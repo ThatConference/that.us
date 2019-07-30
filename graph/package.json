@@ -1,0 +1,39 @@
+{
+  "main": "index.js",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "",
+    "start:watch": "nodemon -r esm ./server.js -e js,graphql"
+  },
+  "engines": {
+    "node": "^10"
+  },
+  "dependencies": {
+    "apollo-server-micro": "^2.6.4",
+    "esm": "^3.2.25",
+    "graphql": "^14.3.1",
+    "graphql-import": "^0.7.1"
+  },
+  "devDependencies": {
+    "micro": "^9.3.4",
+    "microrouter": "^3.1.3",
+    "nodemon": "^1.19.1"
+  },
+  "name": "sandbargraph",
+  "license": "GNU GPLv3",
+  "description": "sand bar and island grill graph endpoint",
+  "keywords": [
+    "node, web, nextjs, now, react"
+  ],
+  "homepage": "https://sandbarandislandgrill.com/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hellounspecified/sandbarandislandgrill.com.git"
+  },
+  "contributors": [
+    {
+      "name": "Clark Sell",
+      "email": "hello@unspecified.io"
+    }
+  ]
+}

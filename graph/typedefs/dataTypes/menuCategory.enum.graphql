@@ -1,0 +1,10 @@
+enum MenuCategory {
+  DRINK
+  APPETIZER
+  SALAD
+  DINNER_LANDFOOD
+  DINNER_SEAFOOD
+  DESERT
+  KIDS
+  WRAP
+}
