@@ -4,16 +4,6 @@
   "env": {
     "SENTRY_DSN": "TODO"
   },
-  "builds": [
-    {
-      "src": "graph/index.js",
-      "use": "@now/node@canary",
-      "includeFiles": ["**/*.graphql"]
-    },
-    { "src": "www/package.json", "use": "@now/next" }
-  ],
-  "routes": [
-    { "src": "/graph", "dest": "/graph/index.js" },
-    { "src": "/(.*)", "dest": "/www/$1" }
-  ]
+  "builds": [{ "src": "www/package.json", "use": "@now/next" }],
+  "routes": [{ "src": "/(.*)", "dest": "/www/$1" }]
 }
