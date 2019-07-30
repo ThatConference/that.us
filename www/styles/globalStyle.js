@@ -5,7 +5,6 @@ const GlobalStyle = createGlobalStyle`
   ${normalize()};
   html {
     @import url('https://fonts.googleapis.com/css?family=Roboto');
-    @import url('https://fonts.googleapis.com/css?family=Great+Vibes&display=swap');
     font-family: 'Roboto', sans-serif;
     width: 100%;
     height: 100%;

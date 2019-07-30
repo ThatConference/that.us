@@ -13,16 +13,16 @@ const HeroImage = styled.div`
 const HeroContainer = styled.div`
   width: 100%;
   height: 100%;
-  padding-left: 42px;
+  padding: 5% 5% 35px 5%;
   position: absolute;
   top: 10px;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-between;
   color: ${({ theme }) => theme.colors.light};
 
   svg {
-    margin: 7px;
+    margin-right: 12px;
     height: 30px;
     fill: ${({ theme }) => theme.colors.light};
 
@@ -39,10 +39,13 @@ const HeroContainer = styled.div`
 
 const BannerHeader = styled.div`
   text-align: left;
-  padding-left: 48px;
   width: 100%;
   display: flex;
   flex-direction: column;
+
+  ${below.med`
+    text-align: center;
+  `};
 
   h1 {
     font-size: 7rem;
@@ -62,8 +65,6 @@ const BannerHeader = styled.div`
 `;
 
 const Hero = props => {
-  console.log(props.imagePath);
-
   return(
     <HeroImage fullHeight={props.fullHeight} >
       <ParallaxBanner

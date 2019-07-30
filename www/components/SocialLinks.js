@@ -1,11 +1,14 @@
 import styled from 'styled-components';
 import Icon from './Icon';
+import { above, below } from '../utitlies/breakpoint.js';
 
 const SocialLinksContainer = styled.div`
-  position: absolute;
-  bottom: 50px;
   display: flex;
   justify-content: left;
+
+  ${below.med`
+    justify-content: center;
+  `};
 
   a:hover {
     svg {

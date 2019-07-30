@@ -42,9 +42,6 @@ const FooterColumn = styled.div`
 `;
 
 const Trademark = styled.p`
-  margin-left: 50px;  
-  margin-top: 20px;
-  text-align: center;
   font-size: 10px;
 `;
 
@@ -58,5 +55,14 @@ const Footer = ({ className }) => (
 export default styled(Footer)`
   position: absolute;
   bottom: 0;
+  text-align: left;
+  width: 100%;
+  padding-left: 5%;
+
+  ${below.med`
+    padding-left: 0;
+    text-align: center;
+  `};
+
   ${applyStyleModifiers(FOOTER_MODIFIERS)};
 `;

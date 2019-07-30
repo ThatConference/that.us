@@ -38,7 +38,7 @@ class home extends Component {
             heading="THAT.us"
             subheading="it's not a you, me, or them, it is US all, together"
           >
-            <div class="_form_10" />
+            <div className="_form_10" />
             <SocialLinks />
           </Hero>
         </Fragment>
