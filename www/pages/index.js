@@ -37,7 +37,7 @@ class home extends Component {
             imagePath={this.getImage()}
             fullHeight="true"
             heading="THAT.us"
-            subheading="it's not you, me or them it is US all togehter"
+            subheading="it's not a you, me or them it is US all, together"
           >
             <div class="_form_10"></div>
             <SocialLinks />
