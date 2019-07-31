@@ -31,7 +31,6 @@ class Page extends Component {
     return (
       <ThemeProvider theme={baseTheme}>
         <Fragment>
-          <GlobalStyle />
           <StyledPage>
             <Meta />
             <CorePage>
@@ -40,6 +39,7 @@ class Page extends Component {
               <Footer modifiers="site" />
             </CorePage>
           </StyledPage>
+          <GlobalStyle />
         </Fragment>
       </ThemeProvider>
     );
