@@ -1,14 +1,12 @@
-import dynamic from 'next/dynamic';
 import React, { Component, Fragment } from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 
+import GlobalStyle from '../styles/globalStyle';
 import baseTheme from '../styles/baseTheme';
 
 import Meta from './Meta';
 import Header from './Header';
 import Footer from './Footer';
-
-const GlobalStyle = dynamic(() => import('../styles/globalStyle'));
 
 const StyledPage = styled.div`
   background: ${props => props.theme.colors.backgroundColor};
@@ -33,8 +31,8 @@ class Page extends Component {
     return (
       <ThemeProvider theme={baseTheme}>
         <Fragment>
-          <GlobalStyle />
           <StyledPage>
+            <GlobalStyle />
             <Meta />
             <CorePage>
               <Header />
