@@ -15,10 +15,12 @@ const HeroContainer = styled.div`
   height: 100%;
   padding: 5% 5% 35px 5%;
   position: absolute;
-  top: 10px;
+  top: 0;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  background-color: rgba(0,0,0,0.6);
+
   color: ${({ theme }) => theme.colors.light};
 
   svg {
@@ -76,7 +78,6 @@ const Hero = props => {
         ]}
         style={{
           height: props.fullHeight ? '100vh' : '60vh',
-          opacity: 0.5,
         }}
       />
       <HeroContainer>
