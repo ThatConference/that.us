@@ -1,8 +1,9 @@
 import Head from 'next/head';
 
-const NAME = "THAT.us"
-const DESCRIPTION = "it's not you me or them, all of us togehter"
-const URL = "https://that.us/"
+const NAME = 'THAT.us';
+const DESCRIPTION =
+  "It's not a you, or I, or even them, it all of US, together!";
+const URL = 'https://that.us/';
 
 const Meta = () => (
   <Head>
@@ -13,10 +14,7 @@ const Meta = () => (
 
     <title>{NAME}</title>
 
-    <meta
-      name="description"
-      content={DESCRIPTION}
-    />
+    <meta name="description" content={DESCRIPTION} />
     <meta
       name="keywords"
       content="Community, Tech, Engineering, Software, Web"
@@ -24,10 +22,7 @@ const Meta = () => (
 
     <meta property="og:type" content="website" />
     <meta property="og:title" content={NAME} />
-    <meta
-      property="og:description"
-      content={DESCRIPTION}
-    />
+    <meta property="og:description" content={DESCRIPTION} />
     <meta property="og:url" content={URL} />
     <meta property="og:site_name" content={NAME} />
     <meta property="og:image" content="https://s0.wp.com/i/blank.jpg" />
@@ -36,10 +31,7 @@ const Meta = () => (
     <meta name="twitter:site" content="@thatconference" />
     <meta name="twitter:title" content={NAME} />
     <meta name="twitter:card" content="summary" />
-    <meta
-      name="twitter:description"
-      content={DESCRIPTION}
-    />
+    <meta name="twitter:description" content={DESCRIPTION} />
     <meta
       name="twitter:image"
       content="https://www.thatconference.com/images/icons/opengraph.jpg"
