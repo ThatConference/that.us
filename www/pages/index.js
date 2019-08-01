@@ -1,10 +1,21 @@
 import Head from 'next/head';
 import React, { Component, Fragment } from 'react';
 import { ParallaxProvider } from 'react-scroll-parallax';
-//import styled from 'styled-components';
 
 import Hero from '../components/Hero';
 import SocialLinks from '../components/SocialLinks';
+
+/*
+gtag events for later reference
+
+https://github.com/zeit/next.js/blob/master/examples/with-google-analytics/pages/contact.js
+import * as gtag from '../lib/gtag'
+gtag.event({
+  action: 'submit_form',
+  category: 'Contact',
+  label: this.state.message
+})
+*/
 
 class home extends Component {
   getImage() {

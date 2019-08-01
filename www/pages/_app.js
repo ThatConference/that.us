@@ -1,8 +1,11 @@
 import React from 'react';
 import App, { Container } from 'next/app';
-import Page from '../components/Page';
+import Router from 'next/router';
 
-import Head from 'next/head';
+import Page from '../components/Page';
+import * as gtag from '../lib/gtag';
+
+Router.events.on('routeChangeComplete', url => gtag.pageview(url));
 
 export default class MyApp extends App {
   render() {
@@ -10,13 +13,6 @@ export default class MyApp extends App {
 
     return (
       <Container>
-        <Head>
-          <link
-            href="https://fonts.googleapis.com/css?family=Raleway&display=swap"
-            rel="stylesheet"
-          />
-        </Head>
-
         <Page>
           <Component {...pageProps} />
         </Page>
