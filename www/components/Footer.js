@@ -55,14 +55,8 @@ const Footer = ({ className }) => (
 export default styled(Footer)`
   position: absolute;
   bottom: 0;
-  text-align: left;
+  text-align: center;
   width: 100%;
-  padding-left: 5%;
-
-  ${below.med`
-    padding-left: 0;
-    text-align: center;
-  `};
 
   ${applyStyleModifiers(FOOTER_MODIFIERS)};
 `;

@@ -19,12 +19,17 @@ const HeroContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
   background-color: rgba(0,0,0,0.6);
+  background-image: url("../static/images/ThatConference-Trees - Textured - Black.svg");
+  background-repeat: no-repeat;
+  background-position: center; 
+  background-size: cover;
 
   color: ${({ theme }) => theme.colors.light};
 
   svg {
-    margin-right: 12px;
+    margin: 8px;
     height: 30px;
     fill: ${({ theme }) => theme.colors.light};
 
@@ -45,16 +50,23 @@ const BannerHeader = styled.div`
   display: flex;
   flex-direction: column;
 
-  ${below.med`
-    text-align: center;
-  `};
+  text-align: center;
 
   h1 {
-    font-size: 7rem;
     margin: 0;
-    line-height: 1.1;
-    font-weight: 500;
-    color: ${({ theme }) => theme.colors.light};
+    img {
+      max-width: 60%;
+
+      ${below.med`
+        padding-top: 40px;
+        max-width: 85%;
+      `};
+
+      ${below.small`
+        padding-top: 60px;
+      `};
+    }
+    
   }
   h2 {
     font-size: 2.5rem;
@@ -63,6 +75,10 @@ const BannerHeader = styled.div`
     line-height: 1.2;
     color: ${({ theme }) => theme.colors.light};
     padding-top: 5px;
+
+    ${below.med`
+      font-size: 2rem;
+    `};
   }
 `;
 
@@ -82,8 +98,10 @@ const Hero = props => {
       />
       <HeroContainer>
         <BannerHeader fullHeight={props.fullHeight}>
-          <h1>{props.heading}</h1>
-          <h2>{props.subheading}</h2>
+          <h1>
+            <img src="../static/images/that.us.horizontal.svg" alt="THAT.us" />
+          </h1>
+          <h2 dangerouslySetInnerHTML={{ __html: props.subheading }} />
         </BannerHeader>
         {props.children}
       </HeroContainer>

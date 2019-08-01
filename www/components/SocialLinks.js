@@ -12,7 +12,7 @@ const SocialLinksContainer = styled.div`
 
   a:hover {
     svg {
-      fill: ${({ theme }) => theme.colors.orange};
+      fill: ${({ theme }) => theme.colors.primary};
     }
   }
 `;
@@ -20,7 +20,7 @@ const SocialLinksContainer = styled.div`
 const SocialLinks = props => {
   return(
     <SocialLinksContainer>
-      <a href="https://www.facebook.com/ThatConference/">
+      <a href="https://www.facebook.com/groups/2257593914570023/">
         <Icon icon="facebook" />
       </a>
       <a href="https://www.instagram.com/thatconference/">
