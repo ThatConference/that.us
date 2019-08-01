@@ -2,12 +2,10 @@
   "name": "that.us",
   "version": "1.0.0",
   "description": "this is the that.us website.",
-  "main": "index.js",
   "scripts": {
-    "dev": "next ./ -p 8000",
-    "build": "next build ./www",
-    "start": "next start ./www",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prestart": "next build ./",
+    "start": "next start",
+    "start:watch": "nodemon -x npm run start"
   },
   "author": "",
   "license": "GNU GPLv3",
@@ -32,6 +30,7 @@
     "babel-jest": "^24.8.0",
     "babel-plugin-module-resolver": "^3.2.0",
     "babel-plugin-styled-components": "^1.10.6",
-    "jest": "^24.8.0"
+    "jest": "^24.8.0",
+    "nodemon": "^1.19.1"
   }
 }

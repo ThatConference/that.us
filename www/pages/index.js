@@ -1,13 +1,10 @@
 import Head from 'next/head';
 import React, { Component, Fragment } from 'react';
 import { ParallaxProvider } from 'react-scroll-parallax';
-import styled from 'styled-components';
+//import styled from 'styled-components';
 
-import ContentSection from '../components/ContentSection';
 import Hero from '../components/Hero';
-import IconText from '../components/IconText';
 import SocialLinks from '../components/SocialLinks';
-import { above, below } from '../utitlies/breakpoint.js';
 
 class home extends Component {
   getImage() {
@@ -41,7 +38,7 @@ class home extends Component {
               imagePath={this.getImage()}
               fullHeight="true"
               heading="THAT.us"
-              subheading="It's not a you, or I, or even them, it all of US, together!"
+              subheading="It's not a you, or I, or even them, it's all of US, together!"
             >
               <div className="_form_10" />
               <SocialLinks />

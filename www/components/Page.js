@@ -31,8 +31,8 @@ class Page extends Component {
     return (
       <ThemeProvider theme={baseTheme}>
         <Fragment>
-          <GlobalStyle />
           <StyledPage>
+            <GlobalStyle />
             <Meta />
             <CorePage>
               <Header />

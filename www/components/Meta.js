@@ -2,7 +2,7 @@ import Head from 'next/head';
 
 const NAME = 'THAT.us';
 const DESCRIPTION =
-  "It's not a you, or I, or even them, it all of US, together!";
+  "It's not a you, or I, or even them, it's all of US, together!";
 const URL = 'https://that.us/';
 
 const Meta = () => (
