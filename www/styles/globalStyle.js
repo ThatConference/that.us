@@ -4,8 +4,8 @@ import { normalize } from 'polished';
 const GlobalStyle = createGlobalStyle`
   ${normalize()};
   html {
-    @import url('https://fonts.googleapis.com/css?family=Roboto');
-    font-family: 'Roboto', sans-serif;
+    /* @import url('https://fonts.googleapis.com/css?family=Roboto');
+    font-family: 'Roboto', sans-serif; */
     width: 100%;
     height: 100%;
 
