@@ -32,6 +32,10 @@ const HeroContainer = styled.div`
     ${below.med`
       height: 20px;
     `};
+
+    ${below.small`
+      margin: 2px 8px;
+    `};
   }
 
   p {

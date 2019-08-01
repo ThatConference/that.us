@@ -50,6 +50,10 @@ const Trademark = styled.p`
   a:hover {
     color: ${({ theme }) => theme.colors.primary};
   }
+
+  ${below.small`
+    margin-top: 4px;
+  `};
 `;
 
 const Footer = ({ className }) => (

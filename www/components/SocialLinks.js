@@ -10,6 +10,12 @@ const SocialLinksContainer = styled.div`
     justify-content: center;
   `};
 
+  a {
+    ${below.small`
+      height: 27px;
+    `};
+  }
+
   a:hover {
     svg {
       fill: ${({ theme }) => theme.colors.primary};
