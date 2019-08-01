@@ -29,6 +29,9 @@ const SocialLinks = props => {
       <a href="https://twitter.com/ThatConference">
         <Icon icon="twitter" />
       </a>
+      <a href="https://github.com/ThatConference/that.us">
+        <Icon icon="github" />
+      </a>
     </SocialLinksContainer>
   )
 }
