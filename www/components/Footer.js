@@ -42,12 +42,19 @@ const FooterColumn = styled.div`
 `;
 
 const Trademark = styled.p`
-  font-size: 10px;
+  font-size: 12px;
+  a:link, a:active, a:visited {
+    color: ${({ theme }) => theme.colors.fonts.light};
+  }
+
+  a:hover {
+    color: ${({ theme }) => theme.colors.primary};
+  }
 `;
 
 const Footer = ({ className }) => (
   <footer className={className}>
-    <Trademark>© 2019 THAT Conference</Trademark>
+    <Trademark>© 2019 <a href="http://www.thatconference.com">THAT Conference</a></Trademark>
   </footer>
 );
 
