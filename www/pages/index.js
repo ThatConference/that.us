@@ -4,6 +4,7 @@ import { ParallaxProvider } from 'react-scroll-parallax';
 import Hero from '../components/Hero';
 import SocialLinks from '../components/SocialLinks';
 import Trees from '../components/Trees';
+import styled from 'styled-components';
 
 /*
 gtag events for later reference
@@ -17,6 +18,12 @@ gtag.event({
 })
 */
 
+const FormDiv = styled.div`
+  flex-grow: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 
 class home extends Component {
   getImage() {
@@ -54,7 +61,9 @@ class home extends Component {
               heading="THAT.us"
               subheading="It's not a you, or I, or even them,<br/>it's all of US, together!"
             >
-              <div className="_form_10" />
+              <FormDiv>
+                <div className="_form_10" />
+              </FormDiv>
               <Trees />
               <SocialLinks />
             </Hero>

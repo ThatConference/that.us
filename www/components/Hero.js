@@ -59,7 +59,7 @@ const BannerHeader = styled.div`
       `};
 
       ${below.small`
-        padding-top: 60px;
+        padding-top: 20px;
       `};
     }
     

@@ -3,10 +3,10 @@ import Icon from './Icon';
 import { above, below } from '../utitlies/breakpoint.js';
 
 const TreeImage = styled.img`
-  width: 130px;
+  width: 170px;
 
   ${below.med`
-    width: 105px;
+    width: 145px;
   `};
 `;
 
@@ -14,7 +14,7 @@ const Trees = props => {
   return (
     <div>
       <a href="http://www.thatconference.com">
-        <TreeImage src="../static/images/ThatConference-Trees - Textured - White.svg" alt="THAT Conference" />
+        <TreeImage src="../static/images/Logo-TC-Trees-Small.png" alt="THAT Conference" />
       </a>
     </div>
   )
