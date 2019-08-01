@@ -1,9 +1,9 @@
 import Head from 'next/head';
 import React, { Component, Fragment } from 'react';
 import { ParallaxProvider } from 'react-scroll-parallax';
-
 import Hero from '../components/Hero';
 import SocialLinks from '../components/SocialLinks';
+import Trees from '../components/Trees';
 
 /*
 gtag events for later reference
@@ -16,6 +16,7 @@ gtag.event({
   label: this.state.message
 })
 */
+
 
 class home extends Component {
   getImage() {
@@ -54,6 +55,7 @@ class home extends Component {
               subheading="It's not a you, or I, or even them,<br/>it's all of US, together!"
             >
               <div className="_form_10" />
+              <Trees />
               <SocialLinks />
             </Hero>
           </Fragment>

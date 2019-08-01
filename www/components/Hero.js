@@ -20,11 +20,7 @@ const HeroContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  background-color: rgba(0,0,0,0.6);
-  background-image: url("../static/images/ThatConference-Trees - Textured - Black.svg");
-  background-repeat: no-repeat;
-  background-position: center; 
-  background-size: cover;
+  background-color: rgba(0,0,0,0.7);
 
   color: ${({ theme }) => theme.colors.light};
 
