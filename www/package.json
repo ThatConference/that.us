@@ -22,15 +22,15 @@
     "react-dom": "^16.8.6",
     "react-facebook": "^8.0.4",
     "react-scroll-parallax": "^2.1.2",
-    "styled-components": "^4.3.2",
+    "styled-components": "^5.0.0",
     "styled-components-modifiers": "^1.2.4"
   },
   "devDependencies": {
-    "@babel/core": "^7.5.5",
-    "babel-jest": "^24.8.0",
-    "babel-plugin-module-resolver": "^3.2.0",
+    "@babel/core": "^7.8.3",
+    "babel-jest": "^25.1.0",
+    "babel-plugin-module-resolver": "^4.0.0",
     "babel-plugin-styled-components": "^1.10.6",
-    "jest": "^24.8.0",
-    "nodemon": "^1.19.1"
+    "jest": "^25.1.0",
+    "nodemon": "^2.0.2"
   }
 }
