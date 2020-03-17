@@ -13,23 +13,23 @@
     "node": ">=10.15"
   },
   "dependencies": {
-    "google-map-react": "^1.1.4",
+    "google-map-react": "^1.1.6",
     "moment": "^2.24.0",
-    "next": "^9.0.2",
+    "next": "^9.3.1",
     "nprogress": "^0.2.0",
-    "polished": "^3.4.1",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-facebook": "^8.0.4",
-    "react-scroll-parallax": "^2.1.2",
-    "styled-components": "^5.0.0",
-    "styled-components-modifiers": "^1.2.4"
+    "polished": "^3.4.4",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0",
+    "react-facebook": "^8.1.4",
+    "react-scroll-parallax": "^2.3.2",
+    "styled-components": "^5.0.1",
+    "styled-components-modifiers": "^1.2.5"
   },
   "devDependencies": {
-    "@babel/core": "^7.8.3",
+    "@babel/core": "^7.8.7",
     "babel-jest": "^25.1.0",
     "babel-plugin-module-resolver": "^4.0.0",
-    "babel-plugin-styled-components": "^1.10.6",
+    "babel-plugin-styled-components": "^1.10.7",
     "jest": "^25.1.0",
     "nodemon": "^2.0.2"
   }
