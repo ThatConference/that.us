@@ -57,7 +57,9 @@ typings/
 # dotenv environment variables file
 .env
 
-# next.js build output
-.next
+.DS_Store
 
 .DS_Store
+/node_modules/
+/public/build/
+__testCoverage__
