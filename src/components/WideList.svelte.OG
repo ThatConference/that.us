@@ -31,11 +31,11 @@
     }
   `;
 
-  const query = client.query({ query: GET_SESSIONS });
+  const sessionQuery = client.query({ query: GET_SESSIONS });
 </script>
 
 <div class="bg-white shadow overflow-hidden sm:rounded-md">
-  {#await query}
+  {#await sessionQuery}
     <div class="flex items-center justify-center">
       <Circle2 size="60" color="#FF3E00" unit="px" />
     </div>

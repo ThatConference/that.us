@@ -1,17 +1,36 @@
 <script>
+  import { getContext } from 'svelte';
+  import gql from 'graphql-tag';
+  import { Circle2 } from 'svelte-loading-spinners';
   //https://github.com/mdauner/sveltejs-forms
   import { Form, Input, Select, Choice } from 'sveltejs-forms';
   import * as yup from 'yup';
 
-  function handleSubmit({ detail: { values, setSubmitting, resetForm } }) {
-    setTimeout(() => {
-      console.log(values);
-      setSubmitting(false);
-      resetForm();
-      // resetForm({
-      //   user: { email: 'test@user.com' }, // optional
-      // });
-    }, 2000);
+  const client = getContext('apolloClient');
+
+  const CREATE_SESSION = gql`
+    mutation createSession($session: CreateSessionInput!) {
+      newSession: createSession(session: $session) {
+        id
+        title
+        shortDescription
+      }
+    }
+  `;
+
+  async function handleSubmit({
+    detail: { values, setSubmitting, resetForm },
+  }) {
+    const {
+      data: { newSession },
+      error,
+    } = await client.mutate({
+      mutation: CREATE_SESSION,
+      variables: { session: { ...values } },
+    });
+
+    setSubmitting(false);
+    resetForm();
   }
 
   const schema = yup.object().shape({

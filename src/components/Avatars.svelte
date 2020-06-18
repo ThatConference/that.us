@@ -4,7 +4,6 @@
 </script>
 
 <div class="flex overflow-hidden">
-
   <img
     class="inline-block h-8 w-8 rounded-full text-white shadow-solid"
     src={host.profileImage}
