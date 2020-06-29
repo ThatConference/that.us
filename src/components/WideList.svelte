@@ -1,16 +1,13 @@
 <script>
-  import { getContext } from 'svelte';
-  import gql from 'graphql-tag';
+  import { getClient } from '@urql/svelte';
 
   import { Circle2 } from 'svelte-loading-spinners';
   import WideListItem from '../elements/WideListItem.svelte';
   import Action from '../elements/Action.svelte';
 
-  const client = getContext('apolloClient');
-
-  const GET_SESSIONS = gql`
-    query getSessions {
-      sessions {
+  const NEW_SESSION = `
+    subscription {
+      newSession {
         id
         title
         shortDescription
@@ -31,11 +28,83 @@
     }
   `;
 
-  const query = client.query({ query: GET_SESSIONS });
+  const QUERY_SESSIONS = `
+      query getSessions {
+        sessions {
+          id
+          title
+          shortDescription
+          startingDateTime
+          host {
+            id
+            firstName
+            lastName
+            profileImage
+          }
+          attendees {
+            id
+            firstName
+            lastName
+            profileImage
+          }
+        }
+      }
+    `;
+
+  // const querySessions = query({
+  //   query: `
+  //     query {
+  //       sessions {
+  //         id
+  //         title
+  //         shortDescription
+  //         startingDateTime
+  //         host {
+  //           id
+  //           firstName
+  //           lastName
+  //           profileImage
+  //         }
+  //         attendees {
+  //           id
+  //           firstName
+  //           lastName
+  //           profileImage
+  //         }
+  //       }
+  //     }
+  //   `,
+  // });
+
+  // $: sessions = querySessions({ pause: true });
+  // $: sessions = querySessions();
+
+  const executeQuery = getClient()
+    .query(QUERY_SESSIONS)
+    .toPromise();
 </script>
 
+<!-- <div class="bg-white shadow overflow-hidden sm:rounded-md">
+
+  {#if $sessions.fetching}
+    <div class="flex items-center justify-center">
+      <Circle2 size="60" color="#FF3E00" unit="px" />
+    </div>
+  {:else}
+    {console.log($sessions)}
+    <ul>
+      {#each $sessions.data.sessions as session}
+        <li>
+          <WideListItem {...session} />
+        </li>
+      {/each}
+    </ul>
+  {/if}
+
+</div> -->
+
 <div class="bg-white shadow overflow-hidden sm:rounded-md">
-  {#await query}
+  {#await executeQuery}
     <div class="flex items-center justify-center">
       <Circle2 size="60" color="#FF3E00" unit="px" />
     </div>

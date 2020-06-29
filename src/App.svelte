@@ -1,39 +1,42 @@
 <script>
-  import { setContext } from 'svelte';
-  import router from 'page';
+  import { initClient } from '@urql/svelte';
 
-  import { client } from './apollo.js';
-  import routes from './routes';
-  import Tailwindcss from './Tailwindcss.svelte';
+  // components
+  import { Router, Route, NotFound, redirect } from './utilities/pager';
 
-  setContext('apolloClient', client);
+  // pages
+  import Tailwindcss from './elements/Tailwindcss.svelte';
+  import Home from './pages/Home.svelte';
+  import Login from './pages/Login.svelte';
+  import Dashboard from './pages/Dashboard.svelte';
+  import CreateSession from './pages/session/Create.svelte';
 
-  let page;
-  let params;
-  let user = false; // todo we will need to set the user later
+  initClient({ url: 'http://localhost:9090/graphql' });
 
-  routes.forEach(route => {
-    router(
-      route.path,
-
-      (ctx, next) => {
-        params = ctx.params;
-        next();
-      },
-
-      // Check if auth is valid. If so, set the page to the component otherwise redirect to login.
-      () => {
-        if (route.auth && !user) {
-          router.redirect('/login');
-        } else {
-          page = route.component;
-        }
-      },
-    );
-  });
-
-  router.start();
+  const guard = (ctx, next) => {
+    // check for example if user is authenticated
+    if (true) {
+      redirect('/login');
+    } else {
+      // go to the next callback in the chain
+      next();
+    }
+  };
 </script>
 
-<Tailwindcss />
-<svelte:component this={page} {params} />
+<main>
+  <Tailwindcss />
+  <Router>
+    <Route path="/" component="{Home}" />
+    <Route path="/login" component="{Login}" />
+    <Route path="/dashboard" component="{Dashboard}" />
+    <Route path="/session/create" component="{CreateSession}" />
+    <NotFound>
+      <h2>Sorry. Page not found.</h2>
+    </NotFound>
+    <Route path="/news" middleware="{[guard]}">
+      <h2>Latest News</h2>
+      <p>Finally some good news!</p>
+    </Route>
+  </Router>
+</main>
