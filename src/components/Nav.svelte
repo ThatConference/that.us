@@ -5,8 +5,8 @@
         <div class="flex items-center">
           <div class="flex-shrink-0">
             <img
-              class="h-8 w-8"
-              src="/img/logos/workflow-mark-on-dark.svg"
+              class="h-10 w-10"
+              src="/images/Logo-Square-White.svg"
               alt="Workflow logo" />
           </div>
           <div class="hidden md:block">
@@ -16,39 +16,19 @@
                 class="px-3 py-2 rounded-md text-sm font-medium text-white
                 bg-gray-900 focus:outline-none focus:text-white
                 focus:bg-gray-700">
-                Dashboard
+                Sessions
               </a>
               <a
                 href="#"
                 class="ml-4 px-3 py-2 rounded-md text-sm font-medium
                 text-gray-300 hover:text-white hover:bg-gray-700
                 focus:outline-none focus:text-white focus:bg-gray-700">
-                Team
-              </a>
-              <a
-                href="#"
-                class="ml-4 px-3 py-2 rounded-md text-sm font-medium
-                text-gray-300 hover:text-white hover:bg-gray-700
-                focus:outline-none focus:text-white focus:bg-gray-700">
-                Projects
-              </a>
-              <a
-                href="#"
-                class="ml-4 px-3 py-2 rounded-md text-sm font-medium
-                text-gray-300 hover:text-white hover:bg-gray-700
-                focus:outline-none focus:text-white focus:bg-gray-700">
-                Calendar
-              </a>
-              <a
-                href="#"
-                class="ml-4 px-3 py-2 rounded-md text-sm font-medium
-                text-gray-300 hover:text-white hover:bg-gray-700
-                focus:outline-none focus:text-white focus:bg-gray-700">
-                Reports
+                Partners
               </a>
             </div>
           </div>
         </div>
+
         <div class="hidden md:block">
           <div class="ml-4 flex items-center md:ml-6">
             <button
