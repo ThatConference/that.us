@@ -8,7 +8,7 @@
   import Tailwindcss from './elements/Tailwindcss.svelte';
   import Home from './pages/Home.svelte';
   import Login from './pages/Login.svelte';
-  import Dashboard from './pages/Dashboard.svelte';
+  import SessionList from './pages/session/List.svelte';
   import CreateSession from './pages/session/Create.svelte';
 
   initClient({ url: 'http://localhost:9090/graphql' });
@@ -29,7 +29,7 @@
   <Router>
     <Route path="/" component="{Home}" />
     <Route path="/login" component="{Login}" />
-    <Route path="/dashboard" component="{Dashboard}" />
+    <Route path="/sessions" component="{SessionList}" />
     <Route path="/session/create" component="{CreateSession}" />
     <NotFound>
       <h2>Sorry. Page not found.</h2>
@@ -39,4 +39,5 @@
       <p>Finally some good news!</p>
     </Route>
   </Router>
+
 </main>

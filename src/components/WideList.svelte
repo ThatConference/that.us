@@ -5,29 +5,6 @@
   import WideListItem from '../elements/WideListItem.svelte';
   import Action from '../elements/Action.svelte';
 
-  const NEW_SESSION = `
-    subscription {
-      newSession {
-        id
-        title
-        shortDescription
-        startingDateTime
-        host {
-          id
-          firstName
-          lastName
-          profileImage
-        }
-        attendees {
-          id
-          firstName
-          lastName
-          profileImage
-        }
-      }
-    }
-  `;
-
   const QUERY_SESSIONS = `
       query getSessions {
         sessions {
@@ -50,31 +27,6 @@
         }
       }
     `;
-
-  // const querySessions = query({
-  //   query: `
-  //     query {
-  //       sessions {
-  //         id
-  //         title
-  //         shortDescription
-  //         startingDateTime
-  //         host {
-  //           id
-  //           firstName
-  //           lastName
-  //           profileImage
-  //         }
-  //         attendees {
-  //           id
-  //           firstName
-  //           lastName
-  //           profileImage
-  //         }
-  //       }
-  //     }
-  //   `,
-  // });
 
   // $: sessions = querySessions({ pause: true });
   // $: sessions = querySessions();
