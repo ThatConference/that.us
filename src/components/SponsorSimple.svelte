@@ -4,41 +4,36 @@
   const client = initClient({ url: 'https://api.that.tech' });
 
   const GET_PARTNERS = `
-    query getEvent($slug: String!) {
-      events {
-        eventBySlug(slug: $slug) {
-          partners {
-            level
-            companyName
-            companyLogo
+      query getEvent($slug: String!) {
+        events {
+          eventBySlug(slug: $slug) {
+            partners {
+              level
+              companyName
+              companyLogo
+            }
           }
         }
       }
-    }
-  `;
+    `;
 
   const PARTNER_LEVELS_TO_DISPLAY = ['CORPORATE_PARTNER', 'PARTNER'];
 
-  async function queryPartners() {
-    console.log(' I WAS HERE ');
-
-    const result = await client
+  function queryPartners() {
+    return client
       .query(GET_PARTNERS, { slug: 'wi/2020' })
-      .toPromise();
+      .toPromise()
+      .then(p => {
+        const partners = p.data.events.eventBySlug.partners;
 
-    const partners = result.data.events.eventBySlug.partners;
-
-    return partners.filter(partner =>
-      PARTNER_LEVELS_TO_DISPLAY.includes(partner.level),
-    );
+        return partners.filter(partner =>
+          PARTNER_LEVELS_TO_DISPLAY.includes(partner.level),
+        );
+      });
   }
-
-  // const executeQuery = client
-  //   .query(GET_PARTNERS, { slug: 'wi/2020' })
-  //   .toPromise();
 </script>
 
-{#await queryPartners then partners}
+{#await queryPartners() then partners}
   <div class="bg-white">
     <div class="max-w-screen-xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-2 gap-8 md:grid-cols-6 lg:grid-cols-5">

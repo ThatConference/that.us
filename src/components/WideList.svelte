@@ -28,32 +28,10 @@
       }
     `;
 
-  // $: sessions = querySessions({ pause: true });
-  // $: sessions = querySessions();
-
   const executeQuery = getClient()
     .query(QUERY_SESSIONS)
     .toPromise();
 </script>
-
-<!-- <div class="bg-white shadow overflow-hidden sm:rounded-md">
-
-  {#if $sessions.fetching}
-    <div class="flex items-center justify-center">
-      <Circle2 size="60" color="#FF3E00" unit="px" />
-    </div>
-  {:else}
-    {console.log($sessions)}
-    <ul>
-      {#each $sessions.data.sessions as session}
-        <li>
-          <WideListItem {...session} />
-        </li>
-      {/each}
-    </ul>
-  {/if}
-
-</div> -->
 
 <div class="bg-white shadow overflow-hidden sm:rounded-md">
   {#await executeQuery}

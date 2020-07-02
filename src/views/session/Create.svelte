@@ -1,4 +1,6 @@
 <script>
+  export let currentRoute;
+
   import Header from '../../elements/Header.svelte';
   import Nav from '../../components/Nav.svelte';
 

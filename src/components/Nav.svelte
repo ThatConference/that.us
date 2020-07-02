@@ -1,6 +1,9 @@
 <script>
+  import { getAuth } from '../utilities/auth';
   import { fade } from 'svelte/transition';
   let visible = false;
+
+  // const { isAuthenticated, logout, login } = getAuth();
 </script>
 
 <nav class="bg-gray-800">
@@ -82,15 +85,6 @@
                 </button>
               </div>
 
-              <!-- Profile dropdown panel, show/hide based on dropdown state.
-
-                Entering: "transition ease-out duration-100"
-                    From: "transform opacity-0 scale-95"
-                    To: "transform opacity-100 scale-100"
-                Leaving: "transition ease-in duration-75"
-                    From: "transform opacity-100 scale-100"
-                    To: "transform opacity-0 scale-95" -->
-
               {#if visible}
                 <div
                   class="origin-top-right absolute right-0 mt-2 w-48 rounded-md
@@ -105,19 +99,22 @@
                     >
                       Your Profile
                     </a>
+
                     <a
                       href="#"
                       class="block px-4 py-2 text-sm text-gray-700
                       hover:bg-gray-100"
+                      on:click|preventDefault="{() => login()}"
                     >
-                      Settings
+                      Login
                     </a>
                     <a
                       href="#"
                       class="block px-4 py-2 text-sm text-gray-700
                       hover:bg-gray-100"
+                      on:click|preventDefault="{() => logout()}"
                     >
-                      Sign out
+                      Logout
                     </a>
                   </div>
                 </div>
@@ -126,6 +123,7 @@
             </div>
           </div>
         </div>
+
         <div class="-mr-2 flex md:hidden">
           <!-- Mobile menu button -->
           <button
