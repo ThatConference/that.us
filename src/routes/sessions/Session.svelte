@@ -4,7 +4,7 @@
 
   export let sessionId;
 
-  import Header from '../../elements/Header.svelte';
+  import Header from '../../elements/ActionHeader.svelte';
   import Nav from '../../components/Nav.svelte';
 
   /* 

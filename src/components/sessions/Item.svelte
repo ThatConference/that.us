@@ -1,7 +1,7 @@
 <script>
   import { Link } from 'yrv';
 
-  import Avatars from '../components/Avatars.svelte';
+  import Avatars from '../../elements/Avatars.svelte';
 
   export let id;
   export let title;

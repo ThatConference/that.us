@@ -1,9 +1,9 @@
 <script>
   import { getClient } from '@urql/svelte';
 
-  import { Circle2 } from 'svelte-loading-spinners';
-  import WideListItem from '../elements/WideListItem.svelte';
-  import Action from '../elements/Action.svelte';
+  import ListItem from './Item.svelte';
+  import Waiting from '../../elements/Waiting.svelte';
+  import Action from '../../elements/Action.svelte';
 
   const QUERY_SESSIONS = `
       query getSessions {
@@ -36,7 +36,7 @@
 <div class="bg-white shadow overflow-hidden sm:rounded-md">
   {#await executeQuery}
     <div class="flex items-center justify-center">
-      <Circle2 size="60" color="#FF3E00" unit="px" />
+      <Waiting />
     </div>
   {:then result}
     {#if !result.data.sessions}
@@ -45,7 +45,7 @@
       <ul>
         {#each result.data.sessions as session}
           <li>
-            <WideListItem {...session} />
+            <ListItem {...session} />
           </li>
         {/each}
       </ul>

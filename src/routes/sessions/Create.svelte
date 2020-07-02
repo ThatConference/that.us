@@ -1,6 +1,8 @@
 <script>
-  import Header from '../../elements/Header.svelte';
+  import Header from '../../elements/ActionHeader.svelte';
   import Nav from '../../components/Nav.svelte';
+
+  import Waiting from '../../elements/Waiting.svelte';
 
   import { getContext } from 'svelte';
   import gql from 'graphql-tag';
@@ -39,11 +41,18 @@
   const schema = yup.object().shape({
     title: yup.string().required(),
     shortDescription: yup.string().required(),
+    startTime: yup.date().required(),
   });
 
   function handleReset() {
     console.log('form has been reset');
   }
+
+  const sessionTimes = [
+    { id: '08:00', title: '8:00 am' },
+    { id: '08:30', title: '8:30 am' },
+    { id: '09:00', title: '9:00 am' },
+  ];
 </script>
 
 <div>
@@ -118,6 +127,30 @@
                 </div>
               </div>
             </div>
+
+            <div
+              class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start
+              sm:border-t sm:border-gray-200 sm:pt-5"
+            >
+              <label
+                for="session_startTime"
+                class="block text-sm font-medium leading-5 text-gray-700
+                sm:mt-px sm:pt-2"
+              >
+                Pick a time...
+              </label>
+              <div class="mt-1 sm:mt-0 sm:col-span-2">
+                <div class="max-w-lg rounded-md shadow-sm sm:max-w-xs">
+                  <Select
+                    name="startTime"
+                    options="{sessionTimes}"
+                    class="form-input block w-full transition duration-150
+                    ease-in-out sm:text-sm sm:leading-5"
+                  />
+                </div>
+              </div>
+            </div>
+
           </div>
 
           <div class="mt-8 border-t border-gray-200 pt-5">
@@ -152,6 +185,11 @@
               </span>
             </div>
           </div>
+
+          {#if isSubmitting}
+            <Waiting />
+          {/if}
+
         </Form>
 
       </div>

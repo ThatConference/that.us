@@ -1,19 +1,22 @@
 <script>
   import { Link } from 'yrv';
 
-  import WideList from '../../components/WideList.svelte';
-  import Header from '../../elements/Header.svelte';
+  import SessionList from '../../components/sessions/List.svelte';
+  import ActionHeader from '../../elements/ActionHeader.svelte';
   import Nav from '../../components/Nav.svelte';
   import Sponsor from '../../components/SponsorSimple.svelte';
+
+  import StackedLayout from '../../elements/layouts/StackedLayout.svelte';
 
   export let currentRoute;
   export let params;
 </script>
 
-<div>
-  <div class="bg-gray-800 pb-32">
+<StackedLayout>
+
+  <div slot="header">
     <Nav />
-    <Header title="Sessions">
+    <ActionHeader title="Session Schedule">
       <span class="inline-flex rounded-md shadow-sm">
         <Link
           href="/sessions/create"
@@ -26,15 +29,15 @@
           Create New Session
         </Link>
       </span>
-    </Header>
+    </ActionHeader>
   </div>
 
-  <main class="-mt-32">
-    <div class="max-w-7xl mx-auto pb-12 px-4 sm:px-6 lg:px-8">
-      <div class="bg-white rounded-lg shadow px-5 py-6 sm:px-6">
-        <WideList />
-      </div>
-    </div>
-  </main>
-  <Sponsor />
-</div>
+  <div slot="body">
+    <SessionList />
+  </div>
+
+  <div slot="footer">
+    <Sponsor />
+  </div>
+
+</StackedLayout>
