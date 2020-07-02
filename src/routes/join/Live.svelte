@@ -2,13 +2,12 @@
   import Header from '../../elements/Header.svelte';
   import Nav from '../../components/Nav.svelte';
 
-  export let currentRoute;
-  const { id } = currentRoute.namedParams;
+  export let sessionId;
 
   function initJitsi() {
     const domain = 'meet.jit.si';
     const options = {
-      roomName: `THAT-${id}`,
+      roomName: `THAT-${sessionId}`,
       width: '100%',
       height: 1000,
       userInfo: {

@@ -1,5 +1,8 @@
 <script>
+  import { Link } from 'yrv';
+
   import Avatars from '../components/Avatars.svelte';
+
   export let id;
   export let title;
   export let shortDescription;
@@ -8,8 +11,8 @@
   export let attendees;
 </script>
 
-<a
-  href="/sessions/session/:{id}"
+<Link
+  href="/sessions/{id}"
   class="block hover:bg-gray-50 focus:outline-none focus:bg-gray-50 transition
   duration-150 ease-in-out"
 >
@@ -63,4 +66,4 @@
       </svg>
     </div>
   </div>
-</a>
+</Link>

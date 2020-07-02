@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+
 import { writable } from 'svelte/store';
 import createAuth0Client from '@auth0/auth0-spa-js';
 import { securityConfig } from '../config';

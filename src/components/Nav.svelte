@@ -1,9 +1,8 @@
 <script>
-  // import { getAuth } from '../utilities/auth';
   import { fade } from 'svelte/transition';
-  let visible = false;
+  import { Link } from 'yrv';
 
-  // const { isAuthenticated, logout, login } = getAuth();
+  let visible = false;
 </script>
 
 <nav class="bg-gray-800">
@@ -20,14 +19,16 @@
           </div>
           <div class="hidden md:block">
             <div class="ml-10 flex items-baseline">
-              <a
+
+              <Link
                 href="/sessions"
                 class="px-3 py-2 rounded-md text-sm font-medium text-white
                 bg-gray-900 focus:outline-none focus:text-white
                 focus:bg-gray-700"
               >
                 Sessions
-              </a>
+              </Link>
+
               <a
                 href="#"
                 class="ml-4 px-3 py-2 rounded-md text-sm font-medium
@@ -101,18 +102,9 @@
                     </a>
 
                     <a
-                      href="#"
+                      href="/logout"
                       class="block px-4 py-2 text-sm text-gray-700
                       hover:bg-gray-100"
-                      on:click|preventDefault="{() => {}}"
-                    >
-                      Login
-                    </a>
-                    <a
-                      href="#"
-                      class="block px-4 py-2 text-sm text-gray-700
-                      hover:bg-gray-100"
-                      on:click|preventDefault="{() => {}}"
                     >
                       Logout
                     </a>
@@ -257,13 +249,13 @@
           Settings
         </a>
         <a
-          href="#"
+          href="/logout"
           class="mt-1 block px-3 py-2 rounded-md text-base font-medium
           text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none
           focus:text-white focus:bg-gray-700"
           role="menuitem"
         >
-          Sign out
+          Logout
         </a>
       </div>
     </div>

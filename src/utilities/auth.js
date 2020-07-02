@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { onMount, setContext, getContext } from 'svelte';
 import { writable } from 'svelte/store';
 import createAuth0Client from '@auth0/auth0-spa-js';
@@ -79,6 +80,7 @@ function createAuth(config) {
 
     // clear token refresh interval on component unmount
     return () => {
+      // eslint-disable-next-line no-unused-expressions
       intervalId && clearInterval(intervalId);
     };
   });

@@ -1,30 +1,68 @@
 <script>
   import { initClient } from '@urql/svelte';
-  import { Router, Route } from 'svelte-routing';
+  // import { Router, Route } from 'svelte-routing';
+  import { Router, Route } from 'yrv';
 
+  import { isAuthenticated } from './utilities/security.js';
+
+  // ui components
   import Tailwindcss from './elements/Tailwindcss.svelte';
-  import List from './routes/session/List.svelte';
-  import Create from './routes/session/Create.svelte';
+
+  // root
+  import Home from './routes/Home.svelte';
   import Login from './routes/Login.svelte';
-  import WAT from './routes/WAT.svelte';
+  import Logout from './routes/Logout.svelte';
 
-  // import { isAuthenticated } from './utilities/security.js';
+  // sessions
+  import List from './routes/sessions/List.svelte';
+  import Session from './routes/sessions/Session.svelte';
+  import Create from './routes/sessions/Create.svelte';
 
-  initClient({ url: 'http://localhost:9090/graphql' });
+  // join
+  import Live from './routes/join/Live.svelte';
+
+  initClient({ url: 'http://localhost:9090/graphql' }); // todo.. deal with these urls
 </script>
 
 <main>
   <Tailwindcss />
 
   <Router>
-    <Route path="/" component="{List}" />
-    <Route path="/login" component="{Login}" />
-    <Route path="/wat/*" component="{WAT}" />
+    <Route exact path="/" component="{Home}" />
+    <Route exact path="/login" component="{Login}" />
+    <Route exact path="/logout" component="{Logout}" />
 
-    <!-- {#if $isAuthenticated} -->
-    <Route path="sessions/" component="{List}" />
-    <Route path="/sessions/create" component="{Create}" />
-    <!-- {/if} -->
+    <Route
+      exact
+      path="/sessions"
+      component="{List}"
+      condition="{() => true}"
+      redirect="/login"
+    />
+
+    <Route
+      exact
+      path="/sessions/create"
+      component="{Create}"
+      condition="{() => true}"
+      redirect="/login"
+    />
+
+    <Route
+      exact
+      path="/sessions/:sessionId"
+      component="{Session}"
+      condition="{() => true}"
+      redirect="/login"
+    />
+
+    <Route
+      exact
+      path="/join/:sessionId"
+      component="{Live}"
+      condition="{() => true}"
+      redirect="/login"
+    />
 
   </Router>
 
