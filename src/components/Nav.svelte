@@ -1,5 +1,5 @@
 <script>
-  import { getAuth } from '../utilities/auth';
+  // import { getAuth } from '../utilities/auth';
   import { fade } from 'svelte/transition';
   let visible = false;
 
@@ -104,7 +104,7 @@
                       href="#"
                       class="block px-4 py-2 text-sm text-gray-700
                       hover:bg-gray-100"
-                      on:click|preventDefault="{() => login()}"
+                      on:click|preventDefault="{() => {}}"
                     >
                       Login
                     </a>
@@ -112,7 +112,7 @@
                       href="#"
                       class="block px-4 py-2 text-sm text-gray-700
                       hover:bg-gray-100"
-                      on:click|preventDefault="{() => logout()}"
+                      on:click|preventDefault="{() => {}}"
                     >
                       Logout
                     </a>

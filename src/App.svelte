@@ -1,15 +1,14 @@
 <script>
   import { initClient } from '@urql/svelte';
-  import { Link, Router, Route } from 'yrv';
+  import { Router, Route } from 'svelte-routing';
 
   import Tailwindcss from './elements/Tailwindcss.svelte';
-  import List from './views/session/List.svelte';
-  import Create from './views/session/Create.svelte';
-  import Login from './views/Login.svelte';
+  import List from './routes/session/List.svelte';
+  import Create from './routes/session/Create.svelte';
+  import Login from './routes/Login.svelte';
+  import WAT from './routes/WAT.svelte';
 
-  import { auth0Promise, isAuthenticated } from './utilities/security.js';
-
-  $: disabled = !$isAuthenticated;
+  // import { isAuthenticated } from './utilities/security.js';
 
   initClient({ url: 'http://localhost:9090/graphql' });
 </script>
@@ -17,25 +16,15 @@
 <main>
   <Tailwindcss />
 
-  <Router path="/">
-    <Route exact path="/" component="{List}" />
-    <Route exact path="/login" component="{Login}" />
-  </Router>
+  <Router>
+    <Route path="/" component="{List}" />
+    <Route path="/login" component="{Login}" />
+    <Route path="/wat/*" component="{WAT}" />
 
-  <Router path="/sessions">
-    {#await auth0Promise then auth}
-      {(console.log($isAuthenticated), '')}
-      {#if !$isAuthenticated}
-        <Route exact redirect="/login">welcome back</Route>
-      {:else}
-        <Route exact component="{List}" />
-        <Route exact path="/create" component="{Create}" />
-      {/if}
-    {/await}
-    <Route fallback>
-      <h2>404 Not Found</h2>
-      <p>Sorry, page not found</p>
-    </Route>
+    <!-- {#if $isAuthenticated} -->
+    <Route path="sessions/" component="{List}" />
+    <Route path="/sessions/create" component="{Create}" />
+    <!-- {/if} -->
 
   </Router>
 
