@@ -1,57 +1,58 @@
 <script>
-  import { getClient } from '@urql/svelte';
+  import { onMount } from 'svelte';
+  import { getClient, query } from '@urql/svelte';
 
   import ListItem from './Item.svelte';
-  import Waiting from '../../elements/Waiting.svelte';
-  import Action from '../../elements/Action.svelte';
+  import { Waiting, Action } from '../../elements';
 
-  const QUERY_SESSIONS = `
-      query getSessions {
-        sessions {
-          id
-          title
-          shortDescription
-          startingDateTime
-          host {
-            id
-            firstName
-            lastName
-            profileImage
-          }
-          attendees {
-            id
-            firstName
-            lastName
-            profileImage
+  const QUERY_SESSIONS = query({
+    query: `
+      query GetEventsSessions ($eventId: ID!) {
+        events {
+          event(id: $eventId) {
+            get {
+              sessions {
+                id
+                title
+                shortDescription
+                status
+                startTime
+                speakers {
+                  id
+                  firstName
+                  lastName
+                  profileImage
+                }
+              }
+            }
           }
         }
       }
-    `;
+    `,
+    variables: { eventId: 'ByE7Dc7eCGcRFzLhWhuI' },
+    requestPolicy: 'network-only',
+  });
 
-  const executeQuery = getClient()
-    .query(QUERY_SESSIONS)
-    .toPromise();
+  $: sessions = QUERY_SESSIONS({ pause: true });
+
+  onMount(() => QUERY_SESSIONS().then());
 </script>
 
 <div class="bg-white shadow overflow-hidden sm:rounded-md">
-  {#await executeQuery}
+  {#if $sessions.fetching}
     <div class="flex items-center justify-center">
       <Waiting />
     </div>
-  {:then result}
-    {#if !result.data.sessions}
-      <Action />
-    {:else}
-      <ul>
-        {#each result.data.sessions as session}
-          <li>
-            <ListItem {...session} />
-          </li>
-        {/each}
-      </ul>
-    {/if}
-  {:catch error}
-    <p>Error: {error}</p>
-  {/await}
-
+  {:else if $sessions.error || !$sessions.data}
+    Oh no! That didn't work.
+  {:else}
+    <ul>
+      {#each $sessions.data.events.event.get.sessions as session}
+        <li>
+          {session.title}
+          <!-- <ListItem {...session} /> -->
+        </li>
+      {/each}
+    </ul>
+  {/if}
 </div>

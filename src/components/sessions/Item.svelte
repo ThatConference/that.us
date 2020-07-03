@@ -6,9 +6,13 @@
   export let id;
   export let title;
   export let shortDescription;
-  export let startingDateTime;
-  export let host;
-  export let attendees;
+  export let startTime;
+  export let speakers;
+  export let status;
+  export let __typename;
+  export let attendees = [];
+
+  let host = speakers[0];
 </script>
 
 <Link
@@ -32,7 +36,7 @@
           <div class="mt-2 flex items-center text-sm leading-5 text-gray-500">
             <span>
               Starts @
-              <time datetime="{startingDateTime}">{startingDateTime}</time>
+              <time datetime="{startTime}">{startTime}</time>
             </span>
           </div>
         </div>

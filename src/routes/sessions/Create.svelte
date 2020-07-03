@@ -1,24 +1,27 @@
 <script>
-  import Header from '../../elements/ActionHeader.svelte';
+  import { Circle2 } from 'svelte-loading-spinners';
+  import { getContext } from 'svelte';
+  import { Form, Input, Select, Choice } from 'sveltejs-forms'; //https://github.com/mdauner/sveltejs-forms
+  import * as yup from 'yup';
+  import { getClient } from '@urql/svelte';
+  import { navigateTo } from 'yrv';
+
+  import { ActionHeader, Waiting } from '../../elements';
   import Nav from '../../components/Nav.svelte';
 
-  import Waiting from '../../elements/Waiting.svelte';
-
-  import { getContext } from 'svelte';
-  import gql from 'graphql-tag';
-  import { Circle2 } from 'svelte-loading-spinners';
-  //https://github.com/mdauner/sveltejs-forms
-  import { Form, Input, Select, Choice } from 'sveltejs-forms';
-  import * as yup from 'yup';
-
-  const client = getContext('apolloClient');
-
-  const CREATE_SESSION = gql`
-    mutation createSession($session: CreateSessionInput!) {
-      newSession: createSession(session: $session) {
-        id
-        title
-        shortDescription
+  const CREATE_SESSION = `
+    mutation createSession($eventId: ID!, $newSession: OpenSpaceCreateInput!) {
+      sessions {
+        create(eventId: $eventId) {
+          openSpace(openspace: $newSession) {
+            id
+            eventId
+            title
+            shortDescription
+            type
+            status
+          }
+        }
       }
     }
   `;
@@ -26,22 +29,33 @@
   async function handleSubmit({
     detail: { values, setSubmitting, resetForm },
   }) {
+    const { title, shortDescription } = values;
+
+    const mutationVariables = {
+      eventId: 'ByE7Dc7eCGcRFzLhWhuI',
+      newSession: {
+        title,
+        shortDescription,
+        status: 'ACCEPTED',
+      },
+    };
+
     const {
       data: { newSession },
       error,
-    } = await client.mutate({
-      mutation: CREATE_SESSION,
-      variables: { session: { ...values } },
-    });
+    } = await getClient()
+      .mutation(CREATE_SESSION, mutationVariables)
+      .toPromise();
 
     setSubmitting(false);
     resetForm();
+    navigateTo('/sessions', { replace: true });
   }
 
   const schema = yup.object().shape({
     title: yup.string().required(),
     shortDescription: yup.string().required(),
-    startTime: yup.date().required(),
+    // startTime: yup.date().required(),
   });
 
   function handleReset() {
@@ -58,7 +72,7 @@
 <div>
   <div class="bg-gray-800 pb-32">
     <Nav />
-    <Header title="Create New Session" />
+    <ActionHeader title="Create New Session" />
   </div>
 
   <main class="-mt-32">

@@ -3,7 +3,7 @@
   // import { Router, Route } from 'svelte-routing';
   import { Router, Route } from 'yrv';
 
-  import { isAuthenticated } from './utilities/security.js';
+  import { isAuthenticated, token } from './utilities/security.js';
 
   // ui components
   import Tailwindcss from './elements/Tailwindcss.svelte';
@@ -21,7 +21,12 @@
   // join
   import Live from './routes/join/Live.svelte';
 
-  initClient({ url: 'http://localhost:9090/graphql' }); // todo.. deal with these urls
+  initClient({
+    url: 'https://api.that.tech',
+    fetchOptions: () => ({
+      headers: { authorization: $token ? `Bearer ${$token}` : '' },
+    }),
+  });
 </script>
 
 <main>
@@ -63,6 +68,8 @@
       condition="{() => true}"
       redirect="/login"
     />
+
+    <Route fallback>Page Not Found</Route>
 
   </Router>
 

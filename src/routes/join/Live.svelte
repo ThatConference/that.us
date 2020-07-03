@@ -1,8 +1,11 @@
 <script>
-  import Header from '../../elements/ActionHeader.svelte';
+  import { ActionHeader } from '../../elements';
+  import StackedLayout from '../../elements/layouts/StackedLayout.svelte';
+
   import Nav from '../../components/Nav.svelte';
 
-  export let sessionId;
+  export let router;
+  const { sessionId } = router.params;
 
   function initJitsi() {
     const domain = 'meet.jit.si';
@@ -27,18 +30,16 @@
   </script>
 </svelte:head>
 
-<div>
-  <div class="bg-gray-800 pb-32">
+<StackedLayout>
+  <div slot="header">
     <Nav />
-    <Header title="WHATEVER MY OPEN SPACE TITLE IS" />
-    <p>some awesome description....</p>
+    <ActionHeader title="WHATEVER MY OPEN SPACE TITLE IS" />
   </div>
 
-  <main class="-mt-32">
-    <div class="max-w-7xl mx-auto pb-12 px-4 sm:px-6 lg:px-8">
-      <div class="bg-white rounded-lg shadow px-5 py-6 sm:px-6">
-        <div id="meet" class="object-center"></div>
-      </div>
-    </div>
-  </main>
-</div>
+  <div slot="body">
+    <div id="meet" class="object-center"></div>
+  </div>
+
+  <div slot="footer"></div>
+
+</StackedLayout>

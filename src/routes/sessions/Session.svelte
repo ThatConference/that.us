@@ -1,50 +1,68 @@
 <script>
-  export let currentRoute;
-  export let params;
+  import { getClient } from '@urql/svelte';
 
-  export let sessionId;
-
-  import Header from '../../elements/ActionHeader.svelte';
+  import StackedLayout from '../../elements/layouts/StackedLayout.svelte';
   import Nav from '../../components/Nav.svelte';
+  import Sponsor from '../../components/SponsorSimple.svelte';
 
-  /* 
+  import { ActionHeader, LinkButton, Waiting } from '../../elements';
 
-    take the id.. 
-    call graph endpoint
-    get session deets.
-    populate visual tree
+  export let router;
+  const { sessionId } = router.params;
 
+  const QUERY_SESSION = `
+    query getSessionById($eventId: ID!, $sessionId: ID!) {
+      events {
+        event(id: $eventId) {
+          session: sessionById(sessionId: $sessionId) {
+            id
+            title
+            shortDescription
+            speakers {
+              firstName
+              lastName
+              profileImage
+            }
+          }
+        }
+      }
+    }
+  `;
 
-  */
-
-  let title = 'doing something awesome';
+  const executeQuery = getClient()
+    .query(QUERY_SESSION, { eventId: 'ByE7Dc7eCGcRFzLhWhuI', sessionId })
+    .toPromise();
 </script>
 
-<div>
-  <div class="bg-gray-800 pb-32">
+<StackedLayout>
+
+  <div slot="header">
     <Nav />
-    <Header {title}>
-      <span class="inline-flex rounded-md shadow-sm">
-        <button
-          on:click="{() => (location = '/session/edit')}"
-          type="button"
-          class="inline-flex items-center px-6 py-3 border border-transparent
-          text-base leading-6 font-medium rounded-md text-white bg-indigo-600
-          hover:bg-indigo-500 focus:outline-none focus:border-indigo-700
-          focus:shadow-outline-indigo active:bg-indigo-700 transition
-          ease-in-out duration-150"
-        >
-          Edit Session
-        </button>
-      </span>
-    </Header>
+    <ActionHeader title="Session Details">
+      <LinkButton href="/sessions/edit" text="Edit Session" />
+    </ActionHeader>
   </div>
 
-  <main class="-mt-32">
-    <div class="max-w-7xl mx-auto pb-12 px-4 sm:px-6 lg:px-8">
-      <div class="bg-white rounded-lg shadow px-5 py-6 sm:px-6">
-        <p>add all the session deets</p>
+  <div slot="body">
+
+    {#await executeQuery}
+      <div class="flex items-center justify-center">
+        <Waiting />
       </div>
-    </div>
-  </main>
-</div>
+    {:then result}
+      {#if !result.data.events.event.session}
+        <p>boooommmmm</p>
+      {:else}
+        <h1>{result.data.events.event.session.title}</h1>
+        <p>{result.data.events.event.session.shortDescription}</p>
+        <LinkButton href="/join/{sessionId}" text="Join Now" />
+      {/if}
+    {:catch error}
+      <p>Error: {error}</p>
+    {/await}
+
+  </div>
+
+  <div slot="footer"></div>
+
+</StackedLayout>

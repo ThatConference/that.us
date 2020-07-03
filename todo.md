@@ -10,10 +10,10 @@
 
 ### sessions
 
-[] pull session list onMount
-[] add create session mutation
+[X] pull session list onMount
+[X] add create session mutation
 [] add edit session mutation
-[] add session details page
+[X] add session details page
 
 ### cleanup
 
@@ -33,3 +33,8 @@
 
 [] add partners page
 [] add the partners jobs
+
+## images
+
+[] resize the images correctly
+[] https://github.com/imgix/imgix.js
