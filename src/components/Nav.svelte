@@ -11,11 +11,13 @@
       <div class="flex items-center justify-between h-16 px-4 sm:px-0">
         <div class="flex items-center">
           <div class="flex-shrink-0">
-            <img
-              class="h-10 w-10"
-              src="/images/Logo-Square-White.svg"
-              alt="Workflow logo"
-            />
+            <Link href="/">
+              <img
+                class="h-10 w-10"
+                src="/images/Logo-Square-White.svg"
+                alt="Workflow logo"
+              />
+            </Link>
           </div>
           <div class="hidden md:block">
             <div class="ml-10 flex items-baseline">
