@@ -1,6 +1,6 @@
 <script>
+  import { onMount } from 'svelte';
   import { initClient } from '@urql/svelte';
-  // import { Router, Route } from 'svelte-routing';
   import { Router, Route } from 'yrv';
 
   import { isAuthenticated, token } from './utilities/security.js';

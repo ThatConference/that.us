@@ -30,7 +30,7 @@
       }
     `,
     variables: { eventId: 'ByE7Dc7eCGcRFzLhWhuI' },
-    requestPolicy: 'network-only',
+    requestPolicy: 'cache-and-network',
   });
 
   $: sessions = QUERY_SESSIONS({ pause: true });
@@ -49,8 +49,7 @@
     <ul>
       {#each $sessions.data.events.event.get.sessions as session}
         <li>
-          {session.title}
-          <!-- <ListItem {...session} /> -->
+          <ListItem {...session} />
         </li>
       {/each}
     </ul>

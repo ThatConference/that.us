@@ -12,8 +12,9 @@
 
 [X] pull session list onMount
 [X] add create session mutation
-[] add edit session mutation
 [X] add session details page
+[] add edit session mutation
+[] format session details page
 
 ### cleanup
 

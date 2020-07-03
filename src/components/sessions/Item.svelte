@@ -1,7 +1,7 @@
 <script>
   import { Link } from 'yrv';
 
-  import Avatars from '../../elements/Avatars.svelte';
+  import { Avatars, Image } from '../../elements';
 
   export let id;
   export let title;
@@ -13,6 +13,8 @@
   export let attendees = [];
 
   let host = speakers[0];
+
+  console.log({ host });
 </script>
 
 <Link
@@ -24,7 +26,11 @@
     <div class="min-w-0 flex-1 flex items-center">
 
       <div class="flex-shrink-0">
-        <img class="h-12 w-12 rounded-full" src="{host.profileImage}" alt="" />
+        <Image
+          class="h-12 w-12 rounded-full"
+          src="{`${host.profileImage}?w=300&amp;h=500&amp;fit=crop&amp;crop=right`}"
+          alt="{`${host.firstName} ${host.lastName}`}"
+        />
       </div>
 
       <div class="min-w-0 flex-1 px-4 md:grid md:grid-cols-2 md:gap-4">

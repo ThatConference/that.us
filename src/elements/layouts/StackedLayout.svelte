@@ -1,7 +1,11 @@
+<script>
+  import { Footer } from '../';
+</script>
+
 <div>
-  <div class="bg-gray-800 pb-32">
+  <header class="bg-gray-800 pb-32">
     <slot name="header" />
-  </div>
+  </header>
 
   <main class="-mt-32">
     <div class="max-w-7xl mx-auto pb-12 px-4 sm:px-6 lg:px-8">
@@ -12,4 +16,8 @@
   </main>
 
   <slot name="footer" />
+
+  <footer>
+    <Footer />
+  </footer>
 </div>

@@ -6,6 +6,7 @@
         events {
           eventBySlug(slug: $slug) {
             partners {
+              id
               level
               companyName
               companyLogo
@@ -33,8 +34,17 @@
 </script>
 
 {#await queryPartners() then partners}
-  <div class="bg-white">
-    <div class="max-w-screen-xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+  <div class="relative bg-white overflow-hidden">
+    <div class="max-w-screen-xl mx-auto ">
+      <div class="sm:text-center lg:text-center">
+        <h2
+          class="text-4xl tracking-tight leading-10 font-extrabold text-gray-900
+          sm:text-5xl sm:leading-none md:text-6xl"
+        >
+          Brought to you by:
+        </h2>
+      </div>
+
       <div class="grid grid-cols-2 gap-8 md:grid-cols-6 lg:grid-cols-5">
         {#each partners as p}
           <div
