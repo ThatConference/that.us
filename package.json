@@ -37,7 +37,7 @@
     "graphql": "^15.2.0",
     "graphql-tag": "^2.10.3",
     "husky": "^4.2.5",
-    "imgix.js": "^3.4.2",
+    "imgix-core-js": "^2.3.1",
     "jest-cli": "^26.1.0",
     "lib-jitsi-meet-dist": "^2.1.0",
     "page": "^1.11.6",

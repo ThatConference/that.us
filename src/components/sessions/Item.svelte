@@ -14,7 +14,7 @@
 
   let host = speakers[0];
 
-  console.log({ host });
+  let imageCrop = '?mask=ellipse&w=500&h=500&fit=crop';
 </script>
 
 <Link
@@ -26,9 +26,9 @@
     <div class="min-w-0 flex-1 flex items-center">
 
       <div class="flex-shrink-0">
-        <Image
+        <img
           class="h-12 w-12 rounded-full"
-          src="{`${host.profileImage}?w=300&amp;h=500&amp;fit=crop&amp;crop=right`}"
+          src="{`${host.profileImage}${imageCrop}`}"
           alt="{`${host.firstName} ${host.lastName}`}"
         />
       </div>

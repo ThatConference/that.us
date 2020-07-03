@@ -2,6 +2,8 @@
   export let src;
   export let alt;
   export let sizes = '100vw';
+
+  let params = '?mask=ellipse&w=500&h=500&fit=crop';
 </script>
 
-<img {src} ix-src="{src}" {alt} {sizes} class="h-12 w-12 rounded-full" />
+<img src="{`${src}${params}`}" {alt} class="h-12 w-12 rounded-full" />
