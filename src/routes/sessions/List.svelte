@@ -5,6 +5,8 @@
   import Nav from '../../components/Nav.svelte';
   import Sponsor from '../../components/SponsorSimple.svelte';
 
+  import NewList from '../../components/sessionsNew/Card.svelte';
+
   import { ActionHeader, LinkButton } from '../../elements';
   import StackedLayout from '../../elements/layouts/StackedLayout.svelte';
 </script>
@@ -19,7 +21,8 @@
   </div>
 
   <div slot="body">
-    <SessionList />
+    <!-- <SessionList /> -->
+    <NewList />
   </div>
 
   <div slot="footer">
