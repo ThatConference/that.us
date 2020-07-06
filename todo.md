@@ -23,8 +23,8 @@
 ### Security
 
 [] add login conditionals to routes
-[] refactor auto zero wrapper
-[] add bearer token to api calls
+[] refactor auth zero wrapper
+[x] add bearer token to api calls
 
 ### Admin
 
@@ -37,5 +37,18 @@
 
 ## images
 
-[] resize the images correctly
-[] https://github.com/imgix/imgix.js
+[x] resize the images correctly
+[x] https://github.com/imgix/imgix.js
+
+## top of mind...
+
+[] jump to time slot
+[] list rerender is weird
+[] jump list at top...
+[] when page loads bump to correct time slot
+[] add tags
+[] create needs tags
+[] filter by tags.
+[] forced login on page
+[] display errors when things are busted
+[] sort out nav

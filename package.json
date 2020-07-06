@@ -28,6 +28,7 @@
     "@tailwindcss/ui": "^0.3.0",
     "@urql/svelte": "^0.3.0",
     "concurrently": "^5.2.0",
+    "dayjs": "^1.8.29",
     "eslint": "^7.3.1",
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-config-prettier": "^6.11.0",

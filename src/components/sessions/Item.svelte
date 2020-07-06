@@ -1,5 +1,6 @@
 <script>
   import { Link } from 'yrv';
+  import dayjs from 'dayjs';
 
   import { Avatars, Image } from '../../elements';
 
@@ -41,8 +42,9 @@
 
           <div class="mt-2 flex items-center text-sm leading-5 text-gray-500">
             <span>
-              Starts @
-              <time datetime="{startTime}">{startTime}</time>
+              <time datetime="{startTime}">
+                {dayjs(startTime).format('MM/DD hh:mm a')}
+              </time>
             </span>
           </div>
         </div>
