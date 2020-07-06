@@ -1,10 +1,17 @@
 <script>
-  export let currentRoute;
-  export let params;
-
-  import Hero from '../components/Hero.svelte';
-  import CTA from '../components/CTA.svelte';
+  import { Footer } from '../elements';
+  import {
+    Hero,
+    Testimonials,
+    CTA,
+    Newsletter,
+    Sponsors,
+  } from '../components/home';
 </script>
 
 <Hero />
+<Testimonials />
+<Sponsors />
 <CTA />
+<Newsletter />
+<Footer />
