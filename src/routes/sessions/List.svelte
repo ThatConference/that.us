@@ -1,11 +1,9 @@
 <script>
   import { Link } from 'yrv';
 
-  import SessionList from '../../components/sessions/List.svelte';
   import Nav from '../../components/Nav.svelte';
   import Sponsor from '../../components/SponsorSimple.svelte';
-
-  import NewList from '../../components/sessionsNew/Card.svelte';
+  import SessionsList from '../../components/sessions/List.svelte';
 
   import { ActionHeader, LinkButton } from '../../elements';
   import StackedLayout from '../../elements/layouts/StackedLayout.svelte';
@@ -21,8 +19,7 @@
   </div>
 
   <div slot="body">
-    <NewList />
-    <SessionList />
+    <SessionsList />
   </div>
 
   <div slot="footer">

@@ -26,6 +26,7 @@
     fetchOptions: () => ({
       headers: { authorization: $token ? `Bearer ${$token}` : '' },
     }),
+    requestPolicy: 'cache-and-network',
   });
 </script>
 
