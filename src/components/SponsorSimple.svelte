@@ -36,7 +36,7 @@
 {#await queryPartners() then partners}
   <div class="relative bg-white overflow-hidden">
     <div class="max-w-screen-xl mx-auto ">
-      <div class="sm:text-center lg:text-center">
+      <div class="sm:text-center lg:text-center pb-12">
         <h2
           class="text-4xl tracking-tight leading-10 font-extrabold text-gray-900
           sm:text-5xl sm:leading-none md:text-6xl"

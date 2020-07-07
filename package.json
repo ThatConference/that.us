@@ -35,12 +35,9 @@
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-jest": "^23.17.1",
     "eslint-plugin-prettier": "^3.1.4",
-    "graphql": "^15.2.0",
-    "graphql-tag": "^2.10.3",
+    "graphql": "^14.0.2",
     "husky": "^4.2.5",
-    "imgix-core-js": "^2.3.1",
     "jest-cli": "^26.1.0",
-    "lib-jitsi-meet-dist": "^2.1.0",
     "lodash": "^4.17.15",
     "page": "^1.11.6",
     "postcss": "^7.0.32",
@@ -58,14 +55,11 @@
     "svelte-loading-spinners": "0.0.19",
     "svelte-preprocess": "^3.9.11",
     "svelte-routing": "^1.4.2",
+    "svelte-tags-input": "^2.6.3",
     "sveltejs-forms": "^2.0.1",
     "tailwindcss": "^1.4.6",
     "yrv": "0.0.30",
-    "yup": "^0.29.1"
-  },
-  "peerDependencies": {
-    "graphql": "^15.2.0",
-    "svelte": "^3.23.2"
+    "yup": "~0.28.2"
   },
   "dependencies": {
     "sirv-cli": "^1.0.3"
