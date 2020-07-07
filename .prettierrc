@@ -2,8 +2,9 @@
   "singleQuote": true,
   "printWidth": 80,
   "trailingComma": "all",
-  "svelteSortOrder": "styles-scripts-markup",
+  "plugins": ["prettier-plugin-svelte"],
+  "svelteSortOrder": "scripts-markup-styles",
   "svelteStrictMode": true,
   "svelteBracketNewLine": true,
-  "svelteAllowShorthand": false
+  "svelteAllowShorthand": true
 }

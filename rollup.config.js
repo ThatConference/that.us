@@ -19,7 +19,7 @@ export default {
 
   plugins: [
     replace({
-      'process.env.NODE_ENV': JSON.stringify('development'),
+      'process.env.NODE_ENV': JSON.stringify('production'),
     }),
     svelte({
       preprocess: sveltePreprocess({ postcss: true }),
@@ -27,7 +27,7 @@ export default {
       dev: !production,
       // we'll extract any component CSS out into
       // a separate file - better for performance
-      css: css => {
+      css: (css) => {
         css.write('public/build/bundle.css');
       },
     }),

@@ -1,11 +1,27 @@
 {
-  "extends": ["airbnb-base", "plugin:prettier/recommended"],
+  "extends": [
+    "eslint:recommended",
+    "airbnb-base",
+    "plugin:prettier/recommended"
+  ],
   "env": {
-    "node": true,
+    "browser": true,
     "es6": true,
     "jest/globals": true
   },
+  "parserOptions": {
+    "ecmaVersion": 2019,
+    "sourceType": "module"
+  },
+  "plugins": ["svelte3", "jest"],
+  "overrides": [
+    {
+      "files": ["**/*.svelte"],
+      "processor": "svelte3/svelte3"
+    }
+  ],
   "rules": {
+    // "svelte3/lint-template": 2,
     "no-underscore-dangle": "off",
     "no-unused-vars": [
       1,
@@ -21,6 +37,5 @@
     "jest/no-identical-title": "error",
     "jest/prefer-to-have-length": "warn",
     "jest/valid-expect": "error"
-  },
-  "plugins": ["jest"]
+  }
 }

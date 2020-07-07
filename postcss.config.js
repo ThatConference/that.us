@@ -1,13 +1,27 @@
-const purgecss = require('@fullhuman/postcss-purgecss')({
-  content: ['./src/**/*.html', './src/**/*.svelte'],
+/* eslint-disable no-undef */
 
-  whitelistPatterns: [/svelte-/],
+const plugins =
+  process.env.NODE_ENV === 'production'
+    ? [
+        require('tailwindcss'),
+        require('@tailwindcss/ui'),
+        require('autoprefixer'),
+        require('@fullhuman/postcss-purgecss'),
+      ]
+    : [require('tailwindcss')];
 
-  defaultExtractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || [],
-});
+module.exports = { plugins };
 
-const production = !process.env.ROLLUP_WATCH;
+// const purgecss = require('@fullhuman/postcss-purgecss')({
+//   content: ['./src/**/*.html', './src/**/*.svelte'],
 
-module.exports = {
-  plugins: [require('tailwindcss'), ...(production ? [purgecss] : [])],
-};
+//   whitelistPatterns: [/svelte-/],
+
+//   defaultExtractor: (content) => content.match(/[A-Za-z0-9-_:/]+/g) || [],
+// });
+
+// const production = !process.env.ROLLUP_WATCH;
+
+// module.exports = {
+//   plugins: [require('tailwindcss'), ...(production ? [purgecss] : [])],
+// };
