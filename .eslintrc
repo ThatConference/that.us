@@ -6,7 +6,7 @@
     "jest/globals": true
   },
   "rules": {
-    "no-underscore-dangle": "warn",
+    "no-underscore-dangle": "off",
     "no-unused-vars": [
       1,
       { "argsIgnorePattern": "res|next|resolve|reject|^err" }

@@ -19,19 +19,9 @@ function createAuth(config) {
   let auth0 = null;
   let intervalId;
 
-  isAuthenticated.subscribe((v) => {
-    console.log(`isAuthenticated ${v}`);
-  });
-
   // You can use Svelte's hooks in plain JS files. How nice!
   onMount(async () => {
-    console.log('on mount in auth');
-    try {
-      console.log('createing auth client');
-      auth0 = await createAuth0Client(config);
-    } catch (e) {
-      console.error('in create client', e);
-    }
+    auth0 = await createAuth0Client(config);
 
     // Not all browsers support this, please program defensively!
     const params = new URLSearchParams(window.location.search);
@@ -44,11 +34,9 @@ function createAuth(config) {
 
     // if code then login success
     if (params.has('code') && params.has('state')) {
-      console.log('we haz code and state');
       // Let the Auth0 SDK do it's stuff - save some state, etc.
 
-      const x = await auth0.handleRedirectCallback();
-      console.log('what is x', x);
+      await auth0.handleRedirectCallback();
 
       // Can be smart here and redirect to original path instead of root
       // TODO fix url to redirect too
@@ -57,7 +45,6 @@ function createAuth(config) {
     }
 
     const _isAuthenticated = await auth0.isAuthenticated();
-    console.log('auth 0 says authentiated ==', _isAuthenticated);
     isAuthenticated.set(_isAuthenticated);
 
     if (_isAuthenticated) {
@@ -89,7 +76,6 @@ function createAuth(config) {
   // It must be whitelisted in Auth0. I think.
   // todo.. default is wrong..
   const login = async (redirectPage = 'http://localhost:5000') => {
-    console.log(config);
     auth0 = await createAuth0Client(config);
 
     await auth0.loginWithRedirect({
