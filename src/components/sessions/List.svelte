@@ -64,22 +64,24 @@
     Oh no! That didn't work.
   {:else}
     {#each groups as group}
-      <GroupHeader>
-        {#if !dayjs(group.startTime).isValid()}
-          <span>Unscheduled</span>
-        {:else}
-          <span>{dayjs(group.startTime).format('hh:mm a')}</span>
-        {/if}
-      </GroupHeader>
+      <div class="pb-12">
+        <GroupHeader>
+          {#if !dayjs(group.startTime).isValid()}
+            <span>Unscheduled</span>
+          {:else}
+            <span>{dayjs(group.startTime).format('hh:mm a')}</span>
+          {/if}
+        </GroupHeader>
 
-      <div>
-        <ul class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {#each sessionResults[group.key] as session}
-            <li class="col-span-1 bg-white rounded-lg shadow">
-              <Card {...session} />
-            </li>
-          {/each}
-        </ul>
+        <div>
+          <ul class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {#each sessionResults[group.key] as session}
+              <li class="col-span-1 bg-white rounded-lg shadow">
+                <Card {...session} />
+              </li>
+            {/each}
+          </ul>
+        </div>
       </div>
     {/each}
   {/if}

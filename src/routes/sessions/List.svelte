@@ -2,8 +2,8 @@
   import { Link } from 'yrv';
 
   import Nav from '../../components/Nav.svelte';
-  import Sponsor from '../../components/SponsorSimple.svelte';
   import SessionsList from '../../components/sessions/List.svelte';
+  import Sponsor from '../../components/SponsorSimple.svelte';
 
   import { ActionHeader, LinkButton } from '../../elements';
   import StackedLayout from '../../elements/layouts/StackedLayout.svelte';

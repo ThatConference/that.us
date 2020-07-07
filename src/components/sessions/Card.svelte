@@ -2,6 +2,8 @@
   import { Link } from 'yrv';
   import dayjs from 'dayjs';
 
+  import Tag from './Tag.svelte';
+
   export let id;
   export let title;
   export let shortDescription;
@@ -10,6 +12,9 @@
   export let status;
   export let __typename;
   export let attendees = [];
+
+  // todo.. fix up these from the api
+  export let tags = ['Javascript', 'Svelte', 'graphql', 'development', 'help'];
 
   let host = speakers[0];
 
@@ -38,49 +43,9 @@
 </div>
 
 <div class="flex flex-wrap items-center justify-around space-x-2 px-6 py-2">
-  <div class="flex-initial">
-    <span
-      class="inline-block px-2 py-0.5 text-teal-800 text-xs leading-4
-      font-medium bg-teal-100 rounded-full"
-    >
-      JavaScript
-    </span>
-  </div>
-  <div class="flex-initial">
-    <span
-      class="inline-block px-2 py-0.5 text-teal-800 text-xs leading-4
-      font-medium bg-teal-100 rounded-full"
-    >
-      ReactJS
-    </span>
-  </div>
-  <div class="flex-initial">
-    <span
-      class="inline-block px-2 py-0.5 text-teal-800 text-xs leading-4
-      font-medium bg-teal-100 rounded-full"
-    >
-      Need Help
-    </span>
-
-  </div>
-  <div class="flex-initial">
-    <span
-      class="inline-block px-2 py-0.5 text-teal-800 text-xs leading-4
-      font-medium bg-teal-100 rounded-full"
-    >
-      Web
-    </span>
-  </div>
-
-  <div class="flex-initial">
-    <span
-      class="inline-block px-2 py-0.5 text-teal-800 text-xs leading-4
-      font-medium bg-teal-100 rounded-full"
-    >
-      Development
-    </span>
-
-  </div>
+  {#each tags as t}
+    <Tag>{t}</Tag>
+  {/each}
 </div>
 
 <div class="border-t border-gray-200">
