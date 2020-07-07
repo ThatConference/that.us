@@ -18,6 +18,7 @@
             id
             title
             shortDescription
+            tags
             speakers {
               firstName
               lastName
@@ -55,6 +56,7 @@
       {:else}
         <h1>{result.data.events.event.session.title}</h1>
         <p>{result.data.events.event.session.shortDescription}</p>
+        <p>{result.data.events.event.session.tags}</p>
         <LinkButton href="/join/{sessionId}" text="Join Now" />
       {/if}
     {:catch error}

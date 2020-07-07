@@ -1,11 +1,18 @@
+<style>
+  .tag-form-input :global(.svelte-tags-input-tag) {
+    background: #252f3f;
+  }
+</style>
+
 <script>
   import { getContext } from 'svelte';
   import dayjs from 'dayjs';
   import { Circle2 } from 'svelte-loading-spinners';
   import { Form, Input, Select, Choice } from 'sveltejs-forms'; //https://github.com/mdauner/sveltejs-forms
-  import { getClient } from '@urql/svelte';
-  import * as yup from 'yup';
   import { navigateTo } from 'yrv';
+  import { getClient } from '@urql/svelte';
+  import Tags from 'svelte-tags-input';
+  import * as yup from 'yup';
 
   import { ActionHeader, Waiting } from '../../elements';
   import Nav from '../../components/Nav.svelte';
@@ -19,6 +26,7 @@
             eventId
             title
             shortDescription
+            tags
             type
             status
           }
@@ -27,10 +35,13 @@
     }
   `;
 
+  let tagsInput;
+  let tagsInputValues = [];
+
   async function handleSubmit({
     detail: { values, setSubmitting, resetForm },
   }) {
-    const { title, shortDescription, startTime } = values;
+    const { title, shortDescription, startTime, tags } = values;
 
     const mutationVariables = {
       eventId: 'ByE7Dc7eCGcRFzLhWhuI',
@@ -38,6 +49,7 @@
         title,
         shortDescription,
         status: 'ACCEPTED',
+        tags,
         startTime,
       },
     };
@@ -50,6 +62,7 @@
       .toPromise();
 
     setSubmitting(false);
+    tagsInputValues = [];
     resetForm();
     navigateTo('/sessions', { replace: true });
   }
@@ -58,10 +71,11 @@
     title: yup.string().required(),
     shortDescription: yup.string().required(),
     startTime: yup.string().required(),
+    tags: yup.array().of(yup.string()),
   });
 
   function handleReset() {
-    console.log('form has been reset');
+    tagsInputValues = [];
   }
 
   const sessionTimes = [
@@ -99,7 +113,7 @@
 <div>
   <div class="bg-gray-800 pb-32">
     <Nav />
-    <ActionHeader title="Create New Session" />
+    <ActionHeader title="Create A New Chat" />
   </div>
 
   <main class="-mt-32">
@@ -114,11 +128,14 @@
           on:reset="{handleReset}"
           let:isSubmitting
           let:isValid
+          let:setValue
         >
 
           <div>
             <p class="mt-1 max-w-2xl text-sm leading-5 text-gray-500">
-              This is all the awesome to be created...
+              Let's gather around a vitual circle and chat. Below is a quick
+              form to help others identify if they have interest in the topic or
+              can be of some help to the converation.
             </p>
           </div>
 
@@ -133,7 +150,7 @@
                 class="block text-sm font-medium leading-5 text-gray-700
                 sm:mt-px sm:pt-2"
               >
-                Title
+                What would you like to chat about?
               </label>
 
               <div class="mt-1 sm:mt-0 sm:col-span-2">
@@ -156,12 +173,13 @@
                 class="block text-sm font-medium leading-5 text-gray-700
                 sm:mt-px sm:pt-2"
               >
-                Short Description
+                Explain a bit more about what you'd like to chat about.
               </label>
               <div class="mt-1 sm:mt-0 sm:col-span-2">
                 <div class="max-w-lg rounded-md shadow-sm sm:max-w-xs">
                   <Input
                     name="shortDescription"
+                    multiline="{true}"
                     class="form-input block w-full transition duration-150
                     ease-in-out sm:text-sm sm:leading-5"
                   />
@@ -178,12 +196,20 @@
                 class="block text-sm font-medium leading-5 text-gray-700
                 sm:mt-px sm:pt-2"
               >
-                Tags ( limit 5 )
+                Set 5 or less 'tags' to help categorize this chat.
               </label>
               <div class="mt-1 sm:mt-0 sm:col-span-2">
-                <div class="max-w-lg rounded-md shadow-sm sm:max-w-xs">
-                  <Input
+                <div
+                  class="max-w-lg rounded-md shadow-sm sm:max-w-xs
+                  tag-form-input"
+                >
+                  <Tags
                     name="tags"
+                    tags="{tagsInputValues}"
+                    bind:this="{tagsInput}"
+                    maxTags="{5}"
+                    onlyUnique="{true}"
+                    on:tags="{({ detail }) => setValue('tags', detail.tags)}"
                     class="form-input block w-full transition duration-150
                     ease-in-out sm:text-sm sm:leading-5"
                   />
@@ -200,7 +226,7 @@
                 class="block text-sm font-medium leading-5 text-gray-700
                 sm:mt-px sm:pt-2"
               >
-                Pick a time...
+                Select a time to chat.
               </label>
               <div class="mt-1 sm:mt-0 sm:col-span-2">
                 <div class="max-w-lg rounded-md shadow-sm sm:max-w-xs">

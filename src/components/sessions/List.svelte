@@ -22,6 +22,7 @@
               shortDescription
               status
               startTime
+              tags
               speakers {
                 id
                 firstName

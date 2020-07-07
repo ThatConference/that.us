@@ -10,14 +10,12 @@
   export let startTime;
   export let speakers;
   export let status;
-  export let __typename;
-  export let attendees = [];
+  export let tags = [];
+  export let __typename; // just here to clean up props
+  export let attendees = []; // todo.. needs to be favorites
 
-  // todo.. fix up these from the api
-  export let tags = ['Javascript', 'Svelte', 'graphql', 'development', 'help'];
-
+  let canJoin = () => true; // todo.. need to set between the two...
   let host = speakers[0];
-
   let imageCrop = '?mask=ellipse&w=500&h=500&fit=crop';
 </script>
 
@@ -75,29 +73,31 @@
         <span class="ml-3">More Details</span>
       </Link>
     </div>
-    <div class="-ml-px w-0 flex-1 flex">
-      <Link
-        href="/join/{id}"
-        class="relative w-0 flex-1 inline-flex items-center justify-center py-4
-        text-sm leading-5 text-gray-700 font-medium border border-transparent
-        rounded-br-lg hover:text-gray-500 focus:outline-none
-        focus:shadow-outline-blue focus:border-blue-300 focus:z-10 transition
-        ease-in-out duration-150"
-      >
-        <svg
-          class="w-5 h-5 text-gray-400"
-          viewBox="0 0 20 20"
-          fill="currentColor"
+    {#if canJoin()}
+      <div class="-ml-px w-0 flex-1 flex">
+        <Link
+          href="/join/{id}"
+          class="relative w-0 flex-1 inline-flex items-center justify-center
+          py-4 text-sm leading-5 text-gray-700 font-medium border
+          border-transparent rounded-br-lg hover:text-gray-500
+          focus:outline-none focus:shadow-outline-blue focus:border-blue-300
+          focus:z-10 transition ease-in-out duration-150"
         >
-          <path
-            d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54
-            1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0
-            011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2
-            12.18 2 5V3z"
-          ></path>
-        </svg>
-        <span class="ml-3">Join In</span>
-      </Link>
-    </div>
+          <svg
+            class="w-5 h-5 text-gray-400"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
+            <path
+              d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54
+              1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0
+              011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2
+              12.18 2 5V3z"
+            ></path>
+          </svg>
+          <span class="ml-3">Join In</span>
+        </Link>
+      </div>
+    {/if}
   </div>
 </div>
