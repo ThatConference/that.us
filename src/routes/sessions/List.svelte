@@ -21,8 +21,8 @@
   </div>
 
   <div slot="body">
-    <!-- <SessionList /> -->
     <NewList />
+    <SessionList />
   </div>
 
   <div slot="footer">

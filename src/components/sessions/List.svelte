@@ -3,6 +3,7 @@
   import dayjs from 'dayjs';
   import { Link } from 'yrv';
   import { getClient, query } from '@urql/svelte';
+  import _ from 'lodash';
 
   import ListItem from './Item.svelte';
   import { Waiting, Action } from '../../elements';
@@ -35,7 +36,16 @@
     requestPolicy: 'cache-and-network',
   });
 
+  let grouped;
+
   $: sessions = QUERY_SESSIONS({ pause: true });
+
+  $: if ($sessions.data) {
+    const { sessions } = $sessions.data.events.event.get;
+
+    grouped = _.groupBy(sessions, 'startTime');
+    console.log({ grouped });
+  }
 
   onMount(() => QUERY_SESSIONS().then());
 

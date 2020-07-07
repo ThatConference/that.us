@@ -41,6 +41,7 @@
     "imgix-core-js": "^2.3.1",
     "jest-cli": "^26.1.0",
     "lib-jitsi-meet-dist": "^2.1.0",
+    "lodash": "^4.17.15",
     "page": "^1.11.6",
     "postcss": "^7.0.32",
     "postcss-load-config": "^2.1.0",
