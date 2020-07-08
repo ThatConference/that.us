@@ -5,6 +5,7 @@
   import { info, heart, signIn } from 'svelte-awesome/icons';
 
   import Tag from './Tag.svelte';
+  import CardLink from './CardLink.svelte';
 
   export let id;
   export let title;
@@ -16,7 +17,7 @@
   export let __typename; // just here to clean up props
   export let attendees = []; // todo.. needs to be favorites
 
-  let canJoin = () => true; // todo.. need to set between the two...
+  let canJoin = () => false; // todo.. need to set between the two...
   let host = speakers[0];
   let imageCrop = '?mask=ellipse&w=500&h=500&fit=crop';
 </script>
@@ -51,34 +52,15 @@
 <div class="border-t border-gray-200">
   <div class="-mt-px flex">
     <div class="w-0 flex-1 flex border-r border-gray-200">
-      <Link
-        href="/sessions/{id}"
-        class="relative -mr-px w-0 flex-1 inline-flex items-center
-        justify-center py-4 text-sm leading-5 text-gray-700 font-medium border
-        border-transparent rounded-bl-lg hover:text-gray-500 focus:outline-none
-        focus:shadow-outline-blue focus:border-blue-300 focus:z-10 transition
-        ease-in-out duration-150"
-      >
-        <Icon data="{info}" class="w-5 h-5 text-gray-400" />
-        <span class="ml-3">More Details</span>
-      </Link>
+      <CardLink href="/sessions/{id}" icon="{info}" text="{'More Details'}" />
     </div>
     {#if canJoin()}
       <div class="-ml-px w-0 flex-1 flex">
-        <Link
-          href="/join/{id}"
-          class="relative w-0 flex-1 inline-flex items-center justify-center
-          py-4 text-sm leading-5 text-gray-700 font-medium border
-          border-transparent rounded-br-lg hover:text-gray-500
-          focus:outline-none focus:shadow-outline-blue focus:border-blue-300
-          focus:z-10 transition ease-in-out duration-150"
-        >
-          <Icon data="{signIn}" class="w-5 h-5 text-gray-400" />
-          <span class="ml-3">Join In</span>
-        </Link>
+        <CardLink href="/join/{id}" icon="{signIn}" text="{'Join In'}" />
       </div>
     {:else}
       <div class="-ml-px w-0 flex-1 flex">
+        <!-- todo... needs to be a button as we need the onclick -->
         <Link
           href="#"
           class="relative w-0 flex-1 inline-flex items-center justify-center
@@ -89,7 +71,7 @@
         >
 
           <Icon data="{heart}" class="w-5 h-5 text-gray-400" />
-          <span class="ml-3">Favortie</span>
+          <span class="ml-3">Favorite</span>
         </Link>
       </div>
     {/if}

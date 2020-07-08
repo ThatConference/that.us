@@ -1,3 +1,6 @@
+/* eslint-disable global-require */
+const { colors } = require('@tailwindcss/ui');
+
 /* eslint-disable no-undef */
 module.exports = {
   purge: [],
