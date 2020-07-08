@@ -50,7 +50,7 @@
       exact
       path="/sessions/create"
       component="{Create}"
-      condition="{() => $isAuthenticated}"
+      condition="{() => true}"
       redirect="/login"
     />
 
@@ -58,7 +58,7 @@
       exact
       path="/sessions/:sessionId"
       component="{Session}"
-      condition="{() => $isAuthenticated}"
+      condition="{() => true}"
       redirect="/login"
     />
 
@@ -66,7 +66,7 @@
       exact
       path="/join/:sessionId"
       component="{Live}"
-      condition="{() => $isAuthenticated}"
+      condition="{() => true}"
       redirect="/login"
     />
 

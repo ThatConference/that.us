@@ -8,9 +8,11 @@
 
   // toggle for the drop down
   let visible;
+  let mobileVisible = false;
 </script>
 
 <nav class="bg-gray-800">
+  <!-- full screen nav -->
   <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
     <div class="border-b border-gray-700">
       <div class="flex items-center justify-between h-16 px-4 sm:px-0">
@@ -78,10 +80,10 @@
                   id="user-menu"
                   class="max-w-xs flex items-center text-sm rounded-full
                   text-white focus:outline-none"
-                  class:focus:shadow-solid="{visible}"
+                  class:shadow-solid="{visible}"
                   aria-label="User menu"
                   aria-haspopup="true"
-                  on:click="{() => (visible = !visible)}"
+                  on:click|preventDefault="{() => (visible = !visible)}"
                 >
                   {#if $isAuthenticated}
                     <img
@@ -149,6 +151,7 @@
             class="inline-flex items-center justify-center p-2 rounded-md
             text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none
             focus:bg-gray-700 focus:text-white"
+            on:click|preventDefault="{() => (mobileVisible = !mobileVisible)}"
           >
             <!-- Menu open: "hidden", Menu closed: "block" -->
             <svg
@@ -189,7 +192,11 @@
 
     Open: "block", closed: "hidden"
     -->
-  <div class="hidden border-b border-gray-700 md:hidden">
+  <div
+    class="border-b border-gray-700 md:hidden"
+    class:hidden="{!mobileVisible}"
+    class:block="{mobileVisible}"
+  >
     <div class="px-2 py-3 sm:px-3">
       <a
         href="#"
@@ -241,14 +248,6 @@
             alt=""
           />
         </div>
-        <div class="ml-3">
-          <div class="text-base font-medium leading-none text-white">
-            Tom Cook
-          </div>
-          <div class="mt-1 text-sm font-medium leading-none text-gray-400">
-            tom@example.com
-          </div>
-        </div>
       </div>
 
       <div
@@ -265,15 +264,6 @@
           role="menuitem"
         >
           Your Profile
-        </a>
-        <a
-          href="#"
-          class="mt-1 block px-3 py-2 rounded-md text-base font-medium
-          text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none
-          focus:text-white focus:bg-gray-700"
-          role="menuitem"
-        >
-          Settings
         </a>
         <a
           href="/logout"

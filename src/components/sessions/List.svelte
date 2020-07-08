@@ -100,7 +100,7 @@
           {#if !dayjs(group.startTime).isValid()}
             <span>Unscheduled</span>
           {:else}
-            <span>{dayjs(group.startTime).format('hh:mm a')}</span>
+            <span>{dayjs(group.startTime).format('hh:mm a Z')}</span>
           {/if}
         </GroupHeader>
 

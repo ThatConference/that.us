@@ -112,6 +112,17 @@
   const initialValues = {
     tags: tagsInputValues,
   };
+
+  const convertOptionsToTimeZone = sessionTimes => {
+    const x = sessionTimes.map(t => ({
+      id: t.id,
+      title: `${t.title} ( in your timezone - ${dayjs(t.id).format(
+        'hh:mm a',
+      )} )`,
+    }));
+
+    return x;
+  };
 </script>
 
 <div>
@@ -237,7 +248,7 @@
                 <div class="max-w-lg rounded-md shadow-sm sm:max-w-xs">
                   <Select
                     name="startTime"
-                    options="{sessionTimes}"
+                    options="{convertOptionsToTimeZone(sessionTimes)}"
                     class="form-input block w-full transition duration-150
                     ease-in-out sm:text-sm sm:leading-5"
                   />
