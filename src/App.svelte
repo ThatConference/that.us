@@ -42,7 +42,7 @@
       exact
       path="/sessions"
       component="{List}"
-      condition="{() => $isAuthenticated}"
+      condition="{() => true}"
       redirect="/login"
     />
 

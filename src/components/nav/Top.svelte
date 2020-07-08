@@ -31,9 +31,9 @@
 
               <Link
                 href="/sessions"
-                class="px-3 py-2 rounded-md text-sm font-medium text-white
-                bg-gray-900 focus:outline-none focus:text-white
-                focus:bg-gray-700"
+                class="ml-4 px-3 py-2 rounded-md text-sm font-medium
+                text-gray-300 hover:text-white hover:bg-gray-700
+                focus:outline-none focus:text-white focus:bg-gray-700"
               >
                 THAT Schedule
               </Link>
@@ -47,23 +47,23 @@
                 My Sessions
               </Link>
 
-              <a
-                href="#"
+              <Link
+                href="/partners"
                 class="ml-4 px-3 py-2 rounded-md text-sm font-medium
                 text-gray-300 hover:text-white hover:bg-gray-700
                 focus:outline-none focus:text-white focus:bg-gray-700"
               >
                 Partners
-              </a>
+              </Link>
 
-              <a
-                href="#"
+              <Link
+                href="/faq"
                 class="ml-4 px-3 py-2 rounded-md text-sm font-medium
                 text-gray-300 hover:text-white hover:bg-gray-700
                 focus:outline-none focus:text-white focus:bg-gray-700"
               >
                 FAQs
-              </a>
+              </Link>
             </div>
           </div>
         </div>

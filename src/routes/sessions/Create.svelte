@@ -231,7 +231,7 @@
                 class="block text-sm font-medium leading-5 text-gray-700
                 sm:mt-px sm:pt-2"
               >
-                Select a time to chat.
+                Select a time to chat. ( CST gmt-5 )
               </label>
               <div class="mt-1 sm:mt-0 sm:col-span-2">
                 <div class="max-w-lg rounded-md shadow-sm sm:max-w-xs">
