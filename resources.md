@@ -42,3 +42,10 @@ https://www.pika.dev/blog/introducing-pika-pack/
 auth0
 https://codechips.me/svelte-auth0-integration-in-66-loc/
 https://www.npmjs.com/package/@dopry/svelte-auth0
+
+scroll
+
+https://github.com/langbamit/svelte-scrollto
+
+https://github.com/RobBrazier/svelte-awesome
+https://fontawesome.com/v4.7.0/icons/

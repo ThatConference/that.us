@@ -1,11 +1,33 @@
 <script>
-  import { ActionHeader } from '../../elements';
+  import { query } from '@urql/svelte';
+
+  import { ActionHeader, LinkButton } from '../../elements';
   import StackedLayout from '../../elements/layouts/StackedLayout.svelte';
 
-  import Nav from '../../components/Nav.svelte';
+  import Nav from '../../components/nav/Top.svelte';
+  import { isAuthenticated, thatProfile } from '../../utilities/security.js';
 
   export let router;
   const { sessionId } = router.params;
+
+  const QUERY_SESSION = query({
+    query: `
+      query getSessionById($eventId: ID!, $sessionId: ID!) {
+        events {
+          event(id: $eventId) {
+            session: sessionById(sessionId: $sessionId) {  
+              title
+              shortDescription
+            }
+          }
+        }
+      }
+    `,
+    variables: { eventId: 'ByE7Dc7eCGcRFzLhWhuI', sessionId },
+    requestPolicy: 'cache-and-network',
+  });
+
+  $: sessionQuery = QUERY_SESSION();
 
   function initJitsi() {
     const domain = 'meet.jit.si';
@@ -14,8 +36,7 @@
       width: '100%',
       height: 1000,
       userInfo: {
-        email: 'email@jitsiexamplemail.com',
-        displayName: 'John Doe',
+        displayName: `${$thatProfile.firstName} ${$thatProfile.lastName}`,
       },
       parentNode: document.getElementById('meet'),
     };
@@ -33,7 +54,12 @@
 <StackedLayout>
   <div slot="header">
     <Nav />
-    <ActionHeader title="WHATEVER MY OPEN SPACE TITLE IS" />
+
+    {#if $sessionQuery.data}
+      <ActionHeader title="{$sessionQuery.data.events.event.session.title}">
+        <LinkButton href="/sessions/{sessionId}" text="Session Details" />
+      </ActionHeader>
+    {/if}
   </div>
 
   <div slot="body">

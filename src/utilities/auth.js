@@ -2,13 +2,27 @@
 import { onMount, setContext, getContext } from 'svelte';
 import { writable } from 'svelte/store';
 import createAuth0Client from '@auth0/auth0-spa-js';
+import { getClient } from '@urql/svelte';
 
 const isLoading = writable(true);
 const isAuthenticated = writable(false);
 const authToken = writable('');
 const userInfo = writable({});
+const thatProfile = writable({});
 const authError = writable(null);
 const AUTH_KEY = {};
+
+const QUERY_ME = `
+  members {
+    me {
+      id
+      firstName
+      lastName
+      profileImage
+      profileSlug
+    }
+  }
+`;
 
 // Default Auth0 expiration time is 10 hours or something like that.
 // If you want to get fancy you can parse the JWT token and get
@@ -19,7 +33,6 @@ function createAuth(config) {
   let auth0 = null;
   let intervalId;
 
-  // You can use Svelte's hooks in plain JS files. How nice!
   onMount(async () => {
     auth0 = await createAuth0Client(config);
 
@@ -50,6 +63,15 @@ function createAuth(config) {
     if (_isAuthenticated) {
       // while on it, fetch the user info
       userInfo.set(await auth0.getUser());
+      thatProfile.set(
+        await getClient()
+          .query(QUERY_ME)
+          .toPromise()
+          .then(
+            (results) => results,
+            // todo: play the format game...
+          ),
+      );
 
       // Get the access token. Make sure to supply audience property
       // in Auth0 config, otherwise you will soon start throwing stuff!
@@ -98,6 +120,7 @@ function createAuth(config) {
     login,
     logout,
     userInfo,
+    thatProfile,
   };
 
   // Put everything in context so that child components can access the state

@@ -46,8 +46,8 @@
 [] list rerender is weird
 [] jump list at top...
 [] when page loads bump to correct time slot
-[] add tags
-[] create needs tags
+[x] add tags
+[x] create needs tags
 [] filter by tags.
 [] forced login on page
 [] display errors when things are busted

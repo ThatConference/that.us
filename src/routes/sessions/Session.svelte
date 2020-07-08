@@ -2,7 +2,7 @@
   import { getClient } from '@urql/svelte';
 
   import StackedLayout from '../../elements/layouts/StackedLayout.svelte';
-  import Nav from '../../components/Nav.svelte';
+  import Nav from '../../components/nav/Top.svelte';
   import Sponsor from '../../components/SponsorSimple.svelte';
 
   import { ActionHeader, LinkButton, Waiting } from '../../elements';

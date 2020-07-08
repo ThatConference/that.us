@@ -4,6 +4,7 @@
   import { Link } from 'yrv';
   import { query } from '@urql/svelte';
   import _ from 'lodash';
+  import { FacebookLoader } from 'svelte-content-loader';
 
   import GroupHeader from './GroupHeader.svelte';
   import Card from './Card.svelte';
@@ -58,8 +59,37 @@
 <div>
 
   {#if $sessionQuery.fetching}
-    <div class="flex items-center justify-center">
-      <Waiting />
+    <div>
+      <div class="flex items-center justify-center">
+        <GroupHeader>Fetching all THAT awesome!</GroupHeader>
+      </div>
+
+      <div>
+        <ul class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          <li class="col-span-1 bg-white rounded-lg shadow">
+            <div class="w-full flex items-center justify-between p-3 space-x-6">
+              <div class="flex-1 truncate">
+                <FacebookLoader />
+              </div>
+            </div>
+          </li>
+          <li class="col-span-1 bg-white rounded-lg shadow">
+            <div class="w-full flex items-center justify-between p-3 space-x-6">
+              <div class="flex-1 truncate">
+                <FacebookLoader />
+              </div>
+            </div>
+          </li>
+          <li class="col-span-1 bg-white rounded-lg shadow">
+            <div class="w-full flex items-center justify-between p-3 space-x-6">
+              <div class="flex-1 truncate">
+                <FacebookLoader />
+              </div>
+            </div>
+          </li>
+
+        </ul>
+      </div>
     </div>
   {:else if $sessionQuery.error || !$sessionQuery.data}
     Oh no! That didn't work.

@@ -2,9 +2,25 @@
 
 import { writable } from 'svelte/store';
 import createAuth0Client from '@auth0/auth0-spa-js';
+import { getClient } from '@urql/svelte';
 import { securityConfig } from '../config';
 
+const QUERY_ME = `
+  query getMe {
+    members {
+      me {
+        id
+        firstName
+        lastName
+        profileImage
+        profileSlug
+      }
+    }
+  }
+`;
+
 export const user = writable({});
+export const thatProfile = writable({});
 export const token = writable('');
 export const isAuthenticated = writable(false);
 export const auth0Promise = createAuth0Client(securityConfig);
@@ -36,8 +52,21 @@ export async function generateAuth0() {
 
   if (await auth0.isAuthenticated()) {
     isAuthenticated.set(true);
+
+    // set the base profile from auth0
     user.set(await auth0.getUser());
+
     token.set(await auth0.getTokenSilently());
+
+    // set the THAT membership profile
+    thatProfile.set(
+      await getClient()
+        .query(QUERY_ME)
+        .toPromise()
+        .then((results) => ({
+          ...results.data.members.me,
+        })),
+    );
   }
 }
 

@@ -15,7 +15,7 @@
   import * as yup from 'yup';
 
   import { ActionHeader, Waiting } from '../../elements';
-  import Nav from '../../components/Nav.svelte';
+  import Nav from '../../components/nav/Top.svelte';
 
   const CREATE_SESSION = `
     mutation createSession($eventId: ID!, $newSession: OpenSpaceCreateInput!) {
@@ -108,6 +108,10 @@
     { id: '2020-08-03T19:00:00.000-05:00', title: '7:00 pm' },
     { id: '2020-08-03T19:30:00.000-05:00', title: '7:30 pm' },
   ];
+
+  const initialValues = {
+    tags: tagsInputValues,
+  };
 </script>
 
 <div>
@@ -122,6 +126,7 @@
 
         <Form
           {schema}
+          {initialValues}
           validateOnBlur="{false}"
           validateOnChange="{false}"
           on:submit="{handleSubmit}"

@@ -1,7 +1,7 @@
 <script>
   import { Link } from 'yrv';
 
-  import Nav from '../../components/Nav.svelte';
+  import Nav from '../../components/nav/Top.svelte';
   import SessionsList from '../../components/sessions/List.svelte';
   import Sponsor from '../../components/SponsorSimple.svelte';
 
@@ -13,7 +13,7 @@
 
   <div slot="header">
     <Nav />
-    <ActionHeader title="Session Schedule">
+    <ActionHeader title="THAT Schedule">
       <LinkButton href="/sessions/create" text="Create New Session" />
     </ActionHeader>
   </div>
