@@ -17,7 +17,7 @@
   export let __typename; // just here to clean up props
   export let attendees = []; // todo.. needs to be favorites
 
-  let canJoin = () => false; // todo.. need to set between the two...
+  let canJoin = () => true; // todo.. need to set between the two...
   let host = speakers[0];
   let imageCrop = '?mask=ellipse&w=500&h=500&fit=crop';
 </script>
