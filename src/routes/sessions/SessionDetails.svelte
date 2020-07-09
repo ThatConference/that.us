@@ -8,6 +8,7 @@
   import { isAuthenticated } from '../../utilities/security.js';
   import { LinkButton } from '../../elements';
 
+  export let router;
   export let title;
   export let shortDescription;
   export let speakers;
@@ -29,7 +30,24 @@
 
     return action;
   };
+
+  let disqus_config = function() {
+    this.page.url = window.location.pathname; // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = sessionId; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+  };
 </script>
+
+<svelte:head>
+  <script>
+    (function() {
+      var d = document,
+        s = d.createElement('script');
+      s.src = 'https://that-us.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+</svelte:head>
 
 <div>
   <!--header-->
@@ -113,6 +131,8 @@
       {shortDescription}
     </p>
   </div>
+
+  <div id="disqus_thread"></div>
 
   <div class="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
     <span class="flex w-full rounded-md shadow-sm sm:ml-3 sm:w-auto">
