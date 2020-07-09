@@ -28,7 +28,7 @@ export const auth0Promise = createAuth0Client(securityConfig);
 export const logout = async () => {
   const auth0 = await auth0Promise;
 
-  auth0.logout({
+  await auth0.logout({
     returnTo: window.location.origin,
   });
 };
