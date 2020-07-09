@@ -1,4 +1,5 @@
 <script>
+  import { onMount } from 'svelte';
   import { query } from '@urql/svelte';
 
   import { ActionHeader, LinkButton } from '../../elements';
@@ -8,7 +9,9 @@
   import { isAuthenticated, thatProfile } from '../../utilities/security.js';
 
   export let router;
+
   const { sessionId } = router.params;
+  const imageCrop = '?mask=ellipse&w=500&h=500&fit=crop';
 
   const QUERY_SESSION = query({
     query: `
@@ -29,15 +32,67 @@
 
   $: sessionQuery = QUERY_SESSION();
 
+  // https://jitsi.github.io/handbook/docs/dev-guide/dev-guide-iframe
   function initJitsi() {
     const domain = 'meet.jit.si';
     const options = {
       roomName: `THAT-${sessionId}`,
       width: '100%',
       height: 1000,
+      // https://github.com/jitsi/jitsi-meet/blob/master/config.js
+      configOverwrite: {
+        startWithAudioMuted: true,
+        prejoinPageEnabled: false, // todo.. We could prolly drop our own image.
+        // enableWelcomePage: true, // not sure what it does
+      },
+      // https://github.com/jitsi/jitsi-meet/blob/master/interface_config.js
+      interfaceConfigOverwrite: {
+        TOOLBAR_BUTTONS: [
+          'microphone',
+          'camera',
+          'closedcaptions',
+          'desktop',
+          'fullscreen',
+          'fodeviceselection',
+          'hangup',
+          'profile',
+          'chat',
+          // 'recording',
+          // 'livestreaming',
+          'etherpad',
+          // 'sharedvideo',
+          'settings',
+          'raisehand',
+          'videoquality',
+          'filmstrip',
+          // 'invite',
+          'feedback',
+          'stats',
+          'shortcuts',
+          'tileview',
+          'videobackgroundblur',
+          'download',
+          'help',
+          'mute-everyone',
+          // 'security',
+        ],
+      },
       userInfo: {
         displayName: `${$thatProfile.firstName} ${$thatProfile.lastName}`,
       },
+      onload: () => {
+        // update here just to cover loading scenarios
+        api.executeCommand(
+          'avatarUrl',
+          `${$thatProfile.profileImage}${imageCrop}`,
+        );
+
+        api.executeCommand(
+          'displayName',
+          `${$thatProfile.firstName} ${$thatProfile.lastName}`,
+        );
+      },
+
       parentNode: document.getElementById('meet'),
     };
 

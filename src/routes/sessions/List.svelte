@@ -7,6 +7,8 @@
 
   import { ActionHeader, LinkButton } from '../../elements';
   import StackedLayout from '../../elements/layouts/StackedLayout.svelte';
+
+  export let router;
 </script>
 
 <StackedLayout>

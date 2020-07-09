@@ -17,7 +17,7 @@
         <li class="col-span-1 bg-white rounded-lg shadow">
           <div class="w-full flex items-center justify-between p-3 space-x-6">
             <div class="flex-1 truncate">
-              <FacebookLoader />
+              <FacebookLoader uniqueKey="card" />
             </div>
           </div>
         </li>

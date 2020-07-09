@@ -33,11 +33,18 @@ export const logout = async () => {
   });
 };
 
-export const login = async () => {
+export const login = async (
+  redirectPage = 'http://localhost:5000/sessions',
+) => {
   const auth0 = await auth0Promise;
 
+  // const appState = preserveRoute
+  //   ? { pathname: window.location.pathname, search: window.location.search }
+  //   : {};
+
   await auth0.loginWithRedirect({
-    redirect_uri: window.location.origin,
+    redirect_uri: redirectPage || window.location.origin,
+    // redirect_uri: redirectPage || window.location.href,
   });
 };
 

@@ -5,3 +5,5 @@ export { default as Avatars } from './Avatars.svelte';
 export { default as ActionHeader } from './ActionHeader.svelte';
 export { default as Footer } from './Footer.svelte';
 export { default as Image } from './Image.svelte';
+export { default as ModalNoAction } from './modals/NoAction.svelte';
+export { default as ModalError } from './modals/Error.svelte';

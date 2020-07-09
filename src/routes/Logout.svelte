@@ -1,11 +1,16 @@
 <script>
   import { onMount } from 'svelte';
   import { logout } from '../utilities/security.js';
+  import { ModalNoAction } from '../elements';
 
   onMount(async () => {
     await logout();
-    console.log('did we really?');
   });
 </script>
 
-<p>You are now being logged out, bye...</p>
+<div>
+  <ModalNoAction
+    title="Logging Out..."
+    text="You will be redirect to our home page once completed."
+  />
+</div>

@@ -6,6 +6,7 @@
 </script>
 
 <Link
+  exact
   {href}
   class="inline-flex items-center px-6 py-3 border border-transparent text-base
   leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500

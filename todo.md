@@ -5,8 +5,8 @@
 
 ### Nav
 
-[] update profile image when not logged in.
-[] mobile view for nav cleaned up
+[x] update profile image when not logged in.
+[ip] mobile view for nav cleaned up
 
 ### sessions
 
@@ -15,6 +15,9 @@
 [X] add session details page
 [] add edit session mutation
 [] format session details page
+[] favorites
+[] /sessions/mysession
+[] add admin cancel function
 
 ### cleanup
 
@@ -22,33 +25,44 @@
 
 ### Security
 
-[] add login conditionals to routes
-[] refactor auth zero wrapper
+[] auth redirect needs to be configured correctly per env.
+[X] create the correct auth0 app and reconfigure
+[blocked] add login conditionals to routes, forced login on page
+[hold] refactor auth zero wrapper
 [x] add bearer token to api calls
-
-### Admin
-
-[] add admin cancel function
+[X] login needs formatting and waiting indicator.
+[X] logout needs formatting and waiting indicator.
 
 ### partners
 
-[] add partners page
-[] add the partners jobs
+[] add /partners page
+[] add the partners jobs ?? or just link??
 
-## images
+### images
 
+[] need a fav icon
 [x] resize the images correctly
 [x] https://github.com/imgix/imgix.js
 
-## top of mind...
+### /join
 
-[] jump to time slot
-[] list rerender is weird
-[] jump list at top...
+Set better defaults
+[] pop chat window by default
+[] mute by default
+
+### FAQ
+
+[] add the
+
+### top of mind...
+
 [] when page loads bump to correct time slot
+[x] list rerender is weird
 [x] add tags
 [x] create needs tags
-[] filter by tags.
-[] forced login on page
 [] display errors when things are busted
-[] sort out nav
+
+### bucket list
+
+[] filter by tags.
+[] jump list at top...

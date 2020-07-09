@@ -94,15 +94,17 @@ function createAuth(config) {
     };
   });
 
-  // Provide a redirect page if you need.
-  // It must be whitelisted in Auth0. I think.
-  // todo.. default is wrong..
-  const login = async (redirectPage = 'http://localhost:5000') => {
+  const login = async (preserveRoute = true, redirectPage) => {
     auth0 = await createAuth0Client(config);
 
+    const appState = preserveRoute
+      ? { pathname: window.location.pathname, search: window.location.search }
+      : {};
+
     await auth0.loginWithRedirect({
-      redirect_uri: redirectPage || window.location.origin,
-      prompt: 'login', // Force login prompt. No silence auth for you!
+      redirect_uri: redirectPage || window.location.href,
+      // prompt: 'login', // Force login prompt. No silence auth for you!
+      appState,
     });
   };
 

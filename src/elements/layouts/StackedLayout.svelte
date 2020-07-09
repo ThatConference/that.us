@@ -1,5 +1,5 @@
 <script>
-  import { Footer } from '../';
+  import { Footer } from '../index';
 </script>
 
 <div>
