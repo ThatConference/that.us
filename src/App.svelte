@@ -38,35 +38,23 @@
     <Route exact path="/login" component="{Login}" />
     <Route exact path="/logout" component="{Logout}" />
 
-    <Route
-      exact
-      path="/sessions"
-      component="{List}"
-      condition="{() => true}"
-      redirect="/login"
-    />
+    <Route exact path="/sessions" component="{List}" />
 
     <Route
       exact
       path="/sessions/create"
       component="{Create}"
-      condition="{() => true}"
+      condition="{() => $isAuthenticated}"
       redirect="/login"
     />
 
-    <Route
-      exact
-      path="/sessions/:sessionId"
-      component="{Session}"
-      condition="{() => true}"
-      redirect="/login"
-    />
+    <Route exact path="/sessions/:sessionId" component="{Session}" />
 
     <Route
       exact
       path="/join/:sessionId"
       component="{Live}"
-      condition="{() => true}"
+      condition="{() => $isAuthenticated}"
       redirect="/login"
     />
 

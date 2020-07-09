@@ -4,6 +4,7 @@
   import { Link } from 'yrv';
   import { heart, signIn } from 'svelte-awesome/icons';
 
+  import { isAuthenticated } from '../../utilities/security.js';
   import { LinkButton } from '../../elements';
 
   export let title;
@@ -17,6 +18,10 @@
   let host = speakers[0];
 
   let imageCrop = '?mask=ellipse&w=500&h=500&fit=crop';
+
+  function canJoin() {
+    return false;
+  }
 </script>
 
 <div>
@@ -43,37 +48,45 @@
           </div>
         </div>
       </div>
-      <div class="ml-4 mt-4 flex-shrink-0 flex">
-        <span class="inline-flex rounded-md shadow-sm">
-          <button
-            type="button"
-            class="relative inline-flex items-center px-4 py-2 border
-            border-gray-300 text-sm leading-5 font-medium rounded-md
-            text-gray-700 bg-white hover:text-gray-500 focus:outline-none
-            focus:shadow-outline-blue focus:border-blue-300 active:bg-gray-50
-            active:text-gray-800"
-          >
-            <Icon data="{heart}" class="-ml-1 mr-2 h-5 w-5 text-gray-400" />
-            <span>Favorite</span>
-          </button>
-        </span>
 
-        <span class="ml-3 inline-flex rounded-md shadow-sm">
-          <a
-            type="button"
-            href="/join/{sessionId}"
-            class="relative inline-flex items-center px-4 py-2 border
-            border-gray-300 text-sm leading-5 font-medium rounded-md
-            text-gray-700 bg-white hover:text-gray-500 focus:outline-none
-            focus:shadow-outline-blue focus:border-blue-300 active:bg-gray-50
-            active:text-gray-800"
-          >
+      {#if $isAuthenticated}
+        <div class="ml-4 mt-4 flex-shrink-0 flex">
+          <span class="inline-flex rounded-md shadow-sm">
+            <button
+              type="button"
+              class="relative inline-flex items-center px-4 py-2 border
+              border-gray-300 text-sm leading-5 font-medium rounded-md
+              text-gray-700 bg-white hover:text-gray-500 focus:outline-none
+              focus:shadow-outline-blue focus:border-blue-300 active:bg-gray-50
+              active:text-gray-800"
+            >
+              <Icon data="{heart}" class="-ml-1 mr-2 h-5 w-5 text-gray-400" />
+              <span>Favorite</span>
+            </button>
+          </span>
 
-            <Icon data="{signIn}" class="-ml-1 mr-2 h-5 w-5 text-gray-400" />
-            <span>Join In</span>
-          </a>
-        </span>
-      </div>
+          {#if canJoin()}
+            <span class="ml-3 inline-flex rounded-md shadow-sm">
+              <a
+                type="button"
+                href="/join/{sessionId}"
+                class="relative inline-flex items-center px-4 py-2 border
+                border-gray-300 text-sm leading-5 font-medium rounded-md
+                text-gray-700 bg-white hover:text-gray-500 focus:outline-none
+                focus:shadow-outline-blue focus:border-blue-300
+                active:bg-gray-50 active:text-gray-800"
+              >
+
+                <Icon
+                  data="{signIn}"
+                  class="-ml-1 mr-2 h-5 w-5 text-gray-400"
+                />
+                <span>Join In</span>
+              </a>
+            </span>
+          {/if}
+        </div>
+      {/if}
     </div>
   </div>
 

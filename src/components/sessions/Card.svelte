@@ -4,6 +4,8 @@
   import Icon from 'svelte-awesome';
   import { info, heart, signIn } from 'svelte-awesome/icons';
 
+  import { isAuthenticated } from '../../utilities/security.js';
+
   import Tag from './Tag.svelte';
   import CardLink from './CardLink.svelte';
 
@@ -17,7 +19,11 @@
   export let __typename; // just here to clean up props
   export let attendees = []; // todo.. needs to be favorites
 
-  let canJoin = () => true; // todo.. need to set between the two...
+  let canJoin = () => {
+    // todo.. need to set between the two...
+    return false;
+  };
+
   let host = speakers[0];
   let imageCrop = '?mask=ellipse&w=500&h=500&fit=crop';
 </script>
@@ -54,26 +60,28 @@
     <div class="w-0 flex-1 flex border-r border-gray-200">
       <CardLink href="/sessions/{id}" icon="{info}" text="{'More Details'}" />
     </div>
-    {#if canJoin()}
-      <div class="-ml-px w-0 flex-1 flex">
-        <CardLink href="/join/{id}" icon="{signIn}" text="{'Join In'}" />
-      </div>
-    {:else}
-      <div class="-ml-px w-0 flex-1 flex">
-        <!-- todo... needs to be a button as we need the onclick -->
-        <Link
-          href="#"
-          class="relative w-0 flex-1 inline-flex items-center justify-center
-          py-4 text-sm leading-5 text-gray-700 font-medium border
-          border-transparent rounded-br-lg hover:text-gray-500
-          focus:outline-none focus:shadow-outline-blue focus:border-blue-300
-          focus:z-10 transition ease-in-out duration-150"
-        >
+    {#if $isAuthenticated}
+      {#if canJoin()}
+        <div class="-ml-px w-0 flex-1 flex">
+          <CardLink href="/join/{id}" icon="{signIn}" text="{'Join In'}" />
+        </div>
+      {:else}
+        <div class="-ml-px w-0 flex-1 flex">
+          <!-- todo... needs to be a button as we need the onclick -->
+          <Link
+            href="#"
+            class="relative w-0 flex-1 inline-flex items-center justify-center
+            py-4 text-sm leading-5 text-gray-700 font-medium border
+            border-transparent rounded-br-lg hover:text-gray-500
+            focus:outline-none focus:shadow-outline-blue focus:border-blue-300
+            focus:z-10 transition ease-in-out duration-150"
+          >
 
-          <Icon data="{heart}" class="w-5 h-5 text-gray-400" />
-          <span class="ml-3">Favorite</span>
-        </Link>
-      </div>
+            <Icon data="{heart}" class="w-5 h-5 text-gray-400" />
+            <span class="ml-3">Favorite</span>
+          </Link>
+        </div>
+      {/if}
     {/if}
   </div>
 </div>
