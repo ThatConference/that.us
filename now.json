@@ -1,9 +1,0 @@
-{
-  "version": 2,
-  "name": "that.us",
-  "env": {
-    "SENTRY_DSN": "TODO"
-  },
-  "builds": [{ "src": "www/package.json", "use": "@now/next" }],
-  "routes": [{ "src": "/(.*)", "dest": "/www/$1" }]
-}

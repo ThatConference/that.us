@@ -1,5 +1,10 @@
 {
-  "printWidth": 80,
   "singleQuote": true,
-  "tabWidth": 2
+  "printWidth": 80,
+  "trailingComma": "all",
+  "plugins": ["prettier-plugin-svelte"],
+  "svelteSortOrder": "scripts-markup-styles",
+  "svelteStrictMode": true,
+  "svelteBracketNewLine": true,
+  "svelteAllowShorthand": true
 }
