@@ -36,8 +36,15 @@ export const logout = async () => {
 export const login = async () => {
   const auth0 = await auth0Promise;
 
+  // console.log(window.location.pathname);
+  // console.log(window.location.search);
+
   await auth0.loginWithRedirect({
     redirect_uri: `${window.location.origin}/sessions`,
+    // appState: {
+    //   pathname: window.location.pathname,
+    //   search: window.location.search,
+    // },
   });
 };
 

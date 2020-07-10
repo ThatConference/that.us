@@ -3,6 +3,7 @@
   import Icon from 'svelte-awesome';
   import { Link } from 'yrv';
   import { heart, signIn } from 'svelte-awesome/icons';
+  import qs from 'query-string';
 
   import { isAuthenticated } from '../../utilities/security.js';
   import { LinkButton } from '../../elements';
@@ -19,9 +20,15 @@
 
   let imageCrop = '?mask=ellipse&w=500&h=500&fit=crop';
 
-  function canJoin() {
-    return false;
-  }
+  // todo.. need to make this based on date range...
+  let canJoin = () => {
+    let action = false;
+
+    const { join } = qs.parse(location.search);
+    if (join) action = true;
+
+    return action;
+  };
 </script>
 
 <div>

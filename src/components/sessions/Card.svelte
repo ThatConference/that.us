@@ -3,6 +3,7 @@
   import dayjs from 'dayjs';
   import Icon from 'svelte-awesome';
   import { info, heart, signIn } from 'svelte-awesome/icons';
+  import qs from 'query-string';
 
   import { isAuthenticated } from '../../utilities/security.js';
 
@@ -19,9 +20,16 @@
   export let __typename; // just here to clean up props
   export let attendees = []; // todo.. needs to be favorites
 
+  export let router;
+
+  // todo.. need to make this based on date range...
   let canJoin = () => {
-    // todo.. need to set between the two...
-    return false;
+    let action = false;
+
+    const { join } = qs.parse(location.search);
+    if (join) action = true;
+
+    return action;
   };
 
   let host = speakers[0];
