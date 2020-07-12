@@ -3,6 +3,8 @@
 import { writable } from 'svelte/store';
 import createAuth0Client from '@auth0/auth0-spa-js';
 import { getClient } from '@urql/svelte';
+import { navigateTo } from 'yrv';
+
 import { securityConfig } from '../config';
 
 const QUERY_ME = `
@@ -33,18 +35,17 @@ export const logout = async () => {
   });
 };
 
-export const login = async () => {
+export const login = async (documentReferrer) => {
   const auth0 = await auth0Promise;
 
-  // console.log(window.location.pathname);
-  // console.log(window.location.search);
+  const appState = {
+    pathname: documentReferrer,
+    search: window.location.search,
+  };
 
   await auth0.loginWithRedirect({
     redirect_uri: `${window.location.origin}/sessions`,
-    // appState: {
-    //   pathname: window.location.pathname,
-    //   search: window.location.search,
-    // },
+    appState,
   });
 };
 
@@ -52,9 +53,11 @@ export async function generateAuth0() {
   const auth0 = await auth0Promise;
   const query = window.location.search;
 
+  let redirectResult;
+
   if (query.includes('code=') && query.includes('state=')) {
-    await auth0.handleRedirectCallback();
-    window.history.replaceState({}, document.title, '/');
+    redirectResult = await auth0.handleRedirectCallback();
+    // window.history.replaceState({}, document.title, '/');
   }
 
   if (await auth0.isAuthenticated()) {
@@ -74,6 +77,8 @@ export async function generateAuth0() {
           ...results.data.members.me,
         })),
     );
+    if (redirectResult)
+      navigateTo(redirectResult.appState.pathname, { replace: true });
   }
 }
 

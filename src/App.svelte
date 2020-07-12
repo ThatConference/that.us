@@ -28,6 +28,13 @@
     }),
     requestPolicy: 'cache-and-network',
   });
+
+  let documentReferrer;
+
+  function shouldRedirecToLogin() {
+    documentReferrer = window.location.pathname;
+    return $isAuthenticated;
+  }
 </script>
 
 <main>
@@ -35,7 +42,7 @@
 
   <Router>
     <Route exact path="/" component="{Home}" />
-    <Route exact path="/login" component="{Login}" />
+    <Route exact path="/login" component="{Login}" {documentReferrer} />
     <Route exact path="/logout" component="{Logout}" />
 
     <Route exact path="/sessions" component="{List}" />
@@ -44,7 +51,7 @@
       exact
       path="/sessions/create"
       component="{Create}"
-      condition="{() => $isAuthenticated}"
+      condition="{shouldRedirecToLogin}"
       redirect="/login"
     />
 
@@ -54,7 +61,7 @@
       exact
       path="/join/:sessionId"
       component="{Live}"
-      condition="{() => $isAuthenticated}"
+      condition="{shouldRedirecToLogin}"
       redirect="/login"
     />
 
