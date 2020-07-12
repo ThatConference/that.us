@@ -1,17 +1,20 @@
 <script>
-  import { onMount } from 'svelte';
-  import { login } from '../utilities/security.js';
+  export let router;
+  export let documentReferrer = '/sessions';
 
+  import { onMount } from 'svelte';
+
+  import { login } from '../utilities/security.js';
   import { ModalNoAction } from '../elements';
 
   onMount(async () => {
-    await login();
+    await login(documentReferrer);
   });
 </script>
 
 <div>
   <ModalNoAction
-    title="Log In..."
+    title="Logging In..."
     text="You being redirected to our identity provider to login. Your browser's
     url will be pointed to https://auth.that.tech"
   />
