@@ -7,6 +7,8 @@ import { navigateTo } from 'yrv';
 
 import { securityConfig } from '../config';
 
+securityConfig.redirect_uri = `${window.location.origin}/sessions`;
+
 const QUERY_ME = `
   query getMe {
     members {
