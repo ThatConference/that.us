@@ -148,8 +148,10 @@
     </div>
   </div>
 
-  <div class="px-4 py-12 sm:px-6">
-    <div id="disqus_thread"></div>
-  </div>
+  {#if $isAuthenticated}
+    <div class="px-4 py-12 sm:px-6">
+      <div id="disqus_thread"></div>
+    </div>
+  {/if}
 
 </div>
