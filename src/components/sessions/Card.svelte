@@ -20,8 +20,6 @@
   export let __typename; // just here to clean up props
   export let attendees = []; // todo.. needs to be favorites
 
-  export let router;
-
   // todo.. need to make this based on date range...
   let canJoin = () => {
     let action = false;
@@ -34,6 +32,20 @@
 
   let host = speakers[0];
   let imageCrop = '?mask=ellipse&w=500&h=500&fit=crop';
+
+  function truncate(sentence, numberOfWords) {
+    let results = '';
+
+    const split = sentence.split(' ');
+
+    if (split.length > numberOfWords) {
+      results = `${split.splice(0, numberOfWords).join(' ')} ...`;
+    } else {
+      results = sentence;
+    }
+
+    return results;
+  }
 </script>
 
 <div class="w-full flex items-center justify-between p-3 space-x-6">
@@ -54,7 +66,9 @@
 </div>
 
 <div class="px-3">
-  <p class="text-gray-500 text-sm leading-5 break-words">{shortDescription}</p>
+  <p class="text-gray-500 text-sm leading-5 break-words">
+    {truncate(shortDescription, 25)}
+  </p>
 </div>
 
 <div class="flex flex-wrap items-center justify-around space-x-2 px-6 py-2">
