@@ -7,7 +7,7 @@
 
   import { isAuthenticated } from '../../utilities/security.js';
 
-  import Tag from './Tag.svelte';
+  import { Tag } from '../../elements';
   import CardLink from './CardLink.svelte';
 
   export let id;
