@@ -3,32 +3,40 @@
   import { FacebookLoader } from 'svelte-content-loader';
   import { fade } from 'svelte/transition';
 
+  import Nav from '../../components/nav/Top.svelte';
   import { ModalError } from '../../elements';
+  import StackedLayout from '../../elements/layouts/StackedLayout.svelte';
   import SessionDetails from './SessionDetails.svelte';
 
-  import { LinkButton } from '../../elements';
+  import { ActionHeader, LinkButton } from '../../elements';
 
   export let router;
   const { sessionId } = router.params;
 
   const QUERY_SESSION = query({
     query: `
-    query getSessionById($eventId: ID!, $sessionId: ID!) {
-      events {
-        event(id: $eventId) {
-          session: sessionById(sessionId: $sessionId) {
-            id
-            title
-            shortDescription
-            tags
-            speakers {
-              firstName
-              lastName
-              profileImage
+      query getSessionById($eventId: ID!, $sessionId: ID!) {
+        events {
+          event(id: $eventId) {
+            session: sessionById(sessionId: $sessionId) {
+              id
+              title
+              shortDescription
+              tags
+              startTime
+              speakers {
+                firstName
+                lastName
+                profileImage
+                profileLinks {
+                  linkType
+                  url
+                  isPublic                  
+                }
+              }
             }
           }
         }
-      }
     }`,
 
     variables: { eventId: 'ByE7Dc7eCGcRFzLhWhuI', sessionId },
@@ -38,23 +46,13 @@
   $: sessionQuery = QUERY_SESSION();
 </script>
 
+<StackedLayout>
 
-<div
-  class="fixed bottom-0 inset-x-0 px-4 pb-6 sm:inset-0 sm:p-0 sm:flex
-  sm:items-center sm:justify-center"
->
-  <div class="fixed inset-0 transition-opacity">
-    <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+  <div slot="header">
+    <Nav />
+    <ActionHeader title="Session Details" />
   </div>
-
-  <div
-    class="bg-white rounded-lg px-4 pt-5 pb-4 overflow-hidden shadow-xl
-    transform transition-all sm:max-w-4xl sm:w-full sm:p-6"
-    role="dialog"
-    aria-modal="true"
-    aria-labelledby="modal-headline"
-  >
-
+  <div slot="body">
     {#if $sessionQuery.fetching}
       <div class="flex items-center justify-center">
         <FacebookLoader />
@@ -71,6 +69,10 @@
         {sessionId}
       />
     {/if}
-
   </div>
-</div>
+
+  <!-- <div slot="footer">
+      <Sponsor />
+    </div> -->
+
+</StackedLayout>

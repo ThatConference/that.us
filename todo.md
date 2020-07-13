@@ -25,7 +25,7 @@
 
 ### Security
 
-[] auth redirect needs to be configured correctly per env.
+[X] auth redirect needs to be configured correctly per env.
 [X] create the correct auth0 app and reconfigure
 [blocked] add login conditionals to routes, forced login on page
 [hold] refactor auth zero wrapper
