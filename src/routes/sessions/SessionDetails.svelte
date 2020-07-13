@@ -3,13 +3,20 @@
   import dayjs from 'dayjs';
   import Icon from 'svelte-awesome';
   import { Link } from 'yrv';
-  import { heart, signIn } from 'svelte-awesome/icons';
+  import {
+    heart,
+    signIn,
+    facebook,
+    twitter,
+    instagram,
+    github,
+  } from 'svelte-awesome/icons';
   import qs from 'query-string';
 
   import { isAuthenticated } from '../../utilities/security.js';
   import { LinkButton, Tag } from '../../elements';
+  import { SocialLink } from '../../components/social';
 
-  export let router;
   export let title;
   export let shortDescription;
   export let speakers;
@@ -72,6 +79,13 @@
             <h3 class="text-lg leading-6 font-medium text-gray-900">
               {`${host.firstName} ${host.lastName}`}
             </h3>
+
+            <div>
+              {#each host.profileLinks as link}
+                <SocialLink href="{link.url}" network="{link.linkType}" />
+              {/each}
+            </div>
+
           </div>
         </div>
       </div>

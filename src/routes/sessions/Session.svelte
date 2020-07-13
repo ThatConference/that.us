@@ -55,7 +55,7 @@
   <div slot="body">
     {#if $sessionQuery.fetching}
       <div class="flex items-center justify-center">
-        <FacebookLoader />
+        <FacebookLoader uniqueKey="loading" />
       </div>
     {:else if $sessionQuery.error || !$sessionQuery.data}
       <ModalError
