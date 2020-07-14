@@ -1,17 +1,20 @@
 <script>
-  import { Footer } from '../elements';
+  import { Footer } from '../components';
   import {
     Hero,
     Testimonials,
     CTA,
     Newsletter,
-    Sponsors,
+    // Sponsors,
   } from '../components/home';
+
+  import SponsorSimple from '../components/SponsorSimple.svelte';
 </script>
 
 <Hero />
 <Testimonials />
-<Sponsors />
-<CTA />
-<Newsletter />
+<!-- <Sponsors /> -->
+<SponsorSimple />
+<!-- <CTA /> -->
+<!-- <Newsletter /> -->
 <Footer />
