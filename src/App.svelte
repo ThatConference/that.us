@@ -13,6 +13,10 @@
   import Login from './routes/Login.svelte';
   import Logout from './routes/Logout.svelte';
 
+  // my
+  import MyFavorites from './routes/my/Favorites.svelte';
+  import MySubmissions from './routes/my/Submissions.svelte';
+
   // sessions
   import List from './routes/sessions/List.svelte';
   import Session from './routes/sessions/Session.svelte';
@@ -61,6 +65,22 @@
       exact
       path="/join/:sessionId"
       component="{Live}"
+      condition="{shouldRedirecToLogin}"
+      redirect="/login"
+    />
+
+    <Route
+      exact
+      path="/my/favorites"
+      component="{MyFavorites}"
+      condition="{shouldRedirecToLogin}"
+      redirect="/login"
+    />
+
+    <Route
+      exact
+      path="/my/submissions"
+      component="{MySubmissions}"
       condition="{shouldRedirecToLogin}"
       redirect="/login"
     />
