@@ -1,4 +1,6 @@
 <script>
+  export let router;
+
   import { Footer } from '../components';
   import {
     Hero,

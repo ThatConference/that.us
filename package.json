@@ -23,6 +23,7 @@
     "@auth0/auth0-spa-js": "^1.10.0",
     "@fortawesome/free-regular-svg-icons": "^5.13.1",
     "@fullhuman/postcss-purgecss": "^2.3.0",
+    "@rollup/plugin-alias": "^3.1.1",
     "@rollup/plugin-commonjs": "^13.0.0",
     "@rollup/plugin-node-resolve": "^8.1.0",
     "@rollup/plugin-replace": "^2.3.3",
@@ -69,7 +70,8 @@
     "yup": "~0.28.2"
   },
   "dependencies": {
-    "sirv-cli": "^1.0.3"
+    "sirv-cli": "^1.0.3",
+    "uninstall": "0.0.0"
   },
   "jest": {
     "testEnvironment": "node",

@@ -1,32 +1,25 @@
 <script>
-  import { Link } from 'yrv';
-  import { onMount } from 'svelte';
-
-  import Nav from '../../components/nav/Top.svelte';
-  import Sponsor from '../../components/SponsorSimple.svelte';
-
-  import SessionsList from '../../components/sessions/List.svelte';
-  import SessionsLoading from '../../components/sessions/SessionsLoading.svelte';
-
-  import { querySessions } from '../../dataSources/api.that.tech/sessions';
-  import { ActionHeader, LinkButton } from '../../elements';
-  import StackedLayout from '../../elements/layouts/StackedLayout.svelte';
-
   export let router;
 
-  $: query = querySessions();
+  import Nav from '../../components/nav/Top.svelte';
+  import StackedLayout from '../../elements/layouts/StackedLayout.svelte';
+  import Sponsor from '../../components/SponsorSimple.svelte';
 
-  onMount(() => {
-    query = querySessions();
-  });
+  import { ActionHeader, LinkButton } from '../../elements';
+
+  import SessionsLoading from '../../components/sessions/SessionsLoading.svelte';
+  import SessionsList from '../../components/sessions/List.svelte';
+  import { queryMyFavorites } from '../../dataSources/api.that.tech/favorites';
+
+  const query = queryMyFavorites();
 </script>
 
 <StackedLayout>
 
   <div slot="header">
     <Nav />
-    <ActionHeader title="THAT Schedule">
-      <LinkButton href="/sessions/create" text="Create New Session" />
+    <ActionHeader title="My Favorites">
+      <LinkButton href="/sessions" text="Return to Full Schedule" />
     </ActionHeader>
   </div>
 

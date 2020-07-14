@@ -6,5 +6,6 @@ export const securityConfig = {
   scope: 'openid profile email offline_access',
 };
 
-// logout_url: 'http://localhost:5000/',
-// useRefreshTokens: true,
+export default {
+  eventId: 'ByE7Dc7eCGcRFzLhWhuI',
+};

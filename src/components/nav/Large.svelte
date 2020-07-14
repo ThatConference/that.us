@@ -101,18 +101,18 @@
             transition:fade
           >
             <div class="py-1 rounded-md bg-white shadow-xs">
-              <a
-                href="X"
+              <Link
+                href="/my/favorites"
                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
               >
                 My Favorties
-              </a>
-              <a
-                href="X"
+              </Link>
+              <Link
+                href="/my/submissions"
                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
               >
                 My Submissions
-              </a>
+              </Link>
               <a
                 href="https://www.thatconference.com/member/{$thatProfile.profileSlug}"
                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
