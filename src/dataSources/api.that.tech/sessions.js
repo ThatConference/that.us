@@ -1,4 +1,3 @@
-import { getClient } from '@urql/svelte';
 import config from '../../config';
 
 export const QUERY_SESSIONS = `
@@ -26,10 +25,14 @@ export const QUERY_SESSIONS = `
   }
 `;
 
-export const querySessions = () => {
-  const variables = { eventId: config.eventId };
-  return getClient()
-    .query(QUERY_SESSIONS, variables)
-    .toPromise()
-    .then((r) => r.data.events.event.get.sessions);
+export default (client) => {
+  const querySessions = () => {
+    const variables = { eventId: config.eventId };
+    return client
+      .query(QUERY_SESSIONS, variables)
+      .toPromise()
+      .then((r) => r.data.events.event.get.sessions);
+  };
+
+  return { querySessions };
 };
