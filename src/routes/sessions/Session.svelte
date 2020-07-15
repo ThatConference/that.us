@@ -34,10 +34,17 @@
                   isPublic                  
                 }
               }
+              favoritedBy {
+                id
+                firstName
+                lastName
+                profileImage
+              }
             }
           }
         }
-    }`,
+      }
+    `,
 
     variables: { eventId: 'ByE7Dc7eCGcRFzLhWhuI', sessionId },
     requestPolicy: 'cache-and-network',
