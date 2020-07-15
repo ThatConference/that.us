@@ -14,10 +14,9 @@
         <!-- default slot as fallback-->
         <slot />
       </div>
+      <slot name="footer" />
     </div>
   </main>
-
-  <slot name="footer" />
 
   <footer>
     <Footer />
