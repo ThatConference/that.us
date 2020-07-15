@@ -13,6 +13,7 @@
   import Login from './routes/Login.svelte';
   import Logout from './routes/Logout.svelte';
   import FAQ from './routes/FAQ.svelte';
+  import Members from './routes/Members.svelte';
 
   // my
   import MyFavorites from './routes/my/Favorites.svelte';
@@ -50,6 +51,7 @@
     <Route exact path="/login" component="{Login}" {documentReferrer} />
     <Route exact path="/logout" component="{Logout}" />
     <Route exact path="/faq" component="{FAQ}" />
+    <Route exact path="/members" component="{Members}" />
 
     <Route exact path="/sessions" component="{List}" />
 

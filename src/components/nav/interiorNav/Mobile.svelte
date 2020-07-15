@@ -1,6 +1,6 @@
 <script>
   import { getContext } from 'svelte';
-  import { isAuthenticated, thatProfile } from '../../utilities/security.js';
+  import { isAuthenticated, thatProfile } from '../../../utilities/security.js';
   import { fade } from 'svelte/transition';
   import { Link } from 'yrv';
 

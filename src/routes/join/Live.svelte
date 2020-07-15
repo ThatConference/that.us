@@ -5,7 +5,7 @@
   import { ActionHeader, LinkButton } from '../../elements';
   import StackedLayout from '../../elements/layouts/StackedLayout.svelte';
 
-  import Nav from '../../components/nav/Top.svelte';
+  import Nav from '../../components/nav/interiorNav/Top.svelte';
   import { isAuthenticated, thatProfile } from '../../utilities/security.js';
 
   export let router;

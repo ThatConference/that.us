@@ -7,7 +7,7 @@
   import { onMount } from 'svelte';
 
   // components
-  import Nav from '../../components/nav/Top.svelte';
+  import Nav from '../../components/nav/interiorNav/Top.svelte';
   import Sponsor from '../../components/SponsorSimple.svelte';
   import SessionsList from '../../components/sessions/List.svelte';
   import SessionsLoading from '../../components/sessions/SessionsLoading.svelte';

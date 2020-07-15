@@ -1,6 +1,5 @@
 <script>
-  import Nav from '../components/home/nav/MainNav.svelte';
-
+  import Nav from '../components/nav/mainNav/MainNav.svelte';
   import FaqItems from '../components/faq/FaqItem.svelte';
 </script>
 
