@@ -1,6 +1,6 @@
 <script>
   import { Link } from 'yrv';
-  import MainNav from './nav/MainNav.svelte';
+  import MainNav from '../nav/mainNav/MainNav.svelte';
 
   import { isAuthenticated } from '../../utilities/security.js';
 </script>

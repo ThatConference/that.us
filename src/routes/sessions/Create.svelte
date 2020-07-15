@@ -9,7 +9,7 @@
   import * as yup from 'yup';
 
   import { ActionHeader, Waiting } from '../../elements';
-  import Nav from '../../components/nav/Top.svelte';
+  import Nav from '../../components/nav/interiorNav/Top.svelte';
 
   import { sessionTimes } from './sessionTimes';
 

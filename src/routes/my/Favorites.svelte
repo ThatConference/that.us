@@ -2,7 +2,7 @@
   export let router;
   import { getClient } from '@urql/svelte';
 
-  import Nav from '../../components/nav/Top.svelte';
+  import Nav from '../../components/nav/interiorNav/Top.svelte';
   import StackedLayout from '../../elements/layouts/StackedLayout.svelte';
   import Sponsor from '../../components/SponsorSimple.svelte';
   import { ActionHeader, LinkButton } from '../../elements';

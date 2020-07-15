@@ -6,7 +6,7 @@
   import Icon from 'svelte-awesome';
   import { user } from 'svelte-awesome/icons';
 
-  import { isAuthenticated, thatProfile } from '../../utilities/security.js';
+  import { isAuthenticated, thatProfile } from '../../../utilities/security.js';
 
   // toggle for the drop down
   let visible;

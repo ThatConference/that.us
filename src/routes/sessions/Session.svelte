@@ -3,7 +3,7 @@
   import { FacebookLoader } from 'svelte-content-loader';
   import { fade } from 'svelte/transition';
 
-  import Nav from '../../components/nav/Top.svelte';
+  import Nav from '../../components/nav/interiorNav/Top.svelte';
   import { ModalError } from '../../elements';
   import StackedLayout from '../../elements/layouts/StackedLayout.svelte';
   import SessionDetails from './SessionDetails.svelte';
