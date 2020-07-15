@@ -260,7 +260,9 @@
           </div>
 
           {#if isSubmitting}
-            <Waiting />
+            <div class="flex flex-grow justify-center py-12">
+              <Waiting />
+            </div>
           {/if}
 
         </Form>
