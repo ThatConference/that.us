@@ -179,7 +179,8 @@
                 class="block text-sm font-medium leading-5 text-gray-700
                 sm:mt-px sm:pt-2"
               >
-                Set 5 or less 'tags' to help categorize this chat.
+                Set 5 or less 'tags' to help categorize this chat. (return/enter
+                is the delimiter)
               </label>
               <div class="mt-1 sm:mt-0 sm:col-span-2">
                 <div
