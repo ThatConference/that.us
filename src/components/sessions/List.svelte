@@ -1,5 +1,6 @@
 <script>
   export let sessions;
+  export let favorites;
 
   import { onMount } from 'svelte';
   import dayjs from 'dayjs';
@@ -34,7 +35,7 @@
         <ul class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {#each sessionResults[group.key] as session (session.id)}
             <li class="col-span-1 bg-white rounded-lg shadow">
-              <Card {...session} />
+              <Card {...session} {favorites} />
             </li>
           {/each}
         </ul>

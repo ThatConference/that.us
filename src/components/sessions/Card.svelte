@@ -1,4 +1,17 @@
 <script>
+  export let favorites = [];
+  export let id;
+  export let title;
+  export let shortDescription;
+  export let startTime;
+  export let speakers;
+  export let status;
+  export let tags = [];
+  export let attendees = []; // todo.. needs to be favorites
+  export let __typename; // just here to clean up props
+  export let eventId = config.eventId; // just here to clean up props
+  export let type = 'OPEN_SPACE'; // just here to clean up props
+
   // 3rd party
   import { Link } from 'yrv';
   import dayjs from 'dayjs';
@@ -13,26 +26,11 @@
   import { truncate } from '../../utilities/truncate';
   import favoritesApi from '../../dataSources/api.that.tech/favorites';
 
-  // const client = getClient();
-
-  const { toggleFavorite } = favoritesApi(getClient());
-
   // UI Elements
   import { Tag } from '../../elements';
   import CardLink from './CardLink.svelte';
 
-  export let id;
-  export let title;
-  export let shortDescription;
-  export let startTime;
-  export let speakers;
-  export let status;
-  export let tags = [];
-  export let attendees = []; // todo.. needs to be favorites
-  export let __typename; // just here to clean up props
-  export let eventId = config.eventId; // just here to clean up props
-  export let type = 'OPEN_SPACE'; // just here to clean up props
-
+  const { toggleFavorite } = favoritesApi(getClient());
   let host = speakers[0];
 
   // todo.. need to make this based on date range...
@@ -48,7 +46,7 @@
   let imageCrop = '?mask=ellipse&w=500&h=500&fit=crop';
 
   let favoriteDisabled = false;
-  let isFavorited = false;
+  let isFavorited = favorites.includes(id);
 
   async function handleToggle() {
     favoriteDisabled = true;
@@ -117,7 +115,6 @@
 
             <Icon data="{heart}" class="w-5 h-5" />
             <span class="ml-3">Favorite</span>
-
           </button>
         </div>
       {/if}
