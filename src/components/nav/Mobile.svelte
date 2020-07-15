@@ -27,7 +27,7 @@
       hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white
       focus:bg-gray-700"
     >
-      THAT Schedule
+      Schedule
     </Link>
     <Link
       href="/members"
