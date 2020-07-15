@@ -29,8 +29,6 @@
   export let __typename;
   export let favoritedBy = [];
 
-  console.log({ favoritedBy });
-
   let host = speakers[0];
 
   let imageCrop = '?mask=ellipse&w=500&h=500&fit=crop';
@@ -52,6 +50,9 @@
 </script>
 
 <svelte:head>
+
+  <title>{title} * THAT.us</title>
+
   <script>
     (function() {
       var d = document,

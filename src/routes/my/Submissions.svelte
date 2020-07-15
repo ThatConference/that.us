@@ -16,6 +16,10 @@
   const query = queryMySubmissions();
 </script>
 
+<svelte:head>
+  <title>My Submissions * THAT.us</title>
+</svelte:head>
+
 <StackedLayout>
 
   <div slot="header">

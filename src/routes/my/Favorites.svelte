@@ -16,6 +16,10 @@
   const query = queryMyFavorites();
 </script>
 
+<svelte:head>
+  <title>My Favorties * THAT.us</title>
+</svelte:head>
+
 <StackedLayout>
 
   <div slot="header">
