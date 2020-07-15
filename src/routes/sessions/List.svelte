@@ -1,21 +1,32 @@
 <script>
   export let router;
 
+  // 3rd party
   import { getClient } from '@urql/svelte';
   import { Link } from 'yrv';
   import { onMount } from 'svelte';
 
+  // components
   import Nav from '../../components/nav/Top.svelte';
   import Sponsor from '../../components/SponsorSimple.svelte';
-
   import SessionsList from '../../components/sessions/List.svelte';
   import SessionsLoading from '../../components/sessions/SessionsLoading.svelte';
 
-  import sessionsApi from '../../dataSources/api.that.tech/sessions';
-  import { ActionHeader, LinkButton } from '../../elements';
+  // elements
   import StackedLayout from '../../elements/layouts/StackedLayout.svelte';
+  import { ActionHeader, LinkButton } from '../../elements';
 
-  const { querySessions } = sessionsApi(getClient());
+  // datasources
+  import sessionsApi from '../../dataSources/api.that.tech/sessions';
+  import favoritesApi from '../../dataSources/api.that.tech/favorites';
+
+  // utilities
+  import { isAuthenticated } from '../../utilities/security.js';
+
+  const apiClient = getClient();
+
+  const { querySessions } = sessionsApi(apiClient);
+  const { queryMyFavoriteIds } = favoritesApi(apiClient);
 
   $: query = querySessions();
 
@@ -41,10 +52,16 @@
     <div class="text-gray-500 text-sm leading-5 text-right lowercase italic">
       <span>* Scheduled times are represented in your timezone.</span>
     </div>
-    {#await query}
+    {#await querySessions()}
       <SessionsLoading />
     {:then sessions}
-      <SessionsList {sessions} />
+      {#if $isAuthenticated}
+        {#await queryMyFavoriteIds() then favorites}
+          <SessionsList {favorites} {sessions} />
+        {/await}
+      {:else}
+        <SessionsList {sessions} />
+      {/if}
     {:catch error}
       <p>OH NO</p>
     {/await}
