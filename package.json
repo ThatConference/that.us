@@ -43,7 +43,7 @@
     "graphql": "^14.0.2",
     "husky": "^4.2.5",
     "jest-cli": "^26.1.0",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "page": "^1.11.6",
     "postcss": "^7.0.32",
     "postcss-load-config": "^2.1.0",
