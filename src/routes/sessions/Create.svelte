@@ -1,9 +1,3 @@
-<style>
-  .tag-form-input :global(.svelte-tags-input-tag) {
-    background: #252f3f;
-  }
-</style>
-
 <script>
   import { getContext } from 'svelte';
   import dayjs from 'dayjs';
@@ -93,6 +87,10 @@
     return x;
   };
 </script>
+
+<svelte:head>
+  <title>Create a New Session * THAT.us</title>
+</svelte:head>
 
 <div>
   <div class="bg-gray-800 pb-32">
@@ -269,3 +267,9 @@
     </div>
   </main>
 </div>
+
+<style>
+  .tag-form-input :global(.svelte-tags-input-tag) {
+    background: #252f3f;
+  }
+</style>

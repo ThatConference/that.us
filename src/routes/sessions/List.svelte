@@ -24,6 +24,10 @@
   });
 </script>
 
+<svelte:head>
+  <title>THAT Schedule * THAT.us</title>
+</svelte:head>
+
 <StackedLayout>
 
   <div slot="header">

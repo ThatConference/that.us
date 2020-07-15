@@ -101,6 +101,7 @@
 </script>
 
 <svelte:head>
+  <title>{$sessionQuery.data.events.event.session.title} * THAT.us</title>
   <script src="https://meet.jit.si/external_api.js" on:load="{initJitsi}">
 
   </script>
