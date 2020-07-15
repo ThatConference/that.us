@@ -1,15 +1,17 @@
 <script>
   export let router;
+  import { getClient } from '@urql/svelte';
 
   import Nav from '../../components/nav/Top.svelte';
   import StackedLayout from '../../elements/layouts/StackedLayout.svelte';
   import Sponsor from '../../components/SponsorSimple.svelte';
-
   import { ActionHeader, LinkButton } from '../../elements';
 
   import SessionsLoading from '../../components/sessions/SessionsLoading.svelte';
   import SessionsList from '../../components/sessions/List.svelte';
-  import { queryMyFavorites } from '../../dataSources/api.that.tech/favorites';
+  import favoritesApi from '../../dataSources/api.that.tech/favorites';
+
+  const { queryMyFavorites } = favoritesApi(getClient());
 
   const query = queryMyFavorites();
 </script>

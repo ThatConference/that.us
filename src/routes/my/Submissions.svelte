@@ -1,5 +1,6 @@
 <script>
   export let router;
+  import { getClient } from '@urql/svelte';
 
   import Nav from '../../components/nav/Top.svelte';
   import StackedLayout from '../../elements/layouts/StackedLayout.svelte';
@@ -9,8 +10,9 @@
 
   import SessionsLoading from '../../components/sessions/SessionsLoading.svelte';
   import SessionsList from '../../components/sessions/List.svelte';
-  import { queryMySubmissions } from '../../dataSources/api.that.tech/submissions';
+  import submissionsApi from '../../dataSources/api.that.tech/submissions';
 
+  const { queryMySubmissions } = submissionsApi(getClient());
   const query = queryMySubmissions();
 </script>
 

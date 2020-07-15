@@ -1,4 +1,3 @@
-import { getClient } from '@urql/svelte';
 import config from '../../config';
 
 const TOGGLE_FAVORITE = `
@@ -12,15 +11,6 @@ const TOGGLE_FAVORITE = `
     }
   }
 `;
-
-export const toggleFavorite = (eventId, sessionId) => {
-  const mutationVariables = {
-    eventId,
-    sessionId,
-  };
-
-  return getClient().mutation(TOGGLE_FAVORITE, mutationVariables).toPromise();
-};
 
 export const QUERY_MY_FAVORITES = `
   query memberFavorites ($eventId: ID!) {
@@ -45,13 +35,26 @@ export const QUERY_MY_FAVORITES = `
   }
 `;
 
-export const queryMyFavorites = () => {
-  const variables = {
-    eventId: config.eventId,
+export default (client) => {
+  const toggleFavorite = (eventId, sessionId) => {
+    const mutationVariables = {
+      eventId,
+      sessionId,
+    };
+
+    return client.mutation(TOGGLE_FAVORITE, mutationVariables).toPromise();
   };
 
-  return getClient()
-    .query(QUERY_MY_FAVORITES, variables)
-    .toPromise()
-    .then((r) => r.data.sessions.me.favorites);
+  const queryMyFavorites = () => {
+    const variables = {
+      eventId: config.eventId,
+    };
+
+    return client
+      .query(QUERY_MY_FAVORITES, variables)
+      .toPromise()
+      .then((r) => r.data.sessions.me.favorites);
+  };
+
+  return { toggleFavorite, queryMyFavorites };
 };

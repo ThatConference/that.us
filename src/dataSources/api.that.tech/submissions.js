@@ -1,4 +1,3 @@
-import { getClient } from '@urql/svelte';
 import config from '../../config';
 
 export const QUERY_SUBMISSIONS = `
@@ -29,16 +28,20 @@ export const QUERY_SUBMISSIONS = `
   }
 `;
 
-export const queryMySubmissions = () => {
-  const variables = { eventId: config.eventId };
-  return getClient()
-    .query(QUERY_SUBMISSIONS, variables)
-    .toPromise()
-    .then((r) => {
-      const { submitted } = r.data.sessions.me;
+export default (client) => {
+  const queryMySubmissions = () => {
+    const variables = { eventId: config.eventId };
+    return client
+      .query(QUERY_SUBMISSIONS, variables)
+      .toPromise()
+      .then((r) => {
+        const { submitted } = r.data.sessions.me;
 
-      return submitted
-        .filter((s) => s.type === 'OPEN_SPACE')
-        .filter((s) => s.eventId === config.eventId);
-    });
+        return submitted
+          .filter((s) => s.type === 'OPEN_SPACE')
+          .filter((s) => s.eventId === config.eventId);
+      });
+  };
+
+  return { queryMySubmissions };
 };

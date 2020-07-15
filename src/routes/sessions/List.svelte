@@ -1,4 +1,7 @@
 <script>
+  export let router;
+
+  import { getClient } from '@urql/svelte';
   import { Link } from 'yrv';
   import { onMount } from 'svelte';
 
@@ -8,11 +11,11 @@
   import SessionsList from '../../components/sessions/List.svelte';
   import SessionsLoading from '../../components/sessions/SessionsLoading.svelte';
 
-  import { querySessions } from '../../dataSources/api.that.tech/sessions';
+  import sessionsApi from '../../dataSources/api.that.tech/sessions';
   import { ActionHeader, LinkButton } from '../../elements';
   import StackedLayout from '../../elements/layouts/StackedLayout.svelte';
 
-  export let router;
+  const { querySessions } = sessionsApi(getClient());
 
   $: query = querySessions();
 

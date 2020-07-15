@@ -11,7 +11,11 @@
   import config from '../../config';
   import { isAuthenticated } from '../../utilities/security';
   import { truncate } from '../../utilities/truncate';
-  import { toggleFavorite } from '../../dataSources/api.that.tech/favorites';
+  import favoritesApi from '../../dataSources/api.that.tech/favorites';
+
+  // const client = getClient();
+
+  const { toggleFavorite } = favoritesApi(getClient());
 
   // UI Elements
   import { Tag } from '../../elements';
