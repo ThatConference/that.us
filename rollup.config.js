@@ -5,6 +5,7 @@ import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
 import replace from '@rollup/plugin-replace';
 import sveltePreprocess from 'svelte-preprocess';
+import json from '@rollup/plugin-json';
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -18,6 +19,7 @@ export default {
   },
 
   plugins: [
+    json(),
     replace({
       'process.env.NODE_ENV': JSON.stringify('production'),
     }),
