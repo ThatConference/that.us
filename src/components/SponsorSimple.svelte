@@ -34,14 +34,15 @@
 </script>
 
 {#await queryPartners() then partners}
-  <div class="relative bg-white overflow-hidden">
-    <div class="max-w-screen-xl mx-auto ">
+  <div class="relative bg-white overflow-hidden my-12">
+    <div class="max-w-screen-xl mx-auto px-8">
       <div class="sm:text-center lg:text-center pb-12">
         <h2
           class="text-4xl tracking-tight leading-10 font-extrabold text-gray-900
-          sm:text-5xl sm:leading-none md:text-6xl"
+          sm:text-5xl sm:leading-none md:text-6xl py-4"
         >
-          Brought to you by:
+          <span class="text-indigo-600">THANK YOU</span>
+          for your support!
         </h2>
       </div>
 
