@@ -1,5 +1,4 @@
 <script>
-  export let favorites = [];
   export let id;
   export let title;
   export let shortDescription;
@@ -13,12 +12,14 @@
   export let type = 'OPEN_SPACE'; // just here to clean up props
 
   // 3rd party
+  import { onMount } from 'svelte';
   import { Link } from 'yrv';
   import dayjs from 'dayjs';
   import Icon from 'svelte-awesome';
   import { info, heart, signIn } from 'svelte-awesome/icons';
   import qs from 'query-string';
   import { getClient } from '@urql/svelte';
+  import _ from 'lodash';
 
   // supporting goo
   import config from '../../config';
@@ -30,7 +31,9 @@
   import { Tag } from '../../elements';
   import CardLink from './CardLink.svelte';
 
-  const { toggleFavorite } = favoritesApi(getClient());
+  const { toggle, get: getFavorites, favoritesStore: favorites } = favoritesApi(
+    getClient(),
+  );
   let host = speakers[0];
 
   // todo.. need to make this based on date range...
@@ -46,20 +49,24 @@
   let imageCrop = '?mask=ellipse&w=500&h=500&fit=crop';
 
   let favoriteDisabled = false;
-  let isFavorited = favorites.includes(id);
 
-  async function handleToggle() {
+  const handleToggle = async () => {
     favoriteDisabled = true;
-    const { data, error } = await toggleFavorite(config.eventId, id);
-
-    if (data && data.sessions.favoriting.toggle) {
-      isFavorited = true;
-    } else {
-      isFavorited = false;
-    }
-
+    await toggle(id);
     favoriteDisabled = false;
-  }
+  };
+
+  let isFavorite = false;
+
+  favorites.subscribe(favs => {
+    let found = _.find(favs, i => i.id === id);
+
+    found ? (isFavorite = true) : (isFavorite = false);
+  });
+
+  onMount(async () => {
+    if ($isAuthenticated) await getFavorites();
+  });
 </script>
 
 <div class="w-full flex items-center justify-between p-3 space-x-6">
@@ -105,7 +112,7 @@
         <div class="-ml-px w-0 flex-1 flex">
           <button
             on:click|preventDefault="{!favoriteDisabled && handleToggle}"
-            class:text-red-500="{isFavorited}"
+            class:text-red-500="{isFavorite}"
             class="relative w-0 flex-1 inline-flex items-center justify-center
             py-4 text-sm leading-5 text-gray-700 font-medium border
             border-transparent rounded-br-lg hover:text-gray-300

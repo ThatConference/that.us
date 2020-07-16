@@ -20,14 +20,9 @@
   import sessionsApi from '../../dataSources/api.that.tech/sessions';
   import favoritesApi from '../../dataSources/api.that.tech/favorites';
 
-  // utilities
-  import { isAuthenticated } from '../../utilities/security.js';
-
   const apiClient = getClient();
 
   const { querySessions } = sessionsApi(apiClient);
-  const { queryMyFavoriteIds } = favoritesApi(apiClient);
-
   $: query = querySessions();
 
   onMount(() => {
@@ -55,13 +50,7 @@
     {#await querySessions()}
       <SessionsLoading />
     {:then sessions}
-      {#if $isAuthenticated}
-        {#await queryMyFavoriteIds() then favorites}
-          <SessionsList {favorites} {sessions} />
-        {/await}
-      {:else}
-        <SessionsList {sessions} />
-      {/if}
+      <SessionsList {sessions} />
     {:catch error}
       <p>OH NO</p>
     {/await}
