@@ -1,4 +1,15 @@
 <script>
+  export let title;
+  export let shortDescription;
+  export let speakers;
+  export let sessionId;
+  export let id;
+  export let tags;
+  export let startTime;
+  export let __typename;
+  export let favoritedBy = [];
+
+  import { onMount } from 'svelte';
   import { fade } from 'svelte/transition';
   import dayjs from 'dayjs';
   import Icon from 'svelte-awesome';
@@ -12,25 +23,20 @@
     github,
   } from 'svelte-awesome/icons';
   import qs from 'query-string';
+  import { getClient } from '@urql/svelte';
+  import _ from 'lodash';
+
+  import { SocialLink } from '../../components/social';
+  import { Avatars, LinkButton, Tag } from '../../elements';
 
   import { isAuthenticated } from '../../utilities/security.js';
-  import { LinkButton, Tag } from '../../elements';
-  import { SocialLink } from '../../components/social';
+  import favoritesApi from '../../dataSources/api.that.tech/favorites';
 
-  import { Avatars } from '../../elements';
-
-  export let title;
-  export let shortDescription;
-  export let speakers;
-  export let sessionId;
-  export let id;
-  export let tags;
-  export let startTime;
-  export let __typename;
-  export let favoritedBy = [];
+  const { toggle, get: getFavorites, favoritesStore: favorites } = favoritesApi(
+    getClient(),
+  );
 
   let host = speakers[0];
-
   let imageCrop = '?mask=ellipse&w=500&h=500&fit=crop';
 
   // todo.. need to make this based on date range...
@@ -42,6 +48,26 @@
 
     return action;
   };
+
+  let favoriteDisabled = false;
+
+  const handleToggle = async () => {
+    favoriteDisabled = true;
+    await toggle(id);
+    favoriteDisabled = false;
+  };
+
+  let isFavorite = false;
+
+  favorites.subscribe(favs => {
+    let found = _.find(favs, i => i.id === id);
+
+    found ? (isFavorite = true) : (isFavorite = false);
+  });
+
+  onMount(async () => {
+    if ($isAuthenticated) await getFavorites();
+  });
 
   let disqus_config = function() {
     this.page.url = window.location.pathname; // Replace PAGE_URL with your page's canonical URL variable
@@ -101,13 +127,15 @@
           <span class="inline-flex rounded-md shadow-sm">
             <button
               type="button"
+              on:click|preventDefault="{!favoriteDisabled && handleToggle}"
+              class:text-red-500="{isFavorite}"
               class="relative inline-flex items-center px-4 py-2 border
               border-gray-300 text-sm leading-5 font-medium rounded-md
               text-gray-700 bg-white hover:text-gray-500 focus:outline-none
               focus:shadow-outline-blue focus:border-blue-300 active:bg-gray-50
               active:text-gray-800"
             >
-              <Icon data="{heart}" class="-ml-1 mr-2 h-5 w-5 text-gray-400" />
+              <Icon data="{heart}" class="-ml-1 mr-2 h-5 w-5" />
               <span>Favorite</span>
             </button>
           </span>

@@ -11,9 +11,7 @@
   import SessionsList from '../../components/sessions/List.svelte';
   import favoritesApi from '../../dataSources/api.that.tech/favorites';
 
-  const { queryMyFavorites } = favoritesApi(getClient());
-
-  const query = queryMyFavorites();
+  const { get } = favoritesApi(getClient());
 </script>
 
 <svelte:head>
@@ -33,7 +31,7 @@
     <div class="text-gray-500 text-sm leading-5 text-right lowercase italic">
       <span>* Scheduled times are represented in your timezone.</span>
     </div>
-    {#await query}
+    {#await get()}
       <SessionsLoading />
     {:then sessions}
       <SessionsList {sessions} />
