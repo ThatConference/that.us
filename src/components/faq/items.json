@@ -1,22 +1,30 @@
 [
   {
     "question": "What is Open Spaces?",
-    "answer": "You can watch Brandon Satrom's <a href='https://www.youtube.com/watch?v=IiWh8l-dRtw&t=43s' target='_blank'>2018 Open Spaces Kickoff</a> for a good explaination.<br>What is Open Spaces? Open Space creates a facility, an opportunity to talk about anything we like. Yes anything, from some low level assembler code to BBQ, anything goes. It’s as simple as putting the topic on the Camp board. From there other campers find the conversations they’re interested in participating in and we come together at the scheduled time. Then we let the conversation guide us where it takes us."
-  },
-  {
-    "question": "So we need bullets, dont' we?",
-    "answer": "<ul><li>Ensure your background doesn't contain any non-family friendly items</li><li>Check that your audio and camera are working. Test with THAT.US</li><li>Have water nearby, it's important to keep hydrated</li><li>If you're not in <strong>Central Time Zone</strong>, verify how your local time corresponds with website time. The goal is to have the site in your local time, but, you know, times are hard.</li><li>Your microphone/speakers/headset/camera are all in good working condition and of good quality</li><li>If you have a lot of background noise or echo, an app like, https://krisp.ai/, can help</li></ul>"
+    "answer": "You can watch Brandon Satrom's <a class='hover:bg-gray-400' href='https://www.youtube.com/watch?v=IiWh8l-dRtw&t=43s' target='_blank'>2018 Open Spaces Kickoff</a> for a good explaination.<br>What is Open Spaces? Open Space creates a facility, an opportunity to talk about anything we like. Yes anything, from some low level assembler code to BBQ, anything goes. It’s as simple as putting the topic on the Camp board. From there other campers find the conversations they’re interested in participating in and we come together at the scheduled time. Then we let the conversation guide us where it takes us."
   },
   {
     "question": "How do Open Spaces work?",
-    "answer": "Open Spaces has four rules and one law:<br><ol><li>Whoever comes are the right people</li><li>Whatever happens is the only thing that could have</li><li>Whenever it starts is the right time</li><li>When it's over, it's over</li><li>The law of mobility: \"If, at any time, you find yourself in any situation where you are neither learning nor contributing—use your method of mobility and move to some place more to your liking\"</li></ol>"
+    "answer": "Open Spaces has four rules and one law:<br><ul><li>1. Whoever comes are the right people</li><li>2. Whatever happens is the only thing that could have</li><li>3. Whenever it starts is the right time</li><li>4. When it's over, it's over</li><li>The law of mobility: \"If, at any time, you find yourself in any situation where you are neither learning nor contributing—use your method of mobility and move to some place more to your liking\"</li></ol>"
   },
   {
-    "question": "whatever....",
-    "answer": "whatever...."
+    "question": "What makes a good Open Spaces subject?",
+    "answer": "Honestly, pretty much anything! Over the years at THAT Conference we have see a wide range of session topics. Topics like, \"Post Agile Development\" to \"3D Printing\" and \"How Do We Help Deaf People Become Devs\". And not all are development related, for example, \"Teach Me D&D\", \"Team Leadership - What Have You Learned?\", \"Rock Climbing\", and \"Home Schooling 101\". If there is knowledge you're burning to share or something you really want to learn more about, create an Open Spaces session for it!"
   },
   {
-    "question": "whatever....",
-    "answer": "whatever...."
+    "question": "What if I don't like where the discussion is going?",
+    "answer": "Ask a question of the group to steer the conversation toward the information your more interested in. If you continue to not learn anything or contribute to the conversation, feel free to leave the Open Space and join a different one which interests you."
+  },
+  {
+    "question": "How do you prepare for virtual open spaces?",
+    "answer": "<ul class='faq-list'><li>Ensure your background doesn't contain any non-family friendly items</li><li>Check that your audio and camera are working. Test with [THAT.US](http://that.US)</li><li>Have water nearby, it's important to keep hydrated</li><li>If you're not in Central Time Zone, verify how your local time corresponds with website time. The goal is to have the site in your local time, but, you know, times are hard.</li><li>Your microphone/speakers/headset/camera are all in good working condition and of good quality</li><li>If you have a lot of background noise or echo, an app like, https://krisp.ai/, can help</li></ul>"
+  },
+  {
+    "question": "question...",
+    "answer": "...answer"
+  },
+  {
+    "question": "question...",
+    "answer": "...answer"
   }
 ]

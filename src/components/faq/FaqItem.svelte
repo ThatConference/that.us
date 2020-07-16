@@ -15,7 +15,7 @@
           </dt>
 
           <dd class="mt-2 md:mt-0 md:col-span-7">
-            <p class="text-base leading-6 text-gray-500 list-decimal">
+            <p class="text-base leading-6 text-gray-500">
               {@html faq.answer}
             </p>
           </dd>
@@ -31,7 +31,7 @@
             {faq.question}
           </dt>
           <dd class="mt-2 md:mt-0 md:col-span-7">
-            <p class="text-base leading-6 text-gray-500 list-decimal ">
+            <p class="text-base leading-6 text-gray-500">
               {@html faq.answer}
             </p>
           </dd>
