@@ -28,6 +28,7 @@
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^8.1.0",
     "@rollup/plugin-replace": "^2.3.3",
+    "@sveltecasts/svelte-youtube": "0.0.5",
     "@tailwindcss/ui": "^0.3.0",
     "@urql/svelte": "^0.3.0",
     "autoprefixer": "^9.8.4",
