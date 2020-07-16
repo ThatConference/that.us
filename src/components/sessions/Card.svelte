@@ -1,4 +1,5 @@
 <script>
+  export let editMode = false;
   export let id;
   export let title;
   export let shortDescription;
@@ -16,7 +17,7 @@
   import { Link } from 'yrv';
   import dayjs from 'dayjs';
   import Icon from 'svelte-awesome';
-  import { info, heart, signIn } from 'svelte-awesome/icons';
+  import { info, heart, signIn, cog } from 'svelte-awesome/icons';
   import qs from 'query-string';
   import { getClient } from '@urql/svelte';
   import _ from 'lodash';
@@ -107,6 +108,21 @@
       {#if canJoin()}
         <div class="-ml-px w-0 flex-1 flex">
           <CardLink href="/join/{id}" icon="{signIn}" text="{'Join In'}" />
+        </div>
+      {:else if editMode}
+        <div class="-ml-px w-0 flex-1 flex">
+          <Link
+            href="/sessions/edit/{id}"
+            class="relative w-0 flex-1 inline-flex items-center justify-center
+            py-4 text-sm leading-5 text-gray-700 font-medium border
+            border-transparent rounded-br-lg hover:text-gray-300
+            focus:outline-none focus:shadow-outline-blue focus:border-blue-300
+            focus:z-10 transition ease-in-out duration-150"
+          >
+
+            <Icon data="{cog}" class="w-5 h-5" />
+            <span class="ml-3">Edit</span>
+          </Link>
         </div>
       {:else}
         <div class="-ml-px w-0 flex-1 flex">
