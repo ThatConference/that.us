@@ -8,7 +8,7 @@
 
   import { ActionHeader, LinkButton } from '../../elements';
 
-  import SessionsLoading from '../../components/sessions/SessionsLoading.svelte';
+  import CardLoader from '../../components/CardLoader.svelte';
   import SessionsList from '../../components/sessions/List.svelte';
   import submissionsApi from '../../dataSources/api.that.tech/submissions';
 
@@ -34,7 +34,7 @@
       <span>* Scheduled times are represented in your timezone.</span>
     </div>
     {#await query}
-      <SessionsLoading />
+      <CardLoader />
     {:then sessions}
       <SessionsList {sessions} />
     {:catch error}
