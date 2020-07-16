@@ -22,8 +22,10 @@
             class="text-4xl tracking-tight leading-10 font-extrabold
             text-gray-900 sm:text-5xl sm:leading-none md:text-6xl"
           >
-            THAT. Created By...
-            <br class="xl:hidden" />
+            THAT.
+            <br />
+            Created By...
+            <br />
             <span class="text-indigo-600">YOU!</span>
           </h2>
           <p
