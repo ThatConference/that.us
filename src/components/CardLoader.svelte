@@ -1,6 +1,6 @@
 <script>
   import { FacebookLoader } from 'svelte-content-loader';
-  import GroupHeader from './GroupHeader.svelte';
+  import { GroupHeader } from '../elements';
 
   let cardsToShow = new Array(3);
 </script>

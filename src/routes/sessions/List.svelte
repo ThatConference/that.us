@@ -10,7 +10,7 @@
   import Nav from '../../components/nav/interiorNav/Top.svelte';
   import Sponsor from '../../components/SponsorSimple.svelte';
   import SessionsList from '../../components/sessions/List.svelte';
-  import SessionsLoading from '../../components/sessions/SessionsLoading.svelte';
+  import CardLoader from '../../components/CardLoader.svelte';
 
   // elements
   import StackedLayout from '../../elements/layouts/StackedLayout.svelte';
@@ -48,7 +48,7 @@
       <span>* Scheduled times are represented in your timezone.</span>
     </div>
     {#await querySessions()}
-      <SessionsLoading />
+      <CardLoader />
     {:then sessions}
       <SessionsList {sessions} />
     {:catch error}

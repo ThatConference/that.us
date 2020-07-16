@@ -10,6 +10,7 @@
   import Hero from '../components/members/Hero.svelte';
   import Footer from '../components/Footer.svelte';
   import MemberCard from '../components/members/MemberCard.svelte';
+  import CardLoader from '../components/CardLoader.svelte';
 
   import membersApi from '../dataSources/api.that.tech/members';
 
@@ -20,6 +21,7 @@
   let loadingMore = false;
   let memberList = [];
   let cursor;
+  let loading = true;
 
   $: memberList = [];
 
@@ -28,6 +30,7 @@
 
     memberList = [...memberList, ...members.members];
     cursor = members.cursor;
+    loading = false;
   });
 
   async function getNext() {
@@ -47,6 +50,9 @@
   <div class="relative bg-white overflow-hidden py-12">
     <div class="max-w-screen-xl mx-auto px-8">
 
+      {#if loading}
+        <CardLoader />
+      {/if}
       <ul
         class="grid grid-cols-1 gap-6 sm:grid-cols-3 md:grid-cols-4
         lg:grid-cols-5"

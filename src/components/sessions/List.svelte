@@ -7,11 +7,10 @@
 
   import _ from 'lodash';
 
-  import GroupHeader from './GroupHeader.svelte';
-  import SessionsLoading from './SessionsLoading.svelte';
+  import CardLoader from '../CardLoader.svelte';
   import Card from './Card.svelte';
 
-  import { Waiting, Action } from '../../elements';
+  import { Waiting, Action, GroupHeader } from '../../elements';
 
   let sessionResults = _.groupBy(sessions, 'startTime');
   let groups = Object.keys(sessionResults)
