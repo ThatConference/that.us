@@ -1,6 +1,7 @@
 <script>
   import Nav from '../components/nav/mainNav/MainNav.svelte';
   import FaqItems from '../components/faq/FaqItem.svelte';
+  import { Footer } from '../components';
 </script>
 
 <div class="relative bg-white overflow-hidden">
@@ -17,7 +18,7 @@
             class="text-3xl leading-9 font-extrabold text-gray-900 sm:text-4xl
             sm:leading-10"
           >
-            Frequently asked questions
+            Frequently Asked Questions
           </h2>
           <FaqItems />
         </div>
@@ -25,3 +26,4 @@
     </div>
   </div>
 </div>
+<Footer />
