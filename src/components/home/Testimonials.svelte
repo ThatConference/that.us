@@ -103,9 +103,9 @@
         <blockquote class="relative">
           <div class="text-2xl leading-9 font-medium text-gray-900">
             <p>
-              I set out to build a community, not an event. A community of geeks
-              and geeklings who want support one another to be our best us each
-              and every day. We all have something of value that can help one
+              We set out to build a community, not an event. A community of
+              geeks and geeklings, who support one another to be our best, each
+              and every day. We ALL have something of value that can help one
               another. THAT.us is just one way we're trying to better connect
               us.
               <span class="text-indigo-600">We're just getting started!</span>
