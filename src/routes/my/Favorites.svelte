@@ -7,7 +7,7 @@
   import Sponsor from '../../components/SponsorSimple.svelte';
   import { ActionHeader, LinkButton } from '../../elements';
 
-  import SessionsLoading from '../../components/sessions/SessionsLoading.svelte';
+  import CardLoader from '../../components/CardLoader.svelte';
   import SessionsList from '../../components/sessions/List.svelte';
   import favoritesApi from '../../dataSources/api.that.tech/favorites';
 
@@ -32,7 +32,7 @@
       <span>* Scheduled times are represented in your timezone.</span>
     </div>
     {#await get()}
-      <SessionsLoading />
+      <CardLoader />
     {:then sessions}
       <SessionsList {sessions} />
     {:catch error}
