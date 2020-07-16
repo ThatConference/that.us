@@ -14,6 +14,7 @@
   import Logout from './routes/Logout.svelte';
   import FAQ from './routes/FAQ.svelte';
   import Members from './routes/Members.svelte';
+  import Partners from './routes/Partners.svelte';
 
   // my
   import MyFavorites from './routes/my/Favorites.svelte';
@@ -52,6 +53,7 @@
     <Route exact path="/logout" component="{Logout}" />
     <Route exact path="/faq" component="{FAQ}" />
     <Route exact path="/members" component="{Members}" />
+    <Route exact path="/partners" component="{Partners}" />
 
     <Route exact path="/sessions" component="{List}" />
 

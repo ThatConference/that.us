@@ -6,16 +6,6 @@
   let hidden = true;
 </script>
 
-<svg
-  class="lg:block absolute right-0 inset-y-0 h-full w-48 text-white transform
-  translate-x-1/2"
-  fill="currentColor"
-  viewBox="0 0 100 100"
-  preserveAspectRatio="none"
->
-  <polygon points="50,0 100,0 50,100 0,100"></polygon>
-</svg>
-
 <div class="relative pt-6 px-4 sm:px-6 lg:px-8">
   <nav
     class="relative flex items-center justify-between sm:h-10 lg:justify-start"
