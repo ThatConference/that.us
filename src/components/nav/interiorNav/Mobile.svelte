@@ -62,7 +62,7 @@
           <img
             class="h-8 w-8 rounded-full"
             src="{$thatProfile.profileImage}?w=256&h=256&fit=crop"
-            alt="`${thatProfile.firstName} ${thatProfile.lastName}`"
+            alt="{`${thatProfile.firstName} ${thatProfile.lastName}`}"
           />
         {:else}
           <Icon data="{user}" class="h-8 w-8 rounded-full text-white" />
