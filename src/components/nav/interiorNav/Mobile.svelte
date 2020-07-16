@@ -84,7 +84,7 @@
           focus:bg-gray-700"
           role="menuitem"
         >
-          My Favorties
+          My Favorites
         </Link>
         <Link
           href="/my/submissions"

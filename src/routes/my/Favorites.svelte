@@ -15,7 +15,7 @@
 </script>
 
 <svelte:head>
-  <title>My Favorties * THAT.us</title>
+  <title>My Favorites * THAT.us</title>
 </svelte:head>
 
 <StackedLayout>
