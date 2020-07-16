@@ -4,6 +4,7 @@
   import { Router, Route } from 'yrv';
 
   import { isAuthenticated, token } from './utilities/security.js';
+  import config from './config';
 
   // ui components
   import Tailwindcss from './elements/Tailwindcss.svelte';
@@ -24,12 +25,13 @@
   import List from './routes/sessions/List.svelte';
   import Session from './routes/sessions/Session.svelte';
   import Create from './routes/sessions/Create.svelte';
+  import EditSession from './routes/sessions/Edit.svelte';
 
   // join
   import Live from './routes/join/Live.svelte';
 
   initClient({
-    url: 'https://api.that.tech',
+    url: config.api,
     fetchOptions: () => ({
       headers: { authorization: $token ? `Bearer ${$token}` : '' },
     }),
@@ -61,6 +63,14 @@
       exact
       path="/sessions/create"
       component="{Create}"
+      condition="{shouldRedirecToLogin}"
+      redirect="/login"
+    />
+
+    <Route
+      exact
+      path="/sessions/edit/:sessionId"
+      component="{EditSession}"
       condition="{shouldRedirecToLogin}"
       redirect="/login"
     />

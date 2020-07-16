@@ -9,4 +9,5 @@ export const securityConfig = {
 export default {
   eventId: 'ByE7Dc7eCGcRFzLhWhuI',
   eventSlug: 'wi/2020',
+  api: 'https://api.that.tech',
 };

@@ -36,7 +36,7 @@
     {#await query}
       <CardLoader />
     {:then sessions}
-      <SessionsList {sessions} />
+      <SessionsList {sessions} editMode="{true}" />
     {:catch error}
       <p>OH NO</p>
     {/await}
