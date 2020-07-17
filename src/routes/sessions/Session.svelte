@@ -67,7 +67,7 @@
     {:else if $sessionQuery.error || !$sessionQuery.data}
       <ModalError
         title="No Session Found"
-        text="I'm sorry we wern't able to find the session you requested."
+        text="I'm sorry we weren't able to find the session you requested."
         action="{{ title: 'Return to Sessions', href: '/sessions' }}"
       />
     {:else}
