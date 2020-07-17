@@ -19,17 +19,17 @@
 </script>
 
 <div class="flex-1 flex flex-col p-8">
-  <Link href="{`https://thatconference.com/partner/${slug}`}">
+  <Link open href="{`https://thatconference.com/partner/${slug}`}">
     <img
       class="w-32 h-32 flex-shrink-0 mx-auto"
       src="{`${companyLogo}`}"
       alt=""
     />
-  </Link>
 
-  <h3 class="mt-6 text-gray-900 text-sm leading-5 font-medium">
-    {`${companyName}`}
-  </h3>
+    <h3 class="mt-6 text-gray-900 text-sm leading-5 font-medium">
+      {`${companyName}`}
+    </h3>
+  </Link>
   <dl class="mt-1 flex-grow flex flex-col justify-between">
 
     <!-- {#if jobTitle}
