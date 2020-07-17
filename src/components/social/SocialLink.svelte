@@ -56,7 +56,7 @@
   }
 </script>
 
-<a {href}>
+<a {href} target="_blank">
   <Icon
     data="{socialIcon}"
     class="-ml-1 mr-2 h-5 w-5 text-gray-400 hover:text-gray-700 focus:underline

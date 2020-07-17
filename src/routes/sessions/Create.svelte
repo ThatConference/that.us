@@ -17,11 +17,11 @@
       ...values,
     };
 
-    await create(newSession);
+    const { id } = await create(newSession);
 
     setSubmitting(false);
     resetForm();
-    navigateTo('/sessions', { replace: true });
+    navigateTo(`/sessions/${id}?edit=true`, { replace: true });
   }
 </script>
 

@@ -10,6 +10,7 @@ const userFragment = `
     company
     jobTitle
     profileImage
+    profileSlug
     profileLinks {
       linkType
       url

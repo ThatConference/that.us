@@ -37,6 +37,7 @@ export const QUERY_SESSION_BY_ID = `
             firstName
             lastName
             profileImage
+            profileSlug
             profileLinks {
               linkType
               url
@@ -68,6 +69,7 @@ export const QUERY_SESSIONS = `
               firstName
               lastName
               profileImage
+              profileSlug
             }
           }
         }

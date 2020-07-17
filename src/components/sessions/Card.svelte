@@ -74,11 +74,17 @@
 
   <div class="flex-1">
     <div class="flex items-center space-x-3">
-      <img
-        class="w-15 h-15 bg-gray-300 rounded-full flex-shrink-0"
-        src="{`${host.profileImage}${imageCrop}`}"
-        alt="{`${host.firstName} ${host.lastName}`}"
-      />
+
+      <Link
+        open
+        href="https://www.thatconference.com/member/{host.profileSlug}"
+      >
+        <img
+          class="w-15 h-15 bg-gray-300 rounded-full flex-shrink-0"
+          src="{`${host.profileImage}${imageCrop}`}"
+          alt="{`${host.firstName} ${host.lastName}`}"
+        />
+      </Link>
       <h3 class="text-gray-900 text-sm leading-5 font-medium break-words">
         {title}
       </h3>
