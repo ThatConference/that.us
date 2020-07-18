@@ -4,6 +4,7 @@ export const securityConfig = {
   redirect_uri: 'http://localhost:5000/sessions',
   audience: 'https://api.that.tech/graphql',
   scope: 'openid profile email offline_access',
+  useRefreshTokens: true,
 };
 
 export default {
