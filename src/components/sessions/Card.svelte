@@ -78,9 +78,10 @@
       <Link
         open
         href="https://www.thatconference.com/member/{host.profileSlug}"
+        class="flex-shrink-0"
       >
         <img
-          class="w-15 h-15 bg-gray-300 rounded-full flex-shrink-0"
+          class="w-15 h-15 bg-gray-300 rounded-full"
           src="{`${host.profileImage}${imageCrop}`}"
           alt="{`${host.firstName} ${host.lastName}`}"
         />
