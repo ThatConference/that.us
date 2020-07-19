@@ -70,42 +70,38 @@
   });
 </script>
 
-<div class="w-full flex items-center justify-between p-3 space-x-6">
+<div class="w-full h-full flex flex-col">
 
-  <div class="flex-1">
-    <div class="flex items-center space-x-3">
-
-      <Link
-        open
-        href="https://www.thatconference.com/member/{host.profileSlug}"
-        class="flex-shrink-0"
-      >
-        <img
-          class="w-15 h-15 bg-gray-300 rounded-full"
-          src="{`${host.profileImage}${imageCrop}`}"
-          alt="{`${host.firstName} ${host.lastName}`}"
-        />
-      </Link>
-      <h3 class="text-gray-900 text-sm leading-5 font-medium break-words">
-        {title}
-      </h3>
-    </div>
-
+  <div class="flex items-center p-3 space-x-3">
+    <Link
+      open
+      href="https://www.thatconference.com/member/{host.profileSlug}"
+      class="flex-shrink-0"
+    >
+      <img
+        class="w-15 h-15 bg-gray-300 rounded-full"
+        src="{`${host.profileImage}${imageCrop}`}"
+        alt="{`${host.firstName} ${host.lastName}`}"
+      />
+    </Link>
+    <h3 class="text-gray-900 text-sm leading-5 font-medium break-words">
+      {title}
+    </h3>
   </div>
 
-  <div class="flex-grow px-3">
+  <div class="flex-grow p-3">
     <p class="text-gray-500 text-sm leading-5 break-words">
       {truncate(shortDescription, 25)}
     </p>
   </div>
 
-  <div class="flex flex-wrap items-center justify-around space-x-2 px-6 py-2">
+  <div class="flex flex-wrap items-center justify-around space-x-3 p-3">
     {#each tags as t}
       <Tag>{t}</Tag>
     {/each}
   </div>
 
-  <div class="border-t border-gray-200">
+  <div class="flex-none border-t border-gray-200">
     <div class="-mt-px flex">
       <div class="w-0 flex-1 flex border-r border-gray-200">
         <CardLink href="/sessions/{id}" icon="{info}" text="{'More Details'}" />
@@ -152,7 +148,3 @@
   </div>
 
 </div>
-
-<style>
-
-</style>

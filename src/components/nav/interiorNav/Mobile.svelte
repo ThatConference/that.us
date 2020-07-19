@@ -1,11 +1,15 @@
 <script>
   import { getContext } from 'svelte';
-  import { isAuthenticated, thatProfile } from '../../../utilities/security.js';
+  import {
+    isAuthenticated,
+    user,
+    thatProfile,
+  } from '../../../utilities/security.js';
   import { fade } from 'svelte/transition';
   import { Link } from 'yrv';
 
   import Icon from 'svelte-awesome';
-  import { user } from 'svelte-awesome/icons';
+  import { user as userIcon } from 'svelte-awesome/icons';
 
   const mobileVisible = getContext('IS_Mobile_VIEW');
 </script>
@@ -58,14 +62,25 @@
   <div class="pt-4 pb-3 border-t border-gray-700">
     <div class="flex items-center px-5">
       <div class="flex-shrink-0">
+
         {#if $isAuthenticated}
-          <img
-            class="h-8 w-8 rounded-full"
-            src="{$thatProfile.profileImage}?w=256&h=256&fit=crop"
-            alt=""
-          />
+          {#if $thatProfile.profileImage}
+            <img
+              class="h-8 w-8 rounded-full"
+              src="{$thatProfile.profileImage}?w=256&h=256&fit=crop"
+              alt=""
+            />
+          {:else if $user.picture}
+            <img
+              class="h-8 w-8 rounded-full"
+              src="{$user.picture}?w=256&h=256&fit=crop"
+              alt=""
+            />
+          {:else}
+            <Icon data="{userIcon}" class="h-8 w-8 rounded-full text-white" />
+          {/if}
         {:else}
-          <Icon data="{user}" class="h-8 w-8 rounded-full text-white" />
+          <Icon data="{userIcon}" class="h-8 w-8 rounded-full text-white" />
         {/if}
       </div>
     </div>

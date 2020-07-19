@@ -6,8 +6,10 @@
   import { navigateTo } from 'yrv';
 
   import { ActionHeader } from '../../elements';
+  import StackedLayout from '../../elements/layouts/StackedLayout.svelte';
   import Nav from '../../components/nav/interiorNav/Top.svelte';
   import NewMemberForm from '../../components/my/NewMemberForm.svelte';
+
   import memberApi from '../../dataSources/api.that.tech/members.js';
 
   import {
@@ -21,12 +23,14 @@
   async function handleSubmit({
     detail: { values, setSubmitting, resetForm },
   }) {
+    console.log({ values });
+
     const newSession = {
       status: 'ACCEPTED',
       ...values,
     };
 
-    const { id } = await create(newSession);
+    // const { id } = await create(newSession);
 
     setSubmitting(false);
     resetForm();
@@ -38,16 +42,16 @@
   <title>Create a New Member Profile * THAT.us</title>
 </svelte:head>
 
-<div>
-  <div class="bg-gray-800 pb-32">
+<StackedLayout>
+  <div slot="header">
     <Nav />
+    <ActionHeader title="Let's create THAT profile." />
   </div>
 
-  <main class="-mt-32">
-    <div class="max-w-7xl mx-auto pb-12 px-4 sm:px-6 lg:px-8">
-      <div class="bg-white rounded-lg shadow px-5 py-6 sm:px-6">
-        <NewMemberForm {handleSubmit} />
-      </div>
-    </div>
-  </main>
-</div>
+  <div slot="body">
+    <NewMemberForm {handleSubmit} />
+  </div>
+
+  <div slot="footer"></div>
+
+</StackedLayout>
