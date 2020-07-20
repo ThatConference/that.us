@@ -15,6 +15,16 @@
         "content",
         "design"
       ]
+    },
+    {
+      "login": "brettski",
+      "name": "Brett Slaski",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/473633?v=4",
+      "profile": "http://blog.brettski.com",
+      "contributions": [
+        "code",
+        "infra"
+      ]
     }
   ],
   "contributorsPerLine": 7,
