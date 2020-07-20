@@ -23,7 +23,8 @@
       "profile": "https://leanpub.com/os-support",
       "contributions": [
         "bug",
-        "review"
+        "review",
+        "test"
       ]
     }
   ],
