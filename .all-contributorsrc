@@ -25,6 +25,17 @@
         "code",
         "infra"
       ]
+    },
+    {
+      "login": "saragibby",
+      "name": "Sara Gibbons",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/82035?v=4",
+      "profile": "http://saragibby.com",
+      "contributions": [
+        "review",
+        "test",
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
