@@ -6,6 +6,17 @@
   "commit": false,
   "contributors": [
     {
+      "login": "csell5",
+      "name": "Clark Sell",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/772569?v=4",
+      "profile": "http://unspecified.io",
+      "contributions": [
+        "code",
+        "content",
+        "design"
+      ]
+    },
+    {
       "login": "brettski",
       "name": "Brett Slaski",
       "avatar_url": "https://avatars3.githubusercontent.com/u/473633?v=4",
