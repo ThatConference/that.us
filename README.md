@@ -43,7 +43,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="http://unspecified.io"><img src="https://avatars1.githubusercontent.com/u/772569?v=4" width="100px;" alt=""/><br /><sub><b>Clark Sell</b></sub></a><br /><a href="https://github.com/ThatConference/that.us/commits?author=csell5" title="Code">💻</a> <a href="#content-csell5" title="Content">🖋</a> <a href="#design-csell5" title="Design">🎨</a></td>
-    <td align="center"><a href="https://leanpub.com/os-support"><img src="https://avatars3.githubusercontent.com/u/240650?v=4" width="100px;" alt=""/><br /><sub><b>Andrew Hooker</b></sub></a><br /><a href="https://github.com/ThatConference/that.us/issues?q=author%3AGeekOnCoffee" title="Bug reports">🐛</a> <a href="https://github.com/ThatConference/that.us/pulls?q=is%3Apr+reviewed-by%3AGeekOnCoffee" title="Reviewed Pull Requests">👀</a></td>
+    <td align="center"><a href="https://leanpub.com/os-support"><img src="https://avatars3.githubusercontent.com/u/240650?v=4" width="100px;" alt=""/><br /><sub><b>Andrew Hooker</b></sub></a><br /><a href="https://github.com/ThatConference/that.us/issues?q=author%3AGeekOnCoffee" title="Bug reports">🐛</a> <a href="https://github.com/ThatConference/that.us/pulls?q=is%3Apr+reviewed-by%3AGeekOnCoffee" title="Reviewed Pull Requests">👀</a> <a href="https://github.com/ThatConference/that.us/commits?author=GeekOnCoffee" title="Tests">⚠️</a></td>
   </tr>
 </table>
 
