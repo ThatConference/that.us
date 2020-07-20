@@ -36,6 +36,17 @@
         "test",
         "code"
       ]
+    },
+    {
+      "login": "GeekOnCoffee",
+      "name": "Andrew Hooker",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/240650?v=4",
+      "profile": "https://leanpub.com/os-support",
+      "contributions": [
+        "bug",
+        "test",
+        "review"
+      ]
     }
   ],
   "contributorsPerLine": 7,
