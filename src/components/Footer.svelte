@@ -62,6 +62,18 @@
       text: 'THAT Conference',
       href: 'https://thatconference.com',
     },
+    {
+      text: 'Code of Conduct',
+      href: 'https://www.thatconference.com/code-of-conduct',
+    },
+    {
+      text: 'Commitment to Diversity',
+      href: 'https://www.thatconference.com/commitment-to-diversity',
+    },
+    {
+      text: 'Anti-Harassment Policy',
+      href: 'https://www.thatconference.com/anti-harassment-policy',
+    },
   ];
 </script>
 

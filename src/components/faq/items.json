@@ -22,5 +22,25 @@
   {
     "question": "What is the online etiquette for a successful virtual Open Spaces session?",
     "answer": "<ul class='faq-list'><li>Always be nice</li><li>Raise hand to speak</li><li>The person who submitted the session should facilitate and ensure those with hand raised have an opportunity to speak</li><li>Mute yourself when not speaking</li><li>Speak up so others can hear you</li><li>Turn your camera on so everyone else knows you're not a cyborg</li><li>Be careful not to speak over or interrupt others while they are speaking</li><li>Show that you are listening</li><li>Use care with humor. If you feel the need to use humor during meetings, just make sure that it’s appropriate for your audience.</li><li>Don't eat while speaking. While listening, muted is fine.</li><li>Keep your cool</li><li>Dress appropriately</li></ul>"
+  },
+  {
+    "question": "Are the virual Open Spaces accessible using Internet Explorer 11 (IE11)",
+    "answer": "No. IE 11 is not supported"
+  },
+  {
+    "question": "Do I need a ticket to participate in the virtual Open Spaces?",
+    "answer": "Yes, a ticket is required to participate in the virtual Open Spaces. You may get your ticket <a  class='underline hover:no-underline hover:font-semibold' href='http://tickets.thatconference.com' target='_blank'>here</a> with a starting contribution of $0."
+  },
+  {
+    "question": "Do I need an account to participate in the virtual Open Spaces?",
+    "answer": "Yes, a THAT account is required to participate in any virtual Open Space. You may create a new account and profile <a  class='underline hover:no-underline hover:font-semibold' href='https://that.us/my/new' target='_blank'>here (https://that.us/my/new)</a>."
+  },
+  {
+    "question": "What is the differences between a public and private THAT Profile? ",
+    "answer": "A private THAT Profile is not discoverable on the internet and not shown on any THAT Conference websites. A <strong>public</strong> profile lists your profile on THAT Conference member sections and pages and makes your profile discoverable by search engines. <strong>A public THAT Profile is required to create sessions</strong>."
+  },
+  {
+    "question": "Are the THATConference.com and THAT.US member accounts the same?",
+    "answer": "Yes. With the major website update of January 2020, the new member accounts work across ALL THAT Conference sites and applications. If you created your account after January 2020 you're all good to go! Make sure you fill out your profile so the community knows something about you!"
   }
 ]
