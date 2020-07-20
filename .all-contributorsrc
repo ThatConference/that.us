@@ -1,0 +1,26 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "csell5",
+      "name": "Clark Sell",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/772569?v=4",
+      "profile": "http://unspecified.io",
+      "contributions": [
+        "code",
+        "content",
+        "design"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "that.us",
+  "projectOwner": "ThatConference",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
