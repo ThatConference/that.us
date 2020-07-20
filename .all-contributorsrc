@@ -1,0 +1,25 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "brettski",
+      "name": "Brett Slaski",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/473633?v=4",
+      "profile": "http://blog.brettski.com",
+      "contributions": [
+        "code",
+        "infra"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "that.us",
+  "projectOwner": "ThatConference",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
