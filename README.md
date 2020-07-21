@@ -40,15 +40,15 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="http://unspecified.io"><img src="https://avatars1.githubusercontent.com/u/772569?v=4" width="100px;" alt=""/><br /><sub><b>Clark Sell</b></sub></a><br /><a href="https://github.com/ThatConference/that.us/commits?author=csell5" title="Code">💻</a> <a href="#content-csell5" title="Content">🖋</a> <a href="#design-csell5" title="Design">🎨</a></td>
-    <td align="center"><a href="http://blog.brettski.com"><img src="https://avatars3.githubusercontent.com/u/473633?v=4" width="100px;" alt=""/><br /><sub><b>Brett Slaski</b></sub></a><br /><a href="https://github.com/ThatConference/that.us/commits?author=brettski" title="Code">💻</a> <a href="#infra-brettski" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
+    <td align="center"><a href="http://blog.brettski.com"><img src="https://avatars3.githubusercontent.com/u/473633?v=4" width="100px;" alt=""/><br /><sub><b>Brett Slaski</b></sub></a><br /><a href="https://github.com/ThatConference/that.us/commits?author=brettski" title="Code">💻</a> <a href="#infra-brettski" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#maintenance-brettski" title="Maintenance">🚧</a></td>
     <td align="center"><a href="http://saragibby.com"><img src="https://avatars1.githubusercontent.com/u/82035?v=4" width="100px;" alt=""/><br /><sub><b>Sara Gibbons</b></sub></a><br /><a href="https://github.com/ThatConference/that.us/pulls?q=is%3Apr+reviewed-by%3Asaragibby" title="Reviewed Pull Requests">👀</a> <a href="https://github.com/ThatConference/that.us/commits?author=saragibby" title="Tests">⚠️</a> <a href="https://github.com/ThatConference/that.us/commits?author=saragibby" title="Code">💻</a></td>
     <td align="center"><a href="https://leanpub.com/os-support"><img src="https://avatars3.githubusercontent.com/u/240650?v=4" width="100px;" alt=""/><br /><sub><b>Andrew Hooker</b></sub></a><br /><a href="https://github.com/ThatConference/that.us/issues?q=author%3AGeekOnCoffee" title="Bug reports">🐛</a> <a href="https://github.com/ThatConference/that.us/commits?author=GeekOnCoffee" title="Tests">⚠️</a> <a href="https://github.com/ThatConference/that.us/pulls?q=is%3Apr+reviewed-by%3AGeekOnCoffee" title="Reviewed Pull Requests">👀</a></td>
+    <td align="center"><a href="https://github.com/gemolle"><img src="https://avatars0.githubusercontent.com/u/60487024?v=4" width="100px;" alt=""/><br /><sub><b>Erin Gemoll</b></sub></a><br /><a href="https://github.com/ThatConference/that.us/issues?q=author%3Agemolle" title="Bug reports">🐛</a></td>
   </tr>
 </table>
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
-
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
