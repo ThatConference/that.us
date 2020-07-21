@@ -111,7 +111,7 @@
         {#if $isAuthenticated}
           <div
             class="origin-top-right absolute right-0 mt-2 w-48 rounded-md
-            shadow-lg"
+            shadow-lg z-50"
             transition:fade
           >
             <div class="py-1 rounded-md bg-white shadow-xs">
