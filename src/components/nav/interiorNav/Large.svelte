@@ -115,12 +115,19 @@
             transition:fade
           >
             <div class="py-1 rounded-md bg-white shadow-xs">
+
+              <div class="block px-4 py-2 text-sm text-gray-700 border-b">
+                <p>{$thatProfile.firstName} {$thatProfile.lastName}</p>
+                <p>{$thatProfile.email}</p>
+              </div>
+
               <Link
                 href="/my/favorites"
                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
               >
                 My Favorites
               </Link>
+
               <Link
                 href="/my/submissions"
                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
