@@ -14,12 +14,13 @@
   import Login from './routes/Login.svelte';
   import Logout from './routes/Logout.svelte';
   import FAQ from './routes/FAQ.svelte';
-  import Members from './routes/Members.svelte';
   import Partners from './routes/Partners.svelte';
+  import Members from './routes/Members.svelte';
 
   // my
   import MyFavorites from './routes/my/Favorites.svelte';
   import MySubmissions from './routes/my/Submissions.svelte';
+  import NewMember from './routes/my/New.svelte';
 
   // sessions
   import List from './routes/sessions/List.svelte';
@@ -97,6 +98,14 @@
       exact
       path="/my/submissions"
       component="{MySubmissions}"
+      condition="{shouldRedirecToLogin}"
+      redirect="/login"
+    />
+
+    <Route
+      exact
+      path="/my/new"
+      component="{NewMember}"
       condition="{shouldRedirecToLogin}"
       redirect="/login"
     />

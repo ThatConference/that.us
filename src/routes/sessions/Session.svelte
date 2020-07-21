@@ -28,6 +28,7 @@
                 firstName
                 lastName
                 profileImage
+                profileSlug
                 profileLinks {
                   linkType
                   url

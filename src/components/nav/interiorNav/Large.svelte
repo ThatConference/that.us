@@ -4,9 +4,13 @@
   import { fade } from 'svelte/transition';
 
   import Icon from 'svelte-awesome';
-  import { user } from 'svelte-awesome/icons';
+  import { user as userIcon } from 'svelte-awesome/icons';
 
-  import { isAuthenticated, thatProfile } from '../../../utilities/security.js';
+  import {
+    isAuthenticated,
+    user,
+    thatProfile,
+  } from '../../../utilities/security.js';
 
   // toggle for the drop down
   let visible;
@@ -82,13 +86,23 @@
           on:click|preventDefault="{() => (visible = !visible)}"
         >
           {#if $isAuthenticated}
-            <img
-              class="h-8 w-8 rounded-full"
-              src="{$thatProfile.profileImage}?w=256&h=256&fit=crop"
-              alt=""
-            />
+            {#if $thatProfile.profileImage}
+              <img
+                class="h-8 w-8 rounded-full"
+                src="{$thatProfile.profileImage}?w=256&h=256&fit=crop"
+                alt=""
+              />
+            {:else if $user.picture}
+              <img
+                class="h-8 w-8 rounded-full"
+                src="{$user.picture}?w=256&h=256&fit=crop"
+                alt=""
+              />
+            {:else}
+              <Icon data="{userIcon}" class="h-8 w-8 rounded-full" />
+            {/if}
           {:else}
-            <Icon data="{user}" class="h-8 w-8 rounded-full" />
+            <Icon data="{userIcon}" class="h-8 w-8 rounded-full" />
           {/if}
         </button>
       </div>

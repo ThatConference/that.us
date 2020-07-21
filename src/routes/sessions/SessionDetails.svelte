@@ -95,11 +95,16 @@
       <div class="ml-4 mt-4">
         <div class="flex items-center">
           <div class="flex-shrink-0">
-            <img
-              class="h-12 w-12 rounded-full"
-              src="{`${host.profileImage}${imageCrop}`}"
-              alt=""
-            />
+            <Link
+              href="https://www.thatconference.com/member/{host.profileSlug}"
+              open
+            >
+              <img
+                class="h-12 w-12 rounded-full"
+                src="{`${host.profileImage}${imageCrop}`}"
+                alt=""
+              />
+            </Link>
           </div>
           <div class="ml-4">
             <h3 class="text-lg leading-6 font-medium text-gray-900">

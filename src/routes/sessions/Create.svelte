@@ -1,5 +1,5 @@
 <script>
-  import { getContext } from 'svelte';
+  import { onMount } from 'svelte';
   import { getClient } from '@urql/svelte';
   import { navigateTo } from 'yrv';
 
@@ -7,6 +7,12 @@
   import Nav from '../../components/nav/interiorNav/Top.svelte';
   import SessionForm from '../../components/sessions/SessionForm.svelte';
   import sessionsApi from '../../dataSources/api.that.tech/sessions.js';
+  import {
+    isAuthenticated,
+    user,
+    thatProfile,
+  } from '../../utilities/security.js';
+
   const { create } = sessionsApi(getClient());
 
   async function handleSubmit({
@@ -23,6 +29,13 @@
     resetForm();
     navigateTo(`/sessions/${id}?edit=true`, { replace: true });
   }
+
+  /* we need to valiate if the user can actually create a session */
+
+  onMount(async () => {
+    console.log('user', { $user });
+    console.log('thatProfile', { $thatProfile });
+  });
 </script>
 
 <svelte:head>

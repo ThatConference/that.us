@@ -172,7 +172,7 @@
           focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50
           active:text-gray-800 transition duration-150 ease-in-out"
         >
-          Reset
+          Reset Form
         </button>
       </span>
 
@@ -186,7 +186,7 @@
           focus:shadow-outline-indigo active:bg-indigo-700 transition
           duration-150 ease-in-out"
         >
-          Submit
+          Add Session
         </button>
       </span>
     </div>

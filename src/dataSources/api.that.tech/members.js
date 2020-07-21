@@ -68,5 +68,10 @@ export default (client) => {
       .then(reformatResults);
   };
 
-  return { queryMembers, queryMembersNext };
+  const create = (after) => {
+    const variables = { pageSize, after };
+    return client.query('CreateMemberProfile', variables).toPromise().then();
+  };
+
+  return { queryMembers, queryMembersNext, create };
 };
