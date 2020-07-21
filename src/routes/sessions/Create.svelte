@@ -29,13 +29,6 @@
     resetForm();
     navigateTo(`/sessions/${id}?edit=true`, { replace: true });
   }
-
-  /* we need to valiate if the user can actually create a session */
-
-  onMount(async () => {
-    console.log('user', { $user });
-    console.log('thatProfile', { $thatProfile });
-  });
 </script>
 
 <svelte:head>

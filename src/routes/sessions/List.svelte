@@ -20,6 +20,8 @@
   import sessionsApi from '../../dataSources/api.that.tech/sessions';
   import favoritesApi from '../../dataSources/api.that.tech/favorites';
 
+  import { thatProfile } from '../../utilities/security.js';
+
   const apiClient = getClient();
 
   const { querySessions } = sessionsApi(apiClient);
