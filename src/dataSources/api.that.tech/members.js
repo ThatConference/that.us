@@ -70,7 +70,7 @@ export default (client) => {
 
   const create = (after) => {
     const variables = { pageSize, after };
-    return client.query(CreateMemberProfile, variables).toPromise().then();
+    return client.query('CreateMemberProfile', variables).toPromise().then();
   };
 
   return { queryMembers, queryMembersNext, create };
