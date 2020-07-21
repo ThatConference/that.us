@@ -17,46 +17,56 @@
     thatProfile,
   } from '../../utilities/security.js';
 
-  console.log($user);
+  let firstNameInit = $user.given_name || $user.firstName;
+  let lastNameInit = $user.family_name || $user.lastName;
+  let emailInit = $user.email;
+  let profileSlugInit = $user.nickname;
 
   let initialValues = {
-    firstName: $user.given_name || $user.firstName,
-    lastName: $user.family_name || $user.lastName,
-    email: $user.email,
-    profileSlug: $user.nickname,
+    firstName: undefined,
+    lastName: undefined,
+    email: undefined,
+    profileSlug: undefined,
     bio: undefined,
     codeOfConduct: false,
     termsOfService: false,
     usersAge: false,
     publicProfile: false,
+    commitmentToDiversity: false,
+    antiHarrasment: false,
   };
 
   const schema = yup.object().shape({
     firstName: yup
       .string()
       .trim()
-      .required('With out this how will we know who you are?'),
+      .required('Please enter your first or given name.'),
     lastName: yup
       .string()
       .trim()
-      .required('With out this how will we know who you are?'),
+      .required('Please enter your last or family name.'),
     email: yup
       .string()
+      .email()
       .trim()
-      .required(
-        'yes we need an email address. we will be the only one who uses it.',
-      ),
-    bio: yup.string().required('we need a short bio'),
+      .required('Please enter your email address.'),
+    bio: yup.string().required('We need to know a bit about yourself.'),
     profileSlug: yup
       .string()
       .lowercase()
-      .required('You must enter a profile slug.'),
+      .required('You must enter a value to represnet your member page.'),
     codeOfConduct: yup
       .boolean()
-      .oneOf([true], 'You Must Accept our Code of Conduct.'),
+      .oneOf([true], 'Please accept our Code of Conduct policy.'),
+    commitmentToDiversity: yup
+      .boolean()
+      .oneOf([true], 'Please accept our Commitment to Diversity policy.'),
+    antiHarrasment: yup
+      .boolean()
+      .oneOf([true], 'Please accept Anti-Harrasment policy.'),
     termsOfService: yup
       .boolean()
-      .oneOf([true], 'You Must Accept Terms of Services.'),
+      .oneOf([true], 'Please accept our Terms of Services.'),
     usersAge: yup.boolean().oneOf([true], 'You Must be 13 years or older.'),
     publicProfile: yup.boolean(),
   });
@@ -80,12 +90,51 @@
       <div>
         <h3 class="text-lg leading-6 font-medium text-gray-900">Profile</h3>
         <p class="mt-1 text-sm leading-5 text-gray-500">
-          This information will be displayed publicly so be careful what you
-          share.
+          This information is what we feature about you if you choose to make
+          your profile public.
+        </p>
+        <p class="mt-2 text-sm leading-5 text-gray-500">
+          To submit any type session your profile will have to be public.
         </p>
       </div>
 
       <div class="mt-6 grid grid-cols-1 row-gap-6 col-gap-4 sm:grid-cols-6">
+
+        <div class="sm:col-span-3">
+          <label
+            for="first_name"
+            class="block text-sm font-medium leading-5 text-gray-700"
+          >
+            First or Given Name
+          </label>
+          <div class="mt-1 rounded-md shadow-sm">
+            <Input
+              type="text"
+              name="firstName"
+              value="{firstNameInit}"
+              class="form-input block w-full transition duration-150 ease-in-out
+              sm:text-sm sm:leading-5"
+            />
+          </div>
+        </div>
+
+        <div class="sm:col-span-3">
+          <label
+            for="last_name"
+            class="block text-sm font-medium leading-5 text-gray-700"
+          >
+            Last or Familiy Name
+          </label>
+          <div class="mt-1 rounded-md shadow-sm">
+            <Input
+              name="lastName"
+              value="{lastNameInit}"
+              class="form-input block w-full transition duration-150 ease-in-out
+              sm:text-sm sm:leading-5"
+            />
+          </div>
+        </div>
+
         <div class="sm:col-span-4">
           <label
             for="username"
@@ -101,7 +150,9 @@
               https://thatconference.com/member/
             </span>
             <Input
+              type="text"
               name="profileSlug"
+              value="{profileSlugInit}"
               class="flex-1 form-input block w-full min-w-0 rounded-none
               rounded-r-md transition duration-150 ease-in-out sm:text-sm
               sm:leading-5"
@@ -173,7 +224,7 @@
             for="photo"
             class="block text-sm leading-5 font-medium text-gray-700"
           >
-            Public Profile
+            Feature Me
           </label>
 
           <div class=" mt-2 flex items-center items-start">
@@ -188,7 +239,11 @@
               <label for="comments" class="font-medium text-gray-700">
                 Make your profile public.
               </label>
-              <p class="text-gray-500">will you accept... link here</p>
+              <p class="text-gray-500">
+                By selecting this, you're able to submit a session and THAT can
+                feature your on that.us or thatconference.com. We do no sell any
+                data.
+              </p>
             </div>
 
             {#if touched['publicProfile'] && errors['publicProfile']}
@@ -207,42 +262,11 @@
           Personal Information
         </h3>
         <p class="mt-1 text-sm leading-5 text-gray-500">
-          Use a permanent address where you can receive mail.
+          This information is private to THAT and allows us to better connect
+          with you.
         </p>
       </div>
       <div class="mt-6 grid grid-cols-1 row-gap-6 col-gap-4 sm:grid-cols-6">
-        <div class="sm:col-span-3">
-          <label
-            for="first_name"
-            class="block text-sm font-medium leading-5 text-gray-700"
-          >
-            First name
-          </label>
-          <div class="mt-1 rounded-md shadow-sm">
-            <Input
-              name="firstName"
-              class="form-input block w-full transition duration-150 ease-in-out
-              sm:text-sm sm:leading-5"
-            />
-          </div>
-        </div>
-
-        <div class="sm:col-span-3">
-          <label
-            for="last_name"
-            class="block text-sm font-medium leading-5 text-gray-700"
-          >
-            Last name
-          </label>
-          <div class="mt-1 rounded-md shadow-sm">
-            <Input
-              name="lastName"
-              class="form-input block w-full transition duration-150 ease-in-out
-              sm:text-sm sm:leading-5"
-            />
-          </div>
-        </div>
-
         <div class="sm:col-span-4">
           <label
             for="email"
@@ -252,7 +276,10 @@
           </label>
           <div class="mt-1 rounded-md shadow-sm">
             <Input
+              type="email"
               name="email"
+              value="{emailInit}"
+              placeholder="e.g. user@example.com"
               class="form-input block w-full transition duration-150 ease-in-out
               sm:text-sm sm:leading-5"
             />
@@ -268,14 +295,15 @@
           Terms of Service
         </h3>
         <p class="mt-1 text-sm leading-5 text-gray-500">
-          so much stuff to say here....
+          Everyone is awesome, and we want your help in keeping it that way.
+          Also lawyers.
         </p>
       </div>
 
       <div class="mt-6">
         <fieldset>
           <legend class="text-base font-medium text-gray-900">
-            Do you agree too
+            Do you agree too our:
           </legend>
 
           <div class="mt-4">
@@ -285,65 +313,128 @@
                 name="codeOfConduct"
                 on:change="{({ detail }) => setValue('codeOfConduct', detail)}"
                 size="2.5rem"
+                class="flex-none"
               />
 
               <div class="ml-3 text-sm leading-5">
                 <label for="comments" class="font-medium text-gray-700">
                   Code of Conduct
                 </label>
-                <p class="text-gray-500">will you accept... link here</p>
+                <p class="text-gray-500">
+                  Be epic. Together we're a family of geeks and geeklings!
+                </p>
+
+                {#if touched['codeOfConduct'] && errors['codeOfConduct']}
+                  <p class="text-red-600 italic">{errors['codeOfConduct']}</p>
+                {/if}
               </div>
 
-              {#if touched['codeOfConduct'] && errors['codeOfConduct']}
-                <p>{errors['codeOfConduct']}</p>
-              {/if}
-
             </div>
-
             <div class="mt-4">
               <div class="relative flex items-center items-start">
 
                 <Checkbox
-                  name="termsOfService"
-                  on:change="{({ detail }) => setValue('termsOfService', detail)}"
+                  name="antiHarrasment"
+                  on:change="{({ detail }) => setValue('antiHarrasment', detail)}"
                   size="2.5rem"
+                  class="flex-none"
                 />
 
                 <div class="ml-3 text-sm leading-5">
-                  <label for="candidates" class="font-medium text-gray-700">
-                    Terms of Service
+                  <label for="comments" class="font-medium text-gray-700">
+                    Commitment Anti-Harrasment
                   </label>
-                  <p class="text-gray-500">blaaa blaaa link....</p>
+                  <p class="text-gray-500">
+                    We do no not accept any sort of harrasment.
+                  </p>
+                  {#if touched['antiHarrasment'] && errors['antiHarrasment']}
+                    <p class="text-red-600 italic">
+                      {errors['antiHarrasment']}
+                    </p>
+                  {/if}
                 </div>
+
               </div>
 
-              {#if touched['termsOfService'] && errors['termsOfService']}
-                <p>{errors['termsOfService']}</p>
-              {/if}
+              <div class="mt-4">
+                <div class="relative flex items-center items-start">
 
-            </div>
+                  <Checkbox
+                    name="commitmentToDiversity"
+                    on:change="{({ detail }) => setValue('commitmentToDiversity', detail)}"
+                    size="2.5rem"
+                    class="flex-none"
+                  />
 
-            <div class="mt-4">
-              <div class="relative flex items-center items-start">
+                  <div class="ml-3 text-sm leading-5">
+                    <label for="comments" class="font-medium text-gray-700">
+                      Commitment to Diversity
+                    </label>
+                    <p class="text-gray-500">
+                      Everyone's welcome at THAT! It's our daily responsibility
+                      to make our industry the best place it can be regardless
+                      of color, gender, location, or even tech stack.
+                    </p>
+                    {#if touched['commitmentToDiversity'] && errors['commitmentToDiversity']}
+                      <p class="text-red-600 italic">
+                        {errors['commitmentToDiversity']}
+                      </p>
+                    {/if}
+                  </div>
 
-                <Checkbox
-                  name="usersAge"
-                  on:change="{({ detail }) => setValue('usersAge', detail)}"
-                  size="2.5rem"
-                />
+                </div>
 
-                <div class="ml-3 text-sm leading-5">
-                  <label for="offers" class="font-medium text-gray-700">
-                    Over the age of 13
-                  </label>
-                  <p class="text-gray-500">bllaaa.</p>
+                <div class="mt-4">
+                  <div class="relative flex items-center items-start">
+
+                    <Checkbox
+                      name="termsOfService"
+                      on:change="{({ detail }) => setValue('termsOfService', detail)}"
+                      size="2.5rem"
+                      class="flex-none"
+                    />
+
+                    <div class="ml-3 text-sm leading-5">
+                      <label for="candidates" class="font-medium text-gray-700">
+                        <Link open href="" class="">Terms of Service</Link>
+                      </label>
+                      <p class="text-gray-500">Lawyer speak.</p>
+                      {#if touched['termsOfService'] && errors['termsOfService']}
+                        <p class="text-red-600 italic">
+                          {errors['termsOfService']}
+                        </p>
+                      {/if}
+                    </div>
+                  </div>
+
+                </div>
+
+                <div class="mt-4">
+                  <div class="relative flex items-center items-start">
+
+                    <Checkbox
+                      name="usersAge"
+                      on:change="{({ detail }) => setValue('usersAge', detail)}"
+                      size="2.5rem"
+                      class="flex-none"
+                    />
+
+                    <div class="ml-3 text-sm leading-5">
+                      <label for="offers" class="font-medium text-gray-700">
+                        Are you over the age of 13?
+                      </label>
+                      <p class="text-gray-500">
+                        I'm sorry but to have an account on THAT.us or
+                        THATConference.com you have to be over the age of 13.
+                      </p>
+                      {#if touched['usersAge'] && errors['usersAge']}
+                        <p class="text-red-600 italic">{errors['usersAge']}</p>
+                      {/if}
+                    </div>
+                  </div>
+
                 </div>
               </div>
-
-              {#if touched['usersAge'] && errors['usersAge']}
-                <p>{errors['usersAge']}</p>
-              {/if}
-
             </div>
           </div>
         </fieldset>
@@ -389,3 +480,17 @@
   {/if}
 
 </Form>
+
+<style global>
+  .sveltejs-forms .field.error input,
+  .sveltejs-forms .field.error textarea {
+    --text-opacity: 1;
+    border: 1px solid rgba(224, 36, 36, var(--text-opacity));
+  }
+  .sveltejs-forms .field.error .message {
+    margin-top: 0.2rem;
+    font-style: italic;
+    --text-opacity: 1;
+    color: rgba(224, 36, 36, var(--text-opacity));
+  }
+</style>
