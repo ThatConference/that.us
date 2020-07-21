@@ -6,11 +6,10 @@
     <slot name="label" />
 
     <div class="mt-1 sm:mt-0 sm:col-span-2">
-      <div class="max-w-lg rounded-md shadow-sm sm:max-w-xs">
+      <div class="max-w-lg sm:max-w-xs">
         <slot name="input" />
       </div>
     </div>
-
   </div>
 </div>
 

@@ -34,20 +34,22 @@
     firstName: yup
       .string()
       .trim()
-      .required(),
+      .required('With out this how will we know who you are?'),
     lastName: yup
       .string()
       .trim()
-      .required(),
+      .required('With out this how will we know who you are?'),
     email: yup
       .string()
       .trim()
-      .required(),
-    bio: yup.string().required(),
+      .required(
+        'yes we need an email address. we will be the only one who uses it.',
+      ),
+    bio: yup.string().required('we need a short bio'),
     profileSlug: yup
       .string()
       .lowercase()
-      .required(),
+      .required('You must enter a profile slug.'),
     codeOfConduct: yup
       .boolean()
       .oneOf([true], 'You Must Accept our Code of Conduct.'),
@@ -57,10 +59,6 @@
     usersAge: yup.boolean().oneOf([true], 'You Must be 13 years or older.'),
     publicProfile: yup.boolean(),
   });
-
-  function handleReset(foo) {
-    console.log({ publicProfile });
-  }
 </script>
 
 <Form
@@ -69,10 +67,11 @@
   validateOnBlur="{false}"
   validateOnChange="{false}"
   on:submit="{handleSubmit}"
-  on:reset="{handleReset}"
   let:isSubmitting
   let:isValid
   let:setValue
+  let:errors
+  let:touched
 >
 
   <div>
@@ -93,11 +92,13 @@
         </label>
       </div>
       <div slot="input">
-        <Input
-          name="firstName"
-          class="form-input block w-full transition duration-150 ease-in-out
-          sm:text-sm sm:leading-5"
-        />
+        <div class="rounded-md shadow-sm">
+          <Input
+            name="firstName"
+            class="form-input block w-full transition duration-150 ease-in-out
+            sm:text-sm sm:leading-5"
+          />
+        </div>
       </div>
     </FormItem>
 
@@ -113,11 +114,13 @@
         </label>
       </div>
       <div slot="input">
-        <Input
-          name="lastName"
-          class="form-input block w-full transition duration-150 ease-in-out
-          sm:text-sm sm:leading-5"
-        />
+        <div class="rounded-md shadow-sm">
+          <Input
+            name="lastName"
+            class="form-input block w-full transition duration-150 ease-in-out
+            sm:text-sm sm:leading-5"
+          />
+        </div>
       </div>
     </FormItem>
 
@@ -133,11 +136,13 @@
         </label>
       </div>
       <div slot="input">
-        <Input
-          name="email"
-          class="form-input block w-full transition duration-150 ease-in-out
-          sm:text-sm sm:leading-5"
-        />
+        <div class="rounded-md shadow-sm">
+          <Input
+            name="email"
+            class="form-input block w-full transition duration-150 ease-in-out
+            sm:text-sm sm:leading-5"
+          />
+        </div>
       </div>
     </FormItem>
 
@@ -154,12 +159,14 @@
         </label>
       </div>
       <div slot="input">
-        <Input
-          name="bio"
-          multiline="{true}"
-          class="form-input block w-full transition duration-150 ease-in-out
-          sm:text-sm sm:leading-5"
-        />
+        <div class="rounded-md shadow-sm">
+          <Input
+            name="bio"
+            multiline="{true}"
+            class="form-input block w-full transition duration-150 ease-in-out
+            sm:text-sm sm:leading-5"
+          />
+        </div>
       </div>
     </FormItem>
 
@@ -175,11 +182,13 @@
         </label>
       </div>
       <div slot="input">
-        <Input
-          name="profileSlug"
-          class="form-input block w-full transition duration-150 ease-in-out
-          sm:text-sm sm:leading-5"
-        />
+        <div class="rounded-md shadow-sm">
+          <Input
+            name="profileSlug"
+            class="form-input block w-full transition duration-150 ease-in-out
+            sm:text-sm sm:leading-5"
+          />
+        </div>
       </div>
     </FormItem>
 
@@ -204,21 +213,14 @@
 
       </div>
       <div slot="input">
-        <!-- 
         <Checkbox
           name="codeOfConduct"
-          bind:checked="{codeOfConduct}"
           on:change="{({ detail }) => setValue('codeOfConduct', detail)}"
-          class="h-4 w-4 text-indigo-600 transition duration-150 ease-in-out"
-        /> -->
-
-        <Input
-          name="codeOfConduct"
-          type="checkbox"
-          class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150
-          ease-in-out"
+          size="2.5rem"
         />
-
+        {#if touched['codeOfConduct'] && errors['codeOfConduct']}
+          <p>{errors['codeOfConduct']}</p>
+        {/if}
       </div>
     </FormItem>
 
@@ -238,23 +240,20 @@
           >
             Terms of Service?
           </Link>
-
         </label>
 
       </div>
       <div slot="input">
-        <!-- <Checkbox
+        <Checkbox
           name="termsOfService"
-          on:clear="{() => setValue('termsOfService', false)}"
-          bind:this="{termsOfService}"
-          class="h-4 w-4 text-indigo-600 transition duration-150 ease-in-out"
-        /> -->
-        <Input
-          name="termsOfService"
-          type="checkbox"
-          class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150
-          ease-in-out"
+          on:change="{({ detail }) => setValue('termsOfService', detail)}"
+          size="2.5rem"
         />
+
+        {#if touched['termsOfService'] && errors['termsOfService']}
+          <p>{errors['termsOfService']}</p>
+        {/if}
+
       </div>
     </FormItem>
 
@@ -270,28 +269,14 @@
 
       </div>
       <div slot="input">
-        <!-- <Checkbox
+        <Checkbox
           name="usersAge"
           on:change="{({ detail }) => setValue('usersAge', detail)}"
-          bind:this="{usersAge}"
-          class="h-4 w-4 text-indigo-600 transition duration-150 ease-in-out"
-        /> -->
-
-        <Input
-          name="usersAge"
-          type="checkbox"
-          class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150
-          ease-in-out"
+          size="2.5rem"
         />
-
-        <Choice
-          name="usersAge"
-          options="{[true]}"
-          single
-          class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150
-          ease-in-out"
-        />
-
+        {#if touched['usersAge'] && errors['usersAge']}
+          <p>{errors['usersAge']}</p>
+        {/if}
       </div>
     </FormItem>
 
@@ -310,21 +295,16 @@
         </label>
 
       </div>
-      <div slot="input">
-
-        <!-- <Checkbox
+      <div slot="input" class="centerGridItem">
+        <Checkbox
           name="publicProfile"
           on:change="{({ detail }) => setValue('publicProfile', detail)}"
-          class="h-4 w-4 text-indigo-600 transition duration-150 ease-in-out"
-          bind:checked="{publicProfile}"
-        /> -->
-        <Input
-          name="publicProfile"
-          type="checkbox"
-          on:change="{({ detail }) => setValue('publicProfile', detail.publicProfile)}"
-          class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150
-          ease-in-out"
+          size="2.5rem"
         />
+
+        {#if touched['publicProfile'] && errors['publicProfile']}
+          <p>error</p>
+        {/if}
 
       </div>
     </FormItem>
