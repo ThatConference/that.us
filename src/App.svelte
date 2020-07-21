@@ -20,7 +20,7 @@
   // my
   import MyFavorites from './routes/my/Favorites.svelte';
   import MySubmissions from './routes/my/Submissions.svelte';
-  import NewMember from './routes/my/New.svelte';
+  import Profile from './routes/my/Profile.svelte';
 
   // sessions
   import List from './routes/sessions/List.svelte';
@@ -104,8 +104,8 @@
 
     <Route
       exact
-      path="/my/new"
-      component="{NewMember}"
+      path="/my/profile"
+      component="{Profile}"
       condition="{shouldRedirecToLogin}"
       redirect="/login"
     />

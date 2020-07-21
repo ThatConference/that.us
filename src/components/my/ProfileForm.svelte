@@ -1,5 +1,7 @@
 <script>
   export let handleSubmit;
+  export let profile;
+  export let isNewProfile;
 
   import dayjs from 'dayjs';
   import { Circle2 } from 'svelte-loading-spinners';
@@ -8,32 +10,59 @@
   import * as yup from 'yup';
   import { Link } from 'yrv';
   import Checkbox from 'svelte-checkbox';
+  import { getClient } from '@urql/svelte';
+  import fetch from 'isomorphic-unfetch';
+  import { ScaleOut } from 'svelte-loading-spinners';
+
+  import config from '../../config';
+  import memberApi from '../../dataSources/api.that.tech/members.js';
 
   import { Waiting } from '../../elements';
-  import {
-    isAuthenticated,
-    user,
-    thatProfile,
-  } from '../../utilities/security.js';
+  import { isAuthenticated, token } from '../../utilities/security.js';
 
-  let firstNameInit = $user.given_name || $user.firstName;
-  let lastNameInit = $user.family_name || $user.lastName;
-  let emailInit = $user.email;
-  let profileSlugInit = $user.nickname;
+  const { isSlugTaken } = memberApi(getClient());
+  let initialValues;
+  let profileImageUploading;
+  let profileImageUrl;
 
-  let initialValues = {
-    firstName: undefined,
-    lastName: undefined,
-    email: undefined,
-    profileSlug: undefined,
-    bio: undefined,
-    codeOfConduct: false,
-    termsOfService: false,
-    usersAge: false,
-    publicProfile: false,
-    commitmentToDiversity: false,
-    antiHarrasment: false,
-  };
+  if (isNewProfile) {
+    initialValues = {
+      firstName: undefined,
+      lastName: undefined,
+      email: undefined,
+      profileSlug: undefined,
+      company: undefined,
+      jobTitle: undefined,
+      bio: undefined,
+      canFeature: false,
+      isOver13: false,
+      acceptedCodeOfConduct: false,
+      acceptedTermsOfService: false,
+      acceptedAntiHarassmentPolicy: false,
+      acceptedCommitmentToDiversity: false,
+      isDeactivated: false,
+      profileImage: undefined,
+      ...profile,
+    };
+  } else {
+    initialValues = profile;
+    profileImageUrl = profile.profileImage;
+  }
+
+  yup.addMethod(yup.string, 'validateSlug', function() {
+    return this.test({
+      name: 'name',
+      message: 'Slug is already taken. Try again.',
+      test: slug => {
+        return new Promise((res, reject) =>
+          isSlugTaken(slug).then(r => {
+            if (isNewProfile) res(!r);
+            res(true);
+          }),
+        );
+      },
+    });
+  });
 
   const schema = yup.object().shape({
     firstName: yup
@@ -44,6 +73,8 @@
       .string()
       .trim()
       .required('Please enter your last or family name.'),
+    company: yup.string().trim(),
+    jobTitle: yup.string().trim(),
     email: yup
       .string()
       .email()
@@ -53,22 +84,55 @@
     profileSlug: yup
       .string()
       .lowercase()
-      .required('You must enter a value to represnet your member page.'),
-    codeOfConduct: yup
+      .required('You must enter a value to represnet your member page.')
+      .validateSlug(),
+    acceptedCodeOfConduct: yup
       .boolean()
       .oneOf([true], 'Please accept our Code of Conduct policy.'),
-    commitmentToDiversity: yup
+    acceptedCommitmentToDiversity: yup
       .boolean()
       .oneOf([true], 'Please accept our Commitment to Diversity policy.'),
-    antiHarrasment: yup
+    acceptedAntiHarassmentPolicy: yup
       .boolean()
       .oneOf([true], 'Please accept Anti-Harrasment policy.'),
-    termsOfService: yup
+    acceptedTermsOfService: yup
       .boolean()
       .oneOf([true], 'Please accept our Terms of Services.'),
-    usersAge: yup.boolean().oneOf([true], 'You Must be 13 years or older.'),
-    publicProfile: yup.boolean(),
+    isOver13: yup.boolean().oneOf([true], 'You Must be 13 years or older.'),
+    canFeature: yup.boolean(),
+    isDeactivated: yup.boolean(),
+    profileImage: yup.string().url(),
   });
+
+  const handleReset = () => {
+    profile = {};
+  };
+
+  const postProfilePicture = async profilePhoto => {
+    profileImageUploading = true;
+    const formData = new FormData();
+    formData.append('file', profilePhoto.currentTarget.files[0]);
+
+    const res = await fetch(config.profileImageApi, {
+      method: 'POST',
+      headers: {
+        Authorization: `bearer ${$token}`,
+      },
+      body: formData,
+    });
+
+    if (!res.ok) {
+      // TODO drop an error modal saying there was a problem uploading
+      return null;
+    }
+
+    const json = await res.json();
+
+    profileImageUploading = false;
+    profileImageUrl = json.data.url;
+
+    return json.data.url;
+  };
 </script>
 
 <Form
@@ -77,6 +141,7 @@
   validateOnBlur="{false}"
   validateOnChange="{false}"
   on:submit="{handleSubmit}"
+  on:reset="{handleReset}"
   let:isSubmitting
   let:isValid
   let:setValue
@@ -85,7 +150,6 @@
 >
   <div>
     <div>
-
       <div>
         <h3 class="text-lg leading-6 font-medium text-gray-900">Profile</h3>
         <p class="mt-1 text-sm leading-5 text-gray-500">
@@ -110,7 +174,6 @@
             <Input
               type="text"
               name="firstName"
-              value="{firstNameInit}"
               class="form-input block w-full transition duration-150 ease-in-out
               sm:text-sm sm:leading-5"
             />
@@ -122,12 +185,11 @@
             for="last_name"
             class="block text-sm font-medium leading-5 text-gray-700"
           >
-            Last or Familiy Name
+            Last or Family Name
           </label>
           <div class="mt-1 rounded-md shadow-sm">
             <Input
               name="lastName"
-              value="{lastNameInit}"
               class="form-input block w-full transition duration-150 ease-in-out
               sm:text-sm sm:leading-5"
             />
@@ -148,14 +210,19 @@
             >
               https://thatconference.com/member/
             </span>
-            <Input
-              type="text"
-              name="profileSlug"
-              value="{profileSlugInit}"
+            <div
               class="flex-1 form-input block w-full min-w-0 rounded-none
               rounded-r-md transition duration-150 ease-in-out sm:text-sm
               sm:leading-5"
-            />
+              class:bg-gray-50="{!isNewProfile}"
+              class:text-gray-500="{!isNewProfile}"
+            >
+              <Input
+                type="text"
+                disabled="{!isNewProfile}"
+                name="profileSlug"
+              />
+            </div>
           </div>
         </div>
 
@@ -180,6 +247,38 @@
             Write a few sentences about yourself.
           </p>
         </div>
+        <div class="sm:col-span-3">
+          <label
+            for="company"
+            class="block text-sm font-medium leading-5 text-gray-700"
+          >
+            Company
+          </label>
+          <div class="mt-1 rounded-md shadow-sm">
+            <Input
+              type="text"
+              name="company"
+              class="form-input block w-full transition duration-150 ease-in-out
+              sm:text-sm sm:leading-5"
+            />
+          </div>
+        </div>
+
+        <div class="sm:col-span-3">
+          <label
+            for="jobTitle"
+            class="block text-sm font-medium leading-5 text-gray-700"
+          >
+            Job Tile
+          </label>
+          <div class="mt-1 rounded-md shadow-sm">
+            <Input
+              name="jobTitle"
+              class="form-input block w-full transition duration-150 ease-in-out
+              sm:text-sm sm:leading-5"
+            />
+          </div>
+        </div>
 
         <div class="sm:col-span-6">
           <label
@@ -191,29 +290,41 @@
 
           <div class="mt-2 flex items-center">
             <span class="h-12 w-12 rounded-full overflow-hidden bg-gray-100">
-              <svg
-                class="h-full w-full text-gray-300"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0
-                  9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018
-                  0z"
-                ></path>
-              </svg>
+
+              {#if profileImageUploading}
+                <div class="h-full w-full flex flex-grow justify-center">
+                  <ScaleOut />
+                </div>
+              {:else if profileImageUrl}
+                <img class="h-full w-full" src="{profileImageUrl}" alt="" />
+              {:else}
+                <svg
+                  class="h-full w-full text-gray-300"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904
+                    0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0
+                    018 0z"
+                  ></path>
+                </svg>
+              {/if}
             </span>
             <span class="ml-5 rounded-md shadow-sm">
-              <button
-                type="button"
+              <input
+                name="profileImage"
+                type="file"
+                on:change="{e => postProfilePicture(e).then(r =>
+                    setValue('profileImage', r),
+                  )}"
+                accept="image/x-png,image/png,.png,image/jpeg,.jpg,.jpeg,image/gif,.gif"
                 class="py-2 px-3 border border-gray-300 rounded-md text-sm
                 leading-4 font-medium text-gray-700 hover:text-gray-500
                 focus:outline-none focus:border-blue-300
                 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800
                 transition duration-150 ease-in-out"
-              >
-                Upload / Update
-              </button>
+              />
             </span>
           </div>
         </div>
@@ -229,8 +340,9 @@
           <div class=" mt-2 flex items-center items-start">
 
             <Checkbox
-              name="publicProfile"
-              on:change="{({ detail }) => setValue('publicProfile', detail)}"
+              name="canFeature"
+              checked="{profile.canFeature}"
+              on:change="{({ detail }) => setValue('canFeature', detail)}"
               size="2.5rem"
             />
 
@@ -245,7 +357,7 @@
               </p>
             </div>
 
-            {#if touched['publicProfile'] && errors['publicProfile']}
+            {#if touched['canFeature'] && errors['canFeature']}
               <p>error</p>
             {/if}
 
@@ -277,7 +389,6 @@
             <Input
               type="email"
               name="email"
-              value="{emailInit}"
               placeholder="e.g. user@example.com"
               class="form-input block w-full transition duration-150 ease-in-out
               sm:text-sm sm:leading-5"
@@ -309,8 +420,9 @@
             <div class="relative flex items-center items-start">
 
               <Checkbox
-                name="codeOfConduct"
-                on:change="{({ detail }) => setValue('codeOfConduct', detail)}"
+                name="acceptedCodeOfConduct"
+                checked="{profile.acceptedCodeOfConduct}"
+                on:change="{({ detail }) => setValue('acceptedCodeOfConduct', detail)}"
                 size="2.5rem"
                 class="flex-none"
               />
@@ -330,8 +442,10 @@
                   Be epic. Together we're a family of geeks and geeklings!
                 </p>
 
-                {#if touched['codeOfConduct'] && errors['codeOfConduct']}
-                  <p class="text-red-600 italic">{errors['codeOfConduct']}</p>
+                {#if touched['acceptedCodeOfConduct'] && errors['acceptedCodeOfConduct']}
+                  <p class="text-red-600 italic">
+                    {errors['acceptedCodeOfConduct']}
+                  </p>
                 {/if}
               </div>
 
@@ -340,8 +454,9 @@
               <div class="relative flex items-center items-start">
 
                 <Checkbox
-                  name="antiHarrasment"
-                  on:change="{({ detail }) => setValue('antiHarrasment', detail)}"
+                  name="acceptedAntiHarassmentPolicy"
+                  checked="{profile.acceptedAntiHarassmentPolicy}"
+                  on:change="{({ detail }) => setValue('acceptedAntiHarassmentPolicy', detail)}"
                   size="2.5rem"
                   class="flex-none"
                 />
@@ -360,9 +475,9 @@
                   <p class="text-gray-500">
                     We do no not accept any sort of harrasment.
                   </p>
-                  {#if touched['antiHarrasment'] && errors['antiHarrasment']}
+                  {#if touched['acceptedAntiHarassmentPolicy'] && errors['acceptedAntiHarassmentPolicy']}
                     <p class="text-red-600 italic">
-                      {errors['antiHarrasment']}
+                      {errors['acceptedAntiHarassmentPolicy']}
                     </p>
                   {/if}
                 </div>
@@ -373,8 +488,9 @@
                 <div class="relative flex items-center items-start">
 
                   <Checkbox
-                    name="commitmentToDiversity"
-                    on:change="{({ detail }) => setValue('commitmentToDiversity', detail)}"
+                    name="acceptedCommitmentToDiversity"
+                    checked="{profile.acceptedCommitmentToDiversity}"
+                    on:change="{({ detail }) => setValue('acceptedCommitmentToDiversity', detail)}"
                     size="2.5rem"
                     class="flex-none"
                   />
@@ -395,9 +511,9 @@
                       to make our industry the best place it can be regardless
                       of color, gender, location, or even tech stack.
                     </p>
-                    {#if touched['commitmentToDiversity'] && errors['commitmentToDiversity']}
+                    {#if touched['acceptedCommitmentToDiversity'] && errors['acceptedCommitmentToDiversity']}
                       <p class="text-red-600 italic">
-                        {errors['commitmentToDiversity']}
+                        {errors['acceptedCommitmentToDiversity']}
                       </p>
                     {/if}
                   </div>
@@ -408,8 +524,9 @@
                   <div class="relative flex items-center items-start">
 
                     <Checkbox
-                      name="termsOfService"
-                      on:change="{({ detail }) => setValue('termsOfService', detail)}"
+                      name="acceptedTermsOfService"
+                      checked="{profile.acceptedTermsOfService}"
+                      on:change="{({ detail }) => setValue('acceptedTermsOfService', detail)}"
                       size="2.5rem"
                       class="flex-none"
                     />
@@ -427,9 +544,9 @@
                         </Link>
                       </label>
                       <p class="text-gray-500">Lawyer speak.</p>
-                      {#if touched['termsOfService'] && errors['termsOfService']}
+                      {#if touched['acceptedTermsOfService'] && errors['acceptedTermsOfService']}
                         <p class="text-red-600 italic">
-                          {errors['termsOfService']}
+                          {errors['acceptedTermsOfService']}
                         </p>
                       {/if}
                     </div>
@@ -441,22 +558,23 @@
                   <div class="relative flex items-center items-start">
 
                     <Checkbox
-                      name="usersAge"
-                      on:change="{({ detail }) => setValue('usersAge', detail)}"
+                      name="isOver13"
+                      checked="{profile.isOver13}"
+                      on:change="{({ detail }) => setValue('isOver13', detail)}"
                       size="2.5rem"
                       class="flex-none"
                     />
 
                     <div class="ml-3 text-sm leading-5">
                       <label for="offers" class="font-medium text-gray-700">
-                        Are you over the age of 13?
+                        Are you >= to the age of 13?
                       </label>
                       <p class="text-gray-500">
                         I'm sorry but to have an account on THAT.us or
                         THATConference.com you have to be over the age of 13.
                       </p>
-                      {#if touched['usersAge'] && errors['usersAge']}
-                        <p class="text-red-600 italic">{errors['usersAge']}</p>
+                      {#if touched['isOver13'] && errors['isOver13']}
+                        <p class="text-red-600 italic">{errors['isOver13']}</p>
                       {/if}
                     </div>
                   </div>
@@ -467,6 +585,54 @@
           </div>
         </fieldset>
 
+      </div>
+    </div>
+
+    <div class="mt-8 border-t border-gray-200 pt-8">
+      <div>
+        <h3 class="text-lg leading-6 font-medium text-gray-900">
+          User Account Maintenance
+        </h3>
+        <p class="mt-1 text-sm leading-5 text-gray-500">more to come...</p>
+      </div>
+
+      <div class="mt-6">
+        <fieldset>
+          <legend class="text-base font-medium text-gray-900">
+            User Account
+          </legend>
+
+          <div class="mt-4">
+            <div class="relative flex items-center items-start">
+
+              <Checkbox
+                name="isDeactivated"
+                checked="{profile.isDeactivated}"
+                on:change="{({ detail }) => setValue('isDeactivated', detail)}"
+                size="2.5rem"
+                class="flex-none"
+              />
+
+              <div class="ml-3 text-sm leading-5">
+                <label for="comments" class="font-medium text-gray-700">
+                  <Link
+                    open
+                    href="https://www.thatconference.com/code-of-conduct"
+                    class="font-medium text-indigo-600 hover:text-indigo-500
+                    transition duration-150 ease-in-out"
+                  >
+                    Deactivate my account.
+                  </Link>
+                </label>
+                <p class="text-gray-500">...</p>
+
+                {#if touched['isDeactivated'] && errors['isDeactivated']}
+                  <p class="text-red-600 italic">{errors['isDeactivated']}</p>
+                {/if}
+              </div>
+            </div>
+          </div>
+        </fieldset>
       </div>
     </div>
 
@@ -482,7 +648,7 @@
           focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50
           active:text-gray-800 transition duration-150 ease-in-out"
         >
-          Cancel
+          Reset
         </button>
       </span>
       <span class="ml-3 inline-flex rounded-md shadow-sm">

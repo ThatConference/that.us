@@ -16,8 +16,23 @@ const QUERY_ME = `
         id
         firstName
         lastName
+        email
+        jobTitle
+        company
         profileImage
         profileSlug
+        profileLinks {
+          linkType
+          url
+        }
+        bio
+        canFeature
+        isOver13
+        acceptedCodeOfConduct
+        acceptedTermsOfService
+        acceptedAntiHarassmentPolicy
+        acceptedCommitmentToDiversity
+        isDeactivated
       }
     }
   }

@@ -1,5 +1,3 @@
-import config from '../../config';
-
 const pageSize = 50;
 
 const userFragment = `
@@ -46,12 +44,84 @@ export const QUERY_MEMBERS_NEXT = `
     }
 `;
 
+const profileFieldsFragment = `
+  fragment profileFields on Profile {
+    id
+    firstName
+    lastName
+    email
+    company
+    jobTitle
+    profileImage
+    profileSlug
+    bio
+    profileLinks {
+      linkType
+      url
+    }
+    canFeature
+    isOver13
+    acceptedCodeOfConduct
+    acceptedTermsOfService
+    acceptedAntiHarassmentPolicy
+    acceptedCommitmentToDiversity
+    isDeactivated
+  }
+`;
+
+export const MUTATION_CREATE = `
+  ${profileFieldsFragment}
+  mutation createMember ($profile: ProfileCreateInput!) {
+    members {
+      create(profile: $profile) {
+        ...profileFields
+      }
+    }
+  }
+  `;
+
+export const MUTATION_UPDATE = `
+  ${profileFieldsFragment}
+  mutation updateMember ($profile: ProfileUpdateInput!) {
+    members { 
+      member {
+      update(profile: $profile) {
+          ...profileFields
+        }
+      }
+    }
+  }
+`;
+
+export const QUERY_IS_SLUG_TAKEN = `
+  query slugCheck($slug: Slug!) {
+    members {
+     isProfileSlugTaken(slug: $slug)
+    }
+  }
+`;
+
 function reformatResults(results) {
   const { members } = results.data.members;
   return members;
 }
 
 export default (client) => {
+  const isSlugTaken = (slug) => {
+    const variables = { slug };
+    return client
+      .query(QUERY_IS_SLUG_TAKEN, variables)
+      .toPromise()
+      .then((r) => {
+        let isTaken;
+
+        if (r.error) isTaken = true;
+        else if (r.data) isTaken = r.data.members.isProfileSlugTaken;
+
+        return isTaken;
+      });
+  };
+
   const queryMembers = () => {
     const variables = { pageSize };
     return client
@@ -68,10 +138,28 @@ export default (client) => {
       .then(reformatResults);
   };
 
-  const create = (after) => {
-    const variables = { pageSize, after };
-    return client.query('CreateMemberProfile', variables).toPromise().then();
+  const createProfile = (profile) => {
+    const variables = { profile };
+    return client
+      .mutation(MUTATION_CREATE, variables)
+      .toPromise()
+      .then((r) => r.data.members.create);
   };
 
-  return { queryMembers, queryMembersNext, create };
+  const updateProfile = (profile) => {
+    const variables = { profile };
+    return client
+      .mutation(MUTATION_UPDATE, variables)
+      .toPromise()
+      .then((r) => r.data.members.member.update);
+  };
+
+  return {
+    queryMembers,
+    queryMembersNext,
+    createProfile,
+    updateProfile,
+
+    isSlugTaken,
+  };
 };

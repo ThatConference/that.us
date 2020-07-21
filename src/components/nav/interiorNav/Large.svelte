@@ -127,12 +127,12 @@
               >
                 My Submissions
               </Link>
-              <a
-                href="https://www.thatconference.com/member/{$thatProfile.profileSlug}"
+              <Link
+                href="/my/profile"
                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
               >
                 My Profile
-              </a>
+              </Link>
 
               <a
                 href="/logout"
