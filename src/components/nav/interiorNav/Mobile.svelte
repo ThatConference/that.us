@@ -92,6 +92,13 @@
       aria-labelledby="user-menu"
     >
       {#if $isAuthenticated}
+        <div
+          class="block px-3 py-2 text-base font-medium text-gray-400 border-b"
+        >
+          <p>{$thatProfile.firstName} {$thatProfile.lastName}</p>
+          <p>{$thatProfile.email}</p>
+        </div>
+
         <Link
           href="/my/favorites"
           class="block px-3 py-2 rounded-md text-base font-medium text-gray-400
