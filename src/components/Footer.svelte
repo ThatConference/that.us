@@ -77,6 +77,21 @@
       href: 'https://www.thatconference.com/anti-harassment-policy',
     },
   ];
+
+  const moreLegalLinks = [
+    {
+      text: 'Privacy',
+      href: 'https://www.thatconference.com/privacy-policy',
+    },
+    {
+      text: 'Terms of Use',
+      href: 'https://www.thatconference.com/terms-of-use',
+    },
+    {
+      text: 'Copyright Policy',
+      href: 'https://www.thatconference.com/copyright',
+    },
+  ];
 </script>
 
 <footer class="bg-gray-100">
@@ -104,6 +119,19 @@
             class="text-base leading-6 text-gray-500 hover:text-gray-900"
           >
             {ll.text}
+          </Link>
+        </div>
+      {/each}
+    </nav>
+
+    <nav class="-mx-5 -my-2 flex flex-wrap justify-center">
+      {#each moreLegalLinks as mll}
+        <div class="px-5 py-2">
+          <Link
+            href="{mll.href}"
+            class="text-base leading-6 text-gray-500 hover:text-gray-900"
+          >
+            {mll.text}
           </Link>
         </div>
       {/each}

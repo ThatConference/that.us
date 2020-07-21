@@ -9,7 +9,6 @@
   import { Link } from 'yrv';
   import Checkbox from 'svelte-checkbox';
 
-  import FormItem from './FormItem.svelte';
   import { Waiting } from '../../elements';
   import {
     isAuthenticated,
@@ -318,7 +317,14 @@
 
               <div class="ml-3 text-sm leading-5">
                 <label for="comments" class="font-medium text-gray-700">
-                  Code of Conduct
+                  <Link
+                    open
+                    href="https://www.thatconference.com/code-of-conduct"
+                    class="font-medium text-indigo-600 hover:text-indigo-500
+                    transition duration-150 ease-in-out"
+                  >
+                    Code of Conduct
+                  </Link>
                 </label>
                 <p class="text-gray-500">
                   Be epic. Together we're a family of geeks and geeklings!
@@ -342,7 +348,14 @@
 
                 <div class="ml-3 text-sm leading-5">
                   <label for="comments" class="font-medium text-gray-700">
-                    Commitment Anti-Harrasment
+                    <Link
+                      open
+                      href="https://www.thatconference.com/anti-harassment-policy"
+                      class="font-medium text-indigo-600 hover:text-indigo-500
+                      transition duration-150 ease-in-out"
+                    >
+                      Commitment Anti-Harrasment
+                    </Link>
                   </label>
                   <p class="text-gray-500">
                     We do no not accept any sort of harrasment.
@@ -368,7 +381,14 @@
 
                   <div class="ml-3 text-sm leading-5">
                     <label for="comments" class="font-medium text-gray-700">
-                      Commitment to Diversity
+                      <Link
+                        open
+                        href="https://www.thatconference.com/commitment-to-diversity"
+                        class="font-medium text-indigo-600 hover:text-indigo-500
+                        transition duration-150 ease-in-out"
+                      >
+                        Commitment to Diversity
+                      </Link>
                     </label>
                     <p class="text-gray-500">
                       Everyone's welcome at THAT! It's our daily responsibility
@@ -396,7 +416,15 @@
 
                     <div class="ml-3 text-sm leading-5">
                       <label for="candidates" class="font-medium text-gray-700">
-                        <Link open href="" class="">Terms of Service</Link>
+                        <Link
+                          open
+                          href="https://www.thatconference.com/terms-of-use"
+                          class="font-medium text-indigo-600
+                          hover:text-indigo-500 transition duration-150
+                          ease-in-out"
+                        >
+                          Terms of Use
+                        </Link>
                       </label>
                       <p class="text-gray-500">Lawyer speak.</p>
                       {#if touched['termsOfService'] && errors['termsOfService']}
