@@ -48,6 +48,15 @@
         "test",
         "review"
       ]
+    },
+    {
+      "login": "gemolle",
+      "name": "Erin Gemoll",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/60487024?v=4",
+      "profile": "https://github.com/gemolle",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
