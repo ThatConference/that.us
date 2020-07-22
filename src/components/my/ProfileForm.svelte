@@ -352,8 +352,8 @@
               </label>
               <p class="text-gray-500">
                 By selecting this, you're able to submit a session and THAT can
-                feature your on that.us or thatconference.com. We do no sell any
-                data.
+                feature your profile on that.us or thatconference.com. We do not
+                sell any data.
               </p>
             </div>
 
@@ -413,7 +413,7 @@
       <div class="mt-6">
         <fieldset>
           <legend class="text-base font-medium text-gray-900">
-            Do you agree too our:
+            Do you agree to our:
           </legend>
 
           <div class="mt-4">
@@ -469,11 +469,11 @@
                       class="font-medium text-indigo-600 hover:text-indigo-500
                       transition duration-150 ease-in-out"
                     >
-                      Commitment Anti-Harrasment
+                      Commitment Anti-Harassment
                     </Link>
                   </label>
                   <p class="text-gray-500">
-                    We do no not accept any sort of harrasment.
+                    We do not accept any sort of harassment.
                   </p>
                   {#if touched['acceptedAntiHarassmentPolicy'] && errors['acceptedAntiHarassmentPolicy']}
                     <p class="text-red-600 italic">
@@ -507,8 +507,8 @@
                       </Link>
                     </label>
                     <p class="text-gray-500">
-                      Everyone's welcome at THAT! It's our daily responsibility
-                      to make our industry the best place it can be regardless
+                      Everyone is welcome at THAT! It's our daily responsibility
+                      to make our industry the best place it can be, regardless
                       of color, gender, location, or even tech stack.
                     </p>
                     {#if touched['acceptedCommitmentToDiversity'] && errors['acceptedCommitmentToDiversity']}
@@ -570,8 +570,8 @@
                         Are you >= to the age of 13?
                       </label>
                       <p class="text-gray-500">
-                        I'm sorry but to have an account on THAT.us or
-                        THATConference.com you have to be over the age of 13.
+                        I'm sorry, but to have an account on THAT.us or
+                        THATConference.com you have to at least 13 years old.
                       </p>
                       {#if touched['isOver13'] && errors['isOver13']}
                         <p class="text-red-600 italic">{errors['isOver13']}</p>
