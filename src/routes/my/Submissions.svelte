@@ -6,7 +6,12 @@
   import StackedLayout from '../../elements/layouts/StackedLayout.svelte';
   import Sponsor from '../../components/SponsorSimple.svelte';
 
-  import { ActionHeader, LinkButton } from '../../elements';
+  import {
+    ActionHeader,
+    LinkButton,
+    ModalError,
+    ModalWarning,
+  } from '../../elements';
 
   import CardLoader from '../../components/CardLoader.svelte';
   import SessionsList from '../../components/sessions/List.svelte';
@@ -36,9 +41,23 @@
     {#await query}
       <CardLoader />
     {:then sessions}
-      <SessionsList {sessions} editMode="{true}" />
+      {#if sessions.length > 0}
+        <SessionsList {sessions} editMode="{true}" />
+      {:else}
+        <div class="p-12">
+          <ModalWarning
+            title="You have no session submissions?"
+            text="Why not? Submit something today!"
+          />
+        </div>
+      {/if}
     {:catch error}
-      <p>OH NO</p>
+      <ModalError
+        title="KABOOM!"
+        text="I'm sorry, bugs are features right? If I were you, I'd refresh the
+        page right now."
+        action="{{ title: 'Return to Schedule', href: '/sessions' }}"
+      />
     {/await}
   </div>
 
