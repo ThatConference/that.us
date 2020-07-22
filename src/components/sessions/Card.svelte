@@ -98,9 +98,14 @@
         alt="{`${host.firstName} ${host.lastName}`}"
       />
     </Link>
-    <h3 class="text-gray-900 text-sm leading-5 font-medium break-words">
-      {title}
-    </h3>
+    <div class="flex flex-col">
+      <h3 class="text-gray-900 text-sm leading-5 font-medium break-words">
+        {title}
+      </h3>
+      <h3 class="text-gray-400 text-sm leading-5 pt-2">
+        {`${host.firstName} ${host.lastName}`}
+      </h3>
+    </div>
   </div>
 
   <div class="flex-grow p-3">
