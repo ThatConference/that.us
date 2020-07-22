@@ -31,7 +31,7 @@
 
     setSubmitting(false);
     resetForm();
-    navigateTo(`/sessions/${id}?edit=true`, { replace: true });
+    navigateTo(`/sessions/${id}?edit=true&isNew=true`, { replace: true });
   }
 </script>
 

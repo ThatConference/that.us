@@ -29,6 +29,8 @@
   import _ from 'lodash';
 
   import { SocialLink } from '../../components/social';
+  import Success from '../../components/notifications/Success.svelte';
+
   import { Avatars, LinkButton, Tag } from '../../elements';
 
   import { isAuthenticated, thatProfile } from '../../utilities/security.js';
@@ -42,7 +44,7 @@
   let imageCrop = '?mask=ellipse&w=500&h=500&fit=crop';
 
   // todo.. need to make this based on date range...
-  const { join, edit } = qs.parse(location.search);
+  const { join, edit, isNew } = qs.parse(location.search);
 
   let favoriteDisabled = false;
 
@@ -89,6 +91,13 @@
     })();
   </script>
 </svelte:head>
+
+{#if isNew}
+  <Success
+    title="Created {title}!"
+    text="Thank you for submitting a session."
+  />
+{/if}
 
 <div>
   <!--header-->
