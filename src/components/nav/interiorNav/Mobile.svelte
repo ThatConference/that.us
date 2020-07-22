@@ -60,13 +60,7 @@
       <div class="flex-shrink-0">
 
         {#if $isAuthenticated}
-          {#if $thatProfile.profileImage}
-            <img
-              class="h-8 w-8 rounded-full"
-              src="{$thatProfile.profileImage}?w=256&h=256&fit=crop"
-              alt=""
-            />
-          {:else if _.isEmpty($thatProfile)}
+          {#if _.isEmpty($thatProfile)}
             <span class="inline-block relative">
               <Icon data="{userIcon}" class="h-8 w-8 rounded-full text-white" />
               <span
@@ -75,6 +69,14 @@
               ></span>
 
             </span>
+          {:else if $thatProfile.profileImage}
+            <img
+              class="h-8 w-8 rounded-full"
+              src="{$thatProfile.profileImage}?w=256&h=256&fit=crop"
+              alt=""
+            />
+          {:else}
+            <Icon data="{userIcon}" class="h-8 w-8 rounded-full text-white" />
           {/if}
         {:else}
           <Icon data="{userIcon}" class="h-8 w-8 rounded-full text-white" />
