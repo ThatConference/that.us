@@ -35,11 +35,16 @@ export default (client) => {
       .query(QUERY_SUBMISSIONS, variables)
       .toPromise()
       .then((r) => {
+        let results = [];
+
         const { submitted } = r.data.sessions.me;
 
-        return submitted
-          .filter((s) => s.type === 'OPEN_SPACE')
-          .filter((s) => s.eventId === config.eventId);
+        if (submitted)
+          results = submitted
+            .filter((s) => s.type === 'OPEN_SPACE')
+            .filter((s) => s.eventId === config.eventId);
+
+        return results;
       });
   };
 
