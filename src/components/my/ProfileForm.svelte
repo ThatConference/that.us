@@ -4,7 +4,7 @@
   export let isNewProfile;
 
   import dayjs from 'dayjs';
-  import { Circle2 } from 'svelte-loading-spinners';
+  import { Circle2, ScaleOut } from 'svelte-loading-spinners';
   import { Form, Input, Select, Choice } from 'sveltejs-forms'; //https://github.com/mdauner/sveltejs-forms
   import Tags from 'svelte-tags-input';
   import * as yup from 'yup';
@@ -12,7 +12,6 @@
   import Checkbox from 'svelte-checkbox';
   import { getClient } from '@urql/svelte';
   import fetch from 'isomorphic-unfetch';
-  import { ScaleOut } from 'svelte-loading-spinners';
 
   import config from '../../config';
   import memberApi from '../../dataSources/api.that.tech/members.js';
@@ -80,9 +79,13 @@
       .email()
       .trim()
       .required('Please enter your email address.'),
-    bio: yup.string().required('We need to know a bit about yourself.'),
+    bio: yup
+      .string()
+      .trim()
+      .required('We need to know a bit about yourself.'),
     profileSlug: yup
       .string()
+      .trim()
       .lowercase()
       .required('You must enter a value to represnet your member page.')
       .validateSlug(),

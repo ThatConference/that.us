@@ -5,6 +5,7 @@
   import { getClient } from '@urql/svelte';
   import { Link } from 'yrv';
   import { onMount } from 'svelte';
+  import _ from 'lodash';
 
   // components
   import Nav from '../../components/nav/interiorNav/Top.svelte';
@@ -21,11 +22,18 @@
   import favoritesApi from '../../dataSources/api.that.tech/favorites';
 
   import { thatProfile } from '../../utilities/security.js';
+  import { show } from '../../store/profileNotification';
 
   const apiClient = getClient();
 
   const { querySessions } = sessionsApi(apiClient);
   $: query = querySessions();
+
+  let createDisabled = true;
+
+  $: if (!_.isEmpty($thatProfile)) {
+    createDisabled = false;
+  }
 
   onMount(() => {
     query = querySessions();
@@ -41,7 +49,9 @@
   <div slot="header">
     <Nav />
     <ActionHeader title="THAT Schedule">
-      <LinkButton href="/sessions/create" text="Create New Session" />
+      {#if !createDisabled}
+        <LinkButton href="/sessions/create" text="Create New Session" />
+      {/if}
     </ActionHeader>
   </div>
 

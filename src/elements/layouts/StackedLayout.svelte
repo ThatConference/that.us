@@ -1,6 +1,22 @@
 <script>
   import { Footer } from '../../components';
+  import CreateProfileNotification from '../../components/notifications/CreateProfile.svelte';
+  import NoProfile from '../../components/notifications/NoProfile.svelte';
+
+  import _ from 'lodash';
+
+  import { isAuthenticated, thatProfile } from '../../utilities/security.js';
+
+  function notifyCallback(event) {
+    console.log(`Notify fired! Detail: ${event.detail}`);
+  }
 </script>
+
+{#if $isAuthenticated}
+  {#if _.isEmpty($thatProfile)}
+    <CreateProfileNotification />
+  {/if}
+{/if}
 
 <div>
   <header class="bg-gray-800 pb-32">
@@ -18,6 +34,7 @@
     </div>
   </main>
 
+  <NoProfile />
   <Footer />
 
 </div>

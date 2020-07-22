@@ -31,7 +31,7 @@
   import { SocialLink } from '../../components/social';
   import { Avatars, LinkButton, Tag } from '../../elements';
 
-  import { isAuthenticated } from '../../utilities/security.js';
+  import { isAuthenticated, thatProfile } from '../../utilities/security.js';
   import favoritesApi from '../../dataSources/api.that.tech/favorites';
 
   const { toggle, get: getFavorites, favoritesStore: favorites } = favoritesApi(
@@ -45,6 +45,11 @@
   const { join, edit } = qs.parse(location.search);
 
   let favoriteDisabled = false;
+
+  let incompleteProfile = true;
+  $: if (!_.isEmpty($thatProfile)) {
+    incompleteProfile = false;
+  }
 
   const handleToggle = async () => {
     favoriteDisabled = true;
@@ -123,61 +128,62 @@
       </div>
 
       {#if $isAuthenticated}
-        <div class="ml-4 mt-4 flex-shrink-0 flex">
-          <span class="inline-flex rounded-md shadow-sm">
-            <button
-              type="button"
-              on:click|preventDefault="{!favoriteDisabled && handleToggle}"
-              class:text-red-500="{isFavorite}"
-              class="relative inline-flex items-center px-4 py-2 border
-              border-gray-300 text-sm leading-5 font-medium rounded-md
-              text-gray-700 bg-white hover:text-gray-500 focus:outline-none
-              focus:shadow-outline-blue focus:border-blue-300 active:bg-gray-50
-              active:text-gray-800"
-            >
-              <Icon data="{heart}" class="-ml-1 mr-2 h-5 w-5" />
-              <span>Favorite</span>
-            </button>
-          </span>
-
-          {#if join}
-            <span class="ml-3 inline-flex rounded-md shadow-sm">
-              <Link
+        {#if !incompleteProfile}
+          <div class="ml-4 mt-4 flex-shrink-0 flex">
+            <span class="inline-flex rounded-md shadow-sm">
+              <button
                 type="button"
-                href="/join/{sessionId}"
+                on:click|preventDefault="{!favoriteDisabled && handleToggle}"
+                class:text-red-500="{isFavorite}"
                 class="relative inline-flex items-center px-4 py-2 border
                 border-gray-300 text-sm leading-5 font-medium rounded-md
                 text-gray-700 bg-white hover:text-gray-500 focus:outline-none
                 focus:shadow-outline-blue focus:border-blue-300
                 active:bg-gray-50 active:text-gray-800"
               >
-
-                <Icon
-                  data="{signIn}"
-                  class="-ml-1 mr-2 h-5 w-5 text-gray-400"
-                />
-                <span>Join In</span>
-              </Link>
+                <Icon data="{heart}" class="-ml-1 mr-2 h-5 w-5" />
+                <span>Favorite</span>
+              </button>
             </span>
-          {/if}
-          {#if edit}
-            <span class="ml-3 inline-flex rounded-md shadow-sm">
-              <Link
-                type="button"
-                href="/sessions/edit/{sessionId}"
-                class="relative inline-flex items-center px-4 py-2 border
-                border-gray-300 text-sm leading-5 font-medium rounded-md
-                text-gray-700 bg-white hover:text-gray-500 focus:outline-none
-                focus:shadow-outline-blue focus:border-blue-300
-                active:bg-gray-50 active:text-gray-800"
-              >
 
-                <Icon data="{cog}" class="-ml-1 mr-2 h-5 w-5 text-gray-400" />
-                <span>Edit</span>
-              </Link>
-            </span>
-          {/if}
-        </div>
+            {#if join}
+              <span class="ml-3 inline-flex rounded-md shadow-sm">
+                <Link
+                  type="button"
+                  href="/join/{sessionId}"
+                  class="relative inline-flex items-center px-4 py-2 border
+                  border-gray-300 text-sm leading-5 font-medium rounded-md
+                  text-gray-700 bg-white hover:text-gray-500 focus:outline-none
+                  focus:shadow-outline-blue focus:border-blue-300
+                  active:bg-gray-50 active:text-gray-800"
+                >
+
+                  <Icon
+                    data="{signIn}"
+                    class="-ml-1 mr-2 h-5 w-5 text-gray-400"
+                  />
+                  <span>Join In</span>
+                </Link>
+              </span>
+            {/if}
+            {#if edit}
+              <span class="ml-3 inline-flex rounded-md shadow-sm">
+                <Link
+                  type="button"
+                  href="/sessions/edit/{sessionId}"
+                  class="relative inline-flex items-center px-4 py-2 border
+                  border-gray-300 text-sm leading-5 font-medium rounded-md
+                  text-gray-700 bg-white hover:text-gray-500 focus:outline-none
+                  focus:shadow-outline-blue focus:border-blue-300
+                  active:bg-gray-50 active:text-gray-800"
+                >
+                  <Icon data="{cog}" class="-ml-1 mr-2 h-5 w-5 text-gray-400" />
+                  <span>Edit</span>
+                </Link>
+              </span>
+            {/if}
+          </div>
+        {/if}
       {/if}
     </div>
   </div>

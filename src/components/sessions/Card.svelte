@@ -24,9 +24,10 @@
 
   // supporting goo
   import config from '../../config';
-  import { isAuthenticated } from '../../utilities/security';
+  import { isAuthenticated, thatProfile } from '../../utilities/security';
   import { truncate } from '../../utilities/truncate';
   import favoritesApi from '../../dataSources/api.that.tech/favorites';
+  import { show } from '../../store/profileNotification';
 
   // UI Elements
   import { Tag } from '../../elements';
@@ -48,17 +49,30 @@
   };
 
   let imageCrop = '?mask=ellipse&w=500&h=500&fit=crop';
-
   let favoriteDisabled = false;
 
+  const isAllowed = () => {
+    let permitted = false;
+
+    if (_.isEmpty($thatProfile)) {
+      show.set(new Boolean(true));
+      permitted = false;
+    } else {
+      permitted = true;
+    }
+
+    return permitted;
+  };
+
   const handleToggle = async () => {
-    favoriteDisabled = true;
-    await toggle(id);
-    favoriteDisabled = false;
+    if (isAllowed()) {
+      favoriteDisabled = true;
+      await toggle(id);
+      favoriteDisabled = false;
+    }
   };
 
   let isFavorite = false;
-
   favorites.subscribe(favs => {
     let found = _.find(favs, i => i.id === id);
 

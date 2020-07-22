@@ -122,3 +122,9 @@
   </Router>
 
 </main>
+
+<style>
+  .tag-form-input :global(.svelte-tags-input-tag) {
+    background: #252f3f;
+  }
+</style>

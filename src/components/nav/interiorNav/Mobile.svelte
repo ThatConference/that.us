@@ -7,6 +7,7 @@
   } from '../../../utilities/security.js';
   import { fade } from 'svelte/transition';
   import { Link } from 'yrv';
+  import _ from 'lodash';
 
   import Icon from 'svelte-awesome';
   import { user as userIcon } from 'svelte-awesome/icons';
@@ -14,11 +15,6 @@
   const mobileVisible = getContext('IS_Mobile_VIEW');
 </script>
 
-<!--
-    Mobile menu, toggle classes based on menu state.
-
-    Open: "block", closed: "hidden"
-    -->
 <div
   class="border-b border-gray-700 md:hidden"
   class:hidden="{!$mobileVisible}"
@@ -70,14 +66,15 @@
               src="{$thatProfile.profileImage}?w=256&h=256&fit=crop"
               alt=""
             />
-          {:else if $user.picture}
-            <img
-              class="h-8 w-8 rounded-full"
-              src="{$user.picture}?w=256&h=256&fit=crop"
-              alt=""
-            />
-          {:else}
-            <Icon data="{userIcon}" class="h-8 w-8 rounded-full text-white" />
+          {:else if _.isEmpty($thatProfile)}
+            <span class="inline-block relative">
+              <Icon data="{userIcon}" class="h-8 w-8 rounded-full text-white" />
+              <span
+                class="absolute bottom-0 right-0 block h-3.5 w-3.5 rounded-full
+                bg-red-400"
+              ></span>
+
+            </span>
           {/if}
         {:else}
           <Icon data="{userIcon}" class="h-8 w-8 rounded-full text-white" />
@@ -92,49 +89,70 @@
       aria-labelledby="user-menu"
     >
       {#if $isAuthenticated}
-        <div
-          class="block px-3 py-2 text-base font-medium text-gray-400 border-b"
-        >
-          <p>{$thatProfile.firstName} {$thatProfile.lastName}</p>
-          <p>{$thatProfile.email}</p>
-        </div>
+        {#if _.isEmpty($thatProfile)}
+          <Link
+            href="/my/profile"
+            class="block px-3 py-2 rounded-md text-base font-medium
+            text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none
+            focus:text-white focus:bg-gray-700"
+            role="menuitem"
+          >
+            Create Profile
+          </Link>
+          <a
+            href="/logout"
+            class="mt-1 block px-3 py-2 rounded-md text-base font-medium
+            text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none
+            focus:text-white focus:bg-gray-700"
+            role="menuitem"
+          >
+            Logout
+          </a>
+        {:else}
+          <div
+            class="block px-3 py-2 text-base font-medium text-gray-400 border-b"
+          >
+            <p>{$thatProfile.firstName} {$thatProfile.lastName}</p>
+            <p>{$thatProfile.email}</p>
+          </div>
 
-        <Link
-          href="/my/favorites"
-          class="block px-3 py-2 rounded-md text-base font-medium text-gray-400
-          hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white
-          focus:bg-gray-700"
-          role="menuitem"
-        >
-          My Favorites
-        </Link>
-        <Link
-          href="/my/submissions"
-          class="block px-3 py-2 rounded-md text-base font-medium text-gray-400
-          hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white
-          focus:bg-gray-700"
-          role="menuitem"
-        >
-          My Submissions
-        </Link>
-        <Link
-          href="/my/profile"
-          class="block px-3 py-2 rounded-md text-base font-medium text-gray-400
-          hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white
-          focus:bg-gray-700"
-          role="menuitem"
-        >
-          Your Profile
-        </Link>
-        <a
-          href="/logout"
-          class="mt-1 block px-3 py-2 rounded-md text-base font-medium
-          text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none
-          focus:text-white focus:bg-gray-700"
-          role="menuitem"
-        >
-          Logout
-        </a>
+          <Link
+            href="/my/favorites"
+            class="block px-3 py-2 rounded-md text-base font-medium
+            text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none
+            focus:text-white focus:bg-gray-700"
+            role="menuitem"
+          >
+            My Favorites
+          </Link>
+          <Link
+            href="/my/submissions"
+            class="block px-3 py-2 rounded-md text-base font-medium
+            text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none
+            focus:text-white focus:bg-gray-700"
+            role="menuitem"
+          >
+            My Submissions
+          </Link>
+          <Link
+            href="/my/profile"
+            class="block px-3 py-2 rounded-md text-base font-medium
+            text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none
+            focus:text-white focus:bg-gray-700"
+            role="menuitem"
+          >
+            Your Profile
+          </Link>
+          <a
+            href="/logout"
+            class="mt-1 block px-3 py-2 rounded-md text-base font-medium
+            text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none
+            focus:text-white focus:bg-gray-700"
+            role="menuitem"
+          >
+            Logout
+          </a>
+        {/if}
       {:else}
         <a
           href="/login"
