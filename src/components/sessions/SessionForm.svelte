@@ -7,18 +7,33 @@
   import { Form, Input, Select, Choice } from 'sveltejs-forms'; //https://github.com/mdauner/sveltejs-forms
   import Tags from 'svelte-tags-input';
   import * as yup from 'yup';
+  import _ from 'lodash';
 
   import { sessionTimes } from './sessionTimes';
-  import { Waiting } from '../../elements';
+  import { Waiting, ModalError } from '../../elements';
+
+  import { thatProfile } from '../../utilities/security.js';
 
   if (initialValues) {
     delete initialValues.id;
     delete initialValues.eventId;
   }
 
+  let createDisabled = true;
+
+  $: if (!_.isEmpty($thatProfile)) {
+    createDisabled = false;
+  }
+
   const schema = yup.object().shape({
-    title: yup.string().required(),
-    shortDescription: yup.string().required(),
+    title: yup
+      .string()
+      .trim()
+      .required(),
+    shortDescription: yup
+      .string()
+      .trim()
+      .required(),
     startTime: yup.string().required(),
     tags: yup.array().of(yup.string()),
   });
@@ -39,6 +54,24 @@
     tagsInputValues = [];
   }
 </script>
+
+{#if createDisabled}
+  <ModalError
+    title="Oh NO! You have an incomplete profile!"
+    text="It appears you haven't created your profile yet. You can't create a
+    session until that's complete."
+    action="{{ title: 'Create Profile', href: '/my/profile' }}"
+    returnTo="{{ title: 'Return to Schedule', href: '/sessions' }}"
+  />
+{:else if !$thatProfile.canFeature}
+  <ModalError
+    title="Your Profile Isn't Public."
+    text="It appears we cannot feature your profile. You need to have a public
+    profile to create a session."
+    action="{{ title: 'Update Profile', href: '/my/profile' }}"
+    returnTo="{{ title: 'Return to Schedule', href: '/sessions' }}"
+  />
+{/if}
 
 <Form
   {schema}
@@ -186,7 +219,7 @@
           focus:shadow-outline-indigo active:bg-indigo-700 transition
           duration-150 ease-in-out"
         >
-          Add Session
+          {initialValues ? 'Update Session' : 'Add Session'}
         </button>
       </span>
     </div>
@@ -199,9 +232,3 @@
   {/if}
 
 </Form>
-
-<style>
-  .tag-form-input :global(.svelte-tags-input-tag) {
-    background: #252f3f;
-  }
-</style>

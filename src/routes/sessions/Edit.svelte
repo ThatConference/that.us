@@ -4,6 +4,7 @@
   import { getClient } from '@urql/svelte';
   import { navigateTo } from 'yrv';
 
+  import StackedLayout from '../../elements/layouts/StackedLayout.svelte';
   import { ActionHeader, LinkButton } from '../../elements';
   import Nav from '../../components/nav/interiorNav/Top.svelte';
   import CardLoader from '../../components/CardLoader.svelte';
@@ -36,25 +37,23 @@
   <title>Edit Session * THAT.us</title>
 </svelte:head>
 
-<div>
-  <div class="bg-gray-800 pb-32">
+<StackedLayout>
+
+  <div slot="header">
     <Nav />
     <ActionHeader title="Edit Chat">
       <LinkButton href="/sessions" text="Return to Schedule" />
     </ActionHeader>
+
   </div>
 
-  <main class="-mt-32">
-    <div class="max-w-7xl mx-auto pb-12 px-4 sm:px-6 lg:px-8">
-      <div class="bg-white rounded-lg shadow px-5 py-6 sm:px-6">
+  <div slot="body">
+    {#await sessionDetails}
+      <CardLoader />
+    {:then session}
+      <SessionForm {handleSubmit} initialValues="{session}" />
+    {/await}
 
-        {#await sessionDetails}
-          <CardLoader />
-        {:then session}
-          <SessionForm {handleSubmit} initialValues="{session}" />
-        {/await}
+  </div>
 
-      </div>
-    </div>
-  </main>
-</div>
+</StackedLayout>

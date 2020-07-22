@@ -2,9 +2,11 @@
   import { Link } from 'yrv';
   import { getContext } from 'svelte';
   import { fade } from 'svelte/transition';
+  import _ from 'lodash';
 
   import Icon from 'svelte-awesome';
   import { user as userIcon } from 'svelte-awesome/icons';
+  import { ScaleOut } from 'svelte-loading-spinners';
 
   import {
     isAuthenticated,
@@ -78,8 +80,8 @@
       <div>
         <button
           id="user-menu"
-          class="max-w-xs flex items-center text-sm rounded-full text-white
-          focus:outline-none"
+          class="max-w-xs h-8 w-8 flex items-center text-sm rounded-full
+          text-white focus:outline-none"
           class:shadow-solid="{visible}"
           aria-label="User menu"
           aria-haspopup="true"
@@ -92,14 +94,15 @@
                 src="{$thatProfile.profileImage}?w=256&h=256&fit=crop"
                 alt=""
               />
-            {:else if $user.picture}
-              <img
-                class="h-8 w-8 rounded-full"
-                src="{$user.picture}?w=256&h=256&fit=crop"
-                alt=""
-              />
-            {:else}
-              <Icon data="{userIcon}" class="h-8 w-8 rounded-full" />
+            {:else if _.isEmpty($thatProfile)}
+              <span class="inline-block relative">
+                <Icon data="{userIcon}" class="h-8 w-8 rounded-full" />
+                <span
+                  class="absolute bottom-0 right-0 block h-3.5 w-3.5
+                  rounded-full bg-red-400"
+                ></span>
+
+              </span>
             {/if}
           {:else}
             <Icon data="{userIcon}" class="h-8 w-8 rounded-full" />
@@ -109,46 +112,70 @@
 
       {#if visible}
         {#if $isAuthenticated}
-          <div
-            class="origin-top-right absolute right-0 mt-2 w-48 rounded-md
-            shadow-lg z-50"
-            transition:fade
-          >
-            <div class="py-1 rounded-md bg-white shadow-xs">
+          {#if _.isEmpty($thatProfile)}
+            <div
+              class="origin-top-right absolute right-0 mt-2 w-48 rounded-md
+              shadow-lg z-50"
+              transition:fade
+            >
+              <div class="py-1 rounded-md bg-white shadow-xs">
+                <Link
+                  href="/my/profile"
+                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >
+                  Create Profile
+                </Link>
 
-              <div class="block px-4 py-2 text-sm text-gray-700 border-b">
-                <p>{$thatProfile.firstName} {$thatProfile.lastName}</p>
-                <p>{$thatProfile.email}</p>
+                <a
+                  href="/logout"
+                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >
+                  Logout
+                </a>
               </div>
-
-              <Link
-                href="/my/favorites"
-                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-              >
-                My Favorites
-              </Link>
-
-              <Link
-                href="/my/submissions"
-                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-              >
-                My Submissions
-              </Link>
-              <Link
-                href="/my/profile"
-                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-              >
-                My Profile
-              </Link>
-
-              <a
-                href="/logout"
-                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-              >
-                Logout
-              </a>
             </div>
-          </div>
+          {:else}
+            <div
+              class="origin-top-right absolute right-0 mt-2 w-48 rounded-md
+              shadow-lg z-50"
+              transition:fade
+            >
+              <div class="py-1 rounded-md bg-white shadow-xs">
+
+                <div class="block px-4 py-2 text-sm text-gray-700 border-b">
+                  <p>{$thatProfile.firstName} {$thatProfile.lastName}</p>
+                  <p>{$thatProfile.email}</p>
+                </div>
+
+                <Link
+                  href="/my/favorites"
+                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >
+                  My Favorites
+                </Link>
+
+                <Link
+                  href="/my/submissions"
+                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >
+                  My Submissions
+                </Link>
+                <Link
+                  href="/my/profile"
+                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >
+                  My Profile
+                </Link>
+
+                <a
+                  href="/logout"
+                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >
+                  Logout
+                </a>
+              </div>
+            </div>
+          {/if}
         {:else}
           <div
             class="origin-top-right absolute right-0 mt-2 w-48 rounded-md

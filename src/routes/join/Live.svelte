@@ -1,8 +1,9 @@
 <script>
   import { onMount } from 'svelte';
   import { query } from '@urql/svelte';
+  import _ from 'lodash';
 
-  import { ActionHeader, LinkButton } from '../../elements';
+  import { ModalError, ActionHeader, LinkButton } from '../../elements';
   import StackedLayout from '../../elements/layouts/StackedLayout.svelte';
 
   import Nav from '../../components/nav/interiorNav/Top.svelte';
@@ -31,6 +32,11 @@
   });
 
   $: sessionQuery = QUERY_SESSION();
+
+  let incompleteProfile = true;
+  $: if (!_.isEmpty($thatProfile)) {
+    incompleteProfile = false;
+  }
 
   // https://jitsi.github.io/handbook/docs/dev-guide/dev-guide-iframe
   function initJitsi() {
@@ -107,6 +113,15 @@
   </script>
 </svelte:head>
 
+{#if incompleteProfile}
+  <ModalError
+    title="Oh NO! You have an incomplete profile!"
+    text="It appears you haven't created your profile yet. You can't create a
+    session until that's complete."
+    action="{{ title: 'Create Profile', href: '/my/profile' }}"
+    returnTo="{{ title: 'Return to Schedule', href: '/sessions' }}"
+  />
+{/if}
 <StackedLayout>
   <div slot="header">
     <Nav />
