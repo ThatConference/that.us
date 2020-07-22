@@ -45,7 +45,7 @@
         <div class="p-12">
           <ModalWarning
             title="No Favorites!"
-            text="Hold on a minute! You haven't favorited any ssssions yet. Get
+            text="Hold on a minute! You haven't favorited any sessions yet. Get
             on it!"
           />
         </div>
@@ -53,7 +53,7 @@
     {:catch error}
       <ModalError
         title="KABOOM!"
-        text="I'm sorry bugs are features right? If I were you, I'd refresh the
+        text="I'm sorry, bugs are features right? If I were you, I'd refresh the
         page right now."
         action="{{ title: 'Return to Schedule', href: '/sessions' }}"
       />
