@@ -350,6 +350,7 @@
               checked="{profile.canFeature}"
               on:change="{({ detail }) => setValue('canFeature', detail)}"
               size="2.5rem"
+              class="flex-none"
             />
 
             <div class="ml-3 text-sm leading-5">

@@ -32,6 +32,7 @@
   import Success from '../../components/notifications/Success.svelte';
 
   import { Avatars, LinkButton, Tag } from '../../elements';
+  import config from '../../config';
 
   import { isAuthenticated, thatProfile } from '../../utilities/security.js';
   import favoritesApi from '../../dataSources/api.that.tech/favorites';
@@ -75,6 +76,10 @@
     this.page.url = window.location.pathname; // Replace PAGE_URL with your page's canonical URL variable
     this.page.identifier = sessionId; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
   };
+
+  let userProfileImage = host.profileImage
+    ? `${host.profileImage}${imageCrop}`
+    : config.defaultProfileImage;
 </script>
 
 <svelte:head>
@@ -116,7 +121,7 @@
             >
               <img
                 class="h-12 w-12 rounded-full"
-                src="{`${host.profileImage}${imageCrop}`}"
+                src="{userProfileImage}"
                 alt=""
               />
             </Link>
