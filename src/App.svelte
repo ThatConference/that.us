@@ -47,6 +47,13 @@
   }
 </script>
 
+<svelte:head>
+
+  <script src="//code.tidio.co/qcwuuigfzw3cjegsc2fyo0sniyh3c3ue.js" async>
+
+  </script>
+</svelte:head>
+
 <main>
   <Tailwindcss />
 
