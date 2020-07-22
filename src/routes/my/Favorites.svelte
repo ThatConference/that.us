@@ -5,7 +5,12 @@
   import Nav from '../../components/nav/interiorNav/Top.svelte';
   import StackedLayout from '../../elements/layouts/StackedLayout.svelte';
   import Sponsor from '../../components/SponsorSimple.svelte';
-  import { ActionHeader, LinkButton } from '../../elements';
+  import {
+    ModalError,
+    ModalWarning,
+    ActionHeader,
+    LinkButton,
+  } from '../../elements';
 
   import CardLoader from '../../components/CardLoader.svelte';
   import SessionsList from '../../components/sessions/List.svelte';
@@ -34,9 +39,24 @@
     {#await get()}
       <CardLoader />
     {:then sessions}
-      <SessionsList {sessions} />
+      {#if sessions.length > 0}
+        <SessionsList {sessions} />
+      {:else}
+        <div class="p-12">
+          <ModalWarning
+            title="No Favorites!"
+            text="Hold on a minute! You haven't favorited any ssssions yet. Get
+            on it!"
+          />
+        </div>
+      {/if}
     {:catch error}
-      <p>OH NO</p>
+      <ModalError
+        title="KABOOM!"
+        text="I'm sorry bugs are features right? If I were you, I'd refresh the
+        page right now."
+        action="{{ title: 'Return to Schedule', href: '/sessions' }}"
+      />
     {/await}
   </div>
 

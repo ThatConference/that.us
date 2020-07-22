@@ -12,13 +12,20 @@
   import { Link } from 'yrv';
   import SocialLinks from '../../components/social/SocialLink.svelte';
   let imageCrop = '?mask=ellipse&w=500&h=500&fit=crop';
+
+  const defaultProfile =
+    'https://images.that.tech/members/person-placeholder.jpg?auto=format&fit=facearea&facepad=10&mask=ellipse&ixlib=react-9.0.2&h=250&w=250&q=50&dpr=2';
+
+  let userProfileImage = profileImage
+    ? `${profileImage}${imageCrop}`
+    : defaultProfile;
 </script>
 
 <div class="flex-1 flex flex-col p-8">
   <Link href="https://www.thatconference.com/member/{profileSlug}" open>
     <img
       class="w-32 h-32 flex-shrink-0 mx-auto bg-black rounded-full"
-      src="{`${profileImage}${imageCrop}`}"
+      src="{userProfileImage}"
       alt=""
     />
     <h3 class="mt-6 text-gray-900 text-sm leading-5 font-medium">
