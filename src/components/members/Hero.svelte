@@ -1,6 +1,8 @@
 <script>
   import Nav from '../nav/mainNav/MainNav.svelte';
   import { Link } from 'yrv';
+
+  import { isAuthenticated } from '../../utilities/security';
 </script>
 
 <div class="relative bg-white overflow-hidden">
@@ -28,22 +30,32 @@
             class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl
             sm:mx-auto md:mt-5 md:text-xl lg:mx-0"
           >
-            Need some awesome text ehre...
+            At the heart of everything we do, you can find our THAT Community
+            Members. We absolutely love our Members and welcome each and every
+            one. Each Member brings a unique skill set and background that
+            enriches our conversations and relationships. If you haven’t already
+            signed up to become a member, we’d love it if you did!
           </p>
-          <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
-            <div class="rounded-md shadow">
-              <Link
-                href="/login"
-                class="w-full flex items-center justify-center px-8 py-3 border
-                border-transparent text-base leading-6 font-medium rounded-md
-                text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none
-                focus:border-indigo-700 focus:shadow-outline-indigo transition
-                duration-150 ease-in-out md:py-4 md:text-lg md:px-10"
-              >
-                Sign up today!
-              </Link>
+
+          {#if !$isAuthenticated}
+            <div
+              class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start"
+            >
+              <div class="rounded-md shadow">
+                <Link
+                  href="/login"
+                  class="w-full flex items-center justify-center px-8 py-3
+                  border border-transparent text-base leading-6 font-medium
+                  rounded-md text-white bg-indigo-600 hover:bg-indigo-500
+                  focus:outline-none focus:border-indigo-700
+                  focus:shadow-outline-indigo transition duration-150
+                  ease-in-out md:py-4 md:text-lg md:px-10"
+                >
+                  Sign up today!
+                </Link>
+              </div>
             </div>
-          </div>
+          {/if}
         </div>
       </main>
     </div>
