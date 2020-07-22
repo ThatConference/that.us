@@ -82,6 +82,10 @@
   onMount(async () => {
     if ($isAuthenticated) await getFavorites();
   });
+
+  let userProfileImage = host.profileImage
+    ? `${host.profileImage}${imageCrop}`
+    : config.defaultProfileImage;
 </script>
 
 <div class="w-full h-full flex flex-col">
@@ -92,9 +96,10 @@
       href="https://www.thatconference.com/member/{host.profileSlug}"
       class="flex-shrink-0"
     >
+
       <img
         class="w-15 h-15 bg-gray-300 rounded-full"
-        src="{`${host.profileImage}${imageCrop}`}"
+        src="{userProfileImage}"
         alt="{`${host.firstName} ${host.lastName}`}"
       />
     </Link>

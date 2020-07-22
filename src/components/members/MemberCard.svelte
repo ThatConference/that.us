@@ -12,13 +12,11 @@
   import { Link } from 'yrv';
   import SocialLinks from '../../components/social/SocialLink.svelte';
   let imageCrop = '?mask=ellipse&w=500&h=500&fit=crop';
-
-  const defaultProfile =
-    'https://images.that.tech/members/person-placeholder.jpg?auto=format&fit=facearea&facepad=10&mask=ellipse&ixlib=react-9.0.2&h=250&w=250&q=50&dpr=2';
+  import config from '../../config';
 
   let userProfileImage = profileImage
     ? `${profileImage}${imageCrop}`
-    : defaultProfile;
+    : config.defaultProfileImage;
 </script>
 
 <div class="flex-1 flex flex-col p-8">
