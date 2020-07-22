@@ -39,7 +39,21 @@
   });
 
   let tagsInput;
-  let tagsInputValues = initialValues ? initialValues.tags : [];
+  let tagInputValues = initialValues ? initialValues.tags : [];
+
+  let formInitValues;
+
+  if (initialValues) {
+    formInitValues = {
+      ...initialValues,
+    };
+  } else {
+    formInitValues = {
+      title: undefined,
+      shortDescription: undefined,
+      tags: [],
+    };
+  }
 
   const convertOptionsToTimeZone = sessionTimes => {
     const x = sessionTimes.map(t => ({
@@ -75,7 +89,7 @@
 
 <Form
   {schema}
-  {initialValues}
+  initialValues="{formInitValues}"
   validateOnBlur="{false}"
   validateOnChange="{false}"
   on:submit="{handleSubmit}"
@@ -157,8 +171,9 @@
         <div class="max-w-lg rounded-md shadow-sm sm:max-w-xs tag-form-input">
           <Tags
             name="tags"
-            tags="{tagsInputValues}"
             bind:this="{tagsInput}"
+            tags="{tagInputValues}"
+            allowBlur="{true}"
             maxTags="{5}"
             onlyUnique="{true}"
             on:tags="{({ detail }) => setValue('tags', detail.tags)}"
