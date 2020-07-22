@@ -1,5 +1,6 @@
 <script>
   import { getClient } from '@urql/svelte';
+  import { Link } from 'yrv';
 
   const GET_PARTNERS = `
       query getEvent($slug: String!) {
@@ -51,9 +52,9 @@
           <div
             class="col-span-1 flex justify-center md:col-span-2 lg:col-span-1"
           >
-            <a href="https://www.thatconference.com/partner/{p.slug}">
+            <Link open href="https://www.thatconference.com/partner/{p.slug}">
               <img class="h-12" src="{p.companyLogo}" alt="{p.companyName}" />
-            </a>
+            </Link>
           </div>
         {/each}
       </div>
