@@ -330,6 +330,9 @@
               />
             </span>
           </div>
+          <p class="mt-2 text-sm text-gray-500">
+            Make sure you save to update your profile.
+          </p>
         </div>
 
         <div class="sm:col-span-6">
