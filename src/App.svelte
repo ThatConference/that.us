@@ -123,8 +123,20 @@
 
 </main>
 
-<style>
+<style global>
   .tag-form-input :global(.svelte-tags-input-tag) {
     background: #252f3f;
+  }
+
+  .sveltejs-forms .field.error input,
+  .sveltejs-forms .field.error textarea {
+    --text-opacity: 1;
+    border: 1px solid rgba(224, 36, 36, var(--text-opacity));
+  }
+  .sveltejs-forms .field.error .message {
+    margin-top: 0.2rem;
+    font-style: italic;
+    --text-opacity: 1;
+    color: rgba(224, 36, 36, var(--text-opacity));
   }
 </style>
