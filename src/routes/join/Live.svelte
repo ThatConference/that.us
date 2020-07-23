@@ -150,7 +150,10 @@
 
   <div slot="footer">
     {#if userMuted}
-      <WarningNotification message="You're currently muted." />
+      <WarningNotification
+        message="You're currently muted. Click to unmute"
+        on:click="{() => api.executeCommand('toggleAudio')}"
+      />
     {/if}
   </div>
 
