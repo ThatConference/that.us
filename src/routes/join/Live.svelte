@@ -1,4 +1,6 @@
 <script>
+  export let router;
+
   import { onMount } from 'svelte';
   import { query } from '@urql/svelte';
   import _ from 'lodash';
@@ -7,9 +9,8 @@
   import StackedLayout from '../../elements/layouts/StackedLayout.svelte';
 
   import Nav from '../../components/nav/interiorNav/Top.svelte';
+  import WarningNotification from '../../components/notifications/Warning.svelte';
   import { isAuthenticated, thatProfile } from '../../utilities/security.js';
-
-  export let router;
 
   const { sessionId } = router.params;
   const imageCrop = '?mask=ellipse&w=500&h=500&fit=crop';
@@ -37,6 +38,13 @@
   $: if (!_.isEmpty($thatProfile)) {
     incompleteProfile = false;
   }
+
+  let api;
+
+  let userMuted = true;
+  const handleMuted = ({ muted }) => {
+    userMuted = muted;
+  };
 
   // https://jitsi.github.io/handbook/docs/dev-guide/dev-guide-iframe
   function initJitsi() {
@@ -102,7 +110,8 @@
       parentNode: document.getElementById('meet'),
     };
 
-    const api = new window.JitsiMeetExternalAPI(domain, options);
+    api = new window.JitsiMeetExternalAPI(domain, options);
+    api.addEventListener('audioMuteStatusChanged', handleMuted);
   }
 </script>
 
@@ -122,11 +131,12 @@
     returnTo="{{ title: 'Return to Schedule', href: '/sessions' }}"
   />
 {/if}
+
 <StackedLayout>
   <div slot="header">
     <Nav />
 
-    {#if $sessionQuery.data}
+    {#if $sessionQuery.data && $sessionQuery.data.events.event.session}
       <ActionHeader title="{$sessionQuery.data.events.event.session.title}">
         <LinkButton href="/sessions/{sessionId}" text="Session Details" />
       </ActionHeader>
@@ -135,8 +145,13 @@
 
   <div slot="body">
     <div id="meet" class="object-center"></div>
+
   </div>
 
-  <div slot="footer"></div>
+  <div slot="footer">
+    {#if userMuted}
+      <WarningNotification message="You're currently muted." />
+    {/if}
+  </div>
 
 </StackedLayout>
