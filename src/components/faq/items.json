@@ -17,7 +17,7 @@
   },
   {
     "question": "How do you prepare for virtual Open Spaces?",
-    "answer": "<ul class='faq-list'><li>Ensure your background doesn't contain any non-family friendly items</li><li>Check that your audio and camera are working. Test with [THAT.US](http://that.US)</li><li>Have water nearby, it's important to keep hydrated</li><li>If you're not in Central Time Zone, verify how your local time corresponds with website time. The goal is to have the site in your local time, but, you know, times are hard.</li><li>Your microphone/speakers/headset/camera are all in good working condition and of good quality</li><li>If you have a lot of background noise or echo, an app like, https://krisp.ai/, can help</li></ul>"
+    "answer": "<ul class='faq-list'><li>Ensure your background doesn't contain any non-family friendly items</li><li>Check that your audio and camera are working. Test with <a class='underline hover:no-underline hover:font-semibold' href='http://that.us' target='_blank'>THAT.US</a></li><li>Have water nearby, it's important to keep hydrated</li><li>If you're not in Central Time Zone, verify how your local time corresponds with website time. The goal is to have the site in your local time, but, you know, times are hard.</li><li>Your microphone/speakers/headset/camera are all in good working condition and of good quality</li><li>If you have a lot of background noise or echo, an app like <a class='underline hover:no-underline hover:font-semibold' href='https://krisp.ai' target='_blank'>Krisp</a> can help</li></ul>"
   },
   {
     "question": "What is the online etiquette for a successful virtual Open Spaces session?",
@@ -29,11 +29,11 @@
   },
   {
     "question": "Do I need a ticket to participate in the virtual Open Spaces?",
-    "answer": "Yes, a ticket is required to participate in the virtual Open Spaces. You may get your ticket <a  class='underline hover:no-underline hover:font-semibold' href='http://tickets.thatconference.com' target='_blank'>here</a> with a starting contribution of $0."
+    "answer": "Yes, a ticket is required to participate in the virtual Open Spaces. You may get your ticket <a class='underline hover:no-underline hover:font-semibold' href='http://tickets.thatconference.com' target='_blank'>here</a> with a starting contribution of $0."
   },
   {
     "question": "Do I need an account to participate in the virtual Open Spaces?",
-    "answer": "Yes, a THAT account is required to participate in any virtual Open Space. You may create a new account and profile <a  class='underline hover:no-underline hover:font-semibold' href='https://that.us/my/profile' target='_blank'>here (https://that.us/my/profile)</a>."
+    "answer": "Yes, a THAT account is required to participate in any virtual Open Space. You may create a new account and profile <a class='underline hover:no-underline hover:font-semibold' href='https://that.us/my/profile' target='_blank'>here (https://that.us/my/profile)</a>."
   },
   {
     "question": "What is the differences between a public and private THAT Profile? ",
