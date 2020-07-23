@@ -138,7 +138,7 @@
             </div>
           {:else}
             <div
-              class="origin-top-right absolute right-0 mt-2 w-48 rounded-md
+              class="origin-top-right absolute right-0 mt-2 min-w-48 rounded-md
               shadow-lg z-50"
               transition:fade
             >
@@ -146,7 +146,7 @@
 
                 <div class="block px-4 py-2 text-sm text-gray-700 border-b">
                   <p>{$thatProfile.firstName} {$thatProfile.lastName}</p>
-                  <p>{$thatProfile.email}</p>
+                  <p class="truncate pt-2">{$thatProfile.email}</p>
                 </div>
 
                 <Link

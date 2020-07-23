@@ -115,7 +115,7 @@
             class="block px-3 py-2 text-base font-medium text-gray-400 border-b"
           >
             <p>{$thatProfile.firstName} {$thatProfile.lastName}</p>
-            <p>{$thatProfile.email}</p>
+            <p class="truncate pt-2">{$thatProfile.email}</p>
           </div>
 
           <Link
