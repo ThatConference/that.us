@@ -1,3 +1,4 @@
 .faq-list {
-  list-style-type: '- ';
+  list-style-type: disc;
+  list-style-position: inside;
 }
