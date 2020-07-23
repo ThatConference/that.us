@@ -62,8 +62,6 @@
     delete updatedProfile.isOver13;
     delete updatedProfile.acceptedCodeOfConduct;
     delete updatedProfile.acceptedTermsOfService;
-    delete updatedProfile.acceptedAntiHarassmentPolicy;
-    delete updatedProfile.acceptedCommitmentToDiversity;
 
     const updateResults = await updateProfile(updatedProfile);
     thatProfile.set(updateResults);
