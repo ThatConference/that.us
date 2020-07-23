@@ -39,7 +39,8 @@
           </p>
           <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
             <div class="rounded-md shadow">
-              <a
+              <Link
+                open
                 href="http://tickets.thatconference.com"
                 class="w-full flex items-center justify-center px-8 py-3 border
                 border-transparent text-base leading-6 font-medium rounded-md
@@ -48,7 +49,7 @@
                 duration-150 ease-in-out md:py-4 md:text-lg md:px-10"
               >
                 Purchase Tickets
-              </a>
+              </Link>
             </div>
 
             {#if !$isAuthenticated}
