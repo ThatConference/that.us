@@ -31,6 +31,7 @@
     "@sveltecasts/svelte-youtube": "0.0.5",
     "@tailwindcss/ui": "^0.4.0",
     "@urql/svelte": "^0.3.0",
+    "all-contributors-cli": "^6.16.1",
     "autoprefixer": "^9.8.5",
     "concurrently": "^5.2.0",
     "dayjs": "^1.8.29",

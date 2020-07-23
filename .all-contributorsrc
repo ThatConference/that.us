@@ -34,7 +34,7 @@
       "profile": "http://saragibby.com",
       "contributions": [
         "review",
-        "test",
+        "userTesting",
         "code"
       ]
     },
@@ -45,7 +45,7 @@
       "profile": "https://leanpub.com/os-support",
       "contributions": [
         "bug",
-        "test",
+        "userTesting",
         "review"
       ]
     },
@@ -73,7 +73,8 @@
       "avatar_url": "https://avatars0.githubusercontent.com/u/5367626?v=4",
       "profile": "https://github.com/mcookWI",
       "contributions": [
-        "bug"
+        "bug",
+        "userTesting"
       ]
     }
   ],
