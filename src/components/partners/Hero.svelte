@@ -97,7 +97,12 @@
           class="mt-3 max-w-md mx-auto text-base text-gray-500 sm:text-lg
           md:mt-5 md:text-xl md:max-w-3xl"
         >
-          Some really awesome text here.
+          Since the start of THAT, it has been the continuous support from
+          companies and organizations partnering with us to help create events
+          that bring the community together. We thank each and every one of our
+          partners, across all levels for all of our years for their amazing
+          support! Please take a few minutes to learn about our partners and let
+          them know you appreciate their support of our community!
         </p>
         <div class="mt-5 max-w-md mx-auto sm:flex sm:justify-center md:mt-8">
           <div class="rounded-md shadow">
