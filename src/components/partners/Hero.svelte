@@ -1,5 +1,6 @@
 <script>
   import Nav from '../nav/mainNav/MainNav.svelte';
+  import { Link } from 'yrv';
 </script>
 
 <div class="relative bg-gray-50 overflow-hidden">
@@ -101,8 +102,9 @@
         </p>
         <div class="mt-5 max-w-md mx-auto sm:flex sm:justify-center md:mt-8">
           <div class="rounded-md shadow">
-            <a
-              href="https://thatconference.com/wi/2020/#tickets"
+            <Link
+              open
+              href="https://www.thatconference.com/wi/2020#tickets"
               class="w-full flex items-center justify-center px-8 py-3 border
               border-transparent text-base leading-6 font-medium rounded-md
               text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none
@@ -110,7 +112,7 @@
               duration-150 ease-in-out md:py-4 md:text-lg md:px-10"
             >
               Partner Today!
-            </a>
+            </Link>
           </div>
 
         </div>
