@@ -13,5 +13,5 @@ export default {
   api: 'https://api.that.tech',
   profileImageApi: 'https://api.that.tech/profile',
   defaultProfileImage:
-    'https://images.that.tech/members/person-placeholder.jpg?auto=format&fit=facearea&facepad=10&mask=ellipse&ixlib=react-9.0.2&h=250&w=250&q=50&dpr=2',
+    'https://images.that.tech/members/person-placeholder.jpg?auto=format&fit=facearea&facepad=10&mask=ellipse&h=250&w=250&q=50&dpr=2',
 };
