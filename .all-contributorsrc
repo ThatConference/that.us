@@ -66,6 +66,15 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "mcookWI",
+      "name": "Mike",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/5367626?v=4",
+      "profile": "https://github.com/mcookWI",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
