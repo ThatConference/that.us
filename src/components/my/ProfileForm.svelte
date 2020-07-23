@@ -18,6 +18,7 @@
 
   import { Waiting } from '../../elements';
   import { isAuthenticated, token } from '../../utilities/security.js';
+  import ErrorNotificaiton from '../../components/notifications/Error.svelte';
 
   const { isSlugTaken } = memberApi(getClient());
   let initialValues;
@@ -674,6 +675,10 @@
     </div>
   </div>
 
+  {#if isValid === false}
+    <ErrorNotificaiton message="Please correct the errors listed above." />
+  {/if}
+
   {#if isSubmitting}
     <div class="flex flex-grow justify-center py-12">
       <Waiting />
@@ -681,17 +686,3 @@
   {/if}
 
 </Form>
-
-<style global>
-  .sveltejs-forms .field.error input,
-  .sveltejs-forms .field.error textarea {
-    --text-opacity: 1;
-    border: 1px solid rgba(224, 36, 36, var(--text-opacity));
-  }
-  .sveltejs-forms .field.error .message {
-    margin-top: 0.2rem;
-    font-style: italic;
-    --text-opacity: 1;
-    color: rgba(224, 36, 36, var(--text-opacity));
-  }
-</style>
