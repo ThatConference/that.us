@@ -98,7 +98,7 @@
     >
 
       <img
-        class="w-15 h-15 bg-gray-300 rounded-full"
+        class="w-15 h-15 rounded-full"
         src="{userProfileImage}"
         alt="{`${host.firstName} ${host.lastName}`}"
       />

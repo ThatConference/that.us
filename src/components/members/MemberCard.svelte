@@ -22,7 +22,7 @@
 <div class="flex-1 flex flex-col p-8">
   <Link href="https://www.thatconference.com/member/{profileSlug}" open>
     <img
-      class="w-32 h-32 flex-shrink-0 mx-auto bg-black rounded-full"
+      class="w-32 h-32 flex-shrink-0 mx-auto rounded-full"
       src="{userProfileImage}"
       alt=""
     />
