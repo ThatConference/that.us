@@ -25,6 +25,14 @@
     >
       Log In
     </Link>
+  {:else}
+    <Link
+      href="/logout"
+      class="mr-8 font-medium text-gray-500 hover:text-gray-900 transition
+      duration-150 ease-in-out"
+    >
+      Log Out
+    </Link>
   {/if}
 
 </div>
