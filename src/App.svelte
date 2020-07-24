@@ -74,7 +74,8 @@
     }
     gtag('js', new Date());
     gtag('config', 'UA-21705613-11');
-    // window['ga-disable-UA-21705613-11'] = process.env.NODE_ENV !== 'production';
+    // set true to disable Google Analytics
+    window['ga-disable-UA-21705613-11'] = window.origin.includes('localhost');
   </script>
 </svelte:head>
 
