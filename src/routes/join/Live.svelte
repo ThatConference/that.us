@@ -106,6 +106,8 @@
           'displayName',
           `${$thatProfile.firstName} ${$thatProfile.lastName}`,
         );
+
+        api.getIFrame().focus();
       },
 
       parentNode: document.getElementById('meet'),
