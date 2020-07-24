@@ -4,6 +4,7 @@
   import { onMount } from 'svelte';
   import { query } from '@urql/svelte';
   import _ from 'lodash';
+  import { navigateTo } from 'yrv';
 
   import { ModalError, ActionHeader, LinkButton } from '../../elements';
   import StackedLayout from '../../elements/layouts/StackedLayout.svelte';
@@ -112,6 +113,10 @@
 
     api = new window.JitsiMeetExternalAPI(domain, options);
     api.addEventListener('audioMuteStatusChanged', handleMuted);
+
+    api.addEventListener('readyToClose', () => {
+      navigateTo(`/sessions`, { replace: true });
+    });
   }
 </script>
 
