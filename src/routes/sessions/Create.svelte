@@ -10,6 +10,8 @@
   import Nav from '../../components/nav/interiorNav/Top.svelte';
   import SessionForm from '../../components/sessions/SessionForm.svelte';
   import sessionsApi from '../../dataSources/api.that.tech/sessions.js';
+  import { tagEvent } from '../../utilities/gtag';
+
   import {
     isAuthenticated,
     user,
@@ -28,6 +30,8 @@
     };
 
     const { id } = await create(newSession);
+
+    tagEvent('session_created', 'session', $user.sub);
 
     setSubmitting(false);
     resetForm();

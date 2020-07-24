@@ -1,7 +1,7 @@
 <script>
   import { onMount } from 'svelte';
   import { initClient } from '@urql/svelte';
-  import { Router, Route } from 'yrv';
+  import { router, Router, Route } from 'yrv';
 
   import { isAuthenticated, token } from './utilities/security.js';
   import config from './config';
@@ -45,12 +45,36 @@
     documentReferrer = window.location.pathname;
     return $isAuthenticated;
   }
+
+  router.subscribe(e => {
+    if (!e.initial) {
+      // https://developers.google.com/analytics/devguides/collection/gtagjs/pages
+      window.gtag('config', config.gtag, {
+        page_path: e.path,
+      });
+    }
+  });
 </script>
 
 <svelte:head>
 
   <script src="//code.tidio.co/qcwuuigfzw3cjegsc2fyo0sniyh3c3ue.js" async>
 
+  </script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script
+    async
+    src="https://www.googletagmanager.com/gtag/js?id=UA-21705613-11">
+
+  </script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'UA-21705613-11');
+    // window['ga-disable-UA-21705613-11'] = process.env.NODE_ENV !== 'production';
   </script>
 </svelte:head>
 

@@ -12,6 +12,7 @@
   import ProfileForm from '../../components/my/ProfileForm.svelte';
 
   import memberApi from '../../dataSources/api.that.tech/members.js';
+  import { tagEvent } from '../../utilities/gtag';
 
   import {
     isAuthenticated,
@@ -43,6 +44,7 @@
     const updateResults = await createProfile({ ...values, profileLinks: [] });
 
     thatProfile.set(updateResults);
+    tagEvent('profile_created', 'account', $user.sub);
 
     setSubmitting(false);
     resetForm();
@@ -64,6 +66,9 @@
     delete updatedProfile.acceptedTermsOfService;
 
     const updateResults = await updateProfile(updatedProfile);
+
+    tagEvent('profile_update', 'account', $user.sub);
+
     thatProfile.set(updateResults);
 
     setSubmitting(false);

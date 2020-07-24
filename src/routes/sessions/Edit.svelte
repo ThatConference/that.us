@@ -10,6 +10,9 @@
   import CardLoader from '../../components/CardLoader.svelte';
   import SessionForm from '../../components/sessions/SessionForm.svelte';
   import sessionsApi from '../../dataSources/api.that.tech/sessions.js';
+  import { tagEvent } from '../../utilities/gtag';
+
+  import { user } from '../../utilities/security.js';
 
   const { sessionId } = router.params;
 
@@ -24,6 +27,8 @@
     };
 
     await update(sessionId, updatedSession);
+
+    tagEvent('session_update', 'session', $user.sub);
 
     setSubmitting(false);
     resetForm();
