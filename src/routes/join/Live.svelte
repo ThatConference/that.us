@@ -5,6 +5,7 @@
   import { query } from '@urql/svelte';
   import _ from 'lodash';
   import { navigateTo } from 'yrv';
+  import Icon from 'svelte-awesome';
 
   import { ModalError, ActionHeader, LinkButton } from '../../elements';
   import StackedLayout from '../../elements/layouts/StackedLayout.svelte';
@@ -12,6 +13,11 @@
   import Nav from '../../components/nav/interiorNav/Top.svelte';
   import WarningNotification from '../../components/notifications/Warning.svelte';
   import { isAuthenticated, thatProfile } from '../../utilities/security.js';
+
+  import {
+    expand as expandIcon,
+    compress as compressIcon,
+  } from 'svelte-awesome/icons';
 
   const { sessionId } = router.params;
   const imageCrop = '?mask=ellipse&w=500&h=500&fit=crop';
@@ -53,7 +59,7 @@
     const options = {
       roomName: `THAT-${sessionId}`,
       width: '100%',
-      height: 1000,
+      height: window.document.body.scrollHeight - 200,
       // https://github.com/jitsi/jitsi-meet/blob/master/config.js
       configOverwrite: {
         startWithAudioMuted: true,
@@ -120,7 +126,51 @@
       navigateTo(`/sessions`, { replace: true });
     });
   }
+
+  let expanded = false;
+
+  function handleResize() {
+    window.document.getElementById(
+      'jitsiConferenceFrame0',
+    ).style.height = `${window.innerHeight - 200}px`;
+    _setContentHeightWidth();
+  }
+
+  function expandJitsiFrame() {
+    expanded = true;
+    _setMainHeight();
+    _setContentHeightWidth();
+  }
+
+  function shrinkJitsiFrame() {
+    expanded = false;
+    _setMainHeight();
+    _setContentHeightWidth();
+  }
+
+  function _setMainHeight() {
+    const main = window.document.getElementById('main');
+    main.style.minHeight = expanded ? `${window.innerHeight - 100}px` : 'auto';
+  }
+
+  function _setContentHeightWidth() {
+    const element = window.document.getElementById('content-block');
+
+    element.style.height = expanded ? `${window.innerHeight - 150}px` : '100%';
+    element.style.width = expanded ? `${window.innerWidth - 50}px` : '100%';
+
+    if (expanded) {
+      element.classList.add('absolute', 'left-5');
+    } else {
+      element.classList.remove('absolute', 'left-5');
+    }
+
+    // Property read to get webkit to repaint the element
+    element.offsetHeight;
+  }
 </script>
+
+<svelte:window on:resize="{handleResize}" />
 
 <svelte:head>
   <title>Join * THAT.us</title>
@@ -150,9 +200,17 @@
     {/if}
   </div>
 
-  <div slot="body">
+  <div slot="body" class="relative">
+    <button
+      class="absolute top-12 left-0 cursor-pointer ml-48 mt-1"
+      on:click="{expanded ? shrinkJitsiFrame : expandJitsiFrame}"
+    >
+      <Icon
+        data="{expanded ? compressIcon : expandIcon}"
+        class="h-6 w-6 text-white"
+      />
+    </button>
     <div id="meet" class="object-center"></div>
-
   </div>
 
   <div slot="footer">
