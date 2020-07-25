@@ -591,7 +591,7 @@
                       </label>
                       <p class="text-gray-500">
                         I'm sorry, but to have an account on THAT.us or
-                        THATConference.com you have to at least 13 years old.
+                        THATConference.com you must be at least 13 years old.
                       </p>
                       {#if touched['isOver13'] && errors['isOver13']}
                         <p class="text-red-600 italic">{errors['isOver13']}</p>
