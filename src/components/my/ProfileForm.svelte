@@ -53,7 +53,13 @@
     return this.test({
       name: 'name',
       message: 'Slug is already taken. Try again.',
-      test: slug => {
+      test: function(slug) {
+        if (!/^[a-zA-Z0-9-_]+$/g.test(slug)) {
+          return this.createError({
+            message: `Invalid format: use only letters, numbers, dash, and underscore`,
+          });
+        }
+        //console.log('what is this?', this);
         return new Promise((res, reject) =>
           isSlugTaken(slug).then(r => {
             if (isNewProfile) res(!r);
@@ -88,7 +94,7 @@
       .string()
       .trim()
       .lowercase()
-      .required('You must enter a value to represnet your member page.')
+      .required('You must enter a value to represent your member page.')
       .validateSlug(),
     acceptedCodeOfConduct: yup
       .boolean()
@@ -300,7 +306,11 @@
                   <ScaleOut />
                 </div>
               {:else if profileImageUrl}
-                <img class="h-full w-full" src="{profileImageUrl}" alt="" />
+                <img
+                  class="h-full w-full"
+                  src="{`${profileImageUrl}?auto=format&fit=facearea&facepad=10&mask=ellipse&h=100&w=100&q=50`}"
+                  alt=""
+                />
               {:else}
                 <svg
                   class="h-full w-full text-gray-300"
@@ -332,7 +342,9 @@
             </span>
           </div>
           <p class="mt-2 text-sm text-gray-500">
-            Make sure you save to update your profile.
+            Make sure you
+            <strong>save</strong>
+            to update your profile.
           </p>
         </div>
 
@@ -360,7 +372,7 @@
               </label>
               <p class="text-gray-500">
                 By selecting this, you're able to submit a session and THAT can
-                feature your profile on that.us or thatconference.com. We do not
+                feature your profile on that.us or thatconference.com. We don't
                 sell any data.
               </p>
             </div>
