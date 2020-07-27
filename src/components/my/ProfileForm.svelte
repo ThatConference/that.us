@@ -2,6 +2,20 @@
   export let handleSubmit;
   export let profile;
   export let isNewProfile;
+  import Icon from 'svelte-awesome';
+  import {
+    link,
+    linkedin,
+    facebook,
+    twitter,
+    instagram,
+    github,
+    youtubePlay,
+    twitch,
+    dribbble,
+    medium,
+    stackOverflow,
+  } from 'svelte-awesome/icons';
 
   import dayjs from 'dayjs';
   import { Circle2, ScaleOut } from 'svelte-loading-spinners';
@@ -19,6 +33,45 @@
   import { Waiting } from '../../elements';
   import { isAuthenticated, token } from '../../utilities/security.js';
   import ErrorNotificaiton from '../../components/notifications/Error.svelte';
+
+  let socialLinkSelections;
+  const socialLinks = [
+    {
+      name: 'github',
+      icon: github,
+      slug: 'https://github.com/',
+    },
+    {
+      name: 'twitter',
+      icon: twitter,
+      slug: 'https://twitter.com/@',
+    },
+    {
+      name: 'linkedin',
+      icon: linkedin,
+      slug: 'https://linkedin.com/',
+    },
+    {
+      name: 'instagram',
+      icon: instagram,
+      slug: 'https://instagram.com/',
+    },
+    {
+      name: 'facebook',
+      icon: facebook,
+      slug: 'https://facebook.com/',
+    },
+    {
+      name: 'youtube',
+      icon: youtubePlay,
+      slug: 'https://youtube.com/',
+    },
+    {
+      name: 'twitch',
+      icon: twitch,
+      slug: 'https://twitch.com/',
+    },
+  ];
 
   const { isSlugTaken } = memberApi(getClient());
   let initialValues;
@@ -42,6 +95,7 @@
       acceptedCommitmentToDiversity: false,
       isDeactivated: false,
       profileImage: undefined,
+      profileLinks: [],
       ...profile,
     };
   } else {
@@ -112,6 +166,7 @@
     canFeature: yup.boolean(),
     isDeactivated: yup.boolean(),
     profileImage: yup.string().url(),
+    profileLinks: yup.array().of(yup.string().url()),
   });
 
   const handleReset = () => {
@@ -213,26 +268,33 @@
           >
             Member Page Slug
           </label>
-          <div class="mt-1 flex rounded-md shadow-sm">
+          <!-- todo .. shadow doesn't align correctly <div class="mt-1 flex rounded-md shadow-sm"> -->
+          <div class="mt-1 flex">
             <span
               class="inline-flex items-center px-3 rounded-l-md border
               border-r-0 border-gray-300 bg-gray-50 text-gray-500 sm:text-sm"
             >
               https://thatconference.com/member/
             </span>
-            <div
-              class="flex-1 form-input block w-full min-w-0 rounded-none
-              rounded-r-md transition duration-150 ease-in-out sm:text-sm
-              sm:leading-5"
-              class:bg-gray-50="{!isNewProfile}"
-              class:text-gray-500="{!isNewProfile}"
-            >
+
+            {#if !isNewProfile}
               <Input
                 type="text"
-                disabled="{!isNewProfile}"
+                disabled
                 name="profileSlug"
+                class="flex-1 form-input block w-full min-w-0 rounded-none
+                rounded-r-md transition duration-150 ease-in-out sm:text-sm
+                sm:leading-5 bg-gray-50 text-gray-500"
               />
-            </div>
+            {:else}
+              <Input
+                type="text"
+                name="profileSlug"
+                class="flex-1 form-input block w-full min-w-0 rounded-none
+                rounded-r-md transition duration-150 ease-in-out sm:text-sm
+                sm:leading-5"
+              />
+            {/if}
           </div>
         </div>
 
@@ -347,17 +409,64 @@
             to update your profile.
           </p>
         </div>
+      </div>
+    </div>
 
-        <div class="sm:col-span-6">
+    <div class="mt-8 border-t border-gray-200 pt-8">
+      <div>
+        <h3 class="text-lg leading-6 font-medium text-gray-900">
+          Social Links
+        </h3>
+        <p class="mt-1 text-sm leading-5 text-gray-500">tese are .....</p>
+      </div>
+
+      <div class="mt-6">
+        <div class="sm:col-span-4">
+          {#each socialLinks as link}
+            <!-- todo - shadow isn't aligned properly <div class="mt-4 flex rounded-md shadow-sm"> -->
+            <div class="mt-4 flex rounded-md shadow-sm">
+              <span
+                class="inline-flex items-center px-3 rounded-l-md border
+                border-r-0 border-gray-300 bg-gray-50 text-gray-500 sm:text-sm
+                w-1/5"
+              >
+                <span class="w-6">
+                  <Icon data="{link.icon}" />
+                </span>
+                {link.slug}
+              </span>
+              <Input
+                type="text"
+                name="{link.name}"
+                on:change="{({ detail }) => setValue('profileLinks', detail)}"
+                class="flex-1 form-input block w-full min-w-0 rounded-none
+                rounded-r-md transition duration-150 ease-in-out sm:text-sm
+                sm:leading-5"
+              />
+            </div>
+          {/each}
+        </div>
+      </div>
+
+      <div class="mt-8 border-t border-gray-200 pt-8">
+        <div>
+          <h3 class="text-lg leading-6 font-medium text-gray-900">
+            Make your profile public(ish).
+          </h3>
+          <p class="mt-1 text-sm leading-5 text-gray-500">
+            By allowing us to feature you, you can...
+          </p>
+        </div>
+
+        <div class="mt-6">
           <label
-            for="photo"
-            class="block text-sm leading-5 font-medium text-gray-700"
+            for="canFeature"
+            class="block text-sm font-medium leading-5 text-gray-700"
           >
-            Feature Me
+            Yes, please feature me.
           </label>
 
-          <div class=" mt-2 flex items-center items-start">
-
+          <div class="mt-2 flex items-center items-start">
             <Checkbox
               name="canFeature"
               checked="{profile.canFeature}"
@@ -367,9 +476,6 @@
             />
 
             <div class="ml-3 text-sm leading-5">
-              <label for="comments" class="font-medium text-gray-700">
-                Make your profile public.
-              </label>
               <p class="text-gray-500">
                 By selecting this, you're able to submit a session and THAT can
                 feature your profile on that.us or thatconference.com. We don't
@@ -383,100 +489,65 @@
 
           </div>
         </div>
-
       </div>
-    </div>
 
-    <div class="mt-8 border-t border-gray-200 pt-8">
-      <div>
-        <h3 class="text-lg leading-6 font-medium text-gray-900">
-          Personal Information
-        </h3>
-        <p class="mt-1 text-sm leading-5 text-gray-500">
-          This information is private to THAT and allows us to better connect
-          with you.
-        </p>
-      </div>
-      <div class="mt-6 grid grid-cols-1 row-gap-6 col-gap-4 sm:grid-cols-6">
-        <div class="sm:col-span-4">
-          <label
-            for="email"
-            class="block text-sm font-medium leading-5 text-gray-700"
-          >
-            Email address
-          </label>
-          <div class="mt-1 rounded-md shadow-sm">
-            <Input
-              type="email"
-              name="email"
-              placeholder="e.g. user@example.com"
-              class="form-input block w-full transition duration-150 ease-in-out
-              sm:text-sm sm:leading-5"
-            />
+      <div class="mt-8 border-t border-gray-200 pt-8">
+        <div>
+          <h3 class="text-lg leading-6 font-medium text-gray-900">
+            Personal Information
+          </h3>
+          <p class="mt-1 text-sm leading-5 text-gray-500">
+            This information is private to THAT and allows us to better connect
+            with you.
+          </p>
+        </div>
+
+        <div class="mt-6 grid grid-cols-1 row-gap-6 col-gap-4 sm:grid-cols-6">
+          <div class="sm:col-span-4">
+            <label
+              for="email"
+              class="block text-sm font-medium leading-5 text-gray-700"
+            >
+              Email address
+            </label>
+            <div class="mt-1 rounded-md shadow-sm">
+              <Input
+                type="email"
+                name="email"
+                placeholder="e.g. user@example.com"
+                class="form-input block w-full transition duration-150
+                ease-in-out sm:text-sm sm:leading-5"
+              />
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="mt-8 border-t border-gray-200 pt-8">
+      <div class="mt-8 border-t border-gray-200 pt-8">
 
-      <div>
-        <h3 class="text-lg leading-6 font-medium text-gray-900">
-          Terms of Service
-        </h3>
-        <p class="mt-1 text-sm leading-5 text-gray-500">
-          Everyone is awesome, and we want your help in keeping it that way.
-          Also lawyers.
-        </p>
-      </div>
+        <div>
+          <h3 class="text-lg leading-6 font-medium text-gray-900">
+            Terms of Service
+          </h3>
+          <p class="mt-1 text-sm leading-5 text-gray-500">
+            Everyone is awesome, and we want your help in keeping it that way.
+            Also lawyers.
+          </p>
+        </div>
 
-      <div class="mt-6">
-        <fieldset>
-          <legend class="text-base font-medium text-gray-900">
-            Do you agree to our:
-          </legend>
+        <div class="mt-6">
+          <fieldset>
+            <legend class="text-base font-medium text-gray-900">
+              Do you agree to our:
+            </legend>
 
-          <div class="mt-4">
-            <div class="relative flex items-center items-start">
-
-              <Checkbox
-                name="acceptedCodeOfConduct"
-                checked="{profile.acceptedCodeOfConduct}"
-                on:change="{({ detail }) => setValue('acceptedCodeOfConduct', detail)}"
-                size="2.5rem"
-                class="flex-none"
-              />
-
-              <div class="ml-3 text-sm leading-5">
-                <label for="comments" class="font-medium text-gray-700">
-                  <Link
-                    open
-                    href="https://www.thatconference.com/code-of-conduct"
-                    class="font-medium text-indigo-600 hover:text-indigo-500
-                    transition duration-150 ease-in-out"
-                  >
-                    Code of Conduct
-                  </Link>
-                </label>
-                <p class="text-gray-500">
-                  Be epic. Together we're a family of geeks and geeklings!
-                </p>
-
-                {#if touched['acceptedCodeOfConduct'] && errors['acceptedCodeOfConduct']}
-                  <p class="text-red-600 italic">
-                    {errors['acceptedCodeOfConduct']}
-                  </p>
-                {/if}
-              </div>
-
-            </div>
             <div class="mt-4">
               <div class="relative flex items-center items-start">
 
                 <Checkbox
-                  name="acceptedAntiHarassmentPolicy"
-                  checked="{profile.acceptedAntiHarassmentPolicy}"
-                  on:change="{({ detail }) => setValue('acceptedAntiHarassmentPolicy', detail)}"
+                  name="acceptedCodeOfConduct"
+                  checked="{profile.acceptedCodeOfConduct}"
+                  on:change="{({ detail }) => setValue('acceptedCodeOfConduct', detail)}"
                   size="2.5rem"
                   class="flex-none"
                 />
@@ -485,32 +556,32 @@
                   <label for="comments" class="font-medium text-gray-700">
                     <Link
                       open
-                      href="https://www.thatconference.com/anti-harassment-policy"
+                      href="https://www.thatconference.com/code-of-conduct"
                       class="font-medium text-indigo-600 hover:text-indigo-500
                       transition duration-150 ease-in-out"
                     >
-                      Commitment Anti-Harassment
+                      Code of Conduct
                     </Link>
                   </label>
                   <p class="text-gray-500">
-                    We do not accept any sort of harassment.
+                    Be epic. Together we're a family of geeks and geeklings!
                   </p>
-                  {#if touched['acceptedAntiHarassmentPolicy'] && errors['acceptedAntiHarassmentPolicy']}
+
+                  {#if touched['acceptedCodeOfConduct'] && errors['acceptedCodeOfConduct']}
                     <p class="text-red-600 italic">
-                      {errors['acceptedAntiHarassmentPolicy']}
+                      {errors['acceptedCodeOfConduct']}
                     </p>
                   {/if}
                 </div>
 
               </div>
-
               <div class="mt-4">
                 <div class="relative flex items-center items-start">
 
                   <Checkbox
-                    name="acceptedCommitmentToDiversity"
-                    checked="{profile.acceptedCommitmentToDiversity}"
-                    on:change="{({ detail }) => setValue('acceptedCommitmentToDiversity', detail)}"
+                    name="acceptedAntiHarassmentPolicy"
+                    checked="{profile.acceptedAntiHarassmentPolicy}"
+                    on:change="{({ detail }) => setValue('acceptedAntiHarassmentPolicy', detail)}"
                     size="2.5rem"
                     class="flex-none"
                   />
@@ -519,21 +590,19 @@
                     <label for="comments" class="font-medium text-gray-700">
                       <Link
                         open
-                        href="https://www.thatconference.com/commitment-to-diversity"
+                        href="https://www.thatconference.com/anti-harassment-policy"
                         class="font-medium text-indigo-600 hover:text-indigo-500
                         transition duration-150 ease-in-out"
                       >
-                        Commitment to Diversity
+                        Commitment Anti-Harassment
                       </Link>
                     </label>
                     <p class="text-gray-500">
-                      Everyone is welcome at THAT! It's our daily responsibility
-                      to make our industry the best place it can be, regardless
-                      of color, gender, location, or even tech stack.
+                      We do not accept any sort of harassment.
                     </p>
-                    {#if touched['acceptedCommitmentToDiversity'] && errors['acceptedCommitmentToDiversity']}
+                    {#if touched['acceptedAntiHarassmentPolicy'] && errors['acceptedAntiHarassmentPolicy']}
                       <p class="text-red-600 italic">
-                        {errors['acceptedCommitmentToDiversity']}
+                        {errors['acceptedAntiHarassmentPolicy']}
                       </p>
                     {/if}
                   </div>
@@ -544,157 +613,201 @@
                   <div class="relative flex items-center items-start">
 
                     <Checkbox
-                      name="acceptedTermsOfService"
-                      checked="{profile.acceptedTermsOfService}"
-                      on:change="{({ detail }) => setValue('acceptedTermsOfService', detail)}"
+                      name="acceptedCommitmentToDiversity"
+                      checked="{profile.acceptedCommitmentToDiversity}"
+                      on:change="{({ detail }) => setValue('acceptedCommitmentToDiversity', detail)}"
                       size="2.5rem"
                       class="flex-none"
                     />
 
                     <div class="ml-3 text-sm leading-5">
-                      <label for="candidates" class="font-medium text-gray-700">
+                      <label for="comments" class="font-medium text-gray-700">
                         <Link
                           open
-                          href="https://www.thatconference.com/terms-of-use"
+                          href="https://www.thatconference.com/commitment-to-diversity"
                           class="font-medium text-indigo-600
                           hover:text-indigo-500 transition duration-150
                           ease-in-out"
                         >
-                          Terms of Use
+                          Commitment to Diversity
                         </Link>
                       </label>
-                      <p class="text-gray-500">Lawyer speak.</p>
-                      {#if touched['acceptedTermsOfService'] && errors['acceptedTermsOfService']}
+                      <p class="text-gray-500">
+                        Everyone is welcome at THAT! It's our daily
+                        responsibility to make our industry the best place it
+                        can be, regardless of color, gender, location, or even
+                        tech stack.
+                      </p>
+                      {#if touched['acceptedCommitmentToDiversity'] && errors['acceptedCommitmentToDiversity']}
                         <p class="text-red-600 italic">
-                          {errors['acceptedTermsOfService']}
+                          {errors['acceptedCommitmentToDiversity']}
                         </p>
                       {/if}
                     </div>
+
                   </div>
 
-                </div>
+                  <div class="mt-4">
+                    <div class="relative flex items-center items-start">
 
-                <div class="mt-4">
-                  <div class="relative flex items-center items-start">
+                      <Checkbox
+                        name="acceptedTermsOfService"
+                        checked="{profile.acceptedTermsOfService}"
+                        on:change="{({ detail }) => setValue('acceptedTermsOfService', detail)}"
+                        size="2.5rem"
+                        class="flex-none"
+                      />
 
-                    <Checkbox
-                      name="isOver13"
-                      checked="{profile.isOver13}"
-                      on:change="{({ detail }) => setValue('isOver13', detail)}"
-                      size="2.5rem"
-                      class="flex-none"
-                    />
-
-                    <div class="ml-3 text-sm leading-5">
-                      <label for="offers" class="font-medium text-gray-700">
-                        Are you >= to the age of 13?
-                      </label>
-                      <p class="text-gray-500">
-                        I'm sorry, but to have an account on THAT.us or
-                        THATConference.com you must be at least 13 years old.
-                      </p>
-                      {#if touched['isOver13'] && errors['isOver13']}
-                        <p class="text-red-600 italic">{errors['isOver13']}</p>
-                      {/if}
+                      <div class="ml-3 text-sm leading-5">
+                        <label
+                          for="candidates"
+                          class="font-medium text-gray-700"
+                        >
+                          <Link
+                            open
+                            href="https://www.thatconference.com/terms-of-use"
+                            class="font-medium text-indigo-600
+                            hover:text-indigo-500 transition duration-150
+                            ease-in-out"
+                          >
+                            Terms of Use
+                          </Link>
+                        </label>
+                        <p class="text-gray-500">Lawyer speak.</p>
+                        {#if touched['acceptedTermsOfService'] && errors['acceptedTermsOfService']}
+                          <p class="text-red-600 italic">
+                            {errors['acceptedTermsOfService']}
+                          </p>
+                        {/if}
+                      </div>
                     </div>
+
                   </div>
 
+                  <div class="mt-4">
+                    <div class="relative flex items-center items-start">
+
+                      <Checkbox
+                        name="isOver13"
+                        checked="{profile.isOver13}"
+                        on:change="{({ detail }) => setValue('isOver13', detail)}"
+                        size="2.5rem"
+                        class="flex-none"
+                      />
+
+                      <div class="ml-3 text-sm leading-5">
+                        <label for="offers" class="font-medium text-gray-700">
+                          Are you >= to the age of 13?
+                        </label>
+                        <p class="text-gray-500">
+                          I'm sorry, but to have an account on THAT.us or
+                          THATConference.com you must be at least 13 years old.
+                        </p>
+                        {#if touched['isOver13'] && errors['isOver13']}
+                          <p class="text-red-600 italic">
+                            {errors['isOver13']}
+                          </p>
+                        {/if}
+                      </div>
+                    </div>
+
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </fieldset>
+          </fieldset>
 
-      </div>
-    </div>
-
-    <div class="mt-8 border-t border-gray-200 pt-8">
-      <div>
-        <h3 class="text-lg leading-6 font-medium text-gray-900">
-          User Account Maintenance
-        </h3>
-        <p class="mt-1 text-sm leading-5 text-gray-500">more to come...</p>
+        </div>
       </div>
 
-      <div class="mt-6">
-        <fieldset>
-          <legend class="text-base font-medium text-gray-900">
-            User Account
-          </legend>
+      <div class="mt-8 border-t border-gray-200 pt-8">
+        <div>
+          <h3 class="text-lg leading-6 font-medium text-gray-900">
+            User Account Maintenance
+          </h3>
+          <p class="mt-1 text-sm leading-5 text-gray-500">more to come...</p>
+        </div>
 
-          <div class="mt-4">
-            <div class="relative flex items-center items-start">
+        <div class="mt-6">
+          <fieldset>
+            <legend class="text-base font-medium text-gray-900">
+              User Account
+            </legend>
 
-              <Checkbox
-                name="isDeactivated"
-                checked="{profile.isDeactivated}"
-                on:change="{({ detail }) => setValue('isDeactivated', detail)}"
-                size="2.5rem"
-                class="flex-none"
-              />
+            <div class="mt-4">
+              <div class="relative flex items-center items-start">
 
-              <div class="ml-3 text-sm leading-5">
-                <label for="comments" class="font-medium text-gray-700">
-                  <Link
-                    open
-                    href="https://www.thatconference.com/code-of-conduct"
-                    class="font-medium text-indigo-600 hover:text-indigo-500
-                    transition duration-150 ease-in-out"
-                  >
-                    Deactivate my account.
-                  </Link>
-                </label>
-                <p class="text-gray-500">...</p>
+                <Checkbox
+                  name="isDeactivated"
+                  checked="{profile.isDeactivated}"
+                  on:change="{({ detail }) => setValue('isDeactivated', detail)}"
+                  size="2.5rem"
+                  class="flex-none"
+                />
 
-                {#if touched['isDeactivated'] && errors['isDeactivated']}
-                  <p class="text-red-600 italic">{errors['isDeactivated']}</p>
-                {/if}
+                <div class="ml-3 text-sm leading-5">
+                  <label for="comments" class="font-medium text-gray-700">
+                    <Link
+                      open
+                      href="https://www.thatconference.com/code-of-conduct"
+                      class="font-medium text-indigo-600 hover:text-indigo-500
+                      transition duration-150 ease-in-out"
+                    >
+                      Deactivate my account.
+                    </Link>
+                  </label>
+                  <p class="text-gray-500">...</p>
+
+                  {#if touched['isDeactivated'] && errors['isDeactivated']}
+                    <p class="text-red-600 italic">{errors['isDeactivated']}</p>
+                  {/if}
+                </div>
               </div>
             </div>
-          </div>
-        </fieldset>
+          </fieldset>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="mt-8 border-t border-gray-200 pt-5">
+      <div class="flex justify-end">
+        <span class="inline-flex rounded-md shadow-sm">
+          <button
+            type="reset"
+            class="py-2 px-4 border border-gray-300 rounded-md text-sm leading-5
+            font-medium text-gray-700 hover:text-gray-500 focus:outline-none
+            focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50
+            active:text-gray-800 transition duration-150 ease-in-out"
+          >
+            Reset
+          </button>
+        </span>
+        <span class="ml-3 inline-flex rounded-md shadow-sm">
+          <button
+            type="submit"
+            disabled="{isSubmitting}"
+            class="inline-flex justify-center py-2 px-4 border
+            border-transparent text-sm leading-5 font-medium rounded-md
+            text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none
+            focus:border-indigo-700 focus:shadow-outline-indigo
+            active:bg-indigo-700 transition duration-150 ease-in-out"
+          >
+            Save
+          </button>
+        </span>
       </div>
     </div>
 
+    {#if isValid === false}
+      <ErrorNotificaiton message="Please correct the errors listed above." />
+    {/if}
+
+    {#if isSubmitting}
+      <div class="flex flex-grow justify-center py-12">
+        <Waiting />
+      </div>
+    {/if}
+
   </div>
-
-  <div class="mt-8 border-t border-gray-200 pt-5">
-    <div class="flex justify-end">
-      <span class="inline-flex rounded-md shadow-sm">
-        <button
-          type="reset"
-          class="py-2 px-4 border border-gray-300 rounded-md text-sm leading-5
-          font-medium text-gray-700 hover:text-gray-500 focus:outline-none
-          focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50
-          active:text-gray-800 transition duration-150 ease-in-out"
-        >
-          Reset
-        </button>
-      </span>
-      <span class="ml-3 inline-flex rounded-md shadow-sm">
-        <button
-          type="submit"
-          disabled="{isSubmitting}"
-          class="inline-flex justify-center py-2 px-4 border border-transparent
-          text-sm leading-5 font-medium rounded-md text-white bg-indigo-600
-          hover:bg-indigo-500 focus:outline-none focus:border-indigo-700
-          focus:shadow-outline-indigo active:bg-indigo-700 transition
-          duration-150 ease-in-out"
-        >
-          Save
-        </button>
-      </span>
-    </div>
-  </div>
-
-  {#if isValid === false}
-    <ErrorNotificaiton message="Please correct the errors listed above." />
-  {/if}
-
-  {#if isSubmitting}
-    <div class="flex flex-grow justify-center py-12">
-      <Waiting />
-    </div>
-  {/if}
-
 </Form>
