@@ -6,6 +6,7 @@
   import _ from 'lodash';
   import { navigateTo } from 'yrv';
   import Icon from 'svelte-awesome';
+  import { getClient } from '@urql/svelte';
 
   import { ModalError, ActionHeader, LinkButton } from '../../elements';
   import StackedLayout from '../../elements/layouts/StackedLayout.svelte';
@@ -13,11 +14,14 @@
   import Nav from '../../components/nav/interiorNav/Top.svelte';
   import WarningNotification from '../../components/notifications/Warning.svelte';
   import { isAuthenticated, thatProfile } from '../../utilities/security.js';
+  import sessionsApi from '../../dataSources/api.that.tech/sessions.js';
 
   import {
     expand as expandIcon,
     compress as compressIcon,
   } from 'svelte-awesome/icons';
+
+  const { setAttendance } = sessionsApi(getClient());
 
   const { sessionId } = router.params;
   const imageCrop = '?mask=ellipse&w=500&h=500&fit=crop';
@@ -44,6 +48,10 @@
   let incompleteProfile = true;
   $: if (!_.isEmpty($thatProfile)) {
     incompleteProfile = false;
+  }
+
+  $: if ($isAuthenticated && !incompleteProfile) {
+    Promise.resolve(setAttendance(sessionId));
   }
 
   let api;
