@@ -28,6 +28,10 @@
     "answer": "No. IE 11 is not supported"
   },
   {
+    "question": "Why am I unable to share my screen on macOS?",
+    "answer": "This usually due to permissions. You can permit screen sharing by going to System Preferences > Security & Privacy > Screen Recording, then, select the browser you're using for THAT.us"
+  },
+  {
     "question": "Do I need a ticket to participate in the virtual Open Spaces?",
     "answer": "Yes, a ticket is required to participate in the virtual Open Spaces. You may get your ticket <a class='underline hover:no-underline hover:font-semibold' href='http://tickets.thatconference.com' target='_blank'>here</a> with a starting contribution of $0."
   },
