@@ -16,6 +16,7 @@
   import { onMount } from 'svelte';
   import { Link } from 'yrv';
   import dayjs from 'dayjs';
+  import isBetween from 'dayjs/plugin/isBetween';
   import Icon from 'svelte-awesome';
   import { info, heart, signIn, cog } from 'svelte-awesome/icons';
   import qs from 'query-string';
@@ -33,20 +34,12 @@
   import { Tag } from '../../elements';
   import CardLink from './CardLink.svelte';
 
+  dayjs.extend(isBetween);
+
   const { toggle, get: getFavorites, favoritesStore: favorites } = favoritesApi(
     getClient(),
   );
   let host = speakers[0];
-
-  // todo.. need to make this based on date range...
-  let canJoin = () => {
-    let action = false;
-
-    const { join } = qs.parse(location.search);
-    if (join) action = true;
-
-    return action;
-  };
 
   let imageCrop = '?mask=ellipse&w=500&h=500&fit=crop';
   let favoriteDisabled = false;
@@ -79,8 +72,30 @@
     found ? (isFavorite = true) : (isFavorite = false);
   });
 
+  let isInWindow = false;
+  $: canJoin = isInWindow;
+
   onMount(async () => {
     if ($isAuthenticated) await getFavorites();
+
+    const interval = setInterval(() => {
+      let inSession = dayjs().isBetween(
+        dayjs(startTime).subtract(5, 'minute'),
+        dayjs(startTime).add(1, 'hour'),
+        'minute',
+      );
+
+      isInWindow = inSession;
+
+      if (!inSession) {
+        const { join } = qs.parse(location.search);
+        if (join) isInWindow = true;
+      }
+    }, 10000);
+
+    return () => {
+      clearInterval(interval);
+    };
   });
 
   let userProfileImage = host.profileImage
@@ -131,7 +146,7 @@
         <CardLink href="/sessions/{id}" icon="{info}" text="{'More Details'}" />
       </div>
       {#if $isAuthenticated}
-        {#if canJoin()}
+        {#if canJoin}
           <div class="-ml-px w-0 flex-1 flex">
             <CardLink href="/join/{id}" icon="{signIn}" text="{'Join In'}" />
           </div>
