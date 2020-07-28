@@ -26,7 +26,8 @@
   import Checkbox from 'svelte-checkbox';
   import { getClient } from '@urql/svelte';
   import fetch from 'isomorphic-unfetch';
-
+  import _ from 'lodash';
+  import omitDeep from 'omit-deep';
   import config from '../../config';
   import memberApi from '../../dataSources/api.that.tech/members.js';
 
@@ -37,36 +38,43 @@
   let socialLinkSelections;
   const socialLinks = [
     {
+      linkType: 'GITHUB',
       name: 'github',
       icon: github,
       slug: 'https://github.com/',
     },
     {
+      linkType: 'TWITTER',
       name: 'twitter',
       icon: twitter,
-      slug: 'https://twitter.com/@',
+      slug: 'https://twitter.com/',
     },
     {
+      linkType: 'LINKEDIN',
       name: 'linkedin',
       icon: linkedin,
-      slug: 'https://linkedin.com/',
+      slug: 'https://linkedin.com/in/',
     },
     {
+      linkType: 'INSTAGRAM',
       name: 'instagram',
       icon: instagram,
       slug: 'https://instagram.com/',
     },
     {
+      linkType: 'FACEBOOK',
       name: 'facebook',
       icon: facebook,
       slug: 'https://facebook.com/',
     },
     {
+      linkType: 'YOUTUBE',
       name: 'youtube',
       icon: youtubePlay,
-      slug: 'https://youtube.com/',
+      slug: 'https://youtube.com/channel/',
     },
     {
+      linkType: 'TWITCH',
       name: 'twitch',
       icon: twitch,
       slug: 'https://twitch.com/',
@@ -77,6 +85,49 @@
   let initialValues;
   let profileImageUploading;
   let profileImageUrl;
+
+  // clear out __typename
+  if (profile) omitDeep(profile, ['__typename']);
+
+  function buildSocialLink(linkType, baseAddress, userSlug) {
+    return {
+      isPublic: true,
+      linkType,
+      url: `${baseAddress}${userSlug.trim()}`,
+    };
+  }
+
+  let socialLinksState = [];
+  function updateLinksInputValues(link, userValue) {
+    // clear out the value regardless.
+    socialLinksState = socialLinksState.filter(
+      i => i.linkType !== link.linkType,
+    );
+
+    // if we have a value.. add it back
+    if (!_.isEmpty(userValue)) {
+      socialLinksState.push(
+        buildSocialLink(link.linkType, link.slug, userValue),
+      );
+    }
+
+    return socialLinksState;
+  }
+
+  function getInitialSocailLinkValue(link) {
+    let result = '';
+
+    const [socialLink] = profile.profileLinks.filter(
+      i => i.linkType === link.linkType,
+    );
+
+    if (socialLink) {
+      let [slug, value] = socialLink.url.split(link.slug);
+      result = value;
+    }
+
+    return result;
+  }
 
   if (isNewProfile) {
     initialValues = {
@@ -101,6 +152,7 @@
   } else {
     initialValues = profile;
     profileImageUrl = profile.profileImage;
+    socialLinksState = profile.profileLinks;
   }
 
   yup.addMethod(yup.string, 'validateSlug', function() {
@@ -113,7 +165,6 @@
             message: `Invalid format: use only letters, numbers, dash, and underscore`,
           });
         }
-        //console.log('what is this?', this);
         return new Promise((res, reject) =>
           isSlugTaken(slug).then(r => {
             if (isNewProfile) res(!r);
@@ -166,7 +217,7 @@
     canFeature: yup.boolean(),
     isDeactivated: yup.boolean(),
     profileImage: yup.string().url(),
-    profileLinks: yup.array().of(yup.string().url()),
+    profileLinks: yup.array(),
   });
 
   const handleReset = () => {
@@ -210,6 +261,7 @@
   let:isSubmitting
   let:isValid
   let:setValue
+  let:values
   let:errors
   let:touched
 >
@@ -428,17 +480,19 @@
               <span
                 class="inline-flex items-center px-3 rounded-l-md border
                 border-r-0 border-gray-300 bg-gray-50 text-gray-500 sm:text-sm
-                w-1/5"
+                w-1/4"
               >
                 <span class="w-6">
                   <Icon data="{link.icon}" />
                 </span>
                 {link.slug}
               </span>
-              <Input
+              <Input name="profileLinks" hidden />
+              <input
                 type="text"
                 name="{link.name}"
-                on:change="{({ detail }) => setValue('profileLinks', detail)}"
+                value="{getInitialSocailLinkValue(link)}"
+                on:change="{e => setValue('profileLinks', updateLinksInputValues(link, e.target.value))}"
                 class="flex-1 form-input block w-full min-w-0 rounded-none
                 rounded-r-md transition duration-150 ease-in-out sm:text-sm
                 sm:leading-5"

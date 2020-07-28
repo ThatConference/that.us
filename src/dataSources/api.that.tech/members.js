@@ -10,6 +10,7 @@ const userFragment = `
     profileImage
     profileSlug
     profileLinks {
+      isPublic
       linkType
       url
     }    
@@ -56,6 +57,7 @@ const profileFieldsFragment = `
     profileSlug
     bio
     profileLinks {
+      isPublic
       linkType
       url
     }
