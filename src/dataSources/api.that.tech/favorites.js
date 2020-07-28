@@ -58,8 +58,12 @@ export default (client, eventId = config.eventId) => {
       .then((r) => {
         let results = [];
 
+        if (r.error) {
+          console.error(r.error);
+        }
+
         // set the store
-        if (r.data) {
+        if (r.data && !r.error) {
           const { favorites } = r.data.sessions.me;
           favoritesStore.set(favorites); // set the store
           results = favorites; // set the return results

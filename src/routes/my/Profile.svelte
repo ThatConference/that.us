@@ -41,7 +41,7 @@
   }
 
   async function handleNew({ detail: { values, setSubmitting, resetForm } }) {
-    const updateResults = await createProfile({ ...values, profileLinks: [] });
+    const updateResults = await createProfile({ profileLinks: [], ...values });
 
     thatProfile.set(updateResults);
     tagEvent('profile_created', 'account', $user.sub);
@@ -55,8 +55,8 @@
     detail: { values, setSubmitting, resetForm },
   }) {
     let updatedProfile = {
-      ...values,
       profileLinks: [],
+      ...values,
     };
 
     // we don't allow the following to get updated

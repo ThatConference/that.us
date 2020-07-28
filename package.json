@@ -20,7 +20,7 @@
     "validate": "concurrently npm:test npm:lint"
   },
   "devDependencies": {
-    "@auth0/auth0-spa-js": "^1.11.0",
+    "@auth0/auth0-spa-js": "1.10.0",
     "@fortawesome/free-regular-svg-icons": "^5.14.0",
     "@fullhuman/postcss-purgecss": "^2.3.0",
     "@rollup/plugin-alias": "^3.1.1",
@@ -47,6 +47,7 @@
     "isomorphic-unfetch": "^3.0.0",
     "jest-cli": "^26.1.0",
     "lodash": "^4.17.19",
+    "omit-deep": "^0.3.0",
     "page": "^1.11.6",
     "postcss": "^7.0.32",
     "postcss-load-config": "^2.1.0",

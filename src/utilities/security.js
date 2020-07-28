@@ -22,6 +22,7 @@ const QUERY_ME = `
         profileImage
         profileSlug
         profileLinks {
+          isPublic
           linkType
           url
         }
