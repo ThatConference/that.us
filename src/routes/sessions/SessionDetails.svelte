@@ -76,8 +76,6 @@
   onMount(async () => {
     if ($isAuthenticated) await getFavorites();
 
-    startTime = dayjs().add(6, 'minute');
-
     const interval = setInterval(() => {
       let inSession = dayjs().isBetween(
         dayjs(startTime).subtract(5, 'minute'),
