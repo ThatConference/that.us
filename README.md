@@ -50,7 +50,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/mcookWI"><img src="https://avatars0.githubusercontent.com/u/5367626?v=4" width="100px;" alt=""/><br /><sub><b>Mike</b></sub></a><br /><a href="https://github.com/ThatConference/that.us/issues?q=author%3AmcookWI" title="Bug reports">🐛</a> <a href="#userTesting-mcookWI" title="User Testing">📓</a></td>
   </tr>
   <tr>
-    <td align="center"><a href="https://github.com/MFazio23"><img src="https://avatars0.githubusercontent.com/u/782519?v=4" width="100px;" alt=""/><br /><sub><b>Michael Fazio</b></sub></a><br /><a href="https://github.com/ThatConference/that.us/commits?author=MFazio23" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/MFazio23"><img src="https://avatars0.githubusercontent.com/u/782519?v=4" width="100px;" alt=""/><br /><sub><b>Michael Fazio</b></sub></a><br /><a href="https://github.com/ThatConference/that.us/commits?author=MFazio23" title="Code">💻</a> <a href="https://github.com/ThatConference/that.us/issues?q=author%3AMFazio23" title="Bug reports">🐛</a></td>
   </tr>
 </table>
 
