@@ -469,7 +469,9 @@
         <h3 class="text-lg leading-6 font-medium text-gray-900">
           Social Links
         </h3>
-        <p class="mt-1 text-sm leading-5 text-gray-500">tese are .....</p>
+        <p class="mt-1 text-sm leading-5 text-gray-500">
+          Where would you like people to follow you?
+        </p>
       </div>
 
       <div class="mt-6">
