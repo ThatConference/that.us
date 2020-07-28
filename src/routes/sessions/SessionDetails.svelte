@@ -12,6 +12,7 @@
   import { onMount } from 'svelte';
   import { fade } from 'svelte/transition';
   import dayjs from 'dayjs';
+  import isBetween from 'dayjs/plugin/isBetween';
   import Icon from 'svelte-awesome';
   import { Link } from 'yrv';
   import {
@@ -37,6 +38,8 @@
   import { isAuthenticated, thatProfile } from '../../utilities/security.js';
   import favoritesApi from '../../dataSources/api.that.tech/favorites';
 
+  dayjs.extend(isBetween);
+
   const { toggle, get: getFavorites, favoritesStore: favorites } = favoritesApi(
     getClient(),
   );
@@ -44,7 +47,6 @@
   let host = speakers[0];
   let imageCrop = '?mask=ellipse&w=500&h=500&fit=crop';
 
-  // todo.. need to make this based on date range...
   const { join, edit, isNew } = qs.parse(location.search);
 
   let favoriteDisabled = false;
@@ -68,8 +70,32 @@
     found ? (isFavorite = true) : (isFavorite = false);
   });
 
+  let isInWindow = false;
+  $: canJoin = isInWindow;
+
   onMount(async () => {
     if ($isAuthenticated) await getFavorites();
+
+    startTime = dayjs().add(6, 'minute');
+
+    const interval = setInterval(() => {
+      let inSession = dayjs().isBetween(
+        dayjs(startTime).subtract(5, 'minute'),
+        dayjs(startTime).add(1, 'hour'),
+        'minute',
+      );
+
+      isInWindow = inSession;
+
+      if (!inSession) {
+        const { join } = qs.parse(location.search);
+        if (join) isInWindow = true;
+      }
+    }, 10000);
+
+    return () => {
+      clearInterval(interval);
+    };
   });
 
   let disqus_config = function() {
@@ -160,7 +186,7 @@
               </button>
             </span>
 
-            {#if join}
+            {#if canJoin}
               <span class="ml-3 inline-flex rounded-md shadow-sm">
                 <Link
                   type="button"
