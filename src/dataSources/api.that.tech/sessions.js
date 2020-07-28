@@ -106,6 +106,16 @@ export const UPDATE_SESSION_BY_ID = `
   }
 `;
 
+export const SET_ATTENDANCE = `
+  mutation setAttendance($sessionId: ID!) {
+    sessions {
+      session(id: $sessionId) {
+        setAttended
+      }
+    }
+  }
+`;
+
 export default (client, eventId = config.eventId) => {
   const querySessions = () => {
     const variables = { eventId };
@@ -150,5 +160,13 @@ export default (client, eventId = config.eventId) => {
       .then((r) => r.data.sessions.session.update.openSpace);
   };
 
-  return { querySessions, getById, create, update };
+  const setAttendance = (sessionId) => {
+    const mutationVariables = {
+      sessionId,
+    };
+
+    return client.mutation(SET_ATTENDANCE, mutationVariables).toPromise();
+  };
+
+  return { querySessions, getById, create, update, setAttendance };
 };
