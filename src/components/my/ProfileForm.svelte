@@ -117,13 +117,15 @@
   function getInitialSocailLinkValue(link) {
     let result = '';
 
-    const [socialLink] = profile.profileLinks.filter(
-      i => i.linkType === link.linkType,
-    );
+    if (!isNewProfile && profile.profileLinks) {
+      const [socialLink] = profile.profileLinks.filter(
+        i => i.linkType === link.linkType,
+      );
 
-    if (socialLink) {
-      let [slug, value] = socialLink.url.split(link.slug);
-      result = value;
+      if (socialLink) {
+        let [slug, value] = socialLink.url.split(link.slug);
+        result = value;
+      }
     }
 
     return result;
