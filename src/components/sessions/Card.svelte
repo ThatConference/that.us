@@ -18,7 +18,7 @@
   import dayjs from 'dayjs';
   import isBetween from 'dayjs/plugin/isBetween';
   import Icon from 'svelte-awesome';
-  import { info, heart, signIn, cog } from 'svelte-awesome/icons';
+  import { info, heart, signIn, cog, caretDown } from 'svelte-awesome/icons';
   import qs from 'query-string';
   import { getClient } from '@urql/svelte';
   import _ from 'lodash';
@@ -26,7 +26,7 @@
   // supporting goo
   import config from '../../config';
   import { isAuthenticated, thatProfile } from '../../utilities/security';
-  import { truncate } from '../../utilities/truncate';
+  import { truncate, isLongerThan } from '../../utilities/truncate';
   import favoritesApi from '../../dataSources/api.that.tech/favorites';
   import { show } from '../../store/profileNotification';
 
@@ -43,6 +43,7 @@
 
   let imageCrop = '?mask=ellipse&w=500&h=500&fit=crop';
   let favoriteDisabled = false;
+  let showExpandedDescription = false;
 
   const isAllowed = () => {
     let permitted = false;
@@ -64,6 +65,8 @@
       favoriteDisabled = false;
     }
   };
+
+  let expandDescription = false;
 
   let isFavorite = false;
   favorites.subscribe(favs => {
@@ -128,9 +131,23 @@
     </div>
   </div>
 
-  <div class="flex-grow p-3">
+  <div
+    class="flex-grow p-3"
+    class:cursor-pointer="{isLongerThan(shortDescription, 25)}"
+    on:click|preventDefault="{() => (expandDescription = !expandDescription)}"
+  >
     <p class="text-gray-500 text-sm leading-5 break-words">
-      {truncate(shortDescription, 25)}
+      {#if expandDescription}
+        <span>{shortDescription}</span>
+      {:else}
+        <div class:hover:text-gray-300="{isLongerThan(shortDescription, 25)}">
+          <span>{truncate(shortDescription, 25)}</span>
+          {#if isLongerThan(shortDescription, 25)}
+            <Icon data="{caretDown}" class="ml-2" />
+          {/if}
+        </div>
+      {/if}
+
     </p>
   </div>
 
