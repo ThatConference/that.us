@@ -13,6 +13,12 @@ const userFragment = `
       isPublic
       linkType
       url
+    }
+    earnedMeritBadges {
+      id
+      name
+      image
+      description
     }    
   }
 `;
@@ -61,6 +67,12 @@ const profileFieldsFragment = `
       linkType
       url
     }
+    earnedMeritBadges {
+      id
+      name
+      image
+      description
+    }
     canFeature
     isOver13
     acceptedCodeOfConduct
@@ -99,6 +111,21 @@ export const QUERY_IS_SLUG_TAKEN = `
   query slugCheck($slug: Slug!) {
     members {
      isProfileSlugTaken(slug: $slug)
+    }
+  }
+`;
+
+export const CLAIM_TICKET = `
+  mutation claimMyTicket($ticketReference: String!) {
+    members {
+      member {
+        claimTicket(ticketRef: $ticketReference)  {
+          id
+          name
+          image
+          description
+        }
+      }
     }
   }
 `;
@@ -156,12 +183,30 @@ export default (client) => {
       .then((r) => r.data.members.member.update);
   };
 
+  const claimTicket = (ticketReference) => {
+    const variables = { ticketReference };
+    return client
+      .mutation(CLAIM_TICKET, variables)
+      .toPromise()
+      .then((r) => {
+        let claimed = null;
+
+        if (r.error) {
+          // todo... someday log
+          console.error(r.error);
+        } else if (r.data.members.member.claimTicket)
+          claimed = r.data.members.member.claimTicket;
+
+        return claimed;
+      });
+  };
+
   return {
     queryMembers,
     queryMembersNext,
     createProfile,
     updateProfile,
-
     isSlugTaken,
+    claimTicket,
   };
 };

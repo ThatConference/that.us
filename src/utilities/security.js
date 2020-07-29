@@ -6,38 +6,9 @@ import { getClient } from '@urql/svelte';
 import { navigateTo } from 'yrv';
 
 import { securityConfig } from '../config';
+import meApi from '../dataSources/api.that.tech/me';
 
 securityConfig.redirect_uri = `${window.location.origin}/sessions`;
-
-const QUERY_ME = `
-  query getMe {
-    members {
-      me {
-        id
-        firstName
-        lastName
-        email
-        jobTitle
-        company
-        profileImage
-        profileSlug
-        profileLinks {
-          isPublic
-          linkType
-          url
-        }
-        bio
-        canFeature
-        isOver13
-        acceptedCodeOfConduct
-        acceptedTermsOfService
-        acceptedAntiHarassmentPolicy
-        acceptedCommitmentToDiversity
-        isDeactivated
-      }
-    }
-  }
-`;
 
 export const user = writable({});
 export const thatProfile = writable({});
@@ -83,20 +54,23 @@ export async function generateAuth0() {
 
     // set the base profile from auth0
     user.set(await auth0.getUser());
-
     token.set(await auth0.getTokenSilently());
 
     // set the THAT membership profile
-    thatProfile.set(
-      await getClient()
-        .query(QUERY_ME)
-        .toPromise()
-        .then((results) => ({
-          ...results.data.members.me,
-        })),
-    );
+    const { queryMe } = meApi(getClient());
+    thatProfile.set(await queryMe(getClient()));
+
     if (redirectResult)
       navigateTo(redirectResult.appState.pathname, { replace: true });
+  }
+}
+
+export async function refreshMe() {
+  const auth0 = await auth0Promise;
+
+  if (await auth0.isAuthenticated()) {
+    const { queryMe } = meApi(getClient());
+    thatProfile.set(await queryMe(getClient()));
   }
 }
 

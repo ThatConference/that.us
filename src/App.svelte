@@ -21,6 +21,7 @@
   import MyFavorites from './routes/my/Favorites.svelte';
   import MySubmissions from './routes/my/Submissions.svelte';
   import Profile from './routes/my/Profile.svelte';
+  import Badges from './routes/my/Badges.svelte';
 
   // sessions
   import List from './routes/sessions/List.svelte';
@@ -36,7 +37,9 @@
     fetchOptions: () => ({
       headers: { authorization: $token ? `Bearer ${$token}` : '' },
     }),
-    requestPolicy: 'cache-and-network',
+    // todo.. this needs to be revisited... and when we get a new graph client.
+    // requestPolicy: 'cache-and-network',
+    requestPolicy: 'network-only',
   });
 
   let documentReferrer;
@@ -138,6 +141,14 @@
       exact
       path="/my/profile"
       component="{Profile}"
+      condition="{shouldRedirecToLogin}"
+      redirect="/login"
+    />
+
+    <Route
+      exact
+      path="/my/badges"
+      component="{Badges}"
       condition="{shouldRedirecToLogin}"
       redirect="/login"
     />

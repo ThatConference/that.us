@@ -143,11 +143,23 @@
               href="https://www.thatconference.com/member/{host.profileSlug}"
               open
             >
-              <img
-                class="h-12 w-12 rounded-full"
-                src="{userProfileImage}"
-                alt=""
-              />
+              <span class="inline-block relative">
+                <img
+                  class="h-12 w-12 rounded-full"
+                  src="{userProfileImage}"
+                  alt=""
+                />
+
+                {#if host.earnedMeritBadges.length > 0}
+                  <span class="absolute bottom-0 left-0 block h-5 w-5">
+                    <img
+                      src="{host.earnedMeritBadges[0].image}"
+                      alt="{host.earnedMeritBadges[0].name}"
+                    />
+                  </span>
+                {/if}
+
+              </span>
             </Link>
           </div>
           <div class="ml-4">

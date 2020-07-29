@@ -20,6 +20,12 @@ export const QUERY_SUBMISSIONS = `
               firstName
               lastName
               profileImage
+              earnedMeritBadges {
+                id
+                name
+                image
+                description
+              }
             }
           }
         }

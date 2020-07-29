@@ -115,11 +115,23 @@
       class="flex-shrink-0"
     >
 
-      <img
-        class="w-15 h-15 rounded-full"
-        src="{userProfileImage}"
-        alt="{`${host.firstName} ${host.lastName}`}"
-      />
+      <span class="inline-block relative">
+        <img
+          class="w-15 h-15 rounded-full"
+          src="{userProfileImage}"
+          alt="{`${host.firstName} ${host.lastName}`}"
+        />
+
+        {#if host.earnedMeritBadges.length > 0}
+          <span class="absolute bottom-0 left-0 block h-6 w-6">
+            <img
+              src="{host.earnedMeritBadges[0].image}"
+              alt="{host.earnedMeritBadges[0].name}"
+            />
+          </span>
+        {/if}
+      </span>
+
     </Link>
     <div class="flex flex-col">
       <h3 class="text-gray-900 text-sm leading-5 font-medium break-words">
