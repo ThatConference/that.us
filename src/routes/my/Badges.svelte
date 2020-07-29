@@ -7,6 +7,7 @@
   import { ActionHeader, LinkButton } from '../../elements';
   import StackedLayout from '../../elements/layouts/StackedLayout.svelte';
   import Nav from '../../components/nav/interiorNav/Top.svelte';
+  import Warning from '../../components/notifications/Warning.svelte';
   import ClaimTicketForm from '../../components/my/ClaimTicketForm.svelte';
   import memberApi from '../../dataSources/api.that.tech/members.js';
   import { tagEvent } from '../../utilities/gtag';
@@ -21,6 +22,7 @@
   const { claimTicket } = memberApi(getClient());
 
   let awardedBadge;
+  let failedClaim = false;
 
   let awardedBadges = [];
   $: if ($thatProfile.earnedMeritBadges) {
@@ -30,6 +32,8 @@
   async function handleClaimTicket({
     detail: { values, setSubmitting, resetForm },
   }) {
+    failedClaim = false;
+
     const { ticketReference } = values;
     const badgeEarned = await claimTicket(ticketReference);
 
@@ -38,12 +42,13 @@
       awardedBadge = badgeEarned;
 
       await refreshMe();
+      resetForm();
+    } else {
+      failedClaim = true;
     }
 
     tagEvent('claim_badge', 'account', $user.sub);
-
     setSubmitting(false);
-    resetForm();
   }
 </script>
 
@@ -95,5 +100,11 @@
   </div>
 
   <div slot="footer"></div>
-
 </StackedLayout>
+
+{#if failedClaim}
+  <Warning
+    message="We were unable to claim that ticket number. Please re-check and try
+    again."
+  />
+{/if}
