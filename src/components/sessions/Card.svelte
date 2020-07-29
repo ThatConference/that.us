@@ -43,6 +43,7 @@
 
   let imageCrop = '?mask=ellipse&w=500&h=500&fit=crop';
   let favoriteDisabled = false;
+  let showExpandedDescription = false;
 
   const isAllowed = () => {
     let permitted = false;
@@ -62,6 +63,14 @@
       favoriteDisabled = true;
       await toggle(id);
       favoriteDisabled = false;
+    }
+  };
+
+  const expandDescription = async () => {
+    if (showExpandedDescription) {
+      showExpandedDescription = false;
+    } else {
+      showExpandedDescription = true;
     }
   };
 
@@ -128,9 +137,9 @@
     </div>
   </div>
 
-  <div class="flex-grow p-3">
+  <div class="flex-grow p-3" on:click|preventDefault="{expandDescription}">
     <p class="text-gray-500 text-sm leading-5 break-words">
-      {truncate(shortDescription, 25)}
+      {showExpandedDescription ? shortDescription : truncate(shortDescription, 25)}
     </p>
   </div>
 
