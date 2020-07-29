@@ -34,6 +34,12 @@
                   url
                   isPublic                  
                 }
+                earnedMeritBadges {
+                  id
+                  name
+                  image
+                  description
+                }
               }
               favoritedBy {
                 id

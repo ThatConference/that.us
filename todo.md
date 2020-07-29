@@ -1,10 +1,5 @@
-## Join Page
-
-- attendance
-
 ## profile page.
 
-- add social links
 - add claim ticket
 
 ## Members

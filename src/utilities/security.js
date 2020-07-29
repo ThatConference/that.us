@@ -26,6 +26,12 @@ const QUERY_ME = `
           linkType
           url
         }
+        earnedMeritBadges {
+          id
+          name
+          image
+          description
+        }
         bio
         canFeature
         isOver13

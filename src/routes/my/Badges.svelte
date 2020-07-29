@@ -22,6 +22,8 @@
 
   const { claimTicket } = memberApi(getClient());
 
+  console.log({ $thatProfile });
+
   async function handleClaimTicket({
     detail: { values, setSubmitting, resetForm },
   }) {
@@ -35,6 +37,8 @@
 
     setSubmitting(false);
     resetForm();
+
+    //todo... need to figure out how to refresh the profile.
     // navigateTo(`/sessions`, { replace: true });
   }
 </script>
@@ -54,13 +58,14 @@
   </div>
 
   <div slot="footer">
-    <div>
-      <img
-        class="h-56 w-56"
-        src="https://storage.googleapis.com/that-bucket/meritbadges/2020TicketPurchased.svg"
-        alt=""
-      />
-    </div>
+
+    {#if $thatProfile}
+      {#each $thatProfile.earnedMeritBadges as badge (badge.id)}
+        <div>
+          <img class="h-56 w-56" src="{badge.image}" alt="{badge.name}" />
+        </div>
+      {/each}
+    {/if}
 
   </div>
 

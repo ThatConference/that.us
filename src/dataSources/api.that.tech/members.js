@@ -13,6 +13,12 @@ const userFragment = `
       isPublic
       linkType
       url
+    }
+    earnedMeritBadges {
+      id
+      name
+      image
+      description
     }    
   }
 `;
@@ -60,6 +66,12 @@ const profileFieldsFragment = `
       isPublic
       linkType
       url
+    }
+    earnedMeritBadges {
+      id
+      name
+      image
+      description
     }
     canFeature
     isOver13

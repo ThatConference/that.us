@@ -43,6 +43,12 @@ export const QUERY_SESSION_BY_ID = `
               url
               isPublic                  
             }
+            earnedMeritBadges {
+              id
+              name
+              image
+              description
+            }
           }
           favoritedBy {
             id
@@ -70,6 +76,12 @@ export const QUERY_SESSIONS = `
               lastName
               profileImage
               profileSlug
+              earnedMeritBadges {
+                id
+                name
+                image
+                description
+              }
             }
           }
         }
