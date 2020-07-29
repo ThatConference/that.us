@@ -18,8 +18,6 @@
   let userProfileImage = profileImage
     ? `${profileImage}${imageCrop}`
     : config.defaultProfileImage;
-
-  if (lastName.toUpperCase() === 'SELL') console.log({ earnedMeritBadges });
 </script>
 
 <div class="flex-1 flex flex-col p-8">
@@ -33,7 +31,7 @@
       />
 
       {#if earnedMeritBadges.length > 0}
-        <span class="absolute bottom-0 left-0 block h-12 w-14">
+        <span class="absolute bottom-0 left-0 block h-12 w-12">
           <img
             src="{earnedMeritBadges[0].image}"
             alt="{earnedMeritBadges[0].name}"
