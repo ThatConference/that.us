@@ -14,6 +14,7 @@ const favoriteFragment = `
       firstName
       lastName
       profileImage
+      profileSlug
       earnedMeritBadges {
         id
         name

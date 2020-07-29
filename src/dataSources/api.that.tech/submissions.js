@@ -20,6 +20,7 @@ export const QUERY_SUBMISSIONS = `
               firstName
               lastName
               profileImage
+              profileSlug
               earnedMeritBadges {
                 id
                 name
