@@ -14,6 +14,12 @@ const favoriteFragment = `
       firstName
       lastName
       profileImage
+      earnedMeritBadges {
+        id
+        name
+        image
+        description
+      }
     }
   }
 `;

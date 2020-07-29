@@ -119,7 +119,12 @@ export const CLAIM_TICKET = `
   mutation claimMyTicket($ticketReference: String!) {
     members {
       member {
-        claimTicket(ticketRef: $ticketReference) 
+        claimTicket(ticketRef: $ticketReference)  {
+          id
+          name
+          image
+          description
+        }
       }
     }
   }
@@ -184,10 +189,12 @@ export default (client) => {
       .mutation(CLAIM_TICKET, variables)
       .toPromise()
       .then((r) => {
-        let claimed = false;
+        let claimed = null;
 
-        if (r.error) claimed = false;
-        else if (r.data.members.member.claimTicket)
+        if (r.error) {
+          // todo... someday log
+          console.error(r.error);
+        } else if (r.data.members.member.claimTicket)
           claimed = r.data.members.member.claimTicket;
 
         return claimed;

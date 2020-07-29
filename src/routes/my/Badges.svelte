@@ -3,14 +3,11 @@
 
   import { onMount } from 'svelte';
   import { getClient } from '@urql/svelte';
-  import { navigateTo } from 'yrv';
-  import _ from 'lodash';
 
-  import { ActionHeader } from '../../elements';
+  import { ActionHeader, LinkButton } from '../../elements';
   import StackedLayout from '../../elements/layouts/StackedLayout.svelte';
   import Nav from '../../components/nav/interiorNav/Top.svelte';
   import ClaimTicketForm from '../../components/my/ClaimTicketForm.svelte';
-
   import memberApi from '../../dataSources/api.that.tech/members.js';
   import { tagEvent } from '../../utilities/gtag';
 
@@ -18,28 +15,35 @@
     isAuthenticated,
     user,
     thatProfile,
+    refreshMe,
   } from '../../utilities/security.js';
 
   const { claimTicket } = memberApi(getClient());
 
-  console.log({ $thatProfile });
+  let awardedBadge;
+
+  let awardedBadges = [];
+  $: if ($thatProfile.earnedMeritBadges) {
+    awardedBadges = [...$thatProfile.earnedMeritBadges];
+  }
 
   async function handleClaimTicket({
     detail: { values, setSubmitting, resetForm },
   }) {
     const { ticketReference } = values;
-    const updateResults = await claimTicket(ticketReference);
+    const badgeEarned = await claimTicket(ticketReference);
 
-    console.log({ updateResults });
+    if (badgeEarned) {
+      tagEvent('badgeClaimed', 'account', badgeEarned.id);
+      awardedBadge = badgeEarned;
 
-    // thatProfile.set(updateResults);
+      await refreshMe();
+    }
+
     tagEvent('claim_badge', 'account', $user.sub);
 
     setSubmitting(false);
     resetForm();
-
-    //todo... need to figure out how to refresh the profile.
-    // navigateTo(`/sessions`, { replace: true });
   }
 </script>
 
@@ -50,23 +54,46 @@
 <StackedLayout>
   <div slot="header">
     <Nav />
-    <ActionHeader title="Merit Badges" />
+    <ActionHeader title="Your Merit Badges">
+      <LinkButton href="/sessions" text="Return to Schedue" />
+    </ActionHeader>
   </div>
 
   <div slot="body">
-    <ClaimTicketForm handleSubmit="{handleClaimTicket}" />
-  </div>
+    {#if awardedBadges.length > 0}
+      <div>
+        <h2
+          class="text-3xl leading-9 font-extrabold tracking-tight text-gray-900
+          sm:text-4xl sm:leading-10"
+        >
+          Awarded Badges
+        </h2>
 
-  <div slot="footer">
-
-    {#if $thatProfile}
-      {#each $thatProfile.earnedMeritBadges as badge (badge.id)}
-        <div>
-          <img class="h-56 w-56" src="{badge.image}" alt="{badge.name}" />
+        <div class="mt-12">
+          {#each awardedBadges as badge (badge.id)}
+            <div class="flex space-x-3">
+              <div class="flex flex-col items-center">
+                <img class="h-56 w-56" src="{badge.image}" alt="{badge.name}" />
+                <h2
+                  class="text-xl leading-9 font-bold tracking-tight
+                  text-gray-500 sm:text-2xl sm:leading-10"
+                >
+                  {badge.name}
+                </h2>
+              </div>
+            </div>
+          {/each}
         </div>
-      {/each}
+      </div>
     {/if}
 
+    <div class="mt-12 border-t">
+      <div class="pt-6">
+        <ClaimTicketForm handleSubmit="{handleClaimTicket}" />
+      </div>
+    </div>
   </div>
+
+  <div slot="footer"></div>
 
 </StackedLayout>
