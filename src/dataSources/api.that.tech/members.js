@@ -103,6 +103,16 @@ export const QUERY_IS_SLUG_TAKEN = `
   }
 `;
 
+export const CLAIM_TICKET = `
+  mutation claimMyTicket($ticketReference: String!) {
+    members {
+      member {
+        claimTicket(ticketRef: $ticketReference) 
+      }
+    }
+  }
+`;
+
 function reformatResults(results) {
   const { members } = results.data.members;
   return members;
@@ -156,12 +166,28 @@ export default (client) => {
       .then((r) => r.data.members.member.update);
   };
 
+  const claimTicket = (ticketReference) => {
+    const variables = { ticketReference };
+    return client
+      .mutation(CLAIM_TICKET, variables)
+      .toPromise()
+      .then((r) => {
+        let claimed = false;
+
+        if (r.error) claimed = false;
+        else if (r.data.members.member.claimTicket)
+          claimed = r.data.members.member.claimTicket;
+
+        return claimed;
+      });
+  };
+
   return {
     queryMembers,
     queryMembersNext,
     createProfile,
     updateProfile,
-
     isSlugTaken,
+    claimTicket,
   };
 };
