@@ -32,11 +32,37 @@
             class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl
             sm:mx-auto md:mt-5 md:text-xl lg:mx-0"
           >
-            On August 3rd 2020 we’re kicking off the largest Open Spaces we’ve
-            ever hosted and you get to join from the comfort of your own camp
-            chair. You’re in control. You make the schedule, together we learn.
-            It’s a full day of virtual open spaces.
+            August 3rd, 2020 marks our first ever THAT Online. We’re taking a
+            different approach to the "virtual conference". Our approach; create
+            a platform removing artificial boundaries, a safe place where we can
+            ALL collaborate in a more creative meaningful way, enabling our
+            inner practitioner. Of course we can to do it anytime, anywhere, and
+            any way we see fit.
           </p>
+
+          <p
+            class="mt-3 font-extrabold text-gray-900 sm:mt-5 sm:text-lg
+            sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0"
+          >
+            You're the Practitioner. You create the schedule!
+          </p>
+          <p
+            class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl
+            sm:mx-auto md:mt-5 md:text-xl lg:mx-0"
+          >
+            Let’s say you want to have a code review, great add it to the
+            schedule! Maybe you want to share your experience on the latest
+            Javascript framework, do it. Do you have a question in search of
+            others advice from others? Ask it. I think you're starting to get
+            the idea. No topic is too small, no format is required.
+          </p>
+          <p
+            class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl
+            sm:mx-auto md:mt-5 md:text-xl lg:mx-0"
+          >
+            All you need is an internet connection and a web browser.
+          </p>
+
           <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
             <div class="rounded-md shadow">
               <Link
