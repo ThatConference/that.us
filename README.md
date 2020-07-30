@@ -52,6 +52,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="https://github.com/MFazio23"><img src="https://avatars0.githubusercontent.com/u/782519?v=4" width="100px;" alt=""/><br /><sub><b>Michael Fazio</b></sub></a><br /><a href="https://github.com/ThatConference/that.us/commits?author=MFazio23" title="Code">💻</a> <a href="https://github.com/ThatConference/that.us/issues?q=author%3AMFazio23" title="Bug reports">🐛</a></td>
     <td align="center"><a href="https://github.com/PrairieGrl"><img src="https://avatars1.githubusercontent.com/u/66928505?v=4" width="100px;" alt=""/><br /><sub><b>PrairieGrl</b></sub></a><br /><a href="https://github.com/ThatConference/that.us/issues?q=author%3APrairieGrl" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://github.com/rolandolopez"><img src="https://avatars3.githubusercontent.com/u/1054389?v=4" width="100px;" alt=""/><br /><sub><b>Rolando Lopez</b></sub></a><br /><a href="https://github.com/ThatConference/that.us/issues?q=author%3Arolandolopez" title="Bug reports">🐛</a></td>
     <td align="center"><a href="https://www.jeana.dev"><img src="https://avatars2.githubusercontent.com/u/194128?v=4" width="100px;" alt=""/><br /><sub><b>Jeana</b></sub></a><br /><a href="https://github.com/ThatConference/that.us/issues?q=author%3Atsidel" title="Bug reports">🐛</a></td>
   </tr>
 </table>
