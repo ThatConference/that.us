@@ -1,7 +1,7 @@
 # THAT.US
 
 [![GitHub issues open](https://img.shields.io/github/issues/thatconference/that.us.svg)](https://github.com/thatconference/that.us/issues) [![release](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/thatconference/that.us/issues) <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-9-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-10-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 ## Get started
@@ -52,6 +52,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="https://github.com/MFazio23"><img src="https://avatars0.githubusercontent.com/u/782519?v=4" width="100px;" alt=""/><br /><sub><b>Michael Fazio</b></sub></a><br /><a href="https://github.com/ThatConference/that.us/commits?author=MFazio23" title="Code">💻</a> <a href="https://github.com/ThatConference/that.us/issues?q=author%3AMFazio23" title="Bug reports">🐛</a></td>
     <td align="center"><a href="https://github.com/PrairieGrl"><img src="https://avatars1.githubusercontent.com/u/66928505?v=4" width="100px;" alt=""/><br /><sub><b>PrairieGrl</b></sub></a><br /><a href="https://github.com/ThatConference/that.us/issues?q=author%3APrairieGrl" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://www.jeana.dev"><img src="https://avatars2.githubusercontent.com/u/194128?v=4" width="100px;" alt=""/><br /><sub><b>Jeana</b></sub></a><br /><a href="https://github.com/ThatConference/that.us/issues?q=author%3Atsidel" title="Bug reports">🐛</a></td>
   </tr>
 </table>
 
