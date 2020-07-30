@@ -1,0 +1,76 @@
+<script>
+  export let id;
+  export let title;
+  export let shortDescription;
+  export let startTime;
+  export let speakers;
+  export let tags = [];
+  export let attendees = []; // todo.. needs to be favorites
+
+  import { fade, fly } from 'svelte/transition';
+  import Icon from 'svelte-awesome';
+  import { arrowDown } from 'svelte-awesome/icons';
+
+  // title = "Remember where we've been. Look to where we're going!";
+  title = "Remember where we've been. Look to where we're going!";
+  shortDescription =
+    'Bacon ipsum dolor amet buffalo kevin cow sausage shoulder, boudin meatball frankfurter. Chuck bacon jerky venison turkey swine, sausage alcatra. Strip steak pork chop leberkas andouille t-bone landjaeger, pastrami shankle bresaola ground round short loin. Chuck pork andouille, sausage t-bone jowl cow venison filet mignon shoulder. Short ribs venison pancetta andouille.';
+
+  import KeynoteCallout from './KeynoteCallout.svelte';
+
+  let showMore = false;
+</script>
+
+<div
+  on:click|preventDefault="{() => (showMore = !showMore)}"
+  class="border-none, cursor-pointer"
+>
+  <div class="bg-gray-900 rounded">
+    <div class="relative z-10 rounded-lg shadow-xl">
+      <div class="absolute inset-x-0 top-0 transform translate-y-px">
+        <div class="flex justify-center transform -translate-y-1/2">
+          <span
+            class="inline-flex rounded-full bg-red-500 px-20 py-3 text-2xl
+            leading-5 font-semibold tracking-wider uppercase text-white"
+          >
+            Keynote
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pt-12 pb-12 px-4 sm:px-6 lg:px-8 lg:pt-20 lg:pb-20">
+
+      <div class="text-center">
+        <p
+          class="mt- text-3xl leading-9 font-extrabold text-white sm:text-2xl
+          sm:leading-10 lg:text-5xl lg:leading-none"
+        >
+          {title}
+        </p>
+        <p
+          class="mt-12 max-w-4xl mx-auto text-xl leading-7 text-gray-300
+          sm:mt-14 sm:text-2xl sm:leading-8"
+        >
+          {shortDescription}
+        </p>
+      </div>
+
+      {#if !showMore}
+        <div
+          transition:fade="{{ duration: 1000 }}"
+          class="pt-12 text-white text-center"
+        >
+          <Icon data="{arrowDown}" class="h-10 w-10" />
+        </div>
+      {/if}
+    </div>
+
+    {#if showMore}
+      <div transition:fly="{{ y: 100, duration: 1000 }}">
+        <KeynoteCallout {speakers} {attendees} />
+      </div>
+    {/if}
+  </div>
+
+</div>

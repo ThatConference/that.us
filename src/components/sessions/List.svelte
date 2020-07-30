@@ -10,6 +10,7 @@
 
   import CardLoader from '../CardLoader.svelte';
   import Card from './Card.svelte';
+  import KeynoteCard from './KeynoteCard.svelte';
 
   import { Waiting, Action, GroupHeader } from '../../elements';
 
@@ -17,6 +18,8 @@
   let groups = Object.keys(sessionResults)
     .map(i => ({ key: i, startTime: new Date(i) }))
     .sort((a, b) => a.startTime - b.startTime);
+
+  console.log({ sessionResults });
 </script>
 
 <div>
@@ -33,9 +36,18 @@
       <div>
         <ul class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 ">
           {#each sessionResults[group.key] as session (session.id)}
-            <li class="col-span-1 bg-white rounded-lg shadow">
-              <Card {...session} {editMode} />
-            </li>
+            {#if session.type !== 'KEYNOTE'}
+              <li class="col-span-1 bg-white rounded-lg shadow-lg">
+                <Card {...session} {editMode} />
+              </li>
+            {:else}
+              <li
+                class="col-span-1 sm:col-span-2 lg:col-span-3 bg-white
+                rounded-lg shadow-lg mt-10 mb-10"
+              >
+                <KeynoteCard {...session} />
+              </li>
+            {/if}
           {/each}
         </ul>
       </div>
