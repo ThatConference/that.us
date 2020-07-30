@@ -25,6 +25,7 @@
 
   const { sessionId } = router.params;
   const imageCrop = '?mask=ellipse&w=500&h=500&fit=crop';
+  const jitsiFrameTopBuffer = 340;
 
   const QUERY_SESSION = query({
     query: `
@@ -67,7 +68,7 @@
     const options = {
       roomName: `THAT-${sessionId}`,
       width: '100%',
-      height: window.document.body.scrollHeight - 200,
+      height: window.document.body.scrollHeight - jitsiFrameTopBuffer,
       // https://github.com/jitsi/jitsi-meet/blob/master/config.js
       configOverwrite: {
         startWithAudioMuted: true,
@@ -138,21 +139,22 @@
   let expanded = false;
 
   function handleResize() {
-    window.document.getElementById(
-      'jitsiConferenceFrame0',
-    ).style.height = `${window.innerHeight - 200}px`;
+    _setMainHeight();
+    _setJitsoFrameSize();
     _setContentHeightWidth();
   }
 
   function expandJitsiFrame() {
     expanded = true;
     _setMainHeight();
+    _setJitsoFrameSize();
     _setContentHeightWidth();
   }
 
   function shrinkJitsiFrame() {
     expanded = false;
     _setMainHeight();
+    _setJitsoFrameSize();
     _setContentHeightWidth();
   }
 
@@ -164,17 +166,29 @@
   function _setContentHeightWidth() {
     const element = window.document.getElementById('content-block');
 
-    element.style.height = expanded ? `${window.innerHeight - 150}px` : '100%';
+    element.style.height = expanded ? `${window.innerHeight - 130}px` : '100%';
     element.style.width = expanded ? `${window.innerWidth - 50}px` : '100%';
 
     if (expanded) {
       element.classList.add('absolute', 'left-5');
+      element.scrollIntoView();
     } else {
       element.classList.remove('absolute', 'left-5');
+      window.scrollTo(0, 0);
     }
 
     // Property read to get webkit to repaint the element
     element.offsetHeight;
+  }
+
+  function _setJitsoFrameSize() {
+    const element = window.document.getElementById('jitsiConferenceFrame0');
+
+    if (expanded) {
+      element.style.height = `${window.innerHeight - 180}px`;
+    } else {
+      element.style.height = `${window.innerHeight - jitsiFrameTopBuffer}px`;
+    }
   }
 </script>
 
