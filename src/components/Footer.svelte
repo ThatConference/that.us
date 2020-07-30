@@ -55,6 +55,10 @@
       href: '/faq',
     },
     {
+      text: 'Help',
+      href: '/help',
+    },
+    {
       text: 'Blog',
       href: 'https://thatconference.com/blog',
     },

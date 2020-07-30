@@ -16,6 +16,7 @@
   import FAQ from './routes/FAQ.svelte';
   import Partners from './routes/Partners.svelte';
   import Members from './routes/Members.svelte';
+  import Help from './routes/help/Help.svelte';
 
   // my
   import MyFavorites from './routes/my/Favorites.svelte';
@@ -92,6 +93,7 @@
     <Route exact path="/faq" component="{FAQ}" />
     <Route exact path="/members" component="{Members}" />
     <Route exact path="/partners" component="{Partners}" />
+    <Route exact path="/help" component="{Help}" />
 
     <Route exact path="/sessions" component="{List}" />
 
