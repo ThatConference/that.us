@@ -17,7 +17,7 @@
     transition:fade="{{ duration: 1000 }}"
   >
     <div class="max-w-screen-xl mx-auto px-2 sm:px-6 lg:px-8">
-      <div class="p-2 rounded-lg bg-red-400 shadow-lg sm:p-3">
+      <div class="p-2 rounded-lg bg-red-400 shadow-lg sm:p-3 sm:mb-32">
         <div class="flex items-center justify-between flex-wrap">
           <div class="w-0 flex-1 flex items-center">
             <span class="flex p-2 rounded-lg">

@@ -13,7 +13,7 @@
 
   import { Waiting } from '../../elements';
   import { isAuthenticated, token } from '../../utilities/security.js';
-  import ErrorNotificaiton from '../../components/notifications/Error.svelte';
+  import ErrorNotification from '../../components/notifications/Error.svelte';
 
   let initialValues = {
     ticketReference: undefined,
@@ -112,7 +112,7 @@
     </div>
 
     {#if isValid === false}
-      <ErrorNotificaiton message="Please correct the errors listed above." />
+      <ErrorNotification message="Please correct the errors listed above." />
     {/if}
 
     {#if isSubmitting}
