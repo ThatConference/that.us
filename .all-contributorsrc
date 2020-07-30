@@ -96,6 +96,24 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "rolandolopez",
+      "name": "Rolando Lopez",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/1054389?v=4",
+      "profile": "https://github.com/rolandolopez",
+      "contributions": [
+        "bug"
+      ]
+      },
+     {
+      "login": "tsidel",
+      "name": "Jeana",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/194128?v=4",
+      "profile": "https://www.jeana.dev",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
