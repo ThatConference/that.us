@@ -17,11 +17,17 @@
   {/if}
 
   {#each attendees as attendee, i}
-    <img
+    <a
+      href="https://www.thatconference.com/member/{attendee.profileSlug}"
       class="-ml-2 inline-block h-8 w-8 rounded-full text-white shadow-solid"
       class:-ml-2="{host || i > 0}"
-      src="{`${attendee.profileImage || config.defaultProfileImage}${imageCrop}`}"
-      alt="{`${attendee.firstName} ${attendee.lastName}`}"
-    />
+      target="_blank"
+    >
+      <img
+        src="{`${attendee.profileImage || config.defaultProfileImage}${imageCrop}`}"
+        alt="{`${attendee.firstName} ${attendee.lastName}`}"
+        title="{`${attendee.firstName} ${attendee.lastName}`}"
+      />
+    </a>
   {/each}
 </div>

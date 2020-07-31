@@ -58,6 +58,7 @@ export const QUERY_SESSION_BY_ID = `
             firstName
             lastName
             profileImage
+            profileSlug
           }
         }
       }

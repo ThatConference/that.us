@@ -47,6 +47,7 @@
                 firstName
                 lastName
                 profileImage
+                profileSlug
               }
             }
           }
