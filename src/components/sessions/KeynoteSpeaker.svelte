@@ -106,7 +106,7 @@
                 >
                   <span
                     class="flex-none text-3xl leading-none tracking-tight
-                    text-gray-900 sm:text-3xl lg:pr-4 pb-4"
+                    text-gray-900 sm:text-3xl lg:pr-4 pb-4 lg:pb-0"
                   >
                     <span class="font-extrabold">Watch On</span>
                   </span>
