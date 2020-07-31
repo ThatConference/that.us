@@ -50,7 +50,9 @@
                         />
 
                         {#if host.earnedMeritBadges.length > 0}
-                          <span class="absolute bottom-0 left-0 block h-6 w-6">
+                          <span
+                            class="absolute bottom-0 left-0 block h-20 w-20"
+                          >
                             <img
                               src="{host.earnedMeritBadges[0].image}"
                               alt="{host.earnedMeritBadges[0].name}"
@@ -68,16 +70,14 @@
                       sm:text-2xl sm:leading-10 lg:text-5xl lg:leading-none"
                     >
 
-                      <span>{`CLARK SELL`}</span>
+                      <span>{`${host.firstName} ${host.lastName}`}</span>
                     </span>
 
                     <span
                       class="py-3 text-xl leading-none tracking-tight
                       text-gray-500 sm:text-xl"
                     >
-                      <span>
-                        {`Founder & Practitioner @ THAT & Unspecified`}
-                      </span>
+                      <span>{`${host.jobTitle} @ ${host.company}`}</span>
 
                     </span>
                     <span
@@ -88,15 +88,7 @@
                         class="ml-3 text-base leading-6 font-medium
                         text-gray-500 text-center"
                       >
-                        I’m a very passionate, entrepreneurial person whose love
-                        for developing software was born from my obsessive
-                        passion for building and customizing automobiles. This
-                        love of creativity, this love of building, creating,
-                        lead me to software development. Today I own and operate
-                        two companies but I consider myself a practitioner. My
-                        passion for software development and people have
-                        converged. It’s my mission to create software that
-                        connects people in a deeper, more meaningful way.
+                        {host.bio}
                       </p>
                     </span>
 

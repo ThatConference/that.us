@@ -27,6 +27,7 @@
               speakers {
                 firstName
                 lastName
+                bio
                 profileImage
                 profileSlug
                 profileLinks {

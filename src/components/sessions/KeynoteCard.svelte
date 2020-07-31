@@ -1,23 +1,14 @@
 <script>
-  export let id;
   export let title;
   export let shortDescription;
-  export let startTime;
   export let speakers;
-  export let tags = [];
-  export let attendees = []; // todo.. needs to be favorites
 
   import { fade, fly } from 'svelte/transition';
   import Icon from 'svelte-awesome';
-  import { arrowDown } from 'svelte-awesome/icons';
+  import { chevronDown } from 'svelte-awesome/icons';
+  import KeynoteSpeaker from './KeynoteSpeaker.svelte';
 
-  // title = "Remember where we've been. Look to where we're going!";
-  title = "Remember where we've been. Look to where we're going!";
-  shortDescription =
-    'Bacon ipsum dolor amet buffalo kevin cow sausage shoulder, boudin meatball frankfurter. Chuck bacon jerky venison turkey swine, sausage alcatra. Strip steak pork chop leberkas andouille t-bone landjaeger, pastrami shankle bresaola ground round short loin. Chuck pork andouille, sausage t-bone jowl cow venison filet mignon shoulder. Short ribs venison pancetta andouille.';
-
-  import KeynoteCallout from './KeynoteCallout.svelte';
-
+  let splitTitle = title.replace(/([.?!])\s*(?=[A-Z])/g, '$1|').split('|');
   let showMore = false;
 </script>
 
@@ -46,7 +37,9 @@
           class="mt- text-3xl leading-9 font-extrabold text-white sm:text-2xl
           sm:leading-10 lg:text-5xl lg:leading-none"
         >
-          {title}
+          {#each splitTitle as line}
+            <p>{line}</p>
+          {/each}
         </p>
         <p
           class="mt-12 max-w-4xl mx-auto text-xl leading-7 text-gray-300
@@ -61,14 +54,14 @@
           transition:fade="{{ duration: 1000 }}"
           class="pt-12 text-white text-center"
         >
-          <Icon data="{arrowDown}" class="h-10 w-10" />
+          <Icon data="{chevronDown}" class="h-10 w-10" />
         </div>
       {/if}
     </div>
 
     {#if showMore}
       <div transition:fly="{{ y: 100, duration: 1000 }}">
-        <KeynoteCallout {speakers} {attendees} />
+        <KeynoteSpeaker {speakers} />
       </div>
     {/if}
   </div>

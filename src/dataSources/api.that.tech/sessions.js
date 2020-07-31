@@ -36,6 +36,9 @@ export const QUERY_SESSION_BY_ID = `
           speakers {
             firstName
             lastName
+            bio
+            jobTitle
+            company
             profileImage
             profileSlug
             profileLinks {
@@ -74,6 +77,9 @@ export const QUERY_SESSIONS = `
               id
               firstName
               lastName
+              bio
+              jobTitle
+              company
               profileImage
               profileSlug
               earnedMeritBadges {
