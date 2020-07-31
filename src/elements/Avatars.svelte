@@ -26,6 +26,7 @@
       <img
         src="{`${attendee.profileImage || config.defaultProfileImage}${imageCrop}`}"
         alt="{`${attendee.firstName} ${attendee.lastName}`}"
+        title="{`${attendee.firstName} ${attendee.lastName}`}"
       />
     </a>
   {/each}
