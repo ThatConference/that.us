@@ -105,14 +105,23 @@
       "contributions": [
         "bug"
       ]
-      },
-     {
+    },
+    {
       "login": "tsidel",
       "name": "Jeana",
       "avatar_url": "https://avatars2.githubusercontent.com/u/194128?v=4",
       "profile": "https://www.jeana.dev",
       "contributions": [
         "bug"
+      ]
+    },
+    {
+      "login": "lukeplamann",
+      "name": "lukeplamann",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/9270720?v=4",
+      "profile": "https://github.com/lukeplamann",
+      "contributions": [
+        "ideas"
       ]
     }
   ],
