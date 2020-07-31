@@ -18,6 +18,13 @@
   let groups = Object.keys(sessionResults)
     .map(i => ({ key: i, startTime: new Date(i) }))
     .sort((a, b) => a.startTime - b.startTime);
+
+  const isKeynote = session => {
+    let results = false;
+    if (session.type === 'KEYNOTE' || session.type === 'PANEL') results = true;
+
+    return results;
+  };
 </script>
 
 <div>
@@ -34,16 +41,16 @@
       <div>
         <ul class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 ">
           {#each sessionResults[group.key] as session (session.id)}
-            {#if session.type !== 'KEYNOTE'}
-              <li class="col-span-1 bg-white rounded-lg shadow-lg">
-                <Card {...session} {editMode} />
-              </li>
-            {:else}
+            {#if isKeynote(session)}
               <li
                 class="col-span-1 sm:col-span-2 lg:col-span-3 bg-white
                 rounded-lg shadow-lg mt-10 mb-10"
               >
                 <KeynoteCard {...session} />
+              </li>
+            {:else}
+              <li class="col-span-1 bg-white rounded-lg shadow-lg">
+                <Card {...session} {editMode} />
               </li>
             {/if}
           {/each}

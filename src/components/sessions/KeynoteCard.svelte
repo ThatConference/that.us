@@ -2,6 +2,7 @@
   export let title;
   export let shortDescription;
   export let speakers;
+  export let type;
 
   import { fade, fly } from 'svelte/transition';
   import Icon from 'svelte-awesome';
@@ -61,7 +62,11 @@
 
     {#if showMore}
       <div transition:fly="{{ y: 100, duration: 1000 }}">
-        <KeynoteSpeaker {speakers} />
+        {#if type === 'KEYNOTE'}
+          <KeynoteSpeaker {speakers} />
+        {:else if type === 'PANEL'}
+          <div></div>
+        {/if}
       </div>
     {/if}
   </div>
