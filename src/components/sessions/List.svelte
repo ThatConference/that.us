@@ -18,8 +18,6 @@
   let groups = Object.keys(sessionResults)
     .map(i => ({ key: i, startTime: new Date(i) }))
     .sort((a, b) => a.startTime - b.startTime);
-
-  console.log({ sessionResults });
 </script>
 
 <div>

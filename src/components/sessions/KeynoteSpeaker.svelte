@@ -95,70 +95,76 @@
                   </div>
                 </div>
               </div>
+
               <div
-                class="border-t-2 border-gray-100 rounded-b-lg pt-10 pb-8 px-6
-                bg-gray-50 sm:px-10 sm:py-10"
+                class="border-t-2 border-gray-100 rounded-b-lg pt-10 pb-8
+                bg-gray-50 px-10 py-10"
               >
 
-                <div class="flex items-center justify-center space-x-4">
-
+                <div
+                  class="flex flex-col lg:flex-row items-center justify-center"
+                >
                   <span
-                    class="text-3xl leading-none tracking-tight text-gray-900
-                    sm:text-3xl pr-4"
+                    class="flex-none text-3xl leading-none tracking-tight
+                    text-gray-900 sm:text-3xl lg:pr-4 pb-4"
                   >
                     <span class="font-extrabold">Watch On</span>
                   </span>
 
-                  <div class="flex-shrink-0 flex space-x-4">
+                  <div
+                    class="flex flex-col lg:flex-row items-center justify-center"
+                  >
 
-                    <span class="inline-flex rounded-md shadow-md">
-                      <Link
+                    <div class="inline-flex m-3 rounded-md shadow-md">
+                      <button
                         open
                         href="https://youtube.com/c/thatconference"
                         type="button"
-                        class="relative inline-flex items-center px-4 py-2
-                        border border-gray-300 text-sm leading-5 font-medium
-                        rounded-md text-gray-700 bg-white hover:text-red-700
-                        focus:outline-none focus:shadow-outline-red
-                        focus:border-red-300 active:bg-gray-50
-                        active:text-gray-800"
+                        class="relative inline-flex items-center justify-center
+                        px-4 py-2 border border-gray-300 text-sm leading-5
+                        font-medium rounded-md text-gray-700 bg-white
+                        hover:text-red-700 focus:outline-none
+                        focus:shadow-outline-red focus:border-red-300
+                        active:bg-gray-50 active:text-gray-800 w-32"
                       >
                         <Icon data="{youtubePlay}" class="-ml-1 mr-2 h-5 w-5" />
                         <span>YouTube</span>
-                      </Link>
-                    </span>
-                    <span class="inline-flex rounded-md shadow-md">
-                      <Link
+                      </button>
+                    </div>
+
+                    <div class="inline-flex m-3 rounded-md shadow-md">
+                      <button
                         open
                         href="https://facebook.com/thatconference"
                         type="button"
-                        class="relative inline-flex items-center px-4 py-2
-                        border border-gray-300 text-sm leading-5 font-medium
-                        rounded-md text-gray-700 bg-white hover:text-blue-700
-                        focus:outline-none focus:shadow-outline-blue
-                        focus:border-blue-300 active:bg-gray-50
-                        active:text-gray-800"
+                        class="relative inline-flex items-center justify-center
+                        px-4 py-2 border border-gray-300 text-sm leading-5
+                        font-medium rounded-md text-gray-700 bg-white
+                        hover:text-blue-700 focus:outline-none
+                        focus:shadow-outline-blue focus:border-blue-300
+                        active:bg-gray-50 active:text-gray-800 w-32"
                       >
                         <Icon data="{facebook}" class="-ml-1 mr-2 h-5 w-5" />
                         <span>Facebook</span>
-                      </Link>
-                    </span>
-                    <span class="inline-flex rounded-md shadow-md">
-                      <Link
+                      </button>
+                    </div>
+
+                    <div class="inline-flex m-3 rounded-md shadow-md">
+                      <button
                         open
                         href="https://twitch.com/thatconference"
                         type="button"
-                        class="relative inline-flex items-center px-6 py-4
-                        border border-gray-300 text-sm leading-5 font-medium
-                        rounded-md text-gray-700 bg-white hover:text-indigo-700
-                        focus:outline-none focus:shadow-outline-indigo
-                        focus:border-indigo-300 active:bg-gray-50
-                        active:text-gray-800"
+                        class="relative inline-flex items-center justify-center
+                        px-4 py-2 border border-gray-300 text-sm leading-5
+                        font-medium rounded-md text-gray-700 bg-white
+                        hover:text-indigo-700 focus:outline-none
+                        focus:shadow-outline-indigo focus:border-indigo-300
+                        active:bg-gray-50 active:text-gray-800 w-32"
                       >
                         <Icon data="{twitch}" class="-ml-1 mr-2 h-5 w-5" />
                         <span>Twitch</span>
-                      </Link>
-                    </span>
+                      </button>
+                    </div>
 
                   </div>
 
@@ -166,7 +172,6 @@
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </div>
