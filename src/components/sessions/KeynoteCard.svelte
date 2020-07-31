@@ -8,6 +8,7 @@
   import Icon from 'svelte-awesome';
   import { chevronDown } from 'svelte-awesome/icons';
   import KeynoteSpeaker from './KeynoteSpeaker.svelte';
+  import PanelSpeakers from './PanelSpeakers.svelte';
 
   let splitTitle = title.replace(/([.?!])\s*(?=[A-Z])/g, '$1|').split('|');
   let showMore = false;
@@ -65,7 +66,7 @@
         {#if type === 'KEYNOTE'}
           <KeynoteSpeaker {speakers} />
         {:else if type === 'PANEL'}
-          <div></div>
+          <PanelSpeakers {speakers} />
         {/if}
       </div>
     {/if}
