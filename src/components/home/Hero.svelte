@@ -100,10 +100,9 @@
   </div>
   <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
     <img
-      class="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full"
-      data-src="https://www.thatconference.com/images/logo.that.online.jpg"
-      src="https://www.thatconference.com/images/logo.that.online.jpg"
-      alt=""
+      class="h-56 w-full object-fit sm:h-72 md:h-96 lg:w-full lg:h-full p-24"
+      src="/images/thatOnline.svg"
+      alt="THAT Online"
     />
   </div>
 </div>
