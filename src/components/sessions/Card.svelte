@@ -94,7 +94,7 @@
         const { join } = qs.parse(location.search);
         if (join) isInWindow = true;
       }
-    }, 10000);
+    }, 5000);
 
     return () => {
       clearInterval(interval);

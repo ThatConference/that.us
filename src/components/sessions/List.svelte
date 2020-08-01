@@ -4,6 +4,7 @@
 
   import { onMount } from 'svelte';
   import dayjs from 'dayjs';
+  import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
   import { Link } from 'yrv';
 
   import _ from 'lodash';
@@ -13,6 +14,12 @@
   import KeynoteCard from './KeynoteCard.svelte';
 
   import { Waiting, Action, GroupHeader } from '../../elements';
+
+  dayjs.extend(isSameOrAfter);
+
+  sessions = sessions.filter(s =>
+    dayjs(s.startTime).isSameOrAfter(dayjs(), 'day'),
+  );
 
   let sessionResults = _.groupBy(sessions, 'startTime');
   let groups = Object.keys(sessionResults)
