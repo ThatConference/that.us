@@ -12,7 +12,7 @@
 </script>
 
 <div class="w-full h-full flex flex-col">
-  <div class="flex items-center p-3 space-x-3">
+  <div class="flex items-center justify-center p-3 space-x-3">
     <Link
       open
       href="https://www.thatconference.com/member/{speaker.profileSlug}"
@@ -39,23 +39,24 @@
     </Link>
   </div>
 
-  <div class="mt-4 flex flex-col items-center justify-center text-center">
+  <div class="flex justify-center text-center mt-2">
     <span
-      class="text-xl leading-9 font-extrabold text-gray-900 sm:text-l
-      sm:leading-10 lg:text-2xl lg:leading-none"
+      class="text-xl leading-none font-extrabold text-gray-900 sm:text-l
+      lg:text-2xl"
     >
-
-      <span>{`${speaker.firstName} ${speaker.lastName}`}</span>
-    </span>
-
-    <span
-      class="py-3 text-xl leading-none tracking-tight text-gray-500 sm:text-xl"
-    >
-      <div class="flex flex-col justify-center">
-        <p>{speaker.jobTitle}</p>
-        <p>{speaker.company}</p>
-      </div>
-
+      {`${speaker.firstName} ${speaker.lastName}`}
     </span>
   </div>
+
+  <div class="flex flex-col justify-center text-center mt-2">
+    <h3 class="text-xl leading-none tracking-tight text-gray-600 sm:text-xl">
+      {speaker.jobTitle ? speaker.jobTitle : ''}
+    </h3>
+
+    <h3 class="text-xl leading-none tracking-tight text-gray-400 sm:text-xl">
+      {speaker.company ? speaker.company : ''}
+    </h3>
+
+  </div>
+
 </div>

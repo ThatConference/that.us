@@ -277,7 +277,7 @@
     <div class="flex flex-wrap items-center text-red-400 space-x-1 ">
       <Icon data="{heartO}" class="h-8 w-8" />
       <span>favorited by:</span>
-      <div class="pl-2">
+      <div class="md:pl-2">
         <Avatars attendees="{favoritedBy}" />
       </div>
     </div>

@@ -28,7 +28,10 @@
               ></div>
               <div class="bg-white rounded-t-lg px-6 pt-12 pb-10">
 
-                <ul class="grid grid-cols-1 gap-8 md:grid-cols-3">
+                <ul
+                  class="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-2
+                  lg:grid-cols-3"
+                >
                   {#each displayedSpeakers as speaker (speaker.id)}
                     <li class="col-span-1">
                       <PanelSpeakerCard {speaker} />
