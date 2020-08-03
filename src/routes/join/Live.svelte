@@ -123,6 +123,7 @@
         );
 
         api.getIFrame().focus();
+        handleResize();
       },
 
       parentNode: document.getElementById('meet'),
