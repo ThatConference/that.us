@@ -8,7 +8,7 @@
       network: 'GITHUB',
     },
     {
-      href: 'https://twitte.com/thatconference',
+      href: 'https://twitter.com/thatconference',
       network: 'TWITTER',
     },
     {
