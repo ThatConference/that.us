@@ -3,9 +3,13 @@
 
   // 3rd party
   import { getClient } from '@urql/svelte';
+  import dayjs from 'dayjs';
   import { Link } from 'yrv';
   import { onMount } from 'svelte';
   import _ from 'lodash';
+
+  // utilities
+  import { getTimeStampId, scrollIntoView } from '../../utilities/scrollHelper';
 
   // components
   import Nav from '../../components/nav/interiorNav/Top.svelte';
@@ -37,6 +41,15 @@
 
   onMount(() => {
     query = querySessions();
+    query.then((_) => {
+      const now = dayjs();
+      let starting = now.startOf('hour');
+      const bump = now.minute() >= 29;
+      starting = bump === true ? starting.add(30, 'm') : starting;
+      const id = getTimeStampId(starting.toDate());
+
+      scrollIntoView(`#${id}`);
+    });
   });
 </script>
 

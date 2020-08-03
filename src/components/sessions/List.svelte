@@ -9,6 +9,8 @@
 
   import _ from 'lodash';
 
+  import { getTimeStampId } from '../../utilities/scrollHelper';
+
   import CardLoader from '../CardLoader.svelte';
   import Card from './Card.svelte';
   import KeynoteCard from './KeynoteCard.svelte';
@@ -17,16 +19,20 @@
 
   dayjs.extend(isSameOrAfter);
 
-  sessions = sessions.filter(s =>
+  sessions = sessions.filter((s) =>
     dayjs(s.startTime).isSameOrAfter(dayjs(), 'day'),
   );
 
   let sessionResults = _.groupBy(sessions, 'startTime');
   let groups = Object.keys(sessionResults)
-    .map(i => ({ key: i, startTime: new Date(i) }))
+    .map((i) => ({
+      key: i,
+      startTime: new Date(i),
+      headerId: getTimeStampId(new Date(i)),
+    }))
     .sort((a, b) => a.startTime - b.startTime);
 
-  const isKeynote = session => {
+  const isKeynote = (session) => {
     let results = false;
     if (session.type === 'KEYNOTE' || session.type === 'PANEL') results = true;
 
@@ -41,7 +47,9 @@
         {#if !dayjs(group.startTime).isValid()}
           <span>Unscheduled</span>
         {:else}
-          <span>{dayjs(group.startTime).format('hh:mm a')}</span>
+          <span id="{group.headerId}">
+            {dayjs(group.startTime).format('hh:mm a')}
+          </span>
         {/if}
       </GroupHeader>
 
