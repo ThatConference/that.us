@@ -1,4 +1,4 @@
-import dayjs from "dayjs";
+import dayjs from 'dayjs';
 
 /**
  * Scrolls the given element into view
@@ -14,7 +14,7 @@ export const scrollIntoView = (elementOrSelector) => {
     case 'string':
       element = document.querySelector(elementOrSelector);
       break;
-    case 'object':
+    default:
       element = elementOrSelector;
       break;
   }
@@ -23,11 +23,9 @@ export const scrollIntoView = (elementOrSelector) => {
     return;
   }
 
-  try {
-    element.scrollIntoView({ behavior: "smooth" });
-  } catch (error) {
-    console.warn(error); // just warn on this, no need to display error
+  if (typeof element.scrollIntoView === 'function') {
+    element.scrollIntoView({ behavior: 'smooth' });
   }
-}
+};
 
-export const getTimeStampId = date => dayjs(date).format('a-hh-mm');
+export const getTimeStampId = (date) => dayjs(date).format('a-hh-mm');
