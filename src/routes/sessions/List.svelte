@@ -41,15 +41,16 @@
 
   onMount(() => {
     query = querySessions();
-    query.then((_) => {
-      const now = dayjs();
-      let starting = now.startOf('hour');
-      const bump = now.minute() >= 29;
-      starting = bump === true ? starting.add(30, 'm') : starting;
-      const id = getTimeStampId(starting.toDate());
+    // TODO put back later after we have new dashboard.
+    // query.then((_) => {
+    //   const now = dayjs();
+    //   let starting = now.startOf('hour');
+    //   const bump = now.minute() >= 29;
+    //   starting = bump === true ? starting.add(30, 'm') : starting;
+    //   const id = getTimeStampId(starting.toDate());
 
-      scrollIntoView(`#${id}`);
-    });
+    //   scrollIntoView(`#${id}`);
+    // });
   });
 </script>
 
