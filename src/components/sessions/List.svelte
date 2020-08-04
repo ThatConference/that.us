@@ -19,20 +19,21 @@
 
   dayjs.extend(isSameOrAfter);
 
-  sessions = sessions.filter((s) =>
-    dayjs(s.startTime).isSameOrAfter(dayjs(), 'day'),
-  );
+  // todo: pull back after real schedule is up.
+  // sessions = sessions.filter((s) =>
+  //   dayjs(s.startTime).isSameOrAfter(dayjs(), 'day'),
+  // );
 
   let sessionResults = _.groupBy(sessions, 'startTime');
   let groups = Object.keys(sessionResults)
-    .map((i) => ({
+    .map(i => ({
       key: i,
       startTime: new Date(i),
       headerId: getTimeStampId(new Date(i)),
     }))
     .sort((a, b) => a.startTime - b.startTime);
 
-  const isKeynote = (session) => {
+  const isKeynote = session => {
     let results = false;
     if (session.type === 'KEYNOTE' || session.type === 'PANEL') results = true;
 
