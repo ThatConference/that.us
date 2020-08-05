@@ -153,7 +153,6 @@
       ]
     },
     {
-
       "login": "kenssamson",
       "name": "Ken Samson",
       "avatar_url": "https://avatars3.githubusercontent.com/u/9221745?v=4",
@@ -167,6 +166,15 @@
       "name": "asdfasdfasdfasdf asd",
       "avatar_url": "https://avatars0.githubusercontent.com/u/5384732?v=4",
       "profile": "https://github.com/ps2goat",
+      "contributions": [
+        "ideas"
+      ]
+    },
+    {
+      "login": "zo0o0ot",
+      "name": "Ross Larson",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/876146?v=4",
+      "profile": "https://github.com/zo0o0ot",
       "contributions": [
         "ideas"
       ]
