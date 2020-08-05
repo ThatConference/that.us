@@ -142,6 +142,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "kamranayub",
+      "name": "Kamran Ayub",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/563819?v=4",
+      "profile": "http://kamranicus.com/",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
