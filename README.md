@@ -1,7 +1,7 @@
 # THAT.US
 
 [![GitHub issues open](https://img.shields.io/github/issues/thatconference/that.us.svg)](https://github.com/thatconference/that.us/issues) [![release](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/thatconference/that.us/issues) <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-13-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-15-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 ## Get started
@@ -57,6 +57,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/lukeplamann"><img src="https://avatars3.githubusercontent.com/u/9270720?v=4" width="100px;" alt=""/><br /><sub><b>lukeplamann</b></sub></a><br /><a href="#ideas-lukeplamann" title="Ideas, Planning, & Feedback">🤔</a></td>
     <td align="center"><a href="http://youtube.com/eddiejaoude?sub_confirmation=1"><img src="https://avatars3.githubusercontent.com/u/624760?v=4" width="100px;" alt=""/><br /><sub><b>Eddie Jaoude</b></sub></a><br /><a href="https://github.com/ThatConference/that.us/commits?author=eddiejaoude" title="Code">💻</a> <a href="https://github.com/ThatConference/that.us/issues?q=author%3Aeddiejaoude" title="Bug reports">🐛</a></td>
     <td align="center"><a href="https://www.microsoft.com"><img src="https://avatars0.githubusercontent.com/u/7679720?v=4" width="100px;" alt=""/><br /><sub><b>David Pine</b></sub></a><br /><a href="https://github.com/ThatConference/that.us/commits?author=IEvangelist" title="Code">💻</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="http://kamranicus.com/"><img src="https://avatars1.githubusercontent.com/u/563819?v=4" width="100px;" alt=""/><br /><sub><b>Kamran Ayub</b></sub></a><br /><a href="https://github.com/ThatConference/that.us/issues?q=author%3Akamranayub" title="Bug reports">🐛</a></td>
   </tr>
 </table>
 
