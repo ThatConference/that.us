@@ -151,6 +151,15 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "kenssamson",
+      "name": "Ken Samson",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/9221745?v=4",
+      "profile": "https://github.com/kenssamson",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
