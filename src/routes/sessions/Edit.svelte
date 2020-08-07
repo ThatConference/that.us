@@ -13,6 +13,7 @@
   import { tagEvent } from '../../utilities/gtag';
 
   import { user } from '../../utilities/security.js';
+  import { format } from './formatRequest';
 
   const { sessionId } = router.params;
 
@@ -21,10 +22,7 @@
   async function handleSubmit({
     detail: { values, setSubmitting, resetForm },
   }) {
-    const updatedSession = {
-      status: 'ACCEPTED',
-      ...values,
-    };
+    const updatedSession = format(values);
 
     await update(sessionId, updatedSession);
 

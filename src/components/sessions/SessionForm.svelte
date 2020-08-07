@@ -1,25 +1,93 @@
+<script context="module">
+  import mtz from 'moment-timezone';
+  const timeZoneOptions = mtz.tz.names().map(t => ({ id: t, title: t }));
+
+  const timeSlotOptions = [];
+
+  for (let hour = 0; hour < 24; hour++) {
+    const onHour = dayjs()
+      .hour(hour)
+      .minute(0);
+
+    const onHalf = dayjs()
+      .hour(hour)
+      .minute(30);
+
+    timeSlotOptions.push({
+      id: onHour.format('HH:mm'),
+      title: onHour.format('h:mm A'),
+    });
+
+    timeSlotOptions.push({
+      id: onHalf.format('HH:mm'),
+      title: onHalf.format('h:mm A'),
+    });
+  }
+
+  const estimatedDurationOptions = [];
+
+  const counter = `0:30`;
+  estimatedDurationOptions.push({ id: counter, title: counter });
+
+  for (let hour = 1; hour < 9; hour++) {
+    const onHour = `${hour}:00`;
+    estimatedDurationOptions.push({ id: onHour, title: onHour });
+
+    if (hour !== 8) {
+      const onHourHalf = `${hour}:30`;
+      estimatedDurationOptions.push({ id: onHourHalf, title: onHourHalf });
+    }
+  }
+</script>
+
 <script>
   export let handleSubmit;
   export let initialValues;
 
   import dayjs from 'dayjs';
+  import utc from 'dayjs/plugin/utc';
+  import timezone from 'dayjs/plugin/timezone';
+  import duration from 'dayjs/plugin/duration';
+  import Datepicker from 'svelte-calendar'; //https://github.com/6eDesign/svelte-calendar
   import { Circle2 } from 'svelte-loading-spinners';
   import { Form, Input, Select, Choice } from 'sveltejs-forms'; //https://github.com/mdauner/sveltejs-forms
   import Tags from 'svelte-tags-input';
   import * as yup from 'yup';
   import _ from 'lodash';
 
-  import { sessionTimes } from './sessionTimes';
   import { Waiting, ModalError } from '../../elements';
-
   import { thatProfile } from '../../utilities/security.js';
+  import ErrorNotificaiton from '../../components/notifications/Error.svelte';
 
-  if (initialValues) {
-    delete initialValues.id;
-    delete initialValues.eventId;
-  }
+  dayjs.extend(utc);
+  dayjs.extend(timezone);
+  dayjs.extend(duration);
 
   let createDisabled = true;
+  let selectedDayDefault = new Date();
+  let selectedDateValue = selectedDayDefault;
+  let selectedTimezoneDefault = dayjs.tz.guess();
+  let selectedTimezoneValue = selectedTimezoneDefault;
+  let selectedTimeValue;
+  let selectedDurationValue;
+  let initDurationInMinutes;
+
+  let originalStartTime;
+
+  if (initialValues) {
+    const { durationInMinutes, startTime } = initialValues;
+
+    originalStartTime = dayjs(startTime);
+    initDurationInMinutes = durationInMinutes
+      ? dayjs
+          .utc(dayjs.duration(durationInMinutes, 'minutes').asMilliseconds())
+          .format('H:mm')
+      : undefined;
+
+    selectedDateValue = originalStartTime.toDate();
+    selectedTimeValue = originalStartTime.format('HH:mm');
+    selectedDurationValue = initDurationInMinutes;
+  }
 
   $: if (!_.isEmpty($thatProfile)) {
     createDisabled = false;
@@ -29,43 +97,57 @@
     title: yup
       .string()
       .trim()
-      .required(),
+      .required('Please add a title.'),
     shortDescription: yup
       .string()
       .trim()
-      .required(),
-    startTime: yup.string().required(),
+      .required('Please add a short description.'),
     tags: yup.array().of(yup.string()),
+    selectedDay: yup.string().required('Please select a day.'),
+    selectedTime: yup.string().required('Please select a starting time.'),
+    selectedTimezone: yup
+      .string()
+      .required('Please select the appropiate timezone.'),
+    selectedDuration: yup
+      .string()
+      .required('Please select an estimated duration.'),
   });
 
+  const currentTimeZone = dayjs.tz.guess();
   let tagsInput;
   let tagInputValues = initialValues ? initialValues.tags : [];
 
   let formInitValues;
 
   if (initialValues) {
+    const { title, shortDescription, tags } = initialValues;
+
     formInitValues = {
-      ...initialValues,
+      title,
+      shortDescription,
+      tags,
+      selectedDay: originalStartTime.format('YYYY-MM-DD'),
+      selectedTime: originalStartTime.format('HH:mm'),
+      selectedTimezone: selectedTimezoneDefault,
+      selectedDuration: initDurationInMinutes,
     };
   } else {
     formInitValues = {
       title: undefined,
       shortDescription: undefined,
-      tags: [],
+      tags: tagInputValues,
+      selectedDay: dayjs(selectedDayDefault).format('YYYY-MM-DD'),
+      selectedTime: undefined,
+      selectedTimezone: selectedTimezoneDefault,
+      selectedDuration: undefined,
     };
   }
 
-  const convertOptionsToTimeZone = sessionTimes => {
-    const x = sessionTimes.map(t => ({
-      id: t.id,
-      title: `${t.title} ( ${dayjs(t.id).format('hh:mm a')} in your timezone )`,
-    }));
-
-    return x;
-  };
-
   function handleReset() {
-    tagsInputValues = [];
+    tagInputValues = [];
+    selectedDateValue = selectedDayDefault;
+    selectedTimezoneValue = selectedTimezoneDefault;
+    selectedTimeValue = undefined;
   }
 </script>
 
@@ -97,13 +179,14 @@
   let:isSubmitting
   let:isValid
   let:setValue
+  let:errors
+  let:touched
 >
 
   <div>
     <p class="mt-1 max-w-2xl text-sm leading-5 text-gray-500">
-      Let's gather around a vitual circle and chat. Below is a quick form to
-      help others identify if they have interest in the topic or can be of some
-      help to the converation.
+      Below is a quick form to help others identify if they have interest in
+      this topic or can be of some help to others.
     </p>
   </div>
 
@@ -116,15 +199,17 @@
       <label
         for="session_title"
         class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px
-        sm:pt-2"
+        sm:pt-2 col-span-1"
       >
         What would you like to chat about?
       </label>
 
-      <div class="mt-1 sm:mt-0 sm:col-span-2">
-        <div class="max-w-lg rounded-md shadow-sm sm:max-w-xs">
+      <div class="mt-1 sm:mt-0 col-span-2">
+
+        <div class="max-w-lg rounded-md shadow-sm">
           <Input
             name="title"
+            autofocus
             class="form-input block w-full transition duration-150 ease-in-out
             sm:text-sm sm:leading-5"
           />
@@ -144,10 +229,12 @@
         Explain a bit more about what you'd like to chat about.
       </label>
       <div class="mt-1 sm:mt-0 sm:col-span-2">
-        <div class="max-w-lg rounded-md shadow-sm sm:max-w-xs">
+        <div class="max-w-lg rounded-md shadow-sm">
           <Input
             name="shortDescription"
-            multiline="{true}"
+            multiline
+            spellcheck="true"
+            rows="5"
             class="form-input block w-full transition duration-150 ease-in-out
             sm:text-sm sm:leading-5"
           />
@@ -168,7 +255,7 @@
         delimiter)
       </label>
       <div class="mt-1 sm:mt-0 sm:col-span-2">
-        <div class="max-w-lg rounded-md shadow-sm sm:max-w-xs tag-form-input">
+        <div class="max-w-lg rounded-md shadow-sm tag-form-input">
           <Tags
             name="tags"
             bind:this="{tagsInput}"
@@ -178,7 +265,33 @@
             onlyUnique="{true}"
             on:tags="{({ detail }) => setValue('tags', detail.tags)}"
             class="form-input block w-full transition duration-150 ease-in-out
-            sm:text-sm sm:leading-5"
+            sm:text-sm sm:leading-5 rounded-md shadow-sm"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start
+      sm:border-t sm:border-gray-200 sm:pt-5"
+    >
+      <label
+        for="session_selectedDay"
+        class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px
+        sm:pt-2"
+      >
+        Select a Day:
+      </label>
+
+      <div class="mt-1 sm:mt-0 sm:col-span-2">
+        <div class="max-w-lg sm:text-sm sm:leading-5">
+          <Input name="selectedDay" hidden />
+          <Datepicker
+            name="selectedDay"
+            start="{new Date()}"
+            bind:selected="{selectedDateValue}"
+            style="rounded-md shadow-sm"
+            on:dateSelected="{({ detail: { date } }) => setValue('selectedDay', dayjs(date).format('YYYY-MM-DD'))}"
           />
         </div>
       </div>
@@ -193,57 +306,132 @@
         class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px
         sm:pt-2"
       >
-        Select a time to chat. ( CST gmt-5 )
+        Select a Time:
       </label>
+
       <div class="mt-1 sm:mt-0 sm:col-span-2">
-        <div class="max-w-lg rounded-md shadow-sm sm:max-w-xs">
-          <Select
-            name="startTime"
-            options="{convertOptionsToTimeZone(sessionTimes)}"
-            class="form-input block w-full transition duration-150 ease-in-out
-            sm:text-sm sm:leading-5"
-          />
+        <div class="flex space-x-8 max-w-lg">
+
+          <div>
+            <legend class="block text-sm font-medium leading-5 text-gray-400">
+              Starting Time
+            </legend>
+            <div class="mt-1 rounded-md shadow-sm w-32">
+              <select
+                aria-label="time"
+                name="selectedTime"
+                bind:value="{selectedTimeValue}"
+                options="{timeSlotOptions}"
+                on:blur="{() => setValue('selectedTime', selectedTimeValue)}"
+                class="form-select relative block w-full rounded-md
+                bg-transparent focus:z-10 transition ease-in-out duration-150
+                sm:text-sm sm:leading-5"
+              >
+                {#each timeSlotOptions as option (option.id)}
+                  <option value="{option.id}">{option.title}</option>
+                {/each}
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <legend class="block text-sm font-medium leading-5 text-gray-400">
+              Time Zone
+            </legend>
+            <div class="mt-1 rounded-md shadow-sm">
+
+              <select
+                aria-label="timezone"
+                name="selectedTimezone"
+                bind:value="{selectedTimezoneValue}"
+                on:blur="{() => setValue('selectedTimezone', selectedTimezoneValue)}"
+                class="form-select relative block w-full rounded-md
+                bg-transparent focus:z-10 transition ease-in-out duration-150
+                sm:text-sm sm:leading-5"
+              >
+                {#each timeZoneOptions as option (option.id)}
+                  <option value="{option.id}">{option.title}</option>
+                {/each}
+              </select>
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
-  </div>
+    <div
+      class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start
+      sm:border-t sm:border-gray-200 sm:pt-5"
+    >
+      <label
+        for="session_duration"
+        class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px
+        sm:pt-2"
+      >
+        Estimated Duration (hours):
+      </label>
 
-  <div class="mt-8 border-t border-gray-200 pt-5">
-    <div class="flex justify-end">
+      <div class="mt-1 sm:mt-0 sm:col-span-2">
+        <div class="w-32">
 
-      <span class="inline-flex rounded-md shadow-sm">
-        <button
-          type="reset"
-          class="py-2 px-4 border border-gray-300 rounded-md text-sm leading-5
-          font-medium text-gray-700 hover:text-gray-500 focus:outline-none
-          focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50
-          active:text-gray-800 transition duration-150 ease-in-out"
-        >
-          Reset Form
-        </button>
-      </span>
-
-      <span class="ml-3 inline-flex rounded-md shadow-sm">
-        <button
-          type="submit"
-          disabled="{isSubmitting}"
-          class="inline-flex justify-center py-2 px-4 border border-transparent
-          text-sm leading-5 font-medium rounded-md text-white bg-indigo-600
-          hover:bg-indigo-500 focus:outline-none focus:border-indigo-700
-          focus:shadow-outline-indigo active:bg-indigo-700 transition
-          duration-150 ease-in-out"
-        >
-          {initialValues ? 'Update Session' : 'Add Session'}
-        </button>
-      </span>
+          <select
+            name="selectedDuration"
+            aria-label="time"
+            bind:value="{selectedDurationValue}"
+            on:blur="{() => setValue('selectedDuration', selectedDurationValue)}"
+            class="form-select relative block w-full rounded-md bg-transparent
+            focus:z-10 transition ease-in-out duration-150 sm:text-sm
+            sm:leading-5"
+          >
+            {#each estimatedDurationOptions as option (option.id)}
+              <option value="{option.id}">{option.title}</option>
+            {/each}
+          </select>
+        </div>
+      </div>
     </div>
-  </div>
 
-  {#if isSubmitting}
-    <div class="flex flex-grow justify-center py-12">
-      <Waiting />
+    <div class="mt-8 border-t border-gray-200 pt-5">
+      <div class="flex justify-end space-x-4">
+
+        <span class="inline-flex rounded-md shadow-sm">
+          <button
+            type="submit"
+            disabled="{isSubmitting}"
+            class="inline-flex justify-center py-2 px-4 border
+            border-transparent text-sm leading-5 font-medium rounded-md
+            text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none
+            focus:border-indigo-700 focus:shadow-outline-indigo
+            active:bg-indigo-700 transition duration-150 ease-in-out"
+          >
+            {initialValues ? 'Update' : 'Create'}
+          </button>
+        </span>
+
+        <span class="inline-flex rounded-md shadow-sm">
+          <button
+            type="reset"
+            tabindex="-1"
+            class="py-2 px-4 border border-gray-300 rounded-md text-sm leading-5
+            font-medium text-gray-700 hover:text-gray-500 focus:outline-none
+            focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50
+            active:text-gray-800 transition duration-150 ease-in-out"
+          >
+            Clear
+          </button>
+        </span>
+      </div>
     </div>
-  {/if}
 
+    {#if isValid === false}
+      <ErrorNotificaiton message="Please correct the errors listed above." />
+    {/if}
+
+    {#if isSubmitting}
+      <div class="flex flex-grow justify-center py-12">
+        <Waiting />
+      </div>
+    {/if}
+
+  </div>
 </Form>

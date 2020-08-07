@@ -55,7 +55,7 @@
 </script>
 
 <svelte:head>
-  <title>THAT Schedule * THAT.us</title>
+  <title>THAT 📆 THAT.us</title>
 </svelte:head>
 
 <StackedLayout>

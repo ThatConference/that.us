@@ -10,6 +10,7 @@ const coreSessionFields = `
     type
     status
     startTime
+    durationInMinutes
   }
 `;
 
@@ -23,6 +24,7 @@ const coreOpenSpaceFields = `
     type
     status
     startTime
+    durationInMinutes
   }
 `;
 

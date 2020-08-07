@@ -106,6 +106,7 @@
       {#each textLinks as tl}
         <div class="px-5 py-2">
           <Link
+            tabindex="-1"
             href="{tl.href}"
             class="text-base leading-6 text-gray-500 hover:text-gray-900"
           >
@@ -119,6 +120,7 @@
       {#each legalLinks as ll}
         <div class="px-5 py-2">
           <Link
+            tabindex="-1"
             href="{ll.href}"
             class="text-base leading-6 text-gray-500 hover:text-gray-900"
           >
@@ -132,6 +134,7 @@
       {#each moreLegalLinks as mll}
         <div class="px-5 py-2">
           <Link
+            tabindex="-1"
             href="{mll.href}"
             class="text-base leading-6 text-gray-500 hover:text-gray-900"
           >

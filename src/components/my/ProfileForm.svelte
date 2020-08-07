@@ -19,7 +19,7 @@
 
   import dayjs from 'dayjs';
   import { Circle2, ScaleOut } from 'svelte-loading-spinners';
-  import { Form, Input, Select, Choice } from 'sveltejs-forms'; //https://github.com/mdauner/sveltejs-forms
+  import { Form, Input, Choice } from 'sveltejs-forms'; //https://github.com/mdauner/sveltejs-forms
   import Tags from 'svelte-tags-input';
   import * as yup from 'yup';
   import { Link } from 'yrv';
@@ -291,8 +291,9 @@
           </label>
           <div class="mt-1 rounded-md shadow-sm">
             <Input
-              type="text"
               name="firstName"
+              type="text"
+              autofocus
               class="form-input block w-full transition duration-150 ease-in-out
               sm:text-sm sm:leading-5"
             />
@@ -614,6 +615,7 @@
                   <label for="comments" class="font-medium text-gray-700">
                     <Link
                       open
+                      tabindex="-1"
                       href="https://www.thatconference.com/code-of-conduct"
                       class="font-medium text-indigo-600 hover:text-indigo-500
                       transition duration-150 ease-in-out"
@@ -648,6 +650,7 @@
                     <label for="comments" class="font-medium text-gray-700">
                       <Link
                         open
+                        tabindex="-1"
                         href="https://www.thatconference.com/anti-harassment-policy"
                         class="font-medium text-indigo-600 hover:text-indigo-500
                         transition duration-150 ease-in-out"
@@ -682,6 +685,7 @@
                       <label for="comments" class="font-medium text-gray-700">
                         <Link
                           open
+                          tabindex="-1"
                           href="https://www.thatconference.com/commitment-to-diversity"
                           class="font-medium text-indigo-600
                           hover:text-indigo-500 transition duration-150
@@ -723,6 +727,7 @@
                         >
                           <Link
                             open
+                            tabindex="-1"
                             href="https://www.thatconference.com/terms-of-use"
                             class="font-medium text-indigo-600
                             hover:text-indigo-500 transition duration-150
@@ -806,6 +811,7 @@
                 <div class="ml-3 text-sm leading-5">
                   <label for="comments" class="font-medium text-gray-700">
                     <Link
+                      tabindex="-1"
                       open
                       href="https://www.thatconference.com/code-of-conduct"
                       class="font-medium text-indigo-600 hover:text-indigo-500
@@ -829,19 +835,8 @@
     </div>
 
     <div class="mt-8 border-t border-gray-200 pt-5">
-      <div class="flex justify-end">
+      <div class="flex justify-end space-x-4">
         <span class="inline-flex rounded-md shadow-sm">
-          <button
-            type="reset"
-            class="py-2 px-4 border border-gray-300 rounded-md text-sm leading-5
-            font-medium text-gray-700 hover:text-gray-500 focus:outline-none
-            focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50
-            active:text-gray-800 transition duration-150 ease-in-out"
-          >
-            Reset
-          </button>
-        </span>
-        <span class="ml-3 inline-flex rounded-md shadow-sm">
           <button
             type="submit"
             disabled="{isSubmitting}"
@@ -852,6 +847,18 @@
             active:bg-indigo-700 transition duration-150 ease-in-out"
           >
             Save
+          </button>
+        </span>
+        <span class="inline-flex rounded-md shadow-sm">
+          <button
+            type="reset"
+            tabindex="-1"
+            class="py-2 px-4 border border-gray-300 rounded-md text-sm leading-5
+            font-medium text-gray-700 hover:text-gray-500 focus:outline-none
+            focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50
+            active:text-gray-800 transition duration-150 ease-in-out"
+          >
+            Clear
           </button>
         </span>
       </div>

@@ -15,6 +15,7 @@ export const QUERY_SUBMISSIONS = `
             status
             startTime
             tags
+            durationInMinutes
             speakers {
               id
               firstName

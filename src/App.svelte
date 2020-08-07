@@ -177,4 +177,11 @@
     --text-opacity: 1;
     color: rgba(224, 36, 36, var(--text-opacity));
   }
+
+  select {
+    /* for Firefox */
+    -moz-appearance: none;
+    /* for Safari, Chrome, Opera */
+    -webkit-appearance: none;
+  }
 </style>
