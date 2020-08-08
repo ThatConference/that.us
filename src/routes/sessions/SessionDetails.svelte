@@ -48,7 +48,7 @@
   let host = speakers[0];
   let imageCrop = '?mask=ellipse&w=500&h=500&fit=crop';
 
-  const { join, edit, isNew } = qs.parse(location.search);
+  const { join, edit, isNew, isUpdated } = qs.parse(location.search);
 
   let favoriteDisabled = false;
 
@@ -128,6 +128,8 @@
     title="Created {title}!"
     text="Thank you for submitting a session."
   />
+{:else if isUpdated}
+  <Success title="Success 🎊" text="Successfully updated {title}." />
 {/if}
 
 <div>

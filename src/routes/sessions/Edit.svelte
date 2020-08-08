@@ -30,7 +30,10 @@
 
     setSubmitting(false);
     resetForm();
-    navigateTo('/sessions', { replace: true });
+    navigateTo(
+      'navigateTo(`/sessions/${id}?edit=true&isUpdated=true`, { replace: true });',
+      { replace: true },
+    );
   }
 
   const sessionDetails = getById(sessionId);
