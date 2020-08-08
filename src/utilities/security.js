@@ -24,7 +24,7 @@ export const logout = async () => {
   });
 };
 
-export const login = async (documentReferrer) => {
+export const login = async (documentReferrer, signup) => {
   const auth0 = await auth0Promise;
 
   const appState = {
@@ -32,10 +32,19 @@ export const login = async (documentReferrer) => {
     search: window.location.search,
   };
 
-  await auth0.loginWithRedirect({
+  let authParams = {
     redirect_uri: `${window.location.origin}/sessions`,
     appState,
-  });
+  };
+
+  if (signup) {
+    authParams = {
+      ...authParams,
+      screen_hint: 'signup',
+    };
+  }
+
+  await auth0.loginWithRedirect(authParams);
 };
 
 export async function generateAuth0() {
