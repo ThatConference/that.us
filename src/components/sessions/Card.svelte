@@ -4,6 +4,7 @@
   export let title;
   export let shortDescription;
   export let startTime;
+  export let durationInMinutes;
   export let speakers;
   export let status;
   export let tags = [];
@@ -81,11 +82,12 @@
   onMount(async () => {
     if ($isAuthenticated) await getFavorites();
 
+    let endTime = durationInMinutes ? durationInMinutes : 60;
+
     const interval = setInterval(() => {
       let inSession = dayjs().isBetween(
         dayjs(startTime).subtract(5, 'minute'),
-        dayjs(startTime).add(1, 'hour'),
-        'minute',
+        dayjs(startTime).add(endTime, 'minutes'),
       );
 
       isInWindow = inSession;

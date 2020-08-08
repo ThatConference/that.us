@@ -6,6 +6,7 @@
   export let id;
   export let tags;
   export let startTime;
+  export let durationInMinutes;
   export let __typename;
   export let favoritedBy = [];
 
@@ -76,11 +77,12 @@
   onMount(async () => {
     if ($isAuthenticated) await getFavorites();
 
+    let endTime = durationInMinutes ? durationInMinutes : 60;
+
     const interval = setInterval(() => {
       let inSession = dayjs().isBetween(
         dayjs(startTime).subtract(5, 'minute'),
-        dayjs(startTime).add(1, 'hour'),
-        'minute',
+        dayjs(startTime).add(endTime, 'minute'),
       );
 
       isInWindow = inSession;
