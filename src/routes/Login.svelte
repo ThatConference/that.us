@@ -3,12 +3,15 @@
   export let documentReferrer = '/sessions';
 
   import { onMount } from 'svelte';
+  import qs from 'query-string';
 
   import { login } from '../utilities/security.js';
   import { ModalNoAction } from '../elements';
 
+  const { signup = false } = qs.parse(location.search);
+
   onMount(async () => {
-    await login(documentReferrer);
+    await login(documentReferrer, signup);
   });
 </script>
 
