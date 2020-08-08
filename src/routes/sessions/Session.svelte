@@ -24,7 +24,7 @@
               shortDescription
               tags
               startTime
-              durartionInMinutes
+              durationInMinutes
               speakers {
                 firstName
                 lastName
