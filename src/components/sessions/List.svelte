@@ -1,5 +1,6 @@
 <script>
   export let sessions;
+
   export let editMode = false;
 
   import { onMount } from 'svelte';

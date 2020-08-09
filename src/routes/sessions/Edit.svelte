@@ -18,6 +18,22 @@
   const { sessionId } = router.params;
 
   const { update, getById } = sessionsApi(getClient());
+  const sessionDetails = getById(sessionId);
+
+  async function handleWithdraw(e) {
+    // todo.. need to verify on the backedn who can actually cancel a session
+    // await update(sessionId, {
+    //   status: 'CANCELLED',
+    // });
+
+    await update(sessionId, {
+      status: 'WITHDREW', // todo.. not really the correct status for this.
+    });
+
+    tagEvent('session_withdraw', 'session', $user.sub);
+
+    navigateTo(`/my/submissions`, { replace: true });
+  }
 
   async function handleSubmit({
     detail: { values, setSubmitting, resetForm },
@@ -30,24 +46,21 @@
 
     setSubmitting(false);
     resetForm();
-    navigateTo(
-      'navigateTo(`/sessions/${id}?edit=true&isUpdated=true`, { replace: true });',
-      { replace: true },
-    );
+    navigateTo(`/sessions/${sessionId}?edit=true&isUpdated=true`, {
+      replace: true,
+    });
   }
-
-  const sessionDetails = getById(sessionId);
 </script>
 
 <svelte:head>
-  <title>Edit Session * THAT.us</title>
+  <title>Update Submission 📝 THAT.us</title>
 </svelte:head>
 
 <StackedLayout>
 
   <div slot="header">
     <Nav />
-    <ActionHeader title="Edit Chat">
+    <ActionHeader title="Update your Submission">
       <LinkButton href="/sessions" text="Return to Schedule" />
     </ActionHeader>
 
@@ -57,7 +70,7 @@
     {#await sessionDetails}
       <CardLoader />
     {:then session}
-      <SessionForm {handleSubmit} initialValues="{session}" />
+      <SessionForm {handleSubmit} {handleWithdraw} initialValues="{session}" />
     {/await}
 
   </div>

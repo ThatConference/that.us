@@ -1,6 +1,6 @@
 <script context="module">
   import mtz from 'moment-timezone';
-  const timeZoneOptions = mtz.tz.names().map(t => ({ id: t, title: t }));
+  const timeZoneOptions = mtz.tz.names().map(t => ({ value: t, label: t }));
 
   const timeSlotOptions = [];
 
@@ -14,43 +14,46 @@
       .minute(30);
 
     timeSlotOptions.push({
-      id: onHour.format('HH:mm'),
-      title: onHour.format('h:mm A'),
+      value: onHour.format('HH:mm'),
+      label: onHour.format('h:mm A'),
     });
 
     timeSlotOptions.push({
-      id: onHalf.format('HH:mm'),
-      title: onHalf.format('h:mm A'),
+      value: onHalf.format('HH:mm'),
+      label: onHalf.format('h:mm A'),
     });
   }
 
   const estimatedDurationOptions = [];
 
   const counter = `0:30`;
-  estimatedDurationOptions.push({ id: counter, title: counter });
+  estimatedDurationOptions.push({ value: counter, label: counter });
 
   for (let hour = 1; hour < 9; hour++) {
     const onHour = `${hour}:00`;
-    estimatedDurationOptions.push({ id: onHour, title: onHour });
+    estimatedDurationOptions.push({ value: onHour, label: onHour });
 
     if (hour !== 8) {
       const onHourHalf = `${hour}:30`;
-      estimatedDurationOptions.push({ id: onHourHalf, title: onHourHalf });
+      estimatedDurationOptions.push({ value: onHourHalf, label: onHourHalf });
     }
   }
 </script>
 
 <script>
   export let handleSubmit;
+  export let handleWithdraw;
   export let initialValues;
 
   import dayjs from 'dayjs';
   import utc from 'dayjs/plugin/utc';
   import timezone from 'dayjs/plugin/timezone';
   import duration from 'dayjs/plugin/duration';
+  import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
   import Datepicker from 'svelte-calendar'; //https://github.com/6eDesign/svelte-calendar
   import { Circle2 } from 'svelte-loading-spinners';
-  import { Form, Input, Select, Choice } from 'sveltejs-forms'; //https://github.com/mdauner/sveltejs-forms
+  import { Form, Input, Choice } from 'sveltejs-forms'; //https://github.com/mdauner/sveltejs-forms
+  import Select from 'svelte-select'; //https://github.com/rob-balfre/svelte-select
   import Tags from 'svelte-tags-input';
   import * as yup from 'yup';
   import _ from 'lodash';
@@ -62,16 +65,15 @@
   dayjs.extend(utc);
   dayjs.extend(timezone);
   dayjs.extend(duration);
+  dayjs.extend(isSameOrAfter);
 
   let createDisabled = true;
   let selectedDayDefault = new Date();
   let selectedDateValue = selectedDayDefault;
   let selectedTimezoneDefault = dayjs.tz.guess();
   let selectedTimezoneValue = selectedTimezoneDefault;
-  let selectedTimeValue;
-  let selectedDurationValue;
-  let initDurationInMinutes;
 
+  let initDurationInMinutes;
   let originalStartTime;
 
   if (initialValues) {
@@ -85,8 +87,6 @@
       : undefined;
 
     selectedDateValue = originalStartTime.toDate();
-    selectedTimeValue = originalStartTime.format('HH:mm');
-    selectedDurationValue = initDurationInMinutes;
   }
 
   $: if (!_.isEmpty($thatProfile)) {
@@ -117,6 +117,10 @@
   let tagsInput;
   let tagInputValues = initialValues ? initialValues.tags : [];
 
+  let estimatedDurationSelect;
+  let timeSlotSelect;
+  let timezoneSelect;
+
   let formInitValues;
 
   if (initialValues) {
@@ -143,12 +147,27 @@
     };
   }
 
+  const canCancelSessionAction = () => {
+    let results = false;
+
+    if (handleWithdraw) {
+      if (dayjs(initialValues.startTime).isSameOrAfter(dayjs())) results = true;
+    }
+    return results;
+  };
+
   function handleReset() {
     tagInputValues = [];
     selectedDateValue = selectedDayDefault;
-    selectedTimezoneValue = selectedTimezoneDefault;
-    selectedTimeValue = undefined;
   }
+
+  const findSelectedTimeSlot = values =>
+    timeSlotOptions.find(item => item.value === values['selectedTime']);
+
+  const findSelectedDuration = values =>
+    estimatedDurationOptions.find(
+      item => item.value === values['selectedDuration'],
+    );
 </script>
 
 {#if createDisabled}
@@ -179,6 +198,7 @@
   let:isSubmitting
   let:isValid
   let:setValue
+  let:values
   let:errors
   let:touched
 >
@@ -317,20 +337,23 @@
               Starting Time
             </legend>
             <div class="mt-1 rounded-md shadow-sm w-32">
-              <select
-                aria-label="time"
-                name="selectedTime"
-                bind:value="{selectedTimeValue}"
-                options="{timeSlotOptions}"
-                on:blur="{() => setValue('selectedTime', selectedTimeValue)}"
-                class="form-select relative block w-full rounded-md
+              <Select
+                bind:this="{timeSlotSelect}"
+                inputAttributes="{{ name: 'selectedTime' }}"
+                on:select="{({ detail }) => setValue('selectedTime', detail.value)}"
+                hasError="{touched['selectedTime'] && errors['selectedTime']}"
+                items="{timeSlotOptions}"
+                on:clear="{() => setValue('selectedTime', undefined)}"
+                inputStyles="form-select relative block w-full rounded-md
                 bg-transparent focus:z-10 transition ease-in-out duration-150
                 sm:text-sm sm:leading-5"
-              >
-                {#each timeSlotOptions as option (option.id)}
-                  <option value="{option.id}">{option.title}</option>
-                {/each}
-              </select>
+                selectedValue="{findSelectedTimeSlot(values)}"
+              />
+
+              {#if touched['selectedTime'] && errors['selectedTime']}
+                <p class="text-red-600 italic">{errors['selectedTime']}</p>
+              {/if}
+
             </div>
           </div>
 
@@ -340,19 +363,23 @@
             </legend>
             <div class="mt-1 rounded-md shadow-sm">
 
-              <select
-                aria-label="timezone"
-                name="selectedTimezone"
-                bind:value="{selectedTimezoneValue}"
-                on:blur="{() => setValue('selectedTimezone', selectedTimezoneValue)}"
-                class="form-select relative block w-full rounded-md
+              <Select
+                bind:this="{timezoneSelect}"
+                inputAttributes="{{ name: 'selectedTimezone' }}"
+                on:select="{({ detail }) => setValue('selectedTimezone', detail.value)}"
+                hasError="{touched['selectedTimezone'] && errors['selectedTimezone']}"
+                items="{timeZoneOptions}"
+                on:clear="{() => setValue('selectedTimezone', undefined)}"
+                inputStyles="form-select relative block w-full rounded-md
                 bg-transparent focus:z-10 transition ease-in-out duration-150
                 sm:text-sm sm:leading-5"
-              >
-                {#each timeZoneOptions as option (option.id)}
-                  <option value="{option.id}">{option.title}</option>
-                {/each}
-              </select>
+                selectedValue="{values['selectedTimezone'] || undefined}"
+              />
+
+              {#if touched['selectedTimezone'] && errors['selectedTimezone']}
+                <p class="text-red-600 italic">{errors['selectedTimezone']}</p>
+              {/if}
+
             </div>
           </div>
         </div>
@@ -373,20 +400,23 @@
 
       <div class="mt-1 sm:mt-0 sm:col-span-2">
         <div class="w-32">
+          <Select
+            bind:this="{estimatedDurationSelect}"
+            inputAttributes="{{ name: 'selectedDuration' }}"
+            on:select="{({ detail }) => setValue('selectedDuration', detail.value)}"
+            hasError="{touched['selectedDuration'] && errors['selectedDuration']}"
+            items="{estimatedDurationOptions}"
+            on:clear="{() => setValue('selectedDuration', undefined)}"
+            inputStyles="form-select relative block w-full rounded-md
+            bg-transparent focus:z-10 transition ease-in-out duration-150
+            sm:text-sm sm:leading-5"
+            selectedValue="{findSelectedDuration(values)}"
+          />
 
-          <select
-            name="selectedDuration"
-            aria-label="time"
-            bind:value="{selectedDurationValue}"
-            on:blur="{() => setValue('selectedDuration', selectedDurationValue)}"
-            class="form-select relative block w-full rounded-md bg-transparent
-            focus:z-10 transition ease-in-out duration-150 sm:text-sm
-            sm:leading-5"
-          >
-            {#each estimatedDurationOptions as option (option.id)}
-              <option value="{option.id}">{option.title}</option>
-            {/each}
-          </select>
+          {#if touched['selectedDuration'] && errors['selectedDuration']}
+            <p class="text-red-600 italic">{errors['selectedDuration']}</p>
+          {/if}
+
         </div>
       </div>
     </div>
@@ -408,18 +438,21 @@
           </button>
         </span>
 
-        <span class="inline-flex rounded-md shadow-sm">
-          <button
-            type="reset"
-            tabindex="-1"
-            class="py-2 px-4 border border-gray-300 rounded-md text-sm leading-5
-            font-medium text-gray-700 hover:text-gray-500 focus:outline-none
-            focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50
-            active:text-gray-800 transition duration-150 ease-in-out"
-          >
-            Clear
-          </button>
-        </span>
+        {#if canCancelSessionAction()}
+          <span class="inline-flex rounded-md shadow-sm">
+            <button
+              on:click="{handleWithdraw}"
+              tabindex="-1"
+              class="py-2 px-4 border order border-transparent rounded-md
+              text-sm leading-5 font-medium text-white bg-red-400
+              hover:bg-red-600 focus:outline-none focus:border-red-700
+              focus:shadow-outline-red active:bg-red-700 transition duration-150
+              ease-in-out"
+            >
+              Cancel / Withdraw
+            </button>
+          </span>
+        {/if}
       </div>
     </div>
 

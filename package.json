@@ -71,6 +71,7 @@
     "svelte-loading-spinners": "0.1.1",
     "svelte-preprocess": "^4.0.10",
     "svelte-routing": "^1.4.2",
+    "svelte-select": "^3.10.1",
     "svelte-tags-input": "^2.6.5",
     "svelte-typewriter": "^3.0.0",
     "sveltejs-forms": "^2.0.1",
