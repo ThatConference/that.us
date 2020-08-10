@@ -57,6 +57,7 @@
   import Tags from 'svelte-tags-input';
   import * as yup from 'yup';
   import _ from 'lodash';
+  import { Link } from 'yrv';
 
   import { Waiting, ModalError } from '../../elements';
   import { thatProfile } from '../../utilities/security.js';
@@ -67,11 +68,10 @@
   dayjs.extend(duration);
   dayjs.extend(isSameOrAfter);
 
+  const selectedTimezoneDefault = dayjs.tz.guess();
   let createDisabled = true;
   let selectedDayDefault = new Date();
   let selectedDateValue = selectedDayDefault;
-  let selectedTimezoneDefault = dayjs.tz.guess();
-  let selectedTimezoneValue = selectedTimezoneDefault;
 
   let initDurationInMinutes;
   let originalStartTime;
@@ -168,6 +168,8 @@
     estimatedDurationOptions.find(
       item => item.value === values['selectedDuration'],
     );
+
+  const findSelectedTimezone = values => values['selectedTimezone'];
 </script>
 
 {#if createDisabled}
@@ -373,7 +375,7 @@
                 inputStyles="form-select relative block w-full rounded-md
                 bg-transparent focus:z-10 transition ease-in-out duration-150
                 sm:text-sm sm:leading-5"
-                selectedValue="{values['selectedTimezone'] || undefined}"
+                selectedValue="{findSelectedTimezone(values)}"
               />
 
               {#if touched['selectedTimezone'] && errors['selectedTimezone']}
@@ -423,34 +425,50 @@
 
     <div class="mt-8 border-t border-gray-200 pt-5">
       <div class="flex justify-end space-x-4">
-
-        <span class="inline-flex rounded-md shadow-sm">
-          <button
-            type="submit"
-            disabled="{isSubmitting}"
-            class="inline-flex justify-center py-2 px-4 border
-            border-transparent text-sm leading-5 font-medium rounded-md
-            text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none
-            focus:border-indigo-700 focus:shadow-outline-indigo
-            active:bg-indigo-700 transition duration-150 ease-in-out"
-          >
-            {initialValues ? 'Update' : 'Create'}
-          </button>
-        </span>
-
-        {#if canCancelSessionAction()}
+        {(console.log(touched), '')}
+        {#if touched}
           <span class="inline-flex rounded-md shadow-sm">
             <button
-              on:click="{handleWithdraw}"
-              tabindex="-1"
-              class="py-2 px-4 border order border-transparent rounded-md
-              text-sm leading-5 font-medium text-white bg-red-400
-              hover:bg-red-600 focus:outline-none focus:border-red-700
-              focus:shadow-outline-red active:bg-red-700 transition duration-150
+              type="submit"
+              disabled="{isSubmitting}"
+              class="inline-flex justify-center py-2 px-4 border
+              border-transparent text-sm leading-5 font-medium rounded-md
+              text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none
+              focus:border-indigo-700 focus:shadow-outline-indigo
+              active:bg-indigo-700 transition duration-150 ease-in-out"
+            >
+              {initialValues ? 'Update' : 'Create'}
+            </button>
+          </span>
+
+          {#if canCancelSessionAction()}
+            <span class="inline-flex rounded-md shadow-sm">
+              <button
+                disabled="{isSubmitting}"
+                on:click="{handleWithdraw}"
+                tabindex="-1"
+                class="py-2 px-4 border order border-transparent rounded-md
+                text-sm leading-5 font-medium text-white bg-red-400
+                hover:bg-red-600 focus:outline-none focus:border-red-700
+                focus:shadow-outline-red active:bg-red-700 transition
+                duration-150 ease-in-out"
+              >
+                Cancel / Withdraw
+              </button>
+            </span>
+          {/if}
+        {:else}
+          <span class="inline-flex rounded-md shadow-sm">
+            <Link
+              href="/sessions"
+              class="py-2 px-4 border border-gray-300 rounded-md text-sm
+              leading-5 font-medium text-gray-700 hover:text-gray-500
+              focus:outline-none focus:border-blue-300 focus:shadow-outline-blue
+              active:bg-gray-50 active:text-gray-800 transition duration-150
               ease-in-out"
             >
-              Cancel / Withdraw
-            </button>
+              Return to Schdule
+            </Link>
           </span>
         {/if}
       </div>
