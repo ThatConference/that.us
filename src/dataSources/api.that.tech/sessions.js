@@ -143,7 +143,9 @@ export default (client, eventId = config.eventId) => {
     return client
       .query(QUERY_SESSIONS, variables)
       .toPromise()
-      .then((r) => r.data.events.event.get.sessions);
+      .then((r) =>
+        r.data.events.event.get.sessions.filter((i) => i.status === 'ACCEPTED'),
+      );
   };
 
   const getById = (sessionId) => {

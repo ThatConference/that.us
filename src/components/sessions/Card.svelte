@@ -18,6 +18,7 @@
   import { Link } from 'yrv';
   import dayjs from 'dayjs';
   import isBetween from 'dayjs/plugin/isBetween';
+  import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
   import Icon from 'svelte-awesome';
   import { info, heart, signIn, cog, caretDown } from 'svelte-awesome/icons';
   import qs from 'query-string';
@@ -36,6 +37,7 @@
   import CardLink from './CardLink.svelte';
 
   dayjs.extend(isBetween);
+  dayjs.extend(isSameOrAfter);
 
   const { toggle, get: getFavorites, favoritesStore: favorites } = favoritesApi(
     getClient(),
@@ -106,6 +108,16 @@
   let userProfileImage = host.profileImage
     ? `${host.profileImage}${imageCrop}`
     : config.defaultProfileImage;
+
+  const canEdit = () => {
+    let canEditMe = false;
+
+    if (editMode) {
+      if (dayjs(startTime).isSameOrAfter(dayjs())) canEditMe = true;
+    }
+
+    return canEditMe;
+  };
 </script>
 
 <div class="w-full h-full flex flex-col">
@@ -181,7 +193,7 @@
           <div class="-ml-px w-0 flex-1 flex">
             <CardLink href="/join/{id}" icon="{signIn}" text="{'Join In'}" />
           </div>
-        {:else if editMode}
+        {:else if canEdit()}
           <div class="-ml-px w-0 flex-1 flex">
             <Link
               href="/sessions/edit/{id}"

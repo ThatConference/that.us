@@ -4,7 +4,7 @@
   import Typewriter from 'svelte-typewriter';
 
   import StackedLayout from '../../elements/layouts/StackedLayout.svelte';
-  import { ActionHeader } from '../../elements';
+  import { ActionHeader, LinkButton } from '../../elements';
   import Nav from '../../components/nav/interiorNav/Top.svelte';
   import SessionForm from '../../components/sessions/SessionForm.svelte';
   import sessionsApi from '../../dataSources/api.that.tech/sessions.js';
@@ -44,6 +44,8 @@
   <div slot="header">
     <Nav />
     <ActionHeader>
+      <LinkButton href="/sessions" text="Return to Schedule" />
+
       <div class="flex space-x-2" slot="title">
         <span>Create a new</span>
         <div class="italic">

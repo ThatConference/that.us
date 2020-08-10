@@ -5,7 +5,7 @@
   import { navigateTo } from 'yrv';
 
   import StackedLayout from '../../elements/layouts/StackedLayout.svelte';
-  import { ActionHeader, LinkButton } from '../../elements';
+  import { ActionHeader, LinkButton, ModalError } from '../../elements';
   import Nav from '../../components/nav/interiorNav/Top.svelte';
   import CardLoader from '../../components/CardLoader.svelte';
   import SessionForm from '../../components/sessions/SessionForm.svelte';
@@ -21,13 +21,8 @@
   const sessionDetails = getById(sessionId);
 
   async function handleWithdraw(e) {
-    // todo.. need to verify on the backedn who can actually cancel a session
-    // await update(sessionId, {
-    //   status: 'CANCELLED',
-    // });
-
-    await update(sessionId, {
-      status: 'WITHDREW', // todo.. not really the correct status for this.
+    const x = await update(sessionId, {
+      status: 'CANCELLED',
     });
 
     tagEvent('session_withdraw', 'session', $user.sub);
@@ -70,7 +65,19 @@
     {#await sessionDetails}
       <CardLoader />
     {:then session}
-      <SessionForm {handleSubmit} {handleWithdraw} initialValues="{session}" />
+      {#if session}
+        <SessionForm
+          {handleSubmit}
+          {handleWithdraw}
+          initialValues="{session}"
+        />
+      {:else}
+        <ModalError
+          title="No Session Found"
+          text="I'm sorry we weren't able to find the session you tried to edit."
+          action="{{ title: 'My Submissions', href: '/my/submissions' }}"
+        />
+      {/if}
     {/await}
 
   </div>

@@ -76,7 +76,7 @@ export default (client, eventId = config.eventId) => {
           results = favorites; // set the return results
         }
 
-        return results;
+        return results.filter((s) => s.status === 'ACCEPTED');
       });
   }
 

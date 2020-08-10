@@ -6,6 +6,7 @@
   export let id;
   export let tags;
   export let startTime;
+  export let status;
   export let durationInMinutes;
   export let __typename;
   export let favoritedBy = [];
@@ -14,6 +15,7 @@
   import { fade } from 'svelte/transition';
   import dayjs from 'dayjs';
   import isBetween from 'dayjs/plugin/isBetween';
+  import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
   import Icon from 'svelte-awesome';
   import { Link } from 'yrv';
   import {
@@ -40,6 +42,7 @@
   import favoritesApi from '../../dataSources/api.that.tech/favorites';
 
   dayjs.extend(isBetween);
+  dayjs.extend(isSameOrAfter);
 
   const { toggle, get: getFavorites, favoritesStore: favorites } = favoritesApi(
     getClient(),
@@ -74,28 +77,41 @@
   let isInWindow = false;
   $: canJoin = isInWindow;
 
+  const canEdit = () => {
+    let canEditMe = false;
+    if (edit) {
+      if (status === 'ACCEPTED') {
+        if (dayjs(startTime).isSameOrAfter(dayjs())) canEditMe = true;
+      }
+    }
+
+    return canEditMe;
+  };
+
   onMount(async () => {
     if ($isAuthenticated) await getFavorites();
 
     let endTime = durationInMinutes ? durationInMinutes : 60;
 
-    const interval = setInterval(() => {
-      let inSession = dayjs().isBetween(
-        dayjs(startTime).subtract(5, 'minute'),
-        dayjs(startTime).add(endTime, 'minute'),
-      );
+    if (status === 'ACCEPTED') {
+      const interval = setInterval(() => {
+        let inSession = dayjs().isBetween(
+          dayjs(startTime).subtract(5, 'minute'),
+          dayjs(startTime).add(endTime, 'minute'),
+        );
 
-      isInWindow = inSession;
+        isInWindow = inSession;
 
-      if (!inSession) {
-        const { join } = qs.parse(location.search);
-        if (join) isInWindow = true;
-      }
-    }, 1000);
+        if (!inSession) {
+          const { join } = qs.parse(location.search);
+          if (join) isInWindow = true;
+        }
+      }, 1000);
 
-    return () => {
-      clearInterval(interval);
-    };
+      return () => {
+        clearInterval(interval);
+      };
+    }
   });
 
   let disqus_config = function() {
@@ -220,7 +236,7 @@
                 </Link>
               </span>
             {/if}
-            {#if edit}
+            {#if canEdit()}
               <span class="ml-3 inline-flex rounded-md shadow-sm">
                 <Link
                   type="button"

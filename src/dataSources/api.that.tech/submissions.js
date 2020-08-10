@@ -50,7 +50,8 @@ export default (client) => {
         if (submitted)
           results = submitted
             .filter((s) => s.type === 'OPEN_SPACE')
-            .filter((s) => s.eventId === config.eventId);
+            .filter((s) => s.eventId === config.eventId)
+            .filter((s) => s.status === 'ACCEPTED');
 
         return results;
       });

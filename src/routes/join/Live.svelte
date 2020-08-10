@@ -41,7 +41,7 @@
       }
     `,
     variables: { eventId: 'ByE7Dc7eCGcRFzLhWhuI', sessionId },
-    requestPolicy: 'cache-and-network',
+    requestPolicy: 'network-only',
   });
 
   $: sessionQuery = QUERY_SESSION();

@@ -169,7 +169,8 @@
       item => item.value === values['selectedDuration'],
     );
 
-  const findSelectedTimezone = values => values['selectedTimezone'];
+  const findSelectedTimezone = values =>
+    timeZoneOptions.find(item => item.value === values['selectedTimezone']);
 </script>
 
 {#if createDisabled}
@@ -313,6 +314,7 @@
             start="{new Date()}"
             bind:selected="{selectedDateValue}"
             style="rounded-md shadow-sm"
+            format="{dayjs(selectedDateValue).format('dddd, MMM D, YYYY')}"
             on:dateSelected="{({ detail: { date } }) => setValue('selectedDay', dayjs(date).format('YYYY-MM-DD'))}"
           />
         </div>
@@ -346,10 +348,10 @@
                 hasError="{touched['selectedTime'] && errors['selectedTime']}"
                 items="{timeSlotOptions}"
                 on:clear="{() => setValue('selectedTime', undefined)}"
+                selectedValue="{findSelectedTimeSlot(values)}"
                 inputStyles="form-select relative block w-full rounded-md
                 bg-transparent focus:z-10 transition ease-in-out duration-150
                 sm:text-sm sm:leading-5"
-                selectedValue="{findSelectedTimeSlot(values)}"
               />
 
               {#if touched['selectedTime'] && errors['selectedTime']}
@@ -363,7 +365,7 @@
             <legend class="block text-sm font-medium leading-5 text-gray-400">
               Time Zone
             </legend>
-            <div class="mt-1 rounded-md shadow-sm">
+            <div class="mt-1 rounded-md shadow-sm w-64">
 
               <Select
                 bind:this="{timezoneSelect}"
@@ -372,10 +374,10 @@
                 hasError="{touched['selectedTimezone'] && errors['selectedTimezone']}"
                 items="{timeZoneOptions}"
                 on:clear="{() => setValue('selectedTimezone', undefined)}"
+                selectedValue="{findSelectedTimezone(values)}"
                 inputStyles="form-select relative block w-full rounded-md
                 bg-transparent focus:z-10 transition ease-in-out duration-150
                 sm:text-sm sm:leading-5"
-                selectedValue="{findSelectedTimezone(values)}"
               />
 
               {#if touched['selectedTimezone'] && errors['selectedTimezone']}
@@ -409,10 +411,10 @@
             hasError="{touched['selectedDuration'] && errors['selectedDuration']}"
             items="{estimatedDurationOptions}"
             on:clear="{() => setValue('selectedDuration', undefined)}"
+            selectedValue="{findSelectedDuration(values)}"
             inputStyles="form-select relative block w-full rounded-md
             bg-transparent focus:z-10 transition ease-in-out duration-150
             sm:text-sm sm:leading-5"
-            selectedValue="{findSelectedDuration(values)}"
           />
 
           {#if touched['selectedDuration'] && errors['selectedDuration']}
@@ -425,52 +427,38 @@
 
     <div class="mt-8 border-t border-gray-200 pt-5">
       <div class="flex justify-end space-x-4">
-        {(console.log(touched), '')}
-        {#if touched}
+
+        <span class="inline-flex rounded-md shadow-sm">
+          <button
+            type="submit"
+            disabled="{isSubmitting}"
+            class="inline-flex justify-center py-2 px-4 border
+            border-transparent text-sm leading-5 font-medium rounded-md
+            text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none
+            focus:border-indigo-700 focus:shadow-outline-indigo
+            active:bg-indigo-700 transition duration-150 ease-in-out"
+          >
+            {initialValues ? 'Update' : 'Create'}
+          </button>
+        </span>
+
+        {#if canCancelSessionAction()}
           <span class="inline-flex rounded-md shadow-sm">
             <button
-              type="submit"
               disabled="{isSubmitting}"
-              class="inline-flex justify-center py-2 px-4 border
-              border-transparent text-sm leading-5 font-medium rounded-md
-              text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none
-              focus:border-indigo-700 focus:shadow-outline-indigo
-              active:bg-indigo-700 transition duration-150 ease-in-out"
-            >
-              {initialValues ? 'Update' : 'Create'}
-            </button>
-          </span>
-
-          {#if canCancelSessionAction()}
-            <span class="inline-flex rounded-md shadow-sm">
-              <button
-                disabled="{isSubmitting}"
-                on:click="{handleWithdraw}"
-                tabindex="-1"
-                class="py-2 px-4 border order border-transparent rounded-md
-                text-sm leading-5 font-medium text-white bg-red-400
-                hover:bg-red-600 focus:outline-none focus:border-red-700
-                focus:shadow-outline-red active:bg-red-700 transition
-                duration-150 ease-in-out"
-              >
-                Cancel / Withdraw
-              </button>
-            </span>
-          {/if}
-        {:else}
-          <span class="inline-flex rounded-md shadow-sm">
-            <Link
-              href="/sessions"
-              class="py-2 px-4 border border-gray-300 rounded-md text-sm
-              leading-5 font-medium text-gray-700 hover:text-gray-500
-              focus:outline-none focus:border-blue-300 focus:shadow-outline-blue
-              active:bg-gray-50 active:text-gray-800 transition duration-150
+              on:click="{handleWithdraw}"
+              tabindex="-1"
+              class="py-2 px-4 border order border-transparent rounded-md
+              text-sm leading-5 font-medium text-white bg-red-400
+              hover:bg-red-600 focus:outline-none focus:border-red-700
+              focus:shadow-outline-red active:bg-red-700 transition duration-150
               ease-in-out"
             >
-              Return to Schdule
-            </Link>
+              Cancel / Withdraw
+            </button>
           </span>
         {/if}
+
       </div>
     </div>
 
