@@ -24,6 +24,8 @@
     });
   }
 
+  console.log({ timeSlotOptions });
+
   const estimatedDurationOptions = [];
 
   const counter = `0:30`;
@@ -50,6 +52,8 @@
   import timezone from 'dayjs/plugin/timezone';
   import duration from 'dayjs/plugin/duration';
   import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
+  import isToday from 'dayjs/plugin/isToday';
+
   import Datepicker from 'svelte-calendar'; //https://github.com/6eDesign/svelte-calendar
   import { Circle2 } from 'svelte-loading-spinners';
   import { Form, Input, Choice } from 'sveltejs-forms'; //https://github.com/mdauner/sveltejs-forms
@@ -67,6 +71,7 @@
   dayjs.extend(timezone);
   dayjs.extend(duration);
   dayjs.extend(isSameOrAfter);
+  dayjs.extend(isToday);
 
   const selectedTimezoneDefault = dayjs.tz.guess();
   let createDisabled = true;
@@ -151,7 +156,8 @@
     let results = false;
 
     if (handleWithdraw) {
-      if (dayjs(initialValues.startTime).isSameOrAfter(dayjs())) results = true;
+      if (dayjs(initialValues.startTime).isSameOrAfter(dayjs(), 'day'))
+        results = true;
     }
     return results;
   };
@@ -171,6 +177,13 @@
 
   const findSelectedTimezone = values =>
     timeZoneOptions.find(item => item.value === values['selectedTimezone']);
+
+  let timeSlotOptionsFiltered = timeSlotOptions;
+  $: timeSlotOptionsFiltered = dayjs(selectedDateValue).isToday()
+    ? timeSlotOptions.filter(t =>
+        dayjs(dayjs(t.value, 'HH:mm')).isSameOrAfter(dayjs()),
+      )
+    : timeSlotOptions;
 </script>
 
 {#if createDisabled}
@@ -346,7 +359,7 @@
                 inputAttributes="{{ name: 'selectedTime' }}"
                 on:select="{({ detail }) => setValue('selectedTime', detail.value)}"
                 hasError="{touched['selectedTime'] && errors['selectedTime']}"
-                items="{timeSlotOptions}"
+                items="{timeSlotOptionsFiltered}"
                 on:clear="{() => setValue('selectedTime', undefined)}"
                 selectedValue="{findSelectedTimeSlot(values)}"
                 inputStyles="form-select relative block w-full rounded-md
@@ -446,7 +459,7 @@
           <span class="inline-flex rounded-md shadow-sm">
             <button
               disabled="{isSubmitting}"
-              on:click="{handleWithdraw}"
+              on:click|preventDefault="{handleWithdraw}"
               tabindex="-1"
               class="py-2 px-4 border order border-transparent rounded-md
               text-sm leading-5 font-medium text-white bg-red-400

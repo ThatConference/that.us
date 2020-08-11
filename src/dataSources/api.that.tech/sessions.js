@@ -177,6 +177,8 @@ export default (client, eventId = config.eventId) => {
       session,
     };
 
+    console.log({ mutationVariables });
+
     return client
       .mutation(UPDATE_SESSION_BY_ID, mutationVariables)
       .toPromise()

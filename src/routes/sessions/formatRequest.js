@@ -36,7 +36,7 @@ export const format = (values) => {
         minute: parsedDuration.minute(),
       })
       .asMinutes(),
-    startTime: parsedStartTime.toDate(),
+    startTime: parsedStartTime,
   };
 
   return newSession;

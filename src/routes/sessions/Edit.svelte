@@ -21,7 +21,7 @@
   const sessionDetails = getById(sessionId);
 
   async function handleWithdraw(e) {
-    const x = await update(sessionId, {
+    await update(sessionId, {
       status: 'CANCELLED',
     });
 
@@ -34,7 +34,6 @@
     detail: { values, setSubmitting, resetForm },
   }) {
     const updatedSession = format(values);
-
     await update(sessionId, updatedSession);
 
     tagEvent('session_update', 'session', $user.sub);

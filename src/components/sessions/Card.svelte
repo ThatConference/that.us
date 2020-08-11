@@ -113,7 +113,7 @@
     let canEditMe = false;
 
     if (editMode) {
-      if (dayjs(startTime).isSameOrAfter(dayjs())) canEditMe = true;
+      if (dayjs(startTime).isSameOrAfter(dayjs(), 'day')) canEditMe = true;
     }
 
     return canEditMe;

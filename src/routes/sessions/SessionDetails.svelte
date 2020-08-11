@@ -81,7 +81,7 @@
     let canEditMe = false;
     if (edit) {
       if (status === 'ACCEPTED') {
-        if (dayjs(startTime).isSameOrAfter(dayjs())) canEditMe = true;
+        if (dayjs(startTime).isSameOrAfter(dayjs(), 'day')) canEditMe = true;
       }
     }
 
@@ -275,7 +275,7 @@
       class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:mx-auto md:mt-5
       md:text-xl lg:mx-0"
     >
-      {dayjs(startTime).format('MMM D YYYY - hh:mm a')}
+      {dayjs(startTime).format('dddd MMMM D, YYYY - h:mm A')}
     </p>
 
     <!-- Description -->
