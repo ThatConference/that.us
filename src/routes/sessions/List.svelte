@@ -31,7 +31,6 @@
   const apiClient = getClient();
 
   const { querySessions } = sessionsApi(apiClient);
-  $: query = querySessions();
 
   let createDisabled = true;
 
@@ -40,7 +39,6 @@
   }
 
   onMount(() => {
-    query = querySessions();
     // TODO put back later after we have new dashboard.
     // query.then((_) => {
     //   const now = dayjs();
@@ -48,7 +46,6 @@
     //   const bump = now.minute() >= 29;
     //   starting = bump === true ? starting.add(30, 'm') : starting;
     //   const id = getTimeStampId(starting.toDate());
-
     //   scrollIntoView(`#${id}`);
     // });
   });
