@@ -10,7 +10,7 @@
   export let tags = [];
   export let attendees = []; // todo.. needs to be favorites
   export let __typename; // just here to clean up props
-  export let eventId = config.eventId; // just here to clean up props
+  export let eventId = events.thatUs.eventId; // just here to clean up props
   export let type = 'OPEN_SPACE'; // just here to clean up props
 
   // 3rd party
@@ -25,12 +25,15 @@
   import { getClient } from '@urql/svelte';
   import _ from 'lodash';
 
-  // supporting goo
-  import config from '../../config';
+  // utilties
+  import config, { events } from '../../config';
   import { isAuthenticated, thatProfile } from '../../utilities/security';
   import { truncate, isLongerThan } from '../../utilities/truncate';
+
+  // data
   import favoritesApi from '../../dataSources/api.that.tech/favorites';
   import { show } from '../../store/profileNotification';
+  import currentEvent from '../../store/currentEvent';
 
   // UI Elements
   import { Tag } from '../../elements';
@@ -64,7 +67,7 @@
   const handleToggle = async () => {
     if (isAllowed()) {
       favoriteDisabled = true;
-      await toggle(id);
+      await toggle(id, $currentEvent.eventId);
       favoriteDisabled = false;
     }
   };
@@ -82,7 +85,7 @@
   $: canJoin = isInWindow;
 
   onMount(async () => {
-    if ($isAuthenticated) await getFavorites();
+    if ($isAuthenticated) await getFavorites($currentEvent.eventId);
 
     let endTime = durationInMinutes ? durationInMinutes : 60;
 

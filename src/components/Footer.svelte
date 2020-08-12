@@ -39,7 +39,7 @@
 
   const textLinks = [
     {
-      text: 'Schedule',
+      text: 'THAT Board',
       href: '/sessions',
     },
     {

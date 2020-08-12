@@ -24,7 +24,6 @@
 
   // datasources
   import sessionsApi from '../../dataSources/api.that.tech/sessions';
-  import favoritesApi from '../../dataSources/api.that.tech/favorites';
 
   // stores
   import currentEvent from '../../store/currentEvent';
@@ -59,9 +58,9 @@
 
   <div slot="header">
     <Nav />
-    <ActionHeader title="THAT Schedule">
+    <ActionHeader title="THAT Board">
       {#if !createDisabled}
-        <LinkButton href="/sessions/create" text="Create New Session" />
+        <LinkButton href="/sessions/create" text="Create New ..." />
       {/if}
     </ActionHeader>
   </div>

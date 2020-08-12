@@ -51,7 +51,7 @@
   <div slot="header">
     <Nav />
     <ActionHeader>
-      <LinkButton href="/sessions" text="Return to Schedule" />
+      <LinkButton href="/sessions" text="Return to THAT Board" />
 
       <div class="flex space-x-2" slot="title">
         <span>Create a new</span>

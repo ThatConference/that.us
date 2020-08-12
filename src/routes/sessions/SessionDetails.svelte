@@ -42,6 +42,7 @@
 
   // Data
   import favoritesApi from '../../dataSources/api.that.tech/favorites';
+  import currentEvent from '../../store/currentEvent';
 
   dayjs.extend(isBetween);
   dayjs.extend(isSameOrAfter);
@@ -64,7 +65,7 @@
 
   const handleToggle = async () => {
     favoriteDisabled = true;
-    await toggle(id);
+    await toggle(id, $currentEvent.eventId);
     favoriteDisabled = false;
   };
 
@@ -91,7 +92,7 @@
   };
 
   onMount(async () => {
-    if ($isAuthenticated) await getFavorites();
+    if ($isAuthenticated) await getFavorites($currentEvent.eventId);
 
     let endTime = durationInMinutes ? durationInMinutes : 60;
 

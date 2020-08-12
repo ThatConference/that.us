@@ -55,7 +55,7 @@
   <div slot="header">
     <Nav />
     <ActionHeader title="Update your Submission">
-      <LinkButton href="/sessions" text="Return to Schedule" />
+      <LinkButton href="/sessions" text="Return to THAT Board" />
     </ActionHeader>
 
   </div>
