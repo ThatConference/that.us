@@ -2,15 +2,14 @@
   export let title;
   export let shortDescription;
   export let speakers;
-  export let sessionId;
   export let id;
   export let tags;
   export let startTime;
   export let status;
   export let durationInMinutes;
-  export let __typename;
   export let favoritedBy = [];
 
+  // 3rd Party
   import { onMount } from 'svelte';
   import { fade } from 'svelte/transition';
   import dayjs from 'dayjs';
@@ -32,13 +31,16 @@
   import { getClient } from '@urql/svelte';
   import _ from 'lodash';
 
+  // UI Support
   import { SocialLink } from '../../components/social';
   import Success from '../../components/notifications/Success.svelte';
-
   import { Avatars, LinkButton, Tag } from '../../elements';
-  import config from '../../config';
 
+  // Utility
+  import config from '../../config';
   import { isAuthenticated, thatProfile } from '../../utilities/security.js';
+
+  // Data
   import favoritesApi from '../../dataSources/api.that.tech/favorites';
 
   dayjs.extend(isBetween);
@@ -115,8 +117,7 @@
   });
 
   let disqus_config = function() {
-    this.page.url = window.location.pathname; // Replace PAGE_URL with your page's canonical URL variable
-    this.page.identifier = sessionId; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    this.page.url = window.location.pathname; // Replace PAGE_URL with your page's canonical URL variabl
   };
 
   let userProfileImage = host.profileImage
@@ -220,7 +221,6 @@
               <span class="ml-3 inline-flex rounded-md shadow-sm">
                 <Link
                   type="button"
-                  href="/join/{sessionId}"
                   class="relative inline-flex items-center px-4 py-2 border
                   border-gray-300 text-sm leading-5 font-medium rounded-md
                   text-gray-700 bg-white hover:text-gray-500 focus:outline-none
@@ -240,7 +240,6 @@
               <span class="ml-3 inline-flex rounded-md shadow-sm">
                 <Link
                   type="button"
-                  href="/sessions/edit/{sessionId}"
                   class="relative inline-flex items-center px-4 py-2 border
                   border-gray-300 text-sm leading-5 font-medium rounded-md
                   text-gray-700 bg-white hover:text-gray-500 focus:outline-none

@@ -24,8 +24,6 @@
     });
   }
 
-  console.log({ timeSlotOptions });
-
   const estimatedDurationOptions = [];
 
   const counter = `0:30`;

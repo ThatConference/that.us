@@ -10,6 +10,7 @@
 
   // utilities
   import { getTimeStampId, scrollIntoView } from '../../utilities/scrollHelper';
+  import { thatProfile } from '../../utilities/security.js';
 
   // components
   import Nav from '../../components/nav/interiorNav/Top.svelte';
@@ -25,12 +26,11 @@
   import sessionsApi from '../../dataSources/api.that.tech/sessions';
   import favoritesApi from '../../dataSources/api.that.tech/favorites';
 
-  import { thatProfile } from '../../utilities/security.js';
+  // stores
+  import currentEvent from '../../store/currentEvent';
   import { show } from '../../store/profileNotification';
 
-  const apiClient = getClient();
-
-  const { querySessions } = sessionsApi(apiClient);
+  const { querySessions } = sessionsApi(getClient());
 
   let createDisabled = true;
 
@@ -70,7 +70,7 @@
     <div class="text-red-500 text-sm leading-5 text-right lowercase italic">
       <span>* Scheduled times are represented in your timezone.</span>
     </div>
-    {#await querySessions()}
+    {#await querySessions($currentEvent.eventId)}
       <CardLoader />
     {:then sessions}
       <SessionsList {sessions} />

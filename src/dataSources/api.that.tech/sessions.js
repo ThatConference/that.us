@@ -1,5 +1,3 @@
-import config from '../../config';
-
 const coreSessionFields = `
   fragment coreFields on AcceptedSession {
     id
@@ -30,38 +28,36 @@ const coreOpenSpaceFields = `
 
 export const QUERY_SESSION_BY_ID = `
   ${coreSessionFields}
-  query getSessionById($eventId: ID!, $sessionId: ID!) {
-    events {
-      event(id: $eventId) {
-        session: sessionById(sessionId: $sessionId) {
-          ...coreFields
-          speakers {
-            firstName
-            lastName
-            bio
-            jobTitle
-            company
-            profileImage
-            profileSlug
-            profileLinks {
-              linkType
-              url
-              isPublic                  
-            }
-            earnedMeritBadges {
-              id
-              name
-              image
-              description
-            }
+  query getSessionById($sessionId: ID!) {
+    sessions {
+      session(sessionId: $sessionId) {
+        ...coreFields
+        speakers {
+          firstName
+          lastName
+          bio
+          jobTitle
+          company
+          profileImage
+          profileSlug
+          profileLinks {
+            linkType
+            url
+            isPublic                  
           }
-          favoritedBy {
+          earnedMeritBadges {
             id
-            firstName
-            lastName
-            profileImage
-            profileSlug
+            name
+            image
+            description
           }
+        }
+        favoritedBy {
+          id
+          firstName
+          lastName
+          profileImage
+          profileSlug
         }
       }
     }
@@ -137,27 +133,73 @@ export const SET_ATTENDANCE = `
   }
 `;
 
-export default (client, eventId = config.eventId) => {
-  const querySessions = () => {
+export default (client) => {
+  const querySessions = (eventId, onOrAfter = new Date(), daysAfter = 30) => {
+    const variables = { eventId, onOrAfter, daysAfter };
+    return client
+      .query(QUERY_SESSIONS, variables)
+      .toPromise()
+      .then((r) => {
+        if (r.error) {
+          // eslint-disable-next-line no-console
+          console.error(r.error);
+          throw new Error('query sessions failed.');
+        }
+
+        let results = [];
+        results = r.data.events.event.get.sessions.filter(
+          (i) => i.status === 'ACCEPTED',
+        );
+
+        results.sort((a, b) => new Date(a.startTime) - new Date(b.startTime));
+
+        return results;
+      });
+  };
+
+  const queryAllEventsSessions = (eventId) => {
     const variables = { eventId };
     return client
       .query(QUERY_SESSIONS, variables)
       .toPromise()
-      .then((r) =>
-        r.data.events.event.get.sessions.filter((i) => i.status === 'ACCEPTED'),
-      );
+      .then((r) => {
+        if (r.error) {
+          // eslint-disable-next-line no-console
+          console.error(r.error);
+          throw new Error('query sessions failed.');
+        }
+
+        let results = [];
+
+        results = r.data.events.event.get.sessions.filter(
+          (i) => i.status === 'ACCEPTED',
+        );
+
+        results.sort((a, b) => new Date(a.startTime) - new Date(b.startTime));
+
+        return results;
+      });
   };
 
+  // todo eventId can go when API is up
   const getById = (sessionId) => {
-    const variables = { eventId, sessionId };
+    const variables = { sessionId };
 
     return client
       .query(QUERY_SESSION_BY_ID, variables)
       .toPromise()
-      .then((r) => r.data.events.event.session);
+      .then((r) => {
+        if (r.error) {
+          // eslint-disable-next-line no-console
+          console.error(r.error);
+          throw new Error('Error on getSessionById API call.');
+        }
+
+        return r.data.sessions.session;
+      });
   };
 
-  const create = (sessionDetails) => {
+  const create = (sessionDetails, eventId) => {
     const mutationVariables = {
       eventId,
       newSession: {
@@ -168,7 +210,15 @@ export default (client, eventId = config.eventId) => {
     return client
       .mutation(CREATE_SESSION, mutationVariables)
       .toPromise()
-      .then((r) => r.data.sessions.create.openSpace);
+      .then((r) => {
+        if (r.error) {
+          // eslint-disable-next-line no-console
+          console.error(r.error);
+          throw new Error('Error on createSession API call.');
+        }
+
+        return r.data.sessions.create.openSpace;
+      });
   };
 
   const update = (sessionId, session) => {
@@ -177,12 +227,18 @@ export default (client, eventId = config.eventId) => {
       session,
     };
 
-    console.log({ mutationVariables });
-
     return client
       .mutation(UPDATE_SESSION_BY_ID, mutationVariables)
       .toPromise()
-      .then((r) => r.data.sessions.session.update.openSpace);
+      .then((r) => {
+        if (r.error) {
+          // eslint-disable-next-line no-console
+          console.error(r.error);
+          throw new Error('Error on updateSession API call.');
+        }
+
+        return r.data.sessions.session.update.openSpace;
+      });
   };
 
   const setAttendance = (sessionId) => {
@@ -193,5 +249,12 @@ export default (client, eventId = config.eventId) => {
     return client.mutation(SET_ATTENDANCE, mutationVariables).toPromise();
   };
 
-  return { querySessions, getById, create, update, setAttendance };
+  return {
+    querySessions,
+    queryAllEventsSessions,
+    getById,
+    create,
+    update,
+    setAttendance,
+  };
 };

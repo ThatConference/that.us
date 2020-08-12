@@ -1,17 +1,24 @@
 <script>
+  // 3rd Party
   import { getClient } from '@urql/svelte';
   import { navigateTo } from 'yrv';
   import Typewriter from 'svelte-typewriter';
 
+  // UI Support
   import StackedLayout from '../../elements/layouts/StackedLayout.svelte';
   import { ActionHeader, LinkButton } from '../../elements';
   import Nav from '../../components/nav/interiorNav/Top.svelte';
   import SessionForm from '../../components/sessions/SessionForm.svelte';
+
+  // data
   import sessionsApi from '../../dataSources/api.that.tech/sessions.js';
+
+  // stores
+  import currentEvent from '../../store/currentEvent';
+
+  // utilities
   import { tagEvent } from '../../utilities/gtag';
-
   import { format } from './formatRequest';
-
   import {
     isAuthenticated,
     user,
@@ -26,7 +33,7 @@
     setSubmitting(true);
 
     const newSession = format(values);
-    const { id } = await create(newSession);
+    const { id } = await create(newSession, $currentEvent.eventId);
 
     tagEvent('session_created', 'session', $user.sub);
 

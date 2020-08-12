@@ -29,18 +29,16 @@
 
   const QUERY_SESSION = query({
     query: `
-      query getSessionById($eventId: ID!, $sessionId: ID!) {
-        events {
-          event(id: $eventId) {
-            session: sessionById(sessionId: $sessionId) {  
-              title
-              shortDescription
-            }
+      query getSessionById($sessionId: ID!) {
+        sessions {
+          session (sessionId: $sessionId) {  
+            title
+            shortDescription
           }
         }
       }
     `,
-    variables: { eventId: 'ByE7Dc7eCGcRFzLhWhuI', sessionId },
+    variables: { sessionId },
     requestPolicy: 'network-only',
   });
 
@@ -216,8 +214,8 @@
   <div slot="header">
     <Nav />
 
-    {#if $sessionQuery.data && $sessionQuery.data.events.event.session}
-      <ActionHeader title="{$sessionQuery.data.events.event.session.title}">
+    {#if $sessionQuery.data && $sessionQuery.data.sessions.session}
+      <ActionHeader title="{$sessionQuery.data.sessions.session.title}">
         <LinkButton href="/sessions/{sessionId}" text="Session Details" />
       </ActionHeader>
     {/if}

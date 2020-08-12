@@ -76,7 +76,10 @@ export default (client, eventId = config.eventId) => {
           results = favorites; // set the return results
         }
 
-        return results.filter((s) => s.status === 'ACCEPTED');
+        results = results.filter((s) => s.status === 'ACCEPTED');
+        results.sort((a, b) => new Date(a.startTime) - new Date(b.startTime));
+
+        return results;
       });
   }
 

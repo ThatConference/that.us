@@ -47,11 +47,14 @@ export default (client) => {
 
         const { submitted } = r.data.sessions.me;
 
-        if (submitted)
+        if (submitted) {
           results = submitted
             .filter((s) => s.type === 'OPEN_SPACE')
             .filter((s) => s.eventId === config.eventId)
             .filter((s) => s.status === 'ACCEPTED');
+
+          results.sort((a, b) => new Date(a.startTime) - new Date(b.startTime));
+        }
 
         return results;
       });

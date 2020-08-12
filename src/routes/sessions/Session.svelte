@@ -1,67 +1,26 @@
 <script>
+  export let router;
+
+  // 3rd party
   import { query } from '@urql/svelte';
+  import { getClient } from '@urql/svelte';
   import { FacebookLoader } from 'svelte-content-loader';
   import { fade } from 'svelte/transition';
 
+  // ui support
+  import { ModalError, ActionHeader, LinkButton } from '../../elements';
   import Nav from '../../components/nav/interiorNav/Top.svelte';
-  import { ModalError } from '../../elements';
-  import StackedLayout from '../../elements/layouts/StackedLayout.svelte';
   import SessionDetails from './SessionDetails.svelte';
+  import StackedLayout from '../../elements/layouts/StackedLayout.svelte';
 
-  import { ActionHeader, LinkButton } from '../../elements';
+  // stores
+  import currentEvent from '../../store/currentEvent';
 
-  export let router;
+  // data sources
+  import sessionsApi from '../../dataSources/api.that.tech/sessions';
+
   const { sessionId } = router.params;
-
-  const QUERY_SESSION = query({
-    query: `
-      query getSessionById($eventId: ID!, $sessionId: ID!) {
-        events {
-          event(id: $eventId) {
-            session: sessionById(sessionId: $sessionId) {
-              id
-              title
-              shortDescription
-              tags
-              startTime
-              status
-              durationInMinutes
-              speakers {
-                firstName
-                lastName
-                bio
-                profileImage
-                profileSlug
-                profileLinks {
-                  linkType
-                  url
-                  isPublic                  
-                }
-                earnedMeritBadges {
-                  id
-                  name
-                  image
-                  description
-                }
-              }
-              favoritedBy {
-                id
-                firstName
-                lastName
-                profileImage
-                profileSlug
-              }
-            }
-          }
-        }
-      }
-    `,
-
-    variables: { eventId: 'ByE7Dc7eCGcRFzLhWhuI', sessionId },
-    requestPolicy: 'network-only',
-  });
-
-  $: sessionQuery = QUERY_SESSION();
+  const { getById } = sessionsApi(getClient());
 </script>
 
 <StackedLayout>
@@ -71,26 +30,20 @@
     <ActionHeader title="Session Details" />
   </div>
   <div slot="body">
-    {#if $sessionQuery.fetching}
+
+    {#await getById(sessionId)}
       <div class="flex items-center justify-center">
         <FacebookLoader uniqueKey="loading" />
       </div>
-    {:else if $sessionQuery.error || !$sessionQuery.data}
+    {:then session}
+      <SessionDetails {...session} />
+    {:catch error}
       <ModalError
         title="No Session Found"
         text="I'm sorry we weren't able to find the session you requested."
         action="{{ title: 'Return to Sessions', href: '/sessions' }}"
       />
-    {:else}
-      <SessionDetails
-        {...$sessionQuery.data.events.event.session}
-        {sessionId}
-      />
-    {/if}
+    {/await}
   </div>
-
-  <!-- <div slot="footer">
-      <Sponsor />
-    </div> -->
 
 </StackedLayout>

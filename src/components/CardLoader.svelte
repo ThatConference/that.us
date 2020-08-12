@@ -1,8 +1,10 @@
 <script>
+  export let numberOfCards = 3;
+
   import { FacebookLoader } from 'svelte-content-loader';
   import { GroupHeader } from '../elements';
 
-  let cardsToShow = new Array(3);
+  let cardsToShow = new Array(numberOfCards);
 </script>
 
 <div>

@@ -4,7 +4,8 @@
   import { router, Router, Route } from 'yrv';
 
   import { isAuthenticated, token } from './utilities/security.js';
-  import config from './config';
+  import config, { events } from './config';
+  import currentEvent from './store/currentEvent';
 
   // ui components
   import Tailwindcss from './elements/Tailwindcss.svelte';
@@ -32,6 +33,9 @@
 
   // join
   import Live from './routes/join/Live.svelte';
+
+  // setting the default event
+  currentEvent.set(events.thatUs);
 
   initClient({
     url: config.api,
