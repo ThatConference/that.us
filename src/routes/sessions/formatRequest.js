@@ -17,8 +17,7 @@ export const format = (values) => {
     selectedDuration,
   } = values;
 
-  const parsedStartTime = dayjs.tz(
-    `${selectedDay} ${selectedTime}`,
+  const parsedStartTime = dayjs(`${selectedDay} ${selectedTime}`).tz(
     selectedTimezone,
   );
 
