@@ -30,7 +30,7 @@
   <div slot="header">
     <Nav />
     <ActionHeader title="My Submissions">
-      <LinkButton href="/sessions/create" text="Create a new Session" />
+      <LinkButton href="/sessions/create" text="Create a New ..." />
     </ActionHeader>
   </div>
 
