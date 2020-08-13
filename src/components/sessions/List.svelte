@@ -53,7 +53,7 @@
         <span>
           {dayjs()
             .dayOfYear(day.dayOfYear)
-            .format("MMMM D, 'YY")}
+            .format("dddd MMMM D, 'YY")}
         </span>
       </h2>
 

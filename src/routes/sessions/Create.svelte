@@ -61,6 +61,7 @@
             <span>Open Space.</span>
             <span>Code Review.</span>
             <span>Panel Discussion.</span>
+            <span>Office Hours.</span>
             <span>Chat.</span>
             <span>Q&A.</span>
             <span>AMA.</span>

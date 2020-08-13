@@ -60,7 +60,7 @@
     <Nav />
     <ActionHeader title="THAT Board">
       {#if !createDisabled}
-        <LinkButton href="/sessions/create" text="Create New ..." />
+        <LinkButton href="/sessions/create" text="Create a New ..." />
       {/if}
     </ActionHeader>
   </div>
