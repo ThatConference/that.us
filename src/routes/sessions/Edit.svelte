@@ -5,7 +5,7 @@
   import { navigateTo } from 'yrv';
 
   import StackedLayout from '../../elements/layouts/StackedLayout.svelte';
-  import { ActionHeader, LinkButton } from '../../elements';
+  import { ActionHeader, LinkButton, ModalError } from '../../elements';
   import Nav from '../../components/nav/interiorNav/Top.svelte';
   import CardLoader from '../../components/CardLoader.svelte';
   import SessionForm from '../../components/sessions/SessionForm.svelte';
@@ -13,41 +13,49 @@
   import { tagEvent } from '../../utilities/gtag';
 
   import { user } from '../../utilities/security.js';
+  import { format } from './formatRequest';
 
   const { sessionId } = router.params;
 
   const { update, getById } = sessionsApi(getClient());
+  const sessionDetails = getById(sessionId);
+
+  async function handleWithdraw(e) {
+    await update(sessionId, {
+      status: 'CANCELLED',
+    });
+
+    tagEvent('session_withdraw', 'session', $user.sub);
+
+    navigateTo(`/my/submissions`, { replace: true });
+  }
 
   async function handleSubmit({
     detail: { values, setSubmitting, resetForm },
   }) {
-    const updatedSession = {
-      status: 'ACCEPTED',
-      ...values,
-    };
-
+    const updatedSession = format(values);
     await update(sessionId, updatedSession);
 
     tagEvent('session_update', 'session', $user.sub);
 
     setSubmitting(false);
     resetForm();
-    navigateTo('/sessions', { replace: true });
+    navigateTo(`/sessions/${sessionId}?edit=true&isUpdated=true`, {
+      replace: true,
+    });
   }
-
-  const sessionDetails = getById(sessionId);
 </script>
 
 <svelte:head>
-  <title>Edit Session * THAT.us</title>
+  <title>Update Submission 📝 THAT.us</title>
 </svelte:head>
 
 <StackedLayout>
 
   <div slot="header">
     <Nav />
-    <ActionHeader title="Edit Chat">
-      <LinkButton href="/sessions" text="Return to Schedule" />
+    <ActionHeader title="Update your Submission">
+      <LinkButton href="/sessions" text="Return to THAT Board" />
     </ActionHeader>
 
   </div>
@@ -56,7 +64,19 @@
     {#await sessionDetails}
       <CardLoader />
     {:then session}
-      <SessionForm {handleSubmit} initialValues="{session}" />
+      {#if session}
+        <SessionForm
+          {handleSubmit}
+          {handleWithdraw}
+          initialValues="{session}"
+        />
+      {:else}
+        <ModalError
+          title="No Session Found"
+          text="I'm sorry we weren't able to find the session you tried to edit."
+          action="{{ title: 'My Submissions', href: '/my/submissions' }}"
+        />
+      {/if}
     {/await}
 
   </div>

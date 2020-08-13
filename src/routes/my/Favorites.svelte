@@ -16,6 +16,8 @@
   import SessionsList from '../../components/sessions/List.svelte';
   import favoritesApi from '../../dataSources/api.that.tech/favorites';
 
+  import currentEvent from '../../store/currentEvent';
+
   const { get } = favoritesApi(getClient());
 </script>
 
@@ -28,7 +30,7 @@
   <div slot="header">
     <Nav />
     <ActionHeader title="My Favorites">
-      <LinkButton href="/sessions" text="Return to Full Schedule" />
+      <LinkButton href="/sessions" text="Return to THAT Board" />
     </ActionHeader>
   </div>
 
@@ -36,7 +38,7 @@
     <div class="text-gray-500 text-sm leading-5 text-right lowercase italic">
       <span>* Scheduled times are represented in your timezone.</span>
     </div>
-    {#await get()}
+    {#await get($currentEvent.eventId)}
       <CardLoader />
     {:then sessions}
       {#if sessions.length > 0}
@@ -55,7 +57,7 @@
         title="KABOOM!"
         text="I'm sorry, bugs are features right? If I were you, I'd refresh the
         page right now."
-        action="{{ title: 'Return to Schedule', href: '/sessions' }}"
+        action="{{ title: 'Return to THAT Board', href: '/sessions' }}"
       />
     {/await}
   </div>

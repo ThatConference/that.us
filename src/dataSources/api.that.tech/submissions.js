@@ -1,4 +1,4 @@
-import config from '../../config';
+import { events } from '../../config';
 
 export const QUERY_SUBMISSIONS = `
   query getMySubmissions {
@@ -15,6 +15,7 @@ export const QUERY_SUBMISSIONS = `
             status
             startTime
             tags
+            durationInMinutes
             speakers {
               id
               firstName
@@ -36,24 +37,25 @@ export const QUERY_SUBMISSIONS = `
 `;
 
 export default (client) => {
-  const queryMySubmissions = () => {
-    const variables = { eventId: config.eventId };
-    return client
-      .query(QUERY_SUBMISSIONS, variables)
+  const queryMySubmissions = () =>
+    client
+      .query(QUERY_SUBMISSIONS)
       .toPromise()
       .then((r) => {
         let results = [];
 
         const { submitted } = r.data.sessions.me;
 
-        if (submitted)
+        if (submitted) {
           results = submitted
             .filter((s) => s.type === 'OPEN_SPACE')
-            .filter((s) => s.eventId === config.eventId);
+            .filter((s) => s.status === 'ACCEPTED');
+
+          results.sort((a, b) => new Date(a.startTime) - new Date(b.startTime));
+        }
 
         return results;
       });
-  };
 
   return { queryMySubmissions };
 };

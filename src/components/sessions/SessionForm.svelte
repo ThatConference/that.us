@@ -1,25 +1,96 @@
+<script context="module">
+  import mtz from 'moment-timezone';
+  const timeZoneOptions = mtz.tz.names().map(t => ({ value: t, label: t }));
+
+  const timeSlotOptions = [];
+
+  for (let hour = 0; hour < 24; hour++) {
+    const onHour = dayjs()
+      .hour(hour)
+      .minute(0);
+
+    const onHalf = dayjs()
+      .hour(hour)
+      .minute(30);
+
+    timeSlotOptions.push({
+      value: onHour.format('HH:mm'),
+      label: onHour.format('h:mm A'),
+    });
+
+    timeSlotOptions.push({
+      value: onHalf.format('HH:mm'),
+      label: onHalf.format('h:mm A'),
+    });
+  }
+
+  const estimatedDurationOptions = [];
+
+  const counter = `0:30`;
+  estimatedDurationOptions.push({ value: counter, label: counter });
+
+  for (let hour = 1; hour < 9; hour++) {
+    const onHour = `${hour}:00`;
+    estimatedDurationOptions.push({ value: onHour, label: onHour });
+
+    if (hour !== 8) {
+      const onHourHalf = `${hour}:30`;
+      estimatedDurationOptions.push({ value: onHourHalf, label: onHourHalf });
+    }
+  }
+</script>
+
 <script>
   export let handleSubmit;
+  export let handleWithdraw;
   export let initialValues;
 
   import dayjs from 'dayjs';
+  import utc from 'dayjs/plugin/utc';
+  import timezone from 'dayjs/plugin/timezone';
+  import duration from 'dayjs/plugin/duration';
+  import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
+  import isToday from 'dayjs/plugin/isToday';
+
+  import Datepicker from 'svelte-calendar'; //https://github.com/6eDesign/svelte-calendar
   import { Circle2 } from 'svelte-loading-spinners';
-  import { Form, Input, Select, Choice } from 'sveltejs-forms'; //https://github.com/mdauner/sveltejs-forms
+  import { Form, Input, Choice } from 'sveltejs-forms'; //https://github.com/mdauner/sveltejs-forms
+  import Select from 'svelte-select'; //https://github.com/rob-balfre/svelte-select
   import Tags from 'svelte-tags-input';
   import * as yup from 'yup';
   import _ from 'lodash';
+  import { Link } from 'yrv';
 
-  import { sessionTimes } from './sessionTimes';
   import { Waiting, ModalError } from '../../elements';
-
   import { thatProfile } from '../../utilities/security.js';
+  import ErrorNotificaiton from '../../components/notifications/Error.svelte';
+
+  dayjs.extend(utc);
+  dayjs.extend(timezone);
+  dayjs.extend(duration);
+  dayjs.extend(isSameOrAfter);
+  dayjs.extend(isToday);
+
+  const selectedTimezoneDefault = dayjs.tz.guess();
+  let createDisabled = true;
+  let selectedDayDefault = new Date();
+  let selectedDateValue = selectedDayDefault;
+
+  let initDurationInMinutes;
+  let originalStartTime;
 
   if (initialValues) {
-    delete initialValues.id;
-    delete initialValues.eventId;
-  }
+    const { durationInMinutes, startTime } = initialValues;
 
-  let createDisabled = true;
+    originalStartTime = dayjs(startTime);
+    initDurationInMinutes = durationInMinutes
+      ? dayjs
+          .utc(dayjs.duration(durationInMinutes, 'minutes').asMilliseconds())
+          .format('H:mm')
+      : undefined;
+
+    selectedDateValue = originalStartTime.toDate();
+  }
 
   $: if (!_.isEmpty($thatProfile)) {
     createDisabled = false;
@@ -29,44 +100,88 @@
     title: yup
       .string()
       .trim()
-      .required(),
+      .required('Please add a title.'),
     shortDescription: yup
       .string()
       .trim()
-      .required(),
-    startTime: yup.string().required(),
+      .required('Please add a short description.'),
     tags: yup.array().of(yup.string()),
+    selectedDay: yup.string().required('Please select a day.'),
+    selectedTime: yup.string().required('Please select a starting time.'),
+    selectedTimezone: yup
+      .string()
+      .required('Please select the appropiate timezone.'),
+    selectedDuration: yup
+      .string()
+      .required('Please select an estimated duration.'),
   });
 
+  const currentTimeZone = dayjs.tz.guess();
   let tagsInput;
   let tagInputValues = initialValues ? initialValues.tags : [];
+
+  let estimatedDurationSelect;
+  let timeSlotSelect;
+  let timezoneSelect;
 
   let formInitValues;
 
   if (initialValues) {
+    const { title, shortDescription, tags } = initialValues;
+
     formInitValues = {
-      ...initialValues,
+      title,
+      shortDescription,
+      tags,
+      selectedDay: originalStartTime.format('YYYY-MM-DD'),
+      selectedTime: originalStartTime.format('HH:mm'),
+      selectedTimezone: selectedTimezoneDefault,
+      selectedDuration: initDurationInMinutes,
     };
   } else {
     formInitValues = {
       title: undefined,
       shortDescription: undefined,
-      tags: [],
+      tags: tagInputValues,
+      selectedDay: dayjs(selectedDayDefault).format('YYYY-MM-DD'),
+      selectedTime: undefined,
+      selectedTimezone: selectedTimezoneDefault,
+      selectedDuration: undefined,
     };
   }
 
-  const convertOptionsToTimeZone = sessionTimes => {
-    const x = sessionTimes.map(t => ({
-      id: t.id,
-      title: `${t.title} ( ${dayjs(t.id).format('hh:mm a')} in your timezone )`,
-    }));
+  const canCancelSessionAction = () => {
+    let results = false;
 
-    return x;
+    if (handleWithdraw) {
+      if (dayjs(initialValues.startTime).isSameOrAfter(dayjs(), 'day'))
+        results = true;
+    }
+    return results;
   };
 
   function handleReset() {
-    tagsInputValues = [];
+    tagInputValues = [];
+    selectedDateValue = selectedDayDefault;
   }
+
+  const findSelectedTimeSlot = values =>
+    timeSlotOptions.find(item => item.value === values['selectedTime']);
+
+  const findSelectedDuration = values =>
+    estimatedDurationOptions.find(
+      item => item.value === values['selectedDuration'],
+    );
+
+  const findSelectedTimezone = values =>
+    timeZoneOptions.find(item => item.value === values['selectedTimezone']);
+
+  let timeSlotOptionsFiltered = timeSlotOptions;
+  $: timeSlotOptionsFiltered = dayjs(selectedDateValue).isToday()
+    ? timeSlotOptions.filter(t =>
+        dayjs(dayjs(t.value, 'HH:mm')).isSameOrAfter(dayjs()),
+      )
+    : timeSlotOptions;
 </script>
 
 {#if createDisabled}
@@ -75,7 +190,7 @@
     text="It appears you haven't created your profile yet. You can't create a
     session until that's complete."
     action="{{ title: 'Create Profile', href: '/my/profile' }}"
-    returnTo="{{ title: 'Return to Schedule', href: '/sessions' }}"
+    returnTo="{{ title: 'Return to THAT Board', href: '/sessions' }}"
   />
 {:else if !$thatProfile.canFeature}
   <ModalError
@@ -83,7 +198,7 @@
     text="It appears we cannot feature your profile. You need to have a public
     profile to create a session."
     action="{{ title: 'Update Profile', href: '/my/profile' }}"
-    returnTo="{{ title: 'Return to Schedule', href: '/sessions' }}"
+    returnTo="{{ title: 'Return to THAT Board', href: '/sessions' }}"
   />
 {/if}
 
@@ -97,13 +212,15 @@
   let:isSubmitting
   let:isValid
   let:setValue
+  let:values
+  let:errors
+  let:touched
 >
 
   <div>
     <p class="mt-1 max-w-2xl text-sm leading-5 text-gray-500">
-      Let's gather around a vitual circle and chat. Below is a quick form to
-      help others identify if they have interest in the topic or can be of some
-      help to the converation.
+      Below is a quick form to help others identify if they have interest in
+      this topic or can be of some help to others.
     </p>
   </div>
 
@@ -116,15 +233,17 @@
       <label
         for="session_title"
         class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px
-        sm:pt-2"
+        sm:pt-2 col-span-1"
       >
         What would you like to chat about?
       </label>
 
-      <div class="mt-1 sm:mt-0 sm:col-span-2">
-        <div class="max-w-lg rounded-md shadow-sm sm:max-w-xs">
+      <div class="mt-1 sm:mt-0 col-span-2">
+
+        <div class="max-w-lg rounded-md shadow-sm">
           <Input
             name="title"
+            autofocus
             class="form-input block w-full transition duration-150 ease-in-out
             sm:text-sm sm:leading-5"
           />
@@ -144,10 +263,12 @@
         Explain a bit more about what you'd like to chat about.
       </label>
       <div class="mt-1 sm:mt-0 sm:col-span-2">
-        <div class="max-w-lg rounded-md shadow-sm sm:max-w-xs">
+        <div class="max-w-lg rounded-md shadow-sm">
           <Input
             name="shortDescription"
-            multiline="{true}"
+            multiline
+            spellcheck="true"
+            rows="5"
             class="form-input block w-full transition duration-150 ease-in-out
             sm:text-sm sm:leading-5"
           />
@@ -168,7 +289,7 @@
         delimiter)
       </label>
       <div class="mt-1 sm:mt-0 sm:col-span-2">
-        <div class="max-w-lg rounded-md shadow-sm sm:max-w-xs tag-form-input">
+        <div class="max-w-lg rounded-md shadow-sm tag-form-input">
           <Tags
             name="tags"
             bind:this="{tagsInput}"
@@ -178,7 +299,34 @@
             onlyUnique="{true}"
             on:tags="{({ detail }) => setValue('tags', detail.tags)}"
             class="form-input block w-full transition duration-150 ease-in-out
-            sm:text-sm sm:leading-5"
+            sm:text-sm sm:leading-5 rounded-md shadow-sm"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start
+      sm:border-t sm:border-gray-200 sm:pt-5"
+    >
+      <label
+        for="session_selectedDay"
+        class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px
+        sm:pt-2"
+      >
+        Select a Day:
+      </label>
+
+      <div class="mt-1 sm:mt-0 sm:col-span-2">
+        <div class="max-w-lg sm:text-sm sm:leading-5">
+          <Input name="selectedDay" hidden />
+          <Datepicker
+            name="selectedDay"
+            start="{new Date()}"
+            bind:selected="{selectedDateValue}"
+            style="rounded-md shadow-sm"
+            format="{dayjs(selectedDateValue).format('dddd, MMM D, YYYY')}"
+            on:dateSelected="{({ detail: { date } }) => setValue('selectedDay', dayjs(date).format('YYYY-MM-DD'))}"
           />
         </div>
       </div>
@@ -193,57 +341,147 @@
         class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px
         sm:pt-2"
       >
-        Select a time to chat. ( CST gmt-5 )
+        Select a Time:
       </label>
+
       <div class="mt-1 sm:mt-0 sm:col-span-2">
-        <div class="max-w-lg rounded-md shadow-sm sm:max-w-xs">
-          <Select
-            name="startTime"
-            options="{convertOptionsToTimeZone(sessionTimes)}"
-            class="form-input block w-full transition duration-150 ease-in-out
-            sm:text-sm sm:leading-5"
-          />
+        <div class="flex space-x-8 max-w-lg">
+
+          <div>
+            <legend class="block text-sm font-medium leading-5 text-gray-400">
+              Starting Time
+            </legend>
+            <div class="mt-1 rounded-md shadow-sm w-32">
+              <Select
+                bind:this="{timeSlotSelect}"
+                inputAttributes="{{ name: 'selectedTime' }}"
+                on:select="{({ detail }) => setValue('selectedTime', detail.value)}"
+                hasError="{touched['selectedTime'] && errors['selectedTime']}"
+                items="{timeSlotOptionsFiltered}"
+                on:clear="{() => setValue('selectedTime', undefined)}"
+                selectedValue="{findSelectedTimeSlot(values)}"
+                inputStyles="form-select relative block w-full rounded-md
+                bg-transparent focus:z-10 transition ease-in-out duration-150
+                sm:text-sm sm:leading-5"
+              />
+
+              {#if touched['selectedTime'] && errors['selectedTime']}
+                <p class="text-red-600 italic">{errors['selectedTime']}</p>
+              {/if}
+
+            </div>
+          </div>
+
+          <div>
+            <legend class="block text-sm font-medium leading-5 text-gray-400">
+              Time Zone
+            </legend>
+            <div class="mt-1 rounded-md shadow-sm w-64">
+
+              <Select
+                bind:this="{timezoneSelect}"
+                inputAttributes="{{ name: 'selectedTimezone' }}"
+                on:select="{({ detail }) => setValue('selectedTimezone', detail.value)}"
+                hasError="{touched['selectedTimezone'] && errors['selectedTimezone']}"
+                items="{timeZoneOptions}"
+                on:clear="{() => setValue('selectedTimezone', undefined)}"
+                selectedValue="{findSelectedTimezone(values)}"
+                inputStyles="form-select relative block w-full rounded-md
+                bg-transparent focus:z-10 transition ease-in-out duration-150
+                sm:text-sm sm:leading-5"
+              />
+
+              {#if touched['selectedTimezone'] && errors['selectedTimezone']}
+                <p class="text-red-600 italic">{errors['selectedTimezone']}</p>
+              {/if}
+
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
-  </div>
+    <div
+      class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start
+      sm:border-t sm:border-gray-200 sm:pt-5"
+    >
+      <label
+        for="session_duration"
+        class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px
+        sm:pt-2"
+      >
+        Estimated Duration (hours):
+      </label>
 
-  <div class="mt-8 border-t border-gray-200 pt-5">
-    <div class="flex justify-end">
+      <div class="mt-1 sm:mt-0 sm:col-span-2">
+        <div class="w-32">
+          <Select
+            bind:this="{estimatedDurationSelect}"
+            inputAttributes="{{ name: 'selectedDuration' }}"
+            on:select="{({ detail }) => setValue('selectedDuration', detail.value)}"
+            hasError="{touched['selectedDuration'] && errors['selectedDuration']}"
+            items="{estimatedDurationOptions}"
+            on:clear="{() => setValue('selectedDuration', undefined)}"
+            selectedValue="{findSelectedDuration(values)}"
+            inputStyles="form-select relative block w-full rounded-md
+            bg-transparent focus:z-10 transition ease-in-out duration-150
+            sm:text-sm sm:leading-5"
+          />
 
-      <span class="inline-flex rounded-md shadow-sm">
-        <button
-          type="reset"
-          class="py-2 px-4 border border-gray-300 rounded-md text-sm leading-5
-          font-medium text-gray-700 hover:text-gray-500 focus:outline-none
-          focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50
-          active:text-gray-800 transition duration-150 ease-in-out"
-        >
-          Reset Form
-        </button>
-      </span>
+          {#if touched['selectedDuration'] && errors['selectedDuration']}
+            <p class="text-red-600 italic">{errors['selectedDuration']}</p>
+          {/if}
 
-      <span class="ml-3 inline-flex rounded-md shadow-sm">
-        <button
-          type="submit"
-          disabled="{isSubmitting}"
-          class="inline-flex justify-center py-2 px-4 border border-transparent
-          text-sm leading-5 font-medium rounded-md text-white bg-indigo-600
-          hover:bg-indigo-500 focus:outline-none focus:border-indigo-700
-          focus:shadow-outline-indigo active:bg-indigo-700 transition
-          duration-150 ease-in-out"
-        >
-          {initialValues ? 'Update Session' : 'Add Session'}
-        </button>
-      </span>
+        </div>
+      </div>
     </div>
-  </div>
 
-  {#if isSubmitting}
-    <div class="flex flex-grow justify-center py-12">
-      <Waiting />
+    <div class="mt-8 border-t border-gray-200 pt-5">
+      <div class="flex justify-end space-x-4">
+
+        <span class="inline-flex rounded-md shadow-sm">
+          <button
+            type="submit"
+            disabled="{isSubmitting}"
+            class="inline-flex justify-center py-2 px-4 border
+            border-transparent text-sm leading-5 font-medium rounded-md
+            text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none
+            focus:border-indigo-700 focus:shadow-outline-indigo
+            active:bg-indigo-700 transition duration-150 ease-in-out"
+          >
+            {initialValues ? 'Update' : 'Create'}
+          </button>
+        </span>
+
+        {#if canCancelSessionAction()}
+          <span class="inline-flex rounded-md shadow-sm">
+            <button
+              disabled="{isSubmitting}"
+              on:click|preventDefault="{handleWithdraw}"
+              tabindex="-1"
+              class="py-2 px-4 border order border-transparent rounded-md
+              text-sm leading-5 font-medium text-white bg-red-400
+              hover:bg-red-600 focus:outline-none focus:border-red-700
+              focus:shadow-outline-red active:bg-red-700 transition duration-150
+              ease-in-out"
+            >
+              Cancel / Withdraw
+            </button>
+          </span>
+        {/if}
+
+      </div>
     </div>
-  {/if}
 
+    {#if isValid === false}
+      <ErrorNotificaiton message="Please correct the errors listed above." />
+    {/if}
+
+    {#if isSubmitting}
+      <div class="flex flex-grow justify-center py-12">
+        <Waiting />
+      </div>
+    {/if}
+
+  </div>
 </Form>

@@ -10,7 +10,7 @@
   export let tags = [];
   export let attendees = []; // todo.. needs to be favorites
   export let __typename; // just here to clean up props
-  export let eventId = config.eventId; // just here to clean up props
+  export let eventId = events.thatUs.eventId; // just here to clean up props
   export let type = 'OPEN_SPACE'; // just here to clean up props
 
   // 3rd party
@@ -18,24 +18,29 @@
   import { Link } from 'yrv';
   import dayjs from 'dayjs';
   import isBetween from 'dayjs/plugin/isBetween';
+  import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
   import Icon from 'svelte-awesome';
   import { info, heart, signIn, cog, caretDown } from 'svelte-awesome/icons';
   import qs from 'query-string';
   import { getClient } from '@urql/svelte';
   import _ from 'lodash';
 
-  // supporting goo
-  import config from '../../config';
+  // utilties
+  import config, { events } from '../../config';
   import { isAuthenticated, thatProfile } from '../../utilities/security';
   import { truncate, isLongerThan } from '../../utilities/truncate';
+
+  // data
   import favoritesApi from '../../dataSources/api.that.tech/favorites';
   import { show } from '../../store/profileNotification';
+  import currentEvent from '../../store/currentEvent';
 
   // UI Elements
   import { Tag } from '../../elements';
   import CardLink from './CardLink.svelte';
 
   dayjs.extend(isBetween);
+  dayjs.extend(isSameOrAfter);
 
   const { toggle, get: getFavorites, favoritesStore: favorites } = favoritesApi(
     getClient(),
@@ -62,7 +67,7 @@
   const handleToggle = async () => {
     if (isAllowed()) {
       favoriteDisabled = true;
-      await toggle(id);
+      await toggle(id, $currentEvent.eventId);
       favoriteDisabled = false;
     }
   };
@@ -80,7 +85,7 @@
   $: canJoin = isInWindow;
 
   onMount(async () => {
-    if ($isAuthenticated) await getFavorites();
+    if ($isAuthenticated) await getFavorites($currentEvent.eventId);
 
     let endTime = durationInMinutes ? durationInMinutes : 60;
 
@@ -106,6 +111,16 @@
   let userProfileImage = host.profileImage
     ? `${host.profileImage}${imageCrop}`
     : config.defaultProfileImage;
+
+  const canEdit = () => {
+    let canEditMe = false;
+
+    if (editMode) {
+      if (dayjs(startTime).isSameOrAfter(dayjs(), 'day')) canEditMe = true;
+    }
+
+    return canEditMe;
+  };
 </script>
 
 <div class="w-full h-full flex flex-col">
@@ -181,7 +196,7 @@
           <div class="-ml-px w-0 flex-1 flex">
             <CardLink href="/join/{id}" icon="{signIn}" text="{'Join In'}" />
           </div>
-        {:else if editMode}
+        {:else if canEdit()}
           <div class="-ml-px w-0 flex-1 flex">
             <Link
               href="/sessions/edit/{id}"

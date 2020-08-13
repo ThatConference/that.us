@@ -7,8 +7,6 @@
   import PanelSpeakerCard from './PanelSpeakerCard.svelte';
 
   let displayedSpeakers = speakers.filter(s => s);
-
-  console.log({ displayedSpeakers });
 </script>
 
 <div>

@@ -10,6 +10,7 @@
 
   // utilities
   import { getTimeStampId, scrollIntoView } from '../../utilities/scrollHelper';
+  import { thatProfile } from '../../utilities/security.js';
 
   // components
   import Nav from '../../components/nav/interiorNav/Top.svelte';
@@ -23,15 +24,12 @@
 
   // datasources
   import sessionsApi from '../../dataSources/api.that.tech/sessions';
-  import favoritesApi from '../../dataSources/api.that.tech/favorites';
 
-  import { thatProfile } from '../../utilities/security.js';
+  // stores
+  import currentEvent from '../../store/currentEvent';
   import { show } from '../../store/profileNotification';
 
-  const apiClient = getClient();
-
-  const { querySessions } = sessionsApi(apiClient);
-  $: query = querySessions();
+  const { querySessions } = sessionsApi(getClient());
 
   let createDisabled = true;
 
@@ -40,7 +38,6 @@
   }
 
   onMount(() => {
-    query = querySessions();
     // TODO put back later after we have new dashboard.
     // query.then((_) => {
     //   const now = dayjs();
@@ -48,23 +45,22 @@
     //   const bump = now.minute() >= 29;
     //   starting = bump === true ? starting.add(30, 'm') : starting;
     //   const id = getTimeStampId(starting.toDate());
-
     //   scrollIntoView(`#${id}`);
     // });
   });
 </script>
 
 <svelte:head>
-  <title>THAT Schedule * THAT.us</title>
+  <title>THAT 📆 THAT.us</title>
 </svelte:head>
 
 <StackedLayout>
 
   <div slot="header">
     <Nav />
-    <ActionHeader title="THAT Schedule">
+    <ActionHeader title="THAT Board">
       {#if !createDisabled}
-        <LinkButton href="/sessions/create" text="Create New Session" />
+        <LinkButton href="/sessions/create" text="Create New ..." />
       {/if}
     </ActionHeader>
   </div>
@@ -73,7 +69,7 @@
     <div class="text-red-500 text-sm leading-5 text-right lowercase italic">
       <span>* Scheduled times are represented in your timezone.</span>
     </div>
-    {#await querySessions()}
+    {#await querySessions($currentEvent.eventId)}
       <CardLoader />
     {:then sessions}
       <SessionsList {sessions} />

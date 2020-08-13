@@ -4,7 +4,8 @@
   import { router, Router, Route } from 'yrv';
 
   import { isAuthenticated, token } from './utilities/security.js';
-  import config from './config';
+  import config, { events } from './config';
+  import currentEvent from './store/currentEvent';
 
   // ui components
   import Tailwindcss from './elements/Tailwindcss.svelte';
@@ -32,6 +33,9 @@
 
   // join
   import Live from './routes/join/Live.svelte';
+
+  // setting the default event
+  currentEvent.set(events.thatUs);
 
   initClient({
     url: config.api,
@@ -176,5 +180,12 @@
     font-style: italic;
     --text-opacity: 1;
     color: rgba(224, 36, 36, var(--text-opacity));
+  }
+
+  select {
+    /* for Firefox */
+    -moz-appearance: none;
+    /* for Safari, Chrome, Opera */
+    -webkit-appearance: none;
   }
 </style>

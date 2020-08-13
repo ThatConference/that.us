@@ -29,7 +29,7 @@
 
   <div slot="header">
     <Nav />
-    <ActionHeader title="My Session Submissions">
+    <ActionHeader title="My Submissions">
       <LinkButton href="/sessions/create" text="Create a new Session" />
     </ActionHeader>
   </div>

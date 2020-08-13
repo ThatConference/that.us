@@ -1,5 +1,4 @@
 import { writable } from 'svelte/store';
-import config from '../../config';
 
 const favoriteFragment = `
   fragment sessionFields on AcceptedSession {
@@ -39,22 +38,22 @@ const TOGGLE_FAVORITE = `
 `;
 
 export const QUERY_MY_FAVORITES = `
-${favoriteFragment}
-query memberFavorites ($eventId: ID!) {
-  sessions {
-    me {
-      favorites(eventId: $eventId) {
-        ...sessionFields
+  ${favoriteFragment}
+  query memberFavorites ($eventId: ID!) {
+    sessions {
+      me {
+        favorites(eventId: $eventId) {
+          ...sessionFields
+        }
       }
     }
   }
-}
 `;
 
-export default (client, eventId = config.eventId) => {
+export default (client) => {
   const favoritesStore = writable([]);
 
-  function query() {
+  function query(eventId) {
     const variables = {
       eventId,
     };
@@ -76,11 +75,14 @@ export default (client, eventId = config.eventId) => {
           results = favorites; // set the return results
         }
 
+        results = results.filter((s) => s.status === 'ACCEPTED');
+        results.sort((a, b) => new Date(a.startTime) - new Date(b.startTime));
+
         return results;
       });
   }
 
-  async function toggle(sessionId) {
+  async function toggle(sessionId, eventId) {
     const mutationVariables = {
       eventId,
       sessionId,
@@ -108,8 +110,8 @@ export default (client, eventId = config.eventId) => {
     return results;
   }
 
-  const get = () => query();
-  const getIds = () => query().then((r) => r.map((i) => i.id));
+  const get = (eventId) => query(eventId);
+  const getIds = (eventId) => query(eventId).then((r) => r.map((i) => i.id));
 
   // favoritesStore.set(query());
 

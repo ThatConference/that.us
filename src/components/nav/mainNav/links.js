@@ -1,6 +1,6 @@
 export default [
   {
-    text: 'Schedule',
+    text: 'THAT Board',
     href: '/sessions',
     first: true,
   },
@@ -11,9 +11,5 @@ export default [
   {
     text: 'Partners',
     href: '/partners',
-  },
-  {
-    text: 'Tickets',
-    href: 'http://tickets.thatconference.com',
   },
 ];

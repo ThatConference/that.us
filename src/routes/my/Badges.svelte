@@ -60,7 +60,7 @@
   <div slot="header">
     <Nav />
     <ActionHeader title="Your Merit Badges">
-      <LinkButton href="/sessions" text="Return to Schedule" />
+      <LinkButton href="/sessions" text="Return to THAT Board" />
     </ActionHeader>
   </div>
 
