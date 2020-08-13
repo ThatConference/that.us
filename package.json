@@ -45,7 +45,7 @@
     "graphql": "^15.3.0",
     "husky": "^4.2.5",
     "isomorphic-unfetch": "^3.0.0",
-    "jest-cli": "^26.3.0",
+    "jest-cli": "^26.4.0",
     "lodash": "^4.17.19",
     "moment-timezone": "^0.5.31",
     "omit-deep": "^0.3.0",
@@ -69,7 +69,7 @@
     "svelte-content-loader": "^1.1.3",
     "svelte-infinite-scroll": "^1.4.1",
     "svelte-loading-spinners": "0.1.1",
-    "svelte-preprocess": "^4.0.10",
+    "svelte-preprocess": "^4.0.11",
     "svelte-routing": "^1.4.2",
     "svelte-select": "^3.11.0",
     "svelte-tags-input": "^2.6.5",
@@ -81,8 +81,7 @@
     "yup": "~0.29.3"
   },
   "dependencies": {
-    "sirv-cli": "^1.0.5",
-    "uninstall": "0.0.0"
+    "sirv-cli": "^1.0.6"
   },
   "jest": {
     "testEnvironment": "node",
