@@ -15,6 +15,7 @@
   import dayjs from 'dayjs';
   import isBetween from 'dayjs/plugin/isBetween';
   import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
+  import relativeTime from 'dayjs/plugin/relativeTime';
   import Icon from 'svelte-awesome';
   import { Link } from 'yrv';
   import {
@@ -46,6 +47,7 @@
 
   dayjs.extend(isBetween);
   dayjs.extend(isSameOrAfter);
+  dayjs.extend(relativeTime);
 
   const { toggle, get: getFavorites, favoritesStore: favorites } = favoritesApi(
     getClient(),
@@ -54,7 +56,7 @@
   let host = speakers[0];
   let imageCrop = '?mask=ellipse&w=500&h=500&fit=crop';
 
-  const { join, edit, isNew, isUpdated } = qs.parse(location.search);
+  let { join, edit, isNew, isUpdated } = qs.parse(location.search);
 
   let favoriteDisabled = false;
 
@@ -91,17 +93,22 @@
     return canEditMe;
   };
 
+  let timeLeftToJoin = 'in ...';
+
   onMount(async () => {
+    window.history.replaceState({}, null, `/sessions/${id}`);
+
     if ($isAuthenticated) await getFavorites($currentEvent.eventId);
 
     let endTime = durationInMinutes ? durationInMinutes : 60;
 
     if (status === 'ACCEPTED') {
       const interval = setInterval(() => {
-        let inSession = dayjs().isBetween(
-          dayjs(startTime).subtract(5, 'minute'),
-          dayjs(startTime).add(endTime, 'minute'),
-        );
+        let currentStartTime = dayjs(startTime).subtract(5, 'minute');
+        let currentEndTime = dayjs(startTime).add(endTime, 'minute');
+
+        timeLeftToJoin = dayjs().to(currentStartTime);
+        let inSession = dayjs().isBetween(currentStartTime, currentEndTime);
 
         isInWindow = inSession;
 
@@ -235,6 +242,17 @@
                   />
                   <span>Join In</span>
                 </Link>
+              </span>
+            {:else}
+              <span class="ml-3 inline-flex rounded-md shadow-sm">
+                <div
+                  class="relative inline-flex items-center px-4 py-2 border
+                  border-gray-300 text-sm leading-5 font-medium rounded-md
+                  text-gray-400 bg-white"
+                >
+                  <Icon data="{signIn}" class="-ml-1 mr-2 h-5 w-5" />
+                  <span>Join {timeLeftToJoin}</span>
+                </div>
               </span>
             {/if}
             {#if canEdit()}
