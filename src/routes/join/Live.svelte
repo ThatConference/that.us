@@ -206,7 +206,7 @@
     text="It appears you haven't created your profile yet. You can't create a
     session until that's complete."
     action="{{ title: 'Create Profile', href: '/my/profile' }}"
-    returnTo="{{ title: 'Return to Schedule', href: '/sessions' }}"
+    returnTo="{{ title: 'Return to THAT Board', href: '/sessions' }}"
   />
 {/if}
 

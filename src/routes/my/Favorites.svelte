@@ -57,7 +57,7 @@
         title="KABOOM!"
         text="I'm sorry, bugs are features right? If I were you, I'd refresh the
         page right now."
-        action="{{ title: 'Return to Schedule', href: '/sessions' }}"
+        action="{{ title: 'Return to THAT Board', href: '/sessions' }}"
       />
     {/await}
   </div>
