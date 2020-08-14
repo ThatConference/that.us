@@ -26,6 +26,7 @@
   import Badges from './routes/my/Badges.svelte';
 
   // sessions
+  import Event from './routes/events/List.svelte';
   import List from './routes/sessions/List.svelte';
   import Session from './routes/sessions/Session.svelte';
   import Create from './routes/sessions/Create.svelte';
@@ -118,6 +119,7 @@
     />
 
     <Route exact path="/sessions/:sessionId" component="{Session}" />
+    <Route exact path="/events/:eventName" component="{Event}" />
 
     <Route
       exact
