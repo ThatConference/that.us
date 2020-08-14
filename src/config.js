@@ -20,6 +20,8 @@ export default {
 export const events = {
   thatOnline: {
     eventId: 'ByE7Dc7eCGcRFzLhWhuI',
+    title: 'THAT Online',
+    date: 'August 3rd, 2020',
   },
 
   thatUs: {

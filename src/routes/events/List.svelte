@@ -3,14 +3,7 @@
 
   // 3rd party
   import { getClient } from '@urql/svelte';
-  import dayjs from 'dayjs';
-  import { Link } from 'yrv';
-  import { onMount } from 'svelte';
-  import _ from 'lodash';
-
-  // utilities
-  import { getTimeStampId, scrollIntoView } from '../../utilities/scrollHelper';
-  import { thatProfile } from '../../utilities/security.js';
+  import { navigateTo } from 'yrv';
 
   // components
   import Nav from '../../components/nav/interiorNav/Top.svelte';
@@ -24,43 +17,25 @@
 
   // datasources
   import sessionsApi from '../../dataSources/api.that.tech/sessions';
+  import { events } from '../../config';
 
-  // stores
-  import currentEvent from '../../store/currentEvent';
-
+  const { eventName } = router.params;
   const { querySessions } = sessionsApi(getClient());
+  const currentEvent = events[eventName];
 
-  let createDisabled = true;
-
-  $: if (!_.isEmpty($thatProfile)) {
-    createDisabled = false;
-  }
-
-  onMount(() => {
-    // TODO put back later after we have new dashboard.
-    // query.then((_) => {
-    //   const now = dayjs();
-    //   let starting = now.startOf('hour');
-    //   const bump = now.minute() >= 29;
-    //   starting = bump === true ? starting.add(30, 'm') : starting;
-    //   const id = getTimeStampId(starting.toDate());
-    //   scrollIntoView(`#${id}`);
-    // });
-  });
+  if (!currentEvent) navigateTo(`/sessions`, { reload: true });
 </script>
 
 <svelte:head>
-  <title>THAT 📆 THAT.us</title>
+  <title>{currentEvent.title} * THAT.us</title>
 </svelte:head>
 
 <StackedLayout>
 
   <div slot="header">
     <Nav />
-    <ActionHeader title="THAT Board">
-      {#if !createDisabled}
-        <LinkButton href="/sessions/create" text="Create a New ..." />
-      {/if}
+    <ActionHeader title="{currentEvent.title}">
+      <LinkButton href="/sessions" text="THAT Board" />
     </ActionHeader>
   </div>
 
@@ -68,7 +43,7 @@
     <div class="text-red-500 text-sm leading-5 text-right lowercase italic">
       <span>* Scheduled times are represented in your timezone.</span>
     </div>
-    {#await querySessions($currentEvent.eventId)}
+    {#await querySessions(currentEvent.eventId)}
       <CardLoader />
     {:then sessions}
       <SessionsList {sessions} />
