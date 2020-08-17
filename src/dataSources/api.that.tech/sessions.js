@@ -94,6 +94,36 @@ export const QUERY_SESSIONS = `
     }
   }
 `;
+export const QUERY_SESSIONS_BY_DATE = `
+  ${coreSessionFields}
+  query GetEventsSessions ($eventId: ID!, $onOrAfter: Date, $daysAfter: Int) {
+    events {
+      event(id: $eventId) {
+        get {
+          sessions(onOrAfter: $onOrAfter, daysAfter: $daysAfter) {
+            ...coreFields
+            speakers {
+              id
+              firstName
+              lastName
+              bio
+              jobTitle
+              company
+              profileImage
+              profileSlug
+              earnedMeritBadges {
+                id
+                name
+                image
+                description
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
 
 export const CREATE_SESSION = `
   ${coreOpenSpaceFields}
@@ -134,10 +164,9 @@ export const SET_ATTENDANCE = `
 `;
 
 export default (client) => {
-  const querySessions = (eventId, onOrAfter = new Date(), daysAfter = 30) => {
-    const variables = { eventId, onOrAfter, daysAfter };
-    return client
-      .query(QUERY_SESSIONS, variables)
+  const query = (graphQuery, variables) =>
+    client
+      .query(graphQuery, variables)
       .toPromise()
       .then((r) => {
         if (r.error) {
@@ -155,7 +184,14 @@ export default (client) => {
 
         return results;
       });
-  };
+
+  const querySessions = (eventId) => query(QUERY_SESSIONS, { eventId });
+
+  const querySessionsByDate = (
+    eventId,
+    onOrAfter = new Date(),
+    daysAfter = 30,
+  ) => query(QUERY_SESSIONS_BY_DATE, { eventId, onOrAfter, daysAfter });
 
   const queryAllEventsSessions = (eventId) => {
     const variables = { eventId };
@@ -251,6 +287,7 @@ export default (client) => {
 
   return {
     querySessions,
+    querySessionsByDate,
     queryAllEventsSessions,
     getById,
     create,
