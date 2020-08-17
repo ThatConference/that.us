@@ -154,7 +154,9 @@ export default (client) => {
   const queryMembers = () => {
     const variables = { pageSize };
     return client
-      .query(QUERY_MEMBERS_INITAL, variables)
+      .query(QUERY_MEMBERS_INITAL, variables, {
+        fetchOptions: { headers: { authorization: '' } },
+      })
       .toPromise()
       .then(reformatResults);
   };
@@ -162,7 +164,9 @@ export default (client) => {
   const queryMembersNext = (after) => {
     const variables = { pageSize, after };
     return client
-      .query(QUERY_MEMBERS_NEXT, variables)
+      .query(QUERY_MEMBERS_NEXT, variables, {
+        fetchOptions: { headers: { authorization: '' } },
+      })
       .toPromise()
       .then(reformatResults);
   };
