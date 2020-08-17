@@ -28,7 +28,7 @@
   // stores
   import currentEvent from '../../store/currentEvent';
 
-  const { querySessions } = sessionsApi(getClient());
+  const { querySessionsByDate } = sessionsApi(getClient());
 
   let createDisabled = true;
 
@@ -68,7 +68,7 @@
     <div class="text-red-500 text-sm leading-5 text-right lowercase italic">
       <span>* Scheduled times are represented in your timezone.</span>
     </div>
-    {#await querySessions($currentEvent.eventId)}
+    {#await querySessionsByDate($currentEvent.eventId)}
       <CardLoader />
     {:then sessions}
       <SessionsList {sessions} />
