@@ -75,7 +75,7 @@
       <div class="hidden lg:block lg:flex-shrink-0">
         <img
           class="h-64 w-64 rounded-full xl:h-80 xl:w-80"
-          src="https://that.imgix.net/members/5ec3a772-104d-4f6c-a577-9ea30baea982.jpeg?mask=ellipse&w=500&h=500&fit=crop"
+          src="https://that.imgix.net/members/1dcd59be-4677-474d-8087-e0b74e8ab810.jpeg?mask=ellipse&w=500&h=500&fit=crop"
           alt="Clark Sell"
         />
       </div>
@@ -83,7 +83,7 @@
       <div class="relative lg:ml-10">
         <svg
           class="absolute top-0 left-0 transform -translate-x-8 -translate-y-24
-          h-36 w-36 text-indigo-200 opacity-50"
+          h-36 w-36 text-thatOrange-200 opacity-50"
           stroke="currentColor"
           fill="none"
           viewBox="0 0 144 144"

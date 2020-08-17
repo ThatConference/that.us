@@ -49,3 +49,24 @@ https://github.com/langbamit/svelte-scrollto
 
 https://github.com/RobBrazier/svelte-awesome
 https://fontawesome.com/v4.7.0/icons/
+
+
+
+# color shades
+https://tailwindcss.com/docs/customizing-colors#extending-the-default-palette
+https://tailwindcss.com/docs/customizing-colors#default-color-palette
+https://tailwindcss.com/docs/customizing-colors
+
+https://mdigi.tools/color-shades/#ff834d
+https://noeldelgado.github.io/shadowlord/#f74646
+
+
+THAT Colors 
+  offwhite - #F7F7F7
+  grey - #555555
+  orange - #FF834D
+  red - #F74646
+  blue - #26529A - inactive
+  darkBlue - #1F2A63 - active, text, section bg
+  navy - #16215A
+

@@ -36,8 +36,8 @@
       <Link
         href="/sessions"
         class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300
-        hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white
-        focus:bg-gray-700"
+        hover:text-white hover:bg-that-blue focus:outline-none focus:text-white
+        focus:bg-that-blue"
       >
         THAT Board
       </Link>
@@ -45,8 +45,8 @@
       <Link
         href="/members"
         class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300
-        hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white
-        focus:bg-gray-700"
+        hover:text-white hover:bg-that-blue focus:outline-none focus:text-white
+        focus:bg-that-blue"
       >
         Members
       </Link>
@@ -54,8 +54,8 @@
       <Link
         href="/partners"
         class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300
-        hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white
-        focus:bg-gray-700"
+        hover:text-white hover:bg-that-blue focus:outline-none focus:text-white
+        focus:bg-that-blue"
       >
         Partners
       </Link>
@@ -63,16 +63,16 @@
       <Link
         href="/faq"
         class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300
-        hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white
-        focus:bg-gray-700"
+        hover:text-white hover:bg-that-blue focus:outline-none focus:text-white
+        focus:bg-that-blue"
       >
         FAQs
       </Link>
       <!-- <Link
         href="/help"
         class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300
-        hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white
-        focus:bg-gray-700"
+        hover:text-white hover:bg-that-blue focus:outline-none focus:text-white
+        focus:bg-that-blue"
       >
         Help
       </Link> -->
