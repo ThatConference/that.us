@@ -30,7 +30,9 @@ export default (client, slug = config.eventSlug) => {
     };
 
     return client
-      .query(QUERY_PARTNERS, variables)
+      .query(QUERY_PARTNERS, variables, {
+        fetchOptions: { headers: { authorization: '' } },
+      })
       .toPromise()
       .then((r) => {
         let results = [];

@@ -166,7 +166,9 @@ export const SET_ATTENDANCE = `
 export default (client) => {
   const query = (graphQuery, variables) =>
     client
-      .query(graphQuery, variables)
+      .query(graphQuery, variables, {
+        fetchOptions: { headers: { authorization: '' } },
+      })
       .toPromise()
       .then((r) => {
         if (r.error) {
@@ -191,38 +193,23 @@ export default (client) => {
     eventId,
     onOrAfter = new Date(),
     daysAfter = 30,
-  ) => query(QUERY_SESSIONS_BY_DATE, { eventId, onOrAfter, daysAfter });
-
-  const queryAllEventsSessions = (eventId) => {
-    const variables = { eventId };
-    return client
-      .query(QUERY_SESSIONS, variables)
-      .toPromise()
-      .then((r) => {
-        if (r.error) {
-          // eslint-disable-next-line no-console
-          console.error(r.error);
-          throw new Error('query sessions failed.');
-        }
-
-        let results = [];
-
-        results = r.data.events.event.get.sessions.filter(
-          (i) => i.status === 'ACCEPTED',
-        );
-
-        results.sort((a, b) => new Date(a.startTime) - new Date(b.startTime));
-
-        return results;
-      });
-  };
+  ) =>
+    query(
+      QUERY_SESSIONS_BY_DATE,
+      { eventId, onOrAfter, daysAfter },
+      {
+        fetchOptions: { headers: { authorization: '' } },
+      },
+    );
 
   // todo eventId can go when API is up
   const getById = (sessionId) => {
     const variables = { sessionId };
 
     return client
-      .query(QUERY_SESSION_BY_ID, variables)
+      .query(QUERY_SESSION_BY_ID, variables, {
+        fetchOptions: { headers: { authorization: '' } },
+      })
       .toPromise()
       .then((r) => {
         if (r.error) {
@@ -288,7 +275,6 @@ export default (client) => {
   return {
     querySessions,
     querySessionsByDate,
-    queryAllEventsSessions,
     getById,
     create,
     update,
