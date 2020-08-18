@@ -17,7 +17,7 @@
   import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
   import relativeTime from 'dayjs/plugin/relativeTime';
   import Icon from 'svelte-awesome';
-  import { Link } from 'yrv';
+  import { Link, navigateTo } from 'yrv';
   import {
     heartO,
     heart,
@@ -27,6 +27,7 @@
     instagram,
     github,
     cog,
+    calendarCheckO,
   } from 'svelte-awesome/icons';
   import qs from 'query-string';
   import { getClient } from '@urql/svelte';
@@ -40,6 +41,7 @@
   // Utility
   import config from '../../config';
   import { isAuthenticated, thatProfile } from '../../utilities/security.js';
+  import ical from '../../utilities/ical.js';
 
   // Data
   import favoritesApi from '../../dataSources/api.that.tech/favorites';
@@ -94,6 +96,7 @@
   };
 
   let timeLeftToJoin = 'in ...';
+  let hasExpired = true;
 
   onMount(async () => {
     window.history.replaceState({}, null, `/sessions/${id}`);
@@ -103,13 +106,16 @@
     let endTime = durationInMinutes ? durationInMinutes : 60;
 
     if (status === 'ACCEPTED') {
-      const interval = setInterval(() => {
-        let currentStartTime = dayjs(startTime).subtract(5, 'minute');
-        let currentEndTime = dayjs(startTime).add(endTime, 'minute');
+      let currentStartTime = dayjs(startTime).subtract(5, 'minute');
+      let currentEndTime = dayjs(startTime).add(endTime, 'minute');
 
+      hasExpired = dayjs().isAfter(currentEndTime);
+
+      const interval = setInterval(() => {
         timeLeftToJoin = dayjs().to(currentStartTime);
         let inSession = dayjs().isBetween(currentStartTime, currentEndTime);
 
+        hasExpired = dayjs().isAfter(currentEndTime);
         isInWindow = inSession;
 
         if (!inSession) {
@@ -131,6 +137,16 @@
   let userProfileImage = host.profileImage
     ? `${host.profileImage}${imageCrop}`
     : config.defaultProfileImage;
+
+  const createICal = () => {
+    return ical(title).create({
+      title,
+      shortDescription,
+      id,
+      startTime,
+      durationInMinutes,
+    });
+  };
 </script>
 
 <svelte:head>
@@ -209,64 +225,93 @@
       {#if $isAuthenticated}
         {#if !incompleteProfile}
           <div class="ml-4 mt-4 flex-shrink-0 flex">
-            <span class="inline-flex rounded-md shadow-sm">
-              <button
-                type="button"
-                on:click|preventDefault="{!favoriteDisabled && handleToggle}"
-                class:text-red-500="{isFavorite}"
-                class="relative inline-flex items-center px-4 py-2 border
-                border-gray-300 text-sm leading-5 font-medium rounded-md
-                text-gray-700 bg-white hover:text-gray-500 focus:outline-none
-                focus:shadow-outline-blue focus:border-blue-300
-                active:bg-gray-50 active:text-gray-800"
-              >
-                <Icon data="{heart}" class="-ml-1 mr-2 h-5 w-5" />
-                <span>Favorite</span>
-              </button>
-            </span>
-
-            {#if canJoin}
-              <span class="ml-3 inline-flex rounded-md shadow-sm">
-                <Link
+            {#if !hasExpired}
+              <span class="inline-flex rounded-md shadow-sm">
+                <button
                   type="button"
-                  href="/join/{id}"
-                  class="relative inline-flex items-center px-4 py-2 border
-                  border-gray-300 text-sm leading-5 font-medium rounded-md
+                  on:click|preventDefault="{!favoriteDisabled && handleToggle}"
+                  class:text-thatRed-500="{isFavorite}"
+                  class="relative inline-flex items-center px-4 py-2 border-2
+                  border-thatBlue-500 text-sm leading-5 font-medium rounded-md
                   text-gray-700 bg-white hover:text-gray-500 focus:outline-none
                   focus:shadow-outline-blue focus:border-blue-300
-                  active:bg-gray-50 active:text-gray-800"
+                  active:bg-gray-50 active:text-gray-800 transition duration-150
+                  ease-in-out"
                 >
+                  <Icon data="{heart}" class="-ml-1 mr-2 h-5 w-5" />
+                  {#if isFavorite}
+                    <span>Unfavorite</span>
+                  {:else}
+                    <span>Favorite</span>
+                  {/if}
+                </button>
+              </span>
 
-                  <Icon
-                    data="{signIn}"
-                    class="-ml-1 mr-2 h-5 w-5 text-gray-400"
-                  />
-                  <span>Join In</span>
-                </Link>
-              </span>
-            {:else}
-              <span class="ml-3 inline-flex rounded-md shadow-sm">
-                <div
-                  class="relative inline-flex items-center px-4 py-2 border
-                  border-gray-300 text-sm leading-5 font-medium rounded-md
-                  text-gray-400 bg-white"
-                >
-                  <Icon data="{signIn}" class="-ml-1 mr-2 h-5 w-5" />
-                  <span>Join {timeLeftToJoin}</span>
-                </div>
-              </span>
+              {#if canJoin}
+                <span class="ml-3 inline-flex rounded-md shadow-sm">
+                  <Link
+                    type="button"
+                    href="/join/{id}"
+                    class="inline-flex justify-center py-2 px-4 border-2
+                    border-thatBlue-500 text-sm leading-5 font-medium rounded-md
+                    text-thatBlue-500 bg-white hover:bg-thatBlue-500
+                    hover:text-white focus:outline-none
+                    focus:shadow-outline-thatBlue-500 focus:bg-thatBlue-500
+                    focus:text-white focus:border-thatBlue-800
+                    active:bg-thatBlue-800 transition duration-150 ease-in-out"
+                  >
+
+                    <Icon
+                      data="{signIn}"
+                      class="-ml-1 mr-2 h-5 w-5 text-gray-400"
+                    />
+                    <span>Join In</span>
+                  </Link>
+                </span>
+              {:else}
+                <span class="ml-3 inline-flex rounded-md shadow-sm">
+                  <a
+                    href="{createICal()}"
+                    download="{`THAT-${id}.ics`}"
+                    class="inline-flex justify-center py-2 px-4 border-2
+                    border-thatBlue-500 text-sm leading-5 font-medium rounded-md
+                    text-thatBlue-500 bg-white hover:bg-thatBlue-500
+                    hover:text-white focus:outline-none
+                    focus:shadow-outline-thatBlue-500 focus:bg-thatBlue-500
+                    focus:text-white focus:border-thatBlue-800
+                    active:bg-thatBlue-800 transition duration-150 ease-in-out"
+                  >
+                    <Icon data="{calendarCheckO}" class="-ml-1 mr-2 h-5 w-5" />
+                    <span>Add To Calendar</span>
+                  </a>
+                </span>
+
+                <span class="ml-3 inline-flex rounded-md shadow-sm">
+                  <div
+                    class="relative inline-flex items-center px-4 py-2 border-2
+                    border-gray-300 text-sm leading-5 font-medium rounded-md
+                    text-gray-400 bg-white"
+                  >
+                    <Icon data="{signIn}" class="-ml-1 mr-2 h-5 w-5" />
+                    <span>Join {timeLeftToJoin}</span>
+                  </div>
+                </span>
+              {/if}
             {/if}
+
             {#if canEdit()}
               <span class="ml-3 inline-flex rounded-md shadow-sm">
                 <Link
                   type="button"
-                  class="relative inline-flex items-center px-4 py-2 border
-                  border-gray-300 text-sm leading-5 font-medium rounded-md
-                  text-gray-700 bg-white hover:text-gray-500 focus:outline-none
-                  focus:shadow-outline-blue focus:border-blue-300
-                  active:bg-gray-50 active:text-gray-800"
+                  class="inline-flex justify-center py-2 px-4 border-2
+                  border-thatBlue-500 text-sm leading-5 font-medium rounded-md
+                  text-thatBlue-500 bg-white hover:bg-thatBlue-500
+                  hover:text-white focus:outline-none
+                  focus:shadow-outline-thatBlue-500 focus:bg-thatBlue-500
+                  focus:text-white focus:border-thatBlue-800
+                  active:bg-thatBlue-800 transition duration-150 ease-in-out"
                 >
-                  <Icon data="{cog}" class="-ml-1 mr-2 h-5 w-5 text-gray-400" />
+                  <Icon data="{cog}" class="-ml-1 mr-2 h-5 w-5" />
                   <span>Edit</span>
                 </Link>
               </span>
