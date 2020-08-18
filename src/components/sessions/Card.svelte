@@ -180,7 +180,9 @@
     </p>
   </div>
 
-  <div class="flex flex-wrap items-center justify-around space-x-3 p-3">
+  <div
+    class="flex flex-wrap items-center justify-around space-x-3 space-y-3 p-3"
+  >
     {#each tags as t}
       <Tag>{t}</Tag>
     {/each}

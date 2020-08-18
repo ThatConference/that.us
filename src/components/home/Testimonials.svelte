@@ -25,7 +25,7 @@
             y="0"
             width="4"
             height="4"
-            class="text-gray-200"
+            class="text-thatBlue-100"
             fill="currentColor"
           ></rect>
         </pattern>
@@ -59,7 +59,7 @@
             y="0"
             width="4"
             height="4"
-            class="text-gray-200"
+            class="text-thatBlue-100"
             fill="currentColor"
           ></rect>
         </pattern>
@@ -83,7 +83,7 @@
       <div class="relative lg:ml-10">
         <svg
           class="absolute top-0 left-0 transform -translate-x-8 -translate-y-24
-          h-36 w-36 text-thatOrange-200 opacity-50"
+          h-36 w-36 text-thatBlue-200 opacity-50"
           stroke="currentColor"
           fill="none"
           viewBox="0 0 144 144"
@@ -108,7 +108,9 @@
               and every day. We ALL have something of value that can help one
               another. THAT.us is just one way we're trying to better connect
               us.
-              <span class="text-indigo-600">We're just getting started!</span>
+              <span class="text-thatOrange-400">
+                We're just getting started!
+              </span>
             </p>
           </div>
           <footer class="mt-8">
@@ -124,7 +126,9 @@
                 <div class="text-base leading-6 font-medium text-gray-900">
                   Clark Sell
                 </div>
-                <div class="text-base leading-6 font-medium text-indigo-600">
+                <div
+                  class="text-base leading-6 font-medium text-thatOrange-400"
+                >
                   Founder, THAT
                 </div>
               </div>

@@ -47,8 +47,8 @@
   {#each sorted as day}
     <div>
       <h2
-        class="text-3xl leading-9 font-extrabold tracking-tight text-gray-900
-        sm:text-4xl sm:leading-10 pb-2"
+        class="text-3xl leading-9 font-extrabold tracking-tight
+        text-thatBlue-800 sm:text-4xl sm:leading-10 pb-2"
       >
         <span>
           {dayjs()
@@ -63,7 +63,7 @@
 
         <h2
           class="text-3xl leading-9 font-extrabold tracking-tight
-          text-indigo-600 sm:text-4xl sm:leading-10 pb-12"
+          text-thatOrange-400 sm:text-4xl sm:leading-10 pb-12"
         >
           {#if !dayjs(ts.timeSlot).isValid()}
             <span>Unscheduled</span>

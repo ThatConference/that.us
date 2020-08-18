@@ -19,7 +19,7 @@
 {/if}
 
 <div class="flex flex-col min-h-screen">
-  <header class="bg-that-navy pb-32">
+  <header class="bg-thatBlue-700 pb-32">
     <slot name="header" />
   </header>
 

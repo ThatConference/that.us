@@ -24,40 +24,40 @@
     <Link
       href="/sessions"
       class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300
-      hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white
-      focus:bg-gray-700"
+      hover:text-white hover:bg-that-blue focus:outline-none focus:text-white
+      focus:bg-that-blue"
     >
       THAT Board
     </Link>
     <Link
       href="/members"
       class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300
-      hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white
-      focus:bg-gray-700"
+      hover:text-white hover:bg-that-blue focus:outline-none focus:text-white
+      focus:bg-that-blue"
     >
       Members
     </Link>
     <Link
       href="/partners"
       class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300
-      hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white
-      focus:bg-gray-700"
+      hover:text-white hover:bg-that-blue focus:outline-none focus:text-white
+      focus:bg-that-blue"
     >
       Partners
     </Link>
     <Link
       href="/faq"
       class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300
-      hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white
-      focus:bg-gray-700"
+      hover:text-white hover:bg-that-blue focus:outline-none focus:text-white
+      focus:bg-that-blue"
     >
       FAQ
     </Link>
     <!-- <Link
       href="/help"
       class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300
-      hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white
-      focus:bg-gray-700"
+        hover:text-white hover:bg-that-blue focus:outline-none focus:text-white
+        focus:bg-that-blue"
     >
       Help
     </Link> -->
@@ -103,8 +103,8 @@
           <Link
             href="/my/profile"
             class="block px-3 py-2 rounded-md text-base font-medium
-            text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none
-            focus:text-white focus:bg-gray-700"
+            text-gray-300 hover:text-white hover:bg-that-blue focus:outline-none
+            focus:text-white focus:bg-that-blue"
             role="menuitem"
           >
             Create Profile
@@ -112,8 +112,8 @@
           <a
             href="/logout"
             class="mt-1 block px-3 py-2 rounded-md text-base font-medium
-            text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none
-            focus:text-white focus:bg-gray-700"
+            text-gray-300 hover:text-white hover:bg-that-blue focus:outline-none
+            focus:text-white focus:bg-that-blue"
             role="menuitem"
           >
             Logout
@@ -129,8 +129,8 @@
           <Link
             href="/my/favorites"
             class="block px-3 py-2 rounded-md text-base font-medium
-            text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none
-            focus:text-white focus:bg-gray-700"
+            text-gray-300 hover:text-white hover:bg-that-blue focus:outline-none
+            focus:text-white focus:bg-that-blue"
             role="menuitem"
           >
             My Favorites
@@ -138,8 +138,8 @@
           <Link
             href="/my/submissions"
             class="block px-3 py-2 rounded-md text-base font-medium
-            text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none
-            focus:text-white focus:bg-gray-700"
+            text-gray-300 hover:text-white hover:bg-that-blue focus:outline-none
+            focus:text-white focus:bg-that-blue"
             role="menuitem"
           >
             My Submissions
@@ -147,8 +147,8 @@
           <Link
             href="/my/badges"
             class="block px-3 py-2 rounded-md text-base font-medium
-            text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none
-            focus:text-white focus:bg-gray-700"
+            text-gray-300 hover:text-white hover:bg-that-blue focus:outline-none
+            focus:text-white focus:bg-that-blue"
             role="menuitem"
           >
             My Badges
@@ -156,8 +156,8 @@
           <Link
             href="/my/profile"
             class="block px-3 py-2 rounded-md text-base font-medium
-            text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none
-            focus:text-white focus:bg-gray-700"
+            text-gray-300 hover:text-white hover:bg-that-blue focus:outline-none
+            focus:text-white focus:bg-that-blue"
             role="menuitem"
           >
             My Profile
@@ -165,8 +165,8 @@
           <a
             href="/logout"
             class="mt-1 block px-3 py-2 rounded-md text-base font-medium
-            text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none
-            focus:text-white focus:bg-gray-700"
+            text-gray-300 hover:text-white hover:bg-that-blue focus:outline-none
+            focus:text-white focus:bg-that-blue"
             role="menuitem"
           >
             Logout

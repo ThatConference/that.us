@@ -65,7 +65,7 @@
   </div>
 
   <div slot="body">
-    <div class="text-red-500 text-sm leading-5 text-right lowercase italic">
+    <div class="text-thatRed-500 text-sm leading-5 text-right lowercase italic">
       <span>* Scheduled times are represented in your timezone.</span>
     </div>
     {#await querySessionsByDate($currentEvent.eventId)}

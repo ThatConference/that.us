@@ -18,7 +18,7 @@
 <div>
   <div class="bg-white pb-12 lg:pb-20">
     <div class="relative z-0">
-      <div class="absolute inset-0 h-5/6 bg-gray-900 lg:h-2/3"></div>
+      <div class="absolute inset-0 h-5/6 bg-thatBlue-800 lg:h-2/3"></div>
       <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="relative lg:grid lg:grid-cols-7">
 
