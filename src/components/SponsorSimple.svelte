@@ -39,10 +39,10 @@
     <div class="max-w-screen-xl mx-auto px-8">
       <div class="sm:text-center lg:text-center pb-12">
         <h2
-          class="text-4xl tracking-tight leading-10 font-extrabold text-gray-900
-          sm:text-5xl sm:leading-none md:text-6xl py-4"
+          class="text-4xl tracking-tight leading-10 font-extrabold
+          text-thatBlue-800 sm:text-5xl sm:leading-none md:text-6xl py-4"
         >
-          <span class="text-indigo-600">THANK YOU</span>
+          <span class="text-thatOrange-400">THANK YOU</span>
           for your support!
         </h2>
       </div>

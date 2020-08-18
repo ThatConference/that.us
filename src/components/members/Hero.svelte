@@ -20,11 +20,11 @@
         <div class="sm:text-center lg:text-left">
           <h2
             class="text-4xl tracking-tight leading-10 font-extrabold
-            text-gray-900 sm:text-5xl sm:leading-none md:text-6xl"
+            text-thatBlue-800 sm:text-5xl sm:leading-none md:text-6xl"
           >
             Welcome to
             <br />
-            <span class="text-indigo-600">THAT Family</span>
+            <span class="text-thatOrange-400">THAT Family</span>
           </h2>
           <p
             class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl
@@ -43,13 +43,14 @@
             >
               <div class="rounded-md shadow">
                 <Link
-                  href="/login"
+                  href="/login?signup=true"
                   class="w-full flex items-center justify-center px-8 py-3
                   border border-transparent text-base leading-6 font-medium
-                  rounded-md text-white bg-indigo-600 hover:bg-indigo-500
-                  focus:outline-none focus:border-indigo-700
-                  focus:shadow-outline-indigo transition duration-150
-                  ease-in-out md:py-4 md:text-lg md:px-10"
+                  rounded-md text-white bg-thatOrange-400
+                  hover:bg-thatOrange-500 focus:outline-none
+                  focus:border-thatOrange-700 focus:shadow-outline-that-orange
+                  transition duration-150 ease-in-out md:py-4 md:text-lg
+                  md:px-10"
                 >
                   Sign up today!
                 </Link>

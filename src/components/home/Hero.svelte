@@ -20,13 +20,13 @@
         <div class="sm:text-center lg:text-left">
           <h2
             class="text-4xl tracking-tight leading-10 font-extrabold
-            text-gray-900 sm:text-5xl sm:leading-none md:text-6xl"
+            text-thatBlue-800 sm:text-5xl sm:leading-none md:text-6xl"
           >
             THAT.
             <br />
             Created By...
             <br />
-            <span class="text-indigo-600">YOU!</span>
+            <span class="text-thatOrange-400">YOU!</span>
           </h2>
           <p
             class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl
@@ -41,7 +41,7 @@
           </p>
 
           <p
-            class="mt-3 font-extrabold text-gray-900 sm:mt-5 sm:text-lg
+            class="mt-3 font-extrabold text-thatBlue-800 sm:mt-5 sm:text-lg
             sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0"
           >
             You're the Practitioner. You create the schedule!
@@ -66,31 +66,33 @@
           <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
             <div class="rounded-md shadow">
               <Link
-                open
                 href="/login?signup=true"
-                class="w-full flex items-center justify-center px-8 py-3 border
-                border-transparent text-base leading-6 font-medium rounded-md
-                text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none
-                focus:border-indigo-700 focus:shadow-outline-indigo transition
-                duration-150 ease-in-out md:py-4 md:text-lg md:px-10"
+                class="w-full flex items-center justify-center px-8 py-3
+                border-2 border-transparent text-base leading-6 font-medium
+                rounded-md text-white bg-thatOrange-400 hover:bg-thatOrange-500
+                focus:outline-none focus:border-thatOrange-700
+                focus:shadow-outline-that-orange transition duration-150
+                ease-in-out md:py-4 md:text-lg md:px-10"
               >
-                Sign Up
+                Sign Up Today!
               </Link>
             </div>
 
             {#if !$isAuthenticated}
               <div class="mt-3 sm:mt-0 sm:ml-3">
-                <a
+                <Link
                   href="/login"
                   class="w-full flex items-center justify-center px-8 py-3
-                  border border-transparent text-base leading-6 font-medium
-                  rounded-md text-indigo-700 bg-indigo-100 hover:text-indigo-600
-                  hover:bg-indigo-50 focus:outline-none
-                  focus:shadow-outline-indigo focus:border-indigo-300 transition
-                  duration-150 ease-in-out md:py-4 md:text-lg md:px-10"
+                  rounded-md text-base leading-6 font-medium border-2
+                  border-thatBlue-500 text-thatBlue-500 bg-white
+                  hover:bg-thatBlue-500 hover:text-white focus:bg-thatBlue-500
+                  focus:text-white focus:outline-none
+                  focus:shadow-outline-thatBlue-500 focus:border-thatBlue-800
+                  transition duration-150 ease-in-out md:py-4 md:text-lg
+                  md:px-10"
                 >
                   Log In
-                </a>
+                </Link>
               </div>
             {/if}
           </div>

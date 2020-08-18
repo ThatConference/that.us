@@ -18,7 +18,7 @@
   on:click|preventDefault="{() => (showMore = !showMore)}"
   class="border-none, cursor-pointer"
 >
-  <div class="bg-gray-900 rounded">
+  <div class="bg-thatBlue-800 rounded">
     <div class="relative z-10 rounded-lg shadow-xl">
       <div class="absolute inset-x-0 top-0 transform translate-y-px">
         <div class="flex justify-center transform -translate-y-1/2">
