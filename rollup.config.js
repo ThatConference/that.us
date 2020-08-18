@@ -7,6 +7,9 @@ import replace from '@rollup/plugin-replace';
 import sveltePreprocess from 'svelte-preprocess';
 import json from '@rollup/plugin-json';
 
+import builtins from 'rollup-plugin-node-builtins';
+import globals from 'rollup-plugin-node-globals';
+
 const production = !process.env.ROLLUP_WATCH;
 
 export default {
@@ -20,9 +23,11 @@ export default {
 
   plugins: [
     json(),
+
     replace({
       'process.env.NODE_ENV': JSON.stringify('production'),
     }),
+
     svelte({
       preprocess: sveltePreprocess({ postcss: true }),
       // enable run-time checks when not in production
@@ -43,6 +48,7 @@ export default {
       browser: true,
       dedupe: ['svelte'],
     }),
+
     commonjs(),
 
     // In dev mode, call `npm run start` once
@@ -56,6 +62,9 @@ export default {
     // If we're building for production (npm run build
     // instead of npm run dev), minify
     production && terser(),
+
+    globals(),
+    builtins(),
   ],
   watch: {
     clearScreen: false,

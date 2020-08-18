@@ -41,3 +41,10 @@
 
   </dl>
 </div>
+
+<style global>
+  .faq-list {
+    list-style-type: disc;
+    list-style-position: inside;
+  }
+</style>

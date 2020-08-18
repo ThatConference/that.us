@@ -8,7 +8,7 @@
 </script>
 
 <div>
-  <div class="flex items-center justify-center">
+  <div class="flex items-center justify-center py-12">
     <GroupHeader>Fetching all THAT awesome!</GroupHeader>
   </div>
 
