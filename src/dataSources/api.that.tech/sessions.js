@@ -1,3 +1,5 @@
+import dayjs from 'dayjs';
+
 const coreSessionFields = `
   fragment coreFields on AcceptedSession {
     id
@@ -191,7 +193,7 @@ export default (client) => {
 
   const querySessionsByDate = (
     eventId,
-    onOrAfter = new Date(),
+    onOrAfter = dayjs().subtract(1, 'day'),
     daysAfter = 30,
   ) =>
     query(
