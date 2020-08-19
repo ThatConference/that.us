@@ -191,11 +191,7 @@ export default (client) => {
 
   const querySessions = (eventId) => query(QUERY_SESSIONS, { eventId });
 
-  const querySessionsByDate = (
-    eventId,
-    onOrAfter = dayjs().subtract(1, 'day'),
-    daysAfter = 30,
-  ) =>
+  const querySessionsByDate = (eventId, onOrAfter = dayjs(), daysAfter = 30) =>
     query(
       QUERY_SESSIONS_BY_DATE,
       { eventId, onOrAfter, daysAfter },
