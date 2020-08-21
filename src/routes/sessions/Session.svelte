@@ -10,7 +10,7 @@
   // ui support
   import { ModalError, ActionHeader, LinkButton } from '../../elements';
   import Nav from '../../components/nav/interiorNav/Top.svelte';
-  import SessionDetails from './SessionDetails.svelte';
+  import SessionDetails from '../../components/sessions/SessionDetails.svelte';
   import StackedLayout from '../../elements/layouts/StackedLayout.svelte';
 
   // stores
