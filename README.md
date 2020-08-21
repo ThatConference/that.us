@@ -63,7 +63,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/kenssamson"><img src="https://avatars3.githubusercontent.com/u/9221745?v=4" width="100px;" alt=""/><br /><sub><b>Ken Samson</b></sub></a><br /><a href="https://github.com/ThatConference/that.us/issues?q=author%3Akenssamson" title="Bug reports">🐛</a></td>
     <td align="center"><a href="https://github.com/ps2goat"><img src="https://avatars0.githubusercontent.com/u/5384732?v=4" width="100px;" alt=""/><br /><sub><b>asdfasdfasdfasdf asd</b></sub></a><br /><a href="#ideas-ps2goat" title="Ideas, Planning, & Feedback">🤔</a></td>
     <td align="center"><a href="https://github.com/zo0o0ot"><img src="https://avatars3.githubusercontent.com/u/876146?v=4" width="100px;" alt=""/><br /><sub><b>Ross Larson</b></sub></a><br /><a href="#ideas-zo0o0ot" title="Ideas, Planning, & Feedback">🤔</a></td>
-    <td align="center"><a href="http://lgbtq.dev"><img src="https://avatars0.githubusercontent.com/u/2401816?v=4" width="100px;" alt=""/><br /><sub><b>Caden Sumner</b></sub></a><br /><a href="https://github.com/ThatConference/that.us/commits?author=Ghosts" title="Code">💻</a></td>
+    <td align="center"><a href="http://lgbtq.dev"><img src="https://avatars0.githubusercontent.com/u/2401816?v=4" width="100px;" alt=""/><br /><sub><b>Caden Sumner</b></sub></a><br /><a href="https://github.com/ThatConference/that.us/commits?author=Ghosts" title="Code">💻</a> <a href="https://github.com/ThatConference/that.us/issues?q=author%3AGhosts" title="Bug reports">🐛</a></td>
   </tr>
 </table>
 
