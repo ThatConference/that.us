@@ -1,0 +1,3 @@
+User-agent: * 
+Disallow: /join/*
+Sitemap: https://that.us/sitemap.xml
