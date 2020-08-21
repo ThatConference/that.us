@@ -180,7 +180,6 @@
       class="-ml-4 -mt-4 flex justify-between items-center flex-wrap
       sm:flex-no-wrap"
     >
-
       <div class="ml-4 mt-4">
         <div class="flex items-center">
           <div class="flex-shrink-0">
@@ -224,7 +223,7 @@
 
       {#if $isAuthenticated}
         {#if !incompleteProfile}
-          <div class="ml-4 mt-4 flex-shrink-0 flex">
+          <div class="ml-4 mt-4 flex-shrink-1 sm:flex-wrap">
             {#if !hasExpired}
               <span class="inline-flex rounded-md shadow-sm">
                 <button
@@ -248,7 +247,7 @@
               </span>
 
               {#if canJoin}
-                <span class="ml-3 inline-flex rounded-md shadow-sm">
+                <span class="mt-1 inline-flex rounded-md shadow-sm">
                   <Link
                     type="button"
                     href="/join/{id}"
@@ -269,7 +268,7 @@
                   </Link>
                 </span>
               {:else}
-                <span class="ml-3 inline-flex rounded-md shadow-sm">
+                <span class="mt-1 inline-flex rounded-md shadow-sm">
                   <a
                     href="{createICal()}"
                     download="{`THAT-${id}.ics`}"
@@ -286,7 +285,7 @@
                   </a>
                 </span>
 
-                <span class="ml-3 inline-flex rounded-md shadow-sm">
+                <span class="mt-1 inline-flex rounded-md shadow-sm">
                   <div
                     class="relative inline-flex items-center px-4 py-2 border-2
                     border-gray-300 text-sm leading-5 font-medium rounded-md
@@ -300,7 +299,7 @@
             {/if}
 
             {#if canEdit()}
-              <span class="ml-3 inline-flex rounded-md shadow-sm">
+              <span class="mt-1 inline-flex rounded-md shadow-sm">
                 <Link
                   type="button"
                   class="inline-flex justify-center py-2 px-4 border-2
