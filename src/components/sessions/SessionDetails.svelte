@@ -301,6 +301,7 @@
             {#if canEdit()}
               <span class="mt-1 inline-flex rounded-md shadow-sm">
                 <Link
+                  href="{`/sessions/edit/${id}`}"
                   type="button"
                   class="inline-flex justify-center py-2 px-4 border-2
                   border-thatBlue-500 text-sm leading-5 font-medium rounded-md
@@ -338,7 +339,16 @@
       class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:mx-auto md:mt-5
       md:text-xl lg:mx-0"
     >
-      {dayjs(startTime).format('dddd MMMM D, YYYY - h:mm A')}
+
+      {#if durationInMinutes <= 60}
+        {dayjs(startTime).format('dddd MMMM D, YYYY - h:mm A')}, for {dayjs
+          .duration(durationInMinutes, 'minutes')
+          .as('hours')} hour.
+      {:else}
+        {dayjs(startTime).format('dddd MMMM D, YYYY - h:mm A')}, for {dayjs
+          .duration(durationInMinutes, 'minutes')
+          .as('hours')} hours.
+      {/if}
     </p>
 
     <!-- Description -->
