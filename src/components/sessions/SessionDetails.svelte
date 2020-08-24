@@ -32,6 +32,7 @@
   import qs from 'query-string';
   import { getClient } from '@urql/svelte';
   import _ from 'lodash';
+  import SvelteSeo from 'svelte-seo';
 
   // UI Support
   import { SocialLink } from '../../components/social';
@@ -152,12 +153,9 @@
 <svelte:head>
 
   <title>{title} * THAT.us</title>
-
-  <!-- todo... -->
-  
-
-
-
+  <SvelteSeo
+    openGraph="{{ title: title, description: shortDescription, type: 'article', url: `https://that.us/session/${id}`, article: { tags: tags } }}"
+  />
   <script>
     (function() {
       var d = document,
@@ -167,7 +165,6 @@
       (d.head || d.body).appendChild(s);
     })();
   </script>
-
 </svelte:head>
 
 {#if isNew}
