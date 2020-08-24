@@ -153,6 +153,11 @@
 
   <title>{title} * THAT.us</title>
 
+  <!-- todo... -->
+  
+
+
+
   <script>
     (function() {
       var d = document,
@@ -162,6 +167,7 @@
       (d.head || d.body).appendChild(s);
     })();
   </script>
+
 </svelte:head>
 
 {#if isNew}
