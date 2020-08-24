@@ -1,25 +1,28 @@
 <script>
   export let router;
 
+  // 3rd Party
   import { onMount } from 'svelte';
   import { query } from '@urql/svelte';
   import _ from 'lodash';
   import { navigateTo } from 'yrv';
   import Icon from 'svelte-awesome';
   import { getClient } from '@urql/svelte';
-
-  import { ModalError, ActionHeader, LinkButton } from '../../elements';
-  import StackedLayout from '../../elements/layouts/StackedLayout.svelte';
-
-  import Nav from '../../components/nav/interiorNav/Top.svelte';
-  import WarningNotification from '../../components/notifications/Warning.svelte';
-  import { isAuthenticated, thatProfile } from '../../utilities/security.js';
-  import sessionsApi from '../../dataSources/api.that.tech/sessions.js';
-
   import {
     expand as expandIcon,
     compress as compressIcon,
   } from 'svelte-awesome/icons';
+
+  // ui support
+  import { ModalError, ActionHeader, LinkButton } from '../../elements';
+  import StackedLayout from '../../elements/layouts/StackedLayout.svelte';
+  import Meta from '../../components/seo/Meta.svelte';
+  import Nav from '../../components/nav/interiorNav/Top.svelte';
+  import WarningNotification from '../../components/notifications/Warning.svelte';
+
+  // data
+  import { isAuthenticated, thatProfile } from '../../utilities/security.js';
+  import sessionsApi from '../../dataSources/api.that.tech/sessions.js';
 
   const { setAttendance } = sessionsApi(getClient());
 
@@ -193,8 +196,13 @@
 
 <svelte:window on:resize="{handleResize}" />
 
+<Meta
+  title="Join In - THAT"
+  description="todo"
+  openGraph="{{ title: `Join In * THAT`, description: 'todo', type: 'website', url: `https://that.us/join`, nofollow: true, noindex: true }}"
+/>
+
 <svelte:head>
-  <title>Join * THAT.us</title>
   <script src="https://meet.jit.si/external_api.js" on:load="{initJitsi}">
 
   </script>

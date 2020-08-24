@@ -10,6 +10,7 @@
   import Sponsor from '../../components/SponsorSimple.svelte';
   import SessionsList from '../../components/sessions/List.svelte';
   import CardLoader from '../../components/CardLoader.svelte';
+  import Meta from '../../components/seo/Meta.svelte';
 
   // elements
   import StackedLayout from '../../elements/layouts/StackedLayout.svelte';
@@ -26,9 +27,11 @@
   if (!currentEvent) navigateTo(`/sessions`, { reload: true });
 </script>
 
-<svelte:head>
-  <title>{currentEvent.title} * THAT.us</title>
-</svelte:head>
+<Meta
+  title="{`${currentEvent.title} * THAT`}"
+  description="todo"
+  openGraph="{{ title: `${currentEvent.title} * THAT`, description: 'todo', type: 'website', url: `https://that.us/events/${eventName}` }}"
+/>
 
 <StackedLayout>
 

@@ -4,6 +4,7 @@
   import { getClient } from '@urql/svelte';
   import { navigateTo } from 'yrv';
 
+  import Meta from '../../components/seo/Meta.svelte';
   import StackedLayout from '../../elements/layouts/StackedLayout.svelte';
   import { ActionHeader, LinkButton, ModalError } from '../../elements';
   import Nav from '../../components/nav/interiorNav/Top.svelte';
@@ -46,9 +47,11 @@
   }
 </script>
 
-<svelte:head>
-  <title>Update Submission 📝 THAT.us</title>
-</svelte:head>
+<Meta
+  title="Edit Submission - THAT"
+  description="todo"
+  openGraph="{{ title: 'Edit Submission * THAT', description: 'todo', type: 'website', url: `https://that.us/sessions/edit` }}"
+/>
 
 <StackedLayout>
 

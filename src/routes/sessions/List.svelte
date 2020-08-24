@@ -7,6 +7,7 @@
   import { Link } from 'yrv';
   import { onMount } from 'svelte';
   import _ from 'lodash';
+  import Meta from '../../components/seo/Meta.svelte';
 
   // utilities
   import { getTimeStampId, scrollIntoView } from '../../utilities/scrollHelper';
@@ -49,9 +50,11 @@
   });
 </script>
 
-<svelte:head>
-  <title>THAT 📆 THAT.us</title>
-</svelte:head>
+<Meta
+  title="THAT Board - THAT"
+  description="todo"
+  openGraph="{{ title: 'THAT Board', description: 'todo', type: 'website', url: `https://that.us/sessions` }}"
+/>
 
 <StackedLayout>
 

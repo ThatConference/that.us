@@ -1,7 +1,7 @@
 <script>
-  export let router;
   import { getClient } from '@urql/svelte';
 
+  // ui support
   import Nav from '../../components/nav/interiorNav/Top.svelte';
   import StackedLayout from '../../elements/layouts/StackedLayout.svelte';
   import Sponsor from '../../components/SponsorSimple.svelte';
@@ -14,16 +14,20 @@
 
   import CardLoader from '../../components/CardLoader.svelte';
   import SessionsList from '../../components/sessions/List.svelte';
-  import favoritesApi from '../../dataSources/api.that.tech/favorites';
+  import Meta from '../../components/seo/Meta.svelte';
 
+  // data
+  import favoritesApi from '../../dataSources/api.that.tech/favorites';
   import currentEvent from '../../store/currentEvent';
 
   const { get } = favoritesApi(getClient());
 </script>
 
-<svelte:head>
-  <title>My Favorites * THAT.us</title>
-</svelte:head>
+<Meta
+  title="My Favorites - THAT"
+  description="todo"
+  openGraph="{{ title: 'My Favorites * THAT', description: 'todo', type: 'website', url: `https://that.us/my/favorites`, nofollow: true, noindex: true }}"
+/>
 
 <StackedLayout>
 

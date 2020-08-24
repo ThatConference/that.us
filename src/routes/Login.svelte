@@ -4,6 +4,7 @@
 
   import { onMount } from 'svelte';
   import qs from 'query-string';
+  import Meta from '../components/seo/Meta.svelte';
 
   import { login } from '../utilities/security.js';
   import { ModalNoAction } from '../elements';
@@ -14,6 +15,12 @@
     await login(documentReferrer, signup);
   });
 </script>
+
+<Meta
+  title="Login - THAT"
+  description="todo"
+  openGraph="{{ title: 'Login * THAT', description: 'todo', type: 'website', url: `https://that.us/login` }}"
+/>
 
 <div>
   <ModalNoAction

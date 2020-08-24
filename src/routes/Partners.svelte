@@ -3,8 +3,8 @@
 
   import { onMount } from 'svelte';
   import { getClient } from '@urql/svelte';
-
   import _ from 'lodash';
+  import Meta from '../components/seo/Meta.svelte';
 
   import { Waiting } from '../elements';
   import Hero from '../components/partners/Hero.svelte';
@@ -18,6 +18,12 @@
 
   let partners = get();
 </script>
+
+<Meta
+  title="Partners - THAT"
+  description="todo"
+  openGraph="{{ title: 'Partners * THAT', description: 'todo', type: 'website', url: `https://that.us/partners` }}"
+/>
 
 <main>
   <Hero />

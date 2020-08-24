@@ -1,5 +1,7 @@
 <script>
   import { onMount } from 'svelte';
+  import Meta from '../components/seo/Meta.svelte';
+
   import { logout } from '../utilities/security.js';
   import { ModalNoAction } from '../elements';
 
@@ -7,6 +9,12 @@
     await logout();
   });
 </script>
+
+<Meta
+  title="Logout - THAT"
+  description="todo"
+  openGraph="{{ title: 'Logout * THAT', description: 'todo', type: 'website', url: `https://that.us/logout` }}"
+/>
 
 <div>
   <ModalNoAction

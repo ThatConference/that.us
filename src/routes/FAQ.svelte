@@ -1,8 +1,15 @@
 <script>
+  import Meta from '../components/seo/Meta.svelte';
   import Nav from '../components/nav/mainNav/MainNav.svelte';
   import FaqItems from '../components/faq/FaqItem.svelte';
   import { Footer } from '../components';
 </script>
+
+<Meta
+  title="FAQ - THAT"
+  description="todo"
+  openGraph="{{ title: 'FAQ * THAT', description: 'todo', type: 'website', url: `https://that.us/FAQ` }}"
+/>
 
 <div class="relative bg-white overflow-hidden">
   <div class="max-w-screen-xl mx-auto ">

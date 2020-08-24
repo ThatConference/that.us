@@ -1,15 +1,19 @@
 <script>
-  export let router;
-
   import { onMount } from 'svelte';
   import { getClient } from '@urql/svelte';
 
+  // ui support
   import { ActionHeader, LinkButton } from '../../elements';
   import StackedLayout from '../../elements/layouts/StackedLayout.svelte';
   import Nav from '../../components/nav/interiorNav/Top.svelte';
   import Warning from '../../components/notifications/Warning.svelte';
   import ClaimTicketForm from '../../components/my/ClaimTicketForm.svelte';
+  import Meta from '../../components/seo/Meta.svelte';
+
+  // data
   import memberApi from '../../dataSources/api.that.tech/members.js';
+
+  // utilities
   import { tagEvent } from '../../utilities/gtag';
 
   import {
@@ -52,9 +56,11 @@
   }
 </script>
 
-<svelte:head>
-  <title>Merit Badges * THAT.us</title>
-</svelte:head>
+<Meta
+  title="Merit Badges - THAT"
+  description="todo"
+  openGraph="{{ title: `Merit Badges * THAT`, description: 'todo', type: 'website', url: `https://that.us/my/badges`, nofollow: true, noindex: true }}"
+/>
 
 <StackedLayout>
   <div slot="header">

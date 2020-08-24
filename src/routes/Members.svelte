@@ -5,6 +5,7 @@
   import { getClient } from '@urql/svelte';
   import SvelteInfiniteScroll from 'svelte-infinite-scroll';
   import _ from 'lodash';
+  import Meta from '../components/seo/Meta.svelte';
 
   import { Waiting } from '../elements';
   import Hero from '../components/members/Hero.svelte';
@@ -44,6 +45,12 @@
     loadingMore = false;
   }
 </script>
+
+<Meta
+  title="Members - THAT"
+  description="todo"
+  openGraph="{{ title: 'Members * THAT', description: 'todo', type: 'website', url: `https://that.us/members` }}"
+/>
 
 <main>
   <Hero />

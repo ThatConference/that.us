@@ -5,6 +5,7 @@
   import Nav from '../../components/nav/interiorNav/Top.svelte';
   import StackedLayout from '../../elements/layouts/StackedLayout.svelte';
   import Sponsor from '../../components/SponsorSimple.svelte';
+  import Meta from '../../components/seo/Meta.svelte';
 
   import {
     ActionHeader,
@@ -21,9 +22,11 @@
   const query = queryMySubmissions();
 </script>
 
-<svelte:head>
-  <title>My Submissions * THAT.us</title>
-</svelte:head>
+<Meta
+  title="My Submissions"
+  description="todo"
+  openGraph="{{ title: 'My Submissions', description: 'todo', type: 'website', url: `https://that.us/my/submissions`, nofollow: true, noindex: true }}"
+/>
 
 <StackedLayout>
 

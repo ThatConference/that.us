@@ -10,6 +10,7 @@
   import StackedLayout from '../../elements/layouts/StackedLayout.svelte';
   import Nav from '../../components/nav/interiorNav/Top.svelte';
   import ProfileForm from '../../components/my/ProfileForm.svelte';
+  import Meta from '../../components/seo/Meta.svelte';
 
   import memberApi from '../../dataSources/api.that.tech/members.js';
   import { tagEvent } from '../../utilities/gtag';
@@ -77,9 +78,11 @@
   }
 </script>
 
-<svelte:head>
-  <title>Create a New Member Profile * THAT.us</title>
-</svelte:head>
+<Meta
+  title="My Profile"
+  description="todo"
+  openGraph="{{ title: 'My Profile', description: 'todo', type: 'website', url: `https://that.us/my/profile`, nofollow: true, noindex: true }}"
+/>
 
 <StackedLayout>
   <div slot="header">

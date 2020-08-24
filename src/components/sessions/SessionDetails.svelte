@@ -32,9 +32,9 @@
   import qs from 'query-string';
   import { getClient } from '@urql/svelte';
   import _ from 'lodash';
-  import SvelteSeo from 'svelte-seo';
 
   // UI Support
+  import Meta from '../../components/seo/Meta.svelte';
   import { SocialLink } from '../../components/social';
   import Success from '../../components/notifications/Success.svelte';
   import { Avatars, LinkButton, Tag } from '../../elements';
@@ -151,14 +151,6 @@
 </script>
 
 <svelte:head>
-
-  <title>{title} * THAT</title>
-  <meta name="description" content="{shortDescription}" />
-
-  <SvelteSeo
-    openGraph="{{ title: title, description: shortDescription, type: 'article', url: `https://that.us/sessions/${id}`, article: { tags: tags } }}"
-  />
-
   <script>
     (function() {
       var d = document,
@@ -169,6 +161,12 @@
     })();
   </script>
 </svelte:head>
+
+<Meta
+  {title}
+  description="{shortDescription}"
+  openGraph="{{ title, description: shortDescription, type: 'website', url: `https://that.us/sessions/${id}` }}"
+/>
 
 {#if isNew}
   <Success
