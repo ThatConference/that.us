@@ -152,10 +152,13 @@
 
 <svelte:head>
 
-  <title>{title} * THAT.us</title>
+  <title>{title} * THAT</title>
+  <meta name="description" content="{shortDescription}" />
+
   <SvelteSeo
-    openGraph="{{ title: title, description: shortDescription, type: 'article', url: `https://that.us/session/${id}`, article: { tags: tags } }}"
+    openGraph="{{ title: title, description: shortDescription, type: 'article', url: `https://that.us/sessions/${id}`, article: { tags: tags } }}"
   />
+
   <script>
     (function() {
       var d = document,
