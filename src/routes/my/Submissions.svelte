@@ -16,30 +16,22 @@
   } from '../../elements';
 
   import submissionsApi from '../../dataSources/api.that.tech/submissions';
-  import metaTags from '../../utilities/seo/metaTags';
+  import metaTagsStore from '../../store/metaTags';
 
   const { queryMySubmissions } = submissionsApi(getClient());
   const query = queryMySubmissions();
 
-  const metaInfo = {
+  metaTagsStore.set({
     title: 'My Submissions - THAT',
-    description: 'todo',
+    description: 'Your session submissions.',
     nofollow: true,
     noindex: true,
     openGraph: {
       type: 'website',
       url: `https://that.us/my/submissions`,
     },
-  };
+  });
 </script>
-
-<svelte:head>
-  <title>{metaInfo.title}</title>
-
-  {#each metaTags(metaInfo) as tags}
-    <meta {...tags} />
-  {/each}
-</svelte:head>
 
 <StackedLayout>
 

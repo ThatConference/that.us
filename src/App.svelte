@@ -6,6 +6,8 @@
   import { isAuthenticated, token } from './utilities/security.js';
   import config, { events } from './config';
   import currentEvent from './store/currentEvent';
+  import metaTagsStore from './store/metaTags';
+  import metaTags from './utilities/seo/metaTags';
 
   // ui components
   import Tailwindcss from './elements/Tailwindcss.svelte';
@@ -66,6 +68,12 @@
 </script>
 
 <svelte:head>
+
+  <title>{$metaTagsStore ? $metaTagsStore.title : 'Welcome to THAT'}</title>
+
+  {#each metaTags($metaTagsStore) as tags}
+    <meta {...tags} />
+  {/each}
 
   <!-- tidio chat bot -->
   <script src="//code.tidio.co/qcwuuigfzw3cjegsc2fyo0sniyh3c3ue.js" async>

@@ -40,9 +40,10 @@
 
   // Utility
   import config from '../../config';
-  import { isAuthenticated, thatProfile } from '../../utilities/security.js';
+  import { isAuthenticated, thatProfile } from '../../utilities/security';
+  import { truncate, isLongerThan } from '../../utilities/truncate';
   import ical from '../../utilities/ical.js';
-  import metaTags from '../../utilities/seo/metaTags';
+  import metaTagsStore from '../../store/metaTags';
 
   // Data
   import favoritesApi from '../../dataSources/api.that.tech/favorites';
@@ -149,29 +150,17 @@
     });
   };
 
-  const metaInfo = {
+  metaTagsStore.set({
     title,
-    description: shortDescription,
+    description: isLongerThan(shortDescription, 60)
+      ? `${truncate(shortDescription, 60)} ...`
+      : shortDescription,
     openGraph: {
       type: 'website',
       url: `https://that.us/sessions/${id}`,
     },
-  };
+  });
 </script>
-
-<svelte:head>
-  <title>{metaInfo.title}</title>
-
-  {#each metaTags(metaInfo) as tags}
-    <meta {...tags} />
-  {/each}
-
-  <script
-    src="https://that-us.disqus.com/embed.js"
-    data-timestamp="{+new Date()}">
-
-  </script>
-</svelte:head>
 
 {#if isNew}
   <Success

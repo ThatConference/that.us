@@ -16,31 +16,23 @@
   import SessionsList from '../../components/sessions/List.svelte';
 
   // data
-  import metaTags from '../../utilities/seo/metaTags';
+  import metaTagsStore from '../../store/metaTags';
   import favoritesApi from '../../dataSources/api.that.tech/favorites';
   import currentEvent from '../../store/currentEvent';
 
   const { get } = favoritesApi(getClient());
 
-  const metaInfo = {
+  metaTagsStore.set({
     title: 'My Favorites - THAT',
-    description: 'todo',
+    description: "You're list of favorited sessions.",
     nofollow: true,
     noindex: true,
     openGraph: {
       type: 'website',
       url: `https://that.us/my/favorites`,
     },
-  };
+  });
 </script>
-
-<svelte:head>
-  <title>{metaInfo.title}</title>
-
-  {#each metaTags(metaInfo) as tags}
-    <meta {...tags} />
-  {/each}
-</svelte:head>
 
 <StackedLayout>
 

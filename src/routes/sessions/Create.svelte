@@ -17,7 +17,7 @@
   import currentEvent from '../../store/currentEvent';
 
   // utilities
-  import metaTags from '../../utilities/seo/metaTags';
+  import metaTagsStore from '../../store/metaTags';
   import { tagEvent } from '../../utilities/gtag';
   import { format } from './formatRequest';
   import {
@@ -42,23 +42,16 @@
     navigateTo(`/sessions/${id}?edit=true&isNew=true`, { replace: true });
   }
 
-  const metaInfo = {
+  metaTagsStore.set({
     title: 'Create a New... - THAT',
-    description: 'todo',
+    description:
+      'Create a New [Session, Code Review, Open Space, Chat], you get the idea.',
     openGraph: {
       type: 'website',
       url: `https://that.us/sessions/create`,
     },
-  };
+  });
 </script>
-
-<svelte:head>
-  <title>{metaInfo.title}</title>
-
-  {#each metaTags(metaInfo) as tags}
-    <meta {...tags} />
-  {/each}
-</svelte:head>
 
 <StackedLayout>
 

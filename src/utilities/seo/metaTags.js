@@ -18,13 +18,19 @@
 const create = (metaData) => {
   const results = [];
 
-  const robotsContent = `${metaData.noindex ? 'noindex' : 'index'},${
-    metaData.nofollow ? 'nofollow' : 'follow'
+  const noindex = metaData ? metaData.noindex : false;
+  const nofollow = metaData ? metaData.nofollow : false;
+
+  const robotsContent = `${noindex ? 'noindex' : 'index'},${
+    nofollow ? 'nofollow' : 'follow'
   }`;
 
   // defaults
   results.push({ name: 'robots', content: robotsContent });
   results.push({ name: 'googlebot', content: robotsContent });
+
+  // if we didn't get anything, return out after the defaults
+  if (!metaData) return results;
 
   if (metaData.description)
     results.push({ name: 'description', content: metaData.description });

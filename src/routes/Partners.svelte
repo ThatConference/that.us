@@ -11,29 +11,21 @@
   import PartnerCard from '../components/partners/PartnerCard.svelte';
   import CardLoader from '../components/CardLoader.svelte';
 
-  import metaTags from '../utilities/seo/metaTags';
+  import metaTagsStore from '../store/metaTags';
   import partnersApi from '../dataSources/api.that.tech/partners';
 
   const { get } = partnersApi(getClient());
   let partners = get();
 
-  const metaInfo = {
+  metaTagsStore.set({
     title: 'Partners - THAT',
-    description: 'todo',
+    description: 'Thank you to those who support our great community everyday.',
     openGraph: {
       type: 'website',
       url: `https://that.us/partners`,
     },
-  };
+  });
 </script>
-
-<svelte:head>
-  <title>{metaInfo.title}</title>
-
-  {#each metaTags(metaInfo) as tags}
-    <meta {...tags} />
-  {/each}
-</svelte:head>
 
 <main>
   <Hero />

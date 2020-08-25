@@ -11,7 +11,7 @@
   // utilities
   import { getTimeStampId, scrollIntoView } from '../../utilities/scrollHelper';
   import { thatProfile } from '../../utilities/security.js';
-  import metaTags from '../../utilities/seo/metaTags';
+  import metaTagsStore from '../../store/metaTags';
 
   // components
   import Nav from '../../components/nav/interiorNav/Top.svelte';
@@ -49,23 +49,16 @@
     // });
   });
 
-  const metaInfo = {
+  metaTagsStore.set({
     title: 'THAT Board - THAT',
-    description: 'todo',
+    description:
+      "We don't have to wait to have the conversation we need to have today. This is what's coming up.",
     openGraph: {
       type: 'website',
       url: `https://that.us/sessions`,
     },
-  };
+  });
 </script>
-
-<svelte:head>
-  <title>{metaInfo.title}</title>
-
-  {#each metaTags(metaInfo) as tags}
-    <meta {...tags} />
-  {/each}
-</svelte:head>
 
 <StackedLayout>
 

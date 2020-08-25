@@ -13,25 +13,16 @@
 
   import SponsorSimple from '../components/SponsorSimple.svelte';
 
-  import metaTags from '../utilities/seo/metaTags';
-
-  const metaInfo = {
+  import metaTagsStore from '../store/metaTags';
+  metaTagsStore.set({
     title: 'Welcome to THAT!',
     description: 'todo',
     openGraph: {
       type: 'website',
       url: `https://that.us/`,
     },
-  };
+  });
 </script>
-
-<svelte:head>
-  <title>{metaInfo.title}</title>
-
-  {#each metaTags(metaInfo) as tags}
-    <meta {...tags} />
-  {/each}
-</svelte:head>
 
 <Hero />
 <Testimonials />

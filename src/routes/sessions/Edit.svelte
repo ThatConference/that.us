@@ -12,7 +12,7 @@
   import SessionForm from '../../components/sessions/SessionForm.svelte';
 
   // utilities
-  import metaTags from '../../utilities/seo/metaTags';
+  import metaTagsStore from '../../store/metaTags';
   import { tagEvent } from '../../utilities/gtag';
   import { user } from '../../utilities/security.js';
   import { format } from './formatRequest';
@@ -50,23 +50,15 @@
     });
   }
 
-  const metaInfo = {
+  metaTagsStore.set({
     title: 'Edit Submission - THAT',
-    description: 'todo',
+    description: 'Edit your submission.',
     openGraph: {
       type: 'website',
       url: `https://that.us/sessions/edit`,
     },
-  };
+  });
 </script>
-
-<svelte:head>
-  <title>{metaInfo.title}</title>
-
-  {#each metaTags(metaInfo) as tags}
-    <meta {...tags} />
-  {/each}
-</svelte:head>
 
 <StackedLayout>
 

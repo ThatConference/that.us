@@ -3,25 +3,16 @@
   import FaqItems from '../components/faq/FaqItem.svelte';
   import { Footer } from '../components';
 
-  import metaTags from '../utilities/seo/metaTags';
-
-  const metaInfo = {
+  import metaTagsStore from '../store/metaTags';
+  metaTagsStore.set({
     title: 'FAQ - THAT',
-    description: 'todo',
+    description: 'A common list of frequently asked questioned, answered.',
     openGraph: {
       type: 'website',
       url: `https://that.us/FAQ`,
     },
-  };
+  });
 </script>
-
-<svelte:head>
-  <title>{metaInfo.title}</title>
-
-  {#each metaTags(metaInfo) as tags}
-    <meta {...tags} />
-  {/each}
-</svelte:head>
 
 <div class="relative bg-white overflow-hidden">
   <div class="max-w-screen-xl mx-auto ">

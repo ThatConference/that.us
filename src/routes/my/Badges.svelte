@@ -13,7 +13,7 @@
   import memberApi from '../../dataSources/api.that.tech/members.js';
 
   // utilities
-  import metaTags from '../../utilities/seo/metaTags';
+  import metaTagsStore from '../../store/metaTags';
   import { tagEvent } from '../../utilities/gtag';
 
   import {
@@ -55,25 +55,17 @@
     setSubmitting(false);
   }
 
-  const metaInfo = {
+  metaTagsStore.set({
     title: 'Merit Badges - THAT',
-    description: 'todo',
+    description: "You've worked hard to earn some awesome merit badges.",
     nofollow: true,
     noindex: true,
     openGraph: {
       type: 'website',
       url: `https://that.us/my/badges`,
     },
-  };
+  });
 </script>
-
-<svelte:head>
-  <title>{metaInfo.title}</title>
-
-  {#each metaTags(metaInfo) as tags}
-    <meta {...tags} />
-  {/each}
-</svelte:head>
 
 <StackedLayout>
   <div slot="header">

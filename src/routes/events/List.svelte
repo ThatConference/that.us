@@ -16,7 +16,7 @@
   import { ActionHeader, LinkButton } from '../../elements';
 
   // datasources
-  import metaTags from '../../utilities/seo/metaTags';
+  import metaTagsStore from '../../store/metaTags';
   import sessionsApi from '../../dataSources/api.that.tech/sessions';
   import { events } from '../../config';
 
@@ -26,23 +26,15 @@
 
   if (!currentEvent) navigateTo(`/sessions`, { reload: true });
 
-  const metaInfo = {
+  metaTagsStore.set({
     title: `${currentEvent.title} * THAT`,
-    description: 'todo',
+    description: `Session list for ${currentEvent.title}.`,
     openGraph: {
       type: 'website',
       url: `https://that.us/events/${eventName}`,
     },
-  };
+  });
 </script>
-
-<svelte:head>
-  <title>{metaInfo.title}</title>
-
-  {#each metaTags(metaInfo) as tags}
-    <meta {...tags} />
-  {/each}
-</svelte:head>
 
 <StackedLayout>
 

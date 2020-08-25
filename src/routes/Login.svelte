@@ -5,7 +5,7 @@
   import { onMount } from 'svelte';
   import qs from 'query-string';
 
-  import metaTags from '../utilities/seo/metaTags';
+  import metaTagsStore from '../store/metaTags';
   import { login } from '../utilities/security.js';
   import { ModalNoAction } from '../elements';
 
@@ -15,23 +15,15 @@
     await login(documentReferrer, signup);
   });
 
-  const metaInfo = {
+  metaTagsStore.set({
     title: 'Login - THAT',
-    description: 'todo',
+    description: 'Login to your THAT account.',
     openGraph: {
       type: 'website',
       url: `https://that.us/login`,
     },
-  };
+  });
 </script>
-
-<svelte:head>
-  <title>{metaInfo.title}</title>
-
-  {#each metaTags(metaInfo) as tags}
-    <meta {...tags} />
-  {/each}
-</svelte:head>
 
 <div>
   <ModalNoAction

@@ -20,7 +20,7 @@
   import WarningNotification from '../../components/notifications/Warning.svelte';
 
   // data
-  import metaTags from '../../utilities/seo/metaTags';
+  import metaTagsStore from '../../store/metaTags';
   import { isAuthenticated, thatProfile } from '../../utilities/security.js';
   import sessionsApi from '../../dataSources/api.that.tech/sessions.js';
 
@@ -193,27 +193,21 @@
     }
   }
 
-  const metaInfo = {
+  metaTagsStore.set({
     title: 'Join In - THAT',
-    description: 'todo',
+    description: 'Join in the conversation today.',
     nofollow: true,
     noindex: true,
     openGraph: {
       type: 'website',
       url: `https://that.us/join`,
     },
-  };
+  });
 </script>
 
 <svelte:window on:resize="{handleResize}" />
 
 <svelte:head>
-  <title>{metaInfo.title}</title>
-
-  {#each metaTags(metaInfo) as tags}
-    <meta {...tags} />
-  {/each}
-
   <script src="https://meet.jit.si/external_api.js" on:load="{initJitsi}">
 
   </script>

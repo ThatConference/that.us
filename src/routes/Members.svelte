@@ -6,8 +6,7 @@
   import SvelteInfiniteScroll from 'svelte-infinite-scroll';
   import _ from 'lodash';
 
-  import metaTags from '../utilities/seo/metaTags';
-
+  import metaTagsStore from '../store/metaTags';
   import { Waiting } from '../elements';
   import Hero from '../components/members/Hero.svelte';
   import Footer from '../components/Footer.svelte';
@@ -46,23 +45,16 @@
     loadingMore = false;
   }
 
-  const metaInfo = {
+  metaTagsStore.set({
     title: 'Members - THAT',
-    description: 'todo',
+    description:
+      'Our community is made of up geeks and geeklings across the world. Here are just a few.',
     openGraph: {
       type: 'website',
       url: `https://that.us/members`,
     },
-  };
+  });
 </script>
-
-<svelte:head>
-  <title>{metaInfo.title}</title>
-
-  {#each metaTags(metaInfo) as tags}
-    <meta {...tags} />
-  {/each}
-</svelte:head>
 
 <main>
   <Hero />
