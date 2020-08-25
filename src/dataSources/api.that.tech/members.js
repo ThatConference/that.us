@@ -136,6 +136,16 @@ function reformatResults(results) {
 }
 
 export default (client) => {
+  const stripAuthorization = () => {
+    const newHeaders = {
+      ...client.fetchOptions().headers,
+    };
+
+    delete newHeaders.authorization;
+
+    return newHeaders;
+  };
+
   const isSlugTaken = (slug) => {
     const variables = { slug };
     return client
@@ -155,7 +165,7 @@ export default (client) => {
     const variables = { pageSize };
     return client
       .query(QUERY_MEMBERS_INITAL, variables, {
-        fetchOptions: { headers: { authorization: '' } },
+        fetchOptions: { headers: { ...stripAuthorization() } },
       })
       .toPromise()
       .then(reformatResults);
@@ -165,7 +175,7 @@ export default (client) => {
     const variables = { pageSize, after };
     return client
       .query(QUERY_MEMBERS_NEXT, variables, {
-        fetchOptions: { headers: { authorization: '' } },
+        fetchOptions: { headers: { ...stripAuthorization() } },
       })
       .toPromise()
       .then(reformatResults);
