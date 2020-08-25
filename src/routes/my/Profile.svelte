@@ -13,6 +13,7 @@
 
   import memberApi from '../../dataSources/api.that.tech/members.js';
   import { tagEvent } from '../../utilities/gtag';
+  import metaTagsStore from '../../store/metaTags';
 
   import {
     isAuthenticated,
@@ -75,11 +76,18 @@
     resetForm();
     navigateTo(`/sessions`, { replace: true });
   }
-</script>
 
-<svelte:head>
-  <title>Create a New Member Profile * THAT.us</title>
-</svelte:head>
+  metaTagsStore.set({
+    title: 'My Profile',
+    description: 'Create or update your THAT profile.',
+    nofollow: true,
+    noindex: true,
+    openGraph: {
+      type: 'website',
+      url: `https://that.us/my/profile`,
+    },
+  });
+</script>
 
 <StackedLayout>
   <div slot="header">

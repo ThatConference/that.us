@@ -12,6 +12,16 @@
   import Youtube from '@sveltecasts/svelte-youtube';
 
   import SponsorSimple from '../components/SponsorSimple.svelte';
+
+  import metaTagsStore from '../store/metaTags';
+  metaTagsStore.set({
+    title: 'Welcome to THAT!',
+    description: 'todo',
+    openGraph: {
+      type: 'website',
+      url: `https://that.us/`,
+    },
+  });
 </script>
 
 <Hero />

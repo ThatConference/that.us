@@ -1,15 +1,19 @@
 <script>
-  export let router;
-
   import { onMount } from 'svelte';
   import { getClient } from '@urql/svelte';
 
+  // ui support
   import { ActionHeader, LinkButton } from '../../elements';
   import StackedLayout from '../../elements/layouts/StackedLayout.svelte';
   import Nav from '../../components/nav/interiorNav/Top.svelte';
   import Warning from '../../components/notifications/Warning.svelte';
   import ClaimTicketForm from '../../components/my/ClaimTicketForm.svelte';
+
+  // data
   import memberApi from '../../dataSources/api.that.tech/members.js';
+
+  // utilities
+  import metaTagsStore from '../../store/metaTags';
   import { tagEvent } from '../../utilities/gtag';
 
   import {
@@ -50,11 +54,18 @@
     tagEvent('claim_badge', 'account', $user.sub);
     setSubmitting(false);
   }
-</script>
 
-<svelte:head>
-  <title>Merit Badges * THAT.us</title>
-</svelte:head>
+  metaTagsStore.set({
+    title: 'Merit Badges - THAT',
+    description: "You've worked hard to earn some awesome merit badges.",
+    nofollow: true,
+    noindex: true,
+    openGraph: {
+      type: 'website',
+      url: `https://that.us/my/badges`,
+    },
+  });
+</script>
 
 <StackedLayout>
   <div slot="header">

@@ -17,6 +17,7 @@
   import currentEvent from '../../store/currentEvent';
 
   // utilities
+  import metaTagsStore from '../../store/metaTags';
   import { tagEvent } from '../../utilities/gtag';
   import { format } from './formatRequest';
   import {
@@ -40,11 +41,17 @@
     setSubmitting(false);
     navigateTo(`/sessions/${id}?edit=true&isNew=true`, { replace: true });
   }
-</script>
 
-<svelte:head>
-  <title>Create a New Session 📄 THAT.us</title>
-</svelte:head>
+  metaTagsStore.set({
+    title: 'Create a New... - THAT',
+    description:
+      'Create a New [Session, Code Review, Open Space, Chat], you get the idea.',
+    openGraph: {
+      type: 'website',
+      url: `https://that.us/sessions/create`,
+    },
+  });
+</script>
 
 <StackedLayout>
 

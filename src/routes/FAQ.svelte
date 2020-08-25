@@ -2,6 +2,16 @@
   import Nav from '../components/nav/mainNav/MainNav.svelte';
   import FaqItems from '../components/faq/FaqItem.svelte';
   import { Footer } from '../components';
+
+  import metaTagsStore from '../store/metaTags';
+  metaTagsStore.set({
+    title: 'FAQ - THAT',
+    description: 'A common list of frequently asked questioned, answered.',
+    openGraph: {
+      type: 'website',
+      url: `https://that.us/FAQ`,
+    },
+  });
 </script>
 
 <div class="relative bg-white overflow-hidden">

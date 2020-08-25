@@ -4,16 +4,21 @@
   import { getClient } from '@urql/svelte';
   import { navigateTo } from 'yrv';
 
+  // ui support
   import StackedLayout from '../../elements/layouts/StackedLayout.svelte';
   import { ActionHeader, LinkButton, ModalError } from '../../elements';
   import Nav from '../../components/nav/interiorNav/Top.svelte';
   import CardLoader from '../../components/CardLoader.svelte';
   import SessionForm from '../../components/sessions/SessionForm.svelte';
-  import sessionsApi from '../../dataSources/api.that.tech/sessions.js';
-  import { tagEvent } from '../../utilities/gtag';
 
+  // utilities
+  import metaTagsStore from '../../store/metaTags';
+  import { tagEvent } from '../../utilities/gtag';
   import { user } from '../../utilities/security.js';
   import { format } from './formatRequest';
+
+  // data
+  import sessionsApi from '../../dataSources/api.that.tech/sessions.js';
 
   const { sessionId } = router.params;
 
@@ -44,11 +49,16 @@
       replace: true,
     });
   }
-</script>
 
-<svelte:head>
-  <title>Update Submission 📝 THAT.us</title>
-</svelte:head>
+  metaTagsStore.set({
+    title: 'Edit Submission - THAT',
+    description: 'Edit your submission.',
+    openGraph: {
+      type: 'website',
+      url: `https://that.us/sessions/edit`,
+    },
+  });
+</script>
 
 <StackedLayout>
 

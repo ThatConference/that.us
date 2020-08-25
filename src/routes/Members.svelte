@@ -6,6 +6,7 @@
   import SvelteInfiniteScroll from 'svelte-infinite-scroll';
   import _ from 'lodash';
 
+  import metaTagsStore from '../store/metaTags';
   import { Waiting } from '../elements';
   import Hero from '../components/members/Hero.svelte';
   import Footer from '../components/Footer.svelte';
@@ -43,6 +44,16 @@
     }
     loadingMore = false;
   }
+
+  metaTagsStore.set({
+    title: 'Members - THAT',
+    description:
+      'Our community is made of up geeks and geeklings across the world. Here are just a few.',
+    openGraph: {
+      type: 'website',
+      url: `https://that.us/members`,
+    },
+  });
 </script>
 
 <main>

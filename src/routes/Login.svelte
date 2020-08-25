@@ -5,6 +5,7 @@
   import { onMount } from 'svelte';
   import qs from 'query-string';
 
+  import metaTagsStore from '../store/metaTags';
   import { login } from '../utilities/security.js';
   import { ModalNoAction } from '../elements';
 
@@ -12,6 +13,15 @@
 
   onMount(async () => {
     await login(documentReferrer, signup);
+  });
+
+  metaTagsStore.set({
+    title: 'Login - THAT',
+    description: 'Login to your THAT account.',
+    openGraph: {
+      type: 'website',
+      url: `https://that.us/login`,
+    },
   });
 </script>
 

@@ -40,8 +40,10 @@
 
   // Utility
   import config from '../../config';
-  import { isAuthenticated, thatProfile } from '../../utilities/security.js';
+  import { isAuthenticated, thatProfile } from '../../utilities/security';
+  import { truncate, isLongerThan } from '../../utilities/truncate';
   import ical from '../../utilities/ical.js';
+  import metaTagsStore from '../../store/metaTags';
 
   // Data
   import favoritesApi from '../../dataSources/api.that.tech/favorites';
@@ -147,22 +149,18 @@
       durationInMinutes,
     });
   };
+
+  metaTagsStore.set({
+    title,
+    description: isLongerThan(shortDescription, 60)
+      ? `${truncate(shortDescription, 60)} ...`
+      : shortDescription,
+    openGraph: {
+      type: 'website',
+      url: `https://that.us/sessions/${id}`,
+    },
+  });
 </script>
-
-<svelte:head>
-
-  <title>{title} * THAT.us</title>
-
-  <script>
-    (function() {
-      var d = document,
-        s = d.createElement('script');
-      s.src = 'https://that-us.disqus.com/embed.js';
-      s.setAttribute('data-timestamp', +new Date());
-      (d.head || d.body).appendChild(s);
-    })();
-  </script>
-</svelte:head>
 
 {#if isNew}
   <Success

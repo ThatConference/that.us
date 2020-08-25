@@ -11,6 +11,7 @@
   // utilities
   import { getTimeStampId, scrollIntoView } from '../../utilities/scrollHelper';
   import { thatProfile } from '../../utilities/security.js';
+  import metaTagsStore from '../../store/metaTags';
 
   // components
   import Nav from '../../components/nav/interiorNav/Top.svelte';
@@ -47,11 +48,17 @@
     //   scrollIntoView(`#${id}`);
     // });
   });
-</script>
 
-<svelte:head>
-  <title>THAT 📆 THAT.us</title>
-</svelte:head>
+  metaTagsStore.set({
+    title: 'THAT Board - THAT',
+    description:
+      "We don't have to wait to have the conversation we need to have today. This is what's coming up.",
+    openGraph: {
+      type: 'website',
+      url: `https://that.us/sessions`,
+    },
+  });
+</script>
 
 <StackedLayout>
 

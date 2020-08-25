@@ -3,7 +3,6 @@
 
   import { onMount } from 'svelte';
   import { getClient } from '@urql/svelte';
-
   import _ from 'lodash';
 
   import { Waiting } from '../elements';
@@ -12,11 +11,20 @@
   import PartnerCard from '../components/partners/PartnerCard.svelte';
   import CardLoader from '../components/CardLoader.svelte';
 
+  import metaTagsStore from '../store/metaTags';
   import partnersApi from '../dataSources/api.that.tech/partners';
 
   const { get } = partnersApi(getClient());
-
   let partners = get();
+
+  metaTagsStore.set({
+    title: 'Partners - THAT',
+    description: 'Thank you to those who support our great community everyday.',
+    openGraph: {
+      type: 'website',
+      url: `https://that.us/partners`,
+    },
+  });
 </script>
 
 <main>

@@ -3,9 +3,11 @@
   import { getClient } from '@urql/svelte';
 
   import Nav from '../../components/nav/interiorNav/Top.svelte';
-  import StackedLayout from '../../elements/layouts/StackedLayout.svelte';
   import Sponsor from '../../components/SponsorSimple.svelte';
+  import CardLoader from '../../components/CardLoader.svelte';
+  import SessionsList from '../../components/sessions/List.svelte';
 
+  import StackedLayout from '../../elements/layouts/StackedLayout.svelte';
   import {
     ActionHeader,
     LinkButton,
@@ -13,17 +15,23 @@
     ModalWarning,
   } from '../../elements';
 
-  import CardLoader from '../../components/CardLoader.svelte';
-  import SessionsList from '../../components/sessions/List.svelte';
   import submissionsApi from '../../dataSources/api.that.tech/submissions';
+  import metaTagsStore from '../../store/metaTags';
 
   const { queryMySubmissions } = submissionsApi(getClient());
   const query = queryMySubmissions();
-</script>
 
-<svelte:head>
-  <title>My Submissions * THAT.us</title>
-</svelte:head>
+  metaTagsStore.set({
+    title: 'My Submissions - THAT',
+    description: 'Your session submissions.',
+    nofollow: true,
+    noindex: true,
+    openGraph: {
+      type: 'website',
+      url: `https://that.us/my/submissions`,
+    },
+  });
+</script>
 
 <StackedLayout>
 
