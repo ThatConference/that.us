@@ -3,10 +3,11 @@
   import { getClient } from '@urql/svelte';
 
   import Nav from '../../components/nav/interiorNav/Top.svelte';
-  import StackedLayout from '../../elements/layouts/StackedLayout.svelte';
   import Sponsor from '../../components/SponsorSimple.svelte';
-  import Meta from '../../components/seo/Meta.svelte';
+  import CardLoader from '../../components/CardLoader.svelte';
+  import SessionsList from '../../components/sessions/List.svelte';
 
+  import StackedLayout from '../../elements/layouts/StackedLayout.svelte';
   import {
     ActionHeader,
     LinkButton,
@@ -14,19 +15,31 @@
     ModalWarning,
   } from '../../elements';
 
-  import CardLoader from '../../components/CardLoader.svelte';
-  import SessionsList from '../../components/sessions/List.svelte';
   import submissionsApi from '../../dataSources/api.that.tech/submissions';
+  import metaTags from '../../utilities/seo/metaTags';
 
   const { queryMySubmissions } = submissionsApi(getClient());
   const query = queryMySubmissions();
+
+  const metaInfo = {
+    title: 'My Submissions - THAT',
+    description: 'todo',
+    nofollow: true,
+    noindex: true,
+    openGraph: {
+      type: 'website',
+      url: `https://that.us/my/submissions`,
+    },
+  };
 </script>
 
-<Meta
-  title="My Submissions"
-  description="todo"
-  openGraph="{{ title: 'My Submissions', description: 'todo', type: 'website', url: `https://that.us/my/submissions`, nofollow: true, noindex: true }}"
-/>
+<svelte:head>
+  <title>{metaInfo.title}</title>
+
+  {#each metaTags(metaInfo) as tags}
+    <meta {...tags} />
+  {/each}
+</svelte:head>
 
 <StackedLayout>
 

@@ -34,7 +34,6 @@
   import _ from 'lodash';
 
   // UI Support
-  import Meta from '../../components/seo/Meta.svelte';
   import { SocialLink } from '../../components/social';
   import Success from '../../components/notifications/Success.svelte';
   import { Avatars, LinkButton, Tag } from '../../elements';
@@ -43,6 +42,7 @@
   import config from '../../config';
   import { isAuthenticated, thatProfile } from '../../utilities/security.js';
   import ical from '../../utilities/ical.js';
+  import metaTags from '../../utilities/seo/metaTags';
 
   // Data
   import favoritesApi from '../../dataSources/api.that.tech/favorites';
@@ -148,25 +148,30 @@
       durationInMinutes,
     });
   };
+
+  const metaInfo = {
+    title,
+    description: shortDescription,
+    openGraph: {
+      type: 'website',
+      url: `https://that.us/sessions/${id}`,
+    },
+  };
 </script>
 
 <svelte:head>
-  <script>
-    (function() {
-      var d = document,
-        s = d.createElement('script');
-      s.src = 'https://that-us.disqus.com/embed.js';
-      s.setAttribute('data-timestamp', +new Date());
-      (d.head || d.body).appendChild(s);
-    })();
+  <title>{metaInfo.title}</title>
+
+  {#each metaTags(metaInfo) as tags}
+    <meta {...tags} />
+  {/each}
+
+  <script
+    src="https://that-us.disqus.com/embed.js"
+    data-timestamp="{+new Date()}">
+
   </script>
 </svelte:head>
-
-<Meta
-  {title}
-  description="{shortDescription}"
-  openGraph="{{ title, description: shortDescription, type: 'website', url: `https://that.us/sessions/${id}` }}"
-/>
 
 {#if isNew}
   <Success

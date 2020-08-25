@@ -4,8 +4,8 @@
 
   import { onMount } from 'svelte';
   import qs from 'query-string';
-  import Meta from '../components/seo/Meta.svelte';
 
+  import metaTags from '../utilities/seo/metaTags';
   import { login } from '../utilities/security.js';
   import { ModalNoAction } from '../elements';
 
@@ -14,13 +14,24 @@
   onMount(async () => {
     await login(documentReferrer, signup);
   });
+
+  const metaInfo = {
+    title: 'Login - THAT',
+    description: 'todo',
+    openGraph: {
+      type: 'website',
+      url: `https://that.us/login`,
+    },
+  };
 </script>
 
-<Meta
-  title="Login - THAT"
-  description="todo"
-  openGraph="{{ title: 'Login * THAT', description: 'todo', type: 'website', url: `https://that.us/login` }}"
-/>
+<svelte:head>
+  <title>{metaInfo.title}</title>
+
+  {#each metaTags(metaInfo) as tags}
+    <meta {...tags} />
+  {/each}
+</svelte:head>
 
 <div>
   <ModalNoAction

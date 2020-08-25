@@ -8,12 +8,12 @@
   import Nav from '../../components/nav/interiorNav/Top.svelte';
   import Warning from '../../components/notifications/Warning.svelte';
   import ClaimTicketForm from '../../components/my/ClaimTicketForm.svelte';
-  import Meta from '../../components/seo/Meta.svelte';
 
   // data
   import memberApi from '../../dataSources/api.that.tech/members.js';
 
   // utilities
+  import metaTags from '../../utilities/seo/metaTags';
   import { tagEvent } from '../../utilities/gtag';
 
   import {
@@ -54,13 +54,26 @@
     tagEvent('claim_badge', 'account', $user.sub);
     setSubmitting(false);
   }
+
+  const metaInfo = {
+    title: 'Merit Badges - THAT',
+    description: 'todo',
+    nofollow: true,
+    noindex: true,
+    openGraph: {
+      type: 'website',
+      url: `https://that.us/my/badges`,
+    },
+  };
 </script>
 
-<Meta
-  title="Merit Badges - THAT"
-  description="todo"
-  openGraph="{{ title: `Merit Badges * THAT`, description: 'todo', type: 'website', url: `https://that.us/my/badges`, nofollow: true, noindex: true }}"
-/>
+<svelte:head>
+  <title>{metaInfo.title}</title>
+
+  {#each metaTags(metaInfo) as tags}
+    <meta {...tags} />
+  {/each}
+</svelte:head>
 
 <StackedLayout>
   <div slot="header">

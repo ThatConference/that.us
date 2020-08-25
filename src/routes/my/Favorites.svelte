@@ -14,20 +14,33 @@
 
   import CardLoader from '../../components/CardLoader.svelte';
   import SessionsList from '../../components/sessions/List.svelte';
-  import Meta from '../../components/seo/Meta.svelte';
 
   // data
+  import metaTags from '../../utilities/seo/metaTags';
   import favoritesApi from '../../dataSources/api.that.tech/favorites';
   import currentEvent from '../../store/currentEvent';
 
   const { get } = favoritesApi(getClient());
+
+  const metaInfo = {
+    title: 'My Favorites - THAT',
+    description: 'todo',
+    nofollow: true,
+    noindex: true,
+    openGraph: {
+      type: 'website',
+      url: `https://that.us/my/favorites`,
+    },
+  };
 </script>
 
-<Meta
-  title="My Favorites - THAT"
-  description="todo"
-  openGraph="{{ title: 'My Favorites * THAT', description: 'todo', type: 'website', url: `https://that.us/my/favorites`, nofollow: true, noindex: true }}"
-/>
+<svelte:head>
+  <title>{metaInfo.title}</title>
+
+  {#each metaTags(metaInfo) as tags}
+    <meta {...tags} />
+  {/each}
+</svelte:head>
 
 <StackedLayout>
 

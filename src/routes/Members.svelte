@@ -5,7 +5,8 @@
   import { getClient } from '@urql/svelte';
   import SvelteInfiniteScroll from 'svelte-infinite-scroll';
   import _ from 'lodash';
-  import Meta from '../components/seo/Meta.svelte';
+
+  import metaTags from '../utilities/seo/metaTags';
 
   import { Waiting } from '../elements';
   import Hero from '../components/members/Hero.svelte';
@@ -44,13 +45,24 @@
     }
     loadingMore = false;
   }
+
+  const metaInfo = {
+    title: 'Members - THAT',
+    description: 'todo',
+    openGraph: {
+      type: 'website',
+      url: `https://that.us/members`,
+    },
+  };
 </script>
 
-<Meta
-  title="Members - THAT"
-  description="todo"
-  openGraph="{{ title: 'Members * THAT', description: 'todo', type: 'website', url: `https://that.us/members` }}"
-/>
+<svelte:head>
+  <title>{metaInfo.title}</title>
+
+  {#each metaTags(metaInfo) as tags}
+    <meta {...tags} />
+  {/each}
+</svelte:head>
 
 <main>
   <Hero />

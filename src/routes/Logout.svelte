@@ -1,6 +1,6 @@
 <script>
   import { onMount } from 'svelte';
-  import Meta from '../components/seo/Meta.svelte';
+  import metaTags from '../utilities/seo/metaTags';
 
   import { logout } from '../utilities/security.js';
   import { ModalNoAction } from '../elements';
@@ -8,13 +8,24 @@
   onMount(async () => {
     await logout();
   });
+
+  const metaInfo = {
+    title: 'Logout - THAT',
+    description: 'todo',
+    openGraph: {
+      type: 'website',
+      url: `https://that.us/logout`,
+    },
+  };
 </script>
 
-<Meta
-  title="Logout - THAT"
-  description="todo"
-  openGraph="{{ title: 'Logout * THAT', description: 'todo', type: 'website', url: `https://that.us/logout` }}"
-/>
+<svelte:head>
+  <title>{metaInfo.title}</title>
+
+  {#each metaTags(metaInfo) as tags}
+    <meta {...tags} />
+  {/each}
+</svelte:head>
 
 <div>
   <ModalNoAction

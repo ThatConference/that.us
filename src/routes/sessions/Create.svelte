@@ -9,7 +9,6 @@
   import { ActionHeader, LinkButton } from '../../elements';
   import Nav from '../../components/nav/interiorNav/Top.svelte';
   import SessionForm from '../../components/sessions/SessionForm.svelte';
-  import Meta from '../../components/seo/Meta.svelte';
 
   // data
   import sessionsApi from '../../dataSources/api.that.tech/sessions.js';
@@ -18,6 +17,7 @@
   import currentEvent from '../../store/currentEvent';
 
   // utilities
+  import metaTags from '../../utilities/seo/metaTags';
   import { tagEvent } from '../../utilities/gtag';
   import { format } from './formatRequest';
   import {
@@ -41,13 +41,24 @@
     setSubmitting(false);
     navigateTo(`/sessions/${id}?edit=true&isNew=true`, { replace: true });
   }
+
+  const metaInfo = {
+    title: 'Create a New... - THAT',
+    description: 'todo',
+    openGraph: {
+      type: 'website',
+      url: `https://that.us/sessions/create`,
+    },
+  };
 </script>
 
-<Meta
-  title="Create a New... - THAT"
-  description="todo"
-  openGraph="{{ title: 'Create a New... * THAT', description: 'todo', type: 'website', url: `https://that.us/sessions/create` }}"
-/>
+<svelte:head>
+  <title>{metaInfo.title}</title>
+
+  {#each metaTags(metaInfo) as tags}
+    <meta {...tags} />
+  {/each}
+</svelte:head>
 
 <StackedLayout>
 

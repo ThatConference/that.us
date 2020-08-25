@@ -7,11 +7,11 @@
   import { Link } from 'yrv';
   import { onMount } from 'svelte';
   import _ from 'lodash';
-  import Meta from '../../components/seo/Meta.svelte';
 
   // utilities
   import { getTimeStampId, scrollIntoView } from '../../utilities/scrollHelper';
   import { thatProfile } from '../../utilities/security.js';
+  import metaTags from '../../utilities/seo/metaTags';
 
   // components
   import Nav from '../../components/nav/interiorNav/Top.svelte';
@@ -48,13 +48,24 @@
     //   scrollIntoView(`#${id}`);
     // });
   });
+
+  const metaInfo = {
+    title: 'THAT Board - THAT',
+    description: 'todo',
+    openGraph: {
+      type: 'website',
+      url: `https://that.us/sessions`,
+    },
+  };
 </script>
 
-<Meta
-  title="THAT Board - THAT"
-  description="todo"
-  openGraph="{{ title: 'THAT Board', description: 'todo', type: 'website', url: `https://that.us/sessions` }}"
-/>
+<svelte:head>
+  <title>{metaInfo.title}</title>
+
+  {#each metaTags(metaInfo) as tags}
+    <meta {...tags} />
+  {/each}
+</svelte:head>
 
 <StackedLayout>
 

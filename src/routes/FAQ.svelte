@@ -1,15 +1,27 @@
 <script>
-  import Meta from '../components/seo/Meta.svelte';
   import Nav from '../components/nav/mainNav/MainNav.svelte';
   import FaqItems from '../components/faq/FaqItem.svelte';
   import { Footer } from '../components';
+
+  import metaTags from '../utilities/seo/metaTags';
+
+  const metaInfo = {
+    title: 'FAQ - THAT',
+    description: 'todo',
+    openGraph: {
+      type: 'website',
+      url: `https://that.us/FAQ`,
+    },
+  };
 </script>
 
-<Meta
-  title="FAQ - THAT"
-  description="todo"
-  openGraph="{{ title: 'FAQ * THAT', description: 'todo', type: 'website', url: `https://that.us/FAQ` }}"
-/>
+<svelte:head>
+  <title>{metaInfo.title}</title>
+
+  {#each metaTags(metaInfo) as tags}
+    <meta {...tags} />
+  {/each}
+</svelte:head>
 
 <div class="relative bg-white overflow-hidden">
   <div class="max-w-screen-xl mx-auto ">

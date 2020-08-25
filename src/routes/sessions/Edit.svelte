@@ -4,17 +4,21 @@
   import { getClient } from '@urql/svelte';
   import { navigateTo } from 'yrv';
 
-  import Meta from '../../components/seo/Meta.svelte';
+  // ui support
   import StackedLayout from '../../elements/layouts/StackedLayout.svelte';
   import { ActionHeader, LinkButton, ModalError } from '../../elements';
   import Nav from '../../components/nav/interiorNav/Top.svelte';
   import CardLoader from '../../components/CardLoader.svelte';
   import SessionForm from '../../components/sessions/SessionForm.svelte';
-  import sessionsApi from '../../dataSources/api.that.tech/sessions.js';
-  import { tagEvent } from '../../utilities/gtag';
 
+  // utilities
+  import metaTags from '../../utilities/seo/metaTags';
+  import { tagEvent } from '../../utilities/gtag';
   import { user } from '../../utilities/security.js';
   import { format } from './formatRequest';
+
+  // data
+  import sessionsApi from '../../dataSources/api.that.tech/sessions.js';
 
   const { sessionId } = router.params;
 
@@ -45,13 +49,24 @@
       replace: true,
     });
   }
+
+  const metaInfo = {
+    title: 'Edit Submission - THAT',
+    description: 'todo',
+    openGraph: {
+      type: 'website',
+      url: `https://that.us/sessions/edit`,
+    },
+  };
 </script>
 
-<Meta
-  title="Edit Submission - THAT"
-  description="todo"
-  openGraph="{{ title: 'Edit Submission * THAT', description: 'todo', type: 'website', url: `https://that.us/sessions/edit` }}"
-/>
+<svelte:head>
+  <title>{metaInfo.title}</title>
+
+  {#each metaTags(metaInfo) as tags}
+    <meta {...tags} />
+  {/each}
+</svelte:head>
 
 <StackedLayout>
 

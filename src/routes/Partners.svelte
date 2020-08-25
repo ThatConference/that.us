@@ -4,7 +4,6 @@
   import { onMount } from 'svelte';
   import { getClient } from '@urql/svelte';
   import _ from 'lodash';
-  import Meta from '../components/seo/Meta.svelte';
 
   import { Waiting } from '../elements';
   import Hero from '../components/partners/Hero.svelte';
@@ -12,18 +11,29 @@
   import PartnerCard from '../components/partners/PartnerCard.svelte';
   import CardLoader from '../components/CardLoader.svelte';
 
+  import metaTags from '../utilities/seo/metaTags';
   import partnersApi from '../dataSources/api.that.tech/partners';
 
   const { get } = partnersApi(getClient());
-
   let partners = get();
+
+  const metaInfo = {
+    title: 'Partners - THAT',
+    description: 'todo',
+    openGraph: {
+      type: 'website',
+      url: `https://that.us/partners`,
+    },
+  };
 </script>
 
-<Meta
-  title="Partners - THAT"
-  description="todo"
-  openGraph="{{ title: 'Partners * THAT', description: 'todo', type: 'website', url: `https://that.us/partners` }}"
-/>
+<svelte:head>
+  <title>{metaInfo.title}</title>
+
+  {#each metaTags(metaInfo) as tags}
+    <meta {...tags} />
+  {/each}
+</svelte:head>
 
 <main>
   <Hero />

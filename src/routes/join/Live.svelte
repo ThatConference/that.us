@@ -16,11 +16,11 @@
   // ui support
   import { ModalError, ActionHeader, LinkButton } from '../../elements';
   import StackedLayout from '../../elements/layouts/StackedLayout.svelte';
-  import Meta from '../../components/seo/Meta.svelte';
   import Nav from '../../components/nav/interiorNav/Top.svelte';
   import WarningNotification from '../../components/notifications/Warning.svelte';
 
   // data
+  import metaTags from '../../utilities/seo/metaTags';
   import { isAuthenticated, thatProfile } from '../../utilities/security.js';
   import sessionsApi from '../../dataSources/api.that.tech/sessions.js';
 
@@ -192,17 +192,28 @@
       element.style.height = `${window.innerHeight - jitsiFrameTopBuffer}px`;
     }
   }
+
+  const metaInfo = {
+    title: 'Join In - THAT',
+    description: 'todo',
+    nofollow: true,
+    noindex: true,
+    openGraph: {
+      type: 'website',
+      url: `https://that.us/join`,
+    },
+  };
 </script>
 
 <svelte:window on:resize="{handleResize}" />
 
-<Meta
-  title="Join In - THAT"
-  description="todo"
-  openGraph="{{ title: `Join In * THAT`, description: 'todo', type: 'website', url: `https://that.us/join`, nofollow: true, noindex: true }}"
-/>
-
 <svelte:head>
+  <title>{metaInfo.title}</title>
+
+  {#each metaTags(metaInfo) as tags}
+    <meta {...tags} />
+  {/each}
+
   <script src="https://meet.jit.si/external_api.js" on:load="{initJitsi}">
 
   </script>

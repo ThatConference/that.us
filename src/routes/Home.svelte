@@ -10,16 +10,28 @@
     // Sponsors,
   } from '../components/home';
   import Youtube from '@sveltecasts/svelte-youtube';
-  import Meta from '../components/seo/Meta.svelte';
 
   import SponsorSimple from '../components/SponsorSimple.svelte';
+
+  import metaTags from '../utilities/seo/metaTags';
+
+  const metaInfo = {
+    title: 'Welcome to THAT!',
+    description: 'todo',
+    openGraph: {
+      type: 'website',
+      url: `https://that.us/`,
+    },
+  };
 </script>
 
-<Meta
-  title="Welcome to THAT!"
-  description="todo"
-  openGraph="{{ title: 'Welcome to THAT!', description: 'todo', type: 'website', url: `https://that.us/` }}"
-/>
+<svelte:head>
+  <title>{metaInfo.title}</title>
+
+  {#each metaTags(metaInfo) as tags}
+    <meta {...tags} />
+  {/each}
+</svelte:head>
 
 <Hero />
 <Testimonials />
