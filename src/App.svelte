@@ -43,7 +43,10 @@
   initClient({
     url: config.api,
     fetchOptions: () => ({
-      headers: { authorization: $token ? `Bearer ${$token}` : '' },
+      headers: {
+        authorization: $token ? `Bearer ${$token}` : '',
+        'that-site': 'that.us',
+      },
     }),
     // todo.. this needs to be revisited... and when we get a new graph client.
     // requestPolicy: 'cache-and-network',
