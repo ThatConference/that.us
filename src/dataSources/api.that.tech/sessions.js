@@ -166,10 +166,24 @@ export const SET_ATTENDANCE = `
 `;
 
 export default (client) => {
+  const stripAuthorization = () => {
+    const newHeaders = {
+      ...client.fetchOptions().headers,
+    };
+
+    delete newHeaders.authorization;
+
+    return newHeaders;
+  };
+
   const query = (graphQuery, variables) =>
     client
       .query(graphQuery, variables, {
-        fetchOptions: { headers: { authorization: '' } },
+        fetchOptions: {
+          headers: {
+            ...stripAuthorization(),
+          },
+        },
       })
       .toPromise()
       .then((r) => {
@@ -200,7 +214,7 @@ export default (client) => {
       QUERY_SESSIONS_BY_DATE,
       { eventId, onOrAfter, daysAfter },
       {
-        fetchOptions: { headers: { authorization: '' } },
+        fetchOptions: { headers: { ...stripAuthorization() } },
       },
     );
 
@@ -210,7 +224,7 @@ export default (client) => {
 
     return client
       .query(QUERY_SESSION_BY_ID, variables, {
-        fetchOptions: { headers: { authorization: '' } },
+        fetchOptions: { headers: { ...stripAuthorization() } },
       })
       .toPromise()
       .then((r) => {

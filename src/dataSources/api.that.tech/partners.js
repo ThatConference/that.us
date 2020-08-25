@@ -24,6 +24,16 @@ export const QUERY_PARTNERS = `
 `;
 
 export default (client, slug = config.eventSlug) => {
+  const stripAuthorization = () => {
+    const newHeaders = {
+      ...client.fetchOptions().headers,
+    };
+
+    delete newHeaders.authorization;
+
+    return newHeaders;
+  };
+
   function query() {
     const variables = {
       slug,
@@ -31,7 +41,7 @@ export default (client, slug = config.eventSlug) => {
 
     return client
       .query(QUERY_PARTNERS, variables, {
-        fetchOptions: { headers: { authorization: '' } },
+        fetchOptions: { headers: { ...stripAuthorization() } },
       })
       .toPromise()
       .then((r) => {
