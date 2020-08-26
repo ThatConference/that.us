@@ -26,5 +26,6 @@ export const events = {
 
   thatUs: {
     eventId: 'YWavA70szR8rxSwrLJaL',
+    title: 'THAT',
   },
 };

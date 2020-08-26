@@ -39,6 +39,7 @@
   // UI Elements
   import { Tag } from '../../elements';
   import CardLink from './CardLink.svelte';
+  import CalendarButton from './elements/CalendarButton.svelte';
 
   dayjs.extend(isBetween);
   dayjs.extend(isSameOrAfter);
@@ -251,6 +252,23 @@
   {#if !hasExpired && $isAuthenticated}
     <div class="flex-none border-t border-gray-200">
       <div class="-mt-px flex">
+        <!-- <div class="-ml-px w-0 flex-1 flex border-r border-gray-200">
+          <span
+            class="relative w-0 flex-1 inline-flex items-center justify-center
+            text-xs leading-4 text-gray-700 font-medium border
+            border-transparent rounded-br-lg hover:text-gray-300
+            focus:outline-none focus:shadow-outline-blue focus:border-blue-300
+            focus:z-10 transition ease-in-out duration-150"
+          >
+            <CalendarButton
+              {title}
+              {shortDescription}
+              {id}
+              {startTime}
+              {durationInMinutes}
+            />
+          </span>
+        </div> -->
         {#if canJoin}
           <div class="-ml-px w-0 flex-1 flex">
             <CardLink href="/join/{id}" icon="{signIn}" text="{'Join In'}" />

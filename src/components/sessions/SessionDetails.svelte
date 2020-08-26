@@ -27,13 +27,13 @@
     instagram,
     github,
     cog,
-    calendarCheckO,
   } from 'svelte-awesome/icons';
   import qs from 'query-string';
   import { getClient } from '@urql/svelte';
   import _ from 'lodash';
 
   // UI Support
+  import CalendarButton from './elements/CalendarButton.svelte';
   import { SocialLink } from '../../components/social';
   import Success from '../../components/notifications/Success.svelte';
   import { Avatars, LinkButton, Tag } from '../../elements';
@@ -140,16 +140,6 @@
     ? `${host.profileImage}${imageCrop}`
     : config.defaultProfileImage;
 
-  const createICal = () => {
-    return ical(title).create({
-      title,
-      shortDescription,
-      id,
-      startTime,
-      durationInMinutes,
-    });
-  };
-
   metaTagsStore.set({
     title,
     description: isLongerThan(shortDescription, 60)
@@ -219,104 +209,107 @@
         </div>
       </div>
 
-      {#if $isAuthenticated}
-        {#if !incompleteProfile}
-          <div class="ml-4 mt-4 flex-shrink-1 sm:flex-wrap">
-            {#if !hasExpired}
-              <span class="inline-flex rounded-md shadow-sm">
-                <button
-                  type="button"
-                  on:click|preventDefault="{!favoriteDisabled && handleToggle}"
-                  class:text-thatRed-500="{isFavorite}"
-                  class="relative inline-flex items-center px-4 py-2 border-2
-                  border-thatBlue-500 text-sm leading-5 font-medium rounded-md
-                  text-gray-700 bg-white hover:text-gray-500 focus:outline-none
-                  focus:shadow-outline-blue focus:border-blue-300
-                  active:bg-gray-50 active:text-gray-800 transition duration-150
-                  ease-in-out"
-                >
-                  <Icon data="{heart}" class="-ml-1 mr-2 h-5 w-5" />
-                  {#if isFavorite}
-                    <span>Unfavorite</span>
-                  {:else}
-                    <span>Favorite</span>
-                  {/if}
-                </button>
-              </span>
+      <div class="pt-4 -m-2 flex flex-wrap items-center">
+        {#if $isAuthenticated && !incompleteProfile}
+          {#if !hasExpired}
+            <div class="mt-2 mx-2 rounded-md shadow-sm">
+              <button
+                type="button"
+                on:click|preventDefault="{!favoriteDisabled && handleToggle}"
+                class:text-thatRed-500="{isFavorite}"
+                class="relative inline-flex items-center px-4 py-2 border-2
+                border-thatBlue-500 text-sm leading-5 font-medium rounded-md
+                text-gray-700 bg-white hover:text-gray-500 focus:outline-none
+                focus:shadow-outline-blue focus:border-blue-300
+                active:bg-gray-50 active:text-gray-800 transition duration-150
+                ease-in-out"
+              >
+                <Icon data="{heart}" class="-ml-1 mr-2 h-4 w-4" />
+                {#if isFavorite}
+                  <span>Unfavorite</span>
+                {:else}
+                  <span>Favorite</span>
+                {/if}
+              </button>
+            </div>
+          {/if}
 
-              {#if canJoin}
-                <span class="mt-1 inline-flex rounded-md shadow-sm">
-                  <Link
-                    type="button"
-                    href="/join/{id}"
-                    class="inline-flex justify-center py-2 px-4 border-2
-                    border-thatBlue-500 text-sm leading-5 font-medium rounded-md
-                    text-thatBlue-500 bg-white hover:bg-thatBlue-500
-                    hover:text-white focus:outline-none
-                    focus:shadow-outline-thatBlue-500 focus:bg-thatBlue-500
-                    focus:text-white focus:border-thatBlue-800
-                    active:bg-thatBlue-800 transition duration-150 ease-in-out"
-                  >
-
-                    <Icon
-                      data="{signIn}"
-                      class="-ml-1 mr-2 h-5 w-5 text-gray-400"
-                    />
-                    <span>Join In</span>
-                  </Link>
-                </span>
-              {:else}
-                <span class="mt-1 inline-flex rounded-md shadow-sm">
-                  <a
-                    href="{createICal()}"
-                    download="{`THAT-${id}.ics`}"
-                    class="inline-flex justify-center py-2 px-4 border-2
-                    border-thatBlue-500 text-sm leading-5 font-medium rounded-md
-                    text-thatBlue-500 bg-white hover:bg-thatBlue-500
-                    hover:text-white focus:outline-none
-                    focus:shadow-outline-thatBlue-500 focus:bg-thatBlue-500
-                    focus:text-white focus:border-thatBlue-800
-                    active:bg-thatBlue-800 transition duration-150 ease-in-out"
-                  >
-                    <Icon data="{calendarCheckO}" class="-ml-1 mr-2 h-5 w-5" />
-                    <span>Add To Calendar</span>
-                  </a>
-                </span>
-
-                <span class="mt-1 inline-flex rounded-md shadow-sm">
-                  <div
-                    class="relative inline-flex items-center px-4 py-2 border-2
-                    border-gray-300 text-sm leading-5 font-medium rounded-md
-                    text-gray-400 bg-white"
-                  >
-                    <Icon data="{signIn}" class="-ml-1 mr-2 h-5 w-5" />
-                    <span>Join {timeLeftToJoin}</span>
-                  </div>
-                </span>
-              {/if}
-            {/if}
-
-            {#if canEdit()}
-              <span class="mt-1 inline-flex rounded-md shadow-sm">
-                <Link
-                  href="{`/sessions/edit/${id}`}"
-                  type="button"
-                  class="inline-flex justify-center py-2 px-4 border-2
-                  border-thatBlue-500 text-sm leading-5 font-medium rounded-md
-                  text-thatBlue-500 bg-white hover:bg-thatBlue-500
-                  hover:text-white focus:outline-none
-                  focus:shadow-outline-thatBlue-500 focus:bg-thatBlue-500
-                  focus:text-white focus:border-thatBlue-800
-                  active:bg-thatBlue-800 transition duration-150 ease-in-out"
-                >
-                  <Icon data="{cog}" class="-ml-1 mr-2 h-5 w-5" />
-                  <span>Edit</span>
-                </Link>
-              </span>
-            {/if}
-          </div>
+          {#if canEdit()}
+            <div class="mt-2 mx-2 rounded-md shadow-sm">
+              <Link
+                href="{`/sessions/edit/${id}`}"
+                type="button"
+                class="inline-flex justify-center py-2 px-4 border-2
+                border-thatBlue-500 text-sm leading-5 font-medium rounded-md
+                text-thatBlue-500 bg-white hover:bg-thatBlue-500
+                hover:text-white focus:outline-none
+                focus:shadow-outline-thatBlue-500 focus:bg-thatBlue-500
+                focus:text-white focus:border-thatBlue-800
+                active:bg-thatBlue-800 transition duration-150 ease-in-out"
+              >
+                <Icon data="{cog}" class="-ml-1 mr-2 h-4 w-4" />
+                <span>Edit</span>
+              </Link>
+            </div>
+          {/if}
         {/if}
-      {/if}
+
+        {#if !hasExpired}
+          {#if canJoin}
+            <div class="mt-2 mx-2 rounded-md shadow-sm">
+              <Link
+                type="button"
+                href="/join/{id}"
+                class="relative inline-flex justify-center py-2 px-4 border-2
+                border-thatBlue-500 text-sm leading-5 font-medium rounded-md
+                text-thatBlue-500 bg-white hover:bg-thatBlue-500
+                hover:text-white focus:outline-none
+                focus:shadow-outline-thatBlue-500 focus:bg-thatBlue-500
+                focus:text-white focus:border-thatBlue-800
+                active:bg-thatBlue-800 transition duration-150 ease-in-out"
+              >
+
+                <Icon
+                  data="{signIn}"
+                  class="-ml-1 mr-2 h-4 w-4 text-gray-400"
+                />
+                <span>Join In</span>
+              </Link>
+            </div>
+          {:else}
+            <div class="mt-2 mx-2 rounded-md shadow-sm">
+              <div
+                class="border-2 border-thatBlue-500 text-sm leading-5
+                font-medium rounded-md text-thatBlue-500 bg-white
+                hover:bg-thatBlue-500 hover:text-white focus:outline-none
+                focus:shadow-outline-thatBlue-500 focus:bg-thatBlue-500
+                focus:text-white focus:border-thatBlue-800
+                active:bg-thatBlue-800 transition duration-150 ease-in-out"
+              >
+                <CalendarButton
+                  {title}
+                  {shortDescription}
+                  {id}
+                  {startTime}
+                  {durationInMinutes}
+                />
+              </div>
+
+            </div>
+
+            <span class="mt-2 mx-2 rounded-md shadow-sm">
+              <div
+                class="relative inline-flex items-center px-4 py-2 border-2
+                border-gray-300 text-sm leading-5 font-medium rounded-md
+                text-gray-400 bg-white"
+              >
+                <Icon data="{signIn}" class="-ml-1 mr-2 h-4 w-4" />
+                <span>Join {timeLeftToJoin}</span>
+              </div>
+            </span>
+          {/if}
+        {/if}
+      </div>
     </div>
   </div>
 
