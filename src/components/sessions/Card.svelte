@@ -19,6 +19,7 @@
   import dayjs from 'dayjs';
   import isBetween from 'dayjs/plugin/isBetween';
   import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
+  import relativeTime from 'dayjs/plugin/relativeTime';
   import Icon from 'svelte-awesome';
   import { info, heart, signIn, cog, caretDown } from 'svelte-awesome/icons';
   import qs from 'query-string';
@@ -41,6 +42,7 @@
 
   dayjs.extend(isBetween);
   dayjs.extend(isSameOrAfter);
+  dayjs.extend(relativeTime);
 
   const { toggle, get: getFavorites, favoritesStore: favorites } = favoritesApi(
     getClient(),
@@ -81,21 +83,25 @@
     found ? (isFavorite = true) : (isFavorite = false);
   });
 
+  let timeLeftToJoin = 'in ...';
+  let hasExpired = true;
   let isInWindow = false;
   $: canJoin = isInWindow;
 
   onMount(async () => {
     if ($isAuthenticated) await getFavorites($currentEvent.eventId);
 
-    let endTime = durationInMinutes ? durationInMinutes : 60;
+    let endTime = (durationInMinutes ? durationInMinutes : 60) + 10;
+
+    let currentStartTime = dayjs(startTime).subtract(5, 'minute');
+    let currentEndTime = dayjs(startTime).add(endTime, 'minute');
 
     const interval = setInterval(() => {
-      let inSession = dayjs().isBetween(
-        dayjs(startTime).subtract(5, 'minute'),
-        dayjs(startTime).add(endTime, 'minutes'),
-      );
+      let inSession = dayjs().isBetween(currentStartTime, currentStartTime);
 
       isInWindow = inSession;
+      timeLeftToJoin = dayjs().to(currentStartTime);
+      hasExpired = dayjs().isAfter(currentEndTime);
 
       if (!inSession) {
         const { join } = qs.parse(location.search);
@@ -188,48 +194,81 @@
 
   <div class="flex-none border-t border-gray-200">
     <div class="-mt-px flex">
-      <div class="w-0 flex-1 flex border-r border-gray-200">
+      <div class="w-0 flex-1 flex ">
         <CardLink href="/sessions/{id}" icon="{info}" text="{'More Details'}" />
       </div>
-      {#if $isAuthenticated}
-        {#if canJoin}
-          <div class="-ml-px w-0 flex-1 flex">
-            <CardLink href="/join/{id}" icon="{signIn}" text="{'Join In'}" />
+      {#if !hasExpired && !$isAuthenticated}
+        <div class="-ml-px w-0 flex-1 flex border-l border-gray-200">
+          <div
+            class="relative w-0 flex-1 inline-flex items-center justify-center
+            py-2 text-xs leading-4 text-gray-300 font-medium border
+            border-transparent rounded-br-lg transition ease-in-out duration-150"
+          >
+            <Icon data="{signIn}" class="-ml-1 mr-2 h-4 w-4" />
+            <span>Join {timeLeftToJoin}</span>
           </div>
-        {:else if canEdit()}
-          <div class="-ml-px w-0 flex-1 flex">
-            <Link
-              href="/sessions/edit/{id}"
-              class="relative w-0 flex-1 inline-flex items-center justify-center
-              py-4 text-sm leading-5 text-gray-700 font-medium border
-              border-transparent rounded-br-lg hover:text-gray-300
-              focus:outline-none focus:shadow-outline-blue focus:border-blue-300
-              focus:z-10 transition ease-in-out duration-150"
-            >
+        </div>
+      {/if}
 
-              <Icon data="{cog}" class="w-5 h-5" />
-              <span class="ml-3">Edit</span>
-            </Link>
-          </div>
-        {:else}
-          <div class="-ml-px w-0 flex-1 flex">
+      {#if $isAuthenticated}
+        {#if !hasExpired}
+          <div class="-ml-px w-0 flex-1 flex border-l border-gray-200">
             <button
               on:click|preventDefault="{!favoriteDisabled && handleToggle}"
               class:text-red-500="{isFavorite}"
               class="relative w-0 flex-1 inline-flex items-center justify-center
-              py-4 text-sm leading-5 text-gray-700 font-medium border
+              py-2 text-xs leading-4 text-gray-700 font-medium border
               border-transparent rounded-br-lg hover:text-gray-300
               focus:outline-none focus:shadow-outline-blue focus:border-blue-300
               focus:z-10 transition ease-in-out duration-150"
             >
 
-              <Icon data="{heart}" class="w-5 h-5" />
+              <Icon data="{heart}" class="w-4 h-4" />
               <span class="ml-3">Favorite</span>
             </button>
+          </div>
+        {/if}
+        {#if canEdit()}
+          <div class="-ml-px w-0 flex-1 flex border-l border-gray-200">
+            <Link
+              href="/sessions/edit/{id}"
+              class="relative w-0 flex-1 inline-flex items-center justify-center
+              py-2 text-xs leading-4 text-gray-700 font-medium border
+              border-transparent rounded-br-lg hover:text-gray-300
+              focus:outline-none focus:shadow-outline-blue focus:border-blue-300
+              focus:z-10 transition ease-in-out duration-150"
+            >
+
+              <Icon data="{cog}" class="w-4 h-4" />
+              <span class="ml-3">Edit</span>
+            </Link>
           </div>
         {/if}
       {/if}
     </div>
   </div>
 
+  {#if !hasExpired && $isAuthenticated}
+    <div class="flex-none border-t border-gray-200">
+      <div class="-mt-px flex">
+        {#if canJoin}
+          <div class="-ml-px w-0 flex-1 flex">
+            <CardLink href="/join/{id}" icon="{signIn}" text="{'Join In'}" />
+          </div>
+        {:else}
+          <div class="-ml-px w-0 flex-1 flex">
+            <div
+              class="relative w-0 flex-1 inline-flex items-center justify-center
+              py-2 text-xs leading-4 text-gray-300 font-medium border
+              border-transparent rounded-br-lg transition ease-in-out
+              duration-150"
+            >
+              <Icon data="{signIn}" class="-ml-1 mr-2 h-4 w-4" />
+              <span>Join {timeLeftToJoin}</span>
+            </div>
+          </div>
+        {/if}
+      </div>
+    </div>
+  {/if}
 </div>
