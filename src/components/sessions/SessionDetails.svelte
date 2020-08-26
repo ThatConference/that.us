@@ -105,7 +105,7 @@
 
     if ($isAuthenticated) await getFavorites($currentEvent.eventId);
 
-    let endTime = durationInMinutes ? durationInMinutes : 60;
+    let endTime = (durationInMinutes ? durationInMinutes : 60) + 10;
 
     if (status === 'ACCEPTED') {
       let currentStartTime = dayjs(startTime).subtract(5, 'minute');
