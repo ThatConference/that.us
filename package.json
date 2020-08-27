@@ -80,6 +80,7 @@
     "sveltejs-forms": "^2.0.1",
     "tailwindcss": "^1.6.3",
     "tailwindcss-font-inter": "^1.0.8",
+    "uuid": "^8.3.0",
     "yrv": "0.0.30",
     "yup": "~0.29.3"
   },

@@ -103,14 +103,13 @@
         <blockquote class="relative">
           <div class="text-2xl leading-9 font-medium text-gray-900">
             <p>
-              We set out to build a community, not an event. A community of
-              geeks and geeklings, who support one another to be our best, each
-              and every day. We ALL have something of value that can help one
-              another. THAT.us is just one way we're trying to better connect
-              us.
-              <span class="text-thatOrange-400">
-                We're just getting started!
-              </span>
+              Our mission is simple, foster a community of geeks who want to
+              help one another be awesome. THAT.us is a safe place for all of
+              the geeks and geeklings from anywhere, to easily connect and
+              support one another in achieving their best self, each and every
+              day. Together we can accomplish amazing things and we all have a
+              role in making our community the best it can be.
+              <span class="text-thatOrange-400">Join today!</span>
             </p>
           </div>
           <footer class="mt-8">

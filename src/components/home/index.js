@@ -6,3 +6,5 @@ export { default as Sponsors } from './Sponsors.svelte';
 export { default as Stats } from './Stats.svelte';
 export { default as Features } from './Features.svelte';
 export { default as UpNext } from './UpNext.svelte';
+export { default as Events } from './Events.svelte';
+export { default as NewMembers } from './NewMembers.svelte';

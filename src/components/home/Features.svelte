@@ -1,4 +1,4 @@
-<div class="py-16 bg-gray-50 overflow-hidden lg:py-24">
+<div class="py-16 bg-that-offWhite overflow-hidden lg:py-24">
   <div
     class="relative max-w-xl mx-auto px-4 sm:px-6 lg:px-8 lg:max-w-screen-xl"
   >
@@ -24,7 +24,7 @@
             y="0"
             width="4"
             height="4"
-            class="text-gray-200"
+            class="text-thatBlue-100"
             fill="currentColor"
           ></rect>
         </pattern>
@@ -203,7 +203,7 @@
                 y="0"
                 width="4"
                 height="4"
-                class="text-gray-200"
+                class="text-thatBlue-100"
                 fill="currentColor"
               ></rect>
             </pattern>
@@ -245,7 +245,7 @@
             y="0"
             width="4"
             height="4"
-            class="text-gray-200"
+            class="text-thatBlue-100"
             fill="currentColor"
           ></rect>
         </pattern>

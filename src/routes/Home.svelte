@@ -1,5 +1,6 @@
 <script>
   import { Footer } from '../components';
+  import { Logo } from '../elements';
 
   import {
     Hero,
@@ -9,8 +10,12 @@
     Stats,
     Features,
     UpNext,
-    // Sponsors,
+    Events,
+    NewMembers,
   } from '../components/home';
+
+  // ui support
+  import MainNav from '../components/nav/mainNav/MainNav.svelte';
 
   import metaTagsStore from '../store/metaTags';
   metaTagsStore.set({
@@ -24,21 +29,32 @@
 </script>
 
 <!--
-  Hero
-  Signup
-  Demo
-  Quote
+  * Hero
+    ^^ Signup
   Stats
+  Features / Demo
+  Quote
   What's up Next?
+  
   View Past Events..
   Welcome our newest ...
+  Newsletter?
 -->
 
-<Hero />
+<div class="max-w-screen-xl mx-auto">
+  <MainNav />
+</div>
 
+<Hero />
 <Stats />
 <Features />
 <Testimonials />
+
+<Logo uri="/images/THAT-Logo-words.svg" />
+
 <UpNext />
+<CTA />
+<Events />
+<NewMembers />
 
 <Footer />
