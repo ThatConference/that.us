@@ -47,8 +47,8 @@
   {#each sorted as day}
     <div>
       <h2
-        class="text-3xl leading-9 font-extrabold tracking-tight
-        text-thatBlue-800 sm:text-4xl sm:leading-10 pb-2"
+        class="sticky top-2 bg-white text-3xl leading-9 font-extrabold
+        tracking-tight text-thatBlue-800 sm:text-4xl sm:leading-10 pb-2"
       >
         <span>
           {dayjs()
@@ -57,40 +57,41 @@
         </span>
       </h2>
 
-    </div>
-    {#each day.timeSlots as ts}
-      <div class="pb-12">
+      {#each day.timeSlots as ts}
+        <div class="pb-12">
+          <h2
+            class="sticky top-12 bg-white text-3xl leading-9 font-extrabold
+            tracking-tight text-thatOrange-400 sm:text-4xl sm:leading-10"
+          >
+            {#if !dayjs(ts.timeSlot).isValid()}
+              <span>Unscheduled</span>
+            {:else}
+              <span>{dayjs(ts.timeSlot).format('hh:mm a')}</span>
+            {/if}
+          </h2>
 
-        <h2
-          class="text-3xl leading-9 font-extrabold tracking-tight
-          text-thatOrange-400 sm:text-4xl sm:leading-10 pb-12"
-        >
-          {#if !dayjs(ts.timeSlot).isValid()}
-            <span>Unscheduled</span>
-          {:else}
-            <span>{dayjs(ts.timeSlot).format('hh:mm a')}</span>
-          {/if}
-        </h2>
-
-        <div>
-          <ul class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 ">
-            {#each ts.sessions as session (session.id)}
-              {#if isKeynote(session)}
-                <li
-                  class="col-span-1 sm:col-span-2 lg:col-span-3 bg-white
-                  rounded-lg shadow-lg mt-10 mb-10"
-                >
-                  <KeynoteCard {...session} />
-                </li>
-              {:else}
-                <li class="col-span-1 bg-white rounded-lg shadow-lg">
-                  <Card {...session} {editMode} />
-                </li>
-              {/if}
-            {/each}
-          </ul>
+          <div class="flex">
+            <ul
+              class="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 "
+            >
+              {#each ts.sessions as session (session.id)}
+                {#if isKeynote(session)}
+                  <li
+                    class="col-span-1 sm:col-span-2 lg:col-span-3 bg-white
+                    rounded-lg shadow-lg mt-10 mb-10"
+                  >
+                    <KeynoteCard {...session} />
+                  </li>
+                {:else}
+                  <li class="col-span-1 bg-white rounded-lg shadow-lg">
+                    <Card {...session} {editMode} />
+                  </li>
+                {/if}
+              {/each}
+            </ul>
+          </div>
         </div>
-      </div>
-    {/each}
+      {/each}
+    </div>
   {/each}
 </div>

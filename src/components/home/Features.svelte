@@ -41,7 +41,7 @@
         class="text-center text-3xl leading-8 font-extrabold tracking-tight
         text-gray-900 sm:text-4xl sm:leading-10"
       >
-        There's a better way to collobrate
+        There's an easier way to collobrate together
       </h3>
       <p
         class="mt-4 max-w-3xl mx-auto text-center text-xl leading-7

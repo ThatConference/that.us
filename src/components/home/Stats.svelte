@@ -1,5 +1,8 @@
 <script>
-
+  export let countries = 0;
+  export let members = 0;
+  export let sessions = 0;
+  export let hours = 0;
 </script>
 
 <div class="bg-thatBlue-700">
@@ -11,11 +14,11 @@
         class="text-3xl leading-9 font-extrabold text-white sm:text-4xl
         sm:leading-10"
       >
-        Trusted by developers from over 80 planets
+        Trusted by geeks from {countries} countries
       </h2>
       <p class="mt-3 text-xl leading-7 text-thatBlue-200 sm:mt-4">
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus
-        repellat laudantium.
+        Everyday is an new opportunity to help someone else or level up
+        yourself.
       </p>
     </div>
     <dl
@@ -27,10 +30,10 @@
         <dt
           class="order-2 mt-2 text-lg leading-6 font-medium text-thatBlue-200"
         >
-          Pepperoni
+          Members
         </dt>
         <dd class="order-1 text-5xl leading-none font-extrabold text-white">
-          100%
+          {members}
         </dd>
       </div>
 
@@ -38,10 +41,10 @@
         <dt
           class="order-2 mt-2 text-lg leading-6 font-medium text-thatBlue-200"
         >
-          Delivery
+          Different Sessions
         </dt>
         <dd class="order-1 text-5xl leading-none font-extrabold text-white">
-          24/7
+          {sessions}
         </dd>
       </div>
 
@@ -49,10 +52,10 @@
         <dt
           class="order-2 mt-2 text-lg leading-6 font-medium text-thatBlue-200"
         >
-          Calories
+          Hours Served
         </dt>
         <dd class="order-1 text-5xl leading-none font-extrabold text-white">
-          100k+
+          {hours}
         </dd>
       </div>
     </dl>

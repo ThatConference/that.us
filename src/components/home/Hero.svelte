@@ -22,22 +22,14 @@
             class="text-4xl tracking-tight leading-10 font-extrabold
             text-thatBlue-800 sm:text-5xl sm:leading-none md:text-6xl"
           >
-            THAT.
-            <br />
-            Created By...
-            <br />
-            <span class="text-thatOrange-400">YOU!</span>
+            Understand THAT,
+            <span class="text-thatOrange-400">FASTER!</span>
           </h2>
           <p
             class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl
             sm:mx-auto md:mt-5 md:text-xl lg:mx-0"
           >
-            August 3rd, 2020 marks our first ever THAT Online. We’re taking a
-            different approach to the "virtual conference". Our approach; create
-            a platform removing artificial boundaries, a safe place where we can
-            ALL collaborate in a more creative meaningful way, enabling our
-            inner practitioner. Of course we can to do it anytime, anywhere, and
-            any way we see fit.
+            Our jobs are hard enough these days.
           </p>
 
           <p
@@ -74,7 +66,7 @@
                 focus:shadow-outline-that-orange transition duration-150
                 ease-in-out md:py-4 md:text-lg md:px-10"
               >
-                Sign Up Today!
+                Become a member today!
               </Link>
             </div>
 
@@ -91,7 +83,7 @@
                   transition duration-150 ease-in-out md:py-4 md:text-lg
                   md:px-10"
                 >
-                  Log In
+                  Already one, log in.
                 </Link>
               </div>
             {/if}
@@ -100,11 +92,10 @@
       </main>
     </div>
   </div>
+
   <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
-    <img
-      class="h-56 w-full object-fit sm:h-72 md:h-96 lg:w-full lg:h-full p-24"
-      src="/images/thatOnline.svg"
-      alt="THAT Online"
-    />
+    <div class="w-full h-full">
+      <img class="object-center" src="/images/THAT-red.svg" alt="THAT" />
+    </div>
   </div>
 </div>
