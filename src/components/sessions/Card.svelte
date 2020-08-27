@@ -93,12 +93,11 @@
     if ($isAuthenticated) await getFavorites($currentEvent.eventId);
 
     let endTime = (durationInMinutes ? durationInMinutes : 60) + 10;
-
     let currentStartTime = dayjs(startTime).subtract(5, 'minute');
     let currentEndTime = dayjs(startTime).add(endTime, 'minute');
 
     const interval = setInterval(() => {
-      let inSession = dayjs().isBetween(currentStartTime, currentStartTime);
+      let inSession = dayjs().isBetween(currentStartTime, currentEndTime);
 
       isInWindow = inSession;
       timeLeftToJoin = dayjs().to(currentStartTime);
