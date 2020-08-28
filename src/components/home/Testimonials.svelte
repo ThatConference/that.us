@@ -3,9 +3,9 @@
   import { fade } from 'svelte/transition';
 </script>
 
-<section class="bg-white overflow-x-hidden">
+<section class="bg-white">
   <div
-    class="relative max-w-screen-xl mx-auto my-20 pt-20 pb-12 px-4 sm:px-6 lg:px-8
+    class="relative max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8
     lg:py-20"
   >
     <svg
