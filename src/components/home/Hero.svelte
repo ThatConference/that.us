@@ -7,7 +7,7 @@
   import { isAuthenticated } from '../../utilities/security';
 </script>
 
-<div class="relative bg-white">
+<div class="relative bg-white overflow-x-hidden">
   <div class="hidden lg:block lg:absolute lg:inset-0">
     <svg
       in:fly="{{ y: -400, duration: 2000 }}"

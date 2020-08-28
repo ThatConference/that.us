@@ -8,11 +8,9 @@
   const { queryMembers } = membersApi(getClient());
 </script>
 
-<div class="relative  py-12">
-  
-
-  <div class="hidden lg:block lg:absolute lg:inset-0">
-    <svg class="absolute top-0 transform translate-x-72 translate-y-64" width="640" height="784" fill="none" viewBox="0 0 640 784">
+<div class="relative py-12">
+  <div class="hidden lg:block lg:absolute lg:inset-0 overflow-x-hidden">
+    <svg class="absolute top-0 right-1/2 transform -translate-x-64 translate-y-64" width="640" height="784" fill="none" viewBox="0 0 640 784">
       <defs>
         <pattern id="9ebea6f4-a1f5-4d96-8c4e-4c2abf658047" x="118" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
           <rect x="0" y="0" width="4" height="4" class="text-thatBlue-100" fill="currentColor" />
