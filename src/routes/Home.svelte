@@ -53,7 +53,7 @@
 <Features />
 <Testimonials />
 
-<Logo uri="/images/THAT-Logo-words.svg" />
+<Logo uri="/images/THAT-Logo-Words.svg" />
 
 <UpNext />
 
