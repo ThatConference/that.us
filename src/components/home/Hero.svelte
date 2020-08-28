@@ -61,12 +61,21 @@
       ></rect>
     </svg>
   </div>
-  <div class="relative pt-6 pb-16 md:pb-20 lg:pb-24 xl:pb-32">
+  
+  <div class="relative pb-16 md:pb-20 lg:pb-24 xl:pb-32">
 
     <main
       class="mt-8 mx-auto max-w-screen-xl px-4 sm:mt-12 sm:px-6 md:mt-20
       xl:mt-24"
     >
+      <h2
+        class="sm:text-center lg:text-left pb-16 text-4xl tracking-tight leading-10 font-extrabold
+        text-thatBlue-800 sm:text-5xl sm:leading-none md:text-6xl"
+      >
+        Understand THAT,
+        <span class="text-thatOrange-400">FASTER!</span>
+      </h2>
+
       <div class="lg:grid lg:grid-cols-12 lg:gap-8">
         <div
           class="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6
@@ -75,13 +84,6 @@
 
           <!-- hero copy -->
           <div>
-            <h2
-              class="text-4xl tracking-tight leading-10 font-extrabold
-              text-thatBlue-800 sm:text-5xl sm:leading-none md:text-6xl"
-            >
-              Understand THAT,
-              <span class="text-thatOrange-400">FASTER!</span>
-            </h2>
             <p
               class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl
               sm:mx-auto md:mt-5 md:text-xl lg:mx-0"
@@ -160,16 +162,13 @@
         </div>
 
         <div
-          class="mt-12 relative sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none
-          lg:mx-0 lg:col-span-6 lg:flex lg:items-center"
+          class="mt-12 sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none
+          lg:mx-0 lg:flex lg:items-center"
         >
-          <div class="relative mx-auto w-full rounded-lg shadow-lg lg:max-w-md">
-            <div class="flex flex-col items-center">
-              <Youtube width="450" videoId="cAftppcmqRE" />
-            </div>
-          </div>
+          <div class="flex flex-col items-center">
+            <Youtube videoId="cAftppcmqRE" />
+          </div> 
         </div>
-
       </div>
     </main>
   </div>
