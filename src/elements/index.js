@@ -10,3 +10,4 @@ export { default as ModalWarning } from './modals/Warning.svelte';
 export { default as Tag } from './Tag.svelte';
 export { default as GroupHeader } from './GroupHeader.svelte';
 export { default as Logo } from './Logo.svelte';
+export { default as FeaturedSession } from './FeaturedSession.svelte';
