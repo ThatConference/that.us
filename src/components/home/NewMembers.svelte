@@ -33,7 +33,7 @@
         Welcome to THAT family!
       </h3>
       <p class="mt-4 text-xl leading-7 text-gray-500">
-        Please join us in welcoming our newest members to THAT. Not a member? <Link class="text-thatOrange-400 hover:text-thatOrange-500" href="/login?signup=true">Join us today!</Link>
+        Please join us in welcoming our newest members to THAT. Not a member yet? <Link class="text-thatOrange-400 hover:text-thatOrange-500" href="/login?signup=true">Join today!</Link>
       </p>
     </div>
 

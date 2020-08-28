@@ -1,4 +1,5 @@
 <script>
+  import { fly } from 'svelte/transition';
   import { Link } from 'yrv';
   import Youtube from '@sveltecasts/svelte-youtube';
 
@@ -6,27 +7,74 @@
   import { isAuthenticated } from '../../utilities/security';
 </script>
 
-
-<div class="relative bg-white overflow-hidden">
+<div class="relative bg-white">
   <div class="hidden lg:block lg:absolute lg:inset-0">
-    <svg class="absolute top-0 left-1/2 transform translate-x-64 -translate-y-8" width="640" height="784" fill="none" viewBox="0 0 640 784">
+    <svg
+      in:fly="{{ y: -400, duration: 2000 }}"
+      class="absolute top-0 left-1/2 transform translate-x-64 -translate-y-8"
+      width="640"
+      height="784"
+      fill="none"
+      viewBox="0 0 640 784"
+    >
+      <rect
+        y="72"
+        width="640"
+        height="640"
+        class="text-that-offWhite"
+        fill="currentColor"
+      ></rect>
+
+    </svg>
+    <svg
+      in:fly="{{ y: 200, duration: 2000 }}"
+      class="absolute top-0 left-1/2 transform translate-x-64 -translate-y-8"
+      width="640"
+      height="784"
+      fill="none"
+      viewBox="0 0 640 784"
+    >
       <defs>
-        <pattern id="9ebea6f4-a1f5-4d96-8c4e-4c2abf658047" x="118" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-          <rect x="0" y="0" width="4" height="4" class="text-thatBlue-100" fill="currentColor" />
+        <pattern
+          id="9ebea6f4-a1f5-4d96-8c4e-4c2abf658047"
+          x="118"
+          y="0"
+          width="20"
+          height="20"
+          patternUnits="userSpaceOnUse"
+        >
+          <rect
+            x="0"
+            y="0"
+            width="4"
+            height="4"
+            class="text-thatBlue-100"
+            fill="currentColor"
+          ></rect>
         </pattern>
       </defs>
-      <rect y="72" width="640" height="640" class="text-that-offWhite" fill="currentColor" />
-      <rect x="118" width="404" height="784" fill="url(#9ebea6f4-a1f5-4d96-8c4e-4c2abf658047)" />
+      <rect
+        x="118"
+        width="404"
+        height="784"
+        fill="url(#9ebea6f4-a1f5-4d96-8c4e-4c2abf658047)"
+      ></rect>
     </svg>
   </div>
   <div class="relative pt-6 pb-16 md:pb-20 lg:pb-24 xl:pb-32">
-  
-    <main class="mt-8 mx-auto max-w-screen-xl px-4 sm:mt-12 sm:px-6 md:mt-20 xl:mt-24">
+
+    <main
+      class="mt-8 mx-auto max-w-screen-xl px-4 sm:mt-12 sm:px-6 md:mt-20
+      xl:mt-24"
+    >
       <div class="lg:grid lg:grid-cols-12 lg:gap-8">
-        <div class="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left">
-          
+        <div
+          class="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6
+          lg:text-left"
+        >
+
           <!-- hero copy -->
-          <div>          
+          <div>
             <h2
               class="text-4xl tracking-tight leading-10 font-extrabold
               text-thatBlue-800 sm:text-5xl sm:leading-none md:text-6xl"
@@ -71,11 +119,12 @@
               {#if !$isAuthenticated}
                 <Link
                   href="/login?signup=true"
-                  class="px-8 py-3 border-2 border-transparent text-base leading-6
-                  font-medium rounded-md shadow text-white bg-thatOrange-400
-                  hover:bg-thatOrange-500 focus:outline-none
+                  class="px-8 py-3 border-2 border-transparent text-base
+                  leading-6 font-medium rounded-md shadow text-white
+                  bg-thatOrange-400 hover:bg-thatOrange-500 focus:outline-none
                   focus:border-thatOrange-700 focus:shadow-outline-that-orange
-                  transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10"
+                  transition duration-150 ease-in-out md:py-4 md:text-lg
+                  md:px-10"
                 >
                   Become a member today!
                 </Link>
@@ -87,7 +136,8 @@
                   bg-white hover:bg-thatBlue-500 hover:text-white
                   focus:bg-thatBlue-500 focus:text-white focus:outline-none
                   focus:shadow-outline-thatBlue-500 focus:border-thatBlue-800
-                  transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10"
+                  transition duration-150 ease-in-out md:py-4 md:text-lg
+                  md:px-10"
                 >
                   Already one, log in.
                 </Link>
@@ -99,7 +149,8 @@
                   bg-white hover:bg-thatBlue-500 hover:text-white
                   focus:bg-thatBlue-500 focus:text-white focus:outline-none
                   focus:shadow-outline-thatBlue-500 focus:border-thatBlue-800
-                  transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10"
+                  transition duration-150 ease-in-out md:py-4 md:text-lg
+                  md:px-10"
                 >
                   View THAT Board
                 </Link>
@@ -107,17 +158,19 @@
             </div>
           </div>
         </div>
-        
-        <div class="mt-12 relative sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-span-6 lg:flex lg:items-center">  
+
+        <div
+          class="mt-12 relative sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none
+          lg:mx-0 lg:col-span-6 lg:flex lg:items-center"
+        >
           <div class="relative mx-auto w-full rounded-lg shadow-lg lg:max-w-md">
             <div class="flex flex-col items-center">
               <Youtube width="450" videoId="cAftppcmqRE" />
             </div>
           </div>
         </div>
-    
+
       </div>
     </main>
   </div>
 </div>
-      

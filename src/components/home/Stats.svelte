@@ -1,8 +1,8 @@
 <script>
-  export let countries = 0;
-  export let members = 0;
-  export let sessions = 0;
-  export let hours = 0;
+  export let countries = 26;
+  export let members = 1215;
+  export let sessions = 110;
+  export let hours = 61;
 </script>
 
 <div class="bg-thatBlue-700">

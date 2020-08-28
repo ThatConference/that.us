@@ -1,5 +1,6 @@
 <script>
   import { Link } from 'yrv';
+  import { fade } from 'svelte/transition';
 </script>
 
 <section class="bg-white ">

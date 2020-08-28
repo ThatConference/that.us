@@ -12,6 +12,7 @@ Events
 AC Addin... 
 
 Are we missing a section?
+THAT Logo in footer.
 
 
 finished
