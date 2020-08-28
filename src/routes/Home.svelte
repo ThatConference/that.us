@@ -53,7 +53,9 @@
 <Features />
 <Testimonials />
 
-<Logo uri="/images/THAT-Logo-Words.svg" />
+<div class="py-12 lg:py-20">
+  <Logo uri="/images/THAT-Logo-Words.svg" />
+</div>
 
 <UpNext />
 

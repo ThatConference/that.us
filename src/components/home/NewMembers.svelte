@@ -8,7 +8,7 @@
   const { queryMembers } = membersApi(getClient());
 </script>
 
-<div class="relative py-12">
+<section class="relative py-12 lg:py-16 ">
   <div class="hidden lg:block lg:absolute lg:inset-0 overflow-x-hidden">
     <svg class="absolute top-0 right-1/2 transform -translate-x-64 translate-y-64" width="640" height="784" fill="none" viewBox="0 0 640 784">
       <defs>
@@ -53,4 +53,4 @@
     {/await}
 
   </div>
-</div>
+</section>

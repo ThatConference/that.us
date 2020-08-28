@@ -2,9 +2,9 @@
   import { Link } from 'yrv';
 </script>
 
-<div class="bg-that-offWhite">
+<section class="py-12 lg:py-16  bg-that-offWhite">
   <div
-    class="max-w-screen-xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex
+    class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 lg:flex
     lg:items-center lg:justify-between"
   >
     <h2
@@ -44,4 +44,4 @@
       </div>
     </div>
   </div>
-</div>
+</section>

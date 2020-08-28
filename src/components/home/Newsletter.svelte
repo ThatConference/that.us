@@ -1,6 +1,6 @@
-<div class="bg-thatBlue-700">
+<section class="bg-thatBlue-700 py-12 lg:py-16 ">
   <div
-    class="max-w-screen-xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex
+    class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 lg:flex
     lg:items-center"
   >
     <div class="lg:w-0 lg:flex-1">
@@ -52,4 +52,4 @@
       </p>
     </div>
   </div>
-</div>
+</section>

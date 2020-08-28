@@ -27,8 +27,8 @@
   ];
 </script>
 
-<div>
-  <div class="mx-auto py-12 px-4 max-w-screen-xl sm:px-6 lg:px-8 lg:py-24">
+<section class="py-12 lg:py-16 ">
+  <div class="mx-auto px-4 max-w-screen-xl sm:px-6 lg:px-8">
     <div class="space-y-12">
       <div class="w-full flex flex-col items-center">
         <h2
@@ -51,4 +51,4 @@
       </ul>
     </div>
   </div>
-</div>
+</section>

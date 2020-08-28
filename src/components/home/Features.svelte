@@ -1,4 +1,4 @@
-<div class="py-16 bg-that-offWhite overflow-x-hidden lg:py-24">
+<section class="py-12 lg:py-16 bg-that-offWhite overflow-x-hidden">
   <div
     class="relative max-w-xl mx-auto px-4 sm:px-6 lg:px-8 lg:max-w-screen-xl"
   >
@@ -224,4 +224,4 @@
     </div>
 
   </div>
-</div>
+</section>

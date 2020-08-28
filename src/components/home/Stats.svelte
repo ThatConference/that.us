@@ -5,9 +5,9 @@
   export let hours = 61;
 </script>
 
-<div class="bg-thatBlue-700">
+<section class="bg-thatBlue-700 py-12 lg:py-16">
   <div
-    class="max-w-screen-xl mx-auto py-12 px-4 sm:py-16 sm:px-6 lg:px-8 lg:py-20"
+    class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8"
   >
     <div class="max-w-4xl mx-auto text-center">
       <h2
@@ -60,4 +60,4 @@
       </div>
     </dl>
   </div>
-</div>
+</section>
