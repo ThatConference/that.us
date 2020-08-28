@@ -1,4 +1,4 @@
-<div class="bg-gray-800">
+<div class="bg-thatBlue-700">
   <div
     class="max-w-screen-xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex
     lg:items-center"
@@ -9,11 +9,13 @@
         sm:text-4xl sm:leading-10"
         id="newsletter-headline"
       >
-        Sign up for our newsletter
+        Stay in the know
       </h2>
       <p class="mt-3 max-w-3xl text-lg leading-6 text-gray-300">
-        Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui Lorem
-        cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat.
+        Another list? We know you're busy enough just trying to get your own
+        product shipped. We also don't want to become more noise for you. We
+        don't email much, honestly we're busy too, but when we do it's to make
+        sure you stay in the know.
       </p>
     </div>
     <div class="mt-8 lg:mt-0 lg:ml-8">
@@ -35,13 +37,18 @@
             text-white bg-indigo-500 hover:bg-indigo-400 focus:outline-none
             focus:bg-indigo-400 transition duration-150 ease-in-out"
           >
-            Notify me
+            Add me
           </button>
         </div>
       </form>
       <p class="mt-3 text-sm leading-5 text-gray-300">
         We care about the protection of your data. Read our
-        <a href="#" class="text-white font-medium underline">Privacy Policy.</a>
+        <a
+          href="https://www.thatconference.com/privacy-policy"
+          class="text-white font-medium underline"
+        >
+          Privacy Policy.
+        </a>
       </p>
     </div>
   </div>

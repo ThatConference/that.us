@@ -17,6 +17,9 @@
   // ui support
   import MainNav from '../components/nav/mainNav/MainNav.svelte';
 
+  // utilities
+  import { isAuthenticated } from '../utilities/security';
+
   import metaTagsStore from '../store/metaTags';
   metaTagsStore.set({
     title: 'Welcome to THAT!',
@@ -53,8 +56,12 @@
 <Logo uri="/images/THAT-Logo-words.svg" />
 
 <UpNext />
-<CTA />
+
+{#if !$isAuthenticated}
+  <CTA />
+{/if}
+
 <Events />
 <NewMembers />
-
+<Newsletter />
 <Footer />

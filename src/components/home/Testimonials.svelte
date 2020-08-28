@@ -1,3 +1,7 @@
+<script>
+  import { Link } from 'yrv';
+</script>
+
 <section class="bg-white overflow-hidden">
   <div
     class="relative max-w-screen-xl mx-auto pt-20 pb-12 px-4 sm:px-6 lg:px-8
@@ -109,7 +113,12 @@
               support one another in achieving their best self, each and every
               day. Together we can accomplish amazing things and we all have a
               role in making our community the best it can be.
-              <span class="text-thatOrange-400">Join today!</span>
+              <Link
+                class="text-thatOrange-400 hover:text-thatOrange-500"
+                href="/login?signup=true"
+              >
+                Join us today!
+              </Link>
             </p>
           </div>
           <footer class="mt-8">
@@ -122,12 +131,10 @@
                 />
               </div>
               <div class="ml-4 lg:ml-0">
-                <div class="text-base leading-6 font-medium text-gray-900">
+                <div class="text-base leading-6 font-medium text-that-blue">
                   Clark Sell
                 </div>
-                <div
-                  class="text-base leading-6 font-medium text-thatOrange-400"
-                >
+                <div class="text-base leading-6 font-medium text-gray-900">
                   Founder, THAT
                 </div>
               </div>

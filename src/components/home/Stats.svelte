@@ -41,7 +41,7 @@
         <dt
           class="order-2 mt-2 text-lg leading-6 font-medium text-thatBlue-200"
         >
-          Different Sessions
+          Activities Completed
         </dt>
         <dd class="order-1 text-5xl leading-none font-extrabold text-white">
           {sessions}

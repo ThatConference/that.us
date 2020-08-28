@@ -4,13 +4,12 @@
 
   import { FeaturedSession } from '../../elements';
   import CardLoader from '../../components/CardLoader.svelte';
-  
+
   // datasources
   import sessionsApi from '../../dataSources/api.that.tech/sessions';
   import currentEvent from '../../store/currentEvent';
 
   const { querySessionsByDate } = sessionsApi(getClient());
-
 </script>
 
 <div class="bg-thatBlue-700">
@@ -23,7 +22,7 @@
           class="text-3xl leading-9 font-extrabold text-white tracking-tight
           sm:text-4xl"
         >
-          Upcoming Sessions
+          Upcoming Activities
         </h2>
         <p class="text-xl leading-7 text-gray-300">
           Ornare sagittis, suspendisse in hendrerit quis. Sed dui aliquet lectus
@@ -34,7 +33,6 @@
         </p>
       </div>
 
-
       {#await querySessionsByDate($currentEvent.eventId)}
         <p>loading...</p>
       {:then sessions}
@@ -42,7 +40,7 @@
           class="space-y-4 sm:grid sm:grid-cols-2 sm:gap-6 sm:space-y-0
           lg:grid-cols-3 lg:gap-8"
         >
-          {#each sessions.slice(0, 6) as s}
+          {#each sessions.slice(0, 6) as s (s.id)}
             <li>
               <FeaturedSession {...s} />
             </li>
