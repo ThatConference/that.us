@@ -2,7 +2,7 @@
   import { Link } from 'yrv';
 </script>
 
-<section class="bg-white overflow-hidden">
+<section class="bg-white ">
   <div
     class="relative max-w-screen-xl mx-auto pt-20 pb-12 px-4 sm:px-6 lg:px-8
     lg:py-20"
@@ -43,7 +43,7 @@
 
     <svg
       class="hidden lg:block absolute right-full top-1/2 transform
-      translate-x-1/2 -translate-y-1/2"
+      translate-x-1/2 -translate-y-2/5"
       width="404"
       height="784"
       fill="none"

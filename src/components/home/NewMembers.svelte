@@ -8,7 +8,7 @@
   const { queryMembers } = membersApi(getClient());
 </script>
 
-<div class="relative overflow-hidden py-12">
+<div class="relative  py-12">
   
 
   <div class="hidden lg:block lg:absolute lg:inset-0">

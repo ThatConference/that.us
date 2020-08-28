@@ -1,10 +1,10 @@
-<div class="py-16 bg-that-offWhite overflow-hidden lg:py-24">
+<div class="py-16 bg-that-offWhite lg:py-24">
   <div
     class="relative max-w-xl mx-auto px-4 sm:px-6 lg:px-8 lg:max-w-screen-xl"
   >
     <svg
       class="hidden lg:block absolute left-full transform -translate-x-1/2
-      -translate-y-1/4"
+      -translate-y-1/6"
       width="404"
       height="784"
       fill="none"
@@ -222,40 +222,6 @@
         />
       </div>
     </div>
-
-    <svg
-      class="hidden lg:block absolute right-full transform translate-x-1/2
-      translate-y-12"
-      width="404"
-      height="784"
-      fill="none"
-      viewBox="0 0 404 784"
-    >
-      <defs>
-        <pattern
-          id="64e643ad-2176-4f86-b3d7-f2c5da3b6a6d"
-          x="0"
-          y="0"
-          width="20"
-          height="20"
-          patternUnits="userSpaceOnUse"
-        >
-          <rect
-            x="0"
-            y="0"
-            width="4"
-            height="4"
-            class="text-thatBlue-100"
-            fill="currentColor"
-          ></rect>
-        </pattern>
-      </defs>
-      <rect
-        width="404"
-        height="784"
-        fill="url(#64e643ad-2176-4f86-b3d7-f2c5da3b6a6d)"
-      ></rect>
-    </svg>
 
   </div>
 </div>
