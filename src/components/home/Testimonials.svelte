@@ -3,17 +3,17 @@
   import { fade } from 'svelte/transition';
 </script>
 
-<section class="bg-white py-12 lg:py-16 ">
+<section class="bg-white py-12 lg:py-16 mt-12">
   <div
     class="relative max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8"
   >
     <svg
       class="hidden lg:block absolute right-full top-1/2 transform
-      translate-x-1/2 -translate-y-2/5"
+      translate-x-1/2 -translate-y-3/6"
       width="404"
       height="784"
       fill="none"
-      viewBox="0 0 404 784"
+      viewBox="0 0 404 575"
     >
       <defs>
         <pattern
