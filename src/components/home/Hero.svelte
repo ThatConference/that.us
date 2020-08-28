@@ -108,11 +108,10 @@
           </div>
         </div>
         
-        <div class="mt-12 relative sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-span-6 lg:flex lg:items-center">
-          
+        <div class="mt-12 relative sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-span-6 lg:flex lg:items-center">  
           <div class="relative mx-auto w-full rounded-lg shadow-lg lg:max-w-md">
             <div class="flex flex-col items-center">
-              <Youtube videoId="cAftppcmqRE" />
+              <Youtube width="450" videoId="cAftppcmqRE" />
             </div>
           </div>
         </div>
