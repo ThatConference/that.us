@@ -8,7 +8,6 @@ function icalWrapper(title) {
 
   function create(session) {
     cal.createEvent({
-      prodId: '//THAT Conference//THAT.us//EN',
       uid: `that-${session.id}`,
       start: dayjs(session.startTime).toDate(),
       end: dayjs(session.startTime)

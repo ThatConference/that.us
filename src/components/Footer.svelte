@@ -98,7 +98,7 @@
   ];
 </script>
 
-<footer class="bg-that-offWhite">
+<footer class="bg-gray-100">
   <div
     class="max-w-screen-xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8"
   >
@@ -108,7 +108,7 @@
           <Link
             tabindex="-1"
             href="{tl.href}"
-            class="text-base leading-6 text-gray-500 hover:text-that-blue"
+            class="text-base leading-6 text-gray-500 hover:text-gray-900"
           >
             {tl.text}
           </Link>
@@ -122,7 +122,7 @@
           <Link
             tabindex="-1"
             href="{ll.href}"
-            class="text-base leading-6 text-gray-500 hover:text-that-blue"
+            class="text-base leading-6 text-gray-500 hover:text-gray-900"
           >
             {ll.text}
           </Link>
@@ -136,7 +136,7 @@
           <Link
             tabindex="-1"
             href="{mll.href}"
-            class="text-base leading-6 text-gray-500 hover:text-that-blue"
+            class="text-base leading-6 text-gray-500 hover:text-gray-900"
           >
             {mll.text}
           </Link>
@@ -153,7 +153,7 @@
     </div>
     <div class="mt-8">
       <p class="text-center text-base leading-6 text-gray-400">
-        &copy; 2020 THAT&reg; . All rights reserved.
+        &copy; 2020 THAT. All rights reserved.
       </p>
     </div>
   </div>

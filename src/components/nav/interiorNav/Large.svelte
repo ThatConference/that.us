@@ -25,7 +25,7 @@
       <img
         class="h-10 w-10"
         src="/images/Logo-Square-White.svg"
-        alt="THAT Logo"
+        alt="Workflow logo"
       />
     </Link>
   </div>

@@ -2,7 +2,6 @@
   import { onMount } from 'svelte';
   import { initClient } from '@urql/svelte';
   import { router, Router, Route } from 'yrv';
-  import { v4 as uuidv4 } from 'uuid';
 
   import { isAuthenticated, token } from './utilities/security.js';
   import config, { events } from './config';
@@ -47,7 +46,6 @@
       headers: {
         authorization: $token ? `Bearer ${$token}` : '',
         'that-site': 'that.us',
-        'that-correlation-id': uuidv4(),
       },
     }),
     // todo.. this needs to be revisited... and when we get a new graph client.

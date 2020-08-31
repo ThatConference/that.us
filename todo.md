@@ -1,2 +1,5 @@
+set our default seo info
+set our page.
 
-THAT Logo in footer.
+??
+meta description best pratices

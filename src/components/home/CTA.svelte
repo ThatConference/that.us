@@ -1,47 +1,40 @@
-<script>
-  import { Link } from 'yrv';
-</script>
-
-<section class="py-12 lg:py-16  bg-that-offWhite">
+<div class="bg-white">
   <div
-    class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 lg:flex
-    lg:items-center lg:justify-between"
+    class="max-w-screen-xl mx-auto text-center py-12 px-4 sm:px-6 lg:py-16
+    lg:px-8"
   >
     <h2
-      class="text-3xl leading-9 font-extrabold tracking-tight text-gray-900
+      class="text-3xl leading-9 font-extrabold tracking-tight text-thatBlue-800
       sm:text-4xl sm:leading-10"
     >
-      Are you ready to expand your network?
+      Ready to dive in?
       <br />
-      <span class="text-that-orange">Become a member today, it's free.</span>
+      Start your free trial today.
     </h2>
-    <div class="mt-8 flex lg:flex-shrink-0 lg:mt-0">
+    <div class="mt-8 flex justify-center">
       <div class="inline-flex rounded-md shadow">
-        <Link
-          href="/login?signup=true"
-          class="px-8 py-3 border-2 border-transparent text-base leading-6
-          font-medium rounded-md shadow text-white bg-thatOrange-400
-          hover:bg-thatOrange-500 focus:outline-none focus:border-thatOrange-700
-          focus:shadow-outline-that-orange transition duration-150 ease-in-out
-          md:py-4 md:text-lg md:px-10"
+        <a
+          href="#"
+          class="inline-flex items-center justify-center px-5 py-3 border
+          border-transparent text-base leading-6 font-medium rounded-md
+          text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none
+          focus:shadow-outline transition duration-150 ease-in-out"
         >
-          Join today!
-        </Link>
-
+          Get started
+        </a>
       </div>
-      <div class="ml-3 inline-flex rounded-md shadow">
-        <Link
-          href="/sessions"
-          class="px-8 py-3 rounded-md shadow text-base leading-6 font-medium
-          border-2 border-thatBlue-500 text-thatBlue-500 bg-white
-          hover:bg-thatBlue-500 hover:text-white focus:bg-thatBlue-500
-          focus:text-white focus:outline-none focus:shadow-outline-thatBlue-500
-          focus:border-thatBlue-800 transition duration-150 ease-in-out md:py-4
-          md:text-lg md:px-10"
+      <div class="ml-3 inline-flex">
+        <a
+          href="#"
+          class="inline-flex items-center justify-center px-5 py-3 border
+          border-transparent text-base leading-6 font-medium rounded-md
+          text-indigo-700 bg-indigo-100 hover:text-indigo-600 hover:bg-indigo-50
+          focus:outline-none focus:shadow-outline focus:border-indigo-300
+          transition duration-150 ease-in-out"
         >
-          View THAT Board
-        </Link>
+          Learn more
+        </a>
       </div>
     </div>
   </div>
-</section>
+</div>

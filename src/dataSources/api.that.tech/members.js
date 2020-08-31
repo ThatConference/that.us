@@ -1,3 +1,5 @@
+const pageSize = 50;
+
 const userFragment = `
   fragment memberFields on PublicProfile {
     id
@@ -159,7 +161,7 @@ export default (client) => {
       });
   };
 
-  const queryMembers = (pageSize = 50) => {
+  const queryMembers = () => {
     const variables = { pageSize };
     return client
       .query(QUERY_MEMBERS_INITAL, variables, {
@@ -169,7 +171,7 @@ export default (client) => {
       .then(reformatResults);
   };
 
-  const queryMembersNext = (after, pageSize = 50) => {
+  const queryMembersNext = (after) => {
     const variables = { pageSize, after };
     return client
       .query(QUERY_MEMBERS_NEXT, variables, {

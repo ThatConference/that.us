@@ -7,7 +7,6 @@
   export let startTime;
   export let status;
   export let durationInMinutes;
-  export let slug;
   export let favoritedBy = [];
 
   // 3rd Party
@@ -167,7 +166,7 @@
   <div class="bg-white px-4 py-5 border-b border-gray-200 sm:px-6">
     <div
       class="-ml-4 -mt-4 flex justify-between items-center flex-wrap
-      sm:flex-no-wrap flex-col md:flex-row"
+      md:flex-no-wrap sm:flex-col lg:flex-row"
     >
       <div class="ml-4 mt-4">
         <div class="flex items-center">
@@ -210,7 +209,7 @@
         </div>
       </div>
 
-      <div class="pt-4 -m-2 flex flex-wrap justify-center items-center">
+      <div class="pt-4 -m-2 flex flex-wrap items-center">
         {#if $isAuthenticated && !incompleteProfile}
           {#if !hasExpired}
             <div class="mt-2 mx-2 rounded-md shadow-sm">
@@ -293,7 +292,6 @@
                   {id}
                   {startTime}
                   {durationInMinutes}
-                  {slug}
                 />
               </div>
 
@@ -317,7 +315,7 @@
 
   <!-- body -->
 
-  <div class="px-4 py-5 sm:px-6 text-center md:text-left">
+  <div class="px-4 py-5 sm:px-6 sm:text-center lg:text-left">
 
     <!-- Title -->
     <h2

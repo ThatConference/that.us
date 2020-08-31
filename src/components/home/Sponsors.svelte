@@ -1,5 +1,5 @@
-<section class="py-12 lg:py-16">
-  <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="bg-white">
+  <div class="max-w-screen-xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
     <p
       class="text-center text-base leading-6 font-semibold uppercase
       text-gray-600 tracking-wider"
@@ -39,4 +39,4 @@
       </div>
     </div>
   </div>
-</section>
+</div>
