@@ -44,9 +44,6 @@
   </div>
 
   <div slot="body">
-    <div class="text-gray-500 text-sm leading-5 text-right lowercase italic">
-      <span>* Scheduled times are represented in your timezone.</span>
-    </div>
     {#await get($currentEvent.eventId)}
       <CardLoader />
     {:then sessions}

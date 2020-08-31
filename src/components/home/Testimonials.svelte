@@ -1,49 +1,19 @@
-<section class="bg-white overflow-hidden">
+<script>
+  import { Link } from 'yrv';
+  import { fade } from 'svelte/transition';
+</script>
+
+<section class="bg-white py-12 lg:py-16 mt-12">
   <div
-    class="relative max-w-screen-xl mx-auto pt-20 pb-12 px-4 sm:px-6 lg:px-8
-    lg:py-20"
+    class="relative max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8"
   >
     <svg
-      class="absolute top-full left-0 transform translate-x-80 -translate-y-24
-      lg:hidden"
-      width="784"
-      height="404"
-      fill="none"
-      viewBox="0 0 784 404"
-    >
-      <defs>
-        <pattern
-          id="e56e3f81-d9c1-4b83-a3ba-0d0ac8c32f32"
-          x="0"
-          y="0"
-          width="20"
-          height="20"
-          patternUnits="userSpaceOnUse"
-        >
-          <rect
-            x="0"
-            y="0"
-            width="4"
-            height="4"
-            class="text-thatBlue-100"
-            fill="currentColor"
-          ></rect>
-        </pattern>
-      </defs>
-      <rect
-        width="784"
-        height="404"
-        fill="url(#e56e3f81-d9c1-4b83-a3ba-0d0ac8c32f32)"
-      ></rect>
-    </svg>
-
-    <svg
       class="hidden lg:block absolute right-full top-1/2 transform
-      translate-x-1/2 -translate-y-1/2"
+      translate-x-1/2 -translate-y-3/6"
       width="404"
       height="784"
       fill="none"
-      viewBox="0 0 404 784"
+      viewBox="0 0 404 575"
     >
       <defs>
         <pattern
@@ -103,14 +73,18 @@
         <blockquote class="relative">
           <div class="text-2xl leading-9 font-medium text-gray-900">
             <p>
-              We set out to build a community, not an event. A community of
-              geeks and geeklings, who support one another to be our best, each
-              and every day. We ALL have something of value that can help one
-              another. THAT.us is just one way we're trying to better connect
-              us.
-              <span class="text-thatOrange-400">
-                We're just getting started!
-              </span>
+              Our mission is simple, foster a community of geeks who want to
+              help one another be awesome. THAT.us is a safe place for all of
+              the geeks and geeklings from anywhere, to easily connect and
+              support one another in achieving their best self, each and every
+              day. Together we can accomplish amazing things and we all have a
+              role in making our community the best it can be.
+              <Link
+                class="text-thatOrange-400 hover:text-thatOrange-500"
+                href="/login?signup=true"
+              >
+                Join us today!
+              </Link>
             </p>
           </div>
           <footer class="mt-8">
@@ -123,12 +97,10 @@
                 />
               </div>
               <div class="ml-4 lg:ml-0">
-                <div class="text-base leading-6 font-medium text-gray-900">
+                <div class="text-base leading-6 font-medium text-that-blue">
                   Clark Sell
                 </div>
-                <div
-                  class="text-base leading-6 font-medium text-thatOrange-400"
-                >
+                <div class="text-base leading-6 font-medium text-gray-900">
                   Founder, THAT
                 </div>
               </div>

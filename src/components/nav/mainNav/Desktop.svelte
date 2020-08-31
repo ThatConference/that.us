@@ -10,7 +10,7 @@
   {#each links as l}
     <Link
       href="{l.href}"
-      class="mr-8 font-medium text-gray-500 hover:text-gray-900 transition
+      class="mr-8 font-medium text-gray-500 hover:text-that-blue transition
       duration-150 ease-in-out"
     >
       {l.text}
@@ -20,7 +20,7 @@
   {#if !$isAuthenticated}
     <Link
       href="/login"
-      class="mr-8 font-medium text-gray-500 hover:text-gray-900 transition
+      class="mr-8 font-medium text-gray-500 hover:text-that-blue transition
       duration-150 ease-in-out"
     >
       Log In
@@ -28,7 +28,7 @@
   {:else}
     <Link
       href="/logout"
-      class="mr-8 font-medium text-gray-500 hover:text-gray-900 transition
+      class="mr-8 font-medium text-gray-500 hover:text-that-blue transition
       duration-150 ease-in-out"
     >
       Log Out

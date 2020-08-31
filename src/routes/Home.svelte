@@ -1,17 +1,24 @@
 <script>
-  export let router;
-
   import { Footer } from '../components';
+  import { Logo } from '../elements';
+
   import {
     Hero,
     Testimonials,
     CTA,
     Newsletter,
-    // Sponsors,
+    Stats,
+    Features,
+    UpNext,
+    Events,
+    NewMembers,
   } from '../components/home';
-  import Youtube from '@sveltecasts/svelte-youtube';
 
-  import SponsorSimple from '../components/SponsorSimple.svelte';
+  // ui support
+  import MainNav from '../components/nav/mainNav/MainNav.svelte';
+
+  // utilities
+  import { isAuthenticated } from '../utilities/security';
 
   import metaTagsStore from '../store/metaTags';
   metaTagsStore.set({
@@ -24,26 +31,35 @@
   });
 </script>
 
-<Hero />
-<Testimonials />
+<!--
+  * Hero
+    ^^ Signup
+  Stats
+  Features / Demo
+  Quote
+  What's up Next?
+  
+  View Past Events..
+  Welcome our newest ...
+  Newsletter?
+-->
 
-<div class="grid grid-cols-1 gap-24 py-24">
-  <div class="flex flex-grow justify-center ">
-    <h2
-      class="text-4xl tracking-tight leading-10 font-extrabold text-thatBlue-800
-      sm:text-5xl sm:leading-none md:text-6xl"
-    >
-      Welcome to THAT
-      <span class="text-thatOrange-400">Online!</span>
-    </h2>
-  </div>
-  <div class="flex flex-grow justify-center">
-    <Youtube videoId="cAftppcmqRE" />
-  </div>
-
+<div class="max-w-screen-xl mx-auto">
+  <MainNav />
 </div>
-<!-- <Sponsors /> -->
-<SponsorSimple />
-<!-- <CTA /> -->
-<!-- <Newsletter /> -->
+
+<Hero />
+<Stats />
+<!-- <Features /> -->
+<Testimonials />
+<Logo uri="/images/THAT-Logo-Words.svg" />
+<UpNext />
+
+{#if !$isAuthenticated}
+  <CTA />
+{/if}
+
+<Events />
+<NewMembers />
+<Newsletter />
 <Footer />

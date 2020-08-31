@@ -11,6 +11,7 @@ const coreSessionFields = `
     status
     startTime
     durationInMinutes
+    slug
   }
 `;
 
@@ -25,6 +26,7 @@ const coreOpenSpaceFields = `
     status
     startTime
     durationInMinutes
+    slug
   }
 `;
 

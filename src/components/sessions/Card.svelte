@@ -7,6 +7,7 @@
   export let durationInMinutes;
   export let speakers;
   export let status;
+  export let slug;
   export let tags = [];
   export let attendees = []; // todo.. needs to be favorites
   export let __typename; // just here to clean up props
@@ -186,7 +187,7 @@
     </p>
   </div>
 
-  <div class="flex flex-wrap items-center justify-center space-x-4 pb-5">
+  <div class="flex flex-wrap items-center justify-center space-x-4 px-4 pb-5">
     {#each tags as t}
       <Tag>{t}</Tag>
     {/each}
@@ -265,6 +266,7 @@
               {id}
               {startTime}
               {durationInMinutes}
+              {slug}
             />
           </span>
         </div> -->
