@@ -50,7 +50,7 @@
 
 <Hero />
 <Stats />
-<Features />
+<!-- <Features /> -->
 <Testimonials />
 <Logo uri="/images/THAT-Logo-Words.svg" />
 <UpNext />
