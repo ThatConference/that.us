@@ -2,8 +2,10 @@
   export let id;
   export let title;
   export let speakers;
+  export let startTime;
 
   import { Link } from 'yrv';
+  import dayjs from 'dayjs';
   
   import config from '../config';
   
@@ -28,6 +30,7 @@
       <div class="space-y-2 xl:flex xl:items-center xl:justify-between">
         <div class="w-full font-medium text-lg leading-6 space-y-1">
           <h4 class="text-white">{title}</h4>
+          <p class="text-thatBlue-200 text-sm italic">{dayjs(startTime).format('dddd MMMM D, YYYY - h:mm A')}</p>
           <p class="text-thatBlue-200 text-right">{`${host.firstName} ${host.lastName}`}</p>
         </div>
       </div>

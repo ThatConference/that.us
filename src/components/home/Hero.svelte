@@ -99,7 +99,7 @@
               sm:mx-auto md:mt-5 md:text-xl lg:mx-0"
             >
               Our jobs are complex, our industry moves fast, but we’re also
-              privileged to be able to work with people all over the globe, but
+              privileged to be able to work with people all over the globe, yet
               we’ve been missing something.
             </p>
           </div>
@@ -193,11 +193,11 @@
                 class="text-base text-gray-500 sm:text-lg sm:max-w-xl sm:mx-auto
                 md:text-xl lg:mx-0"
               >
-                Nothing will ever replace having a conversation where people can
+                Nothing will ever replace having a face to face conversation where people can
                 deeply engage and explore a topic. A safe place where questions
                 can be asked without judgement or bias. Conferences and user
-                groups have traditionally help to fill that gap but they leave a
-                huge gap the rest of the year.
+                groups traditionally help fill that gap but leave a
+                huge void the rest of the year.
               </p>
 
               <p
@@ -208,7 +208,7 @@
                 give you the safe place to have a conversation each and every
                 day. Let’s say you want to have a code review or a design
                 review, great. Maybe you want to share your experience with the
-                latest Javascript framework or seek some geek parenting advice.
+                latest JavaScript framework or seek some geek parenting advice.
                 There are no limits, there are no artificial boundaries. Just
                 people helping people be awesome.
               </p>

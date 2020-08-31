@@ -25,10 +25,9 @@
           Upcoming Activities
         </h2>
         <p class="text-xl leading-7 text-gray-300">
-          Ornare sagittis, suspendisse in hendrerit quis. Sed dui aliquet lectus
-          sit pretium egestas vel mattis neque.
+          Check out these activities currently on the schedule.
           <span class="pl:2 text-that-orange hover:text-thatOrange-500">
-            <Link href="/sessions">View all activities.</Link>
+            <Link href="/sessions">View all upcoming activities.</Link>
           </span>
         </p>
       </div>
