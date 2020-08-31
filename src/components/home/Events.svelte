@@ -17,13 +17,13 @@
       url: '/events/thatOnline',
       logoUrl: '/images/thatOnline.svg',
     },
-    {
-      title: 'Day of the Dome',
-      date: 'October 17th, 2020',
-      description: `Cupim ham pastrami, chislic doner buffalo pig. Tri-tip pork chop andouille ham, corned beef filet mignon tail landjaeger sirloin chuck pork loin hamburger picanha. Meatball hamburger turkey frankfurter, porchetta chislic ham hock strip steak swine picanha alcatra tenderloin. Tongue flank fatback, leberkas cow jerky beef ribs. Leberkas filet mignon sausage meatball pork chop.`,
-      url: '/events/dayOfTheDome',
-      logoUrl: '/images/thatOnline.svg',
-    },
+    // {
+    //   title: 'Day of the Dome',
+    //   date: 'October 17th, 2020',
+    //   description: `Cupim ham pastrami, chislic doner buffalo pig. Tri-tip pork chop andouille ham, corned beef filet mignon tail landjaeger sirloin chuck pork loin hamburger picanha. Meatball hamburger turkey frankfurter, porchetta chislic ham hock strip steak swine picanha alcatra tenderloin. Tongue flank fatback, leberkas cow jerky beef ribs. Leberkas filet mignon sausage meatball pork chop.`,
+    //   url: '/events/dayOfTheDome',
+    //   logoUrl: '/images/thatOnline.svg',
+    // },
   ];
 </script>
 
