@@ -10,7 +10,7 @@
 <section class="relative bg-white overflow-x-hidden">
   <div class="hidden lg:block lg:absolute lg:inset-0">
     <svg
-      in:fly="{{ y: -400, duration: 2000 }}"
+      in:fly="{{ y: -400, duration: 3000 }}"
       class="absolute top-0 left-1/2 transform translate-x-64 -translate-y-8"
       width="640"
       height="784"
@@ -27,7 +27,7 @@
 
     </svg>
     <svg
-      in:fly="{{ y: 200, duration: 2000 }}"
+      in:fly="{{ y: 200, duration: 3000 }}"
       class="absolute top-0 left-1/2 transform translate-x-64 -translate-y-8"
       width="640"
       height="784"
@@ -61,7 +61,7 @@
       ></rect>
     </svg>
   </div>
-  
+
   <div class="relative pb-16 md:pb-20 lg:pb-24 xl:pb-32">
 
     <main
@@ -72,8 +72,8 @@
         class="sm:text-center lg:text-left pb-16 text-4xl tracking-tight leading-10 font-extrabold
         text-thatBlue-800 sm:text-5xl sm:leading-none md:text-6xl"
       >
-        Understand THAT,
-        <span class="text-thatOrange-400">FASTER!</span>
+        Where
+        <span class="text-thatOrange-400">Geeks</span> Connect
       </h2>
 
       <div class="lg:grid lg:grid-cols-12 lg:gap-8">
@@ -81,42 +81,37 @@
           class="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6
           lg:text-left"
         >
-
           <!-- hero copy -->
           <div>
             <p
               class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl
               sm:mx-auto md:mt-5 md:text-xl lg:mx-0"
             >
-              Our jobs are hard enough these days.
+              It's our mission to make the best community of geeks on this planet. A community of people who want to help one another each and every day. 
             </p>
 
+            <p
+              class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl
+              sm:mx-auto md:mt-5 md:text-xl lg:mx-0"
+            >
+              Our jobs are complex, our industry moves fast, but we’re also privileged to be able to work with people all over the globe, but we’ve been missing something.
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6
+          lg:text-left"
+        >
+          <!-- action buttons -->
+          <div class="mt-5 sm:mt-8 sm:flex flex-col space-y-4 sm:justify-center lg:justify-start">
             <p
               class="mt-3 font-extrabold text-thatBlue-800 sm:mt-5 sm:text-lg
               sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0"
             >
-              You're the Practitioner. You create the schedule!
-            </p>
-            <p
-              class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl
-              sm:mx-auto md:mt-5 md:text-xl lg:mx-0"
-            >
-              Let’s say you want to have a code review, great add it to the
-              schedule! Maybe you want to share your experience on the latest
-              Javascript framework, do it. Do you have a question in search of
-              others advice from others? Ask it. I think you're starting to get
-              the idea. No topic is too small, no format is required.
-            </p>
-            <p
-              class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl
-              sm:mx-auto md:mt-5 md:text-xl lg:mx-0"
-            >
               All you need is an internet connection and a web browser.
             </p>
-          </div>
 
-          <!-- action buttons -->
-          <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
             <div class="flex space-x-4">
               {#if !$isAuthenticated}
                 <Link
@@ -160,16 +155,50 @@
             </div>
           </div>
         </div>
+      </div>
 
-        <div
-          class="mt-12 sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none
-          lg:mx-0 lg:flex lg:items-center"
+
+      <div class="mt-12">
+        <h2
+          class="sm:text-center lg:text-left pb-16 text-4xl tracking-tight leading-10 font-extrabold
+          text-thatBlue-800 sm:text-5xl sm:leading-none md:text-6xl"
         >
-          <div class="flex flex-col items-center">
-            <Youtube videoId="cAftppcmqRE" />
-          </div> 
+          Do more than copy code.
+        </h2>
+
+        <div class="lg:grid lg:grid-cols-12 lg:gap-8">
+          <div
+            class="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6
+            lg:text-left"
+          >
+            <div
+              class="mt-12 sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none
+              lg:mx-0 lg:flex lg:items-center"
+            >
+              <div class="flex flex-col items-center">
+                <Youtube width="{426}" height="{240}" videoId="cAftppcmqRE" />
+              </div> 
+            </div>
+          </div>
+          <div class="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left">
+            <p
+              class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl
+              sm:mx-auto md:mt-5 md:text-xl lg:mx-0"
+            >
+              Nothing will ever replace having a conversation where people can deeply engage and explore a topic. A safe place where questions can be asked without judgement or bias. Conferences and user groups have traditionally help to fill that gap but they leave a huge gap the rest of the year.
+            </p>
+
+            <p
+              class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl
+              sm:mx-auto md:mt-5 md:text-xl lg:mx-0"
+            >
+              This is where THAT comes in. It’s our mission to connect you  and give you the safe place to have a conversation each and every day.  Let’s say you want to have a code review or a design review, great. Maybe you want to share your experience with the latest Javascript framework or seek some geek parenting advice. There are no limits, there are no artificial boundaries. Just people helping people be awesome.
+            </p>
+          </div>
         </div>
       </div>
+
+
     </main>
   </div>
 </section>
