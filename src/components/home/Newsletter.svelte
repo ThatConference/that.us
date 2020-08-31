@@ -5,17 +5,20 @@
 
   let submitted = false;
 
-  function handleSubmit({ detail: { values, setSubmitting, resetForm } }) {
-    console.log('handleSubmit -> values', values);
+  function handleSubmit({ detail: { values, setSubmitting, resetForm } }) {  
     tagEvent('newsletter_signup', 'user', values.email);
     setSubmitting(true);
 
+    const data = new FormData();
+    const info = Object.keys(values)
+    info.forEach(i => data.append(i, values[i]));
+    
     fetch('https://thatconference.activehosted.com/proc.php', {
       method: 'POST',
-      body: values,
+      body: data,
       mode: 'no-cors',
     })
-      .then(() => {
+      .then((r) => {
         setSubmitting(false);
         submitted = true;
       })
@@ -46,10 +49,12 @@
         <p class="mt-3 max-w-3xl text-lg leading-6 text-gray-300">
           Thank you for signing up. Welcome to THAT family.
         </p>
+        <p class="mt-3 text-sm leading-5 text-gray-300">
+          Please check your inbox to confirm your subscription.
+        </p>
       {/if}
     </div>
     <div class="mt-8 lg:mt-0 lg:ml-8">
-
       {#if !submitted}
         <Form
           on:submit="{handleSubmit}"
@@ -102,16 +107,16 @@
             </div>
           {/if}
         </Form>
+        <p class="mt-3 text-sm leading-5 text-gray-300">
+          We care about the protection of your data. Read our
+          <a
+            href="https://www.thatconference.com/privacy-policy"
+            class="text-white font-medium underline"
+          >
+            Privacy Policy.
+          </a>
+        </p>
       {/if}
-      <p class="mt-3 text-sm leading-5 text-gray-300">
-        We care about the protection of your data. Read our
-        <a
-          href="https://www.thatconference.com/privacy-policy"
-          class="text-white font-medium underline"
-        >
-          Privacy Policy.
-        </a>
-      </p>
     </div>
   </div>
 </section>
