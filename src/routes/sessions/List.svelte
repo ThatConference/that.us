@@ -1,6 +1,4 @@
 <script>
-  export let router;
-
   // 3rd party
   import { getClient } from '@urql/svelte';
   import dayjs from 'dayjs';

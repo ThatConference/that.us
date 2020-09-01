@@ -1,6 +1,4 @@
 <script>
-  export let router;
-
   import { onMount } from 'svelte';
   import { getClient } from '@urql/svelte';
   import { navigateTo } from 'yrv';

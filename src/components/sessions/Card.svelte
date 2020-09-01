@@ -6,13 +6,7 @@
   export let startTime;
   export let durationInMinutes;
   export let speakers;
-  export let status;
-  export let slug;
   export let tags = [];
-  export let attendees = []; // todo.. needs to be favorites
-  export let __typename; // just here to clean up props
-  export let eventId = events.thatUs.eventId; // just here to clean up props
-  export let type = 'OPEN_SPACE'; // just here to clean up props
 
   // 3rd party
   import { onMount } from 'svelte';

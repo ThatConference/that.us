@@ -1,5 +1,4 @@
 <script>
-  export let router;
   import { getClient } from '@urql/svelte';
 
   import Nav from '../../components/nav/interiorNav/Top.svelte';

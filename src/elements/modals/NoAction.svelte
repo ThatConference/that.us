@@ -1,6 +1,6 @@
 <script>
   import { fade } from 'svelte/transition';
-  import { Waiting } from '../index';
+  import Waiting from '../Waiting.svelte';
 
   export let title;
   export let text;
