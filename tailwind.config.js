@@ -1,9 +1,6 @@
 /* eslint-disable global-require */
-const { colors } = require('@tailwindcss/ui');
 
-/* eslint-disable no-undef */
 module.exports = {
-  purge: [],
   theme: {
     interFontFeatures: {
       default: ['calt', 'liga', 'kern'],
@@ -76,6 +73,7 @@ module.exports = {
     },
   },
   variants: {},
+  purge: ['./src/**/*.svelte'],
   plugins: [
     require('tailwindcss-font-inter')({
       importFontFace: true,

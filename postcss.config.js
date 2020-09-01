@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 /* eslint-disable no-undef */
 
 const plugins =
