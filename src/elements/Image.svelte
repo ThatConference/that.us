@@ -1,7 +1,6 @@
 <script>
   export let src;
   export let alt;
-  export let sizes = '100vw';
 
   let params = '?mask=ellipse&w=500&h=500&fit=crop';
 </script>

@@ -1,5 +1,4 @@
 <script>
-  export let router;
   export let documentReferrer = '/sessions';
 
   import { onMount } from 'svelte';

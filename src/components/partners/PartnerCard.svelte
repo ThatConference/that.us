@@ -1,18 +1,8 @@
 <script>
-  export let id;
-  export let level;
   export let companyName;
   export let companyLogo;
   export let slug;
-  export let linkedIn;
-  export let github;
-  export let youtube;
-  export let instagram;
-  export let twitter;
-  export let facebook;
-  export let twitch;
   export let socialLinks;
-  export let __typename;
 
   import { Link } from 'yrv';
   import SocialLinks from '../../components/social/SocialLink.svelte';

@@ -1,5 +1,4 @@
 <script>
-  export let id;
   export let firstName;
   export let lastName;
   export let jobTitle;
@@ -8,7 +7,6 @@
   export let profileSlug;
   export let earnedMeritBadges = [];
   export let profileLinks = [];
-  export let __typename;
 
   import { Link } from 'yrv';
   import SocialLinks from '../../components/social/SocialLink.svelte';

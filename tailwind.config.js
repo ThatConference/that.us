@@ -83,4 +83,7 @@ module.exports = {
     }),
     require('@tailwindcss/ui'),
   ],
+  future: {
+    removeDeprecatedGapUtilities: true,
+  },
 };

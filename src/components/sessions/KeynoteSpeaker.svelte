@@ -1,6 +1,5 @@
 <script>
   export let speakers;
-  export let attendees = [];
 
   import { Link } from 'yrv';
   import Icon from 'svelte-awesome';
