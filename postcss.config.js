@@ -1,17 +1,24 @@
 /* eslint-disable global-require */
 /* eslint-disable no-undef */
 
-const plugins =
-  process.env.NODE_ENV === 'production'
-    ? [
-        require('tailwindcss'),
-        require('@tailwindcss/ui'),
-        require('autoprefixer'),
-        require('@fullhuman/postcss-purgecss'),
-      ]
-    : [require('tailwindcss')];
+const tailwindcss = require('tailwindcss');
 
-module.exports = { plugins };
+module.exports = {
+  plugins: [tailwindcss('./tailwind.config.js')],
+};
+
+// const plugins =
+//   process.env.NODE_ENV === 'production'
+//     ? [
+//         require('tailwindcss'),
+//         require('@tailwindcss/ui'),
+//         require('autoprefixer'),
+//         require('@fullhuman/postcss-purgecss'),
+//       ]
+//     : [require('tailwindcss')];
+
+// ---
+// module.exports = { plugins };
 
 // const purgecss = require('@fullhuman/postcss-purgecss')({
 //   content: ['./src/**/*.html', './src/**/*.svelte'],
