@@ -78,8 +78,8 @@
 
   let isFavorite = false;
 
-  favorites.subscribe(favs => {
-    let found = _.find(favs, i => i.id === id);
+  favorites.subscribe((favs) => {
+    let found = _.find(favs, (i) => i.id === id);
 
     found ? (isFavorite = true) : (isFavorite = false);
   });
@@ -133,7 +133,7 @@
     }
   });
 
-  let disqus_config = function() {
+  let disqus_config = function () {
     this.page.url = window.location.pathname; // Replace PAGE_URL with your page's canonical URL variabl
   };
 

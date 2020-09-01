@@ -48,6 +48,7 @@
     "isomorphic-unfetch": "^3.0.0",
     "jest-cli": "^26.4.0",
     "lodash": "^4.17.20",
+    "mdsvex": "^0.8.6",
     "moment-timezone": "^0.5.31",
     "omit-deep": "^0.3.0",
     "page": "^1.11.6",

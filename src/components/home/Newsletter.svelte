@@ -5,14 +5,14 @@
 
   let submitted = false;
 
-  function handleSubmit({ detail: { values, setSubmitting, resetForm } }) {  
+  function handleSubmit({ detail: { values, setSubmitting, resetForm } }) {
     tagEvent('newsletter_signup', 'user', values.email);
     setSubmitting(true);
 
     const data = new FormData();
-    const info = Object.keys(values)
-    info.forEach(i => data.append(i, values[i]));
-    
+    const info = Object.keys(values);
+    info.forEach((i) => data.append(i, values[i]));
+
     fetch('https://thatconference.activehosted.com/proc.php', {
       method: 'POST',
       body: data,
@@ -22,7 +22,7 @@
         setSubmitting(false);
         submitted = true;
       })
-      .catch(error => console.error('Request failed', error));
+      .catch((error) => console.error('Request failed', error));
   }
 </script>
 

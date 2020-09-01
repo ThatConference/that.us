@@ -101,7 +101,7 @@
   function updateLinksInputValues(link, userValue) {
     // clear out the value regardless.
     socialLinksState = socialLinksState.filter(
-      i => i.linkType !== link.linkType,
+      (i) => i.linkType !== link.linkType,
     );
 
     // if we have a value.. add it back
@@ -119,7 +119,7 @@
 
     if (!isNewProfile && profile.profileLinks) {
       const [socialLink] = profile.profileLinks.filter(
-        i => i.linkType === link.linkType,
+        (i) => i.linkType === link.linkType,
       );
 
       if (socialLink) {
@@ -157,18 +157,18 @@
     socialLinksState = profile.profileLinks;
   }
 
-  yup.addMethod(yup.string, 'validateSlug', function() {
+  yup.addMethod(yup.string, 'validateSlug', function () {
     return this.test({
       name: 'name',
       message: 'Slug is already taken. Try again.',
-      test: function(slug) {
+      test: function (slug) {
         if (!/^[a-zA-Z0-9-_]+$/g.test(slug)) {
           return this.createError({
             message: `Invalid format: use only letters, numbers, dash, and underscore`,
           });
         }
         return new Promise((res, reject) =>
-          isSlugTaken(slug).then(r => {
+          isSlugTaken(slug).then((r) => {
             if (isNewProfile) res(!r);
             res(true);
           }),
@@ -193,10 +193,7 @@
       .email()
       .trim()
       .required('Please enter your email address.'),
-    bio: yup
-      .string()
-      .trim()
-      .required('We need to know a bit about yourself.'),
+    bio: yup.string().trim().required('We need to know a bit about yourself.'),
     profileSlug: yup
       .string()
       .trim()
@@ -226,7 +223,7 @@
     profile = {};
   };
 
-  const postProfilePicture = async profilePhoto => {
+  const postProfilePicture = async (profilePhoto) => {
     profileImageUploading = true;
     const formData = new FormData();
     formData.append('file', profilePhoto.currentTarget.files[0]);
@@ -446,7 +443,7 @@
               <input
                 name="profileImage"
                 type="file"
-                on:change="{e => postProfilePicture(e).then(r =>
+                on:change="{(e) => postProfilePicture(e).then((r) =>
                     setValue('profileImage', r),
                   )}"
                 accept="image/x-png,image/png,.png,image/jpeg,.jpg,.jpeg,image/gif,.gif"
@@ -497,7 +494,7 @@
                 type="text"
                 name="{link.name}"
                 value="{getInitialSocailLinkValue(link)}"
-                on:change="{e => setValue('profileLinks', updateLinksInputValues(link, e.target.value))}"
+                on:change="{(e) => setValue('profileLinks', updateLinksInputValues(link, e.target.value))}"
                 class="flex-1 form-input block w-full min-w-0 rounded-none
                 rounded-r-md transition duration-150 ease-in-out sm:text-sm
                 sm:leading-5"

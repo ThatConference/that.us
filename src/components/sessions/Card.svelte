@@ -79,8 +79,8 @@
   let expandDescription = false;
 
   let isFavorite = false;
-  favorites.subscribe(favs => {
-    let found = _.find(favs, i => i.id === id);
+  favorites.subscribe((favs) => {
+    let found = _.find(favs, (i) => i.id === id);
 
     found ? (isFavorite = true) : (isFavorite = false);
   });

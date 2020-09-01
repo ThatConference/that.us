@@ -11,7 +11,7 @@
   let popNotification = false;
   let dismissed = false;
 
-  const unsubscribe = show.subscribe(value => {
+  const unsubscribe = show.subscribe((value) => {
     popNotification = value;
 
     if (value) dismissed = false;
