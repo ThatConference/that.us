@@ -79,7 +79,7 @@
     "svelte-tags-input": "^2.6.5",
     "svelte-typewriter": "^2.1.12",
     "sveltejs-forms": "^2.0.1",
-    "tailwindcss": "^1.7.6",
+    "tailwindcss": "^1.6.3",
     "tailwindcss-font-inter": "^1.0.8",
     "uuid": "^8.3.0",
     "yrv": "0.0.30",
