@@ -24,10 +24,10 @@
     return getClient()
       .query(GET_PARTNERS, { slug: 'wi/2020' })
       .toPromise()
-      .then((p) => {
+      .then(p => {
         const partners = p.data.events.eventBySlug.partners;
 
-        return partners.filter((partner) =>
+        return partners.filter(partner =>
           PARTNER_LEVELS_TO_DISPLAY.includes(partner.level),
         );
       });

@@ -1,6 +1,6 @@
 <script context="module">
   import mtz from 'moment-timezone';
-  const timeZoneOptions = mtz.tz.names().map((t) => ({ value: t, label: t }));
+  const timeZoneOptions = mtz.tz.names().map(t => ({ value: t, label: t }));
 
   const timeSlotOptions = [];
 
@@ -158,20 +158,20 @@
     selectedDateValue = selectedDayDefault;
   }
 
-  const findSelectedTimeSlot = (values) =>
-    timeSlotOptions.find((item) => item.value === values['selectedTime']);
+  const findSelectedTimeSlot = values =>
+    timeSlotOptions.find(item => item.value === values['selectedTime']);
 
-  const findSelectedDuration = (values) =>
+  const findSelectedDuration = values =>
     estimatedDurationOptions.find(
-      (item) => item.value === values['selectedDuration'],
+      item => item.value === values['selectedDuration'],
     );
 
-  const findSelectedTimezone = (values) =>
-    timeZoneOptions.find((item) => item.value === values['selectedTimezone']);
+  const findSelectedTimezone = values =>
+    timeZoneOptions.find(item => item.value === values['selectedTimezone']);
 
   let timeSlotOptionsFiltered = timeSlotOptions;
   $: timeSlotOptionsFiltered = dayjs(selectedDateValue).isToday()
-    ? timeSlotOptions.filter((t) =>
+    ? timeSlotOptions.filter(t =>
         dayjs(dayjs(t.value, 'HH:mm')).isSameOrAfter(dayjs()),
       )
     : timeSlotOptions;

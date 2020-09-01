@@ -6,7 +6,7 @@
   import { facebook, youtubePlay, twitch } from 'svelte-awesome/icons';
   import PanelSpeakerCard from './PanelSpeakerCard.svelte';
 
-  let displayedSpeakers = speakers.filter((s) => s);
+  let displayedSpeakers = speakers.filter(s => s);
 </script>
 
 <div>

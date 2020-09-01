@@ -4,7 +4,7 @@ import dayjs from 'dayjs';
  * Scrolls the given element into view
  * @param {string | HTMLElement} elementOrSelector
  */
-export const scrollIntoView = (elementOrSelector) => {
+export const scrollIntoView = elementOrSelector => {
   if (!elementOrSelector) {
     return;
   }
@@ -28,4 +28,4 @@ export const scrollIntoView = (elementOrSelector) => {
   }
 };
 
-export const getTimeStampId = (date) => dayjs(date).format('a-hh-mm');
+export const getTimeStampId = date => dayjs(date).format('a-hh-mm');

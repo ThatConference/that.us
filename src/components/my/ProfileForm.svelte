@@ -101,7 +101,7 @@
   function updateLinksInputValues(link, userValue) {
     // clear out the value regardless.
     socialLinksState = socialLinksState.filter(
-      (i) => i.linkType !== link.linkType,
+      i => i.linkType !== link.linkType,
     );
 
     // if we have a value.. add it back
@@ -119,7 +119,7 @@
 
     if (!isNewProfile && profile.profileLinks) {
       const [socialLink] = profile.profileLinks.filter(
-        (i) => i.linkType === link.linkType,
+        i => i.linkType === link.linkType,
       );
 
       if (socialLink) {
@@ -168,7 +168,7 @@
           });
         }
         return new Promise((res, reject) =>
-          isSlugTaken(slug).then((r) => {
+          isSlugTaken(slug).then(r => {
             if (isNewProfile) res(!r);
             res(true);
           }),
@@ -223,7 +223,7 @@
     profile = {};
   };
 
-  const postProfilePicture = async (profilePhoto) => {
+  const postProfilePicture = async profilePhoto => {
     profileImageUploading = true;
     const formData = new FormData();
     formData.append('file', profilePhoto.currentTarget.files[0]);
@@ -443,7 +443,7 @@
               <input
                 name="profileImage"
                 type="file"
-                on:change="{(e) => postProfilePicture(e).then((r) =>
+                on:change="{e => postProfilePicture(e).then(r =>
                     setValue('profileImage', r),
                   )}"
                 accept="image/x-png,image/png,.png,image/jpeg,.jpg,.jpeg,image/gif,.gif"
@@ -494,7 +494,7 @@
                 type="text"
                 name="{link.name}"
                 value="{getInitialSocailLinkValue(link)}"
-                on:change="{(e) => setValue('profileLinks', updateLinksInputValues(link, e.target.value))}"
+                on:change="{e => setValue('profileLinks', updateLinksInputValues(link, e.target.value))}"
                 class="flex-1 form-input block w-full min-w-0 rounded-none
                 rounded-r-md transition duration-150 ease-in-out sm:text-sm
                 sm:leading-5"

@@ -11,18 +11,18 @@
 
     const data = new FormData();
     const info = Object.keys(values);
-    info.forEach((i) => data.append(i, values[i]));
+    info.forEach(i => data.append(i, values[i]));
 
     fetch('https://thatconference.activehosted.com/proc.php', {
       method: 'POST',
       body: data,
       mode: 'no-cors',
     })
-      .then((r) => {
+      .then(r => {
         setSubmitting(false);
         submitted = true;
       })
-      .catch((error) => console.error('Request failed', error));
+      .catch(error => console.error('Request failed', error));
   }
 </script>
 

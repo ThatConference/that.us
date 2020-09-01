@@ -35,7 +35,7 @@
     }))
     .value();
 
-  const isKeynote = (session) => {
+  const isKeynote = session => {
     let results = false;
     if (session.type === 'KEYNOTE' || session.type === 'PANEL') results = true;
 
