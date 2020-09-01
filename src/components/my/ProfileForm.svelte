@@ -157,11 +157,11 @@
     socialLinksState = profile.profileLinks;
   }
 
-  yup.addMethod(yup.string, 'validateSlug', function() {
+  yup.addMethod(yup.string, 'validateSlug', function () {
     return this.test({
       name: 'name',
       message: 'Slug is already taken. Try again.',
-      test: function(slug) {
+      test: function (slug) {
         if (!/^[a-zA-Z0-9-_]+$/g.test(slug)) {
           return this.createError({
             message: `Invalid format: use only letters, numbers, dash, and underscore`,
@@ -193,10 +193,7 @@
       .email()
       .trim()
       .required('Please enter your email address.'),
-    bio: yup
-      .string()
-      .trim()
-      .required('We need to know a bit about yourself.'),
+    bio: yup.string().trim().required('We need to know a bit about yourself.'),
     profileSlug: yup
       .string()
       .trim()

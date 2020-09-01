@@ -1,4 +1,4 @@
-export const wordCount = (sentence) => sentence.split(' ').length;
+export const wordCount = sentence => sentence.split(' ').length;
 
 export const isLongerThan = (sentence, numOfWords) =>
   wordCount(sentence) > numOfWords;

@@ -6,9 +6,7 @@
 </script>
 
 <section class="bg-thatBlue-700 py-12 lg:py-16">
-  <div
-    class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8"
-  >
+  <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="max-w-4xl mx-auto text-center">
       <h2
         class="text-3xl leading-9 font-extrabold text-white sm:text-4xl

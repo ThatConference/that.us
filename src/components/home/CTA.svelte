@@ -2,10 +2,10 @@
   import { Link } from 'yrv';
 </script>
 
-<section class="py-12 lg:py-16  bg-that-offWhite">
+<section class="py-12 lg:py-16 bg-that-offWhite">
   <div
-    class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 lg:flex
-    lg:items-center lg:justify-between"
+    class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 lg:flex lg:items-center
+    lg:justify-between"
   >
     <h2
       class="text-3xl leading-9 font-extrabold tracking-tight text-gray-900

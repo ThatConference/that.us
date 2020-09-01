@@ -5,13 +5,9 @@
   const timeSlotOptions = [];
 
   for (let hour = 0; hour < 24; hour++) {
-    const onHour = dayjs()
-      .hour(hour)
-      .minute(0);
+    const onHour = dayjs().hour(hour).minute(0);
 
-    const onHalf = dayjs()
-      .hour(hour)
-      .minute(30);
+    const onHalf = dayjs().hour(hour).minute(30);
 
     timeSlotOptions.push({
       value: onHour.format('HH:mm'),
@@ -97,10 +93,7 @@
   }
 
   const schema = yup.object().shape({
-    title: yup
-      .string()
-      .trim()
-      .required('Please add a title.'),
+    title: yup.string().trim().required('Please add a title.'),
     shortDescription: yup
       .string()
       .trim()

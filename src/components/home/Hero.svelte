@@ -193,11 +193,11 @@
                 class="text-base text-gray-500 sm:text-lg sm:max-w-xl sm:mx-auto
                 md:text-xl lg:mx-0"
               >
-                Nothing will ever replace having a face to face conversation where people can
-                deeply engage and explore a topic. A safe place where questions
-                can be asked without judgement or bias. Conferences and user
-                groups traditionally help fill that gap but leave a
-                huge void the rest of the year.
+                Nothing will ever replace having a face to face conversation
+                where people can deeply engage and explore a topic. A safe place
+                where questions can be asked without judgement or bias.
+                Conferences and user groups traditionally help fill that gap but
+                leave a huge void the rest of the year.
               </p>
 
               <p

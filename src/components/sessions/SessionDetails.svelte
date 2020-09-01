@@ -133,7 +133,7 @@
     }
   });
 
-  let disqus_config = function() {
+  let disqus_config = function () {
     this.page.url = window.location.pathname; // Replace PAGE_URL with your page's canonical URL variabl
   };
 

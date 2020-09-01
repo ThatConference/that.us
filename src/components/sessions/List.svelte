@@ -58,9 +58,7 @@
         tracking-tight text-thatBlue-800 sm:text-4xl sm:leading-10 pb-2 z-10"
       >
         <span>
-          {dayjs()
-            .dayOfYear(day.dayOfYear)
-            .format("dddd MMMM D, 'YY")}
+          {dayjs().dayOfYear(day.dayOfYear).format("dddd MMMM D, 'YY")}
         </span>
       </h2>
 

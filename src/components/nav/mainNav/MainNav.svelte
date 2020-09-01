@@ -67,7 +67,11 @@
     >
       <div class="px-5 pt-4 flex items-center justify-between">
         <div>
-          <img class="h-8 w-auto" src="/images/Logo-Square-Blue.svg" alt="THAT Logo" />
+          <img
+            class="h-8 w-auto"
+            src="/images/Logo-Square-Blue.svg"
+            alt="THAT Logo"
+          />
         </div>
         <div class="-mr-2">
           <button
