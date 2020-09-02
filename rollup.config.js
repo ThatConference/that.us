@@ -9,6 +9,7 @@ import json from '@rollup/plugin-json';
 
 import builtins from 'rollup-plugin-node-builtins';
 import globals from 'rollup-plugin-node-globals';
+import { mdsvex } from 'mdsvex';
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -29,7 +30,8 @@ export default {
     }),
 
     svelte({
-      preprocess: sveltePreprocess({ postcss: true }),
+      extensions: ['.svelte', '.svx'],
+      preprocess: [mdsvex(), sveltePreprocess({ postcss: true })],
       // enable run-time checks when not in production
       dev: !production,
       // we'll extract any component CSS out into

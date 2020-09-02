@@ -1,6 +1,6 @@
 {
   "name": "that-us",
-  "version": "0.0.1",
+  "version": "2.0.0",
   "description": "THAT.us website",
   "main": "index.js",
   "engines": {
@@ -32,9 +32,11 @@
     "@tailwindcss/ui": "^0.5.0",
     "@urql/svelte": "^0.4.0",
     "all-contributors-cli": "^6.17.2",
+    "archieml": "^0.4.2",
     "autoprefixer": "^9.8.6",
     "concurrently": "^5.3.0",
     "dayjs": "^1.8.34",
+    "dialogic-svelte": "^0.10.2",
     "eslint": "^7.8.0",
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-config-prettier": "^6.11.0",
@@ -48,6 +50,7 @@
     "isomorphic-unfetch": "^3.0.0",
     "jest-cli": "^26.4.2",
     "lodash": "^4.17.20",
+    "marked": "^1.1.1",
     "mdsvex": "^0.8.6",
     "moment-timezone": "^0.5.31",
     "npm-run-all": "^4.1.5",

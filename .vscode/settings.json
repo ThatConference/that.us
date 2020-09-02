@@ -13,5 +13,8 @@
   },
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
+  },
+  "[svelte]": {
+    "editor.defaultFormatter": "JamesBirtles.svelte-vscode"
   }
 }

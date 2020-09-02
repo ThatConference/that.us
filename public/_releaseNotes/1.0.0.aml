@@ -1,0 +1,45 @@
+versionNumber: v1.0.0
+date: March 3rd, 2020
+
+notes: Bacon ipsum dolor amet cow beef filet mignon spare ribs ham. Beef ribs short loin flank frankfurter meatloaf short ribs kevin t-bone spare ribs bacon ground round. Burgdoggen prosciutto hamburger ground round picanha turkey bacon capicola t-bone chislic filet mignon tongue. Bresaola chicken jerky, drumstick flank beef shankle boudin strip steak tail ribeye picanha capicola pastrami. Flank shankle bacon biltong. Picanha jowl fatback pork loin beef, cupim salami. Tail tri-tip venison chuck shank frankfurter flank leberkas picanha drumstick hamburger fatback t-bone chicken.
+
+[features]
+
+feature:  Spacing / Layout on Session Details screen
+url: https://github.com/that.us/
+
+feature:  Correlation ID now passed along with graph calls
+url: https://github.com/that.us/
+
+feature:  Home Page
+url: https://github.com/that.us/
+
+feature:  new sections include hero, stats, newsletter, events, cta, testimonials,
+url: https://github.com/that.us/
+
+feature:  newsletter section is wired to AC
+url: https://github.com/that.us/
+
+feature:  Colors
+url: https://github.com/that.us/
+
+feature:  renamed ics download to match api download
+url: https://github.com/that.us/
+
+feature:  added prodid to ics
+url: https://github.com/that.us/
+
+feature:  added sticky headers to main board.
+url: https://github.com/that.us/
+
+feature:  redid link color in footers
+url: https://github.com/that.us/
+
+feature:  fixed sizing on cards to take up max grid container.
+url: https://github.com/that.us/
+
+feature:  session details buttons align center on smaller screens
+url: https://github.com/that.us/
+
+feature:  bumped packages
+url: https://github.com/that.us/
