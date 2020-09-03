@@ -36,6 +36,7 @@
   import EditSession from './routes/sessions/Edit.svelte';
 
   import ChangeLog from './routes/releases/ChangeLog.svelte';
+  import ChangeLogMissed from './routes/releases/Missed.svelte';
 
   // join
   import Live from './routes/join/Live.svelte';
@@ -117,6 +118,7 @@
     <Route exact path="/partners" component="{Partners}" />
     <Route exact path="/help" component="{Help}" />
     <Route exact path="/changelog" component="{ChangeLog}" />
+    <Route exact path="/changelog-missed" component="{ChangeLogMissed}" />
 
     <Route exact path="/sessions" component="{List}" />
 

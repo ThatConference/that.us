@@ -7,6 +7,7 @@
   import { Left, Right } from '../../elements/svgs';
   import SimpleLayout from '../../elements/layouts/Simple.svelte';
   import ReleaseNote from '../../components/releaseNotes/Release.svelte';
+  import metaTagsStore from '../../store/metaTags';
 
   let getReleases = fetch('_releaseNotes/manifest.aml')
     .then(response => response.text())
@@ -15,6 +16,15 @@
       releases.reverse();
       return releases;
     });
+
+  metaTagsStore.set({
+    title: 'Changelog',
+    description: 'Check out all of the releases.',
+    openGraph: {
+      type: 'website',
+      url: `https://that.us/changelog`,
+    },
+  });
 </script>
 
 <SimpleLayout>

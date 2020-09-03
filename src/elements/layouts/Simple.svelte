@@ -1,16 +1,6 @@
 <script>
   import { Footer } from '../../components';
   import MainNav from '../../components/nav/mainNav/MainNav.svelte';
-
-  import metaTagsStore from '../../store/metaTags';
-  metaTagsStore.set({
-    title: 'Welcome to THAT!',
-    description: 'todo',
-    openGraph: {
-      type: 'website',
-      url: `https://that.us/`,
-    },
-  });
 </script>
 
 <main>
@@ -18,7 +8,7 @@
     <nav>
       <MainNav />
     </nav>
-    <section>
+    <section class="pt-6 px-4 sm:px-6 lg:px-8">
       <slot />
     </section>
   </div>
