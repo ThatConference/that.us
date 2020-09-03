@@ -1,8 +1,9 @@
 <script>
   import { onMount } from 'svelte';
   import { initClient } from '@urql/svelte';
-  import { router, Router, Route } from 'yrv';
+  import { navigateTo, router, Router, Route } from 'yrv';
   import { v4 as uuidv4 } from 'uuid';
+  import { dialog, Dialog } from 'dialogic-svelte';
 
   import { isAuthenticated, token } from './utilities/security.js';
   import config, { events } from './config';
@@ -12,6 +13,7 @@
 
   // ui components
   import Tailwindcss from './elements/Tailwindcss.svelte';
+  import ReleasesDialog from './components/notifications/Releases.svelte';
 
   // root
   import Home from './routes/Home.svelte';
@@ -72,6 +74,20 @@
         page_path: e.path,
       });
     }
+  });
+
+  let hasMissedReleases = false;
+
+  onMount(() => {
+    // todo: check to see the release
+
+    dialog.show({
+      dialogic: {
+        component: ReleasesDialog,
+        class: 'dialog',
+      },
+      title: 'Missed Releases',
+    });
   });
 </script>
 
@@ -185,6 +201,7 @@
 
   </Router>
 
+  <Dialog />
 </main>
 
 <style global>
@@ -209,5 +226,21 @@
     -moz-appearance: none;
     /* for Safari, Chrome, Opera */
     -webkit-appearance: none;
+  }
+
+  :global(.dialog) {
+    transition: opacity 350ms ease-in-out;
+  }
+  :global(.dialog-show-start) {
+    opacity: 0;
+  }
+  :global(.dialog-show-end) {
+    opacity: 1;
+  }
+  :global(.dialog-hide-start) {
+    opacity: 1;
+  }
+  :global(.dialog-hide-end) {
+    opacity: 0;
   }
 </style>
