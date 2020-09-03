@@ -3,10 +3,6 @@
   export let rest;
 </script>
 
-<a
-  {href}
-  {...rest}
-  class="text-gray-500 cursor-pointer leading-6 hover:text-that-blue"
->
+<a {href} class="text-gray-500 leading-6 hover:text-that-blue" {...rest}>
   <slot />
 </a>

@@ -1,9 +1,11 @@
 <script>
   import { onMount } from 'svelte';
+  import { fade } from 'svelte/transition';
   import archieml from 'archieml';
   import _ from 'lodash';
-  import { FacebookLoader } from 'svelte-content-loader';
 
+  import { Left, Right } from '../../elements/svgs';
+  import SimpleLayout from '../../elements/layouts/Simple.svelte';
   import ReleaseNote from '../../components/releaseNotes/Release.svelte';
 
   let getReleases = fetch('_releaseNotes/manifest.aml')
@@ -15,12 +17,27 @@
     });
 </script>
 
-<section>
-  {#await getReleases}
-    <FacebookLoader uniqueKey="card" />
-  {:then results}
-    {#each results as release}
-      <ReleaseNote releaseNotes="{`_releaseNotes/${release}.aml`}" />
-    {/each}
-  {/await}
-</section>
+<SimpleLayout>
+  <div class="relative py-16 bg-white">
+    <div class="hidden lg:block lg:absolute lg:inset-y-0 lg:h-full lg:w-full">
+      <div class="relative h-full text-lg max-w-prose mx-auto">
+
+        <div in:fade="{{ duration: 2000 }}">
+          <Left />
+        </div>
+
+        <div in:fade="{{ duration: 4000 }}">
+          <Right />
+        </div>
+      </div>
+    </div>
+
+    {#await getReleases then results}
+      {#each results as release}
+        <div class="mb-20">
+          <ReleaseNote releaseNotes="{`_releaseNotes/${release}.aml`}" />
+        </div>
+      {/each}
+    {/await}
+  </div>
+</SimpleLayout>
