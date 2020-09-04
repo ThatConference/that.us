@@ -32,6 +32,8 @@ npm run build
 
 You can run the newly built app with `npm run start`. This uses [sirv](https://github.com/lukeed/sirv), which is included in your package.json's `dependencies` so that the app will work when you deploy to platforms.
 
+[![Feature Requests](https://feathub.com/ThatConference/that.us?format=svg)](https://feathub.com/ThatConference/that.us)
+
 ## Contributors ✨
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
