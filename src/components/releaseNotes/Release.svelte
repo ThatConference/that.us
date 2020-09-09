@@ -40,14 +40,14 @@
       </h1>
       <div class="mx-auto">
         <ul>
-          {#each release.features as i}
+          {#each release.features as f, i}
             <li>
               <div
                 class="flex space-x-3 items-center hover:text-that-blue
                 cursor-pointer pb-2"
               >
                 <Icon data="{externalLink}" class="h-4 w-4" />
-                <StandardLink href="{i.url}">{i.feature}</StandardLink>
+                <StandardLink href="{f.url}">{f.feature}</StandardLink>
               </div>
             </li>
           {/each}

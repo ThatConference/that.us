@@ -8,6 +8,7 @@
   import SimpleLayout from '../../elements/layouts/Simple.svelte';
   import ReleaseNote from '../../components/releaseNotes/Release.svelte';
   import metaTagsStore from '../../store/metaTags';
+  import { showReleaseNotes } from '../../store/siteVersion';
 
   let versionLastSeen;
 
@@ -28,6 +29,7 @@
         window.localStorage.setItem('versionLastSeen', _.last(missedReleases));
 
       missedReleases.reverse();
+      showReleaseNotes.set(false);
       return missedReleases;
     });
 

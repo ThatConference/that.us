@@ -18,6 +18,7 @@
   {/if}
 {/if}
 
+<NoProfile />
 <div class="flex flex-col min-h-screen">
   <header class="bg-thatBlue-700 pb-32">
     <slot name="header" />
@@ -37,7 +38,6 @@
     </div>
   </main>
 
-  <NoProfile />
   <Footer class="self-end" />
 
 </div>

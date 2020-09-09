@@ -3,10 +3,14 @@
   import { getContext } from 'svelte';
   import { fade } from 'svelte/transition';
   import _ from 'lodash';
-
-  import Icon from 'svelte-awesome';
   import { user as userIcon } from 'svelte-awesome/icons';
+  import Icon from 'svelte-awesome';
   import { ScaleOut } from 'svelte-loading-spinners';
+
+  import { hasNotifications } from '../../../store/notificationCenter';
+  import { Activity } from '../../../elements/svgs';
+
+  import ActivitySlideOver from './ActivitySlideOver.svelte';
 
   import {
     isAuthenticated,
@@ -16,6 +20,11 @@
 
   // toggle for the drop down
   let visible;
+  let activityVisible;
+
+  function handleCloseActivityCenter(event) {
+    activityVisible = !activityVisible;
+  }
 </script>
 
 <div class="flex items-center">
@@ -84,14 +93,36 @@
 <div class="hidden md:block">
   <div class="ml-4 flex items-center md:ml-6">
 
+    {#if $hasNotifications}
+      <button
+        class="max-w-xs h-8 w-8 rounded-full text-white focus:outline-none
+        duration-150 ease-in-out hover:bg-thatBlue-500"
+        class:shadow-solid="{activityVisible}"
+        class:bg-thatBlue-500="{activityVisible}"
+        aria-label="Notifications"
+        on:click|preventDefault="{() => (activityVisible = !activityVisible)}"
+      >
+        <Activity />
+      </button>
+
+      {#if activityVisible}
+        <ActivitySlideOver
+          on:click="{handleCloseActivityCenter}"
+          on:clicked-outside="{handleCloseActivityCenter}"
+        />
+      {/if}
+    {/if}
+
     <!-- Profile dropdown -->
     <div class="ml-3 relative">
       <div>
         <button
           id="user-menu"
           class="max-w-xs h-8 w-8 flex items-center text-sm rounded-full
-          text-white focus:outline-none"
+          text-white focus:outline-none duration-150 ease-in-out
+          hover:bg-thatBlue-500"
           class:shadow-solid="{visible}"
+          class:bg-thatBlue-500="{visible}"
           aria-label="User menu"
           aria-haspopup="true"
           on:click|preventDefault="{() => (visible = !visible)}"

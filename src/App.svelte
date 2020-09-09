@@ -3,17 +3,17 @@
   import { initClient } from '@urql/svelte';
   import { navigateTo, router, Router, Route } from 'yrv';
   import { v4 as uuidv4 } from 'uuid';
-  import { dialog, Dialog } from 'dialogic-svelte';
 
   import { isAuthenticated, token } from './utilities/security.js';
   import config, { events } from './config';
   import currentEvent from './store/currentEvent';
   import metaTagsStore from './store/metaTags';
+  import { showReleaseNotes } from './store/siteVersion';
+  import { messages } from './store/notificationCenter';
   import metaTags from './utilities/seo/metaTags';
 
   // ui components
   import Tailwindcss from './elements/Tailwindcss.svelte';
-  import ReleasesDialog from './components/notifications/Releases.svelte';
 
   // root
   import Home from './routes/Home.svelte';
@@ -76,18 +76,42 @@
     }
   });
 
-  let hasMissedReleases = false;
-
   onMount(() => {
-    // todo: check to see the release
-
-    dialog.show({
-      dialogic: {
-        component: ReleasesDialog,
-        class: 'dialog',
-      },
-      title: 'Missed Releases',
-    });
+    if ($showReleaseNotes) {
+      messages.update(m => [
+        ...m,
+        {
+          // message:
+          // 'Check out newest features on THAT.us!! Check out newest features on THAT.us!!',
+          message: 'Check out newest features on THAT.us!!',
+          url: '/changelog-missed',
+        },
+        {
+          // message:
+          // 'Check out newest features on THAT.us!! Check out newest features on THAT.us!!',
+          message: 'Check out newest features on THAT.us!!',
+          url: '/changelog-missed',
+        },
+        {
+          // message:
+          // 'Check out newest features on THAT.us!! Check out newest features on THAT.us!!',
+          message: 'Check out newest features on THAT.us!!',
+          url: '/changelog-missed',
+        },
+        {
+          // message:
+          // 'Check out newest features on THAT.us!! Check out newest features on THAT.us!!',
+          message: 'Check out newest features on THAT.us!!',
+          url: '/changelog-missed',
+        },
+        {
+          // message:
+          // 'Check out newest features on THAT.us!! Check out newest features on THAT.us!!',
+          message: 'Check out newest features on THAT.us!!',
+          url: '/changelog-missed',
+        },
+      ]);
+    }
   });
 </script>
 
@@ -201,7 +225,6 @@
 
   </Router>
 
-  <Dialog />
 </main>
 
 <style global>
@@ -226,21 +249,5 @@
     -moz-appearance: none;
     /* for Safari, Chrome, Opera */
     -webkit-appearance: none;
-  }
-
-  :global(.dialog) {
-    transition: opacity 350ms ease-in-out;
-  }
-  :global(.dialog-show-start) {
-    opacity: 0;
-  }
-  :global(.dialog-show-end) {
-    opacity: 1;
-  }
-  :global(.dialog-hide-start) {
-    opacity: 1;
-  }
-  :global(.dialog-hide-end) {
-    opacity: 0;
   }
 </style>
