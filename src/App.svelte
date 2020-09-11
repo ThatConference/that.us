@@ -81,33 +81,8 @@
       messages.update(m => [
         ...m,
         {
-          // message:
-          // 'Check out newest features on THAT.us!! Check out newest features on THAT.us!!',
-          message: 'Check out newest features on THAT.us!!',
-          url: '/changelog-missed',
-        },
-        {
-          // message:
-          // 'Check out newest features on THAT.us!! Check out newest features on THAT.us!!',
-          message: 'Check out newest features on THAT.us!!',
-          url: '/changelog-missed',
-        },
-        {
-          // message:
-          // 'Check out newest features on THAT.us!! Check out newest features on THAT.us!!',
-          message: 'Check out newest features on THAT.us!!',
-          url: '/changelog-missed',
-        },
-        {
-          // message:
-          // 'Check out newest features on THAT.us!! Check out newest features on THAT.us!!',
-          message: 'Check out newest features on THAT.us!!',
-          url: '/changelog-missed',
-        },
-        {
-          // message:
-          // 'Check out newest features on THAT.us!! Check out newest features on THAT.us!!',
-          message: 'Check out newest features on THAT.us!!',
+          message:
+            '🙌 We shipped again! 🎉 Check out newest features on THAT.us!!!',
           url: '/changelog-missed',
         },
       ]);
@@ -116,7 +91,6 @@
 </script>
 
 <svelte:head>
-
   <title>{$metaTagsStore ? $metaTagsStore.title : 'Welcome to THAT'}</title>
 
   {#each metaTags($metaTagsStore) as tags}
@@ -125,13 +99,11 @@
 
   <!-- tidio chat bot -->
   <script src="//code.tidio.co/qcwuuigfzw3cjegsc2fyo0sniyh3c3ue.js" async>
-
   </script>
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script
     async
     src="https://www.googletagmanager.com/gtag/js?id=UA-21705613-11">
-
   </script>
   <!-- GA -->
   <script>
@@ -151,7 +123,12 @@
 
   <Router>
     <Route exact path="/" component="{Home}" />
-    <Route exact path="/login" component="{Login}" {documentReferrer} />
+    <Route
+      exact
+      path="/login"
+      component="{Login}"
+      documentReferrer="{documentReferrer}"
+    />
     <Route exact path="/logout" component="{Logout}" />
     <Route exact path="/faq" component="{FAQ}" />
     <Route exact path="/members" component="{Members}" />
@@ -222,9 +199,7 @@
     />
 
     <Route fallback>Page Not Found</Route>
-
   </Router>
-
 </main>
 
 <style global>

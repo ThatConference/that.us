@@ -10,7 +10,7 @@
   import { hasNotifications } from '../../../store/notificationCenter';
   import { Activity } from '../../../elements/svgs';
 
-  import ActivitySlideOver from './ActivitySlideOver.svelte';
+  import ActivitySlideOver from '../../activityCenter/ActivitySlideOver.svelte';
 
   import {
     isAuthenticated,
@@ -28,7 +28,6 @@
 </script>
 
 <div class="flex items-center">
-
   <div class="flex-shrink-0">
     <Link href="/">
       <img
@@ -41,13 +40,12 @@
 
   <div class="hidden md:block">
     <div class="ml-10 flex items-baseline">
-
       <Link
         href="/sessions"
         open
         class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300
-        hover:text-white hover:bg-that-blue focus:outline-none focus:text-white
-        focus:bg-that-blue"
+          hover:text-white hover:bg-that-blue focus:outline-none
+          focus:text-white focus:bg-that-blue"
       >
         THAT Board
       </Link>
@@ -55,8 +53,8 @@
       <Link
         href="/members"
         class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300
-        hover:text-white hover:bg-that-blue focus:outline-none focus:text-white
-        focus:bg-that-blue"
+          hover:text-white hover:bg-that-blue focus:outline-none
+          focus:text-white focus:bg-that-blue"
       >
         Members
       </Link>
@@ -64,8 +62,8 @@
       <Link
         href="/partners"
         class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300
-        hover:text-white hover:bg-that-blue focus:outline-none focus:text-white
-        focus:bg-that-blue"
+          hover:text-white hover:bg-that-blue focus:outline-none
+          focus:text-white focus:bg-that-blue"
       >
         Partners
       </Link>
@@ -73,8 +71,8 @@
       <Link
         href="/faq"
         class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300
-        hover:text-white hover:bg-that-blue focus:outline-none focus:text-white
-        focus:bg-that-blue"
+          hover:text-white hover:bg-that-blue focus:outline-none
+          focus:text-white focus:bg-that-blue"
       >
         FAQs
       </Link>
@@ -92,11 +90,10 @@
 
 <div class="hidden md:block">
   <div class="ml-4 flex items-center md:ml-6">
-
     {#if $hasNotifications}
       <button
         class="max-w-xs h-8 w-8 rounded-full text-white focus:outline-none
-        duration-150 ease-in-out hover:bg-thatBlue-500"
+          duration-150 ease-in-out hover:bg-thatBlue-500"
         class:shadow-solid="{activityVisible}"
         class:bg-thatBlue-500="{activityVisible}"
         aria-label="Notifications"
@@ -119,8 +116,8 @@
         <button
           id="user-menu"
           class="max-w-xs h-8 w-8 flex items-center text-sm rounded-full
-          text-white focus:outline-none duration-150 ease-in-out
-          hover:bg-thatBlue-500"
+            text-white focus:outline-none duration-150 ease-in-out
+            hover:bg-thatBlue-500"
           class:shadow-solid="{visible}"
           class:bg-thatBlue-500="{visible}"
           aria-label="User menu"
@@ -133,9 +130,8 @@
                 <Icon data="{userIcon}" class="h-8 w-8 rounded-full" />
                 <span
                   class="absolute bottom-0 right-0 block h-3.5 w-3.5
-                  rounded-full bg-red-400"
+                    rounded-full bg-red-400"
                 ></span>
-
               </span>
             {:else if $thatProfile.profileImage}
               <img
@@ -157,7 +153,7 @@
           {#if _.isEmpty($thatProfile)}
             <div
               class="origin-top-right absolute right-0 mt-2 w-48 rounded-md
-              shadow-lg z-50"
+                shadow-lg z-50"
               transition:fade
             >
               <div class="py-1 rounded-md bg-white shadow-xs">
@@ -179,11 +175,10 @@
           {:else}
             <div
               class="origin-top-right absolute right-0 mt-2 min-w-48 rounded-md
-              shadow-lg z-50"
+                shadow-lg z-50"
               transition:fade
             >
               <div class="py-1 rounded-md bg-white shadow-xs">
-
                 <div class="block px-4 py-2 text-sm text-gray-700 border-b">
                   <p>{$thatProfile.firstName} {$thatProfile.lastName}</p>
                   <p class="truncate pt-2">{$thatProfile.email}</p>
@@ -227,7 +222,7 @@
         {:else}
           <div
             class="origin-top-right absolute right-0 mt-2 w-48 rounded-md
-            shadow-lg"
+              shadow-lg"
             transition:fade
           >
             <div class="py-1 rounded-md bg-white shadow-xs">
@@ -241,7 +236,6 @@
           </div>
         {/if}
       {/if}
-
     </div>
   </div>
 </div>

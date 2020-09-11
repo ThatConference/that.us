@@ -3,6 +3,7 @@
   import { fade } from 'svelte/transition';
   import archieml from 'archieml';
   import _ from 'lodash';
+  import { Link } from 'yrv';
 
   import { Left, Right } from '../../elements/svgs';
   import SimpleLayout from '../../elements/layouts/Simple.svelte';
@@ -52,19 +53,24 @@
     <div class="text-left mb-12">
       <h3
         class="text-3xl leading-8 font-extrabold tracking-tight text-gray-900
-        sm:text-4xl sm:leading-10"
+          sm:text-4xl sm:leading-10"
       >
         Since your last visit...
       </h3>
+      <div>
+        <Link href="/changelog" class="pointer hover:text-thatBlue-500">
+          Checkout our past releases.
+        </Link>
+      </div>
     </div>
 
     {#await getReleases then results}
       {#if results.length > 0}
         <div
-          class="hidden lg:block lg:absolute lg:inset-y-0 lg:h-full lg:w-full"
+          class="hidden lg:block lg:absolute lg:h-full lg:w-full
+            overflow-x-hidden overflow-y-hidden"
         >
           <div class="relative h-full text-lg max-w-prose mx-auto">
-
             <div in:fade="{{ duration: 2000 }}">
               <Left />
             </div>
@@ -81,9 +87,10 @@
           </div>
         {/each}
       {:else}
-        <div>You're all caught up!</div>
+        <div>
+          <p>You're all caught up!</p>
+        </div>
       {/if}
-
     {/await}
   </div>
 </SimpleLayout>

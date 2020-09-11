@@ -59,6 +59,10 @@
       href: '/help',
     },
     {
+      text: 'Changelog',
+      href: '/changelog',
+    },
+    {
       text: 'Blog',
       href: 'https://thatconference.com/blog',
     },
@@ -102,9 +106,9 @@
   <div
     class="max-w-screen-xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8"
   >
-    <nav class="-mx-5 -my-2 flex flex-wrap justify-center">
+    <nav class="-mx-5 -my-2 flex flex-wrap justify-center space-x-6">
       {#each textLinks as tl}
-        <div class="px-5 py-2">
+        <div class="py-2">
           <Link
             tabindex="-1"
             href="{tl.href}"
@@ -116,9 +120,9 @@
       {/each}
     </nav>
 
-    <nav class="-mx-5 -my-2 flex flex-wrap justify-center">
+    <nav class="-mx-5 -my-2 flex flex-wrap justify-center space-x-6">
       {#each legalLinks as ll}
-        <div class="px-5 py-2">
+        <div class="py-2">
           <Link
             tabindex="-1"
             href="{ll.href}"
@@ -130,9 +134,9 @@
       {/each}
     </nav>
 
-    <nav class="-mx-5 -my-2 flex flex-wrap justify-center">
+    <nav class="-mx-5 -my-2 flex flex-wrap justify-center space-x-6">
       {#each moreLegalLinks as mll}
-        <div class="px-5 py-2">
+        <div class="py-2">
           <Link
             tabindex="-1"
             href="{mll.href}"

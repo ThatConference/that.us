@@ -29,9 +29,10 @@
 
 <SimpleLayout>
   <div class="relative py-16 bg-white">
-    <div class="hidden lg:block lg:absolute lg:inset-y-0 lg:h-full lg:w-full">
+    <div
+      class="hidden lg:block lg:absolute lg:h-full lg:w-full overflow-x-hidden"
+    >
       <div class="relative h-full text-lg max-w-prose mx-auto">
-
         <div in:fade="{{ duration: 2000 }}">
           <Left />
         </div>
