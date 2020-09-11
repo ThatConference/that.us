@@ -20,11 +20,7 @@
   import metaTagsStore from '../../store/metaTags';
   import { tagEvent } from '../../utilities/gtag';
   import { format } from './formatRequest';
-  import {
-    isAuthenticated,
-    user,
-    thatProfile,
-  } from '../../utilities/security.js';
+  import { user } from '../../utilities/security.js';
 
   const { create } = sessionsApi(getClient());
 
@@ -63,7 +59,7 @@
       <div class="flex space-x-2" slot="title">
         <span>Create a new</span>
         <div class="italic">
-          <Typewriter mode="loop" cursor="white" interval="{[50, 60, 80]}">
+          <Typewriter loop cursor="white" interval="{[50, 60, 80]}">
             <span>Presentation.</span>
             <span>Open Space.</span>
             <span>Code Review.</span>

@@ -2,13 +2,13 @@
   // 3rd party
   import { getClient } from '@urql/svelte';
   import dayjs from 'dayjs';
-  import { Link } from 'yrv';
+  import { navigateTo, Link } from 'yrv';
   import { onMount } from 'svelte';
   import _ from 'lodash';
 
   // utilities
   import { getTimeStampId, scrollIntoView } from '../../utilities/scrollHelper';
-  import { thatProfile } from '../../utilities/security.js';
+  import { thatProfile } from '../../utilities/security';
   import metaTagsStore from '../../store/metaTags';
 
   // components
@@ -34,6 +34,8 @@
   $: if (!_.isEmpty($thatProfile)) {
     createDisabled = false;
   }
+
+  let hasMissedReleases = false;
 
   onMount(() => {
     // TODO put back later after we have new dashboard.

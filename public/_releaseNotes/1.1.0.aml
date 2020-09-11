@@ -1,0 +1,45 @@
+versionNumber: v1.1.0
+date: September 4th, 2020
+
+notes: Introducing the new Home Page. After 8/3 it was time to transistion to our real vision of THAT. This meant refactoring our home page to reflect our core daily mission, along with a better explination on what THAT really is. There are still a few things to update, but it's a major step forward. 
+
+[features]
+
+feature:  Updated the Spacing & Layout on Session Details page.
+url: https://github.com/ThatConference/that.us/pull/310
+
+feature:  Correlation ID now being passed along with every graph calls for logging & debugging.
+url: https://github.com/ThatConference/that.us/pull/310
+
+feature:  The root page, "Home Page" was completly refactored. 
+url: https://github.com/ThatConference/that.us/pull/310
+
+feature:  Home page includes new sections; hero, stats, newsletter, events, cta, testimonials,
+url: https://github.com/ThatConference/that.us/pull/310
+
+feature:  You can now signup for the newsletter.
+url: https://github.com/ThatConference/that.us/pull/310
+
+feature:  Colors, fixing them to be on brand.
+url: https://github.com/ThatConference/that.us/pull/310
+
+feature:  Renamed ics download to match api download
+url: https://github.com/ThatConference/that.us/pull/310
+
+feature:  Added prodid to ics, matches api.
+url: https://github.com/ThatConference/that.us/pull/310
+
+feature:  Added sticky headers to main board.
+url: https://github.com/ThatConference/that.us/pull/310
+
+feature:  Refactored the link color in footers, #branding
+url: https://github.com/ThatConference/that.us/pull/310
+
+feature:  Fixed sizing on cards to take up max grid container.
+url: https://github.com/ThatConference/that.us/pull/310
+
+feature:  Session details buttons align center on smaller screens #mobile
+url: https://github.com/ThatConference/that.us/pull/310
+
+feature:  Bumped packages
+url: https://github.com/ThatConference/that.us/pull/310

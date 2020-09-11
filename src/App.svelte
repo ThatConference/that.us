@@ -1,13 +1,15 @@
 <script>
   import { onMount } from 'svelte';
   import { initClient } from '@urql/svelte';
-  import { router, Router, Route } from 'yrv';
+  import { navigateTo, router, Router, Route } from 'yrv';
   import { v4 as uuidv4 } from 'uuid';
 
   import { isAuthenticated, token } from './utilities/security.js';
   import config, { events } from './config';
   import currentEvent from './store/currentEvent';
   import metaTagsStore from './store/metaTags';
+  import { showReleaseNotes } from './store/siteVersion';
+  import { messages } from './store/notificationCenter';
   import metaTags from './utilities/seo/metaTags';
 
   // ui components
@@ -34,6 +36,9 @@
   import Session from './routes/sessions/Session.svelte';
   import Create from './routes/sessions/Create.svelte';
   import EditSession from './routes/sessions/Edit.svelte';
+
+  import ChangeLog from './routes/releases/ChangeLog.svelte';
+  import ChangeLogMissed from './routes/releases/Missed.svelte';
 
   // join
   import Live from './routes/join/Live.svelte';
@@ -70,10 +75,22 @@
       });
     }
   });
+
+  onMount(() => {
+    if ($showReleaseNotes) {
+      messages.update(m => [
+        ...m,
+        {
+          message:
+            '🙌 We shipped again! 🎉 Check out newest features on THAT.us!!!',
+          url: '/changelog-missed',
+        },
+      ]);
+    }
+  });
 </script>
 
 <svelte:head>
-
   <title>{$metaTagsStore ? $metaTagsStore.title : 'Welcome to THAT'}</title>
 
   {#each metaTags($metaTagsStore) as tags}
@@ -82,13 +99,11 @@
 
   <!-- tidio chat bot -->
   <script src="//code.tidio.co/qcwuuigfzw3cjegsc2fyo0sniyh3c3ue.js" async>
-
   </script>
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script
     async
     src="https://www.googletagmanager.com/gtag/js?id=UA-21705613-11">
-
   </script>
   <!-- GA -->
   <script>
@@ -108,12 +123,19 @@
 
   <Router>
     <Route exact path="/" component="{Home}" />
-    <Route exact path="/login" component="{Login}" {documentReferrer} />
+    <Route
+      exact
+      path="/login"
+      component="{Login}"
+      documentReferrer="{documentReferrer}"
+    />
     <Route exact path="/logout" component="{Logout}" />
     <Route exact path="/faq" component="{FAQ}" />
     <Route exact path="/members" component="{Members}" />
     <Route exact path="/partners" component="{Partners}" />
     <Route exact path="/help" component="{Help}" />
+    <Route exact path="/changelog" component="{ChangeLog}" />
+    <Route exact path="/changelog-missed" component="{ChangeLogMissed}" />
 
     <Route exact path="/sessions" component="{List}" />
 
@@ -177,9 +199,7 @@
     />
 
     <Route fallback>Page Not Found</Route>
-
   </Router>
-
 </main>
 
 <style global>

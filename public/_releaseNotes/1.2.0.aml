@@ -1,0 +1,10 @@
+versionNumber: v1.2.0
+date: September 11th, 2020
+
+notes: Introducing the new Activity Center. This lays the foundation for what will become the central place for User, Community and System generated messages. You can check it out by clicking on the new nav icon next to your profile.
+
+[features]
+
+feature:  Added the new Activity Center! This now shows the changelog releases.
+url: https://github.com/ThatConference/that.us/pull/323
+
