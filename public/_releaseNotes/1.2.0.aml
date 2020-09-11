@@ -1,45 +1,10 @@
 versionNumber: v1.2.0
-date: September 4th, 2020
+date: September 11th, 2020
 
-notes: User Engagment
+notes: Introducing the new Activity Center. This lays the foundation for what will become the central place for User, Community and System generated messages. You can check it out by clicking on the new nav icon next to your profile.
 
 [features]
 
-feature:  Spacing / Layout on Session Details screen
-url: https://github.com/that.us/
+feature:  Added the new Activity Center! This now shows the changelog releases.
+url: https://github.com/ThatConference/that.us/pull/323
 
-feature:  Correlation ID now passed along with graph calls
-url: https://github.com/that.us/
-
-feature:  Home Page
-url: https://github.com/that.us/
-
-feature:  new sections include hero, stats, newsletter, events, cta, testimonials,
-url: https://github.com/that.us/
-
-feature:  newsletter section is wired to AC
-url: https://github.com/that.us/
-
-feature:  Colors
-url: https://github.com/that.us/
-
-feature:  renamed ics download to match api download
-url: https://github.com/that.us/
-
-feature:  added prodid to ics
-url: https://github.com/that.us/
-
-feature:  added sticky headers to main board.
-url: https://github.com/that.us/
-
-feature:  redid link color in footers
-url: https://github.com/that.us/
-
-feature:  fixed sizing on cards to take up max grid container.
-url: https://github.com/that.us/
-
-feature:  session details buttons align center on smaller screens
-url: https://github.com/that.us/
-
-feature:  bumped packages
-url: https://github.com/that.us/
