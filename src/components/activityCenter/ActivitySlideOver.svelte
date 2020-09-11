@@ -3,6 +3,7 @@
   import { flip } from 'svelte/animate'; // todo we will need this when we really start to clear and add stuff to the list better.
   import Icon from 'svelte-awesome';
   import { externalLink } from 'svelte-awesome/icons';
+  import {Link} from 'yrv';
 
   import { StandardLink } from '../../elements';
   import { Activity } from '../../elements/svgs';
@@ -32,14 +33,16 @@
           class="rounded-lg shadow-lg hover:bg-thatBlue-100
             hover:text-thatBlue-500"
         >
-          <div class="grid grid-cols-5 gap-4 cursor-pointer">
-            <div class="col-span-4 p-4">
-              <StandardLink href="{m.url}">{m.message}</StandardLink>
+          <Link href="{m.url}">
+            <div class="grid grid-cols-5 gap-4 cursor-pointer">
+              <div class="col-span-4 p-4">
+                <p>{m.message}</p>
+              </div>
+              <div class="flex flex-col items-center justify-center">
+                <Icon data="{externalLink}" class="h-8 w-8" />
+              </div>
             </div>
-            <div class="flex flex-col items-center justify-center">
-              <Icon data="{externalLink}" class="h-8 w-8" />
-            </div>
-          </div>
+        </Link>
         </li>
       {/each}
     </ul>
