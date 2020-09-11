@@ -40,7 +40,7 @@
       </h1>
       <div class="mx-auto">
         <ul>
-          {#each release.features as f, i}
+          {#each release.features as f, i (i)}
             <li>
               <div
                 class="flex space-x-3 items-center hover:text-that-blue
