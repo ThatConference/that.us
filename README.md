@@ -1,7 +1,7 @@
 # THAT.US
 
 [![GitHub issues open](https://img.shields.io/github/issues/thatconference/that.us.svg)](https://github.com/thatconference/that.us/issues) [![release](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/thatconference/that.us/issues) <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-19-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-20-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 ## Get started
@@ -66,6 +66,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/ps2goat"><img src="https://avatars0.githubusercontent.com/u/5384732?v=4" width="100px;" alt=""/><br /><sub><b>asdfasdfasdfasdf asd</b></sub></a><br /><a href="#ideas-ps2goat" title="Ideas, Planning, & Feedback">🤔</a></td>
     <td align="center"><a href="https://github.com/zo0o0ot"><img src="https://avatars3.githubusercontent.com/u/876146?v=4" width="100px;" alt=""/><br /><sub><b>Ross Larson</b></sub></a><br /><a href="#ideas-zo0o0ot" title="Ideas, Planning, & Feedback">🤔</a></td>
     <td align="center"><a href="http://lgbtq.dev"><img src="https://avatars0.githubusercontent.com/u/2401816?v=4" width="100px;" alt=""/><br /><sub><b>Caden Sumner</b></sub></a><br /><a href="https://github.com/ThatConference/that.us/commits?author=Ghosts" title="Code">💻</a> <a href="https://github.com/ThatConference/that.us/issues?q=author%3AGhosts" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://github.com/asharonbaltazar"><img src="https://avatars3.githubusercontent.com/u/58940073?v=4" width="100px;" alt=""/><br /><sub><b>asharonbaltazar</b></sub></a><br /><a href="https://github.com/ThatConference/that.us/commits?author=asharonbaltazar" title="Code">💻</a></td>
   </tr>
 </table>
 
