@@ -56,7 +56,7 @@
 
 <main>
   <Hero />
-  <div class="relative bg-white overflow-hidden py-12">
+  <div class="relative bg-white overflow-hidden py-20">
     <div class="max-w-screen-xl mx-auto px-8">
 
       {#if loading}
