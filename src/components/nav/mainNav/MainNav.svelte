@@ -54,7 +54,7 @@
 
 <div
   class="absolute top-0 inset-x-0 p-2 transition transform origin-top-right
-  md:hidden"
+  md:hidden z-10"
   class:hidden
   class:block="{!hidden}"
 >
