@@ -65,7 +65,7 @@
   <div class="relative pb-16 md:pb-20 lg:pb-24 xl:pb-32">
 
     <main
-      class="mt-8 mx-auto max-w-screen-xl px-4 sm:mt-12 sm:px-6 md:mt-20
+      class="mt-20 mx-auto max-w-screen-xl px-4 sm:mt-12 sm:px-6 md:mt-20
       xl:mt-24"
     >
       <h2
