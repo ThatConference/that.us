@@ -56,7 +56,7 @@
   </div>
 
   <div slot="footer">
-    <Sponsor />
+    <Sponsor eventId="{currentEvent.eventId}" />
   </div>
 
 </StackedLayout>
