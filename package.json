@@ -90,7 +90,8 @@
     "yup": "~0.29.3"
   },
   "dependencies": {
-    "sirv-cli": "^1.0.6"
+    "sirv-cli": "^1.0.6",
+    "svelte-headroom": "^2.2.1"
   },
   "jest": {
     "testEnvironment": "node",
