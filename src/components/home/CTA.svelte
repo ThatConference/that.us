@@ -1,5 +1,6 @@
 <script>
   import { Link } from 'yrv';
+  import { login } from '../../utilities/security';
 </script>
 
 <section class="py-12 lg:py-16 bg-that-offWhite">
@@ -17,8 +18,8 @@
     </h2>
     <div class="mt-8 flex lg:flex-shrink-0 lg:mt-0">
       <div class="inline-flex rounded-md shadow">
-        <Link
-          href="/login?signup=true"
+        <button
+          on:click="{() => login(document.location.pathname, true)}"
           class="px-8 py-3 border-2 border-transparent text-base leading-6
           font-medium rounded-md shadow text-white bg-thatOrange-400
           hover:bg-thatOrange-500 focus:outline-none focus:border-thatOrange-700
@@ -26,7 +27,7 @@
           md:py-4 md:text-lg md:px-10"
         >
           Join today!
-        </Link>
+        </button>
 
       </div>
       <div class="ml-3 inline-flex rounded-md shadow">

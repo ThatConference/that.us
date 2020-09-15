@@ -1,6 +1,8 @@
 <script>
-  import { Link } from 'yrv';
   import { fade } from 'svelte/transition';
+
+  // utilities
+  import { login } from '../../utilities/security';
 </script>
 
 <section class="bg-white py-12 lg:py-16 mt-12">
@@ -77,12 +79,12 @@
               support one another in achieving their best self, each and every
               day. Together we can accomplish amazing things and we all have a
               role in making our community the best it can be.
-              <Link
+              <button
                 class="text-thatOrange-400 hover:text-thatOrange-500"
-                href="/login?signup=true"
+                on:click="{() => login(document.location.pathname, true)}"
               >
                 Join us today!
-              </Link>
+              </button>
             </p>
           </div>
           <footer class="mt-8">

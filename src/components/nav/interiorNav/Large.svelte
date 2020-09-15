@@ -13,6 +13,7 @@
   import ActivitySlideOver from '../../activityCenter/ActivitySlideOver.svelte';
 
   import {
+    login,
     isAuthenticated,
     user,
     thatProfile,
@@ -226,12 +227,12 @@
             transition:fade
           >
             <div class="py-1 rounded-md bg-white shadow-xs">
-              <a
-                href="/login"
-                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              <div
+                on:click|stopPropagation="{() => login(document.location.pathname, false)}"
+                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer"
               >
                 Login
-              </a>
+              </div>
             </div>
           </div>
         {/if}

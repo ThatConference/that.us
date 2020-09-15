@@ -2,7 +2,7 @@
   import { Link } from 'yrv';
   import links from './links';
 
-  import { isAuthenticated } from '../../../utilities/security.js';
+  import { login, isAuthenticated } from '../../../utilities/security.js';
 </script>
 
 {#each links as l}
@@ -30,8 +30,8 @@
       Logout
     </a>
   {:else}
-    <a
-      href="/login"
+    <button
+      on:click="{() => login(document.location.pathname, false)}"
       class="block w-full px-5 py-3 text-center font-medium text-indigo-600
       bg-gray-50 hover:bg-gray-100 hover:text-indigo-700 focus:outline-none
       focus:bg-gray-100 focus:text-indigo-700 transition duration-150
@@ -39,6 +39,6 @@
       role="menuitem"
     >
       Log in
-    </a>
+    </button>
   {/if}
 </div>
