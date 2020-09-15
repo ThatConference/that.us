@@ -23,7 +23,7 @@
 
   // utilties
   import config, { events } from '../../config';
-  import { isAuthenticated, thatProfile } from '../../utilities/security';
+  import { login, isAuthenticated, thatProfile } from '../../utilities/security';
   import { truncate, isLongerThan } from '../../utilities/truncate';
 
   // data
@@ -192,37 +192,42 @@
       <div class="w-0 flex-1 flex ">
         <CardLink href="/sessions/{id}" icon="{info}" text="{'More Details'}" />
       </div>
-      {#if !hasExpired && !$isAuthenticated}
-        <div class="-ml-px w-0 flex-1 flex border-l border-gray-200">
-          <div
-            class="relative w-0 flex-1 inline-flex items-center justify-center
-            py-2 text-xs leading-4 text-gray-300 font-medium border
-            border-transparent rounded-br-lg transition ease-in-out duration-150"
-          >
-            <Icon data="{signIn}" class="-ml-1 mr-2 h-4 w-4" />
-            <span>Join {timeLeftToJoin}</span>
-          </div>
-        </div>
-      {/if}
-
-      {#if $isAuthenticated}
-        {#if !hasExpired}
+      
+      {#if !hasExpired}
+        {#if $isAuthenticated}
           <div class="-ml-px w-0 flex-1 flex border-l border-gray-200">
             <button
-              on:click|preventDefault="{!favoriteDisabled && handleToggle}"
-              class:text-red-500="{isFavorite}"
+            on:click|preventDefault="{!favoriteDisabled && handleToggle}"
+            class:text-red-500="{isFavorite}"
+            class="relative w-0 flex-1 inline-flex items-center justify-center
+            py-2 text-xs leading-4 text-gray-700 font-medium border
+            border-transparent rounded-br-lg hover:text-gray-300
+            focus:outline-none focus:shadow-outline-blue focus:border-blue-300
+            focus:z-10 transition ease-in-out duration-150"
+            >
+              
+              <Icon data="{heart}" class="w-4 h-4" />
+              <span class="ml-3">Favorite</span>
+            </button>
+          </div>
+          {:else}
+            <div class="-ml-px w-0 flex-1 flex border-l border-gray-200">
+              <button
+              on:click|preventDefault="{() => login(document.location.pathname, false)}"
               class="relative w-0 flex-1 inline-flex items-center justify-center
               py-2 text-xs leading-4 text-gray-700 font-medium border
               border-transparent rounded-br-lg hover:text-gray-300
               focus:outline-none focus:shadow-outline-blue focus:border-blue-300
               focus:z-10 transition ease-in-out duration-150"
-            >
-
-              <Icon data="{heart}" class="w-4 h-4" />
-              <span class="ml-3">Favorite</span>
-            </button>
-          </div>
+              >
+                <Icon data="{heart}" class="w-4 h-4" />
+                <span class="ml-3">Favorite</span>
+              </button>
+            </div>
         {/if}
+      {/if}
+
+      {#if $isAuthenticated}
         {#if canEdit()}
           <div class="-ml-px w-0 flex-1 flex border-l border-gray-200">
             <Link
@@ -243,27 +248,9 @@
     </div>
   </div>
 
-  {#if !hasExpired && $isAuthenticated}
+  {#if !hasExpired}
     <div class="flex-none border-t border-gray-200">
       <div class="-mt-px flex">
-        <!-- <div class="-ml-px w-0 flex-1 flex border-r border-gray-200">
-          <span
-            class="relative w-0 flex-1 inline-flex items-center justify-center
-            text-xs leading-4 text-gray-700 font-medium border
-            border-transparent rounded-br-lg hover:text-gray-300
-            focus:outline-none focus:shadow-outline-blue focus:border-blue-300
-            focus:z-10 transition ease-in-out duration-150"
-          >
-            <CalendarButton
-              {title}
-              {shortDescription}
-              {id}
-              {startTime}
-              {durationInMinutes}
-              {slug}
-            />
-          </span>
-        </div> -->
         {#if canJoin}
           <div class="-ml-px w-0 flex-1 flex">
             <CardLink href="/join/{id}" icon="{signIn}" text="{'Join In'}" />
