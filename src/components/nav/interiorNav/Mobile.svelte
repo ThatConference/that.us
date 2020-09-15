@@ -1,6 +1,7 @@
 <script>
   import { getContext } from 'svelte';
   import {
+    login,
     isAuthenticated,
     user,
     thatProfile,
@@ -173,14 +174,14 @@
           </a>
         {/if}
       {:else}
-        <a
-          href="/login"
+        <div
+          on:click|stopPropagation="{() => login(document.location.pathname, false)}"
           class="block px-3 py-2 rounded-md text-base font-medium text-gray-400
-          hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white
-          focus:bg-gray-700"
+          hover:text-white hover:bg-that-blue focus:outline-none focus:text-white
+          focus:bg-that-blue"
         >
           Login
-        </a>
+        </div>
       {/if}
     </div>
 

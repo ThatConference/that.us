@@ -62,8 +62,27 @@
         </div>
       </div>
     </div>
+<<<<<<< HEAD
     <nav
       class="relative flex items-center justify-between sm:h-10 lg:justify-start"
+=======
+    <DesktopNav />
+  </nav>
+</div>
+
+<div
+  class="absolute top-0 inset-x-0 p-2 transition transform origin-top-right
+  md:hidden z-10"
+  class:hidden
+  class:block="{!hidden}"
+>
+  <div class="rounded-lg shadow-md">
+    <div
+      class="rounded-lg bg-white shadow-xs overflow-hidden"
+      role="menu"
+      aria-orientation="vertical"
+      aria-labelledby="main-menu"
+>>>>>>> 7deada831c50cad2fae8bf1b63b30b6ae05bca1a
     >
       <div class="flex items-center flex-grow flex-shrink-0 lg:flex-grow-0">
         <div class="flex items-center justify-between w-full md:w-auto">

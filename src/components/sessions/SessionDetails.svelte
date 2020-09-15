@@ -41,7 +41,7 @@
 
   // Utility
   import config from '../../config';
-  import { isAuthenticated, thatProfile } from '../../utilities/security';
+  import { isAuthenticated, login, thatProfile } from '../../utilities/security';
   import { truncate, isLongerThan } from '../../utilities/truncate';
   import ical from '../../utilities/ical.js';
   import metaTagsStore from '../../store/metaTags';
@@ -211,8 +211,8 @@
       </div>
 
       <div class="pt-4 -m-2 flex flex-wrap justify-center items-center">
-        {#if $isAuthenticated && !incompleteProfile}
-          {#if !hasExpired}
+        {#if !hasExpired}
+          {#if $isAuthenticated && !incompleteProfile}
             <div class="mt-2 mx-2 rounded-md shadow-sm">
               <button
                 type="button"
@@ -223,18 +223,34 @@
                 text-gray-700 bg-white hover:text-gray-500 focus:outline-none
                 focus:shadow-outline-blue focus:border-blue-300
                 active:bg-gray-50 active:text-gray-800 transition duration-150
-                ease-in-out"
-              >
+                ease-in-out">
+                  <Icon data="{heart}" class="-ml-1 mr-2 h-4 w-4" />
+                  {#if isFavorite}
+                    <span>Unfavorite</span>
+                  {:else}
+                    <span>Favorite</span>
+                  {/if}
+              </button>
+            </div>
+          {:else}
+            <div class="mt-2 mx-2 rounded-md shadow-sm">
+              <button
+                type="button"
+                on:click|preventDefault="{() => login(document.location.pathname, false)}"   
+                class="relative inline-flex items-center px-4 py-2 border-2
+                border-thatBlue-500 text-sm leading-5 font-medium rounded-md
+                text-gray-700 bg-white hover:text-gray-500 focus:outline-none
+                focus:shadow-outline-blue focus:border-blue-300
+                active:bg-gray-50 active:text-gray-800 transition duration-150
+                ease-in-out">
                 <Icon data="{heart}" class="-ml-1 mr-2 h-4 w-4" />
-                {#if isFavorite}
-                  <span>Unfavorite</span>
-                {:else}
-                  <span>Favorite</span>
-                {/if}
+                <span>Favorite</span>
               </button>
             </div>
           {/if}
-
+        {/if}
+      
+        {#if $isAuthenticated && !incompleteProfile}
           {#if canEdit()}
             <div class="mt-2 mx-2 rounded-md shadow-sm">
               <Link

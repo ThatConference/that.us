@@ -188,6 +188,24 @@
         "code",
         "bug"
       ]
+    },
+    {
+      "login": "asharonbaltazar",
+      "name": "asharonbaltazar",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/58940073?v=4",
+      "profile": "https://github.com/asharonbaltazar",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "teyd",
+      "name": "teyd",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/48223730?v=4",
+      "profile": "https://github.com/teyd",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,

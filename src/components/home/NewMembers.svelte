@@ -1,9 +1,10 @@
 <script>
   import { getClient } from '@urql/svelte';
-  import { Link } from 'yrv';
-
+  
+  import { login } from '../../utilities/security';
   import MemberCard from '../../components/members/MemberCard.svelte';
   import membersApi from '../../dataSources/api.that.tech/members';
+
 
   const { queryMembers } = membersApi(getClient());
 </script>
@@ -64,12 +65,12 @@
       <p class="mt-4 text-xl leading-7 text-gray-500">
         Please join us in welcoming our newest members to THAT. Not a member
         yet?
-        <Link
+        <button
           class="text-thatOrange-400 hover:text-thatOrange-500"
-          href="/login?signup=true"
+          on:click="{() => login(document.location.pathname, true)}"
         >
           Join today!
-        </Link>
+        </button>
       </p>
     </div>
 
