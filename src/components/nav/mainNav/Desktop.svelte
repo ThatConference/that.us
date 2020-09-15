@@ -1,7 +1,7 @@
 <script>
   import { Link } from 'yrv';
 
-  import { isAuthenticated } from '../../../utilities/security.js';
+  import { login, isAuthenticated } from '../../../utilities/security.js';
   import links from './links';
 </script>
 
@@ -18,13 +18,13 @@
   {/each}
 
   {#if !$isAuthenticated}
-    <Link
-      href="/login"
+    <button
+      on:click="{() => login(document.location.pathname, false)}"
       class="mr-8 font-medium text-gray-500 hover:text-that-blue transition
       duration-150 ease-in-out"
     >
       Log In
-    </Link>
+    </button>
   {:else}
     <Link
       href="/logout"
