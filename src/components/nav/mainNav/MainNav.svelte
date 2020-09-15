@@ -8,7 +8,7 @@
 </script>
  
 <Headroom offset={30} on:unpin={() => {if(!hidden) hidden = !hidden}}>
-  <div class="relative bg-white pt-6 px-4 sm:px-6 lg:px-8">
+  <div class="relative bg-white py-6 px-4 sm:px-6 lg:px-8">
     <nav
       class="relative flex items-center justify-between sm:h-10 lg:justify-start"
     >
