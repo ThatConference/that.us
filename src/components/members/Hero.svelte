@@ -14,7 +14,7 @@
       <Nav />
 
       <main
-        class="mt-20 mx-auto max-w-screen-xl px-4 sm:mt-12 sm:px-6 md:mt-16
+        class="mt-24 mx-auto max-w-screen-xl px-4 sm:mt-12 sm:px-6 md:mt-16
         lg:mt-20 lg:px-8 xl:mt-28"
       >
         <div class="sm:text-center lg:text-left">
