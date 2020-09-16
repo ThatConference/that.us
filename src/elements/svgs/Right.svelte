@@ -1,5 +1,9 @@
+<script>
+  export let classes = 'absolute top-12 left-full transform translate-x-32';
+</script>
+
 <svg
-  class="absolute top-12 left-full transform translate-x-32"
+  class="{classes}"
   width="404"
   height="384"
   fill="none"
