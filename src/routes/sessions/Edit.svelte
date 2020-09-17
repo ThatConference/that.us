@@ -14,6 +14,7 @@
   // utilities
   import metaTagsStore from '../../store/metaTags';
   import { tagEvent } from '../../utilities/gtag';
+  import logEvent from '../../utilities/eventTrack';
   import { user } from '../../utilities/security.js';
   import { format } from './formatRequest';
 
@@ -31,7 +32,7 @@
     });
 
     tagEvent('session_withdraw', 'session', $user.sub);
-    window.tidioChatApi.track('session_withdraw');
+    logEvent('session_withdraw');
 
     navigateTo(`/my/submissions`, { replace: true });
   }
@@ -43,7 +44,7 @@
     await update(sessionId, updatedSession);
 
     tagEvent('session_update', 'session', $user.sub);
-    window.tidioChatApi.track('session_updated');
+    logEvent('session_updated');
 
     setSubmitting(false);
     resetForm();

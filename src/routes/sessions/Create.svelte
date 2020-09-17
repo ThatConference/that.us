@@ -19,6 +19,7 @@
   // utilities
   import metaTagsStore from '../../store/metaTags';
   import { tagEvent } from '../../utilities/gtag';
+  import logEvent from '../../utilities/eventTrack';
   import { format } from './formatRequest';
   import { user } from '../../utilities/security.js';
 
@@ -33,7 +34,7 @@
     const { id } = await create(newSession, $currentEvent.eventId);
 
     tagEvent('session_created', 'session', $user.sub);
-    window.tidioChatApi.track('session_created');
+    logEvent('session_created');
 
     setSubmitting(false);
     navigateTo(`/sessions/${id}?edit=true&isNew=true`, { replace: true });

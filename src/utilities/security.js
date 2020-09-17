@@ -5,6 +5,7 @@ import createAuth0Client from '@auth0/auth0-spa-js';
 import { getClient } from '@urql/svelte';
 import { navigateTo } from 'yrv';
 
+import logEvent from './eventTrack';
 import { securityConfig } from '../config';
 import meApi from '../dataSources/api.that.tech/me';
 
@@ -19,7 +20,7 @@ export const auth0Promise = createAuth0Client(securityConfig);
 export const logout = async () => {
   const auth0 = await auth0Promise;
 
-  window.tidioChatApi.track('logout');
+  logEvent('logout');
 
   await auth0.logout({
     returnTo: window.location.origin,
@@ -27,8 +28,6 @@ export const logout = async () => {
 };
 
 export const login = async (documentReferrer, signup) => {
-  window.tidioChatApi.track('login');
-
   const auth0 = await auth0Promise;
 
   const appState = {
@@ -48,6 +47,7 @@ export const login = async (documentReferrer, signup) => {
     };
   }
 
+  logEvent('login');
   await auth0.loginWithRedirect(authParams);
 };
 

@@ -14,6 +14,7 @@
 
   // utilities
   import metaTagsStore from '../../store/metaTags';
+  import logEvent from '../../utilities/eventTrack';
   import { tagEvent } from '../../utilities/gtag';
 
   import {
@@ -43,7 +44,8 @@
 
     if (badgeEarned) {
       tagEvent('badgeClaimed', 'account', badgeEarned.id);
-      window.tidioChatApi.track('badge_claimed');
+
+      logEvent('badge_claimed');
 
       awardedBadge = badgeEarned;
 
