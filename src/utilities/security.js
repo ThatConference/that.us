@@ -17,8 +17,9 @@ export const isAuthenticated = writable(false);
 export const auth0Promise = createAuth0Client(securityConfig);
 
 export const logout = async () => {
-  window.tidioChatApi.track('logout');
   const auth0 = await auth0Promise;
+
+  window.tidioChatApi.track('logout');
 
   await auth0.logout({
     returnTo: window.location.origin,

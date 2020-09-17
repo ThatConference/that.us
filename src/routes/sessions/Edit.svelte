@@ -31,6 +31,7 @@
     });
 
     tagEvent('session_withdraw', 'session', $user.sub);
+    window.tidioChatApi.track('session_withdraw');
 
     navigateTo(`/my/submissions`, { replace: true });
   }
@@ -42,6 +43,7 @@
     await update(sessionId, updatedSession);
 
     tagEvent('session_update', 'session', $user.sub);
+    window.tidioChatApi.track('session_updated');
 
     setSubmitting(false);
     resetForm();
@@ -61,13 +63,11 @@
 </script>
 
 <StackedLayout>
-
   <div slot="header">
     <Nav />
     <ActionHeader title="Update your Submission">
       <LinkButton href="/sessions" text="Return to THAT Board" />
     </ActionHeader>
-
   </div>
 
   <div slot="body">
@@ -76,8 +76,8 @@
     {:then session}
       {#if session}
         <SessionForm
-          {handleSubmit}
-          {handleWithdraw}
+          handleSubmit="{handleSubmit}"
+          handleWithdraw="{handleWithdraw}"
           initialValues="{session}"
         />
       {:else}
@@ -88,7 +88,5 @@
         />
       {/if}
     {/await}
-
   </div>
-
 </StackedLayout>
