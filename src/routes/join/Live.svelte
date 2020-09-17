@@ -21,7 +21,11 @@
 
   // data
   import metaTagsStore from '../../store/metaTags';
-  import { isAuthenticated, thatProfile } from '../../utilities/security.js';
+  import {
+    isAuthenticated,
+    thatProfile,
+    user,
+  } from '../../utilities/security.js';
   import sessionsApi from '../../dataSources/api.that.tech/sessions.js';
 
   const { setAttendance } = sessionsApi(getClient());
@@ -65,6 +69,41 @@
 
   // https://jitsi.github.io/handbook/docs/dev-guide/dev-guide-iframe
   function initJitsi() {
+    let toolButtonConfig = [
+      'microphone',
+      'camera',
+      'closedcaptions',
+      'desktop',
+      'fullscreen',
+      'fodeviceselection',
+      'hangup',
+      'profile',
+      'chat',
+      'etherpad',
+      'settings',
+      'raisehand',
+      'videoquality',
+      'filmstrip',
+      'feedback',
+      'stats',
+      'shortcuts',
+      'tileview',
+      'videobackgroundblur',
+      'download',
+      'help',
+      'mute-everyone',
+    ];
+
+    if ($user['http://auth.that.tech/roles'].includes('Admin')) {
+      toolButtonConfig.push(
+        'recording',
+        'livestreaming',
+        'invite',
+        'sharedvideo',
+        'security',
+      );
+    }
+
     const domain = 'meet.jit.si';
     const options = {
       roomName: `THAT-${sessionId}`,
@@ -75,38 +114,13 @@
         startWithAudioMuted: true,
         prejoinPageEnabled: false, // todo.. We could prolly drop our own image.
         // enableWelcomePage: true, // not sure what it does
+        brandingRoomAlias: `https://that.us/join/THAT-${sessionId}`,
+        transcribingEnabled: true, // doesn't seem to work, but it's listed as valid
       },
       // https://github.com/jitsi/jitsi-meet/blob/master/interface_config.js
       interfaceConfigOverwrite: {
-        TOOLBAR_BUTTONS: [
-          'microphone',
-          'camera',
-          'closedcaptions',
-          'desktop',
-          'fullscreen',
-          'fodeviceselection',
-          'hangup',
-          'profile',
-          'chat',
-          // 'recording',
-          // 'livestreaming',
-          'etherpad',
-          // 'sharedvideo',
-          'settings',
-          'raisehand',
-          'videoquality',
-          'filmstrip',
-          // 'invite',
-          'feedback',
-          'stats',
-          'shortcuts',
-          'tileview',
-          'videobackgroundblur',
-          'download',
-          'help',
-          'mute-everyone',
-          // 'security',
-        ],
+        TOOLBAR_BUTTONS: toolButtonConfig,
+        DEFAULT_REMOTE_DISPLAY_NAME: 'THAT Camper',
       },
       userInfo: {
         displayName: `${$thatProfile.firstName} ${$thatProfile.lastName}`,
@@ -209,7 +223,6 @@
 
 <svelte:head>
   <script src="https://meet.jit.si/external_api.js" on:load="{initJitsi}">
-
   </script>
 </svelte:head>
 
@@ -255,5 +268,4 @@
       />
     {/if}
   </div>
-
 </StackedLayout>
