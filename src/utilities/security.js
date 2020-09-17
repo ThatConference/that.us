@@ -19,12 +19,16 @@ export const auth0Promise = createAuth0Client(securityConfig);
 export const logout = async () => {
   const auth0 = await auth0Promise;
 
+  window.tidioChatApi.track('logout');
+
   await auth0.logout({
     returnTo: window.location.origin,
   });
 };
 
 export const login = async (documentReferrer, signup) => {
+  window.tidioChatApi.track('login');
+
   const auth0 = await auth0Promise;
 
   const appState = {

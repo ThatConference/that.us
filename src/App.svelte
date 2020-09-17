@@ -1,10 +1,16 @@
 <script>
-  import { onMount } from 'svelte';
+  import { onMount, onDestroy } from 'svelte';
   import { initClient } from '@urql/svelte';
   import { navigateTo, router, Router, Route } from 'yrv';
   import { v4 as uuidv4 } from 'uuid';
+  import { get } from 'svelte/store';
 
-  import { isAuthenticated, token } from './utilities/security.js';
+  import {
+    isAuthenticated,
+    token,
+    thatProfile,
+    user,
+  } from './utilities/security.js';
   import config, { events } from './config';
   import currentEvent from './store/currentEvent';
   import metaTagsStore from './store/metaTags';
@@ -76,6 +82,7 @@
     }
   });
 
+  let unsub;
   onMount(() => {
     if ($showReleaseNotes) {
       messages.update(m => [
@@ -88,6 +95,36 @@
       ]);
     }
   });
+
+  onDestroy(unsub);
+
+  function onTidioChatApiReady() {
+    unsub = thatProfile.subscribe(currentUser => {
+      if (currentUser.id) {
+        window.tidioChatApi.setVisitorData({
+          distinct_id: currentUser.id,
+          email: currentUser.email,
+          name: `${currentUser.firstName} ${currentUser.lastName}`,
+        });
+
+        window.tidioChatApi.setContactProperties({
+          company: currentUser.company,
+          canfeature: currentUser.canFeature ? 'true' : 'false',
+        });
+
+        window.tidioChatApi.addVisitorTags([
+          currentUser.id,
+          `https://that.us/member/${currentUser.profileSlug}`,
+        ]);
+      }
+    });
+  }
+
+  (function () {
+    if (window.tidioChatApi)
+      window.tidioChatApi.on('ready', onTidioChatApiReady);
+    else document.addEventListener('tidioChat-ready', onTidioChatApiReady);
+  })();
 </script>
 
 <svelte:head>

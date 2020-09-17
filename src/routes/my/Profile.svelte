@@ -44,6 +44,7 @@
 
     thatProfile.set(updateResults);
     tagEvent('profile_created', 'account', $user.sub);
+    window.tidioChatApi.track('profile_created');
 
     setSubmitting(false);
     resetForm();
@@ -67,6 +68,7 @@
     const updateResults = await updateProfile(updatedProfile);
 
     tagEvent('profile_update', 'account', $user.sub);
+    window.tidioChatApi.track('profile_update');
 
     thatProfile.set(updateResults);
 
@@ -97,10 +99,9 @@
     <ProfileForm
       handleSubmit="{isNewProfile ? handleNew : handleUpdate}"
       profile="{currentProfile}"
-      {isNewProfile}
+      isNewProfile="{isNewProfile}"
     />
   </div>
 
   <div slot="footer"></div>
-
 </StackedLayout>
