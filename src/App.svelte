@@ -1,9 +1,9 @@
 <script>
   import { onMount, onDestroy } from 'svelte';
+  import { get } from 'svelte/store';
   import { initClient } from '@urql/svelte';
   import { navigateTo, router, Router, Route } from 'yrv';
   import { v4 as uuidv4 } from 'uuid';
-  import { get } from 'svelte/store';
 
   import {
     isAuthenticated,
@@ -68,9 +68,9 @@
 
   let documentReferrer;
 
-  function shouldRedirecToLogin() {
+  function isLoggedIn() {
     documentReferrer = window.location.pathname;
-    return $isAuthenticated;
+    return get(isAuthenticated);
   }
 
   router.subscribe(e => {
@@ -180,7 +180,7 @@
       exact
       path="/sessions/create"
       component="{Create}"
-      condition="{shouldRedirecToLogin}"
+      condition="{isLoggedIn}"
       redirect="/login"
     />
 
@@ -188,7 +188,7 @@
       exact
       path="/sessions/edit/:sessionId"
       component="{EditSession}"
-      condition="{shouldRedirecToLogin}"
+      condition="{isLoggedIn}"
       redirect="/login"
     />
 
@@ -199,7 +199,7 @@
       exact
       path="/join/:sessionId"
       component="{Live}"
-      condition="{shouldRedirecToLogin}"
+      condition="{isLoggedIn}"
       redirect="/login"
     />
 
@@ -207,7 +207,7 @@
       exact
       path="/my/favorites"
       component="{MyFavorites}"
-      condition="{shouldRedirecToLogin}"
+      condition="{isLoggedIn}"
       redirect="/login"
     />
 
@@ -215,7 +215,7 @@
       exact
       path="/my/submissions"
       component="{MySubmissions}"
-      condition="{shouldRedirecToLogin}"
+      condition="{isLoggedIn}"
       redirect="/login"
     />
 
@@ -223,7 +223,7 @@
       exact
       path="/my/profile"
       component="{Profile}"
-      condition="{shouldRedirecToLogin}"
+      condition="{isLoggedIn}"
       redirect="/login"
     />
 
@@ -231,7 +231,7 @@
       exact
       path="/my/badges"
       component="{Badges}"
-      condition="{shouldRedirecToLogin}"
+      condition="{isLoggedIn}"
       redirect="/login"
     />
 

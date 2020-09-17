@@ -11,6 +11,7 @@
 
   import memberApi from '../../dataSources/api.that.tech/members.js';
   import { tagEvent } from '../../utilities/gtag';
+  import logEvent from '../../utilities/eventTrack';
   import metaTagsStore from '../../store/metaTags';
 
   import {
@@ -44,7 +45,7 @@
 
     thatProfile.set(updateResults);
     tagEvent('profile_created', 'account', $user.sub);
-    window.tidioChatApi.track('profile_created');
+    logEvent('profile_created');
 
     setSubmitting(false);
     resetForm();
@@ -68,7 +69,7 @@
     const updateResults = await updateProfile(updatedProfile);
 
     tagEvent('profile_update', 'account', $user.sub);
-    window.tidioChatApi.track('profile_update');
+    logEvent('profile_update');
 
     thatProfile.set(updateResults);
 
