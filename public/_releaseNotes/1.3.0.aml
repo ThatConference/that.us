@@ -1,0 +1,30 @@
+versionNumber: v1.3.0
+date: September XX, 2020
+
+notes: 
+
+[features]
+
+feature: [enhancement] The Join and Favorite buttons are always present and active.
+url: https://github.com/ThatConference/that.us/pull/347
+
+feature: [enhancement] Signup and Login call the login directly rather than redirect through login.svetle.
+url: https://github.com/ThatConference/that.us/pull/346
+
+feature: [bug] timezone message hids on mobile
+url: https://github.com/ThatConference/that.us/pull/339
+
+feature: [regression] Mobile nav on main page displays again.
+url: https://github.com/ThatConference/that.us/pull/338
+
+feature: [enhancement] Sponsor component is now community/event aware.
+url: https://github.com/ThatConference/that.us/pull/337
+
+feature: [enhancement] Activity center cards are now the link, not the text.
+url: https://github.com/ThatConference/that.us/pull/327
+
+feature: [enhancement] Tighter integration with our Tidio Chat bot.
+url: https://github.com/ThatConference/that.us/pull/348
+
+feature: [enhancement] More room options Admins specifically the capability to live stream to YouTube.
+url: https://github.com/ThatConference/that.us/pull/351
