@@ -76,9 +76,7 @@
   </div>
 
   <div class="pb-12 sm:pb-16 md:pb-20 lg:pb-28 xl:pb-32">
-    <div class="max-w-screen-xl mx-auto ">
-      <Nav />
-    </div>
+    <Nav />
 
     <main
       class="mt-24 mx-auto max-w-screen-xl px-4 sm:mt-12 sm:px-6 md:mt-16
