@@ -14,6 +14,7 @@
   // utilities
   import metaTagsStore from '../../store/metaTags';
   import { tagEvent } from '../../utilities/gtag';
+  import logEvent from '../../utilities/eventTrack';
   import { user } from '../../utilities/security.js';
   import { format } from './formatRequest';
 
@@ -31,6 +32,7 @@
     });
 
     tagEvent('session_withdraw', 'session', $user.sub);
+    logEvent('session_withdraw');
 
     navigateTo(`/my/submissions`, { replace: true });
   }
@@ -42,6 +44,7 @@
     await update(sessionId, updatedSession);
 
     tagEvent('session_update', 'session', $user.sub);
+    logEvent('session_updated');
 
     setSubmitting(false);
     resetForm();
@@ -61,13 +64,11 @@
 </script>
 
 <StackedLayout>
-
   <div slot="header">
     <Nav />
     <ActionHeader title="Update your Submission">
       <LinkButton href="/sessions" text="Return to THAT Board" />
     </ActionHeader>
-
   </div>
 
   <div slot="body">
@@ -76,8 +77,8 @@
     {:then session}
       {#if session}
         <SessionForm
-          {handleSubmit}
-          {handleWithdraw}
+          handleSubmit="{handleSubmit}"
+          handleWithdraw="{handleWithdraw}"
           initialValues="{session}"
         />
       {:else}
@@ -88,7 +89,5 @@
         />
       {/if}
     {/await}
-
   </div>
-
 </StackedLayout>

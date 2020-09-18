@@ -14,6 +14,7 @@
 
   // utilities
   import metaTagsStore from '../../store/metaTags';
+  import logEvent from '../../utilities/eventTrack';
   import { tagEvent } from '../../utilities/gtag';
 
   import {
@@ -43,6 +44,9 @@
 
     if (badgeEarned) {
       tagEvent('badgeClaimed', 'account', badgeEarned.id);
+
+      logEvent('badge_claimed');
+
       awardedBadge = badgeEarned;
 
       await refreshMe();
@@ -80,7 +84,7 @@
       <div>
         <h2
           class="text-3xl leading-9 font-extrabold tracking-tight text-gray-900
-          sm:text-4xl sm:leading-10"
+            sm:text-4xl sm:leading-10"
         >
           Awarded Badges
         </h2>
@@ -92,7 +96,7 @@
                 <img class="h-56 w-56" src="{badge.image}" alt="{badge.name}" />
                 <h2
                   class="text-xl leading-9 font-bold tracking-tight
-                  text-gray-500 sm:text-2xl sm:leading-10"
+                    text-gray-500 sm:text-2xl sm:leading-10"
                 >
                   {badge.name}
                 </h2>

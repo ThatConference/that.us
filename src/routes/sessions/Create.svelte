@@ -19,6 +19,7 @@
   // utilities
   import metaTagsStore from '../../store/metaTags';
   import { tagEvent } from '../../utilities/gtag';
+  import logEvent from '../../utilities/eventTrack';
   import { format } from './formatRequest';
   import { user } from '../../utilities/security.js';
 
@@ -33,6 +34,7 @@
     const { id } = await create(newSession, $currentEvent.eventId);
 
     tagEvent('session_created', 'session', $user.sub);
+    logEvent('session_created');
 
     setSubmitting(false);
     navigateTo(`/sessions/${id}?edit=true&isNew=true`, { replace: true });
@@ -50,7 +52,6 @@
 </script>
 
 <StackedLayout>
-
   <div slot="header">
     <Nav />
     <ActionHeader>
@@ -76,7 +77,6 @@
   </div>
 
   <div slot="body">
-    <SessionForm {handleSubmit} />
+    <SessionForm handleSubmit="{handleSubmit}" />
   </div>
-
 </StackedLayout>
