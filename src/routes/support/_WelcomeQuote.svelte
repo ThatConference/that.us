@@ -1,10 +1,17 @@
-<blockquote class="relative bg-white rounded-lg shadow-lg">
+<script>
+  import { fade } from 'svelte/transition';
+</script>
+
+<blockquote
+  in:fade="{{ delay: 300, duration: 2000 }}"
+  class="relative bg-white rounded-lg shadow-lg"
+>
   <div class="rounded-t-lg px-6 py-8 sm:px-10 sm:pt-10 sm:pb-8">
     <img src="/images/THAT-Full-Wide.svg" alt="THAT" class="h-8" />
     <div class="relative text-lg text-gray-700 leading-7 font-medium mt-8">
       <svg
-        class="absolute top-0 left-0 transform -translate-x-3 -translate-y-2 h-8
-          w-8 text-gray-200"
+        class="absolute top-0 left-0 transform -translate-x-4 -translate-y-2 h-8
+          w-8 text-thatBlue-100 opacity-50"
         fill="currentColor"
         viewBox="0 0 32 32"
       >
@@ -13,7 +20,10 @@
         ></path>
       </svg>
       <p class="relative">
-        HI! Let me be the first to send ya a warm welcome you to THAT.
+        👋 Hi! I wanted to be the first person here to send you a very warm
+        welcome to THAT. I'm really excited to have you here and can't wait to
+        collobrating more with you. If you need help getting started or just
+        have any questions, please just ask us in the chat below.
       </p>
     </div>
   </div>

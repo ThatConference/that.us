@@ -1,10 +1,13 @@
 <script>
-  import { fade } from 'svelte/transition';
   import { Link } from 'yrv';
 
-  import Layout from './Layout.svelte';
-  import WelcomeQuote from './WelcomeQuote.svelte';
-  import { Trees } from '../../elements/svgs';
+  import Layout from '../../elements/layouts/ContentLayout.svelte';
+  import WelcomeQuote from './_WelcomeQuote.svelte';
+
+  import {
+    Highlight as HighlightLink,
+    Standard as StandardLink,
+  } from '../../elements/links';
 </script>
 
 <Layout>
@@ -25,68 +28,44 @@
         </h1>
       </div>
       <div
-        class="relative z-10 text-base max-w-prose mx-auto mb-8 lg:max-w-5xl
-          lg:mx-0 lg:pr-72"
+        class="relative text-base max-w-prose mx-auto mb-8 lg:max-w-5xl lg:mx-0
+          lg:pr-72"
       >
-        <p class="text-lg text-gray-500 leading-7">TODO</p>
+        <p class="text-lg text-gray-500 leading-7">
+          Here at THAT It's our mission to make the best community of geeks on
+          this planet. A community of people who want to help one another each
+          and every day.
+        </p>
       </div>
       <div class="lg:grid lg:grid-cols-2 lg:gap-8 lg:items-start">
-        <div class="relative z-10 mb-12 lg:mb-0">
+        <div class="relative mb-12 lg:mb-0">
           <div class="mb-10 prose text-gray-500 mx-auto lg:max-w-none">
-            <p>TODO</p>
+            <p>Things you should know:</p>
             <ul>
               <li>
-                <Link href="/sessions">Checkout the upcoming activities.</Link>
+                <Link href="/sessions">Join an upcoming activity.</Link>
               </li>
               <li>
-                <Link href="/sessions">Join an activity.</Link>
+                <Link href="/sessions/create">Creating an activity.</Link>
               </li>
               <li>
-                <Link href="/sessions/create">Create your own activity.</Link>
+                <Link href="/sessions/create">Staying up to date.</Link>
               </li>
             </ul>
             <p>TODO</p>
-            <h2>TODO</h2>
-            <p>TODO</p>
+            <h2>Why THAT?</h2>
+            <p>todo</p>
           </div>
-          <div class="flex text-base max-w-prose mx-auto lg:max-w-none">
-            <div class="rounded-md shadow">
-              <Link
-                href="/sessions"
-                class="w-full flex items-center justify-center px-5 py-3 border
-                  border-transparent text-base leading-6 font-medium rounded-md
-                  text-white bg-indigo-600 hover:bg-indigo-500
-                  focus:outline-none focus:border-indigo-700
-                  focus:shadow-outline-indigo transition duration-150
-                  ease-in-out"
-              >
-                View THAT Board
-              </Link>
-            </div>
-            <div class="rounded-md shadow ml-4">
-              <Link
-                href="#"
-                class="w-full flex items-center justify-center px-5 py-3 border
-                  border-transparent text-base leading-6 font-medium rounded-md
-                  text-indigo-600 bg-white hover:text-indigo-500
-                  focus:outline-none focus:border-indigo-300
-                  focus:shadow-outline-indigo transition duration-150
-                  ease-in-out"
-              >
-                What's an activity?
-              </Link>
-            </div>
+          <div
+            class="flex space-x-4 text-base max-w-prose mx-auto lg:max-w-none"
+          >
+            <StandardLink href="/sessions">Upcoming Activities</StandardLink>
+            <HighlightLink href="/support/join-activity">
+              Joining an Activity
+            </HighlightLink>
           </div>
         </div>
         <div class="relative text-base max-w-prose mx-auto lg:max-w-none">
-          <div transition:fade="{{ delay: 200, duration: 2000 }}">
-            <Trees
-              classes="opacity-25 absolute top-0 right-0 mt-40 mr-80 lg:top-auto
-          lg:right-auto lg:bottom-1/2 lg:left-1/2 lg:mt-0 lg:mr-0 xl:top-0
-          xl:right-0 xl:-mt-40 xl:-mr-80"
-            />
-          </div>
-
           <WelcomeQuote />
         </div>
       </div>

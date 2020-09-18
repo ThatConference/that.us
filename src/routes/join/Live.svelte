@@ -98,7 +98,7 @@
       toolButtonConfig.push(
         'recording',
         'livestreaming',
-        'invite',
+        // 'invite', we can already do this just by passing the url to someone.
         'sharedvideo',
         'security',
       );

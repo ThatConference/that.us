@@ -28,7 +28,12 @@
   import FAQ from './routes/FAQ.svelte';
   import Partners from './routes/Partners.svelte';
   import Members from './routes/Members.svelte';
+
+  // support
   import NewUserWelcome from './routes/support/Welcome.svelte';
+  import JoinActivity from './routes/support/JoinActivity.svelte';
+  import CreateActivity from './routes/support/CreateActivity.svelte';
+  import StayingUpToDate from './routes/support/StayingUpToDate.svelte';
 
   // my
   import MyFavorites from './routes/my/Favorites.svelte';
@@ -172,13 +177,18 @@
     <Route exact path="/partners" component="{Partners}" />
     <Route exact path="/changelog" component="{ChangeLog}" />
     <Route exact path="/changelog-missed" component="{ChangeLogMissed}" />
-    
+
     <Route exact path="/sessions" component="{List}" />
-    
-    
-    
+
     <Route exact path="/support/welcome" component="{NewUserWelcome}" />
-    
+    <Route exact path="/support/join-activity" component="{JoinActivity}" />
+    <Route exact path="/support/create-activity" component="{CreateActivity}" />
+    <Route
+      exact
+      path="/support/staying-up-to-date"
+      component="{StayingUpToDate}"
+    />
+
     <Route
       exact
       path="/sessions/create"
