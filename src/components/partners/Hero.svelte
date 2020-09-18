@@ -3,7 +3,7 @@
   import { Link } from 'yrv';
 </script>
 
-<div class="relative bg-gray-50 overflow-hidden">
+<div class="relative bg-gray-50 overflow-hidden z-10">
   <div class="hidden sm:block sm:absolute sm:inset-y-0 sm:h-full sm:w-full">
     <div class="relative h-full max-w-screen-xl mx-auto">
       <svg
@@ -75,13 +75,11 @@
     </div>
   </div>
 
-  <div class="relative pb-12 sm:pb-16 md:pb-20 lg:pb-28 xl:pb-32">
-    <div class="max-w-screen-xl mx-auto ">
-      <Nav />
-    </div>
+  <div class="pb-12 sm:pb-16 md:pb-20 lg:pb-28 xl:pb-32">
+    <Nav />
 
     <main
-      class="mt-10 mx-auto max-w-screen-xl px-4 sm:mt-12 sm:px-6 md:mt-16
+      class="mt-24 mx-auto max-w-screen-xl px-4 sm:mt-12 sm:px-6 md:mt-16
       lg:mt-20 xl:mt-28"
     >
       <div class="text-center">

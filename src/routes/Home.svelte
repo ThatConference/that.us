@@ -44,7 +44,7 @@
   Newsletter?
 -->
 
-<div class="max-w-screen-xl mx-auto">
+<div class="relative z-10">
   <MainNav />
 </div>
 
