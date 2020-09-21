@@ -6,6 +6,17 @@
     Highlight as HighlightLink,
     Standard as StandardLink,
   } from '../../elements/links';
+
+  import metaTagsStore from '../../store/metaTags';
+
+  metaTagsStore.set({
+    title: 'Joining an Activity - THAT!',
+    description: '',
+    openGraph: {
+      type: 'website',
+      url: `https://that.us/support/join-activity`,
+    },
+  });
 </script>
 
 <Layout>
