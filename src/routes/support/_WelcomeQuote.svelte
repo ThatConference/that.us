@@ -22,8 +22,8 @@
       <p class="relative">
         👋 Hi! I wanted to be the first person here to send you a very warm
         welcome to THAT. I'm really excited to have you here and can't wait to
-        collobrating more with you. If you need help getting started or just
-        have any questions, please just ask us in the chat below.
+        collaborate more with you. If you need help getting started or just have
+        any questions, please just ask us in the chat below.
       </p>
     </div>
   </div>
