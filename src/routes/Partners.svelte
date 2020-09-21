@@ -2,8 +2,8 @@
   import { getClient } from '@urql/svelte';
   import _ from 'lodash';
 
+  import Layout from '../elements/layouts/ContentLayout.svelte';
   import Hero from '../components/partners/Hero.svelte';
-  import Footer from '../components/Footer.svelte';
   import PartnerCard from '../components/partners/PartnerCard.svelte';
   import CardLoader from '../components/CardLoader.svelte';
 
@@ -23,28 +23,31 @@
   });
 </script>
 
-<main>
-  <Hero />
-  <div class="relative bg-white overflow-hidden py-12">
-    <div class="max-w-screen-xl mx-auto px-8">
-      {#await partners}
-        <CardLoader />
-      {:then partners}
-        <ul
-          class="grid grid-cols-1 gap-6 sm:grid-cols-3 md:grid-cols-4
-            lg:grid-cols-5"
-        >
-          {#each partners as p (p.id)}
-            <li
-              class="col-span-1 flex flex-col text-center bg-white rounded-lg
-                shadow"
+<Layout>
+  <main class="overflow-hidden">
+    <div class="relative pb-16 md:pb-20 lg:pb-24 xl:pb-32">
+      <div class="mt-32 mx-auto max-w-screen-xl px-4 sm:px-6 xl:mt-40">
+        <Hero />
+        <div class="mt-12 py-12">
+          {#await partners}
+            <CardLoader />
+          {:then partners}
+            <ul
+              class="grid grid-cols-1 gap-6 sm:grid-cols-3 md:grid-cols-4
+                lg:grid-cols-5"
             >
-              <PartnerCard {...p} />
-            </li>
-          {/each}
-        </ul>
-      {/await}
+              {#each partners as p (p.id)}
+                <li
+                  class="col-span-1 flex flex-col text-center bg-white
+                    rounded-lg shadow"
+                >
+                  <PartnerCard {...p} />
+                </li>
+              {/each}
+            </ul>
+          {/await}
+        </div>
+      </div>
     </div>
-  </div>
-  <Footer />
-</main>
+  </main>
+</Layout>

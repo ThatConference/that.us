@@ -4,10 +4,11 @@
   import SvelteInfiniteScroll from 'svelte-infinite-scroll';
   import _ from 'lodash';
 
+  import Layout from '../elements/layouts/ContentLayout.svelte';
+
   import metaTagsStore from '../store/metaTags';
   import { Waiting } from '../elements';
   import Hero from '../components/members/Hero.svelte';
-  import Footer from '../components/Footer.svelte';
   import MemberCard from '../components/members/MemberCard.svelte';
   import CardLoader from '../components/CardLoader.svelte';
 
@@ -52,37 +53,44 @@
   });
 </script>
 
-<main>
-  <Hero />
-  <div class="relative bg-white overflow-hidden py-20">
-    <div class="max-w-screen-xl mx-auto px-8">
-      {#if loading}
-        <CardLoader />
-      {/if}
-      <ul
-        class="grid grid-cols-1 gap-6 sm:grid-cols-3 md:grid-cols-4
-          lg:grid-cols-5"
-      >
-        {#each memberList as m (m.id)}
-          <li
-            class="col-span-1 flex flex-col text-center bg-white rounded-lg
-              shadow"
-          >
-            <MemberCard {...m} />
-          </li>
-        {/each}
-        <SvelteInfiniteScroll
-          window
-          threshold="{25}"
-          on:loadMore="{() => getNext()}"
-        />
-      </ul>
-      {#if loadingMore}
-        <div class="flex flex-grow justify-center py-12">
-          <Waiting />
-        </div>
-      {/if}
+<Layout>
+  <main class="overflow-hidden">
+    <div class="relative pb-16 md:pb-20 lg:pb-24 xl:pb-32">
+      <div class="mt-32 mx-auto max-w-screen-xl px-4 sm:px-6 xl:mt-40">
+        <main>
+          <Hero />
+          <div class="py-20">
+            <div class="px-8">
+              {#if loading}
+                <CardLoader />
+              {/if}
+              <ul
+                class="grid grid-cols-1 gap-6 sm:grid-cols-3 md:grid-cols-4
+                  lg:grid-cols-5"
+              >
+                {#each memberList as m (m.id)}
+                  <li
+                    class="col-span-1 flex flex-col text-center bg-white
+                      rounded-lg shadow"
+                  >
+                    <MemberCard {...m} />
+                  </li>
+                {/each}
+                <SvelteInfiniteScroll
+                  window
+                  threshold="{25}"
+                  on:loadMore="{() => getNext()}"
+                />
+              </ul>
+              {#if loadingMore}
+                <div class="flex flex-grow justify-center py-12">
+                  <Waiting />
+                </div>
+              {/if}
+            </div>
+          </div>
+        </main>
+      </div>
     </div>
-  </div>
-  <Footer />
-</main>
+  </main>
+</Layout>

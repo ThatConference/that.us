@@ -1,10 +1,8 @@
 <script>
-  import { fly } from 'svelte/transition';
   import { Link } from 'yrv';
   import Youtube from '@sveltecasts/svelte-youtube';
 
   // utilities
-  import { Trees } from '../../elements/svgs';
   import { login, isAuthenticated } from '../../utilities/security';
 </script>
 
