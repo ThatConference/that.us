@@ -11,19 +11,17 @@
 
 <nav class="bg-that-navy">
   <!-- full screen nav -->
-  <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+  <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
     <div>
-      <div class="flex items-center justify-between h-16 px-4 sm:px-0">
-
+      <div class="flex items-center justify-between px-4 sm:px-0">
         <LargeNav />
 
         <div class="-mr-2 flex md:hidden">
-
           <!-- Mobile menu button -->
           <button
             class="inline-flex items-center justify-center p-2 rounded-md
-            text-gray-300 hover:text-white hover:bg-that-blue focus:outline-none
-            focus:text-white focus:bg-that-blue"
+              text-gray-300 hover:text-white hover:bg-that-blue
+              focus:outline-none focus:text-white focus:bg-that-blue"
             on:click|preventDefault="{() => mobileVisible.set(!$mobileVisible)}"
           >
             <!-- Menu open: "hidden", Menu closed: "block" -->
