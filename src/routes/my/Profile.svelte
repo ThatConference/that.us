@@ -1,5 +1,4 @@
 <script>
-  import { onMount } from 'svelte';
   import { getClient } from '@urql/svelte';
   import { navigateTo } from 'yrv';
   import _ from 'lodash';
@@ -12,15 +11,10 @@
   import memberApi from '../../dataSources/api.that.tech/members.js';
   import { tagEvent } from '../../utilities/gtag';
   import logEvent from '../../utilities/eventTrack';
+  import { user, thatProfile } from '../../utilities/security.js';
   import metaTagsStore from '../../store/metaTags';
 
-  import {
-    isAuthenticated,
-    user,
-    thatProfile,
-  } from '../../utilities/security.js';
-
-  const { createProfile, updateProfile, uploadImage } = memberApi(getClient());
+  const { createProfile, updateProfile } = memberApi(getClient());
 
   let isNewProfile;
   let currentProfile;
@@ -49,7 +43,7 @@
 
     setSubmitting(false);
     resetForm();
-    navigateTo(`/sessions`, { replace: true });
+    navigateTo(`/activities`, { replace: true });
   }
 
   async function handleUpdate({
@@ -75,7 +69,7 @@
 
     setSubmitting(false);
     resetForm();
-    navigateTo(`/sessions`, { replace: true });
+    navigateTo(`/activities`, { replace: true });
   }
 
   metaTagsStore.set({

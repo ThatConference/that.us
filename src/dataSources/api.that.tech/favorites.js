@@ -50,7 +50,7 @@ export const QUERY_MY_FAVORITES = `
   }
 `;
 
-export default (client) => {
+export default client => {
   const favoritesStore = writable([]);
 
   function query(eventId) {
@@ -61,7 +61,7 @@ export default (client) => {
     return client
       .query(QUERY_MY_FAVORITES, variables)
       .toPromise()
-      .then((r) => {
+      .then(r => {
         let results = [];
 
         if (r.error) {
@@ -75,7 +75,7 @@ export default (client) => {
           results = favorites; // set the return results
         }
 
-        results = results.filter((s) => s.status === 'ACCEPTED');
+        results = results.filter(s => s.status === 'ACCEPTED');
         results.sort((a, b) => new Date(a.startTime) - new Date(b.startTime));
 
         return results;
@@ -98,11 +98,11 @@ export default (client) => {
       const { toggle: fav } = data.sessions.favoriting;
       if (fav) {
         // is toggled
-        favoritesStore.update((i) => [...i, fav]);
+        favoritesStore.update(i => [...i, fav]);
         results = true;
       } else {
         // not toggled
-        favoritesStore.update((favs) => favs.filter((i) => i.id !== sessionId));
+        favoritesStore.update(favs => favs.filter(i => i.id !== sessionId));
         results = false;
       }
     }
@@ -110,8 +110,8 @@ export default (client) => {
     return results;
   }
 
-  const get = (eventId) => query(eventId);
-  const getIds = (eventId) => query(eventId).then((r) => r.map((i) => i.id));
+  const get = eventId => query(eventId);
+  const getIds = eventId => query(eventId).then(r => r.map(i => i.id));
 
   // favoritesStore.set(query());
 

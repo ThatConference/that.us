@@ -13,7 +13,7 @@
   } from '../../elements';
 
   import CardLoader from '../../components/CardLoader.svelte';
-  import SessionsList from '../../components/sessions/List.svelte';
+  import ActivityList from '../../components/activities/List.svelte';
 
   // data
   import metaTagsStore from '../../store/metaTags';
@@ -24,7 +24,7 @@
 
   metaTagsStore.set({
     title: 'My Favorites - THAT',
-    description: "You're list of favorited sessions.",
+    description: "You're list of favorited activities.",
     nofollow: true,
     noindex: true,
     openGraph: {
@@ -35,25 +35,24 @@
 </script>
 
 <StackedLayout>
-
   <div slot="header">
     <Nav />
     <ActionHeader title="My Favorites">
-      <LinkButton href="/sessions" text="Return to THAT Board" />
+      <LinkButton href="/activities" text="Return to Activities" />
     </ActionHeader>
   </div>
 
   <div slot="body">
     {#await get($currentEvent.eventId)}
       <CardLoader />
-    {:then sessions}
-      {#if sessions.length > 0}
-        <SessionsList {sessions} />
+    {:then activities}
+      {#if activities.length > 0}
+        <ActivityList activities="{activities}" />
       {:else}
         <div class="p-12">
           <ModalWarning
             title="No Favorites!"
-            text="Hold on a minute! You haven't favorited any sessions yet. Get
+            text="Hold on a minute! You haven't favorited any activities yet. Get
             on it!"
           />
         </div>
@@ -63,7 +62,7 @@
         title="KABOOM!"
         text="I'm sorry, bugs are features right? If I were you, I'd refresh the
         page right now."
-        action="{{ title: 'Return to THAT Board', href: '/sessions' }}"
+        action="{{ title: 'Return to Activities', href: '/activities' }}"
       />
     {/await}
   </div>
@@ -71,5 +70,4 @@
   <div slot="footer">
     <Sponsor />
   </div>
-
 </StackedLayout>

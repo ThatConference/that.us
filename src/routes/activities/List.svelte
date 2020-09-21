@@ -1,20 +1,16 @@
 <script>
   // 3rd party
   import { getClient } from '@urql/svelte';
-  import dayjs from 'dayjs';
-  import { navigateTo, Link } from 'yrv';
-  import { onMount } from 'svelte';
   import _ from 'lodash';
 
   // utilities
-  import { getTimeStampId, scrollIntoView } from '../../utilities/scrollHelper';
   import { thatProfile } from '../../utilities/security';
   import metaTagsStore from '../../store/metaTags';
 
   // components
   import Nav from '../../components/nav/interiorNav/Top.svelte';
   import Sponsor from '../../components/SponsorSimple.svelte';
-  import SessionsList from '../../components/sessions/List.svelte';
+  import ActivityList from '../../components/activities/List.svelte';
   import CardLoader from '../../components/CardLoader.svelte';
 
   // elements
@@ -35,38 +31,23 @@
     createDisabled = false;
   }
 
-  let hasMissedReleases = false;
-
-  onMount(() => {
-    // TODO put back later after we have new dashboard.
-    // query.then((_) => {
-    //   const now = dayjs();
-    //   let starting = now.startOf('hour');
-    //   const bump = now.minute() >= 29;
-    //   starting = bump === true ? starting.add(30, 'm') : starting;
-    //   const id = getTimeStampId(starting.toDate());
-    //   scrollIntoView(`#${id}`);
-    // });
-  });
-
   metaTagsStore.set({
-    title: 'THAT Board - THAT',
+    title: 'Upcoming Activities - THAT',
     description:
       "We don't have to wait to have the conversation we need to have today. This is what's coming up.",
     openGraph: {
       type: 'website',
-      url: `https://that.us/sessions`,
+      url: `https://that.us/activities`,
     },
   });
 </script>
 
 <StackedLayout>
-
   <div slot="header">
     <Nav />
-    <ActionHeader title="THAT Board">
+    <ActionHeader title="Activities">
       {#if !createDisabled}
-        <LinkButton href="/sessions/create" text="Create a New ..." />
+        <LinkButton href="/activities/create" text="Create a New ..." />
       {/if}
     </ActionHeader>
   </div>
@@ -74,8 +55,8 @@
   <div slot="body">
     {#await querySessionsByDate($currentEvent.eventId)}
       <CardLoader />
-    {:then sessions}
-      <SessionsList {sessions} />
+    {:then activities}
+      <ActivityList activities="{activities}" />
     {:catch error}
       <p>OH NO</p>
     {/await}
@@ -84,5 +65,4 @@
   <div slot="footer">
     <Sponsor eventId="{$currentEvent.eventId}" />
   </div>
-
 </StackedLayout>

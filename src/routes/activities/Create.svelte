@@ -8,7 +8,7 @@
   import StackedLayout from '../../elements/layouts/StackedLayout.svelte';
   import { ActionHeader, LinkButton } from '../../elements';
   import Nav from '../../components/nav/interiorNav/Top.svelte';
-  import SessionForm from '../../components/sessions/SessionForm.svelte';
+  import ActivityForm from '../../components/activities/ActivityForm.svelte';
 
   // data
   import sessionsApi from '../../dataSources/api.that.tech/sessions.js';
@@ -30,23 +30,23 @@
   }) {
     setSubmitting(true);
 
-    const newSession = format(values);
-    const { id } = await create(newSession, $currentEvent.eventId);
+    const newActivity = format(values);
+    const { id } = await create(newActivity, $currentEvent.eventId);
 
-    tagEvent('session_created', 'session', $user.sub);
-    logEvent('session_created');
+    tagEvent('activity_created', 'activity', $user.sub);
+    logEvent('activity_created');
 
     setSubmitting(false);
-    navigateTo(`/sessions/${id}?edit=true&isNew=true`, { replace: true });
+    navigateTo(`/activities/${id}?edit=true&isNew=true`, { replace: true });
   }
 
   metaTagsStore.set({
     title: 'Create a New... - THAT',
     description:
-      'Create a New [Session, Code Review, Open Space, Chat], you get the idea.',
+      'Create a New [Activity, Code Review, Open Space, Chat], you get the idea.',
     openGraph: {
       type: 'website',
-      url: `https://that.us/sessions/create`,
+      url: `https://that.us/activities/create`,
     },
   });
 </script>
@@ -55,7 +55,7 @@
   <div slot="header">
     <Nav />
     <ActionHeader>
-      <LinkButton href="/sessions" text="Return to THAT Board" />
+      <LinkButton href="/activities" text="Return to Activities" />
 
       <div class="flex space-x-2" slot="title">
         <span>Create a new</span>
@@ -77,6 +77,6 @@
   </div>
 
   <div slot="body">
-    <SessionForm handleSubmit="{handleSubmit}" />
+    <ActivityForm handleSubmit="{handleSubmit}" />
   </div>
 </StackedLayout>

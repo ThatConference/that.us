@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-
+import { onDestroy } from 'svelte';
 import { writable } from 'svelte/store';
 import createAuth0Client from '@auth0/auth0-spa-js';
 import { getClient } from '@urql/svelte';
@@ -9,7 +9,7 @@ import logEvent from './eventTrack';
 import { securityConfig } from '../config';
 import meApi from '../dataSources/api.that.tech/me';
 
-securityConfig.redirect_uri = `${window.location.origin}/sessions`;
+securityConfig.redirect_uri = `${window.location.origin}/activities`;
 
 export const user = writable({});
 export const thatProfile = writable({});
@@ -36,7 +36,7 @@ export const login = async (documentReferrer, signup) => {
   };
 
   let authParams = {
-    redirect_uri: `${window.location.origin}/sessions`,
+    redirect_uri: `${window.location.origin}/activities`,
     appState,
   };
 
@@ -51,7 +51,7 @@ export const login = async (documentReferrer, signup) => {
   await auth0.loginWithRedirect(authParams);
 };
 
-export async function generateAuth0() {
+export async function setupAuth(client) {
   const auth0 = await auth0Promise;
   const query = window.location.search;
 
@@ -59,7 +59,6 @@ export async function generateAuth0() {
 
   if (query.includes('code=') && query.includes('state=')) {
     redirectResult = await auth0.handleRedirectCallback();
-    // window.history.replaceState({}, document.title, '/');
   }
 
   if (await auth0.isAuthenticated()) {
@@ -70,8 +69,8 @@ export async function generateAuth0() {
     token.set(await auth0.getTokenSilently());
 
     // set the THAT membership profile
-    const { queryMe } = meApi(getClient());
-    thatProfile.set(await queryMe(getClient()));
+    const { queryMe } = meApi(client);
+    thatProfile.set(await queryMe(client));
 
     if (redirectResult)
       navigateTo(redirectResult.appState.pathname, { replace: true });
@@ -86,5 +85,3 @@ export async function refreshMe() {
     thatProfile.set(await queryMe(getClient()));
   }
 }
-
-generateAuth0();

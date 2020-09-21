@@ -1,5 +1,4 @@
 <script>
-  import { onMount } from 'svelte';
   import { getClient } from '@urql/svelte';
 
   // ui support
@@ -17,12 +16,7 @@
   import logEvent from '../../utilities/eventTrack';
   import { tagEvent } from '../../utilities/gtag';
 
-  import {
-    isAuthenticated,
-    user,
-    thatProfile,
-    refreshMe,
-  } from '../../utilities/security.js';
+  import { user, thatProfile, refreshMe } from '../../utilities/security.js';
 
   const { claimTicket } = memberApi(getClient());
 
@@ -75,7 +69,7 @@
   <div slot="header">
     <Nav />
     <ActionHeader title="Your Merit Badges">
-      <LinkButton href="/sessions" text="Return to THAT Board" />
+      <LinkButton href="/activities" text="Return to Activities" />
     </ActionHeader>
   </div>
 

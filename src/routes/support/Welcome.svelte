@@ -43,13 +43,13 @@
             <p>Things you should know:</p>
             <ul>
               <li>
-                <Link href="/sessions">Join an upcoming activity.</Link>
+                <Link href="/activities">Join an upcoming activity.</Link>
               </li>
               <li>
-                <Link href="/sessions/create">Creating an activity.</Link>
+                <Link href="/activities/create">Creating an activity.</Link>
               </li>
               <li>
-                <Link href="/sessions/create">Staying up to date.</Link>
+                <Link href="/activities/create">Staying up to date.</Link>
               </li>
             </ul>
             <p>TODO</p>
@@ -59,7 +59,7 @@
           <div
             class="flex space-x-4 text-base max-w-prose mx-auto lg:max-w-none"
           >
-            <StandardLink href="/sessions">Upcoming Activities</StandardLink>
+            <StandardLink href="/activities">Upcoming Activities</StandardLink>
             <HighlightLink href="/support/join-activity">
               Joining an Activity
             </HighlightLink>

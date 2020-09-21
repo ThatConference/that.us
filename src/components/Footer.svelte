@@ -39,8 +39,8 @@
 
   const textLinks = [
     {
-      text: 'THAT Board',
-      href: '/sessions',
+      text: 'Activities',
+      href: '/activities',
     },
     {
       text: 'Members',

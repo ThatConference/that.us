@@ -23,7 +23,11 @@
 
   // utilties
   import config, { events } from '../../config';
-  import { login, isAuthenticated, thatProfile } from '../../utilities/security';
+  import {
+    login,
+    isAuthenticated,
+    thatProfile,
+  } from '../../utilities/security';
   import { truncate, isLongerThan } from '../../utilities/truncate';
 
   // data
@@ -125,14 +129,12 @@
 </script>
 
 <div class="w-full h-full flex flex-col">
-
   <div class="flex items-center p-3 space-x-3">
     <Link
       open
       href="https://www.thatconference.com/member/{host.profileSlug}"
       class="flex-shrink-0"
     >
-
       <span class="inline-block relative">
         <img
           class="w-15 h-15 rounded-full"
@@ -149,7 +151,6 @@
           </span>
         {/if}
       </span>
-
     </Link>
     <div class="flex flex-col">
       <h3 class="text-gray-900 text-sm leading-5 font-medium break-words">
@@ -177,7 +178,6 @@
           {/if}
         </div>
       {/if}
-
     </p>
   </div>
 
@@ -189,41 +189,46 @@
 
   <div class="flex-none border-t border-gray-200">
     <div class="-mt-px flex">
-      <div class="w-0 flex-1 flex ">
-        <CardLink href="/sessions/{id}" icon="{info}" text="{'More Details'}" />
+      <div class="w-0 flex-1 flex">
+        <CardLink
+          href="/activities/{id}"
+          icon="{info}"
+          text="{'More Details'}"
+        />
       </div>
-      
+
       {#if !hasExpired}
         {#if $isAuthenticated}
           <div class="-ml-px w-0 flex-1 flex border-l border-gray-200">
             <button
-            on:click|preventDefault="{!favoriteDisabled && handleToggle}"
-            class:text-red-500="{isFavorite}"
-            class="relative w-0 flex-1 inline-flex items-center justify-center
-            py-2 text-xs leading-4 text-gray-700 font-medium border
-            border-transparent rounded-br-lg hover:text-gray-300
-            focus:outline-none focus:shadow-outline-blue focus:border-blue-300
-            focus:z-10 transition ease-in-out duration-150"
+              on:click|preventDefault="{!favoriteDisabled && handleToggle}"
+              class:text-red-500="{isFavorite}"
+              class="relative w-0 flex-1 inline-flex items-center justify-center
+                py-2 text-xs leading-4 text-gray-700 font-medium border
+                border-transparent rounded-br-lg hover:text-gray-300
+                focus:outline-none focus:shadow-outline-blue
+                focus:border-blue-300 focus:z-10 transition ease-in-out
+                duration-150"
             >
-              
               <Icon data="{heart}" class="w-4 h-4" />
               <span class="ml-3">Favorite</span>
             </button>
           </div>
-          {:else}
-            <div class="-ml-px w-0 flex-1 flex border-l border-gray-200">
-              <button
+        {:else}
+          <div class="-ml-px w-0 flex-1 flex border-l border-gray-200">
+            <button
               on:click|preventDefault="{() => login(document.location.pathname, false)}"
               class="relative w-0 flex-1 inline-flex items-center justify-center
-              py-2 text-xs leading-4 text-gray-700 font-medium border
-              border-transparent rounded-br-lg hover:text-gray-300
-              focus:outline-none focus:shadow-outline-blue focus:border-blue-300
-              focus:z-10 transition ease-in-out duration-150"
-              >
-                <Icon data="{heart}" class="w-4 h-4" />
-                <span class="ml-3">Favorite</span>
-              </button>
-            </div>
+                py-2 text-xs leading-4 text-gray-700 font-medium border
+                border-transparent rounded-br-lg hover:text-gray-300
+                focus:outline-none focus:shadow-outline-blue
+                focus:border-blue-300 focus:z-10 transition ease-in-out
+                duration-150"
+            >
+              <Icon data="{heart}" class="w-4 h-4" />
+              <span class="ml-3">Favorite</span>
+            </button>
+          </div>
         {/if}
       {/if}
 
@@ -231,14 +236,14 @@
         {#if canEdit()}
           <div class="-ml-px w-0 flex-1 flex border-l border-gray-200">
             <Link
-              href="/sessions/edit/{id}"
+              href="/activities/edit/{id}"
               class="relative w-0 flex-1 inline-flex items-center justify-center
-              py-2 text-xs leading-4 text-gray-700 font-medium border
-              border-transparent rounded-br-lg hover:text-gray-300
-              focus:outline-none focus:shadow-outline-blue focus:border-blue-300
-              focus:z-10 transition ease-in-out duration-150"
+                py-2 text-xs leading-4 text-gray-700 font-medium border
+                border-transparent rounded-br-lg hover:text-gray-300
+                focus:outline-none focus:shadow-outline-blue
+                focus:border-blue-300 focus:z-10 transition ease-in-out
+                duration-150"
             >
-
               <Icon data="{cog}" class="w-4 h-4" />
               <span class="ml-3">Edit</span>
             </Link>
@@ -259,9 +264,9 @@
           <div class="-ml-px w-0 flex-1 flex">
             <div
               class="relative w-0 flex-1 inline-flex items-center justify-center
-              py-2 text-xs leading-4 text-gray-300 font-medium border
-              border-transparent rounded-br-lg transition ease-in-out
-              duration-150"
+                py-2 text-xs leading-4 text-gray-300 font-medium border
+                border-transparent rounded-br-lg transition ease-in-out
+                duration-150"
             >
               <Icon data="{signIn}" class="-ml-1 mr-2 h-4 w-4" />
               <span>Join {timeLeftToJoin}</span>

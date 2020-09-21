@@ -22,12 +22,12 @@
 >
   <div class="px-2 py-3 sm:px-3">
     <Link
-      href="/sessions"
+      href="/activities"
       class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300
         hover:text-white hover:bg-that-blue focus:outline-none focus:text-white
         focus:bg-that-blue"
     >
-      THAT Board
+      Activities
     </Link>
     <Link
       href="/members"

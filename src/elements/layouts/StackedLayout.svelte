@@ -1,15 +1,10 @@
 <script>
-  import { Footer } from '../../components';
-  import CreateProfileNotification from '../../components/notifications/CreateProfile.svelte';
-  import NoProfile from '../../components/notifications/NoProfile.svelte';
-
   import _ from 'lodash';
 
   import { isAuthenticated, thatProfile } from '../../utilities/security.js';
-
-  function notifyCallback(event) {
-    console.log(`Notify fired! Detail: ${event.detail}`);
-  }
+  import { Footer } from '../../components';
+  import CreateProfileNotification from '../../components/notifications/CreateProfile.svelte';
+  import NoProfile from '../../components/notifications/NoProfile.svelte';
 </script>
 
 {#if $isAuthenticated}
@@ -19,6 +14,7 @@
 {/if}
 
 <NoProfile />
+
 <div class="flex flex-col min-h-screen">
   <header class="bg-thatBlue-700 pb-32">
     <slot name="header" />
@@ -39,5 +35,4 @@
   </main>
 
   <Footer class="self-end" />
-
 </div>

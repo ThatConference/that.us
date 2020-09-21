@@ -1,6 +1,5 @@
 <script>
   export let router;
-  import { getContext } from 'svelte';
   import { getClient } from '@urql/svelte';
   import { navigateTo } from 'yrv';
 
@@ -9,7 +8,7 @@
   import { ActionHeader, LinkButton, ModalError } from '../../elements';
   import Nav from '../../components/nav/interiorNav/Top.svelte';
   import CardLoader from '../../components/CardLoader.svelte';
-  import SessionForm from '../../components/sessions/SessionForm.svelte';
+  import ActivityForm from '../../components/activities/ActivityForm.svelte';
 
   // utilities
   import metaTagsStore from '../../store/metaTags';
@@ -21,18 +20,18 @@
   // data
   import sessionsApi from '../../dataSources/api.that.tech/sessions.js';
 
-  const { sessionId } = router.params;
+  const { activityId } = router.params;
 
   const { update, getById } = sessionsApi(getClient());
-  const sessionDetails = getById(sessionId);
+  const activityDetails = getById(activityId);
 
   async function handleWithdraw(e) {
-    await update(sessionId, {
+    await update(activityId, {
       status: 'CANCELLED',
     });
 
-    tagEvent('session_withdraw', 'session', $user.sub);
-    logEvent('session_withdraw');
+    tagEvent('activity_withdraw', 'activity', $user.sub);
+    logEvent('activity_withdraw');
 
     navigateTo(`/my/submissions`, { replace: true });
   }
@@ -40,25 +39,25 @@
   async function handleSubmit({
     detail: { values, setSubmitting, resetForm },
   }) {
-    const updatedSession = format(values);
-    await update(sessionId, updatedSession);
+    const updatedActivity = format(values);
+    await update(activityId, updatedActivity);
 
-    tagEvent('session_update', 'session', $user.sub);
-    logEvent('session_updated');
+    tagEvent('activity_update', 'activity', $user.sub);
+    logEvent('activity_updated');
 
     setSubmitting(false);
     resetForm();
-    navigateTo(`/sessions/${sessionId}?edit=true&isUpdated=true`, {
+    navigateTo(`/activities/${activityId}?edit=true&isUpdated=true`, {
       replace: true,
     });
   }
 
   metaTagsStore.set({
-    title: 'Edit Submission - THAT',
+    title: 'Edit Activity - THAT',
     description: 'Edit your submission.',
     openGraph: {
       type: 'website',
-      url: `https://that.us/sessions/edit`,
+      url: `https://that.us/activity/edit`,
     },
   });
 </script>
@@ -67,24 +66,24 @@
   <div slot="header">
     <Nav />
     <ActionHeader title="Update your Submission">
-      <LinkButton href="/sessions" text="Return to THAT Board" />
+      <LinkButton href="/activities" text="Return to Activities" />
     </ActionHeader>
   </div>
 
   <div slot="body">
-    {#await sessionDetails}
+    {#await activityDetails}
       <CardLoader />
-    {:then session}
-      {#if session}
-        <SessionForm
+    {:then activity}
+      {#if activity}
+        <ActivityForm
           handleSubmit="{handleSubmit}"
           handleWithdraw="{handleWithdraw}"
-          initialValues="{session}"
+          initialValues="{activity}"
         />
       {:else}
         <ModalError
-          title="No Session Found"
-          text="I'm sorry we weren't able to find the session you tried to edit."
+          title="No Activity Found"
+          text="I'm sorry we weren't able to find the activity you tried to edit."
           action="{{ title: 'My Submissions', href: '/my/submissions' }}"
         />
       {/if}

@@ -2,7 +2,6 @@
   export let router;
 
   // 3rd Party
-  import { onMount } from 'svelte';
   import { query } from '@urql/svelte';
   import _ from 'lodash';
   import { navigateTo } from 'yrv';
@@ -30,22 +29,22 @@
 
   const { setAttendance } = sessionsApi(getClient());
 
-  const { sessionId } = router.params;
+  const { activityId } = router.params;
   const imageCrop = '?mask=ellipse&w=500&h=500&fit=crop';
   const jitsiFrameTopBuffer = 340;
 
   const QUERY_SESSION = query({
     query: `
-      query getSessionById($sessionId: ID!) {
+      query getSessionById($activityId: ID!) {
         sessions {
-          session (sessionId: $sessionId) {  
+          session (sessionId: $activityId) {  
             title
             shortDescription
           }
         }
       }
     `,
-    variables: { sessionId },
+    variables: { activityId },
     requestPolicy: 'network-only',
   });
 
@@ -57,7 +56,7 @@
   }
 
   $: if ($isAuthenticated && !incompleteProfile) {
-    Promise.resolve(setAttendance(sessionId));
+    Promise.resolve(setAttendance(activityId));
   }
 
   let api;
@@ -106,7 +105,7 @@
 
     const domain = 'meet.jit.si';
     const options = {
-      roomName: `THAT-${sessionId}`,
+      roomName: `THAT-${activityId}`,
       width: '100%',
       height: window.document.body.scrollHeight - jitsiFrameTopBuffer,
       // https://github.com/jitsi/jitsi-meet/blob/master/config.js
@@ -114,7 +113,7 @@
         startWithAudioMuted: true,
         prejoinPageEnabled: false, // todo.. We could prolly drop our own image.
         // enableWelcomePage: true, // not sure what it does
-        brandingRoomAlias: `https://that.us/join/THAT-${sessionId}`,
+        brandingRoomAlias: `https://that.us/join/THAT-${activityId}`,
         transcribingEnabled: true, // doesn't seem to work, but it's listed as valid
       },
       // https://github.com/jitsi/jitsi-meet/blob/master/interface_config.js
@@ -148,7 +147,7 @@
     api.addEventListener('audioMuteStatusChanged', handleMuted);
 
     api.addEventListener('readyToClose', () => {
-      navigateTo(`/sessions`, { replace: true });
+      navigateTo(`/activities`, { replace: true });
     });
   }
 
@@ -230,9 +229,9 @@
   <ModalError
     title="Oh NO! You have an incomplete profile!"
     text="It appears you haven't created your profile yet. You can't create a
-    session until that's complete."
+    activity until that's complete."
     action="{{ title: 'Create Profile', href: '/my/profile' }}"
-    returnTo="{{ title: 'Return to THAT Board', href: '/sessions' }}"
+    returnTo="{{ title: 'Return to Activities', href: '/activities' }}"
   />
 {/if}
 
@@ -242,7 +241,7 @@
 
     {#if $sessionQuery.data && $sessionQuery.data.sessions.session}
       <ActionHeader title="{$sessionQuery.data.sessions.session.title}">
-        <LinkButton href="/sessions/{sessionId}" text="Session Details" />
+        <LinkButton href="/activities/{activityId}" text="Activity Details" />
       </ActionHeader>
     {/if}
   </div>

@@ -3,7 +3,7 @@
 </script>
 
 <div class="relative bg-white overflow-hidden">
-  <div class="max-w-screen-xl mx-auto">
+  <div class="mx-auto">
     <div
       class="relative z-10 pb-4 bg-white sm:pb-8 md:pb-10 lg:max-w-2xl lg:w-full
         lg:pb-12 xl:pb-16"

@@ -12,8 +12,8 @@
       <div class="pr-16 sm:text-center sm:px-16">
         <p class="font-medium text-white">
           <span class="hidden md:inline">
-            To Favorite, Submit or Join any session you will need to create a
-            profile.
+            To Favorite, Submit or Join any activity you will first need to
+            complete your user profile.
           </span>
           <span class="block sm:ml-2 sm:inline-block">
             <Link href="/my/profile" class="text-white font-bold underline">
@@ -24,12 +24,12 @@
       </div>
       <div
         class="absolute inset-y-0 right-0 pt-1 pr-1 flex items-start sm:pt-1
-        sm:pr-2 sm:items-start"
+          sm:pr-2 sm:items-start"
       >
         <button
           type="button"
           class="flex p-2 rounded-md hover:bg-indigo-500 focus:outline-none
-          focus:bg-indigo-500 transition ease-in-out duration-150"
+            focus:bg-indigo-500 transition ease-in-out duration-150"
           aria-label="Dismiss"
           on:click="{() => (wasDismissed = !wasDismissed)}"
         >

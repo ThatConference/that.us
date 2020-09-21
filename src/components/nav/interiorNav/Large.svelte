@@ -42,13 +42,13 @@
   <div class="hidden md:block">
     <div class="ml-10 flex items-baseline">
       <Link
-        href="/sessions"
+        href="/activities"
         open
         class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300
           hover:text-white hover:bg-that-blue focus:outline-none
           focus:text-white focus:bg-that-blue"
       >
-        THAT Board
+        Activities
       </Link>
 
       <Link
@@ -229,7 +229,8 @@
             <div class="py-1 rounded-md bg-white shadow-xs">
               <div
                 on:click|stopPropagation="{() => login(document.location.pathname, false)}"
-                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer"
+                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100
+                  cursor-pointer"
               >
                 Login
               </div>
