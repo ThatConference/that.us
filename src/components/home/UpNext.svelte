@@ -40,7 +40,7 @@
             lg:grid-cols-3 lg:gap-8"
         >
           {#each activities.slice(0, 6) as s (s.id)}
-            <li>
+            <li class="z-0">
               <FeaturedActivity {...s} />
             </li>
           {/each}
