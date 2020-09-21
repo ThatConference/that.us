@@ -9,7 +9,7 @@
 <section class="flex flex-col min-h-screen">
   <NavWrapper />
   <main class="flex-grow overflow-hidden">
-    <div class="hidden lg:block lg:absolute lg:inset-y-0 lg:h-full lg:w-full">
+    <div class="hidden lg:block lg:inset-y-0 lg:h-full lg:w-full">
       <div
         class="invisible lg:visible"
         in:fade="{{ delay: 200, duration: 2000 }}"

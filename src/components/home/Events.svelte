@@ -27,21 +27,21 @@
   ];
 </script>
 
-<section class="py-12 lg:py-16 ">
-  <div class="mx-auto px-4 max-w-screen-xl sm:px-6 lg:px-8">
+<section class="py-12 lg:py-16 bg-white">
+  <div class="relative mx-auto px-4 max-w-screen-xl sm:px-6 lg:px-8">
     <div class="space-y-12">
       <div class="w-full flex flex-col items-center">
         <h2
           class="text-3xl leading-9 font-extrabold tracking-tight sm:text-4xl"
         >
-          View our Past Events.
-          <span class="pl-2 text-that-orange">Join the Upcoming!</span>
+          View our Past Events. <span class="pl-2 text-that-orange">Join the
+            Upcoming!</span>
         </h2>
       </div>
 
       <ul
         class="space-y-12 lg:grid lg:grid-cols-2 lg:items-start lg:gap-y-8
-        lg:gap-x-12 lg:space-y-0"
+          lg:gap-x-12 lg:space-y-0"
       >
         {#each events as e}
           <li>

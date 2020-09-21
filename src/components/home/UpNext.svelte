@@ -12,7 +12,7 @@
 </script>
 
 <section class="py-12 lg:py-16 bg-thatBlue-700">
-  <div class="mx-auto px-4 max-w-screen-xl sm:px-6 lg:px-8">
+  <div class="relative mx-auto px-4 max-w-screen-xl sm:px-6 lg:px-8">
     <div class="space-y-12">
       <div
         class="space-y-5 sm:space-y-4 md:max-w-xl lg:max-w-3xl xl:max-w-none"
@@ -40,7 +40,7 @@
             lg:grid-cols-3 lg:gap-8"
         >
           {#each activities.slice(0, 6) as s (s.id)}
-            <li class="z-0">
+            <li>
               <FeaturedActivity {...s} />
             </li>
           {/each}
