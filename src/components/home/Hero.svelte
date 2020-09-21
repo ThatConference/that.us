@@ -8,65 +8,7 @@
   import { login, isAuthenticated } from '../../utilities/security';
 </script>
 
-<section class="relative bg-white overflow-x-hidden">
-  <div class="hidden lg:block lg:absolute lg:inset-0">
-    <svg
-      in:fly="{{ y: -400, duration: 3000 }}"
-      class="absolute top-0 left-1/2 transform translate-x-64 -translate-y-8"
-      width="640"
-      height="784"
-      fill="none"
-      viewBox="0 0 640 784"
-    >
-      <rect
-        y="72"
-        width="640"
-        height="640"
-        class="text-that-offWhite"
-        fill="currentColor"
-      ></rect>
-    </svg>
-    <!-- <div in:fly="{{ y: 200, duration: 3000 }}">
-      <Trees
-        classes="opacity-25 absolute top-0 left-1/2 transform translate-x-64 -translate-y-8"
-      />
-    </div> -->
-    <svg
-      in:fly="{{ y: 200, duration: 3000 }}"
-      class="absolute top-0 left-1/2 transform translate-x-64 -translate-y-8"
-      width="640"
-      height="784"
-      fill="none"
-      viewBox="0 0 640 784"
-    >
-      <defs>
-        <pattern
-          id="9ebea6f4-a1f5-4d96-8c4e-4c2abf658047"
-          x="118"
-          y="0"
-          width="20"
-          height="20"
-          patternUnits="userSpaceOnUse"
-        >
-          <rect
-            x="0"
-            y="0"
-            width="4"
-            height="4"
-            class="text-thatBlue-100"
-            fill="currentColor"
-          ></rect>
-        </pattern>
-      </defs>
-      <rect
-        x="118"
-        width="404"
-        height="784"
-        fill="url(#9ebea6f4-a1f5-4d96-8c4e-4c2abf658047)"
-      ></rect>
-    </svg>
-  </div>
-
+<section class="relative overflow-x-hidden">
   <div class="relative pb-16 md:pb-20 lg:pb-24 xl:pb-32">
     <main class="mt-32 mx-auto max-w-screen-xl px-4 sm:px-6 xl:mt-40">
       <h2

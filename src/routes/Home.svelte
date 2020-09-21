@@ -1,7 +1,6 @@
 <script>
-  import { Footer } from '../components';
   import { Logo } from '../elements';
-
+  import Layout from '../elements/layouts/ContentLayout.svelte';
   import {
     Hero,
     Testimonials,
@@ -12,9 +11,6 @@
     Events,
     NewMembers,
   } from '../components/home';
-
-  // ui support
-  import MainNav from '../components/nav/mainNav/MainNav.svelte';
 
   // utilities
   import { isAuthenticated } from '../utilities/security';
@@ -30,21 +26,18 @@
   });
 </script>
 
-<div class="relative z-10">
-  <MainNav />
-</div>
+<Layout>
+  <Hero />
+  <Stats />
+  <Testimonials />
+  <Logo uri="/images/THAT-Logo-Words.svg" />
+  <UpNext />
 
-<Hero />
-<Stats />
-<Testimonials />
-<Logo uri="/images/THAT-Logo-Words.svg" />
-<UpNext />
+  {#if !$isAuthenticated}
+    <CTA />
+  {/if}
 
-{#if !$isAuthenticated}
-  <CTA />
-{/if}
-
-<Events />
-<NewMembers />
-<Newsletter />
-<Footer />
+  <Events />
+  <NewMembers />
+  <Newsletter />
+</Layout>
