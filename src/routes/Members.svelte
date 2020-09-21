@@ -15,8 +15,6 @@
 
   const { queryMembers, queryMembersNext } = membersApi(getClient());
 
-  const queryInit = queryMembers();
-
   let loadingMore = false;
   let memberList = [];
   let cursor;
@@ -58,19 +56,17 @@
   <Hero />
   <div class="relative bg-white overflow-hidden py-20">
     <div class="max-w-screen-xl mx-auto px-8">
-
       {#if loading}
         <CardLoader />
       {/if}
       <ul
         class="grid grid-cols-1 gap-6 sm:grid-cols-3 md:grid-cols-4
-        lg:grid-cols-5"
+          lg:grid-cols-5"
       >
-
         {#each memberList as m (m.id)}
           <li
             class="col-span-1 flex flex-col text-center bg-white rounded-lg
-            shadow"
+              shadow"
           >
             <MemberCard {...m} />
           </li>

@@ -6,7 +6,6 @@
     user,
     thatProfile,
   } from '../../../utilities/security.js';
-  import { fade } from 'svelte/transition';
   import { Link } from 'yrv';
   import _ from 'lodash';
 
@@ -23,34 +22,34 @@
 >
   <div class="px-2 py-3 sm:px-3">
     <Link
-      href="/sessions"
+      href="/activities"
       class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300
-      hover:text-white hover:bg-that-blue focus:outline-none focus:text-white
-      focus:bg-that-blue"
+        hover:text-white hover:bg-that-blue focus:outline-none focus:text-white
+        focus:bg-that-blue"
     >
-      THAT Board
+      Activities
     </Link>
     <Link
       href="/members"
       class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300
-      hover:text-white hover:bg-that-blue focus:outline-none focus:text-white
-      focus:bg-that-blue"
+        hover:text-white hover:bg-that-blue focus:outline-none focus:text-white
+        focus:bg-that-blue"
     >
       Members
     </Link>
     <Link
       href="/partners"
       class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300
-      hover:text-white hover:bg-that-blue focus:outline-none focus:text-white
-      focus:bg-that-blue"
+        hover:text-white hover:bg-that-blue focus:outline-none focus:text-white
+        focus:bg-that-blue"
     >
       Partners
     </Link>
     <Link
       href="/faq"
       class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300
-      hover:text-white hover:bg-that-blue focus:outline-none focus:text-white
-      focus:bg-that-blue"
+        hover:text-white hover:bg-that-blue focus:outline-none focus:text-white
+        focus:bg-that-blue"
     >
       FAQ
     </Link>
@@ -67,16 +66,14 @@
   <div class="pt-4 pb-3 border-t border-gray-700">
     <div class="flex items-center px-5">
       <div class="flex-shrink-0">
-
         {#if $isAuthenticated}
           {#if _.isEmpty($thatProfile)}
             <span class="inline-block relative">
               <Icon data="{userIcon}" class="h-8 w-8 rounded-full text-white" />
               <span
                 class="absolute bottom-0 right-0 block h-3.5 w-3.5 rounded-full
-                bg-red-400"
+                  bg-red-400"
               ></span>
-
             </span>
           {:else if $thatProfile.profileImage}
             <img
@@ -104,8 +101,8 @@
           <Link
             href="/my/profile"
             class="block px-3 py-2 rounded-md text-base font-medium
-            text-gray-300 hover:text-white hover:bg-that-blue focus:outline-none
-            focus:text-white focus:bg-that-blue"
+              text-gray-300 hover:text-white hover:bg-that-blue
+              focus:outline-none focus:text-white focus:bg-that-blue"
             role="menuitem"
           >
             Create Profile
@@ -113,8 +110,8 @@
           <a
             href="/logout"
             class="mt-1 block px-3 py-2 rounded-md text-base font-medium
-            text-gray-300 hover:text-white hover:bg-that-blue focus:outline-none
-            focus:text-white focus:bg-that-blue"
+              text-gray-300 hover:text-white hover:bg-that-blue
+              focus:outline-none focus:text-white focus:bg-that-blue"
             role="menuitem"
           >
             Logout
@@ -130,8 +127,8 @@
           <Link
             href="/my/favorites"
             class="block px-3 py-2 rounded-md text-base font-medium
-            text-gray-300 hover:text-white hover:bg-that-blue focus:outline-none
-            focus:text-white focus:bg-that-blue"
+              text-gray-300 hover:text-white hover:bg-that-blue
+              focus:outline-none focus:text-white focus:bg-that-blue"
             role="menuitem"
           >
             My Favorites
@@ -139,8 +136,8 @@
           <Link
             href="/my/submissions"
             class="block px-3 py-2 rounded-md text-base font-medium
-            text-gray-300 hover:text-white hover:bg-that-blue focus:outline-none
-            focus:text-white focus:bg-that-blue"
+              text-gray-300 hover:text-white hover:bg-that-blue
+              focus:outline-none focus:text-white focus:bg-that-blue"
             role="menuitem"
           >
             My Submissions
@@ -148,8 +145,8 @@
           <Link
             href="/my/badges"
             class="block px-3 py-2 rounded-md text-base font-medium
-            text-gray-300 hover:text-white hover:bg-that-blue focus:outline-none
-            focus:text-white focus:bg-that-blue"
+              text-gray-300 hover:text-white hover:bg-that-blue
+              focus:outline-none focus:text-white focus:bg-that-blue"
             role="menuitem"
           >
             My Badges
@@ -157,8 +154,8 @@
           <Link
             href="/my/profile"
             class="block px-3 py-2 rounded-md text-base font-medium
-            text-gray-300 hover:text-white hover:bg-that-blue focus:outline-none
-            focus:text-white focus:bg-that-blue"
+              text-gray-300 hover:text-white hover:bg-that-blue
+              focus:outline-none focus:text-white focus:bg-that-blue"
             role="menuitem"
           >
             My Profile
@@ -166,8 +163,8 @@
           <a
             href="/logout"
             class="mt-1 block px-3 py-2 rounded-md text-base font-medium
-            text-gray-300 hover:text-white hover:bg-that-blue focus:outline-none
-            focus:text-white focus:bg-that-blue"
+              text-gray-300 hover:text-white hover:bg-that-blue
+              focus:outline-none focus:text-white focus:bg-that-blue"
             role="menuitem"
           >
             Logout
@@ -177,13 +174,12 @@
         <div
           on:click|stopPropagation="{() => login(document.location.pathname, false)}"
           class="block px-3 py-2 rounded-md text-base font-medium text-gray-400
-          hover:text-white hover:bg-that-blue focus:outline-none focus:text-white
-          focus:bg-that-blue"
+            hover:text-white hover:bg-that-blue focus:outline-none
+            focus:text-white focus:bg-that-blue"
         >
           Login
         </div>
       {/if}
     </div>
-
   </div>
 </div>

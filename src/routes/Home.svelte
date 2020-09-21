@@ -1,26 +1,21 @@
 <script>
-  import { Footer } from '../components';
   import { Logo } from '../elements';
-
+  import Layout from '../elements/layouts/ContentLayout.svelte';
   import {
     Hero,
     Testimonials,
     CTA,
     Newsletter,
     Stats,
-    Features,
     UpNext,
     Events,
     NewMembers,
   } from '../components/home';
 
-  // ui support
-  import MainNav from '../components/nav/mainNav/MainNav.svelte';
-
   // utilities
   import { isAuthenticated } from '../utilities/security';
-
   import metaTagsStore from '../store/metaTags';
+
   metaTagsStore.set({
     title: 'Welcome to THAT!',
     description: 'todo',
@@ -31,35 +26,18 @@
   });
 </script>
 
-<!--
-  * Hero
-    ^^ Signup
-  Stats
-  Features / Demo
-  Quote
-  What's up Next?
-  
-  View Past Events..
-  Welcome our newest ...
-  Newsletter?
--->
+<Layout>
+  <Hero />
+  <Stats />
+  <Testimonials />
+  <Logo uri="/images/THAT-Logo-Words.svg" />
+  <UpNext />
 
-<div class="relative z-10">
-  <MainNav />
-</div>
+  {#if !$isAuthenticated}
+    <CTA />
+  {/if}
 
-<Hero />
-<Stats />
-<!-- <Features /> -->
-<Testimonials />
-<Logo uri="/images/THAT-Logo-Words.svg" />
-<UpNext />
-
-{#if !$isAuthenticated}
-  <CTA />
-{/if}
-
-<Events />
-<NewMembers />
-<Newsletter />
-<Footer />
+  <Events />
+  <NewMembers />
+  <Newsletter />
+</Layout>

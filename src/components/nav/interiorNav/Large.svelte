@@ -9,6 +9,7 @@
 
   import { hasNotifications } from '../../../store/notificationCenter';
   import { Activity } from '../../../elements/svgs';
+  import DesktopLink from './_DesktopLink.svelte';
 
   import ActivitySlideOver from '../../activityCenter/ActivitySlideOver.svelte';
 
@@ -32,23 +33,23 @@
   <div class="flex-shrink-0">
     <Link href="/">
       <img
-        class="h-10 w-10"
-        src="/images/Logo-Square-White.svg"
+        class="h-10"
+        src="/images/THAT-Full-Wide-White.svg"
         alt="THAT Logo"
       />
     </Link>
   </div>
 
   <div class="hidden md:block">
-    <div class="ml-10 flex items-baseline">
+    <div class="ml-8 flex items-baseline">
       <Link
-        href="/sessions"
+        href="/activities"
         open
-        class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300
+        class="px-3 py-2 rounded-md text-sm font-medium text-gray-300
           hover:text-white hover:bg-that-blue focus:outline-none
           focus:text-white focus:bg-that-blue"
       >
-        THAT Board
+        <DesktopLink>Activities</DesktopLink>
       </Link>
 
       <Link
@@ -57,7 +58,7 @@
           hover:text-white hover:bg-that-blue focus:outline-none
           focus:text-white focus:bg-that-blue"
       >
-        Members
+        <DesktopLink>Members</DesktopLink>
       </Link>
 
       <Link
@@ -66,7 +67,7 @@
           hover:text-white hover:bg-that-blue focus:outline-none
           focus:text-white focus:bg-that-blue"
       >
-        Partners
+        <DesktopLink>Partners</DesktopLink>
       </Link>
 
       <Link
@@ -75,7 +76,7 @@
           hover:text-white hover:bg-that-blue focus:outline-none
           focus:text-white focus:bg-that-blue"
       >
-        FAQs
+        <DesktopLink>FAQs</DesktopLink>
       </Link>
       <!-- <Link
         href="/help"
@@ -229,7 +230,8 @@
             <div class="py-1 rounded-md bg-white shadow-xs">
               <div
                 on:click|stopPropagation="{() => login(document.location.pathname, false)}"
-                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer"
+                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100
+                  cursor-pointer"
               >
                 Login
               </div>

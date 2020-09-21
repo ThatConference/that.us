@@ -167,7 +167,7 @@ export const SET_ATTENDANCE = `
   }
 `;
 
-export default (client) => {
+export default client => {
   const stripAuthorization = () => {
     const newHeaders = {
       ...client.fetchOptions().headers,
@@ -188,7 +188,7 @@ export default (client) => {
         },
       })
       .toPromise()
-      .then((r) => {
+      .then(r => {
         if (r.error) {
           // eslint-disable-next-line no-console
           console.error(r.error);
@@ -197,7 +197,7 @@ export default (client) => {
 
         let results = [];
         results = r.data.events.event.get.sessions.filter(
-          (i) => i.status === 'ACCEPTED',
+          i => i.status === 'ACCEPTED',
         );
 
         results.sort((a, b) => new Date(a.startTime) - new Date(b.startTime));
@@ -205,7 +205,7 @@ export default (client) => {
         return results;
       });
 
-  const querySessions = (eventId) => query(QUERY_SESSIONS, { eventId });
+  const querySessions = eventId => query(QUERY_SESSIONS, { eventId });
 
   const querySessionsByDate = (
     eventId,
@@ -221,7 +221,7 @@ export default (client) => {
     );
 
   // todo eventId can go when API is up
-  const getById = (sessionId) => {
+  const getById = sessionId => {
     const variables = { sessionId };
 
     return client
@@ -229,7 +229,7 @@ export default (client) => {
         fetchOptions: { headers: { ...stripAuthorization() } },
       })
       .toPromise()
-      .then((r) => {
+      .then(r => {
         if (r.error) {
           // eslint-disable-next-line no-console
           console.error(r.error);
@@ -251,7 +251,7 @@ export default (client) => {
     return client
       .mutation(CREATE_SESSION, mutationVariables)
       .toPromise()
-      .then((r) => {
+      .then(r => {
         if (r.error) {
           // eslint-disable-next-line no-console
           console.error(r.error);
@@ -271,7 +271,7 @@ export default (client) => {
     return client
       .mutation(UPDATE_SESSION_BY_ID, mutationVariables)
       .toPromise()
-      .then((r) => {
+      .then(r => {
         if (r.error) {
           // eslint-disable-next-line no-console
           console.error(r.error);
@@ -282,7 +282,7 @@ export default (client) => {
       });
   };
 
-  const setAttendance = (sessionId) => {
+  const setAttendance = sessionId => {
     const mutationVariables = {
       sessionId,
     };

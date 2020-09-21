@@ -34,14 +34,18 @@ export const QUERY_ME = `
     }
 `;
 
-export default (client) => {
+export default client => {
   const queryMe = () =>
     client
       .query(QUERY_ME)
       .toPromise()
-      .then((results) => ({
+      .then(results => ({
         ...results.data.members.me,
-      }));
+      }))
+      .catch(e => {
+        console.error(e);
+        throw e;
+      });
 
   return {
     queryMe,

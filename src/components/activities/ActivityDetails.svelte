@@ -35,13 +35,17 @@
 
   // UI Support
   import CalendarButton from './elements/CalendarButton.svelte';
-  import { SocialLink } from '../../components/social';
-  import Success from '../../components/notifications/Success.svelte';
+  import { SocialLink } from '../social';
+  import Success from '../notifications/Success.svelte';
   import { Avatars, LinkButton, Tag } from '../../elements';
 
   // Utility
   import config from '../../config';
-  import { isAuthenticated, login, thatProfile } from '../../utilities/security';
+  import {
+    isAuthenticated,
+    login,
+    thatProfile,
+  } from '../../utilities/security';
   import { truncate, isLongerThan } from '../../utilities/truncate';
   import ical from '../../utilities/ical.js';
   import metaTagsStore from '../../store/metaTags';
@@ -102,7 +106,7 @@
   let hasExpired = true;
 
   onMount(async () => {
-    window.history.replaceState({}, null, `/sessions/${id}`);
+    window.history.replaceState({}, null, `/activities/${id}`);
 
     if ($isAuthenticated) await getFavorites($currentEvent.eventId);
 
@@ -148,7 +152,7 @@
       : shortDescription,
     openGraph: {
       type: 'website',
-      url: `https://that.us/sessions/${id}`,
+      url: `https://that.us/activities/${id}`,
     },
   });
 </script>
@@ -156,7 +160,7 @@
 {#if isNew}
   <Success
     title="Created {title}!"
-    text="Thank you for submitting a session."
+    text="Thank you for submitting an activity."
   />
 {:else if isUpdated}
   <Success title="Success 🎊" text="Successfully updated {title}." />
@@ -167,7 +171,7 @@
   <div class="bg-white px-4 py-5 border-b border-gray-200 sm:px-6">
     <div
       class="-ml-4 -mt-4 flex justify-between items-center flex-wrap
-      sm:flex-no-wrap flex-col md:flex-row"
+        sm:flex-no-wrap flex-col md:flex-row"
     >
       <div class="ml-4 mt-4">
         <div class="flex items-center">
@@ -191,7 +195,6 @@
                     />
                   </span>
                 {/if}
-
               </span>
             </Link>
           </div>
@@ -205,7 +208,6 @@
                 <SocialLink href="{link.url}" network="{link.linkType}" />
               {/each}
             </div>
-
           </div>
         </div>
       </div>
@@ -219,50 +221,50 @@
                 on:click|preventDefault="{!favoriteDisabled && handleToggle}"
                 class:text-thatRed-500="{isFavorite}"
                 class="relative inline-flex items-center px-4 py-2 border-2
-                border-thatBlue-500 text-sm leading-5 font-medium rounded-md
-                text-gray-700 bg-white hover:text-gray-500 focus:outline-none
-                focus:shadow-outline-blue focus:border-blue-300
-                active:bg-gray-50 active:text-gray-800 transition duration-150
-                ease-in-out">
-                  <Icon data="{heart}" class="-ml-1 mr-2 h-4 w-4" />
-                  {#if isFavorite}
-                    <span>Unfavorite</span>
-                  {:else}
-                    <span>Favorite</span>
-                  {/if}
+                  border-thatBlue-500 text-sm leading-5 font-medium rounded-md
+                  text-gray-700 bg-white hover:text-gray-500 focus:outline-none
+                  focus:shadow-outline-blue focus:border-blue-300
+                  active:bg-gray-50 active:text-gray-800 transition duration-150
+                  ease-in-out"
+              >
+                <Icon data="{heart}" class="-ml-1 mr-2 h-4 w-4" />
+                {#if isFavorite}
+                  <span>Unfavorite</span>
+                {:else}<span>Favorite</span>{/if}
               </button>
             </div>
           {:else}
             <div class="mt-2 mx-2 rounded-md shadow-sm">
               <button
                 type="button"
-                on:click|preventDefault="{() => login(document.location.pathname, false)}"   
+                on:click|preventDefault="{() => login(document.location.pathname, false)}"
                 class="relative inline-flex items-center px-4 py-2 border-2
-                border-thatBlue-500 text-sm leading-5 font-medium rounded-md
-                text-gray-700 bg-white hover:text-gray-500 focus:outline-none
-                focus:shadow-outline-blue focus:border-blue-300
-                active:bg-gray-50 active:text-gray-800 transition duration-150
-                ease-in-out">
+                  border-thatBlue-500 text-sm leading-5 font-medium rounded-md
+                  text-gray-700 bg-white hover:text-gray-500 focus:outline-none
+                  focus:shadow-outline-blue focus:border-blue-300
+                  active:bg-gray-50 active:text-gray-800 transition duration-150
+                  ease-in-out"
+              >
                 <Icon data="{heart}" class="-ml-1 mr-2 h-4 w-4" />
                 <span>Favorite</span>
               </button>
             </div>
           {/if}
         {/if}
-      
+
         {#if $isAuthenticated && !incompleteProfile}
           {#if canEdit()}
             <div class="mt-2 mx-2 rounded-md shadow-sm">
               <Link
-                href="{`/sessions/edit/${id}`}"
+                href="{`/activities/edit/${id}`}"
                 type="button"
                 class="inline-flex justify-center py-2 px-4 border-2
-                border-thatBlue-500 text-sm leading-5 font-medium rounded-md
-                text-thatBlue-500 bg-white hover:bg-thatBlue-500
-                hover:text-white focus:outline-none
-                focus:shadow-outline-thatBlue-500 focus:bg-thatBlue-500
-                focus:text-white focus:border-thatBlue-800
-                active:bg-thatBlue-800 transition duration-150 ease-in-out"
+                  border-thatBlue-500 text-sm leading-5 font-medium rounded-md
+                  text-thatBlue-500 bg-white hover:bg-thatBlue-500
+                  hover:text-white focus:outline-none
+                  focus:shadow-outline-thatBlue-500 focus:bg-thatBlue-500
+                  focus:text-white focus:border-thatBlue-800
+                  active:bg-thatBlue-800 transition duration-150 ease-in-out"
               >
                 <Icon data="{cog}" class="-ml-1 mr-2 h-4 w-4" />
                 <span>Edit</span>
@@ -278,14 +280,13 @@
                 type="button"
                 href="/join/{id}"
                 class="relative inline-flex justify-center py-2 px-4 border-2
-                border-thatBlue-500 text-sm leading-5 font-medium rounded-md
-                text-thatBlue-500 bg-white hover:bg-thatBlue-500
-                hover:text-white focus:outline-none
-                focus:shadow-outline-thatBlue-500 focus:bg-thatBlue-500
-                focus:text-white focus:border-thatBlue-800
-                active:bg-thatBlue-800 transition duration-150 ease-in-out"
+                  border-thatBlue-500 text-sm leading-5 font-medium rounded-md
+                  text-thatBlue-500 bg-white hover:bg-thatBlue-500
+                  hover:text-white focus:outline-none
+                  focus:shadow-outline-thatBlue-500 focus:bg-thatBlue-500
+                  focus:text-white focus:border-thatBlue-800
+                  active:bg-thatBlue-800 transition duration-150 ease-in-out"
               >
-
                 <Icon
                   data="{signIn}"
                   class="-ml-1 mr-2 h-4 w-4 text-gray-400"
@@ -297,29 +298,28 @@
             <div class="mt-2 mx-2 rounded-md shadow-sm">
               <div
                 class="border-2 border-thatBlue-500 text-sm leading-5
-                font-medium rounded-md text-thatBlue-500 bg-white
-                hover:bg-thatBlue-500 hover:text-white focus:outline-none
-                focus:shadow-outline-thatBlue-500 focus:bg-thatBlue-500
-                focus:text-white focus:border-thatBlue-800
-                active:bg-thatBlue-800 transition duration-150 ease-in-out"
+                  font-medium rounded-md text-thatBlue-500 bg-white
+                  hover:bg-thatBlue-500 hover:text-white focus:outline-none
+                  focus:shadow-outline-thatBlue-500 focus:bg-thatBlue-500
+                  focus:text-white focus:border-thatBlue-800
+                  active:bg-thatBlue-800 transition duration-150 ease-in-out"
               >
                 <CalendarButton
-                  {title}
-                  {shortDescription}
-                  {id}
-                  {startTime}
-                  {durationInMinutes}
-                  {slug}
+                  title="{title}"
+                  shortDescription="{shortDescription}"
+                  id="{id}"
+                  startTime="{startTime}"
+                  durationInMinutes="{durationInMinutes}"
+                  slug="{slug}"
                 />
               </div>
-
             </div>
 
             <span class="mt-2 mx-2 rounded-md shadow-sm">
               <div
                 class="relative inline-flex items-center px-4 py-2 border-2
-                border-gray-300 text-sm leading-5 font-medium rounded-md
-                text-gray-400 bg-white"
+                  border-gray-300 text-sm leading-5 font-medium rounded-md
+                  text-gray-400 bg-white"
               >
                 <Icon data="{signIn}" class="-ml-1 mr-2 h-4 w-4" />
                 <span>Join {timeLeftToJoin}</span>
@@ -334,11 +334,10 @@
   <!-- body -->
 
   <div class="px-4 py-5 sm:px-6 text-center md:text-left">
-
     <!-- Title -->
     <h2
       class="text-2xl sm:text-3xl md:text-4xl tracking-tight leading-10
-      font-extrabold text-gray-900 sm:leading-none "
+        font-extrabold text-gray-900 sm:leading-none"
     >
       {title}
     </h2>
@@ -346,9 +345,8 @@
     <!-- Start Time -->
     <p
       class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:mx-auto md:mt-5
-      md:text-xl lg:mx-0"
+        md:text-xl lg:mx-0"
     >
-
       {#if durationInMinutes <= 60}
         {dayjs(startTime).format('dddd MMMM D, YYYY - h:mm A')}, for {dayjs
           .duration(durationInMinutes, 'minutes')
@@ -363,7 +361,7 @@
     <!-- Description -->
     <p
       class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:mx-auto md:mt-5
-      md:text-xl lg:mx-0"
+        md:text-xl lg:mx-0"
     >
       {shortDescription}
     </p>
@@ -376,7 +374,7 @@
     </div>
 
     <!-- Avatars -->
-    <div class="flex flex-wrap items-center text-red-400 space-x-1 ">
+    <div class="flex flex-wrap items-center text-red-400 space-x-1">
       <Icon data="{heartO}" class="h-8 w-8" />
       <span>favorited by:</span>
       <div class="md:pl-2">
@@ -388,6 +386,5 @@
     <div class="px-4 py-12 sm:px-6" class:hidden="{!$isAuthenticated}">
       <div id="disqus_thread"></div>
     </div>
-
   </div>
 </div>

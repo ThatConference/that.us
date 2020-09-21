@@ -38,24 +38,23 @@
               <p class="ml-3 font-medium text-white truncate">
                 <span class="md:hidden">!</span>
                 <span class="hidden md:inline">
-                  You cannot
-                  <span class="font-bold">{text}</span>
-                  a session until you've completed your user profile.
+                  You cannot <span class="font-bold">{text}</span> a activity until
+                  you've completed your user profile.
                 </span>
               </p>
             </div>
             <div
               class="order-3 mt-2 flex-shrink-0 w-full sm:order-2 sm:mt-0
-              sm:w-auto"
+                sm:w-auto"
             >
               <div class="rounded-md shadow-sm">
                 <Link
                   href="/my/profile"
                   class="flex items-center justify-center px-4 py-2 border
-                  border-transparent text-sm leading-5 font-medium rounded-md
-                  text-indigo-600 bg-white hover:text-indigo-500
-                  focus:outline-none focus:shadow-outline transition ease-in-out
-                  duration-150"
+                    border-transparent text-sm leading-5 font-medium rounded-md
+                    text-indigo-600 bg-white hover:text-indigo-500
+                    focus:outline-none focus:shadow-outline transition
+                    ease-in-out duration-150"
                 >
                   Create Profile
                 </Link>
@@ -65,8 +64,8 @@
               <button
                 type="button"
                 class="-mr-1 flex p-2 rounded-md hover:bg-indigo-500
-                focus:outline-none focus:bg-indigo-500 transition ease-in-out
-                duration-150"
+                  focus:outline-none focus:bg-indigo-500 transition ease-in-out
+                  duration-150"
                 aria-label="Dismiss"
                 on:click="{() => (dismissed = !dismissed)}"
               >

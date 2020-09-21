@@ -9,7 +9,7 @@
   },
   {
     "question": "What makes a good Open Spaces subject?",
-    "answer": "Honestly, pretty much anything! Over the years at THAT Conference we have seen a wide range of session topics. Topics like, \"Post Agile Development\" to \"3D Printing\" and \"How Do We Help Deaf People Become Devs\". And not all are development related, for example, \"Teach Me D&D\", \"Team Leadership - What Have You Learned?\", \"Rock Climbing\", and \"Home Schooling 101\". If there is knowledge you're burning to share or something you really want to learn more about, create an Open Spaces session for it!"
+    "answer": "Honestly, pretty much anything! Over the years at THAT Conference we have seen a wide range of activity topics. Topics like, \"Post Agile Development\" to \"3D Printing\" and \"How Do We Help Deaf People Become Devs\". And not all are development related, for example, \"Teach Me D&D\", \"Team Leadership - What Have You Learned?\", \"Rock Climbing\", and \"Home Schooling 101\". If there is knowledge you're burning to share or something you really want to learn more about, create an Open Spaces activity for it!"
   },
   {
     "question": "What if I don't like where the discussion is going?",
@@ -17,11 +17,11 @@
   },
   {
     "question": "How do you prepare for virtual Open Spaces?",
-    "answer": "<ul class='faq-list'><li>Ensure your background doesn't contain any non-family friendly items</li><li>Check that your audio and camera are working. Test at the <a class='underline hover:no-underline hover:font-semibold' href='https://that.us/sessions/3QR1EbLmqHPzYN7xJG2v' target='_blank'>Tech Check Session</a></li><li>Have water nearby, it's important to keep hydrated</li><li>If you're not in Central Time Zone, verify how your local time corresponds with website time. The goal is to have the site in your local time, but, you know, times are hard.</li><li>Your microphone/speakers/headset/camera are all in good working condition and of good quality</li><li>If you have a lot of background noise or echo, an app like <a class='underline hover:no-underline hover:font-semibold' href='https://krisp.ai' target='_blank'>Krisp</a> can help</li></ul>"
+    "answer": "<ul class='faq-list'><li>Ensure your background doesn't contain any non-family friendly items</li><li>Check that your audio and camera are working. Test at the <a class='underline hover:no-underline hover:font-semibold' href='https://that.us/activities/3QR1EbLmqHPzYN7xJG2v' target='_blank'>Tech Check activity</a></li><li>Have water nearby, it's important to keep hydrated</li><li>If you're not in Central Time Zone, verify how your local time corresponds with website time. The goal is to have the site in your local time, but, you know, times are hard.</li><li>Your microphone/speakers/headset/camera are all in good working condition and of good quality</li><li>If you have a lot of background noise or echo, an app like <a class='underline hover:no-underline hover:font-semibold' href='https://krisp.ai' target='_blank'>Krisp</a> can help</li></ul>"
   },
   {
-    "question": "What is the online etiquette for a successful virtual Open Spaces session?",
-    "answer": "<ul class='faq-list'><li>Always be nice</li><li>Raise hand to speak</li><li>The person who submitted the session should facilitate and ensure those with hand raised have an opportunity to speak</li><li>Mute yourself when not speaking</li><li>Speak up so others can hear you</li><li>Turn your camera on so everyone else knows you're not a cyborg</li><li>Be careful not to speak over or interrupt others while they are speaking</li><li>Show that you are listening</li><li>Use care with humor. If you feel the need to use humor during meetings, just make sure that it’s appropriate for your audience.</li><li>Don't eat while speaking. While listening, muted is fine.</li><li>Keep your cool</li><li>Dress appropriately</li></ul>"
+    "question": "What is the online etiquette for a successful virtual Open Spaces activity?",
+    "answer": "<ul class='faq-list'><li>Always be nice</li><li>Raise hand to speak</li><li>The person who submitted the activity should facilitate and ensure those with hand raised have an opportunity to speak</li><li>Mute yourself when not speaking</li><li>Speak up so others can hear you</li><li>Turn your camera on so everyone else knows you're not a cyborg</li><li>Be careful not to speak over or interrupt others while they are speaking</li><li>Show that you are listening</li><li>Use care with humor. If you feel the need to use humor during meetings, just make sure that it’s appropriate for your audience.</li><li>Don't eat while speaking. While listening, muted is fine.</li><li>Keep your cool</li><li>Dress appropriately</li></ul>"
   },
   {
     "question": "Are the virual Open Spaces accessible using Internet Explorer 11 (IE11)",
@@ -41,7 +41,7 @@
   },
   {
     "question": "What is the differences between a public and private THAT Profile? ",
-    "answer": "A private THAT Profile is not discoverable on the internet and not shown on any THAT Conference websites. A <strong>public</strong> profile lists your profile on THAT Conference member sections and pages and makes your profile discoverable by search engines. <strong>A public THAT Profile is required to create sessions</strong>."
+    "answer": "A private THAT Profile is not discoverable on the internet and not shown on any THAT Conference websites. A <strong>public</strong> profile lists your profile on THAT Conference member sections and pages and makes your profile discoverable by search engines. <strong>A public THAT Profile is required to create activitys</strong>."
   },
   {
     "question": "Are the THATConference.com and THAT.US member accounts the same?",
@@ -49,10 +49,10 @@
   },
   {
     "question": "Is there a family track?",
-    "answer": "You can make any kind of “session” you want.. All are invited. Add a tag called family such that other’s know."
+    "answer": "You can make any kind of “activity” you want.. All are invited. Add a tag called family such that other’s know."
   },
   {
-    "question": "Can family members (including kids) create and/or attend virtual sessions?",
-    "answer": "Yes! Everyone is welcome to participate in the virtual sessions (with a valid ticket). However, for those under 13 years of age, must use their parent or guardian's account with appropriate supervision."
+    "question": "Can family members (including kids) create and/or attend virtual activitys?",
+    "answer": "Yes! Everyone is welcome to participate in the virtual activitys (with a valid ticket). However, for those under 13 years of age, must use their parent or guardian's account with appropriate supervision."
   }
 ]

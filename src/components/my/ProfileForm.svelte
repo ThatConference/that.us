@@ -251,8 +251,8 @@
 </script>
 
 <Form
-  {schema}
-  {initialValues}
+  schema="{schema}"
+  initialValues="{initialValues}"
   validateOnBlur="{false}"
   validateOnChange="{false}"
   on:submit="{handleSubmit}"
@@ -273,12 +273,11 @@
           your profile public.
         </p>
         <p class="mt-2 text-sm leading-5 text-gray-500">
-          To submit any type session your profile will have to be public.
+          To submit any type activity your profile will have to be public.
         </p>
       </div>
 
       <div class="mt-6 grid grid-cols-1 row-gap-6 gap-y-4 sm:grid-cols-6">
-
         <div class="sm:col-span-3">
           <label
             for="first_name"
@@ -292,7 +291,7 @@
               type="text"
               autofocus
               class="form-input block w-full transition duration-150 ease-in-out
-              sm:text-sm sm:leading-5"
+                sm:text-sm sm:leading-5"
             />
           </div>
         </div>
@@ -308,7 +307,7 @@
             <Input
               name="lastName"
               class="form-input block w-full transition duration-150 ease-in-out
-              sm:text-sm sm:leading-5"
+                sm:text-sm sm:leading-5"
             />
           </div>
         </div>
@@ -324,7 +323,7 @@
           <div class="mt-1 flex">
             <span
               class="inline-flex items-center px-3 rounded-l-md border
-              border-r-0 border-gray-300 bg-gray-50 text-gray-500 sm:text-sm"
+                border-r-0 border-gray-300 bg-gray-50 text-gray-500 sm:text-sm"
             >
               https://thatconference.com/member/
             </span>
@@ -335,16 +334,16 @@
                 disabled
                 name="profileSlug"
                 class="flex-1 form-input block w-full min-w-0 rounded-none
-                rounded-r-md transition duration-150 ease-in-out sm:text-sm
-                sm:leading-5 bg-gray-50 text-gray-500"
+                  rounded-r-md transition duration-150 ease-in-out sm:text-sm
+                  sm:leading-5 bg-gray-50 text-gray-500"
               />
             {:else}
               <Input
                 type="text"
                 name="profileSlug"
                 class="flex-1 form-input block w-full min-w-0 rounded-none
-                rounded-r-md transition duration-150 ease-in-out sm:text-sm
-                sm:leading-5"
+                  rounded-r-md transition duration-150 ease-in-out sm:text-sm
+                  sm:leading-5"
               />
             {/if}
           </div>
@@ -364,7 +363,7 @@
               name="bio"
               multiline="{true}"
               class="form-textarea block w-full transition duration-150
-              ease-in-out sm:text-sm sm:leading-5"
+                ease-in-out sm:text-sm sm:leading-5"
             />
           </div>
           <p class="mt-2 text-sm text-gray-500">
@@ -383,7 +382,7 @@
               type="text"
               name="company"
               class="form-input block w-full transition duration-150 ease-in-out
-              sm:text-sm sm:leading-5"
+                sm:text-sm sm:leading-5"
             />
           </div>
         </div>
@@ -399,7 +398,7 @@
             <Input
               name="jobTitle"
               class="form-input block w-full transition duration-150 ease-in-out
-              sm:text-sm sm:leading-5"
+                sm:text-sm sm:leading-5"
             />
           </div>
         </div>
@@ -414,7 +413,6 @@
 
           <div class="mt-2 flex items-center">
             <span class="h-12 w-12 rounded-full overflow-hidden bg-gray-100">
-
               {#if profileImageUploading}
                 <div class="h-full w-full flex flex-grow justify-center">
                   <ScaleOut />
@@ -448,17 +446,15 @@
                   )}"
                 accept="image/x-png,image/png,.png,image/jpeg,.jpg,.jpeg,image/gif,.gif"
                 class="py-2 px-3 border border-gray-300 rounded-md text-sm
-                leading-4 font-medium text-gray-700 hover:text-gray-500
-                focus:outline-none focus:border-blue-300
-                focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800
-                transition duration-150 ease-in-out"
+                  leading-4 font-medium text-gray-700 hover:text-gray-500
+                  focus:outline-none focus:border-blue-300
+                  focus:shadow-outline-blue active:bg-gray-50
+                  active:text-gray-800 transition duration-150 ease-in-out"
               />
             </span>
           </div>
           <p class="mt-2 text-sm text-gray-500">
-            Make sure you
-            <strong>save</strong>
-            to update your profile.
+            Make sure you <strong>save</strong> to update your profile.
           </p>
         </div>
       </div>
@@ -481,8 +477,8 @@
             <div class="mt-4 flex rounded-md shadow-sm">
               <span
                 class="inline-flex items-center px-3 rounded-l-md border
-                border-r-0 border-gray-300 bg-gray-50 text-gray-500 sm:text-sm
-                w-1/4"
+                  border-r-0 border-gray-300 bg-gray-50 text-gray-500 sm:text-sm
+                  w-1/4"
               >
                 <span class="w-6">
                   <Icon data="{link.icon}" />
@@ -496,8 +492,8 @@
                 value="{getInitialSocailLinkValue(link)}"
                 on:change="{e => setValue('profileLinks', updateLinksInputValues(link, e.target.value))}"
                 class="flex-1 form-input block w-full min-w-0 rounded-none
-                rounded-r-md transition duration-150 ease-in-out sm:text-sm
-                sm:leading-5"
+                  rounded-r-md transition duration-150 ease-in-out sm:text-sm
+                  sm:leading-5"
               />
             </div>
           {/each}
@@ -533,16 +529,15 @@
 
             <div class="ml-3 text-sm leading-5">
               <p class="text-gray-500">
-                By selecting this, you're able to submit a session and THAT can
-                feature your profile on that.us or thatconference.com. We don't
-                sell any data.
+                By selecting this, you're able to submit an activity and THAT
+                can feature your profile on that.us or thatconference.com. We
+                don't sell any data.
               </p>
             </div>
 
             {#if touched['canFeature'] && errors['canFeature']}
               <p>error</p>
             {/if}
-
           </div>
         </div>
       </div>
@@ -572,7 +567,7 @@
                 name="email"
                 placeholder="e.g. user@example.com"
                 class="form-input block w-full transition duration-150
-                ease-in-out sm:text-sm sm:leading-5"
+                  ease-in-out sm:text-sm sm:leading-5"
               />
             </div>
           </div>
@@ -580,7 +575,6 @@
       </div>
 
       <div class="mt-8 border-t border-gray-200 pt-8">
-
         <div>
           <h3 class="text-lg leading-6 font-medium text-gray-900">
             Terms of Service
@@ -599,7 +593,6 @@
 
             <div class="mt-4">
               <div class="relative flex items-center items-start">
-
                 <Checkbox
                   name="acceptedCodeOfConduct"
                   checked="{profile.acceptedCodeOfConduct}"
@@ -615,7 +608,7 @@
                       tabindex="-1"
                       href="https://www.thatconference.com/code-of-conduct"
                       class="font-medium text-indigo-600 hover:text-indigo-500
-                      transition duration-150 ease-in-out"
+                        transition duration-150 ease-in-out"
                     >
                       Code of Conduct
                     </Link>
@@ -630,11 +623,9 @@
                     </p>
                   {/if}
                 </div>
-
               </div>
               <div class="mt-4">
                 <div class="relative flex items-center items-start">
-
                   <Checkbox
                     name="acceptedAntiHarassmentPolicy"
                     checked="{profile.acceptedAntiHarassmentPolicy}"
@@ -650,7 +641,7 @@
                         tabindex="-1"
                         href="https://www.thatconference.com/anti-harassment-policy"
                         class="font-medium text-indigo-600 hover:text-indigo-500
-                        transition duration-150 ease-in-out"
+                          transition duration-150 ease-in-out"
                       >
                         Commitment Anti-Harassment
                       </Link>
@@ -664,12 +655,10 @@
                       </p>
                     {/if}
                   </div>
-
                 </div>
 
                 <div class="mt-4">
                   <div class="relative flex items-center items-start">
-
                     <Checkbox
                       name="acceptedCommitmentToDiversity"
                       checked="{profile.acceptedCommitmentToDiversity}"
@@ -685,8 +674,8 @@
                           tabindex="-1"
                           href="https://www.thatconference.com/commitment-to-diversity"
                           class="font-medium text-indigo-600
-                          hover:text-indigo-500 transition duration-150
-                          ease-in-out"
+                            hover:text-indigo-500 transition duration-150
+                            ease-in-out"
                         >
                           Commitment to Diversity
                         </Link>
@@ -703,12 +692,10 @@
                         </p>
                       {/if}
                     </div>
-
                   </div>
 
                   <div class="mt-4">
                     <div class="relative flex items-center items-start">
-
                       <Checkbox
                         name="acceptedTermsOfService"
                         checked="{profile.acceptedTermsOfService}"
@@ -727,8 +714,8 @@
                             tabindex="-1"
                             href="https://www.thatconference.com/terms-of-use"
                             class="font-medium text-indigo-600
-                            hover:text-indigo-500 transition duration-150
-                            ease-in-out"
+                              hover:text-indigo-500 transition duration-150
+                              ease-in-out"
                           >
                             Terms of Use
                           </Link>
@@ -741,12 +728,10 @@
                         {/if}
                       </div>
                     </div>
-
                   </div>
 
                   <div class="mt-4">
                     <div class="relative flex items-center items-start">
-
                       <Checkbox
                         name="isOver13"
                         checked="{profile.isOver13}"
@@ -770,13 +755,11 @@
                         {/if}
                       </div>
                     </div>
-
                   </div>
                 </div>
               </div>
             </div>
           </fieldset>
-
         </div>
       </div>
 
@@ -796,7 +779,6 @@
 
             <div class="mt-4">
               <div class="relative flex items-center items-start">
-
                 <Checkbox
                   name="isDeactivated"
                   checked="{profile.isDeactivated}"
@@ -812,7 +794,7 @@
                       open
                       href="https://www.thatconference.com/code-of-conduct"
                       class="font-medium text-indigo-600 hover:text-indigo-500
-                      transition duration-150 ease-in-out"
+                        transition duration-150 ease-in-out"
                     >
                       Deactivate my account.
                     </Link>
@@ -828,7 +810,6 @@
           </fieldset>
         </div>
       </div>
-
     </div>
 
     <div class="mt-8 border-t border-gray-200 pt-5">
@@ -838,11 +819,11 @@
             type="submit"
             disabled="{isSubmitting}"
             class="inline-flex justify-center py-2 px-4 border-2
-            border-thatBlue-500 text-sm leading-5 font-medium rounded-md
-            text-thatBlue-500 bg-white hover:bg-thatBlue-500 hover:text-white
-            focus:outline-none focus:shadow-outline-thatBlue-500
-            focus:bg-thatBlue-500 focus:text-white focus:border-thatBlue-800
-            active:bg-thatBlue-800 transition duration-150 ease-in-out"
+              border-thatBlue-500 text-sm leading-5 font-medium rounded-md
+              text-thatBlue-500 bg-white hover:bg-thatBlue-500 hover:text-white
+              focus:outline-none focus:shadow-outline-thatBlue-500
+              focus:bg-thatBlue-500 focus:text-white focus:border-thatBlue-800
+              active:bg-thatBlue-800 transition duration-150 ease-in-out"
           >
             Save
           </button>
@@ -852,10 +833,10 @@
             type="reset"
             tabindex="-1"
             class="py-2 px-4 border-2 border-gray-300 rounded-md text-sm
-            leading-5 font-medium text-gray-700 hover:text-gray-500
-            focus:outline-none focus:border-blue-300 focus:shadow-outline-blue
-            active:bg-gray-50 active:text-gray-800 transition duration-150
-            ease-in-out"
+              leading-5 font-medium text-gray-700 hover:text-gray-500
+              focus:outline-none focus:border-blue-300 focus:shadow-outline-blue
+              active:bg-gray-50 active:text-gray-800 transition duration-150
+              ease-in-out"
           >
             Clear
           </button>
@@ -872,6 +853,5 @@
         <Waiting />
       </div>
     {/if}
-
   </div>
 </Form>

@@ -8,7 +8,7 @@
   // components
   import Nav from '../../components/nav/interiorNav/Top.svelte';
   import Sponsor from '../../components/SponsorSimple.svelte';
-  import SessionsList from '../../components/sessions/List.svelte';
+  import ActivityList from '../../components/activities/List.svelte';
   import CardLoader from '../../components/CardLoader.svelte';
 
   // elements
@@ -24,11 +24,11 @@
   const { querySessions } = sessionsApi(getClient());
   const currentEvent = events[eventName];
 
-  if (!currentEvent) navigateTo(`/sessions`, { reload: true });
+  if (!currentEvent) navigateTo(`/activities`, { reload: true });
 
   metaTagsStore.set({
     title: `${currentEvent.title} * THAT`,
-    description: `Session list for ${currentEvent.title}.`,
+    description: `Activities for ${currentEvent.title}.`,
     openGraph: {
       type: 'website',
       url: `https://that.us/events/${eventName}`,
@@ -37,19 +37,18 @@
 </script>
 
 <StackedLayout>
-
   <div slot="header">
     <Nav />
     <ActionHeader title="{currentEvent.title}">
-      <LinkButton href="/sessions" text="THAT Board" />
+      <LinkButton href="/activities" text="Activities" />
     </ActionHeader>
   </div>
 
   <div slot="body">
     {#await querySessions(currentEvent.eventId)}
       <CardLoader />
-    {:then sessions}
-      <SessionsList {sessions} />
+    {:then activities}
+      <ActivityList activities="{activities}" />
     {:catch error}
       <p>OH NO</p>
     {/await}
@@ -58,5 +57,4 @@
   <div slot="footer">
     <Sponsor eventId="{currentEvent.eventId}" />
   </div>
-
 </StackedLayout>

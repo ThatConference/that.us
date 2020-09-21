@@ -28,7 +28,7 @@
       network: 'YOUTUBE',
     },
     {
-      href: 'https://thatconference.live',
+      href: 'https://that.live',
       network: 'TWITCH',
     },
     {
@@ -39,8 +39,8 @@
 
   const textLinks = [
     {
-      text: 'THAT Board',
-      href: '/sessions',
+      text: 'Activities',
+      href: '/activities',
     },
     {
       text: 'Members',

@@ -36,20 +36,20 @@ export const QUERY_SUBMISSIONS = `
   }
 `;
 
-export default (client) => {
+export default client => {
   const queryMySubmissions = () =>
     client
       .query(QUERY_SUBMISSIONS)
       .toPromise()
-      .then((r) => {
+      .then(r => {
         let results = [];
 
         const { submitted } = r.data.sessions.me;
 
         if (submitted) {
           results = submitted
-            .filter((s) => s.type === 'OPEN_SPACE')
-            .filter((s) => s.status === 'ACCEPTED');
+            .filter(s => s.type === 'OPEN_SPACE')
+            .filter(s => s.status === 'ACCEPTED');
 
           results.sort((a, b) => new Date(a.startTime) - new Date(b.startTime));
         }

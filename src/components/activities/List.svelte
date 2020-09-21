@@ -1,43 +1,36 @@
 <script>
-  export let sessions;
-
+  export let activities;
   export let editMode = false;
 
   // 3rd party
-  import { onMount } from 'svelte';
   import dayjs from 'dayjs';
   import dayOfYear from 'dayjs/plugin/dayOfYear';
-  import { Link } from 'yrv';
   import _ from 'lodash';
 
-  // utility
-  import { getTimeStampId } from '../../utilities/scrollHelper';
-
   // ui support
-  import CardLoader from '../CardLoader.svelte';
   import Card from './Card.svelte';
   import KeynoteCard from './KeynoteCard.svelte';
-  import { Waiting, Action, GroupHeader } from '../../elements';
 
   dayjs.extend(dayOfYear);
 
-  const sorted = _(sessions)
+  const sorted = _(activities)
     .groupBy(({ startTime }) => dayjs(startTime).dayOfYear())
     .map((value, key) => ({
       timeSlots: _(value)
         .groupBy(({ startTime }) => new Date(startTime))
         .map((value, key) => ({
           timeSlot: key,
-          sessions: value,
+          activities: value,
         }))
         .value(),
       dayOfYear: key,
     }))
     .value();
 
-  const isKeynote = session => {
+  const isKeynote = activity => {
     let results = false;
-    if (session.type === 'KEYNOTE' || session.type === 'PANEL') results = true;
+    if (activity.type === 'KEYNOTE' || activity.type === 'PANEL')
+      results = true;
 
     return results;
   };
@@ -74,17 +67,17 @@
           </h2>
 
           <ul class="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {#each ts.sessions as session (session.id)}
-              {#if isKeynote(session)}
+            {#each ts.activities as activity (activity.id)}
+              {#if isKeynote(activity)}
                 <li
                   class="col-span-1 sm:col-span-2 lg:col-span-3 bg-white
                     rounded-lg shadow-lg mt-10 mb-10"
                 >
-                  <KeynoteCard {...session} />
+                  <KeynoteCard {...activity} />
                 </li>
               {:else}
                 <li class="col-span-1 bg-white rounded-lg shadow-lg">
-                  <Card {...session} editMode="{editMode}" />
+                  <Card {...activity} editMode="{editMode}" />
                 </li>
               {/if}
             {/each}

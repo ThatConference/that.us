@@ -1,7 +1,7 @@
 export default [
   {
-    text: 'THAT Board',
-    href: '/sessions',
+    text: 'Activities',
+    href: '/activities',
     first: true,
   },
   {

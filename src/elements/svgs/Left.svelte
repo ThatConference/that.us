@@ -1,5 +1,10 @@
+<script>
+  export let classes =
+    'absolute top-1/2 right-full transform -translate-y-1/2 -translate-x-32';
+</script>
+
 <svg
-  class="absolute top-1/2 right-full transform -translate-y-1/2 -translate-x-32"
+  class="{classes}"
   width="404"
   height="384"
   fill="none"

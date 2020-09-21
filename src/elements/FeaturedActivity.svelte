@@ -16,13 +16,12 @@
     : config.defaultProfileImage;
 </script>
 
-<Link href="/sessions/{id}">
+<Link href="/activities/{id}">
   <div
     class="w-full h-full py-10 px-6 hover:bg-thatBlue-400 bg-that-blue
-    text-center shadow rounded-lg xl:px-10 xl:text-left"
+      text-center shadow rounded-lg xl:px-10 xl:text-left"
   >
     <div class="space-y-6 xl:space-y-10">
-
       <img
         class="mx-auto h-40 w-40 rounded-full xl:w-56 xl:h-56"
         src="{userProfileImage}"
@@ -40,7 +39,6 @@
           </p>
         </div>
       </div>
-
     </div>
   </div>
 </Link>

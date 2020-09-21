@@ -7,12 +7,19 @@
   let hidden = true;
 </script>
 
-<Headroom offset="{30}" on:unpin="{() => {if (!hidden) hidden = !hidden}}">
+<Headroom
+  offset="{30}"
+  on:unpin="{() => {
+    if (!hidden) hidden = !hidden;
+  }}"
+>
   <div class="bg-white">
-    <div class="max-w-screen-xl mx-auto relative bg-white py-6 px-4 sm:px-6 lg:px-8">
+    <div
+      class="max-w-screen-xl mx-auto relative bg-white py-6 px-4 sm:px-6 lg:px-8"
+    >
       <div
-        class="absolute top-0 inset-x-0 p-2 transition transform origin-top-right
-          md:hidden z-10"
+        class="absolute top-0 inset-x-0 p-2 transition transform
+          origin-top-right md:hidden z-10"
         class:hidden
         class:block="{!hidden}"
       >
@@ -27,7 +34,7 @@
               <div>
                 <img
                   class="h-8 w-auto"
-                  src="/images/Logo-Square-Blue.svg"
+                  src="/images/THAT-Full-Wide.svg"
                   alt="THAT Logo"
                 />
               </div>
@@ -64,14 +71,15 @@
         </div>
       </div>
       <nav
-        class="relative flex items-center justify-between sm:h-10 lg:justify-start"
+        class="relative flex items-center justify-between sm:h-10
+          lg:justify-start"
       >
         <div class="flex items-center flex-grow flex-shrink-0 lg:flex-grow-0">
           <div class="flex items-center justify-between w-full md:w-auto">
             <Link href="/" aria-label="Home">
               <img
                 class="h-8 w-auto sm:h-10"
-                src="/images/Logo-Square-Blue.svg"
+                src="/images/THAT-Full-Wide.svg"
                 alt="THAT Logo"
               />
             </Link>

@@ -1,5 +1,5 @@
 <script>
-  export let documentReferrer = '/sessions';
+  export let documentReferrer = '/activities';
 
   import { onMount } from 'svelte';
   import qs from 'query-string';

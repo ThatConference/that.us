@@ -9,7 +9,7 @@ dayjs.extend(customParseFormat);
 dayjs.extend(utc);
 dayjs.extend(timezone);
 
-export const format = (values) => {
+export const format = values => {
   const {
     selectedDay,
     selectedTime,
@@ -24,7 +24,7 @@ export const format = (values) => {
   const parsedDuration = dayjs(selectedDuration, 'H:mm');
 
   const { title, shortDescription, tags } = values;
-  const newSession = {
+  const newActivity = {
     title,
     shortDescription,
     tags,
@@ -38,5 +38,5 @@ export const format = (values) => {
     startTime: parsedStartTime,
   };
 
-  return newSession;
+  return newActivity;
 };

@@ -6,18 +6,18 @@ const domain = 'that.us';
 function icalWrapper(title) {
   const cal = ical({ domain, name: title });
 
-  function create(session) {
+  function create(activity) {
     cal.createEvent({
       prodId: '//THAT Conference//THAT.us//EN',
-      uid: `that-${session.id}`,
-      start: dayjs(session.startTime).toDate(),
-      end: dayjs(session.startTime)
-        .add(session.durationInMinutes, 'minutes')
+      uid: `that-${activity.id}`,
+      start: dayjs(activity.startTime).toDate(),
+      end: dayjs(activity.startTime)
+        .add(activity.durationInMinutes, 'minutes')
         .toDate(),
-      summary: session.title,
-      description: session.shortDescription,
+      summary: activity.title,
+      description: activity.shortDescription,
       location: 'THAT.us',
-      url: `https://that.us/session/${session.id}`,
+      url: `https://that.us/activity/${activity.id}`,
     });
 
     return cal.toURL();

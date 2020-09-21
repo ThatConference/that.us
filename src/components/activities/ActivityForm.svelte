@@ -59,7 +59,7 @@
 
   import { Waiting, ModalError } from '../../elements';
   import { thatProfile } from '../../utilities/security.js';
-  import ErrorNotificaiton from '../../components/notifications/Error.svelte';
+  import ErrorNotificaiton from '../notifications/Error.svelte';
 
   dayjs.extend(utc);
   dayjs.extend(timezone);
@@ -143,7 +143,7 @@
     };
   }
 
-  const canCancelSessionAction = () => {
+  const canCancelActivityAction = () => {
     let results = false;
 
     if (handleWithdraw) {
@@ -181,22 +181,22 @@
   <ModalError
     title="Oh NO! You have an incomplete profile!"
     text="It appears you haven't created your profile yet. You can't create a
-    session until that's complete."
+    activity until that's complete."
     action="{{ title: 'Create Profile', href: '/my/profile' }}"
-    returnTo="{{ title: 'Return to THAT Board', href: '/sessions' }}"
+    returnTo="{{ title: 'Return to Activities', href: '/activities' }}"
   />
 {:else if !$thatProfile.canFeature}
   <ModalError
     title="Your Profile Isn't Public."
     text="It appears we cannot feature your profile. You need to have a public
-    profile to create a session."
+    profile to create a activity."
     action="{{ title: 'Update Profile', href: '/my/profile' }}"
-    returnTo="{{ title: 'Return to THAT Board', href: '/sessions' }}"
+    returnTo="{{ title: 'Return to Activities', href: '/activities' }}"
   />
 {/if}
 
 <Form
-  {schema}
+  schema="{schema}"
   initialValues="{formInitValues}"
   validateOnBlur="{false}"
   validateOnChange="{false}"
@@ -209,7 +209,6 @@
   let:errors
   let:touched
 >
-
   <div>
     <p class="mt-1 max-w-2xl text-sm leading-5 text-gray-500">
       Below is a quick form to help others identify if they have interest in
@@ -220,25 +219,23 @@
   <div class="mt-6 sm:mt-5">
     <div
       class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t
-      sm:border-gray-200 sm:pt-5"
+        sm:border-gray-200 sm:pt-5"
     >
-
       <label
-        for="session_title"
+        for="activity_title"
         class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px
-        sm:pt-2 col-span-1"
+          sm:pt-2 col-span-1"
       >
         What would you like to chat about?
       </label>
 
       <div class="mt-1 sm:mt-0 col-span-2">
-
         <div class="max-w-lg rounded-md shadow-sm">
           <Input
             name="title"
             autofocus
             class="form-input block w-full transition duration-150 ease-in-out
-            sm:text-sm sm:leading-5"
+              sm:text-sm sm:leading-5"
           />
         </div>
       </div>
@@ -246,12 +243,12 @@
 
     <div
       class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start
-      sm:border-t sm:border-gray-200 sm:pt-5"
+        sm:border-t sm:border-gray-200 sm:pt-5"
     >
       <label
-        for="session_shortDescription"
+        for="activity_shortDescription"
         class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px
-        sm:pt-2"
+          sm:pt-2"
       >
         Explain a bit more about what you'd like to chat about.
       </label>
@@ -263,7 +260,7 @@
             spellcheck="true"
             rows="5"
             class="form-input block w-full transition duration-150 ease-in-out
-            sm:text-sm sm:leading-5"
+              sm:text-sm sm:leading-5"
           />
         </div>
       </div>
@@ -271,12 +268,12 @@
 
     <div
       class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start
-      sm:border-t sm:border-gray-200 sm:pt-5"
+        sm:border-t sm:border-gray-200 sm:pt-5"
     >
       <label
-        for="session_tags"
+        for="activity_tags"
         class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px
-        sm:pt-2"
+          sm:pt-2"
       >
         Set 5 or less 'tags' to help categorize this chat. (return/enter is the
         delimiter)
@@ -292,7 +289,7 @@
             onlyUnique="{true}"
             on:tags="{({ detail }) => setValue('tags', detail.tags)}"
             class="form-input block w-full transition duration-150 ease-in-out
-            sm:text-sm sm:leading-5 rounded-md shadow-sm"
+              sm:text-sm sm:leading-5 rounded-md shadow-sm"
           />
         </div>
       </div>
@@ -300,12 +297,12 @@
 
     <div
       class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start
-      sm:border-t sm:border-gray-200 sm:pt-5"
+        sm:border-t sm:border-gray-200 sm:pt-5"
     >
       <label
-        for="session_selectedDay"
+        for="activity_selectedDay"
         class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px
-        sm:pt-2"
+          sm:pt-2"
       >
         Select a Day:
       </label>
@@ -327,19 +324,18 @@
 
     <div
       class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start
-      sm:border-t sm:border-gray-200 sm:pt-5"
+        sm:border-t sm:border-gray-200 sm:pt-5"
     >
       <label
-        for="session_startTime"
+        for="activity_startTime"
         class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px
-        sm:pt-2"
+          sm:pt-2"
       >
         Select a Time:
       </label>
 
       <div class="mt-1 sm:mt-0 sm:col-span-2">
         <div class="flex space-x-8 max-w-lg">
-
           <div>
             <legend class="block text-sm font-medium leading-5 text-gray-400">
               Starting Time
@@ -361,7 +357,6 @@
               {#if touched['selectedTime'] && errors['selectedTime']}
                 <p class="text-red-600 italic">{errors['selectedTime']}</p>
               {/if}
-
             </div>
           </div>
 
@@ -370,7 +365,6 @@
               Time Zone
             </legend>
             <div class="mt-1 rounded-md shadow-sm w-64">
-
               <Select
                 bind:this="{timezoneSelect}"
                 inputAttributes="{{ name: 'selectedTimezone' }}"
@@ -387,7 +381,6 @@
               {#if touched['selectedTimezone'] && errors['selectedTimezone']}
                 <p class="text-red-600 italic">{errors['selectedTimezone']}</p>
               {/if}
-
             </div>
           </div>
         </div>
@@ -396,12 +389,12 @@
 
     <div
       class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start
-      sm:border-t sm:border-gray-200 sm:pt-5"
+        sm:border-t sm:border-gray-200 sm:pt-5"
     >
       <label
-        for="session_duration"
+        for="activity_duration"
         class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px
-        sm:pt-2"
+          sm:pt-2"
       >
         Estimated Duration (hours):
       </label>
@@ -424,46 +417,43 @@
           {#if touched['selectedDuration'] && errors['selectedDuration']}
             <p class="text-red-600 italic">{errors['selectedDuration']}</p>
           {/if}
-
         </div>
       </div>
     </div>
 
     <div class="mt-8 border-t border-gray-200 pt-5">
       <div class="flex justify-end space-x-4">
-
         <span class="inline-flex rounded-md shadow-sm">
           <button
             type="submit"
             disabled="{isSubmitting}"
             class="inline-flex justify-center py-2 px-4 border-2
-            border-thatBlue-500 text-sm leading-5 font-medium rounded-md
-            text-thatBlue-500 bg-white hover:bg-thatBlue-500 hover:text-white
-            focus:outline-none focus:shadow-outline-thatBlue-500
-            focus:bg-thatBlue-500 focus:text-white focus:border-thatBlue-800
-            active:bg-thatBlue-800 transition duration-150 ease-in-out"
+              border-thatBlue-500 text-sm leading-5 font-medium rounded-md
+              text-thatBlue-500 bg-white hover:bg-thatBlue-500 hover:text-white
+              focus:outline-none focus:shadow-outline-thatBlue-500
+              focus:bg-thatBlue-500 focus:text-white focus:border-thatBlue-800
+              active:bg-thatBlue-800 transition duration-150 ease-in-out"
           >
             {initialValues ? 'Update' : 'Create'}
           </button>
         </span>
 
-        {#if canCancelSessionAction()}
+        {#if canCancelActivityAction()}
           <span class="inline-flex rounded-md shadow-sm">
             <button
               disabled="{isSubmitting}"
               on:click|preventDefault="{handleWithdraw}"
               tabindex="-1"
               class="py-2 px-4 border-2 order border-transparent rounded-md
-              text-sm leading-5 font-medium text-white bg-red-400
-              hover:bg-red-600 focus:outline-none focus:border-red-700
-              focus:shadow-outline-red active:bg-red-700 transition duration-150
-              ease-in-out"
+                text-sm leading-5 font-medium text-white bg-red-400
+                hover:bg-red-600 focus:outline-none focus:border-red-700
+                focus:shadow-outline-red active:bg-red-700 transition
+                duration-150 ease-in-out"
             >
               Cancel / Withdraw
             </button>
           </span>
         {/if}
-
       </div>
     </div>
 
@@ -476,6 +466,5 @@
         <Waiting />
       </div>
     {/if}
-
   </div>
 </Form>

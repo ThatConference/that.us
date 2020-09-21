@@ -1,16 +1,16 @@
 <script>
   import { onMount, onDestroy } from 'svelte';
-  import { get } from 'svelte/store';
   import { initClient } from '@urql/svelte';
-  import { navigateTo, router, Router, Route } from 'yrv';
+  import { router, Router, Route } from 'yrv';
   import { v4 as uuidv4 } from 'uuid';
 
   import {
     isAuthenticated,
     token,
     thatProfile,
-    user,
+    setupAuth,
   } from './utilities/security.js';
+
   import config, { events } from './config';
   import currentEvent from './store/currentEvent';
   import metaTagsStore from './store/metaTags';
@@ -28,7 +28,13 @@
   import FAQ from './routes/FAQ.svelte';
   import Partners from './routes/Partners.svelte';
   import Members from './routes/Members.svelte';
-  import Help from './routes/help/Help.svelte';
+
+  // support
+  import NewUserWelcome from './routes/support/Welcome.svelte';
+  import WhatIsAnActivity from './routes/support/WhatIsAnActivity.svelte';
+  import JoinAnActivity from './routes/support/JoinAnActivity.svelte';
+  import CreateAnActivity from './routes/support/CreateAnActivity.svelte';
+  import StayingUpToDate from './routes/support/StayingUpToDate.svelte';
 
   // my
   import MyFavorites from './routes/my/Favorites.svelte';
@@ -36,12 +42,12 @@
   import Profile from './routes/my/Profile.svelte';
   import Badges from './routes/my/Badges.svelte';
 
-  // sessions
+  // Activities
   import Event from './routes/events/List.svelte';
-  import List from './routes/sessions/List.svelte';
-  import Session from './routes/sessions/Session.svelte';
-  import Create from './routes/sessions/Create.svelte';
-  import EditSession from './routes/sessions/Edit.svelte';
+  import List from './routes/activities/List.svelte';
+  import Activity from './routes/activities/Activity.svelte';
+  import Create from './routes/activities/Create.svelte';
+  import EditActivity from './routes/activities/Edit.svelte';
 
   import ChangeLog from './routes/releases/ChangeLog.svelte';
   import ChangeLogMissed from './routes/releases/Missed.svelte';
@@ -52,7 +58,7 @@
   // setting the default event
   currentEvent.set(events.thatUs);
 
-  initClient({
+  let client = initClient({
     url: config.api,
     fetchOptions: () => ({
       headers: {
@@ -67,10 +73,9 @@
   });
 
   let documentReferrer;
-
   function isLoggedIn() {
     documentReferrer = window.location.pathname;
-    return get(isAuthenticated);
+    return $isAuthenticated;
   }
 
   router.subscribe(e => {
@@ -84,6 +89,8 @@
 
   let unsub;
   onMount(() => {
+    setupAuth(client);
+
     if ($showReleaseNotes) {
       messages.update(m => [
         ...m,
@@ -170,15 +177,36 @@
     <Route exact path="/faq" component="{FAQ}" />
     <Route exact path="/members" component="{Members}" />
     <Route exact path="/partners" component="{Partners}" />
-    <Route exact path="/help" component="{Help}" />
     <Route exact path="/changelog" component="{ChangeLog}" />
     <Route exact path="/changelog-missed" component="{ChangeLogMissed}" />
 
-    <Route exact path="/sessions" component="{List}" />
+    <Route exact path="/activities" component="{List}" />
+
+    <Route exact path="/support/welcome" component="{NewUserWelcome}" />
+    <Route
+      exact
+      path="/support/what-is-an-activity"
+      component="{WhatIsAnActivity}"
+    />
+    <Route
+      exact
+      path="/support/join-an-activity"
+      component="{JoinAnActivity}"
+    />
+    <Route
+      exact
+      path="/support/create-an-activity"
+      component="{CreateAnActivity}"
+    />
+    <Route
+      exact
+      path="/support/staying-up-to-date"
+      component="{StayingUpToDate}"
+    />
 
     <Route
       exact
-      path="/sessions/create"
+      path="/activities/create"
       component="{Create}"
       condition="{isLoggedIn}"
       redirect="/login"
@@ -186,18 +214,18 @@
 
     <Route
       exact
-      path="/sessions/edit/:sessionId"
-      component="{EditSession}"
+      path="/activities/edit/:activityId"
+      component="{EditActivity}"
       condition="{isLoggedIn}"
       redirect="/login"
     />
 
-    <Route exact path="/sessions/:sessionId" component="{Session}" />
+    <Route exact path="/activities/:activityId" component="{Activity}" />
     <Route exact path="/events/:eventName" component="{Event}" />
 
     <Route
       exact
-      path="/join/:sessionId"
+      path="/join/:activityId"
       component="{Live}"
       condition="{isLoggedIn}"
       redirect="/login"
