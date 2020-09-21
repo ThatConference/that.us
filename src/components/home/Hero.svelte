@@ -68,10 +68,7 @@
   </div>
 
   <div class="relative pb-16 md:pb-20 lg:pb-24 xl:pb-32">
-    <main
-      class="mt-8 mx-auto max-w-screen-xl px-4 sm:mt-12 sm:px-6 md:mt-20
-        xl:mt-24"
-    >
+    <main class="mt-32 mx-auto max-w-screen-xl px-4 sm:px-6 xl:mt-40">
       <h2
         class="sm:text-center lg:text-left pb-16 text-4xl tracking-tight
           leading-10 font-extrabold text-thatBlue-800 sm:text-5xl
