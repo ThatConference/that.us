@@ -28,7 +28,7 @@
       network: 'YOUTUBE',
     },
     {
-      href: 'https://thatconference.live',
+      href: 'https://that.live',
       network: 'TWITCH',
     },
     {
