@@ -31,8 +31,9 @@
 
   // support
   import NewUserWelcome from './routes/support/Welcome.svelte';
-  import JoinActivity from './routes/support/JoinActivity.svelte';
-  import CreateActivity from './routes/support/CreateActivity.svelte';
+  import WhatIsAnActivity from './routes/support/WhatIsAnActivity.svelte';
+  import JoinAnActivity from './routes/support/JoinAnActivity.svelte';
+  import CreateAnActivity from './routes/support/CreateAnActivity.svelte';
   import StayingUpToDate from './routes/support/StayingUpToDate.svelte';
 
   // my
@@ -182,8 +183,21 @@
     <Route exact path="/activities" component="{List}" />
 
     <Route exact path="/support/welcome" component="{NewUserWelcome}" />
-    <Route exact path="/support/join-activity" component="{JoinActivity}" />
-    <Route exact path="/support/create-activity" component="{CreateActivity}" />
+    <Route
+      exact
+      path="/support/what-is-an-activity"
+      component="{WhatIsAnActivity}"
+    />
+    <Route
+      exact
+      path="/support/join-an-activity"
+      component="{JoinAnActivity}"
+    />
+    <Route
+      exact
+      path="/support/create-an-activity"
+      component="{CreateAnActivity}"
+    />
     <Route
       exact
       path="/support/staying-up-to-date"

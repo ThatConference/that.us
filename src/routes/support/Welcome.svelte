@@ -69,13 +69,24 @@
             <p>Website actions you should know how to do:</p>
             <ul>
               <li>
-                <Link href="/activities">Join an upcoming activity.</Link>
+                <Link href="/support/what-is-an-activity">
+                  What is an activity.
+                </Link>
               </li>
               <li>
-                <Link href="/activities/create">Creating an activity.</Link>
+                <Link href="/support/join-an-activity">
+                  Join an upcoming activity.
+                </Link>
               </li>
               <li>
-                <Link href="/activities/create">Staying up to date.</Link>
+                <Link href="/support/create-an-activity">
+                  Creating an activity.
+                </Link>
+              </li>
+              <li>
+                <Link href="/support/staying-up-to-date">
+                  Staying up to date.
+                </Link>
               </li>
               <li>
                 <Link href="/my/profile">Keep your profile up to date.</Link>
@@ -105,7 +116,7 @@
             class="flex space-x-4 text-base max-w-prose mx-auto lg:max-w-none"
           >
             <StandardLink href="/activities">Upcoming Activities</StandardLink>
-            <HighlightLink href="/support/join-activity">
+            <HighlightLink href="/support/join-an-activity">
               Joining an Activity
             </HighlightLink>
           </div>
