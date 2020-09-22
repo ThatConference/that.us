@@ -48,6 +48,7 @@
   import Activity from './routes/activities/Activity.svelte';
   import Create from './routes/activities/Create.svelte';
   import EditActivity from './routes/activities/Edit.svelte';
+  import SessionRedirect from './routes/SessionRedirect.svelte';
 
   import ChangeLog from './routes/releases/ChangeLog.svelte';
   import ChangeLogMissed from './routes/releases/Missed.svelte';
@@ -181,6 +182,7 @@
     <Route exact path="/changelog-missed" component="{ChangeLogMissed}" />
 
     <Route exact path="/activities" component="{List}" />
+    <Route path="/sessions" component="{SessionRedirect}" />
 
     <Route exact path="/support/welcome" component="{NewUserWelcome}" />
     <Route
