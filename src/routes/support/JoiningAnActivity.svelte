@@ -12,7 +12,7 @@
   import metaTagsStore from '../../store/metaTags';
 
   metaTagsStore.set({
-    title: 'Joining an Activity - THAT!',
+    title: 'Joining an Activity - THAT',
     description: '',
     openGraph: {
       type: 'website',
@@ -61,8 +61,12 @@
           Sagittis scelerisque nulla cursus in enim consectetur quam.
         </figcaption>
       </figure>
-
-      <div class="flex space-x-4 text-base max-w-prose mx-auto lg:max-w-none">
+    </div>
+    <div
+      class="my-12 max-w-prose mx-auto lg:max-w-none flex flex-col items-center
+        justify-center"
+    >
+      <div class="flex space-x-4 text-base">
         <StandardLink href="/activities">Upcoming Activities</StandardLink>
         <HighlightLink href="/support/what-is-an-activity">
           What is an Activity?

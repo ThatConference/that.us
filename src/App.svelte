@@ -33,7 +33,7 @@
   // support
   import NewUserWelcome from './routes/support/Welcome.svelte';
   import WhatIsAnActivity from './routes/support/WhatIsAnActivity.svelte';
-  import JoinAnActivity from './routes/support/JoinAnActivity.svelte';
+  import JoiningAnActivity from './routes/support/JoiningAnActivity.svelte';
   import CreateAnActivity from './routes/support/CreateAnActivity.svelte';
   import StayingUpToDate from './routes/support/StayingUpToDate.svelte';
 
@@ -193,8 +193,8 @@
     />
     <Route
       exact
-      path="/support/join-an-activity"
-      component="{JoinAnActivity}"
+      path="/support/joining-an-activity"
+      component="{JoiningAnActivity}"
     />
     <Route
       exact

@@ -13,7 +13,7 @@
   import metaTagsStore from '../../store/metaTags';
 
   metaTagsStore.set({
-    title: 'Getting Started - THAT!',
+    title: 'Getting Started - THAT',
     description: '',
     openGraph: {
       type: 'website',
