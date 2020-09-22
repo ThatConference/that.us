@@ -14,7 +14,7 @@
           leading-10 font-extrabold text-thatBlue-800 sm:text-5xl
           sm:leading-none md:text-6xl"
       >
-        Where <span class="text-thatOrange-400">Geeks</span> Connect Everyday
+        Where <span class="text-thatOrange-400">Geeks</span> Connect Every Day
       </h2>
 
       <div class="lg:grid lg:grid-cols-12 lg:gap-8">
