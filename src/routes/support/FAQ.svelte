@@ -7,7 +7,7 @@
   import metaTagsStore from '../../store/metaTags';
   metaTagsStore.set({
     title: 'FAQ - THAT',
-    description: 'A common list of frequently asked questioned, answered.',
+    description: 'A common list of frequently asked questions, answered.',
     openGraph: {
       type: 'website',
       url: `https://that.us/support/faq`,
@@ -16,26 +16,28 @@
 </script>
 
 <Layout>
-  <div class="py-16 overflow-hidden">
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-base max-w-prose mx-auto lg:max-w-none">
-        <p
-          class="text-base leading-6 text-thatOrange-400 font-semibold
-            tracking-wide uppercase"
-        >
-          Help && Support
-        </p>
-        <h1
-          class="mt-2 mb-8 text-3xl leading-8 font-extrabold tracking-tight
-            text-gray-900 sm:text-4xl sm:leading-10"
-        >
-          Frequently Asked Questions
-        </h1>
-      </div>
+  <main class="overflow-hidden">
+    <div class="relative pb-16 md:pb-20 lg:pb-24 xl:pb-32">
+      <div class="mt-32 mx-auto max-w-screen-xl px-4 sm:px-6 xl:mt-40">
+        <div class="sm:text-center lg:text-left">
+          <h2
+            class="text-4xl tracking-tight leading-10 font-extrabold
+            text-thatBlue-800 sm:text-5xl sm:leading-none md:text-6xl"
+          >
+            Frequently Asked Questions
+          </h2>
+          <p
+            class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl
+            sm:mx-auto md:mt-5 md:text-xl lg:mx-0"
+          >
+            A common list of frequently asked questions, answered.
+          </p>
+        </div>
 
-      <div>
-        <FaqItems />
+        <div>
+          <FaqItems />
+        </div>
       </div>
     </div>
-  </div>
+  </main>
 </Layout>
