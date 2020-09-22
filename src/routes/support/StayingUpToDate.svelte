@@ -1,6 +1,4 @@
 <script>
-  import { Link } from 'yrv';
-
   import Layout from './_Layout.svelte';
   import Header from './_Header.svelte';
 

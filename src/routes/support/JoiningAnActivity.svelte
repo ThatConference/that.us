@@ -1,6 +1,4 @@
 <script>
-  import { Link } from 'yrv';
-
   import Layout from './_Layout.svelte';
   import Header from './_Header.svelte';
 
@@ -26,50 +24,62 @@
   <section>
     <div class="prose prose-lg text-gray-500 mx-auto">
       <p>
-        Faucibus commodo massa rhoncus, volutpat. <strong>Dignissim</strong> sed
-        <strong>eget risus enim</strong>. Mattis mauris semper sed amet vitae
-        sed turpis id. Id dolor praesent donec est. Odio penatibus risus viverra
-        tellus varius sit neque erat velit. Faucibus commodo massa rhoncus,
-        volutpat. Dignissim sed eget risus enim. <a href="#">Mattis mauris
-          semper</a> sed amet vitae sed turpis id.
+        <strong>Click the join button.</strong> Yes, it's just THAT simple. The join
+        button enables itself 5 minutes before the scheduled start time and will
+        remain active for the duration of the activity. THAT works in any browser
+        and you just need to enable your webcam and microphone. We do require everyone
+        to login before joining any Activity. You're mic will always be muted by
+        default and your camera will be enabled. Activites are currently limited
+        to 100 concurrent attedees.
       </p>
 
-      <ul>
-        <li>Quis elit egestas venenatis mattis dignissim.</li>
-      </ul>
-
-      <p>todo</p>
-
-      <h2>From beginner to expert in 30 days</h2>
-      <p>todo</p>
-
-      <blockquote>
-        <p>todo</p>
-      </blockquote>
-
-      <p>todo</p>
-
       <figure>
-        <img
-          class="w-full rounded-lg"
-          src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=facearea&w=1310&h=873&q=80&facepad=3"
-          alt=""
-          width="1310"
-          height="873"
-        />
-        <figcaption>
-          Sagittis scelerisque nulla cursus in enim consectetur quam.
-        </figcaption>
+        <img class="w-full rounded-lg border-1 shadow" src="/images/" alt="" />
+        <figcaption>An Activity in progress.</figcaption>
       </figure>
+
+      <h2>Activity Etiquette</h2>
+      <p>
+        We want everyone to be epic and help one another. We've compiled a list
+        of guiding principals:
+      </p>
+      <ul>
+        <li>Always be nice.</li>
+        <li>Raise hand to speak 🙋‍♀️.</li>
+        <li>Mute yourself when not speaking.</li>
+        <li>Speak clearly so others can hear you.</li>
+        <li>Create space so others can speak.</li>
+        <li>
+          Be careful not to speak over or interrupt others while they are
+          speaking.
+        </li>
+        <li>
+          Turn your camera on so everyone else knows you're not a cyborg 📹..
+        </li>
+        <li>
+          Use care with humor. If you feel the need to use humor during
+          meetings, make sure that it's appropriate for your audience. THAT
+          serves a global audience and sometimes while many speak English not
+          everything translates well.
+        </li>
+        <li>
+          Don't eat while speaking. Eating while listening, muted is fine.
+        </li>
+        <li>Keep your cool 😎.</li>
+        <li>Dress appropriately 👕.</li>
+      </ul>
     </div>
+
     <div
       class="my-12 max-w-prose mx-auto lg:max-w-none flex flex-col items-center
         justify-center"
     >
       <div class="flex space-x-4 text-base">
-        <StandardLink href="/activities">Upcoming Activities</StandardLink>
-        <HighlightLink href="/support/what-is-an-activity">
-          What is an Activity?
+        <StandardLink href="/support/what-is-an-activity">
+          What Is An Activity
+        </StandardLink>
+        <HighlightLink href="/support/creating-an-activity">
+          Creating an Activity
         </HighlightLink>
       </div>
     </div>

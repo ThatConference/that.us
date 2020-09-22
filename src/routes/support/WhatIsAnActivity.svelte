@@ -1,6 +1,4 @@
 <script>
-  import { Link } from 'yrv';
-
   import Layout from './_Layout.svelte';
   import Header from './_Header.svelte';
 
@@ -95,8 +93,8 @@
     >
       <div class="flex space-x-4 text-base">
         <StandardLink href="/support/welcome">Getting Started</StandardLink>
-        <HighlightLink href="/support/what-is-an-activity">
-          Creating your first activity?
+        <HighlightLink href="/support/joining-an-activity">
+          Joining an Activity
         </HighlightLink>
       </div>
     </div>
