@@ -15,7 +15,7 @@
         Trusted by geeks from {countries} countries
       </h2>
       <p class="mt-3 text-xl leading-7 text-thatBlue-200 sm:mt-4">
-        Everyday is an new opportunity to help someone else or level up
+        Every day is a new opportunity to help someone else or level up
         yourself.
       </p>
     </div>

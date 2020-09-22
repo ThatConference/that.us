@@ -15,7 +15,7 @@
 
   metaTagsStore.set({
     title: 'Partners - THAT',
-    description: 'Thank you to those who support our great community everyday.',
+    description: 'Thank you to those who support our great community every day.',
     openGraph: {
       type: 'website',
       url: `https://that.us/partners`,
