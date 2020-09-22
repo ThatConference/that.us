@@ -25,7 +25,7 @@
   import Home from './routes/Home.svelte';
   import Login from './routes/Login.svelte';
   import Logout from './routes/Logout.svelte';
-  import FAQ from './routes/FAQ.svelte';
+  import FAQ from './routes/support/FAQ.svelte';
   import Partners from './routes/Partners.svelte';
   import Members from './routes/Members.svelte';
 
@@ -175,7 +175,6 @@
       documentReferrer="{documentReferrer}"
     />
     <Route exact path="/logout" component="{Logout}" />
-    <Route exact path="/faq" component="{FAQ}" />
     <Route exact path="/members" component="{Members}" />
     <Route exact path="/partners" component="{Partners}" />
     <Route exact path="/changelog" component="{ChangeLog}" />
@@ -184,6 +183,7 @@
     <Route exact path="/activities" component="{List}" />
     <Route path="/sessions" component="{SessionRedirect}" />
 
+    <Route exact path="/support/faq" component="{FAQ}" />
     <Route exact path="/support/welcome" component="{NewUserWelcome}" />
     <Route
       exact

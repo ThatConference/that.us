@@ -71,7 +71,7 @@
       </Link>
 
       <Link
-        href="/faq"
+        href="/support/faq"
         class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300
           hover:text-white hover:bg-that-blue focus:outline-none
           focus:text-white focus:bg-that-blue"

@@ -52,7 +52,7 @@
     },
     {
       text: 'FAQ',
-      href: '/faq',
+      href: '/support/faq',
     },
     {
       text: 'Help',
