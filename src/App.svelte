@@ -28,6 +28,7 @@
   import FAQ from './routes/support/FAQ.svelte';
   import Partners from './routes/Partners.svelte';
   import Members from './routes/Members.svelte';
+  import NotFound from './routes/NotFound.svelte';
 
   // support
   import NewUserWelcome from './routes/support/Welcome.svelte';
@@ -265,7 +266,9 @@
       redirect="/login"
     />
 
-    <Route fallback>Page Not Found</Route>
+    <Route fallback>
+      <NotFound />
+    </Route>
   </Router>
 </main>
 
