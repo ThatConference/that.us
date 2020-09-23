@@ -32,7 +32,7 @@
         mistake or want to adjust you can easily do so at anytime.
       </p>
 
-      <div class="text-center my-12">
+      <div class="transform scale-75 text-center">
         <StandardLink href="/activities/create">
           Create an Activity
         </StandardLink>

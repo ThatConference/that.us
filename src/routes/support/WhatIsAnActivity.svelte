@@ -59,7 +59,7 @@
         <li>Just get together and chat.</li>
       </ul>
 
-      <div class="text-center my-12">
+      <div class="transform scale-90 text-center">
         <figure>
           <img
             class="w-full rounded-lg shadow"

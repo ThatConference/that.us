@@ -83,7 +83,7 @@
         calednar program.
       </p>
 
-      <div class="text-center my-12">
+      <div class="transform scale-75 text-center">
         <a
           on:click|preventDefault="{copyToClipboard}"
           href="https://bit.ly/2YRdVxy"

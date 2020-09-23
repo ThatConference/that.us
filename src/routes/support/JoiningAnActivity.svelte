@@ -33,10 +33,14 @@
         to 100 concurrent attedees.
       </p>
 
-      <div class="text-center my-12">
+      <div class="transform scale-75 text-center">
         <figure>
-          <img class="w-full rounded-lg shadow" src="/images/" alt="" />
-          <figcaption>An Activity in progress.</figcaption>
+          <img
+            class="rounded-lg shadow"
+            src="/images/ActivityJoinExample.jpg"
+            alt=""
+          />
+          <figcaption>The join button.</figcaption>
         </figure>
       </div>
 
