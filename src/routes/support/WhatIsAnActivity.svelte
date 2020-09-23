@@ -54,7 +54,8 @@
         <li>Office hours.</li>
         <li>Code review.</li>
         <li>Design review.</li>
-        <li>Q&A or AMA.</li>
+        <li>Q&A.</li>
+        <li>AMA.</li>
         <li>A workshop.</li>
         <li>Just get together and chat.</li>
       </ul>

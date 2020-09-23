@@ -26,10 +26,10 @@
   <section>
     <div class="prose prose-lg text-gray-500 mx-auto">
       <p>
-        It's THAT time! You're now ready to create your first Activity. We're
+        It's THAT time! You're now ready to create your first Activity. We
         couldn't be more excited and want to make sure you get started off
-        right. Honestly it's very simple and if late you found you made a
-        mistake or want to adjust you can easily do so at anytime.
+        right. Honestly it's very simple and if you found you made a mistake or
+        want to adjust, you can easily do so at anytime.
       </p>
 
       <div class="transform scale-75 text-center">
@@ -41,7 +41,7 @@
       <p>
         To create an Activity you first need to
         <Link href="/login">login</Link>
-        if you're not already. If you still need an account just
+        if you're not already. If you still need an account simply
         <Link href="/login?signup=true">create one here</Link>, and then update
         your
         <Link href="/my/profile">profile accordinally</Link>. Once completed you
@@ -66,18 +66,18 @@
         <li>
           <strong class="italic">Tags: </strong>You have a limit of 5 tags.
           These are attributes about this conversation and they help with things
-          like people searching.
+          like people searching for Activities they would like to particapte in.
         </li>
         <li>
-          <strong class="italic">Date and Starting Time: </strong>When are we
-          starting. Mind you people from all over the world are joining and you
-          can pick anytime throughout the day as to best overlap with different
-          timezones.
+          <strong class="italic">Date and Starting Time: </strong>This sets our
+          Activity's starting day and time. Mind you people from all over the
+          world are joining and you can pick anytime throughout the day as to
+          best overlap with different timezones.
         </li>
         <li>
           <strong class="italic">Estimated Duration: </strong>Your Activity can
-          go as long as it needs too but people also need to plan their day's
-          and night's.
+          go as long as it needs to but people also need to plan their days and
+          nights.
         </li>
       </ul>
 
@@ -103,7 +103,7 @@
       <h2>Need to Update your Activity?</h2>
       <p>
         We all make mistakes or maybe you just want to tweak things a bit
-        further. No problem. You can find all of you submitted Activities
+        further. No problem. You can find all of your submitted Activities
         <Link href="/my/submissions">here</Link>, we call it <span
           class="italic"
         >My Submissions</span> and you will alway find it under your profile picture.

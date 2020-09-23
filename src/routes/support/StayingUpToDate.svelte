@@ -94,7 +94,7 @@
       <h2>#that_board in THAT Slack</h2>
       <p>
         Of course we wouldn't forget our very active Slack Channel. There is a
-        dedicated channel in our Slack (#that_board) which no only recieves
+        dedicated channel in our Slack (#that_board) which not only recieves
         realtime updates when the Activities are created but it will also send
         out a daily and hourly digest when an Activity is scheduled. If you're
         not in our Slack, join us today!
@@ -107,7 +107,7 @@
       </div>
 
       <p>
-        Over time, we will continue to extend THAT in new and interesting ways.
+        Over time we will continue to extend THAT in new and interesting ways.
         It's our goal to connect you to the relavent topics, and help you grow
         your network accordinally based on your interests.
       </p>

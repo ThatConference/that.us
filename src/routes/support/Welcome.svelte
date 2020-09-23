@@ -36,9 +36,9 @@
       </p>
 
       <p class="mt-8">
-        In short, anyone, at anytime can create what we call an activity. The
-        format of an activity is simple, a video call in the browser, no tools
-        required. Every activity has a chat window, you're able to share your
+        In short, anyone, at anytime can create what we call an Activity. The
+        format of an Activity is simple, a video call in the browser, no tools
+        required. Every Activity has a chat window, you're able to share your
         desktop, your webcam and mic are enabled. Our goal is to create the best
         virtual face to face converation possible but give you the room to have
         any type of conversation you need.
@@ -57,17 +57,17 @@
           <ul>
             <li>
               <Link href="/support/what-is-an-activity">
-                What is an activity.
+                What is an Activity?
               </Link>
             </li>
             <li>
               <Link href="/support/joining-an-activity">
-                Join an upcoming activity.
+                Join an upcoming Activity.
               </Link>
             </li>
             <li>
               <Link href="/support/creating-an-activity">
-                Creating an activity.
+                Creating an Activity.
               </Link>
             </li>
             <li>

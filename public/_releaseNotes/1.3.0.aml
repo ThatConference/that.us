@@ -50,7 +50,7 @@ url: https://github.com/ThatConference/that.us/pull/357
 feature: [enhancement] adds a redirect from sessions -> activities for existing links.
 url: https://github.com/ThatConference/that.us/pull/358
 
-feature: [enhancement] @scichelli fixes @csell5 bad grammer
+feature: [enhancement] @scichelli fixes @csell5 bad grammar
 url: https://github.com/ThatConference/that.us/pull/359
 
 feature: [chore] Updates package references. 

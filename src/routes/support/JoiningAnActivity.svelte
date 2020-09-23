@@ -30,7 +30,7 @@
         and you just need to enable your webcam and microphone. We do require everyone
         to login before joining any Activity. You're mic will always be muted by
         default and your camera will be enabled. Activites are currently limited
-        to 100 concurrent attedees.
+        to 100 concurrent attendees.
       </p>
 
       <div class="transform scale-75 text-center">
@@ -40,7 +40,7 @@
             src="/images/ActivityJoinExample.jpg"
             alt=""
           />
-          <figcaption>The join button.</figcaption>
+          <figcaption>The join button</figcaption>
         </figure>
       </div>
 
@@ -60,7 +60,7 @@
           speaking.
         </li>
         <li>
-          Turn your camera on so everyone else knows you're not a cyborg 📹..
+          Turn your camera on so everyone else knows you're not a cyborg 📹.
         </li>
         <li>
           Use care with humor. If you feel the need to use humor during
