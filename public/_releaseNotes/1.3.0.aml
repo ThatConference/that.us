@@ -28,3 +28,33 @@ url: https://github.com/ThatConference/that.us/pull/348
 
 feature: [enhancement] More room options Admins specifically the capability to live stream to YouTube.
 url: https://github.com/ThatConference/that.us/pull/351
+
+feature: [enhancement] @asharonbaltazar adds headroom style nav to content pages.
+url: https://github.com/ThatConference/that.us/pull/342
+
+feature: [enhancement] Converts all references of sessions to activities.
+url: https://github.com/ThatConference/that.us/pull/349
+
+feature: [enhancement] Creates a new content layout for content pages.
+url: https://github.com/ThatConference/that.us/pull/349
+
+feature: [enhancement] Converts home page to new content layout page.
+url: https://github.com/ThatConference/that.us/pull/349
+
+feature: [enhancement] Updates to new nav bar style.
+url: https://github.com/ThatConference/that.us/pull/349
+
+feature: [enhancement] Converts layout for members and partner pages to new content layout page.
+url: https://github.com/ThatConference/that.us/pull/357
+
+feature: [enhancement] adds a redirect from sessions -> activities for existing links.
+url: https://github.com/ThatConference/that.us/pull/358
+
+feature: [enhancement] @scichelli fixes @csell5 bad grammar
+url: https://github.com/ThatConference/that.us/pull/359
+
+feature: [chore] Updates package references. 
+url: https://github.com/ThatConference/that.us/pull/362
+
+feature: [enhancement] Converts the FAQ page to the new layout.
+url: https://github.com/ThatConference/that.us/pull/363

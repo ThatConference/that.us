@@ -28,11 +28,12 @@
   import FAQ from './routes/support/FAQ.svelte';
   import Partners from './routes/Partners.svelte';
   import Members from './routes/Members.svelte';
+  import NotFound from './routes/NotFound.svelte';
 
   // support
   import NewUserWelcome from './routes/support/Welcome.svelte';
   import WhatIsAnActivity from './routes/support/WhatIsAnActivity.svelte';
-  import JoinAnActivity from './routes/support/JoinAnActivity.svelte';
+  import JoiningAnActivity from './routes/support/JoiningAnActivity.svelte';
   import CreateAnActivity from './routes/support/CreateAnActivity.svelte';
   import StayingUpToDate from './routes/support/StayingUpToDate.svelte';
 
@@ -55,6 +56,10 @@
 
   // join
   import Live from './routes/join/Live.svelte';
+
+  router.subscribe(() => {
+    window.scrollTo(0, 0);
+  });
 
   // setting the default event
   currentEvent.set(events.thatUs);
@@ -192,12 +197,12 @@
     />
     <Route
       exact
-      path="/support/join-an-activity"
-      component="{JoinAnActivity}"
+      path="/support/joining-an-activity"
+      component="{JoiningAnActivity}"
     />
     <Route
       exact
-      path="/support/create-an-activity"
+      path="/support/creating-an-activity"
       component="{CreateAnActivity}"
     />
     <Route
@@ -265,7 +270,9 @@
       redirect="/login"
     />
 
-    <Route fallback>Page Not Found</Route>
+    <Route fallback>
+      <NotFound />
+    </Route>
   </Router>
 </main>
 

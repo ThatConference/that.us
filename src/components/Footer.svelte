@@ -39,6 +39,11 @@
 
   const textLinks = [
     {
+      text: 'Getting Started',
+      href: '/support/welcome',
+    },
+
+    {
       text: 'Activities',
       href: '/activities',
     },
@@ -55,16 +60,8 @@
       href: '/support/faq',
     },
     {
-      text: 'Help',
-      href: '/help',
-    },
-    {
       text: 'Changelog',
       href: '/changelog',
-    },
-    {
-      text: 'Blog',
-      href: 'https://thatconference.com/blog',
     },
     {
       text: 'THAT Conference',
