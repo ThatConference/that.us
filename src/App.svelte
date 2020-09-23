@@ -198,7 +198,7 @@
     />
     <Route
       exact
-      path="/support/create-an-activity"
+      path="/support/creating-an-activity"
       component="{CreateAnActivity}"
     />
     <Route
