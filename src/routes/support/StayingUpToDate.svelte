@@ -1,11 +1,5 @@
 <script>
-  /*
-    My Favorites
-    Favorite
-    Calendar Link
-    #THAT_Board in slack
-
-  */
+  import { Link } from 'yrv';
 
   import Layout from './_Layout.svelte';
   import Header from './_Header.svelte';
@@ -14,6 +8,7 @@
     Highlight as HighlightLink,
     Standard as StandardLink,
   } from '../../elements/links';
+  import { Standard as StandardButton } from '../../elements/buttons';
 
   import metaTagsStore from '../../store/metaTags';
 
@@ -25,6 +20,23 @@
       url: `https://that.us/support/join-activity`,
     },
   });
+
+  let copyText = 'https://bit.ly/2YRdVxy';
+  function copyToClipboard() {
+    let calendarElement = document.getElementById('calendarUrl');
+    let range = document.createRange();
+    range.selectNode(calendarElement);
+    window.getSelection().addRange(range);
+
+    try {
+      document.execCommand('copy');
+      copyText = 'Copied to Clipboard';
+    } catch (err) {
+      console.error('Oops, unable to copy');
+    }
+
+    window.getSelection().removeAllRanges();
+  }
 </script>
 
 <Layout>
@@ -32,50 +44,84 @@
   <section>
     <div class="prose prose-lg text-gray-500 mx-auto">
       <p>
-        Faucibus commodo massa rhoncus, volutpat. <strong>Dignissim</strong> sed
-        <strong>eget risus enim</strong>. Mattis mauris semper sed amet vitae
-        sed turpis id. Id dolor praesent donec est. Odio penatibus risus viverra
-        tellus varius sit neque erat velit. Faucibus commodo massa rhoncus,
-        volutpat. Dignissim sed eget risus enim. <a href="#">Mattis mauris
-          semper</a> sed amet vitae sed turpis id.
+        Life moves fast and you have enough to sift through already. Our goal is
+        to make it very easy to stay up to date with everything THAT, while not
+        becoming refrigerator noise. To that end, we currently have three
+        different ways you can stay up to date.
       </p>
 
       <ul>
-        <li>Quis elit egestas venenatis mattis dignissim.</li>
+        <li>The Activity Board & My Favorites.</li>
+        <li>Subsribe to our shared calendar.</li>
+        <li>#that_board in Slack.</li>
       </ul>
 
-      <p>todo</p>
+      <h2>Activity Board and My Favorties</h2>
+      <p>
+        <Link href="/activities">The Activity Board</Link>
+        as we call it, is your main place to find out what's up next. It will
+        always show all Activities from today looking forward. You can also find <strong
+          class="italic"
+        >all</strong> Activities
+        <Link href="/events/thatUs">here</Link>.
+      </p>
 
-      <h2>From beginner to expert in 30 days</h2>
-      <p>todo</p>
+      <p>
+        <Link href="/my/favorites">My Favorites</Link>
+        is just like the Activity Board but filtered to the Activities you've
+        already favortied. This is great during times of high usage or for
+        historical reasons.
+      </p>
 
-      <blockquote>
-        <p>todo</p>
-      </blockquote>
+      <h2>Calendar Feed</h2>
+      <p>
+        Most people live by their calendars. We've created a shared Google
+        calender that you can subscribe too. This calendar is updated as
+        Activities are created and updated and every entry reflects the all of
+        the same information you would find on the Activity details page. The
+        link below will copy to your clipboard for you to use in your favorite
+        calednar program.
+      </p>
 
-      <p>todo</p>
+      <div class="text-center my-12">
+        <a
+          on:click|preventDefault="{copyToClipboard}"
+          href="https://bit.ly/2YRdVxy"
+          id="calendarUrl"
+        >{copyText}</a>
+      </div>
 
-      <figure>
-        <img
-          class="w-full rounded-lg"
-          src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=facearea&w=1310&h=873&q=80&facepad=3"
-          alt=""
-          width="1310"
-          height="873"
-        />
-        <figcaption>
-          Sagittis scelerisque nulla cursus in enim consectetur quam.
-        </figcaption>
-      </figure>
+      <h2>#that_board in THAT Slack</h2>
+      <p>
+        Of course we wouldn't forget our very active Slack Channel. There is a
+        dedicated channel in our Slack (#that_board) which no only recieves
+        realtime updates when the Activities are created but it will also send
+        out a daily and hourly digest when an Activity is scheduled. If you're
+        not in our Slack, join us today!
+      </p>
+
+      <div class="text-center my-12">
+        <StandardLink open="{true}" href="https://thatslack.thatconference.com">
+          Join us in THAT Slack
+        </StandardLink>
+      </div>
+
+      <p>
+        Over time, we will continue to extend THAT in new and interesting ways.
+        It's our goal to connect you to the relavent topics, and help you grow
+        your network accordinally based on your interests.
+      </p>
     </div>
     <div
       class="my-12 max-w-prose mx-auto lg:max-w-none flex flex-col items-center
         justify-center"
     >
       <div class="flex space-x-4 text-base">
-        <StandardLink href="/activities">Upcoming Activities</StandardLink>
-        <HighlightLink href="/support/what-is-an-activity">
-          What is an Activity?
+        <StandardLink href="/support/create-an-activity">
+          Create an Activity
+        </StandardLink>
+        <HighlightLink href="/activities">
+          Check out the upcoming Activities
         </HighlightLink>
       </div>
     </div>
