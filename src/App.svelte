@@ -57,6 +57,10 @@
   // join
   import Live from './routes/join/Live.svelte';
 
+  router.subscribe(() => {
+    window.scrollTo(0, 0);
+  });
+
   // setting the default event
   currentEvent.set(events.thatUs);
 

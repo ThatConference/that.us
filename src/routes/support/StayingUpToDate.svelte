@@ -117,7 +117,7 @@
         justify-center"
     >
       <div class="flex space-x-4 text-base">
-        <StandardLink href="/support/create-an-activity">
+        <StandardLink href="/support/creating-an-activity">
           Create an Activity
         </StandardLink>
         <HighlightLink href="/activities">
