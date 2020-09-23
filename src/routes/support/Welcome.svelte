@@ -57,28 +57,26 @@
           <ul>
             <li>
               <Link href="/support/what-is-an-activity">
-                <span class="text-thatBlue-500">What is an activity.</span>
+                What is an activity.
               </Link>
             </li>
             <li>
-              <Link href="/support/join-an-activity">
-                <span class="text-thatBlue-500">Join an upcoming activity.</span>
+              <Link href="/support/joining-an-activity">
+                Join an upcoming activity.
               </Link>
             </li>
             <li>
-              <Link href="/support/create-an-activity">
-                <span class="text-thatBlue-500">Creating an activity.</span>
+              <Link href="/support/creating-an-activity">
+                Creating an activity.
               </Link>
             </li>
             <li>
               <Link href="/support/staying-up-to-date">
-                <span class="text-thatBlue-500">Staying up to date.</span>
+                Staying up to date.
               </Link>
             </li>
             <li>
-              <Link href="/my/profile">
-                <span class="text-thatBlue-500">Keep your profile up to date.</span>
-              </Link>
+              <Link href="/my/profile">Keep your profile up to date.</Link>
             </li>
           </ul>
 

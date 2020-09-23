@@ -59,16 +59,18 @@
         <li>Just get together and chat.</li>
       </ul>
 
-      <figure>
-        <img
-          class="w-full rounded-lg border-1 shadow"
-          src="/images/ActivityDetailExample.jpg"
-          alt=""
-        />
-        <figcaption>
-          Our product review and sprint planning activity.
-        </figcaption>
-      </figure>
+      <div class="text-center my-12">
+        <figure>
+          <img
+            class="w-full rounded-lg shadow"
+            src="/images/ActivityDetailExample.jpg"
+            alt=""
+          />
+          <figcaption>
+            Our product review and sprint planning activity.
+          </figcaption>
+        </figure>
+      </div>
 
       <h2>How long can an Activity be?</h2>
       <p>

@@ -1,11 +1,12 @@
 <script>
   export let href;
+  export let reload = false;
 
   import { Link } from 'yrv';
 </script>
 
 <Link
-  reload="{true}"
+  reload="{reload}"
   href="{href}"
   class="px-8 py-3 rounded-md shadow text-base leading-6 font-medium border-2
     border-thatBlue-500 text-thatBlue-500 bg-white hover:bg-thatBlue-500

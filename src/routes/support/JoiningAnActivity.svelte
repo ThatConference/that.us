@@ -33,10 +33,12 @@
         to 100 concurrent attedees.
       </p>
 
-      <figure>
-        <img class="w-full rounded-lg border-1 shadow" src="/images/" alt="" />
-        <figcaption>An Activity in progress.</figcaption>
-      </figure>
+      <div class="text-center my-12">
+        <figure>
+          <img class="w-full rounded-lg shadow" src="/images/" alt="" />
+          <figcaption>An Activity in progress.</figcaption>
+        </figure>
+      </div>
 
       <h2>Activity Etiquette</h2>
       <p>

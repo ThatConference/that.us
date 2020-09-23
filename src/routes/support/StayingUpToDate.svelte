@@ -1,4 +1,12 @@
 <script>
+  /*
+    My Favorites
+    Favorite
+    Calendar Link
+    #THAT_Board in slack
+
+  */
+
   import Layout from './_Layout.svelte';
   import Header from './_Header.svelte';
 
