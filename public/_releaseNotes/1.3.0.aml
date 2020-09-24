@@ -1,7 +1,7 @@
 versionNumber: v1.3.0
-date: September XX, 2020
+date: September 24th, 2020
 
-notes: 
+notes: The theme of this release was the new user and getting started. A new section called "support" was added which will be the home for all of our help pages. New pages include: Welcome, What is an Activity, Joining, Creating and Staying up to date. In addition to that we added deeper integration with Tidio to aide in debugging. We renamed all Session references to Activities and landed on the Activity Board vs THAT Board. The Nav layout was updated making it like headroom along with better branding. New content layout pages were introduced and refactored for better consistency. Lastly we added filtering! 
 
 [features]
 
@@ -58,3 +58,12 @@ url: https://github.com/ThatConference/that.us/pull/362
 
 feature: [enhancement] Converts the FAQ page to the new layout.
 url: https://github.com/ThatConference/that.us/pull/363
+
+feature: [enhancement] Adds the new user getting started section.
+url: https://github.com/ThatConference/that.us/pull/365
+
+feature: [enhancement] Updates FAQ and introduce search.
+url: https://github.com/ThatConference/that.us/pull/366
+
+feature: [enhancement] Adds search to to the activity lists.
+url: https://github.com/ThatConference/that.us/pull/369
