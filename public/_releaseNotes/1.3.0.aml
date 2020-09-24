@@ -1,7 +1,7 @@
 versionNumber: v1.3.0
 date: September 24th, 2020
 
-notes: The theme of this release was the new user and getting started. A new section called "support" was added which will be the home for all of our help pages. New pages includes, Welcome, What is an Activity, Joining, Creating and Staying up to date. In addition to that we added deeper integration with Tidio to aide in debugging. We remaed all session references to Activities and landed on Activity Board vs THAT Board. The Nav layout was updated making it like headroom along with better branding. New content layout pages were introduced and refactored for better consistency. Lastly we added filtering! 
+notes: The theme of this release was the new user and getting started. A new section called "support" was added which will be the home for all of our help pages. New pages include: Welcome, What is an Activity, Joining, Creating and Staying up to date. In addition to that we added deeper integration with Tidio to aide in debugging. We renamed all Session references to Activities and landed on the Activity Board vs THAT Board. The Nav layout was updated making it like headroom along with better branding. New content layout pages were introduced and refactored for better consistency. Lastly we added filtering! 
 
 [features]
 
