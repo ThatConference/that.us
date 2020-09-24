@@ -43,6 +43,7 @@
     "eslint-plugin-jest": "^24.0.2",
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-svelte3": "^2.7.3",
+    "fuse.js": "^6.4.1",
     "graphql": "^15.3.0",
     "husky": "^4.3.0",
     "ical-generator": "^1.15.0",
