@@ -19,7 +19,7 @@
   const options = {
     // isCaseSensitive: false,
     includeScore: true,
-    //shouldSort: false,
+    shouldSort: false,
     // includeMatches: false,
     findAllMatches: true,
     // minMatchCharLength: 1,
