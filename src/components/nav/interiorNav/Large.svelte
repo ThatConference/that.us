@@ -1,28 +1,25 @@
 <script>
   import { Link } from 'yrv';
-  import { getContext } from 'svelte';
   import { fade } from 'svelte/transition';
   import _ from 'lodash';
   import { user as userIcon } from 'svelte-awesome/icons';
   import Icon from 'svelte-awesome';
-  import { ScaleOut } from 'svelte-loading-spinners';
 
-  import { hasNotifications } from '../../../store/notificationCenter';
   import { Activity } from '../../../elements/svgs';
+  import ActivitySlideOver from '../../activityCenter/ActivitySlideOver.svelte';
   import DesktopLink from './_DesktopLink.svelte';
 
-  import ActivitySlideOver from '../../activityCenter/ActivitySlideOver.svelte';
-
+  import { hasNotifications } from '../../../store/notificationCenter';
   import {
     login,
     isAuthenticated,
-    user,
     thatProfile,
   } from '../../../utilities/security.js';
 
   // toggle for the drop down
   let visible;
   let activityVisible;
+  let helpVisible;
 
   function handleCloseActivityCenter(event) {
     activityVisible = !activityVisible;
@@ -70,22 +67,62 @@
         <DesktopLink>Partners</DesktopLink>
       </Link>
 
-      <Link
-        href="/support/faq"
-        class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300
-          hover:text-white hover:bg-that-blue focus:outline-none
-          focus:text-white focus:bg-that-blue"
-      >
-        <DesktopLink>FAQs</DesktopLink>
-      </Link>
-      <!-- <Link
-        href="/help"
-        class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300
-        hover:text-white hover:bg-that-blue focus:outline-none focus:text-white
-        focus:bg-that-blue"
-      >
-        Help
-      </Link> -->
+      <div>
+        <button
+          href="/help"
+          class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300
+            hover:text-white hover:bg-that-blue focus:outline-none
+            focus:text-white focus:bg-that-blue"
+          on:click|preventDefault="{() => (helpVisible = !helpVisible)}"
+        >
+          <DesktopLink>Help</DesktopLink>
+        </button>
+        {#if helpVisible}
+          <div
+            class="absolute mt-2 ml-4 w-64 rounded-md shadow-lg z-50"
+            in:fade
+          >
+            <div class="py-1 rounded-md bg-white shadow-xs">
+              <Link
+                href="/support/welcome"
+                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              >
+                Getting Started
+              </Link>
+              <Link
+                href="/support/what-is-an-activity"
+                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              >
+                What Is An Activity
+              </Link>
+              <Link
+                href="/support/joining-an-activity"
+                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              >
+                How To Join An Activity
+              </Link>
+              <Link
+                href="/support/creating-an-activity"
+                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              >
+                How To Create An Activity
+              </Link>
+              <Link
+                href="/support/staying-up-to-date"
+                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              >
+                Staying Up To Date
+              </Link>
+              <Link
+                href="/support/faq"
+                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              >
+                FAQ
+              </Link>
+            </div>
+          </div>
+        {/if}
+      </div>
     </div>
   </div>
 </div>
