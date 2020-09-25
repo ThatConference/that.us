@@ -93,25 +93,25 @@
                 href="/support/what-is-an-activity"
                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
               >
-                What is an Activity?
+                What Is An Activity
               </Link>
               <Link
                 href="/support/joining-an-activity"
                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
               >
-                How to join an Activity?
+                How To Join An Activity
               </Link>
               <Link
                 href="/support/creating-an-activity"
                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
               >
-                How to create an Activity?
+                How To Create An Activity
               </Link>
               <Link
                 href="/support/staying-up-to-date"
                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
               >
-                Staying up to date.
+                Staying Up To Date
               </Link>
               <Link
                 href="/support/faq"
