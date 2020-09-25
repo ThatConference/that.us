@@ -59,7 +59,10 @@
           Since your last visit...
         </h3>
         <div>
-          <Link href="/changelog" class="pointer hover:text-thatBlue-500">
+          <Link
+            href="/changelog"
+            class="pointer text-thatBlue-500 hover:text-thatBlue-900"
+          >
             Checkout our past releases.
           </Link>
         </div>
