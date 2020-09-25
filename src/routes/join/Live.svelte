@@ -2,6 +2,7 @@
   export let router;
 
   // 3rd Party
+  import { createEventDispatcher } from 'svelte';
   import { query } from '@urql/svelte';
   import _ from 'lodash';
   import { navigateTo } from 'yrv';
@@ -60,7 +61,8 @@
   }
 
   let api;
-
+  let bgColor = 'bg-white';
+  let isCurrentlySharing = false;
   let userMuted = true;
   const handleMuted = ({ muted }) => {
     userMuted = muted;
@@ -149,6 +151,11 @@
     api.addEventListener('readyToClose', () => {
       navigateTo(`/activities`, { replace: true });
     });
+
+    api.addEventListener('screenSharingStatusChanged', ({ on }) => {
+      isCurrentlySharing = on;
+      bgColor = isCurrentlySharing ? 'bg-red-500' : 'bg-white';
+    });
   }
 
   let expanded = false;
@@ -235,7 +242,7 @@
   />
 {/if}
 
-<StackedLayout>
+<StackedLayout bodyBackgroundColor="{bgColor}">
   <div slot="header">
     <Nav />
 

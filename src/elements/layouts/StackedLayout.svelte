@@ -1,4 +1,6 @@
 <script>
+  export let bodyBackgroundColor = 'bg-white';
+
   import _ from 'lodash';
 
   import { isAuthenticated, thatProfile } from '../../utilities/security.js';
@@ -24,7 +26,7 @@
     <div class="max-w-7xl mx-auto pb-12 px-4 sm:px-6 lg:px-8">
       <div
         id="content-block"
-        class="bg-white rounded-lg shadow px-5 py-6 sm:px-6"
+        class="{bodyBackgroundColor} rounded-lg shadow px-5 py-6 sm:px-6"
       >
         <slot name="body" />
         <!-- default slot as fallback-->
