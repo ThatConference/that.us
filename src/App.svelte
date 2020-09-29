@@ -51,6 +51,9 @@
   import EditActivity from './routes/activities/Edit.svelte';
   import SessionRedirect from './routes/SessionRedirect.svelte';
 
+  // Communities
+  import Community from './routes/communities/Community.svelte';
+
   import ChangeLog from './routes/releases/ChangeLog.svelte';
   import ChangeLogMissed from './routes/releases/Missed.svelte';
 
@@ -180,10 +183,17 @@
       documentReferrer="{documentReferrer}"
     />
     <Route exact path="/logout" component="{Logout}" />
-    <Route exact path="/members" component="{Members}" />
-    <Route exact path="/partners" component="{Partners}" />
     <Route exact path="/changelog" component="{ChangeLog}" />
     <Route exact path="/changelog-missed" component="{ChangeLogMissed}" />
+
+    <Route exact path="/partners" component="{Partners}" />
+    <Route exact path="/partners/:partner" component="{Partners}" />
+
+    <Route exact path="/members" component="{Members}" />
+    <Route exact path="/members/:member" component="{Members}" />
+
+    <Route exact path="/communities" component="{Community}" />
+    <Route exact path="/communities/:community" component="{Community}" />
 
     <Route exact path="/activities" component="{List}" />
     <Route path="/sessions" component="{SessionRedirect}" />
