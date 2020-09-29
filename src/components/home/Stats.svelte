@@ -1,8 +1,8 @@
 <script>
   export let countries = 26;
-  export let members = 1215;
-  export let activities = 110;
-  export let hours = 61;
+  export let members = 1228;
+  export let activities = 128;
+  export let hours = 83;
 </script>
 
 <section class="bg-thatBlue-700 py-12 lg:py-16">
