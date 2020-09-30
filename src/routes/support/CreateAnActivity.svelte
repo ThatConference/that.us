@@ -28,8 +28,7 @@
       <p>
         It's THAT time! You're now ready to create your first Activity. We
         couldn't be more excited and want to make sure you get started off
-        right. Honestly it's very simple and if you found you made a mistake or
-        want to adjust, you can easily do so at anytime.
+        right.
       </p>
 
       <div class="transform scale-75 text-center">
@@ -44,12 +43,12 @@
         if you're not already. If you still need an account simply
         <Link href="/login?signup=true">create one here</Link>, and then update
         your
-        <Link href="/my/profile">profile accordinally</Link>. Once completed you
-        can now create an
+        <Link href="/my/profile">profile accordingly</Link>. Once completed you
+        can then create a
         <Link href="/activity/create">New Activity</Link>. It's here where you
         will detail out the conversation, inviting others to join in. The
         submission process isn't complex but it's important as you want to make
-        sure the right people join in your Activiy.
+        sure the right people join in your Activity.
       </p>
 
       <ul>
@@ -65,19 +64,18 @@
         </li>
         <li>
           <strong class="italic">Tags: </strong>You have a limit of 5 tags.
-          These are attributes about this conversation and they help with things
-          like people searching for Activities they would like to particapte in.
+          These are attributes about this conversation and they help people
+          search for Activities they would like to participate in.
         </li>
         <li>
-          <strong class="italic">Date and Starting Time: </strong>This sets our
-          Activity's starting day and time. Mind you people from all over the
-          world are joining and you can pick anytime throughout the day as to
-          best overlap with different timezones.
+          <strong class="italic">Date and Start Time: </strong>This sets our
+          Activity's start day and time. Mind you people from all over the world
+          are joining and you can pick anytime throughout the day as to best
+          overlap with different timezones.
         </li>
         <li>
           <strong class="italic">Estimated Duration: </strong>Your Activity can
-          go as long as it needs to but people also need to plan their days and
-          nights.
+          go as long as it needs.
         </li>
       </ul>
 
@@ -88,7 +86,7 @@
             src="/images/ActivityCreateExample.jpg"
             alt="New Activity Form"
           />
-          <figcaption>New Activity Form</figcaption>
+          <figcaption>Example: New Activity Form</figcaption>
         </figure>
       </div>
 
@@ -96,18 +94,18 @@
         If you'd like to browse through some of our past Activities you will
         find them
         <Link href="/events/thatUs">here</Link>. Once you've submitted your
-        Activity you'll recieve an email confirmation which will also include a
+        Activity you'll receive an email confirmation which will also include a
         calendar attachment.
       </p>
 
       <h2>Need to Update your Activity?</h2>
       <p>
-        We all make mistakes or maybe you just want to tweak things a bit
-        further. No problem. You can find all of your submitted Activities
+        No problem we all make mistakes or maybe you just want to tweak things a
+        bit further. No problem. You can find all of your submitted Activities
         <Link href="/my/submissions">here</Link>, we call it <span
           class="italic"
-        >My Submissions</span> and you will alway find it under your profile picture.
-        Now pick the correct Activity and then select edit.
+        >My Submissions</span> and you will always find it under your profile picture.
+        Just pick the correct Activity and then select edit.
       </p>
     </div>
     <div

@@ -24,40 +24,42 @@
   <section>
     <div class="prose prose-lg text-gray-500 mx-auto">
       <p>
-        <strong>Activities</strong> are scheduled gatherings you and others create
-        for a multitude of reasons. The format of an activity is simple, a video
-        call in the browser with no tools required. Every Activity has a chat window,
-        you're able to share your desktop; your webcam and microphone are enabled.
+        <strong>Activities</strong> are topic-based scheduled gatherings that anyone
+        can create for any multitude of reasons in which anyone can join. An activity
+        is simple, a video call in the browser with no tools required. Every Activity
+        has a chat window, the ability to share your desktop and enables your webcam
+        and microphone. You choose the format that best suits the topic and the people
+        in the conversation.
       </p>
 
       <h2>What makes a good Activity?</h2>
       <blockquote>
         <p>
           An activity's success shouldn't be graded on the number of people in
-          attendance but rather conversation which was had and the knowledge
+          attendance but rather the conversation which was had and the knowledge
           that was shared.
         </p>
       </blockquote>
 
       <p>
         Yes anything can be an Activity. Activies are about the people involved
-        and the conversation that will be had. They're meant to be dynamic, and
+        and the conversation that will be had. They're meant to be dynamic and
         highly interactive. The topic and the user's problems should determine
-        where things go, not the format. So what can you do, well anything but
-        here are a few things that have happened to date:
+        the format to allow everyone to learn together. So what can you do, well
+        anything but here are a few things that have happened to date:
       </p>
 
       <ul>
-        <li>Give a presentation.</li>
-        <li>Host a user group meeting.</li>
-        <li>Host a virtual conference.</li>
-        <li>Office hours.</li>
-        <li>Code review.</li>
-        <li>Design review.</li>
-        <li>Q&A.</li>
-        <li>AMA.</li>
-        <li>A workshop.</li>
-        <li>Just get together and chat.</li>
+        <li>Presentations</li>
+        <li>User group meetings</li>
+        <li>Virtual conferences</li>
+        <li>Office Hours</li>
+        <li>Code Reviews</li>
+        <li>Design Reviews</li>
+        <li>Interactive Workshops</li>
+        <li>Q&A</li>
+        <li>AMA</li>
+        <li>Just Get Together and Chat</li>
       </ul>
 
       <div class="transform scale-90 text-center">
@@ -68,7 +70,7 @@
             alt=""
           />
           <figcaption>
-            Our product review and sprint planning activity.
+            Example: product review and sprint planning Activity.
           </figcaption>
         </figure>
       </div>
@@ -76,17 +78,16 @@
       <h2>How long can an Activity be?</h2>
       <p>
         The length of an Activity is up to you. An Activity may be a short 30
-        minutes or last all day. We have seen 30 minute, help me figure out this
-        issue, activities and whole weekend hackathon-type activities. It's
-        entirely up to you and what you are trying to achieve. In the example
-        above you will see our bi-weekly sprint review which typically lasts for
-        an hour.
+        minutes or last all day. We have seen quick 30 minute issue triage, to
+        an entire weekend hackathon-type activities. It's entirely up to you and
+        what you are trying to achieve. In the example above you will see our
+        bi-weekly sprint review which typically lasts for an hour.
       </p>
 
       <h2>Who can create and who can join an Activity?</h2>
       <p>
         Anybody and Anybody! That's correct. Anyone with an active public THAT
-        account is allowed to create an activity. As for joining anyone with an
+        account is allowed to create an activity. As for joining, anyone with an
         active THAT account can join.
       </p>
     </div>

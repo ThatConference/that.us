@@ -56,7 +56,7 @@
         <li>#that_board in Slack.</li>
       </ul>
 
-      <h2>Activity Board and My Favorties</h2>
+      <h2>Activity Board and My Favorites</h2>
       <p>
         <Link href="/activities">The Activity Board</Link>
         as we call it, is your main place to find out what's up next. It will
@@ -69,18 +69,18 @@
       <p>
         <Link href="/my/favorites">My Favorites</Link>
         is just like the Activity Board but filtered to the Activities you've
-        already favortied. This is great during times of high usage or for
+        already favorited. This is great during times of high usage or for
         historical reasons.
       </p>
 
       <h2>Calendar Feed</h2>
       <p>
         Most people live by their calendars. We've created a shared Google
-        calender that you can subscribe too. This calendar is updated as
-        Activities are created and updated and every entry reflects the all of
-        the same information you would find on the Activity details page. The
-        link below will copy to your clipboard for you to use in your favorite
-        calednar program.
+        calender that you can subscribe to. This calendar is updated as
+        Activities are created and every entry reflects all of the same
+        information you would find on the Activity details page. The link below
+        will copy to your clipboard for you to use in your favorite calendar
+        program.
       </p>
 
       <div class="transform scale-75 text-center">
@@ -94,10 +94,10 @@
       <h2>#that_board in THAT Slack</h2>
       <p>
         Of course we wouldn't forget our very active Slack Channel. There is a
-        dedicated channel in our Slack (#that_board) which not only recieves
-        realtime updates when the Activities are created but it will also send
-        out a daily and hourly digest when an Activity is scheduled. If you're
-        not in our Slack, join us today!
+        dedicated channel in our Slack (#that_board) which not only receives
+        realtime updates when the Activities are created but it will also send a
+        daily and hourly digest when an Activity is scheduled. If you're not in
+        our Slack, join us today!
       </p>
 
       <div class="text-center my-12">
@@ -109,7 +109,7 @@
       <p>
         Over time we will continue to extend THAT in new and interesting ways.
         It's our goal to connect you to the relavent topics, and help you grow
-        your network accordinally based on your interests.
+        your network accordingly based on your interests.
       </p>
     </div>
     <div
