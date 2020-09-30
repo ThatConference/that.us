@@ -40,7 +40,7 @@
             src="/images/ActivityJoinExample.jpg"
             alt=""
           />
-          <figcaption>The join button</figcaption>
+          <figcaption>Example Activity: join on the bottom.</figcaption>
         </figure>
       </div>
 
@@ -51,7 +51,7 @@
       </p>
       <ul>
         <li>Always be nice.</li>
-        <li>Raise hand to speak 🙋‍♀️.</li>
+        <li>Raise hand to speak.</li>
         <li>Mute yourself when not speaking.</li>
         <li>Speak clearly so others can hear you.</li>
         <li>Create space so others can speak.</li>
@@ -59,20 +59,15 @@
           Be careful not to speak over or interrupt others while they are
           speaking.
         </li>
-        <li>
-          Turn your camera on so everyone else knows you're not a cyborg 📹.
-        </li>
+        <li>Turn your camera on so everyone else knows you're not a cyborg.</li>
         <li>
           Use care with humor. If you feel the need to use humor during
           meetings, make sure that it's appropriate for your audience. THAT
           serves a global audience and sometimes while many speak English not
           everything translates well.
         </li>
-        <li>
-          Don't eat while speaking. Eating while listening, muted is fine.
-        </li>
-        <li>Keep your cool 😎.</li>
-        <li>Dress appropriately 👕.</li>
+        <li>Keep your cool.</li>
+        <li>Dress appropriately.</li>
       </ul>
     </div>
 
