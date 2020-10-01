@@ -27,7 +27,8 @@
   import Logout from './routes/Logout.svelte';
   import FAQ from './routes/support/FAQ.svelte';
   import Partners from './routes/Partners.svelte';
-  import Members from './routes/Members.svelte';
+  import Members from './routes/members/Members.svelte';
+  import Member from './routes/members/Member.svelte';
   import NotFound from './routes/NotFound.svelte';
 
   // support
@@ -154,10 +155,8 @@
   <script src="//code.tidio.co/qcwuuigfzw3cjegsc2fyo0sniyh3c3ue.js" async>
   </script>
   <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script
-    async
-    src="https://www.googletagmanager.com/gtag/js?id=UA-21705613-11">
-  </script>
+  <scriptasync src="https://www.googletagmanager.com/gtag/js?id=UA-21705613-11">
+  </scriptasync>
   <!-- GA -->
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -190,7 +189,7 @@
     <Route exact path="/partners/:partner" component="{Partners}" />
 
     <Route exact path="/members" component="{Members}" />
-    <Route exact path="/members/:member" component="{Members}" />
+    <Route exact path="/members/:member" component="{Member}" />
 
     <Route exact path="/communities" component="{Community}" />
     <Route exact path="/communities/:community" component="{Community}" />

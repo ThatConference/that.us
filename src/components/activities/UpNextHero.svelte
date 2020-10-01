@@ -5,7 +5,7 @@
 
   import { Link } from 'yrv';
 
-  import { FeaturedActivity } from '../../elements';
+  import { FeaturedActivity, FeaturedActivityAdd } from '../../elements';
 </script>
 
 <section class="py-12 lg:py-16 bg-thatBlue-700">
@@ -36,18 +36,24 @@
         </p>
       </div>
 
-      {#if activities.length > 0}
-        <ul
-          class="space-y-4 sm:grid sm:grid-cols-2 sm:gap-6 sm:space-y-0
-            lg:grid-cols-3 lg:gap-8"
-        >
+      <ul
+        class="space-y-4 sm:grid sm:grid-cols-2 sm:gap-6 sm:space-y-0
+      lg:grid-cols-3 lg:gap-8"
+      >
+        {#if activities.length > 0}
           {#each activities.slice(0, 6) as s (s.id)}
             <li>
               <FeaturedActivity {...s} />
             </li>
           {/each}
-        </ul>
-      {/if}
+        {/if}
+
+        {#if activities.length < 6}
+          <li>
+            <FeaturedActivityAdd />
+          </li>
+        {/if}
+      </ul>
     </div>
   </div>
 </section>

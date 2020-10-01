@@ -11,5 +11,6 @@ export { default as Tag } from './Tag.svelte';
 export { default as GroupHeader } from './GroupHeader.svelte';
 export { default as Logo } from './Logo.svelte';
 export { default as FeaturedActivity } from './FeaturedActivity.svelte';
+export { default as FeaturedActivityAdd } from './FeaturedActivity-Add.svelte';
 export { default as StandardLink } from './StandardLink.svelte';
 export { default as CTA } from './CTA.svelte';

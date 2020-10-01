@@ -4,15 +4,15 @@
   import SvelteInfiniteScroll from 'svelte-infinite-scroll';
   import _ from 'lodash';
 
-  import Layout from '../elements/layouts/ContentLayout.svelte';
+  import Layout from '../../elements/layouts/ContentLayout.svelte';
 
-  import metaTagsStore from '../store/metaTags';
-  import { Waiting } from '../elements';
-  import Hero from '../components/members/Hero.svelte';
-  import MemberCard from '../components/members/MemberCard.svelte';
-  import CardLoader from '../components/CardLoader.svelte';
+  import metaTagsStore from '../../store/metaTags';
+  import { Waiting } from '../../elements';
+  import Hero from '../../components/members/Hero.svelte';
+  import MemberCard from '../../components/members/MemberCard.svelte';
+  import CardLoader from '../../components/CardLoader.svelte';
 
-  import membersApi from '../dataSources/api.that.tech/members';
+  import membersApi from '../../dataSources/api.that.tech/members';
 
   const { queryMembers, queryMembersNext } = membersApi(getClient());
 

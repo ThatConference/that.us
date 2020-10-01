@@ -37,16 +37,16 @@
   <div class="lg:grid lg:grid-cols-12 lg:gap-8">
     <div class="max-w-2xl mx-auto flex justify-center lg:col-span-3">
       <img
-        class="max-h-60"
-        src="/images/logos/logo-nodejs.svg"
-        alt="javascript logo"
+        class="mx-auto h-40 w-40 rounded-full xl:w-56 xl:h-56"
+        src="{'https://that.imgix.net/members/1dcd59be-4677-474d-8087-e0b74e8ab810.jpeg?mask=ellipse&w=500&h=500&fit=crop'}"
+        alt="{``}"
       />
     </div>
     <div class="mt-12 lg:mt-0 lg:col-start-4 lg:col-span-9">
       <div class="flex flex-col space-y-8">
         <div class="flex items-center justify-between">
           <div>
-            <Header subtitle="Community Spotlight">Node.js</Header>
+            <Header subtitle="Member Spotlight">Clark Sell</Header>
           </div>
 
           <div>
