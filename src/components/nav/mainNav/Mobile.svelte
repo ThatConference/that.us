@@ -40,15 +40,5 @@
     >
       Log in
     </button>
-    <button
-      on:click="{() => login(document.location.pathname, true)}"
-      class="block w-full px-5 py-3 text-center font-medium text-thatOrange-400
-      bg-gray-50 hover:bg-gray-100 hover:text-thatOrange-400 focus:outline-none
-      focus:bg-gray-100 focus:text-thatOrange-400 transition duration-150
-      ease-in-out"
-      role="menuitem"
-    >
-      Sign Up
-    </button>
   {/if}
 </div>
