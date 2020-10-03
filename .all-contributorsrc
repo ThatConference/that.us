@@ -224,6 +224,15 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "thalesagapito",
+      "name": "Thales Agapito",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/51180770?v=4",
+      "profile": "http://agapito.dev",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
