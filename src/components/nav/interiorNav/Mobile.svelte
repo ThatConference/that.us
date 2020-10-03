@@ -167,9 +167,17 @@
           on:click|stopPropagation="{() => login(document.location.pathname, false)}"
           class="block px-3 py-2 rounded-md text-base font-medium text-gray-400
             hover:text-white hover:bg-that-blue focus:outline-none
-            focus:text-white focus:bg-that-blue"
+            focus:text-white focus:bg-that-blue cursor-pointer"
         >
           Login
+        </div>
+        <div
+          on:click|stopPropagation="{() => login(document.location.pathname, true)}"
+          class="block px-3 py-2 rounded-md text-base font-medium text-gray-400
+            hover:text-white hover:bg-that-blue focus:outline-none
+            focus:text-white focus:bg-that-blue cursor-pointer"
+        >
+          Sign Up
         </div>
       {/if}
     </div>
