@@ -84,8 +84,8 @@
         </h2>
 
         <div class="mt-12">
-          {#each awardedBadges as badge (badge.id)}
-            <div class="flex space-x-3">
+          <div class="flex space-x-3">
+            {#each awardedBadges as badge (badge.id)}
               <div class="flex flex-col items-center">
                 <img class="h-56 w-56" src="{badge.image}" alt="{badge.name}" />
                 <h2
@@ -95,8 +95,8 @@
                   {badge.name}
                 </h2>
               </div>
-            </div>
-          {/each}
+            {/each}
+          </div>
         </div>
       </div>
     {/if}

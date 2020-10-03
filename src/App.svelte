@@ -22,6 +22,8 @@
   import Tailwindcss from './elements/Tailwindcss.svelte';
 
   // root
+  import Test from './routes/Test.svelte';
+  import TestTest from './routes/Test2.svelte';
   import Home from './routes/Home.svelte';
   import Login from './routes/Login.svelte';
   import Logout from './routes/Logout.svelte';
@@ -277,6 +279,18 @@
       component="{Badges}"
       condition="{isLoggedIn}"
       redirect="/login"
+    />
+    
+    <Route
+      exact
+      path="/test"
+      component="{Test}"
+    />
+    
+    <Route
+      exact
+      path="/testtest"
+      component="{TestTest}"
     />
 
     <Route fallback>

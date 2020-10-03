@@ -16,7 +16,7 @@
   {#await querySessionsByDate($currentEvent.eventId)}
     <p>loading...</p>
   {:then activities}
-    <UpNextHero activityName="{communityName}" activities="{activities}" />
+    <UpNextHero activityName="{communityName}" />
   {:catch error}
     <p>OH NO</p>
   {/await}

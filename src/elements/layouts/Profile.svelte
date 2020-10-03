@@ -1,6 +1,4 @@
 <script>
-  export let logoUrl;
-
   import BaseLayout from './ContentLayout.svelte';
 </script>
 

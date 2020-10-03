@@ -13,7 +13,7 @@
 </script>
 
 <section class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-  <div class="lg:grid lg:grid-cols-12 lg:gap-8 my-24">
+  <div class="lg:grid lg:grid-cols-12 lg:gap-8 mb-24">
     <div class="text-center md:max-w-2xl md:mx-auto lg:col-span-3">
       <h2
         class="my-2 text-3xl leading-8 font-extrabold tracking-tight
