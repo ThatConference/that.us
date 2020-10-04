@@ -15,6 +15,7 @@
   <div
     class="fixed bottom-0 inset-x-0 pb-2 sm:pb-5"
     transition:fade="{{ duration: 1000 }}"
+    style="z-index : 10;"
   >
     <div class="max-w-screen-xl mx-auto px-2 sm:px-6 lg:px-8">
       <div class="p-2 rounded-lg bg-red-400 shadow-lg sm:p-3">
