@@ -166,15 +166,11 @@
     // set true to disable Google Analytics
     window['ga-disable-UA-21705613-11'] = window.origin.includes('localhost');
   </script>
-  <script
-    src="https://code.jquery.com/jquery-3.5.1.min.js"
-    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
-    crossorigin="anonymous"></script>
   <script>
     // FIXING TIDIO OVERLAY
-    function tidioFixed () {
+    function tidioFixed() {
       setTimeout(function () {
-        window.$('iframe#tidio-chat-iframe').css('z-index', 5);
+        document.getElementById('tidio-chat-iframe').style.zIndex = '2';
       }, 2500);
     }
     tidioFixed();
