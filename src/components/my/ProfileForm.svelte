@@ -325,7 +325,7 @@
               class="inline-flex items-center px-3 rounded-l-md border
                 border-r-0 border-gray-300 bg-gray-50 text-gray-500 sm:text-sm"
             >
-              https://thatconference.com/member/
+              https://that.us/members/
             </span>
 
             {#if !isNewProfile}
@@ -454,7 +454,9 @@
             </span>
           </div>
           <p class="mt-2 text-sm text-gray-500">
-            Make sure you <strong>save</strong> to update your profile.
+            Make sure you
+            <strong>save</strong>
+            to update your profile.
           </p>
         </div>
       </div>

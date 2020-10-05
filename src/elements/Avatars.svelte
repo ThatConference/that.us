@@ -18,7 +18,7 @@
 
   {#each attendees as attendee, i}
     <a
-      href="https://www.thatconference.com/member/{attendee.profileSlug}"
+      href="https://that.us/members/{attendee.profileSlug}"
       class="-ml-2 inline-block h-12 w-12 rounded-full text-white shadow-solid"
       class:-ml-2="{host || i > 0}"
       target="_blank"

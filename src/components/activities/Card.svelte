@@ -132,7 +132,7 @@
   <div class="flex items-center p-3 space-x-3">
     <Link
       open
-      href="https://www.thatconference.com/member/{host.profileSlug}"
+      href="https://that.us/members/{host.profileSlug}"
       class="flex-shrink-0"
     >
       <span class="inline-block relative">
