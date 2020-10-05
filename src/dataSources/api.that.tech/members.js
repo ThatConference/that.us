@@ -141,6 +141,7 @@ export const QUERY_MEMBER_BY_SLUG = `
         profileImage
         interests
         lifeHack
+        createdAt
         profileLinks {
           linkType
           url

@@ -15,7 +15,7 @@
     <span class="text-that-orange">{communityName}</span>
     Activity!
     <br />
-    <span class="text-that-orange">Follow {communityHandle} today!</span>
+    <span class="text-that-orange">Follow {communityHandle}!</span>
   </h2>
 
   <span slot="actionPrimary">

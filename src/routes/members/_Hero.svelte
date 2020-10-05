@@ -6,6 +6,7 @@
   import Icon from 'svelte-awesome';
   import { share } from 'svelte-awesome/icons';
   import Clipboard from 'clipboard';
+  import dayjs from 'dayjs';
 
   import { Standard as StandardButton } from '../../elements/buttons';
   import { Tag } from '../../elements';
@@ -85,6 +86,10 @@
             </Header>
             <h3 class="font-bold tracking-tight text-gray-500">
               {`${member.jobTitle}, ${member.company}`}
+            </h3>
+            <h3 class="tracking-tight text-gray-500">
+              Member Since
+              {dayjs(member.createdAt).format('MMMM, YYYY')}
             </h3>
           </div>
 
