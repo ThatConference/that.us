@@ -13,11 +13,7 @@
 </script>
 
 <section>
-  {#await querySessionsByDate($currentEvent.eventId)}
-    <p>loading...</p>
-  {:then activities}
+  {#await querySessionsByDate($currentEvent.eventId) then activities}
     <UpNextHero activityName="{communityName}" activities="{activities}" />
-  {:catch error}
-    <p>OH NO</p>
   {/await}
 </section>

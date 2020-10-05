@@ -14,33 +14,6 @@
 
   import { SocialLink } from '../../components/social';
 
-  const communityTags = [
-    '#node',
-    '#javascript',
-    '#opensource',
-    '#foo',
-    '#foo',
-    '#foo',
-    '#node',
-    '#javascript',
-    '#opensource',
-    '#foo',
-    '#foo',
-    '#foo',
-    '#node',
-    '#javascript',
-    '#opensource',
-    '#foo',
-    '#foo',
-    '#foo',
-    '#node',
-    '#javascript',
-    '#opensource',
-    '#foo',
-    '#foo',
-    '#foo',
-  ];
-
   let clipboard;
   let copiedText;
 
@@ -121,11 +94,13 @@
         </div>
 
         <div class="flex flex-wrap justify-center items-center space-x-4">
-          {#each communityTags as tag, i (i)}
-            <div in:fade="{{ delay: i * 100 }}">
-              <Tag>{tag}</Tag>
-            </div>
-          {/each}
+          {#if member.interests}
+            {#each member.interests as interest, i (i)}
+              <div in:fade="{{ delay: i * 100 }}">
+                <Tag>{interest}</Tag>
+              </div>
+            {/each}
+          {/if}
         </div>
       </div>
     </div>
