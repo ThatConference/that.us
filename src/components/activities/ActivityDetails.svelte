@@ -177,7 +177,7 @@
         <div class="flex items-center">
           <div class="flex-shrink-0">
             <Link
-              href="https://that.us/members/{host.profileSlug}"
+              href="/members/{host.profileSlug}"
               open
             >
               <span class="inline-block relative">
