@@ -19,8 +19,7 @@
 </script>
 
 <div class="flex-1 flex flex-col p-8">
-  <Link href="https://www.thatconference.com/member/{profileSlug}" open>
-
+  <Link href="https://that.us/members/{profileSlug}">
     <span class="inline-block relative">
       <img
         class="w-32 h-32 flex-shrink-0 mx-auto rounded-full"
@@ -36,7 +35,6 @@
           />
         </span>
       {/if}
-
     </span>
 
     <h3 class="mt-6 text-gray-900 text-sm leading-5 font-medium">
@@ -44,7 +42,6 @@
     </h3>
   </Link>
   <dl class="mt-1 flex-grow flex flex-col justify-between">
-
     {#if jobTitle}
       <dt class="sr-only">Title</dt>
       <dd class="text-gray-500 text-sm leading-5">{jobTitle}</dd>

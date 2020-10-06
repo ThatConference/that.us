@@ -128,12 +128,45 @@ export const CLAIM_TICKET = `
   }
 `;
 
+export const QUERY_MEMBER_BY_SLUG = `
+  query getMemberBySlug ($slug: Slug!) {
+    members {
+      member(slug: $slug) {
+        firstName
+        lastName
+        bio
+        company
+        jobTitle
+        profileSlug
+        profileImage
+        interests
+        lifeHack
+        createdAt
+        profileLinks {
+          linkType
+          url
+        }
+        earnedMeritBadges {
+          name
+          image
+        }
+        sessions {
+          id
+          title
+          type
+          startTime
+        }
+      }
+    }
+  }
+`;
+
 function reformatResults(results) {
   const { members } = results.data.members;
   return members;
 }
 
-export default (client) => {
+export default client => {
   const stripAuthorization = () => {
     const newHeaders = {
       ...client.fetchOptions().headers,
@@ -144,12 +177,12 @@ export default (client) => {
     return newHeaders;
   };
 
-  const isSlugTaken = (slug) => {
+  const isSlugTaken = slug => {
     const variables = { slug };
     return client
       .query(QUERY_IS_SLUG_TAKEN, variables)
       .toPromise()
-      .then((r) => {
+      .then(r => {
         let isTaken;
 
         if (r.error) isTaken = true;
@@ -169,6 +202,16 @@ export default (client) => {
       .then(reformatResults);
   };
 
+  const queryMemberBySlug = slug => {
+    const variables = { slug };
+    return client
+      .query(QUERY_MEMBER_BY_SLUG, variables, {
+        fetchOptions: { headers: { ...stripAuthorization() } },
+      })
+      .toPromise()
+      .then(r => r.data.members.member);
+  };
+
   const queryMembersNext = (after, pageSize = 50) => {
     const variables = { pageSize, after };
     return client
@@ -179,28 +222,28 @@ export default (client) => {
       .then(reformatResults);
   };
 
-  const createProfile = (profile) => {
+  const createProfile = profile => {
     const variables = { profile };
     return client
       .mutation(MUTATION_CREATE, variables)
       .toPromise()
-      .then((r) => r.data.members.create);
+      .then(r => r.data.members.create);
   };
 
-  const updateProfile = (profile) => {
+  const updateProfile = profile => {
     const variables = { profile };
     return client
       .mutation(MUTATION_UPDATE, variables)
       .toPromise()
-      .then((r) => r.data.members.member.update);
+      .then(r => r.data.members.member.update);
   };
 
-  const claimTicket = (ticketReference) => {
+  const claimTicket = ticketReference => {
     const variables = { ticketReference };
     return client
       .mutation(CLAIM_TICKET, variables)
       .toPromise()
-      .then((r) => {
+      .then(r => {
         let claimed = null;
 
         if (r.error) {
@@ -216,6 +259,7 @@ export default (client) => {
   return {
     queryMembers,
     queryMembersNext,
+    queryMemberBySlug,
     createProfile,
     updateProfile,
     isSlugTaken,

@@ -1,4 +1,6 @@
 <script>
+  import { fade } from 'svelte/transition';
+
   import { Logo } from '../elements';
   import Layout from '../elements/layouts/ContentLayout.svelte';
   import {
@@ -27,17 +29,27 @@
 </script>
 
 <Layout>
-  <Hero />
-  <Stats />
-  <Testimonials />
-  <Logo uri="/images/THAT-Logo-Words.svg" />
-  <UpNext />
+  <div in:fade="{{ delay: 200 }}">
+    <Hero />
+  </div>
 
-  {#if !$isAuthenticated}
-    <CTA />
-  {/if}
+  <div in:fade="{{ delay: 400 }}">
+    <Stats />
+  </div>
 
-  <Events />
-  <NewMembers />
-  <Newsletter />
+  <div in:fade="{{ delay: 600 }}">
+    <Testimonials />
+  </div>
+
+  <div in:fade="{{ delay: 800 }}">
+    <Logo uri="/images/THAT-Logo-Words.svg" />
+
+    <UpNext />
+    {#if !$isAuthenticated}
+      <CTA />
+    {/if}
+    <Events />
+    <NewMembers />
+    <Newsletter />
+  </div>
 </Layout>

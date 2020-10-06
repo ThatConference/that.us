@@ -1,4 +1,6 @@
 <script>
+  import { fade } from 'svelte/transition';
+
   import Nav from '../../components/nav/mainNav/MainNav.svelte';
 </script>
 

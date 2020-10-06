@@ -27,7 +27,8 @@
   import Logout from './routes/Logout.svelte';
   import FAQ from './routes/support/FAQ.svelte';
   import Partners from './routes/Partners.svelte';
-  import Members from './routes/Members.svelte';
+  import Members from './routes/members/Members.svelte';
+  import Member from './routes/members/Member.svelte';
   import NotFound from './routes/NotFound.svelte';
 
   // support
@@ -50,6 +51,9 @@
   import Create from './routes/activities/Create.svelte';
   import EditActivity from './routes/activities/Edit.svelte';
   import SessionRedirect from './routes/SessionRedirect.svelte';
+
+  // Communities
+  import Community from './routes/communities/Community.svelte';
 
   import ChangeLog from './routes/releases/ChangeLog.svelte';
   import ChangeLogMissed from './routes/releases/Missed.svelte';
@@ -155,10 +159,8 @@
   <script src="//code.tidio.co/qcwuuigfzw3cjegsc2fyo0sniyh3c3ue.js" async>
   </script>
   <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script
-    async
-    src="https://www.googletagmanager.com/gtag/js?id=UA-21705613-11">
-  </script>
+  <scriptasync src="https://www.googletagmanager.com/gtag/js?id=UA-21705613-11">
+  </scriptasync>
   <!-- GA -->
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -184,10 +186,17 @@
       documentReferrer="{documentReferrer}"
     />
     <Route exact path="/logout" component="{Logout}" />
-    <Route exact path="/members" component="{Members}" />
-    <Route exact path="/partners" component="{Partners}" />
     <Route exact path="/changelog" component="{ChangeLog}" />
     <Route exact path="/changelog-missed" component="{ChangeLogMissed}" />
+
+    <Route exact path="/partners" component="{Partners}" />
+    <Route exact path="/partners/:partner" component="{Partners}" />
+
+    <Route exact path="/members" component="{Members}" />
+    <Route exact path="/members/:member" component="{Member}" />
+
+    <Route exact path="/communities" component="{Community}" />
+    <Route exact path="/communities/:community" component="{Community}" />
 
     <Route exact path="/activities" component="{List}" />
     <Route path="/sessions" component="{SessionRedirect}" />
