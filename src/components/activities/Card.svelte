@@ -128,11 +128,7 @@
 
 <div class="w-full h-full flex flex-col">
   <div class="flex items-center p-3 space-x-3">
-    <Link
-      open
-      href="https://that.us/members/{host.profileSlug}"
-      class="flex-shrink-0"
-    >
+    <Link open href="/members/{host.profileSlug}" class="flex-shrink-0">
       <span class="inline-block relative">
         <img
           class="w-15 h-15 rounded-full"
