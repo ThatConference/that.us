@@ -83,9 +83,7 @@
               {/if}
             </button>
 
-            <StandardButton class="h-3/4" on:click="{console.log('clicked')}">
-              Follow
-            </StandardButton>
+            <StandardButton class="h-3/4" on:click>Follow</StandardButton>
           </div>
         </div>
 

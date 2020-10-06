@@ -1,17 +1,16 @@
 <script>
-  import { getClient } from '@urql/svelte';
+  /* 
+    TODO
+    if there are no events upcoming, we should then swap the section to 
+    see some of the sessions from the past.
+  */
 
-  // datasources
-  import sessionsApi from '../../dataSources/api.that.tech/sessions';
-  import currentEvent from '../../store/currentEvent';
-
+  export let activities = [];
   import UpNextMemberHero from '../../components/activities/UpNextMemberHero.svelte';
-
-  const { querySessionsByDate } = sessionsApi(getClient());
 </script>
 
 <section>
-  {#await querySessionsByDate($currentEvent.eventId) then activities}
-    <UpNextMemberHero activities="{activities}" />
-  {/await}
+  <!-- {#if activities.length > 0} -->
+  <UpNextMemberHero activities="{activities}" />
+  <!-- {/if} -->
 </section>
