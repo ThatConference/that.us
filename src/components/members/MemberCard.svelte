@@ -19,8 +19,7 @@
 </script>
 
 <div class="flex-1 flex flex-col p-8">
-  <!-- <Link href="https://that.us/members/{profileSlug}" open> -->
-  <Link href="http://localhost:5000/members/{profileSlug}">
+  <Link href="https://that.us/members/{profileSlug}">
     <span class="inline-block relative">
       <img
         class="w-32 h-32 flex-shrink-0 mx-auto rounded-full"
