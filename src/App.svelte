@@ -107,6 +107,10 @@
         },
       ]);
     }
+    // Fixing Tidio Overlay
+    setTimeout(function () {
+      document.getElementById('tidio-chat-iframe').style.zIndex = '2';
+    }, 2500);
   });
 
   onDestroy(unsub);
@@ -165,15 +169,6 @@
     gtag('config', 'UA-21705613-11');
     // set true to disable Google Analytics
     window['ga-disable-UA-21705613-11'] = window.origin.includes('localhost');
-  </script>
-  <script>
-    // FIXING TIDIO OVERLAY
-    function tidioFixed() {
-      setTimeout(function () {
-        document.getElementById('tidio-chat-iframe').style.zIndex = '2';
-      }, 2500);
-    }
-    tidioFixed();
   </script>
 </svelte:head>
 
