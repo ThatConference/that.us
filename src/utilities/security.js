@@ -1,5 +1,4 @@
 /* eslint-disable no-undef */
-import { onDestroy } from 'svelte';
 import { writable } from 'svelte/store';
 import createAuth0Client from '@auth0/auth0-spa-js';
 import { getClient } from '@urql/svelte';

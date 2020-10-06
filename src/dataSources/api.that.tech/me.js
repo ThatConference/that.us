@@ -29,6 +29,8 @@ export const QUERY_ME = `
           acceptedAntiHarassmentPolicy
           acceptedCommitmentToDiversity
           isDeactivated
+          lifeHack
+          interests
         }
       }
     }

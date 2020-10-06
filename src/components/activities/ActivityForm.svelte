@@ -49,13 +49,12 @@
   import isToday from 'dayjs/plugin/isToday';
 
   import Datepicker from 'svelte-calendar'; //https://github.com/6eDesign/svelte-calendar
-  import { Circle2 } from 'svelte-loading-spinners';
-  import { Form, Input, Choice } from 'sveltejs-forms'; //https://github.com/mdauner/sveltejs-forms
+
+  import { Form, Input } from 'sveltejs-forms'; //https://github.com/mdauner/sveltejs-forms
   import Select from 'svelte-select'; //https://github.com/rob-balfre/svelte-select
   import Tags from 'svelte-tags-input';
   import * as yup from 'yup';
   import _ from 'lodash';
-  import { Link } from 'yrv';
 
   import { Waiting, ModalError } from '../../elements';
   import { thatProfile } from '../../utilities/security.js';
@@ -109,7 +108,6 @@
       .required('Please select an estimated duration.'),
   });
 
-  const currentTimeZone = dayjs.tz.guess();
   let tagsInput;
   let tagInputValues = initialValues ? initialValues.tags : [];
 

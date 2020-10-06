@@ -7,6 +7,8 @@ const userFragment = `
     jobTitle
     profileImage
     profileSlug
+    lifeHack
+    interests
     profileLinks {
       isPublic
       linkType
@@ -78,6 +80,8 @@ const profileFieldsFragment = `
     acceptedAntiHarassmentPolicy
     acceptedCommitmentToDiversity
     isDeactivated
+    interests
+    lifeHack
   }
 `;
 
