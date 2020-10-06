@@ -26,13 +26,15 @@
     <Hero member="{member}" />
   </div>
   <div in:fade="{{ delay: 400 }}">
-    <UpNext communityName="Node.js" />
+    <UpNext />
   </div>
   <div in:fade="{{ delay: 600 }}">
-    <CTA communityName="Node.js" communityHandle="@nodejs" />
+    <CTA memberSlug="{member.profileSlug}" />
   </div>
   <div in:fade="{{ delay: 800 }}">
     <MeritBadges meritBadges="{member.earnedMeritBadges}" />
-    <NewestFollowers />
+    {#if member.followers && member.followers.length > 0}
+      <NewestFollowers />
+    {/if}
   </div>
 </div>

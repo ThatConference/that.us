@@ -22,7 +22,7 @@
   import _ from 'lodash';
 
   // utilties
-  import config, { events } from '../../config';
+  import config from '../../config';
   import {
     login,
     isAuthenticated,
@@ -38,7 +38,6 @@
   // UI Elements
   import { Tag } from '../../elements';
   import CardLink from './CardLink.svelte';
-  import CalendarButton from './elements/CalendarButton.svelte';
 
   dayjs.extend(isBetween);
   dayjs.extend(isSameOrAfter);
@@ -51,7 +50,6 @@
 
   let imageCrop = '?mask=ellipse&w=500&h=500&fit=crop';
   let favoriteDisabled = false;
-  let showExpandedDescription = false;
 
   const isAllowed = () => {
     let permitted = false;
