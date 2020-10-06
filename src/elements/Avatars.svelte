@@ -10,7 +10,7 @@
 <div class="flex flex-wrap overflow-hidden">
   {#if host}
     <img
-      class="inline-block h-8 w-8 rounded-full text-white shadow-solid"
+      class="inline-block h-12 w-12 rounded-full text-white shadow-solid"
       src="{`${host.profileImage || config.defaultProfileImage}${imageCrop}`}"
       alt="`${host.firstName} ${host.lastName}`}"
     />
@@ -18,8 +18,8 @@
 
   {#each attendees as attendee, i}
     <a
-      href="https://www.thatconference.com/member/{attendee.profileSlug}"
-      class="-ml-2 inline-block h-8 w-8 rounded-full text-white shadow-solid"
+      href="https://that.us/members/{attendee.profileSlug}"
+      class="-ml-2 inline-block h-12 w-12 rounded-full text-white shadow-solid"
       class:-ml-2="{host || i > 0}"
       target="_blank"
     >

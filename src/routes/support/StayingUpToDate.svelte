@@ -1,5 +1,7 @@
 <script>
+  import { onMount, onDestroy } from 'svelte';
   import { Link } from 'yrv';
+  import Clipboard from 'clipboard';
 
   import Layout from './_Layout.svelte';
   import Header from './_Header.svelte';
@@ -8,7 +10,6 @@
     Highlight as HighlightLink,
     Standard as StandardLink,
   } from '../../elements/links';
-  import { Standard as StandardButton } from '../../elements/buttons';
 
   import metaTagsStore from '../../store/metaTags';
 
@@ -21,22 +22,20 @@
     },
   });
 
-  let copyText = 'https://bit.ly/2YRdVxy';
-  function copyToClipboard() {
-    let calendarElement = document.getElementById('calendarUrl');
-    let range = document.createRange();
-    range.selectNode(calendarElement);
-    window.getSelection().addRange(range);
+  let clipboard;
+  let copiedText = 'https://bit.ly/2YRdVxy';
 
-    try {
-      document.execCommand('copy');
-      copyText = 'Copied to Clipboard';
-    } catch (err) {
-      console.error('Oops, unable to copy');
-    }
+  onMount(() => {
+    clipboard = new Clipboard('#calendarUrl');
 
-    window.getSelection().removeAllRanges();
-  }
+    clipboard.on('success', function (e) {
+      copiedText = 'Copied!';
+    });
+  });
+
+  onDestroy(() => {
+    clipboard.destroy();
+  });
 </script>
 
 <Layout>
@@ -60,9 +59,9 @@
       <p>
         <Link href="/activities">The Activity Board</Link>
         as we call it, is your main place to find out what's up next. It will
-        always show all Activities from today looking forward. You can also find <strong
-          class="italic"
-        >all</strong> Activities
+        always show all Activities from today looking forward. You can also find
+        <strong class="italic">all</strong>
+        Activities
         <Link href="/events/thatUs">here</Link>.
       </p>
 
@@ -83,12 +82,18 @@
         program.
       </p>
 
-      <div class="transform scale-75 text-center">
-        <a
-          on:click|preventDefault="{copyToClipboard}"
-          href="https://bit.ly/2YRdVxy"
+      <div class="text-center">
+        <button
           id="calendarUrl"
-        >{copyText}</a>
+          data-clipboard-text="https://bit.ly/2YRdVxy"
+          class="px-4 py-2 rounded-md shadow text-base leading-6 font-medium border-2
+        border-thatBlue-500 text-thatBlue-500 bg-white hover:bg-thatBlue-500
+        hover:text-white focus:bg-thatBlue-500 focus:text-white focus:outline-none
+        focus:shadow-outline-thatBlue-500 focus:border-thatBlue-800 transition
+        duration-150 ease-in-out md:text-lg md:px-10"
+        >
+          {copiedText}
+        </button>
       </div>
 
       <h2>#that_board in THAT Slack</h2>
