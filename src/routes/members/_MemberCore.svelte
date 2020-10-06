@@ -30,7 +30,6 @@
 
   let delayCounter = 200;
   function getDelay() {
-    console.log(delayCounter);
     let current = delayCounter;
     delayCounter = delayCounter + 200;
 
@@ -55,7 +54,11 @@
 
   <div in:fade="{{ delay: getDelay() }}">
     <CTA memberSlug="{member.profileSlug}" on:click="{handleFollow}" />
-    <MeritBadges meritBadges="{member.earnedMeritBadges}" />
+
+    {#if member.earnedMeritBadges > 0}
+      <MeritBadges meritBadges="{member.earnedMeritBadges}" />
+    {/if}
+
     {#if member.followers && member.followers.length > 0}
       <NewestFollowers />
     {/if}
