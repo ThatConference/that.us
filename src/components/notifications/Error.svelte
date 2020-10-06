@@ -13,7 +13,7 @@
 
 {#if !dismissed}
   <div
-    class="fixed bottom-0 inset-x-0 pb-2 sm:pb-5"
+    class="fixed bottom-0 inset-x-0 pb-2 sm:pb-5 z-10"
     transition:fade="{{ duration: 1000 }}"
   >
     <div class="max-w-screen-xl mx-auto px-2 sm:px-6 lg:px-8">

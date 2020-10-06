@@ -111,6 +111,10 @@
         },
       ]);
     }
+    // Fixing Tidio Overlay
+    setTimeout(function () {
+      document.getElementById('tidio-chat-iframe').style.zIndex = '2';
+    }, 2500);
   });
 
   onDestroy(unsub);
