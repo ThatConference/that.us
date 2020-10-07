@@ -157,8 +157,8 @@ export const QUERY_MEMBER_BY_SLUG = `
         sessions {
           id
           title
-          type
           startTime
+          shortDescription
         }
       }
     }

@@ -44,18 +44,21 @@
 
   {#if member.lifeHack}
     <div in:fade="{{ delay: getDelay() }}">
-      <LifeHack quote="{member.lifeHack}" />
+      <LifeHack
+        quote="{member.lifeHack}"
+        name="{`${member.firstName} ${member.lastName}`}"
+      />
     </div>
   {/if}
 
   <div in:fade="{{ delay: getDelay() }}">
-    <UpNext />
+    <UpNext activities="{member.sessions}" />
   </div>
 
   <div in:fade="{{ delay: getDelay() }}">
     <CTA memberSlug="{member.profileSlug}" on:click="{handleFollow}" />
 
-    {#if member.earnedMeritBadges > 0}
+    {#if member.earnedMeritBadges.length > 0}
       <MeritBadges meritBadges="{member.earnedMeritBadges}" />
     {/if}
 
