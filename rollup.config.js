@@ -40,8 +40,6 @@ function serve() {
 
 export default {
   // inlineDynamicImports: true,
-  emitCss: false,
-  css: true,
   input: 'src/main.js',
   output: {
     sourcemap: true,
