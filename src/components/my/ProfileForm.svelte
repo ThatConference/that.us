@@ -359,6 +359,9 @@
           >
             About Yourself
           </label>
+          <p class="mt-2 text-sm text-gray-500">
+            Write a few sentences about yourself.
+          </p>
           <div class="mt-1 rounded-md shadow-sm">
             <Input
               type="textarea"
@@ -369,9 +372,6 @@
                 ease-in-out sm:text-sm sm:leading-5"
             />
           </div>
-          <p class="mt-2 text-sm text-gray-500">
-            Write a few sentences about yourself.
-          </p>
         </div>
         <div class="sm:col-span-3">
           <label
@@ -519,13 +519,15 @@
         <div class="mt-6">
           <div class="sm:col-span-4">
             <div class="mt-6 grid grid-cols-1 row-gap-6 gap-y-4 sm:grid-cols-6">
-              <div class="sm:col-span-4">
-                <label
-                  for="interests"
-                  class="block text-sm font-medium leading-5 text-gray-700"
-                >
-                  What are you interested in?
+              <div
+                class="sm:col-span-4 block text-sm font-medium leading-5 text-gray-700"
+              >
+                <label for="interests">
+                  What are somethings you're interested in?
                 </label>
+                <p class="mt-2 text-gray-500">
+                  Please note return/enter is the delimiter.
+                </p>
 
                 <div class="mt-1 rounded-md shadow-sm tag-form-input">
                   <Tags
