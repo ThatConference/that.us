@@ -1,6 +1,5 @@
 <style global>
   @tailwind base;
-
   @tailwind components;
   @tailwind utilities;
   .prose a {
