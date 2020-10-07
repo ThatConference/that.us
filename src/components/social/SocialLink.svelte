@@ -56,7 +56,7 @@
   }
 </script>
 
-<a {href} target="_blank" tabindex="-1">
+<a href="{href}" target="_blank" tabindex="-1" rel="noopener">
   <Icon
     data="{socialIcon}"
     class="-ml-1 mr-2 h-5 w-5 text-gray-400 hover:text-that-blue focus:underline
