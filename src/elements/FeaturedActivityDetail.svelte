@@ -2,7 +2,6 @@
   export let id;
   export let title;
   export let shortDescription;
-  export let tags;
   export let startTime;
 
   import Icon from 'svelte-awesome';
