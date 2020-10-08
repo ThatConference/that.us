@@ -1,9 +1,36 @@
 versionNumber: v1.4.0
-date: October 28th, 2020
+date: October 8th, 2020
 
-notes:
+notes: The theme of this sprint was laying the groundwork for adding a community and really any profile pages (Community, Member, Company). Their overall layout is similar with a few different child sections. The base for a community /communities/[community] was created as well as a member /members/[memberslug]. Hacktoberfest also kicked off, and a few other items were implemented. On the backend we added the notion of communities. From the last sprint we turned on the new user nurturing campaigns that happen when a user joins.
 
 [features]
 
-feature: [enhancement] XXX
-url: https://github.com/ThatConference/that.us/pull/XXX
+feature: Full Milestone Details
+url: https://github.com/ThatConference/that.us/milestone/4
+
+feature: [enhancement] New Getting Started and Help was added to the nav. Fall over from last sprint. 
+url: https://github.com/ThatConference/that.us/pull/373
+
+feature: [enhancement] When a user shares during an activity we change the border color to make it very clear they're sharing.
+url: https://github.com/ThatConference/that.us/pull/377
+
+feature: [chore] Manual stats update.
+url: https://github.com/ThatConference/that.us/pull/379
+
+feature: [bug] SponsorSimple wasn't pulling from context and the eventId was missing and not rendering.
+url: https://github.com/ThatConference/that.us/pull/381
+
+feature: [chore] Package Bumps. That happened multiple times but the biggest was finally upgrading to all but one of the majors which had some breaking changes.
+url: https://github.com/ThatConference/that.us/pull/403
+
+feature: [enhancement] added noopener to anchor links
+url: https://github.com/ThatConference/that.us/pull/401
+
+feature: [bug] Thanks @thalesagapito!  Due to some padding the navbar was getting cut off on mobile.
+url: https://github.com/ThatConference/that.us/pull/388
+
+feature: [bug] Thanks @Yassine-Latreche. Tidio z-index was over our warning messages.
+url: https://github.com/ThatConference/that.us/pull/391
+
+feature: [enhancement] added community and member profile pages.
+url: https://github.com/ThatConference/that.us/pull/382
