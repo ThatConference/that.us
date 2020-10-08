@@ -133,7 +133,7 @@ export const CLAIM_TICKET = `
 `;
 
 export const QUERY_MEMBER_BY_SLUG = `
-  query getMemberBySlug ($slug: Slug!) {
+  query getMemberBySlug ($slug: Slug!, $sessionStartDate: Date, $filter: AcceptedSessionFilter) {
     members {
       member(slug: $slug) {
         firstName
@@ -154,7 +154,7 @@ export const QUERY_MEMBER_BY_SLUG = `
           name
           image
         }
-        sessions {
+        sessions(filter: $filter, asOfDate: $sessionStartDate) {
           id
           title
           startTime
@@ -206,8 +206,16 @@ export default client => {
       .then(reformatResults);
   };
 
-  const queryMemberBySlug = slug => {
-    const variables = { slug };
+  const queryMemberBySlug = (
+    slug,
+    sessionStartDate = new Date(new Date().setHours(0, 0, 0, 0)),
+    filter = 'UPCOMING',
+  ) => {
+    const variables = {
+      slug,
+      sessionStartDate,
+      filter,
+    };
     return client
       .query(QUERY_MEMBER_BY_SLUG, variables, {
         fetchOptions: { headers: { ...stripAuthorization() } },
