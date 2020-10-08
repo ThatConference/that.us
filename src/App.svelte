@@ -284,6 +284,12 @@
       condition="{isLoggedIn}"
       redirect="/login"
     />
+    
+    <Route
+      exact
+      path="/not-found"
+      component="{NotFound}"
+    />
 
     <Route fallback>
       <NotFound />
