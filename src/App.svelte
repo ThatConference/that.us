@@ -54,6 +54,7 @@
 
   // Communities
   import Community from './routes/communities/Community.svelte';
+  import Communities from './routes/communities/Communities.svelte';
 
   import ChangeLog from './routes/releases/ChangeLog.svelte';
   import ChangeLogMissed from './routes/releases/Missed.svelte';
@@ -197,7 +198,7 @@
     <Route exact path="/members" component="{Members}" />
     <Route exact path="/members/:member" component="{Member}" />
 
-    <Route exact path="/communities" component="{Community}" />
+    <Route exact path="/communities" component="{Communities}" />
     <Route exact path="/communities/:community" component="{Community}" />
 
     <Route exact path="/activities" component="{List}" />

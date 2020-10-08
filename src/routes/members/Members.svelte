@@ -10,8 +10,7 @@
   import { Waiting } from '../../elements';
   import Hero from '../../components/members/Hero.svelte';
   import MemberCard from '../../components/members/MemberCard.svelte';
-  import CardLoader from '../../components/CardLoader.svelte';
-
+  
   import membersApi from '../../dataSources/api.that.tech/members';
 
   const { queryMembers, queryMembersNext } = membersApi(getClient());
@@ -62,16 +61,17 @@
           <div class="py-20">
             <div class="px-8">
               {#if loading}
-                <CardLoader />
+                <div class="mb-24 w-full flex flex-col items-center justify-center">
+                  <Waiting />
+                </div>
               {/if}
               <ul
                 class="grid grid-cols-1 gap-6 sm:grid-cols-3 md:grid-cols-4
                   lg:grid-cols-5"
               >
-                {#each memberList as m (m.id)}
+                {#each memberList as m, i (m.id)}
                   <li
-                    class="col-span-1 flex flex-col text-center bg-white
-                      rounded-lg shadow"
+                    class="col-span-1"
                   >
                     <MemberCard {...m} />
                   </li>

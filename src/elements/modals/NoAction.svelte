@@ -23,7 +23,7 @@
     transition:fade="{{ duration: 1000 }}"
   >
     <div>
-      <div class="mx-auto flex items-center justify-center h-12 w-12">
+      <div class="mx-auto flex items-center justify-center">
         <Waiting />
       </div>
       <div class="mt-3 text-center sm:mt-5">

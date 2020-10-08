@@ -1,5 +1,4 @@
 <script>
-  import dayjs from 'dayjs';
   /* 
     TODO
     if there are no events upcoming, we should then swap the section to 
