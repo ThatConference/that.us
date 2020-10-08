@@ -218,7 +218,7 @@
     isDeactivated: yup.boolean(),
     profileImage: yup.string().url(),
     profileLinks: yup.array(),
-    lifeHack: yup.string(),
+    lifeHack: yup.string().trim(),
     interests: yup.array().of(yup.string()),
   });
 
