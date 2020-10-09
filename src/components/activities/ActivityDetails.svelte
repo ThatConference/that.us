@@ -12,7 +12,6 @@
 
   // 3rd Party
   import { onMount } from 'svelte';
-  import { fade } from 'svelte/transition';
   import dayjs from 'dayjs';
   import isBetween from 'dayjs/plugin/isBetween';
   import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';

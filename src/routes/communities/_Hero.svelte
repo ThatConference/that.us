@@ -1,40 +1,16 @@
 <script>
+  export let community;
+
   import { onMount, onDestroy } from 'svelte';
   import { fade } from 'svelte/transition';
   import Icon from 'svelte-awesome';
   import { share } from 'svelte-awesome/icons';
   import Clipboard from 'clipboard';
-
+  import dayjs from 'dayjs';
+  
   import { Standard as StandardButton } from '../../elements/buttons';
   import { Tag } from '../../elements';
   import Header from '../../elements/layouts/profile/_Header.svelte';
-
-  const communityTags = [
-    '#node',
-    '#javascript',
-    '#opensource',
-    '#foo',
-    '#foo',
-    '#foo',
-    '#node',
-    '#javascript',
-    '#opensource',
-    '#foo',
-    '#foo',
-    '#foo',
-    '#node',
-    '#javascript',
-    '#opensource',
-    '#foo',
-    '#foo',
-    '#foo',
-    '#node',
-    '#javascript',
-    '#opensource',
-    '#foo',
-    '#foo',
-    '#foo',
-  ];
 
   let clipboard;
   let copiedText;
@@ -56,8 +32,8 @@
   <div class="lg:grid lg:grid-cols-12 lg:gap-8">
     <div class="max-w-2xl mx-auto flex justify-center lg:col-span-3">
       <img
-        class="max-h-60"
-        src="/images/logos/logo-nodejs.svg"
+        class="w-full max-h-60"
+        src="{community.logo}"
         alt="javascript logo"
       />
     </div>
@@ -65,13 +41,17 @@
       <div class="flex flex-col space-y-8">
         <div class="flex items-center justify-between">
           <div>
-            <Header subtitle="Community Spotlight">Node.js</Header>
+            <Header subtitle="Community Spotlight">{community.name}</Header>
+            <h3 class="font-bold tracking-tight text-gray-500">
+              Created on
+              {dayjs(community.createdAt).format('MMMM, YYYY')}
+            </h3>
           </div>
 
           <div class="flex justify-end space-x-4">
             <button
               id="shareUrl"
-              data-clipboard-text="{`https://that.us/communities/`}"
+              data-clipboard-text="{`https://that.us/communities/${community.slug}`}"
               class="px-4 py-2 rounded-md shadow text-base leading-6 font-medium border-2
                 border-thatBlue-500 text-thatBlue-500 bg-white hover:bg-thatBlue-500
                 hover:text-white focus:bg-thatBlue-500 focus:text-white focus:outline-none
@@ -85,7 +65,7 @@
               {/if}
             </button>
 
-            <StandardButton class="h-3/4" on:click="{console.log('clicked')}">
+            <StandardButton class="h-3/4" on:click="{() => console.log('clicked')}">
               Follow
             </StandardButton>
           </div>
@@ -93,18 +73,12 @@
 
         <div>
           <p>
-            Bacon ipsum dolor amet ground round meatball ham hock ribeye strip
-            steak bacon tenderloin pig beef ribs meatloaf jerky chuck porchetta
-            corned beef boudin. Pork chop shank tail, salami sausage ham hock
-            swine. Frankfurter sirloin prosciutto cow tongue tail fatback pork
-            hamburger pancetta t-bone. Picanha pig turducken doner hamburger
-            flank ham hock beef ribs sausage prosciutto jerky ground round.
-            Tenderloin pork chop landjaeger ball tip swine.
+            {community.description}
           </p>
         </div>
 
         <div class="flex flex-wrap justify-center items-center space-x-4">
-          {#each communityTags as tag, i (i)}
+          {#each community.tags as tag, i (i)}
             <div in:fade="{{ delay: i * 100 }}">
               <Tag>{tag}</Tag>
             </div>

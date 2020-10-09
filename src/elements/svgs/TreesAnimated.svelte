@@ -11,6 +11,7 @@
 </script>
 
 <svg
+  width="200px"
   viewBox="0 0 1451 635"
   xmlns="http://www.w3.org/2000/svg"
   fill-rule="evenodd"
@@ -19,45 +20,45 @@
   stroke-miterlimit="2"
   fill="#ffffff"
 >
-  <g out:fade="{{ duration: 1000 }}" in:fade="{{ duration: 1000 }}">
+  <g out:fade="{{ duration: 500 }}" in:fade="{{ duration: 500 }}">
     <path
-      in:draw="{{ duration: 1000, easing: circIn }}"
-      out:draw="{{ duration: 1000, easing: circOut }}"
+      in:draw="{{ duration: 500, easing: circIn }}"
+      out:draw="{{ duration: 500, easing: circOut }}"
       style="stroke:#f74646; stroke-width: 10px"
       d="{leftBracket}"
     >
       <animate
         attributeName="fill"
-        begin="700ms"
-        dur="700ms"
+        begin="500ms"
+        dur="500ms"
         to="#f74646"
         fill="freeze"
       ></animate>
     </path>
     <path
-      in:draw="{{ duration: 1000, easing: circIn }}"
-      out:draw="{{ duration: 1000, easing: circOut }}"
+      in:draw="{{ duration: 500, easing: circIn }}"
+      out:draw="{{ duration: 500, easing: circOut }}"
       style="stroke:#f74646; stroke-width: 10px"
       d="{treesPath}"
     >
       <animate
         attributeName="fill"
-        begin="700ms"
-        dur="700ms"
+        begin="500ms"
+        dur="500ms"
         to="#f74646"
         fill="freeze"
       ></animate>
     </path>
     <path
-      in:draw="{{ duration: 1000, easing: circIn }}"
-      out:draw="{{ duration: 1000, easing: circOut }}"
+      in:draw="{{ duration: 500, easing: circIn }}"
+      out:draw="{{ duration: 500, easing: circOut }}"
       style="stroke:#f74646; stroke-width: 10px"
       d="{rightBracket}"
     >
       <animate
         attributeName="fill"
-        begin="700ms"
-        dur="700ms"
+        begin="500ms"
+        dur="500ms"
         to="#f74646"
         fill="freeze"
       ></animate>
