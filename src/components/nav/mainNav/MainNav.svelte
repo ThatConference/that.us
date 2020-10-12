@@ -112,7 +112,9 @@
             </div>
           </div>
         </div>
-        <DesktopNav />
+        <div class="md:w-full">
+          <DesktopNav />
+        </div>
       </nav>
     </div>
   </div>

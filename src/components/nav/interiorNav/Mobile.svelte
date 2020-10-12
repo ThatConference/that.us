@@ -46,6 +46,14 @@
       Partners
     </Link>
     <Link
+      href="/communities"
+      class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300
+        hover:text-white hover:bg-that-blue focus:outline-none focus:text-white
+        focus:bg-that-blue"
+    >
+      Communities
+    </Link>
+    <Link
       href="/support/welcome"
       class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300
         hover:text-white hover:bg-that-blue focus:outline-none focus:text-white
