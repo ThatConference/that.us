@@ -2,22 +2,14 @@
   import { Link } from 'yrv';
   import { fade } from 'svelte/transition';
   import _ from 'lodash';
-  import { user as userIcon } from 'svelte-awesome/icons';
-  import Icon from 'svelte-awesome';
 
   import { Activity } from '../../../elements/svgs';
   import ActivitySlideOver from '../../activityCenter/ActivitySlideOver.svelte';
   import DesktopLink from './_DesktopLink.svelte';
+  import UserProfile from '../_UserProfile.svelte';
 
   import { hasNotifications } from '../../../store/notificationCenter';
-  import {
-    login,
-    isAuthenticated,
-    thatProfile,
-  } from '../../../utilities/security.js';
-
-  // toggle for the drop down
-  let visible;
+  
   let activityVisible;
   let helpVisible;
 
@@ -56,6 +48,15 @@
           focus:text-white focus:bg-that-blue"
       >
         <DesktopLink>Members</DesktopLink>
+      </Link>
+      
+      <Link
+        href="/communities"
+        class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300
+          hover:text-white hover:bg-that-blue focus:outline-none
+          focus:text-white focus:bg-that-blue"
+      >
+        <DesktopLink>Communities</DesktopLink>
       </Link>
 
       <Link
@@ -128,17 +129,19 @@
 </div>
 
 <div class="hidden md:block">
-  <div class="ml-4 flex items-center md:ml-6">
+  <div class="ml-4 flex items-center justify-center md:ml-6">
     {#if $hasNotifications}
       <button
-        class="max-w-xs h-8 w-8 rounded-full text-white focus:outline-none
+        class="max-w-xs h-10 w-10 rounded-full text-white focus:outline-none
           duration-150 ease-in-out hover:bg-thatBlue-500"
         class:shadow-solid="{activityVisible}"
         class:bg-thatBlue-500="{activityVisible}"
         aria-label="Notifications"
         on:click|preventDefault="{() => (activityVisible = !activityVisible)}"
       >
-        <Activity />
+        <div class="transform hover:scale-110 flex justify-center">
+          <Activity />
+        </div>
       </button>
 
       {#if activityVisible}
@@ -148,141 +151,9 @@
         />
       {/if}
     {/if}
-
-    <!-- Profile dropdown -->
-    <div class="ml-3 relative">
-      <div>
-        <button
-          id="user-menu"
-          class="max-w-xs h-8 w-8 flex items-center text-sm rounded-full
-            text-white focus:outline-none duration-150 ease-in-out
-            hover:bg-thatBlue-500"
-          class:shadow-solid="{visible}"
-          class:bg-thatBlue-500="{visible}"
-          aria-label="User menu"
-          aria-haspopup="true"
-          on:click|preventDefault="{() => (visible = !visible)}"
-        >
-          {#if $isAuthenticated}
-            {#if _.isEmpty($thatProfile)}
-              <span class="inline-block relative">
-                <Icon data="{userIcon}" class="h-8 w-8 rounded-full" />
-                <span
-                  class="absolute bottom-0 right-0 block h-3.5 w-3.5
-                    rounded-full bg-red-400"
-                ></span>
-              </span>
-            {:else if $thatProfile.profileImage}
-              <img
-                class="h-8 w-8 rounded-full"
-                src="{$thatProfile.profileImage}?w=256&h=256&fit=crop"
-                alt=""
-              />
-            {:else}
-              <Icon data="{userIcon}" class="h-8 w-8 rounded-full" />
-            {/if}
-          {:else}
-            <Icon data="{userIcon}" class="h-8 w-8 rounded-full" />
-          {/if}
-        </button>
-      </div>
-
-      {#if visible}
-        {#if $isAuthenticated}
-          {#if _.isEmpty($thatProfile)}
-            <div
-              class="origin-top-right absolute right-0 mt-2 w-48 rounded-md
-                shadow-lg z-50"
-              transition:fade
-            >
-              <div class="py-1 rounded-md bg-white shadow-xs">
-                <Link
-                  href="/my/profile"
-                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                >
-                  Create Profile
-                </Link>
-
-                <a
-                  href="/logout"
-                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                >
-                  Logout
-                </a>
-              </div>
-            </div>
-          {:else}
-            <div
-              class="origin-top-right absolute right-0 mt-2 min-w-48 rounded-md
-                shadow-lg z-50"
-              transition:fade
-            >
-              <div class="py-1 rounded-md bg-white shadow-xs">
-                <div class="block px-4 py-2 text-sm text-gray-700 border-b">
-                  <p>{$thatProfile.firstName} {$thatProfile.lastName}</p>
-                  <p class="truncate pt-2">{$thatProfile.email}</p>
-                </div>
-
-                <Link
-                  href="/my/favorites"
-                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                >
-                  My Favorites
-                </Link>
-
-                <Link
-                  href="/my/submissions"
-                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                >
-                  My Submissions
-                </Link>
-                <Link
-                  href="/my/badges"
-                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                >
-                  My Badges
-                </Link>
-                <Link
-                  href="/my/profile"
-                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                >
-                  My Profile
-                </Link>
-
-                <a
-                  href="/logout"
-                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                >
-                  Logout
-                </a>
-              </div>
-            </div>
-          {/if}
-        {:else}
-          <div
-            class="origin-top-right absolute right-0 mt-2 w-48 rounded-md
-              shadow-lg"
-            transition:fade
-          >
-            <div class="py-1 rounded-md bg-white shadow-xs">
-              <div
-                on:click|stopPropagation="{() => login(document.location.pathname, false)}"
-                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100
-                  cursor-pointer"
-              >
-                Login
-              </div>
-              <div
-                on:click|stopPropagation="{() => login(document.location.pathname, true)}"
-                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100
-                  cursor-pointer"
-              >
-                Sign Up
-              </div>
-            </div>
-          </div>
-        {/if}
-      {/if}
+    <div class="ml-4 rounded-full text-white hover:bg-thatBlue-500">
+      <UserProfile/>
     </div>
+
   </div>
 </div>

@@ -16,7 +16,7 @@
 
 <Link href="/activities/{id}">
   <div
-    class="w-full h-full py-10 px-6 hover:bg-thatBlue-400 bg-that-blue
+    class="transform hover:scale-110 w-full h-full py-10 px-6 hover:bg-thatBlue-400 bg-that-blue
       shadow rounded-lg xl:px-10 text-left"
   >
     <div class="h-full w-full text-white flex flex-col space-y-4">

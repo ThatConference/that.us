@@ -13,6 +13,10 @@ export default [
     href: '/members',
   },
   {
+    text: 'Communities',
+    href: '/communities',
+  },
+  {
     text: 'Partners',
     href: '/partners',
   },
