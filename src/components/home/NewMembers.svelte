@@ -41,7 +41,7 @@
         y="72"
         width="640"
         height="640"
-        class="text-that-offWhite"
+        class="text-thatBlue-100 opacity-25"
         fill="currentColor"
       ></rect>
       <rect
@@ -82,8 +82,7 @@
 
         {#each members as m (m.id)}
           <li
-            class="col-span-1 flex flex-col text-center bg-white rounded-lg
-            shadow z-50"
+            class="col-span-1"
           >
             <MemberCard {...m} />
           </li>
