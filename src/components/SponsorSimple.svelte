@@ -8,7 +8,7 @@
   const GET_PARTNERS = `
     query getCurrentEvent($id: ID!) {
       events {
-        event(id: $id) {
+        event(findBy: { id: $id }) {
           get {
             partners {
               id

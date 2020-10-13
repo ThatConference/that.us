@@ -72,7 +72,7 @@ export const QUERY_SESSIONS = `
   ${coreSessionFields}
   query GetEventsSessions ($eventId: ID!) {
     events {
-      event(id: $eventId) {
+      event(findBy: { id: $eventId }) {
         get {
           sessions {
             ...coreFields
@@ -102,7 +102,7 @@ export const QUERY_SESSIONS_BY_DATE = `
   ${coreSessionFields}
   query GetEventsSessions ($eventId: ID!, $onOrAfter: Date, $daysAfter: Int) {
     events {
-      event(id: $eventId) {
+      event(findBy: { id: $eventId }) {
         get {
           sessions(onOrAfter: $onOrAfter, daysAfter: $daysAfter) {
             ...coreFields
