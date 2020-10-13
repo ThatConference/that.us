@@ -3,7 +3,7 @@ import config from '../../config';
 export const QUERY_PARTNERS = `
   query getEventPartners($slug: String!) {
     events {
-      eventBySlug(slug: $slug) {
+      event(findBy: { slug: $slug }) {
         partners {
           id
           level
@@ -44,13 +44,13 @@ export default (client, slug = config.eventSlug) => {
         fetchOptions: { headers: { ...stripAuthorization() } },
       })
       .toPromise()
-      .then((r) => {
+      .then(r => {
         let results = [];
 
         if (r.data) {
           const { partners } = r.data.events.eventBySlug;
 
-          const modifiedPartners = partners.map((p) => {
+          const modifiedPartners = partners.map(p => {
             const socialLinks = [];
             if (p.linkedIn)
               socialLinks.push({ href: p.linkedIn, network: 'LINKEDIN' });
