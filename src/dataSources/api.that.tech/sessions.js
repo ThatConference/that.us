@@ -2,6 +2,7 @@ import dayjs from 'dayjs';
 
 const coreSessionFields = `
   fragment coreFields on AcceptedSession {
+    __typename
     id
     eventId
     title
@@ -17,6 +18,7 @@ const coreSessionFields = `
 
 const coreOpenSpaceFields = `
   fragment coreFields on OpenSpace {
+    __typename
     id
     eventId
     title
@@ -34,9 +36,11 @@ export const QUERY_SESSION_BY_ID = `
   ${coreSessionFields}
   query getSessionById($sessionId: ID!) {
     sessions {
+      __typename
       session(sessionId: $sessionId) {
         ...coreFields
         speakers {
+          __typename
           firstName
           lastName
           bio
@@ -45,11 +49,13 @@ export const QUERY_SESSION_BY_ID = `
           profileImage
           profileSlug
           profileLinks {
+            __typename
             linkType
             url
             isPublic                  
           }
           earnedMeritBadges {
+            __typename
             id
             name
             image
@@ -57,6 +63,7 @@ export const QUERY_SESSION_BY_ID = `
           }
         }
         favoritedBy {
+          __typename
           id
           firstName
           lastName
@@ -74,6 +81,7 @@ export const QUERY_SESSIONS = `
     events {
       event(findBy: { id: $eventId }) {
         get {
+          __typename
           sessions {
             cursor
             sessions{
@@ -139,7 +147,9 @@ export const CREATE_SESSION = `
   ${coreOpenSpaceFields}
   mutation createSession($eventId: ID!, $newSession: OpenSpaceCreateInput!) {
     sessions {
+      __typename
       create(eventId: $eventId) {
+        __typename
         openSpace(openspace: $newSession) {
           ...coreFields
         }
@@ -152,8 +162,11 @@ export const UPDATE_SESSION_BY_ID = `
   ${coreOpenSpaceFields}
   mutation UpdateOpenSpaceSession($sessionId: ID!, $session: OpenSpaceUpdateInput!) {
     sessions {
+      __typename
       session(id: $sessionId) {
+        __typename
         update {
+          __typename
           openSpace (openspace: $session) {
             ...coreFields
           }
@@ -166,7 +179,9 @@ export const UPDATE_SESSION_BY_ID = `
 export const SET_ATTENDANCE = `
   mutation setAttendance($sessionId: ID!) {
     sessions {
+      __typename
       session(id: $sessionId) {
+        __typename
         setAttended
       }
     }

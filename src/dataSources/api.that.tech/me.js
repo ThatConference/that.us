@@ -1,7 +1,9 @@
 export const QUERY_ME = `
     query getMe {
       members {
+        __typename
         me {
+          __typename
           id
           firstName
           lastName
@@ -11,11 +13,13 @@ export const QUERY_ME = `
           profileImage
           profileSlug
           profileLinks {
+            __typename
             isPublic
             linkType
             url
           }
           earnedMeritBadges {
+            __typename
             id
             name
             image

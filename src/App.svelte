@@ -79,8 +79,8 @@
       },
     }),
     // todo.. this needs to be revisited... and when we get a new graph client.
-    // requestPolicy: 'cache-and-network',
-    requestPolicy: 'network-only',
+    requestPolicy: 'cache-and-network',
+    // requestPolicy: 'network-only',
   });
 
   let documentReferrer;

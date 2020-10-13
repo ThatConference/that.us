@@ -3,8 +3,11 @@ import communityFavorites from '../../../store/communityFavorites';
 export const MUTATION_FOLLOW_COMMUNITY_TOGGLE = `
   mutation followCommunity($communityId: ID) {
     communities {
+      __typename
       favoriting(findBy: {id: $communityId}) {
+        __typename
         toggle {
+          __typename
           id
         }
       }
@@ -23,6 +26,7 @@ export default client => {
       .toPromise();
 
     if (data) {
+      console.log({ data });
       const { toggle: fav } = data.communities.favoriting;
       if (fav) {
         // is toggled

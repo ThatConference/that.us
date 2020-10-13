@@ -3,9 +3,12 @@ import { events } from '../../config';
 export const QUERY_SUBMISSIONS = `
   query getMySubmissions {
     sessions {
+      __typename
       me {
-        submitted {      
+        __typename
+        submitted {
           ... on Base {
+            __typename
             id
             eventId
             type
@@ -17,12 +20,14 @@ export const QUERY_SUBMISSIONS = `
             tags
             durationInMinutes
             speakers {
+              __typename
               id
               firstName
               lastName
               profileImage
               profileSlug
               earnedMeritBadges {
+                __typename
                 id
                 name
                 image

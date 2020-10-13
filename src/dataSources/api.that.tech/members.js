@@ -1,5 +1,6 @@
 const userFragment = `
   fragment memberFields on PublicProfile {
+    __typename
     id
     firstName
     lastName
@@ -10,11 +11,13 @@ const userFragment = `
     lifeHack
     interests
     profileLinks {
+      __typename
       isPublic
       linkType
       url
     }
     earnedMeritBadges {
+      __typename
       id
       name
       image
@@ -27,7 +30,9 @@ export const QUERY_MEMBERS_INITAL = `
     ${userFragment}
     query getAllMembersPaged($pageSize: Int) {
       members {
+        __typename
         members (pageSize: $pageSize, orderBy:CREATEDAT) {
+          __typename
           cursor
           members {
             ...memberFields
@@ -41,7 +46,9 @@ export const QUERY_MEMBERS_NEXT = `
     ${userFragment}
     query getAllMembersPaged($pageSize: Int, $after: String) {
       members {
+        __typename
         members (pageSize: $pageSize, after: $after, orderBy:CREATEDAT) {
+          __typename
           cursor
           members {
             ...memberFields
@@ -53,6 +60,7 @@ export const QUERY_MEMBERS_NEXT = `
 
 const profileFieldsFragment = `
   fragment profileFields on Profile {
+    __typename
     id
     firstName
     lastName
@@ -63,11 +71,13 @@ const profileFieldsFragment = `
     profileSlug
     bio
     profileLinks {
+      __typename
       isPublic
       linkType
       url
     }
     earnedMeritBadges {
+      __typename
       id
       name
       image
@@ -89,6 +99,7 @@ export const MUTATION_CREATE = `
   ${profileFieldsFragment}
   mutation createMember ($profile: ProfileCreateInput!) {
     members {
+      __typename
       create(profile: $profile) {
         ...profileFields
       }
@@ -99,8 +110,10 @@ export const MUTATION_CREATE = `
 export const MUTATION_UPDATE = `
   ${profileFieldsFragment}
   mutation updateMember ($profile: ProfileUpdateInput!) {
-    members { 
+    members {
+      __typename 
       member {
+        __typename
       update(profile: $profile) {
           ...profileFields
         }
@@ -112,6 +125,7 @@ export const MUTATION_UPDATE = `
 export const QUERY_IS_SLUG_TAKEN = `
   query slugCheck($slug: Slug!) {
     members {
+      __typename
      isProfileSlugTaken(slug: $slug)
     }
   }
@@ -120,8 +134,11 @@ export const QUERY_IS_SLUG_TAKEN = `
 export const CLAIM_TICKET = `
   mutation claimMyTicket($ticketReference: String!) {
     members {
+      __typename
       member {
+        __typename
         claimTicket(ticketRef: $ticketReference)  {
+          __typename
           id
           name
           image
@@ -135,7 +152,9 @@ export const CLAIM_TICKET = `
 export const QUERY_MEMBER_BY_SLUG = `
   query getMemberBySlug ($slug: Slug!, $sessionStartDate: Date, $filter: AcceptedSessionFilter) {
     members {
+      __typename
       member(slug: $slug) {
+        __typename
         firstName
         lastName
         bio
@@ -147,14 +166,17 @@ export const QUERY_MEMBER_BY_SLUG = `
         lifeHack
         createdAt
         profileLinks {
+          __typename
           linkType
           url
         }
         earnedMeritBadges {
+          __typename
           name
           image
         }
         sessions(filter: $filter, asOfDate: $sessionStartDate) {
+          __typename
           id
           title
           startTime

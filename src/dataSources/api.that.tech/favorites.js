@@ -2,6 +2,7 @@ import { writable } from 'svelte/store';
 
 const favoriteFragment = `
   fragment sessionFields on AcceptedSession {
+    __typename
     id
     title
     shortDescription
@@ -9,12 +10,14 @@ const favoriteFragment = `
     startTime
     tags
     speakers {
+      __typename
       id
       firstName
       lastName
       profileImage
       profileSlug
       earnedMeritBadges {
+        __typename
         id
         name
         image
@@ -28,7 +31,9 @@ const TOGGLE_FAVORITE = `
   ${favoriteFragment}
   mutation toggleFavorite($eventId: ID!, $sessionId: ID!) {
     sessions {
+      __typename
       favoriting(eventId: $eventId) {
+        __typename
         toggle(sessionId: $sessionId) {
           ...sessionFields
         }
@@ -41,7 +46,9 @@ export const QUERY_MY_FAVORITES = `
   ${favoriteFragment}
   query memberFavorites ($eventId: ID!) {
     sessions {
+      __typename
       me {
+        __typename
         favorites(eventId: $eventId) {
           ...sessionFields
         }

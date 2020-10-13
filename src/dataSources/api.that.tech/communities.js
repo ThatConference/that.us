@@ -1,7 +1,9 @@
 export const QUERY_ALL_COMMUNITIES = `
   query getAllCommunities {
     communities {
+      __typename
       all {
+        __typename
         id
         name
         slug
@@ -14,8 +16,11 @@ export const QUERY_ALL_COMMUNITIES = `
 export const QUERY_COMMUNITY_BY_SLUG = `
   query getCommunityBySlug($slug: Slug) {
     communities {
+      __typename
       community(findBy: {slug: $slug}) {
+        __typename
         get {
+          __typename
           id
           name
           slug
@@ -24,7 +29,9 @@ export const QUERY_COMMUNITY_BY_SLUG = `
           createdAt
           tags
           followers {
+            __typename
             members {
+              __typename
               id
               profileSlug
               profileImage
@@ -33,11 +40,14 @@ export const QUERY_COMMUNITY_BY_SLUG = `
             }
           }
           sessions {
+            __typename
             sessions {
+              __typename
               id
               title
               startTime
               speakers {
+                __typename
                 profileImage
                 firstName
                 lastName
