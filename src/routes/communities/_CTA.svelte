@@ -1,6 +1,7 @@
 <script>
   export let communityName;
   export let communityHandle;
+  export let handleFollow;
 
   import { Standard as StandardButton } from '../../elements/buttons';
   import { CTA } from '../../elements';
@@ -19,7 +20,7 @@
   </h2>
 
   <span slot="actionPrimary">
-    <StandardButton class="h-3/4" on:click>
+    <StandardButton class="h-3/4" on:click="{handleFollow}">
       Follow
       {communityHandle}
     </StandardButton>

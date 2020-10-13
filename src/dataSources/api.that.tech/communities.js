@@ -23,6 +23,15 @@ export const QUERY_COMMUNITY_BY_SLUG = `
           logo
           createdAt
           tags
+          followers {
+            members {
+              id
+              profileSlug
+              profileImage
+              firstName
+              lastName
+            }
+          }
           sessions {
             sessions {
               id

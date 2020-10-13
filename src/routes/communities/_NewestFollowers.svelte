@@ -1,15 +1,8 @@
 <script>
+  export let followers = [];
+
   import { Standard as StandardButton } from '../../elements/buttons';
-
   import { Avatars } from '../../elements';
-
-  let testPeeps = [];
-  for (let index = 0; index < 25; index++) {
-    testPeeps.push({
-      firstName: 'Clark',
-      lastName: 'Sell',
-    });
-  }
 </script>
 
 <section class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -26,7 +19,7 @@
     <div class="lg:col-start-4 lg:col-span-9">
       <div class="flex flex-col">
         <div class="my-8 lg:my-0">
-          <Avatars attendees="{testPeeps}" />
+          <Avatars attendees="{followers}" />
         </div>
         <div class="flex flex-row-reverse">
           <StandardButton class="h-3/4" on:click>View Everyone</StandardButton>

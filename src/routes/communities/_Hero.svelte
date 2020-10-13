@@ -1,5 +1,6 @@
 <script>
   export let community;
+  export let handleFollow;
 
   import { onMount, onDestroy } from 'svelte';
   import { fade } from 'svelte/transition';
@@ -26,6 +27,7 @@
   onDestroy(() => {
     clipboard.destroy();
   });
+
 </script>
 
 <section class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -65,7 +67,7 @@
               {/if}
             </button>
 
-            <StandardButton class="h-3/4" on:click="{() => console.log('clicked')}">
+            <StandardButton class="h-3/4" on:click="{handleFollow}">
               Follow
             </StandardButton>
           </div>
