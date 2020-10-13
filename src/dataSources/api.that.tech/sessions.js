@@ -75,21 +75,24 @@ export const QUERY_SESSIONS = `
       event(findBy: { id: $eventId }) {
         get {
           sessions {
-            ...coreFields
-            speakers {
-              id
-              firstName
-              lastName
-              bio
-              jobTitle
-              company
-              profileImage
-              profileSlug
-              earnedMeritBadges {
+            cursor
+            sessions{
+              ...coreFields
+              speakers {
                 id
-                name
-                image
-                description
+                firstName
+                lastName
+                bio
+                jobTitle
+                company
+                profileImage
+                profileSlug
+                earnedMeritBadges {
+                  id
+                  name
+                  image
+                  description
+                }
               }
             }
           }
@@ -100,26 +103,29 @@ export const QUERY_SESSIONS = `
 `;
 export const QUERY_SESSIONS_BY_DATE = `
   ${coreSessionFields}
-  query GetEventsSessions ($eventId: ID!, $onOrAfter: Date, $daysAfter: Int) {
+  query GetEventsSessions ($eventId: ID!, $asOfDate: Date) {
     events {
       event(findBy: { id: $eventId }) {
         get {
-          sessions(onOrAfter: $onOrAfter, daysAfter: $daysAfter) {
-            ...coreFields
-            speakers {
-              id
-              firstName
-              lastName
-              bio
-              jobTitle
-              company
-              profileImage
-              profileSlug
-              earnedMeritBadges {
+          sessions(asOfDate: $asOfDate, status: ACCEPTED, pageSize: 50) {
+            cursor
+            sessions {
+              ...coreFields
+              speakers {
                 id
-                name
-                image
-                description
+                firstName
+                lastName
+                bio
+                jobTitle
+                company
+                profileImage
+                profileSlug
+                earnedMeritBadges {
+                  id
+                  name
+                  image
+                  description
+                }
               }
             }
           }
@@ -196,10 +202,7 @@ export default client => {
         }
 
         let results = [];
-        results = r.data.events.event.get.sessions.filter(
-          i => i.status === 'ACCEPTED',
-        );
-
+        results = r.data.events.event.get.sessions.sessions;
         results.sort((a, b) => new Date(a.startTime) - new Date(b.startTime));
 
         return results;
@@ -207,14 +210,10 @@ export default client => {
 
   const querySessions = eventId => query(QUERY_SESSIONS, { eventId });
 
-  const querySessionsByDate = (
-    eventId,
-    onOrAfter = dayjs().startOf('day'),
-    daysAfter = 30,
-  ) =>
+  const querySessionsByDate = (eventId, asOfDate = dayjs().startOf('day')) =>
     query(
       QUERY_SESSIONS_BY_DATE,
-      { eventId, onOrAfter, daysAfter },
+      { eventId, asOfDate },
       {
         fetchOptions: { headers: { ...stripAuthorization() } },
       },
