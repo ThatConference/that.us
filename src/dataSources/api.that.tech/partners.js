@@ -4,19 +4,21 @@ export const QUERY_PARTNERS = `
   query getEventPartners($slug: String!) {
     events {
       event(findBy: { slug: $slug }) {
-        partners {
-          id
-          level
-          companyName
-          companyLogo
-          slug
-          linkedIn
-          github
-          youtube
-          instagram
-          twitter
-          facebook
-          twitch
+        get{
+          partners {
+            id
+            level
+            companyName
+            companyLogo
+            slug
+            linkedIn
+            github
+            youtube
+            instagram
+            twitter
+            facebook
+            twitch
+          }
         }
       }
     }
@@ -48,7 +50,7 @@ export default (client, slug = config.eventSlug) => {
         let results = [];
 
         if (r.data) {
-          const { partners } = r.data.events.eventBySlug;
+          const { partners } = r.data.events.event.get;
 
           const modifiedPartners = partners.map(p => {
             const socialLinks = [];
