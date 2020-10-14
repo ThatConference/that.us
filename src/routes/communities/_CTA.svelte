@@ -1,10 +1,14 @@
 <script>
   export let communityName;
   export let communityHandle;
-  export let handleFollow;
+  export let isFollowing = false;
+  
+  import { createEventDispatcher } from 'svelte';
 
   import { Standard as StandardButton } from '../../elements/buttons';
   import { CTA } from '../../elements';
+
+  const dispatch = createEventDispatcher();
 </script>
 
 <CTA>
@@ -20,8 +24,12 @@
   </h2>
 
   <span slot="actionPrimary">
-    <StandardButton class="h-3/4" on:click="{handleFollow}">
-      Follow
+    <StandardButton class="h-3/4" on:click="{() => dispatch('community-follow')}">
+      {#if isFollowing}
+        Un-Follow
+      {:else}
+        Follow
+      {/if}
       {communityHandle}
     </StandardButton>
   </span>

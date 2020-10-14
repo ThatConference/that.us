@@ -12,7 +12,7 @@
   import CommunityCard from '../../components/communities/CommunityCard.svelte';
   
   import metaTagsStore from '../../store/metaTags';
-  import communitiesApi from '../../dataSources/api.that.tech/communities';
+  import communitiesApi from '../../dataSources/api.that.tech/community/queries';
   
   let loading = true;  
   let loadingMore = false;

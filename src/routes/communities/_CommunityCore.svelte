@@ -1,21 +1,17 @@
 <script>
-  export let community;
+  export let communitySlug;
   
   import { fade } from 'svelte/transition';
   import { getClient } from '@urql/svelte';
-  import {navigateTo} from 'yrv';
-  
+  import { useMachine } from "xstate-svelte";
+
   import NewestFollowers from './_NewestFollowers.svelte';
   import CTA from './_CTA.svelte';
-  import UpNext from './_UpNext.svelte';
+  import UpNext from '../../components/activities/UpNext.svelte';
   import Hero from './_Hero.svelte';
 
-  import communitiesMutationApi from '../../dataSources/api.that.tech/mutations/communities';
+  import createMachine from './machines/community';
   import metaTagsStore from '../../store/metaTags';
-
-  if (!community) {
-    navigateTo('/not-found');
-  }
 
   metaTagsStore.set({
     title: 'Community - THAT',
@@ -34,32 +30,32 @@
     return current;
   }
 
-  const { toggleCommunityFavorite } = communitiesMutationApi(getClient());
-
-  function handleFollow() {
-    const {id} = community;
-    toggleCommunityFavorite(id);
-  }
-
+  const { state, send } = useMachine(createMachine(communitySlug, getClient()));
+  
 </script>
 
-{#if community}
+
+<!-- {(console.log('context', $state.context), '')} -->
+
+{#if $state.matches('loaded')}
+
   <div class="flex flex-col">
-    
     <div in:fade="{{ delay: getDelay() }}">
-      <Hero community="{community}" handleFollow="{handleFollow}"/>
+      <Hero community="{$state.context.community}" isFollowing="{$state.context.isFollowing}" on:community-follow="{() => send('FOLLOW', {id: $state.context.community.id})}"/>
+    </div>
+
+    <div in:fade="{{ delay: getDelay() }}">
+      <NewestFollowers stateMachineService="{$state.context.followMachineServices}"/>
+    </div>
+
+    <div in:fade="{{ delay: getDelay() }}">
+      <UpNext stateMachineService="{$state.context.activitiesMachineServices}"/>
     </div>
     
-    <div in:fade="{{ delay: getDelay() }}">
-      <NewestFollowers followers="{community.followers.members}"/>
-    </div>
     
     <div in:fade="{{ delay: getDelay() }}">
-      <UpNext communityName="{community.name}" activities="{community.sessions.sessions}"/>
-    </div>
-    
-    <div in:fade="{{ delay: getDelay() }}">
-      <CTA communityName="{community.name}" communityHandle="@{community.name}" handleFollow="{handleFollow}"/>
+      <CTA communityName="{$state.context.community.name}" isFollowing="{$state.context.isFollowing}" communityHandle="@{$state.context.community.name}" on:community-follow="{() => send('FOLLOW', {id: $state.context.community.id})}"/>
     </div>
   </div>
+
 {/if}

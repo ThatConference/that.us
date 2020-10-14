@@ -1,8 +1,8 @@
 <script>
   export let community;
-  export let handleFollow;
-
-  import { onMount, onDestroy } from 'svelte';
+  export let isFollowing = false;
+  
+  import { onMount, onDestroy, createEventDispatcher } from 'svelte';
   import { fade } from 'svelte/transition';
   import Icon from 'svelte-awesome';
   import { share } from 'svelte-awesome/icons';
@@ -13,6 +13,7 @@
   import { Tag } from '../../elements';
   import Header from '../../elements/layouts/profile/_Header.svelte';
 
+  const dispatch = createEventDispatcher();
   let clipboard;
   let copiedText;
 
@@ -67,8 +68,12 @@
               {/if}
             </button>
 
-            <StandardButton class="h-3/4" on:click="{handleFollow}">
-              Follow
+            <StandardButton class="h-3/4" on:click="{() => dispatch('community-follow')}">
+              {#if !isFollowing}
+                Follow
+              {:else}
+                Un-Follow
+              {/if}
             </StandardButton>
           </div>
         </div>
