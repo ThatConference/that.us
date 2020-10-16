@@ -1,7 +1,7 @@
 # THAT.US
 
 [![GitHub issues open](https://img.shields.io/github/issues/thatconference/that.us.svg)](https://github.com/thatconference/that.us/issues) [![release](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/thatconference/that.us/issues) <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-26-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-27-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 ## Get started
@@ -75,6 +75,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="http://agapito.dev"><img src="https://avatars0.githubusercontent.com/u/51180770?v=4" width="100px;" alt=""/><br /><sub><b>Thales Agapito</b></sub></a><br /><a href="https://github.com/ThatConference/that.us/commits?author=thalesagapito" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/ReazerDev"><img src="https://avatars1.githubusercontent.com/u/36013882?v=4" width="100px;" alt=""/><br /><sub><b>ReazerDev</b></sub></a><br /><a href="https://github.com/ThatConference/that.us/commits?author=ReazerDev" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/Yassine-Latreche"><img src="https://avatars1.githubusercontent.com/u/59394690?v=4" width="100px;" alt=""/><br /><sub><b>Yassine Latreche</b></sub></a><br /><a href="https://github.com/ThatConference/that.us/commits?author=Yassine-Latreche" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/kehnj"><img src="https://avatars1.githubusercontent.com/u/17574909?v=4" width="100px;" alt=""/><br /><sub><b>Ken Johnson</b></sub></a><br /><a href="https://github.com/ThatConference/that.us/issues?q=author%3Akehnj" title="Bug reports">🐛</a></td>
   </tr>
 </table>
 
