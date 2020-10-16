@@ -159,11 +159,11 @@
   {/each}
 
   <!-- tidio chat bot -->
-  <script src="//code.tidio.co/qcwuuigfzw3cjegsc2fyo0sniyh3c3ue.js" async>
+  <script async src="//code.tidio.co/qcwuuigfzw3cjegsc2fyo0sniyh3c3ue.js" >
   </script>
   <!-- Global site tag (gtag.js) - Google Analytics -->
-  <scriptasync src="https://www.googletagmanager.com/gtag/js?id=UA-21705613-11">
-  </scriptasync>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-21705613-11">
+  </script>
   <!-- GA -->
   <script>
     window.dataLayer = window.dataLayer || [];

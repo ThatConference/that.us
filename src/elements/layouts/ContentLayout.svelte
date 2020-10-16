@@ -8,7 +8,7 @@
 
 <section class="flex flex-col min-h-screen">
   <NavWrapper />
-  <main class="flex-grow overflow-hidden">
+  <main class="flex-grow">
     <div class="hidden lg:block lg:inset-y-0 lg:h-full lg:w-full">
       <div
         class="invisible lg:visible"
