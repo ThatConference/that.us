@@ -1,13 +1,12 @@
 <script>
   export let router;
-  
+
   import ProfileLayout from '../../elements/layouts/Profile.svelte';
   import CommunityCore from './_CommunityCore.svelte';
-  
-  const { community } = router.params;
 
+  const { community } = router.params;
 </script>
 
 <ProfileLayout>
-    <CommunityCore communitySlug="{community}" />  
+  <CommunityCore communitySlug="{community}" />
 </ProfileLayout>

@@ -1,9 +1,9 @@
 <script>
   export let communitySlug;
-  
+
   import { fade } from 'svelte/transition';
   import { getClient } from '@urql/svelte';
-  import { useMachine } from "xstate-svelte";
+  import { useMachine } from 'xstate-svelte';
 
   import NewestFollowers from './_NewestFollowers.svelte';
   import CTA from './_CTA.svelte';
@@ -31,31 +31,43 @@
   }
 
   const { state, send } = useMachine(createMachine(communitySlug, getClient()));
-  
 </script>
-
 
 <!-- {(console.log('context', $state.context), '')} -->
 
 {#if $state.matches('loaded')}
-
   <div class="flex flex-col">
     <div in:fade="{{ delay: getDelay() }}">
-      <Hero community="{$state.context.community}" isFollowing="{$state.context.isFollowing}" on:community-follow="{() => send('FOLLOW', {id: $state.context.community.id})}"/>
+      <Hero
+        community="{$state.context.community}"
+        isFollowing="{$state.context.isFollowing}"
+        on:community-follow="{() => send('FOLLOW', {
+            id: $state.context.community.id,
+          })}"
+      />
     </div>
 
     <div in:fade="{{ delay: getDelay() }}">
-      <NewestFollowers stateMachineService="{$state.context.followMachineServices}"/>
+      <NewestFollowers
+        stateMachineService="{$state.context.followMachineServices}"
+      />
     </div>
 
     <div in:fade="{{ delay: getDelay() }}">
-      <UpNext stateMachineService="{$state.context.activitiesMachineServices}"/>
+      <UpNext
+        stateMachineService="{$state.context.activitiesMachineServices}"
+      />
     </div>
-    
-    
+
     <div in:fade="{{ delay: getDelay() }}">
-      <CTA communityName="{$state.context.community.name}" isFollowing="{$state.context.isFollowing}" communityHandle="@{$state.context.community.name}" on:community-follow="{() => send('FOLLOW', {id: $state.context.community.id})}"/>
+      <CTA
+        communityName="{$state.context.community.name}"
+        isFollowing="{$state.context.isFollowing}"
+        communityHandle="@{$state.context.community.name}"
+        on:community-follow="{() => send('FOLLOW', {
+            id: $state.context.community.id,
+          })}"
+      />
     </div>
   </div>
-
 {/if}

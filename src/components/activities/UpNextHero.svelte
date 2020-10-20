@@ -4,7 +4,7 @@
   export let activities = [];
 
   import { Link } from 'yrv';
-  
+
   import { FeaturedActivity, FeaturedActivityAdd } from '../../elements';
 </script>
 
@@ -71,11 +71,8 @@
             
             transition duration-150 ease-in-out md:text-lg md:px-10"
         >
-          <span>
-            View Next
-          </span>
+          <span> View Next </span>
         </button>
-
       </div>
     </div>
   </div>

@@ -3,7 +3,6 @@
   "editor.formatOnSave": true,
   "prettier.tabWidth": 2,
   "editor.tabSize": 2,
-  "editor.formatOnSaveTimeout": 1500,
   "editor.snippetSuggestions": "top",
   "workbench.colorCustomizations": {
     "titleBar.activeForeground": "#000",
@@ -15,6 +14,6 @@
     "source.fixAll.eslint": true
   },
   "[svelte]": {
-    "editor.defaultFormatter": "JamesBirtles.svelte-vscode"
+    "editor.defaultFormatter": "svelte.svelte-vscode"
   }
 }

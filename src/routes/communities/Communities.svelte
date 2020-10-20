@@ -8,17 +8,17 @@
 
   import { Waiting } from '../../elements';
   import Layout from '../../elements/layouts/ContentLayout.svelte';
-  
+
   import CommunityCard from '../../components/communities/CommunityCard.svelte';
-  
+
   import metaTagsStore from '../../store/metaTags';
   import communitiesApi from '../../dataSources/api.that.tech/community/queries';
-  
-  let loading = true;  
+
+  let loading = true;
   let loadingMore = false;
   $: communityList = [];
   let cursor;
-  
+
   metaTagsStore.set({
     title: 'Communities - THAT',
     description: 'tbd',
@@ -27,13 +27,13 @@
       url: `https://that.us/communities`,
     },
   });
-  
+
   // api call
   const { queryAllCommunities } = communitiesApi(getClient());
-  
+
   onMount(async () => {
     const communities = await queryAllCommunities();
-    
+
     communityList = [...communityList, ...communities];
     // cursor = members.cursor;
     loading = false;
@@ -49,7 +49,6 @@
   //   }
   //   loadingMore = false;
   // }
-
 </script>
 
 <Layout>
@@ -70,15 +69,12 @@
                 class="grid grid-cols-1 gap-6 sm:grid-cols-3 md:grid-cols-4
                   lg:grid-cols-5"
               >
-                
                 {#each communityList as c (c.id)}
-                  <li
-                    class="col-span-1 flex flex-col"
-                  >
+                  <li class="col-span-1 flex flex-col">
                     <CommunityCard community="{c}" />
                   </li>
                 {/each}
-                
+
                 <!-- <SvelteInfiniteScroll
                   window
                   threshold="{25}"

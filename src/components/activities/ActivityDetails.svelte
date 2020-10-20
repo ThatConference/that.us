@@ -18,12 +18,7 @@
   import relativeTime from 'dayjs/plugin/relativeTime';
   import Icon from 'svelte-awesome';
   import { Link } from 'yrv';
-  import {
-    heartO,
-    heart,
-    signIn,
-    cog,
-  } from 'svelte-awesome/icons';
+  import { heartO, heart, signIn, cog } from 'svelte-awesome/icons';
   import qs from 'query-string';
   import { getClient } from '@urql/svelte';
   import _ from 'lodash';
@@ -166,10 +161,7 @@
       <div class="ml-4 mt-4">
         <div class="flex items-center">
           <div class="flex-shrink-0">
-            <Link
-              href="/members/{host.profileSlug}"
-              open
-            >
+            <Link href="/members/{host.profileSlug}" open>
               <span class="inline-block relative">
                 <img
                   class="h-12 w-12 rounded-full"
@@ -338,13 +330,13 @@
         md:text-xl lg:mx-0"
     >
       {#if durationInMinutes <= 60}
-        {dayjs(startTime).format('dddd MMMM D, YYYY - h:mm A')}, for {dayjs
-          .duration(durationInMinutes, 'minutes')
-          .as('hours')} hour.
+        {dayjs(startTime).format('dddd MMMM D, YYYY - h:mm A')}, for
+        {dayjs.duration(durationInMinutes, 'minutes').as('hours')}
+        hour.
       {:else}
-        {dayjs(startTime).format('dddd MMMM D, YYYY - h:mm A')}, for {dayjs
-          .duration(durationInMinutes, 'minutes')
-          .as('hours')} hours.
+        {dayjs(startTime).format('dddd MMMM D, YYYY - h:mm A')}, for
+        {dayjs.duration(durationInMinutes, 'minutes').as('hours')}
+        hours.
       {/if}
     </p>
 
@@ -371,6 +363,5 @@
         <Avatars attendees="{favoritedBy}" />
       </div>
     </div>
-
   </div>
 </div>

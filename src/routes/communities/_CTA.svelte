@@ -2,7 +2,7 @@
   export let communityName;
   export let communityHandle;
   export let isFollowing = false;
-  
+
   import { createEventDispatcher } from 'svelte';
 
   import { Standard as StandardButton } from '../../elements/buttons';
@@ -24,12 +24,11 @@
   </h2>
 
   <span slot="actionPrimary">
-    <StandardButton class="h-3/4" on:click="{() => dispatch('community-follow')}">
-      {#if isFollowing}
-        Un-Follow
-      {:else}
-        Follow
-      {/if}
+    <StandardButton
+      class="h-3/4"
+      on:click="{() => dispatch('community-follow')}"
+    >
+      {#if isFollowing}Un-Follow{:else}Follow{/if}
       {communityHandle}
     </StandardButton>
   </span>

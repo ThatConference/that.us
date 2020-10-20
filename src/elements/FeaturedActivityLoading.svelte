@@ -1,8 +1,6 @@
 <script>
-  
   import Icon from 'svelte-awesome';
   import { plusCircle } from 'svelte-awesome/icons';
-
 </script>
 
 <div
@@ -22,7 +20,7 @@
         <p class="text-thatBlue-200 text-sm italic">Any Day, Any Time</p>
 
         <span class="text-thatBlue-200 text-right">
-            <p>Your Name Here :)</p>
+          <p>Your Name Here :)</p>
         </span>
       </div>
     </div>

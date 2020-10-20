@@ -1,15 +1,26 @@
 <script>
   export let stateMachineService;
 
-  import {useService} from 'xstate-svelte'; 
+  import { useService } from 'xstate-svelte';
   import { Link } from 'yrv';
-  import Waiting from '../../elements/Waiting.svelte'
+  import Waiting from '../../elements/Waiting.svelte';
   import { fade } from 'svelte/transition';
 
-  import { FeaturedActivityLoading, FeaturedActivity, FeaturedActivityAdd } from '../../elements/activities';
+  import {
+    FeaturedActivityLoading,
+    FeaturedActivity,
+    FeaturedActivityAdd,
+  } from '../../elements/activities';
 
   const { state, send } = useService(stateMachineService);
 
+  let delayCounter = 500;
+  function getDelay() {
+    let current = delayCounter;
+    delayCounter = delayCounter + 200;
+
+    return current;
+  }
 </script>
 
 <section class="py-12 lg:py-16 bg-thatBlue-700">
@@ -23,7 +34,9 @@
         >
           Upcoming
           {#if $state.context.community.name}
-            <span class="text-that-orange">{$state.context.community.name}</span>
+            <span
+              class="text-that-orange"
+            >{$state.context.community.name}</span>
           {/if}
           Activities
         </h2>
@@ -39,16 +52,10 @@
         </p>
       </div>
 
-      {#if $state.matches('loadingNext') }
+      {#if $state.matches('loadingNext')}
         <ul
           class="space-y-4 sm:grid sm:grid-cols-2 sm:gap-6 sm:space-y-0 lg:grid-cols-3 lg:gap-8"
-        >
-          {#each ['','','',] as i}
-            <div in:fade="{{ delay: getDelay() }}">
-              <FeaturedActivityLoading/>
-            </div>
-          {/each}
-        </ul>
+        ></ul>
       {/if}
 
       {#if $state.matches('loaded')}
@@ -57,16 +64,20 @@
         >
           {#if $state.context.activities.length > 0}
             {#each $state.context.activities.slice(0, 6) as s (s.id)}
-              <li>
-                <FeaturedActivity {...s} />
-              </li>
+              <div in:fade="{{ delay: getDelay() }}">
+                <li>
+                  <FeaturedActivity {...s} />
+                </li>
+              </div>
             {/each}
           {/if}
 
           {#if $state.context.activities.length < 6}
-            <li>
-              <FeaturedActivityAdd />
-            </li>
+            <div in:fade="{{ delay: getDelay() }}">
+              <li>
+                <FeaturedActivityAdd />
+              </li>
+            </div>
           {/if}
         </ul>
         <div class="flex justify-end">
@@ -83,17 +94,13 @@
               focus:border-thatBlue-800 
               transition duration-150 ease-in-out md:text-lg md:px-10"
           >
-            <span>
-              View Next
-            </span>
+            <span> View Next </span>
           </button>
         </div>
       {/if}
-
     </div>
   </div>
 </section>
-
 
 {#if $state.matches('loadedFailed')}
   <p>error</p>
