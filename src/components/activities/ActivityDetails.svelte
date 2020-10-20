@@ -17,15 +17,11 @@
   import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
   import relativeTime from 'dayjs/plugin/relativeTime';
   import Icon from 'svelte-awesome';
-  import { Link, navigateTo } from 'yrv';
+  import { Link } from 'yrv';
   import {
     heartO,
     heart,
     signIn,
-    facebook,
-    twitter,
-    instagram,
-    github,
     cog,
   } from 'svelte-awesome/icons';
   import qs from 'query-string';
@@ -36,7 +32,7 @@
   import CalendarButton from './elements/CalendarButton.svelte';
   import { SocialLink } from '../social';
   import Success from '../notifications/Success.svelte';
-  import { Avatars, LinkButton, Tag } from '../../elements';
+  import { Avatars, Tag } from '../../elements';
 
   // Utility
   import config from '../../config';
@@ -46,7 +42,6 @@
     thatProfile,
   } from '../../utilities/security';
   import { truncate, isLongerThan } from '../../utilities/truncate';
-  import ical from '../../utilities/ical.js';
   import metaTagsStore from '../../store/metaTags';
 
   // Data
@@ -135,10 +130,6 @@
       };
     }
   });
-
-  let disqus_config = function () {
-    this.page.url = window.location.pathname; // Replace PAGE_URL with your page's canonical URL variabl
-  };
 
   let userProfileImage = host.profileImage
     ? `${host.profileImage}${imageCrop}`
@@ -381,9 +372,5 @@
       </div>
     </div>
 
-    <!-- Disqus -->
-    <div class="px-4 py-12 sm:px-6" class:hidden="{!$isAuthenticated}">
-      <div id="disqus_thread"></div>
-    </div>
   </div>
 </div>
