@@ -41,7 +41,7 @@
   export let handleWithdraw;
   export let initialValues;
 
-  import dayjs from 'dayjs';
+  import dayjs, { Dayjs } from 'dayjs';
   import utc from 'dayjs/plugin/utc';
   import timezone from 'dayjs/plugin/timezone';
   import duration from 'dayjs/plugin/duration';
@@ -311,6 +311,7 @@
           <Datepicker
             name="selectedDay"
             start="{new Date()}"
+            end="{dayjs().add(6, 'month').toDate()}"
             bind:selected="{selectedDateValue}"
             style="rounded-md shadow-sm"
             format="{dayjs(selectedDateValue).format('dddd, MMM D, YYYY')}"
