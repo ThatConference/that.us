@@ -27,6 +27,8 @@ export const QUERY_ALL_COMMUNITIES = `
         name
         slug
         logo
+        sessionCount
+        followCount
       }
     }
   }
@@ -145,7 +147,7 @@ export default client => {
   const queryCommunityActivities = ({
     id,
     asOfDate = new Date(),
-    pageSize = 2,
+    pageSize = 6,
   }) => {
     dlog('queryCommunityActivities');
 
@@ -166,7 +168,7 @@ export default client => {
   const queryNextCommunityActivities = ({
     id,
     asOfDate = new Date(),
-    pageSize = 2,
+    pageSize = 6,
     cursor,
   }) => {
     dlog('queryNextCommunityActivities');

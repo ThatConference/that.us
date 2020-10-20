@@ -23,7 +23,7 @@
       <h1 class="text-lg font-semibold tracking-tight">{title}</h1>
 
       <div
-        class="flex-grow "
+        class="flex-grow"
         class:cursor-pointer="{isLongerThan(shortDescription, 25)}"
         on:click|preventDefault|stopPropagation="{() => (expandDescription = !expandDescription)}"
       >

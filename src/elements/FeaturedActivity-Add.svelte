@@ -39,19 +39,21 @@
         {/if}
       </div>
 
-      <div class="space-y-2 xl:flex xl:items-center xl:justify-between">
-        <div class="w-full font-medium text-lg leading-6 space-y-1">
-          <h4 class="text-white">What Activity will you create?</h4>
-          <p class="text-thatBlue-200 text-sm italic">Any Day, Any Time</p>
+      <div
+        class="font-medium text-lg leading-6 space-y-2 w-full h-full flex flex-col"
+      >
+        <h4 class="space-y-1 flex-grow text-white">
+          What Activity will you create?
+        </h4>
+        <p class="text-thatBlue-200 text-sm italic">Any Day, Any Time</p>
 
-          <span class="text-thatBlue-200 text-right">
-            {#if $isAuthenticated}
-              <p>{`${$thatProfile.firstName} ${$thatProfile.lastName}`}</p>
-            {:else}
-              <p>Your Name Here :)</p>
-            {/if}
-          </span>
-        </div>
+        <span class="text-thatBlue-200 text-right">
+          {#if $isAuthenticated}
+            <p>{`${$thatProfile.firstName} ${$thatProfile.lastName}`}</p>
+          {:else}
+            <p>Your Name Here :)</p>
+          {/if}
+        </span>
       </div>
     </div>
   </div>

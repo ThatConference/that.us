@@ -9,6 +9,8 @@
   const { state, send } = useService(stateMachineService);
 </script>
 
+{(console.log('follow state', $state.context), '')}
+
 {#if $state.matches('loaded')}
   <section class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="lg:grid lg:grid-cols-12 lg:gap-8 my-24">

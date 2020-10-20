@@ -3,7 +3,7 @@
 
   import { fade } from 'svelte/transition';
   import { getClient } from '@urql/svelte';
-  import { useMachine } from 'xstate-svelte';
+  import { useMachine, interpret } from 'xstate-svelte';
 
   import NewestFollowers from './_NewestFollowers.svelte';
   import CTA from './_CTA.svelte';
@@ -33,9 +33,9 @@
   const { state, send } = useMachine(createMachine(communitySlug, getClient()));
 </script>
 
-<!-- {(console.log('context', $state.context), '')} -->
+{(console.log('context', $state.context), '')}
 
-{#if $state.matches('loaded')}
+{#if ['loaded', 'toggleFollow'].some($state.matches)}
   <div class="flex flex-col">
     <div in:fade="{{ delay: getDelay() }}">
       <Hero

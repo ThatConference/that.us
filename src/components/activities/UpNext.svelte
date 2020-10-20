@@ -17,7 +17,7 @@
   let delayCounter = 500;
   function getDelay() {
     let current = delayCounter;
-    delayCounter = delayCounter + 200;
+    delayCounter = delayCounter + 500;
 
     return current;
   }
@@ -64,20 +64,16 @@
         >
           {#if $state.context.activities.length > 0}
             {#each $state.context.activities.slice(0, 6) as s (s.id)}
-              <div in:fade="{{ delay: getDelay() }}">
-                <li>
-                  <FeaturedActivity {...s} />
-                </li>
-              </div>
+              <li in:fade="{{ delay: getDelay() }}">
+                <FeaturedActivity {...s} />
+              </li>
             {/each}
           {/if}
 
           {#if $state.context.activities.length < 6}
-            <div in:fade="{{ delay: getDelay() }}">
-              <li>
-                <FeaturedActivityAdd />
-              </li>
-            </div>
+            <li class="h-full w-full" in:fade="{{ delay: getDelay() }}">
+              <FeaturedActivityAdd />
+            </li>
           {/if}
         </ul>
         <div class="flex justify-end">

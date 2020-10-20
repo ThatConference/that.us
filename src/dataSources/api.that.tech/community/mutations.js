@@ -1,5 +1,3 @@
-import communityFavorites from '../../../store/communityFavorites';
-
 export const MUTATION_FOLLOW_COMMUNITY_TOGGLE = `
   mutation followCommunity($communityId: ID) {
     communities {
@@ -13,7 +11,7 @@ export const MUTATION_FOLLOW_COMMUNITY_TOGGLE = `
 `;
 
 export default client => {
-  async function toggleCommunityFavorite(communityId) {
+  async function toggleFollow(communityId) {
     const variables = { communityId };
     return client
       .mutation(MUTATION_FOLLOW_COMMUNITY_TOGGLE, variables)
@@ -22,7 +20,6 @@ export default client => {
         let results = false;
 
         if (data) {
-          console.log('dataSource returned', data);
           const { toggle: fav } = data.communities.favoriting;
           results = !!fav;
         }
@@ -31,5 +28,5 @@ export default client => {
       });
   }
 
-  return { toggleCommunityFavorite };
+  return { toggleFollow };
 };

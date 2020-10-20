@@ -37,8 +37,7 @@
       </div>
 
       <ul
-        class="space-y-4 sm:grid sm:grid-cols-2 sm:gap-6 sm:space-y-0
-      lg:grid-cols-3 lg:gap-8"
+        class="space-y-4 sm:grid sm:grid-cols-2 sm:gap-6 sm:space-y-0 lg:grid-cols-3 lg:gap-8"
       >
         {#if activities.length > 0}
           {#each activities.slice(0, 6) as s (s.id)}
