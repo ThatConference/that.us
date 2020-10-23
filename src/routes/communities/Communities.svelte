@@ -5,7 +5,6 @@
   import _ from 'lodash';
 
   import { useMachine } from 'xstate-svelte';
-  import { machine } from './machines/test';
 
   import Hero from './_CommunitiesHero.svelte';
 
@@ -53,7 +52,7 @@
   //   loadingMore = false;
   // }
 
-  const { state, send } = useMachine(machine, { devTools: true });
+  // const { state, send } = useMachine(machine, { devTools: true });
 </script>
 
 <Layout>
