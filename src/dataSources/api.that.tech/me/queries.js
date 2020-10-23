@@ -1,6 +1,4 @@
-import debug from 'debug';
-
-const dlog = debug('that.data.api.community');
+import { getClient } from '@urql/svelte';
 
 export const QUERY_MY_COMMUNITY_FOLLOWS = `
   query queryMyCommunityFollows {
@@ -14,21 +12,17 @@ export const QUERY_MY_COMMUNITY_FOLLOWS = `
   }
 `;
 
-export default client => {
-  dlog('created');
-
+export default () => {
   const queryMeCommunityFollows = () => {
-    console.log('queryMeFollowing');
     const variables = {};
-    return client
+    return getClient()
       .query(QUERY_MY_COMMUNITY_FOLLOWS, variables)
       .toPromise()
       .then(r => {
         if (r.error) throw new Error(r.error);
-        console.log('queryMeCommunityFollows', r);
 
         const { me } = r.data.communities;
-        return me ? me.favorties : [];
+        return me ? me.favorites.ids : [];
       });
   };
 

@@ -23,7 +23,7 @@ export default client => {
           const { toggle: fav } = data.communities.favoriting;
           results = !!fav;
         }
-        console.log({ results });
+
         return results;
       });
   }

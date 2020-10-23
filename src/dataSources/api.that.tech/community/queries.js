@@ -1,6 +1,4 @@
-import debug from 'debug';
-
-const dlog = debug('that.data.api.community');
+import { getClient } from '@urql/svelte';
 
 const sessionDetailsFragment = `
   fragment sessionDetailFields on PagedAcceptedSession {
@@ -105,8 +103,6 @@ export const QUERY_NEXT_COMMUNITY_ACTIVITIES = `
 `;
 
 export default client => {
-  dlog('created');
-
   const stripAuthorization = () => {
     const newHeaders = {
       ...client.fetchOptions().headers,
@@ -149,8 +145,6 @@ export default client => {
     asOfDate = new Date(),
     pageSize = 6,
   }) => {
-    dlog('queryCommunityActivities');
-
     const variables = { id, asOfDate, pageSize };
     return client
       .query(QUERY_COMMUNITY_ACTIVITIES, variables, {
@@ -171,8 +165,6 @@ export default client => {
     pageSize = 6,
     cursor,
   }) => {
-    dlog('queryNextCommunityActivities');
-
     const variables = { id, asOfDate, pageSize, cursor };
     return client
       .query(QUERY_NEXT_COMMUNITY_ACTIVITIES, variables, {

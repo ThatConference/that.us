@@ -1,95 +1,92 @@
 import { Machine, assign } from 'xstate';
 
 import communityQueryApi from '../../../dataSources/api.that.tech/community/queries';
-import meQueryApi from '../../../dataSources/api.that.tech/me/queries';
 
 function createMachine(community, apiClient) {
-  const { queryMeCommunityFollows } = meQueryApi(apiClient);
   const { queryCommunityFollowers } = communityQueryApi(apiClient); // query next on page?
 
   return Machine(
     {
       id: 'followers',
-      initial: 'init',
+      initial: 'loadingFollowers',
 
       context: {
         community,
         cursor: null,
         followers: [],
-        followingIds: [],
       },
 
       states: {
-        init: {
-          type: 'parallel',
-          states: {
-            loadingFollowing: {
-              initial: 'loading',
-              states: {
-                loading: {
-                  invoke: {
-                    id: 'initialQueryFollowers',
-                    src: 'queryFollowers',
-                    onDone: {
-                      actions: ['queryFollowersSuccess'],
-                      target: 'success',
-                    },
-                    onError: 'failed',
-                  },
-                },
-                success: { type: 'final' },
-                failed: { type: 'final' },
+        loadingFollowers: {
+          meta: {
+            message: 'loading followers',
+          },
+          invoke: {
+            id: 'initialQueryFollowers',
+            src: 'queryFollowers',
+            onDone: {
+              meta: {
+                message: 'loading followers success',
               },
+              actions: ['queryFollowersSuccess'],
+              target: 'loaded',
             },
-
-            loadingMeFollowing: {
-              initial: 'loading',
-              states: {
-                loading: {
-                  invoke: {
-                    id: 'initialQueryMeFollowing',
-                    src: 'queryMeFollowing',
-                    onDone: {
-                      actions: ['queryMeFollowingSuccess'],
-                      target: 'success',
-                    },
-                    onError: 'failed',
-                  },
-                },
-                success: { type: 'final' },
-                failed: { type: 'final' },
+            onError: {
+              meta: {
+                message: 'loading followers failed',
               },
+              target: 'loadingFailed',
             },
           },
-          onDone: 'loaded',
         },
 
         loadingNext: {
+          meta: {
+            message: 'loading next followers',
+          },
           invoke: {
             id: 'nextQueryFollowers',
             src: 'queryNextFollowers',
             onDone: {
+              meta: {
+                message: 'loading next followers success',
+              },
               actions: ['queryNextSuccess'],
               target: 'loaded',
             },
-            onError: 'loadingFailed',
+            onError: {
+              meta: {
+                message: 'loading next followers failed',
+              },
+              target: 'loadingFailed',
+            },
           },
         },
 
         loaded: {
+          meta: {
+            message: 'followers loaded.',
+          },
           on: {
             NEXT: {
+              meta: {
+                message: 'user requested to load next set of followers.',
+              },
               target: 'loadingNext',
             },
           },
         },
 
         loadingFailed: {
+          meta: {
+            message: 'loading failed.',
+          },
           entry: 'logError',
           type: 'final',
         },
       },
     },
+
     {
       guards: {},
 
@@ -99,8 +96,6 @@ function createMachine(community, apiClient) {
 
         queryNextFollowers: context =>
           queryCommunityFollowers(context.community.id),
-
-        queryMeFollowing: () => queryMeCommunityFollows(),
       },
 
       actions: {
@@ -112,10 +107,6 @@ function createMachine(community, apiClient) {
         }),
 
         queryNextSuccess: assign({ followers: (_, event) => event.data }),
-
-        queryMeFollowingSuccess: assign({
-          followingIds: (_, event) => event.data,
-        }),
       },
     },
   );

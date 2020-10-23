@@ -3,7 +3,7 @@
 
   import { fade } from 'svelte/transition';
   import { getClient } from '@urql/svelte';
-  import { useMachine, interpret } from 'xstate-svelte';
+  import { useMachine } from 'xstate-svelte';
 
   import NewestFollowers from './_NewestFollowers.svelte';
   import CTA from './_CTA.svelte';
@@ -12,6 +12,8 @@
 
   import createMachine from './machines/community';
   import metaTagsStore from '../../store/metaTags';
+  import followingCommunityStore from '../../store/user/followingCommunities';
+  import { isAuthenticated, token } from '../../utilities/security.js';
 
   metaTagsStore.set({
     title: 'Community - THAT',
@@ -23,19 +25,30 @@
   });
 
   let delayCounter = 200;
-  function getDelay() {
+  function getDelay(reset = false) {
     let current = delayCounter;
     delayCounter = delayCounter + 200;
 
+    if (reset) delayCounter = 200;
     return current;
   }
 
   const { state, send } = useMachine(createMachine(communitySlug, getClient()));
+  const { get } = followingCommunityStore();
+
+  isAuthenticated.subscribe(value => {
+    send('AUTHENTICATED', { status: value });
+  });
+
+  $: if ($isAuthenticated && $token) {
+    console.log('authenticated', { auth: $isAuthenticated, token: $token });
+    const store = get();
+  }
 </script>
 
-{(console.log('context', $state.context), '')}
+<!-- {(console.log({ $state }), '')} -->
 
-{#if ['loaded', 'toggleFollow'].some($state.matches)}
+{#if [{ init: 'loaded' }].some($state.matches)}
   <div class="flex flex-col">
     <div in:fade="{{ delay: getDelay() }}">
       <Hero
@@ -59,7 +72,7 @@
       />
     </div>
 
-    <div in:fade="{{ delay: getDelay() }}">
+    <div in:fade="{{ delay: getDelay(true) }}">
       <CTA
         communityName="{$state.context.community.name}"
         isFollowing="{$state.context.isFollowing}"

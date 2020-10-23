@@ -7,20 +7,12 @@
   import { fade } from 'svelte/transition';
 
   import {
-    FeaturedActivityLoading,
     FeaturedActivity,
     FeaturedActivityAdd,
   } from '../../elements/activities';
+  import Action from '../../elements/Action.svelte';
 
   const { state, send } = useService(stateMachineService);
-
-  let delayCounter = 500;
-  function getDelay() {
-    let current = delayCounter;
-    delayCounter = delayCounter + 500;
-
-    return current;
-  }
 </script>
 
 <section class="py-12 lg:py-16 bg-thatBlue-700">
@@ -52,46 +44,60 @@
         </p>
       </div>
 
-      {#if $state.matches('loadingNext')}
-        <ul
-          class="space-y-4 sm:grid sm:grid-cols-2 sm:gap-6 sm:space-y-0 lg:grid-cols-3 lg:gap-8"
-        ></ul>
-      {/if}
-
-      {#if $state.matches('loaded')}
-        <ul
-          class="space-y-4 sm:grid sm:grid-cols-2 sm:gap-6 sm:space-y-0 lg:grid-cols-3 lg:gap-8"
-        >
+      <ul
+        class="space-y-4 sm:grid sm:grid-cols-2 sm:gap-6 sm:space-y-0 lg:grid-cols-3 lg:gap-8"
+      >
+        {#if $state.matches('loaded')}
           {#if $state.context.activities.length > 0}
             {#each $state.context.activities.slice(0, 6) as s (s.id)}
-              <li in:fade="{{ delay: getDelay() }}">
+              <li in:fade>
                 <FeaturedActivity {...s} />
               </li>
             {/each}
           {/if}
+        {/if}
+        {#if $state.context.activities.length < 6}
+          <li class="h-full w-full" in:fade>
+            <FeaturedActivityAdd />
+          </li>
+        {/if}
+      </ul>
 
-          {#if $state.context.activities.length < 6}
-            <li class="h-full w-full" in:fade="{{ delay: getDelay() }}">
-              <FeaturedActivityAdd />
-            </li>
-          {/if}
-        </ul>
+      {#if ['loaded'].some($state.matches)}
         <div class="flex justify-end">
-          <button
-            on:click="{() => send('NEXT')}"
-            class="px-8 py-2 rounded-md shadow text-base leading-6
-              bg-that-blue  
-              text-white
-              hover:bg-thatBlue-400
-              focus:bg-thatBlue-400 
-              focus:text-white 
-              focus:outline-none
-              focus:shadow-outline-thatBlue-500 
-              focus:border-thatBlue-800 
-              transition duration-150 ease-in-out md:text-lg md:px-10"
-          >
-            <span> View Next </span>
-          </button>
+          {#if $state.context.activities.length >= 6}
+            <button
+              on:click="{() => send('NEXT')}"
+              class="px-8 py-2 rounded-md shadow text-base leading-6
+                      bg-that-blue  
+                      text-white
+                      hover:bg-thatBlue-400
+                      focus:bg-thatBlue-400 
+                      focus:text-white 
+                      focus:outline-none
+                      focus:shadow-outline-thatBlue-500 
+                      focus:border-thatBlue-800 
+                      transition duration-150 ease-in-out md:text-lg md:px-10"
+            >
+              <span>View Next</span>
+            </button>
+          {:else if $state.context.hasActivities}
+            <button
+              on:click="{() => send('REFRESH')}"
+              class="px-8 py-2 rounded-md shadow text-base leading-6
+                        bg-that-blue  
+                        text-white
+                        hover:bg-thatBlue-400
+                        focus:bg-thatBlue-400 
+                        focus:text-white 
+                        focus:outline-none
+                        focus:shadow-outline-thatBlue-500 
+                        focus:border-thatBlue-800 
+                        transition duration-150 ease-in-out md:text-lg md:px-10"
+            >
+              <span>Start Over</span>
+            </button>
+          {/if}
         </div>
       {/if}
     </div>

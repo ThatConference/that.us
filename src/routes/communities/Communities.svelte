@@ -1,25 +1,15 @@
 <script>
-  import { onMount } from 'svelte';
   import { getClient } from '@urql/svelte';
-  import SvelteInfiniteScroll from 'svelte-infinite-scroll';
-  import _ from 'lodash';
-
+  // import SvelteInfiniteScroll from 'svelte-infinite-scroll'; todo.. add back once we have paged communities
   import { useMachine } from 'xstate-svelte';
 
   import Hero from './_CommunitiesHero.svelte';
-
-  import { Waiting } from '../../elements';
+  // import { Waiting } from '../../elements'; todo.. add back once we have paged communities
   import Layout from '../../elements/layouts/ContentLayout.svelte';
-
   import CommunityCard from '../../components/communities/CommunityCard.svelte';
 
+  import createMachine from './machines/communities';
   import metaTagsStore from '../../store/metaTags';
-  import communitiesApi from '../../dataSources/api.that.tech/community/queries';
-
-  let loading = true;
-  let loadingMore = false;
-  $: communityList = [];
-  let cursor;
 
   metaTagsStore.set({
     title: 'Communities - THAT',
@@ -30,29 +20,9 @@
     },
   });
 
-  // api call
-  const { queryAllCommunities } = communitiesApi(getClient());
-
-  onMount(async () => {
-    const communities = await queryAllCommunities();
-
-    communityList = [...communityList, ...communities];
-    // cursor = members.cursor;
-    loading = false;
+  const { state, send } = useMachine(createMachine(getClient()), {
+    devTools: true,
   });
-
-  // async function getNext() {
-  //   loadingMore = true;
-  //   const nextResults = await queryMembersNext(cursor);
-
-  //   if (nextResults) {
-  //     memberList = _.uniqBy([...memberList, ...nextResults.members], i => i.id);
-  //     cursor = nextResults.cursor;
-  //   }
-  //   loadingMore = false;
-  // }
-
-  // const { state, send } = useMachine(machine, { devTools: true });
 </script>
 
 <Layout>
@@ -63,33 +33,45 @@
           <Hero />
           <div class="py-20">
             <div class="px-8">
-              {#if loading}
-                <!-- <CardLoader /> -->
+              <!-- TODO -- Pulling now to see how the UX really is once deployed -->
+              <!-- {#if ['loadingCommunities'].some($state.matches)}
                 <div class="w-full flex flex-col items-center justify-center">
                   <Waiting />
                 </div>
-              {/if}
+              {/if} -->
+
               <ul
                 class="grid grid-cols-1 gap-6 sm:grid-cols-3 md:grid-cols-4
                   lg:grid-cols-5"
               >
-                {#each communityList as c (c.id)}
+                {#each $state.context.communities as c (c.id)}
                   <li class="col-span-1 flex flex-col">
-                    <CommunityCard community="{c}" />
+                    <button
+                      on:click="{() => send('SELECTED', { slug: c.slug })}"
+                      class="focus:outline-none"
+                    >
+                      <CommunityCard community="{c}" />
+                    </button>
                   </li>
                 {/each}
 
-                <!-- <SvelteInfiniteScroll
+                <!-- 
+                  todo.. add back once the api has paged communities
+                  <SvelteInfiniteScroll
                   window
                   threshold="{25}"
-                  on:loadMore="{() => getNext()}"
-                /> -->
+                  on:loadMore="{() => send('LOADNEXT')}"
+                  /> 
+                -->
               </ul>
-              {#if loadingMore}
-                <div class="flex flex-grow justify-center py-12">
-                  <Waiting />
-                </div>
-              {/if}
+              <!-- 
+                todo.. add back once the api has paged communities
+                {#if ['loadingNextCommunities'].some($state.matches)}
+                  <div class="flex flex-grow justify-center py-12">
+                    <Waiting />
+                  </div>
+                {/if} 
+              -->
             </div>
           </div>
         </main>

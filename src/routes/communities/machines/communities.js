@@ -1,97 +1,66 @@
-import { Machine, assign, spawn } from 'xstate';
+import { Machine, assign } from 'xstate';
 import { navigateTo } from 'yrv';
+import _ from 'lodash';
 
-import createFollowMachine from './follow';
-import createActivitiesMachineServices from './activities';
+import communitiesApi from '../../../dataSources/api.that.tech/community/queries';
 
-import communityQueryApi from '../../../dataSources/api.that.tech/community/queries';
-import communityMutationApi from '../../../dataSources/api.that.tech/community/mutations';
+/*
+  SELECTED Event Payload
+  send('SELECTED', {slug: '/whatever'})
+  
+  LOADNEXT Event Payload
+  send('LOADNEXT')
+*/
 
-// const followEvent = {
-//   type: 'FOLLOW', // event type
-//   id: "12345", // communityid to follow
-// };
-
-function createMachine(slug, graphClient) {
-  const { toggleFollow } = communityMutationApi(graphClient);
-  const { queryCommunityBySlug } = communityQueryApi(graphClient);
+function createMachine(graphClient) {
+  const { queryNextAllCommunities, queryAllCommunities } = communitiesApi(
+    graphClient,
+  );
 
   return Machine(
     {
-      id: 'community',
-      initial: 'loadingCommunity',
+      id: 'communities',
+      initial: 'loadingCommunities',
 
       context: {
-        slug,
-        community: undefined,
-        followMachineServices: undefined,
-        activitiesMachineServices: undefined,
-        isFollowing: false,
-      },
-
-      on: {
-        LOGOUT: {
-          actions: [''],
-          target: '.',
-        },
-
-        AUTHENTICATED: {
-          actions: [''],
-          target: '.',
-        },
+        communities: [],
+        cursor: undefined,
       },
 
       states: {
-        loadingCommunity: {
+        loadingCommunities: {
           invoke: {
-            id: 'queryCommunity',
-            src: 'queryCommunity',
-            onDone: [
-              {
-                cond: 'communityFound',
-                actions: [
-                  'queryCommunitySuccess',
-                  'createFollowMachineServices',
-                  'createActivityMachineServices',
-                ],
-                target: 'loaded',
-              },
-              {
-                cond: 'communityNotFound',
-                target: 'notFound',
-              },
-            ],
+            id: 'queryCommunities',
+            src: 'queryCommunities',
+            onDone: {
+              actions: ['queryCommunitiesSuccess'],
+              target: 'loaded',
+            },
             onError: 'error',
           },
         },
 
-        toggleFollow: {
+        loadingNextCommunities: {
           invoke: {
-            id: 'toggleFollow',
-            src: 'toggleFollow',
-            onDone: [
-              {
-                actions: 'toggleFollowSuccess',
-                target: 'loaded',
-              },
-            ],
-            onError: 'toggleFailed',
+            id: 'queryNextCommunities',
+            src: 'queryCommunities',
+            onDone: {
+              actions: ['queryCommunitiesSuccess'],
+              target: 'loaded',
+            },
+            onError: 'error',
           },
         },
 
         loaded: {
           on: {
-            FOLLOW: 'toggleFollow',
+            SELECTED: 'selected',
+            LOADNEXT: 'loadingNextCommunities',
           },
         },
 
-        notFound: {
-          entry: 'notFound',
-          type: 'final',
-        },
-
-        toggleFailed: {
-          entry: 'logError',
+        selected: {
+          entry: 'redirect',
           type: 'final',
         },
 
@@ -102,43 +71,25 @@ function createMachine(slug, graphClient) {
       },
     },
     {
-      guards: {
-        communityFound: (_, event) => event.data !== null,
-        communityNotFound: (_, event) => event.data === null,
-      },
-
       services: {
-        queryCommunity: context => queryCommunityBySlug(context.slug),
-        toggleFollow: context => toggleFollow(context.community.id),
+        queryCommunities: () => queryAllCommunities(),
+        queryNextCommunities: context =>
+          queryNextAllCommunities(context.cursor),
       },
 
       actions: {
         logError: (context, event) => console.error({ context, event }),
-        notFound: () => navigateTo('/not-found'),
+        redirect: (_, event) => navigateTo(`/communities/${event.slug}`),
 
-        queryCommunitySuccess: assign({
-          community: (_, event) => event.data,
+        queryCommunitiesSuccess: assign({
+          communities: (_, event) => event.data,
         }),
 
-        toggleFollowSuccess: assign({
-          isFollowing: (_, event) => event.data,
+        queryNextCommunitiesSuccess: assign({
+          cursor: (_, event) => event.data.cursor,
+          communities: (context, event) =>
+            _.uniqBy([...context.communities, ...event.data], i => i.id),
         }),
-
-        createFollowMachineServices: assign({
-          followMachineServices: context =>
-            spawn(createFollowMachine(context.community, graphClient)),
-        }),
-
-        createActivityMachineServices: assign({
-          activitiesMachineServices: context =>
-            spawn(
-              createActivitiesMachineServices(context.community, graphClient),
-            ),
-        }),
-
-        onFollow: () => {
-          console.log('onFollowEvent');
-        },
       },
     },
   );

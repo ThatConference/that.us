@@ -17,6 +17,7 @@ function createMachine(community, apiClient) {
         community,
         cursor: null,
         activities: [],
+        hasActivities: false,
       },
 
       states: {
@@ -46,9 +47,8 @@ function createMachine(community, apiClient) {
 
         loaded: {
           on: {
-            NEXT: {
-              target: 'loadingNext',
-            },
+            NEXT: 'loadingNext',
+            REFRESH: 'init',
           },
         },
 
@@ -78,6 +78,7 @@ function createMachine(community, apiClient) {
         queryActivitiesSuccess: assign({
           activities: (_, { data }) => data.sessions,
           cursor: (_, { data }) => data.cursor,
+          hasActivities: (_, { data }) => data.sessions.length > 0,
         }),
 
         queryNextSuccess: assign({ followers: (_, event) => event.data }),
