@@ -12,6 +12,7 @@
   import { Standard as StandardButton } from '../../elements/buttons';
   import { Tag } from '../../elements';
   import Header from '../../elements/layouts/profile/_Header.svelte';
+  import { isAuthenticated } from '../../utilities/security.js';
 
   const dispatch = createEventDispatcher();
   let clipboard;
@@ -67,12 +68,14 @@
               {/if}
             </button>
 
-            <StandardButton
-              class="h-3/4"
-              on:click="{() => dispatch('community-follow')}"
-            >
-              {#if !isFollowing}Follow{:else}Un-Follow{/if}
-            </StandardButton>
+            {#if $isAuthenticated}
+              <StandardButton
+                class="h-3/4"
+                on:click="{() => dispatch('community-follow')}"
+              >
+                {#if !isFollowing}Follow{:else}Un-Follow{/if}
+              </StandardButton>
+            {/if}
           </div>
         </div>
 

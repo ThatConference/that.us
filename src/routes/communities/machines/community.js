@@ -1,4 +1,4 @@
-import { Machine, assign, spawn } from 'xstate';
+import { Machine, assign, spawn, send } from 'xstate';
 import { navigateTo } from 'yrv';
 
 import createFollowMachine from './follow';
@@ -135,11 +135,40 @@ function createMachine(slug, graphClient) {
                 message: 'user is currently authenticated',
               },
 
+              initial: 'loadFollowing',
+
               on: {
                 FOLLOW: '.toggleFollow',
               },
 
               states: {
+                loadFollowing: {
+                  meta: {
+                    message: 'loading what communities the user follows.',
+                  },
+
+                  invoke: {
+                    id: 'queryMyFollowing',
+                    src: 'queryMyFollowing',
+                    onDone: [
+                      {
+                        meta: {
+                          message: 'load following api success.',
+                        },
+                        actions: ['queryMyFollowingSuccess'],
+                        target: 'loaded',
+                      },
+                    ],
+
+                    onError: {
+                      meta: {
+                        message: 'toggle follow api errored.',
+                      },
+                      target: 'error',
+                    },
+                  },
+                },
+
                 toggleFollow: {
                   meta: {
                     message: 'user requested to follow community.',
@@ -153,18 +182,24 @@ function createMachine(slug, graphClient) {
                         meta: {
                           message: 'toggle follow api success.',
                         },
-                        actions: ['toggleFollowSuccess'],
-                        type: 'final',
+                        actions: ['toggleFollowSuccess', 'refreshFollowers'],
+                        target: 'loaded',
                       },
                     ],
                     onError: {
                       meta: {
                         message: 'toggle follow api errored.',
                       },
-                      actions: ['logError'],
-                      type: 'final',
+                      target: 'error',
                     },
                   },
+                },
+
+                loaded: {},
+
+                error: {
+                  entry: 'logError',
+                  type: 'final',
                 },
               },
             },
@@ -195,7 +230,7 @@ function createMachine(slug, graphClient) {
 
       services: {
         queryCommunity: context => queryCommunityBySlug(context.slug),
-        queryMyFollowing: context => queryMeCommunityFollows(),
+        queryMyFollowing: () => queryMeCommunityFollows(),
         toggleFollow: context => toggleFollow(context.community.id),
       },
 
@@ -203,6 +238,10 @@ function createMachine(slug, graphClient) {
         logError: (context, event) => console.error({ context, event }),
         notFound: () => navigateTo('/not-found'),
         login: () => navigateTo('/login'),
+
+        refreshFollowers: send('REFRESH', {
+          to: context => context.followMachineServices,
+        }),
 
         setIsAuthenticated: assign({
           isAuthenticated: (_, event) => event.status,
@@ -213,7 +252,8 @@ function createMachine(slug, graphClient) {
         }),
 
         queryMyFollowingSuccess: assign({
-          isFollowing: (_, event) => event.data,
+          isFollowing: (context, event) =>
+            event.data.includes(context.community.id),
         }),
 
         toggleFollowSuccess: assign({

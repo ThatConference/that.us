@@ -68,6 +68,13 @@ function createMachine(community, apiClient) {
             message: 'followers loaded.',
           },
           on: {
+            REFRESH: {
+              meta: {
+                message: 'parent request to refresh followers.',
+              },
+              target: 'loadingFollowers',
+            },
+
             NEXT: {
               meta: {
                 message: 'user requested to load next set of followers.',

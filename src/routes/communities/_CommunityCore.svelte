@@ -12,7 +12,6 @@
 
   import createMachine from './machines/community';
   import metaTagsStore from '../../store/metaTags';
-  import followingCommunityStore from '../../store/user/followingCommunities';
   import { isAuthenticated, token } from '../../utilities/security.js';
 
   metaTagsStore.set({
@@ -34,15 +33,11 @@
   }
 
   const { state, send } = useMachine(createMachine(communitySlug, getClient()));
-  const { get } = followingCommunityStore();
-
-  isAuthenticated.subscribe(value => {
-    send('AUTHENTICATED', { status: value });
-  });
 
   $: if ($isAuthenticated && $token) {
-    console.log('authenticated', { auth: $isAuthenticated, token: $token });
-    const store = get();
+    send('AUTHENTICATED', { status: true });
+  } else {
+    send('AUTHENTICATED', { status: false });
   }
 </script>
 
