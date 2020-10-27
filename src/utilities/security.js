@@ -26,7 +26,7 @@ export const logout = async () => {
   });
 };
 
-export const login = async (documentReferrer, signup) => {
+export const login = async (documentReferrer, signup = false) => {
   const auth0 = await auth0Promise;
 
   const appState = {

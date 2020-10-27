@@ -1,6 +1,7 @@
 <script>
   export let activities;
   export let editMode = false;
+  export let reverse = false;
 
   // 3rd party
   import { onMount } from 'svelte';
@@ -56,6 +57,10 @@
       dayOfYear: key,
     }))
     .value();
+
+  $: if (reverse) {
+    sorted.reverse();
+  }
 
   const isKeynote = activity => {
     let results = false;

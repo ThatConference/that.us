@@ -1,0 +1,204 @@
+import { getClient } from '@urql/svelte';
+
+const sessionDetailsFragment = `
+  fragment sessionDetailFields on PagedAcceptedSession {
+    cursor
+    count
+    sessions {
+      id
+      title
+      startTime
+      speakers {
+        profileImage
+        firstName
+        lastName
+      }
+    }    
+  }
+`;
+
+export const QUERY_ALL_COMMUNITIES = `
+  query queryAllCommunities {
+    communities {
+      all {
+        id
+        name
+        slug
+        logo
+        sessionCount
+        followCount
+      }
+    }
+  }
+`;
+
+export const QUERY_COMMUNITY_BY_SLUG = `
+  query queryCommunityBySlug($slug: Slug) {
+    communities {
+      community(findBy: {slug: $slug}) {
+        get {
+          id
+          name
+          slug
+          description
+          logo
+          tags
+          createdAt
+        }
+      }
+    }
+  }
+`;
+
+export const QUERY_COMMUNITY_FOLLOWERS = `
+  query queryCommunityFollowersById($id: ID) {
+    communities {
+      community(findBy: {id: $id}) {
+        get {
+          followCount
+          followers {
+            cursor
+            members {
+              id
+              profileSlug
+              profileImage
+              firstName
+              lastName
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+export const QUERY_COMMUNITY_ACTIVITIES = `
+  ${sessionDetailsFragment}
+  query queryCommunityActivitiesById($id: ID, $asOfDate: Date, $pageSize: Int) {
+    communities {
+      community(findBy: {id: $id}) {
+        get {
+          sessions(asOfDate: $asOfDate, pageSize: $pageSize) {
+            ...sessionDetailFields
+          }
+        }
+      }
+    }
+  }
+`;
+
+export const QUERY_NEXT_COMMUNITY_ACTIVITIES = `
+  ${sessionDetailsFragment}
+  query queryCommunityActivitiesById($id: ID, $asOfDate: Date, $pageSize: Int, $cursor: String) {
+    communities {
+      community(findBy: {id: $id}) {
+        get {
+          sessions(asOfDate: $asOfDate, pageSize: $pageSize, cursor: $cursor) {
+            ...sessionDetailFields
+          }
+        }
+      }
+    }
+  }
+`;
+
+export default client => {
+  const stripAuthorization = () => {
+    const newHeaders = {
+      ...client.fetchOptions().headers,
+    };
+
+    delete newHeaders.authorization;
+    return newHeaders;
+  };
+
+  const queryAllCommunities = () =>
+    client
+      .query(QUERY_ALL_COMMUNITIES, {
+        fetchOptions: { headers: { ...stripAuthorization() } },
+      })
+      .toPromise()
+      .then(r => {
+        if (r.error) throw new Error(r.error);
+
+        const { communities } = r.data;
+        return communities ? communities.all : [];
+      });
+
+  const queryCommunityBySlug = slug => {
+    const variables = { slug };
+    return client
+      .query(QUERY_COMMUNITY_BY_SLUG, variables, {
+        fetchOptions: { headers: { ...stripAuthorization() } },
+      })
+      .toPromise()
+      .then(r => {
+        if (r.error) throw new Error(r.error);
+
+        const { community } = r.data.communities;
+        return community ? community.get : null;
+      });
+  };
+
+  const queryCommunityActivities = ({
+    id,
+    asOfDate = new Date(),
+    pageSize = 6,
+  }) => {
+    const variables = { id, asOfDate, pageSize };
+    return client
+      .query(QUERY_COMMUNITY_ACTIVITIES, variables, {
+        fetchOptions: { headers: { ...stripAuthorization() } },
+      })
+      .toPromise()
+      .then(r => {
+        if (r.error) throw new Error(r.error);
+
+        const { community } = r.data.communities;
+        return community ? community.get.sessions : [];
+      });
+  };
+
+  const queryNextCommunityActivities = ({
+    id,
+    asOfDate = new Date(),
+    pageSize = 6,
+    cursor,
+  }) => {
+    const variables = { id, asOfDate, pageSize, cursor };
+    return client
+      .query(QUERY_NEXT_COMMUNITY_ACTIVITIES, variables, {
+        fetchOptions: { headers: { ...stripAuthorization() } },
+      })
+      .toPromise()
+      .then(r => {
+        if (r.error) throw new Error(r.error);
+
+        const { community } = r.data.communities;
+        return community ? community.get.sessions : [];
+      });
+  };
+
+  const queryCommunityFollowers = id => {
+    const variables = { id };
+    return client
+      .query(QUERY_COMMUNITY_FOLLOWERS, variables, {
+        fetchOptions: { headers: { ...stripAuthorization() } },
+      })
+      .toPromise()
+      .then(r => {
+        if (r.error) throw new Error(r.error);
+
+        const { community } = r.data.communities;
+        return community ? community.get : []; // followerCount and followers are in get
+      });
+  };
+
+  return {
+    queryAllCommunities,
+    queryCommunityBySlug,
+    queryCommunityActivities,
+    queryNextCommunityActivities,
+    queryCommunityFollowers,
+  };
+};

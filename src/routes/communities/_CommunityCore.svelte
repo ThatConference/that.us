@@ -1,21 +1,18 @@
 <script>
-  export let community;
-  
-  import { fade } from 'svelte/transition';
-  import {navigateTo} from 'yrv';
-  
+  export let slug;
 
-  import metaTagsStore from '../../store/metaTags';
-  
+  import { fade } from 'svelte/transition';
+  import { getClient } from '@urql/svelte';
+  import { useMachine } from 'xstate-svelte';
+
   import NewestFollowers from './_NewestFollowers.svelte';
   import CTA from './_CTA.svelte';
-  import UpNext from './_UpNext.svelte';
+  import UpNext from '../../components/activities/UpNext.svelte';
   import Hero from './_Hero.svelte';
-import communities from '../../dataSources/api.that.tech/communities';
 
-  if (!community) {
-    navigateTo('/not-found');
-  }
+  import createMachine from './machines/community';
+  import metaTagsStore from '../../store/metaTags';
+  import { isAuthenticated, token } from '../../utilities/security.js';
 
   metaTagsStore.set({
     title: 'Community - THAT',
@@ -27,32 +24,58 @@ import communities from '../../dataSources/api.that.tech/communities';
   });
 
   let delayCounter = 200;
-  function getDelay() {
+  function getDelay(reset = false) {
     let current = delayCounter;
     delayCounter = delayCounter + 200;
 
+    if (reset) delayCounter = 200;
     return current;
   }
 
+  const { state, send } = useMachine(createMachine(slug, getClient()));
+
+  $: if ($isAuthenticated && $token) {
+    send('AUTHENTICATED', { status: true });
+  } else {
+    send('AUTHENTICATED', { status: false });
+  }
 </script>
 
-{#if community}
+<!-- {(console.log({ $state }), '')} -->
+
+<!-- {#if [{ init: 'loaded' }].some($state.matches)} -->
+{#if ['communityLoaded'].some($state.matches)}
   <div class="flex flex-col">
-    
     <div in:fade="{{ delay: getDelay() }}">
-      <Hero community="{community}"/>
+      <Hero
+        community="{$state.context.community}"
+        isFollowing="{$state.context.isFollowing}"
+        on:community-follow="{() => send('FOLLOW', {
+            id: $state.context.community.id,
+          })}"
+      />
     </div>
-    
+
     <div in:fade="{{ delay: getDelay() }}">
-      <NewestFollowers />
+      <NewestFollowers
+        stateMachineService="{$state.context.followMachineServices}"
+      />
     </div>
-    
+
     <div in:fade="{{ delay: getDelay() }}">
-      <UpNext communityName="{community.name}" activities="{community.sessions.sessions}"/>
+      <UpNext
+        stateMachineService="{$state.context.activitiesMachineServices}"
+      />
     </div>
-    
-    <div in:fade="{{ delay: getDelay() }}">
-      <CTA communityName="{community.name}" communityHandle="@{community.name}" />
+
+    <div in:fade="{{ delay: getDelay(true) }}">
+      <CTA
+        isFollowing="{$state.context.isFollowing}"
+        community="{$state.context.community}"
+        on:community-follow="{() => send('FOLLOW', {
+            id: $state.context.community.id,
+          })}"
+      />
     </div>
   </div>
 {/if}

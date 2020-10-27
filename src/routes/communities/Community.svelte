@@ -1,20 +1,12 @@
 <script>
   export let router;
-  
-  import { getClient } from '@urql/svelte';
 
   import ProfileLayout from '../../elements/layouts/Profile.svelte';
   import CommunityCore from './_CommunityCore.svelte';
-  import communityApi from '../../dataSources/api.that.tech/communities';
-  
-  
-  const { community } = router.params;
-  const { queryCommunityBySlug } = communityApi(getClient());
 
+  const { community } = router.params;
 </script>
 
 <ProfileLayout>
-  {#await queryCommunityBySlug(community) then r}
-    <CommunityCore community="{r}" />
-  {/await}
+  <CommunityCore slug="{community}" />
 </ProfileLayout>

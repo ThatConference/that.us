@@ -1,17 +1,20 @@
 <script>
   export let community;
+  export let isFollowing = false;
 
-  import { onMount, onDestroy } from 'svelte';
+  import { onMount, onDestroy, createEventDispatcher } from 'svelte';
   import { fade } from 'svelte/transition';
   import Icon from 'svelte-awesome';
   import { share } from 'svelte-awesome/icons';
   import Clipboard from 'clipboard';
   import dayjs from 'dayjs';
-  
+
   import { Standard as StandardButton } from '../../elements/buttons';
   import { Tag } from '../../elements';
   import Header from '../../elements/layouts/profile/_Header.svelte';
+  import { isAuthenticated } from '../../utilities/security.js';
 
+  const dispatch = createEventDispatcher();
   let clipboard;
   let copiedText;
 
@@ -65,16 +68,19 @@
               {/if}
             </button>
 
-            <StandardButton class="h-3/4" on:click="{() => console.log('clicked')}">
-              Follow
-            </StandardButton>
+            {#if $isAuthenticated}
+              <StandardButton
+                class="h-3/4"
+                on:click="{() => dispatch('community-follow')}"
+              >
+                {#if !isFollowing}Follow{:else}Un-Follow{/if}
+              </StandardButton>
+            {/if}
           </div>
         </div>
 
         <div>
-          <p>
-            {community.description}
-          </p>
+          <p>{community.description}</p>
         </div>
 
         <div class="flex flex-wrap justify-center items-center space-x-4">

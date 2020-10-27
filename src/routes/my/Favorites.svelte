@@ -47,7 +47,7 @@
       <CardLoader />
     {:then activities}
       {#if activities.length > 0}
-        <ActivityList activities="{activities}" />
+        <ActivityList reverse="{true}" activities="{activities}" />
       {:else}
         <div class="p-12">
           <ModalWarning

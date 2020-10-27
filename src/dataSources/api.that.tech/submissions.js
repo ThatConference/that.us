@@ -4,7 +4,7 @@ export const QUERY_SUBMISSIONS = `
   query getMySubmissions {
     sessions {
       me {
-        submitted {      
+        submitted {
           ... on Base {
             id
             eventId

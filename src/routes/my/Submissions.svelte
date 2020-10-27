@@ -45,7 +45,11 @@
       <CardLoader />
     {:then activities}
       {#if activities.length > 0}
-        <ActivityList activities="{activities}" editMode="{true}" />
+        <ActivityList
+          activities="{activities}"
+          reverse="{true}"
+          editMode="{true}"
+        />
       {:else}
         <div class="p-12">
           <ModalWarning
