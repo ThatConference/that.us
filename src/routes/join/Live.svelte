@@ -1,13 +1,11 @@
 <script>
   export let router;
 
-  // 3rd Party
-  import { createEventDispatcher } from 'svelte';
-  import { query } from '@urql/svelte';
+  // 3rd Partyimport { createEventDispatcher } from 'svelte';
   import _ from 'lodash';
   import { navigateTo } from 'yrv';
   import Icon from 'svelte-awesome';
-  import { getClient } from '@urql/svelte';
+  import { getClient, operationStore, query } from '@urql/svelte';
   import {
     expand as expandIcon,
     compress as compressIcon,
@@ -34,8 +32,8 @@
   const imageCrop = '?mask=ellipse&w=500&h=500&fit=crop';
   const jitsiFrameTopBuffer = 340;
 
-  const QUERY_SESSION = query({
-    query: `
+  const activity = operationStore(
+    `
       query getSessionById($activityId: ID!) {
         sessions {
           session (sessionId: $activityId) {  
@@ -45,11 +43,15 @@
         }
       }
     `,
-    variables: { activityId },
-    requestPolicy: 'network-only',
-  });
+    {
+      activityId,
+    },
+    {
+      requestPolicy: 'network-only',
+    },
+  );
 
-  $: sessionQuery = QUERY_SESSION();
+  query(activity);
 
   let incompleteProfile = true;
   $: if (!_.isEmpty($thatProfile)) {
@@ -246,8 +248,8 @@
   <div slot="header">
     <Nav />
 
-    {#if $sessionQuery.data && $sessionQuery.data.sessions.session}
-      <ActionHeader title="{$sessionQuery.data.sessions.session.title}">
+    {#if $activity.data && $activity.data.sessions.session}
+      <ActionHeader title="{$activity.data.sessions.session.title}">
         <LinkButton href="/activities/{activityId}" text="Activity Details" />
       </ActionHeader>
     {/if}
