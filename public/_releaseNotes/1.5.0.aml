@@ -1,0 +1,37 @@
+versionNumber: v1.5.0
+date: October 27th, 2020
+
+notes: This sprint can be summed up with just a simple old fashioned butt whooping. This sprint we introduced XState but really added integration for finite state machines helping orchestrate the UI and potentially reuse it across multiple products. The spirt of this sprint was adding this notion of Communities and the ability to follow things you might find interest in.
+
+[features]
+
+feature: Full Milestone Details
+url: https://github.com/ThatConference/that.us/milestone/5
+
+feature: [bug] We upgraded urql to it's v1 release well that broke things. 
+url: https://github.com/ThatConference/that.us/pull/434
+
+feature: [enhancement] Members can now follow communities, oh and communities have been added!
+url: https://github.com/ThatConference/that.us/pull/421
+
+feature: [enhancement] Major package update
+url: https://github.com/ThatConference/that.us/pull/421
+
+feature: [enhancement] My Sessions and My Favorties now sort newest first.
+url: https://github.com/ThatConference/that.us/pull/421
+
+feature: [bug] Exterior pages wouldn't render in Firefox
+url: https://github.com/ThatConference/that.us/pull/427
+
+feature: [bug] You couldn't advance the calendar picker past October when creating a new session. 🤦‍♂️
+url: https://github.com/ThatConference/that.us/pull/430
+
+feature: [enhancement] We removed disqus as it's wasn't really being used and we're working on a better way to comment.
+url: https://github.com/ThatConference/that.us/pull/431
+
+feature: [enhancement] Nav updates adds profile to the exterior pages.
+url: https://github.com/ThatConference/that.us/pull/420
+
+feature: [enhancement] API updates. We adjusted the schema to better acount for things like paging and a number of queries needed to be updated as a result.
+url: https://github.com/ThatConference/that.us/pull/423
+
