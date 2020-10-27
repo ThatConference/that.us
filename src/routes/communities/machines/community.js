@@ -29,7 +29,7 @@ function createMachine(slug, graphClient) {
   return Machine(
     {
       id: 'community',
-      type: 'parallel',
+      initial: 'loading',
 
       context: {
         slug,
@@ -42,67 +42,38 @@ function createMachine(slug, graphClient) {
       },
 
       states: {
-        init: {
+        loading: {
           meta: {
-            message: 'loading data',
+            message: 'loading community data',
           },
-
-          initial: 'loading',
-
-          states: {
-            loading: {
-              meta: {
-                message: 'loading community data',
-              },
-              invoke: {
-                id: 'queryCommunity',
-                src: 'queryCommunity',
-                onDone: [
-                  {
-                    meta: {
-                      message: 'community api call a success.',
-                    },
-                    cond: 'communityFound',
-                    actions: [
-                      'queryCommunitySuccess',
-                      'createFollowMachineServices',
-                      'createActivityMachineServices',
-                    ],
-                    target: 'loaded',
-                  },
-                  {
-                    cond: 'communityNotFound',
-                    target: 'notFound',
-                  },
+          invoke: {
+            id: 'queryCommunity',
+            src: 'queryCommunity',
+            onDone: [
+              {
+                meta: {
+                  message: 'community api call a success.',
+                },
+                cond: 'communityFound',
+                actions: [
+                  'queryCommunitySuccess',
+                  'createFollowMachineServices',
+                  'createActivityMachineServices',
                 ],
-                onError: 'error',
+                target: 'communityLoaded',
               },
-            },
-
-            loaded: {
-              meta: {
-                message: 'user data loaded, now idle.',
+              {
+                cond: 'communityNotFound',
+                target: 'notFound',
               },
-            },
-
-            notFound: {
-              meta: {
-                message: 'community not found.',
-              },
-              entry: 'notFound',
-              type: 'final',
-            },
-
-            error: {
-              entry: 'logError',
-              type: 'final',
-            },
+            ],
+            onError: 'error',
           },
         },
 
-        user: {
+        communityLoaded: {
           meta: {
-            message: 'data has been loaded',
+            message: 'user data loaded, now idle.',
           },
 
           initial: 'unknown',
@@ -116,6 +87,9 @@ function createMachine(slug, graphClient) {
 
           states: {
             unknown: {
+              meta: {
+                message: 'user security status is unknown.',
+              },
               on: {
                 '': [
                   {
@@ -203,20 +177,25 @@ function createMachine(slug, graphClient) {
                 },
               },
             },
-
             unAuthenticated: {
               meta: {
                 message: 'user is currently NOT authenticated',
               },
-
-              on: {
-                LOGINANDFOLLOW: {
-                  entry: 'login',
-                  type: 'final',
-                },
-              },
             },
           },
+        },
+
+        notFound: {
+          meta: {
+            message: 'community not found.',
+          },
+          entry: 'notFound',
+          type: 'final',
+        },
+
+        error: {
+          entry: 'logError',
+          type: 'final',
         },
       },
     },

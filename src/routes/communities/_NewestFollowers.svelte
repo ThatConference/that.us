@@ -3,7 +3,7 @@
 
   import { useService } from 'xstate-svelte';
 
-  import { Standard as StandardButton } from '../../elements/buttons';
+  // import { Standard as StandardButton } from '../../elements/buttons';
   import { Avatars } from '../../elements';
 
   const { state, send } = useService(stateMachineService);
@@ -27,11 +27,11 @@
             <Avatars attendees="{$state.context.followers}" />
           </div>
 
-          <div class="flex flex-row-reverse">
+          <!-- <div class="flex flex-row-reverse">
             <StandardButton class="h-3/4" on:click>
               View Everyone
             </StandardButton>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>

@@ -1,5 +1,5 @@
 <script>
-  export let communitySlug;
+  export let slug;
 
   import { fade } from 'svelte/transition';
   import { getClient } from '@urql/svelte';
@@ -32,7 +32,7 @@
     return current;
   }
 
-  const { state, send } = useMachine(createMachine(communitySlug, getClient()));
+  const { state, send } = useMachine(createMachine(slug, getClient()));
 
   $: if ($isAuthenticated && $token) {
     send('AUTHENTICATED', { status: true });
@@ -43,7 +43,8 @@
 
 <!-- {(console.log({ $state }), '')} -->
 
-{#if [{ init: 'loaded' }].some($state.matches)}
+<!-- {#if [{ init: 'loaded' }].some($state.matches)} -->
+{#if ['communityLoaded'].some($state.matches)}
   <div class="flex flex-col">
     <div in:fade="{{ delay: getDelay() }}">
       <Hero

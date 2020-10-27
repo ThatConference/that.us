@@ -8,5 +8,5 @@
 </script>
 
 <ProfileLayout>
-  <CommunityCore communitySlug="{community}" />
+  <CommunityCore slug="{community}" />
 </ProfileLayout>
