@@ -5,9 +5,13 @@ dev.to
 ---
 
 view next on newest followers
-refactor machine names, locations. Wrap, pass in the config. --> reuse in other places.
 
----
+refactor machine names, locations. Wrap, pass in the config. --> reuse in other places.
+paging on the main activity board.
+paging on my sessions??
+partner pages... also add paging?
+
+## users profile show what they follow?
 
 convert home upnext to use the new machine context and new component
 animation / transistion on the up-next - janky while loading

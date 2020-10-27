@@ -10,11 +10,17 @@
     class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl
       sm:mx-auto md:mt-5 md:text-xl lg:mx-0"
   >
-    Bacon ipsum dolor amet salami flank tongue ball tip ham chicken leberkas
-    tenderloin ribeye corned beef pork capicola t-bone spare ribs turducken.
-    Turducken ground round ham hock capicola, picanha chicken pork belly tail
-    sirloin pork chop tri-tip jowl biltong doner. Capicola sausage short ribs
-    chuck chislic andouille, venison pork ground round pig. Cow ground round
-    flank hamburger boudin doner beef ribs meatball bresaola.
+    At THAT our mission is to help communities grow. Regardless of your
+    interests or where you call home we believe there is something special when
+    a group of Geeks or Geeklings can get together and share with one another. A
+    community at THAT is anything from a virtual user group, to a few folks
+    geeking out over some hot technology stack. Interested in running a
+    community here? Email us at
+    <a
+      href="mailto:hello@thatconference.com?subject=Adding a new community to THAT.us"
+      rel="noopener"
+      target="_blank"
+      class="text-thatOrange-400 hover:text-thatOrange-500 hover:underline"
+    >hello@thatconference.com</a>.
   </p>
 </div>
