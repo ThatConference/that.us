@@ -69,9 +69,8 @@
 
     <div in:fade="{{ delay: getDelay(true) }}">
       <CTA
-        communityName="{$state.context.community.name}"
         isFollowing="{$state.context.isFollowing}"
-        communityHandle="@{$state.context.community.name}"
+        community="{$state.context.community}"
         on:community-follow="{() => send('FOLLOW', {
             id: $state.context.community.id,
           })}"

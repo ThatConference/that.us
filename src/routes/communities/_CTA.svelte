@@ -1,12 +1,16 @@
 <script>
-  export let communityName;
-  export let communityHandle;
+  export let community;
   export let isFollowing = false;
+
+  const { slug, name } = community;
+  const handle = `@${name}`;
 
   import { createEventDispatcher } from 'svelte';
 
   import { Standard as StandardButton } from '../../elements/buttons';
   import { CTA } from '../../elements';
+
+  import { isAuthenticated, login } from '../../utilities/security.js';
 
   const dispatch = createEventDispatcher();
 </script>
@@ -17,19 +21,28 @@
     sm:text-4xl sm:leading-10"
   >
     Never miss another
-    <span class="text-that-orange">{communityName}</span>
+    <span class="text-that-orange">{name}</span>
     Activity!
     <br />
-    <span class="text-that-orange">Follow {communityHandle} today!</span>
+    <span class="text-that-orange">Follow @{name} today!</span>
   </h2>
 
   <span slot="actionPrimary">
-    <StandardButton
-      class="h-3/4"
-      on:click="{() => dispatch('community-follow')}"
-    >
-      {#if isFollowing}Un-Follow{:else}Follow{/if}
-      {communityHandle}
-    </StandardButton>
+    {#if $isAuthenticated}
+      <StandardButton
+        class="h-3/4"
+        on:click="{() => dispatch('community-follow')}"
+      >
+        {#if isFollowing}Un-Follow{:else}Follow{/if}
+        {handle}
+      </StandardButton>
+    {:else}
+      <StandardButton
+        class="h-3/4"
+        on:click="{() => login(`/communities/${slug}`)}"
+      >
+        Login and Follow Today
+      </StandardButton>
+    {/if}
   </span>
 </CTA>
