@@ -21,7 +21,7 @@
   import { heartO, heart, signIn, cog } from 'svelte-awesome/icons';
   import qs from 'query-string';
   import { getClient } from '@urql/svelte';
-  import _ from 'lodash';
+  import { isEmpty, find } from 'lodash';
 
   // UI Support
   import CalendarButton from './elements/CalendarButton.svelte';
@@ -59,7 +59,7 @@
   let favoriteDisabled = false;
 
   let incompleteProfile = true;
-  $: if (!_.isEmpty($thatProfile)) {
+  $: if (!isEmpty($thatProfile)) {
     incompleteProfile = false;
   }
 
@@ -72,7 +72,7 @@
   let isFavorite = false;
 
   favorites.subscribe(favs => {
-    let found = _.find(favs, i => i.id === id);
+    let found = find(favs, i => i.id === id);
 
     found ? (isFavorite = true) : (isFavorite = false);
   });

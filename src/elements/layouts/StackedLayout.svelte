@@ -1,7 +1,7 @@
 <script>
   export let bodyBackgroundColor = 'bg-white';
 
-  import _ from 'lodash';
+  import { isEmpty } from 'lodash';
 
   import { isAuthenticated, thatProfile } from '../../utilities/security.js';
   import { Footer } from '../../components';
@@ -10,7 +10,7 @@
 </script>
 
 {#if $isAuthenticated}
-  {#if _.isEmpty($thatProfile)}
+  {#if isEmpty($thatProfile)}
     <CreateProfileNotification />
   {/if}
 {/if}

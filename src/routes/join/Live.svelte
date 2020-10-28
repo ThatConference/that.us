@@ -2,7 +2,7 @@
   export let router;
 
   // 3rd Partyimport { createEventDispatcher } from 'svelte';
-  import _ from 'lodash';
+  import { isEmpty } from 'lodash';
   import { navigateTo } from 'yrv';
   import Icon from 'svelte-awesome';
   import { getClient, operationStore, query } from '@urql/svelte';
@@ -54,7 +54,7 @@
   query(activity);
 
   let incompleteProfile = true;
-  $: if (!_.isEmpty($thatProfile)) {
+  $: if (!isEmpty($thatProfile)) {
     incompleteProfile = false;
   }
 

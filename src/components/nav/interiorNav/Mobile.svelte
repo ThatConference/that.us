@@ -3,11 +3,10 @@
   import {
     login,
     isAuthenticated,
-    user,
     thatProfile,
   } from '../../../utilities/security.js';
   import { Link } from 'yrv';
-  import _ from 'lodash';
+  import { isEmpty } from 'lodash';
 
   import Icon from 'svelte-awesome';
   import { user as userIcon } from 'svelte-awesome/icons';
@@ -67,7 +66,7 @@
     <div class="flex items-center px-5">
       <div class="flex-shrink-0">
         {#if $isAuthenticated}
-          {#if _.isEmpty($thatProfile)}
+          {#if isEmpty($thatProfile)}
             <span class="inline-block relative">
               <Icon data="{userIcon}" class="h-8 w-8 rounded-full text-white" />
               <span
@@ -97,7 +96,7 @@
       aria-labelledby="user-menu"
     >
       {#if $isAuthenticated}
-        {#if _.isEmpty($thatProfile)}
+        {#if isEmpty($thatProfile)}
           <Link
             href="/my/profile"
             class="block px-3 py-2 rounded-md text-base font-medium

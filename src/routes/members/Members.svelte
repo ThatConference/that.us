@@ -1,6 +1,5 @@
 <script>
   import SvelteInfiniteScroll from 'svelte-infinite-scroll';
-  import _ from 'lodash';
   import { useMachine } from 'xstate-svelte';
 
   import Layout from '../../elements/layouts/ContentLayout.svelte';

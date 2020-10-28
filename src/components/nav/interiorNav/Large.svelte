@@ -1,7 +1,6 @@
 <script>
   import { Link } from 'yrv';
   import { fade } from 'svelte/transition';
-  import _ from 'lodash';
 
   import { Activity } from '../../../elements/svgs';
   import ActivitySlideOver from '../../activityCenter/ActivitySlideOver.svelte';
@@ -9,7 +8,7 @@
   import UserProfile from '../_UserProfile.svelte';
 
   import { hasNotifications } from '../../../store/notificationCenter';
-  
+
   let activityVisible;
   let helpVisible;
 
@@ -49,7 +48,7 @@
       >
         <DesktopLink>Members</DesktopLink>
       </Link>
-      
+
       <Link
         href="/communities"
         class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300
@@ -152,8 +151,7 @@
       {/if}
     {/if}
     <div class="ml-4 rounded-full text-white hover:bg-thatBlue-500">
-      <UserProfile/>
+      <UserProfile />
     </div>
-
   </div>
 </div>

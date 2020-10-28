@@ -19,7 +19,7 @@
   import { info, heart, signIn, cog, caretDown } from 'svelte-awesome/icons';
   import qs from 'query-string';
   import { getClient } from '@urql/svelte';
-  import _ from 'lodash';
+  import { isEmpty, find } from 'lodash';
 
   // utilties
   import config from '../../config';
@@ -54,7 +54,7 @@
   const isAllowed = () => {
     let permitted = false;
 
-    if (_.isEmpty($thatProfile)) {
+    if (isEmpty($thatProfile)) {
       show.set(new Boolean(true));
       permitted = false;
     } else {
@@ -76,7 +76,7 @@
 
   let isFavorite = false;
   favorites.subscribe(favs => {
-    let found = _.find(favs, i => i.id === id);
+    let found = find(favs, i => i.id === id);
 
     found ? (isFavorite = true) : (isFavorite = false);
   });
