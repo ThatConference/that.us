@@ -9,7 +9,7 @@
   import ClaimTicketForm from '../../components/my/ClaimTicketForm.svelte';
 
   // data
-  import memberApi from '../../dataSources/api.that.tech/members.js';
+  import memberApi from '../../dataSources/api.that.tech/members/mutations';
 
   // utilities
   import metaTagsStore from '../../store/metaTags';

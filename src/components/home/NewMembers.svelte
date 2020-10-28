@@ -1,10 +1,9 @@
 <script>
   import { getClient } from '@urql/svelte';
-  
+
   import { login } from '../../utilities/security';
   import MemberCard from '../../components/members/MemberCard.svelte';
-  import membersApi from '../../dataSources/api.that.tech/members';
-
+  import membersApi from '../../dataSources/api.that.tech/members/queries';
 
   const { queryMembers } = membersApi(getClient());
 </script>
@@ -54,7 +53,6 @@
   </div>
 
   <div class="max-w-screen-xl mx-auto px-8">
-
     <div class="relative py-20 text-left">
       <h3
         class="text-3xl leading-8 font-extrabold tracking-tight text-gray-900
@@ -79,16 +77,12 @@
         class="grid grid-cols-1 gap-6 sm:grid-cols-3 md:grid-cols-4
         lg:grid-cols-5"
       >
-
         {#each members as m (m.id)}
-          <li
-            class="col-span-1"
-          >
+          <li class="col-span-1">
             <MemberCard {...m} />
           </li>
         {/each}
       </ul>
     {/await}
-
   </div>
 </section>

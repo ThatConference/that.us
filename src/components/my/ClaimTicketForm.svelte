@@ -1,18 +1,9 @@
 <script>
   export let handleSubmit;
-
-  import Icon from 'svelte-awesome';
-  import { link } from 'svelte-awesome/icons';
-
-  import { Circle2, ScaleOut } from 'svelte-loading-spinners';
   import { Form, Input } from 'sveltejs-forms'; //https://github.com/mdauner/sveltejs-forms
-
   import * as yup from 'yup';
-  import _ from 'lodash';
-  import memberApi from '../../dataSources/api.that.tech/members.js';
 
   import { Waiting } from '../../elements';
-  import { isAuthenticated, token } from '../../utilities/security.js';
   import ErrorNotificaiton from '../../components/notifications/Error.svelte';
 
   let initialValues = {
@@ -37,8 +28,8 @@
 </script>
 
 <Form
-  {schema}
-  {initialValues}
+  schema="{schema}"
+  initialValues="{initialValues}"
   validateOnBlur="{false}"
   validateOnChange="{false}"
   on:submit="{handleSubmit}"
@@ -61,7 +52,6 @@
       </div>
 
       <div class="mt-6 grid grid-cols-1 row-gap-6 gap-y-4 sm:grid-cols-6">
-
         <div class="sm:col-span-3">
           <label
             for="ticket_reference"
@@ -120,6 +110,5 @@
         <Waiting />
       </div>
     {/if}
-
   </div>
 </Form>

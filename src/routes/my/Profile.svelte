@@ -1,14 +1,14 @@
 <script>
-  import { getClient } from '@urql/svelte';
   import { navigateTo } from 'yrv';
-  import _ from 'lodash';
+  import { isNil, isEmpty } from 'lodash';
+  import { getClient } from '@urql/svelte';
 
   import { ActionHeader } from '../../elements';
   import StackedLayout from '../../elements/layouts/StackedLayout.svelte';
   import Nav from '../../components/nav/interiorNav/Top.svelte';
   import ProfileForm from '../../components/my/ProfileForm.svelte';
 
-  import memberApi from '../../dataSources/api.that.tech/members.js';
+  import memberApi from '../../dataSources/api.that.tech/members/mutations';
   import { tagEvent } from '../../utilities/gtag';
   import logEvent from '../../utilities/eventTrack';
   import { user, thatProfile } from '../../utilities/security.js';
@@ -20,7 +20,7 @@
   let currentProfile;
 
   $: if ($user || $thatProfile) {
-    if (!_.isNil($thatProfile) && !_.isEmpty($thatProfile)) {
+    if (!isNil($thatProfile) && !isEmpty($thatProfile)) {
       currentProfile = $thatProfile;
       isNewProfile = false;
     } else {
