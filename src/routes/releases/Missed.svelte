@@ -1,11 +1,10 @@
 <script>
   import { onMount } from 'svelte';
-  import { fade } from 'svelte/transition';
+
   import archieml from 'archieml';
-  import _ from 'lodash';
+  import { last } from 'lodash';
   import { Link } from 'yrv';
 
-  import { Left, Right } from '../../elements/svgs';
   import Layout from '../../elements/layouts/ContentLayout.svelte';
   import ReleaseNote from '../../components/releaseNotes/Release.svelte';
   import metaTagsStore from '../../store/metaTags';
@@ -27,7 +26,7 @@
 
       // has to be before we reverse it.
       if (missedReleases.length > 0)
-        window.localStorage.setItem('versionLastSeen', _.last(missedReleases));
+        window.localStorage.setItem('versionLastSeen', last(missedReleases));
 
       missedReleases.reverse();
       showReleaseNotes.set(false);

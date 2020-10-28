@@ -1,9 +1,6 @@
 <script>
-  import { fade } from 'svelte/transition';
   import archieml from 'archieml';
-  import _ from 'lodash';
 
-  import { Left, Right } from '../../elements/svgs';
   import Layout from '../../elements/layouts/ContentLayout.svelte';
   import ReleaseNote from '../../components/releaseNotes/Release.svelte';
   import metaTagsStore from '../../store/metaTags';

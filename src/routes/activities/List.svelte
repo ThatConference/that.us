@@ -1,7 +1,7 @@
 <script>
   // 3rd party
   import { getClient } from '@urql/svelte';
-  import _ from 'lodash';
+  import { isEmpty } from 'lodash';
 
   // utilities
   import { thatProfile } from '../../utilities/security';
@@ -27,7 +27,7 @@
 
   let createDisabled = true;
 
-  $: if (!_.isEmpty($thatProfile)) {
+  $: if (!isEmpty($thatProfile)) {
     createDisabled = false;
   }
 

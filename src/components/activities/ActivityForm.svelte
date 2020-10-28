@@ -54,7 +54,7 @@
   import Select from 'svelte-select'; //https://github.com/rob-balfre/svelte-select
   import Tags from 'svelte-tags-input';
   import * as yup from 'yup';
-  import _ from 'lodash';
+  import { isEmpty } from 'lodash';
 
   import { Waiting, ModalError } from '../../elements';
   import { thatProfile } from '../../utilities/security.js';
@@ -87,7 +87,7 @@
     selectedDateValue = originalStartTime.toDate();
   }
 
-  $: if (!_.isEmpty($thatProfile)) {
+  $: if (!isEmpty($thatProfile)) {
     createDisabled = false;
   }
 

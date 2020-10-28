@@ -1,6 +1,5 @@
 <script>
   import { getClient } from '@urql/svelte';
-  import _ from 'lodash';
 
   import Layout from '../elements/layouts/ContentLayout.svelte';
   import Hero from '../components/partners/Hero.svelte';
@@ -15,7 +14,8 @@
 
   metaTagsStore.set({
     title: 'Partners - THAT',
-    description: 'Thank you to those who support our great community every day.',
+    description:
+      'Thank you to those who support our great community every day.',
     openGraph: {
       type: 'website',
       url: `https://that.us/partners`,

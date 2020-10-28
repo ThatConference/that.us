@@ -2,8 +2,8 @@
   import { fade } from 'svelte/transition';
   import { user as userIcon } from 'svelte-awesome/icons';
   import Icon from 'svelte-awesome';
-  import {Link} from 'yrv';
-  import _ from 'lodash';
+  import { Link } from 'yrv';
+  import { isEmpty } from 'lodash';
 
   import {
     login,
@@ -12,9 +12,7 @@
   } from '../../utilities/security.js';
 
   let visible;
-
 </script>
-
 
 <div class="relative">
   <div>
@@ -27,12 +25,12 @@
       on:click|preventDefault="{() => (visible = !visible)}"
     >
       {#if $isAuthenticated}
-        {#if _.isEmpty($thatProfile)}
+        {#if isEmpty($thatProfile)}
           <div>
             <Icon data="{userIcon}" class="h-8 w-8 rounded-full" />
             <span
-              class="absolute bottom-0 right-0 block h-3.5 w-3.5 rounded-full bg-red-400">
-            </span>
+              class="absolute bottom-0 right-0 block h-3.5 w-3.5 rounded-full bg-red-400"
+            ></span>
           </div>
         {:else if $thatProfile.profileImage}
           <img
@@ -53,7 +51,7 @@
 
   {#if visible}
     {#if $isAuthenticated}
-      {#if _.isEmpty($thatProfile)}
+      {#if isEmpty($thatProfile)}
         <div
           class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg z-50"
           transition:fade
