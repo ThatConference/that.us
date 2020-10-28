@@ -1,5 +1,4 @@
 <script>
-  import { getClient } from '@urql/svelte';
   import SvelteInfiniteScroll from 'svelte-infinite-scroll';
   import _ from 'lodash';
   import { useMachine } from 'xstate-svelte';
@@ -13,7 +12,7 @@
 
   import memberMachine from './machines/members';
 
-  const { state, send } = useMachine(memberMachine(getClient()));
+  const { state, send } = useMachine(memberMachine());
 
   metaTagsStore.set({
     title: 'Members - THAT',
@@ -24,6 +23,10 @@
       url: `https://that.us/members`,
     },
   });
+
+  function handleNext() {
+    send('NEXT');
+  }
 </script>
 
 <Layout>
@@ -53,7 +56,7 @@
                 <SvelteInfiniteScroll
                   window
                   threshold="{25}"
-                  on:loadMore="{() => send('NEXT')}"
+                  on:loadMore="{handleNext}"
                 />
               </ul>
               {#if ['loadingNext'].some($state.matches)}

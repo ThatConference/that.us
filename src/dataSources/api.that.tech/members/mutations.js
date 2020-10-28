@@ -1,5 +1,3 @@
-import { getClient } from '@urql/svelte';
-
 const profileFieldsFragment = `
   fragment profileFields on Profile {
     id
@@ -73,10 +71,10 @@ export const CLAIM_TICKET = `
   }
 `;
 
-export default () => {
+export default client => {
   const createProfile = profile => {
     const variables = { profile };
-    return getClient()
+    return client
       .mutation(MUTATION_CREATE, variables)
       .toPromise()
       .then(r => r.data.members.create);
@@ -84,7 +82,7 @@ export default () => {
 
   const updateProfile = profile => {
     const variables = { profile };
-    return getClient()
+    return client
       .mutation(MUTATION_UPDATE, variables)
       .toPromise()
       .then(r => r.data.members.member.update);
@@ -92,7 +90,7 @@ export default () => {
 
   const claimTicket = ticketReference => {
     const variables = { ticketReference };
-    return getClient()
+    return client
       .mutation(CLAIM_TICKET, variables)
       .toPromise()
       .then(r => {

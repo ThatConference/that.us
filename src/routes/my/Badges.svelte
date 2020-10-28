@@ -1,4 +1,6 @@
 <script>
+  import { getClient } from '@urql/svelte';
+
   // ui support
   import { ActionHeader, LinkButton } from '../../elements';
   import StackedLayout from '../../elements/layouts/StackedLayout.svelte';
@@ -16,7 +18,7 @@
 
   import { user, thatProfile, refreshMe } from '../../utilities/security.js';
 
-  const { claimTicket } = memberApi();
+  const { claimTicket } = memberApi(getClient());
 
   let awardedBadge;
   let failedClaim = false;

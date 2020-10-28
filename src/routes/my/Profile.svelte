@@ -1,6 +1,7 @@
 <script>
   import { navigateTo } from 'yrv';
   import { isNil, isEmpty } from 'lodash';
+  import { getClient } from '@urql/svelte';
 
   import { ActionHeader } from '../../elements';
   import StackedLayout from '../../elements/layouts/StackedLayout.svelte';
@@ -13,7 +14,7 @@
   import { user, thatProfile } from '../../utilities/security.js';
   import metaTagsStore from '../../store/metaTags';
 
-  const { createProfile, updateProfile } = memberApi();
+  const { createProfile, updateProfile } = memberApi(getClient());
 
   let isNewProfile;
   let currentProfile;

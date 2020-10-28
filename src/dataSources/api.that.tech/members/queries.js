@@ -1,5 +1,3 @@
-import { getClient } from '@urql/svelte';
-
 const userFragment = `
   fragment memberFields on PublicProfile {
     id
@@ -109,10 +107,10 @@ const stripAuthorization = client => {
   return newHeaders;
 };
 
-export default () => {
+export default client => {
   const isSlugTaken = slug => {
     const variables = { slug };
-    return getClient()
+    return client
       .query(QUERY_IS_SLUG_TAKEN, variables)
       .toPromise()
       .then(r => {
@@ -127,7 +125,6 @@ export default () => {
 
   const queryMembers = (pageSize = 50) => {
     const variables = { pageSize };
-    const client = getClient();
     return client
       .query(QUERY_MEMBERS_INITAL, variables, {
         fetchOptions: { headers: { ...stripAuthorization(client) } },
@@ -146,7 +143,6 @@ export default () => {
       sessionStartDate,
       filter,
     };
-    const client = getClient();
     return client
       .query(QUERY_MEMBER_BY_SLUG, variables, {
         fetchOptions: { headers: { ...stripAuthorization(client) } },
@@ -155,9 +151,8 @@ export default () => {
       .then(r => r.data.members.member);
   };
 
-  const queryMembersNext = (after, pageSize = 50) => {
+  const queryMembersNext = async (after, pageSize = 50) => {
     const variables = { pageSize, after };
-    const client = getClient();
     return client
       .query(QUERY_MEMBERS_NEXT, variables, {
         fetchOptions: { headers: { ...stripAuthorization(client) } },

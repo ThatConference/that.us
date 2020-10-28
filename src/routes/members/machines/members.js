@@ -1,3 +1,5 @@
+import { getClient } from '@urql/svelte';
+
 import { Machine, assign } from 'xstate';
 import { uniqBy } from 'lodash';
 import pagingMachine from '../../../machines/paging';
@@ -5,7 +7,7 @@ import pagingMachine from '../../../machines/paging';
 import membersApi from '../../../dataSources/api.that.tech/members/queries';
 
 function createServices() {
-  const { queryMembers, queryMembersNext } = membersApi();
+  const { queryMembers, queryMembersNext } = membersApi(getClient());
 
   return {
     guards: {},
