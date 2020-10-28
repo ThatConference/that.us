@@ -1,8 +1,8 @@
 <script>
-  import { onMount } from 'svelte';
   import { getClient } from '@urql/svelte';
   import SvelteInfiniteScroll from 'svelte-infinite-scroll';
   import _ from 'lodash';
+  import { useMachine } from 'xstate-svelte';
 
   import Layout from '../../elements/layouts/ContentLayout.svelte';
 
@@ -10,36 +10,10 @@
   import { Waiting } from '../../elements';
   import Hero from '../../components/members/Hero.svelte';
   import MemberCard from '../../components/members/MemberCard.svelte';
-  
-  import membersApi from '../../dataSources/api.that.tech/members';
 
-  const { queryMembers, queryMembersNext } = membersApi(getClient());
+  import memberMachine from './machines/members';
 
-  let loadingMore = false;
-  let memberList = [];
-  let cursor;
-  let loading = true;
-
-  $: memberList = [];
-
-  onMount(async () => {
-    const members = await queryMembers();
-
-    memberList = [...memberList, ...members.members];
-    cursor = members.cursor;
-    loading = false;
-  });
-
-  async function getNext() {
-    loadingMore = true;
-    const nextResults = await queryMembersNext(cursor);
-
-    if (nextResults) {
-      memberList = _.uniqBy([...memberList, ...nextResults.members], i => i.id);
-      cursor = nextResults.cursor;
-    }
-    loadingMore = false;
-  }
+  const { state, send } = useMachine(memberMachine(getClient()));
 
   metaTagsStore.set({
     title: 'Members - THAT',
@@ -60,8 +34,10 @@
           <Hero />
           <div class="py-20">
             <div class="px-8">
-              {#if loading}
-                <div class="mb-24 w-full flex flex-col items-center justify-center">
+              {#if ['init'].some($state.matches)}
+                <div
+                  class="mb-24 w-full flex flex-col items-center justify-center"
+                >
                   <Waiting />
                 </div>
               {/if}
@@ -69,20 +45,18 @@
                 class="grid grid-cols-1 gap-6 sm:grid-cols-3 md:grid-cols-4
                   lg:grid-cols-5"
               >
-                {#each memberList as m, i (m.id)}
-                  <li
-                    class="col-span-1"
-                  >
+                {#each $state.context.items as m, i (m.id)}
+                  <li class="col-span-1">
                     <MemberCard {...m} />
                   </li>
                 {/each}
                 <SvelteInfiniteScroll
                   window
                   threshold="{25}"
-                  on:loadMore="{() => getNext()}"
+                  on:loadMore="{() => send('NEXT')}"
                 />
               </ul>
-              {#if loadingMore}
+              {#if ['loadingNext'].some($state.matches)}
                 <div class="flex flex-grow justify-center py-12">
                   <Waiting />
                 </div>
