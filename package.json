@@ -80,7 +80,7 @@
     "svelte-checkbox": "^1.0.0-beta.9",
     "svelte-content-loader": "^1.1.3",
     "svelte-headroom": "^2.2.1",
-    "svelte-infinite-scroll": "1.4.0",
+    "svelte-infinite-scroll": "^1.5.1",
     "svelte-loading-spinners": "0.1.1",
     "svelte-preprocess": "^4.5.2",
     "svelte-routing": "^1.4.2",
