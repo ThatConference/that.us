@@ -1,98 +1,48 @@
+import { getClient } from '@urql/svelte';
+
 import { Machine, assign } from 'xstate';
-import { navigateTo } from 'yrv';
-import _ from 'lodash';
+import { uniqBy } from 'lodash';
+import pagingMachine from '../../../machines/paging';
 
 import communitiesApi from '../../../dataSources/api.that.tech/community/queries';
 
-/*
-  SELECTED Event Payload
-  send('SELECTED', {slug: '/whatever'})
-  
-  LOADNEXT Event Payload
-  send('LOADNEXT')
-*/
-
-function createMachine(graphClient) {
+function createServices() {
   const { queryNextAllCommunities, queryAllCommunities } = communitiesApi(
-    graphClient,
+    getClient(),
   );
 
-  return Machine(
-    {
-      id: 'communities',
-      initial: 'loadingCommunities',
-
-      context: {
-        communities: [],
-        cursor: undefined,
-      },
-
-      states: {
-        loadingCommunities: {
-          invoke: {
-            id: 'queryCommunities',
-            src: 'queryCommunities',
-            onDone: {
-              actions: ['queryCommunitiesSuccess'],
-              target: 'loaded',
-            },
-            onError: 'error',
-          },
-        },
-
-        loadingNextCommunities: {
-          invoke: {
-            id: 'queryNextCommunities',
-            src: 'queryCommunities',
-            onDone: {
-              actions: ['queryCommunitiesSuccess'],
-              target: 'loaded',
-            },
-            onError: 'error',
-          },
-        },
-
-        loaded: {
-          on: {
-            SELECTED: 'selected',
-            LOADNEXT: 'loadingNextCommunities',
-          },
-        },
-
-        selected: {
-          entry: 'redirect',
-          type: 'final',
-        },
-
-        error: {
-          entry: 'logError',
-          type: 'final',
-        },
-      },
+  return {
+    guards: {
+      hasMore: (_, event) => event.data !== null,
     },
-    {
-      services: {
-        queryCommunities: () => queryAllCommunities(),
-        queryNextCommunities: context =>
-          queryNextAllCommunities(context.cursor),
-      },
 
-      actions: {
-        logError: (context, event) => console.error({ context, event }),
-        redirect: (_, event) => navigateTo(`/communities/${event.slug}`),
-
-        queryCommunitiesSuccess: assign({
-          communities: (_, event) => event.data,
-        }),
-
-        queryNextCommunitiesSuccess: assign({
-          cursor: (_, event) => event.data.cursor,
-          communities: (context, event) =>
-            _.uniqBy([...context.communities, ...event.data], i => i.id),
-        }),
-      },
+    services: {
+      load: () => queryAllCommunities(),
+      loadNext: context => queryNextAllCommunities(context.cursor),
     },
-  );
+
+    actions: {
+      logError: (context, event) => console.error({ context, event }),
+
+      // todo: will need to add the correct data structure once we have paged communities
+      loadSuccess: assign({
+        items: (_, { data }) => data,
+        cursor: (_, { data }) => undefined,
+      }),
+
+      loadNextSuccess: assign({
+        items: (context, event) =>
+          uniqBy([...context.items, ...event.data.communities], i => i.id),
+        cursor: (_, { data }) => data.cursor,
+      }),
+    },
+  };
 }
 
-export default createMachine;
+function create() {
+  const services = createServices();
+
+  return Machine({ ...pagingMachine }, { ...services });
+}
+
+export default create;
