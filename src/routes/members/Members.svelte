@@ -55,11 +55,11 @@
                 {/each}
                 <SvelteInfiniteScroll
                   window
-                  threshold="{25}"
+                  threshold="{100}"
                   on:loadMore="{handleNext}"
                 />
               </ul>
-              {#if ['loadingNext'].some($state.matches)}
+              {#if ['loadingNext', 'loadedAll'].some($state.matches)}
                 <div class="flex flex-grow justify-center py-12">
                   <Waiting />
                 </div>

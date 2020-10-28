@@ -10,7 +10,9 @@ function createServices() {
   const { queryMembers, queryMembersNext } = membersApi(getClient());
 
   return {
-    guards: {},
+    guards: {
+      hasMore: (_, event) => event.data !== null,
+    },
 
     services: {
       load: () => queryMembers(),
@@ -21,16 +23,16 @@ function createServices() {
       logError: (context, event) => console.error({ context, event }),
 
       loadSuccess: assign({
-        items: (context, { data }) => data.members,
-        cursor: (context, { data }) => data.cursor,
-        hasMore: (context, { data }) => true,
+        items: (_, { data }) => data.members,
+        cursor: (_, { data }) => data.cursor,
+        hasMore: (_, { data }) => true,
       }),
 
       // todo... we add to the object
       loadNextSuccess: assign({
         items: (context, event) =>
           uniqBy([...context.items, ...event.data.members], i => i.id),
-        cursor: (context, { data }) => data.cursor,
+        cursor: (_, { data }) => data.cursor,
       }),
     },
   };

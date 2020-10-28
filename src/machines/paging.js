@@ -8,7 +8,7 @@
 
 function getMachine() {
   return {
-    id: 'activities',
+    id: 'pagingMachine',
     initial: 'init',
     context: {
       items: [],
@@ -31,7 +31,7 @@ function getMachine() {
             meta: {
               message: 'loading item data success',
             },
-            actions: ['loadSuccess'],
+            actions: ['loadSuccess', 'setHasMore'],
             target: 'loaded',
           },
           onError: 'loadingFailed',
@@ -40,18 +40,24 @@ function getMachine() {
 
       loadingNext: {
         invoke: {
-          id: 'loadNext',
+          id: 'loadingNext',
           meta: {
             message: 'calling load next',
           },
           src: 'loadNext',
-          onDone: {
-            meta: {
-              message: 'loading item next data was a success',
+          onDone: [
+            {
+              meta: {
+                message: 'loading item next data was a success',
+              },
+              cond: 'hasMore',
+              actions: ['loadNextSuccess'],
+              target: 'loaded',
             },
-            actions: ['loadNextSuccess'],
-            target: 'loaded',
-          },
+            {
+              target: 'loadedAll',
+            },
+          ],
           onError: 'loadingFailed',
         },
       },
@@ -67,12 +73,19 @@ function getMachine() {
             },
             target: 'loadingNext',
           },
+
           REFRESH: {
             meta: {
               message: 'event REFRESH fired',
             },
             target: 'init',
           },
+        },
+      },
+
+      loadedAll: {
+        meta: {
+          message: 'all possible data has been loaded',
         },
       },
 
