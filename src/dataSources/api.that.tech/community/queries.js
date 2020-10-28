@@ -125,6 +125,9 @@ export default client => {
         return communities ? communities.all : [];
       });
 
+  // TODO stub function until we have paged communities
+  const queryNextAllCommunities = () => null;
+
   const queryCommunityBySlug = slug => {
     const variables = { slug };
     return client
@@ -196,6 +199,7 @@ export default client => {
 
   return {
     queryAllCommunities,
+    queryNextAllCommunities,
     queryCommunityBySlug,
     queryCommunityActivities,
     queryNextCommunityActivities,
