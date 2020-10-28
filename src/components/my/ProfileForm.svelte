@@ -5,7 +5,6 @@
 
   import Icon from 'svelte-awesome';
   import {
-    link,
     linkedin,
     facebook,
     twitter,
@@ -20,13 +19,12 @@
   import * as yup from 'yup';
   import { Link } from 'yrv';
   import Checkbox from 'svelte-checkbox';
-  import { getClient } from '@urql/svelte';
   import fetch from 'isomorphic-unfetch';
-  import _ from 'lodash';
+  import { isEmpty } from 'lodash';
   import omitDeep from 'omit-deep';
 
   import config from '../../config';
-  import memberApi from '../../dataSources/api.that.tech/members.js';
+  import memberApi from '../../dataSources/api.that.tech/members/queries';
   import { Waiting } from '../../elements';
   import { token } from '../../utilities/security.js';
   import ErrorNotificaiton from '../../components/notifications/Error.svelte';
@@ -76,7 +74,7 @@
     },
   ];
 
-  const { isSlugTaken } = memberApi(getClient());
+  const { isSlugTaken } = memberApi();
 
   let initialValues;
   let profileImageUploading;
@@ -101,7 +99,7 @@
     );
 
     // if we have a value.. add it back
-    if (!_.isEmpty(userValue)) {
+    if (!isEmpty(userValue)) {
       socialLinksState.push(
         buildSocialLink(link.linkType, link.slug, userValue),
       );

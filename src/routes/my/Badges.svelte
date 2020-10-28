@@ -1,6 +1,4 @@
 <script>
-  import { getClient } from '@urql/svelte';
-
   // ui support
   import { ActionHeader, LinkButton } from '../../elements';
   import StackedLayout from '../../elements/layouts/StackedLayout.svelte';
@@ -9,7 +7,7 @@
   import ClaimTicketForm from '../../components/my/ClaimTicketForm.svelte';
 
   // data
-  import memberApi from '../../dataSources/api.that.tech/members.js';
+  import memberApi from '../../dataSources/api.that.tech/members/mutations';
 
   // utilities
   import metaTagsStore from '../../store/metaTags';
@@ -18,7 +16,7 @@
 
   import { user, thatProfile, refreshMe } from '../../utilities/security.js';
 
-  const { claimTicket } = memberApi(getClient());
+  const { claimTicket } = memberApi();
 
   let awardedBadge;
   let failedClaim = false;

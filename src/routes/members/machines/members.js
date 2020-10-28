@@ -1,11 +1,11 @@
 import { Machine, assign } from 'xstate';
-import _ from 'lodash';
+import { uniqBy } from 'lodash';
 import pagingMachine from '../../../machines/paging';
 
-import membersApi from '../../../dataSources/api.that.tech/members';
+import membersApi from '../../../dataSources/api.that.tech/members/queries';
 
-function createServices(client) {
-  const { queryMembers, queryMembersNext } = membersApi(client);
+function createServices() {
+  const { queryMembers, queryMembersNext } = membersApi();
 
   return {
     guards: {},
@@ -27,15 +27,15 @@ function createServices(client) {
       // todo... we add to the object
       loadNextSuccess: assign({
         items: (context, event) =>
-          _.uniqBy([...context.items, ...event.data.members], i => i.id),
+          uniqBy([...context.items, ...event.data.members], i => i.id),
         cursor: (context, { data }) => data.cursor,
       }),
     },
   };
 }
 
-function create(client) {
-  const services = createServices(client);
+function create() {
+  const services = createServices();
 
   return Machine({ ...pagingMachine }, { ...services });
 }

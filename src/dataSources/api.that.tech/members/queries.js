@@ -1,3 +1,5 @@
+import { getClient } from '@urql/svelte';
+
 const userFragment = `
   fragment memberFields on PublicProfile {
     id
@@ -51,83 +53,10 @@ export const QUERY_MEMBERS_NEXT = `
     }
 `;
 
-const profileFieldsFragment = `
-  fragment profileFields on Profile {
-    id
-    firstName
-    lastName
-    email
-    company
-    jobTitle
-    profileImage
-    profileSlug
-    bio
-    profileLinks {
-      isPublic
-      linkType
-      url
-    }
-    earnedMeritBadges {
-      id
-      name
-      image
-      description
-    }
-    canFeature
-    isOver13
-    acceptedCodeOfConduct
-    acceptedTermsOfService
-    acceptedAntiHarassmentPolicy
-    acceptedCommitmentToDiversity
-    isDeactivated
-    interests
-    lifeHack
-  }
-`;
-
-export const MUTATION_CREATE = `
-  ${profileFieldsFragment}
-  mutation createMember ($profile: ProfileCreateInput!) {
-    members {
-      create(profile: $profile) {
-        ...profileFields
-      }
-    }
-  }
-  `;
-
-export const MUTATION_UPDATE = `
-  ${profileFieldsFragment}
-  mutation updateMember ($profile: ProfileUpdateInput!) {
-    members { 
-      member {
-      update(profile: $profile) {
-          ...profileFields
-        }
-      }
-    }
-  }
-`;
-
 export const QUERY_IS_SLUG_TAKEN = `
   query slugCheck($slug: Slug!) {
     members {
      isProfileSlugTaken(slug: $slug)
-    }
-  }
-`;
-
-export const CLAIM_TICKET = `
-  mutation claimMyTicket($ticketReference: String!) {
-    members {
-      member {
-        claimTicket(ticketRef: $ticketReference)  {
-          id
-          name
-          image
-          description
-        }
-      }
     }
   }
 `;
@@ -170,20 +99,20 @@ function reformatResults(results) {
   return members;
 }
 
-export default client => {
-  const stripAuthorization = () => {
-    const newHeaders = {
-      ...client.fetchOptions().headers,
-    };
-
-    delete newHeaders.authorization;
-
-    return newHeaders;
+const stripAuthorization = client => {
+  const newHeaders = {
+    ...client.fetchOptions().headers,
   };
 
+  delete newHeaders.authorization;
+
+  return newHeaders;
+};
+
+export default () => {
   const isSlugTaken = slug => {
     const variables = { slug };
-    return client
+    return getClient()
       .query(QUERY_IS_SLUG_TAKEN, variables)
       .toPromise()
       .then(r => {
@@ -198,9 +127,10 @@ export default client => {
 
   const queryMembers = (pageSize = 50) => {
     const variables = { pageSize };
+    const client = getClient();
     return client
       .query(QUERY_MEMBERS_INITAL, variables, {
-        fetchOptions: { headers: { ...stripAuthorization() } },
+        fetchOptions: { headers: { ...stripAuthorization(client) } },
       })
       .toPromise()
       .then(reformatResults);
@@ -216,9 +146,10 @@ export default client => {
       sessionStartDate,
       filter,
     };
+    const client = getClient();
     return client
       .query(QUERY_MEMBER_BY_SLUG, variables, {
-        fetchOptions: { headers: { ...stripAuthorization() } },
+        fetchOptions: { headers: { ...stripAuthorization(client) } },
       })
       .toPromise()
       .then(r => r.data.members.member);
@@ -226,55 +157,19 @@ export default client => {
 
   const queryMembersNext = (after, pageSize = 50) => {
     const variables = { pageSize, after };
+    const client = getClient();
     return client
       .query(QUERY_MEMBERS_NEXT, variables, {
-        fetchOptions: { headers: { ...stripAuthorization() } },
+        fetchOptions: { headers: { ...stripAuthorization(client) } },
       })
       .toPromise()
       .then(reformatResults);
-  };
-
-  const createProfile = profile => {
-    const variables = { profile };
-    return client
-      .mutation(MUTATION_CREATE, variables)
-      .toPromise()
-      .then(r => r.data.members.create);
-  };
-
-  const updateProfile = profile => {
-    const variables = { profile };
-    return client
-      .mutation(MUTATION_UPDATE, variables)
-      .toPromise()
-      .then(r => r.data.members.member.update);
-  };
-
-  const claimTicket = ticketReference => {
-    const variables = { ticketReference };
-    return client
-      .mutation(CLAIM_TICKET, variables)
-      .toPromise()
-      .then(r => {
-        let claimed = null;
-
-        if (r.error) {
-          // todo... someday log
-          console.error(r.error);
-        } else if (r.data.members.member.claimTicket)
-          claimed = r.data.members.member.claimTicket;
-
-        return claimed;
-      });
   };
 
   return {
     queryMembers,
     queryMembersNext,
     queryMemberBySlug,
-    createProfile,
-    updateProfile,
     isSlugTaken,
-    claimTicket,
   };
 };
