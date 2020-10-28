@@ -65,7 +65,7 @@
 
       {#if ['loaded'].some($state.matches)}
         <div class="flex justify-end">
-          {#if $state.context.activities.length >= 6}
+          {#if $state.context.hasActivities}
             <button
               on:click="{() => send('NEXT')}"
               class="px-8 py-2 rounded-md shadow text-base leading-6
@@ -81,7 +81,7 @@
             >
               <span>View Next</span>
             </button>
-          {:else if $state.context.hasActivities}
+          {:else}
             <button
               on:click="{() => send('REFRESH')}"
               class="px-8 py-2 rounded-md shadow text-base leading-6
@@ -95,7 +95,7 @@
                         focus:border-thatBlue-800 
                         transition duration-150 ease-in-out md:text-lg md:px-10"
             >
-              <span>Start Over</span>
+              <span>Refresh</span>
             </button>
           {/if}
         </div>
