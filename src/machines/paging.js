@@ -13,7 +13,6 @@ function getMachine() {
     context: {
       items: [],
       cursor: null,
-      hasMore: false,
     },
 
     states: {
@@ -31,7 +30,7 @@ function getMachine() {
             meta: {
               message: 'loading item data success',
             },
-            actions: ['loadSuccess', 'setHasMore'],
+            actions: ['loadSuccess'],
             target: 'loaded',
           },
           onError: 'loadingFailed',

@@ -25,7 +25,6 @@ function createServices() {
       loadSuccess: assign({
         items: (_, { data }) => data.members,
         cursor: (_, { data }) => data.cursor,
-        hasMore: (_, { data }) => true,
       }),
 
       // todo... we add to the object
