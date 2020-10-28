@@ -43,8 +43,35 @@
   let activitiesFiltered = [];
   let searchterm = '';
   let fuse;
+  let tags = [];
+  let selectedTags = [];
+  let activitiesTaggedFiltered = [];
 
-  $: sorted = _(activitiesFiltered)
+  $: {
+	  const tagsSet = new Set();
+
+	  for (const activity of activities) {
+		  for (const tag of activity.tags) {
+			  tagsSet.add(tag.toLowerCase());
+		  }
+	  }
+
+	  tags = Array.from(tagsSet.values()).sort((a, b) => {
+		  if (a < b) {
+			  return -1;
+		  }
+		  if (a > b) {
+			  return 1;
+		  }
+		  return 0;
+	  });
+  }
+
+  $: activitiesTaggedFiltered = selectedTags.length > 0
+    ? activitiesFiltered.filter(activity => selectedTags.some(tag => activity.tags.some(t => t.toLowerCase() === tag)))
+	: activitiesFiltered;
+
+  $: sorted = _(activitiesTaggedFiltered)
     .groupBy(({ startTime }) => dayjs(startTime).dayOfYear())
     .map((value, key) => ({
       timeSlots: _(value)
@@ -94,6 +121,18 @@
         on:input="{filter(searchterm)}"
         placeholder="type to search..."
       />
+      <div class="hidden sm:block my-2 p-2 rounded border border-gray-200 bg-white">
+		<fieldset class="flex flex-col">
+          <legend>Filter by tag</legend>
+
+          {#each tags as tag}
+            <label class="capitalize">
+              <input type="checkbox" bind:group={selectedTags} value={tag} />
+              {tag}
+            </label>
+          {/each}
+        </fieldset>
+	  </div>
     </div>
   </div>
 
