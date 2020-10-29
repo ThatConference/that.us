@@ -10,10 +10,13 @@
   import dayOfYear from 'dayjs/plugin/dayOfYear';
   import _ from 'lodash';
   import Fuse from 'fuse.js';
+  import Icon from 'svelte-awesome';
+  import { filter as filterIcon } from 'svelte-awesome/icons';
 
   // ui support
   import Card from './Card.svelte';
   import KeynoteCard from './KeynoteCard.svelte';
+  import FilterSlideOver from './FilterSlideOver.svelte';
 
   dayjs.extend(dayOfYear);
 
@@ -43,6 +46,7 @@
   let activitiesFiltered = [];
   let searchterm = '';
   let fuse;
+  let filterVisible;
   let tags = [];
   let selectedTags = [];
   let activitiesTaggedFiltered = [];
@@ -89,6 +93,7 @@
     sorted.reverse();
   }
 
+
   const isKeynote = activity => {
     let results = false;
     if (activity.type === 'KEYNOTE' || activity.type === 'PANEL')
@@ -97,44 +102,50 @@
     return results;
   };
 
-  function filter(term) {
-    if (term === '') {
+  $: {
+    if (searchterm === '') {
       activitiesFiltered = activities;
-      return;
+    } else {
+      activitiesFiltered = fuse.search(searchterm).map(r => r.item);
     }
+  }
 
-    activitiesFiltered = fuse.search(term).map(r => r.item);
+  function handleToggleFilter() {
+    filterVisible = !filterVisible;
   }
 
   onMount(() => {
     fuse = new Fuse(activities, options);
-    filter(searchterm);
   });
 </script>
 
 <div class="relative">
   <div class="sticky z-20 top-4">
     <div class="absolute top-0 right-0 z-20 border-gray-200">
+      <button type="button"
+              class="max-w-xs h-10 w-10 rounded-full text-gray-300 focus:outline-none
+          duration-150 ease-in-out hover:bg-thatBlue-500"
+        on:click={handleToggleFilter}
+      >
+        <Icon data={filterIcon} label="Filter" />
+      </button>
       <input
         class="form-input"
         bind:value="{searchterm}"
-        on:input="{filter(searchterm)}"
         placeholder="type to search..."
       />
-      <div class="hidden sm:block my-2 p-2 rounded border border-gray-200 bg-white">
-		<fieldset class="flex flex-col">
-          <legend>Filter by tag</legend>
-
-          {#each tags as tag}
-            <label class="capitalize">
-              <input type="checkbox" bind:group={selectedTags} value={tag} />
-              {tag}
-            </label>
-          {/each}
-        </fieldset>
-	  </div>
     </div>
   </div>
+
+  {#if filterVisible}
+    <FilterSlideOver
+      {tags}
+      bind:selectedTags
+      bind:searchterm
+      on:click={handleToggleFilter}
+      on:clicked-outside={handleToggleFilter}
+    />
+  {/if}
 
   {#each sorted as day, d}
     <div in:fade="{{ delay: d * 200 }}">
