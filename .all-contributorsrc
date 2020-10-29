@@ -260,6 +260,15 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "coreyhaines",
+      "name": "Corey Haines",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/3962?v=4",
+      "profile": "http://www.coreyhaines.com",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
