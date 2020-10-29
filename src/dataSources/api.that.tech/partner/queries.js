@@ -1,4 +1,4 @@
-import config from '../../config';
+import config from '../../../config';
 
 export const QUERY_PARTNERS = `
   query getEventPartners($slug: String!) {
@@ -25,17 +25,16 @@ export const QUERY_PARTNERS = `
   }
 `;
 
-export default (client, slug = config.eventSlug) => {
-  const stripAuthorization = () => {
-    const newHeaders = {
-      ...client.fetchOptions().headers,
-    };
-
-    delete newHeaders.authorization;
-
-    return newHeaders;
+function stripAuthorization(client) {
+  const newHeaders = {
+    ...client.fetchOptions().headers,
   };
 
+  delete newHeaders.authorization;
+  return newHeaders;
+}
+
+export default (client, slug = config.eventSlug) => {
   function query() {
     const variables = {
       slug,
@@ -43,7 +42,7 @@ export default (client, slug = config.eventSlug) => {
 
     return client
       .query(QUERY_PARTNERS, variables, {
-        fetchOptions: { headers: { ...stripAuthorization() } },
+        fetchOptions: { headers: { ...stripAuthorization(client) } },
       })
       .toPromise()
       .then(r => {
@@ -84,7 +83,11 @@ export default (client, slug = config.eventSlug) => {
 
   const get = () => query();
 
+  // todo stubbed out until we have paged partners
+  const getNext = () => null;
+
   return {
     get,
+    getNext,
   };
 };

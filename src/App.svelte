@@ -26,7 +26,8 @@
   import Login from './routes/Login.svelte';
   import Logout from './routes/Logout.svelte';
   import FAQ from './routes/support/FAQ.svelte';
-  import Partners from './routes/Partners.svelte';
+  import Partners from './routes/partners/Partners.svelte';
+  import Partner from './routes/partners/Partner.svelte';
   import Members from './routes/members/Members.svelte';
   import Member from './routes/members/Member.svelte';
   import NotFound from './routes/NotFound.svelte';
@@ -195,7 +196,7 @@
     <Route exact path="/changelog-missed" component="{ChangeLogMissed}" />
 
     <Route exact path="/partners" component="{Partners}" />
-    <Route exact path="/partners/:partner" component="{Partners}" />
+    <Route exact path="/partners/:partner" component="{Partner}" />
 
     <Route exact path="/members" component="{Members}" />
     <Route exact path="/members/:member" component="{Member}" />
