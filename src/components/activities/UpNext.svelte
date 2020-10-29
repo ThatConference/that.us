@@ -3,7 +3,6 @@
 
   import { useService } from 'xstate-svelte';
   import { Link } from 'yrv';
-  import Waiting from '../../elements/Waiting.svelte';
   import { fade } from 'svelte/transition';
 
   import {

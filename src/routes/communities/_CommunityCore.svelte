@@ -2,7 +2,6 @@
   export let slug;
 
   import { fade } from 'svelte/transition';
-  import { getClient } from '@urql/svelte';
   import { useMachine } from 'xstate-svelte';
 
   import NewestFollowers from './_NewestFollowers.svelte';
@@ -32,7 +31,7 @@
     return current;
   }
 
-  const { state, send } = useMachine(createMachine(slug, getClient()));
+  const { state, send } = useMachine(createMachine(slug));
 
   $: if ($isAuthenticated && $token) {
     send('AUTHENTICATED', { status: true });

@@ -1,9 +1,10 @@
+import { getClient } from '@urql/svelte';
 import { Machine, assign } from 'xstate';
 
 import communityQueryApi from '../../../dataSources/api.that.tech/community/queries';
 
-function createMachine(community, apiClient) {
-  const { queryCommunityFollowers } = communityQueryApi(apiClient); // query next on page?
+function createMachine(community, client = getClient()) {
+  const { queryCommunityFollowers } = communityQueryApi(client); // query next on page?
 
   return Machine(
     {
