@@ -25,10 +25,10 @@
       isNewProfile = false;
     } else {
       currentProfile = {
-        firstName: $user.given_name,
-        lastName: $user.family_name,
-        profileSlug: $user.nickname,
-        email: $user.email,
+        firstName: $user.given_name ? $user.given_name : '',
+        lastName: $user.family_name ? $user.family_name : '',
+        profileSlug: $user.nickname ? $user.nickname : '',
+        email: $user.email ? $user.email : '',
       };
       isNewProfile = true;
     }
