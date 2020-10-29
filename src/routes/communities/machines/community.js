@@ -2,7 +2,7 @@ import { getClient } from '@urql/svelte';
 import { Machine, assign, spawn, send } from 'xstate';
 import { navigateTo } from 'yrv';
 
-import createFollowMachine from './follow';
+import createFollowMachine from './followers';
 import createActivitiesMachineServices from './activities';
 
 import communityQueryApi from '../../../dataSources/api.that.tech/community/queries';
