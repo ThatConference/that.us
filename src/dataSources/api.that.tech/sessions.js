@@ -30,6 +30,25 @@ const coreOpenSpaceFields = `
   }
 `;
 
+const coreSpeakerFields = `
+  fragment coreSpeakerFields on PublicProfile {
+    id
+    firstName
+    lastName
+    bio
+    jobTitle
+    company
+    profileImage
+    profileSlug
+    earnedMeritBadges {
+      id
+      name
+      image
+      description
+    }
+  }
+`;
+
 export const QUERY_SESSION_BY_ID = `
   ${coreSessionFields}
   query getSessionById($sessionId: ID!) {
@@ -70,29 +89,61 @@ export const QUERY_SESSION_BY_ID = `
 
 export const QUERY_SESSIONS = `
   ${coreSessionFields}
-  query GetEventsSessions ($eventId: ID!) {
+  ${coreSpeakerFields}
+  query GetEventsSessions ($eventId: ID!, $pageSize: Int, $cursor: String) {
     events {
       event(findBy: { id: $eventId }) {
         get {
-          sessions {
+          sessions(pageSize: $pageSize, cursor: $cursor) {
             cursor
             sessions{
               ...coreFields
               speakers {
-                id
-                firstName
-                lastName
-                bio
-                jobTitle
-                company
-                profileImage
-                profileSlug
-                earnedMeritBadges {
-                  id
-                  name
-                  image
-                  description
-                }
+                ...coreSpeakerFields
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  `;
+
+export const QUERY_NEXT_SESSIONS = `
+  ${coreSessionFields}
+  ${coreSpeakerFields}
+  query GetEventsSessions ($eventId: ID!, $pageSize: Int, $cursor: String) {
+    events {
+      event(findBy: { id: $eventId }) {
+        get {
+          sessions(pageSize: $pageSize, cursor: $cursor) {
+            cursor
+            sessions{
+              ...coreFields
+              speakers {
+                ...coreSpeakerFields
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  `;
+
+export const QUERY_SESSIONS_BY_DATE = `
+  ${coreSessionFields}
+  ${coreSpeakerFields}
+  query GetEventsSessions ($eventId: ID!, $asOfDate: Date, $pageSize: Int) {
+    events {
+      event(findBy: { id: $eventId }) {
+        get {
+          sessions(asOfDate: $asOfDate, status: ACCEPTED, pageSize: $pageSize) {
+            cursor
+            sessions {
+              ...coreFields
+              speakers {
+                ...coreSpeakerFields
               }
             }
           }
@@ -101,31 +152,20 @@ export const QUERY_SESSIONS = `
     }
   }
 `;
-export const QUERY_SESSIONS_BY_DATE = `
+
+export const QUERY_NEXT_SESSIONS_BY_DATE = `
   ${coreSessionFields}
-  query GetEventsSessions ($eventId: ID!, $asOfDate: Date) {
+  ${coreSpeakerFields}
+  query GetEventsSessions ($eventId: ID!, $asOfDate: Date, $pageSize: Int, $cursor: String) {
     events {
       event(findBy: { id: $eventId }) {
         get {
-          sessions(asOfDate: $asOfDate, status: ACCEPTED, pageSize: 50) {
+          sessions(asOfDate: $asOfDate, status: ACCEPTED, pageSize: $pageSize, cursor: $cursor) {
             cursor
             sessions {
               ...coreFields
               speakers {
-                id
-                firstName
-                lastName
-                bio
-                jobTitle
-                company
-                profileImage
-                profileSlug
-                earnedMeritBadges {
-                  id
-                  name
-                  image
-                  description
-                }
+                ...coreSpeakerFields
               }
             }
           }
@@ -173,23 +213,22 @@ export const SET_ATTENDANCE = `
   }
 `;
 
-export default client => {
-  const stripAuthorization = () => {
-    const newHeaders = {
-      ...client.fetchOptions().headers,
-    };
-
-    delete newHeaders.authorization;
-
-    return newHeaders;
+function stripAuthorization(client) {
+  const newHeaders = {
+    ...client.fetchOptions().headers,
   };
 
+  delete newHeaders.authorization;
+  return newHeaders;
+}
+
+export default client => {
   const query = (graphQuery, variables) =>
     client
       .query(graphQuery, variables, {
         fetchOptions: {
           headers: {
-            ...stripAuthorization(),
+            ...stripAuthorization(client),
           },
         },
       })
@@ -201,21 +240,40 @@ export default client => {
           throw new Error('query sessions failed.');
         }
 
-        let results = [];
-        results = r.data.events.event.get.sessions.sessions;
-        results.sort((a, b) => new Date(a.startTime) - new Date(b.startTime));
-
-        return results;
+        const { get } = r.data.events.event;
+        return get ? get.sessions : null;
       });
 
-  const querySessions = eventId => query(QUERY_SESSIONS, { eventId });
+  const querySessions = ({ eventId, pageSize = 50 }) =>
+    query(QUERY_SESSIONS, { eventId, pageSize });
 
-  const querySessionsByDate = (eventId, asOfDate = dayjs().startOf('day')) =>
+  const queryNextSessions = ({ eventId, pageSize = 50, cursor }) =>
+    query(QUERY_NEXT_SESSIONS, { eventId, pageSize, cursor });
+
+  const querySessionsByDate = ({
+    eventId,
+    pageSize = 50,
+    asOfDate = dayjs().startOf('day'),
+  }) =>
     query(
       QUERY_SESSIONS_BY_DATE,
-      { eventId, asOfDate },
+      { eventId, asOfDate, pageSize },
       {
-        fetchOptions: { headers: { ...stripAuthorization() } },
+        fetchOptions: { headers: { ...stripAuthorization(client) } },
+      },
+    );
+
+  const queryNextSessionsByDate = ({
+    eventId,
+    cursor,
+    pageSize = 50,
+    asOfDate = dayjs().startOf('day'),
+  }) =>
+    query(
+      QUERY_NEXT_SESSIONS_BY_DATE,
+      { eventId, asOfDate, pageSize, cursor },
+      {
+        fetchOptions: { headers: { ...stripAuthorization(client) } },
       },
     );
 
@@ -225,7 +283,7 @@ export default client => {
 
     return client
       .query(QUERY_SESSION_BY_ID, variables, {
-        fetchOptions: { headers: { ...stripAuthorization() } },
+        fetchOptions: { headers: { ...stripAuthorization(client) } },
       })
       .toPromise()
       .then(r => {
@@ -291,7 +349,9 @@ export default client => {
 
   return {
     querySessions,
+    queryNextSessions,
     querySessionsByDate,
+    queryNextSessionsByDate,
     getById,
     create,
     update,

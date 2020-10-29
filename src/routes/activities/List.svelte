@@ -59,10 +59,10 @@
   </div>
 
   <div slot="body">
-    {#await querySessionsByDate($currentEvent.eventId)}
+    {#await querySessionsByDate({ eventId: $currentEvent.eventId })}
       <CardLoader />
     {:then activities}
-      <ActivityList activities="{activities}" />
+      <ActivityList activities="{activities.sessions}" />
     {:catch error}
       <p>OH NO</p>
     {/await}

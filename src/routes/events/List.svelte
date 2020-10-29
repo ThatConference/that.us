@@ -45,10 +45,10 @@
   </div>
 
   <div slot="body">
-    {#await querySessions(currentEvent.eventId)}
+    {#await querySessions({ eventId: currentEvent.eventId })}
       <CardLoader />
     {:then activities}
-      <ActivityList activities="{activities}" />
+      <ActivityList activities="{activities.sessions}" />
     {:catch error}
       <p>OH NO</p>
     {/await}
