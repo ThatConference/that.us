@@ -1,8 +1,8 @@
 <script>
   export let countries = 26;
-  export let members = 1228;
-  export let activities = 128;
-  export let hours = 83;
+  export let members = 1238;
+  export let activities = 142;
+  export let hours = 116;
 </script>
 
 <section class="bg-thatBlue-700 py-12 lg:py-16">
@@ -12,7 +12,9 @@
         class="text-3xl leading-9 font-extrabold text-white sm:text-4xl
           sm:leading-10"
       >
-        Trusted by geeks from {countries} countries
+        Trusted by geeks from
+        {countries}
+        countries
       </h2>
       <p class="mt-3 text-xl leading-7 text-thatBlue-200 sm:mt-4">
         Every day is a new opportunity to help someone else or level up
