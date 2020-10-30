@@ -1,3 +1,4 @@
+import { stripAuthorizationHeader } from '../utilities';
 import config from '../../../config';
 
 export const QUERY_PARTNERS = `
@@ -25,15 +26,6 @@ export const QUERY_PARTNERS = `
   }
 `;
 
-function stripAuthorization(client) {
-  const newHeaders = {
-    ...client.fetchOptions().headers,
-  };
-
-  delete newHeaders.authorization;
-  return newHeaders;
-}
-
 export default (client, slug = config.eventSlug) => {
   function query() {
     const variables = {
@@ -42,7 +34,7 @@ export default (client, slug = config.eventSlug) => {
 
     return client
       .query(QUERY_PARTNERS, variables, {
-        fetchOptions: { headers: { ...stripAuthorization(client) } },
+        fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
       })
       .toPromise()
       .then(r => {

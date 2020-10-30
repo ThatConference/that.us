@@ -1,3 +1,5 @@
+import { stripAuthorizationHeader } from '../utilities';
+
 const userFragment = `
   fragment memberFields on PublicProfile {
     id
@@ -97,16 +99,6 @@ function reformatResults(results) {
   return members;
 }
 
-const stripAuthorization = client => {
-  const newHeaders = {
-    ...client.fetchOptions().headers,
-  };
-
-  delete newHeaders.authorization;
-
-  return newHeaders;
-};
-
 export default client => {
   const isSlugTaken = slug => {
     const variables = { slug };
@@ -127,7 +119,7 @@ export default client => {
     const variables = { pageSize };
     return client
       .query(QUERY_MEMBERS_INITAL, variables, {
-        fetchOptions: { headers: { ...stripAuthorization(client) } },
+        fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
       })
       .toPromise()
       .then(reformatResults);
@@ -145,7 +137,7 @@ export default client => {
     };
     return client
       .query(QUERY_MEMBER_BY_SLUG, variables, {
-        fetchOptions: { headers: { ...stripAuthorization(client) } },
+        fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
       })
       .toPromise()
       .then(r => r.data.members.member);
@@ -155,7 +147,7 @@ export default client => {
     const variables = { pageSize, after };
     return client
       .query(QUERY_MEMBERS_NEXT, variables, {
-        fetchOptions: { headers: { ...stripAuthorization(client) } },
+        fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
       })
       .toPromise()
       .then(reformatResults);

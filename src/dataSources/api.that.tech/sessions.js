@@ -1,4 +1,5 @@
 import dayjs from 'dayjs';
+import { stripAuthorizationHeader } from './utilities';
 
 const coreSessionFields = `
   fragment coreFields on AcceptedSession {
@@ -213,22 +214,13 @@ export const SET_ATTENDANCE = `
   }
 `;
 
-function stripAuthorization(client) {
-  const newHeaders = {
-    ...client.fetchOptions().headers,
-  };
-
-  delete newHeaders.authorization;
-  return newHeaders;
-}
-
 export default client => {
   const query = (graphQuery, variables) =>
     client
       .query(graphQuery, variables, {
         fetchOptions: {
           headers: {
-            ...stripAuthorization(client),
+            ...stripAuthorizationHeader(client),
           },
         },
       })
@@ -259,7 +251,7 @@ export default client => {
       QUERY_SESSIONS_BY_DATE,
       { eventId, asOfDate, pageSize },
       {
-        fetchOptions: { headers: { ...stripAuthorization(client) } },
+        fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
       },
     );
 
@@ -273,7 +265,7 @@ export default client => {
       QUERY_NEXT_SESSIONS_BY_DATE,
       { eventId, asOfDate, pageSize, cursor },
       {
-        fetchOptions: { headers: { ...stripAuthorization(client) } },
+        fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
       },
     );
 
@@ -283,7 +275,7 @@ export default client => {
 
     return client
       .query(QUERY_SESSION_BY_ID, variables, {
-        fetchOptions: { headers: { ...stripAuthorization(client) } },
+        fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
       })
       .toPromise()
       .then(r => {
