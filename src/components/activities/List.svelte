@@ -48,7 +48,7 @@
   let fuse;
   let filterVisible;
   let tags = [];
-  let selectedTags = [];
+  let selectedTags = getSessionSelectedTags();
   let activitiesTaggedFiltered = [];
 
   $: {
@@ -70,6 +70,8 @@
 		  return 0;
 	  });
   }
+
+  $: window.sessionStorage.setItem('selectedTags', JSON.stringify(selectedTags));
 
   $: activitiesTaggedFiltered = selectedTags.length > 0
     ? activitiesFiltered.filter(activity => selectedTags.some(tag => activity.tags.some(t => t.toLowerCase() === tag)))
@@ -114,6 +116,18 @@
     filterVisible = !filterVisible;
   }
 
+  function getSessionSelectedTags() {
+    const sessionTags = window.sessionStorage.getItem('selectedTags');
+    if (sessionTags) {
+      const parsedTags = JSON.parse(sessionTags);
+      if (parsedTags && Array.isArray(parsedTags)) {
+        return parsedTags;
+      }
+    }
+
+    return [];
+  }
+
   onMount(() => {
     fuse = new Fuse(activities, options);
   });
@@ -125,6 +139,9 @@
       <button type="button"
               class="max-w-xs h-10 w-10 rounded-full text-gray-300 focus:outline-none
           duration-150 ease-in-out hover:bg-thatBlue-500"
+        class:bg-thatBlue-500={filterVisible}
+        class:bg-thatRed-500={selectedTags.length > 0}
+        aria-label={`Show filter and tags options${selectedTags.length > 0 ? ` (Selected tags: ${selectedTags.join(', ')})` : ''}`}
         on:click={handleToggleFilter}
       >
         <Icon data={filterIcon} label="Filter" />
