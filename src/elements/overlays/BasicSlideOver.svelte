@@ -7,13 +7,14 @@
 
 <div
   class="z-30 fixed inset-0 overflow-hidden"
-  on:click|stopPropagation="{() => dispatch('clicked-outside', 'clicked')}"
+  on:click|stopPropagation={() => { dispatch('clicked-outside', 'clicked'); }}
 >
   <div class="absolute inset-0 overflow-hidden">
     <section
       in:fly="{{ x: 400, duration: 1000 }}"
       out:fly="{{ x: 400, duration: 1000 }}"
       class="z-30 absolute inset-y-0 right-0 pl-10 max-w-full flex"
+      on:click|stopPropagation={() => {}}
     >
       <div class="w-screen max-w-md border-l-4 border-thatOrange-400">
         <div class="h-full divide-y divide-gray-200 flex flex-col bg-white ">
