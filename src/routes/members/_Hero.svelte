@@ -11,8 +11,13 @@
   import { Standard as StandardButton } from '../../elements/buttons';
   import { Tag } from '../../elements';
   import Header from '../../elements/layouts/profile/_Header.svelte';
-
+  import config from '../../config';
+  let imageCrop = '?mask=ellipse&w=500&h=500&fit=crop';
   import { SocialLink } from '../../components/social';
+
+  let userProfileImage = member.profileImage
+    ? `${member.profileImage}${imageCrop}`
+    : config.defaultProfileImage;
 
   let clipboard;
   let copiedText;
@@ -38,7 +43,7 @@
       <div>
         <img
           class="mx-auto h-40 w-40 rounded-full xl:w-56 xl:h-56"
-          src="{`${member.profileImage}?mask=ellipse&w=500&h=500&fit=crop`}"
+          src="{userProfileImage}"
           alt="{`${member.firstName} ${member.lastName}`}"
         />
       </div>
