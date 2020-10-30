@@ -2,7 +2,7 @@ import { getClient } from '@urql/svelte';
 
 import { Machine, assign } from 'xstate';
 import { uniqBy } from 'lodash';
-import pagingMachine from '../../../machines/paging';
+import createPagingConfig from '../../../machines/paging';
 
 import membersApi from '../../../dataSources/api.that.tech/members/queries';
 
@@ -33,14 +33,15 @@ function createServices() {
           uniqBy([...context.items, ...event.data.members], i => i.id),
         cursor: (_, { data }) => data.cursor,
       }),
+
+      loadedAllSuccess: () => {}, // stub action for now.
     },
   };
 }
 
 function create() {
   const services = createServices();
-
-  return Machine({ ...pagingMachine }, { ...services });
+  return Machine({ ...createPagingConfig() }, { ...services });
 }
 
 export default create;

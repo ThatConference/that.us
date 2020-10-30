@@ -2,7 +2,7 @@ import { getClient } from '@urql/svelte';
 
 import { Machine, assign } from 'xstate';
 import { uniqBy } from 'lodash';
-import pagingMachine from '../../../machines/paging';
+import createPagingConfig from '../../../machines/paging';
 
 import communitiesApi from '../../../dataSources/api.that.tech/community/queries';
 
@@ -41,8 +41,7 @@ function createServices() {
 
 function create() {
   const services = createServices();
-
-  return Machine({ ...pagingMachine }, { ...services });
+  return Machine({ ...createPagingConfig() }, { ...services });
 }
 
 export default create;

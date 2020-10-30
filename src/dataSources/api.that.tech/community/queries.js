@@ -1,4 +1,4 @@
-import { getClient } from '@urql/svelte';
+import { stripAuthorizationHeader } from '../utilities';
 
 const sessionDetailsFragment = `
   fragment sessionDetailFields on PagedAcceptedSession {
@@ -103,19 +103,10 @@ export const QUERY_NEXT_COMMUNITY_ACTIVITIES = `
 `;
 
 export default client => {
-  const stripAuthorization = () => {
-    const newHeaders = {
-      ...client.fetchOptions().headers,
-    };
-
-    delete newHeaders.authorization;
-    return newHeaders;
-  };
-
   const queryAllCommunities = () =>
     client
       .query(QUERY_ALL_COMMUNITIES, {
-        fetchOptions: { headers: { ...stripAuthorization() } },
+        fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
       })
       .toPromise()
       .then(r => {
@@ -132,7 +123,7 @@ export default client => {
     const variables = { slug };
     return client
       .query(QUERY_COMMUNITY_BY_SLUG, variables, {
-        fetchOptions: { headers: { ...stripAuthorization() } },
+        fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
       })
       .toPromise()
       .then(r => {
@@ -151,7 +142,7 @@ export default client => {
     const variables = { id, asOfDate, pageSize };
     return client
       .query(QUERY_COMMUNITY_ACTIVITIES, variables, {
-        fetchOptions: { headers: { ...stripAuthorization() } },
+        fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
       })
       .toPromise()
       .then(r => {
@@ -171,7 +162,7 @@ export default client => {
     const variables = { id, asOfDate, pageSize, cursor };
     return client
       .query(QUERY_NEXT_COMMUNITY_ACTIVITIES, variables, {
-        fetchOptions: { headers: { ...stripAuthorization() } },
+        fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
       })
       .toPromise()
       .then(r => {
@@ -186,7 +177,7 @@ export default client => {
     const variables = { id };
     return client
       .query(QUERY_COMMUNITY_FOLLOWERS, variables, {
-        fetchOptions: { headers: { ...stripAuthorization() } },
+        fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
       })
       .toPromise()
       .then(r => {

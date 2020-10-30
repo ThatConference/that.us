@@ -1,23 +1,38 @@
+import { stripAuthorizationHeader } from '../utilities';
 import config from '../../../config';
 
+const coreFieldsFragment = `
+  fragment coreFieldsFragment on Partner {
+    id
+    slug
+    companyName
+    companyLogo
+  }
+`;
+
+const socialLinksFieldsFragment = `
+  fragment socialLinksFieldsFragment on Partner {
+    linkedIn
+    github
+    youtube
+    instagram
+    twitter
+    facebook
+    twitch
+  }
+`;
+
 export const QUERY_PARTNERS = `
+  ${socialLinksFieldsFragment}
+  ${coreFieldsFragment}
   query getEventPartners($slug: String!) {
     events {
       event(findBy: { slug: $slug }) {
         get{
           partners {
-            id
+            ...coreFieldsFragment
             level
-            companyName
-            companyLogo
-            slug
-            linkedIn
-            github
-            youtube
-            instagram
-            twitter
-            facebook
-            twitch
+            ...socialLinksFieldsFragment
           }
         }
       }
@@ -25,54 +40,85 @@ export const QUERY_PARTNERS = `
   }
 `;
 
-function stripAuthorization(client) {
-  const newHeaders = {
-    ...client.fetchOptions().headers,
-  };
+export const QUERY_PARTNER = `
+  ${socialLinksFieldsFragment}
+  ${coreFieldsFragment}
+  query queryPartner($slug: Slug!) {
+    partners {
+      partner(findBy: { slug: $slug }) {
+        ...coreFieldsFragment
+        website
+        aboutUs
+        city
+        state
+        goals
+      
+        jobListings {
+          id
+          slug
+          title
+          description
+          jobType
+          experienceLevel
+          applyNowLink
+          role
+        }
+        
+        members {
+          id
+          firstName
+          lastName
+          profileImage
+          profileSlug
+        }
+        
+        ...socialLinksFieldsFragment
+      }
+    }
+  }
+`;
 
-  delete newHeaders.authorization;
-  return newHeaders;
+function createSocialLinks(partner) {
+  const socialLinks = [];
+
+  if (partner.linkedIn)
+    socialLinks.push({ href: partner.linkedIn, network: 'LINKEDIN' });
+  if (partner.github)
+    socialLinks.push({ href: partner.github, network: 'GITHUB' });
+  if (partner.youtube)
+    socialLinks.push({ href: partner.youtube, network: 'YOUTUBE' });
+  if (partner.instagram)
+    socialLinks.push({ href: partner.instagram, network: 'INSTAGRAM' });
+  if (partner.twitter)
+    socialLinks.push({ href: partner.twitter, network: 'TWITTER' });
+  if (partner.facebook)
+    socialLinks.push({ href: partner.facebook, network: 'FACEBOOK' });
+  if (partner.twitch)
+    socialLinks.push({ href: partner.twitch, network: 'TWITCH' });
+
+  return socialLinks;
 }
 
-export default (client, slug = config.eventSlug) => {
-  function query() {
-    const variables = {
-      slug,
-    };
-
+export default client => {
+  function query(slug) {
+    const variables = { slug };
     return client
       .query(QUERY_PARTNERS, variables, {
-        fetchOptions: { headers: { ...stripAuthorization(client) } },
+        fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
       })
       .toPromise()
       .then(r => {
+        if (r.error) throw new Error(r.error);
+
         let results = [];
 
         if (r.data) {
           const { partners } = r.data.events.event.get;
 
-          const modifiedPartners = partners.map(p => {
-            const socialLinks = [];
-            if (p.linkedIn)
-              socialLinks.push({ href: p.linkedIn, network: 'LINKEDIN' });
-            if (p.github)
-              socialLinks.push({ href: p.github, network: 'GITHUB' });
-            if (p.youtube)
-              socialLinks.push({ href: p.youtube, network: 'YOUTUBE' });
-            if (p.instagram)
-              socialLinks.push({ href: p.instagram, network: 'INSTAGRAM' });
-            if (p.twitter)
-              socialLinks.push({ href: p.twitter, network: 'TWITTER' });
-            if (p.facebook)
-              socialLinks.push({ href: p.facebook, network: 'FACEBOOK' });
-            if (p.twitch)
-              socialLinks.push({ href: p.twitch, network: 'TWITCH' });
-
-            return {
-              ...p,
-              socialLinks,
-            };
-          });
+          const modifiedPartners = partners.map(p => ({
+            ...p,
+            socialLinks: createSocialLinks(p),
+          }));
 
           results = modifiedPartners;
         }
@@ -81,13 +127,30 @@ export default (client, slug = config.eventSlug) => {
       });
   }
 
-  const get = () => query();
+  const getEventPartners = (slug = config.eventSlug) => query(slug);
+  const getNextEventPartners = (slug = config.eventSlug) => null; // todo stubbed out until we have paged partners
 
-  // todo stubbed out until we have paged partners
-  const getNext = () => null;
+  const getPartner = slug => {
+    const variables = { slug };
+    return client
+      .query(QUERY_PARTNER, variables, {
+        fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
+      })
+      .toPromise()
+      .then(({ data, error }) => {
+        if (error) throw new Error(error);
+
+        const { partner } = data.partners;
+
+        return partner
+          ? { ...partner, socialLinks: createSocialLinks(partner) }
+          : null;
+      });
+  };
 
   return {
-    get,
-    getNext,
+    getEventPartners,
+    getNextEventPartners,
+    getPartner,
   };
 };

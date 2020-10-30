@@ -22,7 +22,7 @@
   import Tailwindcss from './elements/Tailwindcss.svelte';
 
   // root
-  import Home from './routes/Home.svelte';
+  import Home from './routes/home/Home.svelte';
   import Login from './routes/Login.svelte';
   import Logout from './routes/Logout.svelte';
   import FAQ from './routes/support/FAQ.svelte';

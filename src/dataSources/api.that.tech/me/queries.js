@@ -1,5 +1,3 @@
-import { getClient } from '@urql/svelte';
-
 export const QUERY_MY_COMMUNITY_FOLLOWS = `
   query queryMyCommunityFollows {
     communities {
@@ -12,10 +10,10 @@ export const QUERY_MY_COMMUNITY_FOLLOWS = `
   }
 `;
 
-export default () => {
+export default client => {
   const queryMeCommunityFollows = () => {
     const variables = {};
-    return getClient()
+    return client
       .query(QUERY_MY_COMMUNITY_FOLLOWS, variables)
       .toPromise()
       .then(r => {

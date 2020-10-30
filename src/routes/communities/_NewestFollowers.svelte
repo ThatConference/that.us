@@ -6,7 +6,7 @@
   // import { Standard as StandardButton } from '../../elements/buttons';
   import { Avatars } from '../../elements';
 
-  const { state, send } = useService(stateMachineService);
+  const { state } = useService(stateMachineService);
 </script>
 
 {#if $state.matches('loaded')}
@@ -24,7 +24,7 @@
       <div class="lg:col-start-4 lg:col-span-9">
         <div class="flex flex-col">
           <div class="my-8 lg:my-0">
-            <Avatars attendees="{$state.context.followers}" />
+            <Avatars attendees="{$state.context.items}" />
           </div>
 
           <!-- <div class="flex flex-row-reverse">
@@ -38,6 +38,6 @@
   </section>
 {/if}
 
-{#if $state.matches('loadedFailed')}
+{#if $state.matches('loadingFailed')}
   <p>error</p>
 {/if}

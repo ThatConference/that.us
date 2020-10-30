@@ -5,38 +5,27 @@ import createPagingConfig from '../../../machines/paging';
 import communityQueryApi from '../../../dataSources/api.that.tech/community/queries';
 
 function createServices(client) {
-  const {
-    queryCommunityActivities,
-    queryNextCommunityActivities,
-  } = communityQueryApi(client);
+  const { queryCommunityFollowers } = communityQueryApi(client);
 
   return {
     guards: {
-      hasMore: (_, { data }) => data.count > 0,
+      hasMore: (_, event) => event.data !== null,
     },
 
     services: {
-      load: context => queryCommunityActivities({ id: context.meta.id }),
-
-      loadNext: context =>
-        queryNextCommunityActivities({
-          id: context.meta.id,
-          cursor: context.cursor,
-        }),
+      load: context => queryCommunityFollowers(context.meta.id),
+      loadNext: context => queryCommunityFollowers(context.meta.id),
     },
 
     actions: {
       logError: (context, event) => console.error({ context, event }),
 
       loadSuccess: assign({
-        items: (_, { data }) => data.sessions,
-        cursor: (_, { data }) => data.cursor,
+        items: (_, { data: { followers } }) => followers.members,
+        cursor: (_, { data: { followers } }) => followers.cursor,
       }),
 
-      loadNextSuccess: assign({
-        items: (_, { data }) => data.sessions,
-        cursor: (_, { data }) => data.cursor,
-      }),
+      loadNextSuccess: assign({ items: (_, event) => event.data }),
 
       loadedAllSuccess: assign({
         items: () => [],

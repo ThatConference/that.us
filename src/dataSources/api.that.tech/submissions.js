@@ -1,5 +1,3 @@
-import { events } from '../../config';
-
 export const QUERY_SUBMISSIONS = `
   query getMySubmissions {
     sessions {

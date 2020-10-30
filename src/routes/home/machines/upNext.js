@@ -2,25 +2,23 @@ import { getClient } from '@urql/svelte';
 import { Machine, assign } from 'xstate';
 
 import createPagingConfig from '../../../machines/paging';
-import communityQueryApi from '../../../dataSources/api.that.tech/community/queries';
+import sessionsApi from '../../../dataSources/api.that.tech/sessions';
 
 function createServices(client) {
-  const {
-    queryCommunityActivities,
-    queryNextCommunityActivities,
-  } = communityQueryApi(client);
+  const { queryNextSessionsByDate, querySessionsByDate } = sessionsApi(client);
 
   return {
     guards: {
-      hasMore: (_, { data }) => data.count > 0,
+      hasMore: (_, { data }) => data !== null && data.sessions.length > 0,
     },
 
     services: {
-      load: context => queryCommunityActivities({ id: context.meta.id }),
-
+      load: context =>
+        querySessionsByDate({ eventId: context.meta.id, pageSize: 6 }),
       loadNext: context =>
-        queryNextCommunityActivities({
-          id: context.meta.id,
+        queryNextSessionsByDate({
+          eventId: context.meta.id,
+          pageSize: 6,
           cursor: context.cursor,
         }),
     },
@@ -34,7 +32,7 @@ function createServices(client) {
       }),
 
       loadNextSuccess: assign({
-        items: (_, { data }) => data.sessions,
+        items: (context, { data }) => data.sessions,
         cursor: (_, { data }) => data.cursor,
       }),
 

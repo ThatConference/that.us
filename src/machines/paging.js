@@ -6,11 +6,12 @@
   send('REFRESH)
 */
 
-function getMachine() {
+function createConfig(metaContext) {
   return {
     id: 'pagingMachine',
     initial: 'init',
     context: {
+      meta: metaContext || undefined,
       items: [],
       cursor: null,
     },
@@ -54,6 +55,7 @@ function getMachine() {
               target: 'loaded',
             },
             {
+              actions: ['loadedAllSuccess'],
               target: 'loadedAll',
             },
           ],
@@ -86,6 +88,14 @@ function getMachine() {
         meta: {
           message: 'all possible data has been loaded',
         },
+        on: {
+          REFRESH: {
+            meta: {
+              message: 'event REFRESH fired',
+            },
+            target: 'init',
+          },
+        },
       },
 
       loadingFailed: {
@@ -99,4 +109,4 @@ function getMachine() {
   };
 }
 
-export default getMachine();
+export default createConfig;

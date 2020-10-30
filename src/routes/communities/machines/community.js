@@ -1,7 +1,8 @@
+import { getClient } from '@urql/svelte';
 import { Machine, assign, spawn, send } from 'xstate';
 import { navigateTo } from 'yrv';
 
-import createFollowMachine from './follow';
+import createFollowMachine from './followers';
 import createActivitiesMachineServices from './activities';
 
 import communityQueryApi from '../../../dataSources/api.that.tech/community/queries';
@@ -21,10 +22,12 @@ send('AUTHENTICATED', {status: true})
 
 */
 
-function createMachine(slug, graphClient) {
-  const { toggleFollow } = communityMutationApi(graphClient);
-  const { queryCommunityBySlug } = communityQueryApi(graphClient);
-  const { queryMeCommunityFollows } = meQueryApi();
+function createMachine(slug) {
+  const client = getClient();
+
+  const { toggleFollow } = communityMutationApi(client);
+  const { queryCommunityBySlug } = communityQueryApi(client);
+  const { queryMeCommunityFollows } = meQueryApi(client);
 
   return Machine(
     {
@@ -241,14 +244,12 @@ function createMachine(slug, graphClient) {
 
         createFollowMachineServices: assign({
           followMachineServices: context =>
-            spawn(createFollowMachine(context.community, graphClient)),
+            spawn(createFollowMachine(context.community, client)),
         }),
 
         createActivityMachineServices: assign({
           activitiesMachineServices: context =>
-            spawn(
-              createActivitiesMachineServices(context.community, graphClient),
-            ),
+            spawn(createActivitiesMachineServices(context.community, client)),
         }),
       },
     },

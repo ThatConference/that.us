@@ -47,7 +47,7 @@
               <li
                 class="col-span-1 flex flex-col text-center bg-white rounded-lg shadow"
               >
-                <Link open href="{`/partner/${p.slug}`}">
+                <Link open href="{`/partners/${p.slug}`}">
                   <PartnerCard {...p} />
                 </Link>
               </li>
