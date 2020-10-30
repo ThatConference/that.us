@@ -112,8 +112,8 @@
     }
   }
 
-  function handleToggleFilter() {
-    filterVisible = !filterVisible;
+  function handleCloseFilter() {
+    filterVisible = false;
   }
 
   function getSessionSelectedTags() {
@@ -142,7 +142,7 @@
         class:bg-thatBlue-500={filterVisible}
         class:bg-thatRed-500={selectedTags.length > 0}
         aria-label={`Show filter and tags options${selectedTags.length > 0 ? ` (Selected tags: ${selectedTags.join(', ')})` : ''}`}
-        on:click={handleToggleFilter}
+        on:click={() => { filterVisible = true; }}
       >
         <Icon data={filterIcon} label="Filter" />
       </button>
@@ -159,8 +159,8 @@
       {tags}
       bind:selectedTags
       bind:searchterm
-      on:click={handleToggleFilter}
-      on:clicked-outside={handleToggleFilter}
+      on:click={handleCloseFilter}
+      on:clicked-outside={handleCloseFilter}
     />
   {/if}
 
