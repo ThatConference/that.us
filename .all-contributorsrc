@@ -278,6 +278,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "r-andrew-dev",
+      "name": "Rachael Andrew",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/6334799?v=4",
+      "profile": "https://www.rachael-andrew.dev/",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
