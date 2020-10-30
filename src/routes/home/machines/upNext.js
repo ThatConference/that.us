@@ -9,7 +9,7 @@ function createServices(client) {
 
   return {
     guards: {
-      hasMore: (_, { data }) => data.count > 0,
+      hasMore: (_, { data }) => data !== null && data.sessions.length > 0,
     },
 
     services: {
