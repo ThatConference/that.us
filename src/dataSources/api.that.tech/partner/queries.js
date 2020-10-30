@@ -73,13 +73,13 @@ export default (client, slug = config.eventSlug) => {
       });
   }
 
-  const get = () => query();
+  const getEventPartners = () => query();
 
   // todo stubbed out until we have paged partners
-  const getNext = () => null;
+  const getNextEventPartners = () => null;
 
   return {
-    get,
-    getNext,
+    getEventPartners,
+    getNextEventPartners,
   };
 };
