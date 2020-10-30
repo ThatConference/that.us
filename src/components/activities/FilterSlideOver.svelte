@@ -54,6 +54,17 @@
             </label>
           {/each}
         </fieldset>
+
+        <button type="button"
+          class="inline-block my-2 px-4 py-2 rounded-md shadow text-base font-medium border-2
+        border-thatBlue-500 text-thatBlue-500 bg-white hover:bg-thatBlue-500
+        hover:text-white focus:bg-thatBlue-500 focus:text-white focus:outline-none
+        focus:shadow-outline-thatBlue-500 focus:border-thatBlue-800 transition
+        duration-150 ease-in-out"
+          on:click={() => { selectedTags = []; }}
+        >
+          Clear selected tags
+        </button>
       </div>
     </div>
   </div>
