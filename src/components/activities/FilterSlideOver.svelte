@@ -1,33 +1,27 @@
 <script>
-  import { fade, fly } from 'svelte/transition';
-  import { flip } from 'svelte/animate'; // todo we will need this when we really start to clear and add stuff to the list better.
-  import Icon from 'svelte-awesome';
-  import { externalLink } from 'svelte-awesome/icons';
-  import {Link} from 'yrv';
-
-  import { StandardLink } from '../../elements';
-  import { Activity } from '../../elements/svgs';
-  import SlideOver from '../../elements/overlays/BasicSlideOver.svelte';
-
-  import { messages } from '../../store/notificationCenter';
-
-  function handleClear() {
-    messages.set([]);
-  }
-
   export let searchterm = '';
   export let tags;
   export let selectedTags = [];
+
+  import Icon from 'svelte-awesome';
+  import { filter as filterIcon } from 'svelte-awesome/icons';
+
+  import SlideOver from '../../elements/overlays/BasicSlideOver.svelte';
 </script>
 
 <SlideOver title="Search and Filter" on:click on:clicked-outside>
-  <div class="space-y-6">
-    <div class="space-y-2">
-      <span class="text-lg leading-7 font-medium text-gray-900">
-        Search and filter
-      </span>
+  <div class="flex items-center justify-center space-x-2" slot="header">
+    <span class="text-thatOrange-400">
+      <Icon data="{filterIcon}" label="Filter" class="h-8 w-8" />
+    </span>
+    <h2 class="text-lg leading-7 font-medium text-gray-900">
+      Activity Filters
+    </h2>
+  </div>
 
-      <hr />
+  <div class="flex flex-col divide-y divide-gray-400">
+    <div class="py-12">
+      <h2 class="text-lg leading-7 font-medium text-gray-900">Text Search</h2>
 
       <div class="my-2 border-gray-200">
         <input
@@ -38,33 +32,40 @@
       </div>
     </div>
 
-    <div class="space-y-2">
-      <span class="text-lg leading-7 font-medium text-gray-900">
-        Tags
-      </span>
+    <div class="py-12">
+      <div class="flex items-center justify-between">
+        <h2 class="text-lg leading-7 font-medium text-gray-900">Tags</h2>
 
-      <hr />
+        <button
+          type="button"
+          class="inline-block my-2 px-4 py-2 rounded-md shadow text-base font-medium border-2
+          border-thatBlue-500 text-thatBlue-500 bg-white hover:bg-thatBlue-500
+          hover:text-white focus:bg-thatBlue-500 focus:text-white focus:outline-none
+          focus:shadow-outline-thatBlue-500 focus:border-thatBlue-800 transition
+          duration-150 ease-in-out"
+          on:click="{() => {
+            selectedTags = [];
+          }}"
+        >
+          Clear selected tags
+        </button>
+      </div>
 
       <div class="my-2">
         <fieldset class="flex flex-col">
           {#each tags as tag}
-            <label class="capitalize">
-              <input type="checkbox" bind:group={selectedTags} value={tag} />
-              {tag}
+            <label
+              class="capitalize text-base text-gray-500 sm:text-lg sm:mx-auto md:mt-2 md:text-md lg:mx-0"
+            >
+              <input
+                type="checkbox"
+                bind:group="{selectedTags}"
+                value="{tag}"
+              />
+              <span class="px-2">{tag}</span>
             </label>
           {/each}
         </fieldset>
-
-        <button type="button"
-          class="inline-block my-2 px-4 py-2 rounded-md shadow text-base font-medium border-2
-        border-thatBlue-500 text-thatBlue-500 bg-white hover:bg-thatBlue-500
-        hover:text-white focus:bg-thatBlue-500 focus:text-white focus:outline-none
-        focus:shadow-outline-thatBlue-500 focus:border-thatBlue-800 transition
-        duration-150 ease-in-out"
-          on:click={() => { selectedTags = []; }}
-        >
-          Clear selected tags
-        </button>
       </div>
     </div>
   </div>
