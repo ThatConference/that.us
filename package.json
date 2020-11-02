@@ -29,7 +29,7 @@
     "@rollup/plugin-node-resolve": "^10.0.0",
     "@rollup/plugin-replace": "^2.3.4",
     "@sveltecasts/svelte-youtube": "0.0.5",
-    "@tailwindcss/ui": "^0.6.2",
+    "@tailwindcss/ui": "^0.7.2",
     "@urql/svelte": "^1.1.2",
     "@xstate/inspect": "^0.1.1",
     "all-contributors-cli": "^6.19.0",
