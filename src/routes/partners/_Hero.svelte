@@ -38,7 +38,7 @@
       <div class="flex justify-between">
         <div>
           <div class="transform hover:scale-110 cursor-pointer">
-            <Link href="{partner.website}">
+            <Link href="{partner.website}?utm_source=THAT">
               <img
                 class="w-96"
                 src="{partner.companyLogo}"
@@ -78,7 +78,11 @@
               {/if}
             </button>
 
-            <StandardLink class="h-3/4" href="{partner.website}" open="{true}">
+            <StandardLink
+              class="h-3/4"
+              href="{partner.website}?utm_source=THAT"
+              open="{true}"
+            >
               Visit Us
             </StandardLink>
             <StandardButton class="h-3/4" on:click>Follow Us</StandardButton>
