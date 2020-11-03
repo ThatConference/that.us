@@ -29,7 +29,7 @@
       >
         <p class="text-sm leading-5 break-words">
           {#if expandDescription}
-            <span>{shortDescription}</span>
+            <span class="lineBreaks">{shortDescription}</span>
           {:else}
             <div
               class:hover:text-gray-300="{isLongerThan(shortDescription, 25)}"

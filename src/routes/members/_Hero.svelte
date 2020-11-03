@@ -93,7 +93,7 @@
         </div>
 
         <div class="leading-8 text-lg font-medium text-gray-900">
-          <p>{member.bio}</p>
+          <p class="lineBreaks">{member.bio}</p>
         </div>
 
         <div class="flex flex-wrap justify-center items-center space-x-4">
