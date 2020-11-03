@@ -68,6 +68,7 @@ export const QUERY_PARTNER = `
           id
           firstName
           lastName
+          jobTitle
           profileImage
           profileSlug
         }

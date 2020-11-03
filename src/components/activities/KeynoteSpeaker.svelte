@@ -20,7 +20,6 @@
       <div class="absolute inset-0 h-5/6 bg-thatBlue-800 lg:h-2/3"></div>
       <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="relative lg:grid lg:grid-cols-7">
-
           <div
             class="mt-10 max-w-lg mx-auto lg:mt-0 lg:max-w-none lg:mx-0
             lg:col-start-2 lg:col-end-7 lg:row-start-1 lg:row-end-4"
@@ -31,17 +30,14 @@
               ></div>
               <div class="bg-white rounded-t-lg px-6 pt-12 pb-10">
                 <div>
-
                   <div
                     class="text-center text-3xl leading-9 font-semibold
                     text-gray-900 sm:-mx-6"
                   >
                     <Link
-                      open
-                      href="https://www.thatconference.com/member/{host.profileSlug}"
+                      href="/members/{host.profileSlug}"
                       class="flex-shrink-0"
                     >
-
                       <span class="inline-block relative">
                         <img
                           class="w-48 h-48 rounded-full"
@@ -60,7 +56,6 @@
                           </span>
                         {/if}
                       </span>
-
                     </Link>
                   </div>
 
@@ -69,7 +64,6 @@
                       class="text-3xl leading-9 font-extrabold text-gray-900
                       sm:text-2xl sm:leading-10 lg:text-5xl lg:leading-none"
                     >
-
                       <span>{`${host.firstName} ${host.lastName}`}</span>
                     </span>
 
@@ -78,7 +72,6 @@
                       text-gray-500 sm:text-xl"
                     >
                       <span>{`${host.jobTitle} @ ${host.company}`}</span>
-
                     </span>
                     <span
                       class="py-3 text-xl leading-none tracking-tight
@@ -91,7 +84,6 @@
                         {host.bio}
                       </p>
                     </span>
-
                   </div>
                 </div>
               </div>
@@ -100,7 +92,6 @@
                 class="border-t-2 border-gray-100 rounded-b-lg pt-10 pb-8
                 bg-gray-50 px-10 py-10"
               >
-
                 <div
                   class="flex flex-col lg:flex-row items-center justify-center"
                 >
@@ -114,7 +105,6 @@
                   <div
                     class="flex flex-col lg:flex-row items-center justify-center"
                   >
-
                     <div class="inline-flex m-3 rounded-md shadow-md">
                       <Link
                         open
@@ -165,9 +155,7 @@
                         <span>Twitch</span>
                       </Link>
                     </div>
-
                   </div>
-
                 </div>
               </div>
             </div>

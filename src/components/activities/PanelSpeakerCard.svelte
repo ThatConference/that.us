@@ -13,12 +13,7 @@
 
 <div class="w-full h-full flex flex-col">
   <div class="flex items-center justify-center p-3 space-x-3">
-    <Link
-      open
-      href="https://www.thatconference.com/member/{speaker.profileSlug}"
-      class="flex-shrink-0"
-    >
-
+    <Link open href="/members/{speaker.profileSlug}" class="flex-shrink-0">
       <span class="inline-block relative">
         <img
           class="w-40 h-40 rounded-full"
@@ -35,7 +30,6 @@
           </span>
         {/if}
       </span>
-
     </Link>
   </div>
 
@@ -56,7 +50,5 @@
     <h3 class="text-xl leading-none tracking-tight text-gray-400 sm:text-xl">
       {speaker.company ? speaker.company : ''}
     </h3>
-
   </div>
-
 </div>

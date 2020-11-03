@@ -320,4 +320,8 @@
     /* for Safari, Chrome, Opera */
     -webkit-appearance: none;
   }
+
+  .lineBreaks {
+    white-space: pre-line;
+  }
 </style>

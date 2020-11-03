@@ -7,9 +7,8 @@
 
   // ui support
   import Hero from './_Hero.svelte';
-  // import NewestFollowers from './_NewestFollowers.svelte';
-  // import CTA from './_CTA.svelte';
-  // import UpNext from '../../components/activities/UpNext.svelte';
+  import FeaturedMembers from './_FeaturedMembers.svelte';
+  import Goals from './_Goals.svelte';
 
   // utilities
   import createMachine from './machines/partner';
@@ -38,33 +37,32 @@
 
 {(console.log({ $state }), '')}
 
-<!-- {#if [{ init: 'loaded' }].some($state.matches)} -->
 {#if ['profileLoaded'].some($state.matches)}
   <div class="flex flex-col">
     <div in:fade="{{ delay: getDelay() }}">
       <Hero partner="{$state.context.profile}" />
     </div>
 
-    <div in:fade="{{ delay: getDelay() }}">
-      <!-- <NewestFollowers
-        stateMachineService="{$state.context.followMachineServices}"
-      /> -->
-    </div>
+    {#if $state.context.profile.members && $state.context.profile.members.length > 0}
+      <div in:fade="{{ delay: getDelay() }}">
+        <FeaturedMembers members="{$state.context.profile.members}" />
+      </div>
+    {/if}
 
+    {#if $state.context.profile.goals && $state.context.profile.goals.length > 0}
+      <div in:fade="{{ delay: getDelay() }}">
+        <Goals goals="{$state.context.profile.goals}" />
+      </div>
+    {/if}
+
+    <!-- 
+    
     <div in:fade="{{ delay: getDelay() }}">
-      <!-- <UpNext
-        stateMachineService="{$state.context.activitiesMachineServices}"
-      /> -->
     </div>
 
     <div in:fade="{{ delay: getDelay(true) }}">
-      <!-- <CTA
-        isFollowing="{$state.context.isFollowing}"
-        community="{$state.context.community}"
-        on:community-follow="{() => send('FOLLOW', {
-            id: $state.context.community.id,
-          })}"
-      /> -->
-    </div>
+    </div> 
+
+    -->
   </div>
 {/if}

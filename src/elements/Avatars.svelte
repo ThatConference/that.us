@@ -14,7 +14,7 @@
     <img
       class="inline-block h-12 w-12 rounded-full text-white shadow-solid"
       src="{`${host.profileImage || config.defaultProfileImage}${imageCrop}`}"
-      alt="`${host.firstName} ${host.lastName}`}"
+      alt="{host.firstName} {host.lastName}"
     />
   {/if}
 

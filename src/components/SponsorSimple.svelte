@@ -48,7 +48,8 @@
             class="text-4xl tracking-tight leading-10 font-extrabold
               text-thatBlue-800 sm:text-5xl sm:leading-none md:text-6xl py-4"
           >
-            <span class="text-thatOrange-400">THANK YOU</span> for your support!
+            <span class="text-thatOrange-400">THANK YOU</span>
+            for your support!
           </h2>
         </div>
 
@@ -57,7 +58,7 @@
             <div
               class="col-span-1 flex justify-center md:col-span-2 lg:col-span-1"
             >
-              <Link open href="https://www.thatconference.com/partner/{p.slug}">
+              <Link href="/partner/{p.slug}">
                 <img class="h-12" src="{p.companyLogo}" alt="{p.companyName}" />
               </Link>
             </div>
