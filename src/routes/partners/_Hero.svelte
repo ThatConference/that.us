@@ -87,7 +87,7 @@
       </div>
 
       <div class="leading-8 text-lg font-medium text-gray-900">
-        <p>{partner.aboutUs}</p>
+        <p class="lineBreaks">{partner.aboutUs || ''}</p>
       </div>
     </div>
   </div>
