@@ -14,7 +14,7 @@
     </span>
 
     <h3
-      class="mt-4 text-gray-900 leading-5 text-sm font-semibold tracking-tight uppercase"
+      class="mt-4 text-gray-500 font-bold leading-5 text-md font-semibold tracking-tight uppercase"
     >
       {`${community.name}`}
     </h3>
