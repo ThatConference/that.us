@@ -43,13 +43,17 @@
       <Hero partner="{$state.context.profile}" />
     </div>
 
-    <div in:fade="{{ delay: getDelay() }}">
-      <FeaturedMembers members="{$state.context.profile.members}" />
-    </div>
+    {#if $state.context.profile.members && $state.context.profile.members.length > 0}
+      <div in:fade="{{ delay: getDelay() }}">
+        <FeaturedMembers members="{$state.context.profile.members}" />
+      </div>
+    {/if}
 
-    <div in:fade="{{ delay: getDelay() }}">
-      <Goals goals="{$state.context.profile.goals}" />
-    </div>
+    {#if $state.context.profile.goals && $state.context.profile.goals.length > 0}
+      <div in:fade="{{ delay: getDelay() }}">
+        <Goals goals="{$state.context.profile.goals}" />
+      </div>
+    {/if}
 
     <!-- 
     

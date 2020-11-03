@@ -3,7 +3,7 @@
 
   import { Link } from 'yrv';
 
-  let imageCrop = '?auto=format&w=256&h=256&q=80';
+  let imageCrop = '?auto=format&fit=facearea&facepad=2&w=256&h=256&q=80';
 </script>
 
 <div class="bg-that-offWhite bg-opacity-50">
@@ -35,7 +35,7 @@
                   />
                   <div class="font-medium text-lg leading-6 space-y-1">
                     <h4>{`${member.firstName} ${member.lastName}`}</h4>
-                    <p class="text-indigo-600">{member.jobTitle}</p>
+                    <p class="text-that-orange">{member.jobTitle}</p>
                   </div>
                 </div>
               </Link>
