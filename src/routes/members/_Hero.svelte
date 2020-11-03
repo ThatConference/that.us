@@ -92,7 +92,7 @@
           </div>
         </div>
 
-        <div>
+        <div class="leading-8 text-lg font-medium text-gray-900">
           <p>{member.bio}</p>
         </div>
 

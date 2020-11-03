@@ -2,17 +2,13 @@
   export let partner;
 
   import { onMount, onDestroy } from 'svelte';
-  import { fade } from 'svelte/transition';
   import Icon from 'svelte-awesome';
   import { share } from 'svelte-awesome/icons';
   import Clipboard from 'clipboard';
-  import dayjs from 'dayjs';
 
   import { Standard as StandardButton } from '../../elements/buttons';
-  import { Tag } from '../../elements';
+  import { Standard as StandardLink } from '../../elements/links';
   import Header from '../../elements/layouts/profile/_Header.svelte';
-  import config from '../../config';
-  let imageCrop = '?mask=ellipse&w=500&h=500&fit=crop';
   import { SocialLink } from '../../components/social';
 
   let clipboard;
@@ -57,9 +53,12 @@
         <div class="flex items-center justify-between">
           <div>
             <Header subtitle="Partner Spotlight">{partner.companyName}</Header>
-            <h3 class="font-bold tracking-tight text-gray-500">
-              {`${partner.city}, ${partner.state}`}
-            </h3>
+
+            {#if partner.city && partner.state}
+              <h3 class="font-bold tracking-tight text-gray-500">
+                {`${partner.city}, ${partner.state}`}
+              </h3>
+            {/if}
           </div>
 
           <div class="flex justify-end space-x-4">
@@ -79,22 +78,15 @@
               {/if}
             </button>
 
+            <StandardLink class="h-3/4" href="{partner.website}" open="{true}">
+              Visit
+            </StandardLink>
             <StandardButton class="h-3/4" on:click>Follow</StandardButton>
           </div>
         </div>
 
-        <div>
+        <div class="leading-8 text-lg font-medium text-gray-900">
           <p>{partner.aboutUs}</p>
-        </div>
-
-        <div class="flex flex-wrap justify-center items-center space-x-4">
-          <!-- {#if member.interests}
-            {#each member.interests as interest, i (i)}
-              <div in:fade="{{ delay: i * 100 }}">
-                <Tag>{interest}</Tag>
-              </div>
-            {/each}
-          {/if} -->
         </div>
       </div>
     </div>
