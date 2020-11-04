@@ -23,14 +23,18 @@
 
   const { state, send } = useMachine(createMachine(slug));
 
-  metaTagsStore.set({
-    title: `${slug} - THAT`,
-    description: ``,
-    openGraph: {
-      type: 'website',
-      url: `https://that.us/partners/${slug}`,
-    },
-  });
+  $: if (['profileLoaded'].some($state.matches)) {
+    const { profile } = $state.context;
+
+    metaTagsStore.set({
+      title: `${profile.companyName} - THAT`,
+      description: `${profile.aboutUs}`,
+      openGraph: {
+        type: 'website',
+        url: `https://that.us/partners/${profile.slug}`,
+      },
+    });
+  }
 
   let delayCounter = 200;
   function getDelay(reset = false) {

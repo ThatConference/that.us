@@ -13,14 +13,18 @@
   import metaTagsStore from '../../store/metaTags';
   import { isAuthenticated, token } from '../../utilities/security.js';
 
-  metaTagsStore.set({
-    title: `${slug} - THAT`,
-    description: ``,
-    openGraph: {
-      type: 'website',
-      url: `https://that.us/communities/${slug}`,
-    },
-  });
+  $: if (['communityLoaded'].some($state.matches)) {
+    const { community } = $state.context;
+
+    metaTagsStore.set({
+      title: `${community.name} - THAT`,
+      description: ``,
+      openGraph: {
+        type: 'website',
+        url: `https://that.us/communities/${community.slug}`,
+      },
+    });
+  }
 
   let delayCounter = 200;
   function getDelay(reset = false) {
