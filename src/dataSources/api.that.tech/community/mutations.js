@@ -17,6 +17,8 @@ export default client => {
       .mutation(MUTATION_FOLLOW_COMMUNITY_TOGGLE, variables)
       .toPromise()
       .then(({ data, error }) => {
+        if (error) throw new Error(error);
+
         let results = false;
 
         if (data) {

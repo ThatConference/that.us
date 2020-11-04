@@ -17,8 +17,15 @@ function createConfig(slug) {
     context: {
       slug: slug || undefined,
       profile: undefined,
-      isFollowing: false,
+      followers: [],
       isAuthenticated: false,
+      followMachineServices: undefined,
+    },
+
+    on: {
+      AUTHENTICATED: {
+        actions: ['setIsAuthenticated'],
+      },
     },
 
     states: {
@@ -35,7 +42,7 @@ function createConfig(slug) {
                 message: 'profile api call a success.',
               },
               cond: 'profileFound',
-              actions: ['queryProfileSuccess'],
+              actions: ['queryProfileSuccess', 'createFollowMachineServices'],
               target: 'profileLoaded',
             },
             {
@@ -132,8 +139,8 @@ function createConfig(slug) {
                       meta: {
                         message: 'toggle follow api success.',
                       },
-                      actions: ['toggleFollowSuccess', 'refreshFollowers'],
-                      target: 'loaded',
+                      actions: ['refreshFollowers'],
+                      target: 'loadFollowing',
                     },
                   ],
                   onError: {

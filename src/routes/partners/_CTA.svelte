@@ -1,8 +1,8 @@
 <script>
-  export let community;
+  export let partner;
   export let isFollowing = false;
 
-  const { slug, name } = community;
+  const { slug, companyName } = partner;
   const handle = `@${slug}`;
 
   import { createEventDispatcher } from 'svelte';
@@ -21,17 +21,17 @@
     sm:text-4xl sm:leading-10"
   >
     Never miss another
-    <span class="text-that-orange">{name}</span>
+    <span class="text-that-orange">{companyName}</span>
     Activity!
     <br />
-    <span class="text-that-orange">Follow {handle} today!</span>
+    <span class="text-that-orange">Follow us today!</span>
   </h2>
 
   <span slot="actionPrimary">
     {#if $isAuthenticated}
       <StandardButton
         class="h-3/4"
-        on:click="{() => dispatch('community-follow')}"
+        on:click="{() => dispatch('TOGGLE_FOLLOW')}"
       >
         {#if isFollowing}Un-Follow{:else}Follow{/if}
         {handle}
@@ -39,7 +39,7 @@
     {:else}
       <StandardButton
         class="h-3/4"
-        on:click="{() => login(`/communities/${slug}`)}"
+        on:click="{() => login(`/partners/${slug}`)}"
       >
         Login and Follow Today
       </StandardButton>

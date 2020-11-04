@@ -44,6 +44,12 @@ function createMachine(slug) {
         isAuthenticated: false,
       },
 
+      on: {
+        AUTHENTICATED: {
+          actions: ['setIsAuthenticated'],
+        },
+      },
+
       states: {
         loading: {
           meta: {

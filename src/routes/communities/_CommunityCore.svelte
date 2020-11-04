@@ -14,11 +14,11 @@
   import { isAuthenticated, token } from '../../utilities/security.js';
 
   metaTagsStore.set({
-    title: 'Community - THAT',
-    description: '',
+    title: `${slug} - THAT`,
+    description: ``,
     openGraph: {
       type: 'website',
-      url: `https://that.us/communities/`,
+      url: `https://that.us/communities/${slug}`,
     },
   });
 
@@ -40,9 +40,6 @@
   }
 </script>
 
-<!-- {(console.log({ $state }), '')} -->
-
-<!-- {#if [{ init: 'loaded' }].some($state.matches)} -->
 {#if ['communityLoaded'].some($state.matches)}
   <div class="flex flex-col">
     <div in:fade="{{ delay: getDelay() }}">
