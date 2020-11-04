@@ -9,23 +9,30 @@
   import Hero from './_Hero.svelte';
   import FeaturedMembers from './_FeaturedMembers.svelte';
   import Goals from './_Goals.svelte';
+  import Followers from './_Followers.svelte';
+  import CTA from './_CTA.svelte';
 
   // utilities
+  import {
+    isAuthenticated,
+    token,
+    thatProfile,
+  } from '../../utilities/security.js';
   import createMachine from './machines/partner';
   import metaTagsStore from '../../store/metaTags';
 
+  const { state, send } = useMachine(createMachine(slug));
+
   metaTagsStore.set({
-    title: 'Partner Showcase - THAT',
-    description: '',
+    title: `${slug} - THAT`,
+    description: ``,
     openGraph: {
       type: 'website',
       url: `https://that.us/partners/${slug}`,
     },
   });
 
-  const { state, send } = useMachine(createMachine(slug));
   let delayCounter = 200;
-
   function getDelay(reset = false) {
     let current = delayCounter;
     delayCounter = delayCounter + 200;
@@ -33,14 +40,26 @@
     if (reset) delayCounter = 200;
     return current;
   }
+
+  $: if ($isAuthenticated && $token) {
+    send('AUTHENTICATED', { status: true });
+  } else {
+    send('AUTHENTICATED', { status: false });
+  }
 </script>
 
-{(console.log({ $state }), '')}
+<!-- {(console.log({ $state }), '')} -->
 
 {#if ['profileLoaded'].some($state.matches)}
   <div class="flex flex-col">
     <div in:fade="{{ delay: getDelay() }}">
-      <Hero partner="{$state.context.profile}" />
+      <Hero
+        partner="{$state.context.profile}"
+        isFollowing="{$state.context.followers.includes($thatProfile.id)}"
+        on:TOGGLE_FOLLOW="{() => send('FOLLOW', {
+            id: $state.context.profile.id,
+          })}"
+      />
     </div>
 
     {#if $state.context.profile.members && $state.context.profile.members.length > 0}
@@ -55,14 +74,22 @@
       </div>
     {/if}
 
-    <!-- 
-    
-    <div in:fade="{{ delay: getDelay() }}">
-    </div>
+    {#if $state.context.followers.length > 0}
+      <div in:fade="{{ delay: getDelay() }}">
+        <Followers
+          stateMachineService="{$state.context.followMachineServices}"
+        />
+      </div>
+    {/if}
 
     <div in:fade="{{ delay: getDelay(true) }}">
-    </div> 
-
-    -->
+      <CTA
+        partner="{$state.context.profile}"
+        isFollowing="{$state.context.followers.includes($thatProfile.id)}"
+        on:TOGGLE_FOLLOW="{() => send('FOLLOW', {
+            id: $state.context.profile.id,
+          })}"
+      />
+    </div>
   </div>
 {/if}

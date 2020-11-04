@@ -1,7 +1,8 @@
 <script>
   export let partner;
+  export let isFollowing = false;
 
-  import { onMount, onDestroy } from 'svelte';
+  import { onMount, onDestroy, createEventDispatcher } from 'svelte';
   import Icon from 'svelte-awesome';
   import { share } from 'svelte-awesome/icons';
   import Clipboard from 'clipboard';
@@ -10,7 +11,9 @@
   import { Standard as StandardButton } from '../../elements/buttons';
   import { Standard as StandardLink } from '../../elements/links';
   import { SocialLink } from '../../components/social';
+  import { isAuthenticated } from '../../utilities/security.js';
 
+  const dispatch = createEventDispatcher();
   let clipboard;
   let copiedText;
 
@@ -38,7 +41,7 @@
       <div class="flex justify-between">
         <div>
           <div class="transform hover:scale-110 cursor-pointer">
-            <Link href="{partner.website}">
+            <Link href="{partner.website}?utm_source=THAT">
               <img
                 class="w-96"
                 src="{partner.companyLogo}"
@@ -78,10 +81,21 @@
               {/if}
             </button>
 
-            <StandardLink class="h-3/4" href="{partner.website}" open="{true}">
+            <StandardLink
+              class="h-3/4"
+              href="{partner.website}?utm_source=THAT"
+              open="{true}"
+            >
               Visit Us
             </StandardLink>
-            <StandardButton class="h-3/4" on:click>Follow Us</StandardButton>
+            {#if $isAuthenticated}
+              <StandardButton
+                class="h-3/4"
+                on:click="{() => dispatch('TOGGLE_FOLLOW')}"
+              >
+                {#if !isFollowing}Follow{:else}Un-Follow{/if}
+              </StandardButton>
+            {/if}
           </div>
         </div>
       </div>

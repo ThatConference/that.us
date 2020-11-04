@@ -58,7 +58,7 @@
             <div
               class="col-span-1 flex justify-center md:col-span-2 lg:col-span-1"
             >
-              <Link href="/partner/{p.slug}">
+              <Link href="/partners/{p.slug}">
                 <img class="h-12" src="{p.companyLogo}" alt="{p.companyName}" />
               </Link>
             </div>

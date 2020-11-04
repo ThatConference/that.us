@@ -79,6 +79,45 @@ export const QUERY_PARTNER = `
   }
 `;
 
+export const QUERY_FOLLOWERS = `
+  query queryPartnerFollowersById($id: ID) {
+    partners {
+      partner(findBy: {id: $id}) {
+        followCount
+        followers {
+          cursor
+          members {
+            id
+            profileSlug
+            profileImage
+            firstName
+            lastName
+          }
+        }
+      }
+    }
+  }
+`;
+
+export const QUERY_NEXT_FOLLOWERS = `
+  query queryPartnerFollowersById($id: ID, $cursor: String) {
+    partners {
+      partner(findBy: {id: $id}) {
+        followers(cursor: $cursor) {
+          cursor
+          members {
+            id
+            profileSlug
+            profileImage
+            firstName
+            lastName
+          }
+        }
+      }
+    }
+  }
+`;
+
 function createSocialLinks(partner) {
   const socialLinks = [];
 
@@ -149,9 +188,42 @@ export default client => {
       });
   };
 
+  const queryFollowers = id => {
+    const variables = { id };
+    return client
+      .query(QUERY_FOLLOWERS, variables, {
+        fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
+      })
+      .toPromise()
+      .then(r => {
+        if (r.error) throw new Error(r.error);
+
+        const { partner } = r.data.partners;
+
+        return partner || null; // followerCount and followers are in partner
+      });
+  };
+
+  const queryNextFollowers = (id, cursor) => {
+    const variables = { id, cursor };
+    return client
+      .query(QUERY_NEXT_FOLLOWERS, variables, {
+        fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
+      })
+      .toPromise()
+      .then(r => {
+        if (r.error) throw new Error(r.error);
+
+        const { partner } = r.data.partners;
+        return partner ? partner.followers : [];
+      });
+  };
+
   return {
     getEventPartners,
     getNextEventPartners,
     getPartner,
+    queryFollowers,
+    queryNextFollowers,
   };
 };

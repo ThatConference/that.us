@@ -13,7 +13,7 @@
     alt=""
   />
 
-  <h3 class="mt-2 text-gray-900 text-sm leading-5 font-medium">
+  <h3 class="mt-2 text-gray-500 text-md leading-5 font-semibold tracking-tight">
     {`${companyName}`}
   </h3>
   <dl class="mt-1 flex-grow flex flex-col justify-between">

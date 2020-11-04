@@ -3,10 +3,14 @@ import { navigateTo } from 'yrv';
 import { Machine, assign, spawn, send } from 'xstate';
 
 import partnerQueryApi from '../../../dataSources/api.that.tech/partner/queries';
+import partnerMutationsApi from '../../../dataSources/api.that.tech/partner/mutations';
 import createPartnerConfig from './partnerConfig';
 
+import createFollowMachine from './followers';
+
 function createServices(client) {
-  const { getPartner } = partnerQueryApi(client);
+  const { getPartner, queryFollowers } = partnerQueryApi(client);
+  const { toggleFollow } = partnerMutationsApi(client);
 
   return {
     guards: {
@@ -19,6 +23,8 @@ function createServices(client) {
 
     services: {
       queryProfile: context => getPartner(context.slug),
+      queryMyFollowing: context => queryFollowers(context.profile.id),
+      toggleFollow: context => toggleFollow(context.profile.id),
     },
 
     actions: {
@@ -29,23 +35,22 @@ function createServices(client) {
         isAuthenticated: (_, event) => event.status,
       }),
 
+      refreshFollowers: send('REFRESH', {
+        to: context => context.followMachineServices,
+      }),
+
       queryProfileSuccess: assign({
         profile: (_, { data }) => data,
       }),
 
       queryMyFollowingSuccess: assign({
-        isFollowing: (context, event) =>
-          event.data.includes(context.community.id),
+        followers: (_, { data }) => data.followers.members.map(f => f.id),
       }),
 
-      toggleFollowSuccess: assign({
-        isFollowing: (_, event) => event.data,
+      createFollowMachineServices: assign({
+        followMachineServices: context =>
+          spawn(createFollowMachine(context.profile, client)),
       }),
-
-      // createFollowMachineServices: assign({
-      //   followMachineServices: context =>
-      //     spawn(createFollowMachine(context.community, client)),
-      // }),
     },
   };
 }
