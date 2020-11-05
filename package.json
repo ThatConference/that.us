@@ -31,7 +31,7 @@
     "@sveltecasts/svelte-youtube": "0.0.5",
     "@tailwindcss/ui": "^0.7.2",
     "@urql/svelte": "^1.1.2",
-    "@xstate/inspect": "^0.1.1",
+    "@xstate/inspect": "^0.2.0",
     "all-contributors-cli": "^6.19.0",
     "archieml": "^0.4.2",
     "autoprefixer": "^10.0.1",
