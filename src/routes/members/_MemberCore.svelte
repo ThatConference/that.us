@@ -1,36 +1,39 @@
 <script>
-  export let member;
-  
+  export let slug;
+
   import { fade } from 'svelte/transition';
-  import {navigateTo} from 'yrv';
-  
-  import metaTagsStore from '../../store/metaTags';
-  
-  import NewestFollowers from './_NewestFollowers.svelte';
+  import { navigateTo } from 'yrv';
+  import { useMachine } from 'xstate-svelte';
+
+  import Followers from './_Followers.svelte';
   import CTA from './_CTA.svelte';
-  import UpNext from './_UpNext.svelte';
   import LifeHack from './_LifeHack.svelte';
   import MeritBadges from './_MeritBadges.svelte';
   import Hero from './_Hero.svelte';
-  
   import WarningModal from '../../components/notifications/Warning.svelte';
-  
-  if (!member) {
-    navigateTo('/not-found');
-  }
+  import UpNextMember from '../../components/activities/UpNextMember.svelte';
 
-  metaTagsStore.set({
-    title: `${member.firstName} ${member.lastName} - THAT`,
-    description: '',
-    openGraph: {
-      type: 'website',
-      url: `https://that.us/members/${member.slug}`,
-    },
-  });
+  import {
+    isAuthenticated,
+    token,
+    thatProfile,
+  } from '../../utilities/security.js';
+  import createMachine from './machines/member';
+  import metaTagsStore from '../../store/metaTags';
 
-  let showModal = false;
-  function handleFollow() {
-    showModal = true;
+  const { state, send } = useMachine(createMachine(slug));
+
+  $: if (['profileLoaded'].some($state.matches)) {
+    const { profile } = $state.context;
+
+    metaTagsStore.set({
+      title: `${profile.firstName} ${profile.lastName} - THAT`,
+      description: `${profile.bio}`,
+      openGraph: {
+        type: 'website',
+        url: `https://that.us/members/${profile.slug}`,
+      },
+    });
   }
 
   let delayCounter = 200;
@@ -40,44 +43,55 @@
 
     return current;
   }
+
+  $: if ($isAuthenticated && $token) {
+    send('AUTHENTICATED', { status: true });
+  } else {
+    send('AUTHENTICATED', { status: false });
+  }
 </script>
 
-{#if member}
+{#if ['profileLoaded'].some($state.matches)}
   <div class="flex flex-col">
     <div in:fade="{{ delay: getDelay() }}">
-      <Hero member="{member}" on:click="{handleFollow}" />
+      <Hero
+        isFollowing="{$state.context.followers.includes($thatProfile.id)}"
+        member="{$state.context.profile}"
+        on:TOGGLE_FOLLOW="{() => send('FOLLOW', {
+            id: $state.context.profile.profileSlug,
+          })}"
+      />
     </div>
 
-    {#if member.lifeHack}
+    {#if $state.context.profile.lifeHack}
       <div in:fade="{{ delay: getDelay() }}">
         <LifeHack
-          quote="{member.lifeHack}"
-          name="{`${member.firstName} ${member.lastName}`}"
+          quote="{$state.context.profile.lifeHack}"
+          name="{`${$state.context.profile.firstName} ${$state.context.profile.lastName}`}"
         />
       </div>
     {/if}
 
     <div in:fade="{{ delay: getDelay() }}">
-      <UpNext activities="{member.sessions}" />
+      <UpNextMember
+        stateMachineService="{$state.context.activitiesMachineServices}"
+      />
     </div>
 
     <div in:fade="{{ delay: getDelay() }}">
-      <CTA memberSlug="{member.profileSlug}" on:click="{handleFollow}" />
+      <Followers stateMachineService="{$state.context.followMachineServices}" />
 
-      {#if member.earnedMeritBadges.length > 0}
-        <MeritBadges meritBadges="{member.earnedMeritBadges}" />
+      {#if $state.context.profile.earnedMeritBadges.length > 0}
+        <MeritBadges meritBadges="{$state.context.profile.earnedMeritBadges}" />
       {/if}
 
-      {#if member.followers && member.followers.length > 0}
-        <NewestFollowers />
-      {/if}
-    </div>
-
-    {#if showModal}
-      <WarningModal
-        on:click="{() => (showModal = false)}"
-        message="Not, yet. We're still working on this feature. Check back soon."
+      <CTA
+        isFollowing="{$state.context.followers.includes($thatProfile.id)}"
+        profile="{$state.context.profile}"
+        on:TOGGLE_FOLLOW="{() => send('FOLLOW', {
+            id: $state.context.profile.profileSlug,
+          })}"
       />
-    {/if}
+    </div>
   </div>
 {/if}

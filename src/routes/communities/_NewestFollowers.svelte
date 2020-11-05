@@ -37,7 +37,3 @@
     </div>
   </section>
 {/if}
-
-{#if $state.matches('loadingFailed')}
-  <p>error</p>
-{/if}

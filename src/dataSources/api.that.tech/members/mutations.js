@@ -71,6 +71,19 @@ export const CLAIM_TICKET = `
   }
 `;
 
+export const MUTATION_FOLLOW_MEMBER_TOGGLE = `
+  mutation followPartner($target: FindMemberInput!) {
+    members {
+      member {
+        followToggle(target: $target) {
+          id
+          profileSlug
+        }
+      }
+    }
+  }
+`;
+
 export default client => {
   const createProfile = profile => {
     const variables = { profile };
@@ -106,9 +119,29 @@ export default client => {
       });
   };
 
+  function toggleFollow(slug) {
+    const variables = { target: { slug } };
+    return client
+      .mutation(MUTATION_FOLLOW_MEMBER_TOGGLE, variables)
+      .toPromise()
+      .then(({ data, error }) => {
+        if (error) throw new Error(error);
+
+        let results;
+
+        if (data) {
+          const { followToggle } = data.members.member;
+          results = followToggle || null;
+        }
+
+        return results;
+      });
+  }
+
   return {
     createProfile,
     updateProfile,
     claimTicket,
+    toggleFollow,
   };
 };

@@ -30,18 +30,16 @@
               <Avatars attendees="{$state.context.items}" />
             </div>
 
-            <!-- <div class="flex flex-row-reverse">
-        <StandardButton class="h-3/4" on:click>
-          View Everyone
-        </StandardButton>
-      </div> -->
+            <!-- 
+              <div class="flex flex-row-reverse">
+                  <StandardButton class="h-3/4" on:click>
+                    View Everyone
+                  </StandardButton>
+              </div> 
+            -->
           </div>
         </div>
       </div>
     </section>
   </div>
-{/if}
-
-{#if $state.matches('loadingFailed')}
-  <p>error</p>
 {/if}

@@ -23,7 +23,7 @@
       class="-ml-2 inline-block h-12 w-12 rounded-full text-white shadow-solid"
       class:-ml-2="{host || i > 0}"
     >
-      <Link open href="/members/{attendee.profileSlug}">
+      <Link reload href="/members/{attendee.profileSlug}">
         <img
           src="{`${attendee.profileImage || config.defaultProfileImage}${imageCrop}`}"
           alt="{`${attendee.firstName} ${attendee.lastName}`}"

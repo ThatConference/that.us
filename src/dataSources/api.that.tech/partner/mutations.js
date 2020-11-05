@@ -11,7 +11,7 @@ export const MUTATION_FOLLOW_PARTNER_TOGGLE = `
 `;
 
 export default client => {
-  async function toggleFollow(partnerId) {
+  function toggleFollow(partnerId) {
     const variables = { partnerId };
     return client
       .mutation(MUTATION_FOLLOW_PARTNER_TOGGLE, variables)
