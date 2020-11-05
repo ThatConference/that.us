@@ -46,7 +46,7 @@
       >
         {#if $state.matches('loaded')}
           {#if $state.context.items.length > 0}
-            {#each $state.context.items.slice(0, 6) as s (s.id)}
+            {#each $state.context.items as s (s.id)}
               <li in:fade>
                 <FeaturedActivity {...s} />
               </li>
@@ -101,7 +101,3 @@
     </div>
   </div>
 </section>
-
-{#if $state.matches('loadedFailed')}
-  <p>error</p>
-{/if}

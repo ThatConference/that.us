@@ -36,7 +36,8 @@
       >
         {#if $state.matches('loaded')}
           {#if $state.context.items.length > 0}
-            {#each $state.context.items as s (s.id)}
+            <!-- slicing off and taking the first 6 as we don't have paging on the API -->
+            {#each $state.context.items.slice(0, 6) as s (s.id)}
               <li>
                 <FeaturedActivityDetail {...s} />
               </li>
@@ -45,42 +46,42 @@
         {/if}
       </ul>
 
-      <div class="flex justify-end">
-        {#if ['loaded'].some($state.matches)}
-          <button
-            on:click="{() => send('NEXT')}"
-            class="px-8 py-2 rounded-md shadow text-base leading-6
-                    bg-that-blue text-white hover:bg-thatBlue-400
-                    focus:bg-thatBlue-400 focus:text-white focus:outline-none
-                    focus:shadow-outline-thatBlue-500 focus:border-thatBlue-800 
-                    transition duration-150 ease-in-out md:text-lg md:px-10"
-          >
-            <span>View Next</span>
-          </button>
-        {/if}
+      <!-- 
+        TODO. Stubbed out for once we have paging on the API ready. The statemachine already supports it.
 
-        {#if ['loadedAll'].some($state.matches)}
-          <button
-            on:click="{() => send('REFRESH')}"
-            class="px-8 py-2 rounded-md shadow text-base leading-6
-                      bg-that-blue  
-                      text-white
-                      hover:bg-thatBlue-400
-                      focus:bg-thatBlue-400 
-                      focus:text-white 
-                      focus:outline-none
-                      focus:shadow-outline-thatBlue-500 
-                      focus:border-thatBlue-800 
+        <div class="flex justify-end">
+          {#if ['loaded'].some($state.matches)}
+            <button
+              on:click="{() => send('NEXT')}"
+              class="px-8 py-2 rounded-md shadow text-base leading-6
+                      bg-that-blue text-white hover:bg-thatBlue-400
+                      focus:bg-thatBlue-400 focus:text-white focus:outline-none
+                      focus:shadow-outline-thatBlue-500 focus:border-thatBlue-800 
                       transition duration-150 ease-in-out md:text-lg md:px-10"
-          >
-            <span>Refresh</span>
-          </button>
-        {/if}
-      </div>
+            >
+              <span>View Next</span>
+            </button>
+          {/if}
+
+          {#if ['loadedAll'].some($state.matches)}
+            <button
+              on:click="{() => send('REFRESH')}"
+              class="px-8 py-2 rounded-md shadow text-base leading-6
+                        bg-that-blue  
+                        text-white
+                        hover:bg-thatBlue-400
+                        focus:bg-thatBlue-400 
+                        focus:text-white 
+                        focus:outline-none
+                        focus:shadow-outline-thatBlue-500 
+                        focus:border-thatBlue-800 
+                        transition duration-150 ease-in-out md:text-lg md:px-10"
+            >
+              <span>Refresh</span>
+            </button>
+          {/if}
+        </div>
+      -->
     </div>
   </div>
 </section>
-
-{#if $state.matches('loadedFailed')}
-  <p>error</p>
-{/if}

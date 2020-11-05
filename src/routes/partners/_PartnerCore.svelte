@@ -52,8 +52,6 @@
   }
 </script>
 
-<!-- {(console.log({ $state }), '')} -->
-
 {#if ['profileLoaded'].some($state.matches)}
   <div class="flex flex-col">
     <div in:fade="{{ delay: getDelay() }}">
