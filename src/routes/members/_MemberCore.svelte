@@ -7,11 +7,11 @@
 
   import Followers from './_Followers.svelte';
   import CTA from './_CTA.svelte';
-  import UpNext from './_UpNext.svelte';
   import LifeHack from './_LifeHack.svelte';
   import MeritBadges from './_MeritBadges.svelte';
   import Hero from './_Hero.svelte';
   import WarningModal from '../../components/notifications/Warning.svelte';
+  import UpNextMember from '../../components/activities/UpNextMember.svelte';
 
   import {
     isAuthenticated,
@@ -74,9 +74,11 @@
       </div>
     {/if}
 
-    <!-- <div in:fade="{{ delay: getDelay() }}">
-      <UpNext activities="{member.sessions}" />
-    </div> -->
+    <div in:fade="{{ delay: getDelay() }}">
+      <UpNextMember
+        stateMachineService="{$state.context.activitiesMachineServices}"
+      />
+    </div>
 
     <div in:fade="{{ delay: getDelay() }}">
       <Followers stateMachineService="{$state.context.followMachineServices}" />

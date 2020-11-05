@@ -4,6 +4,7 @@ import { Machine, assign, spawn, send } from 'xstate';
 
 import profileConfig from '../../../machines/profile';
 import followMachine from './followers';
+import activitiesMachine from './activities';
 
 import memberQueryApi from '../../../dataSources/api.that.tech/members/queries';
 import memberMutationApi from '../../../dataSources/api.that.tech/members/mutations';
@@ -50,6 +51,11 @@ function createServices(client) {
       createFollowMachineServices: assign({
         followMachineServices: context =>
           spawn(followMachine(context.profile, client)),
+      }),
+
+      createActivitiesMachineServices: assign({
+        activitiesMachineServices: context =>
+          spawn(activitiesMachine(context.profile, client)),
       }),
     },
   };

@@ -20,6 +20,7 @@ function createConfig(slug) {
       followers: [],
       isAuthenticated: false,
       followMachineServices: undefined,
+      activitiesMachineServices: undefined,
     },
 
     on: {
@@ -42,7 +43,11 @@ function createConfig(slug) {
                 message: 'profile api call a success.',
               },
               cond: 'profileFound',
-              actions: ['queryProfileSuccess', 'createFollowMachineServices'],
+              actions: [
+                'queryProfileSuccess',
+                'createFollowMachineServices',
+                'createActivitiesMachineServices',
+              ],
               target: 'profileLoaded',
             },
             {

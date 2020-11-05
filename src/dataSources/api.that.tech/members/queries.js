@@ -94,6 +94,21 @@ export const QUERY_MEMBER_BY_SLUG = `
   }
 `;
 
+export const QUERY_MEMBER_ACTIVITIES = `
+  query getMemberActivities ($slug: Slug!, $sessionStartDate: Date, $filter: AcceptedSessionFilter) {
+    members {
+      member(slug: $slug) {
+        sessions(filter: $filter, asOfDate: $sessionStartDate) {
+          id
+          title
+          startTime
+          shortDescription
+        }
+      }
+    }
+  }
+`;
+
 export const QUERY_FOLLOWERS = `
   query queryMemberFollowers($slug: Slug!) {
     members {
@@ -182,6 +197,46 @@ export default client => {
       .then(r => r.data.members.member);
   };
 
+  const queryMemberActivities = (
+    slug,
+    sessionStartDate = new Date(new Date().setHours(0, 0, 0, 0)),
+    filter = 'UPCOMING',
+  ) => {
+    const variables = {
+      slug,
+      sessionStartDate,
+      filter,
+    };
+    return client
+      .query(QUERY_MEMBER_ACTIVITIES, variables, {
+        fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
+      })
+      .toPromise()
+      .then(r => {
+        if (r.error) throw new Error(r.error);
+
+        return r.data.members.member.sessions;
+      });
+  };
+
+  const queryNextMemberActivities = (
+    slug,
+    sessionStartDate = new Date(new Date().setHours(0, 0, 0, 0)),
+    filter = 'UPCOMING',
+  ) => {
+    const variables = {
+      slug,
+      sessionStartDate,
+      filter,
+    };
+    return client
+      .query(QUERY_MEMBER_ACTIVITIES, variables, {
+        fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
+      })
+      .toPromise()
+      .then(r => r.data.members.member.sessions);
+  };
+
   const queryMembersNext = (after, pageSize = 50) => {
     const variables = { pageSize, after };
     return client
@@ -228,6 +283,8 @@ export default client => {
     queryMembers,
     queryMembersNext,
     queryMemberBySlug,
+    queryMemberActivities,
+    queryNextMemberActivities,
     queryFollowers,
     queryNextFollowers,
     isSlugTaken,
