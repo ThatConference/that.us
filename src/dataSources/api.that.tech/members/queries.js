@@ -94,6 +94,45 @@ export const QUERY_MEMBER_BY_SLUG = `
   }
 `;
 
+export const QUERY_FOLLOWERS = `
+  query queryMemberFollowers($slug: Slug!) {
+    members {
+      member(slug: $slug) {
+        followCount
+        followers {
+          cursor
+          profiles {
+            id
+            profileSlug
+            profileImage
+            firstName
+            lastName
+          }
+        }
+      }
+    }
+  }
+`;
+
+export const QUERY_NEXT_FOLLOWERS = `
+  query queryNextMemberFollowers($slug: Slug!, $cursor: String) {
+    members {
+      member(slug: $slug) {
+        followers(cursor: $cursor) {
+          cursor
+          profiles {
+            id
+            profileSlug
+            profileImage
+            firstName
+            lastName
+          }
+        }
+      }
+    }
+  }
+`;
+
 function reformatResults(results) {
   const { members } = results.data.members;
   return members;
@@ -143,7 +182,7 @@ export default client => {
       .then(r => r.data.members.member);
   };
 
-  const queryMembersNext = async (after, pageSize = 50) => {
+  const queryMembersNext = (after, pageSize = 50) => {
     const variables = { pageSize, after };
     return client
       .query(QUERY_MEMBERS_NEXT, variables, {
@@ -153,10 +192,44 @@ export default client => {
       .then(reformatResults);
   };
 
+  const queryFollowers = slug => {
+    const variables = { slug };
+
+    return client
+      .query(QUERY_FOLLOWERS, variables, {
+        fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
+      })
+      .toPromise()
+      .then(r => {
+        if (r.error) throw new Error(r.error);
+
+        const { member } = r.data.members;
+
+        return member || null; // followerCount and followers are in partner
+      });
+  };
+
+  const queryNextFollowers = (id, cursor) => {
+    const variables = { id, cursor };
+    return client
+      .query(QUERY_NEXT_FOLLOWERS, variables, {
+        fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
+      })
+      .toPromise()
+      .then(r => {
+        if (r.error) throw new Error(r.error);
+
+        const { member } = r.data.members;
+        return member || null;
+      });
+  };
+
   return {
     queryMembers,
     queryMembersNext,
     queryMemberBySlug,
+    queryFollowers,
+    queryNextFollowers,
     isSlugTaken,
   };
 };

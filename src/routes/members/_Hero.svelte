@@ -1,7 +1,8 @@
 <script>
   export let member;
+  export let isFollowing = false;
 
-  import { onMount, onDestroy } from 'svelte';
+  import { onMount, onDestroy, createEventDispatcher } from 'svelte';
   import { fade } from 'svelte/transition';
   import Icon from 'svelte-awesome';
   import { share } from 'svelte-awesome/icons';
@@ -14,11 +15,13 @@
   import config from '../../config';
   let imageCrop = '?mask=ellipse&w=500&h=500&fit=crop';
   import { SocialLink } from '../../components/social';
+  import { isAuthenticated } from '../../utilities/security.js';
 
   let userProfileImage = member.profileImage
     ? `${member.profileImage}${imageCrop}`
     : config.defaultProfileImage;
 
+  const dispatch = createEventDispatcher();
   let clipboard;
   let copiedText;
 
@@ -88,7 +91,14 @@
               {/if}
             </button>
 
-            <StandardButton class="h-3/4" on:click>Follow</StandardButton>
+            {#if $isAuthenticated}
+              <StandardButton
+                class="h-3/4"
+                on:click="{() => dispatch('TOGGLE_FOLLOW')}"
+              >
+                {#if !isFollowing}Follow{:else}Un-Follow{/if}
+              </StandardButton>
+            {/if}
           </div>
         </div>
 

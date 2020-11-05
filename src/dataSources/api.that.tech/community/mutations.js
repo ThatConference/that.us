@@ -11,7 +11,7 @@ export const MUTATION_FOLLOW_COMMUNITY_TOGGLE = `
 `;
 
 export default client => {
-  async function toggleFollow(communityId) {
+  function toggleFollow(communityId) {
     const variables = { communityId };
     return client
       .mutation(MUTATION_FOLLOW_COMMUNITY_TOGGLE, variables)

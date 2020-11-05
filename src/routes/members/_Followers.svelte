@@ -20,7 +20,7 @@
             class="my-2 text-3xl leading-8 font-extrabold tracking-tight
       text-gray-900 sm:text-4xl sm:leading-10"
           >
-            Our Followers
+            My Followers
           </h2>
         </div>
 
@@ -32,9 +32,9 @@
 
             <!-- 
               <div class="flex flex-row-reverse">
-                  <StandardButton class="h-3/4" on:click>
-                    View Everyone
-                  </StandardButton>
+                <StandardButton class="h-3/4" on:click>
+                  View Everyone
+                </StandardButton>
               </div> 
             -->
           </div>
