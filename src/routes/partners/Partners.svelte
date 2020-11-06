@@ -10,6 +10,7 @@
 
   import metaTagsStore from '../../store/metaTags';
   import partnerMachine from './machines/partners';
+  import { debug } from '../../config';
 
   metaTagsStore.set({
     title: 'Partners - THAT',
@@ -21,7 +22,9 @@
     },
   });
 
-  const { state, send } = useMachine(partnerMachine());
+  const { state, send } = useMachine(partnerMachine(), {
+    devTools: debug.xstate,
+  });
 
   function handleNext() {
     send('NEXT');

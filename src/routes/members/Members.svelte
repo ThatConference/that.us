@@ -8,10 +8,13 @@
   import { Waiting } from '../../elements';
   import Hero from '../../components/members/Hero.svelte';
   import MemberCard from '../../components/members/MemberCard.svelte';
+  import { debug } from '../../config';
 
   import memberMachine from './machines/members';
 
-  const { state, send } = useMachine(memberMachine());
+  const { state, send } = useMachine(memberMachine(), {
+    devTools: debug.xstate,
+  });
 
   metaTagsStore.set({
     title: 'Members - THAT',

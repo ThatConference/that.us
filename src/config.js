@@ -29,3 +29,7 @@ export const events = {
     title: 'THAT',
   },
 };
+
+export const debug = {
+  xstate: false,
+};

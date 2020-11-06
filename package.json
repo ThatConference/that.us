@@ -13,7 +13,7 @@
   "license": "GPL-3.0",
   "scripts": {
     "build": "rollup -c",
-    "dev": "cross-env DEBUG=* rollup -c -w",
+    "dev": "rollup -c -w",
     "start": "sirv public --single",
     "lint": "eslint src/**/*.js",
     "test": "jest --coverage --passWithNoTests",

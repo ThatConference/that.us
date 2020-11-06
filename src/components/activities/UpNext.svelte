@@ -5,13 +5,16 @@
   import { Link } from 'yrv';
   import { fade } from 'svelte/transition';
 
+  import { debug } from '../../config';
   import {
     FeaturedActivity,
     FeaturedActivityAdd,
   } from '../../elements/activities';
   import Action from '../../elements/Action.svelte';
 
-  const { state, send } = useService(stateMachineService);
+  const { state, send } = useService(stateMachineService, {
+    devTools: debug.xstate,
+  });
 </script>
 
 <section class="py-12 lg:py-16 bg-thatBlue-700">

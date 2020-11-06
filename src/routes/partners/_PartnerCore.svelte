@@ -20,8 +20,11 @@
   } from '../../utilities/security.js';
   import createMachine from './machines/partner';
   import metaTagsStore from '../../store/metaTags';
+  import { debug } from '../../config';
 
-  const { state, send } = useMachine(createMachine(slug));
+  const { state, send } = useMachine(createMachine(slug), {
+    devTools: debug.xstate,
+  });
 
   $: if (['profileLoaded'].some($state.matches)) {
     const { profile } = $state.context;

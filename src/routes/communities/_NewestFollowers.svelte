@@ -5,8 +5,9 @@
 
   // import { Standard as StandardButton } from '../../elements/buttons';
   import { Avatars } from '../../elements';
+  import { debug } from '../../config';
 
-  const { state } = useService(stateMachineService);
+  const { state } = useService(stateMachineService, { devTools: debug.xstate });
 </script>
 
 {#if $state.matches('loaded')}
