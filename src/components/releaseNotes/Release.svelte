@@ -44,8 +44,12 @@
                 class="flex space-x-3 items-center hover:text-that-blue
                   cursor-pointer pb-2"
               >
-                <Icon data="{externalLink}" class="h-4 w-4" />
-                <StandardLink href="{f.url}">{f.feature}</StandardLink>
+                <div>
+                  <Icon data="{externalLink}" class="h-4 w-4" />
+                </div>
+                <div>
+                  <StandardLink href="{f.url}">{f.feature}</StandardLink>
+                </div>
               </div>
             </li>
           {/each}
