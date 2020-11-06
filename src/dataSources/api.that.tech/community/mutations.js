@@ -22,8 +22,8 @@ export default client => {
         let results = false;
 
         if (data) {
-          const { toggle: fav } = data.communities.favoriting;
-          results = !!fav;
+          const { toggle } = data.communities.favoriting;
+          results = !!toggle;
         }
 
         return results;

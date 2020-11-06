@@ -17,7 +17,7 @@ function createConfig(slug) {
     context: {
       slug: slug || undefined,
       profile: undefined,
-      followers: [],
+      isFollowing: false,
       isAuthenticated: false,
       followMachineServices: undefined,
       activitiesMachineServices: undefined,
@@ -144,7 +144,7 @@ function createConfig(slug) {
                       meta: {
                         message: 'toggle follow api success.',
                       },
-                      actions: ['refreshFollowers'],
+                      actions: ['toggeFollowSuccess', 'refreshFollowers'],
                       target: 'loadFollowing',
                     },
                   ],

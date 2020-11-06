@@ -17,7 +17,6 @@ function createConfig(slug) {
     context: {
       slug: slug || undefined,
       profile: undefined,
-      followers: [],
       isAuthenticated: false,
       followMachineServices: undefined,
     },

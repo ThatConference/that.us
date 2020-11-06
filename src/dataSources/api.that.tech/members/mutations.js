@@ -127,11 +127,11 @@ export default client => {
       .then(({ data, error }) => {
         if (error) throw new Error(error);
 
-        let results;
+        let results = false;
 
         if (data) {
           const { followToggle } = data.members.member;
-          results = followToggle || null;
+          results = !!followToggle;
         }
 
         return results;

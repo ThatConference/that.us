@@ -58,7 +58,7 @@
   <div class="flex flex-col">
     <div in:fade="{{ delay: getDelay() }}">
       <Hero
-        isFollowing="{$state.context.followers.includes($thatProfile.id)}"
+        isFollowing="{$state.context.isFollowing}"
         member="{$state.context.profile}"
         on:TOGGLE_FOLLOW="{() => send('FOLLOW', {
             id: $state.context.profile.profileSlug,
@@ -89,7 +89,7 @@
       {/if}
 
       <CTA
-        isFollowing="{$state.context.followers.includes($thatProfile.id)}"
+        isFollowing="{$state.context.isFollowing}"
         profile="{$state.context.profile}"
         on:TOGGLE_FOLLOW="{() => send('FOLLOW', {
             id: $state.context.profile.profileSlug,

@@ -60,7 +60,7 @@
     <div in:fade="{{ delay: getDelay() }}">
       <Hero
         partner="{$state.context.profile}"
-        isFollowing="{$state.context.followers.includes($thatProfile.id)}"
+        isFollowing="{$state.context.isFollowing}"
         on:TOGGLE_FOLLOW="{() => send('FOLLOW', {
             id: $state.context.profile.id,
           })}"
@@ -79,18 +79,16 @@
       </div>
     {/if}
 
-    {#if $state.context.followers.length > 0}
+    <div in:fade="{{ delay: getDelay(true) }}">
       <div in:fade="{{ delay: getDelay() }}">
         <Followers
           stateMachineService="{$state.context.followMachineServices}"
         />
       </div>
-    {/if}
 
-    <div in:fade="{{ delay: getDelay(true) }}">
       <CTA
         partner="{$state.context.profile}"
-        isFollowing="{$state.context.followers.includes($thatProfile.id)}"
+        isFollowing="{$state.context.isFollowing}"
         on:TOGGLE_FOLLOW="{() => send('FOLLOW', {
             id: $state.context.profile.id,
           })}"
