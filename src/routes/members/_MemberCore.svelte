@@ -12,6 +12,7 @@
   import Hero from './_Hero.svelte';
   import WarningModal from '../../components/notifications/Warning.svelte';
   import UpNextMember from '../../components/activities/UpNextMember.svelte';
+  import { debug } from '../../config';
 
   import {
     isAuthenticated,
@@ -21,7 +22,9 @@
   import createMachine from './machines/member';
   import metaTagsStore from '../../store/metaTags';
 
-  const { state, send } = useMachine(createMachine(slug));
+  const { state, send } = useMachine(createMachine(slug), {
+    devTools: debug.xstate,
+  });
 
   $: if (['profileLoaded'].some($state.matches)) {
     const { profile } = $state.context;
@@ -55,7 +58,7 @@
   <div class="flex flex-col">
     <div in:fade="{{ delay: getDelay() }}">
       <Hero
-        isFollowing="{$state.context.followers.includes($thatProfile.id)}"
+        isFollowing="{$state.context.isFollowing}"
         member="{$state.context.profile}"
         on:TOGGLE_FOLLOW="{() => send('FOLLOW', {
             id: $state.context.profile.profileSlug,
@@ -86,7 +89,7 @@
       {/if}
 
       <CTA
-        isFollowing="{$state.context.followers.includes($thatProfile.id)}"
+        isFollowing="{$state.context.isFollowing}"
         profile="{$state.context.profile}"
         on:TOGGLE_FOLLOW="{() => send('FOLLOW', {
             id: $state.context.profile.profileSlug,

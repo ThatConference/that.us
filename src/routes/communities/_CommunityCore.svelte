@@ -9,6 +9,7 @@
   import UpNext from '../../components/activities/UpNext.svelte';
   import Hero from './_Hero.svelte';
 
+  import { debug } from '../../config';
   import createMachine from './machines/community';
   import metaTagsStore from '../../store/metaTags';
   import { isAuthenticated, token } from '../../utilities/security.js';
@@ -35,7 +36,9 @@
     return current;
   }
 
-  const { state, send } = useMachine(createMachine(slug));
+  const { state, send } = useMachine(createMachine(slug), {
+    devTools: debug.xstate,
+  });
 
   $: if ($isAuthenticated && $token) {
     send('AUTHENTICATED', { status: true });

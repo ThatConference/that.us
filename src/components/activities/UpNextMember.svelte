@@ -4,9 +4,12 @@
   import { useService } from 'xstate-svelte';
   import { Link } from 'yrv';
 
+  import { debug } from '../../config';
   import { FeaturedActivityDetail } from '../../elements';
 
-  const { state, send } = useService(stateMachineService);
+  const { state, send } = useService(stateMachineService, {
+    devTools: debug.xstate,
+  });
 </script>
 
 <section class="py-12 lg:py-16 bg-thatBlue-700">

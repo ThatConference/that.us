@@ -27,7 +27,7 @@ function createMachine(slug) {
 
   const { toggleFollow } = communityMutationApi(client);
   const { queryCommunityBySlug } = communityQueryApi(client);
-  const { queryMeCommunityFollows } = meQueryApi(client);
+  const { queryMeFollowingCommunities } = meQueryApi(client);
 
   return Machine(
     {
@@ -218,7 +218,7 @@ function createMachine(slug) {
 
       services: {
         queryCommunity: context => queryCommunityBySlug(context.slug),
-        queryMyFollowing: () => queryMeCommunityFollows(),
+        queryMyFollowing: () => queryMeFollowingCommunities(),
         toggleFollow: context => toggleFollow(context.community.id),
       },
 

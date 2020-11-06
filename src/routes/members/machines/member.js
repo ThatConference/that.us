@@ -8,10 +8,12 @@ import activitiesMachine from './activities';
 
 import memberQueryApi from '../../../dataSources/api.that.tech/members/queries';
 import memberMutationApi from '../../../dataSources/api.that.tech/members/mutations';
+import meQueryApi from '../../../dataSources/api.that.tech/me/queries';
 
 function createServices(client) {
-  const { queryMemberBySlug, queryFollowers } = memberQueryApi(client);
+  const { queryMemberBySlug } = memberQueryApi(client);
   const { toggleFollow } = memberMutationApi(client);
+  const { queryMeFollowingMembers } = meQueryApi(client);
 
   return {
     guards: {
@@ -24,7 +26,7 @@ function createServices(client) {
 
     services: {
       queryProfile: context => queryMemberBySlug(context.slug),
-      queryMyFollowing: context => queryFollowers(context.slug),
+      queryMyFollowing: () => queryMeFollowingMembers(),
       toggleFollow: context => toggleFollow(context.profile.profileSlug),
     },
 
@@ -45,7 +47,11 @@ function createServices(client) {
       }),
 
       queryMyFollowingSuccess: assign({
-        followers: (_, { data }) => data.followers.profiles.map(f => f.id),
+        isFollowing: (context, { data }) => data.includes(context.profile.id),
+      }),
+
+      toggleFollowSuccess: assign({
+        isFollowing: (_, event) => event.data,
       }),
 
       createFollowMachineServices: assign({

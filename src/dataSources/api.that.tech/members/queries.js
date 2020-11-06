@@ -65,6 +65,7 @@ export const QUERY_MEMBER_BY_SLUG = `
   query getMemberBySlug ($slug: Slug!, $sessionStartDate: Date, $filter: AcceptedSessionFilter) {
     members {
       member(slug: $slug) {
+        id
         firstName
         lastName
         bio

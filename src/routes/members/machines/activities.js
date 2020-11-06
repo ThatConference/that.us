@@ -28,12 +28,12 @@ function createServices(client) {
       logError: (context, event) => console.error({ context, event }),
 
       loadSuccess: assign({
-        items: (_, { data }) => data,
+        items: (_, { data }) => data.filter(i => i !== null),
         cursor: (_, { data }) => undefined,
       }),
 
       loadNextSuccess: assign({
-        items: (_, { data }) => data,
+        items: (_, { data }) => data.filter(i => i !== null),
         cursor: (_, { data }) => undefined,
       }),
 

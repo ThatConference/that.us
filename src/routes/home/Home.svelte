@@ -31,7 +31,9 @@
   import currentEvent from '../../store/currentEvent';
   import createMachine from './machines/home';
 
-  const { state } = useMachine(createMachine({ id: $currentEvent.eventId }));
+  const { state } = useMachine(createMachine({ id: $currentEvent.eventId }), {
+    debug: true,
+  });
 </script>
 
 <Layout>

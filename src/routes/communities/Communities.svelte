@@ -10,8 +10,11 @@
 
   import createMachine from './machines/communities';
   import metaTagsStore from '../../store/metaTags';
+  import { debug } from '../../config';
 
-  const { state, send } = useMachine(createMachine());
+  const { state, send } = useMachine(createMachine(), {
+    devTools: debug.xstate,
+  });
 
   metaTagsStore.set({
     title: 'Communities - THAT',
