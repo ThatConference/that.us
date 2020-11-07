@@ -1,8 +1,7 @@
 # THAT.US
 
 [![GitHub issues open](https://img.shields.io/github/issues/thatconference/that.us.svg)](https://github.com/thatconference/that.us/issues) [![release](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/thatconference/that.us/issues) <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-30-orange.svg?style=flat-square)](#contributors-)
-
+[![All Contributors](https://img.shields.io/badge/all_contributors-31-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 ## Get started
@@ -80,12 +79,12 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="https://www.mischka.me"><img src="https://avatars1.githubusercontent.com/u/3939997?v=4" width="100px;" alt=""/><br /><sub><b>Jacob Mischka</b></sub></a><br /><a href="https://github.com/ThatConference/that.us/commits?author=jacobmischka" title="Code">💻</a></td>
     <td align="center"><a href="https://www.rachael-andrew.dev/"><img src="https://avatars3.githubusercontent.com/u/6334799?v=4" width="100px;" alt=""/><br /><sub><b>Rachael Andrew</b></sub></a><br /><a href="https://github.com/ThatConference/that.us/commits?author=r-andrew-dev" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/sojan80"><img src="https://avatars1.githubusercontent.com/u/13117568?v=4" width="100px;" alt=""/><br /><sub><b>Jeff Allen</b></sub></a><br /><a href="https://github.com/ThatConference/that.us/issues?q=author%3Asojan80" title="Bug reports">🐛</a></td>
   </tr>
 </table>
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
-
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
