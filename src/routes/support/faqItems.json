@@ -1,7 +1,7 @@
 [
   {
     "question": "I have a cool idea for THAT.us, where can I submit it?",
-    "answer": "THAT.us is a fully open source project located <a class='underline hover:no-underline hover:font-semibold' target='_blank' href='https://github.com/ThatConference/that.us'>GitHub</a>. Feel free to add a feature request or send your idea directly to <a class='underline hover:no-underline hover:font-semibold' href='mailto:hello@thatconference.com'>hello@thatconference.com</a>. We are accepting pull requests too!",
+    "answer": "THAT.us is a fully open source project located on <a class='underline hover:no-underline hover:font-semibold' target='_blank' href='https://github.com/ThatConference/that.us'>GitHub</a>. Feel free to add a feature request or send your idea directly to <a class='underline hover:no-underline hover:font-semibold' href='mailto:hello@thatconference.com'>hello@thatconference.com</a>. We are accepting pull requests too!",
     "category": "general"
   },
   {
