@@ -1,3 +1,4 @@
+import * as Sentry from '@sentry/browser';
 import { stripAuthorizationHeader } from '../utilities';
 
 const userFragment = `
@@ -161,10 +162,17 @@ export default client => {
       .query(QUERY_IS_SLUG_TAKEN, variables)
       .toPromise()
       .then(r => {
-        let isTaken;
+        let isTaken = true;
 
-        if (r.error) isTaken = true;
-        else if (r.data) isTaken = r.data.members.isProfileSlugTaken;
+        if (r.error) {
+          Sentry.captureException(new Error(r.error), {
+            tags: {
+              api_that_tech: 'query_members',
+            },
+          });
+        }
+
+        if (r.data) isTaken = r.data.members.isProfileSlugTaken;
 
         return isTaken;
       });
@@ -177,7 +185,17 @@ export default client => {
         fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
       })
       .toPromise()
-      .then(reformatResults);
+      .then(r => {
+        if (r.error) {
+          Sentry.captureException(new Error(r.error), {
+            tags: {
+              api_that_tech: 'query_members',
+            },
+          });
+        }
+
+        return reformatResults(r);
+      });
   };
 
   const queryMemberBySlug = (
@@ -195,7 +213,17 @@ export default client => {
         fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
       })
       .toPromise()
-      .then(r => r.data.members.member);
+      .then(r => {
+        if (r.error) {
+          Sentry.captureException(new Error(r.error), {
+            tags: {
+              api_that_tech: 'query_members',
+            },
+          });
+        }
+
+        return r.data.members.member;
+      });
   };
 
   const queryMemberActivities = (
@@ -214,7 +242,13 @@ export default client => {
       })
       .toPromise()
       .then(r => {
-        if (r.error) throw new Error(r.error);
+        if (r.error) {
+          Sentry.captureException(new Error(r.error), {
+            tags: {
+              api_that_tech: 'query_members',
+            },
+          });
+        }
 
         return r.data.members.member.sessions;
       });
@@ -235,7 +269,17 @@ export default client => {
         fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
       })
       .toPromise()
-      .then(r => r.data.members.member.sessions);
+      .then(r => {
+        if (r.error) {
+          Sentry.captureException(new Error(r.error), {
+            tags: {
+              api_that_tech: 'query_members',
+            },
+          });
+        }
+
+        return r.data.members.member.sessions;
+      });
   };
 
   const queryMembersNext = (after, pageSize = 50) => {
@@ -245,7 +289,17 @@ export default client => {
         fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
       })
       .toPromise()
-      .then(reformatResults);
+      .then(r => {
+        if (r.error) {
+          Sentry.captureException(new Error(r.error), {
+            tags: {
+              api_that_tech: 'query_members',
+            },
+          });
+        }
+
+        return reformatResults(r);
+      });
   };
 
   const queryFollowers = slug => {
@@ -257,7 +311,13 @@ export default client => {
       })
       .toPromise()
       .then(r => {
-        if (r.error) throw new Error(r.error);
+        if (r.error) {
+          Sentry.captureException(new Error(r.error), {
+            tags: {
+              api_that_tech: 'query_members',
+            },
+          });
+        }
 
         const { member } = r.data.members;
 
@@ -273,7 +333,13 @@ export default client => {
       })
       .toPromise()
       .then(r => {
-        if (r.error) throw new Error(r.error);
+        if (r.error) {
+          Sentry.captureException(new Error(r.error), {
+            tags: {
+              api_that_tech: 'query_members',
+            },
+          });
+        }
 
         const { member } = r.data.members;
         return member || null;

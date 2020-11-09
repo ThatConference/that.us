@@ -1,3 +1,5 @@
+import * as Sentry from '@sentry/browser';
+
 export const QUERY_ME = `
     query getMe {
       members {
@@ -41,12 +43,16 @@ export default client => {
     client
       .query(QUERY_ME)
       .toPromise()
-      .then(results => ({
-        ...results.data.members.me,
-      }))
-      .catch(e => {
-        console.error(e);
-        throw e;
+      .then(r => {
+        if (r.error) {
+          Sentry.captureException(new Error(r.error), {
+            tags: {
+              api_that_tech: 'query_favorites',
+            },
+          });
+        }
+
+        return r.data.members.me;
       });
 
   return {

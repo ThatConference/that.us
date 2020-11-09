@@ -1,3 +1,5 @@
+import * as Sentry from '@sentry/browser';
+
 const profileFieldsFragment = `
   fragment profileFields on Profile {
     id
@@ -90,7 +92,17 @@ export default client => {
     return client
       .mutation(MUTATION_CREATE, variables)
       .toPromise()
-      .then(r => r.data.members.create);
+      .then(r => {
+        if (r.error) {
+          Sentry.captureException(new Error(r.error), {
+            tags: {
+              api_that_tech: 'mutation_members',
+            },
+          });
+        }
+
+        return r.data.members.create;
+      });
   };
 
   const updateProfile = profile => {
@@ -110,9 +122,14 @@ export default client => {
         let claimed = null;
 
         if (r.error) {
-          // todo... someday log
-          console.error(r.error);
-        } else if (r.data.members.member.claimTicket)
+          Sentry.captureException(new Error(r.error), {
+            tags: {
+              api_that_tech: 'mutation_members',
+            },
+          });
+        }
+
+        if (r.data.members.member.claimTicket)
           claimed = r.data.members.member.claimTicket;
 
         return claimed;
@@ -125,7 +142,13 @@ export default client => {
       .mutation(MUTATION_FOLLOW_MEMBER_TOGGLE, variables)
       .toPromise()
       .then(({ data, error }) => {
-        if (error) throw new Error(error);
+        if (error) {
+          Sentry.captureException(new Error(error), {
+            tags: {
+              api_that_tech: 'mutation_members',
+            },
+          });
+        }
 
         let results = false;
 

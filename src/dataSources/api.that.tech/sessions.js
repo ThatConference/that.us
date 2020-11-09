@@ -1,3 +1,4 @@
+import * as Sentry from '@sentry/browser';
 import dayjs from 'dayjs';
 import { stripAuthorizationHeader } from './utilities';
 
@@ -227,9 +228,11 @@ export default client => {
       .toPromise()
       .then(r => {
         if (r.error) {
-          // eslint-disable-next-line no-console
-          console.error(r.error);
-          throw new Error('query sessions failed.');
+          Sentry.captureException(new Error(r.error), {
+            tags: {
+              api_that_tech: 'query_sessions',
+            },
+          });
         }
 
         const { get } = r.data.events.event;
@@ -280,9 +283,11 @@ export default client => {
       .toPromise()
       .then(r => {
         if (r.error) {
-          // eslint-disable-next-line no-console
-          console.error(r.error);
-          throw new Error('Error on getSessionById API call.');
+          Sentry.captureException(new Error(r.error), {
+            tags: {
+              api_that_tech: 'query_sessions',
+            },
+          });
         }
 
         return r.data.sessions.session;
@@ -302,9 +307,11 @@ export default client => {
       .toPromise()
       .then(r => {
         if (r.error) {
-          // eslint-disable-next-line no-console
-          console.error(r.error);
-          throw new Error('Error on createSession API call.');
+          Sentry.captureException(new Error(r.error), {
+            tags: {
+              api_that_tech: 'mutate_sessions',
+            },
+          });
         }
 
         return r.data.sessions.create.openSpace;
@@ -322,9 +329,11 @@ export default client => {
       .toPromise()
       .then(r => {
         if (r.error) {
-          // eslint-disable-next-line no-console
-          console.error(r.error);
-          throw new Error('Error on updateSession API call.');
+          Sentry.captureException(new Error(r.error), {
+            tags: {
+              api_that_tech: 'mutate_sessions',
+            },
+          });
         }
 
         return r.data.sessions.session.update.openSpace;
