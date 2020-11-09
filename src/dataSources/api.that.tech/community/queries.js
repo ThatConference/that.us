@@ -1,3 +1,4 @@
+import * as Sentry from '@sentry/browser';
 import { stripAuthorizationHeader } from '../utilities';
 
 const sessionDetailsFragment = `
@@ -110,7 +111,13 @@ export default client => {
       })
       .toPromise()
       .then(r => {
-        if (r.error) throw new Error(r.error);
+        if (r.error) {
+          Sentry.captureException(new Error(r.error), {
+            tags: {
+              api_that_tech: 'query_community',
+            },
+          });
+        }
 
         const { communities } = r.data;
         return communities ? communities.all : [];
@@ -127,7 +134,13 @@ export default client => {
       })
       .toPromise()
       .then(r => {
-        if (r.error) throw new Error(r.error);
+        if (r.error) {
+          Sentry.captureException(new Error(r.error), {
+            tags: {
+              api_that_tech: 'query_community',
+            },
+          });
+        }
 
         const { community } = r.data.communities;
         return community ? community.get : null;
@@ -146,7 +159,13 @@ export default client => {
       })
       .toPromise()
       .then(r => {
-        if (r.error) throw new Error(r.error);
+        if (r.error) {
+          Sentry.captureException(new Error(r.error), {
+            tags: {
+              api_that_tech: 'query_community',
+            },
+          });
+        }
 
         const { community } = r.data.communities;
         return community ? community.get.sessions : [];
@@ -166,7 +185,13 @@ export default client => {
       })
       .toPromise()
       .then(r => {
-        if (r.error) throw new Error(r.error);
+        if (r.error) {
+          Sentry.captureException(new Error(r.error), {
+            tags: {
+              api_that_tech: 'query_community',
+            },
+          });
+        }
 
         const { community } = r.data.communities;
         return community ? community.get.sessions : [];
@@ -181,7 +206,13 @@ export default client => {
       })
       .toPromise()
       .then(r => {
-        if (r.error) throw new Error(r.error);
+        if (r.error) {
+          Sentry.captureException(new Error(r.error), {
+            tags: {
+              api_that_tech: 'query_community',
+            },
+          });
+        }
 
         const { community } = r.data.communities;
         return community ? community.get : []; // followerCount and followers are in get

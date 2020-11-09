@@ -1,3 +1,4 @@
+import * as Sentry from '@sentry/browser';
 import { writable } from 'svelte/store';
 
 const favoriteFragment = `
@@ -65,7 +66,11 @@ export default client => {
         let results = [];
 
         if (r.error) {
-          console.error(r.error);
+          Sentry.captureException(new Error(r.error), {
+            tags: {
+              api_that_tech: 'query_favorites',
+            },
+          });
         }
 
         // set the store
@@ -92,6 +97,14 @@ export default client => {
     const { data, error } = await client
       .mutation(TOGGLE_FAVORITE, mutationVariables)
       .toPromise();
+
+    if (error) {
+      Sentry.captureException(new Error(error), {
+        tags: {
+          api_that_tech: 'mutate_favorites',
+        },
+      });
+    }
 
     // update store
     if (data) {

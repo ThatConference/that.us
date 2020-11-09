@@ -3,6 +3,7 @@
   import { initClient } from '@urql/svelte';
   import { router, Router, Route } from 'yrv';
   import { v4 as uuidv4 } from 'uuid';
+  import * as Sentry from '@sentry/browser';
 
   import {
     isAuthenticated,
@@ -116,6 +117,11 @@
   });
 
   onDestroy(unsub);
+
+  $: if ($thatProfile) {
+    let { id, email } = $thatProfile;
+    Sentry.setUser({ id, email });
+  }
 
   function onTidioChatApiReady() {
     /*

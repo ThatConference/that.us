@@ -1,3 +1,5 @@
+import * as Sentry from '@sentry/browser';
+
 export const QUERY_ME_FOLLOWING_COMMUNITIES = `
   query queryMyCommunityFollows {
     communities {
@@ -41,7 +43,13 @@ export default client => {
       .query(QUERY_ME_FOLLOWING_COMMUNITIES, variables)
       .toPromise()
       .then(r => {
-        if (r.error) throw new Error(r.error);
+        if (r.error) {
+          Sentry.captureException(new Error(r.error), {
+            tags: {
+              api_that_tech: 'query_me',
+            },
+          });
+        }
 
         const { me } = r.data.communities;
         return me ? me.favorites.ids : [];
@@ -54,7 +62,13 @@ export default client => {
       .query(QUERY_ME_FOLLOWING_MEMBERS, variables)
       .toPromise()
       .then(r => {
-        if (r.error) throw new Error(r.error);
+        if (r.error) {
+          Sentry.captureException(new Error(r.error), {
+            tags: {
+              api_that_tech: 'query_me',
+            },
+          });
+        }
 
         const { me } = r.data.members;
         return me ? me.following.ids : [];
@@ -67,7 +81,13 @@ export default client => {
       .query(QUERY_ME_FOLLOWING_PARTNERS, variables)
       .toPromise()
       .then(r => {
-        if (r.error) throw new Error(r.error);
+        if (r.error) {
+          Sentry.captureException(new Error(r.error), {
+            tags: {
+              api_that_tech: 'query_me',
+            },
+          });
+        }
 
         const { me } = r.data.partners;
         return me ? me.favorites.ids : [];

@@ -1,3 +1,5 @@
+import * as Sentry from '@sentry/browser';
+
 export const MUTATION_FOLLOW_COMMUNITY_TOGGLE = `
   mutation followCommunity($communityId: ID) {
     communities {
@@ -17,7 +19,12 @@ export default client => {
       .mutation(MUTATION_FOLLOW_COMMUNITY_TOGGLE, variables)
       .toPromise()
       .then(({ data, error }) => {
-        if (error) throw new Error(error);
+        if (error) {
+          Sentry.captureException(new Error(error), {
+            tags: {},
+            api_that_tech: 'mutate_community',
+          });
+        }
 
         let results = false;
 

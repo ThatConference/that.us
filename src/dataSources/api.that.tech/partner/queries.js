@@ -1,3 +1,5 @@
+import * as Sentry from '@sentry/browser';
+
 import { stripAuthorizationHeader } from '../utilities';
 import config from '../../../config';
 
@@ -148,7 +150,13 @@ export default client => {
       })
       .toPromise()
       .then(r => {
-        if (r.error) throw new Error(r.error);
+        if (r.error) {
+          Sentry.captureException(new Error(r.error), {
+            tags: {
+              api_that_tech: 'query_partners',
+            },
+          });
+        }
 
         let results = [];
 
@@ -178,7 +186,13 @@ export default client => {
       })
       .toPromise()
       .then(({ data, error }) => {
-        if (error) throw new Error(error);
+        if (error) {
+          Sentry.captureException(new Error(error), {
+            tags: {
+              api_that_tech: 'query_partners',
+            },
+          });
+        }
 
         const { partner } = data.partners;
 
@@ -196,7 +210,13 @@ export default client => {
       })
       .toPromise()
       .then(r => {
-        if (r.error) throw new Error(r.error);
+        if (r.error) {
+          Sentry.captureException(new Error(r.error), {
+            tags: {
+              api_that_tech: 'query_partners',
+            },
+          });
+        }
 
         const { partner } = r.data.partners;
 
@@ -212,7 +232,13 @@ export default client => {
       })
       .toPromise()
       .then(r => {
-        if (r.error) throw new Error(r.error);
+        if (r.error) {
+          Sentry.captureException(new Error(r.error), {
+            tags: {
+              api_that_tech: 'query_partners',
+            },
+          });
+        }
 
         const { partner } = r.data.partners;
         return partner ? partner.followers : [];
