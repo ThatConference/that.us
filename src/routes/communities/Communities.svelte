@@ -28,6 +28,8 @@
   function handleNext() {
     send('NEXT');
   }
+
+  throw new Error('dialog');
 </script>
 
 <Layout>

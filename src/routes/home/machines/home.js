@@ -1,6 +1,7 @@
 import { getClient } from '@urql/svelte';
 import { Machine, assign, spawn } from 'xstate';
 
+import { log } from '../../../utilities/error';
 import createHomeConfig from './homeConfig';
 import upNextServices from './upNext';
 
@@ -10,7 +11,12 @@ function createServices(client) {
     services: {},
 
     actions: {
-      logError: (context, event) => console.error({ context, event }),
+      logError: context =>
+        log({
+          error: 'home state machine ended in the error state.',
+          meta: context,
+          tags: { stateMachine: 'home' },
+        }),
 
       createActors: assign({
         upNextActor: context => spawn(upNextServices(context.meta, client)),

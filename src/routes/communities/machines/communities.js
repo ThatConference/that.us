@@ -1,9 +1,9 @@
 import { getClient } from '@urql/svelte';
-
 import { Machine, assign } from 'xstate';
 import { uniqBy } from 'lodash';
-import createPagingConfig from '../../../machines/paging';
 
+import { log } from '../../../utilities/error';
+import createPagingConfig from '../../../machines/paging';
 import communitiesApi from '../../../dataSources/api.that.tech/community/queries';
 
 function createServices() {
@@ -22,7 +22,13 @@ function createServices() {
     },
 
     actions: {
-      logError: (context, event) => console.error({ context, event }),
+      logError: context =>
+        log({
+          error:
+            'communities communities state machine ended in the error state.',
+          meta: context,
+          tags: { stateMachine: 'communities' },
+        }),
 
       // todo: will need to add the correct data structure once we have paged communities
       loadSuccess: assign({

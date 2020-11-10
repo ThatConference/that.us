@@ -2,6 +2,7 @@ import { getClient } from '@urql/svelte';
 import { Machine, assign, spawn, send } from 'xstate';
 import { navigateTo } from 'yrv';
 
+import { log } from '../../../utilities/error';
 import createFollowMachine from './followers';
 import createActivitiesMachineServices from './activities';
 
@@ -223,7 +224,14 @@ function createMachine(slug) {
       },
 
       actions: {
-        logError: (context, event) => console.error({ context, event }),
+        logError: context =>
+          log({
+            error:
+              'communities community state machine ended in the error state.',
+            meta: context,
+            tags: { stateMachine: 'community' },
+          }),
+
         notFound: () => navigateTo('/not-found'),
         login: () => navigateTo('/login'),
 

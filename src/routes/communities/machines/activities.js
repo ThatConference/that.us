@@ -1,6 +1,7 @@
 import { getClient } from '@urql/svelte';
 import { Machine, assign } from 'xstate';
 
+import { log } from '../../../utilities/error';
 import createPagingConfig from '../../../machines/paging';
 import communityQueryApi from '../../../dataSources/api.that.tech/community/queries';
 
@@ -26,7 +27,13 @@ function createServices(client) {
     },
 
     actions: {
-      logError: (context, event) => console.error({ context, event }),
+      logError: context =>
+        log({
+          error:
+            'communities activities state machine ended in the error state.',
+          meta: context,
+          tags: { stateMachine: 'activities' },
+        }),
 
       loadSuccess: assign({
         items: (_, { data }) => data.sessions.filter(i => i !== null),
