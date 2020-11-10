@@ -1,4 +1,4 @@
-import * as Sentry from '@sentry/browser';
+import { log } from './utilities/error';
 
 export const QUERY_SUBMISSIONS = `
   query getMySubmissions {
@@ -41,18 +41,11 @@ export default client => {
     client
       .query(QUERY_SUBMISSIONS)
       .toPromise()
-      .then(r => {
-        if (r.error) {
-          Sentry.captureException(new Error(r.error), {
-            tags: {
-              api_that_tech: 'mutate_sessions',
-            },
-          });
-        }
+      .then(({ data, error }) => {
+        if (error) log(error, 'mutate_sessions');
 
         let results = [];
-
-        const { submitted } = r.data.sessions.me;
+        const { submitted } = data.sessions.me;
 
         if (submitted) {
           results = submitted

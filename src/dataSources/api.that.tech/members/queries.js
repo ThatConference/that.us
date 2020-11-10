@@ -1,4 +1,4 @@
-import * as Sentry from '@sentry/browser';
+import { log } from '../utilities/error';
 import { stripAuthorizationHeader } from '../utilities';
 
 const userFragment = `
@@ -151,7 +151,7 @@ export const QUERY_NEXT_FOLLOWERS = `
 `;
 
 function reformatResults(results) {
-  const { members } = results.data.members;
+  const { members } = results.members;
   return members;
 }
 
@@ -161,19 +161,11 @@ export default client => {
     return client
       .query(QUERY_IS_SLUG_TAKEN, variables)
       .toPromise()
-      .then(r => {
+      .then(({ data, error }) => {
+        if (error) log(error, 'query_members');
+
         let isTaken = true;
-
-        if (r.error) {
-          Sentry.captureException(new Error(r.error), {
-            tags: {
-              api_that_tech: 'query_members',
-            },
-          });
-        }
-
-        if (r.data) isTaken = r.data.members.isProfileSlugTaken;
-
+        if (data) isTaken = data.members.isProfileSlugTaken;
         return isTaken;
       });
   };
@@ -185,16 +177,10 @@ export default client => {
         fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
       })
       .toPromise()
-      .then(r => {
-        if (r.error) {
-          Sentry.captureException(new Error(r.error), {
-            tags: {
-              api_that_tech: 'query_members',
-            },
-          });
-        }
+      .then(({ data, error }) => {
+        if (error) log(error, 'query_members');
 
-        return reformatResults(r);
+        return reformatResults(data);
       });
   };
 
@@ -213,16 +199,10 @@ export default client => {
         fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
       })
       .toPromise()
-      .then(r => {
-        if (r.error) {
-          Sentry.captureException(new Error(r.error), {
-            tags: {
-              api_that_tech: 'query_members',
-            },
-          });
-        }
+      .then(({ data, error }) => {
+        if (error) log(error, 'query_members');
 
-        return r.data.members.member;
+        return data.members.member;
       });
   };
 
@@ -241,16 +221,10 @@ export default client => {
         fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
       })
       .toPromise()
-      .then(r => {
-        if (r.error) {
-          Sentry.captureException(new Error(r.error), {
-            tags: {
-              api_that_tech: 'query_members',
-            },
-          });
-        }
+      .then(({ data, error }) => {
+        if (error) log(error, 'query_members');
 
-        return r.data.members.member.sessions;
+        return data.members.member.sessions;
       });
   };
 
@@ -269,16 +243,10 @@ export default client => {
         fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
       })
       .toPromise()
-      .then(r => {
-        if (r.error) {
-          Sentry.captureException(new Error(r.error), {
-            tags: {
-              api_that_tech: 'query_members',
-            },
-          });
-        }
+      .then(({ data, error }) => {
+        if (error) log(error, 'query_members');
 
-        return r.data.members.member.sessions;
+        return data.members.member.sessions;
       });
   };
 
@@ -289,16 +257,10 @@ export default client => {
         fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
       })
       .toPromise()
-      .then(r => {
-        if (r.error) {
-          Sentry.captureException(new Error(r.error), {
-            tags: {
-              api_that_tech: 'query_members',
-            },
-          });
-        }
+      .then(({ data, error }) => {
+        if (error) log(error, 'query_members');
 
-        return reformatResults(r);
+        return reformatResults(data);
       });
   };
 
@@ -310,16 +272,10 @@ export default client => {
         fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
       })
       .toPromise()
-      .then(r => {
-        if (r.error) {
-          Sentry.captureException(new Error(r.error), {
-            tags: {
-              api_that_tech: 'query_members',
-            },
-          });
-        }
+      .then(({ data, error }) => {
+        if (error) log(error, 'query_members');
 
-        const { member } = r.data.members;
+        const { member } = data.members;
 
         return member || null; // followerCount and followers are in partner
       });
@@ -332,16 +288,10 @@ export default client => {
         fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
       })
       .toPromise()
-      .then(r => {
-        if (r.error) {
-          Sentry.captureException(new Error(r.error), {
-            tags: {
-              api_that_tech: 'query_members',
-            },
-          });
-        }
+      .then(({ data, error }) => {
+        if (error) log(error, 'query_members');
 
-        const { member } = r.data.members;
+        const { member } = data.members;
         return member || null;
       });
   };

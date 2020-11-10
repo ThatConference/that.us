@@ -1,5 +1,6 @@
-import * as Sentry from '@sentry/browser';
 import { writable } from 'svelte/store';
+
+import { log } from './utilities/error';
 
 const favoriteFragment = `
   fragment sessionFields on AcceptedSession {
@@ -62,20 +63,14 @@ export default client => {
     return client
       .query(QUERY_MY_FAVORITES, variables)
       .toPromise()
-      .then(r => {
+      .then(({ data, error }) => {
+        if (error) log(error, 'query_favorites');
+
         let results = [];
 
-        if (r.error) {
-          Sentry.captureException(new Error(r.error), {
-            tags: {
-              api_that_tech: 'query_favorites',
-            },
-          });
-        }
-
         // set the store
-        if (r.data && !r.error) {
-          const { favorites } = r.data.sessions.me;
+        if (data && !error) {
+          const { favorites } = data.sessions.me;
           favoritesStore.set(favorites); // set the store
           results = favorites; // set the return results
         }
@@ -98,13 +93,7 @@ export default client => {
       .mutation(TOGGLE_FAVORITE, mutationVariables)
       .toPromise();
 
-    if (error) {
-      Sentry.captureException(new Error(error), {
-        tags: {
-          api_that_tech: 'mutate_favorites',
-        },
-      });
-    }
+    if (error) log(error, 'mutate_favorites');
 
     // update store
     if (data) {

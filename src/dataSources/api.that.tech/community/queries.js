@@ -1,4 +1,4 @@
-import * as Sentry from '@sentry/browser';
+import { log } from '../utilities/error';
 import { stripAuthorizationHeader } from '../utilities';
 
 const sessionDetailsFragment = `
@@ -110,16 +110,10 @@ export default client => {
         fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
       })
       .toPromise()
-      .then(r => {
-        if (r.error) {
-          Sentry.captureException(new Error(r.error), {
-            tags: {
-              api_that_tech: 'query_community',
-            },
-          });
-        }
+      .then(({ data, error }) => {
+        if (error) log(error, 'query_community');
 
-        const { communities } = r.data;
+        const { communities } = data;
         return communities ? communities.all : [];
       });
 
@@ -133,16 +127,10 @@ export default client => {
         fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
       })
       .toPromise()
-      .then(r => {
-        if (r.error) {
-          Sentry.captureException(new Error(r.error), {
-            tags: {
-              api_that_tech: 'query_community',
-            },
-          });
-        }
+      .then(({ data, error }) => {
+        if (error) log(error, 'query_community');
 
-        const { community } = r.data.communities;
+        const { community } = data.communities;
         return community ? community.get : null;
       });
   };
@@ -158,16 +146,10 @@ export default client => {
         fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
       })
       .toPromise()
-      .then(r => {
-        if (r.error) {
-          Sentry.captureException(new Error(r.error), {
-            tags: {
-              api_that_tech: 'query_community',
-            },
-          });
-        }
+      .then(({ data, error }) => {
+        if (error) log(error, 'query_community');
 
-        const { community } = r.data.communities;
+        const { community } = data.communities;
         return community ? community.get.sessions : [];
       });
   };
@@ -184,16 +166,10 @@ export default client => {
         fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
       })
       .toPromise()
-      .then(r => {
-        if (r.error) {
-          Sentry.captureException(new Error(r.error), {
-            tags: {
-              api_that_tech: 'query_community',
-            },
-          });
-        }
+      .then(({ data, error }) => {
+        if (error) log(error, 'query_community');
 
-        const { community } = r.data.communities;
+        const { community } = data.communities;
         return community ? community.get.sessions : [];
       });
   };
@@ -205,16 +181,10 @@ export default client => {
         fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
       })
       .toPromise()
-      .then(r => {
-        if (r.error) {
-          Sentry.captureException(new Error(r.error), {
-            tags: {
-              api_that_tech: 'query_community',
-            },
-          });
-        }
+      .then(({ data, error }) => {
+        if (error) log(error, 'query_community');
 
-        const { community } = r.data.communities;
+        const { community } = data.communities;
         return community ? community.get : []; // followerCount and followers are in get
       });
   };
