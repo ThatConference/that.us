@@ -6,6 +6,7 @@ import profileConfig from '../../../machines/profile';
 import followMachine from './followers';
 import activitiesMachine from './activities';
 
+import { log } from '../../../utilities/error';
 import memberQueryApi from '../../../dataSources/api.that.tech/members/queries';
 import memberMutationApi from '../../../dataSources/api.that.tech/members/mutations';
 import meQueryApi from '../../../dataSources/api.that.tech/me/queries';
@@ -31,7 +32,12 @@ function createServices(client) {
     },
 
     actions: {
-      logError: (context, event) => console.error({ context, event }),
+      logError: context =>
+        log({
+          error: 'members member state machine ended in the error state.',
+          meta: context,
+          tags: { stateMachine: 'members' },
+        }),
       notFound: () => navigateTo('/not-found'),
 
       setIsAuthenticated: assign({

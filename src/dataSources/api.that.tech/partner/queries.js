@@ -1,4 +1,4 @@
-import * as Sentry from '@sentry/browser';
+import { log } from '../utilities/error';
 
 import { stripAuthorizationHeader } from '../utilities';
 import config from '../../../config';
@@ -149,19 +149,12 @@ export default client => {
         fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
       })
       .toPromise()
-      .then(r => {
-        if (r.error) {
-          Sentry.captureException(new Error(r.error), {
-            tags: {
-              api_that_tech: 'query_partners',
-            },
-          });
-        }
+      .then(({ data, error }) => {
+        if (error) log(error, 'query_partners');
 
         let results = [];
-
-        if (r.data) {
-          const { partners } = r.data.events.event.get;
+        if (data) {
+          const { partners } = data.events.event.get;
 
           const modifiedPartners = partners.map(p => ({
             ...p,
@@ -186,16 +179,9 @@ export default client => {
       })
       .toPromise()
       .then(({ data, error }) => {
-        if (error) {
-          Sentry.captureException(new Error(error), {
-            tags: {
-              api_that_tech: 'query_partners',
-            },
-          });
-        }
+        if (error) log(error, 'query_partners');
 
         const { partner } = data.partners;
-
         return partner
           ? { ...partner, socialLinks: createSocialLinks(partner) }
           : null;
@@ -209,17 +195,10 @@ export default client => {
         fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
       })
       .toPromise()
-      .then(r => {
-        if (r.error) {
-          Sentry.captureException(new Error(r.error), {
-            tags: {
-              api_that_tech: 'query_partners',
-            },
-          });
-        }
+      .then(({ data, error }) => {
+        if (error) log(error, 'query_partners');
 
-        const { partner } = r.data.partners;
-
+        const { partner } = data.partners;
         return partner || null; // followerCount and followers are in partner
       });
   };
@@ -231,16 +210,10 @@ export default client => {
         fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
       })
       .toPromise()
-      .then(r => {
-        if (r.error) {
-          Sentry.captureException(new Error(r.error), {
-            tags: {
-              api_that_tech: 'query_partners',
-            },
-          });
-        }
+      .then(({ data, error }) => {
+        if (error) log(error, 'query_partners');
 
-        const { partner } = r.data.partners;
+        const { partner } = data.partners;
         return partner ? partner.followers : [];
       });
   };

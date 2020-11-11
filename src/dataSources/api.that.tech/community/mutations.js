@@ -1,4 +1,4 @@
-import * as Sentry from '@sentry/browser';
+import { log } from '../utilities/error';
 
 export const MUTATION_FOLLOW_COMMUNITY_TOGGLE = `
   mutation followCommunity($communityId: ID) {
@@ -19,15 +19,9 @@ export default client => {
       .mutation(MUTATION_FOLLOW_COMMUNITY_TOGGLE, variables)
       .toPromise()
       .then(({ data, error }) => {
-        if (error) {
-          Sentry.captureException(new Error(error), {
-            tags: {},
-            api_that_tech: 'mutate_community',
-          });
-        }
+        if (error) log(error, 'mutate_community');
 
         let results = false;
-
         if (data) {
           const { toggle } = data.communities.favoriting;
           results = !!toggle;

@@ -1,9 +1,9 @@
 import { getClient } from '@urql/svelte';
-
 import { Machine, assign } from 'xstate';
 import { uniqBy } from 'lodash';
-import createPagingConfig from '../../../machines/paging';
 
+import { log } from '../../../utilities/error';
+import createPagingConfig from '../../../machines/paging';
 import membersApi from '../../../dataSources/api.that.tech/members/queries';
 
 function createServices() {
@@ -20,7 +20,12 @@ function createServices() {
     },
 
     actions: {
-      logError: (context, event) => console.error({ context, event }),
+      logError: context =>
+        log({
+          error: 'members members state machine ended in the error state.',
+          meta: context,
+          tags: { stateMachine: 'members' },
+        }),
 
       loadSuccess: assign({
         items: (_, { data }) => data.members,

@@ -2,6 +2,7 @@ import { getClient } from '@urql/svelte';
 import { Machine, assign } from 'xstate';
 import { uniqBy } from 'lodash';
 
+import { log } from '../../../utilities/error';
 import partnersApi from '../../../dataSources/api.that.tech/partner/queries';
 import createPagingConfig from '../../../machines/paging';
 
@@ -19,7 +20,12 @@ function createServices() {
     },
 
     actions: {
-      logError: (context, event) => console.error({ context, event }),
+      logError: context =>
+        log({
+          error: 'partners partners state machine ended in the error state.',
+          meta: context,
+          tags: { stateMachine: 'partners' },
+        }),
 
       loadSuccess: assign({
         items: (_, { data }) => data,

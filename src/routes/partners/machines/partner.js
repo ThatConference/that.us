@@ -2,6 +2,7 @@ import { getClient } from '@urql/svelte';
 import { navigateTo } from 'yrv';
 import { Machine, assign, spawn, send } from 'xstate';
 
+import { log } from '../../../utilities/error';
 import partnerQueryApi from '../../../dataSources/api.that.tech/partner/queries';
 import partnerMutationsApi from '../../../dataSources/api.that.tech/partner/mutations';
 import meQueryApi from '../../../dataSources/api.that.tech/me/queries';
@@ -30,7 +31,13 @@ function createServices(client) {
     },
 
     actions: {
-      logError: (context, event) => console.error({ context, event }),
+      logError: context =>
+        log({
+          error: 'partners partner state machine ended in the error state.',
+          meta: context,
+          tags: { stateMachine: 'partners' },
+        }),
+
       notFound: () => navigateTo('/not-found'),
 
       setIsAuthenticated: assign({

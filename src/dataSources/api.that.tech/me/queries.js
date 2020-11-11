@@ -1,4 +1,4 @@
-import * as Sentry from '@sentry/browser';
+import { log } from '../utilities/error';
 
 export const QUERY_ME_FOLLOWING_COMMUNITIES = `
   query queryMyCommunityFollows {
@@ -42,16 +42,10 @@ export default client => {
     return client
       .query(QUERY_ME_FOLLOWING_COMMUNITIES, variables)
       .toPromise()
-      .then(r => {
-        if (r.error) {
-          Sentry.captureException(new Error(r.error), {
-            tags: {
-              api_that_tech: 'query_me',
-            },
-          });
-        }
+      .then(({ data, error }) => {
+        if (error) log(error, 'query_me');
 
-        const { me } = r.data.communities;
+        const { me } = data.communities;
         return me ? me.favorites.ids : [];
       });
   };
@@ -61,16 +55,10 @@ export default client => {
     return client
       .query(QUERY_ME_FOLLOWING_MEMBERS, variables)
       .toPromise()
-      .then(r => {
-        if (r.error) {
-          Sentry.captureException(new Error(r.error), {
-            tags: {
-              api_that_tech: 'query_me',
-            },
-          });
-        }
+      .then(({ data, error }) => {
+        if (error) log(error, 'query_me');
 
-        const { me } = r.data.members;
+        const { me } = data.members;
         return me ? me.following.ids : [];
       });
   };
@@ -80,16 +68,10 @@ export default client => {
     return client
       .query(QUERY_ME_FOLLOWING_PARTNERS, variables)
       .toPromise()
-      .then(r => {
-        if (r.error) {
-          Sentry.captureException(new Error(r.error), {
-            tags: {
-              api_that_tech: 'query_me',
-            },
-          });
-        }
+      .then(({ data, error }) => {
+        if (error) log(error, 'query_me');
 
-        const { me } = r.data.partners;
+        const { me } = data.partners;
         return me ? me.favorites.ids : [];
       });
   };

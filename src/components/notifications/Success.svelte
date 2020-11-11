@@ -2,9 +2,14 @@
   export let title;
   export let text;
 
+  import { onMount } from 'svelte';
   import { fade } from 'svelte/transition';
 
   let close = false;
+
+  onMount(() => {
+    return setTimeout(() => (close = true), 2000);
+  });
 </script>
 
 {#if !close}

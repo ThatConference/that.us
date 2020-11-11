@@ -1,6 +1,7 @@
 import { getClient } from '@urql/svelte';
 import { Machine, assign } from 'xstate';
 
+import { log } from '../../../utilities/error';
 import createPagingConfig from '../../../machines/paging';
 import partnerQueryApi from '../../../dataSources/api.that.tech/partner/queries';
 
@@ -18,7 +19,12 @@ function createServices(client) {
     },
 
     actions: {
-      logError: (context, event) => console.error({ context, event }),
+      logError: context =>
+        log({
+          error: 'partners followers state machine ended in the error state.',
+          meta: context,
+          tags: { stateMachine: 'partners' },
+        }),
 
       loadSuccess: assign({
         items: (_, { data: { followers } }) => followers.members,

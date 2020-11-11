@@ -38,7 +38,7 @@ function serve() {
 }
 
 export default {
-  // inlineDynamicImports: true,
+  inlineDynamicImports: true,
   input: 'src/main.js',
   output: {
     sourcemap: true,

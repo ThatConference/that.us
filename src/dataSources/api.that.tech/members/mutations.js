@@ -1,4 +1,4 @@
-import * as Sentry from '@sentry/browser';
+import { log } from '../utilities/error';
 
 const profileFieldsFragment = `
   fragment profileFields on Profile {
@@ -92,16 +92,10 @@ export default client => {
     return client
       .mutation(MUTATION_CREATE, variables)
       .toPromise()
-      .then(r => {
-        if (r.error) {
-          Sentry.captureException(new Error(r.error), {
-            tags: {
-              api_that_tech: 'mutation_members',
-            },
-          });
-        }
+      .then(({ data, error }) => {
+        if (error) log(error, 'mutate_members');
 
-        return r.data.members.create;
+        return data.members.create;
       });
   };
 
@@ -110,7 +104,11 @@ export default client => {
     return client
       .mutation(MUTATION_UPDATE, variables)
       .toPromise()
-      .then(r => r.data.members.member.update);
+      .then(({ data, error }) => {
+        if (error) log(error, 'mutate_members');
+
+        return data.members.member.update;
+      });
   };
 
   const claimTicket = ticketReference => {
@@ -118,19 +116,12 @@ export default client => {
     return client
       .mutation(CLAIM_TICKET, variables)
       .toPromise()
-      .then(r => {
+      .then(({ data, error }) => {
+        if (error) log(error, 'mutate_members');
+
         let claimed = null;
-
-        if (r.error) {
-          Sentry.captureException(new Error(r.error), {
-            tags: {
-              api_that_tech: 'mutation_members',
-            },
-          });
-        }
-
-        if (r.data.members.member.claimTicket)
-          claimed = r.data.members.member.claimTicket;
+        if (data.members.member.claimTicket)
+          claimed = data.members.member.claimTicket;
 
         return claimed;
       });
@@ -142,16 +133,9 @@ export default client => {
       .mutation(MUTATION_FOLLOW_MEMBER_TOGGLE, variables)
       .toPromise()
       .then(({ data, error }) => {
-        if (error) {
-          Sentry.captureException(new Error(error), {
-            tags: {
-              api_that_tech: 'mutation_members',
-            },
-          });
-        }
+        if (error) log(error, 'mutate_members');
 
         let results = false;
-
         if (data) {
           const { followToggle } = data.members.member;
           results = !!followToggle;

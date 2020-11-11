@@ -1,6 +1,7 @@
-import * as Sentry from '@sentry/browser';
 import dayjs from 'dayjs';
+
 import { stripAuthorizationHeader } from './utilities';
+import { log } from './utilities/error';
 
 const coreSessionFields = `
   fragment coreFields on AcceptedSession {
@@ -226,16 +227,10 @@ export default client => {
         },
       })
       .toPromise()
-      .then(r => {
-        if (r.error) {
-          Sentry.captureException(new Error(r.error), {
-            tags: {
-              api_that_tech: 'query_sessions',
-            },
-          });
-        }
+      .then(({ data, error }) => {
+        if (error) log(error, 'query_sessions');
 
-        const { get } = r.data.events.event;
+        const { get } = data.events.event;
         return get ? get.sessions : null;
       });
 
@@ -272,7 +267,6 @@ export default client => {
       },
     );
 
-  // todo eventId can go when API is up
   const getById = sessionId => {
     const variables = { sessionId };
 
@@ -281,16 +275,10 @@ export default client => {
         fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
       })
       .toPromise()
-      .then(r => {
-        if (r.error) {
-          Sentry.captureException(new Error(r.error), {
-            tags: {
-              api_that_tech: 'query_sessions',
-            },
-          });
-        }
+      .then(({ data, error }) => {
+        if (error) log(error, 'query_sessions');
 
-        return r.data.sessions.session;
+        return data.sessions.session;
       });
   };
 
@@ -305,16 +293,10 @@ export default client => {
     return client
       .mutation(CREATE_SESSION, mutationVariables)
       .toPromise()
-      .then(r => {
-        if (r.error) {
-          Sentry.captureException(new Error(r.error), {
-            tags: {
-              api_that_tech: 'mutate_sessions',
-            },
-          });
-        }
+      .then(({ data, error }) => {
+        if (error) log(error, 'query_sessions');
 
-        return r.data.sessions.create.openSpace;
+        return data.sessions.create.openSpace;
       });
   };
 
@@ -327,16 +309,10 @@ export default client => {
     return client
       .mutation(UPDATE_SESSION_BY_ID, mutationVariables)
       .toPromise()
-      .then(r => {
-        if (r.error) {
-          Sentry.captureException(new Error(r.error), {
-            tags: {
-              api_that_tech: 'mutate_sessions',
-            },
-          });
-        }
+      .then(({ data, error }) => {
+        if (error) log(error, 'query_sessions');
 
-        return r.data.sessions.session.update.openSpace;
+        return data.sessions.session.update.openSpace;
       });
   };
 

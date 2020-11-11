@@ -1,4 +1,4 @@
-import * as Sentry from '@sentry/browser';
+import { log } from '../utilities/error';
 
 export const MUTATION_FOLLOW_PARTNER_TOGGLE = `
   mutation followPartner($partnerId: ID) {
@@ -19,13 +19,7 @@ export default client => {
       .mutation(MUTATION_FOLLOW_PARTNER_TOGGLE, variables)
       .toPromise()
       .then(({ data, error }) => {
-        if (error) {
-          Sentry.captureException(new Error(error), {
-            tags: {
-              api_that_tech: 'mutation_partners',
-            },
-          });
-        }
+        if (error) log(error, 'mutate_partners');
 
         let results = false;
 

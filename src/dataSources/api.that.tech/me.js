@@ -1,4 +1,4 @@
-import * as Sentry from '@sentry/browser';
+import { log } from './utilities/error';
 
 export const QUERY_ME = `
     query getMe {
@@ -43,16 +43,10 @@ export default client => {
     client
       .query(QUERY_ME)
       .toPromise()
-      .then(r => {
-        if (r.error) {
-          Sentry.captureException(new Error(r.error), {
-            tags: {
-              api_that_tech: 'query_favorites',
-            },
-          });
-        }
+      .then(({ data, error }) => {
+        if (error) log(error, 'query_favorites');
 
-        return r.data.members.me;
+        return data.members.me;
       });
 
   return {
