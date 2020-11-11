@@ -26,10 +26,10 @@ function createServices(client) {
     },
 
     actions: {
-      logError: context =>
+      logError: (context, event) =>
         log({
           error: 'member activities state machine ended in the error state.',
-          meta: context,
+          extra: { context, event },
           tags: { stateMachine: 'members' },
         }),
 

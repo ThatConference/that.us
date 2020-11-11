@@ -12,10 +12,10 @@ function createServices(client) {
     services: {},
 
     actions: {
-      logError: context =>
+      logError: (context, event) =>
         log({
           error: 'home state machine ended in the error state.',
-          meta: context,
+          extra: { context, event },
           tags: { stateMachine: 'home' },
         }),
 
