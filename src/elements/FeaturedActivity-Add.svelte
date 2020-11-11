@@ -18,7 +18,7 @@
   >
     <div class="space-y-6 xl:space-y-10">
       <div class="flex justify-center">
-        {#if $isAuthenticated && $thatProfile.canFeature}
+        {#if $isAuthenticated && $thatProfile}
           {#if isHover}
             <Icon
               data="{plusCircle}"
@@ -48,7 +48,7 @@
         <p class="text-thatBlue-200 text-sm italic">Any Day, Any Time</p>
 
         <span class="text-thatBlue-200 text-right">
-          {#if $isAuthenticated && $thatProfile.canFeature}
+          {#if $isAuthenticated && $thatProfile}
             <p>{`${$thatProfile.firstName} ${$thatProfile.lastName}`}</p>
           {:else}
             <p>Your Name Here :)</p>

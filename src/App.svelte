@@ -78,7 +78,7 @@
     document.getElementById('tidio-chat-iframe').style.zIndex = '2';
 
     unsub = thatProfile.subscribe(currentUser => {
-      if (currentUser.id) {
+      if (currentUser) {
         window.tidioChatApi.setVisitorData({
           distinct_id: currentUser.id,
           email: currentUser.email,
