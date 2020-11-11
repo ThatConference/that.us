@@ -6,6 +6,7 @@ function createConfig(metaContext) {
     context: {
       meta: metaContext || undefined,
       upNextActor: undefined,
+      statsActor: undefined,
     },
 
     states: {

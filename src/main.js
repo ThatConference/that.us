@@ -25,11 +25,16 @@ Sentry.init({
         eventId: event.event_id,
         onLoad: () => {
           if (document) {
-            document
-              .querySelector('.sentry-error-embed .close')
-              .addEventListener('click', () => {
+            const sentryEmbed = document.querySelector(
+              '.sentry-error-embed .close',
+            );
+            if (sentryEmbed) {
+              sentryEmbed.addEventListener('click', () => {
                 window.location.href = '/';
               });
+            } else {
+              console.error('could not load sentry feedback form');
+            }
           }
         },
       });

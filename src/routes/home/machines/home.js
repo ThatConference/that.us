@@ -4,6 +4,7 @@ import { Machine, assign, spawn } from 'xstate';
 import { log } from '../../../utilities/error';
 import createHomeConfig from './homeConfig';
 import upNextServices from './upNext';
+import statsServices from './stats';
 
 function createServices(client) {
   return {
@@ -20,6 +21,7 @@ function createServices(client) {
 
       createActors: assign({
         upNextActor: context => spawn(upNextServices(context.meta, client)),
+        statsActor: context => spawn(statsServices(context.meta, client)),
       }),
     },
   };
