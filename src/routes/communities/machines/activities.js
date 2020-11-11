@@ -27,11 +27,11 @@ function createServices(client) {
     },
 
     actions: {
-      logError: context =>
+      logError: (context, event) =>
         log({
           error:
             'communities activities state machine ended in the error state.',
-          meta: context,
+          extra: { context, event },
           tags: { stateMachine: 'activities' },
         }),
 

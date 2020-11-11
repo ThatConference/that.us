@@ -32,10 +32,10 @@ function createServices(client) {
     },
 
     actions: {
-      logError: context =>
+      logError: (context, event) =>
         log({
           error: 'members member state machine ended in the error state.',
-          meta: context,
+          extra: { context, event },
           tags: { stateMachine: 'members' },
         }),
       notFound: () => navigateTo('/not-found'),

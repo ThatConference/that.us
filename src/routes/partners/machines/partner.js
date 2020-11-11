@@ -31,10 +31,10 @@ function createServices(client) {
     },
 
     actions: {
-      logError: context =>
+      logError: (context, event) =>
         log({
           error: 'partners partner state machine ended in the error state.',
-          meta: context,
+          extra: { context, event },
           tags: { stateMachine: 'partners' },
         }),
 

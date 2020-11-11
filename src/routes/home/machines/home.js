@@ -4,6 +4,7 @@ import { Machine, assign, spawn } from 'xstate';
 import { log } from '../../../utilities/error';
 import createHomeConfig from './homeConfig';
 import upNextServices from './upNext';
+import statsServices from './stats';
 
 function createServices(client) {
   return {
@@ -11,15 +12,16 @@ function createServices(client) {
     services: {},
 
     actions: {
-      logError: context =>
+      logError: (context, event) =>
         log({
           error: 'home state machine ended in the error state.',
-          meta: context,
+          extra: { context, event },
           tags: { stateMachine: 'home' },
         }),
 
       createActors: assign({
         upNextActor: context => spawn(upNextServices(context.meta, client)),
+        statsActor: context => spawn(statsServices(context.meta, client)),
       }),
     },
   };

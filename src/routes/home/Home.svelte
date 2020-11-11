@@ -42,7 +42,7 @@
   </div>
 
   <div in:fade="{{ delay: 400 }}">
-    <Stats />
+    <Stats stateMachineService="{$state.context.statsActor}" />
   </div>
 
   <div in:fade="{{ delay: 600 }}">
