@@ -1,6 +1,8 @@
 <script>
   import { Link } from 'yrv';
   import { fade } from 'svelte/transition';
+  import Icon from 'svelte-awesome';
+  import { plus } from 'svelte-awesome/icons';
 
   import { Activity } from '../../../elements/svgs';
   import ActivitySlideOver from '../../activityCenter/ActivitySlideOver.svelte';
@@ -150,6 +152,13 @@
         />
       {/if}
     {/if}
+
+    <div class="ml-4 p-1 rounded-full text-white hover:bg-thatBlue-500">
+      <Link href="/activities/create">
+        <Icon data="{plus}" class="h-8 w-8" />
+      </Link>
+    </div>
+
     <div class="ml-4 rounded-full text-white hover:bg-thatBlue-500">
       <UserProfile />
     </div>
