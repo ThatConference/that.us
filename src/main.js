@@ -3,7 +3,7 @@ import { inspect } from '@xstate/inspect';
 import * as Sentry from '@sentry/browser';
 import { Integrations } from '@sentry/tracing';
 
-import { debug } from './config';
+import config, { debug } from './config';
 import App from './App.svelte';
 
 if (debug.xstate) {
@@ -18,6 +18,7 @@ Sentry.init({
     'https://15d4b436dc0a4366a0ac388c65772926@o235190.ingest.sentry.io/5357492',
   integrations: [new Integrations.BrowserTracing()],
   attachStacktrace: true,
+  release: config.version,
   beforeSend(event) {
     if (event.exception) {
       Sentry.showReportDialog({

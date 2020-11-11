@@ -1,3 +1,5 @@
+import { version } from '../package.json';
+
 export const securityConfig = {
   domain: 'auth.that.tech',
   client_id: '1ERg68Y2ie7QuO6wnr7EAadWT4Pvbfnm',
@@ -7,6 +9,7 @@ export const securityConfig = {
 };
 
 export default {
+  version,
   eventId: 'ByE7Dc7eCGcRFzLhWhuI',
   eventSlug: 'wi/2020',
   // api: 'https://api.that.tech',

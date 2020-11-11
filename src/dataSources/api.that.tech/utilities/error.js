@@ -5,6 +5,7 @@ export const log = (error, tag) => {
     scope.setLevel('error');
 
     Sentry.setExtra('graph combinedError', error);
+    Sentry.setExtra('graph combinedError raw', JSON.stringify(error));
 
     Sentry.captureException(new Error(error), {
       tags: {
