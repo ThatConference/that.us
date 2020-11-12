@@ -184,34 +184,43 @@
 
   function _setMainHeight() {
     const main = window.document.getElementById('main');
-    main.style.minHeight = expanded ? `${window.innerHeight - 100}px` : 'auto';
+    if (main) {
+      main.style.minHeight = expanded
+        ? `${window.innerHeight - 100}px`
+        : 'auto';
+    }
   }
 
   function _setContentHeightWidth() {
     const element = window.document.getElementById('content-block');
 
-    element.style.height = expanded ? `${window.innerHeight - 130}px` : '100%';
-    element.style.width = expanded ? `${window.innerWidth - 50}px` : '100%';
+    if (element) {
+      element.style.height = expanded
+        ? `${window.innerHeight - 130}px`
+        : '100%';
+      element.style.width = expanded ? `${window.innerWidth - 50}px` : '100%';
 
-    if (expanded) {
-      element.classList.add('absolute', 'left-5');
-      element.scrollIntoView();
-    } else {
-      element.classList.remove('absolute', 'left-5');
-      window.scrollTo(0, 0);
+      if (expanded) {
+        element.classList.add('absolute', 'left-5');
+        element.scrollIntoView();
+      } else {
+        element.classList.remove('absolute', 'left-5');
+        window.scrollTo(0, 0);
+      }
+
+      // Property read to get webkit to repaint the element
+      element.offsetHeight;
     }
-
-    // Property read to get webkit to repaint the element
-    element.offsetHeight;
   }
 
   function _setJitsoFrameSize() {
     const element = window.document.getElementById('jitsiConferenceFrame0');
-
-    if (expanded) {
-      element.style.height = `${window.innerHeight - 180}px`;
-    } else {
-      element.style.height = `${window.innerHeight - jitsiFrameTopBuffer}px`;
+    if (element) {
+      if (expanded) {
+        element.style.height = `${window.innerHeight - 180}px`;
+      } else {
+        element.style.height = `${window.innerHeight - jitsiFrameTopBuffer}px`;
+      }
     }
   }
 
