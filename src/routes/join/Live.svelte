@@ -17,7 +17,8 @@
   import Nav from '../../components/nav/interiorNav/Top.svelte';
   import WarningNotification from '../../components/notifications/Warning.svelte';
 
-  // data
+  // data / utilities
+  import config from '../../config';
   import metaTagsStore from '../../store/metaTags';
   import {
     isAuthenticated,
@@ -26,11 +27,20 @@
   } from '../../utilities/security.js';
   import sessionsApi from '../../dataSources/api.that.tech/sessions.js';
 
-  const { setAttendance } = sessionsApi(getClient());
-
   const { activityId } = router.params;
+  const { setAttendance } = sessionsApi(getClient());
   const imageCrop = '?mask=ellipse&w=500&h=500&fit=crop';
   const jitsiFrameTopBuffer = 340;
+
+  let expanded = false;
+  let api;
+  let bgColor = 'bg-white';
+  let isCurrentlySharing = false;
+  let userMuted = true;
+  let incompleteProfile = true;
+
+  let displayName = 'Johnny 5'; // generate a fake name...
+  let avatarUrl = config.defaultProfileImage;
 
   const activity = operationStore(
     `
@@ -50,25 +60,11 @@
       requestPolicy: 'network-only',
     },
   );
-
   query(activity);
 
-  let incompleteProfile = true;
-  $: if (!isEmpty($thatProfile)) {
-    incompleteProfile = false;
-  }
-
-  $: if ($isAuthenticated && !incompleteProfile) {
-    Promise.resolve(setAttendance(activityId));
-  }
-
-  let api;
-  let bgColor = 'bg-white';
-  let isCurrentlySharing = false;
-  let userMuted = true;
-  const handleMuted = ({ muted }) => {
+  function handleMuted({ muted }) {
     userMuted = muted;
-  };
+  }
 
   // https://jitsi.github.io/handbook/docs/dev-guide/dev-guide-iframe
   function initJitsi() {
@@ -126,19 +122,12 @@
         DEFAULT_REMOTE_DISPLAY_NAME: 'THAT Camper',
       },
       userInfo: {
-        displayName: `${$thatProfile.firstName} ${$thatProfile.lastName}`,
+        displayName: `${$thatProfile?.firstName} ${$thatProfile?.lastName}`,
       },
       onload: () => {
         // update here just to cover loading scenarios
-        api.executeCommand(
-          'avatarUrl',
-          `${$thatProfile.profileImage}${imageCrop}`,
-        );
-
-        api.executeCommand(
-          'displayName',
-          `${$thatProfile.firstName} ${$thatProfile.lastName}`,
-        );
+        api.executeCommand('avatarUrl', avatarUrl);
+        api.executeCommand('displayName', displayName);
 
         api.getIFrame().focus();
         handleResize();
@@ -159,8 +148,6 @@
       bgColor = isCurrentlySharing ? 'bg-red-500' : 'bg-white';
     });
   }
-
-  let expanded = false;
 
   function handleResize() {
     _setMainHeight();
@@ -221,6 +208,24 @@
       } else {
         element.style.height = `${window.innerHeight - jitsiFrameTopBuffer}px`;
       }
+    }
+  }
+
+  $: if (!isEmpty($thatProfile)) {
+    console.error('>>>>>>>', $thatProfile);
+
+    incompleteProfile = false;
+  }
+
+  $: if ($isAuthenticated && !incompleteProfile) {
+    Promise.resolve(setAttendance(activityId));
+
+    avatarUrl = `${$thatProfile.profileImage}${imageCrop}`;
+    displayName = `${$thatProfile.firstName} ${$thatProfile.lastName}`;
+
+    if (api) {
+      api.executeCommand('avatarUrl', avatarUrl);
+      api.executeCommand('displayName', displayName);
     }
   }
 

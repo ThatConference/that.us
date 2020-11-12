@@ -12,7 +12,7 @@
 
 <div
   class="fixed bottom-0 inset-x-0 px-4 pb-4 sm:inset-0 sm:flex sm:items-center
-  sm:justify-center"
+  sm:justify-center z-50"
 >
   <div class="fixed inset-0 transition-opacity">
     <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
