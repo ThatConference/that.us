@@ -248,7 +248,7 @@
   <div slot="header">
     <Nav />
 
-    {#if $activity.data && $activity.data.sessions.session}
+    {#if $activity?.data?.sessions?.session}
       <ActionHeader title="{$activity.data.sessions.session.title}">
         <LinkButton href="/activities/{activityId}" text="Activity Details" />
       </ActionHeader>
