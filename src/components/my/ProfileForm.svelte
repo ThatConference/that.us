@@ -186,8 +186,8 @@
       .string()
       .trim()
       .required('Please enter your last or family name.'),
-    company: yup.string().trim(),
-    jobTitle: yup.string().trim(),
+    company: yup.string().trim().nullable(),
+    jobTitle: yup.string().trim().nullable(),
     email: yup
       .string()
       .email()
@@ -215,8 +215,8 @@
     isOver13: yup.boolean().oneOf([true], 'You Must be 13 years or older.'),
     canFeature: yup.boolean(),
     isDeactivated: yup.boolean(),
-    profileImage: yup.string().url(),
-    profileLinks: yup.array(),
+    profileImage: yup.string().url().nullable(),
+    profileLinks: yup.array().nullable(),
     lifeHack: yup.string().trim().nullable(),
     interests: yup.array().of(yup.string()),
   });
