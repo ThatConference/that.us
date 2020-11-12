@@ -150,11 +150,6 @@ export const QUERY_NEXT_FOLLOWERS = `
   }
 `;
 
-function reformatResults(results) {
-  const { members } = results.members;
-  return members;
-}
-
 export default client => {
   const isSlugTaken = slug => {
     const variables = { slug };
@@ -180,7 +175,33 @@ export default client => {
       .then(({ data, error }) => {
         if (error) log(error, 'query_members');
 
-        return reformatResults(data);
+        let results = null;
+        if (data) {
+          const { members } = data.members;
+          results = members;
+        }
+
+        return results;
+      });
+  };
+
+  const queryMembersNext = (after, pageSize = 50) => {
+    const variables = { pageSize, after };
+    return client
+      .query(QUERY_MEMBERS_NEXT, variables, {
+        fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
+      })
+      .toPromise()
+      .then(({ data, error }) => {
+        if (error) log(error, 'query_members');
+
+        let results = null;
+        if (data) {
+          const { members } = data.members;
+          results = members;
+        }
+
+        return results;
       });
   };
 
@@ -247,20 +268,6 @@ export default client => {
         if (error) log(error, 'query_members');
 
         return data.members.member.sessions;
-      });
-  };
-
-  const queryMembersNext = (after, pageSize = 50) => {
-    const variables = { pageSize, after };
-    return client
-      .query(QUERY_MEMBERS_NEXT, variables, {
-        fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
-      })
-      .toPromise()
-      .then(({ data, error }) => {
-        if (error) log(error, 'query_members');
-
-        return reformatResults(data);
       });
   };
 
