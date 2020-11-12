@@ -17,7 +17,8 @@
   import Nav from '../../components/nav/interiorNav/Top.svelte';
   import WarningNotification from '../../components/notifications/Warning.svelte';
 
-  // data
+  // data / utilities
+  import config from '../../config';
   import metaTagsStore from '../../store/metaTags';
   import {
     isAuthenticated,
@@ -26,11 +27,20 @@
   } from '../../utilities/security.js';
   import sessionsApi from '../../dataSources/api.that.tech/sessions.js';
 
-  const { setAttendance } = sessionsApi(getClient());
-
   const { activityId } = router.params;
+  const { setAttendance } = sessionsApi(getClient());
   const imageCrop = '?mask=ellipse&w=500&h=500&fit=crop';
   const jitsiFrameTopBuffer = 340;
+
+  let expanded = false;
+  let api;
+  let bgColor = 'bg-white';
+  let isCurrentlySharing = false;
+  let userMuted = true;
+  let incompleteProfile = true;
+
+  let displayName = 'Johnny 5'; // generate a fake name...
+  let avatarUrl = config.defaultProfileImage;
 
   const activity = operationStore(
     `
@@ -50,25 +60,11 @@
       requestPolicy: 'network-only',
     },
   );
-
   query(activity);
 
-  let incompleteProfile = true;
-  $: if (!isEmpty($thatProfile)) {
-    incompleteProfile = false;
-  }
-
-  $: if ($isAuthenticated && !incompleteProfile) {
-    Promise.resolve(setAttendance(activityId));
-  }
-
-  let api;
-  let bgColor = 'bg-white';
-  let isCurrentlySharing = false;
-  let userMuted = true;
-  const handleMuted = ({ muted }) => {
+  function handleMuted({ muted }) {
     userMuted = muted;
-  };
+  }
 
   // https://jitsi.github.io/handbook/docs/dev-guide/dev-guide-iframe
   function initJitsi() {
@@ -126,19 +122,12 @@
         DEFAULT_REMOTE_DISPLAY_NAME: 'THAT Camper',
       },
       userInfo: {
-        displayName: `${$thatProfile.firstName} ${$thatProfile.lastName}`,
+        displayName: `${$thatProfile?.firstName} ${$thatProfile?.lastName}`,
       },
       onload: () => {
         // update here just to cover loading scenarios
-        api.executeCommand(
-          'avatarUrl',
-          `${$thatProfile.profileImage}${imageCrop}`,
-        );
-
-        api.executeCommand(
-          'displayName',
-          `${$thatProfile.firstName} ${$thatProfile.lastName}`,
-        );
+        api.executeCommand('avatarUrl', avatarUrl);
+        api.executeCommand('displayName', displayName);
 
         api.getIFrame().focus();
         handleResize();
@@ -159,8 +148,6 @@
       bgColor = isCurrentlySharing ? 'bg-red-500' : 'bg-white';
     });
   }
-
-  let expanded = false;
 
   function handleResize() {
     _setMainHeight();
@@ -184,34 +171,61 @@
 
   function _setMainHeight() {
     const main = window.document.getElementById('main');
-    main.style.minHeight = expanded ? `${window.innerHeight - 100}px` : 'auto';
+    if (main) {
+      main.style.minHeight = expanded
+        ? `${window.innerHeight - 100}px`
+        : 'auto';
+    }
   }
 
   function _setContentHeightWidth() {
     const element = window.document.getElementById('content-block');
 
-    element.style.height = expanded ? `${window.innerHeight - 130}px` : '100%';
-    element.style.width = expanded ? `${window.innerWidth - 50}px` : '100%';
+    if (element) {
+      element.style.height = expanded
+        ? `${window.innerHeight - 130}px`
+        : '100%';
+      element.style.width = expanded ? `${window.innerWidth - 50}px` : '100%';
 
-    if (expanded) {
-      element.classList.add('absolute', 'left-5');
-      element.scrollIntoView();
-    } else {
-      element.classList.remove('absolute', 'left-5');
-      window.scrollTo(0, 0);
+      if (expanded) {
+        element.classList.add('absolute', 'left-5');
+        element.scrollIntoView();
+      } else {
+        element.classList.remove('absolute', 'left-5');
+        window.scrollTo(0, 0);
+      }
+
+      // Property read to get webkit to repaint the element
+      element.offsetHeight;
     }
-
-    // Property read to get webkit to repaint the element
-    element.offsetHeight;
   }
 
   function _setJitsoFrameSize() {
     const element = window.document.getElementById('jitsiConferenceFrame0');
+    if (element) {
+      if (expanded) {
+        element.style.height = `${window.innerHeight - 180}px`;
+      } else {
+        element.style.height = `${window.innerHeight - jitsiFrameTopBuffer}px`;
+      }
+    }
+  }
 
-    if (expanded) {
-      element.style.height = `${window.innerHeight - 180}px`;
-    } else {
-      element.style.height = `${window.innerHeight - jitsiFrameTopBuffer}px`;
+  $: if (!isEmpty($thatProfile)) {
+    console.error('>>>>>>>', $thatProfile);
+
+    incompleteProfile = false;
+  }
+
+  $: if ($isAuthenticated && !incompleteProfile) {
+    Promise.resolve(setAttendance(activityId));
+
+    avatarUrl = `${$thatProfile.profileImage}${imageCrop}`;
+    displayName = `${$thatProfile.firstName} ${$thatProfile.lastName}`;
+
+    if (api) {
+      api.executeCommand('avatarUrl', avatarUrl);
+      api.executeCommand('displayName', displayName);
     }
   }
 
