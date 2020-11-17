@@ -212,8 +212,6 @@
   }
 
   $: if (!isEmpty($thatProfile)) {
-    console.error('>>>>>>>', $thatProfile);
-
     incompleteProfile = false;
   }
 
