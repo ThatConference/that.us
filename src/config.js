@@ -39,5 +39,5 @@ export const events = {
 };
 
 export const debug = {
-  xstate: false,
+  xstate: process.env.XSTATE_DEBUG,
 };
