@@ -1,3 +1,5 @@
+import { spawn } from 'child_process';
+
 import svelte from 'rollup-plugin-svelte';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
@@ -16,20 +18,18 @@ function serve() {
   let server;
 
   function toExit() {
-    if (server) server.kill(0);
+    if (server) {
+      server.kill(0);
+    }
   }
 
   return {
     writeBundle() {
       if (server) return;
-      server = require('child_process').spawn(
-        'npm',
-        ['run', 'start', '--', '--dev'],
-        {
-          stdio: ['ignore', 'inherit', 'inherit'],
-          shell: true,
-        },
-      );
+      server = spawn('npm', ['run', 'start', '--', '--dev'], {
+        stdio: ['ignore', 'inherit', 'inherit'],
+        shell: true,
+      });
 
       process.on('SIGTERM', toExit);
       process.on('exit', toExit);
@@ -51,7 +51,12 @@ export default {
     json(),
 
     replace({
-      'process.env.NODE_ENV': JSON.stringify('production'),
+      'process.env.NODE_ENV': JSON.stringify(
+        process.env.NODE_ENV || 'production',
+      ),
+      'process.env.XSTATE_DEBUG': JSON.stringify(
+        process.env.XSTATE_DEBUG || false,
+      ),
     }),
 
     svelte({
@@ -74,20 +79,18 @@ export default {
     resolve({
       browser: true,
       dedupe: ['svelte'],
+      preferBuiltins: true,
     }),
 
     commonjs(),
 
-    // In dev mode, call `npm run start` once
-    // the bundle has been generated
+    // In dev mode, call `npm run start` once the bundle has been generated
     !production && serve(),
 
-    // Watch the `public` directory and refresh the
-    // browser on changes when not in production
+    // Watch the `public` directory and refresh the browser on changes when not in production
     !production && livereload('public'),
 
-    // If we're building for production (npm run build
-    // instead of npm run dev), minify
+    // If we're building for production (npm run build instead of npm run dev), minify
     production && terser(),
 
     globals(),
