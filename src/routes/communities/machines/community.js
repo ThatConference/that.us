@@ -2,6 +2,7 @@ import { getClient } from '@urql/svelte';
 import { Machine, assign, spawn, send } from 'xstate';
 import { navigateTo } from 'yrv';
 
+import { isValidSlug } from '../../../machines/guards/slug';
 import { log } from '../../../utilities/error';
 import createFollowMachine from './followers';
 import createActivitiesMachineServices from './activities';
@@ -33,7 +34,7 @@ function createMachine(slug) {
   return Machine(
     {
       id: 'community',
-      initial: 'loading',
+      initial: 'validating',
 
       context: {
         slug,
@@ -52,6 +53,23 @@ function createMachine(slug) {
       },
 
       states: {
+        validating: {
+          meta: {
+            message: 'validating community slug',
+          },
+          on: {
+            '': [
+              {
+                cond: 'isValidSlug',
+                target: 'loading',
+              },
+              {
+                target: 'notFound',
+              },
+            ],
+          },
+        },
+
         loading: {
           meta: {
             message: 'loading community data',
@@ -211,6 +229,7 @@ function createMachine(slug) {
     },
     {
       guards: {
+        isValidSlug,
         communityFound: (_, event) => event.data !== null,
         communityNotFound: (_, event) => event.data === null,
         isAuthenticated: context => context.isAuthenticated,
