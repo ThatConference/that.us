@@ -17,57 +17,17 @@
   import Tailwindcss from './elements/Tailwindcss.svelte';
   import Router from './Router.svelte';
 
-  router.subscribe(() => {
-    window.scrollTo(0, 0);
-  });
-
-  // setting the default event
-  currentEvent.set(events.thatUs);
-
-  let client = initClient({
-    url: config.api,
-    fetchOptions: () => ({
-      headers: {
-        authorization: $token ? `Bearer ${$token}` : '',
-        'that-site': 'that.us',
-        'that-correlation-id': uuidv4(),
-      },
-    }),
-    // todo.. this needs to be revisited... and when we get a new graph client.
-    // requestPolicy: 'cache-and-network',
-    requestPolicy: 'network-only',
-  });
-
-  router.subscribe(e => {
-    if (!e.initial) {
-      // https://developers.google.com/analytics/devguides/collection/gtagjs/pages
-      window.gtag('config', config.gtag, {
-        page_path: e.path,
-      });
-    }
-  });
-
   let unsub;
-  onMount(() => {
-    setupAuth(client);
+  currentEvent.set(events.thatUs); // setting the default event
 
-    if ($showReleaseNotes) {
-      messages.update(m => [
-        ...m,
-        {
-          message:
-            '🙌 We shipped again! 🎉 Check out newest features on THAT.us!!!',
-          url: '/changelog-missed',
-        },
-      ]);
-    }
-  });
+  function createCorrelationId() {
+    const id = uuidv4();
 
-  onDestroy(unsub);
+    Sentry.configureScope(scope => {
+      scope.setTag('correlationId', id);
+    });
 
-  $: if ($thatProfile) {
-    let { id, email } = $thatProfile;
-    Sentry.setUser({ id, email });
+    return id;
   }
 
   function onTidioChatApiReady() {
@@ -98,11 +58,60 @@
     });
   }
 
-  (function () {
-    if (window.tidioChatApi)
+  let client = initClient({
+    url: config.api,
+    fetchOptions: () => ({
+      headers: {
+        authorization: $token ? `Bearer ${$token}` : '',
+        'that-site': 'that.us',
+        'that-correlation-id': createCorrelationId(),
+      },
+    }),
+    // todo.. this needs to be revisited... and when we get a new graph client.
+    // requestPolicy: 'cache-and-network',
+    requestPolicy: 'network-only',
+  });
+
+  router.subscribe(e => {
+    if (!e.initial) {
+      // https://developers.google.com/analytics/devguides/collection/gtagjs/pages
+      window.gtag('config', config.gtag, {
+        page_path: e.path,
+      });
+    }
+  });
+
+  router.subscribe(() => {
+    window.scrollTo(0, 0);
+  });
+
+  onMount(() => {
+    setupAuth(client);
+
+    if ($showReleaseNotes) {
+      messages.update(m => [
+        ...m,
+        {
+          message:
+            '🙌 We shipped again! 🎉 Check out newest features on THAT.us!!!',
+          url: '/changelog-missed',
+        },
+      ]);
+    }
+
+    if (window.tidioChatApi) {
       window.tidioChatApi.on('ready', onTidioChatApiReady);
-    else document.addEventListener('tidioChat-ready', onTidioChatApiReady);
-  })();
+    } else {
+      document.addEventListener('tidioChat-ready', onTidioChatApiReady);
+    }
+  });
+
+  onDestroy(unsub);
+
+  $: if ($thatProfile) {
+    let { id, email } = $thatProfile;
+    Sentry.setUser({ id, email });
+  }
 </script>
 
 <svelte:head>
