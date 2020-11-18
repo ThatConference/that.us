@@ -2,6 +2,7 @@ import { getClient } from '@urql/svelte';
 import { navigateTo } from 'yrv';
 import { Machine, assign, spawn, send } from 'xstate';
 
+import { isValidSlug } from '../../../machines/guards/slug';
 import profileConfig from '../../../machines/profile';
 import followMachine from './followers';
 import activitiesMachine from './activities';
@@ -18,6 +19,7 @@ function createServices(client) {
 
   return {
     guards: {
+      isValidSlug,
       profileFound: (_, { data }) => data !== null,
       profileNotFound: (_, { data }) => data === null,
 

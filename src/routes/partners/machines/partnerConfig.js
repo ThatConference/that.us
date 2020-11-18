@@ -12,7 +12,7 @@
 function createConfig(slug) {
   return {
     id: 'profile',
-    initial: 'loading',
+    initial: 'validating',
 
     context: {
       slug: slug || undefined,
@@ -28,6 +28,22 @@ function createConfig(slug) {
     },
 
     states: {
+      validating: {
+        meta: {
+          message: 'validating community slug',
+        },
+        on: {
+          '': [
+            {
+              cond: 'isValidSlug',
+              target: 'loading',
+            },
+            {
+              target: 'notFound',
+            },
+          ],
+        },
+      },
       loading: {
         meta: {
           message: 'loading profile data',
