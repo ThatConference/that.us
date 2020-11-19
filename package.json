@@ -1,6 +1,6 @@
 {
   "name": "that-us",
-  "version": "1.6.3",
+  "version": "1.7.0",
   "description": "THAT.us website",
   "main": "index.js",
   "engines": {
