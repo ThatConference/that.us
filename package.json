@@ -41,7 +41,7 @@
     "concurrently": "^5.3.0",
     "cross-env": "^7.0.2",
     "dayjs": "^1.9.6",
-    "debug": "^4.2.0",
+    "debug": "^4.3.1",
     "env-cmd": "^10.1.0",
     "eslint": "^7.13.0",
     "eslint-config-airbnb-base": "^14.2.1",
@@ -57,7 +57,7 @@
     "isomorphic-unfetch": "^3.1.0",
     "jest-cli": "^26.6.3",
     "lodash": "^4.17.20",
-    "marked": "^1.2.4",
+    "marked": "^1.2.5",
     "moment-timezone": "^0.5.32",
     "npm-run-all": "^4.1.5",
     "omit-deep": "^0.3.0",
@@ -70,7 +70,7 @@
     "prettier-eslint-cli": "^5.0.0",
     "prettier-plugin-svelte": "^1.4.1",
     "query-string": "^6.13.7",
-    "rollup": "^2.33.2",
+    "rollup": "^2.33.3",
     "rollup-plugin-livereload": "^2.0.0",
     "rollup-plugin-node-builtins": "^2.1.2",
     "rollup-plugin-node-globals": "^1.4.0",
@@ -91,13 +91,13 @@
     "svelte-tags-input": "^2.6.5",
     "svelte-typewriter": "^2.4.1",
     "sveltejs-forms": "^2.1.2",
-    "tailwindcss": "^1.9.6",
+    "tailwindcss": "^2.0.1",
     "tailwindcss-font-inter": "^2.0.0",
     "uuid": "^8.3.1",
     "xstate": "^4.14.0",
     "xstate-svelte": "^1.0.1",
     "yrv": "^0.0.35",
-    "yup": "~0.29.3"
+    "yup": "~0.30.0"
   },
   "dependencies": {
     "sirv-cli": "^1.0.8"
