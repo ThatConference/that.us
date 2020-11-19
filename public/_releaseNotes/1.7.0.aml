@@ -1,0 +1,52 @@
+versionNumber: v1.7.0
+date: November 19th, 2020
+
+notes: If you measure it, they will come. Error handling has been non existent in that.us and it was time to fix that. Global error handling was added, logging it to Sentry and stablizing what came as a result of that. While it should have been done at the start, we now have a framework in place and prevent the app from crashing while logging. We also added the ability to auto associate an activity to a community by adding @[community-Name]. We've also been working with people to add new communities and if you're interested in moderating one, please contact us. Oh yea, open in new tab is finally supported too.
+
+[features]
+
+feature: Full Milestone Details
+url: https://github.com/ThatConference/that.us/milestone/7
+
+feature: [chore] upgraded to tailwind 2.0
+url: https://github.com/ThatConference/that.us/pull/521
+
+feature: [enhancement] adds guards around invalid slugs
+url: https://github.com/ThatConference/that.us/pull/518
+
+feature: [enhancement] adds dynamic env configs
+url: https://github.com/ThatConference/that.us/pull/518
+
+feature: [enhancement] adds debug mode for xstate-inspect
+url: https://github.com/ThatConference/that.us/pull/518
+
+feature: [bug] routing support for open in new tab, FINALLY!!!
+url: https://github.com/ThatConference/that.us/pull/515
+
+feature: [bug] optional profile fields are now really optional
+url: https://github.com/ThatConference/that.us/pull/513
+
+feature: [bug] Lifehack is really optional
+url: https://github.com/ThatConference/that.us/pull/513
+
+feature: [bug] fixes null reference issues on join page.
+url: https://github.com/ThatConference/that.us/pull/511
+
+feature: [enhancement] Front page stats now calls the api rather than hardcoded.
+url: https://github.com/ThatConference/that.us/pull/503
+
+feature: [enhancement] adds a link to create activities in the nav
+url: https://github.com/ThatConference/that.us/pull/497
+
+feature: [enhancement] added error handling, yes you read that right, added sentry logging
+url: https://github.com/ThatConference/that.us/pull/491
+
+feature: [enhancement] added sentry logging
+url: https://github.com/ThatConference/that.us/pull/487
+
+feature: [enhancement] updates how graphql errors are logged
+url: https://github.com/ThatConference/that.us/pull/498
+
+feature: [bug] fixes the animated checkbox in safari
+url: https://github.com/ThatConference/that.us/pull/488
+
