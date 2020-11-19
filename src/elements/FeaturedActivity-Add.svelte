@@ -2,6 +2,7 @@
   import { Link } from 'yrv';
 
   import { isAuthenticated, thatProfile } from '../utilities/security';
+  import { imageCrops } from '../config';
 
   import Icon from 'svelte-awesome';
   import { plusCircle } from 'svelte-awesome/icons';
@@ -27,7 +28,7 @@
           {:else}
             <img
               class="mx-auto h-40 w-40 rounded-full xl:w-56 xl:h-56"
-              src="{$thatProfile.profileImage}"
+              src="{`${$thatProfile.profileImage}${imageCrops.profile}`}"
               alt="{`${$thatProfile.firstName} ${$thatProfile.lastName}`}"
             />
           {/if}

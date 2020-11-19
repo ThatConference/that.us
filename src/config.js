@@ -41,3 +41,7 @@ export const events = {
 export const debug = {
   xstate: process.env.XSTATE_DEBUG,
 };
+
+export const imageCrops = {
+  profile: '?mask=ellipse&w=500&h=500&fit=crop',
+};

@@ -7,12 +7,11 @@
   import { Link } from 'yrv';
   import dayjs from 'dayjs';
 
-  import config from '../config';
+  import config, { imageCrops } from '../config';
 
   let host = speakers[0];
-  let imageCrop = '?mask=ellipse&w=500&h=500&fit=crop';
   let userProfileImage = host.profileImage
-    ? `${host.profileImage}${imageCrop}`
+    ? `${host.profileImage}${imageCrops.profile}`
     : config.defaultProfileImage;
 </script>
 
