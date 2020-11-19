@@ -296,6 +296,15 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "eselje",
+      "name": "Eric Selje",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/8174668?v=4",
+      "profile": "http://saltydogllc.com",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
