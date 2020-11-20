@@ -1,6 +1,7 @@
 import { version } from '../package.json';
 
 export default {
+  nodeEnv: process.env.NODE_ENV,
   version,
   eventId: 'ByE7Dc7eCGcRFzLhWhuI',
   eventSlug: 'wi/2020',
@@ -23,6 +24,7 @@ export const logging = {
   dsn:
     'https://15d4b436dc0a4366a0ac388c65772926@o235190.ingest.sentry.io/5357492',
   environment: process.env.NODE_ENV,
+  logRocket: 'c59zeb/that-prod',
 };
 
 export const events = {

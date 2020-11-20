@@ -2,6 +2,7 @@
 import { inspect } from '@xstate/inspect';
 import * as Sentry from '@sentry/browser';
 import { Integrations } from '@sentry/tracing';
+import LogRocket from 'logrocket';
 
 import config, { debug, logging } from './config';
 import App from './App.svelte';
@@ -11,6 +12,12 @@ if (debug.xstate) {
     url: 'https://statecharts.io/inspect',
     iframe: false,
   });
+}
+
+if (config.nodeEnv !== 'development') {
+  // only initialize LogRocket in non-dev environments
+  // https://docs.logrocket.com/docs/development#using-logrocket-in-development
+  LogRocket.init(logging.logRocket);
 }
 
 Sentry.init({
