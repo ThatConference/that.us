@@ -4,6 +4,7 @@
   import { router } from 'yrv';
   import { v4 as uuidv4 } from 'uuid';
   import * as Sentry from '@sentry/browser';
+  import LogRocket from 'logrocket';
 
   import config, { events } from './config';
   import { token, thatProfile, setupAuth } from './utilities/security.js';
@@ -110,7 +111,18 @@
 
   $: if ($thatProfile) {
     let { id, email } = $thatProfile;
-    Sentry.setUser({ id, email });
+
+    Sentry.configureScope(scope => {
+      scope.setUser({
+        email,
+        id,
+      });
+      scope.setExtra('logRocketSession', LogRocket.sessionURL);
+    });
+
+    LogRocket.identify(id, {
+      email,
+    });
   }
 </script>
 
