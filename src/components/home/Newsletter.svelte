@@ -95,7 +95,7 @@
                     bg-thatBlue-100 border border-transparent text-thatBlue-500
                     hover:bg-thatBlue-500 hover:text-white focus:bg-thatBlue-500
                     focus:text-white focus:outline-none
-                    focus:shadow-outline-thatBlue-500 focus:border-thatBlue-800
+                    focus:ring-thatBlue-500 focus:border-thatBlue-800
                     transition duration-150 ease-in-out"
                 >
                   Add me
@@ -109,8 +109,14 @@
           {/if}
         </Form>
         <p class="mt-3 text-sm leading-5 text-gray-300">
-          We care about the protection of your data. Read our <a href="https://www.thatconference.com/privacy-policy" class="text-white
-              font-medium underline"> Privacy Policy. </a>
+          We care about the protection of your data. Read our
+          <a
+            href="https://www.thatconference.com/privacy-policy"
+            class="text-white
+              font-medium underline"
+          >
+            Privacy Policy.
+          </a>
         </p>
       {/if}
     </div>

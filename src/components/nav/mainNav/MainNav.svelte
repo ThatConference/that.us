@@ -25,7 +25,7 @@
       >
         <div class="rounded-lg shadow-md">
           <div
-            class="rounded-lg bg-white shadow-xs overflow-hidden"
+            class="rounded-lg bg-white ring-1 ring-black ring-opacity-5 overflow-hidden"
             role="menu"
             aria-orientation="vertical"
             aria-labelledby="main-menu"

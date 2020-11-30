@@ -13,7 +13,7 @@
     shadow md:py-4 md:text-lg md:px-10 transition duration-150 ease-in-out
     text-base text-white bg-thatOrange-400 hover:bg-thatOrange-500
     focus:outline-none focus:border-thatOrange-700
-    focus:shadow-outline-that-orange"
+    focus:ring-that-orange"
 >
   <span>
     <slot />

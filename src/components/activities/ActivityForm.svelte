@@ -429,7 +429,7 @@
             class="inline-flex justify-center py-2 px-4 border-2
               border-thatBlue-500 text-sm leading-5 font-medium rounded-md
               text-thatBlue-500 bg-white hover:bg-thatBlue-500 hover:text-white
-              focus:outline-none focus:shadow-outline-thatBlue-500
+              focus:outline-none focus:ring-thatBlue-500
               focus:bg-thatBlue-500 focus:text-white focus:border-thatBlue-800
               active:bg-thatBlue-800 transition duration-150 ease-in-out"
           >
@@ -446,7 +446,7 @@
               class="py-2 px-4 border-2 order border-transparent rounded-md
                 text-sm leading-5 font-medium text-white bg-red-400
                 hover:bg-red-600 focus:outline-none focus:border-red-700
-                focus:shadow-outline-red active:bg-red-700 transition
+                focus:ring-red active:bg-red-700 transition
                 duration-150 ease-in-out"
             >
               Cancel / Withdraw

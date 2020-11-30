@@ -156,7 +156,7 @@
   <div class="bg-white px-4 py-5 border-b border-gray-200 sm:px-6">
     <div
       class="-ml-4 -mt-4 flex justify-between items-center flex-wrap
-        sm:flex-no-wrap flex-col md:flex-row"
+        sm:flex-nowrap flex-col md:flex-row"
     >
       <div class="ml-4 mt-4">
         <div class="flex items-center">
@@ -205,7 +205,7 @@
                 class="relative inline-flex items-center px-4 py-2 border-2
                   border-thatBlue-500 text-sm leading-5 font-medium rounded-md
                   text-gray-700 bg-white hover:text-gray-500 focus:outline-none
-                  focus:shadow-outline-blue focus:border-blue-300
+                  focus:ring-blue focus:border-blue-300
                   active:bg-gray-50 active:text-gray-800 transition duration-150
                   ease-in-out"
               >
@@ -223,7 +223,7 @@
                 class="relative inline-flex items-center px-4 py-2 border-2
                   border-thatBlue-500 text-sm leading-5 font-medium rounded-md
                   text-gray-700 bg-white hover:text-gray-500 focus:outline-none
-                  focus:shadow-outline-blue focus:border-blue-300
+                  focus:ring-blue focus:border-blue-300
                   active:bg-gray-50 active:text-gray-800 transition duration-150
                   ease-in-out"
               >
@@ -244,7 +244,7 @@
                   border-thatBlue-500 text-sm leading-5 font-medium rounded-md
                   text-thatBlue-500 bg-white hover:bg-thatBlue-500
                   hover:text-white focus:outline-none
-                  focus:shadow-outline-thatBlue-500 focus:bg-thatBlue-500
+                  focus:ring-thatBlue-500 focus:bg-thatBlue-500
                   focus:text-white focus:border-thatBlue-800
                   active:bg-thatBlue-800 transition duration-150 ease-in-out"
               >
@@ -265,7 +265,7 @@
                   border-thatBlue-500 text-sm leading-5 font-medium rounded-md
                   text-thatBlue-500 bg-white hover:bg-thatBlue-500
                   hover:text-white focus:outline-none
-                  focus:shadow-outline-thatBlue-500 focus:bg-thatBlue-500
+                  focus:ring-thatBlue-500 focus:bg-thatBlue-500
                   focus:text-white focus:border-thatBlue-800
                   active:bg-thatBlue-800 transition duration-150 ease-in-out"
               >
@@ -282,7 +282,7 @@
                 class="border-2 border-thatBlue-500 text-sm leading-5
                   font-medium rounded-md text-thatBlue-500 bg-white
                   hover:bg-thatBlue-500 hover:text-white focus:outline-none
-                  focus:shadow-outline-thatBlue-500 focus:bg-thatBlue-500
+                  focus:ring-thatBlue-500 focus:bg-thatBlue-500
                   focus:text-white focus:border-thatBlue-800
                   active:bg-thatBlue-800 transition duration-150 ease-in-out"
               >

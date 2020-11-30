@@ -73,8 +73,12 @@ module.exports = {
       },
     },
   },
-  variants: {},
-  purge: ['./src/**/*.svelte'],
+  variants: {
+    extend: {
+      fontWeight: ['hover', 'focus'],
+    },
+  },
+  purge: ['./src/**/*.svelte', './src/**/*.html', './src/**/*.js'],
   plugins: [
     require('tailwindcss-font-inter')({
       importFontFace: true,
@@ -82,8 +86,4 @@ module.exports = {
     }),
     require('@tailwindcss/ui'),
   ],
-  future: {
-    removeDeprecatedGapUtilities: true,
-    purgeLayersByDefault: true,
-  },
 };

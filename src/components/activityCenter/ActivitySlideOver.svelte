@@ -3,7 +3,7 @@
   import { flip } from 'svelte/animate'; // todo we will need this when we really start to clear and add stuff to the list better.
   import Icon from 'svelte-awesome';
   import { externalLink } from 'svelte-awesome/icons';
-  import {Link} from 'yrv';
+  import { Link } from 'yrv';
 
   import { StandardLink } from '../../elements';
   import { Activity } from '../../elements/svgs';
@@ -42,7 +42,7 @@
                 <Icon data="{externalLink}" class="h-8 w-8" />
               </div>
             </div>
-        </Link>
+          </Link>
         </li>
       {/each}
     </ul>
@@ -53,7 +53,7 @@
       type="button"
       class="py-2 px-4 border border-gray-300 rounded-md text-sm leading-5
         font-medium text-gray-700 hover:text-gray-500 focus:outline-none
-        focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50
+        focus:border-blue-300 focus:ring-blue active:bg-gray-50
         active:text-gray-800 transition duration-150 ease-in-out"
       on:click="{handleClear}"
     >
