@@ -57,7 +57,7 @@
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-base max-w-prose mx-auto lg:max-w-none">
         <div
-          class="flex justify-between items-center flex-wrap sm:flex-no-wrap
+          class="flex justify-between items-center flex-wrap sm:flex-nowrap
             flex-col md:flex-row"
         >
           <div>

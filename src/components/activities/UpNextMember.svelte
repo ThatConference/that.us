@@ -59,7 +59,7 @@
               class="px-8 py-2 rounded-md shadow text-base leading-6
                       bg-that-blue text-white hover:bg-thatBlue-400
                       focus:bg-thatBlue-400 focus:text-white focus:outline-none
-                      focus:shadow-outline-thatBlue-500 focus:border-thatBlue-800 
+                      focus:ring-thatBlue-500 focus:border-thatBlue-800 
                       transition duration-150 ease-in-out md:text-lg md:px-10"
             >
               <span>View Next</span>
@@ -76,7 +76,7 @@
                         focus:bg-thatBlue-400 
                         focus:text-white 
                         focus:outline-none
-                        focus:shadow-outline-thatBlue-500 
+                        focus:ring-thatBlue-500 
                         focus:border-thatBlue-800 
                         transition duration-150 ease-in-out md:text-lg md:px-10"
             >

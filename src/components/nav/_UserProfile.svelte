@@ -56,7 +56,9 @@
           class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg z-50"
           transition:fade
         >
-          <div class="py-1 rounded-md bg-white shadow-xs">
+          <div
+            class="py-1 rounded-md bg-white ring-1 ring-black ring-opacity-5"
+          >
             <Link
               href="/my/profile"
               class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
@@ -77,7 +79,9 @@
           class="origin-top-right absolute right-0 mt-2 min-w-48 rounded-md shadow-lg z-50"
           transition:fade
         >
-          <div class="py-1 rounded-md bg-white shadow-xs">
+          <div
+            class="py-1 rounded-md bg-white ring-1 ring-black ring-opacity-5"
+          >
             <div class="block px-4 py-2 text-sm text-gray-700 border-b">
               <p>{$thatProfile.firstName} {$thatProfile.lastName}</p>
               <p class="truncate pt-2">{$thatProfile.email}</p>
@@ -123,7 +127,7 @@
         transition:fade
         class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg"
       >
-        <div class="py-1 rounded-md bg-white shadow-xs">
+        <div class="py-1 rounded-md bg-white ring-1 ring-black ring-opacity-5">
           <div
             on:click|stopPropagation="{() => login(document.location.pathname, false)}"
             class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer"

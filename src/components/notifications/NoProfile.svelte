@@ -38,8 +38,9 @@
               <p class="ml-3 font-medium text-white truncate">
                 <span class="md:hidden">!</span>
                 <span class="hidden md:inline">
-                  You cannot <span class="font-bold">{text}</span> a activity until
-                  you've completed your user profile.
+                  You cannot
+                  <span class="font-bold">{text}</span>
+                  a activity until you've completed your user profile.
                 </span>
               </p>
             </div>
@@ -53,7 +54,7 @@
                   class="flex items-center justify-center px-4 py-2 border
                     border-transparent text-sm leading-5 font-medium rounded-md
                     text-indigo-600 bg-white hover:text-indigo-500
-                    focus:outline-none focus:shadow-outline transition
+                    focus:outline-none focus:ring transition
                     ease-in-out duration-150"
                 >
                   Create Profile

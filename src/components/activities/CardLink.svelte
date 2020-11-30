@@ -8,10 +8,10 @@
 </script>
 
 <Link
-  {href}
+  href="{href}"
   class="relative -mr-px w-0 flex-1 inline-flex items-center justify-center py-2
   text-xs leading-4 text-gray-700 font-medium border border-transparent
-  rounded-bl-lg hover:text-gray-300 focus:outline-none focus:shadow-outline-blue
+  rounded-bl-lg hover:text-gray-300 focus:outline-none focus:ring-blue
   focus:border-blue-300 focus:z-10 transition ease-in-out duration-150"
 >
   <Icon data="{icon}" class="w-4 h-4" />

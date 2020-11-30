@@ -10,7 +10,8 @@
     class="text-4xl tracking-tight leading-10 font-extrabold text-thatBlue-800
       sm:text-5xl sm:leading-none md:text-6xl"
   >
-    Welcome to <span class="text-thatOrange-400">THAT Family</span>
+    Welcome to
+    <span class="text-thatOrange-400">THAT Family</span>
   </h2>
   <p
     class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl
@@ -32,7 +33,7 @@
             border-transparent text-base leading-6 font-medium rounded-md
             text-white bg-thatOrange-400 hover:bg-thatOrange-500
             focus:outline-none focus:border-thatOrange-700
-            focus:shadow-outline-that-orange transition duration-150 ease-in-out
+            focus:ring-that-orange transition duration-150 ease-in-out
             md:py-4 md:text-lg md:px-10"
         >
           Sign up today!

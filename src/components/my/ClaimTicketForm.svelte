@@ -51,7 +51,7 @@
         </p>
       </div>
 
-      <div class="mt-6 grid grid-cols-1 row-gap-6 gap-y-4 sm:grid-cols-6">
+      <div class="mt-6 grid grid-cols-1 gap-y-6 gap-y-4 sm:grid-cols-6">
         <div class="sm:col-span-3">
           <label
             for="ticket_reference"
@@ -79,7 +79,7 @@
             type="reset"
             class="py-2 px-4 border border-gray-300 rounded-md text-sm leading-5
             font-medium text-gray-700 hover:text-gray-500 focus:outline-none
-            focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50
+            focus:border-blue-300 focus:ring-blue active:bg-gray-50
             active:text-gray-800 transition duration-150 ease-in-out"
           >
             Reset
@@ -92,7 +92,7 @@
             class="inline-flex justify-center py-2 px-4 border
             border-transparent text-sm leading-5 font-medium rounded-md
             text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none
-            focus:border-indigo-700 focus:shadow-outline-indigo
+            focus:border-indigo-700 focus:ring-indigo
             active:bg-indigo-700 transition duration-150 ease-in-out"
           >
             Claim Ticket

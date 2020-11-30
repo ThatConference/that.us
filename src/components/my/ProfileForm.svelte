@@ -279,7 +279,7 @@
         </p>
       </div>
 
-      <div class="mt-6 grid grid-cols-1 row-gap-6 gap-y-4 sm:grid-cols-6">
+      <div class="mt-6 grid grid-cols-1 gap-y-6 gap-y-4 sm:grid-cols-6">
         <div class="sm:col-span-3">
           <label
             for="first_name"
@@ -450,7 +450,7 @@
                 class="py-2 px-3 border border-gray-300 rounded-md text-sm
                   leading-4 font-medium text-gray-700 hover:text-gray-500
                   focus:outline-none focus:border-blue-300
-                  focus:shadow-outline-blue active:bg-gray-50
+                  focus:ring-blue active:bg-gray-50
                   active:text-gray-800 transition duration-150 ease-in-out"
               />
             </span>
@@ -517,7 +517,7 @@
 
         <div class="mt-6">
           <div class="sm:col-span-4">
-            <div class="mt-6 grid grid-cols-1 row-gap-6 gap-y-4 sm:grid-cols-6">
+            <div class="mt-6 grid grid-cols-1 gap-y-6 gap-y-4 sm:grid-cols-6">
               <div
                 class="sm:col-span-4 block text-sm font-medium leading-5 text-gray-700"
               >
@@ -543,7 +543,7 @@
               </div>
             </div>
 
-            <div class="mt-6 grid grid-cols-1 row-gap-6 gap-y-4 sm:grid-cols-6">
+            <div class="mt-6 grid grid-cols-1 gap-y-6 gap-y-4 sm:grid-cols-6">
               <div class="sm:col-span-4">
                 <label
                   for="lifeHack"
@@ -618,7 +618,7 @@
             </p>
           </div>
 
-          <div class="mt-6 grid grid-cols-1 row-gap-6 gap-y-4 sm:grid-cols-6">
+          <div class="mt-6 grid grid-cols-1 gap-y-6 gap-y-4 sm:grid-cols-6">
             <div class="sm:col-span-4">
               <label
                 for="email"
@@ -889,7 +889,7 @@
               class="inline-flex justify-center py-2 px-4 border-2
               border-thatBlue-500 text-sm leading-5 font-medium rounded-md
               text-thatBlue-500 bg-white hover:bg-thatBlue-500 hover:text-white
-              focus:outline-none focus:shadow-outline-thatBlue-500
+              focus:outline-none focus:ring-thatBlue-500
               focus:bg-thatBlue-500 focus:text-white focus:border-thatBlue-800
               active:bg-thatBlue-800 transition duration-150 ease-in-out"
             >
@@ -902,7 +902,7 @@
               tabindex="-1"
               class="py-2 px-4 border-2 border-gray-300 rounded-md text-sm
               leading-5 font-medium text-gray-700 hover:text-gray-500
-              focus:outline-none focus:border-blue-300 focus:shadow-outline-blue
+              focus:outline-none focus:border-blue-300 focus:ring-blue
               active:bg-gray-50 active:text-gray-800 transition duration-150
               ease-in-out"
             >
