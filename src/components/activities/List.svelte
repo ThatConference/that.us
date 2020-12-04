@@ -7,7 +7,6 @@
   import { onMount } from 'svelte';
   import { fade } from 'svelte/transition';
   import dayjs from 'dayjs';
-  import dayOfYear from 'dayjs/plugin/dayOfYear';
   import _ from 'lodash';
   import Fuse from 'fuse.js';
   import Icon from 'svelte-awesome';
@@ -17,8 +16,6 @@
   import Card from './Card.svelte';
   import KeynoteCard from './KeynoteCard.svelte';
   import FilterSlideOver from './FilterSlideOver.svelte';
-
-  dayjs.extend(dayOfYear);
 
   // https://fusejs.io/api/options.html
   const options = {
@@ -52,33 +49,41 @@
   let activitiesTaggedFiltered = [];
 
   $: {
-	  const tagsSet = new Set();
+    const tagsSet = new Set();
 
-	  for (const activity of activities) {
-		  for (const tag of activity.tags) {
-			  tagsSet.add(tag.toLowerCase());
-		  }
-	  }
+    for (const activity of activities) {
+      for (const tag of activity.tags) {
+        tagsSet.add(tag.toLowerCase());
+      }
+    }
 
-	  tags = Array.from(tagsSet.values()).sort((a, b) => {
-		  if (a < b) {
-			  return -1;
-		  }
-		  if (a > b) {
-			  return 1;
-		  }
-		  return 0;
-	  });
+    tags = Array.from(tagsSet.values()).sort((a, b) => {
+      if (a < b) {
+        return -1;
+      }
+      if (a > b) {
+        return 1;
+      }
+      return 0;
+    });
   }
 
-  $: window.sessionStorage.setItem('selectedTags', JSON.stringify(selectedTags));
+  $: window.sessionStorage.setItem(
+    'selectedTags',
+    JSON.stringify(selectedTags),
+  );
 
-  $: activitiesTaggedFiltered = selectedTags.length > 0
-    ? activitiesFiltered.filter(activity => selectedTags.some(tag => activity.tags.some(t => t.toLowerCase() === tag)))
-	: activitiesFiltered;
+  $: activitiesTaggedFiltered =
+    selectedTags.length > 0
+      ? activitiesFiltered.filter(activity =>
+          selectedTags.some(tag =>
+            activity.tags.some(t => t.toLowerCase() === tag),
+          ),
+        )
+      : activitiesFiltered;
 
   $: sorted = _(activitiesTaggedFiltered)
-    .groupBy(({ startTime }) => dayjs(startTime).dayOfYear())
+    .groupBy(({ startTime }) => dayjs(startTime).format('MM/DD/YYYY'))
     .map((value, key) => ({
       timeSlots: _(value)
         .groupBy(({ startTime }) => new Date(startTime))
@@ -94,7 +99,6 @@
   $: if (reverse) {
     sorted.reverse();
   }
-
 
   const isKeynote = activity => {
     let results = false;
@@ -136,15 +140,18 @@
 <div class="relative">
   <div class="sticky z-20 top-4">
     <div class="absolute top-0 right-0 z-20 border-gray-200">
-      <button type="button"
-              class="max-w-xs h-10 w-10 rounded-full text-gray-300 focus:outline-none
+      <button
+        type="button"
+        class="max-w-xs h-10 w-10 rounded-full text-gray-300 focus:outline-none
           duration-150 ease-in-out hover:bg-thatBlue-500"
-        class:bg-thatBlue-500={filterVisible}
-        class:bg-thatRed-500={selectedTags.length > 0}
-        aria-label={`Show filter and tags options${selectedTags.length > 0 ? ` (Selected tags: ${selectedTags.join(', ')})` : ''}`}
-        on:click={() => { filterVisible = true; }}
+        class:bg-thatBlue-500="{filterVisible}"
+        class:bg-thatRed-500="{selectedTags.length > 0}"
+        aria-label="{`Show filter and tags options${selectedTags.length > 0 ? ` (Selected tags: ${selectedTags.join(', ')})` : ''}`}"
+        on:click="{() => {
+          filterVisible = true;
+        }}"
       >
-        <Icon data={filterIcon} label="Filter" />
+        <Icon data="{filterIcon}" label="Filter" />
       </button>
       <input
         class="form-input"
@@ -156,11 +163,11 @@
 
   {#if filterVisible}
     <FilterSlideOver
-      {tags}
+      tags="{tags}"
       bind:selectedTags
       bind:searchterm
-      on:click={handleCloseFilter}
-      on:clicked-outside={handleCloseFilter}
+      on:click="{handleCloseFilter}"
+      on:clicked-outside="{handleCloseFilter}"
     />
   {/if}
 
@@ -170,9 +177,7 @@
         class="sticky top-2 bg-white text-3xl leading-9 font-extrabold
         tracking-tight text-thatBlue-800 sm:text-4xl sm:leading-10 pb-2 z-10"
       >
-        <span>
-          {dayjs().dayOfYear(day.dayOfYear).format("dddd MMMM D, 'YY")}
-        </span>
+        <span> {dayjs(day.dayOfYear).format("dddd MMMM D, 'YY")} </span>
       </h2>
 
       {#each day.timeSlots as ts, t}
