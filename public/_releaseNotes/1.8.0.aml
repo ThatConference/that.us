@@ -1,0 +1,37 @@
+versionNumber: v1.8.0
+date: December 3rd, 2020
+
+notes: We did it! Brett and I took a break over Thanksgiving to unplug and recharge. THAT means this was a very shortened sprint. From the UI perspective it was more bug fixes and planning for the new event landing pages. On the API side of things, we added another child service to the federation called "the garage". pro-tip code names always work better. Bretts has been working through a new ticketing, ordering and membership system. We're really excited to replace how our ticketing process. For those who might even read this, we love ya! We dropped new merch in the store, store.thatconference.com.
+
+[features]
+
+feature: Full Milestone Details
+url: https://github.com/ThatConference/that.us/milestone/8
+
+feature: [chore] more Tailwind 2.0 upgrades
+url: https://github.com/ThatConference/that.us/pull/533
+
+feature: [bug #537 that.us] fixes how we grouped sessions on the activities page to deal with the year flipping.
+url: https://github.com/ThatConference/that.us/pull/538
+
+feature: [enhancment] added logrocket integration
+url: https://github.com/ThatConference/that.us/pull/530
+
+feature: [enhancment] set better seo defaults for the main page.
+url: https://github.com/ThatConference/that.us/pull/528
+
+feature: [bug #526 that.us] fixes profile image masking on cards
+url: https://github.com/ThatConference/that.us/pull/527
+
+feature: [bug #111 that-api-sessions] @ matching was failing on case mismatch
+url: https://github.com/ThatConference/that-api-sessions/issues/111
+
+feature: [enhancment] adds new entity products to the garage
+url: https://github.com/ThatConference/that-api-garage/issues/2
+
+feature: [enhancment] adds the garage to the gateway
+url: https://github.com/ThatConference/that-api-gateway/pull/52
+
+feature: [enhancment] adds a new status site and uptime check for all of that.tech
+url: http://status.that.tech
+
