@@ -146,12 +146,24 @@
     </nav>
 
     <div class="mt-8 flex justify-center">
+      <Link
+        tabindex="-1"
+        href="http://status.that.tech"
+        open
+        class="text-base leading-6 text-gray-500 hover:text-that-blue"
+      >
+        System Status and Uptime
+      </Link>
+    </div>
+
+    <div class="mt-8 flex justify-center">
       {#each socials as s}
         <div class="h-10 w-10">
           <SocialLink href="{s.href}" network="{s.network}" />
         </div>
       {/each}
     </div>
+
     <div class="mt-8">
       <p class="text-center text-base leading-6 text-gray-400">
         &copy; 2020 THAT&reg; . All rights reserved.
