@@ -8,9 +8,8 @@ import { terser } from 'rollup-plugin-terser';
 import replace from '@rollup/plugin-replace';
 import sveltePreprocess from 'svelte-preprocess';
 import json from '@rollup/plugin-json';
-
-import builtins from 'rollup-plugin-node-builtins';
-import globals from 'rollup-plugin-node-globals';
+import css from 'rollup-plugin-css-only';
+import nodePolyfills from 'rollup-plugin-node-polyfills';
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -60,16 +59,15 @@ export default {
     }),
 
     svelte({
-      extensions: ['.svelte', '.svx'],
       preprocess: sveltePreprocess({ postcss: true }),
-      // enable run-time checks when not in production
-      dev: !production,
-
-      // we'll extract any component CSS out into a separate file - better for performance
-      css: css => {
-        css.write('bundle.css');
+      compilerOptions: {
+        // enable run-time checks when not in production
+        dev: !production,
       },
     }),
+
+    // we'll extract any component CSS out into a separate file - better for performance
+    css({ output: 'bundle.css' }),
 
     // If you have external dependencies installed from
     // npm, you'll most likely need these plugins. In
@@ -79,10 +77,11 @@ export default {
     resolve({
       browser: true,
       dedupe: ['svelte'],
-      preferBuiltins: true,
+      preferBuiltins: false,
     }),
 
     commonjs(),
+    nodePolyfills(),
 
     // In dev mode, call `npm run start` once the bundle has been generated
     !production && serve(),
@@ -92,9 +91,6 @@ export default {
 
     // If we're building for production (npm run build instead of npm run dev), minify
     production && terser(),
-
-    globals(),
-    builtins(),
   ],
   watch: {
     clearScreen: false,
