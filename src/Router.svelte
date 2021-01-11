@@ -50,6 +50,11 @@
 
   // join
   import Live from './routes/join/Live.svelte';
+
+  // ticket test
+  import OrderVerify from './routes/orders/Verify.svelte';
+  import OrderSuccess from './routes/orders/Success.svelte';
+  import OrderCancel from './routes/orders/Cancel.svelte';
 </script>
 
 <Router>
@@ -75,6 +80,11 @@
 
   <Route exact path="/activities" component="{List}" />
   <Route path="/sessions" component="{SessionRedirect}" />
+
+  <!-- tickets TEST -->
+  <Route exact path="/orders/verify" component="{OrderVerify}" />
+  <Route exact path="/orders/success" component="{OrderSuccess}" />
+  <Route exact path="/orders/cancel" component="{OrderCancel}" />
 
   <Route exact path="/support/faq" component="{FAQ}" />
   <Route exact path="/support/welcome" component="{NewUserWelcome}" />
