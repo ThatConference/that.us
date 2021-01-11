@@ -10,6 +10,7 @@ export default {
   defaultProfileImage:
     'https://images.that.tech/members/person-placeholder.jpg?auto=format&fit=facearea&facepad=10&mask=ellipse&h=250&w=250&q=50&dpr=2',
   gtag: 'UA-21705613-11',
+  stripeKey: process.env.STRIPE_KEY,
 };
 
 export const securityConfig = {
