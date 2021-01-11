@@ -54,8 +54,9 @@ export default {
         process.env.NODE_ENV || 'production',
       ),
       'process.env.XSTATE_DEBUG': JSON.stringify(
-        process.env.XSTATE_DEBUG || false,
+        JSON.parse(process.env.XSTATE_DEBUG || false),
       ),
+      'process.env.STRIPE_KEY': JSON.stringify(process.env.STRIPE_KEY || ''),
     }),
 
     svelte({
