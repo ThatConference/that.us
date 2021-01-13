@@ -52,7 +52,8 @@
   import Live from './routes/join/Live.svelte';
 
   // ticket test
-  import OrderVerify from './routes/orders/Verify.svelte';
+  import OrderSummary from './routes/orders/Summary.svelte';
+  import OrderTest from './routes/orders/Test.svelte';
   import OrderSuccess from './routes/orders/Success.svelte';
   import OrderCancel from './routes/orders/Cancel.svelte';
 </script>
@@ -82,7 +83,8 @@
   <Route path="/sessions" component="{SessionRedirect}" />
 
   <!-- tickets TEST -->
-  <Route exact path="/orders/verify" component="{OrderVerify}" />
+  <Route exact path="/orders/summary" component="{OrderSummary}" />
+  <Route exact path="/orders/test" component="{OrderTest}" />
   <Route exact path="/orders/success" component="{OrderSuccess}" />
   <Route exact path="/orders/cancel" component="{OrderCancel}" />
 
