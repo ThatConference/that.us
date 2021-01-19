@@ -64,7 +64,7 @@
               type="text"
               name="ticketReference"
               placeholder="A1RC-1"
-              class="form-input block w-full transition duration-150 ease-in-out
+              class="form-input block w-full border rounded-md transition duration-150 ease-in-out
               sm:text-sm sm:leading-5"
             />
           </div>

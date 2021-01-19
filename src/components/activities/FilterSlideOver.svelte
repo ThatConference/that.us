@@ -25,7 +25,7 @@
 
       <div class="my-2 border-gray-200">
         <input
-          class="form-input w-full"
+          class="form-input w-full border rounded-md"
           bind:value="{searchterm}"
           placeholder="type to search..."
         />

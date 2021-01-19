@@ -228,7 +228,7 @@
       </label>
 
       <div class="mt-1 sm:mt-0 col-span-2">
-        <div class="max-w-lg rounded-md shadow-sm">
+        <div class="max-w-lg border rounded-md shadow-sm">
           <Input
             name="title"
             autofocus
@@ -251,7 +251,7 @@
         Explain a bit more about what you'd like to chat about.
       </label>
       <div class="mt-1 sm:mt-0 sm:col-span-2">
-        <div class="max-w-lg rounded-md shadow-sm">
+        <div class="max-w-lg border rounded-md shadow-sm">
           <Input
             name="shortDescription"
             multiline
