@@ -554,7 +554,7 @@
                   What is a 1 sentence "life hack" that you'd share with
                   someone?
                 </label>
-                <div class="mt-1 rounded-md shadow-sm">
+                <div class="mt-1 border rounded-md shadow-sm">
                   <Input
                     type="text"
                     name="lifeHack"
@@ -628,7 +628,7 @@
               >
                 Email address
               </label>
-              <div class="mt-1 rounded-md shadow-sm">
+              <div class="mt-1 border rounded-md shadow-sm">
                 <Input
                   type="email"
                   name="email"
