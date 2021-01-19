@@ -24,7 +24,7 @@ Sentry.init({
   dsn: logging.dsn,
   release: config.version,
   environment: logging.environment,
-  debug: logging.environment === 'development',
+  debug: false,
   attachStacktrace: true,
   integrations: [new Integrations.BrowserTracing()],
   beforeSend(event) {
