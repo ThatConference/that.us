@@ -154,7 +154,7 @@
         <Icon data="{filterIcon}" label="Filter" />
       </button>
       <input
-        class="form-input"
+        class="form-input border rounded-md"
         bind:value="{searchterm}"
         placeholder="type to search..."
       />
