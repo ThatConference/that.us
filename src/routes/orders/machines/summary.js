@@ -1,15 +1,11 @@
-import { Machine, assign } from 'xstate';
+import { Machine, assign, send, spawn } from 'xstate';
 
 import { log } from '../../../utilities/error';
 import createConfig from './summaryConfig';
 
-function createServices() {
+function createServices(stepsMachine, cartMachine) {
   return {
-    guards: {
-      isAuthenticated: context => context.isAuthenticated,
-      hasUserProfile: context => context.hasUserProfile,
-    },
-
+    guards: {},
     services: {},
 
     actions: {
@@ -17,23 +13,31 @@ function createServices() {
         log({
           error: 'summary state machine has ended in the error state.',
           extra: { context, event },
-          tags: { stateMachine: 'cart' },
+          tags: { stateMachine: 'summary' },
         }),
 
-      setIsAuthenticated: assign({
-        isAuthenticated: (_, event) => event.status,
+      notifyPrerequisitesMet: send('VERIFICATION_SUCCESS', {
+        to: context => context.cartMachine,
       }),
 
-      setHasUserProfile: assign({
-        hasUserProfile: (_, event) => event.status,
+      setCartMachine: assign({
+        cartMachine: context => spawn(cartMachine),
+      }),
+
+      setStepsMachine: assign({
+        stepsMachine: context => spawn(stepsMachine),
+      }),
+
+      setPrerequisitesMet: assign({
+        prerequisitesMet: () => true,
       }),
     },
   };
 }
 
-function create(meta) {
-  const services = createServices();
-  return Machine({ ...createConfig(meta) }, { ...services });
+function create(stepsMachine, cartMachine) {
+  const services = createServices(stepsMachine, cartMachine);
+  return Machine({ ...createConfig() }, { ...services });
 }
 
 export default create;

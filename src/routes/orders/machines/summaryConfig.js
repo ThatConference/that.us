@@ -6,73 +6,36 @@
   send('PROFILE_COMPLETED', {status: true})
 */
 
-function createConfig(metaContext) {
+function createConfig() {
   return {
-    id: 'orderSummaryMachine',
-    initial: 'pendingLogin',
+    id: 'Order_Summary',
+    initial: 'init',
     context: {
-      meta: metaContext || undefined,
-      isAuthenticated: false,
-      hasUserProfile: false,
+      prerequisitesMet: false,
+      stepsMachine: null,
+      cartMachine: null,
     },
 
     on: {
-      AUTHENTICATED: {
-        actions: ['setIsAuthenticated'],
-        target: 'pendingLogin',
-      },
-
-      PROFILE_COMPLETED: {
-        actions: ['setHasUserProfile'],
+      PREREQUISITES_MET: {
+        actions: ['setPrerequisitesMet'],
+        target: 'ready',
       },
     },
 
     states: {
-      pendingLogin: {
+      init: {
         on: {
           '': {
-            cond: 'isAuthenticated',
-            target: 'authenticated',
-            meta: {
-              completed: true,
-            },
+            actions: ['setStepsMachine', 'setCartMachine'],
+            target: 'waiting',
           },
         },
       },
-
-      authenticated: {
-        initial: 'pendingProfile',
-        states: {
-          pendingProfile: {
-            on: {
-              '': {
-                cond: 'hasUserProfile',
-                target: 'profileCompleted',
-              },
-            },
-          },
-
-          profileCompleted: {
-            initial: 'pendingVerification',
-
-            states: {
-              pendingVerification: {
-                on: {
-                  complete: {
-                    target: 'completePurchase',
-                  },
-                },
-              },
-
-              completePurchase: {
-                type: 'final',
-              },
-            },
-          },
-        },
+      waiting: {},
+      ready: {
+        entry: 'notifyPrerequisitesMet',
       },
-
-      unAuthenticated: {},
 
       error: {
         entry: 'logError',
