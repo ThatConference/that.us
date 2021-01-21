@@ -11,9 +11,6 @@ function createServices() {
     guards: {
       hasCartItems: context => !isEmpty(context.cart),
       isEmptyCart: context => isEmpty(context.cart),
-
-      isAuthenticated: context => context.isAuthenticated,
-      hasUserProfile: context => context.hasUserProfile,
     },
 
     services: {},
@@ -25,14 +22,6 @@ function createServices() {
           extra: { context, event },
           tags: { stateMachine: 'cart' },
         }),
-
-      setIsAuthenticated: assign({
-        isAuthenticated: (_, event) => event.isAuthenticated,
-      }),
-
-      setHasUserProfile: assign({
-        hasUserProfile: (_, event) => event.hasUserProfile,
-      }),
 
       readLocalStorage: assign({
         cart: () => {
@@ -57,22 +46,28 @@ function createServices() {
             throw new Error('No productId passed into addItem');
           }
 
-          const { productId, quantity = 1 } = event;
+          const { productId, quantity = 1, price, title, description } = event;
           const currentCart = context.cart;
 
           if (currentCart[productId]) {
             currentCart[productId] = {
-              id: productId,
               qty: event.quantity
-                ? quantity
+                ? event.quantity
                 : currentCart[productId].qty + quantity,
             };
           } else {
             currentCart[productId] = {
-              id: productId,
               qty: quantity,
             };
           }
+
+          currentCart[productId] = {
+            ...currentCart[productId],
+            productId,
+            title,
+            description,
+            price,
+          };
 
           return currentCart;
         },

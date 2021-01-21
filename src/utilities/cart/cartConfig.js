@@ -1,99 +1,84 @@
 function createConfig(metaContext) {
   return {
-    id: 'cart',
-    initial: 'init',
-
+    id: 'Cart',
+    type: 'parallel',
     context: {
       meta: metaContext || undefined,
       cart: {},
       checkoutSessionId: undefined,
-      isAuthenticated: false,
-      hasUserProfile: false,
     },
-
-    on: {
-      AUTHENTICATED: {
-        actions: ['setIsAuthenticated'],
-      },
-
-      USER_PROFILE: {
-        actions: ['setHasUserProfile'],
-      },
-
-      ADD_ITEM: {
-        actions: ['readLocalStorage', 'addItem', 'setLocalStorage'],
-        target: 'pending',
-      },
-    },
-
     states: {
-      init: {
-        meta: {
-          message: 'Loading cart data from localStorage.',
-        },
+      verification: {
+        initial: 'unVerified',
+
         on: {
-          '': {
-            actions: ['readLocalStorage'],
-            target: 'new',
-          },
+          VERIFICATION_SUCCESS: '.verified',
+        },
+
+        states: {
+          unVerified: {},
+          verified: {},
         },
       },
 
-      new: {
-        meta: {
-          message: 'Cart is currently empty.',
-        },
-        on: {
-          '': {
-            cond: 'hasCartItems',
-            target: 'pending',
-          },
-        },
-      },
-
-      pending: {
-        meta: {
-          message: 'Cart has items and is pending purchase.',
-        },
+      cart: {
+        initial: 'init',
 
         on: {
-          '': {
-            cond: 'isEmptyCart',
-            target: 'new',
-          },
-
-          UPDATE_QUANTITY: {
+          ADD_ITEM: {
             actions: ['readLocalStorage', 'addItem', 'setLocalStorage'],
-            target: 'pending',
-          },
-
-          REMOVE_ITEM: {
-            actions: ['readLocalStorage', 'removeItem', 'setLocalStorage'],
-            target: 'pending',
-          },
-
-          CLEAR_CART: {
-            actions: ['clearCart', 'clearLocalStorage'],
-            target: 'new',
-          },
-
-          VERIFY: {
-            actions: ['verify'],
-            target: 'verifying',
+            target: '.pending',
           },
         },
-      },
 
-      verifying: {
-        meta: {
-          message: 'Verifying cart before purchase.',
+        states: {
+          init: {
+            on: {
+              '': {
+                actions: ['readLocalStorage'],
+                target: 'new',
+              },
+            },
+          },
+
+          new: {
+            on: {
+              '': {
+                cond: 'hasCartItems',
+                target: 'pending',
+              },
+            },
+          },
+
+          pending: {
+            on: {
+              '': {
+                cond: 'isEmptyCart',
+                target: 'new',
+              },
+
+              UPDATE_QUANTITY: {
+                actions: ['readLocalStorage', 'addItem', 'setLocalStorage'],
+                target: 'pending',
+              },
+
+              REMOVE_ITEM: {
+                actions: ['readLocalStorage', 'removeItem', 'setLocalStorage'],
+                target: 'pending',
+              },
+
+              CLEAR_CART: {
+                actions: ['clearCart', 'clearLocalStorage'],
+                target: 'new',
+              },
+            },
+          },
+
+          error: {
+            entry: 'logError',
+            type: 'final',
+          },
         },
-        actions: ['redirectToVerify'],
-      },
-
-      error: {
-        entry: 'logError',
-        type: 'final',
       },
     },
   };
