@@ -1,12 +1,13 @@
 <script>
-  import { useMachine } from 'xstate-svelte';
+  export let stateMachine;
+
+  import { useService } from 'xstate-svelte';
   import { isEmpty } from 'lodash';
-  import { navigateTo } from 'yrv';
+  import { navigateTo, Link } from 'yrv';
 
   import StepComplete from '../../../elements/svgs/StepComplete.svelte';
   import Step from '../../../elements/svgs/Step.svelte';
 
-  import summaryMachine from '../machines/summary';
   import { debug } from '../../../config';
   import {
     isAuthenticated,
@@ -15,7 +16,7 @@
     login,
   } from '../../../utilities/security';
 
-  const { state, send, service } = useMachine(summaryMachine(), {
+  const { state, send, service } = useService(stateMachine, {
     devTools: debug.xstate,
   });
 
@@ -24,12 +25,12 @@
   let stepThreeComplete = false;
   let stepFourComplete = false;
 
-  service.onTransition(state => {
-    if (state.matches('authenticated')) {
+  service.onTransition(eventState => {
+    if (eventState.matches('authenticated')) {
       stepOneComplete = true;
     }
 
-    if (state.matches('authenticated.profileCompleted')) {
+    if (eventState.matches('authenticated.profileCompleted')) {
       stepTwoComplete = true;
     }
   });
@@ -152,3 +153,56 @@
     </li>
   </ol>
 </nav>
+
+<div class="px-4 py-5 sm:p-6">
+  {#if $state.matches('pendingLogin')}
+    <h3 class="text-lg leading-6 font-medium text-gray-900">Please Login</h3>
+    <div class="mt-2 max-w-xl text-sm text-gray-500">
+      <p>
+        Your purchase is attached to the user profile who is logged in. To get
+        started please login, and/or create an new account.
+      </p>
+    </div>
+    <div class="mt-3 text-sm">
+      <Link
+        on:click="{() => login('/orders/summary')}"
+        class="font-medium text-thatOrange-400 hover:text-thatOrange-500"
+      >
+        Login
+        <span aria-hidden="true">&rarr;</span>
+      </Link>
+    </div>
+  {:else if $state.matches('authenticated.pendingProfile')}
+    <h3 class="text-lg leading-6 font-medium text-gray-900">
+      Full Profile Incomplete
+    </h3>
+    <div class="mt-2 max-w-xl text-sm text-gray-500">
+      <p>
+        Your purchase is attached to the user profile. In order to proceed you
+        need to finish creating your user profile.
+      </p>
+    </div>
+    <div class="mt-3 text-sm">
+      <Link
+        href="/my/profile"
+        class="font-medium text-thatOrange-400 hover:text-thatOrange-500"
+      >
+        Complete Your Profile
+        <span aria-hidden="true">&rarr;</span>
+      </Link>
+    </div>
+  {:else if $state.matches('authenticated.profileCompleted')}
+    <h3 class="text-lg leading-6 font-medium text-gray-900">
+      Finalize and Complete
+    </h3>
+    <div class="mt-2 max-w-xl text-sm text-gray-500">
+      <p>
+        To fully complete this purchase, upon continue we will redirect your
+        browser to https://checkout.stripe.com. This is our credit card
+        processor, Stripe. It's here where you will enter your payment details,
+        and finalize this order. Once completed you will be redirected back to
+        THAT.us.
+      </p>
+    </div>
+  {/if}
+</div>
