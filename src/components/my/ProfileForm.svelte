@@ -287,7 +287,7 @@
           >
             First or Given Name
           </label>
-          <div class="mt-1 rounded-md shadow-sm">
+          <div class="mt-1 border rounded-md shadow-sm">
             <Input
               name="firstName"
               type="text"
@@ -305,7 +305,7 @@
           >
             Last or Family Name
           </label>
-          <div class="mt-1 rounded-md shadow-sm">
+          <div class="mt-1 border rounded-md shadow-sm">
             <Input
               name="lastName"
               class="form-input block w-full transition duration-150 ease-in-out
@@ -335,7 +335,7 @@
                 type="text"
                 disabled
                 name="profileSlug"
-                class="flex-1 form-input block w-full min-w-0 rounded-none
+                class="flex-1 form-input block w-full min-w-0 border rounded-none
                   rounded-r-md transition duration-150 ease-in-out sm:text-sm
                   sm:leading-5 bg-gray-50 text-gray-500"
               />
@@ -361,10 +361,10 @@
           <p class="mt-2 text-sm text-gray-500">
             Write a few sentences about yourself.
           </p>
-          <div class="mt-1 rounded-md shadow-sm">
+          <div class="mt-1 border rounded-md shadow-sm">
             <Input
               type="textarea"
-              rows="3"
+              rows="10"
               name="bio"
               multiline="{true}"
               class="form-textarea block w-full transition duration-150
@@ -379,7 +379,7 @@
           >
             Company
           </label>
-          <div class="mt-1 rounded-md shadow-sm">
+          <div class="mt-1 border rounded-md shadow-sm">
             <Input
               type="text"
               name="company"
@@ -396,7 +396,7 @@
           >
             Job Tile
           </label>
-          <div class="mt-1 rounded-md shadow-sm">
+          <div class="mt-1 border rounded-md shadow-sm">
             <Input
               name="jobTitle"
               class="form-input block w-full transition duration-150 ease-in-out
@@ -414,7 +414,9 @@
           </label>
 
           <div class="mt-2 flex items-center">
-            <span class="h-12 w-12 rounded-full overflow-hidden bg-gray-100">
+            <span
+              class="h-12 w-12 border rounded-full overflow-hidden bg-gray-100"
+            >
               {#if profileImageUploading}
                 <div class="h-full w-full flex flex-grow justify-center">
                   <ScaleOut />
@@ -478,7 +480,7 @@
         <div class="sm:col-span-4">
           {#each socialLinks as link}
             <!-- todo - shadow isn't aligned properly <div class="mt-4 flex rounded-md shadow-sm"> -->
-            <div class="mt-4 flex rounded-md shadow-sm">
+            <div class="mt-4 flex border rounded-md shadow-sm">
               <span
                 class="inline-flex items-center px-3 rounded-l-md border
                   border-r-0 border-gray-300 bg-gray-50 text-gray-500 sm:text-sm
@@ -495,7 +497,7 @@
                 name="{link.name}"
                 value="{getInitialSocailLinkValue(link)}"
                 on:change="{e => setValue('profileLinks', updateLinksInputValues(link, e.target.value))}"
-                class="flex-1 form-input block w-full min-w-0 rounded-none
+                class="flex-1 form-input block w-full min-w-0 border rounded-none
                   rounded-r-md transition duration-150 ease-in-out sm:text-sm
                   sm:leading-5"
               />
@@ -552,7 +554,7 @@
                   What is a 1 sentence "life hack" that you'd share with
                   someone?
                 </label>
-                <div class="mt-1 rounded-md shadow-sm">
+                <div class="mt-1 border rounded-md shadow-sm">
                   <Input
                     type="text"
                     name="lifeHack"
@@ -626,7 +628,7 @@
               >
                 Email address
               </label>
-              <div class="mt-1 rounded-md shadow-sm">
+              <div class="mt-1 border rounded-md shadow-sm">
                 <Input
                   type="email"
                   name="email"
