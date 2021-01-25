@@ -175,7 +175,7 @@
     <div in:fade="{{ delay: d * 200 }}">
       <h2
         class="sticky top-0 bg-white text-3xl leading-9 font-extrabold
-        tracking-tight text-thatBlue-800 sm:text-4xl sm:leading-10 pb-12 z-10"
+        tracking-tight text-thatBlue-800 sm:text-4xl sm:leading-10 pb-12 z-10 inline"
       >
         <span> {dayjs(day.dayOfYear).format("dddd MMMM D, 'YY")} </span>
       </h2>
@@ -183,7 +183,7 @@
       {#each day.timeSlots as ts, t}
         <h2
           class="sticky top-12 bg-white text-3xl leading-9 font-extrabold
-            tracking-tight text-thatOrange-400 sm:text-4xl sm:leading-10 z-10"
+            tracking-tight text-thatOrange-400 sm:text-4xl sm:leading-10 z-10 inline"
         >
           {#if !dayjs(ts.timeSlot).isValid()}
             <span>Unscheduled</span>
