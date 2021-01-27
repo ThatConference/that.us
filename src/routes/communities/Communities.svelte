@@ -49,10 +49,12 @@
                   lg:grid-cols-5"
               >
                 {#each $state.context.items as c (c.id)}
-                  <li class="col-span-1 flex flex-col">
+                  <li
+                    class="col-span-1 bg-white rounded-lg shadow transform hover:scale-110 hover:bg-that-offWhite"
+                  >
                     <Link
                       href="{`/communities/${c.slug}`}"
-                      class="focus:outline-none"
+                      class="h-full flex flex-col justify-between p-4 text-center focus:outline-none"
                     >
                       <CommunityCard community="{c}" />
                     </Link>
