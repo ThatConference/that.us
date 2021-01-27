@@ -48,7 +48,7 @@
           >
             {#each $state.context.items as p, i (p.id)}
               <li
-                class="col-span-1 flex flex-col text-center bg-white rounded-lg shadow"
+                class="col-span-1 flex flex-col text-center bg-white rounded-lg shadow transform hover:scale-110 hover:bg-that-offWhite"
               >
                 <Link open href="{`/partners/${p.slug}`}">
                   <PartnerCard {...p} />
