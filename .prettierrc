@@ -6,5 +6,6 @@
   "svelteSortOrder": "scripts-markup-styles",
   "svelteStrictMode": true,
   "svelteBracketNewLine": true,
-  "svelteAllowShorthand": true
+  "svelteAllowShorthand": true,
+  "endOfLine": "auto"
 }
