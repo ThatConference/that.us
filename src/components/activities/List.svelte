@@ -176,7 +176,6 @@
       <h2
         class="sticky top-0 z-1 bg-white text-3xl leading-9 font-extrabold
         tracking-tight text-thatBlue-800 sm:text-4xl sm:leading-10 pt-4 pb-10 inline-block"
-        style="z-index: 1"
       >
         <span> {dayjs(day.dayOfYear).format("dddd MMMM D, 'YY")} </span>
       </h2>
