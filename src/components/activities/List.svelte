@@ -175,21 +175,21 @@
     <div in:fade="{{ delay: d * 200 }}">
       <h2
         class="sticky top-0 bg-white text-3xl leading-9 font-extrabold
-        tracking-tight text-thatBlue-800 sm:text-4xl sm:leading-10 pb-12 z-10 inline"
+        tracking-tight text-thatBlue-800 sm:text-4xl sm:leading-10 z-10 pb-10"
       >
         <span> {dayjs(day.dayOfYear).format("dddd MMMM D, 'YY")} </span>
       </h2>
 
       {#each day.timeSlots as ts, t}
         <h2
-          class="sticky top-12 bg-white text-3xl leading-9 font-extrabold
-            tracking-tight text-thatOrange-400 sm:text-4xl sm:leading-10 z-10 inline"
+          class="sticky top-10 bg-white text-3xl leading-9 font-extrabold
+            tracking-tight text-thatOrange-400 sm:text-4xl sm:leading-10 z-10"
         >
           {#if !dayjs(ts.timeSlot).isValid()}
             <span>Unscheduled</span>
           {:else}<span>{dayjs(ts.timeSlot).format('hh:mm a')}</span>{/if}
         </h2>
-        <div in:fade="{{ delay: t * 500 }}" class="pb-12">
+        <div in:fade="{{ delay: t * 500 }}" class="mb-12">
           <ul class="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {#each ts.activities as activity (activity.id)}
               {#if isKeynote(activity)}
