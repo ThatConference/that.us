@@ -71,6 +71,10 @@ module.exports = {
           900: '#0f213e',
         },
       },
+      // Necessary z-index for the date headers in Activities
+      zIndex: {
+        1: '1',
+      },
     },
   },
   variants: {
