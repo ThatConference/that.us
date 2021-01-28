@@ -138,8 +138,8 @@
 </script>
 
 <div class="relative">
-  <div class="sticky z-20 top-4">
-    <div class="absolute top-0 right-0 z-20 border-gray-200">
+  <div class="sticky z-20 top-0">
+    <div class="absolute top-0 right-0 z-20 border-gray-200 pt-4">
       <button
         type="button"
         class="max-w-xs h-10 w-10 rounded-full text-gray-300 focus:outline-none
