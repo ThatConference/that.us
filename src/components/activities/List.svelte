@@ -35,6 +35,7 @@
       'title',
       'shortDescription',
       'tags',
+      'communities',
       'speakers.firstName',
       'speakers.lastName',
     ],
