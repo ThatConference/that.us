@@ -47,7 +47,7 @@
   let filterVisible;
   let tags = [];
   let communities = [];
-  let selectedTags = getSessionSelectedTags();
+  let selectedFilterTerms = getSessionSelectedTags();
   let activitiesTaggedFiltered = [];
 
   $: {
@@ -79,13 +79,13 @@
 
   $: window.sessionStorage.setItem(
     'selectedTags',
-    JSON.stringify(selectedTags),
+    JSON.stringify(selectedFilterTerms),
   );
 
   $: activitiesTaggedFiltered =
-    selectedTags.length > 0
+    selectedFilterTerms.length > 0
       ? activitiesFiltered.filter(activity =>
-          selectedTags.some(tag =>
+          selectedFilterTerms.some(tag =>
             activity.tags.some(t => t.toLowerCase() === tag),
           ),
         )
@@ -154,8 +154,8 @@
         class="max-w-xs h-10 w-10 rounded-full text-gray-300 focus:outline-none
           duration-150 ease-in-out hover:bg-thatBlue-500"
         class:bg-thatBlue-500="{filterVisible}"
-        class:bg-thatRed-500="{selectedTags.length > 0}"
-        aria-label="{`Show filter and tags options${selectedTags.length > 0 ? ` (Selected tags: ${selectedTags.join(', ')})` : ''}`}"
+        class:bg-thatRed-500="{selectedFilterTerms.length > 0}"
+        aria-label="{`Show filter and tags options${selectedFilterTerms.length > 0 ? ` (Selected tags: ${selectedFilterTerms.join(', ')})` : ''}`}"
         on:click="{() => {
           filterVisible = true;
         }}"
@@ -174,7 +174,7 @@
     <FilterSlideOver
       tags="{tags}"
       communities="{communities}"
-      bind:selectedTags
+      bind:selectedFilterTerms
       bind:searchterm
       on:click="{handleCloseFilter}"
       on:clicked-outside="{handleCloseFilter}"

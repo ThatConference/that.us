@@ -2,7 +2,7 @@
   export let searchterm = '';
   export let tags;
   export let communities;
-  export let selectedTags = [];
+  export let selectedFilterTerms = [];
 
   import Icon from 'svelte-awesome';
   import { filter as filterIcon } from 'svelte-awesome/icons';
@@ -45,7 +45,7 @@
           focus:ring-thatBlue-500 focus:border-thatBlue-800 transition
           duration-150 ease-in-out"
           on:click="{() => {
-            selectedTags = [];
+            selectedFilterTerms = [];
           }}"
         >
           Clear selected tags
@@ -61,7 +61,7 @@
               >
                 <input
                   type="checkbox"
-                  bind:group="{selectedTags}"
+                  bind:group="{selectedFilterTerms}"
                   value="{tag}"
                 />
                 <span class="px-2">{tag}</span>
@@ -82,7 +82,7 @@
             >
               <input
                 type="checkbox"
-                bind:group="{selectedTags}"
+                bind:group="{selectedFilterTerms}"
                 value="@{community}"
               />
               <span class="px-2">@{community}</span>
