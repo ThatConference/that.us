@@ -45,15 +45,21 @@
   let fuse;
   let filterVisible;
   let tags = [];
+  let communities = [];
   let selectedTags = getSessionSelectedTags();
   let activitiesTaggedFiltered = [];
 
   $: {
     const tagsSet = new Set();
+    const communitiesSet = new Set();
 
     for (const activity of activities) {
       for (const tag of activity.tags) {
         tagsSet.add(tag.toLowerCase());
+      }
+
+      for (const community of activity.communities) {
+        communitiesSet.add(community.toLowerCase());
       }
     }
 
@@ -66,6 +72,8 @@
       }
       return 0;
     });
+
+    communities = Array.from(communitiesSet.values());
   }
 
   $: window.sessionStorage.setItem(
@@ -164,6 +172,7 @@
   {#if filterVisible}
     <FilterSlideOver
       tags="{tags}"
+      communities="{communities}"
       bind:selectedTags
       bind:searchterm
       on:click="{handleCloseFilter}"
