@@ -33,31 +33,14 @@
       </div>
     </div>
 
-    <div class="py-12">
-      <div class="flex items-center justify-between">
+    <div class="py-12 flex justify-between">
+      <div class="mr-3">
         <h2 class="text-lg leading-7 font-medium text-gray-900">Tags</h2>
-
-        <button
-          type="button"
-          class="inline-block my-2 px-4 py-2 rounded-md shadow text-base font-medium border-2
-          border-thatBlue-500 text-thatBlue-500 bg-white hover:bg-thatBlue-500
-          hover:text-white focus:bg-thatBlue-500 focus:text-white focus:outline-none
-          focus:ring-thatBlue-500 focus:border-thatBlue-800 transition
-          duration-150 ease-in-out"
-          on:click="{() => {
-            selectedFilterTerms = [];
-          }}"
-        >
-          Clear selected tags
-        </button>
-      </div>
-
-      <div class="my-2">
         <fieldset class="flex flex-col">
           {#each tags as tag}
             {#if tag.charAt(0) !== '@'}
               <label
-                class="capitalize text-base text-gray-500 sm:text-lg sm:mx-auto md:mt-2 md:text-md lg:mx-0"
+                class="capitalize text-base text-gray-500 sm:text-lg sm:mx-auto md:mt-2 md:text-md lg:mx-0 whitespace-nowrap"
               >
                 <input
                   type="checkbox"
@@ -70,15 +53,12 @@
           {/each}
         </fieldset>
       </div>
-
-      <h2 class="mt-4 text-lg leading-7 font-medium text-gray-900">
-        Communities
-      </h2>
-      <div class="mb-2">
+      <div class="ml-3">
+        <h2 class="text-lg leading-7 font-medium text-gray-900">Communities</h2>
         <fieldset class="flex flex-col">
           {#each communities as community}
             <label
-              class="capitalize text-base text-gray-500 sm:text-lg sm:mx-auto md:mt-2 md:text-md lg:mx-0"
+              class="capitalize text-base text-gray-500 sm:text-lg sm:mx-auto md:mt-2 md:text-md lg:mx-0 whitespace-nowrap"
             >
               <input
                 type="checkbox"
