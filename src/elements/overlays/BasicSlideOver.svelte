@@ -51,7 +51,7 @@
               </div>
             </header>
 
-            <div class="relative flex-1 px-4 sm:px-6">
+            <div class="flex-1 px-4 sm:px-6">
               <div class="h-full">
                 <slot />
               </div>
