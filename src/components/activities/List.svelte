@@ -138,8 +138,8 @@
 </script>
 
 <div class="relative">
-  <div class="sticky z-20 top-4">
-    <div class="absolute top-0 right-0 z-20 border-gray-200">
+  <div class="sticky z-20 top-0">
+    <div class="absolute top-0 right-0 z-20 border-gray-200 pt-4">
       <button
         type="button"
         class="max-w-xs h-10 w-10 rounded-full text-gray-300 focus:outline-none
@@ -173,41 +173,45 @@
 
   {#each sorted as day, d}
     <div in:fade="{{ delay: d * 200 }}">
-      <h2
-        class="sticky top-2 bg-white text-3xl leading-9 font-extrabold
-        tracking-tight text-thatBlue-800 sm:text-4xl sm:leading-10 pb-2 z-10"
+      <span
+        class="sticky top-0 z-20 bg-white text-3xl leading-9 font-extrabold
+        tracking-tight text-thatBlue-800 sm:text-4xl sm:leading-10 pt-4 mb-10"
       >
         <span> {dayjs(day.dayOfYear).format("dddd MMMM D, 'YY")} </span>
-      </h2>
+      </span>
 
       {#each day.timeSlots as ts, t}
-        <div in:fade="{{ delay: t * 500 }}" class="pb-12">
-          <h2
-            class="sticky top-12 bg-white text-3xl leading-9 font-extrabold
-            tracking-tight text-thatOrange-400 sm:text-4xl sm:leading-10 z-10"
+        <div class="relative">
+          <span
+            class="sticky top-14 z-10 bg-white text-3xl leading-9 font-extrabold
+            tracking-tight text-thatOrange-400 sm:text-4xl sm:leading-10"
           >
             {#if !dayjs(ts.timeSlot).isValid()}
               <span>Unscheduled</span>
             {:else}<span>{dayjs(ts.timeSlot).format('hh:mm a')}</span>{/if}
-          </h2>
+          </span>
 
-          <ul class="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {#each ts.activities as activity (activity.id)}
-              {#if isKeynote(activity)}
-                <li
-                  in:fade
-                  class="col-span-1 sm:col-span-2 lg:col-span-3 bg-white
+          <div in:fade="{{ delay: t * 500 }}" class="mb-12">
+            <ul
+              class="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3"
+            >
+              {#each ts.activities as activity (activity.id)}
+                {#if isKeynote(activity)}
+                  <li
+                    in:fade
+                    class="col-span-1 sm:col-span-2 lg:col-span-3 bg-white
                   rounded-lg shadow-lg mt-10 mb-10"
-                >
-                  <KeynoteCard {...activity} />
-                </li>
-              {:else}
-                <li in:fade class="col-span-1 bg-white rounded-lg shadow-lg">
-                  <Card {...activity} editMode="{editMode}" />
-                </li>
-              {/if}
-            {/each}
-          </ul>
+                  >
+                    <KeynoteCard {...activity} />
+                  </li>
+                {:else}
+                  <li in:fade class="col-span-1 bg-white rounded-lg shadow-lg">
+                    <Card {...activity} editMode="{editMode}" />
+                  </li>
+                {/if}
+              {/each}
+            </ul>
+          </div>
         </div>
       {/each}
     </div>
