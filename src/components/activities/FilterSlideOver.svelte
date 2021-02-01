@@ -34,30 +34,13 @@
     </div>
 
     <div class="py-12 flex justify-between">
-      <div class="mr-3">
-        <h2 class="text-lg leading-7 font-medium text-gray-900">Tags</h2>
-
-        <button
-          type="button"
-          class="inline-block my-2 px-4 py-2 rounded-md shadow text-base font-medium border-2
-          border-thatBlue-500 text-thatBlue-500 bg-white hover:bg-thatBlue-500
-          hover:text-white focus:bg-thatBlue-500 focus:text-white focus:outline-none
-          focus:ring-thatBlue-500 focus:border-thatBlue-800 transition
-          duration-150 ease-in-out"
-          on:click="{() => {
-            selectedFilterTerms = [];
-          }}"
-        >
-          Clear selected tags
-        </button>
-      </div>
-
       <div class="my-2">
+        <h2 class="text-lg leading-7 font-medium text-gray-900">Tags</h2>
         <fieldset class="flex flex-col">
           {#each tags as tag}
             {#if tag.charAt(0) !== '@'}
               <label
-                class="capitalize text-base text-gray-500 sm:text-lg sm:mx-auto md:mt-2 md:text-md lg:mx-0 whitespace-nowrap"
+                class="capitalize text-base text-gray-500 sm:text-lg md:mt-2 md:text-md lg:mx-0 whitespace-nowrap"
               >
                 <input
                   type="checkbox"
@@ -78,7 +61,7 @@
           <fieldset class="flex flex-col">
             {#each communities as community}
               <label
-                class="capitalize text-base text-gray-500 sm:text-lg sm:mx-auto md:mt-2 md:text-md lg:mx-0 whitespace-nowrap"
+                class="capitalize text-base text-gray-500 sm:text-lg md:mt-2 md:text-md lg:mx-0 whitespace-nowrap"
               >
                 <input
                   type="checkbox"
@@ -90,6 +73,24 @@
             {/each}
           </fieldset>
         </div>
+
+        {#if selectedFilterTerms.length}
+          <div class="absolute bottom-0 left-0 w-full flex justify-center">
+            <button
+              type="button"
+              class="inline-block w-full md:w-auto mx-4 md:mx-0 my-2 px-4 py-2 rounded-md shadow text-base font-medium border-2
+              border-thatBlue-500 text-thatBlue-500 bg-white hover:bg-thatBlue-500
+              hover:text-white focus:bg-thatBlue-500 focus:text-white focus:outline-none
+              focus:ring-thatBlue-500 focus:border-thatBlue-800 transition
+              duration-150 ease-in-out"
+              on:click="{() => {
+                selectedFilterTerms = [];
+              }}"
+            >
+              {`Clear ${selectedFilterTerms.length} selected filter${selectedFilterTerms.length > 1 ? 's' : ''}`}
+            </button>
+          </div>
+        {/if}
       </div>
     </div>
   </div>
