@@ -175,7 +175,7 @@
     <div in:fade="{{ delay: d * 200 }}">
       <span
         class="sticky top-0 z-20 bg-white text-xl leading-9 font-extrabold
-        tracking-tight text-thatBlue-800 sm:text-3xl md:text-4xl sm:leading-10 pt-4 mb-10 whitespace-nowrap"
+        tracking-tight text-thatBlue-800 sm:text-3xl md:text-4xl sm:leading-10 pt-4 mb-5 md:mb-9 whitespace-nowrap"
       >
         {dayjs(day.dayOfYear).format("dddd MMMM D, 'YY")}
       </span>
