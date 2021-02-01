@@ -1,6 +1,7 @@
 <script>
   export let searchterm = '';
   export let tags;
+  export let communities;
   export let selectedTags = [];
 
   import Icon from 'svelte-awesome';
@@ -54,15 +55,37 @@
       <div class="my-2">
         <fieldset class="flex flex-col">
           {#each tags as tag}
+            {#if tag.charAt(0) !== '@'}
+              <label
+                class="capitalize text-base text-gray-500 sm:text-lg sm:mx-auto md:mt-2 md:text-md lg:mx-0"
+              >
+                <input
+                  type="checkbox"
+                  bind:group="{selectedTags}"
+                  value="{tag}"
+                />
+                <span class="px-2">{tag}</span>
+              </label>
+            {/if}
+          {/each}
+        </fieldset>
+      </div>
+
+      <h2 class="mt-4 text-lg leading-7 font-medium text-gray-900">
+        Communities
+      </h2>
+      <div class="mb-2">
+        <fieldset class="flex flex-col">
+          {#each communities as community}
             <label
               class="capitalize text-base text-gray-500 sm:text-lg sm:mx-auto md:mt-2 md:text-md lg:mx-0"
             >
               <input
                 type="checkbox"
                 bind:group="{selectedTags}"
-                value="{tag}"
+                value="@{community}"
               />
-              <span class="px-2">{tag}</span>
+              <span class="px-2">@{community}</span>
             </label>
           {/each}
         </fieldset>
