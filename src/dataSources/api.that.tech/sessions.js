@@ -15,6 +15,7 @@ const coreSessionFields = `
     startTime
     durationInMinutes
     slug
+    communities
   }
 `;
 
