@@ -33,8 +33,8 @@
       </div>
     </div>
 
-    <div class="py-12">
-      <div class="flex items-center justify-between">
+    <div class="py-12 flex justify-between">
+      <div class="mr-3">
         <h2 class="text-lg leading-7 font-medium text-gray-900">Tags</h2>
 
         <button
@@ -57,7 +57,7 @@
           {#each tags as tag}
             {#if tag.charAt(0) !== '@'}
               <label
-                class="capitalize text-base text-gray-500 sm:text-lg sm:mx-auto md:mt-2 md:text-md lg:mx-0"
+                class="capitalize text-base text-gray-500 sm:text-lg sm:mx-auto md:mt-2 md:text-md lg:mx-0 whitespace-nowrap"
               >
                 <input
                   type="checkbox"
@@ -70,25 +70,26 @@
           {/each}
         </fieldset>
       </div>
-
-      <h2 class="mt-4 text-lg leading-7 font-medium text-gray-900">
-        Communities
-      </h2>
-      <div class="mb-2">
-        <fieldset class="flex flex-col">
-          {#each communities as community}
-            <label
-              class="capitalize text-base text-gray-500 sm:text-lg sm:mx-auto md:mt-2 md:text-md lg:mx-0"
-            >
-              <input
-                type="checkbox"
-                bind:group="{selectedFilterTerms}"
-                value="@{community}"
-              />
-              <span class="px-2">@{community}</span>
-            </label>
-          {/each}
-        </fieldset>
+      <div class="ml-3">
+        <h2 class="mt-4 text-lg leading-7 font-medium text-gray-900">
+          Communities
+        </h2>
+        <div class="mb-2">
+          <fieldset class="flex flex-col">
+            {#each communities as community}
+              <label
+                class="capitalize text-base text-gray-500 sm:text-lg sm:mx-auto md:mt-2 md:text-md lg:mx-0 whitespace-nowrap"
+              >
+                <input
+                  type="checkbox"
+                  bind:group="{selectedFilterTerms}"
+                  value="@{community}"
+                />
+                <span class="px-2">@{community}</span>
+              </label>
+            {/each}
+          </fieldset>
+        </div>
       </div>
     </div>
   </div>
