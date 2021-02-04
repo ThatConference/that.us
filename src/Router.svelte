@@ -53,9 +53,11 @@
 
   // ticket test
   import OrderSummary from './routes/orders/Summary.svelte';
-  import OrderTest from './routes/orders/Test.svelte';
   import OrderSuccess from './routes/orders/Success.svelte';
-  import OrderCancel from './routes/orders/Cancel.svelte';
+  import OrderCancelled from './routes/orders/Cancelled.svelte';
+
+  // membership pricing
+  import Pricing from './routes/membership/Pricing.svelte';
 </script>
 
 <Router>
@@ -84,9 +86,8 @@
 
   <!-- tickets TEST -->
   <Route exact path="/orders/summary" component="{OrderSummary}" />
-  <Route exact path="/orders/test" component="{OrderTest}" />
   <Route exact path="/orders/success" component="{OrderSuccess}" />
-  <Route exact path="/orders/cancel" component="{OrderCancel}" />
+  <Route exact path="/orders/cancelled" component="{OrderCancelled}" />
 
   <Route exact path="/support/faq" component="{FAQ}" />
   <Route exact path="/support/welcome" component="{NewUserWelcome}" />
@@ -169,6 +170,8 @@
     condition="{isLoggedIn}"
     redirect="/login"
   />
+
+  <Route exact path="/membership/pricing" component="{Pricing}" />
 
   <Route exact path="/not-found" component="{NotFound}" />
 

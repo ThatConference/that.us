@@ -1,9 +1,9 @@
-import { writable } from 'svelte/store';
+import { debug } from '../../config';
+import { useMachine } from '../useMachine';
+import create from './cartMachine';
 
-import createMachine from './cartMachine';
+const cartInstance = useMachine(create(), {
+  devTools: debug.xstate,
+});
 
-export const cart = writable();
-
-(function init() {
-  cart.set(createMachine());
-})();
+export default cartInstance;

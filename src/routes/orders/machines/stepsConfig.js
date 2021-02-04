@@ -30,13 +30,12 @@ function createConfig(metaContext) {
     states: {
       pendingLogin: {
         on: {
-          '': {
-            cond: 'isAuthenticated',
-            target: 'authenticated',
-            meta: {
-              completed: true,
+          '': [
+            {
+              cond: 'isAuthenticated',
+              target: 'authenticated',
             },
-          },
+          ],
         },
       },
 

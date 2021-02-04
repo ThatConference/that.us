@@ -1,9 +1,12 @@
-import { Machine, assign, send, spawn } from 'xstate';
+import { getContext } from 'svelte';
+import { Machine, assign, spawn } from 'xstate';
 
 import { log } from '../../../utilities/error';
 import createConfig from './summaryConfig';
 
-function createServices(stepsMachine, cartMachine) {
+function createServices(stepsMachine) {
+  const { send } = getContext('cart');
+
   return {
     guards: {},
     services: {},
@@ -16,13 +19,7 @@ function createServices(stepsMachine, cartMachine) {
           tags: { stateMachine: 'summary' },
         }),
 
-      notifyPrerequisitesMet: send('VERIFICATION_SUCCESS', {
-        to: context => context.cartMachine,
-      }),
-
-      setCartMachine: assign({
-        cartMachine: context => spawn(cartMachine),
-      }),
+      notifyPrerequisitesMet: () => send('VERIFICATION_SUCCESS'),
 
       setStepsMachine: assign({
         stepsMachine: context => spawn(stepsMachine),
@@ -35,8 +32,8 @@ function createServices(stepsMachine, cartMachine) {
   };
 }
 
-function create(stepsMachine, cartMachine) {
-  const services = createServices(stepsMachine, cartMachine);
+function create(stepsMachine) {
+  const services = createServices(stepsMachine);
   return Machine({ ...createConfig() }, { ...services });
 }
 

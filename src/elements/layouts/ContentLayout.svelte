@@ -16,7 +16,7 @@
       >
         <Trees
           classes="opacity-25 fixed w-4/6 h-5/6 right-0 mt-40 mr-80 
-          lg:bottom-4/12 lg:left-5/12 lg:mt-0 lg:mr-0 text-thatBlue-100"
+      lg:bottom-4/12 lg:left-5/12 lg:mt-0 lg:mr-0 text-thatBlue-100"
         />
       </div>
     </div>
