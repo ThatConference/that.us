@@ -1,21 +1,28 @@
 <script>
-  export let stateMachine;
-
-  import { useService } from 'xstate-svelte';
+  import { getContext } from 'svelte';
   import { getClient } from '@urql/svelte';
 
   import CartItem from './_CartItem.svelte';
   import { Standard as StandardButton } from '../../../elements/buttons';
+  import currentEvent from '../../../store/currentEvent';
 
   import orderMutations from '../../../dataSources/api.that.tech/orders/mutations';
-  import config, { debug } from '../../../config';
+  import config from '../../../config';
 
   const stripe = Stripe(config.stripeKey);
   const client = getClient();
+  const { state, send } = getContext('cart');
 
   function handleCheckout() {
+    const currentCart = $state.context.cart;
+    const lineItems = Object.keys(currentCart).map(i => ({
+      productId: i,
+      quantity: currentCart[i].qty,
+    }));
+
+    //todo.. add some more breadcrumbing and messaging.
     orderMutations(client)
-      .createCheckoutSession()
+      .createCheckoutSession($currentEvent.eventId, lineItems)
       .then(session => stripe.redirectToCheckout({ sessionId: session }))
       .then(function (result) {
         // If redirectToCheckout fails due to a browser or network error, you should display the localized error message to your customer using error.message.
@@ -28,10 +35,6 @@
       });
   }
 
-  const { state, send } = useService(stateMachine, {
-    devTools: debug.xstate,
-  });
-
   let orderTotal = 0.0;
 
   $: if ($state.context.cart) {
@@ -42,6 +45,11 @@
       const lineTotal = currentCart[curr].price * currentCart[curr].qty;
       return acc + lineTotal;
     }, 0.0);
+  }
+
+  function showBackground(i) {
+    const result = i % 2;
+    return result != 0;
   }
 </script>
 
@@ -107,15 +115,13 @@
               </tr>
             </thead>
             <tbody>
-              {#each Object.keys($state.context.cart) as productKey}
+              {#each Object.keys($state.context.cart) as productKey, i (productKey)}
                 <CartItem
                   lineItem="{$state.context.cart[productKey]}"
-                  on:cart_remove="{({ detail: { productId } }) => send(
-                      'REMOVE_ITEM',
-                      {
-                        productId,
-                      },
-                    )}"
+                  showBackground="{showBackground(i)}"
+                  on:cart_remove="{({ detail: { id } }) => send('REMOVE_ITEM', {
+                      id,
+                    })}"
                   on:cart_update="{({ detail }) => send('UPDATE_QUANTITY', {
                       ...detail,
                     })}"

@@ -1,20 +1,25 @@
 import { log } from '../utilities/error';
 
 export const MUTATION_CREATE_CHECKOUT_SESSION = `
-  mutation createCheckoutSession($checkout: CheckoutCreateInput!) {
+  mutation createCheckoutSession($checkout: StripeCheckoutCreateInput!) {
     orders {
       me {
-        create(checkout: $checkout)
+        checkout {
+          stripe {
+            create (checkout: $checkout)
+          }
+        }
       }
     }
   }
 `;
 
 export default client => {
-  function createCheckoutSession() {
+  function createCheckoutSession(eventId, lineItems) {
     const variables = {
       checkout: {
-        lineItems: ['price_1HxQ4SBvVBgmhQW4k59jrXlh'], // todo, this will need to be passed in...
+        eventId,
+        products: lineItems,
       },
     };
 
@@ -27,8 +32,8 @@ export default client => {
         let results;
 
         if (data) {
-          const { create } = data.orders.me;
-          results = create || undefined;
+          const { checkout } = data.orders.me;
+          results = checkout ? checkout.stripe.create : undefined;
         }
 
         return results;
