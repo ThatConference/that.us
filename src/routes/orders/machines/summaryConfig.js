@@ -13,7 +13,6 @@ function createConfig() {
     context: {
       prerequisitesMet: false,
       stepsMachine: null,
-      cartMachine: null,
     },
 
     on: {
@@ -27,7 +26,7 @@ function createConfig() {
       init: {
         on: {
           '': {
-            actions: ['setStepsMachine', 'setCartMachine'],
+            actions: ['setStepsMachine'],
             target: 'waiting',
           },
         },

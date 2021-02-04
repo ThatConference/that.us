@@ -1,11 +1,31 @@
-/*
-  TODO: Shelled out for now.... 
-*/
-
 import { log } from '../utilities/error';
 import { stripAuthorizationHeader } from '../utilities';
 
-export const QUERY_EVENT_PRODUCTS = ``;
+const productBaseFieldsFragment = `
+  fragment productBaseFields on ProductBase {
+    id
+    name
+    description
+    ticketType: type
+    price
+    isEnabled
+  }
+`;
+
+export const QUERY_EVENT_PRODUCTS = `
+  ${productBaseFieldsFragment}
+  query QueryEventProducts($eventId: ID!) {
+    events {
+      event(findBy: {id: $eventId}) {
+        get {
+          products {
+            ...productBaseFields
+          }
+        }
+      }
+    }
+  }
+`;
 
 export default client => {
   function queryProductsByEvent(eventId) {
@@ -19,12 +39,8 @@ export default client => {
       .then(({ data, error }) => {
         if (error) log(error, 'QUERY_EVENT_PRODUCTS');
 
-        let results;
-
-        if (data) {
-        }
-
-        return results;
+        const { event } = data.events;
+        return event ? event.get.products : [];
       });
   }
 
