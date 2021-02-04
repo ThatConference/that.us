@@ -1,4 +1,5 @@
 /* eslint-disable global-require */
+const colors = require('tailwindcss/colors');
 
 module.exports = {
   theme: {
@@ -24,6 +25,7 @@ module.exports = {
     },
     extend: {
       colors: {
+        cyan: colors.cyan,
         'that-offWhite': '#F7F7F7',
         'that-grey': '#555555',
         'that-gray': '#555555',
@@ -89,5 +91,6 @@ module.exports = {
       disableUnusedFeatures: true,
     }),
     require('@tailwindcss/ui'),
+    require('@tailwindcss/aspect-ratio'),
   ],
 };

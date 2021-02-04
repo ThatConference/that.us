@@ -13,7 +13,7 @@
 
 <tr class="bg-white" class:bg-gray-50="{showBackground}">
   <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-    {lineItem.title}
+    {lineItem.name}
   </td>
   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
     {lineItem.description}
@@ -23,7 +23,7 @@
   </td>
   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
     <input
-      type="text"
+      type="number"
       name="quantity"
       id="quantity"
       bind:value="{currentQty}"
@@ -42,9 +42,7 @@
     </Link>
     /
     <Link
-      on:click="{() => dispatch('cart_remove', {
-          productId: lineItem.productId,
-        })}"
+      on:click="{() => dispatch('cart_remove', { id: lineItem.id })}"
       class="text-thatOrange-400 hover:text-thatOrange-500"
     >
       Remove

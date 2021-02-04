@@ -1,10 +1,11 @@
 <script>
+  import { getContext } from 'svelte';
   import { Link } from 'yrv';
   import { fade } from 'svelte/transition';
   import Icon from 'svelte-awesome';
   import { plus } from 'svelte-awesome/icons';
 
-  import { Activity } from '../../../elements/svgs';
+  import { Activity, Cart } from '../../../elements/svgs';
   import ActivitySlideOver from '../../activityCenter/ActivitySlideOver.svelte';
   import DesktopLink from './_DesktopLink.svelte';
   import UserProfile from '../_UserProfile.svelte';
@@ -17,6 +18,10 @@
   function handleCloseActivityCenter(event) {
     activityVisible = !activityVisible;
   }
+
+  const { state } = getContext('cart');
+
+  $: cartItems = Object.keys($state.context.cart).length;
 </script>
 
 <div class="flex items-center">
@@ -136,7 +141,7 @@
     {#if $hasNotifications}
       <button
         class="max-w-xs h-10 w-10 rounded-full text-white focus:outline-none
-          duration-150 ease-in-out hover:bg-thatBlue-500"
+    duration-150 ease-in-out hover:bg-thatBlue-500"
         class:shadow-solid="{activityVisible}"
         class:bg-thatBlue-500="{activityVisible}"
         aria-label="Notifications"
@@ -153,6 +158,28 @@
           on:clicked-outside="{handleCloseActivityCenter}"
         />
       {/if}
+    {/if}
+
+    {#if true}
+      <div class="relative inline-block">
+        <div class="ml-4 p-1 rounded-full text-white hover:bg-thatBlue-500">
+          <Link href="/orders/summary">
+            <Cart />
+
+            {#if cartItems > 0}
+              <span class="absolute bottom-0 right-0 block">
+                <span
+                  class="inline-flex items-center justify-center h-4 w-4 rounded-full bg-gray-500"
+                >
+                  <span
+                    class="text-xs font-medium leading-none text-white"
+                  >{cartItems}</span>
+                </span>
+              </span>
+            {/if}
+          </Link>
+        </div>
+      </div>
     {/if}
 
     <div class="ml-4 p-1 rounded-full text-white hover:bg-thatBlue-500">

@@ -4,6 +4,7 @@ function createConfig(metaContext) {
     type: 'parallel',
     context: {
       meta: metaContext || undefined,
+      eventId: undefined,
       cart: {},
       checkoutSessionId: undefined,
     },

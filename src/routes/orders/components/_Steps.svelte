@@ -2,13 +2,14 @@
   export let stateMachine;
 
   import { useService } from 'xstate-svelte';
+
   import { isEmpty } from 'lodash';
   import { navigateTo, Link } from 'yrv';
+  import { debug } from '../../../config';
 
   import StepComplete from '../../../elements/svgs/StepComplete.svelte';
   import Step from '../../../elements/svgs/Step.svelte';
 
-  import { debug } from '../../../config';
   import {
     isAuthenticated,
     token,

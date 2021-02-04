@@ -1,4 +1,4 @@
-import { Machine, assign } from 'xstate';
+import { createMachine, assign } from 'xstate';
 import { isEmpty } from 'lodash';
 
 import { log } from '../error';
@@ -42,29 +42,29 @@ function createServices() {
 
       addItem: assign({
         cart: (context, event) => {
-          if (!event.productId) {
-            throw new Error('No productId passed into addItem');
+          if (!event.id) {
+            throw new Error('No id passed into addItem');
           }
 
-          const { productId, quantity = 1, price, title, description } = event;
+          const { id, quantity = 1, price, name, description } = event;
           const currentCart = context.cart;
 
-          if (currentCart[productId]) {
-            currentCart[productId] = {
+          if (currentCart[id]) {
+            currentCart[id] = {
               qty: event.quantity
                 ? event.quantity
-                : currentCart[productId].qty + quantity,
+                : currentCart[id].qty + quantity,
             };
           } else {
-            currentCart[productId] = {
+            currentCart[id] = {
               qty: quantity,
             };
           }
 
-          currentCart[productId] = {
-            ...currentCart[productId],
-            productId,
-            title,
+          currentCart[id] = {
+            ...currentCart[id],
+            id,
+            name,
             description,
             price,
           };
@@ -75,14 +75,14 @@ function createServices() {
 
       removeItem: assign({
         cart: (context, event) => {
-          if (!event.productId) {
-            throw new Error('No productId passed into removeItem');
+          if (!event.id) {
+            throw new Error('No id passed into removeItem');
           }
 
-          const { productId } = event;
+          const { id } = event;
           const currentCart = context.cart;
 
-          delete currentCart[productId];
+          delete currentCart[id];
 
           return currentCart;
         },
@@ -93,7 +93,7 @@ function createServices() {
 
 function create(meta) {
   const services = createServices();
-  return Machine({ ...createConfig(meta) }, { ...services });
+  return createMachine({ ...createConfig(meta) }, { ...services });
 }
 
 export default create;
