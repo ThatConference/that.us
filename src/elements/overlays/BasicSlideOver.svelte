@@ -21,7 +21,7 @@
       <div class="w-screen md:w-auto border-l-4 border-thatOrange-400">
         <div class="h-full divide-y divide-gray-200 flex flex-col bg-white ">
           <div
-            class="min-h-0 flex-1 flex flex-col py-6 space-y-6 overflow-y-scroll"
+            class="min-h-0 flex-1 flex flex-col py-6 space-y-6 overflow-y-scroll overscroll-none"
           >
             <header class="px-4 sm:px-6">
               <div class="flex items-start justify-between space-x-3">

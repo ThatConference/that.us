@@ -73,25 +73,23 @@
             {/each}
           </fieldset>
         </div>
-
-        {#if selectedFilterTerms.length}
-          <div class="absolute bottom-0 left-0 w-full flex justify-center">
-            <button
-              type="button"
-              class="inline-block w-full md:w-auto mx-4 md:mx-0 my-2 px-4 py-2 rounded-md shadow text-base font-medium border-2
-              border-thatBlue-500 text-thatBlue-500 bg-white hover:bg-thatBlue-500
-              hover:text-white focus:bg-thatBlue-500 focus:text-white focus:outline-none
-              focus:ring-thatBlue-500 focus:border-thatBlue-800 transition
-              duration-150 ease-in-out"
-              on:click="{() => {
-                selectedFilterTerms = [];
-              }}"
-            >
-              {`Clear ${selectedFilterTerms.length} selected filter${selectedFilterTerms.length > 1 ? 's' : ''}`}
-            </button>
-          </div>
-        {/if}
       </div>
     </div>
+  </div>
+  <div slot="panelActions">
+    {#if selectedFilterTerms.length}
+      <button
+        type="button"
+        class="py-2 px-4 border border-gray-300 rounded-md text-sm leading-5
+        font-medium text-gray-700 hover:text-gray-500 focus:outline-none
+        focus:border-blue-300 focus:ring-blue active:bg-gray-50
+        active:text-gray-800 transition duration-150 ease-in-out"
+        on:click="{() => {
+          selectedFilterTerms = [];
+        }}"
+      >
+        {`Clear ${selectedFilterTerms.length} selected filter${selectedFilterTerms.length > 1 ? 's' : ''}`}
+      </button>
+    {/if}
   </div>
 </SlideOver>
