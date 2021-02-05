@@ -181,49 +181,68 @@
     />
   {/if}
 
-  {#each sorted as day, d}
-    <div in:fade="{{ delay: d * 200 }}">
-      <span
-        class="sticky top-0 z-20 bg-white text-3xl leading-9 font-extrabold
-        tracking-tight text-thatBlue-800 sm:text-4xl sm:leading-10 pt-4 mb-10"
-      >
-        <span> {dayjs(day.dayOfYear).format("dddd MMMM D, 'YY")} </span>
-      </span>
+  {#if sorted.length}
+    {#each sorted as day, d}
+      <div in:fade="{{ delay: d * 200 }}">
+        <span
+          class="sticky top-0 z-20 bg-white text-3xl leading-9 font-extrabold
+      tracking-tight text-thatBlue-800 sm:text-4xl sm:leading-10 pt-4 mb-10"
+        >
+          <span> {dayjs(day.dayOfYear).format("dddd MMMM D, 'YY")} </span>
+        </span>
 
-      {#each day.timeSlots as ts, t}
-        <div class="relative">
-          <span
-            class="sticky top-14 z-10 bg-white text-3xl leading-9 font-extrabold
-            tracking-tight text-thatOrange-400 sm:text-4xl sm:leading-10"
-          >
-            {#if !dayjs(ts.timeSlot).isValid()}
-              <span>Unscheduled</span>
-            {:else}<span>{dayjs(ts.timeSlot).format('hh:mm a')}</span>{/if}
-          </span>
-
-          <div in:fade="{{ delay: t * 500 }}" class="mb-12">
-            <ul
-              class="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3"
+        {#each day.timeSlots as ts, t}
+          <div class="relative">
+            <span
+              class="sticky top-14 z-10 bg-white text-3xl leading-9 font-extrabold
+          tracking-tight text-thatOrange-400 sm:text-4xl sm:leading-10"
             >
-              {#each ts.activities as activity (activity.id)}
-                {#if isKeynote(activity)}
-                  <li
-                    in:fade
-                    class="col-span-1 sm:col-span-2 lg:col-span-3 bg-white
-                  rounded-lg shadow-lg mt-10 mb-10"
-                  >
-                    <KeynoteCard {...activity} />
-                  </li>
-                {:else}
-                  <li in:fade class="col-span-1 bg-white rounded-lg shadow-lg">
-                    <Card {...activity} editMode="{editMode}" />
-                  </li>
-                {/if}
-              {/each}
-            </ul>
+              {#if !dayjs(ts.timeSlot).isValid()}
+                <span>Unscheduled</span>
+              {:else}<span>{dayjs(ts.timeSlot).format('hh:mm a')}</span>{/if}
+            </span>
+
+            <div in:fade="{{ delay: t * 500 }}" class="mb-12">
+              <ul
+                class="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3"
+              >
+                {#each ts.activities as activity (activity.id)}
+                  {#if isKeynote(activity)}
+                    <li
+                      in:fade
+                      class="col-span-1 sm:col-span-2 lg:col-span-3 bg-white
+                rounded-lg shadow-lg mt-10 mb-10"
+                    >
+                      <KeynoteCard {...activity} />
+                    </li>
+                  {:else}
+                    <li
+                      in:fade
+                      class="col-span-1 bg-white rounded-lg shadow-lg"
+                    >
+                      <Card {...activity} editMode="{editMode}" />
+                    </li>
+                  {/if}
+                {/each}
+              </ul>
+            </div>
           </div>
-        </div>
-      {/each}
+        {/each}
+      </div>
+    {/each}
+  {:else}
+    <div class="flex flex-col justify-center items-center">
+      <img
+        class="h-52 sm:h-64 lg:h-72 m-0 mt-24 lg:m-10"
+        src="/images/characters/sasquatch.png"
+        alt="Empty-handed Sasquatch"
+      />
+      <h1
+        class="pt-10 pb-4 sm:pb-10 px-2 tracking-tight leading-10 font-bold
+    text-thatBlue-600 text-3xl sm:text-4xl lg:text-5xl text-center"
+      >
+        {`Honestly, I tried, but there's nothing for "${searchterm}".`}
+      </h1>
     </div>
-  {/each}
+  {/if}
 </div>
