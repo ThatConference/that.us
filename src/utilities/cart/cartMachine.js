@@ -5,6 +5,7 @@ import { log } from '../error';
 import createConfig from './cartConfig';
 
 const cartKeyName = 'cart';
+const cartVersion = '1.0.0';
 
 function createServices() {
   return {
@@ -26,12 +27,21 @@ function createServices() {
       readLocalStorage: assign({
         cart: () => {
           const localCart = window.localStorage.getItem(cartKeyName);
-          return JSON.parse(localCart) || {}; // maybe null would be better
+          const results = JSON.parse(localCart) || undefined;
+
+          return results && results.lineItems ? results.lineItems : {}; // maybe null would be better
         },
       }),
 
       setLocalStorage: context => {
-        window.localStorage.setItem(cartKeyName, JSON.stringify(context.cart));
+        const { cart } = context;
+
+        const localCart = {
+          version: cartVersion,
+          lineItems: cart,
+        };
+
+        window.localStorage.setItem(cartKeyName, JSON.stringify(localCart));
       },
 
       clearCart: assign({
