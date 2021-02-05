@@ -231,6 +231,18 @@
       </div>
     {/each}
   {:else}
-    <div>hello there</div>
+    <div class="flex flex-col justify-center items-center">
+      <img
+        class="h-52 sm:h-64 lg:h-72 m-0 mt-24 lg:m-10"
+        src="/images/characters/sasquatch.png"
+        alt="Empty-handed Sasquatch"
+      />
+      <h1
+        class="pt-10 pb-4 sm:pb-10 px-2 tracking-tight leading-10 font-bold
+    text-thatBlue-600 text-3xl sm:text-4xl lg:text-5xl text-center"
+      >
+        {`Honestly, I tried, but there's nothing for "${searchterm}".`}
+      </h1>
+    </div>
   {/if}
 </div>
