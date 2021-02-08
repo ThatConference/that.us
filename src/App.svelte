@@ -36,7 +36,7 @@
       resets the z-index of the tidio iframe such that it's under warnings.
       ... we might have to set it better based on some other layering going on in places.
     */
-    document.getElementById('tidio-chat-iframe').style.zIndex = '2';
+    document.getElementById('tidio-chat-iframe').style.zIndex = '50';
 
     unsub = thatProfile.subscribe(currentUser => {
       if (currentUser) {
