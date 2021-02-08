@@ -68,7 +68,7 @@
   </div>
 
   <div slot="body">
-    <main class="relative">
+    <main class="-mx-6 relative">
       <div
         class="divide-y divide-gray-200 lg:grid lg:grid-cols-12 lg:divide-y-0 lg:divide-x"
       >
@@ -81,12 +81,16 @@
                   navigateTo('/my/settings/profile');
                   settingsComponent = Profile;
                 }}"
-                class="{settingsComponent === Profile ? asideSelected.item : asideDefault.item}"
+                class="{settingsComponent === Profile
+                  ? asideSelected.item
+                  : asideDefault.item}"
               >
                 <User
-                  classes="{settingsComponent === Profile ? asideSelected.image : asideDefault.image}"
+                  classes="{settingsComponent === Profile
+                    ? asideSelected.image
+                    : asideDefault.image}"
                 />
-                <span class="truncate"> Profile </span>
+                <span class="truncate"> Your Profile </span>
               </a>
 
               <a
@@ -95,26 +99,16 @@
                   navigateTo('/my/settings/badges');
                   settingsComponent = Badges;
                 }}"
-                class="{settingsComponent === Badges ? asideSelected.item : asideDefault.item}"
+                class="{settingsComponent === Badges
+                  ? asideSelected.item
+                  : asideDefault.item}"
               >
                 <Badge
-                  classes="{settingsComponent === Badges ? asideSelected.image : asideDefault.image}"
+                  classes="{settingsComponent === Badges
+                    ? asideSelected.image
+                    : asideDefault.image}"
                 />
-                <span class="truncate"> Badges </span>
-              </a>
-
-              <a
-                href="/my/settings/tickets"
-                on:click|preventDefault="{() => {
-                  navigateTo('/my/settings/tickets');
-                  settingsComponent = Tickets;
-                }}"
-                class="{settingsComponent === Tickets ? asideSelected.item : asideDefault.item}"
-              >
-                <Ticket
-                  classes="{settingsComponent === Tickets ? asideSelected.image : asideDefault.image}"
-                />
-                <span class="truncate"> Tickets </span>
+                <span class="truncate"> Merit Badges </span>
               </a>
 
               <a
@@ -123,18 +117,40 @@
                   navigateTo('/my/settings/order-history');
                   settingsComponent = OrderHistory;
                 }}"
-                class="{settingsComponent === OrderHistory ? asideSelected.item : asideDefault.item}"
+                class="{settingsComponent === OrderHistory
+                  ? asideSelected.item
+                  : asideDefault.item}"
               >
                 <CreditCard
-                  classes="{settingsComponent === OrderHistory ? asideSelected.image : asideDefault.image}"
+                  classes="{settingsComponent === OrderHistory
+                    ? asideSelected.image
+                    : asideDefault.image}"
                 />
                 <span class="truncate"> Order History </span>
+              </a>
+
+              <a
+                href="/my/settings/tickets"
+                on:click|preventDefault="{() => {
+                  navigateTo('/my/settings/tickets');
+                  settingsComponent = Tickets;
+                }}"
+                class="{settingsComponent === Tickets
+                  ? asideSelected.item
+                  : asideDefault.item}"
+              >
+                <Ticket
+                  classes="{settingsComponent === Tickets
+                    ? asideSelected.image
+                    : asideDefault.image}"
+                />
+                <span class="truncate"> Event Tickets </span>
               </a>
             </nav>
           </div>
         </aside>
 
-        <div class="divide-y divide-gray-200 lg:col-span-9 px-4">
+        <div class="divide-y divide-gray-200 lg:col-span-9 py-4 px-4">
           <svelte:component this="{settingsComponent}" />
         </div>
       </div>

@@ -56,7 +56,14 @@ function createServices() {
             throw new Error('No id passed into addItem');
           }
 
-          const { id, quantity = 1, price, name, description } = event;
+          const {
+            id,
+            quantity = 1,
+            price,
+            name,
+            description,
+            isBulkPurchase = false,
+          } = event;
           const currentCart = context.cart;
 
           if (currentCart[id]) {
@@ -77,6 +84,7 @@ function createServices() {
             name,
             description,
             price,
+            isBulkPurchase,
           };
 
           return currentCart;
