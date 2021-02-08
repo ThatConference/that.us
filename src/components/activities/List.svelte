@@ -138,13 +138,12 @@
 </script>
 
 <div class="relative">
-  <div class="sticky z-20 top-0">
-    <div class="absolute top-0 right-0 z-20 border-gray-200 pt-4">
+  <div class="sticky z-30 top-0 ">
+    <div class="absolute top-0 right-0 border-gray-200 pt-4">
       <button
         type="button"
         class="max-w-xs h-10 w-10 rounded-full text-gray-300 focus:outline-none
-          duration-150 ease-in-out hover:bg-thatBlue-500"
-        class:bg-thatBlue-500="{filterVisible}"
+          duration-150 ease-in-out bg-thatBlue-500 sm:bg-white lg:hover:bg-thatBlue-400"
         class:bg-thatRed-500="{selectedTags.length > 0}"
         aria-label="{`Show filter and tags options${selectedTags.length > 0 ? ` (Selected tags: ${selectedTags.join(', ')})` : ''}`}"
         on:click="{() => {
@@ -154,7 +153,7 @@
         <Icon data="{filterIcon}" label="Filter" />
       </button>
       <input
-        class="form-input border rounded-md"
+        class="form-input border rounded-md hidden sm:inline"
         bind:value="{searchterm}"
         placeholder="type to search..."
       />
@@ -174,8 +173,8 @@
   {#each sorted as day, d}
     <div in:fade="{{ delay: d * 200 }}">
       <h2
-        class="sticky top-0 z-20 bg-white text-xl leading-9 font-extrabold
-        tracking-tight text-thatBlue-800 sm:text-3xl md:text-4xl sm:leading-10 pt-4 mb-5 md:mb-9 whitespace-nowrap"
+        class="sticky top-0 z-20 bg-white text-xl md:text-4xl leading-9 font-extrabold
+        tracking-tight text-thatBlue-800 sm:leading-10 pt-4 mb-5 sm:mb-9 whitespace-nowrap"
       >
         {dayjs(day.dayOfYear).format("dddd MMMM D, 'YY")}
       </h2>
@@ -183,8 +182,8 @@
       {#each day.timeSlots as ts, t}
         <div class="relative">
           <h2
-            class="sticky top-11 sm:top-13 z-10 bg-white text-xl leading-9 font-extrabold
-            tracking-tight text-thatOrange-400 sm:text-3xl md:text-4xl sm:leading-10 whitespace-nowrap"
+            class="sticky top-11 sm:top-13 z-10 bg-white text-xl md:text-4xl leading-9 font-extrabold
+            tracking-tight text-thatOrange-400 sm:leading-10 whitespace-nowrap"
           >
             {#if !dayjs(ts.timeSlot).isValid()}
               Unscheduled
