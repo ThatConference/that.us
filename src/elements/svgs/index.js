@@ -6,3 +6,7 @@ export { default as TreesAnimated } from './TreesAnimated.svelte';
 export { default as Check } from './Check.svelte';
 export { default as Ban } from './Ban.svelte';
 export { default as Cart } from './Cart.svelte';
+export { default as User } from './User.svelte';
+export { default as Badge } from './Badge.svelte';
+export { default as CreditCard } from './CreditCard.svelte';
+export { default as Ticket } from './Ticket.svelte';
