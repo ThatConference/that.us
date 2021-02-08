@@ -2,7 +2,7 @@
   export let q;
   export let a;
 
-  import Chevron from '../../../../elements/svgs/Chevron.svelte';
+  import { Chevron } from '../../../../elements/svgs';
 
   let userClicked = false;
 </script>

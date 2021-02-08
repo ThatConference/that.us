@@ -18,6 +18,7 @@
     const lineItems = Object.keys(currentCart).map(i => ({
       productId: i,
       quantity: currentCart[i].qty,
+      isBulkPurchase: currentCart[i].isBulkPurchase,
     }));
 
     //todo.. add some more breadcrumbing and messaging.

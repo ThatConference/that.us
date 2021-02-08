@@ -64,21 +64,15 @@
 <div>
   {#if awardedBadges.length > 0}
     <div>
-      <h2
-        class="text-3xl leading-9 font-extrabold tracking-tight text-gray-900
-            sm:text-4xl sm:leading-10"
-      >
-        Awarded Badges
-      </h2>
+      <h2 class="text-xl leading-6 font-bold text-gray-900">Merit Badges</h2>
 
       <div class="mt-12">
-        <div class="flex space-x-3">
+        <div class="flex space-x-3 justify-around">
           {#each awardedBadges as badge (badge.id)}
             <div class="flex flex-col items-center">
-              <img class="h-56 w-56" src="{badge.image}" alt="{badge.name}" />
+              <img class="h-24 w-24" src="{badge.image}" alt="{badge.name}" />
               <h2
-                class="text-xl leading-9 font-bold tracking-tight
-                    text-gray-500 sm:text-2xl sm:leading-10"
+                class="text-xl leading-6 font-bold tracking-tight text-gray-500"
               >
                 {badge.name}
               </h2>

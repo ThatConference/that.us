@@ -269,12 +269,14 @@
   <div>
     <div>
       <div>
-        <h3 class="text-lg leading-6 font-medium text-gray-900">Profile</h3>
-        <p class="mt-1 text-sm leading-5 text-gray-500">
+        <h2 class="text-xl leading-6 font-bold text-gray-900">Your Profile</h2>
+
+        <p class="mt-4 text-sm leading-5 text-gray-500">
           This information is what we feature about you if you choose to make
           your profile public.
         </p>
-        <p class="mt-2 text-sm leading-5 text-gray-500">
+
+        <p class="mt-4 text-sm leading-5 text-gray-500">
           To submit any type activity your profile will have to be public.
         </p>
       </div>
@@ -445,9 +447,8 @@
               <input
                 name="profileImage"
                 type="file"
-                on:change="{e => postProfilePicture(e).then(r =>
-                    setValue('profileImage', r),
-                  )}"
+                on:change="{e =>
+                  postProfilePicture(e).then(r => setValue('profileImage', r))}"
                 accept="image/x-png,image/png,.png,image/jpeg,.jpg,.jpeg,image/gif,.gif"
                 class="py-2 px-3 border border-gray-300 rounded-md text-sm
                   leading-4 font-medium text-gray-700 hover:text-gray-500
@@ -496,7 +497,11 @@
                 type="text"
                 name="{link.name}"
                 value="{getInitialSocailLinkValue(link)}"
-                on:change="{e => setValue('profileLinks', updateLinksInputValues(link, e.target.value))}"
+                on:change="{e =>
+                  setValue(
+                    'profileLinks',
+                    updateLinksInputValues(link, e.target.value),
+                  )}"
                 class="flex-1 form-input block w-full min-w-0 border rounded-none
                   rounded-r-md transition duration-150 ease-in-out sm:text-sm
                   sm:leading-5"
@@ -538,7 +543,8 @@
                     allowBlur="{true}"
                     maxTags="{25}"
                     onlyUnique="{true}"
-                    on:tags="{({ detail }) => setValue('tags', detail.interests)}"
+                    on:tags="{({ detail }) =>
+                      setValue('tags', detail.interests)}"
                     class="form-input block w-full transition duration-150 ease-in-out text-sm leading-5 rounded-md shadow-sm"
                   />
                 </div>
@@ -663,7 +669,8 @@
                   <Checkbox
                     name="acceptedCodeOfConduct"
                     checked="{profile.acceptedCodeOfConduct}"
-                    on:change="{({ detail }) => setValue('acceptedCodeOfConduct', detail)}"
+                    on:change="{({ detail }) =>
+                      setValue('acceptedCodeOfConduct', detail)}"
                     size="2.5rem"
                     class="flex-none"
                   />
@@ -696,7 +703,8 @@
                     <Checkbox
                       name="acceptedAntiHarassmentPolicy"
                       checked="{profile.acceptedAntiHarassmentPolicy}"
-                      on:change="{({ detail }) => setValue('acceptedAntiHarassmentPolicy', detail)}"
+                      on:change="{({ detail }) =>
+                        setValue('acceptedAntiHarassmentPolicy', detail)}"
                       size="2.5rem"
                       class="flex-none"
                     />
@@ -729,7 +737,8 @@
                       <Checkbox
                         name="acceptedCommitmentToDiversity"
                         checked="{profile.acceptedCommitmentToDiversity}"
-                        on:change="{({ detail }) => setValue('acceptedCommitmentToDiversity', detail)}"
+                        on:change="{({ detail }) =>
+                          setValue('acceptedCommitmentToDiversity', detail)}"
                         size="2.5rem"
                         class="flex-none"
                       />
@@ -766,7 +775,8 @@
                         <Checkbox
                           name="acceptedTermsOfService"
                           checked="{profile.acceptedTermsOfService}"
-                          on:change="{({ detail }) => setValue('acceptedTermsOfService', detail)}"
+                          on:change="{({ detail }) =>
+                            setValue('acceptedTermsOfService', detail)}"
                           size="2.5rem"
                           class="flex-none"
                         />
@@ -802,7 +812,8 @@
                         <Checkbox
                           name="isOver13"
                           checked="{profile.isOver13}"
-                          on:change="{({ detail }) => setValue('isOver13', detail)}"
+                          on:change="{({ detail }) =>
+                            setValue('isOver13', detail)}"
                           size="2.5rem"
                           class="flex-none"
                         />
@@ -850,7 +861,8 @@
                   <Checkbox
                     name="isDeactivated"
                     checked="{profile.isDeactivated}"
-                    on:change="{({ detail }) => setValue('isDeactivated', detail)}"
+                    on:change="{({ detail }) =>
+                      setValue('isDeactivated', detail)}"
                     size="2.5rem"
                     class="flex-none"
                   />

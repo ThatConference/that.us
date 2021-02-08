@@ -14,6 +14,7 @@ function createConfig(metaContext) {
       meta: metaContext || undefined,
       items: [],
       cursor: null,
+      count: 0,
     },
 
     states: {
