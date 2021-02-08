@@ -117,12 +117,25 @@
           </a>
         {:else}
           <div
-            class="block px-3 py-2 text-base font-medium text-gray-400 border-b"
+            class="block px-3 py-2 rounded-md text-base font-medium
+            text-gray-300 hover:text-white hover:bg-that-blue
+            focus:outline-none focus:text-white focus:bg-that-blue border-b"
           >
-            <p>{$thatProfile.firstName} {$thatProfile.lastName}</p>
-            <p class="truncate pt-2">{$thatProfile.email}</p>
+            <Link href="/my/settings" role="menuitem">
+              <p>{$thatProfile.firstName} {$thatProfile.lastName}</p>
+              <p class="truncate pt-2">{$thatProfile.email}</p>
+            </Link>
           </div>
 
+          <Link
+            href="/my/settings"
+            class="block px-3 py-2 rounded-md text-base font-medium
+              text-gray-300 hover:text-white hover:bg-that-blue
+              focus:outline-none focus:text-white focus:bg-that-blue"
+            role="menuitem"
+          >
+            My Settings
+          </Link>
           <Link
             href="/my/favorites"
             class="block px-3 py-2 rounded-md text-base font-medium
@@ -141,24 +154,7 @@
           >
             My Submissions
           </Link>
-          <Link
-            href="/my/badges"
-            class="block px-3 py-2 rounded-md text-base font-medium
-              text-gray-300 hover:text-white hover:bg-that-blue
-              focus:outline-none focus:text-white focus:bg-that-blue"
-            role="menuitem"
-          >
-            My Badges
-          </Link>
-          <Link
-            href="/my/profile"
-            class="block px-3 py-2 rounded-md text-base font-medium
-              text-gray-300 hover:text-white hover:bg-that-blue
-              focus:outline-none focus:text-white focus:bg-that-blue"
-            role="menuitem"
-          >
-            My Profile
-          </Link>
+
           <a
             href="/logout"
             class="mt-1 block px-3 py-2 rounded-md text-base font-medium
