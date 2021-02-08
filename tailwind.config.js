@@ -26,6 +26,8 @@ module.exports = {
     extend: {
       colors: {
         cyan: colors.cyan,
+        teal: colors.teal,
+        'light-blue': colors.lightBlue,
         'that-offWhite': '#F7F7F7',
         'that-grey': '#555555',
         'that-gray': '#555555',
@@ -90,6 +92,7 @@ module.exports = {
       importFontFace: true,
       disableUnusedFeatures: true,
     }),
+    require('@tailwindcss/forms'),
     require('@tailwindcss/ui'),
     require('@tailwindcss/aspect-ratio'),
   ],

@@ -9,11 +9,10 @@
   setContext('IS_Mobile_VIEW', mobileVisible);
 </script>
 
-<nav class="bg-that-navy">
-  <!-- full screen nav -->
-  <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-    <div>
-      <div class="flex items-center justify-between px-4 sm:px-0">
+<nav>
+  <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+    <div class="border-b border-thatBlue-400 border-opacity-25">
+      <div class="flex items-center justify-between pb-6 px-4 sm:px-0">
         <LargeNav />
 
         <div class="-mr-2 flex md:hidden">

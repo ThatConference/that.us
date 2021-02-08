@@ -12,6 +12,7 @@
   // root
   import Home from './routes/home/Home.svelte';
   import Login from './routes/Login.svelte';
+  import LoginSuccess from './routes/LoginSuccess.svelte';
   import Logout from './routes/Logout.svelte';
   import FAQ from './routes/support/FAQ.svelte';
   import Partners from './routes/partners/Partners.svelte';
@@ -28,11 +29,10 @@
   import StayingUpToDate from './routes/support/StayingUpToDate.svelte';
 
   // my
+  import Settings from './routes/my/Settings.svelte';
   import MyFavorites from './routes/my/Favorites.svelte';
   import MySubmissions from './routes/my/Submissions.svelte';
-  import Profile from './routes/my/Profile.svelte';
-  import Badges from './routes/my/Badges.svelte';
-
+  
   // Activities
   import Event from './routes/events/List.svelte';
   import List from './routes/activities/List.svelte';
@@ -68,6 +68,7 @@
     component="{Login}"
     documentReferrer="{documentReferrer}"
   />
+  <Route exact path="/login-success" component="{LoginSuccess}" />
   <Route exact path="/logout" component="{Logout}" />
   <Route exact path="/changelog" component="{ChangeLog}" />
   <Route exact path="/changelog-missed" component="{ChangeLogMissed}" />
@@ -141,6 +142,22 @@
 
   <Route
     exact
+    path="/my/settings/:aside"
+    component="{Settings}"
+    condition="{isLoggedIn}"
+    redirect="/login"
+  />
+
+  <Route
+    exact
+    path="/my/settings"
+    component="{Settings}"
+    condition="{isLoggedIn}"
+    redirect="/login"
+  />
+
+  <Route
+    exact
     path="/my/favorites"
     component="{MyFavorites}"
     condition="{isLoggedIn}"
@@ -151,22 +168,6 @@
     exact
     path="/my/submissions"
     component="{MySubmissions}"
-    condition="{isLoggedIn}"
-    redirect="/login"
-  />
-
-  <Route
-    exact
-    path="/my/profile"
-    component="{Profile}"
-    condition="{isLoggedIn}"
-    redirect="/login"
-  />
-
-  <Route
-    exact
-    path="/my/badges"
-    component="{Badges}"
     condition="{isLoggedIn}"
     redirect="/login"
   />

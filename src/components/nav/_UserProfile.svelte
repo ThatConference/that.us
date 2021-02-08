@@ -82,11 +82,21 @@
           <div
             class="py-1 rounded-md bg-white ring-1 ring-black ring-opacity-5"
           >
-            <div class="block px-4 py-2 text-sm text-gray-700 border-b">
-              <p>{$thatProfile.firstName} {$thatProfile.lastName}</p>
-              <p class="truncate pt-2">{$thatProfile.email}</p>
+            <div
+              class="block px-4 py-2 text-sm hover:bg-gray-100 text-gray-700 border-b"
+            >
+              <Link href="/my/settings/profile">
+                <p>{$thatProfile.firstName} {$thatProfile.lastName}</p>
+                <p class="truncate pt-2">{$thatProfile.email}</p>
+              </Link>
             </div>
 
+            <Link
+              href="/my/settings"
+              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+            >
+              My Settings
+            </Link>
             <Link
               href="/my/favorites"
               class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
@@ -99,18 +109,6 @@
               class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
             >
               My Submissions
-            </Link>
-            <Link
-              href="/my/badges"
-              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-            >
-              My Badges
-            </Link>
-            <Link
-              href="/my/profile"
-              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-            >
-              My Profile
             </Link>
 
             <a
