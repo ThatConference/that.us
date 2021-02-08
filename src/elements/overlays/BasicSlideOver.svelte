@@ -6,16 +6,16 @@
 </script>
 
 <div
-  class="z-30 fixed inset-0 overflow-hidden"
+  class="z-40 fixed inset-0 overflow-hidden"
   on:click|stopPropagation="{() => {
     dispatch('clicked-outside', 'clicked');
   }}"
 >
   <div class="absolute inset-0 overflow-hidden">
     <section
-      in:fly="{{ x: 400, duration: 1000 }}"
-      out:fly="{{ x: 400, duration: 1000 }}"
-      class="z-30 absolute inset-y-0 right-0 max-w-full flex"
+      in:fly="{{ x: 400, duration: 500 }}"
+      out:fly="{{ x: 400, duration: 500 }}"
+      class="absolute inset-y-0 right-0 max-w-full flex"
       on:click|stopPropagation="{() => {}}"
     >
       <div class="w-screen md:w-auto border-l-4 border-thatOrange-400">
