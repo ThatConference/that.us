@@ -35,6 +35,7 @@
       'title',
       'shortDescription',
       'tags',
+      'communities',
       'speakers.firstName',
       'speakers.lastName',
     ],
@@ -45,15 +46,21 @@
   let fuse;
   let filterVisible;
   let tags = [];
-  let selectedTags = getSessionSelectedTags();
+  let communities = [];
+  let selectedFilterTerms = getSessionSelectedTags();
   let activitiesTaggedFiltered = [];
 
   $: {
     const tagsSet = new Set();
+    const communitiesSet = new Set();
 
     for (const activity of activities) {
       for (const tag of activity.tags) {
         tagsSet.add(tag.toLowerCase());
+      }
+
+      for (const community of activity.communities) {
+        communitiesSet.add(community.toLowerCase());
       }
     }
 
@@ -66,17 +73,19 @@
       }
       return 0;
     });
+
+    communities = Array.from(communitiesSet.values());
   }
 
   $: window.sessionStorage.setItem(
     'selectedTags',
-    JSON.stringify(selectedTags),
+    JSON.stringify(selectedFilterTerms),
   );
 
   $: activitiesTaggedFiltered =
-    selectedTags.length > 0
+    selectedFilterTerms.length > 0
       ? activitiesFiltered.filter(activity =>
-          selectedTags.some(tag =>
+          selectedFilterTerms.some(tag =>
             activity.tags.some(t => t.toLowerCase() === tag),
           ),
         )
@@ -121,9 +130,9 @@
   }
 
   function getSessionSelectedTags() {
-    const sessionTags = window.sessionStorage.getItem('selectedTags');
-    if (sessionTags) {
-      const parsedTags = JSON.parse(sessionTags);
+    const sessionFilters = window.sessionStorage.getItem('selectedFilters');
+    if (sessionFilters) {
+      const parsedTags = JSON.parse(sessionFilters);
       if (parsedTags && Array.isArray(parsedTags)) {
         return parsedTags;
       }
@@ -163,7 +172,8 @@
   {#if filterVisible}
     <FilterSlideOver
       tags="{tags}"
-      bind:selectedTags
+      communities="{communities}"
+      bind:selectedFilterTerms
       bind:searchterm
       on:click="{handleCloseFilter}"
       on:clicked-outside="{handleCloseFilter}"
@@ -174,7 +184,7 @@
     <div in:fade="{{ delay: d * 200 }}">
       <h2
         class="sticky top-0 z-20 bg-white text-xl md:text-4xl leading-9 font-extrabold
-        tracking-tight text-thatBlue-800 sm:leading-10 pt-4 mb-5 sm:mb-9 whitespace-nowrap"
+        tracking-tight text-thatBlue-800 sm:leading-10 pt-4 mb-7 sm:mb-9 whitespace-nowrap"
       >
         {dayjs(day.dayOfYear).format("dddd MMMM D, 'YY")}
       </h2>
@@ -194,25 +204,52 @@
             <ul
               class="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3"
             >
-              {#each ts.activities as activity (activity.id)}
-                {#if isKeynote(activity)}
-                  <li
-                    in:fade
-                    class="col-span-1 sm:col-span-2 lg:col-span-3 bg-white
-                  rounded-lg shadow-lg mt-10 mb-10"
-                  >
-                    <KeynoteCard {...activity} />
-                  </li>
-                {:else}
-                  <li in:fade class="col-span-1 bg-white rounded-lg shadow-lg">
-                    <Card {...activity} editMode="{editMode}" />
-                  </li>
-                {/if}
-              {/each}
-            </ul>
+              {#if !dayjs(ts.timeSlot).isValid()}
+                <span>Unscheduled</span>
+              {:else}<span>{dayjs(ts.timeSlot).format('hh:mm a')}</span>{/if}
+            </span>
+
+            <div in:fade="{{ delay: t * 500 }}" class="mb-12">
+              <ul
+                class="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3"
+              >
+                {#each ts.activities as activity (activity.id)}
+                  {#if isKeynote(activity)}
+                    <li
+                      in:fade
+                      class="col-span-1 sm:col-span-2 lg:col-span-3 bg-white
+                rounded-lg shadow-lg mt-10 mb-10"
+                    >
+                      <KeynoteCard {...activity} />
+                    </li>
+                  {:else}
+                    <li
+                      in:fade
+                      class="col-span-1 bg-white rounded-lg shadow-lg"
+                    >
+                      <Card {...activity} editMode="{editMode}" />
+                    </li>
+                  {/if}
+                {/each}
+              </ul>
+            </div>
           </div>
-        </div>
-      {/each}
+        {/each}
+      </div>
+    {/each}
+  {:else}
+    <div class="flex flex-col justify-center items-center">
+      <img
+        class="h-52 sm:h-64 lg:h-72 m-0 mt-24 lg:m-10"
+        src="/images/characters/sasquatch.png"
+        alt="Empty-handed Sasquatch"
+      />
+      <h1
+        class="pt-10 pb-4 sm:pb-10 px-2 tracking-tight leading-10 font-bold
+    text-thatBlue-600 text-3xl sm:text-4xl lg:text-5xl text-center"
+      >
+        {`Honestly, I tried, but there's nothing for "${searchterm}".`}
+      </h1>
     </div>
-  {/each}
+  {/if}
 </div>
