@@ -8,7 +8,7 @@ import logEvent from './eventTrack';
 import { securityConfig } from '../config';
 import meApi from '../dataSources/api.that.tech/me';
 
-securityConfig.redirect_uri = `${window.location.origin}/activities`;
+securityConfig.redirect_uri = `${window.location.origin}/login-success`;
 
 export const user = writable({});
 export const thatProfile = writable({});
@@ -35,7 +35,7 @@ export const login = async (documentReferrer, signup = false) => {
   };
 
   let authParams = {
-    redirect_uri: `${window.location.origin}/activities`,
+    redirect_uri: securityConfig.redirect_uri,
     appState,
   };
 
