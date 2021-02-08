@@ -153,8 +153,8 @@
         type="button"
         class="max-w-xs h-10 w-10 rounded-full text-gray-300 focus:outline-none
           duration-150 ease-in-out bg-thatBlue-500 sm:bg-white lg:hover:bg-thatBlue-400"
-        class:bg-thatRed-500="{selectedTags.length > 0}"
-        aria-label="{`Show filter and tags options${selectedTags.length > 0 ? ` (Selected tags: ${selectedTags.join(', ')})` : ''}`}"
+        class:bg-thatRed-500="{selectedFilterTerms.length > 0}"
+        aria-label="{`Show filter and tags options${selectedFilterTerms.length > 0 ? ` (Selected tags: ${selectedFilterTerms.join(', ')})` : ''}`}"
         on:click="{() => {
           filterVisible = true;
         }}"
@@ -184,7 +184,7 @@
     <div in:fade="{{ delay: d * 200 }}">
       <h2
         class="sticky top-0 z-20 bg-white text-xl md:text-4xl leading-9 font-extrabold
-        tracking-tight text-thatBlue-800 sm:leading-10 pt-4 mb-7 sm:mb-9 whitespace-nowrap"
+      tracking-tight text-thatBlue-800 sm:leading-10 pt-4 mb-7 sm:mb-9 whitespace-nowrap"
       >
         {dayjs(day.dayOfYear).format("dddd MMMM D, 'YY")}
       </h2>
@@ -193,7 +193,7 @@
         <div class="relative">
           <h2
             class="sticky top-11 sm:top-13 z-10 bg-white text-xl md:text-4xl leading-9 font-extrabold
-            tracking-tight text-thatOrange-400 sm:leading-10 whitespace-nowrap"
+          tracking-tight text-thatOrange-400 sm:leading-10 whitespace-nowrap"
           >
             {#if !dayjs(ts.timeSlot).isValid()}
               Unscheduled
@@ -204,52 +204,25 @@
             <ul
               class="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3"
             >
-              {#if !dayjs(ts.timeSlot).isValid()}
-                <span>Unscheduled</span>
-              {:else}<span>{dayjs(ts.timeSlot).format('hh:mm a')}</span>{/if}
-            </span>
-
-            <div in:fade="{{ delay: t * 500 }}" class="mb-12">
-              <ul
-                class="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3"
-              >
-                {#each ts.activities as activity (activity.id)}
-                  {#if isKeynote(activity)}
-                    <li
-                      in:fade
-                      class="col-span-1 sm:col-span-2 lg:col-span-3 bg-white
+              {#each ts.activities as activity (activity.id)}
+                {#if isKeynote(activity)}
+                  <li
+                    in:fade
+                    class="col-span-1 sm:col-span-2 lg:col-span-3 bg-white
                 rounded-lg shadow-lg mt-10 mb-10"
-                    >
-                      <KeynoteCard {...activity} />
-                    </li>
-                  {:else}
-                    <li
-                      in:fade
-                      class="col-span-1 bg-white rounded-lg shadow-lg"
-                    >
-                      <Card {...activity} editMode="{editMode}" />
-                    </li>
-                  {/if}
-                {/each}
-              </ul>
-            </div>
+                  >
+                    <KeynoteCard {...activity} />
+                  </li>
+                {:else}
+                  <li in:fade class="col-span-1 bg-white rounded-lg shadow-lg">
+                    <Card {...activity} editMode="{editMode}" />
+                  </li>
+                {/if}
+              {/each}
+            </ul>
           </div>
-        {/each}
-      </div>
-    {/each}
-  {:else}
-    <div class="flex flex-col justify-center items-center">
-      <img
-        class="h-52 sm:h-64 lg:h-72 m-0 mt-24 lg:m-10"
-        src="/images/characters/sasquatch.png"
-        alt="Empty-handed Sasquatch"
-      />
-      <h1
-        class="pt-10 pb-4 sm:pb-10 px-2 tracking-tight leading-10 font-bold
-    text-thatBlue-600 text-3xl sm:text-4xl lg:text-5xl text-center"
-      >
-        {`Honestly, I tried, but there's nothing for "${searchterm}".`}
-      </h1>
+        </div>
+      {/each}
     </div>
-  {/if}
+  {/each}
 </div>
