@@ -2,7 +2,6 @@
   export let activities;
   export let editMode = false;
   export let reverse = false;
-
   // 3rd party
   import { onMount } from 'svelte';
   import { fade } from 'svelte/transition';
@@ -11,12 +10,10 @@
   import Fuse from 'fuse.js';
   import Icon from 'svelte-awesome';
   import { filter as filterIcon } from 'svelte-awesome/icons';
-
   // ui support
   import Card from './Card.svelte';
   import KeynoteCard from './KeynoteCard.svelte';
   import FilterSlideOver from './FilterSlideOver.svelte';
-
   // https://fusejs.io/api/options.html
   const options = {
     // isCaseSensitive: false,
@@ -40,7 +37,6 @@
       'speakers.lastName',
     ],
   };
-
   let activitiesFiltered = [];
   let searchterm = '';
   let fuse;
@@ -49,21 +45,17 @@
   let communities = [];
   let selectedFilterTerms = getSessionSelectedTags();
   let activitiesTaggedFiltered = [];
-
   $: {
     const tagsSet = new Set();
     const communitiesSet = new Set();
-
     for (const activity of activities) {
       for (const tag of activity.tags) {
         tagsSet.add(tag.toLowerCase());
       }
-
       for (const community of activity.communities) {
         communitiesSet.add(community.toLowerCase());
       }
     }
-
     tags = Array.from(tagsSet.values()).sort((a, b) => {
       if (a < b) {
         return -1;
@@ -73,15 +65,12 @@
       }
       return 0;
     });
-
     communities = Array.from(communitiesSet.values());
   }
-
   $: window.sessionStorage.setItem(
     'selectedTags',
     JSON.stringify(selectedFilterTerms),
   );
-
   $: activitiesTaggedFiltered =
     selectedFilterTerms.length > 0
       ? activitiesFiltered.filter(activity =>
@@ -90,7 +79,6 @@
           ),
         )
       : activitiesFiltered;
-
   $: sorted = _(activitiesTaggedFiltered)
     .groupBy(({ startTime }) => dayjs(startTime).format('MM/DD/YYYY'))
     .map((value, key) => ({
@@ -104,19 +92,15 @@
       dayOfYear: key,
     }))
     .value();
-
   $: if (reverse) {
     sorted.reverse();
   }
-
   const isKeynote = activity => {
     let results = false;
     if (activity.type === 'KEYNOTE' || activity.type === 'PANEL')
       results = true;
-
     return results;
   };
-
   $: {
     if (searchterm === '') {
       activitiesFiltered = activities;
@@ -124,11 +108,9 @@
       activitiesFiltered = fuse.search(searchterm).map(r => r.item);
     }
   }
-
   function handleCloseFilter() {
     filterVisible = false;
   }
-
   function getSessionSelectedTags() {
     const sessionFilters = window.sessionStorage.getItem('selectedFilters');
     if (sessionFilters) {
@@ -137,23 +119,20 @@
         return parsedTags;
       }
     }
-
     return [];
   }
-
   onMount(() => {
     fuse = new Fuse(activities, options);
   });
 </script>
 
 <div class="relative">
-  <div class="sticky z-20 top-0">
-    <div class="absolute top-0 right-0 z-20 border-gray-200 pt-4">
+  <div class="sticky z-30 top-0 ">
+    <div class="absolute top-0 right-0 border-gray-200 pt-4">
       <button
         type="button"
         class="max-w-xs h-10 w-10 rounded-full text-gray-300 focus:outline-none
-          duration-150 ease-in-out hover:bg-thatBlue-500"
-        class:bg-thatBlue-500="{filterVisible}"
+          duration-150 ease-in-out bg-thatBlue-500 sm:bg-white lg:hover:bg-thatBlue-400"
         class:bg-thatRed-500="{selectedFilterTerms.length > 0}"
         aria-label="{`Show filter and tags options${selectedFilterTerms.length > 0 ? ` (Selected tags: ${selectedFilterTerms.join(', ')})` : ''}`}"
         on:click="{() => {
@@ -163,7 +142,7 @@
         <Icon data="{filterIcon}" label="Filter" />
       </button>
       <input
-        class="form-input border rounded-md"
+        class="form-input border rounded-md hidden sm:inline"
         bind:value="{searchterm}"
         placeholder="type to search..."
       />
@@ -184,23 +163,21 @@
   {#if sorted.length}
     {#each sorted as day, d}
       <div in:fade="{{ delay: d * 200 }}">
-        <span
-          class="sticky top-0 z-20 bg-white text-3xl leading-9 font-extrabold
-      tracking-tight text-thatBlue-800 sm:text-4xl sm:leading-10 pt-4 mb-10"
+        <h2
+          class="sticky top-0 z-20 bg-white text-xl md:text-4xl leading-9 font-extrabold tracking-tight text-thatBlue-800 sm:leading-10 pt-4 mb-7 sm:mb-9 whitespace-nowrap"
         >
-          <span> {dayjs(day.dayOfYear).format("dddd MMMM D, 'YY")} </span>
-        </span>
+          {dayjs(day.dayOfYear).format("dddd MMMM D, 'YY")}
+        </h2>
 
         {#each day.timeSlots as ts, t}
           <div class="relative">
-            <span
-              class="sticky top-14 z-10 bg-white text-3xl leading-9 font-extrabold
-          tracking-tight text-thatOrange-400 sm:text-4xl sm:leading-10"
+            <h2
+              class="sticky top-11 sm:top-13 z-10 bg-white text-xl md:text-4xl leading-9 font-extrabold tracking-tight text-thatOrange-400 sm:leading-10 whitespace-nowrap"
             >
               {#if !dayjs(ts.timeSlot).isValid()}
-                <span>Unscheduled</span>
-              {:else}<span>{dayjs(ts.timeSlot).format('hh:mm a')}</span>{/if}
-            </span>
+                Unscheduled
+              {:else}{dayjs(ts.timeSlot).format('hh:mm a')}{/if}
+            </h2>
 
             <div in:fade="{{ delay: t * 500 }}" class="mb-12">
               <ul
@@ -210,8 +187,7 @@
                   {#if isKeynote(activity)}
                     <li
                       in:fade
-                      class="col-span-1 sm:col-span-2 lg:col-span-3 bg-white
-                rounded-lg shadow-lg mt-10 mb-10"
+                      class="col-span-1 sm:col-span-2 lg:col-span-3 bg-white rounded-lg shadow-lg mt-10 mb-10"
                     >
                       <KeynoteCard {...activity} />
                     </li>
@@ -238,8 +214,7 @@
         alt="Empty-handed Sasquatch"
       />
       <h1
-        class="pt-10 pb-4 sm:pb-10 px-2 tracking-tight leading-10 font-bold
-    text-thatBlue-600 text-3xl sm:text-4xl lg:text-5xl text-center"
+        class="pt-10 pb-4 sm:pb-10 px-2 tracking-tight leading-10 font-bold text-thatBlue-600 text-3xl sm:text-4xl lg:text-5xl text-center"
       >
         {`Honestly, I tried, but there's nothing for "${searchterm}".`}
       </h1>
