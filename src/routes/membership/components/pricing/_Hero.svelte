@@ -132,7 +132,7 @@
           <div
             class="mt-10 max-w-lg mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-start-3 lg:col-end-6 lg:row-start-1 lg:row-end-4"
           >
-            <div class="relative z-10 rounded-lg shadow-xl">
+            <div class="relative rounded-lg shadow-xl">
               <div
                 class="pointer-events-none absolute inset-0 rounded-lg border-2 border-thatOrange-400"
                 aria-hidden="true"
@@ -269,8 +269,7 @@
                             stroke-linecap="round"
                             stroke-linejoin="round"
                             stroke-width="2"
-                            d="M5 13l4 4L19 7"
-                          ></path>
+                            d="M5 13l4 4L19 7"></path>
                         </svg>
                       </div>
                       <p class="ml-3 text-base font-medium text-gray-500">
@@ -293,8 +292,7 @@
                             stroke-linecap="round"
                             stroke-linejoin="round"
                             stroke-width="2"
-                            d="M5 13l4 4L19 7"
-                          ></path>
+                            d="M5 13l4 4L19 7"></path>
                         </svg>
                       </div>
                       <p class="ml-3 text-base font-medium text-gray-500">

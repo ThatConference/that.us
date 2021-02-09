@@ -30,7 +30,7 @@
 
   <div class="pb-12 sm:mt-12 sm:pb-16 lg:mt-16 lg:pb-24">
     <div class="relative">
-      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div
           class="max-w-md mx-auto space-y-4 lg:max-w-5xl lg:grid lg:grid-cols-2 lg:gap-5 lg:space-y-0"
         >
@@ -70,8 +70,7 @@
                         stroke-linecap="round"
                         stroke-linejoin="round"
                         stroke-width="2"
-                        d="M5 13l4 4L19 7"
-                      ></path>
+                        d="M5 13l4 4L19 7"></path>
                     </svg>
                   </div>
                   <p class="ml-3 text-base text-gray-700">
@@ -94,8 +93,7 @@
                         stroke-linecap="round"
                         stroke-linejoin="round"
                         stroke-width="2"
-                        d="M5 13l4 4L19 7"
-                      ></path>
+                        d="M5 13l4 4L19 7"></path>
                     </svg>
                   </div>
                   <p class="ml-3 text-base text-gray-700">
@@ -118,8 +116,7 @@
                         stroke-linecap="round"
                         stroke-linejoin="round"
                         stroke-width="2"
-                        d="M5 13l4 4L19 7"
-                      ></path>
+                        d="M5 13l4 4L19 7"></path>
                     </svg>
                   </div>
                   <p class="ml-3 text-base text-gray-700">
@@ -142,8 +139,7 @@
                         stroke-linecap="round"
                         stroke-linejoin="round"
                         stroke-width="2"
-                        d="M5 13l4 4L19 7"
-                      ></path>
+                        d="M5 13l4 4L19 7"></path>
                     </svg>
                   </div>
                   <p class="ml-3 text-base text-gray-700">
@@ -196,8 +192,7 @@
                         stroke-linecap="round"
                         stroke-linejoin="round"
                         stroke-width="2"
-                        d="M5 13l4 4L19 7"
-                      ></path>
+                        d="M5 13l4 4L19 7"></path>
                     </svg>
                   </div>
                   <p class="ml-3 text-base text-gray-700">
@@ -220,8 +215,7 @@
                         stroke-linecap="round"
                         stroke-linejoin="round"
                         stroke-width="2"
-                        d="M5 13l4 4L19 7"
-                      ></path>
+                        d="M5 13l4 4L19 7"></path>
                     </svg>
                   </div>
                   <p class="ml-3 text-base text-gray-700">
@@ -244,8 +238,7 @@
                         stroke-linecap="round"
                         stroke-linejoin="round"
                         stroke-width="2"
-                        d="M5 13l4 4L19 7"
-                      ></path>
+                        d="M5 13l4 4L19 7"></path>
                     </svg>
                   </div>
                   <p class="ml-3 text-base text-gray-700">
@@ -268,8 +261,7 @@
                         stroke-linecap="round"
                         stroke-linejoin="round"
                         stroke-width="2"
-                        d="M5 13l4 4L19 7"
-                      ></path>
+                        d="M5 13l4 4L19 7"></path>
                     </svg>
                   </div>
                   <p class="ml-3 text-base text-gray-700">
