@@ -6,7 +6,7 @@
 </script>
 
 <div
-  class="z-40 fixed inset-0 overflow-hidden"
+  class="z-50 fixed inset-0 overflow-hidden"
   on:click|stopPropagation="{() => {
     dispatch('clicked-outside', 'clicked');
   }}"
