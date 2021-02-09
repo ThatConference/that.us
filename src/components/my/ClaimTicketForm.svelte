@@ -73,29 +73,32 @@
     </div>
 
     <div class="mt-8 border-t border-gray-200 pt-5">
-      <div class="flex justify-end">
+      <div class="flex justify-end space-x-4">
         <span class="inline-flex rounded-md shadow-sm">
-          <button
-            type="reset"
-            class="py-2 px-4 border border-gray-300 rounded-md text-sm leading-5
-            font-medium text-gray-700 hover:text-gray-500 focus:outline-none
-            focus:border-blue-300 focus:ring-blue active:bg-gray-50
-            active:text-gray-800 transition duration-150 ease-in-out"
-          >
-            Reset
-          </button>
-        </span>
-        <span class="ml-3 inline-flex rounded-md shadow-sm">
           <button
             type="submit"
             disabled="{isSubmitting}"
-            class="inline-flex justify-center py-2 px-4 border
-            border-transparent text-sm leading-5 font-medium rounded-md
-            text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none
-            focus:border-indigo-700 focus:ring-indigo
-            active:bg-indigo-700 transition duration-150 ease-in-out"
+            class="inline-flex justify-center py-2 px-4 border-2
+              border-thatBlue-500 text-sm leading-5 font-medium rounded-md
+              text-thatBlue-500 bg-white hover:bg-thatBlue-500 hover:text-white
+              focus:outline-none focus:ring-thatBlue-500
+              focus:bg-thatBlue-500 focus:text-white focus:border-thatBlue-800
+              active:bg-thatBlue-800 transition duration-150 ease-in-out"
           >
             Claim Ticket
+          </button>
+        </span>
+        <span class="inline-flex rounded-md shadow-sm">
+          <button
+            type="reset"
+            tabindex="-1"
+            class="py-2 px-4 border-2 border-gray-300 rounded-md text-sm
+              leading-5 font-medium text-gray-700 hover:text-gray-500
+              focus:outline-none focus:border-blue-300 focus:ring-blue
+              active:bg-gray-50 active:text-gray-800 transition duration-150
+              ease-in-out"
+          >
+            Reset
           </button>
         </span>
       </div>
