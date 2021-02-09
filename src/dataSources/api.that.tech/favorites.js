@@ -10,6 +10,7 @@ const favoriteFragment = `
     status
     startTime
     tags
+    communities
     speakers {
       id
       firstName
