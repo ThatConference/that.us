@@ -60,7 +60,7 @@
             class="py-1 rounded-md bg-white ring-1 ring-black ring-opacity-5"
           >
             <Link
-              href="/my/profile"
+              href="/my/settings/profile"
               class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
             >
               Create Profile
@@ -127,13 +127,15 @@
       >
         <div class="py-1 rounded-md bg-white ring-1 ring-black ring-opacity-5">
           <div
-            on:click|stopPropagation="{() => login(document.location.pathname, false)}"
+            on:click|stopPropagation="{() =>
+              login(document.location.pathname, false)}"
             class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer"
           >
             Login
           </div>
           <div
-            on:click|stopPropagation="{() => login(document.location.pathname, true)}"
+            on:click|stopPropagation="{() =>
+              login(document.location.pathname, true)}"
             class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer"
           >
             Sign Up

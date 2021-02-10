@@ -98,7 +98,7 @@
       {#if $isAuthenticated}
         {#if isEmpty($thatProfile)}
           <Link
-            href="/my/profile"
+            href="/my/settings/profile"
             class="block px-3 py-2 rounded-md text-base font-medium
               text-gray-300 hover:text-white hover:bg-that-blue
               focus:outline-none focus:text-white focus:bg-that-blue"
@@ -167,7 +167,8 @@
         {/if}
       {:else}
         <div
-          on:click|stopPropagation="{() => login(document.location.pathname, false)}"
+          on:click|stopPropagation="{() =>
+            login(document.location.pathname, false)}"
           class="block px-3 py-2 rounded-md text-base font-medium text-gray-400
             hover:text-white hover:bg-that-blue focus:outline-none
             focus:text-white focus:bg-that-blue cursor-pointer"
@@ -175,7 +176,8 @@
           Login
         </div>
         <div
-          on:click|stopPropagation="{() => login(document.location.pathname, true)}"
+          on:click|stopPropagation="{() =>
+            login(document.location.pathname, true)}"
           class="block px-3 py-2 rounded-md text-base font-medium text-gray-400
             hover:text-white hover:bg-that-blue focus:outline-none
             focus:text-white focus:bg-that-blue cursor-pointer"
