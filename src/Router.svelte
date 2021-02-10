@@ -32,7 +32,7 @@
   import Settings from './routes/my/Settings.svelte';
   import MyFavorites from './routes/my/Favorites.svelte';
   import MySubmissions from './routes/my/Submissions.svelte';
-  
+
   // Activities
   import Event from './routes/events/List.svelte';
   import List from './routes/activities/List.svelte';
@@ -87,8 +87,22 @@
 
   <!-- tickets TEST -->
   <Route exact path="/orders/summary" component="{OrderSummary}" />
-  <Route exact path="/orders/success" component="{OrderSuccess}" />
-  <Route exact path="/orders/cancelled" component="{OrderCancelled}" />
+
+  <Route
+    exact
+    path="/orders/success"
+    component="{OrderSuccess}"
+    condition="{isLoggedIn}"
+    redirect="/login"
+  />
+
+  <Route
+    exact
+    path="/orders/cancelled"
+    component="{OrderCancelled}"
+    condition="{isLoggedIn}"
+    redirect="/login"
+  />
 
   <Route exact path="/support/faq" component="{FAQ}" />
   <Route exact path="/support/welcome" component="{NewUserWelcome}" />
