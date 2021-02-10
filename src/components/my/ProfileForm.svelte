@@ -279,7 +279,7 @@
         </p>
       </div>
 
-      <div class="mt-6 grid grid-cols-1 gap-y-6 gap-y-4 sm:grid-cols-6">
+      <div class="mt-6 grid grid-cols-1 gap-y-6 sm:grid-cols-6">
         <div class="sm:col-span-3">
           <label
             for="first_name"
@@ -519,7 +519,7 @@
 
         <div class="mt-6">
           <div class="sm:col-span-4">
-            <div class="mt-6 grid grid-cols-1 gap-y-6 gap-y-4 sm:grid-cols-6">
+            <div class="mt-6 grid grid-cols-1 gap-y-6  sm:grid-cols-6">
               <div
                 class="sm:col-span-4 block text-sm font-medium leading-5 text-gray-700"
               >
@@ -545,7 +545,7 @@
               </div>
             </div>
 
-            <div class="mt-6 grid grid-cols-1 gap-y-6 gap-y-4 sm:grid-cols-6">
+            <div class="mt-6 grid grid-cols-1 gap-y-6  sm:grid-cols-6">
               <div class="sm:col-span-4">
                 <label
                   for="lifeHack"
@@ -585,7 +585,7 @@
               Yes, please feature me.
             </label>
 
-            <div class="mt-2 flex items-center items-start">
+            <div class="mt-2 flex items-center">
               <Checkbox
                 name="canFeature"
                 checked="{profile.canFeature}"
@@ -620,7 +620,7 @@
             </p>
           </div>
 
-          <div class="mt-6 grid grid-cols-1 gap-y-6 gap-y-4 sm:grid-cols-6">
+          <div class="mt-6 grid grid-cols-1 gap-y-6 sm:grid-cols-6">
             <div class="sm:col-span-4">
               <label
                 for="email"
@@ -659,7 +659,7 @@
               </legend>
 
               <div class="mt-4">
-                <div class="relative flex items-center items-start">
+                <div class="relative flex items-center">
                   <Checkbox
                     name="acceptedCodeOfConduct"
                     checked="{profile.acceptedCodeOfConduct}"
@@ -692,7 +692,7 @@
                   </div>
                 </div>
                 <div class="mt-4">
-                  <div class="relative flex items-center items-start">
+                  <div class="relative flex items-center">
                     <Checkbox
                       name="acceptedAntiHarassmentPolicy"
                       checked="{profile.acceptedAntiHarassmentPolicy}"
@@ -725,7 +725,7 @@
                   </div>
 
                   <div class="mt-4">
-                    <div class="relative flex items-center items-start">
+                    <div class="relative flex items-center">
                       <Checkbox
                         name="acceptedCommitmentToDiversity"
                         checked="{profile.acceptedCommitmentToDiversity}"
@@ -762,7 +762,7 @@
                     </div>
 
                     <div class="mt-4">
-                      <div class="relative flex items-center items-start">
+                      <div class="relative flex items-center">
                         <Checkbox
                           name="acceptedTermsOfService"
                           checked="{profile.acceptedTermsOfService}"
@@ -798,7 +798,7 @@
                     </div>
 
                     <div class="mt-4">
-                      <div class="relative flex items-center items-start">
+                      <div class="relative flex items-center">
                         <Checkbox
                           name="isOver13"
                           checked="{profile.isOver13}"
@@ -846,7 +846,7 @@
               </legend>
 
               <div class="mt-4">
-                <div class="relative flex items-center items-start">
+                <div class="relative flex ">
                   <Checkbox
                     name="isDeactivated"
                     checked="{profile.isDeactivated}"
