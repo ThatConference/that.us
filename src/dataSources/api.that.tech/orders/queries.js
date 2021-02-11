@@ -44,6 +44,18 @@ export const QUERY_NEXT_MY_ORDERS = `
   }
 `;
 
+export const QUERY_ORDER_RECEIPT = `
+  query QUERY_ORDER_RECEIPT($orderId: ID!) {
+    orders {
+      me {
+        order(orderId: $orderId) {
+          receipt
+        }
+      }
+    }
+  }
+`;
+
 export default client => {
   function queryMyOrders(pageSize = defaultPageSize) {
     const variables = {
@@ -78,5 +90,21 @@ export default client => {
       });
   }
 
-  return { queryMyOrders, queryMyOrdersNext };
+  function queryOrderReceiptUrl(orderId) {
+    const variables = {
+      orderId,
+    };
+
+    return client
+      .query(QUERY_ORDER_RECEIPT, variables)
+      .toPromise()
+      .then(({ data, error }) => {
+        if (error) log(error, 'QUERY_NEXT_MY_ORDERS');
+
+        const { receipt } = data.orders.me.order;
+        return receipt || null;
+      });
+  }
+
+  return { queryMyOrders, queryMyOrdersNext, queryOrderReceiptUrl };
 };
