@@ -65,7 +65,7 @@
       linkType: 'YOUTUBE',
       name: 'youtube',
       icon: youtubePlay,
-      slug: 'https://youtube.com/channel/',
+      slug: 'https://youtube.com/',
     },
     {
       linkType: 'TWITCH',
@@ -74,6 +74,11 @@
       slug: 'https://twitch.com/',
     },
   ];
+
+  let youtubeSuffix = 'https://youtube.com/channel/';
+  function setYoutubeSuffix(userSelection) {
+    youtubeSuffix = userSelection;
+  }
 
   const { isSlugTaken } = memberApi(getClient());
 
@@ -480,28 +485,60 @@
         <div class="sm:col-span-4">
           {#each socialLinks as link}
             <!-- todo - shadow isn't aligned properly <div class="mt-4 flex rounded-md shadow-sm"> -->
-            <div class="mt-4 flex border rounded-md shadow-sm">
-              <span
-                class="inline-flex items-center px-3 rounded-l-md border
-                  border-r-0 border-gray-300 bg-gray-50 text-gray-500 sm:text-sm
-                  w-1/4"
-              >
-                <span class="w-6">
-                  <Icon data="{link.icon}" />
+            {#if link.linkType !== 'YOUTUBE'}
+              <div class="mt-4 flex border rounded-md shadow-sm">
+                <span
+                  class="inline-flex items-center px-3 rounded-l-md border
+                    border-r-0 border-gray-300 bg-gray-50 text-gray-500 sm:text-sm
+                    w-1/4"
+                >
+                  <span class="w-6">
+                    <Icon data="{link.icon}" />
+                  </span>
+                  {link.slug}
                 </span>
-                {link.slug}
-              </span>
-              <Input name="profileLinks" hidden />
-              <input
-                type="text"
-                name="{link.name}"
-                value="{getInitialSocailLinkValue(link)}"
-                on:change="{e => setValue('profileLinks', updateLinksInputValues(link, e.target.value))}"
-                class="flex-1 form-input block w-full min-w-0 border rounded-none
-                  rounded-r-md transition duration-150 ease-in-out sm:text-sm
-                  sm:leading-5"
-              />
-            </div>
+                <Input name="profileLinks" hidden />
+                <input
+                  type="text"
+                  name="{link.name}"
+                  value="{getInitialSocailLinkValue(link)}"
+                  on:change="{e => setValue('profileLinks', updateLinksInputValues(link, e.target.value))}"
+                  class="flex-1 form-input block w-full min-w-0 border rounded-none
+                    rounded-r-md transition duration-150 ease-in-out sm:text-sm
+                    sm:leading-5"
+                />
+              </div>
+              <!-- Special YouTube input handling due to the differences in channel links -->
+            {:else}
+              <div class="mt-4 flex border rounded-md shadow-sm">
+                <div
+                  class="inline-flex items-center px-3 rounded-l-md border
+                    border-r-0 border-gray-300 bg-gray-50 text-gray-500 sm:text-sm
+                    w-1/4"
+                >
+                  <span class="w-6">
+                    <Icon data="{link.icon}" />
+                  </span>
+                  <select
+                    class="p-1 bg-transparent focus:border-thatBlue-200 focus:ring focus:ring-thatBlue-100 focus:ring-opacity-50 outline-none cursor-pointer"
+                    on:blur="{e => setYoutubeSuffix(e.target.value)}"
+                  >
+                    <option>{`${link.slug}channel/`}</option>
+                    <option>{`${link.slug}c/`}</option>
+                  </select>
+                </div>
+                <Input name="profileLinks" hidden />
+                <input
+                  type="text"
+                  name="{link.name}"
+                  value="{getInitialSocailLinkValue(link)}"
+                  on:change="{e => setValue('profileLinks', updateLinksInputValues(link, `${youtubeSuffix}${e.target.value}`))}"
+                  class="flex-1 form-input block w-full min-w-0 border rounded-none
+                    rounded-r-md transition duration-150 ease-in-out sm:text-sm
+                    sm:leading-5"
+                />
+              </div>
+            {/if}
           {/each}
         </div>
       </div>
