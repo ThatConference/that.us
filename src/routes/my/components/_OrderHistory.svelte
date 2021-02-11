@@ -1,13 +1,16 @@
 <script>
+  import { getClient } from '@urql/svelte';
   import SvelteInfiniteScroll from 'svelte-infinite-scroll';
   import { useMachine } from 'xstate-svelte';
-  import { Link } from 'yrv';
   import dayjs from 'dayjs';
 
   import { debug } from '../../../config';
   import createMachine from '../machines/orderHistory';
   import { Ticket, ChevronRight, Chevron } from '../../../elements/svgs';
   import { Waiting } from '../../../elements';
+  import orderQueryApi from '../../../dataSources/api.that.tech/orders/queries';
+
+  const { queryOrderReceiptUrl } = orderQueryApi(getClient());
 
   const { state, send } = useMachine(createMachine(), {
     devTools: debug.xstate,
@@ -16,6 +19,12 @@
   function handleNext() {
     console.log('handleNext called');
     send('NEXT');
+  }
+
+  function handleReceiptRedirect(orderId) {
+    return queryOrderReceiptUrl(orderId).then(r => {
+      window.open(r);
+    });
   }
 </script>
 
@@ -39,7 +48,10 @@
     <ul class="divide-y divide-gray-200">
       {#each $state.context.items as c (c.id)}
         <li>
-          <Link href="#" class="block hover:bg-gray-50">
+          <button
+            on:click="{() => handleReceiptRedirect(c.id)}"
+            class="block hover:bg-gray-50"
+          >
             <div class="flex items-center px-4 py-4 sm:px-6">
               <div class="min-w-0 flex-1 flex items-center">
                 <!-- image -->
@@ -89,7 +101,7 @@
                 <ChevronRight />
               </div>
             </div>
-          </Link>
+          </button>
         </li>
       {/each}
 
