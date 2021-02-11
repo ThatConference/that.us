@@ -3,7 +3,7 @@
   import metaTagsStore from '../store/metaTags';
 
   metaTagsStore.set({
-    title: 'Login Success',
+    title: 'Login Success - THAT',
     description: '',
     nofollow: true,
     noindex: true,
