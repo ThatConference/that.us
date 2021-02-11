@@ -89,5 +89,6 @@ module.exports = {
       disableUnusedFeatures: true,
     }),
     require('@tailwindcss/ui'),
+    require('@tailwindcss/forms'),
   ],
 };

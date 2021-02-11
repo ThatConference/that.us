@@ -31,6 +31,7 @@
     "@sentry/browser": "^5.29.2",
     "@sentry/tracing": "^5.29.2",
     "@sveltecasts/svelte-youtube": "0.0.5",
+    "@tailwindcss/forms": "^0.2.1",
     "@tailwindcss/ui": "^0.7.2",
     "@urql/svelte": "^1.1.4",
     "@xstate/inspect": "^0.4.1",

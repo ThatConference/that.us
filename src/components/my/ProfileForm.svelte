@@ -520,9 +520,8 @@
                     <Icon data="{link.icon}" />
                   </span>
                   <select
-                    class="p-1 bg-transparent focus:border-thatBlue-200 focus:ring focus:ring-thatBlue-100 focus:ring-opacity-50 outline-none cursor-pointer"
+                    class="w-full p-1 bg-transparent text-gray-500 sm:text-sm border-none focus:border-thatBlue-200 focus:ring focus:ring-thatBlue-100 focus:ring-opacity-50 outline-none cursor-pointer"
                     on:blur="{e => setYoutubeSuffix(e.target.value)}"
-                    style="-webkit-appearance: menulist-button"
                   >
                     <option>{`${link.slug}channel/`}</option>
                     <option>{`${link.slug}c/`}</option>
