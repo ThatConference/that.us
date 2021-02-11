@@ -15,7 +15,7 @@
   });
 
   metaTagsStore.set({
-    title: 'Order Summary',
+    title: 'Order Summary - THAT',
     description: 'View the items in your cart.',
     nofollow: true,
     noindex: true,

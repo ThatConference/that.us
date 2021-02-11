@@ -12,7 +12,7 @@
   });
 
   metaTagsStore.set({
-    title: 'Payment Recieved',
+    title: 'Payment Recieved - THAT',
     description: 'Your payment was successfully received.',
     nofollow: true,
     noindex: true,

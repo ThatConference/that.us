@@ -1,3 +1,16 @@
+<script>
+  import metaTagsStore from '../store/metaTags';
+
+  metaTagsStore.set({
+    title: 'Page Not Found - THAT',
+    description: 'The page you are looking for is not at this address.',
+    openGraph: {
+      type: 'website',
+      url: `https://that.us/not-found`,
+    },
+  });
+</script>
+
 <div class="container mx-auto flex flex-col">
   <img src="/images/characters/Preston@2x.png" alt="Confused Preston" />
 

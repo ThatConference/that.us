@@ -29,7 +29,7 @@
   }
 
   metaTagsStore.set({
-    title: 'Order History',
+    title: 'Order History - THAT',
     description: 'View your order history.',
     nofollow: true,
     noindex: true,
