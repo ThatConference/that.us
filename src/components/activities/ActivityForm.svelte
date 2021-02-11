@@ -180,7 +180,7 @@
     title="Oh NO! You have an incomplete profile!"
     text="It appears you haven't created your profile yet. You can't create a
     activity until that's complete."
-    action="{{ title: 'Create Profile', href: '/my/profile' }}"
+    action="{{ title: 'Create Profile', href: '/my/settings/profile' }}"
     returnTo="{{ title: 'Return to Activities', href: '/activities' }}"
   />
 {:else if !$thatProfile.canFeature}
@@ -188,7 +188,7 @@
     title="Your Profile Isn't Public."
     text="It appears we cannot feature your profile. You need to have a public
     profile to create a activity."
-    action="{{ title: 'Update Profile', href: '/my/profile' }}"
+    action="{{ title: 'Update Profile', href: '/my/settings/profile' }}"
     returnTo="{{ title: 'Return to Activities', href: '/activities' }}"
   />
 {/if}
@@ -315,7 +315,8 @@
             bind:selected="{selectedDateValue}"
             style="rounded-md shadow-sm"
             format="{dayjs(selectedDateValue).format('dddd, MMM D, YYYY')}"
-            on:dateSelected="{({ detail: { date } }) => setValue('selectedDay', dayjs(date).format('YYYY-MM-DD'))}"
+            on:dateSelected="{({ detail: { date } }) =>
+              setValue('selectedDay', dayjs(date).format('YYYY-MM-DD'))}"
           />
         </div>
       </div>
@@ -343,7 +344,8 @@
               <Select
                 bind:this="{timeSlotSelect}"
                 inputAttributes="{{ name: 'selectedTime' }}"
-                on:select="{({ detail }) => setValue('selectedTime', detail.value)}"
+                on:select="{({ detail }) =>
+                  setValue('selectedTime', detail.value)}"
                 hasError="{touched['selectedTime'] && errors['selectedTime']}"
                 items="{timeSlotOptionsFiltered}"
                 on:clear="{() => setValue('selectedTime', undefined)}"
@@ -367,8 +369,10 @@
               <Select
                 bind:this="{timezoneSelect}"
                 inputAttributes="{{ name: 'selectedTimezone' }}"
-                on:select="{({ detail }) => setValue('selectedTimezone', detail.value)}"
-                hasError="{touched['selectedTimezone'] && errors['selectedTimezone']}"
+                on:select="{({ detail }) =>
+                  setValue('selectedTimezone', detail.value)}"
+                hasError="{touched['selectedTimezone'] &&
+                  errors['selectedTimezone']}"
                 items="{timeZoneOptions}"
                 on:clear="{() => setValue('selectedTimezone', undefined)}"
                 selectedValue="{findSelectedTimezone(values)}"
@@ -403,8 +407,10 @@
           <Select
             bind:this="{estimatedDurationSelect}"
             inputAttributes="{{ name: 'selectedDuration' }}"
-            on:select="{({ detail }) => setValue('selectedDuration', detail.value)}"
-            hasError="{touched['selectedDuration'] && errors['selectedDuration']}"
+            on:select="{({ detail }) =>
+              setValue('selectedDuration', detail.value)}"
+            hasError="{touched['selectedDuration'] &&
+              errors['selectedDuration']}"
             items="{estimatedDurationOptions}"
             on:clear="{() => setValue('selectedDuration', undefined)}"
             selectedValue="{findSelectedDuration(values)}"

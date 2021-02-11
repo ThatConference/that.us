@@ -79,8 +79,7 @@
             d="M0 -2L20 40L0 82"
             vector-effect="non-scaling-stroke"
             stroke="currentcolor"
-            stroke-linejoin="round"
-          ></path>
+            stroke-linejoin="round"></path>
         </svg>
       </div>
     </li>
@@ -93,7 +92,8 @@
           step="2"
           isActive="{$state.matches('authenticated.pendingProfile')}"
           stepName="Profile Completed"
-          on:click="{() => navigateTo('/my/profile', { replace: true })}"
+          on:click="{() =>
+            navigateTo('/my/settings/profile', { replace: true })}"
         />
       {/if}
 
@@ -111,8 +111,7 @@
             d="M0 -2L20 40L0 82"
             vector-effect="non-scaling-stroke"
             stroke="currentcolor"
-            stroke-linejoin="round"
-          ></path>
+            stroke-linejoin="round"></path>
         </svg>
       </div>
     </li>
@@ -123,7 +122,9 @@
       {:else}
         <Step
           step="3"
-          isActive="{$state.matches('authenticated.profileCompleted.pendingVerification')}"
+          isActive="{$state.matches(
+            'authenticated.profileCompleted.pendingVerification',
+          )}"
           stepName="Verify Order"
           on:click="{() => navigateTo('/orders/summary', { replace: true })}"
         />
@@ -143,8 +144,7 @@
             d="M0 -2L20 40L0 82"
             vector-effect="non-scaling-stroke"
             stroke="currentcolor"
-            stroke-linejoin="round"
-          ></path>
+            stroke-linejoin="round"></path>
         </svg>
       </div>
     </li>
@@ -185,7 +185,7 @@
     </div>
     <div class="mt-3 text-sm">
       <Link
-        href="/my/profile"
+        href="/my/settings/profile"
         class="font-medium text-thatOrange-400 hover:text-thatOrange-500"
       >
         Complete Your Profile

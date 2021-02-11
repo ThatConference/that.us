@@ -19,7 +19,7 @@
     </div>
 
     <div class="mt-8 w-full">
-      <HighlightButton on:click="{() => login('/my/profile', true)}">
+      <HighlightButton on:click="{() => login('/my/settings/profile', true)}">
         Create An Account
       </HighlightButton>
     </div>

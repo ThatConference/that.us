@@ -101,13 +101,15 @@
     </ul>
   </div>
 
+  {#if ['loaded'].some($state.matches)}
+    <div class="mt-12 text-gray-400 flex flex-col items-center">
+      scroll for more <Chevron />
+    </div>
+  {/if}
+
   {#if ['loadingNext', 'loadedAll'].some($state.matches)}
     <div class="flex flex-grow justify-center py-12">
       <Waiting />
-    </div>
-  {:else}
-    <div class="mt-12 text-gray-400 flex flex-col items-center">
-      scroll for more <Chevron />
     </div>
   {/if}
 </div>

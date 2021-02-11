@@ -147,7 +147,9 @@
                   </p>
                 </li>
               </ul>
-              <StandardButton on:click="{() => login('/my/profile', true)}">
+              <StandardButton
+                on:click="{() => login('/my/settings/profile', true)}"
+              >
                 Create Your Account
               </StandardButton>
             </div>

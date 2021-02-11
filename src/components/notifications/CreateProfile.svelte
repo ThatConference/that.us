@@ -16,7 +16,10 @@
             complete your user profile.
           </span>
           <span class="block sm:ml-2 sm:inline-block">
-            <Link href="/my/profile" class="text-white font-bold underline">
+            <Link
+              href="/my/settings/profile"
+              class="text-white font-bold underline"
+            >
               Create Your Profile &rarr;
             </Link>
           </span>
@@ -43,8 +46,7 @@
               stroke-linecap="round"
               stroke-linejoin="round"
               stroke-width="2"
-              d="M6 18L18 6M6 6l12 12"
-            ></path>
+              d="M6 18L18 6M6 6l12 12"></path>
           </svg>
         </button>
       </div>

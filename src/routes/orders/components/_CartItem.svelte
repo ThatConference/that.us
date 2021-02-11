@@ -22,25 +22,32 @@
     ${lineItem.price}
   </td>
   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-    <input
-      type="number"
-      name="quantity"
-      id="quantity"
-      bind:value="{currentQty}"
-      class="p-2 text-center block shadow-sm focus:ring-thatOrange-500 focus:border-thatOrange-500 border border-gray-200 rounded-md"
-    />
+    {#if !lineItem.isBulkPurchase}
+      {currentQty}
+    {:else}
+      <input
+        type="number"
+        name="quantity"
+        id="quantity"
+        bind:value="{currentQty}"
+        class="p-2 text-center block shadow-sm focus:ring-thatOrange-500 focus:border-thatOrange-500 border border-gray-200 rounded-md"
+      />
+    {/if}
   </td>
   <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-    <Link
-      on:click="{() => dispatch('cart_update', {
-          ...lineItem,
-          quantity: currentQty,
-        })}"
-      class="text-thatOrange-400 hover:text-thatOrange-500"
-    >
-      Update
-    </Link>
-    /
+    {#if lineItem.isBulkPurchase}
+      <Link
+        on:click="{() =>
+          dispatch('cart_update', {
+            ...lineItem,
+            quantity: currentQty,
+          })}"
+        class="text-thatOrange-400 hover:text-thatOrange-500"
+      >
+        Update
+      </Link>
+      /
+    {/if}
     <Link
       on:click="{() => dispatch('cart_remove', { id: lineItem.id })}"
       class="text-thatOrange-400 hover:text-thatOrange-500"

@@ -95,7 +95,9 @@
               </Link>
             </li>
             <li>
-              <Link href="/my/profile">Keep your profile up to date.</Link>
+              <Link href="/my/settings/profile"
+                >Keep your profile up to date.</Link
+              >
             </li>
           </ul>
         </div>

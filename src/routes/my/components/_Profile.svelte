@@ -76,7 +76,7 @@
     noindex: true,
     openGraph: {
       type: 'website',
-      url: `https://that.us/my/profile`,
+      url: `https://that.us/my/settings/profile`,
     },
   });
 </script>
