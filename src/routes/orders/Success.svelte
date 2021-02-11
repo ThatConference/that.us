@@ -3,11 +3,23 @@
 
   import Layout from './components/_Layout.svelte';
   import { LinkButton } from '../../elements';
+  import metaTagsStore from '../../store/metaTags';
 
   const { send } = getContext('cart');
 
   onMount(() => {
     send('CLEAR_CART');
+  });
+
+  metaTagsStore.set({
+    title: 'Payment Recieved',
+    description: 'Your payment was successfully received.',
+    nofollow: true,
+    noindex: true,
+    openGraph: {
+      type: 'website',
+      url: `https://that.us/orders/success`,
+    },
   });
 </script>
 
