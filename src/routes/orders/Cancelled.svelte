@@ -4,7 +4,7 @@
   import metaTagsStore from '../../store/metaTags';
 
   metaTagsStore.set({
-    title: 'Payment Cancelled',
+    title: 'Payment Cancelled - THAT',
     description: 'Your payment was cancelled.',
     nofollow: true,
     noindex: true,

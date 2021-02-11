@@ -70,7 +70,7 @@
   }
 
   metaTagsStore.set({
-    title: 'My Profile',
+    title: 'Your Profile - THAT',
     description: 'Create or update your THAT profile.',
     nofollow: true,
     noindex: true,
