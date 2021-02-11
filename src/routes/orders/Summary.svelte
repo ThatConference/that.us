@@ -1,17 +1,28 @@
 <script>
   import { useMachine } from 'xstate-svelte';
 
-  import { debug } from '../../config';
-
   import Layout from './components/_Layout.svelte';
   import Steps from './components/_Steps.svelte';
   import Cart from './components/_Cart.svelte';
 
+  import { debug } from '../../config';
   import summaryMachine from './machines/summary';
   import createStepsMachine from './machines/steps';
+  import metaTagsStore from '../../store/metaTags';
 
   const { state } = useMachine(summaryMachine(createStepsMachine()), {
     devTools: debug.xstate,
+  });
+
+  metaTagsStore.set({
+    title: 'Order Summary',
+    description: 'View the items in your cart.',
+    nofollow: true,
+    noindex: true,
+    openGraph: {
+      type: 'website',
+      url: `https://that.us/orders/summary`,
+    },
   });
 </script>
 

@@ -1,6 +1,18 @@
 <script>
   import Layout from './components/_Layout.svelte';
   import { LinkButton } from '../../elements';
+  import metaTagsStore from '../../store/metaTags';
+
+  metaTagsStore.set({
+    title: 'Payment Cancelled',
+    description: 'Your payment was cancelled.',
+    nofollow: true,
+    noindex: true,
+    openGraph: {
+      type: 'website',
+      url: `https://that.us/orders/cancelled`,
+    },
+  });
 </script>
 
 <Layout>

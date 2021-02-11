@@ -1,5 +1,17 @@
 <script>
   import { ModalNoAction } from '../elements';
+  import metaTagsStore from '../store/metaTags';
+
+  metaTagsStore.set({
+    title: 'Login Success',
+    description: '',
+    nofollow: true,
+    noindex: true,
+    openGraph: {
+      type: 'website',
+      url: `https://that.us/login-success`,
+    },
+  });
 </script>
 
 <div>
