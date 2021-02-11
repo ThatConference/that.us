@@ -9,6 +9,7 @@
   import { Ticket, ChevronRight, Chevron } from '../../../elements/svgs';
   import { Waiting } from '../../../elements';
   import orderQueryApi from '../../../dataSources/api.that.tech/orders/queries';
+  import metaTagsStore from '../../../store/metaTags';
 
   const { queryOrderReceiptUrl } = orderQueryApi(getClient());
 
@@ -26,6 +27,17 @@
       window.open(r);
     });
   }
+
+  metaTagsStore.set({
+    title: 'Order History',
+    description: 'View your order history.',
+    nofollow: true,
+    noindex: true,
+    openGraph: {
+      type: 'website',
+      url: `https://that.us/my/settings/order-history`,
+    },
+  });
 </script>
 
 <div>
