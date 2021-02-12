@@ -17,17 +17,6 @@
     devTools: debug.xstate,
   });
 
-  function handleNext() {
-    console.log('handleNext called');
-    send('NEXT');
-  }
-
-  function handleReceiptRedirect(orderId) {
-    return queryOrderReceiptUrl(orderId).then(r => {
-      window.open(r);
-    });
-  }
-
   metaTagsStore.set({
     title: 'Order History - THAT',
     description: 'View your order history.',
@@ -38,6 +27,17 @@
       url: `https://that.us/my/settings/order-history`,
     },
   });
+
+  function handleNext() {
+    console.log('handleNext called');
+    send('NEXT');
+  }
+
+  function handleReceiptRedirect(orderId) {
+    return queryOrderReceiptUrl(orderId).then(r => {
+      window.open(r);
+    });
+  }
 </script>
 
 <div>
@@ -62,7 +62,7 @@
         <li>
           <button
             on:click="{() => handleReceiptRedirect(c.id)}"
-            class="block hover:bg-gray-50"
+            class="min-w-full block hover:bg-gray-50"
           >
             <div class="flex items-center px-4 py-4 sm:px-6">
               <div class="min-w-0 flex-1 flex items-center">
