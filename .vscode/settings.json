@@ -13,8 +13,7 @@
     "titleBar.inactiveBackground": "#4D51F7"
   },
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true,
-    "source.fixAll.prettier": true
+    "source.fixAll": true,
   },
   "[svelte]": {
     "editor.defaultFormatter": "svelte.svelte-vscode"
