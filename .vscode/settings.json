@@ -1,5 +1,7 @@
 {
-  "editor.rulers": [80],
+  "editor.rulers": [
+    80
+  ],
   "editor.formatOnSave": true,
   "prettier.tabWidth": 2,
   "editor.tabSize": 2,
@@ -11,7 +13,8 @@
     "titleBar.inactiveBackground": "#4D51F7"
   },
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
+    "source.fixAll.eslint": true,
+    "source.fixAll.prettier": true
   },
   "[svelte]": {
     "editor.defaultFormatter": "svelte.svelte-vscode"

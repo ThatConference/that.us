@@ -1,18 +1,20 @@
 <script>
-  export let eventTicket;
+export let eventTicket;
 
-  import { getContext } from 'svelte';
-  import { navigateTo } from 'yrv';
+import { getContext } from 'svelte';
+import { navigateTo } from 'yrv';
 
-  import { Standard as StandardButton } from '../../../../elements/buttons';
-  import { login } from '../../../../utilities/security';
+import { Standard as StandardButton } from '../../../../elements/buttons';
+import { login } from '../../../../utilities/security';
 
-  const { send } = getContext('cart');
+const { send } = getContext('cart');
 
-  function handleAddEventTicketClick() {
-    send('ADD_ITEM', eventTicket);
-    navigateTo('/orders/summary');
-  }
+function handleAddEventTicketClick(quantity = 1) {
+  const isBulkPurchase = quantity > 1 ? true : false;
+
+  send('ADD_ITEM', { ...eventTicket, isBulkPurchase, quantity });
+  navigateTo('/orders/summary');
+}
 </script>
 
 <div class="mt-16">
@@ -32,15 +34,13 @@
     <div class="relative">
       <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div
-          class="max-w-md mx-auto space-y-4 lg:max-w-5xl lg:grid lg:grid-cols-2 lg:gap-5 lg:space-y-0"
-        >
+          class="max-w-md mx-auto space-y-4 lg:max-w-5xl lg:grid lg:grid-cols-2 lg:gap-5 lg:space-y-0">
           <div class="flex flex-col rounded-lg shadow-lg overflow-hidden">
             <div class="px-6 py-8 bg-white sm:p-10 sm:pb-6">
               <div>
                 <h3
                   class="inline-flex px-4 py-1 rounded-full text-sm font-semibold tracking-wide uppercase bg-thatOrange-400 text-white"
-                  id="tier-standard"
-                >
+                  id="tier-standard">
                   Daily Usage
                 </h3>
               </div>
@@ -52,8 +52,7 @@
               </p>
             </div>
             <div
-              class="flex-1 flex flex-col justify-between px-6 pt-6 pb-8 bg-gray-50 space-y-6 sm:p-10 sm:pt-6"
-            >
+              class="flex-1 flex flex-col justify-between px-6 pt-6 pb-8 bg-gray-50 space-y-6 sm:p-10 sm:pt-6">
               <ul class="space-y-4">
                 <li class="flex items-start">
                   <div class="flex-shrink-0">
@@ -64,8 +63,7 @@
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
-                      aria-hidden="true"
-                    >
+                      aria-hidden="true">
                       <path
                         stroke-linecap="round"
                         stroke-linejoin="round"
@@ -87,8 +85,7 @@
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
-                      aria-hidden="true"
-                    >
+                      aria-hidden="true">
                       <path
                         stroke-linecap="round"
                         stroke-linejoin="round"
@@ -110,8 +107,7 @@
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
-                      aria-hidden="true"
-                    >
+                      aria-hidden="true">
                       <path
                         stroke-linecap="round"
                         stroke-linejoin="round"
@@ -133,8 +129,7 @@
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
-                      aria-hidden="true"
-                    >
+                      aria-hidden="true">
                       <path
                         stroke-linecap="round"
                         stroke-linejoin="round"
@@ -148,8 +143,7 @@
                 </li>
               </ul>
               <StandardButton
-                on:click="{() => login('/my/settings/profile', true)}"
-              >
+                on:click="{() => login('/my/settings/profile', true)}">
                 Create Your Account
               </StandardButton>
             </div>
@@ -160,8 +154,7 @@
               <div>
                 <h3
                   class="inline-flex px-4 py-1 rounded-full text-sm font-semibold tracking-wide uppercase bg-thatOrange-400 text-white"
-                  id="tier-standard"
-                >
+                  id="tier-standard">
                   THAT Online Event Ticket
                 </h3>
               </div>
@@ -176,8 +169,7 @@
               </p>
             </div>
             <div
-              class="flex-1 flex flex-col justify-between px-6 pt-6 pb-8 bg-gray-50 space-y-6 sm:p-10 sm:pt-6"
-            >
+              class="flex-1 flex flex-col justify-between px-6 pt-6 pb-8 bg-gray-50 space-y-6 sm:p-10 sm:pt-6">
               <ul class="space-y-4">
                 <li class="flex items-start">
                   <div class="flex-shrink-0">
@@ -188,8 +180,7 @@
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
-                      aria-hidden="true"
-                    >
+                      aria-hidden="true">
                       <path
                         stroke-linecap="round"
                         stroke-linejoin="round"
@@ -211,8 +202,7 @@
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
-                      aria-hidden="true"
-                    >
+                      aria-hidden="true">
                       <path
                         stroke-linecap="round"
                         stroke-linejoin="round"
@@ -234,8 +224,7 @@
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
-                      aria-hidden="true"
-                    >
+                      aria-hidden="true">
                       <path
                         stroke-linecap="round"
                         stroke-linejoin="round"
@@ -257,8 +246,7 @@
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
-                      aria-hidden="true"
-                    >
+                      aria-hidden="true">
                       <path
                         stroke-linecap="round"
                         stroke-linejoin="round"
@@ -271,7 +259,7 @@
                   </p>
                 </li>
               </ul>
-              <StandardButton on:click="{handleAddEventTicketClick}">
+              <StandardButton on:click="{() => handleAddEventTicketClick()}">
                 Add to Cart
               </StandardButton>
             </div>
