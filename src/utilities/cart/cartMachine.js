@@ -62,7 +62,7 @@ function createServices() {
             price,
             name,
             description,
-            isBulkPurchase = false,
+            isBulkPurchase,
           } = event;
           const currentCart = context.cart;
 
