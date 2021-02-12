@@ -1,14 +1,14 @@
 {
-  "plugins": ["prettier-plugin-svelte"],
   "singleQuote": true,
   "printWidth": 80,
   "trailingComma": "all",
   "arrowParens": "avoid",
   "endOfLine": "auto",
+  "plugins": ["prettier-plugin-svelte"],
 
   "svelteSortOrder": "scripts-markup-styles",
   "svelteStrictMode": true,
   "svelteBracketNewLine": false,
   "svelteAllowShorthand": false,
-  "svelteIndentScriptAndStyle": false
+  "svelteIndentScriptAndStyle": true
 }
