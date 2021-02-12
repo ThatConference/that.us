@@ -54,11 +54,12 @@
 
     <UpNext stateMachineService="{$state.context.upNextActor}" />
 
+    <Events />
+
     {#if !$isAuthenticated}
       <CTA />
     {/if}
 
-    <Events />
     <NewMembers />
     <Newsletter />
   </div>
