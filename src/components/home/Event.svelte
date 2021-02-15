@@ -26,24 +26,19 @@
     </div>
 
     <div class="px-4 py-8">
-      <div class="w-full flex items-center justify-between space-x-6">
-        <div class="flex-1">
-          <div class="flex items-center space-x-3">
-            <h3 class="text-gray-900 text-md font-medium truncate">
-              {name}
-            </h3>
-          </div>
+      <div class="px-4">
+        <h3 class="text-gray-900 text-md font-bold truncate">
+          {name}
+        </h3>
 
-          <p class="mt-1 text-gray-500 text-sm truncate">
-            {dayjs(startDate).format('dddd MMMM D, YYYY - h:mm A')}
-            {dayjs(endDate).format('dddd MMMM D, YYYY - h:mm A')}
-          </p>
+        <p class="pt-2 text-gray-500 text-sm truncate">
+          {dayjs(startDate).format('dddd MMMM D, YYYY - h:mm A')}
+          {dayjs(endDate).format('dddd MMMM D, YYYY - h:mm A')}
+        </p>
 
-          <p class="mt-4 text-gray-500 text-sm">
-            {description}
-          </p>
-        </div>
+        <p class="pt-4 text-gray-500 text-sm">
+          {description}
+        </p>
       </div>
     </div>
-  </div>
-</Link>
+  </div></Link>
