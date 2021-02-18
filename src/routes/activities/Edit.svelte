@@ -15,7 +15,7 @@
   import { tagEvent } from '../../utilities/gtag';
   import logEvent from '../../utilities/eventTrack';
   import { user } from '../../utilities/security.js';
-  import { format } from './formatRequest';
+  import { format } from './lib/formatRequest';
 
   // data
   import sessionsApi from '../../dataSources/api.that.tech/sessions.js';
@@ -78,14 +78,12 @@
         <ActivityForm
           handleSubmit="{handleSubmit}"
           handleWithdraw="{handleWithdraw}"
-          initialValues="{activity}"
-        />
+          initialValues="{activity}" />
       {:else}
         <ModalError
           title="No Activity Found"
           text="I'm sorry we weren't able to find the activity you tried to edit."
-          action="{{ title: 'My Submissions', href: '/my/submissions' }}"
-        />
+          action="{{ title: 'My Submissions', href: '/my/submissions' }}" />
       {/if}
     {/await}
   </div>

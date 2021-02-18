@@ -18,25 +18,28 @@
   // datasources
   import metaTagsStore from '../../store/metaTags';
   import sessionsApi from '../../dataSources/api.that.tech/sessions';
-  import { events } from '../../config';
 
-  const { eventName } = router.params;
-  const { querySessions } = sessionsApi(getClient());
-  const currentEvent = events[eventName];
+  const { id, name } = router.params;
+  // const { querySessions } = sessionsApi(getClient());
+  // const currentEvent = events[eventName];
 
-  if (!currentEvent) navigateTo(`/activities`, { reload: true });
+  // console.log({ eventName });
 
-  metaTagsStore.set({
-    title: `${currentEvent.title} * THAT`,
-    description: `Activities for ${currentEvent.title}.`,
-    openGraph: {
-      type: 'website',
-      url: `https://that.us/events/${eventName}`,
-    },
-  });
+  // if (!eventName) navigateTo(`/activities`, { reload: true });
+
+  // metaTagsStore.set({
+  //   title: `${currentEvent.title} * THAT`,
+  //   description: `Activities for ${currentEvent.title}.`,
+  //   openGraph: {
+  //     type: 'website',
+  //     url: `https://that.us/events/${eventName}`,
+  //   },
+  // });
 </script>
 
-<StackedLayout>
+<div>Event Listing</div>
+
+<!-- <StackedLayout>
   <div slot="header">
     <Nav />
     <ActionHeader title="{currentEvent.title}">
@@ -57,4 +60,4 @@
   <div slot="footer">
     <Sponsor eventId="{currentEvent.eventId}" />
   </div>
-</StackedLayout>
+</StackedLayout> -->

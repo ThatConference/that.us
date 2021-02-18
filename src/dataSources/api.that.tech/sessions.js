@@ -55,7 +55,7 @@ const coreSpeakerFields = `
 
 export const QUERY_SESSION_BY_ID = `
   ${coreSessionFields}
-  query getSessionById($sessionId: ID!) {
+  query QUERY_SESSION_BY_ID($sessionId: ID!) {
     sessions {
       session(sessionId: $sessionId) {
         ...coreFields
@@ -94,12 +94,13 @@ export const QUERY_SESSION_BY_ID = `
 export const QUERY_SESSIONS = `
   ${coreSessionFields}
   ${coreSpeakerFields}
-  query GetEventsSessions ($eventId: ID!, $pageSize: Int, $cursor: String) {
+  query QUERY_SESSIONS ($eventId: ID!, $pageSize: Int, $cursor: String) {
     events {
       event(findBy: { id: $eventId }) {
         get {
           sessions(pageSize: $pageSize, cursor: $cursor) {
             cursor
+            count
             sessions{
               ...coreFields
               speakers {
@@ -111,18 +112,46 @@ export const QUERY_SESSIONS = `
       }
     }
   }
-  `;
+`;
+
+export const QUERY_SESSIONS_BY_SLUG = `
+  ${coreSessionFields}
+  ${coreSpeakerFields}
+  query QUERY_SESSIONS_BY_SLUG ($slug: String!, $pageSize: Int, $cursor: String) {
+    events {
+      event (findBy: { slug: $slug }) {
+        get {
+          id
+          name
+          startDate
+          endDate
+          sessions(pageSize: $pageSize, cursor: $cursor) {
+            cursor
+            count
+            sessions {
+              ...coreFields
+              speakers {
+                ...coreSpeakerFields
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
 
 export const QUERY_NEXT_SESSIONS = `
   ${coreSessionFields}
   ${coreSpeakerFields}
-  query GetEventsSessions ($eventId: ID!, $pageSize: Int, $cursor: String) {
+  query QUERY_NEXT_SESSIONS ($eventId: ID!, $pageSize: Int, $cursor: String) {
     events {
-      event(findBy: { id: $eventId }) {
+      event (findBy: { id: $eventId }) {
         get {
-          sessions(pageSize: $pageSize, cursor: $cursor) {
+          sessions (pageSize: $pageSize, cursor: $cursor) {
             cursor
-            sessions{
+            count
+            sessions {
               ...coreFields
               speakers {
                 ...coreSpeakerFields
@@ -133,16 +162,20 @@ export const QUERY_NEXT_SESSIONS = `
       }
     }
   }
-  `;
+`;
 
 export const QUERY_SESSIONS_BY_DATE = `
   ${coreSessionFields}
   ${coreSpeakerFields}
-  query GetEventsSessions ($eventId: ID!, $asOfDate: Date, $pageSize: Int) {
+  query QUERY_SESSIONS_BY_DATE ($eventId: ID!, $asOfDate: Date, $pageSize: Int) {
     events {
-      event(findBy: { id: $eventId }) {
+      event (findBy: { id: $eventId }) {
         get {
-          sessions(asOfDate: $asOfDate, status: ACCEPTED, pageSize: $pageSize) {
+          id
+          name
+          startDate
+          endDate
+          sessions (asOfDate: $asOfDate, status: ACCEPTED, pageSize: $pageSize) {
             cursor
             sessions {
               ...coreFields
@@ -160,7 +193,7 @@ export const QUERY_SESSIONS_BY_DATE = `
 export const QUERY_NEXT_SESSIONS_BY_DATE = `
   ${coreSessionFields}
   ${coreSpeakerFields}
-  query GetEventsSessions ($eventId: ID!, $asOfDate: Date, $pageSize: Int, $cursor: String) {
+  query QUERY_NEXT_SESSIONS_BY_DATE ($eventId: ID!, $asOfDate: Date, $pageSize: Int, $cursor: String) {
     events {
       event(findBy: { id: $eventId }) {
         get {
@@ -181,7 +214,7 @@ export const QUERY_NEXT_SESSIONS_BY_DATE = `
 
 export const CREATE_SESSION = `
   ${coreOpenSpaceFields}
-  mutation createSession($eventId: ID!, $newSession: OpenSpaceCreateInput!) {
+  mutation CREATE_SESSION($eventId: ID!, $newSession: OpenSpaceCreateInput!) {
     sessions {
       create(eventId: $eventId) {
         openSpace(openspace: $newSession) {
@@ -194,7 +227,7 @@ export const CREATE_SESSION = `
 
 export const UPDATE_SESSION_BY_ID = `
   ${coreOpenSpaceFields}
-  mutation UpdateOpenSpaceSession($sessionId: ID!, $session: OpenSpaceUpdateInput!) {
+  mutation UPDATE_SESSION_BY_ID($sessionId: ID!, $session: OpenSpaceUpdateInput!) {
     sessions {
       session(id: $sessionId) {
         update {
@@ -208,7 +241,7 @@ export const UPDATE_SESSION_BY_ID = `
 `;
 
 export const SET_ATTENDANCE = `
-  mutation setAttendance($sessionId: ID!) {
+  mutation SET_ATTENDANCE($sessionId: ID!) {
     sessions {
       session(id: $sessionId) {
         setAttended
@@ -237,6 +270,29 @@ export default client => {
 
   const querySessions = ({ eventId, pageSize = 50 }) =>
     query(QUERY_SESSIONS, { eventId, pageSize });
+
+  const querySessionsBySlug = (slug, pageSize = 50) => {
+    const variables = {
+      slug,
+      pageSize,
+    };
+
+    return client
+      .query(QUERY_SESSIONS_BY_SLUG, variables, {
+        fetchOptions: {
+          headers: {
+            ...stripAuthorizationHeader(client),
+          },
+        },
+      })
+      .toPromise()
+      .then(({ data, error }) => {
+        if (error) log(error, 'QUERY_SESSIONS_BY_SLUG');
+
+        const { get } = data.events.event;
+        return get || null;
+      });
+  };
 
   const queryNextSessions = ({ eventId, pageSize = 50, cursor }) =>
     query(QUERY_NEXT_SESSIONS, { eventId, pageSize, cursor });
@@ -327,6 +383,7 @@ export default client => {
 
   return {
     querySessions,
+    querySessionsBySlug,
     queryNextSessions,
     querySessionsByDate,
     queryNextSessionsByDate,

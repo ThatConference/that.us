@@ -6,7 +6,7 @@
   import * as Sentry from '@sentry/browser';
   import LogRocket from 'logrocket';
 
-  import config, { events } from './config';
+  import config from './config';
   import { token, thatProfile, setupAuth } from './utilities/security.js';
   import currentEvent from './store/currentEvent';
   import metaTagsStore from './store/metaTags';
@@ -21,7 +21,7 @@
   import Router from './Router.svelte';
 
   let unsub;
-  currentEvent.set(events.thatUs); // setting the default event
+  currentEvent.set({ eventId: config.eventId, title: 'THAT' }); // setting the default event
 
   setContext('cart', cart);
 
