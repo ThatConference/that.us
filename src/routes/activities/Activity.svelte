@@ -14,7 +14,7 @@
   // data sources
   import sessionsApi from '../../dataSources/api.that.tech/sessions';
 
-  const { activityId } = router.params;
+  const { id } = router.params;
   const { getById } = sessionsApi(getClient());
 </script>
 
@@ -24,7 +24,7 @@
     <ActionHeader title="Activity Details" />
   </div>
   <div slot="body">
-    {#await getById(activityId)}
+    {#await getById(id)}
       <div class="flex items-center justify-center">
         <FacebookLoader uniqueKey="loading" />
       </div>
@@ -34,8 +34,7 @@
       <ModalError
         title="No Activities Found"
         text="I'm sorry we weren't able to find the activity you requested."
-        action="{{ title: 'Return to Activities', href: '/activities' }}"
-      />
+        action="{{ title: 'Return to Activities', href: '/activities' }}" />
     {/await}
   </div>
 </StackedLayout>

@@ -20,7 +20,7 @@
   import metaTagsStore from '../../store/metaTags';
   import { tagEvent } from '../../utilities/gtag';
   import logEvent from '../../utilities/eventTrack';
-  import { format } from './formatRequest';
+  import { format } from './lib/formatRequest';
   import { user } from '../../utilities/security.js';
 
   const { create } = sessionsApi(getClient());
