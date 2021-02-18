@@ -11,6 +11,8 @@
   import OrderHistory from './components/_OrderHistory.svelte';
   import Tickets from './components/_Tickets.svelte';
 
+  console.log('here?');
+
   let settingsComponent;
 
   const asideSelected = {
@@ -70,8 +72,7 @@
   <div slot="body">
     <main class="-mx-6 relative">
       <div
-        class="divide-y divide-gray-200 lg:grid lg:grid-cols-12 lg:divide-y-0 lg:divide-x"
-      >
+        class="divide-y divide-gray-200 lg:grid lg:grid-cols-12 lg:divide-y-0 lg:divide-x">
         <aside class="py-6 lg:col-span-3">
           <div class="sticky top-4">
             <nav>
@@ -83,13 +84,11 @@
                 }}"
                 class="{settingsComponent === Profile
                   ? asideSelected.item
-                  : asideDefault.item}"
-              >
+                  : asideDefault.item}">
                 <User
                   classes="{settingsComponent === Profile
                     ? asideSelected.image
-                    : asideDefault.image}"
-                />
+                    : asideDefault.image}" />
                 <span class="truncate"> Your Profile </span>
               </a>
 
@@ -101,13 +100,11 @@
                 }}"
                 class="{settingsComponent === Badges
                   ? asideSelected.item
-                  : asideDefault.item}"
-              >
+                  : asideDefault.item}">
                 <Badge
                   classes="{settingsComponent === Badges
                     ? asideSelected.image
-                    : asideDefault.image}"
-                />
+                    : asideDefault.image}" />
                 <span class="truncate"> Merit Badges </span>
               </a>
 
@@ -119,13 +116,11 @@
                 }}"
                 class="{settingsComponent === OrderHistory
                   ? asideSelected.item
-                  : asideDefault.item}"
-              >
+                  : asideDefault.item}">
                 <CreditCard
                   classes="{settingsComponent === OrderHistory
                     ? asideSelected.image
-                    : asideDefault.image}"
-                />
+                    : asideDefault.image}" />
                 <span class="truncate"> Order History </span>
               </a>
 
@@ -137,13 +132,11 @@
                 }}"
                 class="{settingsComponent === Tickets
                   ? asideSelected.item
-                  : asideDefault.item}"
-              >
+                  : asideDefault.item}">
                 <Ticket
                   classes="{settingsComponent === Tickets
                     ? asideSelected.image
-                    : asideDefault.image}"
-                />
+                    : asideDefault.image}" />
                 <span class="truncate"> Event Tickets </span>
               </a>
             </nav>
