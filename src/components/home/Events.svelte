@@ -29,7 +29,7 @@
 
     results.hybrid = sortBy(
       allEvents
-        .filter(i => i.type === 'MULTI_DAY')
+        .filter(i => i.type === 'MULTI_DAY' || i.type === 'HYBRID_MULTI_DAY')
         .filter(i => i.isActive)
         // .filter(i => i.isFeatured)
         .filter(i => dayjs().isSameOrBefore(i.startDate, 'day')),

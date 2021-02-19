@@ -17,6 +17,10 @@
         break;
 
       case 'MULTI_DAY':
+        value = 'multi-day';
+        break;
+
+      case 'HYBRID_MULTI_DAY':
         value = 'hybrid multi-day';
         break;
 

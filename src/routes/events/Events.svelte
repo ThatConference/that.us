@@ -29,7 +29,9 @@
       .then(r => {
         const splitAt = r.findIndex(i => dayjs(i.endDate).isBefore(dayjs()));
 
-        const upcoming = take(r, splitAt);
+        const upcoming = take(r, splitAt)
+          .filter(i => i.type.toLowerCase() !== 'daily')
+          .reverse();
         const past = drop(r, splitAt);
 
         return [upcoming, past];
