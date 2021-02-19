@@ -95,7 +95,3 @@
     </div>
   </main>
 </Layout>
-
-console.log("🚀 ~ file: Events.svelte ~ line 83 ~ queryEvents ~ splitAt",
-splitAt) console.log("🚀 ~ file: Events.svelte ~ line 85 ~ queryEvents ~
-splitAt", splitAt)
