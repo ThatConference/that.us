@@ -4,7 +4,7 @@ export default {
   nodeEnv: process.env.NODE_ENV,
   version,
   eventId: 'YWavA70szR8rxSwrLJaL',
-  eventSlug: 'thatus/2020',
+  eventSlug: 'thatus/daily',
   api: 'https://gateway-bgydxslf5a-uc.a.run.app',
   profileImageApi: 'https://api.that.tech/profile',
   defaultProfileImage:
