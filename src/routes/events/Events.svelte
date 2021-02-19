@@ -1,63 +1,101 @@
 <script>
-  export let router;
-
-  // 3rd party
+  import { fade } from 'svelte/transition';
   import { getClient } from '@urql/svelte';
-  import { navigateTo } from 'yrv';
+  import { Link } from 'yrv';
+  import { sortBy, take, drop } from 'lodash';
 
-  // components
-  import Nav from '../../components/nav/interiorNav/Top.svelte';
-  import Sponsor from '../../components/SponsorSimple.svelte';
-  import ActivityList from '../../components/activities/List.svelte';
+  import Hero from './components/_EventsHero.svelte';
+  import EventCard from './components/_EventCard.svelte';
+  import Layout from '../../elements/layouts/ContentLayout.svelte';
   import CardLoader from '../../components/CardLoader.svelte';
 
-  // elements
-  import StackedLayout from '../../elements/layouts/StackedLayout.svelte';
-  import { ActionHeader, LinkButton } from '../../elements';
-
-  // datasources
+  import eventsApi from '../../dataSources/api.that.tech/events/queries';
   import metaTagsStore from '../../store/metaTags';
-  import sessionsApi from '../../dataSources/api.that.tech/sessions';
+  import dayjs from 'dayjs';
 
-  const { id, name } = router.params;
-  // const { querySessions } = sessionsApi(getClient());
-  // const currentEvent = events[eventName];
+  metaTagsStore.set({
+    title: 'Events - THAT',
+    description: 'Upcoming and Past Events at THAT',
+    openGraph: {
+      type: 'website',
+      url: 'https://that.us/events',
+    },
+  });
 
-  // console.log({ eventName });
+  function queryEvents() {
+    return eventsApi(getClient())
+      .queryEventsByCommunity()
+      .then(r => sortBy(r, 'endDate').reverse())
+      .then(r => {
+        const splitAt = r.findIndex(i => dayjs(i.endDate).isBefore(dayjs()));
 
-  // if (!eventName) navigateTo(`/activities`, { reload: true });
+        const upcoming = take(r, splitAt);
+        const past = drop(r, splitAt);
 
-  // metaTagsStore.set({
-  //   title: `${currentEvent.title} * THAT`,
-  //   description: `Activities for ${currentEvent.title}.`,
-  //   openGraph: {
-  //     type: 'website',
-  //     url: `https://that.us/events/${eventName}`,
-  //   },
-  // });
+        return [upcoming, past];
+      });
+  }
 </script>
 
-<div>Event Listing</div>
+<Layout>
+  <main class="overflow-hidden">
+    <div class="relative pb-16 md:pb-20 lg:pb-24 xl:pb-32">
+      <div class="mt-32 mx-auto max-w-screen-xl px-4 sm:px-6 xl:mt-40">
+        <main>
+          <Hero />
+          <div class="py-20">
+            <div class="px-8">
+              {#await queryEvents()}
+                <div class="w-full flex flex-col items-center justify-center">
+                  <CardLoader />
+                </div>
+              {:then events}
+                <div class="relative mx-auto">
+                  <div
+                    class="mt-12 max-w-lg mx-auto grid gap-10 lg:grid-cols-3 lg:max-w-none">
+                    {#each events[0] as e (e.id)}
+                      <div in:fade class="transform hover:scale-105">
+                        <Link href="{`/events/${e.slug}`}">
+                          <EventCard event="{e}" />
+                        </Link>
+                      </div>
+                    {/each}
+                  </div>
 
-<!-- <StackedLayout>
-  <div slot="header">
-    <Nav />
-    <ActionHeader title="{currentEvent.title}">
-      <LinkButton href="/activities" text="Activities" />
-    </ActionHeader>
-  </div>
+                  <div class="relative m-12">
+                    <div
+                      class="absolute inset-0 flex items-center"
+                      aria-hidden="true">
+                      <div class="w-full border-t border-gray-300"></div>
+                    </div>
+                    <div class="relative flex justify-center">
+                      <span
+                        class="uppercase tracking-wider px-2 bg-white rounded-md text-sm text-gray-500">
+                        Past Events
+                      </span>
+                    </div>
+                  </div>
 
-  <div slot="body">
-    {#await querySessions({ eventId: currentEvent.eventId })}
-      <CardLoader />
-    {:then activities}
-      <ActivityList activities="{activities.sessions}" />
-    {:catch error}
-      <p>OH NO</p>
-    {/await}
-  </div>
+                  <div
+                    class="mt-12 max-w-lg mx-auto grid gap-10 lg:grid-cols-3 lg:max-w-none">
+                    {#each events[1] as e (e.id)}
+                      <div in:fade class="transform hover:scale-105">
+                        <Link href="{`/events/${e.slug}`}">
+                          <EventCard event="{e}" />
+                        </Link>
+                      </div>
+                    {/each}
+                  </div>
+                </div>
+              {/await}
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </main>
+</Layout>
 
-  <div slot="footer">
-    <Sponsor eventId="{currentEvent.eventId}" />
-  </div>
-</StackedLayout> -->
+console.log("🚀 ~ file: Events.svelte ~ line 83 ~ queryEvents ~ splitAt",
+splitAt) console.log("🚀 ~ file: Events.svelte ~ line 85 ~ queryEvents ~
+splitAt", splitAt)
