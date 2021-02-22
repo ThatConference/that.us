@@ -25,7 +25,7 @@
 
     //todo.. add some more breadcrumbing and messaging.
     orderMutations(client)
-      .createCheckoutSession($currentEvent.eventId, lineItems)
+      .createCheckoutSession($state.context.eventId, lineItems)
       .then(session => stripe.redirectToCheckout({ sessionId: session }))
       .then(function (result) {
         // If redirectToCheckout fails due to a browser or network error, you should display the localized error message to your customer using error.message.
@@ -94,33 +94,28 @@
       <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
           <div
-            class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg"
-          >
+            class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
             <table class="min-w-full divide-y divide-gray-200">
               <thead class="bg-gray-50">
                 <tr>
                   <th
                     scope="col"
-                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                  >
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Item
                   </th>
                   <th
                     scope="col"
-                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                  >
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Description
                   </th>
                   <th
                     scope="col"
-                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                  >
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Price
                   </th>
                   <th
                     scope="col"
-                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                  >
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Quantity
                   </th>
                   <th scope="col" class="relative px-6 py-3">
@@ -128,8 +123,7 @@
                   </th>
                   <th
                     scope="col"
-                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                  >
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Total
                   </th>
                 </tr>
@@ -146,8 +140,7 @@
                     on:cart_update="{({ detail }) =>
                       send('UPDATE_QUANTITY', {
                         ...detail,
-                      })}"
-                  />
+                      })}" />
                 {/each}
               </tbody>
             </table>
@@ -170,8 +163,7 @@
         </StandardButton>
       {:else}
         <div
-          class="px-8 py-2 rounded-md shadow text-base leading-6 font-medium text-white bg-gray-200 md:text-lg md:px-10"
-        >
+          class="px-8 py-2 rounded-md shadow text-base leading-6 font-medium text-white bg-gray-200 md:text-lg md:px-10">
           Purchase Now
         </div>
       {/if}

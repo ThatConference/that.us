@@ -1,13 +1,13 @@
 <script>
-import { getClient } from '@urql/svelte';
+  import { getClient } from '@urql/svelte';
 
-import { login } from '../../utilities/security';
-import { Standard as StandardLink } from '../../elements/links';
+  import { login } from '../../utilities/security';
+  import { Standard as StandardLink } from '../../elements/links';
 
-import MemberCard from '../../components/members/MemberCard.svelte';
-import membersApi from '../../dataSources/api.that.tech/members/queries';
+  import MemberCard from '../../components/members/MemberCard.svelte';
+  import membersApi from '../../dataSources/api.that.tech/members/queries';
 
-const { queryMembers } = membersApi(getClient());
+  const { queryMembers } = membersApi(getClient());
 </script>
 
 <section class="relative py-12 lg:py-16">

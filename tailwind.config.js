@@ -93,6 +93,7 @@ module.exports = {
       disableUnusedFeatures: true,
     }),
     require('@tailwindcss/forms'),
+    require('@tailwindcss/typography'),
     require('@tailwindcss/ui'),
     require('@tailwindcss/aspect-ratio'),
   ],

@@ -11,8 +11,6 @@
   import OrderHistory from './components/_OrderHistory.svelte';
   import Tickets from './components/_Tickets.svelte';
 
-  console.log('here?');
-
   let settingsComponent;
 
   const asideSelected = {

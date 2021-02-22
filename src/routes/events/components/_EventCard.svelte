@@ -25,7 +25,7 @@
         break;
 
       case 'ONLINE':
-        value = 'virtual';
+        value = 'online';
         break;
 
       default:
