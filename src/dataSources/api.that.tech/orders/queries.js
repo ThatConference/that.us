@@ -76,6 +76,7 @@ export const QUERY_MY_ALLOCATIONS = `
             name
             slug
             startDate
+            endDate
           }
           product {
             ...productFields

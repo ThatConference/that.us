@@ -11,6 +11,10 @@ const plugins =
         require('autoprefixer'),
         require('@fullhuman/postcss-purgecss'),
       ]
-    : [tailwindcss('./tailwind.config.js')];
+    : [
+        tailwindcss('./tailwind.config.js'),
+        require('@tailwindcss/ui'),
+        require('autoprefixer'),
+      ];
 
 module.exports = { plugins };

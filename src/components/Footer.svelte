@@ -99,18 +99,16 @@
   ];
 </script>
 
-<footer class="bg-that-offWhite">
+<footer class="bg-thatBlue-100 bg-opacity-25">
   <div
-    class="max-w-screen-xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8"
-  >
+    class="max-w-screen-xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
     <nav class="-mx-5 -my-2 flex flex-wrap justify-center space-x-6">
       {#each textLinks as tl}
         <div class="py-2">
           <Link
             tabindex="-1"
             href="{tl.href}"
-            class="text-base leading-6 text-gray-500 hover:text-that-blue"
-          >
+            class="text-base leading-6 text-gray-500 hover:text-that-blue">
             {tl.text}
           </Link>
         </div>
@@ -123,8 +121,7 @@
           <Link
             tabindex="-1"
             href="{ll.href}"
-            class="text-base leading-6 text-gray-500 hover:text-that-blue"
-          >
+            class="text-base leading-6 text-gray-500 hover:text-that-blue">
             {ll.text}
           </Link>
         </div>
@@ -137,8 +134,7 @@
           <Link
             tabindex="-1"
             href="{mll.href}"
-            class="text-base leading-6 text-gray-500 hover:text-that-blue"
-          >
+            class="text-base leading-6 text-gray-500 hover:text-that-blue">
             {mll.text}
           </Link>
         </div>
@@ -150,8 +146,7 @@
         tabindex="-1"
         href="http://status.that.tech"
         open
-        class="text-base leading-6 text-gray-500 hover:text-that-blue"
-      >
+        class="text-base leading-6 text-gray-500 hover:text-that-blue">
         System Status and Uptime
       </Link>
     </div>
