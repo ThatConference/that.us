@@ -85,10 +85,12 @@
         on:loadMore="{handleNext}" />
     {/if}
 
-    {#if ['loaded'].some($state.matches)}
-      <div class="mt-12 text-gray-400 flex flex-col items-center">
-        scroll for more <Chevron />
-      </div>
+    {#if $state.context.items > 0}
+      {#if ['loaded'].some($state.matches)}
+        <div class="mt-12 text-gray-400 flex flex-col items-center">
+          scroll for more <Chevron />
+        </div>
+      {/if}
     {/if}
 
     {#if ['loadingNext', 'loadedAll'].some($state.matches)}

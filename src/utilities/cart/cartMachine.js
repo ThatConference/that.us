@@ -51,6 +51,7 @@ function createServices() {
       clearLocalStorage: () => window.localStorage.removeItem(cartKeyName),
 
       addItem: assign({
+        eventId: (_, event) => event.eventId,
         cart: (context, event) => {
           if (!event.id) {
             throw new Error('No id passed into addItem');
