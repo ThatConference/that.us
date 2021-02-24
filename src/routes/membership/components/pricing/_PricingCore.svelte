@@ -11,6 +11,6 @@
   <div class="relative max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
     <AnnualMembership membership="{membership}" />
     <EventTickets eventTicket="{eventTicket}" />
-    <Discounts />
+    <!-- <Discounts /> -->
   </div>
 </section>

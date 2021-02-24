@@ -24,8 +24,8 @@
           Support Us, Supporting You.
         </h2>
         <p class="mt-4 text-xl text-gray-600">
-          We could create a free platform, but then we'd have to monitize your
-          data. To that we say, no thank you. Rather we're taking the approach
+          We could create a free platform, but then you become the product. To
+          that we say no thank you, we're the product. We're taking the approach
           of creating a monitization strategy of help us, help you.
         </p>
       </div>

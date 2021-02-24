@@ -1,21 +1,19 @@
 <script>
-export let membership;
+  export let membership;
 
-import { navigateTo } from 'yrv';
-import { getContext } from 'svelte';
+  import { navigateTo } from 'yrv';
+  import { getContext } from 'svelte';
 
-import {
-  Standard as StandardButton,
-  Highlight as HighlightButton,
-} from '../../../../elements/buttons';
+  import { Highlight as HighlightButton } from '../../../../elements/buttons';
+  import { Check } from '../../../../elements/svgs';
 
-const { send } = getContext('cart');
+  const { send } = getContext('cart');
 
-function handleAddMembershipClick(quantity = 1) {
-  const isBulkPurchase = quantity > 1 ? true : false;
-  send('ADD_ITEM', { ...membership, isBulkPurchase, quantity });
-  navigateTo('/orders/summary');
-}
+  function handleAddMembershipClick(quantity = 1) {
+    const isBulkPurchase = quantity > 1 ? true : false;
+    send('ADD_ITEM', { ...membership, isBulkPurchase, quantity });
+    navigateTo('/orders/summary');
+  }
 </script>
 
 <div class="text-white">
@@ -23,7 +21,7 @@ function handleAddMembershipClick(quantity = 1) {
     <div>
       <h1 class="text-4xl font-extrabold sm:text-5xl sm:tracking-tight">
         <span class="">THAT Membership Only</span>
-        <span class="text-thatOrange-400">${membership.price} a year</span>
+        <span class="text-thatOrange-400">${membership.price} per year</span>
       </h1>
       <p class="mt-5 text-xl">
         Includes every online event, every feature and even a discount to THAT
@@ -32,7 +30,7 @@ function handleAddMembershipClick(quantity = 1) {
     </div>
 
     <HighlightButton on:click="{() => handleAddMembershipClick()}">
-      Add To Cart
+      Purchase Now
     </HighlightButton>
   </div>
 
@@ -40,217 +38,64 @@ function handleAddMembershipClick(quantity = 1) {
     <div>
       <h2
         class="text-base font-semibold text-thatOrange-400 tracking-wide uppercase">
-        Everything you need
+        A Peer to Peer Learning System
       </h2>
-      <p class="mt-2 text-3xl font-extrabold">All-in-one platform</p>
+      <p class="mt-2 text-3xl font-extrabold">Supprting Our Future</p>
       <p class="mt-4 text-lg">
-        Ac euismod vel sit maecenas id pellentesque eu sed consectetur.
-        Malesuada adipiscing sagittis vel nulla nec. Urna, sed a lectus
-        elementum blandit et.
+        Why create a membership? It helps us support future platform grown and
+        better manage a yearly budget. It allows us to focus more time on
+        creating a better platform for all us use to use everyday.
       </p>
     </div>
     <div
       class="mt-4 sm:mt-8 md:mt-10 md:grid md:grid-cols-2 md:gap-x-8 xl:mt-0 xl:col-span-2">
       <ul class="divide-y divide-gray-200">
         <li class="py-4 flex md:py-0 md:pb-4">
-          <!-- Heroicon name: check -->
-          <svg
-            class="flex-shrink-0 h-6 w-6 text-green-500"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            aria-hidden="true">
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M5 13l4 4L19 7"></path>
-          </svg>
-          <span class="ml-3 text-base">
-            Vitae in pulvinar odio id utobortis in inter.
-          </span>
+          <Check />
+          <span class="ml-3 text-base">Access to all online events</span>
         </li>
 
         <li class="py-4 flex">
-          <!-- Heroicon name: check -->
-          <svg
-            class="flex-shrink-0 h-6 w-6 text-green-500"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            aria-hidden="true">
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M5 13l4 4L19 7"></path>
-          </svg>
-          <span class="ml-3 text-base">
-            Sed sed id viverra viverra augue eget massa.
-          </span>
+          <Check />
+          <span class="ml-3 text-base"
+            >$50 off 1 THAT Conference Camper Ticket</span>
         </li>
 
         <li class="py-4 flex">
-          <!-- Heroicon name: check -->
-          <svg
-            class="flex-shrink-0 h-6 w-6 text-green-500"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            aria-hidden="true">
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M5 13l4 4L19 7"></path>
-          </svg>
-          <span class="ml-3 text-base">
-            Urna, gravida amet, a, integer venenatis.
-          </span>
+          <Check />
+          <span class="ml-3 text-base">10% off THAT Store Merchandise</span>
         </li>
 
         <li class="py-4 flex">
-          <!-- Heroicon name: check -->
-          <svg
-            class="flex-shrink-0 h-6 w-6 text-green-500"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            aria-hidden="true">
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M5 13l4 4L19 7"></path>
-          </svg>
+          <Check />
           <span class="ml-3 text-base">
-            Lobortis sed pharetra amet vitae eleifend.
-          </span>
-        </li>
-
-        <li class="py-4 flex">
-          <!-- Heroicon name: check -->
-          <svg
-            class="flex-shrink-0 h-6 w-6 text-green-500"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            aria-hidden="true">
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M5 13l4 4L19 7"></path>
-          </svg>
-          <span class="ml-3 text-base">
-            Ullamcorper blandit a consequat donec elit aoreet.
+            Yearly Commitment, Automatic Renewal
           </span>
         </li>
       </ul>
       <ul
         class="border-t border-gray-200 divide-y divide-gray-200 md:border-t-0">
         <li class="py-4 flex md:border-t-0 md:py-0 md:pb-4">
-          <!-- Heroicon name: check -->
-          <svg
-            class="flex-shrink-0 h-6 w-6 text-green-500"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            aria-hidden="true">
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M5 13l4 4L19 7"></path>
-          </svg>
+          <Check />
           <span class="ml-3 text-base">
-            Vitae in pulvinar odio id utobortis in inter.
+            First access to new platform features
           </span>
         </li>
 
         <li class="py-4 flex">
-          <!-- Heroicon name: check -->
-          <svg
-            class="flex-shrink-0 h-6 w-6 text-green-500"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            aria-hidden="true">
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M5 13l4 4L19 7"></path>
-          </svg>
-          <span class="ml-3 text-base">
-            Sed sed id viverra viverra augue eget massa.
-          </span>
+          <Check />
+          <span class="ml-3 text-base"> Help shape future releases </span>
         </li>
 
         <li class="py-4 flex">
-          <!-- Heroicon name: check -->
-          <svg
-            class="flex-shrink-0 h-6 w-6 text-green-500"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            aria-hidden="true">
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M5 13l4 4L19 7"></path>
-          </svg>
-          <span class="ml-3 text-base">
-            Urna, gravida amet, a, integer venenatis.
-          </span>
+          <Check />
+          <span class="ml-3 text-base">Special Merit Badge</span>
         </li>
 
         <li class="py-4 flex">
-          <!-- Heroicon name: check -->
-          <svg
-            class="flex-shrink-0 h-6 w-6 text-green-500"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            aria-hidden="true">
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M5 13l4 4L19 7"></path>
-          </svg>
+          <Check />
           <span class="ml-3 text-base">
-            Lobortis sed pharetra amet vitae eleifend.
-          </span>
-        </li>
-
-        <li class="py-4 flex">
-          <!-- Heroicon name: check -->
-          <svg
-            class="flex-shrink-0 h-6 w-6 text-green-500"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            aria-hidden="true">
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M5 13l4 4L19 7"></path>
-          </svg>
-          <span class="ml-3 text-base"
-            >Ullamcorper blandit a consequat donec elit aoreet.
+            You're Supporting Future Platform Growth
           </span>
         </li>
       </ul>

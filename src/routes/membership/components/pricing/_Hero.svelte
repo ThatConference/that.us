@@ -1,53 +1,47 @@
 <script>
-export let eventTicket;
-export let membership;
+  export let eventTicket;
+  export let membership;
 
-import { navigateTo } from 'yrv';
-import { getContext } from 'svelte';
+  import { navigateTo } from 'yrv';
+  import { getContext } from 'svelte';
 
-import { login } from '../../../../utilities/security';
+  import { login } from '../../../../utilities/security';
 
-import { Check, Ban } from '../../../../elements/svgs';
-import {
-  Standard as StandardButton,
-  Highlight as HighlightButton,
-} from '../../../../elements/buttons';
+  import { Check, Ban } from '../../../../elements/svgs';
+  import {
+    Standard as StandardButton,
+    Highlight as HighlightButton,
+  } from '../../../../elements/buttons';
 
-const { send } = getContext('cart');
+  const { send } = getContext('cart');
 
-function handleAddMembershipClick(quantity = 1) {
-  const isBulkPurchase = quantity > 1 ? true : false;
-  send('ADD_ITEM', { ...membership, isBulkPurchase, quantity });
-  navigateTo('/orders/summary');
-}
+  function handleAddMembershipClick(quantity = 1) {
+    const isBulkPurchase = quantity > 1 ? true : false;
+    send('ADD_ITEM', { ...membership, isBulkPurchase, quantity });
+    navigateTo('/orders/summary');
+  }
 
-function handleAddEventTicketClick(quantity = 1) {
-  const isBulkPurchase = quantity > 1 ? true : false;
-  send('ADD_ITEM', { ...eventTicket, isBulkPurchase, quantity });
-  navigateTo('/orders/summary');
-}
+  function handleAddEventTicketClick(quantity = 1) {
+    const isBulkPurchase = quantity > 1 ? true : false;
+    send('ADD_ITEM', { ...eventTicket, isBulkPurchase, quantity });
+    navigateTo('/orders/summary');
+  }
 </script>
 
 <div>
   <div class="bg-thatBlue-800 pt-12 px-4 sm:px-6 lg:px-8 lg:pt-20">
-    <div class="text-center">
-      <h2
-        class="text-lg leading-6 font-semibold text-gray-300 uppercase tracking-wider">
-        Pricing
-      </h2>
-      <p class="mt- text-3xl font-extrabold text-white sm:text-4xl lg:text-5xl">
-        You're not the product, we are.
+    <div class="flex flex-col items-center justify-center space-y-12">
+      <p class="text-3xl font-extrabold text-white sm:text-4xl lg:text-5xl">
+        You are not the product! We are.
       </p>
+
       <p
-        class="mt-3 max-w-4xl mx-auto text-xl text-gray-300 sm:mt-5 sm:text-2xl">
-        Our passion is people, communities and helping one another become better
-        than they were yesterday.
-      </p>
-      <p
-        class="mt-3 max-w-4xl mx-auto text-xl text-gray-300 sm:mt-5 sm:text-2xl">
-        We could create a free platform, but then we have to monitize your data.
-        To that we say, no thank you. Rather we're taking the approach of
-        creating a monitization strategy of help us, help you.
+        class="text-center max-w-6xl mx-auto text-xl text-gray-300 sm:mt-5 sm:text-2xl">
+        Our passion is people, communities, and helping one another become
+        better than they were yesterday. We could create a free platform, but
+        then you become the product. To that we say no thank you, we're the
+        product. We're taking the approach of creating a monitization strategy
+        of help us, help you.
       </p>
     </div>
   </div>
@@ -155,7 +149,7 @@ function handleAddEventTicketClick(quantity = 1) {
                       </span>
                     </span>
                     <span class="text-2xl font-medium text-gray-500">
-                      /year
+                      / year
                     </span>
                   </div>
                 </div>
@@ -242,20 +236,7 @@ function handleAddEventTicketClick(quantity = 1) {
                   <ul class="space-y-4">
                     <li class="flex items-start">
                       <div class="flex-shrink-0">
-                        <!-- Heroicon name: check -->
-                        <svg
-                          class="flex-shrink-0 h-6 w-6 text-green-500"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                          aria-hidden="true">
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M5 13l4 4L19 7"></path>
-                        </svg>
+                        <Check />
                       </div>
                       <p class="ml-3 text-base font-medium text-gray-500">
                         Join Activities
@@ -264,20 +245,7 @@ function handleAddEventTicketClick(quantity = 1) {
 
                     <li class="flex items-start">
                       <div class="flex-shrink-0">
-                        <!-- Heroicon name: check -->
-                        <svg
-                          class="flex-shrink-0 h-6 w-6 text-green-500"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                          aria-hidden="true">
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M5 13l4 4L19 7"></path>
-                        </svg>
+                        <Check />
                       </div>
                       <p class="ml-3 text-base font-medium text-gray-500">
                         Create Activities
@@ -289,7 +257,7 @@ function handleAddEventTicketClick(quantity = 1) {
                         <Ban />
                       </div>
                       <p class="ml-3 text-base font-medium text-gray-500">
-                        No access to monthly events
+                        Access to monthly events
                       </p>
                     </li>
                   </ul>

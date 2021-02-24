@@ -89,6 +89,8 @@
 
   <section>
     <CTA
+      on:purchase-membership="{() =>
+        handleAddMembershipClick(event.id, event.products)}"
       on:purchase-event-ticket="{() =>
         handleAddEventTicketClick(event.id, event.products)}" />
   </section>
