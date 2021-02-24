@@ -6,7 +6,7 @@ const productBaseFieldsFragment = `
     id
     name
     description
-    ticketType: type
+    productType: type
     price
     isEnabled
   }

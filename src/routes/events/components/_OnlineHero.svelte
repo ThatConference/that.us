@@ -7,6 +7,10 @@
   import { ChevronRight } from '../../../elements/svgs';
   import { Code } from '../../../elements/svgs/illustrations';
 
+  const ticket = event.products
+    .filter(f => f.isEnabled)
+    .find(e => e.productType === 'TICKET');
+
   const dispatch = createEventDispatcher();
 </script>
 
@@ -27,7 +31,7 @@
                     >Tickets on Sale</span>
                 </div>
                 <span class="ml-4 text-sm font-semibold"
-                  >Only $15. Purchase today!</span>
+                  >Only ${ticket.price}. Purchase today!</span>
                 <ChevronRight />
               </button>
             </div>
@@ -56,7 +60,7 @@
 
         <div class="mt-6 col-span-3 font-extrabold flex justify-center">
           <p class="text-lg italic lowercase tracking-tight text-white ">
-            all dates/times are represented in your timezone.
+            all dates/times are represented in your time zone.
           </p>
         </div>
       </div>

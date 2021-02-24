@@ -24,9 +24,9 @@ function createServices() {
 
       queryProductsSuccess: assign({
         eventTicket: (_, { data }) =>
-          data.find(element => element.ticketType === 'TICKET'),
+          data.find(element => element.productType === 'TICKET'),
         membership: (_, { data }) =>
-          data.find(element => element.ticketType === 'MEMBERSHIP'),
+          data.find(element => element.productType === 'MEMBERSHIP'),
       }),
     },
   };
