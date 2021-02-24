@@ -5,7 +5,6 @@
   import currentEvent from '../../store/currentEvent';
 
   import Layout from './components/_Layout.svelte';
-  import LogoCloud from './components/_LogoCloud.svelte';
   import Hero from './components/pricing/_Hero.svelte';
   import Quote from './components/pricing/_Quote.svelte';
   import FAQs from './components/pricing/_FAQs.svelte';
@@ -23,14 +22,12 @@
   <Layout>
     <Hero
       eventTicket="{$state.context.eventTicket}"
-      membership="{$state.context.membership}"
-    />
+      membership="{$state.context.membership}" />
     <Quote />
     <PricingCore
       eventTicket="{$state.context.eventTicket}"
-      membership="{$state.context.membership}"
-    />
-    <LogoCloud />
+      membership="{$state.context.membership}" />
+
     <FAQs />
     <NotReady />
   </Layout>
