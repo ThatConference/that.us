@@ -1,5 +1,5 @@
 <script>
-  import FAQS from '../../../../components/faq/_FAQs.svelte';
+  import FAQS from '../../../components/faq/_FAQs.svelte';
 
   const faqs = [
     {
@@ -30,4 +30,6 @@
   ];
 </script>
 
-<FAQS faqs="{faqs}" />
+<div class="">
+  <FAQS faqs="{faqs}" />
+</div>

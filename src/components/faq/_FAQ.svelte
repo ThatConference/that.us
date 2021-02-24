@@ -2,7 +2,7 @@
   export let q;
   export let a;
 
-  import { Chevron } from '../../../../elements/svgs';
+  import { Chevron } from '../../elements/svgs';
 
   let userClicked = false;
 </script>
@@ -10,8 +10,7 @@
 <dt class="text-lg">
   <button
     class="text-left w-full flex justify-between items-start text-gray-400"
-    on:click|preventDefault="{() => (userClicked = !userClicked)}"
-  >
+    on:click|preventDefault="{() => (userClicked = !userClicked)}">
     <span class="font-medium text-gray-900">{q}</span>
     <span class="ml-6 h-7 flex items-center">
       <Chevron open="{userClicked}" />
