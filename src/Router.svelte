@@ -14,7 +14,6 @@
   import Login from './routes/Login.svelte';
   import LoginSuccess from './routes/LoginSuccess.svelte';
   import Logout from './routes/Logout.svelte';
-  import FAQ from './routes/support/FAQ.svelte';
   import Partners from './routes/partners/Partners.svelte';
   import Partner from './routes/partners/Partner.svelte';
   import Members from './routes/members/Members.svelte';
@@ -22,6 +21,7 @@
   import NotFound from './routes/NotFound.svelte';
 
   // support
+  import FaqPage from './routes/support/FAQ.svelte';
   import NewUserWelcome from './routes/support/Welcome.svelte';
   import WhatIsAnActivity from './routes/support/WhatIsAnActivity.svelte';
   import JoiningAnActivity from './routes/support/JoiningAnActivity.svelte';
@@ -98,7 +98,8 @@
   </Router>
 
   <Router path='/support'>
-    <Route exact path="/faq" component="{FAQ}" />
+    <Route exact redirect="/support/welcome" />
+    <Route exact path="/faq" component="{FaqPage}" />
     <Route exact path="/welcome" component="{NewUserWelcome}" />
     <Route exact path="/what-is-an-activity" component="{WhatIsAnActivity}" />
     <Route exact path="/joining-an-activity" component="{JoiningAnActivity}" />
