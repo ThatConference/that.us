@@ -10,6 +10,8 @@
   import { Standard as StandardButton } from '../../../elements/buttons';
   import { Check } from '../../../elements/svgs';
 
+  import ActivityTypes from './_ActivityTypes.svelte';
+
   const ticket = event.products
     .filter(f => f.isEnabled)
     .find(e => e.productType === 'TICKET');
@@ -174,11 +176,15 @@
 
     <div class="relative mt-12 sm:mt-16 lg:mt-24">
       <div
-        class="px-4 lg:grid lg:grid-flow-row-dense lg:grid-cols-2 lg:gap-8 lg:items-center">
-        <div class="lg:col-start-2">
+        class="px-4 lg:grid lg:grid-flow-row-dense lg:grid-cols-2 lg:gap-12 lg:items-center">
+        <div class="mt-10 relative lg:mt-0 lg:col-start-1">
+          <ActivityTypes />
+        </div>
+
+        <div class="mt-24 lg:mt-0 relative lg:ml-14 lg:col-start-2">
           <h3
             class="text-2xl font-extrabold text-thatBlue-800 tracking-tight sm:text-3xl">
-            Always in the loop
+            A platform designed to support us
           </h3>
           <p class="mt-3 text-lg text-gray-500">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit ex
@@ -191,26 +197,12 @@
               <div class="flex-shrink-0">
                 <div
                   class="flex items-center justify-center h-12 w-12 rounded-md bg-thatOrange-400 text-white">
-                  <!-- Heroicon name: outline/annotation -->
-                  <svg
-                    class="h-6 w-6"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    aria-hidden="true">
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"
-                    ></path>
-                  </svg>
+                  <Icon data="{commentsO}" class="h-8 w-8" />
                 </div>
               </div>
               <div class="ml-4">
                 <dt class="text-lg leading-6 font-medium text-gray-900">
-                  Mobile notifications
+                  We're all speakers
                 </dt>
                 <dd class="mt-2 text-base text-gray-500">
                   Lorem ipsum, dolor sit amet consectetur adipisicing elit.
@@ -224,72 +216,19 @@
               <div class="flex-shrink-0">
                 <div
                   class="flex items-center justify-center h-12 w-12 rounded-md bg-thatOrange-400 text-white">
-                  <!-- Heroicon name: outline/mail -->
-                  <svg
-                    class="h-6 w-6"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    aria-hidden="true">
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                    ></path>
-                  </svg>
+                  <Icon data="{hashtag}" class="h-8 w-8" />
                 </div>
               </div>
               <div class="ml-4">
                 <dt class="text-lg leading-6 font-medium text-gray-900">
-                  Reminder emails
+                  Any Topic, Any Format
                 </dt>
                 <dd class="mt-2 text-base text-gray-500">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Maiores impedit perferendis suscipit eaque, iste dolor
-                  cupiditate blanditiis ratione.
+                  Why should you be limited to...
                 </dd>
               </div>
             </div>
           </dl>
-        </div>
-
-        <div class="mt-10 -mx-4 relative lg:mt-0 lg:col-start-1">
-          <svg
-            class="absolute left-1/2 transform -translate-x-1/2 translate-y-16 lg:hidden"
-            width="784"
-            height="404"
-            fill="none"
-            viewBox="0 0 784 404"
-            aria-hidden="true">
-            <defs>
-              <pattern
-                id="e80155a9-dfde-425a-b5ea-1f6fadd20131"
-                x="0"
-                y="0"
-                width="20"
-                height="20"
-                patternUnits="userSpaceOnUse">
-                <rect
-                  x="0"
-                  y="0"
-                  width="4"
-                  height="4"
-                  class="text-gray-200"
-                  fill="currentColor"></rect>
-              </pattern>
-            </defs>
-            <rect
-              width="784"
-              height="404"
-              fill="url(#e80155a9-dfde-425a-b5ea-1f6fadd20131)"></rect>
-          </svg>
-          <img
-            class="relative mx-auto"
-            width="490"
-            src="https://tailwindui.com/img/features/feature-example-2.png"
-            alt="" />
         </div>
       </div>
     </div>
