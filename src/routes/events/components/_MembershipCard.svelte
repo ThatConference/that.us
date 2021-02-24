@@ -21,18 +21,19 @@
       <div class="text-center">
         <h2
           class="text-3xl font-extrabold text-thatBlue-800 sm:text-4xl lg:text-5xl">
-          Simple no-tricks pricing
+          Support Us, Supporting You.
         </h2>
         <p class="mt-4 text-xl text-gray-600">
-          If you're not satisfied, contact us within the first 14 days and we'll
-          send you a full refund.
+          We could create a free platform, but then we'd have to monitize your
+          data. To that we say, no thank you. Rather we're taking the approach
+          of creating a monitization strategy of help us, help you.
         </p>
       </div>
     </div>
   </div>
-  <div class="mt-8 bg-gray-50 pb-16 sm:mt-12 sm:pb-20 lg:pb-28">
+  <div class="mt-8 pb-16 sm:mt-12 sm:pb-20 lg:pb-28">
     <div class="relative">
-      <div class="absolute inset-0 h-1/2 bg-thatBlue-100 bg-opacity-25"></div>
+      <div class="absolute inset-0 h-1/2"></div>
       <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div
           class="max-w-lg mx-auto rounded-lg shadow-lg overflow-hidden lg:max-w-none lg:flex">
@@ -41,9 +42,13 @@
               THAT Membership
             </h3>
             <p class="mt-6 text-base text-gray-500">
-              Lorem ipsum dolor sit amet consect etur adipisicing elit. Itaque
-              amet indis perferendis blanditiis repellendus etur quidem
-              assumenda.
+              Includes every online event, every feature and even a discount to
+              <span class="px:2 text-that-orange hover:text-thatOrange-500">
+                <Link href="https://thatconference.com?utm_source=THAT">
+                  THAT Conference
+                </Link>
+              </span>
+              while helping us manage our yearly budget.
             </p>
             <div class="mt-8">
               <div class="flex items-center">
