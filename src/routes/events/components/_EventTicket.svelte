@@ -4,7 +4,13 @@
   import dayjs from 'dayjs';
 
   import Icon from 'svelte-awesome';
-  import { commentsO, hashtag, codeFork } from 'svelte-awesome/icons';
+  import {
+    commentsO,
+    hashtag,
+    clockO,
+    desktop,
+    users,
+  } from 'svelte-awesome/icons';
 
   import { createEventDispatcher } from 'svelte';
   import { Standard as StandardButton } from '../../../elements/buttons';
@@ -24,10 +30,17 @@
     <div class="relative">
       <h2
         class="text-center text-3xl leading-8 font-extrabold tracking-tight text-thatBlue-800 sm:text-4xl">
-        This isn't just another online event
+        An online event designed for interaction
       </h2>
-      <p class="mt-4 max-w-3xl mx-auto text-center text-xl text-gray-500">
-        {event.description}
+      <p class="mt-6 max-w-5xl mx-auto text-center text-xl text-gray-500">
+        We created THAT to fill a gap between the times when we cannot
+        physically connect. We believe peer to peer learning is one of the most
+        powerful ways we can help one another any day of the year.
+      </p>
+
+      <p class="mt-8 max-w-4xl mx-auto text-center text-xl text-gray-500">
+        Each and every month we bring everyone together to recenter, and
+        recharge.
       </p>
     </div>
 
@@ -36,13 +49,12 @@
       <div class="relative">
         <h3
           class="text-2xl font-extrabold text-thatBlue-800 tracking-tight sm:text-3xl">
-          A format that support interaction
+          Built to support the practitioners
         </h3>
         <p class="mt-3 text-lg text-gray-500">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur
-          minima sequi recusandae, porro maiores officia assumenda aliquam
-          laborum ab aliquid veritatis impedit odit adipisci optio iste
-          blanditiis facere. Totam, velit.
+          We created THAT to fill a gap between the times when we cannot
+          physically connect. We believe peer to peer learning is one of the
+          most powerful ways we can help one another any day of the year.
         </p>
 
         <dl class="mt-10 space-y-10">
@@ -50,16 +62,16 @@
             <div class="flex-shrink-0">
               <div
                 class="flex items-center justify-center h-12 w-12 rounded-md bg-thatOrange-400 text-white">
-                <Icon data="{commentsO}" class="h-8 w-8" />
+                <Icon data="{clockO}" class="h-8 w-8" />
               </div>
             </div>
             <div class="ml-4">
               <dt class="text-lg leading-6 font-medium text-gray-900">
-                We're all speakers
+                24 hours long, each and every time zone.
               </dt>
               <dd class="mt-2 text-base text-gray-500">
-                Everyone on of us has something we can offer. Our experiences
-                help define us, sharing those help us all grow.
+                We know you're busy. Rather than complicate your schedule, we're
+                creating an opportunity to get involved when it works for your.
               </dd>
             </div>
           </div>
@@ -68,15 +80,17 @@
             <div class="flex-shrink-0">
               <div
                 class="flex items-center justify-center h-12 w-12 rounded-md bg-thatOrange-400 text-white">
-                <Icon data="{hashtag}" class="h-8 w-8" />
+                <Icon data="{desktop}" class="h-8 w-8" />
               </div>
             </div>
             <div class="ml-4">
               <dt class="text-lg leading-6 font-medium text-gray-900">
-                Any Topic
+                Audio or video and even your desktop.
               </dt>
               <dd class="mt-2 text-base text-gray-500">
-                Tech moves fast. Really fast.
+                Sometimes all you need is a short conversation and other times
+                you want to share your screen and dive deep into code. We're
+                here to support you, your topic in the best way possible.
               </dd>
             </div>
           </div>
@@ -85,17 +99,17 @@
             <div class="flex-shrink-0">
               <div
                 class="flex items-center justify-center h-12 w-12 rounded-md bg-thatOrange-400 text-white">
-                <Icon data="{codeFork}" class="h-8 w-8" />
+                <Icon data="{users}" class="h-8 w-8" />
               </div>
             </div>
             <div class="ml-4">
               <dt class="text-lg leading-6 font-medium text-gray-900">
-                Any Format
+                Grow your network
               </dt>
               <dd class="mt-2 text-base text-gray-500">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Maiores impedit perferendis suscipit eaque, iste dolor
-                cupiditate blanditiis ratione.
+                THAT is a community, not just an event. Events are a reunion,
+                the platform connects us, and the converastion happens every
+                day, 365 days a year.
               </dd>
             </div>
           </div>
@@ -117,7 +131,7 @@
               <div class="mt-4 flex items-baseline text-6xl font-extrabold">
                 ${ticket.price}
                 <span class="ml-1 text-2xl font-medium text-gray-500">
-                  usd
+                  USD
                 </span>
               </div>
               <p class="mt-5 text-lg text-gray-500">
@@ -144,7 +158,7 @@
                     <Check />
                   </div>
                   <p class="ml-3 text-base text-gray-700">
-                    Create and Moderate Activities
+                    Create and Facilitate Activities
                   </p>
                 </li>
 
@@ -160,7 +174,7 @@
                     <Check />
                   </div>
                   <p class="ml-3 text-base text-gray-700">
-                    Supports Future Platform Growth
+                    Helps Support Future Platform Growth
                   </p>
                 </li>
               </ul>
@@ -187,9 +201,10 @@
             A platform designed to support us
           </h3>
           <p class="mt-3 text-lg text-gray-500">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit ex
-            obcaecati natus eligendi delectus, cum deleniti sunt in labore nihil
-            quod quibusdam expedita nemo.
+            Built to support you; the developer, tester, manager, thought
+            leader, entrepreneur, the true practitioner. Designed to help us all
+            support one other while growing together without the limitation of
+            time, format, or location.
           </p>
 
           <dl class="mt-10 space-y-10">
@@ -202,12 +217,13 @@
               </div>
               <div class="ml-4">
                 <dt class="text-lg leading-6 font-medium text-gray-900">
-                  We're all speakers
+                  We're all speakers, practitioners.
                 </dt>
                 <dd class="mt-2 text-base text-gray-500">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Maiores impedit perferendis suscipit eaque, iste dolor
-                  cupiditate blanditiis ratione.
+                  Do you have a specific technical question or looking to share
+                  an experience with others? Any one and everyone is welcome to
+                  submit, join, and participate in any activity that interests
+                  them.
                 </dd>
               </div>
             </div>
@@ -221,10 +237,13 @@
               </div>
               <div class="ml-4">
                 <dt class="text-lg leading-6 font-medium text-gray-900">
-                  Any Topic, Any Format
+                  Any Topic, Any Format.
                 </dt>
                 <dd class="mt-2 text-base text-gray-500">
-                  Why should you be limited to...
+                  Why create artificial limitations when we don't have to? You
+                  create the topics, not us. It's your participation that helps
+                  drive everyone's growth. It's our diversity that helps each of
+                  us be our best in all aspects of our work.
                 </dd>
               </div>
             </div>

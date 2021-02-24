@@ -1,20 +1,21 @@
 <script>
-export let eventTicket;
+  export let eventTicket;
 
-import { getContext } from 'svelte';
-import { navigateTo } from 'yrv';
+  import { getContext } from 'svelte';
+  import { navigateTo } from 'yrv';
 
-import { Standard as StandardButton } from '../../../../elements/buttons';
-import { login } from '../../../../utilities/security';
+  import { Standard as StandardButton } from '../../../../elements/buttons';
+  import { Check, Ban } from '../../../../elements/svgs';
+  import { login } from '../../../../utilities/security';
 
-const { send } = getContext('cart');
+  const { send } = getContext('cart');
 
-function handleAddEventTicketClick(quantity = 1) {
-  const isBulkPurchase = quantity > 1 ? true : false;
+  function handleAddEventTicketClick(quantity = 1) {
+    const isBulkPurchase = quantity > 1 ? true : false;
 
-  send('ADD_ITEM', { ...eventTicket, isBulkPurchase, quantity });
-  navigateTo('/orders/summary');
-}
+    send('ADD_ITEM', { ...eventTicket, isBulkPurchase, quantity });
+    navigateTo('/orders/summary');
+  }
 </script>
 
 <div class="mt-16">
@@ -23,10 +24,10 @@ function handleAddEventTicketClick(quantity = 1) {
       <h1 class="text-4xl font-extrabold sm:text-5xl sm:tracking-tight">
         Additional ways to get involved.
       </h1>
-      <p class="mt-5 text-xl">
+      <!-- <p class="mt-5 text-xl">
         Includes every online event, every feature and even a discount to THAT
         Conference.
-      </p>
+      </p> -->
     </div>
   </div>
 
@@ -56,89 +57,24 @@ function handleAddEventTicketClick(quantity = 1) {
               <ul class="space-y-4">
                 <li class="flex items-start">
                   <div class="flex-shrink-0">
-                    <!-- Heroicon name: check -->
-                    <svg
-                      class="h-6 w-6 text-green-500"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      aria-hidden="true">
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M5 13l4 4L19 7"></path>
-                    </svg>
+                    <Check />
                   </div>
-                  <p class="ml-3 text-base text-gray-700">
-                    Pariatur quod similique
-                  </p>
+                  <p class="ml-3 text-base text-gray-700">Join Activities</p>
                 </li>
 
                 <li class="flex items-start">
                   <div class="flex-shrink-0">
-                    <!-- Heroicon name: check -->
-                    <svg
-                      class="h-6 w-6 text-green-500"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      aria-hidden="true">
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M5 13l4 4L19 7"></path>
-                    </svg>
+                    <Check />
                   </div>
-                  <p class="ml-3 text-base text-gray-700">
-                    Sapiente libero doloribus modi nostrum
-                  </p>
+                  <p class="ml-3 text-base text-gray-700">Create Activities</p>
                 </li>
 
                 <li class="flex items-start">
                   <div class="flex-shrink-0">
-                    <!-- Heroicon name: check -->
-                    <svg
-                      class="h-6 w-6 text-green-500"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      aria-hidden="true">
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M5 13l4 4L19 7"></path>
-                    </svg>
+                    <Ban />
                   </div>
                   <p class="ml-3 text-base text-gray-700">
-                    Vel ipsa esse repudiandae excepturi
-                  </p>
-                </li>
-
-                <li class="flex items-start">
-                  <div class="flex-shrink-0">
-                    <!-- Heroicon name: check -->
-                    <svg
-                      class="h-6 w-6 text-green-500"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      aria-hidden="true">
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M5 13l4 4L19 7"></path>
-                    </svg>
-                  </div>
-                  <p class="ml-3 text-base text-gray-700">
-                    Itaque cupiditate adipisci quibusdam
+                    Access to monthy event
                   </p>
                 </li>
               </ul>
@@ -161,7 +97,7 @@ function handleAddEventTicketClick(quantity = 1) {
               <div class="mt-4 flex items-baseline text-6xl font-extrabold">
                 ${eventTicket.price}
                 <span class="ml-1 text-2xl font-medium text-gray-500">
-                  /each event
+                  / each event
                 </span>
               </div>
               <p class="mt-5 text-lg text-gray-500">
@@ -173,94 +109,40 @@ function handleAddEventTicketClick(quantity = 1) {
               <ul class="space-y-4">
                 <li class="flex items-start">
                   <div class="flex-shrink-0">
-                    <!-- Heroicon name: check -->
-                    <svg
-                      class="h-6 w-6 text-green-500"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      aria-hidden="true">
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M5 13l4 4L19 7"></path>
-                    </svg>
+                    <Check />
                   </div>
                   <p class="ml-3 text-base text-gray-700">
-                    Pariatur quod similique
+                    Full Access All Day
                   </p>
                 </li>
 
                 <li class="flex items-start">
                   <div class="flex-shrink-0">
-                    <!-- Heroicon name: check -->
-                    <svg
-                      class="h-6 w-6 text-green-500"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      aria-hidden="true">
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M5 13l4 4L19 7"></path>
-                    </svg>
+                    <Check />
                   </div>
                   <p class="ml-3 text-base text-gray-700">
-                    Sapiente libero doloribus modi nostrum
+                    Create and Facilitate Activities
                   </p>
                 </li>
 
                 <li class="flex items-start">
                   <div class="flex-shrink-0">
-                    <!-- Heroicon name: check -->
-                    <svg
-                      class="h-6 w-6 text-green-500"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      aria-hidden="true">
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M5 13l4 4L19 7"></path>
-                    </svg>
+                    <Check />
                   </div>
-                  <p class="ml-3 text-base text-gray-700">
-                    Vel ipsa esse repudiandae excepturi
-                  </p>
+                  <p class="ml-3 text-base text-gray-700">Join Any Activity</p>
                 </li>
 
                 <li class="flex items-start">
                   <div class="flex-shrink-0">
-                    <!-- Heroicon name: check -->
-                    <svg
-                      class="h-6 w-6 text-green-500"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      aria-hidden="true">
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M5 13l4 4L19 7"></path>
-                    </svg>
+                    <Check />
                   </div>
                   <p class="ml-3 text-base text-gray-700">
-                    Itaque cupiditate adipisci quibusdam
+                    Helps Support Future Platform Growth
                   </p>
                 </li>
               </ul>
               <StandardButton on:click="{() => handleAddEventTicketClick()}">
-                Add to Cart
+                Purchase Now
               </StandardButton>
             </div>
           </div>

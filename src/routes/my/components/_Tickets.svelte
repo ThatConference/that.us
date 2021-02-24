@@ -35,11 +35,6 @@
 <div>
   <header>
     <h2 class="text-xl leading-6 font-bold text-gray-900">Event Tickets</h2>
-
-    <p class="mt-4 text-sm leading-5 text-gray-500">
-      Bacon ipsum dolor amet meatloaf tongue pork belly filet mignon ground
-      round boudin meatball swine pork.
-    </p>
   </header>
 
   {#if ['init'].some($state.matches)}

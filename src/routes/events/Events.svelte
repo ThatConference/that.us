@@ -49,7 +49,7 @@
             <div class="px-8">
               {#await queryEvents()}
                 <div class="w-full flex flex-col items-center justify-center">
-                  <CardLoader />
+                  <CardLoader showHeader="{false}" />
                 </div>
               {:then events}
                 <div class="relative mx-auto">
