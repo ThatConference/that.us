@@ -3,12 +3,16 @@
 
   import dayjs from 'dayjs';
 
+  import Icon from 'svelte-awesome';
+  import { commentsO, hashtag, codeFork } from 'svelte-awesome/icons';
+
   import { createEventDispatcher } from 'svelte';
   import { Standard as StandardButton } from '../../../elements/buttons';
+  import { Check } from '../../../elements/svgs';
 
   const ticket = event.products
     .filter(f => f.isEnabled)
-    .find(e => e.ticketType === 'TICKET');
+    .find(e => e.productType === 'TICKET');
 
   const dispatch = createEventDispatcher();
 </script>
@@ -18,11 +22,10 @@
     <div class="relative">
       <h2
         class="text-center text-3xl leading-8 font-extrabold tracking-tight text-thatBlue-800 sm:text-4xl">
-        A better way to help one another
+        This isn't just another online event
       </h2>
       <p class="mt-4 max-w-3xl mx-auto text-center text-xl text-gray-500">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus magnam
-        voluptatum cupiditate veritatis in, accusamus quisquam.
+        {event.description}
       </p>
     </div>
 
@@ -30,8 +33,8 @@
       class="relative mt-12 lg:mt-24 lg:grid lg:grid-cols-2 lg:gap-12 lg:items-center">
       <div class="relative">
         <h3
-          class="text-2xl font-extrabold text-gray-900 tracking-tight sm:text-3xl">
-          Different on purpose
+          class="text-2xl font-extrabold text-thatBlue-800 tracking-tight sm:text-3xl">
+          A format that support interaction
         </h3>
         <p class="mt-3 text-lg text-gray-500">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur
@@ -44,32 +47,17 @@
           <div class="flex">
             <div class="flex-shrink-0">
               <div
-                class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
-                <!-- Heroicon name: outline/globe-alt -->
-                <svg
-                  class="h-6 w-6"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  aria-hidden="true">
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
-                  ></path>
-                </svg>
+                class="flex items-center justify-center h-12 w-12 rounded-md bg-thatOrange-400 text-white">
+                <Icon data="{commentsO}" class="h-8 w-8" />
               </div>
             </div>
             <div class="ml-4">
               <dt class="text-lg leading-6 font-medium text-gray-900">
-                Competitive exchange rates
+                We're all speakers
               </dt>
               <dd class="mt-2 text-base text-gray-500">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Maiores impedit perferendis suscipit eaque, iste dolor
-                cupiditate blanditiis ratione.
+                Everyone on of us has something we can offer. Our experiences
+                help define us, sharing those help us all grow.
               </dd>
             </div>
           </div>
@@ -77,32 +65,16 @@
           <div class="flex">
             <div class="flex-shrink-0">
               <div
-                class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
-                <!-- Heroicon name: outline/scale -->
-                <svg
-                  class="h-6 w-6"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  aria-hidden="true">
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"
-                  ></path>
-                </svg>
+                class="flex items-center justify-center h-12 w-12 rounded-md bg-thatOrange-400 text-white">
+                <Icon data="{hashtag}" class="h-8 w-8" />
               </div>
             </div>
             <div class="ml-4">
               <dt class="text-lg leading-6 font-medium text-gray-900">
-                No hidden fees
+                Any Topic
               </dt>
               <dd class="mt-2 text-base text-gray-500">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Maiores impedit perferendis suscipit eaque, iste dolor
-                cupiditate blanditiis ratione.
+                Tech moves fast. Really fast.
               </dd>
             </div>
           </div>
@@ -110,26 +82,13 @@
           <div class="flex">
             <div class="flex-shrink-0">
               <div
-                class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
-                <!-- Heroicon name: outline/lightning-bolt -->
-                <svg
-                  class="h-6 w-6"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  aria-hidden="true">
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                </svg>
+                class="flex items-center justify-center h-12 w-12 rounded-md bg-thatOrange-400 text-white">
+                <Icon data="{codeFork}" class="h-8 w-8" />
               </div>
             </div>
             <div class="ml-4">
               <dt class="text-lg leading-6 font-medium text-gray-900">
-                Transfers are instant
+                Any Format
               </dt>
               <dd class="mt-2 text-base text-gray-500">
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit.
@@ -163,7 +122,7 @@
                 {event.name}
               </p>
               <p class="text-lg text-gray-500">
-                {dayjs(event.startDate).format('dddd MMMM D, YYYY')}
+                {dayjs(event.startDate).format('dddd MMMM D, YYYY - h:mm A')}
               </p>
             </div>
             <div
@@ -171,89 +130,35 @@
               <ul class="space-y-4">
                 <li class="flex items-start">
                   <div class="flex-shrink-0">
-                    <!-- Heroicon name: check -->
-                    <svg
-                      class="h-6 w-6 text-green-500"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      aria-hidden="true">
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M5 13l4 4L19 7"></path>
-                    </svg>
+                    <Check />
                   </div>
                   <p class="ml-3 text-base text-gray-700">
-                    Pariatur quod similique
+                    Full Access All Day
                   </p>
                 </li>
 
                 <li class="flex items-start">
                   <div class="flex-shrink-0">
-                    <!-- Heroicon name: check -->
-                    <svg
-                      class="h-6 w-6 text-green-500"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      aria-hidden="true">
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M5 13l4 4L19 7"></path>
-                    </svg>
+                    <Check />
                   </div>
                   <p class="ml-3 text-base text-gray-700">
-                    Sapiente libero doloribus modi nostrum
+                    Create and Moderate Activities
                   </p>
                 </li>
 
                 <li class="flex items-start">
                   <div class="flex-shrink-0">
-                    <!-- Heroicon name: check -->
-                    <svg
-                      class="h-6 w-6 text-green-500"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      aria-hidden="true">
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M5 13l4 4L19 7"></path>
-                    </svg>
+                    <Check />
                   </div>
-                  <p class="ml-3 text-base text-gray-700">
-                    Vel ipsa esse repudiandae excepturi
-                  </p>
+                  <p class="ml-3 text-base text-gray-700">Join Any Activity</p>
                 </li>
 
                 <li class="flex items-start">
                   <div class="flex-shrink-0">
-                    <!-- Heroicon name: check -->
-                    <svg
-                      class="h-6 w-6 text-green-500"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      aria-hidden="true">
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M5 13l4 4L19 7"></path>
-                    </svg>
+                    <Check />
                   </div>
                   <p class="ml-3 text-base text-gray-700">
-                    Itaque cupiditate adipisci quibusdam
+                    Supports Future Platform Growth
                   </p>
                 </li>
               </ul>
@@ -272,7 +177,7 @@
         class="px-4 lg:grid lg:grid-flow-row-dense lg:grid-cols-2 lg:gap-8 lg:items-center">
         <div class="lg:col-start-2">
           <h3
-            class="text-2xl font-extrabold text-gray-900 tracking-tight sm:text-3xl">
+            class="text-2xl font-extrabold text-thatBlue-800 tracking-tight sm:text-3xl">
             Always in the loop
           </h3>
           <p class="mt-3 text-lg text-gray-500">
@@ -285,7 +190,7 @@
             <div class="flex">
               <div class="flex-shrink-0">
                 <div
-                  class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
+                  class="flex items-center justify-center h-12 w-12 rounded-md bg-thatOrange-400 text-white">
                   <!-- Heroicon name: outline/annotation -->
                   <svg
                     class="h-6 w-6"
@@ -318,7 +223,7 @@
             <div class="flex">
               <div class="flex-shrink-0">
                 <div
-                  class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
+                  class="flex items-center justify-center h-12 w-12 rounded-md bg-thatOrange-400 text-white">
                   <!-- Heroicon name: outline/mail -->
                   <svg
                     class="h-6 w-6"

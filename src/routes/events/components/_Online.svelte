@@ -19,13 +19,25 @@
   import OnlineHero from './_OnlineHero.svelte';
   import EventFollowers from './_EventFollowers.svelte';
   import EventTicket from './_EventTicket.svelte';
+  import FAQ from './_FAQ.svelte';
+  import Membership from './_MembershipCard.svelte';
 
   const { send } = getContext('cart');
 
   function handleAddEventTicketClick(eventId, eventProducts, quantity = 1) {
     const eventTicket = eventProducts
       .filter(f => f.isEnabled)
-      .find(e => e.ticketType === 'TICKET');
+      .find(e => e.productType === 'TICKET');
+    const isBulkPurchase = quantity > 1 ? true : false;
+
+    send('ADD_ITEM', { eventId, ...eventTicket, isBulkPurchase, quantity });
+    navigateTo('/orders/summary');
+  }
+
+  function handleAddMembershipClick(eventId, eventProducts, quantity = 1) {
+    const eventTicket = eventProducts
+      .filter(f => f.isEnabled)
+      .find(e => e.productType === 'MEMBERSHIP');
     const isBulkPurchase = quantity > 1 ? true : false;
 
     send('ADD_ITEM', { eventId, ...eventTicket, isBulkPurchase, quantity });
@@ -50,6 +62,13 @@
       event="{event}"
       on:purchase-event-ticket="{() =>
         handleAddEventTicketClick(event.id, event.products)}" />
+  </section>
+
+  <section in:fade="{{ delay: 250 }}">
+    <Membership
+      event="{event}"
+      on:purchase-membership="{() =>
+        handleAddMembershipClick(event.id, event.products)}" />
   </section>
 
   <section>
@@ -100,5 +119,9 @@
         View all Partners
       </StandardLink>
     </div>
+  </section>
+
+  <section>
+    <FAQ />
   </section>
 </Layout>
