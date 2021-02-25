@@ -117,7 +117,7 @@
         </a>
       </div>
 
-      <StandardLink href="/partners/{event.slug}">
+      <StandardLink href="/events/{event.slug}/partners">
         View all Partners
       </StandardLink>
     </div>
