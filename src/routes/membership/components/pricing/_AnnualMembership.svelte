@@ -40,11 +40,11 @@
         class="text-base font-semibold text-thatOrange-400 tracking-wide uppercase">
         A Peer to Peer Learning System
       </h2>
-      <p class="mt-2 text-3xl font-extrabold">Supprting Our Future</p>
+      <p class="mt-2 text-3xl font-extrabold">Supporting Our Future</p>
       <p class="mt-4 text-lg">
-        Why create a membership? It helps us support future platform grown and
+        Why create a membership? It helps us support future platform growth and
         better manage a yearly budget. It allows us to focus more time on
-        creating a better platform for all us use to use everyday.
+        creating a better platform for all of us to use everyday.
       </p>
     </div>
     <div
@@ -58,18 +58,18 @@
         <li class="py-4 flex">
           <Check />
           <span class="ml-3 text-base"
-            >$50 off 1 THAT Conference Camper Ticket</span>
+            >$50 off 1 THAT Conference Camper ticket</span>
         </li>
 
         <li class="py-4 flex">
           <Check />
-          <span class="ml-3 text-base">10% off THAT Store Merchandise</span>
+          <span class="ml-3 text-base">10% off THAT Store merchandise</span>
         </li>
 
         <li class="py-4 flex">
           <Check />
           <span class="ml-3 text-base">
-            Yearly Commitment, Automatic Renewal
+            Yearly commitment, automatic renewal
           </span>
         </li>
       </ul>
@@ -95,7 +95,7 @@
         <li class="py-4 flex">
           <Check />
           <span class="ml-3 text-base">
-            You're Supporting Future Platform Growth
+            Supporting future platform growth
           </span>
         </li>
       </ul>

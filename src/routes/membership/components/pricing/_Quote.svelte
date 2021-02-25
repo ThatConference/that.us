@@ -2,7 +2,7 @@
   import { Link } from 'yrv';
 </script>
 
-<div class="pt-16 lg:py-24">
+<div class="pt-16 lg:pt-24">
   <div class="pb-16 bg-that-grey lg:pb-0">
     <div class="lg:mx-auto lg:max-w-7xl flex flex-col items-center">
       <div class="transform -translate-y-32">
@@ -35,7 +35,7 @@
               </svg>
               <p class="mt-6 text-2xl font-medium text-white">
                 We believe there is a better way to help one another. I started
-                THAT over a decade ago with a simple goal is helping geeks help
+                THAT over a decade ago with a simple goal of helping geeks help
                 one another. My passion is people, communities, and helping one
                 another become a better human each and every day.
               </p>
@@ -48,19 +48,19 @@
               <p class="mt-6 text-2xl font-medium text-white">
                 Peer to peer learning is powerful, really powerful, our
                 experiences are invaluable. It doesn't matter who we are, we all
-                have a little something that could help someone. THAT.us was to
-                help us all connect with one another, seek help, when we need it
-                without waiting.
+                have a little something that could help someone. THAT.us was
+                created to help us all connect with one another, seek help, when
+                we need it without waiting.
               </p>
               <p class="mt-6 text-2xl font-medium text-white">
                 Real help, from real people, who care about seeing each other
                 succeed.
               </p>
             </div>
-            <footer class="mt-6">
-              <p class="text-base font-medium text-white">Welcome to THAT</p>
+            <footer class="mt-8">
+              <p class="text-2xl font-bold text-white">Welcome to THAT!</p>
               <Link
-                class="text-base font-medium text-thatOrange-400"
+                class="text-2xl font-bold text-thatOrange-400"
                 href="/members/clark">
                 Clark Sell
               </Link>

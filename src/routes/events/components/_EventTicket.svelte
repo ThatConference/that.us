@@ -38,9 +38,9 @@
         powerful ways we can help one another any day of the year.
       </p>
 
-      <p class="mt-8 max-w-4xl mx-auto text-center text-xl text-gray-500">
-        Each and every month we bring everyone together to recenter, and
-        recharge.
+      <p class="mt-8 max-w-3xl mx-auto text-center text-xl text-gray-500">
+        Each and every month we host THAT Online aimed at bringing us all
+        together to recenter, and recharge.
       </p>
     </div>
 
@@ -51,10 +51,12 @@
           class="text-2xl font-extrabold text-thatBlue-800 tracking-tight sm:text-3xl">
           Built to support the practitioners
         </h3>
+
         <p class="mt-3 text-lg text-gray-500">
-          We created THAT to fill a gap between the times when we cannot
-          physically connect. We believe peer to peer learning is one of the
-          most powerful ways we can help one another any day of the year.
+          Nothing will ever replace just talking with someone and learning from
+          each others experiences. Our problems are hard, they require context
+          and that's ok. This is why we've created a platform to connect people
+          in a more authentic way, true to peer to peer learning.
         </p>
 
         <dl class="mt-10 space-y-10">
@@ -71,7 +73,7 @@
               </dt>
               <dd class="mt-2 text-base text-gray-500">
                 We know you're busy. Rather than complicate your schedule, we're
-                creating an opportunity to get involved when it works for your.
+                creating an opportunity to get involved when it works for you.
               </dd>
             </div>
           </div>
@@ -104,11 +106,11 @@
             </div>
             <div class="ml-4">
               <dt class="text-lg leading-6 font-medium text-gray-900">
-                Grow your network
+                Grow your network.
               </dt>
               <dd class="mt-2 text-base text-gray-500">
                 THAT is a community, not just an event. Events are a reunion,
-                the platform connects us, and the converastion happens every
+                the platform connects us, and the conversation happens every
                 day, 365 days a year.
               </dd>
             </div>
@@ -237,7 +239,7 @@
               </div>
               <div class="ml-4">
                 <dt class="text-lg leading-6 font-medium text-gray-900">
-                  Any Topic, Any Format.
+                  Any topic, any format.
                 </dt>
                 <dd class="mt-2 text-base text-gray-500">
                   Why create artificial limitations when we don't have to? You
