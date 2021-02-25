@@ -1,6 +1,7 @@
 <script>
   import { useMachine } from 'xstate-svelte';
 
+  import { Logo } from '../../elements';
   import { debug } from '../../config';
   import currentEvent from '../../store/currentEvent';
 
@@ -24,6 +25,8 @@
       eventTicket="{$state.context.eventTicket}"
       membership="{$state.context.membership}" />
     <Quote />
+    <Logo height="40" uri="/images/THAT-Logo-Words.svg" />
+
     <PricingCore
       eventTicket="{$state.context.eventTicket}"
       membership="{$state.context.membership}" />

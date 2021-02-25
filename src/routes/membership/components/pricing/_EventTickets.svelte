@@ -74,7 +74,7 @@
                     <Ban />
                   </div>
                   <p class="ml-3 text-base text-gray-700">
-                    Access to monthy event
+                    Access to Monthly Event
                   </p>
                 </li>
               </ul>
