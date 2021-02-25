@@ -32,7 +32,7 @@
       network: 'TWITCH',
     },
     {
-      href: 'https://thatconference.com',
+      href: 'https://thatconference.com?utm_source=THAT',
       network: 'WEBSITE',
     },
   ];
@@ -71,30 +71,32 @@
   const legalLinks = [
     {
       text: 'Code of Conduct',
-      href: 'https://www.thatconference.com/code-of-conduct',
+      href: 'https://www.thatconference.com/code-of-conduct?utm_source=THAT',
     },
     {
       text: 'Commitment to Diversity',
-      href: 'https://www.thatconference.com/commitment-to-diversity',
+      href:
+        'https://www.thatconference.com/commitment-to-diversity?utm_source=THAT',
     },
     {
       text: 'Anti-Harassment Policy',
-      href: 'https://www.thatconference.com/anti-harassment-policy',
+      href:
+        'https://www.thatconference.com/anti-harassment-policy?utm_source=THAT',
     },
   ];
 
   const moreLegalLinks = [
     {
       text: 'Privacy',
-      href: 'https://www.thatconference.com/privacy-policy',
+      href: 'https://www.thatconference.com/privacy-policy?utm_source=THAT',
     },
     {
       text: 'Terms of Use',
-      href: 'https://www.thatconference.com/terms-of-use',
+      href: 'https://www.thatconference.com/terms-of-use?utm_source=THAT',
     },
     {
       text: 'Copyright Policy',
-      href: 'https://www.thatconference.com/copyright',
+      href: 'https://www.thatconference.com/copyright?utm_source=THAT',
     },
   ];
 </script>

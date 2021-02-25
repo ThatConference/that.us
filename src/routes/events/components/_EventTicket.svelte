@@ -3,12 +3,24 @@
 
   import dayjs from 'dayjs';
 
+  import Icon from 'svelte-awesome';
+  import {
+    commentsO,
+    hashtag,
+    clockO,
+    desktop,
+    users,
+  } from 'svelte-awesome/icons';
+
   import { createEventDispatcher } from 'svelte';
   import { Standard as StandardButton } from '../../../elements/buttons';
+  import { Check } from '../../../elements/svgs';
+
+  import ActivityTypes from './_ActivityTypes.svelte';
 
   const ticket = event.products
     .filter(f => f.isEnabled)
-    .find(e => e.ticketType === 'TICKET');
+    .find(e => e.productType === 'TICKET');
 
   const dispatch = createEventDispatcher();
 </script>
@@ -18,11 +30,17 @@
     <div class="relative">
       <h2
         class="text-center text-3xl leading-8 font-extrabold tracking-tight text-thatBlue-800 sm:text-4xl">
-        A better way to help one another
+        An online event designed for interaction
       </h2>
-      <p class="mt-4 max-w-3xl mx-auto text-center text-xl text-gray-500">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus magnam
-        voluptatum cupiditate veritatis in, accusamus quisquam.
+      <p class="mt-6 max-w-5xl mx-auto text-center text-xl text-gray-500">
+        We created THAT to fill a gap between the times when we cannot
+        physically connect. We believe peer to peer learning is one of the most
+        powerful ways we can help one another any day of the year.
+      </p>
+
+      <p class="mt-8 max-w-4xl mx-auto text-center text-xl text-gray-500">
+        Each and every month we bring everyone together to recenter, and
+        recharge.
       </p>
     </div>
 
@@ -30,46 +48,30 @@
       class="relative mt-12 lg:mt-24 lg:grid lg:grid-cols-2 lg:gap-12 lg:items-center">
       <div class="relative">
         <h3
-          class="text-2xl font-extrabold text-gray-900 tracking-tight sm:text-3xl">
-          Different on purpose
+          class="text-2xl font-extrabold text-thatBlue-800 tracking-tight sm:text-3xl">
+          Built to support the practitioners
         </h3>
         <p class="mt-3 text-lg text-gray-500">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur
-          minima sequi recusandae, porro maiores officia assumenda aliquam
-          laborum ab aliquid veritatis impedit odit adipisci optio iste
-          blanditiis facere. Totam, velit.
+          We created THAT to fill a gap between the times when we cannot
+          physically connect. We believe peer to peer learning is one of the
+          most powerful ways we can help one another any day of the year.
         </p>
 
         <dl class="mt-10 space-y-10">
           <div class="flex">
             <div class="flex-shrink-0">
               <div
-                class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
-                <!-- Heroicon name: outline/globe-alt -->
-                <svg
-                  class="h-6 w-6"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  aria-hidden="true">
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
-                  ></path>
-                </svg>
+                class="flex items-center justify-center h-12 w-12 rounded-md bg-thatOrange-400 text-white">
+                <Icon data="{clockO}" class="h-8 w-8" />
               </div>
             </div>
             <div class="ml-4">
               <dt class="text-lg leading-6 font-medium text-gray-900">
-                Competitive exchange rates
+                24 hours long, each and every time zone.
               </dt>
               <dd class="mt-2 text-base text-gray-500">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Maiores impedit perferendis suscipit eaque, iste dolor
-                cupiditate blanditiis ratione.
+                We know you're busy. Rather than complicate your schedule, we're
+                creating an opportunity to get involved when it works for your.
               </dd>
             </div>
           </div>
@@ -77,32 +79,18 @@
           <div class="flex">
             <div class="flex-shrink-0">
               <div
-                class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
-                <!-- Heroicon name: outline/scale -->
-                <svg
-                  class="h-6 w-6"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  aria-hidden="true">
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"
-                  ></path>
-                </svg>
+                class="flex items-center justify-center h-12 w-12 rounded-md bg-thatOrange-400 text-white">
+                <Icon data="{desktop}" class="h-8 w-8" />
               </div>
             </div>
             <div class="ml-4">
               <dt class="text-lg leading-6 font-medium text-gray-900">
-                No hidden fees
+                Audio or video and even your desktop.
               </dt>
               <dd class="mt-2 text-base text-gray-500">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Maiores impedit perferendis suscipit eaque, iste dolor
-                cupiditate blanditiis ratione.
+                Sometimes all you need is a short conversation and other times
+                you want to share your screen and dive deep into code. We're
+                here to support you, your topic in the best way possible.
               </dd>
             </div>
           </div>
@@ -110,31 +98,18 @@
           <div class="flex">
             <div class="flex-shrink-0">
               <div
-                class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
-                <!-- Heroicon name: outline/lightning-bolt -->
-                <svg
-                  class="h-6 w-6"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  aria-hidden="true">
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                </svg>
+                class="flex items-center justify-center h-12 w-12 rounded-md bg-thatOrange-400 text-white">
+                <Icon data="{users}" class="h-8 w-8" />
               </div>
             </div>
             <div class="ml-4">
               <dt class="text-lg leading-6 font-medium text-gray-900">
-                Transfers are instant
+                Grow your network
               </dt>
               <dd class="mt-2 text-base text-gray-500">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Maiores impedit perferendis suscipit eaque, iste dolor
-                cupiditate blanditiis ratione.
+                THAT is a community, not just an event. Events are a reunion,
+                the platform connects us, and the converastion happens every
+                day, 365 days a year.
               </dd>
             </div>
           </div>
@@ -156,14 +131,14 @@
               <div class="mt-4 flex items-baseline text-6xl font-extrabold">
                 ${ticket.price}
                 <span class="ml-1 text-2xl font-medium text-gray-500">
-                  usd
+                  USD
                 </span>
               </div>
               <p class="mt-5 text-lg text-gray-500">
                 {event.name}
               </p>
               <p class="text-lg text-gray-500">
-                {dayjs(event.startDate).format('dddd MMMM D, YYYY')}
+                {dayjs(event.startDate).format('dddd MMMM D, YYYY - h:mm A')}
               </p>
             </div>
             <div
@@ -171,89 +146,35 @@
               <ul class="space-y-4">
                 <li class="flex items-start">
                   <div class="flex-shrink-0">
-                    <!-- Heroicon name: check -->
-                    <svg
-                      class="h-6 w-6 text-green-500"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      aria-hidden="true">
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M5 13l4 4L19 7"></path>
-                    </svg>
+                    <Check />
                   </div>
                   <p class="ml-3 text-base text-gray-700">
-                    Pariatur quod similique
+                    Full Access All Day
                   </p>
                 </li>
 
                 <li class="flex items-start">
                   <div class="flex-shrink-0">
-                    <!-- Heroicon name: check -->
-                    <svg
-                      class="h-6 w-6 text-green-500"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      aria-hidden="true">
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M5 13l4 4L19 7"></path>
-                    </svg>
+                    <Check />
                   </div>
                   <p class="ml-3 text-base text-gray-700">
-                    Sapiente libero doloribus modi nostrum
+                    Create and Facilitate Activities
                   </p>
                 </li>
 
                 <li class="flex items-start">
                   <div class="flex-shrink-0">
-                    <!-- Heroicon name: check -->
-                    <svg
-                      class="h-6 w-6 text-green-500"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      aria-hidden="true">
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M5 13l4 4L19 7"></path>
-                    </svg>
+                    <Check />
                   </div>
-                  <p class="ml-3 text-base text-gray-700">
-                    Vel ipsa esse repudiandae excepturi
-                  </p>
+                  <p class="ml-3 text-base text-gray-700">Join Any Activity</p>
                 </li>
 
                 <li class="flex items-start">
                   <div class="flex-shrink-0">
-                    <!-- Heroicon name: check -->
-                    <svg
-                      class="h-6 w-6 text-green-500"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      aria-hidden="true">
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M5 13l4 4L19 7"></path>
-                    </svg>
+                    <Check />
                   </div>
                   <p class="ml-3 text-base text-gray-700">
-                    Itaque cupiditate adipisci quibusdam
+                    Helps Support Future Platform Growth
                   </p>
                 </li>
               </ul>
@@ -269,48 +190,40 @@
 
     <div class="relative mt-12 sm:mt-16 lg:mt-24">
       <div
-        class="px-4 lg:grid lg:grid-flow-row-dense lg:grid-cols-2 lg:gap-8 lg:items-center">
-        <div class="lg:col-start-2">
+        class="px-4 lg:grid lg:grid-flow-row-dense lg:grid-cols-2 lg:gap-12 lg:items-center">
+        <div class="mt-10 relative lg:mt-0 lg:col-start-1">
+          <ActivityTypes />
+        </div>
+
+        <div class="mt-24 lg:mt-0 relative lg:ml-14 lg:col-start-2">
           <h3
-            class="text-2xl font-extrabold text-gray-900 tracking-tight sm:text-3xl">
-            Always in the loop
+            class="text-2xl font-extrabold text-thatBlue-800 tracking-tight sm:text-3xl">
+            A platform designed to support us
           </h3>
           <p class="mt-3 text-lg text-gray-500">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit ex
-            obcaecati natus eligendi delectus, cum deleniti sunt in labore nihil
-            quod quibusdam expedita nemo.
+            Built to support you; the developer, tester, manager, thought
+            leader, entrepreneur, the true practitioner. Designed to help us all
+            support one other while growing together without the limitation of
+            time, format, or location.
           </p>
 
           <dl class="mt-10 space-y-10">
             <div class="flex">
               <div class="flex-shrink-0">
                 <div
-                  class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
-                  <!-- Heroicon name: outline/annotation -->
-                  <svg
-                    class="h-6 w-6"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    aria-hidden="true">
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"
-                    ></path>
-                  </svg>
+                  class="flex items-center justify-center h-12 w-12 rounded-md bg-thatOrange-400 text-white">
+                  <Icon data="{commentsO}" class="h-8 w-8" />
                 </div>
               </div>
               <div class="ml-4">
                 <dt class="text-lg leading-6 font-medium text-gray-900">
-                  Mobile notifications
+                  We're all speakers, practitioners.
                 </dt>
                 <dd class="mt-2 text-base text-gray-500">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Maiores impedit perferendis suscipit eaque, iste dolor
-                  cupiditate blanditiis ratione.
+                  Do you have a specific technical question or looking to share
+                  an experience with others? Any one and everyone is welcome to
+                  submit, join, and participate in any activity that interests
+                  them.
                 </dd>
               </div>
             </div>
@@ -318,73 +231,23 @@
             <div class="flex">
               <div class="flex-shrink-0">
                 <div
-                  class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
-                  <!-- Heroicon name: outline/mail -->
-                  <svg
-                    class="h-6 w-6"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    aria-hidden="true">
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                    ></path>
-                  </svg>
+                  class="flex items-center justify-center h-12 w-12 rounded-md bg-thatOrange-400 text-white">
+                  <Icon data="{hashtag}" class="h-8 w-8" />
                 </div>
               </div>
               <div class="ml-4">
                 <dt class="text-lg leading-6 font-medium text-gray-900">
-                  Reminder emails
+                  Any Topic, Any Format.
                 </dt>
                 <dd class="mt-2 text-base text-gray-500">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Maiores impedit perferendis suscipit eaque, iste dolor
-                  cupiditate blanditiis ratione.
+                  Why create artificial limitations when we don't have to? You
+                  create the topics, not us. It's your participation that helps
+                  drive everyone's growth. It's our diversity that helps each of
+                  us be our best in all aspects of our work.
                 </dd>
               </div>
             </div>
           </dl>
-        </div>
-
-        <div class="mt-10 -mx-4 relative lg:mt-0 lg:col-start-1">
-          <svg
-            class="absolute left-1/2 transform -translate-x-1/2 translate-y-16 lg:hidden"
-            width="784"
-            height="404"
-            fill="none"
-            viewBox="0 0 784 404"
-            aria-hidden="true">
-            <defs>
-              <pattern
-                id="e80155a9-dfde-425a-b5ea-1f6fadd20131"
-                x="0"
-                y="0"
-                width="20"
-                height="20"
-                patternUnits="userSpaceOnUse">
-                <rect
-                  x="0"
-                  y="0"
-                  width="4"
-                  height="4"
-                  class="text-gray-200"
-                  fill="currentColor"></rect>
-              </pattern>
-            </defs>
-            <rect
-              width="784"
-              height="404"
-              fill="url(#e80155a9-dfde-425a-b5ea-1f6fadd20131)"></rect>
-          </svg>
-          <img
-            class="relative mx-auto"
-            width="490"
-            src="https://tailwindui.com/img/features/feature-example-2.png"
-            alt="" />
         </div>
       </div>
     </div>

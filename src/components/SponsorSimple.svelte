@@ -58,9 +58,14 @@
           {#each partners as p}
             <div
               class="col-span-1 flex justify-center md:col-span-2 lg:col-span-1">
-              <Link href="/partners/{p.slug}">
-                <img class="h-12" src="{p.companyLogo}" alt="{p.companyName}" />
-              </Link>
+              <div class="transform hover:scale-105">
+                <Link href="/partners/{p.slug}">
+                  <img
+                    class="h-12"
+                    src="{p.companyLogo}"
+                    alt="{p.companyName}" />
+                </Link>
+              </div>
             </div>
           {/each}
         </div>
