@@ -14,11 +14,15 @@
   import Login from './routes/Login.svelte';
   import LoginSuccess from './routes/LoginSuccess.svelte';
   import Logout from './routes/Logout.svelte';
-  import Partners from './routes/partners/Partners.svelte';
-  import Partner from './routes/partners/Partner.svelte';
+  import NotFound from './routes/NotFound.svelte';
+
+  // Members
   import Members from './routes/members/Members.svelte';
   import Member from './routes/members/Member.svelte';
-  import NotFound from './routes/NotFound.svelte';
+
+  // partners
+  import Partners from './routes/partners/Partners.svelte';
+  import Partner from './routes/partners/Partner.svelte';
 
   // support
   import FaqPage from './routes/support/FAQ.svelte';
@@ -57,6 +61,8 @@
   // Landing pages
   import Pricing from './routes/membership/Pricing.svelte';
 
+  // events
+  import EventPartners from './routes/partners/EventPartners.svelte';
   import EventList from './routes/events/Events.svelte';
   import EventLanding from './routes/events/Event.svelte';
 </script>
@@ -118,6 +124,7 @@
   <Router path="/events">
     <Route exact path="/" component="{EventList}" />
     <Route exact path="/:id/:name" component="{EventLanding}" />
+    <Route exact path="/:id/:name/partners" component="{EventPartners}" />
   </Router>
 
   <Router path="/my">
