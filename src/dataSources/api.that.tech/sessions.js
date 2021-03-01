@@ -94,19 +94,15 @@ export const QUERY_SESSION_BY_ID = `
 export const QUERY_SESSIONS = `
   ${coreSessionFields}
   ${coreSpeakerFields}
-  query QUERY_SESSIONS ($eventId: ID!, $pageSize: Int, $cursor: String) {
-    events {
-      event(findBy: { id: $eventId }) {
-        get {
-          sessions(pageSize: $pageSize, cursor: $cursor) {
-            cursor
-            count
-            sessions{
-              ...coreFields
-              speakers {
-                ...coreSpeakerFields
-              }
-            }
+  query QUERY_SESSIONS ($pageSize: Int, $cursor: String) {
+    sessions {
+      all(pageSize: $pageSize, cursor: $cursor) {
+        cursor
+        count
+        sessions{
+          ...coreFields
+          speakers {
+            ...coreSpeakerFields
           }
         }
       }
@@ -144,19 +140,15 @@ export const QUERY_SESSIONS_BY_SLUG = `
 export const QUERY_NEXT_SESSIONS = `
   ${coreSessionFields}
   ${coreSpeakerFields}
-  query QUERY_NEXT_SESSIONS ($eventId: ID!, $pageSize: Int, $cursor: String) {
-    events {
-      event (findBy: { id: $eventId }) {
-        get {
-          sessions (pageSize: $pageSize, cursor: $cursor) {
-            cursor
-            count
-            sessions {
-              ...coreFields
-              speakers {
-                ...coreSpeakerFields
-              }
-            }
+  query QUERY_NEXT_SESSIONS ($pageSize: Int, $cursor: String) {
+    sessions {
+      all (pageSize: $pageSize, cursor: $cursor) {
+        cursor
+        count
+        sessions {
+          ...coreFields
+          speakers {
+            ...coreSpeakerFields
           }
         }
       }
@@ -167,22 +159,14 @@ export const QUERY_NEXT_SESSIONS = `
 export const QUERY_SESSIONS_BY_DATE = `
   ${coreSessionFields}
   ${coreSpeakerFields}
-  query QUERY_SESSIONS_BY_DATE ($eventId: ID!, $asOfDate: Date, $pageSize: Int) {
-    events {
-      event (findBy: { id: $eventId }) {
-        get {
-          id
-          name
-          startDate
-          endDate
-          sessions (asOfDate: $asOfDate, status: ACCEPTED, pageSize: $pageSize) {
-            cursor
-            sessions {
-              ...coreFields
-              speakers {
-                ...coreSpeakerFields
-              }
-            }
+  query QUERY_SESSIONS_BY_DATE ($asOfDate: Date, $pageSize: Int) {
+    sessions {
+      all (asOfDate: $asOfDate, status: ACCEPTED, pageSize: $pageSize) {
+        cursor
+        sessions {
+          ...coreFields
+          speakers {
+            ...coreSpeakerFields
           }
         }
       }
@@ -193,19 +177,15 @@ export const QUERY_SESSIONS_BY_DATE = `
 export const QUERY_NEXT_SESSIONS_BY_DATE = `
   ${coreSessionFields}
   ${coreSpeakerFields}
-  query QUERY_NEXT_SESSIONS_BY_DATE ($eventId: ID!, $asOfDate: Date, $pageSize: Int, $cursor: String) {
-    events {
-      event(findBy: { id: $eventId }) {
-        get {
-          sessions(asOfDate: $asOfDate, status: ACCEPTED, pageSize: $pageSize, cursor: $cursor) {
-            cursor
-            sessions {
-              ...coreFields
-              speakers {
-                ...coreSpeakerFields
-              }
-            }
-          }
+  query QUERY_NEXT_SESSIONS_BY_DATE ($asOfDate: Date, $pageSize: Int, $cursor: String) {
+    sessions {
+      all(asOfDate: $asOfDate, status: ACCEPTED, pageSize: $pageSize, cursor: $cursor) {
+        cursor
+        sessions {
+          ...coreFields
+          speakers {
+            ...coreSpeakerFields
+          } 
         }
       }
     }
@@ -264,8 +244,8 @@ export default client => {
       .then(({ data, error }) => {
         if (error) log(error, 'query_sessions');
 
-        const { get } = data.events.event;
-        return get ? get.sessions : null;
+        const { all } = data.sessions;
+        return all || [];
       });
 
   const querySessions = ({ eventId, pageSize = 50 }) =>
@@ -294,31 +274,29 @@ export default client => {
       });
   };
 
-  const queryNextSessions = ({ eventId, pageSize = 50, cursor }) =>
-    query(QUERY_NEXT_SESSIONS, { eventId, pageSize, cursor });
+  const queryNextSessions = ({ pageSize = 50, cursor }) =>
+    query(QUERY_NEXT_SESSIONS, { pageSize, cursor });
 
   const querySessionsByDate = ({
-    eventId,
     pageSize = 50,
     asOfDate = dayjs().startOf('day'),
   }) =>
     query(
       QUERY_SESSIONS_BY_DATE,
-      { eventId, asOfDate, pageSize },
+      { asOfDate, pageSize },
       {
         fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
       },
     );
 
   const queryNextSessionsByDate = ({
-    eventId,
     cursor,
     pageSize = 50,
     asOfDate = dayjs().startOf('day'),
   }) =>
     query(
       QUERY_NEXT_SESSIONS_BY_DATE,
-      { eventId, asOfDate, pageSize, cursor },
+      { asOfDate, pageSize, cursor },
       {
         fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
       },

@@ -14,11 +14,9 @@ function createServices(client) {
     },
 
     services: {
-      load: context =>
-        querySessionsByDate({ eventId: context.meta.id, pageSize: 6 }),
+      load: () => querySessionsByDate({ pageSize: 6 }),
       loadNext: context =>
         queryNextSessionsByDate({
-          eventId: context.meta.id,
           pageSize: 6,
           cursor: context.cursor,
         }),
