@@ -17,10 +17,8 @@ function createServices() {
     },
 
     services: {
-      load: context =>
-        querySessionsByDate({ eventId: context.eventId, pageSize: 75 }),
-      loadNext: context =>
-        queryNextSessions({ eventId: context.eventId, cursor: context.cursor }),
+      load: () => querySessionsByDate({ pageSize: 75 }),
+      loadNext: context => queryNextSessions({ cursor: context.cursor }),
     },
 
     actions: {
