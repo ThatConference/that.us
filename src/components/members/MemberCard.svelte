@@ -20,30 +20,26 @@
 
 <Link href="/members/{profileSlug}">
   <div
-    class="h-full text-center bg-white rounded-lg shadow transform hover:scale-110 hover:bg-that-offWhite "
-  >
+    class="h-full text-center bg-white rounded-lg shadow transform hover:scale-110 hover:bg-gray-100 ">
     <div class="p-4 flex flex-col">
       <div>
         <span class="inline-block relative">
           <img
             class="w-32 h-32 flex-shrink-0 mx-auto rounded-full"
             src="{userProfileImage}"
-            alt=""
-          />
+            alt="" />
 
           {#if earnedMeritBadges.length > 0}
             <span class="absolute bottom-0 left-0 block h-12 w-12">
               <img
                 src="{earnedMeritBadges[0].image}"
-                alt="{earnedMeritBadges[0].name}"
-              />
+                alt="{earnedMeritBadges[0].name}" />
             </span>
           {/if}
         </span>
 
         <h3
-          class="mt-4 text-gray-500 text-md font-bold tracking-tight leading-5"
-        >
+          class="mt-4 text-gray-500 text-md font-bold tracking-tight leading-5">
           {`${firstName} ${lastName}`}
         </h3>
       </div>
