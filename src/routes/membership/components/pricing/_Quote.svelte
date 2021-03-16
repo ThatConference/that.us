@@ -37,19 +37,19 @@
                 We believe there is a better way to help one another. I started
                 THAT over a decade ago with a simple goal of helping geeks help
                 one another. My passion is people, communities, and helping one
-                another become a better human each and every day.
+                another become a better human every day.
               </p>
               <p class="mt-6 text-2xl font-medium text-white">
                 Our mission is simple, create an interactive platform both
-                online and in person connecting Geeks and Geeklings across the
+                online and in-person connecting Geeks and Geeklings across the
                 globe. We shouldn't be artificially limited by time, space,
-                topic or even a format.
+                topic, or even a format.
               </p>
               <p class="mt-6 text-2xl font-medium text-white">
-                Peer to peer learning is powerful, really powerful, our
+                Peer-to-peer learning is powerful, really powerful, our
                 experiences are invaluable. It doesn't matter who we are, we all
                 have a little something that could help someone. THAT.us was
-                created to help us all connect with one another, seek help, when
+                created to help us all connect with one another, seek help when
                 we need it without waiting.
               </p>
               <p class="mt-6 text-2xl font-medium text-white">

@@ -22,9 +22,10 @@
   }
 
   function handleAddEventTicketClick(quantity = 1) {
-    const isBulkPurchase = quantity > 1 ? true : false;
-    send('ADD_ITEM', { ...eventTicket, isBulkPurchase, quantity });
-    navigateTo('/orders/summary');
+    // const isBulkPurchase = quantity > 1 ? true : false;
+    // send('ADD_ITEM', { ...eventTicket, isBulkPurchase, quantity });
+    // navigateTo('/orders/summary');
+    navigateTo('/events');
   }
 </script>
 
@@ -40,7 +41,7 @@
         Our passion is people, communities, and helping one another become
         better than they were yesterday. We could create a free platform, but
         then you become the product. To that we say no thank you, we're the
-        product. We're taking the approach of creating a monitization strategy
+        product. We're taking the approach of creating a monetization strategy
         of help us, help you.
       </p>
     </div>
@@ -66,9 +67,7 @@
                       <span
                         class="px-3 flex items-start text-6xl tracking-tight text-gray-900">
                         <span class="mt-2 mr-2 text-4xl font-medium"> $ </span>
-                        <span class="font-extrabold">
-                          {eventTicket.price}
-                        </span>
+                        <span class="font-extrabold"> 15 </span>
                       </span>
                       <span class="text-xl font-medium text-gray-500">
                         / per event
@@ -110,7 +109,7 @@
                     <div class="flex flex-col">
                       <StandardButton
                         on:click="{() => handleAddEventTicketClick()}">
-                        Purchase
+                        Upcoming Events
                       </StandardButton>
                     </div>
                   </div>
