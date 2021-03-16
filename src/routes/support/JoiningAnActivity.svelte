@@ -28,9 +28,9 @@
         button enables itself 5 minutes before the scheduled start time and will
         remain active for the duration of the activity. THAT works in any browser
         and you just need to enable your webcam and microphone. We do require everyone
-        to login before joining any Activity. You're mic will always be muted by
-        default and your camera will be enabled. Activites are currently limited
-        to 100 concurrent attendees.
+        to log in before joining any Activity. Your mic will always be muted by default
+        and your camera will be enabled. Activities are currently limited to 100
+        concurrent attendees.
       </p>
 
       <div class="transform scale-75 text-center">
@@ -38,8 +38,7 @@
           <img
             class="rounded-lg shadow"
             src="/images/ActivityJoinExample.jpg"
-            alt=""
-          />
+            alt="" />
           <figcaption>Example Activity: join on the bottom.</figcaption>
         </figure>
       </div>
@@ -63,7 +62,7 @@
         <li>
           Use care with humor. If you feel the need to use humor during
           meetings, make sure that it's appropriate for your audience. THAT
-          serves a global audience and sometimes while many speak English not
+          serves a global audience, and sometimes while many speak English not
           everything translates well.
         </li>
         <li>Keep your cool.</li>
@@ -73,8 +72,7 @@
 
     <div
       class="my-12 max-w-prose mx-auto lg:max-w-none flex flex-col items-center
-        justify-center"
-    >
+        justify-center">
       <div class="flex space-x-4 text-base">
         <StandardLink href="/support/what-is-an-activity">
           What Is An Activity

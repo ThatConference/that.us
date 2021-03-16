@@ -39,7 +39,7 @@
 
       <p>
         To create an Activity you first need to
-        <Link href="/login">login</Link>
+        <Link href="/login">log in</Link>
         if you're not already. If you still need an account simply
         <Link href="/login?signup=true">create one here</Link>, and then update
         your
@@ -84,8 +84,7 @@
           <img
             class="w-full rounded-lg shadow"
             src="/images/ActivityCreateExample.jpg"
-            alt="New Activity Form"
-          />
+            alt="New Activity Form" />
           <figcaption>Example: New Activity Form</figcaption>
         </figure>
       </div>
@@ -109,8 +108,7 @@
     </div>
     <div
       class="my-12 max-w-prose mx-auto lg:max-w-none flex flex-col items-center
-        justify-center"
-    >
+        justify-center">
       <div class="flex space-x-4 text-base">
         <StandardLink href="/support/joining-an-activity">
           Joining an Activity

@@ -4,7 +4,7 @@
     {
       title: 'Presentations',
       copy:
-        'The traditional session style, which an idea, product, or piece of work is shown and explained to an audience. Best when left ample time for Q&A.',
+        'The traditional session style, in which an idea, product, or piece of work is shown and explained to an audience. Best when left ample time for Q&A.',
     },
     {
       title: 'Peer Reviews',
@@ -14,7 +14,7 @@
     {
       title: 'Q&A',
       copy:
-        "A style in which a person or group of people ask questions and other's provide answers. This format is intended to be open ended along with inclusion of all opinions if an opinion style question is asked.",
+        'A style in which a person or group of people ask questions and others provide answers. This format is intended to be open-ended along with the inclusion of all opinions if an opinion-style question is asked.',
     },
     {
       title: 'Open Space',
@@ -29,7 +29,7 @@
     {
       title: 'Social',
       copy:
-        'Get to know one another better by engaging everyone in conversation. Make sure to give everyone space to participate.',
+        'Get to know one another better by engaging everyone in the conversation. Make sure to give everyone space to participate.',
     },
   ];
 </script>

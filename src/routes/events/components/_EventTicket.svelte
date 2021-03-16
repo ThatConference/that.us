@@ -34,13 +34,13 @@
       </h2>
       <p class="mt-6 max-w-5xl mx-auto text-center text-xl text-gray-500">
         We created THAT to fill a gap between the times when we cannot
-        physically connect. We believe peer to peer learning is one of the most
+        physically connect. We believe peer-to-peer learning is one of the most
         powerful ways we can help one another any day of the year.
       </p>
 
       <p class="mt-8 max-w-3xl mx-auto text-center text-xl text-gray-500">
-        Each and every month we host THAT Online aimed at bringing us all
-        together to recenter, and recharge.
+        Every month we host THAT Online aimed at bringing us all together to
+        recenter and recharge.
       </p>
     </div>
 
@@ -54,9 +54,9 @@
 
         <p class="mt-3 text-lg text-gray-500">
           Nothing will ever replace just talking with someone and learning from
-          each others experiences. Our problems are hard, they require context
+          each other's experiences. Our problems are hard, they require context
           and that's ok. This is why we've created a platform to connect people
-          in a more authentic way, true to peer to peer learning.
+          more authentically, true to peer-to-peer learning.
         </p>
 
         <dl class="mt-10 space-y-10">
@@ -223,7 +223,7 @@
                 </dt>
                 <dd class="mt-2 text-base text-gray-500">
                   Do you have a specific technical question or looking to share
-                  an experience with others? Any one and everyone is welcome to
+                  an experience with others? Anyone and everyone are welcome to
                   submit, join, and participate in any activity that interests
                   them.
                 </dd>
