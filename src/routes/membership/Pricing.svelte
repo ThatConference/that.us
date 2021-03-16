@@ -24,7 +24,9 @@
     <Hero
       eventTicket="{$state.context.eventTicket}"
       membership="{$state.context.membership}" />
+
     <Quote />
+
     <Logo height="40" uri="/images/THAT-Logo-Words.svg" />
 
     <PricingCore
