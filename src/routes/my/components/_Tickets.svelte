@@ -2,6 +2,7 @@
   import { useMachine } from 'xstate-svelte';
   import { Link } from 'yrv';
   import dayjs from 'dayjs';
+  import isBetween from 'dayjs/plugin/isBetween';
   import { sortBy } from 'lodash';
 
   import { debug } from '../../../config';
@@ -9,6 +10,9 @@
   import createMachine from '../machines/allocations';
 
   import { Waiting } from '../../../elements';
+  import { tag } from 'svelte-awesome/icons';
+
+  dayjs.extend(isBetween);
 
   metaTagsStore.set({
     title: 'Event Tickets - THAT',
@@ -62,6 +66,20 @@
                       <span
                         class="inline-flex rounded-full bg-thatOrange-400 px-4 py-1 text-sm font-semibold tracking-wider uppercase text-white">
                         UPCOMING
+                      </span>
+                    </div>
+                  </div>
+                {:else if dayjs().isBetween(dayjs(t.event.startDate), dayjs(t.event.endDate))}
+                  <div
+                    class="pointer-events-none absolute inset-0 rounded-lg border-2 border-thatOrange-400"
+                    aria-hidden="true">
+                  </div>
+                  <div
+                    class="absolute inset-x-0 top-0 transform translate-y-px">
+                    <div class="flex justify-center transform -translate-y-1/2">
+                      <span
+                        class="inline-flex rounded-full bg-thatOrange-400 px-4 py-1 text-sm font-semibold tracking-wider uppercase text-white">
+                        In-Progress
                       </span>
                     </div>
                   </div>

@@ -23,8 +23,8 @@
         .filter(i => i.type === 'ONLINE')
         .filter(i => i.isActive)
         // .filter(i => i.isFeatured)
-        .filter(i => dayjs().isSameOrBefore(i.startDate, 'day')),
-      'startDate',
+        .filter(i => dayjs().isSameOrBefore(i.endDate, 'day')),
+      'endDate',
     );
 
     results.hybrid = sortBy(
@@ -32,8 +32,8 @@
         .filter(i => i.type === 'MULTI_DAY' || i.type === 'HYBRID_MULTI_DAY')
         .filter(i => i.isActive)
         // .filter(i => i.isFeatured)
-        .filter(i => dayjs().isSameOrBefore(i.startDate, 'day')),
-      'startDate',
+        .filter(i => dayjs().isSameOrBefore(i.endDate, 'day')),
+      'endDate',
     );
 
     return results;
