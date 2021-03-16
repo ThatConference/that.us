@@ -27,7 +27,7 @@
         <strong>Activities</strong> are topic-based scheduled gatherings that anyone
         can create for any multitude of reasons in which anyone can join. An activity
         is simple, a video call in the browser with no tools required. Every Activity
-        has a chat window, the ability to share your desktop and enables your webcam
+        has a chat window, the ability to share your desktop, and enables your webcam
         and microphone. You choose the format that best suits the topic and the people
         in the conversation.
       </p>
@@ -42,11 +42,12 @@
       </blockquote>
 
       <p>
-        Yes anything can be an Activity. Activies are about the people involved
-        and the conversation that will be had. They're meant to be dynamic and
-        highly interactive. The topic and the user's problems should determine
-        the format to allow everyone to learn together. So what can you do, well
-        anything but here are a few things that have happened to date:
+        Yes, anything can be an Activity. Activities are about the people
+        involved and the conversation that will be had. They're meant to be
+        dynamic and highly interactive. The topic and the user's problems should
+        determine the format to allow everyone to learn together. So what can
+        you do, well anything but here are a few things that have happened to
+        date:
       </p>
 
       <ul>
@@ -67,8 +68,7 @@
           <img
             class="w-full rounded-lg shadow"
             src="/images/ActivityDetailExample.jpg"
-            alt=""
-          />
+            alt="" />
           <figcaption>
             Example: product review and sprint planning Activity.
           </figcaption>
@@ -78,8 +78,8 @@
       <h2>How long can an Activity be?</h2>
       <p>
         The length of an Activity is up to you. An Activity may be a short 30
-        minutes or last all day. We have seen quick 30 minute issue triage, to
-        an entire weekend hackathon-type activities. It's entirely up to you and
+        minutes or last all day. We have seen quick 30-minute issue triage, to
+        an entire weekend hackathon-type activity. It's entirely up to you and
         what you are trying to achieve. In the example above you will see our
         bi-weekly sprint review which typically lasts for an hour.
       </p>
@@ -93,8 +93,7 @@
     </div>
     <div
       class="my-12 max-w-prose mx-auto lg:max-w-none flex flex-col items-center
-        justify-center"
-    >
+        justify-center">
       <div class="flex space-x-4 text-base">
         <StandardLink href="/support/welcome">Getting Started</StandardLink>
         <HighlightLink href="/support/joining-an-activity">
