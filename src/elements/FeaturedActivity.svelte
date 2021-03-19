@@ -17,15 +17,13 @@
 
 <Link href="/activities/{id}">
   <div
-    class="transform hover:scale-110 w-full h-full py-10 px-6 hover:bg-thatBlue-400 bg-that-blue text-center shadow rounded-lg xl:px-10 xl:text-left"
-  >
+    class="transform hover:scale-105 w-full h-full py-10 px-6 hover:bg-thatBlue-400 bg-that-blue text-center shadow rounded-lg xl:px-10 xl:text-left">
     <div class="space-y-6 xl:space-y-10">
       <div>
         <img
           class="mx-auto h-40 w-40 rounded-full xl:w-56 xl:h-56"
           src="{userProfileImage}"
-          alt="{`${host.firstName} ${host.lastName}`}"
-        />
+          alt="{`${host.firstName} ${host.lastName}`}" />
       </div>
 
       <div class="font-medium text-lg leading-6 flex flex-col">

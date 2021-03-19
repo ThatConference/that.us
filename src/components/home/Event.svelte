@@ -12,7 +12,7 @@
 <div class="bg-white">
   <Link href="/events/{slug}">
     <div
-      class="relative rounded-lg shadow-xl transform hover:scale-110 hover:bg-gray-100">
+      class="relative rounded-lg shadow-xl transform hover:scale-105 hover:bg-gray-100">
       <div
         class="pointer-events-none absolute inset-0 rounded-lg border-2 border-thatBlue-400"
         aria-hidden="true">

@@ -40,7 +40,7 @@
           <Icon data="{userIcon}" class="h-8 w-8 rounded-full" />
         {/if}
       {:else}
-        <div class="transform hover:scale-110">
+        <div class="transform hover:scale-105">
           <Icon data="{userIcon}" class="h-8 w-8 rounded-full" />
         </div>
       {/if}

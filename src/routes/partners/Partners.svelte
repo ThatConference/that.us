@@ -44,12 +44,10 @@
           {/if}
 
           <ul
-            class="grid grid-cols-1 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"
-          >
+            class="grid grid-cols-1 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
             {#each $state.context.items as p, i (p.id)}
               <li
-                class="col-span-1 flex flex-col text-center bg-white rounded-lg shadow transform hover:scale-110 hover:bg-that-offWhite"
-              >
+                class="col-span-1 flex flex-col text-center bg-white rounded-lg shadow transform hover:scale-105 hover:bg-that-offWhite">
                 <Link open href="{`/partners/${p.slug}`}">
                   <PartnerCard {...p} />
                 </Link>
@@ -58,8 +56,7 @@
             <SvelteInfiniteScroll
               window
               threshold="{100}"
-              on:loadMore="{handleNext}"
-            />
+              on:loadMore="{handleNext}" />
           </ul>
           {#if ['loadingNext', 'loadedAll'].some($state.matches)}
             <div class="flex flex-grow justify-center py-12">

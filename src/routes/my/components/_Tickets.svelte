@@ -52,7 +52,7 @@
       <ul class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {#each tickets as t (t.id)}
           <li
-            class="col-span-1 bg-white rounded-lg shadow divide-y divide-gray-200 transform hover:scale-110 hover:bg-gray-50">
+            class="col-span-1 bg-white rounded-lg shadow divide-y divide-gray-200 transform hover:scale-105 hover:bg-gray-50">
             <Link href="/activities/{t.event.slug}">
               <div class="relative rounded-lg shadow-xl">
                 {#if !dayjs().isAfter(dayjs(t.event.startDate), 'day')}
