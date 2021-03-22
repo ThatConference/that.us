@@ -49,7 +49,7 @@
                   lg:grid-cols-5">
                 {#each $state.context.items as c (c.id)}
                   <li
-                    class="col-span-1 bg-white rounded-lg shadow transform hover:scale-105 hover:bg-that-offWhite">
+                    class="col-span-1 bg-white rounded-lg shadow transition duration-500 ease-in-out transform hover:scale-105 hover:bg-that-offWhite">
                     <Link
                       href="{`/communities/${c.slug}`}"
                       class="h-full flex flex-col justify-between p-4 text-center focus:outline-none">

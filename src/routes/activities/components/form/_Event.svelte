@@ -81,7 +81,7 @@
     <ul class="grid grid-cols-1 gap-5 sm:gap-6 sm:grid-cols-2">
       <li
         in:fade
-        class="col-span-1 shadow-sm rounded-md transform hover:scale-105 ">
+        class="col-span-1 shadow-sm rounded-md transition duration-500 ease-in-out transform hover:scale-105 ">
         <input
           type="radio"
           id="{activeEvents.daily.name}"
@@ -152,7 +152,7 @@
       {#each activeEvents.online as event, i (i)}
         <li
           in:fade="{{ delay: i * 200 }}"
-          class="col-span-1 shadow-sm rounded-md transform hover:scale-105 ">
+          class="col-span-1 shadow-sm rounded-md transition duration-500 ease-in-out transform hover:scale-105 ">
           <input
             type="radio"
             id="{event.name}"

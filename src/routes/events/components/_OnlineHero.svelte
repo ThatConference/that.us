@@ -21,7 +21,8 @@
         <div
           class="px-4 sm:px-6 sm:text-center lg:px-0 lg:text-left lg:flex lg:items-center col-span-3 lg:col-span-2">
           <div class="lg:py-24">
-            <div class="transform hover:scale-105">
+            <div
+              class="transition duration-500 ease-in-out transform hover:scale-105">
               <button
                 on:click="{() => dispatch('purchase-event-ticket')}"
                 class="inline-flex items-center text-thatBlue-400 bg-white rounded-lg p-1 pr-2 text-base lg:text-sm">

@@ -12,7 +12,7 @@
 
 <Link href="/activities/create">
   <div
-    class="transform hover:scale-105 w-full h-full py-10 px-6 hover:bg-thatBlue-400 bg-that-blue
+    class="transition duration-500 ease-in-out transform hover:scale-105 w-full h-full py-10 px-6 hover:bg-thatBlue-400 bg-that-blue
       text-center shadow rounded-lg xl:px-10 xl:text-left"
     on:mouseenter="{() => (isHover = true)}"
     on:mouseleave="{() => (isHover = false)}">
