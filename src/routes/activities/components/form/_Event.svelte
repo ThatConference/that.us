@@ -9,7 +9,6 @@
   import dayjs from 'dayjs';
   import isSameOrBefore from 'dayjs/plugin/isSameOrBefore';
   import { Input } from 'sveltejs-forms'; //https://github.com/mdauner/sveltejs-forms
-  import ContentLoader from 'svelte-content-loader';
 
   import { CheckFull } from '../../../../elements/svgs';
   import eventsApi from '../../../../dataSources/api.that.tech/events/queries';
@@ -66,12 +65,26 @@
 {#await queryEvents()}
   <div in:fade class="px-4 sm:px-6 py-5 ">
     <div class="grid grid-cols-1 gap-5 sm:gap-6 sm:grid-cols-2">
-      <div class="h-14 overflow-hidden col-span-1 shadow-sm rounded-md">
-        <ContentLoader secondaryColor="#e5e7eb" />
+      <div class="col-span-1 shadow-sm rounded-md">
+        <div in:fade class="shadow-sm rounded-md bg-white p-4 w-full mx-auto">
+          <div class="animate-pulse">
+            <div class="flex-1 space-y-2">
+              <div class="h-3 bg-gray-400 rounded w-1/2"></div>
+              <div class="h-3 bg-gray-300 rounded w-3/4"></div>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="h-14 overflow-hidden col-span-1 shadow-sm rounded-md">
-        <ContentLoader secondaryColor="#e5e7eb" />
+      <div class="col-span-1 shadow-sm rounded-md">
+        <div in:fade class="shadow-sm rounded-md bg-white p-4 w-full mx-auto">
+          <div class="animate-pulse">
+            <div class="flex-1 space-y-2">
+              <div class="h-3 bg-gray-400 rounded w-1/2"></div>
+              <div class="h-3 bg-gray-300 rounded w-3/4"></div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
