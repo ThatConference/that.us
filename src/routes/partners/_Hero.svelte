@@ -39,7 +39,8 @@
       </h1>
       <div class="flex justify-between">
         <div>
-          <div class="transform hover:scale-105 cursor-pointer">
+          <div
+            class="transition duration-500 ease-in-out transform hover:scale-105 cursor-pointer">
             <Link href="{partner.website}?utm_source=THAT">
               <img
                 class="w-96"

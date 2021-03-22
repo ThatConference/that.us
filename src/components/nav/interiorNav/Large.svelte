@@ -132,7 +132,8 @@
         class:bg-thatBlue-500="{activityVisible}"
         aria-label="Notifications"
         on:click|preventDefault="{() => (activityVisible = !activityVisible)}">
-        <div class="transform hover:scale-105 flex justify-center">
+        <div
+          class="transition duration-500 ease-in-out transform hover:scale-105 flex justify-center">
           <Activity />
         </div>
       </button>

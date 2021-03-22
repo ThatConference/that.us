@@ -56,7 +56,9 @@
                   <div
                     class="mt-12 max-w-lg mx-auto grid gap-10 lg:grid-cols-3 lg:max-w-none">
                     {#each events[0] as e (e.id)}
-                      <div in:fade class="transform hover:scale-105">
+                      <div
+                        in:fade
+                        class="transition duration-500 ease-in-out transform hover:scale-105">
                         <Link href="{`/events/${e.slug}`}">
                           <EventCard event="{e}" />
                         </Link>
@@ -81,7 +83,9 @@
                   <div
                     class="mt-12 max-w-lg mx-auto grid gap-10 lg:grid-cols-3 lg:max-w-none">
                     {#each events[1] as e (e.id)}
-                      <div in:fade class="transform hover:scale-105">
+                      <div
+                        in:fade
+                        class="transition duration-500 ease-in-out transform hover:scale-105">
                         <Link href="{`/events/${e.slug}`}">
                           <EventCard event="{e}" />
                         </Link>

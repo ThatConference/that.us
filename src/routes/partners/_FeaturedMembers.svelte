@@ -23,7 +23,8 @@
         <ul
           class="space-y-12 sm:grid sm:grid-cols-2 sm:gap-12 sm:space-y-0 lg:gap-x-8">
           {#each members as member}
-            <li class="transform hover:scale-105 cursor-pointer">
+            <li
+              class="transition duration-500 ease-in-out transform hover:scale-105 cursor-pointer">
               <Link href="/members/{member.profileSlug}">
                 <div class="flex items-center space-x-4 lg:space-x-6">
                   <img

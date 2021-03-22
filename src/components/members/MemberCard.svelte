@@ -20,7 +20,7 @@
 
 <Link href="/members/{profileSlug}">
   <div
-    class="h-full text-center bg-white rounded-lg shadow transform hover:scale-105 hover:bg-gray-100 ">
+    class="h-full text-center bg-white rounded-lg shadow transition duration-500 ease-in-out transform hover:scale-105 hover:bg-gray-100 ">
     <div class="p-4 flex flex-col">
       <div>
         <span class="inline-block relative">
