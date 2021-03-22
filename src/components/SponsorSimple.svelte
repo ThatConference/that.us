@@ -33,7 +33,6 @@
       .then(p => {
         const { partners } = p.data.events.event.get;
 
-        console.log(partners);
         return partners.filter(partner =>
           PARTNER_LEVELS_TO_DISPLAY.includes(partner.level),
         );

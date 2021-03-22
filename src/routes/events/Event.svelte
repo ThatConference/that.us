@@ -3,6 +3,7 @@
   import { router } from 'yrv';
 
   import metaTagsStore from '../../store/metaTags';
+  import currentEvent from '../../store/currentEvent';
   import eventsApi from '../../dataSources/api.that.tech/events/queries';
 
   import Hybrid from './components/_Hybrid.svelte';
@@ -24,7 +25,12 @@
 
   function queryEvent() {
     eventFormat = Online; // todo later set based on event results
-    return eventsApi(getClient()).queryEventBySlug(eventSlug);
+    return eventsApi(getClient())
+      .queryEventBySlug(eventSlug)
+      .then(event => {
+        currentEvent.set({ eventId: event.id, title: event.name });
+        return event;
+      });
   }
 </script>
 

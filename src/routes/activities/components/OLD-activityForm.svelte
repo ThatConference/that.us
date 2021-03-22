@@ -229,8 +229,7 @@
         sm:border-t sm:border-gray-200 sm:pt-5">
       <label
         for="activity_shortDescription"
-        class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px
-          sm:pt-2">
+        class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
         Explain a bit more about what you'd like to chat about.
       </label>
       <div class="mt-1 sm:mt-0 sm:col-span-2">
