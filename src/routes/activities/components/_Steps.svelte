@@ -23,6 +23,7 @@
           <Step
             title="{name}"
             completed="{false}"
+            stepNumber="{index + 1}"
             isLastItem="{stepNames.length - 1 === index}" />
         </li>
       {/each}

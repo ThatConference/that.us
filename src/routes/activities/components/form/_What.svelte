@@ -10,8 +10,7 @@
   <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start">
     <label
       for="activity_title"
-      class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px
-      sm:pt-2 col-span-1">
+      class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2 col-span-1">
       What would you like to chat about?
     </label>
 
@@ -20,7 +19,7 @@
         <Input
           name="title"
           autofocus
-          class="form-input shadow-sm block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
+          class="form-input w-full sm:text-sm sm:leading-5 hover:border-gray-700" />
       </div>
     </div>
   </div>
@@ -39,7 +38,7 @@
           multiline
           rows="5"
           spellcheck="true"
-          class="form-input shadow-sm block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
+          class="form-input w-full sm:text-sm sm:leading-5 hover:border-gray-700" />
       </div>
     </div>
   </div>
@@ -61,7 +60,7 @@
           allowBlur="{true}"
           maxTags="{5}"
           onlyUnique="{true}"
-          class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5 rounded-md shadow-sm" />
+          class="form-input w-full sm:text-sm sm:leading-5 hover:border-gray-700" />
       </div>
     </div>
   </div>
