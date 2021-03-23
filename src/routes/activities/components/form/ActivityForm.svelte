@@ -20,11 +20,7 @@
 </script>
 
 <script>
-  export let initialActivityData = {
-    title: 'Clark',
-    shortDescription: 'some short desc',
-    tags: ['a', 'b', 'c'],
-  };
+  export let initialData;
   export let handleWithdraw;
   export let handleSubmit;
 
@@ -47,11 +43,13 @@
   import WhatSection from './_What.svelte';
   import WhenSection from './_When.svelte';
 
-  const { eventId: initialEventId } = $router.params;
+  const { eventId } = $router.params;
 
   const formattedInitial = formatActivityInitialInput({
-    eventId: initialEventId, // if there is an eventId it will get overwritten
-    ...initialActivityData,
+    event: {
+      id: eventId,
+    }, // if there is an eventId it will get overwritten
+    ...initialData,
   });
 
   let createDisabled = true;
@@ -114,24 +112,24 @@
     <div class="space-y-6 lg:col-start-1 lg:col-span-2">
       <!-- event section -->
       <section in:fade>
-        <SectionTitle title="Select The Where" />
+        <SectionTitle title="Select The Where" stepNumber="1" />
 
         <EventSection
           setField="{setValue}"
-          eventId="{initialEventId}"
+          eventId="{formattedInitial.event.id}"
           on:event-selected="{handleEventSelected}" />
       </section>
 
       <!-- what section -->
       <section in:fade="{{ delay: 200 }}" class="mt-8">
-        <SectionTitle title="Define The What" />
+        <SectionTitle title="Define The What" stepNumber="2" />
         <WhatSection setField="{setValue}" initialData="{formattedInitial}" />
       </section>
 
       {#if eventSelected}
         <!-- when section -->
         <section in:fade class="mt-8">
-          <SectionTitle title="Schedule The When" />
+          <SectionTitle title="Schedule The When" stepNumber="3" />
 
           <WhenSection
             touched="{touched}"
@@ -178,7 +176,7 @@
                     focus:outline-none focus:ring-thatBlue-500 focus:bg-thatBlue-500 focus:text-white focus:border-thatBlue-800
                   active:bg-thatBlue-800 
                   transition duration-150 ease-in-out">
-                  {initialActivityData ? 'Update Activity' : 'Submit Activity'}
+                  {initialData ? 'Update Activity' : 'Submit Activity'}
                 </button>
               </span>
             </div>

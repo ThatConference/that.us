@@ -61,6 +61,7 @@
   export let touched, errors, values, setField; // parent form values
   export let event;
 
+  import { tick } from 'svelte';
   import dayjs from 'dayjs';
   import utc from 'dayjs/plugin/utc';
   import timezone from 'dayjs/plugin/timezone';
@@ -81,31 +82,43 @@
   dayjs.extend(isToday);
   dayjs.extend(isBetween);
 
-  let initDurationInMinutes;
-  let originalStartTime;
-
   // control bindings
   let estimatedDurationSelect;
-  let timeSlotSelect;
   let timezoneSelect;
 
-  let currentEventId;
+  let currentEventId = values?.event?.id;
+  let selectedTimeValue = values.selectedTime;
+  let selectedDateValue = values.selectedDay
+    ? dayjs(values.selectedDay).toDate()
+    : dayjs().toDate();
 
-  $: selectedDateValue = dayjs().toDate();
   $: startDate = dayjs().toDate();
   $: endDate = dayjs(event.endDate).toDate();
 
+  async function handleReset() {
+    await tick();
+
+    setField('selectedTime', undefined); // reset the starting time as the event range has changed.
+    selectedTimeValue = undefined;
+  }
+
   // reset the start date based on the event
   $: {
-    if (currentEventId !== event.id) {
+    if (currentEventId && !event.id) {
+      startDate = dayjs(values.event.startDate).toDate();
+      endDate = dayjs(values.event.endDate).toDate();
+    } else if (currentEventId !== event.id) {
       startDate =
-        event.id === config.eventId
+        event.id === config.eventId // if this is the default daily event. then it's just today's date.
           ? dayjs().toDate()
           : dayjs(event.startDate).toDate();
+
       currentEventId = event.id;
 
-      selectedDateValue = startDate;
       setField('selectedDay', dayjs(selectedDateValue).format('YYYY-MM-DD'));
+      selectedDateValue = startDate;
+
+      handleReset();
     }
   }
 
@@ -119,10 +132,6 @@
 
         return d.isBetween(dayjs(event.startDate), dayjs(event.endDate));
       });
-
-  function findSelectedTimeSlot(values) {
-    return timeSlotOptions.find(item => item.value === values['selectedTime']);
-  }
 
   function findSelectedDuration(values) {
     return estimatedDurationOptions.find(
@@ -153,7 +162,7 @@
           end="{endDate}"
           bind:selected="{selectedDateValue}"
           format="{dayjs(selectedDateValue).format('dddd, MMM D, YYYY')}"
-          style="rounded-md shadow-sm"
+          style="form-input  sm:text-sm sm:leading-5 rounded-md shadow-sm hover:border-gray-700"
           on:dateSelected="{({ detail: { date } }) =>
             setField('selectedDay', dayjs(date).format('YYYY-MM-DD'))}" />
       </div>
@@ -176,17 +185,16 @@
           </legend>
           <div class="mt-1 w-32">
             <Select
-              bind:this="{timeSlotSelect}"
               inputAttributes="{{ name: 'selectedTime' }}"
+              items="{timeSlotOptionsFiltered}"
+              bind:selectedValue="{selectedTimeValue}"
               on:select="{({ detail }) =>
                 setField('selectedTime', detail.value)}"
-              hasError="{touched['selectedTime'] && errors['selectedTime']}"
-              items="{timeSlotOptionsFiltered}"
               on:clear="{() => setField('selectedTime', undefined)}"
-              selectedValue="{findSelectedTimeSlot(values)}"
+              hasError="{touched['selectedTime'] && errors['selectedTime']}"
               inputStyles="form-select relative block w-full
               bg-transparent focus:z-10 transition ease-in-out duration-150
-              sm:text-sm sm:leading-5 rounded-md shadow-sm" />
+              sm:text-sm sm:leading-5 rounded-md shadow-sm hover:border-gray-700" />
           </div>
         </div>
 
@@ -207,7 +215,7 @@
               selectedValue="{findSelectedTimezone(values)}"
               inputStyles="form-select relative block w-full rounded-md
                 bg-transparent focus:z-10 transition ease-in-out duration-150
-                sm:text-sm sm:leading-5" />
+                sm:text-sm sm:leading-5 hover:border-gray-700" />
           </div>
         </div>
       </div>
@@ -243,7 +251,7 @@
           selectedValue="{findSelectedDuration(values)}"
           inputStyles="form-select relative block w-full rounded-md
           bg-transparent focus:z-10 transition ease-in-out duration-150
-          sm:text-sm sm:leading-5" />
+          sm:text-sm sm:leading-5 hover:border-gray-700" />
       </div>
       <div class="mt-6">
         {#if touched['selectedDuration'] && errors['selectedDuration']}

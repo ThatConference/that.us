@@ -9,7 +9,7 @@ dayjs.extend(duration);
 
 export function formatActivityInitialInput(currentData) {
   const {
-    eventId,
+    event: { id, startDate, endDate },
     durationInMinutes,
     startTime,
     title,
@@ -24,16 +24,18 @@ export function formatActivityInitialInput(currentData) {
     : undefined;
 
   const results = {
-    eventId,
+    event: {
+      id,
+      startDate,
+      endDate,
+    },
     title: title || '',
     shortDescription: shortDescription || '',
     tags: tags || [],
-    selectedDay: startTime
-      ? dayjs(startTime).format('YYYY-MM-DD')
-      : dayjs().format('YYYY-MM-DD'),
+    selectedDay: startTime ? dayjs(startTime).format('YYYY-MM-DD') : undefined,
     selectedTime: startTime ? dayjs(startTime).format('HH:mm') : undefined,
     selectedTimezone: dayjs.tz.guess(),
-    selectedDuration: durationInMinutes || initDurationInMinutes,
+    selectedDuration: initDurationInMinutes,
   };
 
   return results;

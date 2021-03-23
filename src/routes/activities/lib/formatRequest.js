@@ -21,6 +21,8 @@ export const format = values => {
     selectedTimezone,
   );
 
+  console.log({ parsedStartTime }); // todo christophers bug.
+
   const parsedDuration = dayjs(selectedDuration, 'H:mm');
 
   const { title, shortDescription, tags } = values;

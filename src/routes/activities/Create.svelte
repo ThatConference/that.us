@@ -17,24 +17,26 @@
 
   // utilities
   import metaTagsStore from '../../store/metaTags';
+  import { tagEvent } from '../../utilities/gtag';
+  import logEvent from '../../utilities/eventTrack';
+  import { format } from './lib/formatRequest';
+  import { user } from '../../utilities/security.js';
 
   const { create } = sessionsApi(getClient());
 
   async function handleSubmit({
     detail: { values, setSubmitting, resetForm },
   }) {
-    console.log({ values });
-    // setSubmitting(true);
+    setSubmitting(true);
 
-    // const newActivity = format(values);
-    // const { id } = await create(newActivity, values.eventId);
+    const newActivity = format(values);
+    const { id } = await create(newActivity, values.eventId);
 
-    // tagEvent('activity_created', 'activity', $user.sub);
-    // logEvent('activity_created');
+    tagEvent('activity_created', 'activity', $user.sub);
+    logEvent('activity_created');
 
-    // setSubmitting(false);
-    // formIsSubmitting = false;
-    // navigateTo(`/activities/${id}?edit=true&isNew=true`, { replace: true });
+    setSubmitting(false);
+    navigateTo(`/activities/${id}?edit=true&isNew=true`, { replace: true });
   }
 
   metaTagsStore.set({

@@ -2,9 +2,7 @@
   export let title;
   export let completed = false;
   export let isLastItem = false;
-
-  import Icon from 'svelte-awesome';
-  import { circleO } from 'svelte-awesome/icons';
+  export let stepNumber;
 
   import { CheckFull } from '../../../elements/svgs';
 </script>
@@ -25,8 +23,8 @@
         </span>
       {:else}
         <span
-          class="h-8 w-8 bg-white rounded-full flex items-center justify-center ring-8 ring-white">
-          <Icon data="{circleO}" class="text-thatOrange-400 w-16 h-16" />
+          class="h-8 w-8 bg-white rounded-full flex items-center justify-center ring-4 ring-gray-300">
+          <span class="text-sm text-gray-500">{stepNumber}</span>
         </span>
       {/if}
     </div>
