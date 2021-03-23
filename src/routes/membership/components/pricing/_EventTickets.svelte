@@ -11,10 +11,12 @@
   const { send } = getContext('cart');
 
   function handleAddEventTicketClick(quantity = 1) {
-    const isBulkPurchase = quantity > 1 ? true : false;
+    // const isBulkPurchase = quantity > 1 ? true : false;
 
-    send('ADD_ITEM', { ...eventTicket, isBulkPurchase, quantity });
-    navigateTo('/orders/summary');
+    // send('ADD_ITEM', { ...eventTicket, isBulkPurchase, quantity });
+    // navigateTo('/orders/summary');
+
+    navigateTo('/events');
   }
 </script>
 
@@ -95,7 +97,7 @@
                 </h3>
               </div>
               <div class="mt-4 flex items-baseline text-6xl font-extrabold">
-                ${eventTicket.price}
+                $15
                 <span class="ml-1 text-2xl font-medium text-gray-500">
                   / each event
                 </span>
@@ -142,7 +144,7 @@
                 </li>
               </ul>
               <StandardButton on:click="{() => handleAddEventTicketClick()}">
-                Purchase Now
+                Upcoming Events
               </StandardButton>
             </div>
           </div>

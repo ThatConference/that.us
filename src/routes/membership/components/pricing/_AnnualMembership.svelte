@@ -44,7 +44,7 @@
       <p class="mt-4 text-lg">
         Why create a membership? It helps us support future platform growth and
         better manage a yearly budget. It allows us to focus more time on
-        creating a better platform for all of us to use everyday.
+        creating a better platform for all of us to use every day.
       </p>
     </div>
     <div

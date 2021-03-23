@@ -17,7 +17,7 @@
 
 <NoProfile />
 
-<div class="flex flex-col min-h-screen ">
+<div class="bg-gradient-to-b from-gray-100 flex flex-col min-h-screen ">
   <div class="relative bg-thatBlue-500 pt-10">
     <div
       class="absolute flex justify-center inset-x-0 left-1/2 transform -translate-x-1/2 w-full overflow-hidden lg:inset-y-0">

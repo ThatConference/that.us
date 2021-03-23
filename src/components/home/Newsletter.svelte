@@ -29,22 +29,20 @@
 <section class="bg-thatBlue-700 py-12 lg:py-16">
   <div
     class="relative max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 lg:flex
-      lg:items-center"
-  >
+      lg:items-center">
     <div class="lg:w-0 lg:flex-1">
       <h2
         class="text-3xl leading-9 font-extrabold tracking-tight text-white
           sm:text-4xl sm:leading-10"
-        id="newsletter-headline"
-      >
+        id="newsletter-headline">
         Stay in the know
       </h2>
       {#if !submitted}
         <p class="mt-3 max-w-3xl text-lg leading-6 text-gray-300">
-          Another list? We know you're busy enough just trying to get your own
+          Another list? We know you're busy enough just trying to get your
           product shipped. We also don't want to become more noise for you. We
-          don't email much, honestly we're busy too, but when we do it's to make
-          sure you stay in the know.
+          don't email much, honestly, we're busy too, but when we do it's to
+          make sure you stay in the know.
         </p>
       {:else}
         <p class="mt-3 max-w-3xl text-lg leading-6 text-gray-300">
@@ -62,8 +60,7 @@
           aria-labelledby="newsletter-headline"
           validateOnBlur="{false}"
           validateOnChange="{false}"
-          let:isSubmitting
-        >
+          let:isSubmitting>
           {#if !isSubmitting}
             <div class="sm:flex">
               <Input type="hidden" name="u" value="16" />
@@ -83,11 +80,9 @@
                   text-gray-900 bg-white placeholder-gray-500 focus:outline-none
                   focus:placeholder-gray-400 transition duration-150 ease-in-out
                   sm:max-w-xs"
-                placeholder="Enter your email"
-              />
+                placeholder="Enter your email" />
               <div
-                class="mt-3 rounded-md shadow sm:mt-0 sm:ml-3 sm:flex-shrink-0"
-              >
+                class="mt-3 rounded-md shadow sm:mt-0 sm:ml-3 sm:flex-shrink-0">
                 <button
                   type="submit"
                   class="w-full flex items-center justify-center px-5 py-3
@@ -96,8 +91,7 @@
                     hover:bg-thatBlue-500 hover:text-white focus:bg-thatBlue-500
                     focus:text-white focus:outline-none
                     focus:ring-thatBlue-500 focus:border-thatBlue-800
-                    transition duration-150 ease-in-out"
-                >
+                    transition duration-150 ease-in-out">
                   Add me
                 </button>
               </div>
@@ -113,8 +107,7 @@
           <a
             href="https://www.thatconference.com/privacy-policy"
             class="text-white
-              font-medium underline"
-          >
+              font-medium underline">
             Privacy Policy.
           </a>
         </p>

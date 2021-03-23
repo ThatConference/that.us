@@ -3,10 +3,9 @@
 
   import { Link } from 'yrv';
   import { createEventDispatcher } from 'svelte';
-  import Icon from 'svelte-awesome';
-  import { checkCircle } from 'svelte-awesome/icons';
 
   import { Highlight as HighlightButton } from '../../../elements/buttons';
+  import { CheckFull } from '../../../elements/svgs';
 
   const membershipDetails = event.products
     .filter(f => f.isEnabled)
@@ -26,7 +25,7 @@
         <p class="mt-4 text-xl text-gray-600">
           We could create a free platform, but then you become the product. To
           that we say no thank you, we're the product. We're taking the approach
-          of creating a monitization strategy of help us, help you.
+          of creating a monetization strategy of help us, help you.
         </p>
       </div>
     </div>
@@ -61,28 +60,48 @@
               <ul
                 class="mt-8 space-y-5 lg:space-y-0 lg:grid lg:grid-cols-2 lg:gap-x-8 lg:gap-y-5">
                 <li class="flex items-center lg:col-span-1">
-                  <Icon data="{checkCircle}" class="text-green-400 h-5 w-5" />
+                  <div>
+                    <span
+                      class="h-5 w-5 rounded-full bg-green-500 flex items-center justify-center ring-8 ring-white">
+                      <CheckFull height="h-4" width="h-4" />
+                    </span>
+                  </div>
                   <p class="ml-3 text-sm text-gray-700">
                     Full Access to every monthly online event
                   </p>
                 </li>
 
                 <li class="flex items-center lg:col-span-1">
-                  <Icon data="{checkCircle}" class="text-green-400 h-5 w-5" />
+                  <div>
+                    <span
+                      class="h-5 w-5 rounded-full bg-green-500 flex items-center justify-center ring-8 ring-white">
+                      <CheckFull height="h-4" width="h-4" />
+                    </span>
+                  </div>
                   <p class="ml-3 text-sm text-gray-700">
                     $50 off 1 THAT Conference Camper Ticket
                   </p>
                 </li>
 
                 <li class="flex items-center lg:col-span-1">
-                  <Icon data="{checkCircle}" class="text-green-400 h-5 w-5" />
+                  <div>
+                    <span
+                      class="h-5 w-5 rounded-full bg-green-500 flex items-center justify-center ring-8 ring-white">
+                      <CheckFull height="h-4" width="h-4" />
+                    </span>
+                  </div>
                   <p class="ml-3 text-sm text-gray-700">
                     10% off at THAT Store
                   </p>
                 </li>
 
                 <li class="flex items-center lg:col-span-1">
-                  <Icon data="{checkCircle}" class="text-green-400 h-5 w-5" />
+                  <div>
+                    <span
+                      class="h-5 w-5 rounded-full bg-green-500 flex items-center justify-center ring-8 ring-white">
+                      <CheckFull height="h-4" width="h-4" />
+                    </span>
+                  </div>
                   <p class="ml-3 text-sm text-gray-700">
                     First access to all new platform features
                   </p>

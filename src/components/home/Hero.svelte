@@ -12,8 +12,7 @@
       <h2
         class="sm:text-center lg:text-left pb-16 text-4xl tracking-tight
           leading-10 font-extrabold text-thatBlue-800 sm:text-5xl
-          sm:leading-none md:text-6xl"
-      >
+          sm:leading-none md:text-6xl">
         Where
         <span class="text-thatOrange-400">Geeks</span>
         Connect Every Day
@@ -22,14 +21,12 @@
       <div class="lg:grid lg:grid-cols-12 lg:gap-8">
         <div
           class="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-5
-            lg:text-left"
-        >
+            lg:text-left">
           <!-- hero copy -->
           <div>
             <p
               class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl
-                sm:mx-auto md:mt-5 md:text-xl lg:mx-0"
-            >
+                sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
               It's our mission to make the best community of geeks on this
               planet. A community of people who want to help one another each
               and every day.
@@ -37,8 +34,7 @@
 
             <p
               class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl
-                sm:mx-auto md:mt-5 md:text-xl lg:mx-0"
-            >
+                sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
               Our jobs are complex, our industry moves fast, but we’re also
               privileged to be able to work with people all over the globe, yet
               we’ve been missing something.
@@ -48,17 +44,14 @@
 
         <div
           class="sm:text-center md:max-w-2xl md:mx-auto lg:col-start-7
-            lg:col-span-6 lg:text-left"
-        >
+            lg:col-span-6 lg:text-left">
           <!-- action buttons -->
           <div
             class="mt-5 sm:mt-8 sm:flex flex-col space-y-4 items-center
-              sm:justify-center lg:justify-start"
-          >
+              sm:justify-center lg:justify-start">
             <p
               class="mt-3 font-extrabold text-thatBlue-800 sm:mt-5 sm:text-lg
-                sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0"
-            >
+                sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
               All you need is an internet connection and a web browser.
             </p>
 
@@ -71,8 +64,7 @@
                     bg-thatOrange-400 hover:bg-thatOrange-500 focus:outline-none
                     focus:border-thatOrange-700 focus:ring-that-orange
                     transition duration-150 ease-in-out md:py-4 md:text-lg
-                    md:px-10"
-                >
+                    md:px-10">
                   Become a member today!
                 </button>
 
@@ -84,8 +76,7 @@
                     focus:bg-thatBlue-500 focus:text-white focus:outline-none
                     focus:ring-thatBlue-500 focus:border-thatBlue-800
                     transition duration-150 ease-in-out md:py-4 md:text-lg
-                    md:px-10"
-                >
+                    md:px-10">
                   Already one, log in.
                 </button>
               {:else}
@@ -97,8 +88,7 @@
                     focus:bg-thatBlue-500 focus:text-white focus:outline-none
                     focus:ring-thatBlue-500 focus:border-thatBlue-800
                     transition duration-150 ease-in-out md:py-4 md:text-lg
-                    md:px-10"
-                >
+                    md:px-10">
                   View Activities
                 </Link>
               {/if}
@@ -111,46 +101,41 @@
         <h2
           class="sm:text-center lg:text-left pb-16 text-4xl tracking-tight
             leading-10 font-extrabold text-thatBlue-800 sm:text-5xl
-            sm:leading-none md:text-6xl"
-        >
+            sm:leading-none md:text-6xl">
           Real people, real conversations.
         </h2>
 
         <div class="lg:grid lg:grid-cols-12 lg:gap-8">
           <div
             class="flex flex-col items-center justify-center md:max-w-2xl
-              md:mx-auto lg:col-span-5"
-          >
+              md:mx-auto lg:col-span-5">
             <Youtube width="{426}" height="{240}" videoId="cAftppcmqRE" />
           </div>
 
           <div
             class="mt-12 sm-mt-0 sm:text-center md:max-w-2xl md:mx-auto
-              lg:col-start-6 lg:col-span-7 lg:text-left"
-          >
+              lg:col-start-6 lg:col-span-7 lg:text-left">
             <div class="flex flex-col space-y-6">
               <p
                 class="text-base text-gray-500 sm:text-lg sm:max-w-xl sm:mx-auto
-                  md:text-xl lg:mx-0"
-              >
-                Nothing will ever replace having a face to face conversation
+                  md:text-xl lg:mx-0">
+                Nothing will ever replace having a face-to-face conversation
                 where people can deeply engage and explore a topic. A safe place
-                where questions can be asked without judgement or bias.
+                where questions can be asked without judgment or bias.
                 Conferences and user groups traditionally help fill that gap but
-                leave a huge void the rest of the year.
+                leave a huge void for the rest of the year.
               </p>
 
               <p
                 class="text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl
-                  sm:mx-auto md:mt-5 md:text-xl lg:mx-0"
-              >
+                  sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
                 This is where THAT comes in. It’s our mission to connect you and
-                give you the safe place to have a conversation each and every
-                day. Let’s say you want to have a code review or a design
-                review, great. Maybe you want to share your experience with the
-                latest JavaScript framework or seek some geek parenting advice.
-                There are no limits, there are no artificial boundaries. Just
-                people helping people be awesome.
+                give you a safe place to have a conversation each and every day.
+                Let’s say you want to have a code review or a design review,
+                great. Maybe you want to share your experience with the latest
+                JavaScript framework or seek some geek parenting advice. There
+                are no limits, there are no artificial boundaries. Just people
+                helping people be awesome.
               </p>
             </div>
           </div>

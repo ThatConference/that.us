@@ -24,7 +24,7 @@
     }
   `;
 
-  const PARTNER_LEVELS_TO_DISPLAY = ['CORPORATE_PARTNER', 'PARTNER'];
+  const PARTNER_LEVELS_TO_DISPLAY = ['CORPORATE_PARTNER', 'PARTNER', 'PIONEER'];
 
   function queryPartners() {
     return getClient()
@@ -58,7 +58,8 @@
           {#each partners as p}
             <div
               class="col-span-1 flex justify-center md:col-span-2 lg:col-span-1">
-              <div class="transform hover:scale-105">
+              <div
+                class="transition duration-500 ease-in-out transform hover:scale-105">
                 <Link href="/partners/{p.slug}">
                   <img
                     class="h-12"

@@ -59,6 +59,11 @@ export const QUERY_SESSION_BY_ID = `
     sessions {
       session(sessionId: $sessionId) {
         ...coreFields
+        event {
+          id
+          startDate
+          endDate
+        }
         speakers {
           firstName
           lastName

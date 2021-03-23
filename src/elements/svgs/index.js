@@ -12,3 +12,4 @@ export { default as CreditCard } from './CreditCard.svelte';
 export { default as Ticket } from './Ticket.svelte';
 export { default as ChevronRight } from './ChevronRight.svelte';
 export { default as Chevron } from './Chevron.svelte';
+export { default as CheckFull } from './CheckFull.svelte';
