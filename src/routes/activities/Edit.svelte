@@ -18,7 +18,7 @@
   import { tagEvent } from '../../utilities/gtag';
   import logEvent from '../../utilities/eventTrack';
   import { user } from '../../utilities/security.js';
-  import { format } from './lib/formatRequest';
+  import { formatUpdate } from './lib/formatRequest';
 
   // data
   import sessionsApi from '../../dataSources/api.that.tech/sessions.js';
@@ -42,7 +42,7 @@
   async function handleSubmit({
     detail: { values, setSubmitting, resetForm },
   }) {
-    const updatedActivity = format(values);
+    const updatedActivity = formatUpdate(values);
     await update(activityId, updatedActivity);
 
     tagEvent('activity_update', 'activity', $user.sub);

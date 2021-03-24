@@ -43,7 +43,7 @@ export default client => {
       .query(QUERY_SUBMISSIONS)
       .toPromise()
       .then(({ data, error }) => {
-        if (error) log(error, 'mutate_sessions');
+        if (error) log(error, 'QUERY_SUBMISSIONS');
 
         let results = [];
         const { submitted } = data.sessions.me;
