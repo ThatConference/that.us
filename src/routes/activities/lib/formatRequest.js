@@ -9,8 +9,11 @@ dayjs.extend(customParseFormat);
 dayjs.extend(utc);
 dayjs.extend(timezone);
 
-export const format = values => {
+export const formatCreate = values => {
   const {
+    title,
+    shortDescription,
+    tags,
     selectedDay,
     selectedTime,
     selectedTimezone,
@@ -21,12 +24,44 @@ export const format = values => {
     selectedTimezone,
   );
 
-  console.log({ parsedStartTime }); // todo christophers bug.
+  const parsedDuration = dayjs(selectedDuration, 'H:mm');
+
+  const newActivity = {
+    title,
+    shortDescription,
+    tags,
+    status: 'ACCEPTED',
+    durationInMinutes: dayjs
+      .duration({
+        hour: parsedDuration.hour(),
+        minute: parsedDuration.minute(),
+      })
+      .asMinutes(),
+    startTime: parsedStartTime,
+  };
+
+  return newActivity;
+};
+export const formatUpdate = values => {
+  const {
+    eventId,
+    title,
+    shortDescription,
+    tags,
+    selectedDay,
+    selectedTime,
+    selectedTimezone,
+    selectedDuration,
+  } = values;
+
+  const parsedStartTime = dayjs(`${selectedDay} ${selectedTime}`).tz(
+    selectedTimezone,
+  );
 
   const parsedDuration = dayjs(selectedDuration, 'H:mm');
 
-  const { title, shortDescription, tags } = values;
   const newActivity = {
+    eventId,
     title,
     shortDescription,
     tags,
