@@ -33,7 +33,7 @@
 
   $: {
     metaTagsStore.set({
-      title: 'Daily Activities * THAT',
+      title: 'Daily Activities - THAT',
       description: `THAT Daily Activities || 'Activities'}.`,
       openGraph: {
         type: 'website',
