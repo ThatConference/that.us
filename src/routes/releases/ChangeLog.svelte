@@ -14,7 +14,7 @@
     });
 
   metaTagsStore.set({
-    title: 'Changelog',
+    title: 'Changelog - THAT',
     description: 'Check out all of the releases.',
     openGraph: {
       type: 'website',

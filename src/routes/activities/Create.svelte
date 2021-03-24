@@ -41,7 +41,7 @@
   }
 
   metaTagsStore.set({
-    title: 'Create a New... - THAT',
+    title: 'New Activity - THAT',
     description:
       'Create a New [Activity, Code Review, Open Space, Chat], you get the idea.',
     openGraph: {
