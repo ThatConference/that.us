@@ -5,9 +5,9 @@
 
   const stepNames = [
     'Select a location.',
-    'Define the what.',
-    'Schedule the activity.',
-    'Submit Activity',
+    'Describe the activity.',
+    'Schedule a time.',
+    'Submit activity.',
   ];
 </script>
 

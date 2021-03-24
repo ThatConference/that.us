@@ -112,7 +112,7 @@
     <div class="space-y-6 lg:col-start-1 lg:col-span-2">
       <!-- event section -->
       <section in:fade>
-        <SectionTitle title="Select The Where" stepNumber="1" />
+        <SectionTitle title="Select a Location" stepNumber="1" />
 
         <EventSection
           setField="{setValue}"
@@ -122,14 +122,14 @@
 
       <!-- what section -->
       <section in:fade="{{ delay: 200 }}" class="mt-8">
-        <SectionTitle title="Define The What" stepNumber="2" />
+        <SectionTitle title="Describe the Activity" stepNumber="2" />
         <WhatSection setField="{setValue}" initialData="{formattedInitial}" />
       </section>
 
       {#if eventSelected}
         <!-- when section -->
         <section in:fade class="mt-8">
-          <SectionTitle title="Schedule The When" stepNumber="3" />
+          <SectionTitle title="Schedule a Time" stepNumber="3" />
 
           <WhenSection
             touched="{touched}"
