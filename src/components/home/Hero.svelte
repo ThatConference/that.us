@@ -57,6 +57,18 @@
 
             <div class="flex space-x-4">
               {#if !$isAuthenticated}
+                <Link
+                  href="/support/welcome"
+                  class="px-8 py-3 rounded-md shadow text-base leading-6
+                  font-medium border-2 border-thatBlue-500 text-thatBlue-500
+                  bg-white hover:bg-thatBlue-500 hover:text-white
+                  focus:bg-thatBlue-500 focus:text-white focus:outline-none
+                  focus:ring-thatBlue-500 focus:border-thatBlue-800
+                  transition duration-150 ease-in-out md:py-4 md:text-lg
+                  md:px-10">
+                  Getting Started
+                </Link>
+
                 <button
                   on:click="{() => login(document.location.pathname, true)}"
                   class="px-8 py-3 border-2 border-transparent text-base
@@ -65,11 +77,11 @@
                     focus:border-thatOrange-700 focus:ring-that-orange
                     transition duration-150 ease-in-out md:py-4 md:text-lg
                     md:px-10">
-                  Become a member today!
+                  Join today!
                 </button>
-
-                <button
-                  on:click="{() => login(document.location.pathname, false)}"
+              {:else}
+                <Link
+                  href="/events"
                   class="px-8 py-3 rounded-md shadow text-base leading-6
                     font-medium border-2 border-thatBlue-500 text-thatBlue-500
                     bg-white hover:bg-thatBlue-500 hover:text-white
@@ -77,9 +89,9 @@
                     focus:ring-thatBlue-500 focus:border-thatBlue-800
                     transition duration-150 ease-in-out md:py-4 md:text-lg
                     md:px-10">
-                  Already one, log in.
-                </button>
-              {:else}
+                  Upcomming Events
+                </Link>
+
                 <Link
                   href="/activities"
                   class="px-8 py-3 rounded-md shadow text-base leading-6
@@ -89,7 +101,7 @@
                     focus:ring-thatBlue-500 focus:border-thatBlue-800
                     transition duration-150 ease-in-out md:py-4 md:text-lg
                     md:px-10">
-                  View Activities
+                  Upcomming Activities
                 </Link>
               {/if}
             </div>
