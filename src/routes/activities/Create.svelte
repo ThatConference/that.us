@@ -20,7 +20,7 @@
   import metaTagsStore from '../../store/metaTags';
   import { tagEvent } from '../../utilities/gtag';
   import logEvent from '../../utilities/eventTrack';
-  import { format } from './lib/formatRequest';
+  import { formatCreate } from './lib/formatRequest';
   import { user } from '../../utilities/security.js';
 
   const { create } = sessionsApi(getClient());
@@ -30,7 +30,7 @@
   }) {
     setSubmitting(true);
 
-    const newActivity = format(values);
+    const newActivity = formatCreate(values);
     const { id } = await create(newActivity, values.eventId);
 
     tagEvent('activity_created', 'activity', $user.sub);

@@ -115,7 +115,7 @@
 
       currentEventId = event.id;
 
-      setField('selectedDay', dayjs(selectedDateValue).format('YYYY-MM-DD'));
+      setField('selectedDay', dayjs(startDate).format('YYYY-MM-DD'));
       selectedDateValue = startDate;
 
       handleReset();
