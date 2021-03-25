@@ -1,5 +1,7 @@
 <script>
   export let activities;
+
+  console.log({ activities });
   export let editMode = false;
   export let reverse = false;
   // 3rd party
@@ -165,14 +167,14 @@
     {#each sorted as day, d}
       <div>
         <h2
-          class="sticky top-0 z-20 bg-white text-xl md:text-4xl leading-9 font-extrabold tracking-tight text-thatBlue-800 sm:leading-10 pt-4 mb-7 sm:mb-9 whitespace-nowrap">
+          class="sticky top-0 z-20 bg-gray-100 text-xl md:text-4xl leading-9 font-extrabold tracking-tight text-thatBlue-800 sm:leading-10 pt-4 mb-7 sm:mb-9 whitespace-nowrap">
           {dayjs(day.dayOfYear).format("dddd MMMM D, 'YY")}
         </h2>
 
         {#each day.timeSlots as ts, t}
           <div class="relative">
             <h2
-              class="sticky top-11 sm:top-13 z-10 bg-white text-xl md:text-4xl leading-9 font-extrabold tracking-tight text-thatOrange-400 sm:leading-10 whitespace-nowrap">
+              class="sticky top-11 sm:top-13 z-10 bg-gray-100 text-xl md:text-4xl leading-9 font-extrabold tracking-tight text-thatOrange-400 sm:leading-10 whitespace-nowrap">
               {#if !dayjs(ts.timeSlot).isValid()}
                 Unscheduled
               {:else}{dayjs(ts.timeSlot).format('hh:mm a')}{/if}
@@ -185,7 +187,7 @@
                   {#if isKeynote(activity)}
                     <li
                       in:fade
-                      class="col-span-1 sm:col-span-2 lg:col-span-3 bg-white rounded-lg shadow-lg mt-10 mb-10">
+                      class="col-span-1 sm:col-span-2 lg:col-span-3 bg-gray-100 rounded-lg shadow-lg mt-10 mb-10">
                       <KeynoteCard {...activity} />
                     </li>
                   {:else}
