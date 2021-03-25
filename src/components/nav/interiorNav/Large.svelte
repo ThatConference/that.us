@@ -34,8 +34,17 @@
     </Link>
   </div>
 
-  <div class="hidden md:block">
+  <div class="hidden lg:block">
     <div class="ml-8 flex items-baseline">
+      <Link
+        href="/events"
+        open
+        class="px-3 py-2 rounded-md text-sm font-medium text-gray-300
+          hover:text-white hover:bg-that-blue focus:outline-none
+          focus:text-white focus:bg-that-blue">
+        <DesktopLink>Events</DesktopLink>
+      </Link>
+
       <Link
         href="/activities"
         open
@@ -122,7 +131,7 @@
   </div>
 </div>
 
-<div class="hidden md:block">
+<div class="hidden lg:block">
   <div class="ml-4 flex items-center justify-center md:ml-6">
     {#if $hasNotifications}
       <button
