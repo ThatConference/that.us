@@ -126,7 +126,7 @@ export const QUERY_SESSIONS_BY_SLUG = `
           name
           startDate
           endDate
-          sessions(pageSize: $pageSize, cursor: $cursor) {
+          sessions(pageSize: $pageSize, status: ACCEPTED, cursor: $cursor) {
             cursor
             count
             sessions {
@@ -147,7 +147,7 @@ export const QUERY_NEXT_SESSIONS = `
   ${coreSpeakerFields}
   query QUERY_NEXT_SESSIONS ($pageSize: Int, $cursor: String) {
     sessions {
-      all (pageSize: $pageSize, cursor: $cursor) {
+      all (pageSize: $pageSize, status: ACCEPTED, cursor: $cursor) {
         cursor
         count
         sessions {
@@ -256,10 +256,11 @@ export default client => {
   const querySessions = ({ eventId, pageSize = 50 }) =>
     query(QUERY_SESSIONS, { eventId, pageSize });
 
-  const querySessionsBySlug = (slug, pageSize = 50) => {
+  const querySessionsBySlug = ({ slug, cursor, pageSize = 50 }) => {
     const variables = {
       slug,
       pageSize,
+      cursor,
     };
 
     return client
