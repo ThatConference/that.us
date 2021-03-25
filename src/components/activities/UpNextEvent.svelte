@@ -4,6 +4,9 @@
   import { Link } from 'yrv';
   import { fade } from 'svelte/transition';
 
+  let sessions = event.sessions.sessions;
+  $: sessionsFiltered = sessions.filter(s => s.status === 'ACCEPTED');
+
   import {
     FeaturedActivity,
     FeaturedActivityAdd,
@@ -31,7 +34,7 @@
       <ul
         class="space-y-4 sm:grid sm:grid-cols-2 sm:gap-6 sm:space-y-0 lg:grid-cols-3 lg:gap-8">
         {#if event.sessions.sessions}
-          {#each event.sessions.sessions as s (s.id)}
+          {#each sessionsFiltered as s (s.id)}
             <li in:fade>
               <FeaturedActivity {...s} />
             </li>
