@@ -43,7 +43,7 @@
 
   $: {
     metaTagsStore.set({
-      title: `${$state.context.name || 'Activities'} * THAT`,
+      title: `${$state.context.name || 'Activities'} - THAT`,
       description: `Activities for ${$state.context.name || 'Activities'}.`,
       openGraph: {
         type: 'website',
