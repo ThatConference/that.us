@@ -42,7 +42,10 @@
       text: 'Getting Started',
       href: '/support/welcome',
     },
-
+    {
+      text: 'Events',
+      href: '/events',
+    },
     {
       text: 'Activities',
       href: '/activities',
@@ -63,6 +66,7 @@
       text: 'Changelog',
       href: '/changelog',
     },
+
     {
       text: 'THAT Conference',
       href: 'https://thatconference.com',
