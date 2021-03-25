@@ -7,6 +7,7 @@
   import eventsApi from '../../dataSources/api.that.tech/events/queries';
 
   import Hybrid from './components/_Hybrid.svelte';
+  import MultiDay from './components/_MultiDay.svelte';
   import Online from './components/_Online.svelte';
 
   const { id, name } = $router.params;
@@ -24,11 +25,26 @@
   });
 
   function queryEvent() {
-    eventFormat = Online; // todo later set based on event results
     return eventsApi(getClient())
       .queryEventBySlug(eventSlug)
       .then(event => {
-        currentEvent.set({ eventId: event.id, title: event.name });
+        switch (event.type) {
+          case 'HYBRID_MULTI_DAY':
+            eventFormat = Hybrid;
+            currentEvent.set({ eventId: event.id, title: event.name });
+            break;
+
+          case 'MULTI_DAY':
+            eventFormat = MultiDay;
+            currentEvent.set({ eventId: event.id, title: event.name });
+            break;
+
+          default:
+            eventFormat = Online;
+            currentEvent.set({ eventId: event.id, title: event.name });
+            break;
+        }
+
         return event;
       });
   }
