@@ -8,7 +8,7 @@ import createPagingConfig from '../../../machines/paging';
 import sessionsApi from '../../../dataSources/api.that.tech/sessions';
 
 function createServices() {
-  const { querySessionsBySlug, queryNextSessions } = sessionsApi(getClient());
+  const { querySessionsBySlug } = sessionsApi(getClient());
 
   return {
     guards: {
@@ -16,9 +16,12 @@ function createServices() {
     },
 
     services: {
-      load: context => querySessionsBySlug(context.eventSlug),
+      load: context => querySessionsBySlug({ slug: context.eventSlug }),
       loadNext: context =>
-        queryNextSessions({ eventId: context.eventId, cursor: context.cursor }),
+        querySessionsBySlug({
+          slug: context.eventSlug,
+          cursor: context.cursor,
+        }),
     },
 
     actions: {
@@ -40,13 +43,13 @@ function createServices() {
       }),
 
       loadNextSuccess: assign({
-        items: (context, { data }) =>
+        items: (context, { data: { sessions } }) =>
           uniqBy(
-            [...context.items, ...data.sessions.filter(s => s)],
+            [...context.items, ...sessions.sessions.filter(s => s)],
             i => i.id,
           ),
-        cursor: (_, { data }) => data.cursor,
-        count: (_, { data }) => data.count,
+        cursor: (_, { data: { sessions } }) => sessions.cursor,
+        count: (_, { data: { sessions } }) => sessions.count,
       }),
     },
   };

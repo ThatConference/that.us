@@ -1,7 +1,5 @@
 <script>
   export let activities;
-
-  console.log({ activities });
   export let editMode = false;
   export let reverse = false;
   // 3rd party
