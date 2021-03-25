@@ -4,7 +4,7 @@
   import metaTagsStore from '../../store/metaTags';
 
   metaTagsStore.set({
-    title: 'Payment Cancelled - THAT',
+    title: 'Payment Canceled - THAT',
     description: 'Your payment was cancelled.',
     nofollow: true,
     noindex: true,
@@ -19,13 +19,11 @@
   <div class="space-y-12">
     <div class="text-base max-w-prose mx-auto lg:max-w-none">
       <h2
-        class="text-base text-thatOrange-400 font-semibold tracking-wide uppercase"
-      >
-        Payment Cancelled
+        class="text-base text-thatOrange-400 font-semibold tracking-wide uppercase">
+        Payment Canceled
       </h2>
       <p
-        class="mt-6 text-4xl sm:text-5xl sm:tracking-tight lg:text-6xl leading-8 font-extrabold tracking-tight text-gray-900"
-      >
+        class="mt-6 text-4xl sm:text-5xl sm:tracking-tight lg:text-6xl leading-8 font-extrabold tracking-tight text-gray-900">
         Oh No!
       </p>
     </div>
@@ -33,16 +31,13 @@
     <div class="relative">
       <div class="prose text-lg text-gray-500 mx-auto lg:max-w-none">
         <p>
-          Sagittis scelerisque nulla cursus in enim consectetur quam. Dictum
-          urna sed consectetur neque tristique pellentesque. Blandit amet, sed
-          aenean erat arcu morbi. Cursus faucibus nunc nisl netus morbi vel
-          porttitor vitae ut. Amet vitae fames senectus vitae.
+          Your payment has been canceled. We've left the items in your cart in
+          case this was in error.
         </p>
 
         <p>
-          Sollicitudin tristique eros erat odio sed vitae, consequat turpis
-          elementum. Lorem nibh vel, eget pretium arcu vitae. Eros eu viverra
-          donec ut volutpat donec laoreet quam urna.
+          If you have any questions or need some help please just contact us in
+          the chat window on the bottom right of your window.
         </p>
       </div>
       <div class="mt-12 flex justify-end space-x-5">
