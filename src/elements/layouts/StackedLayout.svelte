@@ -1,5 +1,5 @@
 <script>
-  export let bodyBackgroundColor = 'bg-white';
+  export let bodyBackgroundColor = 'bg-gray-100';
 
   import { isEmpty } from 'lodash';
 
@@ -17,7 +17,7 @@
 
 <NoProfile />
 
-<div class="bg-gradient-to-b from-gray-100 flex flex-col min-h-screen ">
+<div class="bg-white flex flex-col min-h-screen ">
   <div class="relative bg-thatBlue-500 pt-10">
     <div
       class="absolute flex justify-center inset-x-0 left-1/2 transform -translate-x-1/2 w-full overflow-hidden lg:inset-y-0">
