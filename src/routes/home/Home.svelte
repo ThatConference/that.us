@@ -50,10 +50,11 @@
   </div>
 
   <div in:fade="{{ delay: 800 }}">
-    <Logo uri="/images/THAT-Logo-Words.svg" />
+    <div class="relative flex flex-col items-center">
+      <img class="h-72" src="/images/THAT-Logo-Words.svg" alt="THAT" />
+    </div>
 
     <UpNext stateMachineService="{$state.context.upNextActor}" />
-
     <Events />
 
     {#if !$isAuthenticated}
