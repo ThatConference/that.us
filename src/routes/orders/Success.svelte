@@ -1,9 +1,13 @@
 <script>
   import { onMount, getContext } from 'svelte';
+  import { Link } from 'yrv';
 
   import Layout from './components/_Layout.svelte';
-  import { LinkButton } from '../../elements';
   import metaTagsStore from '../../store/metaTags';
+  import {
+    Highlight as HighlightLink,
+    Standard as StandardLink,
+  } from '../../elements/links';
 
   const { send } = getContext('cart');
 
@@ -27,13 +31,11 @@
   <div class="space-y-12">
     <div class="text-base max-w-prose mx-auto lg:max-w-none">
       <h2
-        class="text-base text-thatOrange-400 font-semibold tracking-wide uppercase"
-      >
+        class="text-base text-thatOrange-400 font-semibold tracking-wide uppercase">
         Payment Recieved
       </h2>
       <p
-        class="mt-6 text-4xl sm:text-5xl sm:tracking-tight lg:text-6xl leading-8 font-extrabold tracking-tight text-gray-900"
-      >
+        class="mt-6 text-4xl sm:text-5xl sm:tracking-tight lg:text-6xl leading-8 font-extrabold tracking-tight text-gray-900">
         Thank You
       </p>
     </div>
@@ -41,47 +43,60 @@
     <div class="relative">
       <div class="prose text-lg text-gray-500 mx-auto lg:max-w-none">
         <p>
-          Sagittis scelerisque nulla cursus in enim consectetur quam. Dictum
-          urna sed consectetur neque tristique pellentesque. Blandit amet, sed
-          aenean erat arcu morbi. Cursus faucibus nunc nisl netus morbi vel
-          porttitor vitae ut. Amet vitae fames senectus vitae.
+          Our passion is people, communities, and helping one another become a
+          better geek than they were yesterday. We couldn't do this without you
+          and your support. <span class="font-bold">Thank You!</span>
         </p>
 
-        <p>
-          Sollicitudin tristique eros erat odio sed vitae, consequat turpis
-          elementum. Lorem nibh vel, eget pretium arcu vitae. Eros eu viverra
-          donec ut volutpat donec laoreet quam urna.
-        </p>
+        <p>So now what?</p>
+
         <ul>
-          <li>Quis elit egestas venenatis mattis dignissim.</li>
-          <li>Cras cras lobortis vitae vivamus ultricies facilisis tempus.</li>
-          <li>Orci in sit morbi dignissim metus diam arcu pretium.</li>
+          <li>
+            Join in! Better yet, go create an activity. <Link
+              href="/support/welcome">Learn how to get started.</Link>
+          </li>
+          <li>
+            <Link href="https://thatslack.thatconference.com"
+              >Join us in Slack.</Link>
+          </li>
+          <li>
+            Keep up to date. <Link href="/support/staying-up-to-date"
+              >Subscribe to the calendar.</Link>
+          </li>
+          <li>
+            Get ready for what's coming. <Link href="/events"
+              >Check out our past and upcoming events.</Link>
+          </li>
         </ul>
-        <p>
-          Rhoncus nisl, libero egestas diam fermentum dui. At quis tincidunt vel
-          ultricies. Vulputate aliquet velit faucibus semper. Pellentesque in
-          venenatis vestibulum consectetur nibh id. In id ut tempus egestas.
-          Enim sit aliquam nec, a. Morbi enim fermentum lacus in. Viverra.
-        </p>
+
         <h3>We’re here to help</h3>
         <p>
-          Tincidunt integer commodo, cursus etiam aliquam neque, et. Consectetur
-          pretium in volutpat, diam. Montes, magna cursus nulla feugiat
-          dignissim id lobortis amet. Laoreet sem est phasellus eu proin massa,
-          lectus. Diam rutrum posuere donec ultricies non morbi. Mi a platea
-          auctor mi.
+          We're here to support you and the community. Anything we can do to
+          improve, or if you wish there was a particular feature, please tell
+          us. Our entire platform is open source and everyone is invited to our
+          sprint meeting they're just activities.
+        </p>
+        <p>
+          Do you run a user group, meetup, or conference? Is there a way we can
+          support you? Let us know.
+        </p>
+        <p>
+          At any time feel free to drop us a line <a
+            href="mailto:hello@that.us"
+            rel="noopener"
+            target="_blank"
+            class="text-thatOrange-400 hover:text-thatOrange-500 hover:underline"
+            >hello@that.us</a>
         </p>
       </div>
       <div class="mt-12 flex justify-end space-x-5">
-        <LinkButton
-          href="/my/settings/order-history"
-          text="View Your Order History"
-        />
+        <StandardLink href="/my/settings/order-history">
+          View Your Order History
+        </StandardLink>
 
-        <LinkButton
-          href="/my/settings/order-history"
-          text="View Your Order History"
-        />
+        <HighlightLink href="/activities">
+          Check out the upcoming Activities
+        </HighlightLink>
       </div>
     </div>
   </div>
