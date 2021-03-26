@@ -102,8 +102,8 @@
   <Router path="/orders">
     <Route exact redirect="/orders/summary" />
     <Route exact path="/summary" component="{OrderSummary}" />
-    <Route exact path="/success" component="{OrderSuccess}" condition="{isLoggedIn}" redirect="/login" />
-    <Route exact path="/canceled" component="{OrderCanceled}" condition="{isLoggedIn}" redirect="/login" />
+    <Route exact path="/success" component="{OrderSuccess}" />
+    <Route exact path="/canceled" component="{OrderCanceled}" />
   </Router>
 
   <Router path='/support'>
