@@ -1,6 +1,7 @@
 <script>
   import { SocialLink } from './social';
   import { Link } from 'yrv';
+  import dayjs from 'dayjs';
 
   const socials = [
     {
@@ -167,7 +168,7 @@
 
     <div class="mt-8">
       <p class="text-center text-base leading-6 text-gray-400">
-        &copy; 2020 THAT&reg; . All rights reserved.
+        &copy; {dayjs().format('YYYY')} THAT&reg; All rights reserved.
       </p>
     </div>
   </div>
