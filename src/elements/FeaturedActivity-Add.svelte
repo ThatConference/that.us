@@ -1,16 +1,20 @@
 <script>
+  export let eventId;
+
   import { Link } from 'yrv';
+  import Icon from 'svelte-awesome';
+  import { plusCircle } from 'svelte-awesome/icons';
 
   import { isAuthenticated, thatProfile } from '../utilities/security';
   import { imageCrops } from '../config';
 
-  import Icon from 'svelte-awesome';
-  import { plusCircle } from 'svelte-awesome/icons';
+  const baseSlug = '/activities/create';
 
   let isHover = false;
+  let createLink = eventId ? `${baseSlug}#/event/${eventId}` : baseSlug;
 </script>
 
-<Link href="/activities/create">
+<Link href="{createLink}">
   <div
     class="transition duration-500 ease-in-out transform hover:scale-105 w-full h-full py-10 px-6 hover:bg-thatBlue-400 bg-that-blue
       text-center shadow rounded-lg xl:px-10 xl:text-left"
