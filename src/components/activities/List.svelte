@@ -1,20 +1,23 @@
 <script>
   export let activities;
+  export let events = [];
   export let editMode = false;
   export let reverse = false;
+
   // 3rd party
   import { onMount } from 'svelte';
   import { fade } from 'svelte/transition';
   import dayjs from 'dayjs';
   import _ from 'lodash';
-  import Fuse from 'fuse.js';
+  import Fuse from 'fuse.js'; // https://fusejs.io/api/options.html
   import Icon from 'svelte-awesome';
   import { filter as filterIcon } from 'svelte-awesome/icons';
+
   // ui support
   import Card from './Card.svelte';
   import KeynoteCard from './KeynoteCard.svelte';
   import FilterSlideOver from './FilterSlideOver.svelte';
-  // https://fusejs.io/api/options.html
+
   const options = {
     // isCaseSensitive: false,
     includeScore: true,
@@ -37,6 +40,7 @@
       'speakers.lastName',
     ],
   };
+
   let activitiesFiltered = [];
   let searchterm = '';
   let fuse;
@@ -45,32 +49,36 @@
   let communities = [];
   let selectedFilterTerms = getSessionSelectedTags();
   let activitiesTaggedFiltered = [];
+
   $: {
     const tagsSet = new Set();
     const communitiesSet = new Set();
+
     for (const activity of activities) {
       for (const tag of activity.tags) {
         tagsSet.add(tag.toLowerCase());
       }
+
       for (const community of activity.communities) {
         communitiesSet.add(community.toLowerCase());
       }
     }
+
     tags = Array.from(tagsSet.values()).sort((a, b) => {
-      if (a < b) {
-        return -1;
-      }
-      if (a > b) {
-        return 1;
-      }
+      if (a < b) return -1;
+      if (a > b) return 1;
+
       return 0;
     });
+
     communities = Array.from(communitiesSet.values());
   }
+
   $: window.sessionStorage.setItem(
     'selectedTags',
     JSON.stringify(selectedFilterTerms),
   );
+
   $: activitiesTaggedFiltered =
     selectedFilterTerms.length > 0
       ? activitiesFiltered.filter(activity =>
@@ -79,6 +87,7 @@
           ),
         )
       : activitiesFiltered;
+
   $: sorted = _(activitiesTaggedFiltered)
     .groupBy(({ startTime }) => dayjs(startTime).format('MM/DD/YYYY'))
     .map((value, key) => ({
@@ -92,15 +101,11 @@
       dayOfYear: key,
     }))
     .value();
+
   $: if (reverse) {
     sorted.reverse();
   }
-  const isKeynote = activity => {
-    let results = false;
-    if (activity.type === 'KEYNOTE' || activity.type === 'PANEL')
-      results = true;
-    return results;
-  };
+
   $: {
     if (searchterm === '') {
       activitiesFiltered = activities;
@@ -108,19 +113,34 @@
       activitiesFiltered = fuse.search(searchterm).map(r => r.item);
     }
   }
+
+  function isKeynote(activity) {
+    let results = false;
+
+    if (activity.type === 'KEYNOTE' || activity.type === 'PANEL')
+      results = true;
+
+    return results;
+  }
+
   function handleCloseFilter() {
     filterVisible = false;
   }
+
   function getSessionSelectedTags() {
     const sessionFilters = window.sessionStorage.getItem('selectedFilters');
+
     if (sessionFilters) {
       const parsedTags = JSON.parse(sessionFilters);
+
       if (parsedTags && Array.isArray(parsedTags)) {
         return parsedTags;
       }
     }
+
     return [];
   }
+
   onMount(() => {
     fuse = new Fuse(activities, options);
   });
@@ -155,6 +175,7 @@
     <FilterSlideOver
       tags="{tags}"
       communities="{communities}"
+      events="{events}"
       bind:selectedFilterTerms
       bind:searchterm
       on:click="{handleCloseFilter}"

@@ -67,7 +67,9 @@
     {#if ['init'].some($state.matches)}
       <CardLoader />
     {:else}
-      <ActivityList activities="{$state.context.items}" />
+      <ActivityList
+        activities="{$state.context.items}"
+        events="{$state.context.events}" />
 
       <SvelteInfiniteScroll
         window

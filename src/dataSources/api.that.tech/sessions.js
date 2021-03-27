@@ -170,6 +170,11 @@ export const QUERY_SESSIONS_BY_DATE = `
         cursor
         sessions {
           ...coreFields
+          event {
+            id
+            name
+            slug
+          }
           speakers {
             ...coreSpeakerFields
           }
