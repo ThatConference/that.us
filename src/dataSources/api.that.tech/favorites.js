@@ -73,6 +73,8 @@ export default client => {
         if (data && !error) {
           const { favorites } = data.sessions.me;
 
+          results = favorites;
+
           results = results.filter(s => s).filter(s => s.status === 'ACCEPTED');
           results.sort((a, b) => new Date(a.startTime) - new Date(b.startTime));
 
