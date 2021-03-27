@@ -34,12 +34,22 @@ function createServices() {
         items: (_, { data }) => data.sessions.filter(s => s),
         cursor: (_, { data }) => data.cursor,
         count: (_, { data }) => data.count,
+        events: (context, { data: { sessions } }) =>
+          uniqBy(
+            [...context.events, ...sessions.filter(s => s).map(e => e.event)],
+            i => i.id,
+          ),
       }),
 
       loadNextSuccess: assign({
         items: (context, { data }) =>
           uniqBy(
             [...context.items, ...data.sessions.filter(s => s)],
+            i => i.id,
+          ),
+        events: (context, { data: { sessions } }) =>
+          uniqBy(
+            [...context.events, ...sessions.filter(s => s).map(e => e.event)],
             i => i.id,
           ),
         cursor: (_, { data }) => data.cursor,
@@ -52,7 +62,7 @@ function createServices() {
 function create() {
   const services = createServices();
   return Machine(
-    { ...createPagingConfig({ eventId: config.eventId }) },
+    { ...createPagingConfig({ eventId: config.eventId, events: [] }) },
     { ...services },
   );
 }

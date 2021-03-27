@@ -2,12 +2,18 @@
   export let searchterm = '';
   export let tags;
   export let communities;
+  export let events = [];
   export let selectedFilterTerms = [];
 
   import Icon from 'svelte-awesome';
-  import { filter as filterIcon } from 'svelte-awesome/icons';
+  import { filter as filterIcon, externalLink } from 'svelte-awesome/icons';
 
+  import { StandardLink } from '../../elements';
   import SlideOver from '../../elements/overlays/BasicSlideOver.svelte';
+
+  import config from '../../config';
+
+  $: eventsModified = events.filter(e => e.id !== config.eventId);
 </script>
 
 <SlideOver title="Search and Filter" on:click on:clicked-outside>
@@ -28,46 +34,64 @@
         <input
           class="form-input w-full border rounded-md"
           bind:value="{searchterm}"
-          placeholder="type to search..."
-        />
+          placeholder="type to search..." />
       </div>
     </div>
 
-    <div class="py-12 flex justify-between">
-      <div class="my-2">
+    {#if eventsModified.length > 0}
+      <div class="py-12">
+        <h2 class="text-lg leading-7 font-medium text-gray-900">Events</h2>
+
+        <div class="my-2 border-gray-200">
+          <ul>
+            {#each eventsModified as event}
+              <li>
+                <div
+                  class="flex space-x-3 items-center hover:text-that-blue cursor-pointer pb-2">
+                  <div>
+                    <Icon data="{externalLink}" class="h-4 w-4" />
+                  </div>
+                  <div>
+                    <StandardLink href="{`/activities/${event.slug}`}"
+                      >{event.name}</StandardLink>
+                  </div>
+                </div>
+              </li>
+            {/each}
+          </ul>
+        </div>
+      </div>
+    {/if}
+
+    <div class="px-4 py-12 grid grid-cols-2 gap-6">
+      <div>
         <h2 class="text-lg leading-7 font-medium text-gray-900">Tags</h2>
         <fieldset class="flex flex-col">
           {#each tags as tag}
             {#if tag.charAt(0) !== '@'}
               <label
-                class="capitalize text-base text-gray-500 sm:text-lg md:mt-2 md:text-md lg:mx-0 whitespace-nowrap"
-              >
+                class="capitalize text-base text-gray-500 sm:text-lg md:mt-2 md:text-md lg:mx-0 whitespace-nowrap">
                 <input
                   type="checkbox"
                   bind:group="{selectedFilterTerms}"
-                  value="{tag}"
-                />
+                  value="{tag}" />
                 <span class="px-2">{tag}</span>
               </label>
             {/if}
           {/each}
         </fieldset>
       </div>
-      <div class="ml-3">
-        <h2 class="mt-4 text-lg leading-7 font-medium text-gray-900">
-          Communities
-        </h2>
+      <div>
+        <h2 class="text-lg leading-7 font-medium text-gray-900">Communities</h2>
         <div class="mb-2">
           <fieldset class="flex flex-col">
             {#each communities as community}
               <label
-                class="capitalize text-base text-gray-500 sm:text-lg md:mt-2 md:text-md lg:mx-0 whitespace-nowrap"
-              >
+                class="capitalize text-base text-gray-500 sm:text-lg md:mt-2 md:text-md lg:mx-0 whitespace-nowrap">
                 <input
                   type="checkbox"
                   bind:group="{selectedFilterTerms}"
-                  value="@{community}"
-                />
+                  value="@{community}" />
                 <span class="px-2">@{community}</span>
               </label>
             {/each}
@@ -86,9 +110,10 @@
         active:text-gray-800 transition duration-150 ease-in-out"
         on:click="{() => {
           selectedFilterTerms = [];
-        }}"
-      >
-        {`Clear ${selectedFilterTerms.length} selected filter${selectedFilterTerms.length > 1 ? 's' : ''}`}
+        }}">
+        {`Clear ${selectedFilterTerms.length} selected filter${
+          selectedFilterTerms.length > 1 ? 's' : ''
+        }`}
       </button>
     {/if}
   </div>
