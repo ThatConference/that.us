@@ -26,10 +26,16 @@ function createConfig(metaContext) {
         initial: 'init',
 
         on: {
-          ADD_ITEM: {
-            actions: ['readLocalStorage', 'addItem', 'setLocalStorage'],
-            target: '.pending',
-          },
+          ADD_ITEM: [
+            {
+              cond: 'canAddItem',
+              actions: ['readLocalStorage', 'addItem', 'setLocalStorage'],
+              target: '.pending',
+            },
+            {
+              target: '.invalidCart',
+            },
+          ],
         },
 
         states: {
@@ -79,6 +85,8 @@ function createConfig(metaContext) {
             entry: 'logError',
             type: 'final',
           },
+
+          invalidCart: {},
         },
       },
     },
