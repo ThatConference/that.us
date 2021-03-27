@@ -12,6 +12,7 @@ function createServices() {
     guards: {
       hasCartItems: context => !isEmpty(context.cart),
       isEmptyCart: context => isEmpty(context.cart),
+      canAddItem: (context, event) => true,
     },
 
     services: {},
