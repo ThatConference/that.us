@@ -3,6 +3,7 @@
 
   import { createEventDispatcher } from 'svelte';
   import dayjs from 'dayjs';
+  import { Link } from 'yrv';
 
   import { ChevronRight } from '../../../elements/svgs';
   import { Code } from '../../../elements/svgs/illustrations';
@@ -59,7 +60,19 @@
           </div>
         </div>
 
-        <div class="mt-6 col-span-3 font-extrabold flex justify-center">
+        <div
+          class="mt-6 col-span-3 font-extrabold space-y-6 flex flex-col items-center">
+          <div>
+            <div
+              class="transition duration-500 ease-in-out transform hover:scale-105">
+              <Link href="{`/activities/${event.slug}`}">
+                <span
+                  class="px-4 py-2 text-white text-lg leading-5 uppercase tracking-wide bg-thatOrange-400 transition duration-500 ease-in-out hover:bg-thatOrange-500 rounded-md"
+                  >View Event Schedule</span>
+              </Link>
+            </div>
+          </div>
+
           <p class="text-lg italic lowercase tracking-tight text-white ">
             all dates/times are represented in your time zone.
           </p>

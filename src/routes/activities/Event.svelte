@@ -62,7 +62,11 @@
     <Nav />
     <ActionHeader title="{$state.context.name}">
       {#if !createDisabled}
-        <LinkButton href="/activities/create" text="Create Activity" />
+        {#if $state.context.eventId}
+          <LinkButton
+            href="{`/activities/create#/event/${$state.context.eventId}`}"
+            text="Create Activity" />
+        {/if}
       {/if}
     </ActionHeader>
     <!-- <h3

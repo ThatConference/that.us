@@ -1,5 +1,5 @@
 <script>
-  import { Router, Route } from 'yrv';
+  import { Router, router, Route } from 'yrv';
 
   import config from './config';
   import { isAuthenticated } from './utilities/security.js';
@@ -8,7 +8,7 @@
   const { eventId } = config;
 
   function isLoggedIn() {
-    documentReferrer = window.location.pathname;
+    documentReferrer = $router.path;
     return $isAuthenticated;
   }
 
@@ -120,8 +120,8 @@
     <Route exact component="{Daily}" />
     <Route exact path="/:id" component="{Activity}" />
     <Route exact path="/:id/:name" component="{EventActivities}" />
-    <Route exact path="/create" redirect="{`/activities/create/${eventId}`}" />
-    <Route exact path="/create/:eventId" component="{Create}" condition="{isLoggedIn}" redirect="/login" />
+    <Route exact path="/create" redirect="{`/activities/create#/event/${eventId}`}" />
+    <Route exact path="/create#/event/:eventId" component="{Create}" condition="{isLoggedIn}" redirect="/login" />
     <Route exact path="/edit/:activityId" component="{EditActivity}" condition="{isLoggedIn}" redirect="/login" />
   </Router>
 

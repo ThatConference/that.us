@@ -23,6 +23,7 @@
   function handleOnChange({ target }) {
     setField('eventId', target.value);
     let eventSelectedDetail = events.find(i => i.id === eventSelected);
+    window.location.replace(`#/event/${target.value}`);
     dispatch('event-selected', eventSelectedDetail);
   }
 

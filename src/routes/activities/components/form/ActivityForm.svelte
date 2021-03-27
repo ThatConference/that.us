@@ -45,7 +45,6 @@
   import WhenSection from './_When.svelte';
 
   const { eventId } = $router.params;
-
   const formattedInitial = formatActivityInitialInput({
     event: {
       id: eventId,
