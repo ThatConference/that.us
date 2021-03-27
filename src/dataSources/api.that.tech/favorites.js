@@ -58,7 +58,7 @@ export default client => {
 
   function query(eventId) {
     const variables = {
-      eventId,
+      eventId: 'ANY',
     };
 
     return client
