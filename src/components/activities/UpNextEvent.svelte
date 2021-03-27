@@ -5,7 +5,9 @@
   import { fade } from 'svelte/transition';
 
   let sessions = event.sessions.sessions;
-  $: sessionsFiltered = sessions.filter(s => s.status === 'ACCEPTED');
+  $: sessionsFiltered = sessions
+    .filter(s => s)
+    .filter(s => s.status === 'ACCEPTED');
 
   import {
     FeaturedActivity,
@@ -42,7 +44,7 @@
         {/if}
 
         <li class="h-full w-full" in:fade>
-          <FeaturedActivityAdd />
+          <FeaturedActivityAdd eventId="{event.id}" />
         </li>
       </ul>
 
