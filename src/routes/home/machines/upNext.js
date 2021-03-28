@@ -31,12 +31,12 @@ function createServices(client) {
         }),
 
       loadSuccess: assign({
-        items: (_, { data }) => data.sessions,
+        items: (_, { data }) => data.sessions.filter(s => s),
         cursor: (_, { data }) => data.cursor,
       }),
 
       loadNextSuccess: assign({
-        items: (context, { data }) => data.sessions,
+        items: (context, { data }) => data.sessions.filter(s => s),
         cursor: (_, { data }) => data.cursor,
       }),
 
