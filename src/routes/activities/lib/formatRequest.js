@@ -20,9 +20,15 @@ export const formatCreate = values => {
     selectedDuration,
   } = values;
 
-  const parsedStartTime = dayjs(`${selectedDay} ${selectedTime}`).tz(
+  const formattedSelectedDay = dayjs(selectedDay).format('YYYY-MM-DD');
+
+  const parsedStartTime = dayjs(`${formattedSelectedDay} ${selectedTime}`).tz(
     selectedTimezone,
   );
+
+  if (!parsedStartTime.isValid()) {
+    throw new Error('invalid date/time');
+  }
 
   const parsedDuration = dayjs(selectedDuration, 'H:mm');
 
@@ -42,6 +48,7 @@ export const formatCreate = values => {
 
   return newActivity;
 };
+
 export const formatUpdate = values => {
   const {
     eventId,
@@ -54,9 +61,15 @@ export const formatUpdate = values => {
     selectedDuration,
   } = values;
 
-  const parsedStartTime = dayjs(`${selectedDay} ${selectedTime}`).tz(
+  const formattedSelectedDay = dayjs(selectedDay).format('YYYY-MM-DD');
+
+  const parsedStartTime = dayjs(`${formattedSelectedDay} ${selectedTime}`).tz(
     selectedTimezone,
   );
+
+  if (!parsedStartTime.isValid()) {
+    throw new Error('invalid date/time');
+  }
 
   const parsedDuration = dayjs(selectedDuration, 'H:mm');
 
