@@ -28,14 +28,32 @@ function createConfig(metaContext) {
         on: {
           ADD_ITEM: [
             {
-              cond: 'canAddItem',
+              cond: 'isDuplicateMembership',
+              target: '.cartError.duplicateMembership',
+            },
+            {
+              cond: 'isSameTicketType',
+              target: '.cartError.invalidProductType',
+            },
+            {
+              cond: 'isSameEvent',
+              target: '.cartError.invalidEvent',
+            },
+            {
               actions: ['readLocalStorage', 'addItem', 'setLocalStorage'],
               target: '.pending',
             },
-            {
-              target: '.invalidCart',
-            },
           ],
+          CONTINUE: { target: '.init' },
+          REPLACE_CART: {
+            actions: [
+              'clearCart',
+              'clearLocalStorage',
+              'addItem',
+              'setLocalStorage',
+            ],
+            target: '.pending',
+          },
         },
 
         states: {
@@ -61,6 +79,7 @@ function createConfig(metaContext) {
             on: {
               '': {
                 cond: 'isEmptyCart',
+                actions: ['clearCart', 'clearLocalStorage'],
                 target: 'new',
               },
 
@@ -86,7 +105,33 @@ function createConfig(metaContext) {
             type: 'final',
           },
 
-          invalidCart: {},
+          cartError: {
+            initial: 'error',
+            states: {
+              error: {},
+              duplicateMembership: {
+                entry: [
+                  'clearCart',
+                  'clearLocalStorage',
+                  'addItem',
+                  'setLocalStorage',
+                ],
+                on: {
+                  '': {
+                    target: '#Cart.cart.pending',
+                  },
+                },
+              },
+
+              invalidEvent: {
+                entry: 'saveAddErrorEventData',
+              },
+
+              invalidProductType: {
+                entry: 'saveAddErrorEventData',
+              },
+            },
+          },
         },
       },
     },
