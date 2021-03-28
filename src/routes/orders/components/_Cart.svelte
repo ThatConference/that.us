@@ -1,12 +1,11 @@
 <script>
   import { getContext } from 'svelte';
   import { getClient } from '@urql/svelte';
-  import { Link } from 'yrv';
+  import { Cart as CartModal } from '../../../elements/modals';
 
   import CartItem from './_CartItem.svelte';
   import { Standard as StandardButton } from '../../../elements/buttons';
   import { LinkButton } from '../../../elements';
-  import currentEvent from '../../../store/currentEvent';
 
   import orderMutations from '../../../dataSources/api.that.tech/orders/mutations';
   import config from '../../../config';
@@ -54,12 +53,47 @@
     const result = i % 2;
     return result != 0;
   }
+
+  function handleErrorContinue() {
+    send('CONTINUE');
+  }
+
+  function handleReplaceCart() {
+    const eventData = {
+      ...$state.context.addErrorEventData,
+      type: 'REPLACE_CART',
+    };
+
+    send('REPLACE_CART', eventData);
+  }
 </script>
 
 <svelte:head>
   <script src="https://js.stripe.com/v3/">
   </script>
 </svelte:head>
+
+{#if $state.matches('cart.cartError.invalidEvent')}
+  <CartModal
+    title="Purchasing Limitation"
+    text="Currently, we only support purchasing items from one event per order.">
+    <div class="flex justify-center space-x-6">
+      <StandardButton on:click="{handleReplaceCart}">replace</StandardButton>
+      <StandardButton on:click="{handleErrorContinue}">keep</StandardButton>
+    </div>
+  </CartModal>
+{/if}
+
+{#if $state.matches('cart.cartError.invalidProductType')}
+  <CartModal
+    title="Purchasing Limitation"
+    text="You can purchase an event ticket or a membership but not both. If you have a membership, there is no need for an additional event ticket.">
+    <div class="flex justify-center space-x-6">
+      <StandardButton on:click="{handleReplaceCart}">replace</StandardButton>
+      <StandardButton on:click="{handleErrorContinue}">keep</StandardButton>
+    </div>
+  </CartModal>
+{/if}
 
 {#if $state.matches('cart.new')}
   <section class="flex flex-col space-y-8">
