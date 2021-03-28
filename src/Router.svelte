@@ -122,7 +122,7 @@
     <Route exact path="/:id/:name" component="{EventActivities}" />
     <Route exact path="/create" redirect="{`/activities/create#/event/${eventId}`}" />
     <Route exact path="/create#/event/:eventId" component="{Create}" condition="{isLoggedIn}" redirect="/login" />
-    <Route exact path="/edit/:activityId" component="{EditActivity}" condition="{isLoggedIn}" redirect="/login" />
+    <Route path="/edit/:activityId" component="{EditActivity}" condition="{isLoggedIn}" redirect="/login" />
   </Router>
 
   <Router path="/events">
