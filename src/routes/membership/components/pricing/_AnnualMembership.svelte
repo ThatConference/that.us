@@ -4,6 +4,7 @@
   import { navigateTo } from 'yrv';
   import { getContext } from 'svelte';
 
+  import config from '../../../../config';
   import { Highlight as HighlightButton } from '../../../../elements/buttons';
   import { Check } from '../../../../elements/svgs';
 
@@ -11,7 +12,12 @@
 
   function handleAddMembershipClick(quantity = 1) {
     const isBulkPurchase = quantity > 1 ? true : false;
-    send('ADD_ITEM', { ...membership, isBulkPurchase, quantity });
+    send('ADD_ITEM', {
+      eventId: config.eventId,
+      ...membership,
+      isBulkPurchase,
+      quantity,
+    });
     navigateTo('/orders/summary');
   }
 </script>

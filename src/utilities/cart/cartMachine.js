@@ -11,8 +11,29 @@ function createServices() {
   return {
     guards: {
       hasCartItems: context => !isEmpty(context.cart),
+
       isEmptyCart: context => isEmpty(context.cart),
-      canAddItem: (context, event) => true,
+
+      isDuplicateMembership: (context, event) => {
+        // triggers just replacing the item in the cart.
+        if (isEmpty(context.cart)) return false;
+        if (event.productType !== 'MEMBERSHIP') return false;
+
+        const result = event.productType === context.productType;
+        return result;
+      },
+
+      isSameTicketType: (context, event) => {
+        if (isEmpty(context.cart)) return false;
+
+        return event.productType !== context.productType;
+      },
+
+      isSameEvent: (context, event) => {
+        if (isEmpty(context.cart)) return false;
+
+        return context.eventId !== event.eventId;
+      },
     },
 
     services: {},
@@ -25,21 +46,35 @@ function createServices() {
           tags: { stateMachine: 'cart' },
         }),
 
-      readLocalStorage: assign({
-        cart: () => {
-          const localCart = window.localStorage.getItem(cartKeyName);
-          const results = JSON.parse(localCart) || undefined;
+      saveAddErrorEventData: assign({
+        addErrorEventData: (_, event) => event,
+      }),
 
-          return results && results.lineItems ? results.lineItems : {}; // maybe null would be better
-        },
+      readLocalStorage: assign(() => {
+        const localCart = window.localStorage.getItem(cartKeyName);
+        const results = JSON.parse(localCart) || {};
+
+        const {
+          lineItems = {},
+          eventId = undefined,
+          productType = undefined,
+        } = results;
+
+        return {
+          eventId,
+          cart: lineItems,
+          productType,
+        };
       }),
 
       setLocalStorage: context => {
-        const { cart } = context;
+        const { cart, eventId, productType } = context;
 
         const localCart = {
           version: cartVersion,
           lineItems: cart,
+          eventId,
+          productType,
         };
 
         window.localStorage.setItem(cartKeyName, JSON.stringify(localCart));
@@ -47,12 +82,15 @@ function createServices() {
 
       clearCart: assign({
         cart: () => ({}),
+        eventId: () => undefined,
+        productType: () => undefined,
       }),
 
       clearLocalStorage: () => window.localStorage.removeItem(cartKeyName),
 
       addItem: assign({
         eventId: (_, event) => event.eventId,
+        productType: (_, event) => event.productType,
         cart: (context, event) => {
           if (!event.id) {
             throw new Error('No id passed into addItem');

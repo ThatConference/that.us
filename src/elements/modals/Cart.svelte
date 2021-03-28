@@ -1,6 +1,5 @@
 <script>
   import { fade } from 'svelte/transition';
-  import Waiting from '../Waiting.svelte';
 
   export let title;
   export let text;
@@ -14,24 +13,26 @@
   </div>
 
   <div
-    class="bg-white rounded-lg px-4 pt-5 pb-4 overflow-hidden shadow-xl
-    transform transition-all sm:max-w-sm sm:w-full sm:p-6"
+    class="bg-white rounded-lg px-4 pt-5 pb-4 overflow-hidden shadow-xl transform transition-all sm:max-w-sm sm:w-full sm:p-6"
     role="dialog"
     aria-modal="true"
     aria-labelledby="modal-headline"
     transition:fade="{{ duration: 1000 }}">
     <div>
-      <div class="mx-auto flex items-center justify-center">
-        <Waiting />
+      <div class="p-12 mx-auto flex items-center justify-center">
+        <img src="/images/THATCart.svg" alt="" />
       </div>
-      <div class="mt-3 text-center sm:mt-5">
-        <h3
-          class="text-lg leading-6 font-medium text-gray-900"
+      <div class="mt-4 text-center sm:mt-5">
+        <h1
+          class="text-xl leading-6 font-bold text-gray-900"
           id="modal-headline">
           {title}
-        </h3>
+        </h1>
         <div class="mt-2">
-          <p class="text-sm leading-5 text-gray-500">{text}</p>
+          <p class="text-md leading-5 text-gray-500">{text}</p>
+        </div>
+        <div class="mt-6">
+          <slot />
         </div>
       </div>
     </div>

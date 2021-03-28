@@ -1,10 +1,11 @@
 <script>
-  export let eventTicket;
+  // export let eventTicket;
   export let membership;
 
   import { navigateTo } from 'yrv';
   import { getContext } from 'svelte';
 
+  import config from '../../../../config';
   import { login } from '../../../../utilities/security';
 
   import { Check, Ban } from '../../../../elements/svgs';
@@ -17,7 +18,12 @@
 
   function handleAddMembershipClick(quantity = 1) {
     const isBulkPurchase = quantity > 1 ? true : false;
-    send('ADD_ITEM', { ...membership, isBulkPurchase, quantity });
+    send('ADD_ITEM', {
+      eventId: config.eventId,
+      ...membership,
+      isBulkPurchase,
+      quantity,
+    });
     navigateTo('/orders/summary');
   }
 

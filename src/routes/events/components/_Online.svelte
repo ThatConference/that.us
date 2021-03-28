@@ -8,12 +8,13 @@
   import Nav from '../../../components/nav/interiorNav/Top.svelte';
   import SponsorSimple from '../../../components/SponsorSimple.svelte';
   import UpNextEvent from '../../../components/activities/UpNextEvent.svelte';
-
   import {
     Standard as StandardLink,
     Highlight as HighlightLink,
   } from '../../../elements/links';
   import Layout from '../../../elements/layouts/LandingLayout.svelte';
+
+  import config from '../../../config';
 
   import CTA from './_EventCTA.svelte';
   import OnlineHero from './_OnlineHero.svelte';
@@ -30,7 +31,12 @@
       .find(e => e.productType === 'TICKET');
     const isBulkPurchase = quantity > 1 ? true : false;
 
-    send('ADD_ITEM', { eventId, ...eventTicket, isBulkPurchase, quantity });
+    send('ADD_ITEM', {
+      eventId,
+      ...eventTicket,
+      isBulkPurchase,
+      quantity,
+    });
     navigateTo('/orders/summary');
   }
 
@@ -40,7 +46,12 @@
       .find(e => e.productType === 'MEMBERSHIP');
     const isBulkPurchase = quantity > 1 ? true : false;
 
-    send('ADD_ITEM', { eventId, ...eventTicket, isBulkPurchase, quantity });
+    send('ADD_ITEM', {
+      eventId,
+      ...eventTicket,
+      isBulkPurchase,
+      quantity,
+    });
     navigateTo('/orders/summary');
   }
 </script>
