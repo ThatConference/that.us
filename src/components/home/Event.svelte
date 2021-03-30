@@ -33,8 +33,8 @@
           </h3>
 
           <p class="pt-2 text-gray-500 text-sm truncate">
-            {dayjs(startDate).format('dddd MMMM D, YYYY - h:mm A')}
-            {dayjs(endDate).format('dddd MMMM D, YYYY - h:mm A')}
+            {dayjs(startDate).format('dddd, MMMM D, YYYY - h:mm A')}
+            {dayjs(endDate).format('dddd, MMMM D, YYYY - h:mm A')}
           </p>
 
           <p class="pt-4 text-gray-500 text-sm">

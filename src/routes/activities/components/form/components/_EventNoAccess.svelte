@@ -21,7 +21,7 @@
         </p>
 
         <p>
-          {dayjs(event.startDate).format('dddd MMMM D, YYYY')}
+          {dayjs(event.startDate).format('dddd, MMMM D, YYYY')}
         </p>
       </div>
       <div class="flex-shrink-0 pr-4">

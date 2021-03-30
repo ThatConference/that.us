@@ -187,7 +187,7 @@
       <div>
         <h2
           class="sticky top-0 z-20 bg-gray-100 text-xl md:text-4xl leading-9 font-extrabold tracking-tight text-thatBlue-800 sm:leading-10 pt-4 mb-7 sm:mb-9 whitespace-nowrap">
-          {dayjs(day.dayOfYear).format("dddd MMMM D, 'YY")}
+          {dayjs(day.dayOfYear).format("dddd, MMMM D, 'YY")}
         </h2>
 
         {#each day.timeSlots as ts, t}
