@@ -160,6 +160,16 @@ export const QUERY_EVENTS_BY_COMMUNITY = `
   }
 `;
 
+export const QUERY_ME_HAS_ACCESS = `
+  query QUERY_ME_HAS_ACCESS ($eventId: ID!) {
+    events {
+      me {
+        hasAccess(eventId: $eventId)
+      }
+    }
+  }
+`;
+
 export default client => {
   function queryEventBySlug(slug) {
     const variables = { slug };
@@ -209,5 +219,19 @@ export default client => {
       });
   }
 
-  return { queryEvents, queryEventsByCommunity, queryEventBySlug };
+  function meHasAccess(eventId) {
+    const variables = { eventId };
+
+    return client
+      .query(QUERY_ME_HAS_ACCESS, variables)
+      .toPromise()
+      .then(({ data, error }) => {
+        if (error) log(error, 'QUERY_ME_HAS_ACCESS');
+
+        const { hasAccess } = data.events.me;
+        return hasAccess || false;
+      });
+  }
+
+  return { queryEvents, queryEventsByCommunity, queryEventBySlug, meHasAccess };
 };

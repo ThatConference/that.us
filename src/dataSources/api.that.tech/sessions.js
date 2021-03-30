@@ -240,6 +240,21 @@ export const SET_ATTENDANCE = `
   }
 `;
 
+export const QUERY_SESSION_BY_ID_SHORT = `
+  query querySessionById($sessionId: ID!) {
+    sessions {
+      session (sessionId: $sessionId) {  
+        title
+        shortDescription
+        eventId
+        event {
+          slug
+        }
+      }
+    }
+  }
+`;
+
 export default client => {
   const query = (graphQuery, variables) =>
     client
@@ -282,6 +297,28 @@ export default client => {
 
         const { get } = data.events.event;
         return get || null;
+      });
+  };
+
+  const querySessionById = sessionId => {
+    const variables = {
+      sessionId,
+    };
+
+    return client
+      .query(QUERY_SESSION_BY_ID_SHORT, variables, {
+        fetchOptions: {
+          headers: {
+            ...stripAuthorizationHeader(client),
+          },
+        },
+      })
+      .toPromise()
+      .then(({ data, error }) => {
+        if (error) log(error, 'QUERY_SESSION_BY_ID_SHORT');
+
+        const { session } = data.sessions;
+        return session || null;
       });
   };
 
@@ -373,6 +410,7 @@ export default client => {
   return {
     querySessions,
     querySessionsBySlug,
+    querySessionById,
     queryNextSessions,
     querySessionsByDate,
     queryNextSessionsByDate,

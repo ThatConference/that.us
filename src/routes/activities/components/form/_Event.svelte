@@ -14,7 +14,10 @@
   import eventsApi from '../../../../dataSources/api.that.tech/events/queries';
   import config from '../../../../config';
 
+  import EventNoAccess from './components/_EventNoAccess.svelte';
+
   dayjs.extend(isSameOrBefore);
+  const { queryEvents: queryEventsApi, meHasAccess } = eventsApi(getClient());
 
   const dispatch = createEventDispatcher();
   let events;
@@ -28,9 +31,9 @@
   }
 
   async function queryEvents() {
-    const allEvents = await eventsApi(getClient())
-      .queryEvents()
-      .then(r => r.filter(i => i.community === 'that'));
+    const allEvents = await queryEventsApi().then(r =>
+      r.filter(i => i.community === 'that'),
+    );
 
     const results = {};
 
@@ -59,6 +62,11 @@
     // results.activeEvents = [...results.daily, ...results.online];
     events = allEvents;
     handleOnChange({ target: { value: eventSelected } });
+    return results;
+  }
+
+  async function queryHasAccess(eventId) {
+    const results = await meHasAccess(eventId);
     return results;
   }
 </script>
@@ -166,52 +174,57 @@
       {#each activeEvents.online as event, i (i)}
         <li
           in:fade="{{ delay: i * 200 }}"
-          class="col-span-1 shadow-sm rounded-md transition duration-500 ease-in-out transform hover:scale-105 ">
-          <input
-            type="radio"
-            id="{event.name}"
-            bind:group="{eventSelected}"
-            value="{event.id}"
-            on:change="{handleOnChange}" />
+          class="col-span-1 shadow-sm rounded-md">
+          {#if queryHasAccess(event.id)}
+            <div
+              class="transition duration-500 ease-in-out transform hover:scale-105">
+              <input
+                type="radio"
+                id="{event.name}"
+                bind:group="{eventSelected}"
+                value="{event.id}"
+                on:change="{handleOnChange}" />
 
-          <label for="{event.name}" class="h-full flex">
-            {#if event.id !== eventSelected}
-              <div
-                class="flex-1 flex items-center justify-between border border-gray-200 bg-white hover:bg-gray-50 rounded-md truncate">
-                <div class="flex-1 px-4 py-2 text-sm truncate">
-                  <p class="text-gray-900 font-medium">
-                    {event.name}
-                  </p>
-                  {#if event.id !== config.eventId}
-                    <p class="text-gray-500">
-                      {dayjs(event.startDate).format('dddd MMMM D, YYYY')}
-                    </p>
-                  {/if}
-                </div>
-              </div>
-            {:else}
-              <div
-                class="flex-1 flex items-center justify-between border border-green-500 bg-green-100 rounded-md truncate">
-                <div class="flex-1 px-4 py-2 text-sm truncate">
-                  <p class="text-gray-900 font-bold">
-                    {event.name}
-                  </p>
-                  {#if event.id !== config.eventId}
-                    <p class="text-gray-500">
-                      {dayjs(event.startDate).format('dddd MMMM D, YYYY')}
-                    </p>
-                  {/if}
-                </div>
+              <label for="{event.name}" class="h-full flex">
+                {#if event.id !== eventSelected}
+                  <div
+                    class="flex-1 flex items-center justify-between border border-gray-200 bg-white hover:bg-gray-50 rounded-md truncate">
+                    <div class="flex-1 px-4 py-2 text-sm truncate">
+                      <p class="text-gray-900 font-medium">
+                        {event.name}
+                      </p>
 
-                <div class="flex-shrink-0 pr-4">
-                  <span
-                    class="h-6 w-6 rounded-full bg-green-500 bg-opacity-60 flex items-center justify-center">
-                    <CheckFull height="h-4" width="w-4" />
-                  </span>
-                </div>
-              </div>
-            {/if}
-          </label>
+                      <p class="text-gray-500">
+                        {dayjs(event.startDate).format('dddd, MMMM D, YYYY')}
+                      </p>
+                    </div>
+                  </div>
+                {:else}
+                  <div
+                    class="flex-1 flex items-center justify-between border border-green-500 bg-green-100 rounded-md truncate">
+                    <div class="flex-1 px-4 py-2 text-sm truncate">
+                      <p class="text-gray-900 font-bold">
+                        {event.name}
+                      </p>
+
+                      <p class="text-gray-500">
+                        {dayjs(event.startDate).format('dddd, MMMM D, YYYY')}
+                      </p>
+                    </div>
+
+                    <div class="flex-shrink-0 pr-4">
+                      <span
+                        class="h-6 w-6 rounded-full bg-green-500 bg-opacity-60 flex items-center justify-center">
+                        <CheckFull height="h-4" width="w-4" />
+                      </span>
+                    </div>
+                  </div>
+                {/if}
+              </label>
+            </div>
+          {:else}
+            <EventNoAccess event="{event}" />
+          {/if}
         </li>
       {/each}
     </ul>

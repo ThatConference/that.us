@@ -21,10 +21,6 @@
         'You must enter a ticket reference number to claim your merit badge.',
       ),
   });
-
-  const handleReset = () => {
-    profile = {};
-  };
 </script>
 
 <Form
@@ -33,12 +29,8 @@
   validateOnBlur="{false}"
   validateOnChange="{false}"
   on:submit="{handleSubmit}"
-  on:reset="{handleReset}"
   let:isSubmitting
-  let:isValid
-  let:errors
-  let:touched
->
+  let:isValid>
   <div>
     <div>
       <div>
@@ -55,8 +47,7 @@
         <div class="sm:col-span-3">
           <label
             for="ticket_reference"
-            class="block text-sm font-medium leading-5 text-gray-700"
-          >
+            class="block text-sm font-medium leading-5 text-gray-700">
             Ticket Reference Number
           </label>
           <div class="mt-1">
@@ -65,8 +56,7 @@
               name="ticketReference"
               placeholder="A1RC-1"
               class="form-input block w-full border rounded-md transition duration-150 ease-in-out
-              sm:text-sm sm:leading-5"
-            />
+              sm:text-sm sm:leading-5" />
           </div>
         </div>
       </div>
@@ -83,8 +73,7 @@
               text-thatBlue-500 bg-white hover:bg-thatBlue-500 hover:text-white
               focus:outline-none focus:ring-thatBlue-500
               focus:bg-thatBlue-500 focus:text-white focus:border-thatBlue-800
-              active:bg-thatBlue-800 transition duration-150 ease-in-out"
-          >
+              active:bg-thatBlue-800 transition duration-150 ease-in-out">
             Claim Ticket
           </button>
         </span>
@@ -96,8 +85,7 @@
               leading-5 font-medium text-gray-700 hover:text-gray-500
               focus:outline-none focus:border-blue-300 focus:ring-blue
               active:bg-gray-50 active:text-gray-800 transition duration-150
-              ease-in-out"
-          >
+              ease-in-out">
             Reset
           </button>
         </span>

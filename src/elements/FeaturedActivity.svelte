@@ -30,7 +30,7 @@
         <h4 class="text-white">{title}</h4>
 
         <p class="text-thatBlue-200 text-sm italic">
-          {dayjs(startTime).format('dddd MMMM D, YYYY - h:mm A')}
+          {dayjs(startTime).format('dddd, MMMM D, YYYY - h:mm A')}
         </p>
 
         <p class="text-thatBlue-200 text-right">

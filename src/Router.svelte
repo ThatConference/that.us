@@ -55,6 +55,7 @@
 
   // join
   import Live from './routes/join/Live.svelte';
+  import JoinAccessDenied from './routes/join/AccessDenied.svelte';
 
   // orders
   import OrderSummary from './routes/orders/Summary.svelte';
@@ -80,10 +81,14 @@
   <Route exact path="/changelog" component="{ChangeLog}" />
   <Route exact path="/changelog-missed" component="{ChangeLogMissed}" />
 
-  <Route exact path="/join/:activityId" component="{Live}" condition="{isLoggedIn}" redirect="/login" />
   <Route exact path="/membership/pricing" component="{Pricing}" />
   <Route exact path="/not-found" component="{NotFound}" />
-
+  
+  <Router path="/join">
+    <Route exact path="/access-denied/:activityId" component="{JoinAccessDenied}" />
+    <Route exact path="/:activityId" component="{Live}" condition="{isLoggedIn}" redirect="/login" />
+  </Router>
+  
   <Router path="/partners">
     <Route exact component="{Partners}" />
     <Route exact path="/:partner" component="{Partner}" />

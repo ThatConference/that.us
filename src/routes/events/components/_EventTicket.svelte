@@ -140,7 +140,7 @@
                 {event.name}
               </p>
               <p class="text-lg text-gray-500">
-                {dayjs(event.startDate).format('dddd MMMM D, YYYY - h:mm A')}
+                {dayjs(event.startDate).format('dddd, MMMM D, YYYY - h:mm A')}
               </p>
             </div>
             <div

@@ -317,11 +317,11 @@
       class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:mx-auto md:mt-5
         md:text-xl lg:mx-0">
       {#if durationInMinutes <= 60}
-        {dayjs(startTime).format('dddd MMMM D, YYYY - h:mm A')}, for
+        {dayjs(startTime).format('dddd, MMMM D, YYYY - h:mm A')}, for
         {dayjs.duration(durationInMinutes, 'minutes').as('hours')}
         hour.
       {:else}
-        {dayjs(startTime).format('dddd MMMM D, YYYY - h:mm A')}, for
+        {dayjs(startTime).format('dddd, MMMM D, YYYY - h:mm A')}, for
         {dayjs.duration(durationInMinutes, 'minutes').as('hours')}
         hours.
       {/if}
