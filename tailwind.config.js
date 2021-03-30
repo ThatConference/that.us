@@ -88,10 +88,6 @@ module.exports = {
   },
   purge: ['./src/**/*.svelte', './src/**/*.html', './src/**/*.js'],
   plugins: [
-    require('tailwindcss-font-inter')({
-      importFontFace: true,
-      disableUnusedFeatures: true,
-    }),
     require('@tailwindcss/forms'),
     require('@tailwindcss/typography'),
     require('@tailwindcss/ui'),
