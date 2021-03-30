@@ -1,12 +1,12 @@
 <script>
-  import { onMount, onDestroy } from 'svelte';
+  import { onMount, onDestroy, setContext } from 'svelte';
   import { initClient } from '@urql/svelte';
   import { router } from 'yrv';
   import { v4 as uuidv4 } from 'uuid';
   import * as Sentry from '@sentry/browser';
   import LogRocket from 'logrocket';
 
-  import config, { events } from './config';
+  import config from './config';
   import { token, thatProfile, setupAuth } from './utilities/security.js';
   import currentEvent from './store/currentEvent';
   import metaTagsStore from './store/metaTags';
@@ -14,12 +14,16 @@
   import { messages } from './store/notificationCenter';
   import metaTags from './utilities/seo/metaTags';
 
+  import cart from './utilities/cart';
+
   // ui components
   import Tailwindcss from './elements/Tailwindcss.svelte';
   import Router from './Router.svelte';
 
   let unsub;
-  currentEvent.set(events.thatUs); // setting the default event
+  currentEvent.set({ eventId: config.eventId, title: 'THAT' }); // setting the default event
+
+  setContext('cart', cart);
 
   function createCorrelationId() {
     const id = uuidv4();

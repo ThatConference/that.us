@@ -58,7 +58,7 @@ export default client => {
 
   function query(eventId) {
     const variables = {
-      eventId,
+      eventId: 'ANY',
     };
 
     return client
@@ -72,12 +72,14 @@ export default client => {
         // set the store
         if (data && !error) {
           const { favorites } = data.sessions.me;
-          favoritesStore.set(favorites); // set the store
-          results = favorites; // set the return results
-        }
 
-        results = results.filter(s => s.status === 'ACCEPTED');
-        results.sort((a, b) => new Date(a.startTime) - new Date(b.startTime));
+          results = favorites;
+
+          results = results.filter(s => s).filter(s => s.status === 'ACCEPTED');
+          results.sort((a, b) => new Date(a.startTime) - new Date(b.startTime));
+
+          favoritesStore.set(results); // set the store
+        }
 
         return results;
       });

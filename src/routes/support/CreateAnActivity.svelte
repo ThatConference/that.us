@@ -39,12 +39,12 @@
 
       <p>
         To create an Activity you first need to
-        <Link href="/login">login</Link>
+        <Link href="/login">log in</Link>
         if you're not already. If you still need an account simply
         <Link href="/login?signup=true">create one here</Link>, and then update
         your
-        <Link href="/my/profile">profile accordingly</Link>. Once completed you
-        can then create a
+        <Link href="/my/settings/profile">profile accordingly</Link>. Once
+        completed you can then create a
         <Link href="/activity/create">New Activity</Link>. It's here where you
         will detail out the conversation, inviting others to join in. The
         submission process isn't complex but it's important as you want to make
@@ -84,8 +84,7 @@
           <img
             class="w-full rounded-lg shadow"
             src="/images/ActivityCreateExample.jpg"
-            alt="New Activity Form"
-          />
+            alt="New Activity Form" />
           <figcaption>Example: New Activity Form</figcaption>
         </figure>
       </div>
@@ -102,16 +101,14 @@
       <p>
         No problem we all make mistakes or maybe you just want to tweak things a
         bit further. No problem. You can find all of your submitted Activities
-        <Link href="/my/submissions">here</Link>, we call it <span
-          class="italic"
-        >My Submissions</span> and you will always find it under your profile picture.
-        Just pick the correct Activity and then select edit.
+        <Link href="/my/submissions">here</Link>, we call it
+        <span class="italic">My Submissions</span> and you will always find it under
+        your profile picture. Just pick the correct Activity and then select edit.
       </p>
     </div>
     <div
       class="my-12 max-w-prose mx-auto lg:max-w-none flex flex-col items-center
-        justify-center"
-    >
+        justify-center">
       <div class="flex space-x-4 text-base">
         <StandardLink href="/support/joining-an-activity">
           Joining an Activity

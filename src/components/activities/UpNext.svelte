@@ -21,11 +21,9 @@
   <div class="relative mx-auto px-4 max-w-screen-xl sm:px-6 lg:px-8">
     <div class="space-y-12">
       <div
-        class="space-y-5 sm:space-y-4 md:max-w-xl lg:max-w-3xl xl:max-w-none"
-      >
+        class="space-y-5 sm:space-y-4 md:max-w-xl lg:max-w-3xl xl:max-w-none">
         <h2
-          class="text-3xl leading-9 font-extrabold text-white tracking-tight sm:text-4xl"
-        >
+          class="text-3xl leading-9 font-extrabold text-white tracking-tight sm:text-4xl">
           Upcoming
           {#if $state.context.meta.name}
             <span class="text-that-orange">{$state.context.meta.name}</span>
@@ -37,7 +35,9 @@
           <span class="pl:2 text-that-orange hover:text-thatOrange-500">
             <Link href="/activities">
               View all of the upcoming
-              {$state.context.meta.name}
+              {#if $state.context.meta.name}
+                {$state.context.meta.name}
+              {/if}
               activities.
             </Link>
           </span>
@@ -45,8 +45,7 @@
       </div>
 
       <ul
-        class="space-y-4 sm:grid sm:grid-cols-2 sm:gap-6 sm:space-y-0 lg:grid-cols-3 lg:gap-8"
-      >
+        class="space-y-4 sm:grid sm:grid-cols-2 sm:gap-6 sm:space-y-0 lg:grid-cols-3 lg:gap-8">
         {#if $state.matches('loaded')}
           {#if $state.context.items.length > 0}
             {#each $state.context.items as s (s.id)}
@@ -77,8 +76,7 @@
                     focus:outline-none
                     focus:ring-thatBlue-500 
                     focus:border-thatBlue-800 
-                    transition duration-150 ease-in-out md:text-lg md:px-10"
-          >
+                    transition duration-150 ease-in-out md:text-lg md:px-10">
             <span>View Next</span>
           </button>
         {/if}
@@ -95,8 +93,7 @@
                       focus:outline-none
                       focus:ring-thatBlue-500 
                       focus:border-thatBlue-800 
-                      transition duration-150 ease-in-out md:text-lg md:px-10"
-          >
+                      transition duration-150 ease-in-out md:text-lg md:px-10">
             <span>Refresh</span>
           </button>
         {/if}

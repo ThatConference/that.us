@@ -27,8 +27,7 @@
   <section>
     <div
       class="relative text-base max-w-prose mx-auto mb-8 lg:max-w-5xl lg:mx-0
-        lg:pr-72 text-lg text-gray-500 leading-7"
-    >
+        lg:pr-72 text-lg text-gray-500 leading-7">
       <p>
         Here at THAT, it's our mission to help foster the best community of
         geeks on this planet. Our vision, create an interactive platform
@@ -38,19 +37,17 @@
 
       <p class="mt-8">
         We created THAT to fill a gap between the times when we cannot
-        physically connect. We believe peer to peer learning is one of the most
+        physically connect. We believe peer-to-peer learning is one of the most
         powerful ways we can help one another any day of the year.
       </p>
     </div>
     <div
       class="lg:grid lg:grid-cols-2 lg:gap-8 lg:items-start text-base text-lg
-        text-gray-500 leading-7"
-    >
+        text-gray-500 leading-7">
       <div class="relative mb-12 lg:mb-0">
         <div
           class="mb-10 prose mx-auto lg:max-w-none text-base text-lg
-            text-gray-500 leading-7"
-        >
+            text-gray-500 leading-7">
           <h2>The What</h2>
 
           <p>
@@ -62,11 +59,11 @@
           </p>
 
           <p class="mt-8">
-            In short, anyone, at anytime can create what we call an Activity.
+            In short, anyone, at any time can create what we call an Activity.
             The format of an Activity is simple, a video call in the browser, no
             tools required. Every Activity has a chat window, you're able to
-            share your desktop, your webcam and mic is enabled. Our goal is to
-            create the best virtual face to face conversation possible but give
+            share your desktop, your webcam and mic are enabled. Our goal is to
+            create the best virtual face-to-face conversation possible but give
             you the room to have any type of conversation you need. We're
             grateful you're here and now we want to make sure you have the
             information you need to get involved with THAT.
@@ -95,7 +92,8 @@
               </Link>
             </li>
             <li>
-              <Link href="/my/profile">Keep your profile up to date.</Link>
+              <Link href="/my/settings/profile"
+                >Keep your profile up to date.</Link>
             </li>
           </ul>
         </div>

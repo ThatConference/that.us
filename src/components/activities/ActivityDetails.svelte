@@ -131,7 +131,7 @@
     : config.defaultProfileImage;
 
   metaTagsStore.set({
-    title,
+    title: `${title} - THAT`,
     description: isLongerThan(shortDescription, 60)
       ? `${truncate(shortDescription, 60)} ...`
       : shortDescription,
@@ -145,19 +145,17 @@
 {#if isNew}
   <Success
     title="Created {title}!"
-    text="Thank you for submitting an activity."
-  />
+    text="Thank you for submitting an activity." />
 {:else if isUpdated}
   <Success title="Success 🎊" text="Successfully updated {title}." />
 {/if}
 
 <div>
   <!--header-->
-  <div class="bg-white px-4 py-5 border-b border-gray-200 sm:px-6">
+  <div class="px-4 py-5 border-b border-gray-300 sm:px-6">
     <div
       class="-ml-4 -mt-4 flex justify-between items-center flex-wrap
-        sm:flex-nowrap flex-col md:flex-row"
-    >
+        sm:flex-nowrap flex-col md:flex-row">
       <div class="ml-4 mt-4">
         <div class="flex items-center">
           <div class="flex-shrink-0">
@@ -166,15 +164,13 @@
                 <img
                   class="h-12 w-12 rounded-full"
                   src="{userProfileImage}"
-                  alt=""
-                />
+                  alt="" />
 
                 {#if host.earnedMeritBadges.length > 0}
                   <span class="absolute bottom-0 left-0 block h-5 w-5">
                     <img
                       src="{host.earnedMeritBadges[0].image}"
-                      alt="{host.earnedMeritBadges[0].name}"
-                    />
+                      alt="{host.earnedMeritBadges[0].name}" />
                   </span>
                 {/if}
               </span>
@@ -207,8 +203,7 @@
                   text-gray-700 bg-white hover:text-gray-500 focus:outline-none
                   focus:ring-blue focus:border-blue-300
                   active:bg-gray-50 active:text-gray-800 transition duration-150
-                  ease-in-out"
-              >
+                  ease-in-out">
                 <Icon data="{heart}" class="-ml-1 mr-2 h-4 w-4" />
                 {#if isFavorite}
                   <span>Unfavorite</span>
@@ -219,14 +214,14 @@
             <div class="mt-2 mx-2 rounded-md shadow-sm">
               <button
                 type="button"
-                on:click|preventDefault="{() => login(document.location.pathname, false)}"
+                on:click|preventDefault="{() =>
+                  login(document.location.pathname, false)}"
                 class="relative inline-flex items-center px-4 py-2 border-2
                   border-thatBlue-500 text-sm leading-5 font-medium rounded-md
                   text-gray-700 bg-white hover:text-gray-500 focus:outline-none
                   focus:ring-blue focus:border-blue-300
                   active:bg-gray-50 active:text-gray-800 transition duration-150
-                  ease-in-out"
-              >
+                  ease-in-out">
                 <Icon data="{heart}" class="-ml-1 mr-2 h-4 w-4" />
                 <span>Favorite</span>
               </button>
@@ -246,8 +241,7 @@
                   hover:text-white focus:outline-none
                   focus:ring-thatBlue-500 focus:bg-thatBlue-500
                   focus:text-white focus:border-thatBlue-800
-                  active:bg-thatBlue-800 transition duration-150 ease-in-out"
-              >
+                  active:bg-thatBlue-800 transition duration-150 ease-in-out">
                 <Icon data="{cog}" class="-ml-1 mr-2 h-4 w-4" />
                 <span>Edit</span>
               </Link>
@@ -267,12 +261,10 @@
                   hover:text-white focus:outline-none
                   focus:ring-thatBlue-500 focus:bg-thatBlue-500
                   focus:text-white focus:border-thatBlue-800
-                  active:bg-thatBlue-800 transition duration-150 ease-in-out"
-              >
+                  active:bg-thatBlue-800 transition duration-150 ease-in-out">
                 <Icon
                   data="{signIn}"
-                  class="-ml-1 mr-2 h-4 w-4 text-gray-400"
-                />
+                  class="-ml-1 mr-2 h-4 w-4 text-gray-400" />
                 <span>Join In</span>
               </Link>
             </div>
@@ -284,16 +276,14 @@
                   hover:bg-thatBlue-500 hover:text-white focus:outline-none
                   focus:ring-thatBlue-500 focus:bg-thatBlue-500
                   focus:text-white focus:border-thatBlue-800
-                  active:bg-thatBlue-800 transition duration-150 ease-in-out"
-              >
+                  active:bg-thatBlue-800 transition duration-150 ease-in-out">
                 <CalendarButton
                   title="{title}"
                   shortDescription="{shortDescription}"
                   id="{id}"
                   startTime="{startTime}"
                   durationInMinutes="{durationInMinutes}"
-                  slug="{slug}"
-                />
+                  slug="{slug}" />
               </div>
             </div>
 
@@ -301,8 +291,7 @@
               <div
                 class="relative inline-flex items-center px-4 py-2 border-2
                   border-gray-300 text-sm leading-5 font-medium rounded-md
-                  text-gray-400 bg-white"
-              >
+                  text-gray-400 bg-white">
                 <Icon data="{signIn}" class="-ml-1 mr-2 h-4 w-4" />
                 <span>Join {timeLeftToJoin}</span>
               </div>
@@ -319,22 +308,20 @@
     <!-- Title -->
     <h2
       class="text-2xl sm:text-3xl md:text-4xl tracking-tight leading-10
-        font-extrabold text-gray-900 sm:leading-none"
-    >
+        font-extrabold text-gray-900 sm:leading-none">
       {title}
     </h2>
 
     <!-- Start Time -->
     <p
       class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:mx-auto md:mt-5
-        md:text-xl lg:mx-0"
-    >
+        md:text-xl lg:mx-0">
       {#if durationInMinutes <= 60}
-        {dayjs(startTime).format('dddd MMMM D, YYYY - h:mm A')}, for
+        {dayjs(startTime).format('dddd, MMMM D, YYYY - h:mm A')}, for
         {dayjs.duration(durationInMinutes, 'minutes').as('hours')}
         hour.
       {:else}
-        {dayjs(startTime).format('dddd MMMM D, YYYY - h:mm A')}, for
+        {dayjs(startTime).format('dddd, MMMM D, YYYY - h:mm A')}, for
         {dayjs.duration(durationInMinutes, 'minutes').as('hours')}
         hours.
       {/if}
@@ -343,8 +330,7 @@
     <!-- Description -->
     <p
       class="lineBreaks mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:mx-auto md:mt-5
-        md:text-xl lg:mx-0"
-    >
+        md:text-xl lg:mx-0">
       {shortDescription}
     </p>
 

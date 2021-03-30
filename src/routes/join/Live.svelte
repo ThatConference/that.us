@@ -1,9 +1,7 @@
 <script>
-  export let router;
-
-  // 3rd Partyimport { createEventDispatcher } from 'svelte';
+  import { onMount } from 'svelte';
   import { isEmpty } from 'lodash';
-  import { navigateTo } from 'yrv';
+  import { navigateTo, router } from 'yrv';
   import Icon from 'svelte-awesome';
   import { getClient, operationStore, query } from '@urql/svelte';
   import {
@@ -26,9 +24,12 @@
     user,
   } from '../../utilities/security.js';
   import sessionsApi from '../../dataSources/api.that.tech/sessions.js';
+  import eventsApi from '../../dataSources/api.that.tech/events/queries.js';
 
-  const { activityId } = router.params;
-  const { setAttendance } = sessionsApi(getClient());
+  const { activityId } = $router.params;
+  const { setAttendance, querySessionById } = sessionsApi(getClient());
+  const { meHasAccess } = eventsApi(getClient());
+
   const imageCrop = '?mask=ellipse&w=500&h=500&fit=crop';
   const jitsiFrameTopBuffer = 340;
 
@@ -42,25 +43,18 @@
   let displayName = 'Johnny 5'; // generate a fake name...
   let avatarUrl = config.defaultProfileImage;
 
-  const activity = operationStore(
-    `
-      query getSessionById($activityId: ID!) {
-        sessions {
-          session (sessionId: $activityId) {  
-            title
-            shortDescription
-          }
-        }
-      }
-    `,
-    {
-      activityId,
-    },
-    {
-      requestPolicy: 'network-only',
-    },
-  );
-  query(activity);
+  let activityDetails;
+  onMount(async () => {
+    const activityQueryResults = await querySessionById(activityId);
+    let hasAccess = false;
+
+    activityDetails = activityQueryResults;
+
+    if (activityQueryResults) {
+      hasAccess = await meHasAccess(activityQueryResults.eventId);
+      if (!hasAccess) navigateTo(`/join/access-denied/${activityId}`);
+    }
+  });
 
   function handleMuted({ muted }) {
     userMuted = muted;
@@ -110,7 +104,8 @@
       height: window.document.body.scrollHeight - jitsiFrameTopBuffer,
       // https://github.com/jitsi/jitsi-meet/blob/master/config.js
       configOverwrite: {
-        startWithAudioMuted: true,
+        startAudioMuted: 5,
+        // startWithAudioMuted: true,
         prejoinPageEnabled: false, // todo.. We could prolly drop our own image.
         // enableWelcomePage: true, // not sure what it does
         brandingRoomAlias: `https://that.us/join/THAT-${activityId}`,
@@ -140,7 +135,12 @@
     api.addEventListener('audioMuteStatusChanged', handleMuted);
 
     api.addEventListener('readyToClose', () => {
-      navigateTo(`/activities`, { replace: true });
+      navigateTo('/activities');
+    });
+
+    api.addEventListener('videoConferenceLeft', () => {
+      // todo.. go back to event if it's part of an event.
+      navigateTo('/activities');
     });
 
     api.addEventListener('screenSharingStatusChanged', ({ on }) => {
@@ -249,19 +249,17 @@
 {#if incompleteProfile}
   <ModalError
     title="Oh NO! You have an incomplete profile!"
-    text="It appears you haven't created your profile yet. You can't create a
-    activity until that's complete."
-    action="{{ title: 'Create Profile', href: '/my/profile' }}"
-    returnTo="{{ title: 'Return to Activities', href: '/activities' }}"
-  />
+    text="It appears you haven't created your profile yet. You can't join an activity until that's complete."
+    action="{{ title: 'Create Profile', href: '/my/settings/profile' }}"
+    returnTo="{{ title: 'Return to Activities', href: '/activities' }}" />
 {/if}
 
 <StackedLayout bodyBackgroundColor="{bgColor}">
   <div slot="header">
     <Nav />
 
-    {#if $activity?.data?.sessions?.session}
-      <ActionHeader title="{$activity.data.sessions.session.title}">
+    {#if activityDetails}
+      <ActionHeader title="{activityDetails.title}">
         <LinkButton href="/activities/{activityId}" text="Activity Details" />
       </ActionHeader>
     {/if}
@@ -270,12 +268,10 @@
   <div slot="body" class="relative">
     <button
       class="absolute top-12 left-0 cursor-pointer ml-48 mt-1"
-      on:click="{expanded ? shrinkJitsiFrame : expandJitsiFrame}"
-    >
+      on:click="{expanded ? shrinkJitsiFrame : expandJitsiFrame}">
       <Icon
         data="{expanded ? compressIcon : expandIcon}"
-        class="h-6 w-6 text-white"
-      />
+        class="h-6 w-6 text-white" />
     </button>
     <div id="meet" class="object-center"></div>
   </div>
@@ -284,8 +280,7 @@
     {#if userMuted}
       <WarningNotification
         message="You're currently muted. Click to unmute"
-        on:click="{() => api.executeCommand('toggleAudio')}"
-      />
+        on:click="{() => api.executeCommand('toggleAudio')}" />
     {/if}
   </div>
 </StackedLayout>

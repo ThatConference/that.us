@@ -15,49 +15,50 @@
 </script>
 
 <div
-  class="border-b border-gray-700 md:hidden"
+  class="border-b border-gray-700 lg:hidden"
   class:hidden="{!$mobileVisible}"
-  class:block="{$mobileVisible}"
->
+  class:block="{$mobileVisible}">
   <div class="px-2 py-3 sm:px-3">
+    <Link
+      href="/events"
+      class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300
+        hover:text-white hover:bg-that-blue focus:outline-none focus:text-white
+        focus:bg-that-blue">
+      Events
+    </Link>
     <Link
       href="/activities"
       class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300
         hover:text-white hover:bg-that-blue focus:outline-none focus:text-white
-        focus:bg-that-blue"
-    >
+        focus:bg-that-blue">
       Activities
     </Link>
     <Link
       href="/members"
       class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300
         hover:text-white hover:bg-that-blue focus:outline-none focus:text-white
-        focus:bg-that-blue"
-    >
+        focus:bg-that-blue">
       Members
     </Link>
     <Link
       href="/partners"
       class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300
         hover:text-white hover:bg-that-blue focus:outline-none focus:text-white
-        focus:bg-that-blue"
-    >
+        focus:bg-that-blue">
       Partners
     </Link>
     <Link
       href="/communities"
       class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300
         hover:text-white hover:bg-that-blue focus:outline-none focus:text-white
-        focus:bg-that-blue"
-    >
+        focus:bg-that-blue">
       Communities
     </Link>
     <Link
       href="/support/welcome"
       class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300
         hover:text-white hover:bg-that-blue focus:outline-none focus:text-white
-        focus:bg-that-blue"
-    >
+        focus:bg-that-blue">
       Help
     </Link>
   </div>
@@ -78,8 +79,7 @@
             <img
               class="h-8 w-8 rounded-full"
               src="{$thatProfile.profileImage}?w=256&h=256&fit=crop"
-              alt=""
-            />
+              alt="" />
           {:else}
             <Icon data="{userIcon}" class="h-8 w-8 rounded-full text-white" />
           {/if}
@@ -93,17 +93,15 @@
       class="mt-3 px-2"
       role="menu"
       aria-orientation="vertical"
-      aria-labelledby="user-menu"
-    >
+      aria-labelledby="user-menu">
       {#if $isAuthenticated}
         {#if isEmpty($thatProfile)}
           <Link
-            href="/my/profile"
+            href="/my/settings/profile"
             class="block px-3 py-2 rounded-md text-base font-medium
               text-gray-300 hover:text-white hover:bg-that-blue
               focus:outline-none focus:text-white focus:bg-that-blue"
-            role="menuitem"
-          >
+            role="menuitem">
             Create Profile
           </Link>
           <a
@@ -111,25 +109,34 @@
             class="mt-1 block px-3 py-2 rounded-md text-base font-medium
               text-gray-300 hover:text-white hover:bg-that-blue
               focus:outline-none focus:text-white focus:bg-that-blue"
-            role="menuitem"
-          >
+            role="menuitem">
             Logout
           </a>
         {:else}
           <div
-            class="block px-3 py-2 text-base font-medium text-gray-400 border-b"
-          >
-            <p>{$thatProfile.firstName} {$thatProfile.lastName}</p>
-            <p class="truncate pt-2">{$thatProfile.email}</p>
+            class="block px-3 py-2 rounded-md text-base font-medium
+            text-gray-300 hover:text-white hover:bg-that-blue
+            focus:outline-none focus:text-white focus:bg-that-blue border-b">
+            <Link href="/my/settings" role="menuitem">
+              <p>{$thatProfile.firstName} {$thatProfile.lastName}</p>
+              <p class="truncate pt-2">{$thatProfile.email}</p>
+            </Link>
           </div>
 
+          <Link
+            href="/my/settings"
+            class="block px-3 py-2 rounded-md text-base font-medium
+              text-gray-300 hover:text-white hover:bg-that-blue
+              focus:outline-none focus:text-white focus:bg-that-blue"
+            role="menuitem">
+            My Settings
+          </Link>
           <Link
             href="/my/favorites"
             class="block px-3 py-2 rounded-md text-base font-medium
               text-gray-300 hover:text-white hover:bg-that-blue
               focus:outline-none focus:text-white focus:bg-that-blue"
-            role="menuitem"
-          >
+            role="menuitem">
             My Favorites
           </Link>
           <Link
@@ -137,53 +144,34 @@
             class="block px-3 py-2 rounded-md text-base font-medium
               text-gray-300 hover:text-white hover:bg-that-blue
               focus:outline-none focus:text-white focus:bg-that-blue"
-            role="menuitem"
-          >
+            role="menuitem">
             My Submissions
           </Link>
-          <Link
-            href="/my/badges"
-            class="block px-3 py-2 rounded-md text-base font-medium
-              text-gray-300 hover:text-white hover:bg-that-blue
-              focus:outline-none focus:text-white focus:bg-that-blue"
-            role="menuitem"
-          >
-            My Badges
-          </Link>
-          <Link
-            href="/my/profile"
-            class="block px-3 py-2 rounded-md text-base font-medium
-              text-gray-300 hover:text-white hover:bg-that-blue
-              focus:outline-none focus:text-white focus:bg-that-blue"
-            role="menuitem"
-          >
-            My Profile
-          </Link>
+
           <a
             href="/logout"
             class="mt-1 block px-3 py-2 rounded-md text-base font-medium
               text-gray-300 hover:text-white hover:bg-that-blue
               focus:outline-none focus:text-white focus:bg-that-blue"
-            role="menuitem"
-          >
+            role="menuitem">
             Logout
           </a>
         {/if}
       {:else}
         <div
-          on:click|stopPropagation="{() => login(document.location.pathname, false)}"
+          on:click|stopPropagation="{() =>
+            login(document.location.pathname, false)}"
           class="block px-3 py-2 rounded-md text-base font-medium text-gray-400
             hover:text-white hover:bg-that-blue focus:outline-none
-            focus:text-white focus:bg-that-blue cursor-pointer"
-        >
+            focus:text-white focus:bg-that-blue cursor-pointer">
           Login
         </div>
         <div
-          on:click|stopPropagation="{() => login(document.location.pathname, true)}"
+          on:click|stopPropagation="{() =>
+            login(document.location.pathname, true)}"
           class="block px-3 py-2 rounded-md text-base font-medium text-gray-400
             hover:text-white hover:bg-that-blue focus:outline-none
-            focus:text-white focus:bg-that-blue cursor-pointer"
-        >
+            focus:text-white focus:bg-that-blue cursor-pointer">
           Sign Up
         </div>
       {/if}

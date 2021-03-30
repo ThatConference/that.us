@@ -22,8 +22,7 @@
       class:shadow-solid="{visible}"
       aria-label="User menu"
       aria-haspopup="true"
-      on:click|preventDefault="{() => (visible = !visible)}"
-    >
+      on:click|preventDefault="{() => (visible = !visible)}">
       {#if $isAuthenticated}
         {#if isEmpty($thatProfile)}
           <div>
@@ -36,13 +35,13 @@
           <img
             class="h-10 w-10 rounded-full"
             src="{$thatProfile.profileImage}?w=256&h=256&fit=crop"
-            alt=""
-          />
+            alt="" />
         {:else}
           <Icon data="{userIcon}" class="h-8 w-8 rounded-full" />
         {/if}
       {:else}
-        <div class="transform hover:scale-110">
+        <div
+          class="transition duration-500 ease-in-out transform hover:scale-105">
           <Icon data="{userIcon}" class="h-8 w-8 rounded-full" />
         </div>
       {/if}
@@ -54,22 +53,18 @@
       {#if isEmpty($thatProfile)}
         <div
           class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg z-50"
-          transition:fade
-        >
+          transition:fade>
           <div
-            class="py-1 rounded-md bg-white ring-1 ring-black ring-opacity-5"
-          >
+            class="py-1 rounded-md bg-white ring-1 ring-black ring-opacity-5">
             <Link
-              href="/my/profile"
-              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-            >
+              href="/my/settings/profile"
+              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
               Create Profile
             </Link>
 
             <a
               href="/logout"
-              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-            >
+              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
               Logout
             </a>
           </div>
@@ -77,46 +72,37 @@
       {:else}
         <div
           class="origin-top-right absolute right-0 mt-2 min-w-48 rounded-md shadow-lg z-50"
-          transition:fade
-        >
+          transition:fade>
           <div
-            class="py-1 rounded-md bg-white ring-1 ring-black ring-opacity-5"
-          >
-            <div class="block px-4 py-2 text-sm text-gray-700 border-b">
-              <p>{$thatProfile.firstName} {$thatProfile.lastName}</p>
-              <p class="truncate pt-2">{$thatProfile.email}</p>
+            class="py-1 rounded-md bg-white ring-1 ring-black ring-opacity-5">
+            <div
+              class="block px-4 py-2 text-sm hover:bg-gray-100 text-gray-700 border-b">
+              <Link href="/my/settings/profile">
+                <p>{$thatProfile.firstName} {$thatProfile.lastName}</p>
+                <p class="truncate pt-2">{$thatProfile.email}</p>
+              </Link>
             </div>
 
             <Link
+              href="/my/settings"
+              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+              My Settings
+            </Link>
+            <Link
               href="/my/favorites"
-              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-            >
+              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
               My Favorites
             </Link>
 
             <Link
               href="/my/submissions"
-              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-            >
+              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
               My Submissions
-            </Link>
-            <Link
-              href="/my/badges"
-              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-            >
-              My Badges
-            </Link>
-            <Link
-              href="/my/profile"
-              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-            >
-              My Profile
             </Link>
 
             <a
               href="/logout"
-              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-            >
+              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
               Logout
             </a>
           </div>
@@ -125,19 +111,18 @@
     {:else}
       <div
         transition:fade
-        class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg"
-      >
+        class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg z-50">
         <div class="py-1 rounded-md bg-white ring-1 ring-black ring-opacity-5">
           <div
-            on:click|stopPropagation="{() => login(document.location.pathname, false)}"
-            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer"
-          >
+            on:click|stopPropagation="{() =>
+              login(document.location.pathname, false)}"
+            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer">
             Login
           </div>
           <div
-            on:click|stopPropagation="{() => login(document.location.pathname, true)}"
-            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer"
-          >
+            on:click|stopPropagation="{() =>
+              login(document.location.pathname, true)}"
+            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer">
             Sign Up
           </div>
         </div>

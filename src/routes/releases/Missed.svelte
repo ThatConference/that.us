@@ -38,7 +38,7 @@
   });
 
   metaTagsStore.set({
-    title: 'Changelog',
+    title: 'Changelog - THAT',
     description: "This is what you've missed since your last visit.",
     openGraph: {
       type: 'website',
@@ -53,15 +53,13 @@
       <div class="mb-12">
         <h3
           class="text-3xl leading-8 font-extrabold tracking-tight text-gray-900
-            sm:text-4xl sm:leading-10"
-        >
+            sm:text-4xl sm:leading-10">
           Since your last visit...
         </h3>
         <div>
           <Link
             href="/changelog"
-            class="pointer text-thatBlue-500 hover:text-thatBlue-900"
-          >
+            class="pointer text-thatBlue-500 hover:text-thatBlue-900">
             Checkout our past releases.
           </Link>
         </div>

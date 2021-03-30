@@ -50,7 +50,7 @@
             >
               <div class="rounded-md shadow-sm">
                 <Link
-                  href="/my/profile"
+                  href="/my/settings/profile"
                   class="flex items-center justify-center px-4 py-2 border
                     border-transparent text-sm leading-5 font-medium rounded-md
                     text-indigo-600 bg-white hover:text-indigo-500
@@ -80,8 +80,7 @@
                     stroke-linecap="round"
                     stroke-linejoin="round"
                     stroke-width="2"
-                    d="M6 18L18 6M6 6l12 12"
-                  ></path>
+                    d="M6 18L18 6M6 6l12 12"></path>
                 </svg>
               </button>
             </div>

@@ -1,6 +1,7 @@
 <script>
   import { SocialLink } from './social';
   import { Link } from 'yrv';
+  import dayjs from 'dayjs';
 
   const socials = [
     {
@@ -32,7 +33,7 @@
       network: 'TWITCH',
     },
     {
-      href: 'https://thatconference.com',
+      href: 'https://thatconference.com?utm_source=THAT',
       network: 'WEBSITE',
     },
   ];
@@ -42,7 +43,10 @@
       text: 'Getting Started',
       href: '/support/welcome',
     },
-
+    {
+      text: 'Events',
+      href: '/events',
+    },
     {
       text: 'Activities',
       href: '/activities',
@@ -63,6 +67,7 @@
       text: 'Changelog',
       href: '/changelog',
     },
+
     {
       text: 'THAT Conference',
       href: 'https://thatconference.com',
@@ -71,46 +76,46 @@
   const legalLinks = [
     {
       text: 'Code of Conduct',
-      href: 'https://www.thatconference.com/code-of-conduct',
+      href: 'https://www.thatconference.com/code-of-conduct?utm_source=THAT',
     },
     {
       text: 'Commitment to Diversity',
-      href: 'https://www.thatconference.com/commitment-to-diversity',
+      href:
+        'https://www.thatconference.com/commitment-to-diversity?utm_source=THAT',
     },
     {
       text: 'Anti-Harassment Policy',
-      href: 'https://www.thatconference.com/anti-harassment-policy',
+      href:
+        'https://www.thatconference.com/anti-harassment-policy?utm_source=THAT',
     },
   ];
 
   const moreLegalLinks = [
     {
       text: 'Privacy',
-      href: 'https://www.thatconference.com/privacy-policy',
+      href: 'https://www.thatconference.com/privacy-policy?utm_source=THAT',
     },
     {
       text: 'Terms of Use',
-      href: 'https://www.thatconference.com/terms-of-use',
+      href: 'https://www.thatconference.com/terms-of-use?utm_source=THAT',
     },
     {
       text: 'Copyright Policy',
-      href: 'https://www.thatconference.com/copyright',
+      href: 'https://www.thatconference.com/copyright?utm_source=THAT',
     },
   ];
 </script>
 
-<footer class="bg-that-offWhite">
+<footer class="bg-gray-100">
   <div
-    class="max-w-screen-xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8"
-  >
+    class="max-w-screen-xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
     <nav class="-mx-5 -my-2 flex flex-wrap justify-center space-x-6">
       {#each textLinks as tl}
         <div class="py-2">
           <Link
             tabindex="-1"
             href="{tl.href}"
-            class="text-base leading-6 text-gray-500 hover:text-that-blue"
-          >
+            class="text-base leading-6 text-gray-500 hover:text-that-blue">
             {tl.text}
           </Link>
         </div>
@@ -123,8 +128,7 @@
           <Link
             tabindex="-1"
             href="{ll.href}"
-            class="text-base leading-6 text-gray-500 hover:text-that-blue"
-          >
+            class="text-base leading-6 text-gray-500 hover:text-that-blue">
             {ll.text}
           </Link>
         </div>
@@ -137,8 +141,7 @@
           <Link
             tabindex="-1"
             href="{mll.href}"
-            class="text-base leading-6 text-gray-500 hover:text-that-blue"
-          >
+            class="text-base leading-6 text-gray-500 hover:text-that-blue">
             {mll.text}
           </Link>
         </div>
@@ -150,8 +153,7 @@
         tabindex="-1"
         href="http://status.that.tech"
         open
-        class="text-base leading-6 text-gray-500 hover:text-that-blue"
-      >
+        class="text-base leading-6 text-gray-500 hover:text-that-blue">
         System Status and Uptime
       </Link>
     </div>
@@ -166,7 +168,7 @@
 
     <div class="mt-8">
       <p class="text-center text-base leading-6 text-gray-400">
-        &copy; 2020 THAT&reg; . All rights reserved.
+        &copy; {dayjs().format('YYYY')} THAT&reg; All rights reserved.
       </p>
     </div>
   </div>

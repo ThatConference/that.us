@@ -14,11 +14,9 @@ function createServices(client) {
     },
 
     services: {
-      load: context =>
-        querySessionsByDate({ eventId: context.meta.id, pageSize: 6 }),
+      load: () => querySessionsByDate({ pageSize: 6 }),
       loadNext: context =>
         queryNextSessionsByDate({
-          eventId: context.meta.id,
           pageSize: 6,
           cursor: context.cursor,
         }),
@@ -33,12 +31,12 @@ function createServices(client) {
         }),
 
       loadSuccess: assign({
-        items: (_, { data }) => data.sessions,
+        items: (_, { data }) => data.sessions.filter(s => s),
         cursor: (_, { data }) => data.cursor,
       }),
 
       loadNextSuccess: assign({
-        items: (context, { data }) => data.sessions,
+        items: (context, { data }) => data.sessions.filter(s => s),
         cursor: (_, { data }) => data.cursor,
       }),
 

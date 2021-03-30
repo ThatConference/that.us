@@ -34,19 +34,18 @@
   <div class="mb-24">
     <div class="flex flex-col space-y-8">
       <h1
-        class="text-base leading-6 text-thatOrange-400 font-semibold tracking-wide uppercase"
-      >
+        class="text-base leading-6 text-thatOrange-400 font-semibold tracking-wide uppercase">
         PARTNER SPOTLIGHT
       </h1>
       <div class="flex justify-between">
         <div>
-          <div class="transform hover:scale-110 cursor-pointer">
+          <div
+            class="transition duration-500 ease-in-out transform hover:scale-105 cursor-pointer">
             <Link href="{partner.website}?utm_source=THAT">
               <img
                 class="w-96"
                 src="{partner.companyLogo}"
-                alt="{partner.companyName}"
-              />
+                alt="{partner.companyName}" />
             </Link>
           </div>
 
@@ -72,8 +71,7 @@
             border-thatBlue-500 text-thatBlue-500 bg-white hover:bg-thatBlue-500
             hover:text-white focus:bg-thatBlue-500 focus:text-white focus:outline-none
             focus:ring-thatBlue-500 focus:border-thatBlue-800 transition
-            duration-150 ease-in-out md:text-lg md:px-10"
-            >
+            duration-150 ease-in-out md:text-lg md:px-10">
               {#if copiedText}
                 <span>{copiedText}</span>
               {:else}
@@ -84,15 +82,13 @@
             <StandardLink
               class="h-3/4"
               href="{partner.website}?utm_source=THAT"
-              open="{true}"
-            >
+              open="{true}">
               Visit Us
             </StandardLink>
             {#if $isAuthenticated}
               <StandardButton
                 class="h-3/4"
-                on:click="{() => dispatch('TOGGLE_FOLLOW')}"
-              >
+                on:click="{() => dispatch('TOGGLE_FOLLOW')}">
                 {#if !isFollowing}Follow{:else}Un-Follow{/if}
               </StandardButton>
             {/if}
