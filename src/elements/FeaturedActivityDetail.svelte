@@ -42,7 +42,7 @@
       </div>
 
       <p class="text-thatBlue-200 text-sm italic">
-        {dayjs(startTime).format('dddd MMMM D, YYYY - h:mm A')}
+        {dayjs(startTime).format('dddd, MMMM D, YYYY - h:mm A')}
       </p>
     </div>
   </div>

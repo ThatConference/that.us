@@ -195,7 +195,7 @@
                       </p>
 
                       <p class="text-gray-500">
-                        {dayjs(event.startDate).format('dddd MMMM D, YYYY')}
+                        {dayjs(event.startDate).format('dddd, MMMM D, YYYY')}
                       </p>
                     </div>
                   </div>
@@ -208,7 +208,7 @@
                       </p>
 
                       <p class="text-gray-500">
-                        {dayjs(event.startDate).format('dddd MMMM D, YYYY')}
+                        {dayjs(event.startDate).format('dddd, MMMM D, YYYY')}
                       </p>
                     </div>
 
