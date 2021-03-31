@@ -89,7 +89,7 @@
                     focus:ring-thatBlue-500 focus:border-thatBlue-800
                     transition duration-150 ease-in-out md:py-4 md:text-lg
                     md:px-10">
-                  Upcomming Events
+                  Upcoming Events
                 </Link>
 
                 <Link
@@ -101,7 +101,7 @@
                     focus:ring-thatBlue-500 focus:border-thatBlue-800
                     transition duration-150 ease-in-out md:py-4 md:text-lg
                     md:px-10">
-                  Upcomming Activities
+                  Upcoming Activities
                 </Link>
               {/if}
             </div>
