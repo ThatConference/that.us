@@ -160,11 +160,25 @@ export const QUERY_EVENTS_BY_COMMUNITY = `
   }
 `;
 
-export const QUERY_ME_HAS_ACCESS = `
-  query QUERY_ME_HAS_ACCESS ($eventId: ID!) {
+export const QUERY_CAN_ACCESS_EVENT = `
+  query QUERY_CAN_ACCESS_EVENT ($eventId: ID!) {
     events {
       me {
-        hasAccess(eventId: $eventId)
+        access (eventId: $eventId) {
+          hasAccess
+        }
+      }
+    }
+  }
+`;
+
+export const QUERY_CAN_ADD_SESSION = `
+  query QUERY_CAN_ADD_SESSION ($eventId: ID!) {
+    events {
+      me {
+        access (eventId: $eventId) {
+          addSession
+        }
       }
     }
   }
@@ -219,19 +233,39 @@ export default client => {
       });
   }
 
-  function meHasAccess(eventId) {
+  function canAddSession(eventId) {
     const variables = { eventId };
 
     return client
-      .query(QUERY_ME_HAS_ACCESS, variables)
+      .query(QUERY_CAN_ADD_SESSION, variables)
       .toPromise()
       .then(({ data, error }) => {
-        if (error) log(error, 'QUERY_ME_HAS_ACCESS');
+        if (error) log(error, 'QUERY_CAN_ADD_SESSION');
 
-        const { hasAccess } = data.events.me;
+        const { addSession } = data.events.me.access;
+        return addSession || false;
+      });
+  }
+
+  function canAccessEvent(eventId) {
+    const variables = { eventId };
+
+    return client
+      .query(QUERY_CAN_ACCESS_EVENT, variables)
+      .toPromise()
+      .then(({ data, error }) => {
+        if (error) log(error, 'QUERY_CAN_ACCESS_EVENT');
+
+        const { hasAccess } = data.events.me.access;
         return hasAccess || false;
       });
   }
 
-  return { queryEvents, queryEventsByCommunity, queryEventBySlug, meHasAccess };
+  return {
+    queryEvents,
+    queryEventsByCommunity,
+    queryEventBySlug,
+    canAddSession,
+    canAccessEvent,
+  };
 };

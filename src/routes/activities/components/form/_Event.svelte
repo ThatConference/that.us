@@ -17,7 +17,7 @@
   import EventNoAccess from './components/_EventNoAccess.svelte';
 
   dayjs.extend(isSameOrBefore);
-  const { queryEvents: queryEventsApi, meHasAccess } = eventsApi(getClient());
+  const { queryEvents: queryEventsApi, canAddSession } = eventsApi(getClient());
 
   const dispatch = createEventDispatcher();
   let events;
@@ -170,7 +170,7 @@
         <li
           in:fade="{{ delay: i * 200 }}"
           class="col-span-1 shadow-sm rounded-md">
-          {#await meHasAccess(event.id) then accessResults}
+          {#await canAddSession(event.id) then accessResults}
             {#if accessResults}
               <div
                 class="transition duration-500 ease-in-out transform hover:scale-105">

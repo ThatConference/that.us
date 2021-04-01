@@ -28,7 +28,7 @@
 
   const { activityId } = $router.params;
   const { setAttendance, querySessionById } = sessionsApi(getClient());
-  const { meHasAccess } = eventsApi(getClient());
+  const { canAccessEvent } = eventsApi(getClient());
 
   const imageCrop = '?mask=ellipse&w=500&h=500&fit=crop';
   const jitsiFrameTopBuffer = 340;
@@ -51,7 +51,7 @@
     activityDetails = activityQueryResults;
 
     if (activityQueryResults) {
-      hasAccess = await meHasAccess(activityQueryResults.eventId);
+      hasAccess = await canAccessEvent(activityQueryResults.eventId);
       if (!hasAccess) navigateTo(`/join/access-denied/${activityId}`);
     }
   });
