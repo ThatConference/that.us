@@ -27,6 +27,7 @@
 
   function createCorrelationId() {
     const id = uuidv4();
+    LogRocket.info('correlationId', id);
 
     Sentry.configureScope(scope => {
       scope.setTag('correlationId', id);
@@ -121,7 +122,6 @@
         email,
         id,
       });
-      scope.setExtra('logRocketSession', LogRocket.sessionURL);
     });
 
     LogRocket.identify(id, {
