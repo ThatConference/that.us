@@ -69,6 +69,18 @@
           </li>
         </ul>
 
+        <h3>Order Confirmation and Receipt</h3>
+        <p>
+          If you've landed here, that means all of the crazy squirrels in the
+          clouds did their jobs. In your inbox, you should see two confirmation
+          emails, a receipt from the credit card processor, and a welcome
+          message from THAT. <span class="font-bold">
+            If you're not seeing those, please check your junk/spam folders as
+            sometimes we manage to land there accidentally.</span>
+          At any time you can view your <Link href="/my/settings/order-history"
+            >order history</Link> and reprint your receipt.
+        </p>
+
         <h3>We’re here to help</h3>
         <p>
           We're here to support you and the community. Anything we can do to
