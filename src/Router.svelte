@@ -60,6 +60,7 @@
   // orders
   import OrderSummary from './routes/orders/Summary.svelte';
   import OrderSuccess from './routes/orders/Success.svelte';
+  import ThatSuccess from './routes/orders/ThatSuccess.svelte';
   import OrderCanceled from './routes/orders/Canceled.svelte';
 
   // Landing pages
@@ -108,6 +109,7 @@
     <Route exact redirect="/orders/summary" />
     <Route exact path="/summary" component="{OrderSummary}" />
     <Route exact path="/success" component="{OrderSuccess}" />
+    <Route exact path="/that-success" component="{ThatSuccess}" condition="{isLoggedIn}" redirect="/login"/>
     <Route exact path="/canceled" component="{OrderCanceled}" />
   </Router>
 
