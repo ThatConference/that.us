@@ -90,6 +90,7 @@ const eventFieldsFragment = `
     community
     isFeatured
     isActive
+    logo
     
     theme { 
       heroSlug

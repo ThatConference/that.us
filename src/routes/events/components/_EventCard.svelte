@@ -38,10 +38,7 @@
 
 <div class="h-full flex flex-col rounded-lg shadow-lg overflow-hidden">
   <div class="flex-shrink-0">
-    <img
-      class="h-48 w-full object-cover"
-      src="{event.eventTheme ? event.eventTheme.heroSlug : ''}"
-      alt="" />
+    <img class="py-4 h-48 w-full object-fit" src="{event.logo || ''}" alt="" />
   </div>
   <div class="flex-1 bg-white p-6 flex flex-col justify-between">
     <div class="flex-1">
