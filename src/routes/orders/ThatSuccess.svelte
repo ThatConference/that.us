@@ -10,6 +10,7 @@
   } from '../../elements/links';
 
   import { thatProfile } from '../../utilities/security';
+  import QuestionModal from './components/_QuestionModal.svelte';
 
   const { send } = getContext('cart');
 
@@ -31,16 +32,37 @@
     },
   });
 
-  function initPaperForm() {
-    console.log('paperform script was init');
-    // document.body.appendChild(script);
+  let questionsCompleted = false;
+
+  function handleOnSubmit(e) {
+    //todo post to the api that this was completed.
+    questionsCompleted = true;
+  }
+
+  function handleOnLoad() {
+    window.addEventListener('PaperformSubmission', handleOnSubmit);
   }
 </script>
 
 <svelte:head>
-  <script src="https://paperform.co/__embed.min.js" on:load="{initPaperForm}">
+  <script src="https://paperform.co/__embed.min.js" on:load="{handleOnLoad}">
   </script>
 </svelte:head>
+
+{#if !questionsCompleted}
+  <div class="">
+    <div
+      class="z-50 absolute inset-0 min-h-screen min-w-screen bg-gray-500 opacity-75">
+    </div>
+    <QuestionModal>
+      <div
+        class="h-full w-full"
+        data-prefill="{formDataPrefill}"
+        data-paperform-id="tzytilxo">
+      </div>
+    </QuestionModal>
+  </div>
+{/if}
 
 <Layout>
   <div class="space-y-12">
@@ -92,32 +114,17 @@
           message from THAT. <span class="font-bold">
             If you're not seeing those, please check your junk/spam folders as
             sometimes we manage to land there accidentally.</span>
-          At any time you can view your <Link href="/my/settings/order-history"
-            >order history</Link> and reprint your receipt.
         </p>
+        <div class="mt-12 flex justify-end space-x-5">
+          <StandardLink href="/my/settings/order-history">
+            View Your Order History
+          </StandardLink>
 
-        <h3>We have some questions...</h3>
+          <HighlightLink href="/activities">
+            Check out the upcoming Activities
+          </HighlightLink>
+        </div>
       </div>
-
-      <div class="py-12 flex flex-row">
-        {#key formDataPrefill}
-          <div
-            class="flex-grow"
-            data-prefill="{formDataPrefill}"
-            data-paperform-id="tzytilxo">
-          </div>
-        {/key}
-      </div>
-
-      <!-- <div class="mt-12 flex justify-end space-x-5">
-        <StandardLink href="/my/settings/order-history">
-          View Your Order History
-        </StandardLink>
-
-        <HighlightLink href="/activities">
-          Check out the upcoming Activities
-        </HighlightLink>
-      </div> -->
     </div>
   </div>
 </Layout>
