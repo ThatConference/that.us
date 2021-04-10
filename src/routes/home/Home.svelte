@@ -2,13 +2,13 @@
   import { fade } from 'svelte/transition';
   import { useMachine } from 'xstate-svelte';
 
-  import { Logo } from '../../elements';
   import Layout from '../../elements/layouts/ContentLayout.svelte';
   import UpNext from '../../components/activities/UpNext.svelte';
   import {
     Hero,
     Testimonials,
     CTA,
+    CtaMembership,
     Newsletter,
     Stats,
     Events,
@@ -16,7 +16,7 @@
   } from '../../components/home';
 
   // utilities
-  import { isAuthenticated } from '../../utilities/security';
+  import { isAuthenticated, thatProfile } from '../../utilities/security';
   import metaTagsStore from '../../store/metaTags';
 
   metaTagsStore.set({
@@ -59,6 +59,8 @@
 
     {#if !$isAuthenticated}
       <CTA />
+    {:else if !$thatProfile.isMember}
+      <CtaMembership />
     {/if}
 
     <NewMembers />

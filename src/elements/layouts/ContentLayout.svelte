@@ -2,7 +2,7 @@
   import { fade } from 'svelte/transition';
 
   import { Trees } from '../svgs';
-  import Footer from '../../components/Footer.svelte';
+  import Footer from '../../components/footer/Footer.svelte';
   import NavWrapper from './_NavWrapper.svelte';
 </script>
 
