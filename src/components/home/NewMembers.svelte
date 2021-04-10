@@ -1,7 +1,7 @@
 <script>
   import { getClient } from '@urql/svelte';
+  import { Link } from 'yrv';
 
-  import { login } from '../../utilities/security';
   import { Standard as StandardLink } from '../../elements/links';
 
   import MemberCard from '../../components/members/MemberCard.svelte';
@@ -57,13 +57,13 @@
         Welcome to THAT family!
       </h3>
       <p class="mt-4 text-xl leading-7 text-gray-500">
-        Please join us in welcoming our newest members to THAT. Not a member
-        yet?
-        <button
-          class="text-thatOrange-400 hover:text-thatOrange-500"
-          on:click="{() => login(document.location.pathname, true)}">
+        Please join us in welcoming the newest Geeks to THAT. Not a member yet?
+
+        <Link
+          href="/membership/pricing"
+          class="text-thatOrange-400 hover:text-thatOrange-500">
           Join today!
-        </button>
+        </Link>
       </p>
     </div>
 

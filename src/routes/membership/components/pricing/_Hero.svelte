@@ -270,7 +270,7 @@
                     <div class="flex flex-col">
                       <StandardButton
                         on:click="{() => login('/my/settings/profile', true)}">
-                        Get Started
+                        Create an Account
                       </StandardButton>
                     </div>
                   </div>

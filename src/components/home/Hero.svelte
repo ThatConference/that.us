@@ -20,21 +20,15 @@
 
       <div class="lg:grid lg:grid-cols-12 lg:gap-8">
         <div
-          class="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-5
-            lg:text-left">
-          <!-- hero copy -->
-          <div>
-            <p
-              class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl
-                sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
+          class="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-5 lg:text-left">
+          <div class="prose sm:text-lg md:text-xl text-gray-500">
+            <p>
               It's our mission to make the best community of geeks on this
               planet. A community of people who want to help one another each
               and every day.
             </p>
 
-            <p
-              class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl
-                sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
+            <p>
               Our jobs are complex, our industry moves fast, but we’re also
               privileged to be able to work with people all over the globe, yet
               we’ve been missing something.
@@ -69,8 +63,8 @@
                   Getting Started
                 </Link>
 
-                <button
-                  on:click="{() => login(document.location.pathname, true)}"
+                <Link
+                  href="/membership/pricing"
                   class="px-8 py-3 border-2 border-transparent text-base
                     leading-6 font-medium rounded-md shadow text-white
                     bg-thatOrange-400 hover:bg-thatOrange-500 focus:outline-none
@@ -78,7 +72,7 @@
                     transition duration-150 ease-in-out md:py-4 md:text-lg
                     md:px-10">
                   Join today!
-                </button>
+                </Link>
               {:else}
                 <Link
                   href="/events"
@@ -128,27 +122,25 @@
             class="mt-12 sm-mt-0 sm:text-center md:max-w-2xl md:mx-auto
               lg:col-start-6 lg:col-span-7 lg:text-left">
             <div class="flex flex-col space-y-6">
-              <p
-                class="text-base text-gray-500 sm:text-lg sm:max-w-xl sm:mx-auto
-                  md:text-xl lg:mx-0">
-                Nothing will ever replace having a face-to-face conversation
-                where people can deeply engage and explore a topic. A safe place
-                where questions can be asked without judgment or bias.
-                Conferences and user groups traditionally help fill that gap but
-                leave a huge void for the rest of the year.
-              </p>
+              <div class="prose sm:text-lg md:text-xl text-gray-500">
+                <p>
+                  Nothing will ever replace having a face-to-face conversation
+                  where people can deeply engage and explore a topic. A safe
+                  place where questions can be asked without judgment or bias.
+                  Conferences and user groups traditionally help fill that gap
+                  but leave a huge void for the rest of the year.
+                </p>
 
-              <p
-                class="text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl
-                  sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
-                This is where THAT comes in. It’s our mission to connect you and
-                give you a safe place to have a conversation each and every day.
-                Let’s say you want to have a code review or a design review,
-                great. Maybe you want to share your experience with the latest
-                JavaScript framework or seek some geek parenting advice. There
-                are no limits, there are no artificial boundaries. Just people
-                helping people be awesome.
-              </p>
+                <p>
+                  This is where THAT comes in. It’s our mission to connect you
+                  and give you a safe place to have a conversation each and
+                  every day. Let’s say you want to have a code review or a
+                  design review, great. Maybe you want to share your experience
+                  with the latest JavaScript framework or seek some geek
+                  parenting advice. There are no limits, there are no artificial
+                  boundaries. Just people helping people be awesome.
+                </p>
+              </div>
             </div>
           </div>
         </div>
