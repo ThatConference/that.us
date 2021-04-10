@@ -7,6 +7,7 @@
   export let durationInMinutes;
   export let speakers;
   export let tags = [];
+  export let eventId;
 
   // 3rd party
   import { onMount } from 'svelte';
@@ -51,6 +52,7 @@
   let imageCrop = '?mask=ellipse&w=500&h=500&fit=crop';
   let favoriteDisabled = false;
 
+  const requiresAccessToJoin = eventId !== config.eventId;
   const isAllowed = () => {
     let permitted = false;
 
@@ -126,22 +128,22 @@
   };
 </script>
 
-<div class="w-full h-full flex flex-col">
+<div
+  class="w-full h-full flex flex-col"
+  class:requiresAccess="{requiresAccessToJoin}">
   <div class="flex items-center p-3 space-x-3">
     <Link open href="/members/{host.profileSlug}" class="flex-shrink-0">
       <span class="inline-block relative">
         <img
           class="w-15 h-15 rounded-full"
           src="{userProfileImage}"
-          alt="{`${host.firstName} ${host.lastName}`}"
-        />
+          alt="{`${host.firstName} ${host.lastName}`}" />
 
         {#if host.earnedMeritBadges.length > 0}
           <span class="absolute bottom-0 left-0 block h-6 w-6">
             <img
               src="{host.earnedMeritBadges[0].image}"
-              alt="{host.earnedMeritBadges[0].name}"
-            />
+              alt="{host.earnedMeritBadges[0].name}" />
           </span>
         {/if}
       </span>
@@ -159,8 +161,7 @@
   <div
     class="flex-grow p-3"
     class:cursor-pointer="{isLongerThan(shortDescription, 25)}"
-    on:click|preventDefault="{() => (expandDescription = !expandDescription)}"
-  >
+    on:click|preventDefault="{() => (expandDescription = !expandDescription)}">
     <p class="text-gray-500 text-sm leading-5 break-words">
       {#if expandDescription}
         <span class="lineBreaks">{shortDescription}</span>
@@ -187,8 +188,7 @@
         <CardLink
           href="/activities/{id}"
           icon="{info}"
-          text="{'More Details'}"
-        />
+          text="{'More Details'}" />
       </div>
 
       {#if !hasExpired}
@@ -202,8 +202,7 @@
                 border-transparent rounded-br-lg hover:text-gray-300
                 focus:outline-none focus:ring-blue
                 focus:border-blue-300 focus:z-10 transition ease-in-out
-                duration-150"
-            >
+                duration-150">
               <Icon data="{heart}" class="w-4 h-4" />
               <span class="ml-3">Favorite</span>
             </button>
@@ -211,14 +210,14 @@
         {:else}
           <div class="-ml-px w-0 flex-1 flex border-l border-gray-200">
             <button
-              on:click|preventDefault="{() => login(document.location.pathname, false)}"
+              on:click|preventDefault="{() =>
+                login(document.location.pathname, false)}"
               class="relative w-0 flex-1 inline-flex items-center justify-center
                 py-2 text-xs leading-4 text-gray-700 font-medium border
                 border-transparent rounded-br-lg hover:text-gray-300
                 focus:outline-none focus:ring-blue
                 focus:border-blue-300 focus:z-10 transition ease-in-out
-                duration-150"
-            >
+                duration-150">
               <Icon data="{heart}" class="w-4 h-4" />
               <span class="ml-3">Favorite</span>
             </button>
@@ -236,8 +235,7 @@
                 border-transparent rounded-br-lg hover:text-gray-300
                 focus:outline-none focus:ring-blue
                 focus:border-blue-300 focus:z-10 transition ease-in-out
-                duration-150"
-            >
+                duration-150">
               <Icon data="{cog}" class="w-4 h-4" />
               <span class="ml-3">Edit</span>
             </Link>
@@ -260,8 +258,7 @@
               class="relative w-0 flex-1 inline-flex items-center justify-center
                 py-2 text-xs leading-4 text-gray-300 font-medium border
                 border-transparent rounded-br-lg transition ease-in-out
-                duration-150"
-            >
+                duration-150">
               <Icon data="{signIn}" class="-ml-1 mr-2 h-4 w-4" />
               <span>Join {timeLeftToJoin}</span>
             </div>
@@ -271,3 +268,9 @@
     </div>
   {/if}
 </div>
+
+<style>
+  .requiresAccess {
+    @apply rounded-lg border-t-4 border-red-500;
+  }
+</style>
