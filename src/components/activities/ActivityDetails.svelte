@@ -9,6 +9,8 @@
   export let durationInMinutes;
   export let slug;
   export let favoritedBy = [];
+  export let eventId;
+  export let event;
 
   // 3rd Party
   import { onMount } from 'svelte';
@@ -50,12 +52,11 @@
   const { toggle, get: getFavorites, favoritesStore: favorites } = favoritesApi(
     getClient(),
   );
+  const isDailyActivity = config.eventId === eventId;
 
   let host = speakers[0];
   let imageCrop = '?mask=ellipse&w=500&h=500&fit=crop';
-
   let { join, edit, isNew, isUpdated } = qs.parse(location.search);
-
   let favoriteDisabled = false;
 
   let incompleteProfile = true;
@@ -304,50 +305,58 @@
 
   <!-- body -->
 
-  <div class="px-4 py-5 sm:px-6 text-center md:text-left">
-    <!-- Title -->
-    <h2
-      class="text-2xl sm:text-3xl md:text-4xl tracking-tight leading-10
+  <div class="w-full flex flex-col sm:flex-row space-x-6">
+    <div class="flex-auto px-4 py-5 sm:px-6 text-center md:text-left">
+      <!-- Title -->
+      <h2
+        class="text-2xl sm:text-3xl md:text-4xl tracking-tight leading-10
         font-extrabold text-gray-900 sm:leading-none">
-      {title}
-    </h2>
+        {title}
+      </h2>
 
-    <!-- Start Time -->
-    <p
-      class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:mx-auto md:mt-5
+      <!-- Start Time -->
+      <p
+        class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:mx-auto md:mt-5
         md:text-xl lg:mx-0">
-      {#if durationInMinutes <= 60}
-        {dayjs(startTime).format('dddd, MMMM D, YYYY - h:mm A')}, for
-        {dayjs.duration(durationInMinutes, 'minutes').as('hours')}
-        hour.
-      {:else}
-        {dayjs(startTime).format('dddd, MMMM D, YYYY - h:mm A')}, for
-        {dayjs.duration(durationInMinutes, 'minutes').as('hours')}
-        hours.
-      {/if}
-    </p>
+        {#if durationInMinutes <= 60}
+          {dayjs(startTime).format('dddd, MMMM D, YYYY - h:mm A')}, for
+          {dayjs.duration(durationInMinutes, 'minutes').as('hours')}
+          hour.
+        {:else}
+          {dayjs(startTime).format('dddd, MMMM D, YYYY - h:mm A')}, for
+          {dayjs.duration(durationInMinutes, 'minutes').as('hours')}
+          hours.
+        {/if}
+      </p>
 
-    <!-- Description -->
-    <p
-      class="lineBreaks mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:mx-auto md:mt-5
+      <!-- Description -->
+      <p
+        class="lineBreaks mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:mx-auto md:mt-5
         md:text-xl lg:mx-0">
-      {shortDescription}
-    </p>
+        {shortDescription}
+      </p>
 
-    <!-- Tags -->
-    <div class="flex flex-wrap content-start space-x-4 py-12">
-      {#each tags as t}
-        <Tag>{t}</Tag>
-      {/each}
-    </div>
+      <!-- Tags -->
+      <div class="flex flex-wrap content-start space-x-4 py-12">
+        {#each tags as t}
+          <Tag>{t}</Tag>
+        {/each}
+      </div>
 
-    <!-- Avatars -->
-    <div class="flex flex-wrap items-center text-red-400 space-x-1">
-      <Icon data="{heartO}" class="h-8 w-8" />
-      <span>favorited by:</span>
-      <div class="md:pl-2">
-        <Avatars attendees="{favoritedBy}" />
+      <!-- Avatars -->
+      <div class="flex flex-wrap items-center text-red-400 space-x-1">
+        <Icon data="{heartO}" class="h-8 w-8" />
+        <span>favorited by:</span>
+        <div class="md:pl-2">
+          <Avatars attendees="{favoritedBy}" />
+        </div>
       </div>
     </div>
+
+    {#if !isDailyActivity}
+      <div class="sm:w-1/2 p-6 flex flex-col items-center">
+        <img src="{event.logo}" alt="Event Logo" />
+      </div>
+    {/if}
   </div>
 </div>

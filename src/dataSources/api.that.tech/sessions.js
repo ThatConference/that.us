@@ -63,6 +63,7 @@ export const QUERY_SESSION_BY_ID = `
           id
           startDate
           endDate
+          logo
         }
         speakers {
           firstName
