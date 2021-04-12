@@ -39,7 +39,7 @@
 </script>
 
 <Layout>
-  {#if $thatProfile.isMember}
+  {#if $thatProfile?.isMember}
     <div in:fade="{{ delay: 200 }}">
       <WelcomeBack />
     </div>
@@ -77,7 +77,7 @@
 
       {#if !$isAuthenticated}
         <CTA />
-      {:else if !$thatProfile.isMember}
+      {:else if !$thatProfile?.isMember}
         <CtaMembership />
       {/if}
 

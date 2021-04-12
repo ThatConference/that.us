@@ -38,7 +38,7 @@
         </Link>
       </div>
     </div>
-  {:else if !$thatProfile.isMember}
+  {:else if !$thatProfile?.isMember}
     <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
       <div class="rounded-md shadow">
         <Link
