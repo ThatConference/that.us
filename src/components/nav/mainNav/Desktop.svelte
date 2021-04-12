@@ -18,8 +18,8 @@
     {#each links as l}
       <Link
         href="{l.href}"
-        class="ml-4 px-3 py-2 font-medium text-sm text-gray-500  rounded-md
-        hover:text-white hover:bg-that-blue focus:outline-none
+        class="ml-1 px-3 py-2 font-medium text-sm text-gray-500  rounded-md
+        hover:text-white hover:bg-that-blue hover:bg-opacity-50 focus:outline-none
           focus:text-white focus:bg-that-blue
           transition duration-150 ease-in-out">
         <div class="flex items-center">

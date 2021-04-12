@@ -39,7 +39,7 @@
       <Link
         href="/events"
         open
-        class="px-3 py-2 rounded-md text-sm font-medium text-gray-300
+        class="ml-1 px-3 py-2 rounded-md text-sm font-medium text-gray-300
           hover:text-white hover:bg-that-blue focus:outline-none
           focus:text-white focus:bg-that-blue">
         <DesktopLink>Events</DesktopLink>
@@ -48,7 +48,7 @@
       <Link
         href="/activities"
         open
-        class="px-3 py-2 rounded-md text-sm font-medium text-gray-300
+        class="ml-1 px-3 py-2 rounded-md text-sm font-medium text-gray-300
           hover:text-white hover:bg-that-blue focus:outline-none
           focus:text-white focus:bg-that-blue">
         <DesktopLink>Activities</DesktopLink>
@@ -56,7 +56,7 @@
 
       <Link
         href="/members"
-        class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300
+        class="ml-1 px-3 py-2 rounded-md text-sm font-medium text-gray-300
           hover:text-white hover:bg-that-blue focus:outline-none
           focus:text-white focus:bg-that-blue">
         <DesktopLink>Members</DesktopLink>
@@ -64,7 +64,7 @@
 
       <Link
         href="/communities"
-        class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300
+        class="ml-1 px-3 py-2 rounded-md text-sm font-medium text-gray-300
           hover:text-white hover:bg-that-blue focus:outline-none
           focus:text-white focus:bg-that-blue">
         <DesktopLink>Communities</DesktopLink>
@@ -72,7 +72,7 @@
 
       <Link
         href="/partners"
-        class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300
+        class="ml-1 px-3 py-2 rounded-md text-sm font-medium text-gray-300
           hover:text-white hover:bg-that-blue focus:outline-none
           focus:text-white focus:bg-that-blue">
         <DesktopLink>Partners</DesktopLink>
@@ -81,7 +81,7 @@
       <div>
         <button
           href="/help"
-          class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300
+          class="ml-1 px-3 py-2 rounded-md text-sm font-medium text-gray-300
             hover:text-white hover:bg-that-blue focus:outline-none
             focus:text-white focus:bg-that-blue"
           on:click|preventDefault="{() => (helpVisible = !helpVisible)}">
