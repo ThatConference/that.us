@@ -79,7 +79,7 @@
                   Join us today!
                 </Link>
               </p>
-            {:else if !$thatProfile.isMember}
+            {:else if !$thatProfile?.isMember}
               <p>
                 Our mission is simple, foster a community of geeks who want to
                 help one another be awesome. We could create a free platform,
