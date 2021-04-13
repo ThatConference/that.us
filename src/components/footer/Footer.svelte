@@ -18,7 +18,8 @@
         <img
           class="h-12 w-auto"
           src="/images/THAT-Full-Wide.svg"
-          alt="THAT Logo" />
+          alt="THAT Logo"
+          loading="lazy" />
 
         <p class="text-gray-500 text-base">
           Geeks helping Geeks become more awesome every day.

@@ -7,8 +7,7 @@
     <div class="lg:col-span-4 w-full">
       <h2
         class="my-2 text-3xl leading-9 font-extrabold tracking-tight
-              text-gray-900 sm:text-4xl sm:leading-10"
-      >
+              text-gray-900 sm:text-4xl sm:leading-10">
         My Merit Badges
       </h2>
     </div>
@@ -23,7 +22,7 @@
                 src="{badge.image}"
                 alt="{badge.name}"
                 title="{badge.name}"
-              />
+                loading="lazy" />
             </div>
           {/each}
         </div>

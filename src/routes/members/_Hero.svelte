@@ -41,14 +41,13 @@
 <section class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
   <div class="lg:grid lg:grid-cols-12 lg:gap-8 mb-24">
     <div
-      class="max-w-2xl mx-auto flex flex-col items-center space-y-8 lg:col-span-3"
-    >
+      class="max-w-2xl mx-auto flex flex-col items-center space-y-8 lg:col-span-3">
       <div>
         <img
           class="mx-auto h-40 w-40 rounded-full xl:w-56 xl:h-56"
           src="{userProfileImage}"
           alt="{`${member.firstName} ${member.lastName}`}"
-        />
+          loading="lazy" />
       </div>
       <div>
         <div class="flex justify-center space-x-2">
@@ -82,8 +81,7 @@
               border-thatBlue-500 text-thatBlue-500 bg-white hover:bg-thatBlue-500
               hover:text-white focus:bg-thatBlue-500 focus:text-white focus:outline-none
               focus:ring-thatBlue-500 focus:border-thatBlue-800 transition
-              duration-150 ease-in-out md:text-lg md:px-10"
-            >
+              duration-150 ease-in-out md:text-lg md:px-10">
               {#if copiedText}
                 <span>{copiedText}</span>
               {:else}
@@ -94,8 +92,7 @@
             {#if $isAuthenticated}
               <StandardButton
                 class="h-3/4"
-                on:click="{() => dispatch('TOGGLE_FOLLOW')}"
-              >
+                on:click="{() => dispatch('TOGGLE_FOLLOW')}">
                 {#if !isFollowing}Follow{:else}Un-Follow{/if}
               </StandardButton>
             {/if}

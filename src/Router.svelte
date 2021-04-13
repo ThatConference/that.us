@@ -36,6 +36,7 @@
   import StayingUpToDate from './routes/support/StayingUpToDate.svelte';
   import ChangeLog from './routes/releases/ChangeLog.svelte';
   import ChangeLogMissed from './routes/releases/Missed.svelte';
+  import CovidPolicies from './routes/support/Covid.svelte';
 
   // my
   import Settings from './routes/my/Settings.svelte';
@@ -70,6 +71,7 @@
   import EventPartners from './routes/partners/EventPartners.svelte';
   import EventList from './routes/events/Events.svelte';
   import EventLanding from './routes/events/Event.svelte';
+  import Tickets from './routes/events/Tickets.svelte';
 </script>
 
 <!-- prettier-ignore -->
@@ -121,6 +123,7 @@
     <Route exact path="/joining-an-activity" component="{JoiningAnActivity}" />
     <Route exact path="/creating-an-activity" component="{CreateAnActivity}" />
     <Route exact path="/staying-up-to-date" component="{StayingUpToDate}" />
+    <Route exact path="/covid-policies" component="{CovidPolicies}" />
   </Router>
 
   <Router path='/activities'>
@@ -135,6 +138,7 @@
   <Router path="/events">
     <Route exact path="/" component="{EventList}" />
     <Route exact path="/:id/:name" component="{EventLanding}" />
+    <Route exact path="/:id/:name/tickets" component="{Tickets}" />
     <Route exact path="/:id/:name/partners" component="{EventPartners}" />
   </Router>
 

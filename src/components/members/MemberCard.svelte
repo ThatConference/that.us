@@ -27,13 +27,15 @@
           <img
             class="w-32 h-32 flex-shrink-0 mx-auto rounded-full"
             src="{userProfileImage}"
-            alt="" />
+            alt=""
+            loading="lazy" />
 
           {#if earnedMeritBadges.length > 0}
             <span class="absolute bottom-0 left-0 block h-12 w-12">
               <img
                 src="{earnedMeritBadges[0].image}"
-                alt="{earnedMeritBadges[0].name}" />
+                alt="{earnedMeritBadges[0].name}"
+                loading="lazy" />
             </span>
           {/if}
         </span>

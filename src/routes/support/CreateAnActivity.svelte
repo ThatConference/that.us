@@ -84,7 +84,8 @@
           <img
             class="w-full rounded-lg shadow"
             src="/images/ActivityCreateExample.jpg"
-            alt="New Activity Form" />
+            alt="New Activity Form"
+            loading="lazy" />
           <figcaption>Example: New Activity Form</figcaption>
         </figure>
       </div>

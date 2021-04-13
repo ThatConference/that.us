@@ -79,7 +79,21 @@
     <Membership
       event="{event}"
       on:purchase-membership="{() =>
-        handleAddMembershipClick(event.id, event.products)}" />
+        handleAddMembershipClick(event.id, event.products)}">
+      <div slot="header">
+        <div class="text-center">
+          <h2
+            class="text-3xl font-extrabold text-thatBlue-800 sm:text-4xl lg:text-5xl">
+            Support Us, Supporting You.
+          </h2>
+          <p class="mt-4 text-xl text-gray-600">
+            We could create a free platform, but then you become the product. To
+            that we say no thank you, we're the product. We're taking the
+            approach of creating a monetization strategy of help us, help you.
+          </p>
+        </div>
+      </div>
+    </Membership>
   </section>
 
   <section>
@@ -107,31 +121,7 @@
   </section>
 
   <section class="mx-auto max-w-7xl pb-12">
-    <SponsorSimple eventId="{event.eventId}">
-      <div slot="header">
-        <div
-          class="pb-12 text-3xl sm:text-4xl leading-8 sm:leading-10 font-extrabold tracking-tight text-thatBlue-800">
-          <h1 class="block text-center sm:text-left">Event Partners</h1>
-        </div>
-      </div>
-    </SponsorSimple>
-
-    <div class="relative pt-16 flex justify-end space-x-4">
-      <div
-        class="px-8 py-3 border-2 border-transparent leading-6 font-medium rounded-md
-      shadow md:py-4 md:text-lg md:px-10 transition duration-150 ease-in-out
-      text-base text-white bg-thatOrange-400 hover:bg-thatOrange-500
-      focus:outline-none focus:border-thatOrange-700
-      focus:ring-that-orange">
-        <a href="mailto:hello@that.us?subject=Let's Partner">
-          Partner with us!
-        </a>
-      </div>
-
-      <StandardLink href="/events/{event.slug}/partners">
-        View all Partners
-      </StandardLink>
-    </div>
+    <SponsorSimple eventId="{event.eventId}" />
   </section>
 
   <section>

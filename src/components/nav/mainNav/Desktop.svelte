@@ -39,7 +39,7 @@
         <Link href="/orders/summary">
           <Cart />
           {#if cartItems > 0}
-            <span class="absolute bottom-0 right-0 block">
+            <span class="animate-pulse absolute bottom-0 right-0 block">
               <span
                 class="inline-flex items-center justify-center h-4 w-4 rounded-full bg-gray-500">
                 <span class="text-xs font-medium leading-none text-white"

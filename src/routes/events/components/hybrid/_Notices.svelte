@@ -1,0 +1,70 @@
+<script>
+  import { Link } from 'yrv';
+</script>
+
+<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24">
+  <div class="flex justify-center">
+    <div
+      class="bg-white px-12 py-6 flex flex-col rounded-lg shadow-lg space-y-12">
+      <div
+        class="flex flex-col sm:flex-row justify-start sm:justify-between items-center space-x-12 space-y-6">
+        <div class="flex-col justify-start">
+          <h3>
+            <span
+              class="px-4 py-1 rounded-full text-sm font-bold tracking-wide uppercase bg-that-orange text-white">
+              Special Discounts
+            </span>
+          </h3>
+
+          <div class="mt-4 prose text-lg text-gray-500">
+            Ordering 15 or more tickets? Contact us at
+            <a
+              href="mailto:hello@that.us?subject=Ticket Discounts"
+              rel="noopener"
+              target="_blank">hello@that.us</a>
+            to ask about direct invoicing with volume discounts.
+          </div>
+        </div>
+
+        <div
+          class="flex-shrink-0 w-48 flex justify-center rounded-md shadow hover:bg-gray-50">
+          <a
+            href="mailto:hello@that.us"
+            class="px-5 py-3 border border-transparent text-base font-medium rounded-md text-gray-900 bg-white hover:bg-gray-50">
+            Contact Us Today
+          </a>
+        </div>
+      </div>
+
+      <!-- Covid -->
+      <div
+        class="flex flex-col sm:flex-row justify-start sm:justify-between items-center space-x-12 space-y-6">
+        <div class="flex-col justify-start">
+          <h3>
+            <span
+              class="px-4 py-1 rounded-full text-sm font-bold tracking-wide uppercase bg-yellow-300 text-gray-600">
+              Covid Policies
+            </span>
+          </h3>
+
+          <div class="mt-4 prose text-lg text-gray-500">
+            todo: WE NEED WORDS
+            <a
+              href="mailto:hello@that.us?subject=Ticket Discounts"
+              rel="noopener"
+              target="_blank">hello@that.us</a>
+          </div>
+        </div>
+
+        <div
+          class="flex-shrink-0 w-48 flex justify-center rounded-md shadow hover:bg-gray-50">
+          <Link
+            href="/support/covid-policies"
+            class="px-5 py-3 border border-transparent text-base font-medium rounded-md text-gray-900 bg-white hover:bg-gray-50">
+            Learn More
+          </Link>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

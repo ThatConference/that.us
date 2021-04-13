@@ -133,7 +133,7 @@
               <div class="absolute inset-x-0 top-0 transform translate-y-px">
                 <div class="flex justify-center transform -translate-y-1/2">
                   <span
-                    class="inline-flex rounded-full bg-thatOrange-400 px-4 py-1 text-sm font-semibold tracking-wider uppercase text-white">
+                    class="inline-flex rounded-full bg-thatOrange-400 px-4 py-1 text-sm font-bold tracking-wider uppercase text-white">
                     Best Value
                   </span>
                 </div>

@@ -2,7 +2,6 @@
 const colors = require('tailwindcss/colors');
 
 module.exports = {
-  // mode: 'jit',
   theme: {
     interFontFeatures: {
       default: ['calt', 'liga', 'kern'],
@@ -87,6 +86,7 @@ module.exports = {
       fontWeight: ['hover', 'focus'],
     },
   },
+  // mode: 'jit',
   purge: ['./src/**/*.svelte', './src/**/*.html', './src/**/*.js'],
   plugins: [
     require('@tailwindcss/forms'),

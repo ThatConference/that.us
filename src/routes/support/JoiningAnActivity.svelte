@@ -38,7 +38,8 @@
           <img
             class="rounded-lg shadow"
             src="/images/ActivityJoinExample.jpg"
-            alt="" />
+            alt=""
+            loading="lazy" />
           <figcaption>Example Activity: join on the bottom.</figcaption>
         </figure>
       </div>

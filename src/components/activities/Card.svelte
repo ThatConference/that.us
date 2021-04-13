@@ -137,13 +137,15 @@
         <img
           class="w-15 h-15 rounded-full"
           src="{userProfileImage}"
-          alt="{`${host.firstName} ${host.lastName}`}" />
+          alt="{`${host.firstName} ${host.lastName}`}"
+          loading="lazy" />
 
         {#if host.earnedMeritBadges.length > 0}
           <span class="absolute bottom-0 left-0 block h-6 w-6">
             <img
               src="{host.earnedMeritBadges[0].image}"
-              alt="{host.earnedMeritBadges[0].name}" />
+              alt="{host.earnedMeritBadges[0].name}"
+              loading="lazy" />
           </span>
         {/if}
       </span>

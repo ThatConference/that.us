@@ -9,7 +9,8 @@
         <img
           class="z-10 h-48 w-48 border border-white rounded-full xl:h-64 xl:w-64"
           src="https://that.imgix.net/members/1dcd59be-4677-474d-8087-e0b74e8ab810.jpeg?mask=ellipse&w=500&h=500&fit=crop"
-          alt="Clark Sell" />
+          alt="Clark Sell"
+          loading="lazy" />
       </div>
 
       <div>
