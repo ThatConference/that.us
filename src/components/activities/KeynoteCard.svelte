@@ -1,12 +1,17 @@
 <script>
+  export let id;
   export let title;
   export let shortDescription;
   export let speakers;
   export let type;
+  export let location;
 
   import { fade, fly } from 'svelte/transition';
   import Icon from 'svelte-awesome';
+  import { Link } from 'yrv';
   import { chevronDown } from 'svelte-awesome/icons';
+  import { facebook, youtubePlay, twitch, signIn } from 'svelte-awesome/icons';
+
   import KeynoteSpeaker from './KeynoteSpeaker.svelte';
   import PanelSpeakers from './PanelSpeakers.svelte';
 
@@ -62,6 +67,90 @@
         {:else if type === 'PANEL'}
           <PanelSpeakers speakers="{speakers}" />
         {/if}
+
+        <div
+          class="border-t-2 border-gray-100 rounded-b-lg pt-10 pb-8 bg-gray-50 px-10 py-10">
+          <div class="flex flex-col lg:flex-row items-center justify-center">
+            <span
+              class="flex-none text-3xl leading-none tracking-tight text-gray-900 sm:text-3xl lg:pr-4 pb-4 lg:pb-0">
+              <span class="font-extrabold">
+                {#if location === 'THAT'}
+                  Join In
+                {:else}
+                  Watch On
+                {/if}
+              </span>
+            </span>
+
+            <div class="flex flex-col lg:flex-row items-center justify-center">
+              {#if location === 'THAT'}
+                <div class="inline-flex m-3 rounded-md shadow-md">
+                  <Link
+                    open
+                    href="{`/join/${id}`}"
+                    type="button"
+                    class="relative inline-flex items-center justify-center
+                      px-4 py-2 border border-gray-300 text-sm leading-5
+                      font-medium rounded-md text-gray-700 bg-white
+                      hover:text-red-700 focus:outline-none
+                      focus:ring-red focus:border-red-300
+                      active:bg-gray-50 active:text-gray-800 w-32">
+                    <Icon data="{signIn}" class="-ml-1 mr-2 h-5 w-5" />
+                    <span>THAT</span>
+                  </Link>
+                </div>
+              {:else}
+                <div class="inline-flex m-3 rounded-md shadow-md">
+                  <Link
+                    open
+                    href="https://youtube.com/c/thatconference"
+                    type="button"
+                    class="relative inline-flex items-center justify-center
+                      px-4 py-2 border border-gray-300 text-sm leading-5
+                      font-medium rounded-md text-gray-700 bg-white
+                      hover:text-red-700 focus:outline-none
+                      focus:ring-red focus:border-red-300
+                      active:bg-gray-50 active:text-gray-800 w-32">
+                    <Icon data="{youtubePlay}" class="-ml-1 mr-2 h-5 w-5" />
+                    <span>YouTube</span>
+                  </Link>
+                </div>
+
+                <div class="inline-flex m-3 rounded-md shadow-md">
+                  <Link
+                    open
+                    href="https://facebook.com/thatconference"
+                    type="button"
+                    class="relative inline-flex items-center justify-center
+                      px-4 py-2 border border-gray-300 text-sm leading-5
+                      font-medium rounded-md text-gray-700 bg-white
+                      hover:text-blue-700 focus:outline-none
+                      focus:ring-blue focus:border-blue-300
+                      active:bg-gray-50 active:text-gray-800 w-32">
+                    <Icon data="{facebook}" class="-ml-1 mr-2 h-5 w-5" />
+                    <span>Facebook</span>
+                  </Link>
+                </div>
+
+                <div class="inline-flex m-3 rounded-md shadow-md">
+                  <Link
+                    open
+                    href="https://twitch.com/thatconference"
+                    type="button"
+                    class="relative inline-flex items-center justify-center
+                      px-4 py-2 border border-gray-300 text-sm leading-5
+                      font-medium rounded-md text-gray-700 bg-white
+                      hover:text-indigo-700 focus:outline-none
+                      focus:ring-indigo focus:border-indigo-300
+                      active:bg-gray-50 active:text-gray-800 w-32">
+                    <Icon data="{twitch}" class="-ml-1 mr-2 h-5 w-5" />
+                    <span>Twitch</span>
+                  </Link>
+                </div>
+              {/if}
+            </div>
+          </div>
+        </div>
       </div>
     {/if}
   </div>
