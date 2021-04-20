@@ -33,6 +33,7 @@ export const QUERY_ME = `
           isDeactivated
           lifeHack
           interests
+          isMember
         }
       }
     }

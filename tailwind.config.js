@@ -1,4 +1,5 @@
 /* eslint-disable global-require */
+const colors = require('tailwindcss/colors');
 
 module.exports = {
   theme: {
@@ -24,6 +25,9 @@ module.exports = {
     },
     extend: {
       colors: {
+        cyan: colors.cyan,
+        teal: colors.teal,
+        'light-blue': colors.lightBlue,
         'that-offWhite': '#F7F7F7',
         'that-grey': '#555555',
         'that-gray': '#555555',
@@ -84,11 +88,9 @@ module.exports = {
   },
   purge: ['./src/**/*.svelte', './src/**/*.html', './src/**/*.js'],
   plugins: [
-    require('tailwindcss-font-inter')({
-      importFontFace: true,
-      disableUnusedFeatures: true,
-    }),
-    require('@tailwindcss/ui'),
     require('@tailwindcss/forms'),
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/ui'),
+    require('@tailwindcss/aspect-ratio'),
   ],
 };

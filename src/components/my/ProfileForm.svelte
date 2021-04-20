@@ -269,17 +269,18 @@
   let:setValue
   let:values
   let:errors
-  let:touched
->
+  let:touched>
   <div>
     <div>
       <div>
-        <h3 class="text-lg leading-6 font-medium text-gray-900">Profile</h3>
-        <p class="mt-1 text-sm leading-5 text-gray-500">
+        <h2 class="text-xl leading-6 font-bold text-gray-900">Your Profile</h2>
+
+        <p class="mt-4 text-sm leading-5 text-gray-500">
           This information is what we feature about you if you choose to make
           your profile public.
         </p>
-        <p class="mt-2 text-sm leading-5 text-gray-500">
+
+        <p class="mt-4 text-sm leading-5 text-gray-500">
           To submit any type activity your profile will have to be public.
         </p>
       </div>
@@ -288,8 +289,7 @@
         <div class="sm:col-span-3">
           <label
             for="first_name"
-            class="block text-sm font-medium leading-5 text-gray-700"
-          >
+            class="block text-sm font-medium leading-5 text-gray-700">
             First or Given Name
           </label>
           <div class="mt-1 border rounded-md shadow-sm">
@@ -298,40 +298,35 @@
               type="text"
               autofocus
               class="form-input block w-full transition duration-150 ease-in-out
-                sm:text-sm sm:leading-5"
-            />
+                sm:text-sm sm:leading-5" />
           </div>
         </div>
 
         <div class="sm:col-span-3">
           <label
             for="last_name"
-            class="block text-sm font-medium leading-5 text-gray-700"
-          >
+            class="block text-sm font-medium leading-5 text-gray-700">
             Last or Family Name
           </label>
           <div class="mt-1 border rounded-md shadow-sm">
             <Input
               name="lastName"
               class="form-input block w-full transition duration-150 ease-in-out
-                sm:text-sm sm:leading-5"
-            />
+                sm:text-sm sm:leading-5" />
           </div>
         </div>
 
         <div class="sm:col-span-4">
           <label
             for="username"
-            class="block text-sm font-medium leading-5 text-gray-700"
-          >
+            class="block text-sm font-medium leading-5 text-gray-700">
             Member Page Slug
           </label>
           <!-- todo .. shadow doesn't align correctly <div class="mt-1 flex rounded-md shadow-sm"> -->
           <div class="mt-1 flex">
             <span
               class="inline-flex items-center px-3 rounded-l-md border
-                border-r-0 border-gray-300 bg-gray-50 text-gray-500 sm:text-sm"
-            >
+                border-r-0 border-gray-300 bg-gray-50 text-gray-500 sm:text-sm">
               https://that.us/members/
             </span>
 
@@ -342,16 +337,14 @@
                 name="profileSlug"
                 class="flex-1 form-input block w-full min-w-0 border rounded-none
                   rounded-r-md transition duration-150 ease-in-out sm:text-sm
-                  sm:leading-5 bg-gray-50 text-gray-500"
-              />
+                  sm:leading-5 bg-gray-50 text-gray-500" />
             {:else}
               <Input
                 type="text"
                 name="profileSlug"
                 class="flex-1 form-input block w-full min-w-0 rounded-none
                   rounded-r-md transition duration-150 ease-in-out sm:text-sm
-                  sm:leading-5"
-              />
+                  sm:leading-5" />
             {/if}
           </div>
         </div>
@@ -359,8 +352,7 @@
         <div class="sm:col-span-6">
           <label
             for="about"
-            class="block text-sm font-medium leading-5 text-gray-700"
-          >
+            class="block text-sm font-medium leading-5 text-gray-700">
             About Yourself
           </label>
           <p class="mt-2 text-sm text-gray-500">
@@ -373,15 +365,13 @@
               name="bio"
               multiline="{true}"
               class="form-textarea block w-full transition duration-150
-                ease-in-out sm:text-sm sm:leading-5"
-            />
+                ease-in-out sm:text-sm sm:leading-5" />
           </div>
         </div>
         <div class="sm:col-span-3">
           <label
             for="company"
-            class="block text-sm font-medium leading-5 text-gray-700"
-          >
+            class="block text-sm font-medium leading-5 text-gray-700">
             Company
           </label>
           <div class="mt-1 border rounded-md shadow-sm">
@@ -389,39 +379,34 @@
               type="text"
               name="company"
               class="form-input block w-full transition duration-150 ease-in-out
-                sm:text-sm sm:leading-5"
-            />
+                sm:text-sm sm:leading-5" />
           </div>
         </div>
 
         <div class="sm:col-span-3">
           <label
             for="jobTitle"
-            class="block text-sm font-medium leading-5 text-gray-700"
-          >
+            class="block text-sm font-medium leading-5 text-gray-700">
             Job Tile
           </label>
           <div class="mt-1 border rounded-md shadow-sm">
             <Input
               name="jobTitle"
               class="form-input block w-full transition duration-150 ease-in-out
-                sm:text-sm sm:leading-5"
-            />
+                sm:text-sm sm:leading-5" />
           </div>
         </div>
 
         <div class="sm:col-span-6">
           <label
             for="photo"
-            class="block text-sm leading-5 font-medium text-gray-700"
-          >
+            class="block text-sm leading-5 font-medium text-gray-700">
             Profile Photo
           </label>
 
           <div class="mt-2 flex items-center">
             <span
-              class="h-12 w-12 border rounded-full overflow-hidden bg-gray-100"
-            >
+              class="h-12 w-12 border rounded-full overflow-hidden bg-gray-100">
               {#if profileImageUploading}
                 <div class="h-full w-full flex flex-grow justify-center">
                   <ScaleOut />
@@ -430,19 +415,16 @@
                 <img
                   class="h-full w-full"
                   src="{`${profileImageUrl}?auto=format&fit=facearea&facepad=10&mask=ellipse&h=100&w=100&q=50`}"
-                  alt=""
-                />
+                  alt="" />
               {:else}
                 <svg
                   class="h-full w-full text-gray-300"
                   fill="currentColor"
-                  viewBox="0 0 24 24"
-                >
+                  viewBox="0 0 24 24">
                   <path
                     d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904
                     0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0
-                    018 0z"
-                  ></path>
+                    018 0z"></path>
                 </svg>
               {/if}
             </span>
@@ -458,8 +440,7 @@
                   leading-4 font-medium text-gray-700 hover:text-gray-500
                   focus:outline-none focus:border-blue-300
                   focus:ring-blue active:bg-gray-50
-                  active:text-gray-800 transition duration-150 ease-in-out"
-              />
+                  active:text-gray-800 transition duration-150 ease-in-out" />
             </span>
           </div>
           <p class="mt-2 text-sm text-gray-500">
@@ -490,8 +471,7 @@
                 <span
                   class="inline-flex items-center px-3 rounded-l-md border
                     border-r-0 border-gray-300 bg-gray-50 text-gray-500 sm:text-sm
-                    w-1/4"
-                >
+                    w-1/4">
                   <span class="w-6">
                     <Icon data="{link.icon}" />
                   </span>
@@ -505,8 +485,7 @@
                   on:change="{e => setValue('profileLinks', updateLinksInputValues(link, e.target.value))}"
                   class="flex-1 form-input block w-full min-w-0 border rounded-none
                     rounded-r-md transition duration-150 ease-in-out sm:text-sm
-                    sm:leading-5"
-                />
+                    sm:leading-5" />
               </div>
               <!-- Special YouTube input handling due to the differences in channel links -->
             {:else}
@@ -514,15 +493,13 @@
                 <div
                   class="inline-flex items-center px-3 rounded-l-md border
                     border-r-0 border-gray-300 bg-gray-50 text-gray-500 sm:text-sm
-                    w-1/4"
-                >
+                    w-1/4">
                   <span class="w-6">
                     <Icon data="{link.icon}" />
                   </span>
                   <select
                     class="w-full p-1 bg-transparent text-gray-500 sm:text-sm border-none focus:border-thatBlue-200 focus:ring focus:ring-thatBlue-100 focus:ring-opacity-50 outline-none cursor-pointer"
-                    on:blur="{e => setYoutubeSuffix(e.target.value)}"
-                  >
+                    on:blur="{e => setYoutubeSuffix(e.target.value)}">
                     <option>{`${link.slug}channel/`}</option>
                     <option>{`${link.slug}c/`}</option>
                   </select>
@@ -535,8 +512,7 @@
                   on:change="{e => setValue('profileLinks', updateLinksInputValues(link, `${youtubeSuffix}${e.target.value}`))}"
                   class="flex-1 form-input block w-full min-w-0 border rounded-none
                     rounded-r-md transition duration-150 ease-in-out sm:text-sm
-                    sm:leading-5"
-                />
+                    sm:leading-5" />
               </div>
             {/if}
           {/each}
@@ -558,8 +534,7 @@
           <div class="sm:col-span-4">
             <div class="mt-6 grid grid-cols-1 gap-y-6  sm:grid-cols-6">
               <div
-                class="sm:col-span-4 block text-sm font-medium leading-5 text-gray-700"
-              >
+                class="sm:col-span-4 block text-sm font-medium leading-5 text-gray-700">
                 <label for="interests">
                   What are somethings you're interested in?
                 </label>
@@ -576,8 +551,7 @@
                     maxTags="{25}"
                     onlyUnique="{true}"
                     on:tags="{({ detail }) => setValue('tags', detail.interests)}"
-                    class="form-input block w-full transition duration-150 ease-in-out text-sm leading-5 rounded-md shadow-sm"
-                  />
+                    class="form-input block w-full transition duration-150 ease-in-out text-sm leading-5 rounded-md shadow-sm" />
                 </div>
               </div>
             </div>
@@ -586,8 +560,7 @@
               <div class="sm:col-span-4">
                 <label
                   for="lifeHack"
-                  class="block text-sm font-medium leading-5 text-gray-700"
-                >
+                  class="block text-sm font-medium leading-5 text-gray-700">
                   What is a 1 sentence "life hack" that you'd share with
                   someone?
                 </label>
@@ -596,8 +569,7 @@
                     type="text"
                     name="lifeHack"
                     placeholder="Embrace failure, lean into the journey and if you don't like the road, take the fork."
-                    class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5"
-                  />
+                    class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
                 </div>
               </div>
             </div>
@@ -617,8 +589,7 @@
           <div class="mt-6">
             <label
               for="canFeature"
-              class="block text-sm font-medium leading-5 text-gray-700"
-            >
+              class="block text-sm font-medium leading-5 text-gray-700">
               Yes, please feature me.
             </label>
 
@@ -628,8 +599,7 @@
                 checked="{profile.canFeature}"
                 on:change="{({ detail }) => setValue('canFeature', detail)}"
                 size="2.5rem"
-                class="flex-none"
-              />
+                class="flex-none" />
 
               <div class="ml-3 text-sm leading-5">
                 <p class="text-gray-500">
@@ -661,8 +631,7 @@
             <div class="sm:col-span-4">
               <label
                 for="email"
-                class="block text-sm font-medium leading-5 text-gray-700"
-              >
+                class="block text-sm font-medium leading-5 text-gray-700">
                 Email address
               </label>
               <div class="mt-1 border rounded-md shadow-sm">
@@ -671,8 +640,7 @@
                   name="email"
                   placeholder="e.g. user@example.com"
                   class="form-input block w-full transition duration-150
-                  ease-in-out sm:text-sm sm:leading-5"
-                />
+                  ease-in-out sm:text-sm sm:leading-5" />
               </div>
             </div>
           </div>
@@ -702,8 +670,7 @@
                     checked="{profile.acceptedCodeOfConduct}"
                     on:change="{({ detail }) => setValue('acceptedCodeOfConduct', detail)}"
                     size="2.5rem"
-                    class="flex-none"
-                  />
+                    class="flex-none" />
 
                   <div class="ml-3 text-sm leading-5">
                     <label for="comments" class="font-medium text-gray-700">
@@ -712,8 +679,7 @@
                         tabindex="-1"
                         href="https://www.thatconference.com/code-of-conduct"
                         class="font-medium text-indigo-600 hover:text-indigo-500
-                        transition duration-150 ease-in-out"
-                      >
+                        transition duration-150 ease-in-out">
                         Code of Conduct
                       </Link>
                     </label>
@@ -735,8 +701,7 @@
                       checked="{profile.acceptedAntiHarassmentPolicy}"
                       on:change="{({ detail }) => setValue('acceptedAntiHarassmentPolicy', detail)}"
                       size="2.5rem"
-                      class="flex-none"
-                    />
+                      class="flex-none" />
 
                     <div class="ml-3 text-sm leading-5">
                       <label for="comments" class="font-medium text-gray-700">
@@ -745,8 +710,7 @@
                           tabindex="-1"
                           href="https://www.thatconference.com/anti-harassment-policy"
                           class="font-medium text-indigo-600 hover:text-indigo-500
-                          transition duration-150 ease-in-out"
-                        >
+                          transition duration-150 ease-in-out">
                           Commitment Anti-Harassment
                         </Link>
                       </label>
@@ -768,8 +732,7 @@
                         checked="{profile.acceptedCommitmentToDiversity}"
                         on:change="{({ detail }) => setValue('acceptedCommitmentToDiversity', detail)}"
                         size="2.5rem"
-                        class="flex-none"
-                      />
+                        class="flex-none" />
 
                       <div class="ml-3 text-sm leading-5">
                         <label for="comments" class="font-medium text-gray-700">
@@ -779,8 +742,7 @@
                             href="https://www.thatconference.com/commitment-to-diversity"
                             class="font-medium text-indigo-600
                             hover:text-indigo-500 transition duration-150
-                            ease-in-out"
-                          >
+                            ease-in-out">
                             Commitment to Diversity
                           </Link>
                         </label>
@@ -805,22 +767,19 @@
                           checked="{profile.acceptedTermsOfService}"
                           on:change="{({ detail }) => setValue('acceptedTermsOfService', detail)}"
                           size="2.5rem"
-                          class="flex-none"
-                        />
+                          class="flex-none" />
 
                         <div class="ml-3 text-sm leading-5">
                           <label
                             for="candidates"
-                            class="font-medium text-gray-700"
-                          >
+                            class="font-medium text-gray-700">
                             <Link
                               open
                               tabindex="-1"
                               href="https://www.thatconference.com/terms-of-use"
                               class="font-medium text-indigo-600
                               hover:text-indigo-500 transition duration-150
-                              ease-in-out"
-                            >
+                              ease-in-out">
                               Terms of Use
                             </Link>
                           </label>
@@ -841,8 +800,7 @@
                           checked="{profile.isOver13}"
                           on:change="{({ detail }) => setValue('isOver13', detail)}"
                           size="2.5rem"
-                          class="flex-none"
-                        />
+                          class="flex-none" />
 
                         <div class="ml-3 text-sm leading-5">
                           <label for="offers" class="font-medium text-gray-700">
@@ -889,8 +847,7 @@
                     checked="{profile.isDeactivated}"
                     on:change="{({ detail }) => setValue('isDeactivated', detail)}"
                     size="2.5rem"
-                    class="flex-none"
-                  />
+                    class="flex-none" />
 
                   <div class="ml-3 text-sm leading-5">
                     <label for="comments" class="font-medium text-gray-700">
@@ -899,8 +856,7 @@
                         open
                         href="https://www.thatconference.com/code-of-conduct"
                         class="font-medium text-indigo-600 hover:text-indigo-500
-                        transition duration-150 ease-in-out"
-                      >
+                        transition duration-150 ease-in-out">
                         Deactivate my account.
                       </Link>
                     </label>
@@ -930,8 +886,7 @@
               text-thatBlue-500 bg-white hover:bg-thatBlue-500 hover:text-white
               focus:outline-none focus:ring-thatBlue-500
               focus:bg-thatBlue-500 focus:text-white focus:border-thatBlue-800
-              active:bg-thatBlue-800 transition duration-150 ease-in-out"
-            >
+              active:bg-thatBlue-800 transition duration-150 ease-in-out">
               Save
             </button>
           </span>
@@ -943,8 +898,7 @@
               leading-5 font-medium text-gray-700 hover:text-gray-500
               focus:outline-none focus:border-blue-300 focus:ring-blue
               active:bg-gray-50 active:text-gray-800 transition duration-150
-              ease-in-out"
-            >
+              ease-in-out">
               Clear
             </button>
           </span>

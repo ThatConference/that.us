@@ -180,17 +180,15 @@
     title="Oh NO! You have an incomplete profile!"
     text="It appears you haven't created your profile yet. You can't create a
     activity until that's complete."
-    action="{{ title: 'Create Profile', href: '/my/profile' }}"
-    returnTo="{{ title: 'Return to Activities', href: '/activities' }}"
-  />
+    action="{{ title: 'Create Profile', href: '/my/settings/profile' }}"
+    returnTo="{{ title: 'Return to Activities', href: '/activities' }}" />
 {:else if !$thatProfile.canFeature}
   <ModalError
     title="Your Profile Isn't Public."
     text="It appears we cannot feature your profile. You need to have a public
     profile to create a activity."
-    action="{{ title: 'Update Profile', href: '/my/profile' }}"
-    returnTo="{{ title: 'Return to Activities', href: '/activities' }}"
-  />
+    action="{{ title: 'Update Profile', href: '/my/settings/profile' }}"
+    returnTo="{{ title: 'Return to Activities', href: '/activities' }}" />
 {/if}
 
 <Form
@@ -205,79 +203,61 @@
   let:setValue
   let:values
   let:errors
-  let:touched
->
+  let:touched>
   <div>
-    <p class="mt-1 max-w-2xl text-sm leading-5 text-gray-500">
-      Below is a quick form to help others identify if they have interest in
-      this topic or can be of some help to others.
-    </p>
-  </div>
-
-  <div class="mt-6 sm:mt-5">
-    <div
-      class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t
-        sm:border-gray-200 sm:pt-5"
-    >
+    <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start">
       <label
         for="activity_title"
         class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px
-          sm:pt-2 col-span-1"
-      >
+          sm:pt-2 col-span-1">
         What would you like to chat about?
       </label>
 
       <div class="mt-1 sm:mt-0 col-span-2">
-        <div class="max-w-lg border rounded-md shadow-sm">
+        <div class="max-w-lg">
           <Input
             name="title"
             autofocus
-            class="form-input block w-full transition duration-150 ease-in-out
-              sm:text-sm sm:leading-5"
-          />
+            class="form-input shadow-sm block w-full transition duration-150 ease-in-out
+              sm:text-sm sm:leading-5" />
         </div>
       </div>
     </div>
 
     <div
       class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start
-        sm:border-t sm:border-gray-200 sm:pt-5"
-    >
+        sm:border-t sm:border-gray-200 sm:pt-5">
       <label
         for="activity_shortDescription"
         class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px
-          sm:pt-2"
-      >
+          sm:pt-2">
         Explain a bit more about what you'd like to chat about.
       </label>
       <div class="mt-1 sm:mt-0 sm:col-span-2">
-        <div class="max-w-lg border rounded-md shadow-sm">
+        <div class="max-w-lg">
           <Input
             name="shortDescription"
             multiline
             spellcheck="true"
             rows="5"
-            class="form-input block w-full transition duration-150 ease-in-out
-              sm:text-sm sm:leading-5"
-          />
+            class="form-input shadow-sm block w-full transition duration-150 ease-in-out
+              sm:text-sm sm:leading-5" />
         </div>
       </div>
     </div>
 
     <div
       class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start
-        sm:border-t sm:border-gray-200 sm:pt-5"
-    >
+        sm:border-t sm:border-gray-200 sm:pt-5">
       <label
         for="activity_tags"
         class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px
-          sm:pt-2"
-      >
+          sm:pt-2">
         Set 5 or less 'tags' to help categorize this chat. (return/enter is the
         delimiter)
       </label>
       <div class="mt-1 sm:mt-0 sm:col-span-2">
-        <div class="max-w-lg rounded-md shadow-sm tag-form-input">
+        <div class="max-w-lg tag-form-input">
           <Tags
             name="tags"
             bind:this="{tagsInput}"
@@ -286,22 +266,18 @@
             maxTags="{5}"
             onlyUnique="{true}"
             on:tags="{({ detail }) => setValue('tags', detail.tags)}"
-            class="form-input block w-full transition duration-150 ease-in-out
-              sm:text-sm sm:leading-5 rounded-md shadow-sm"
-          />
+            class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5 rounded-md shadow-sm" />
         </div>
       </div>
     </div>
 
     <div
       class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start
-        sm:border-t sm:border-gray-200 sm:pt-5"
-    >
+        sm:border-t sm:border-gray-200 sm:pt-5">
       <label
         for="activity_selectedDay"
         class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px
-          sm:pt-2"
-      >
+          sm:pt-2">
         Select a Day:
       </label>
 
@@ -315,21 +291,19 @@
             bind:selected="{selectedDateValue}"
             style="rounded-md shadow-sm"
             format="{dayjs(selectedDateValue).format('dddd, MMM D, YYYY')}"
-            on:dateSelected="{({ detail: { date } }) => setValue('selectedDay', dayjs(date).format('YYYY-MM-DD'))}"
-          />
+            on:dateSelected="{({ detail: { date } }) =>
+              setValue('selectedDay', dayjs(date).format('YYYY-MM-DD'))}" />
         </div>
       </div>
     </div>
 
     <div
       class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start
-        sm:border-t sm:border-gray-200 sm:pt-5"
-    >
+        sm:border-t sm:border-gray-200 sm:pt-5">
       <label
         for="activity_startTime"
         class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px
-          sm:pt-2"
-      >
+          sm:pt-2">
         Select a Time:
       </label>
 
@@ -339,19 +313,19 @@
             <legend class="block text-sm font-medium leading-5 text-gray-400">
               Starting Time
             </legend>
-            <div class="mt-1 rounded-md shadow-sm w-32">
+            <div class="mt-1 w-32">
               <Select
                 bind:this="{timeSlotSelect}"
                 inputAttributes="{{ name: 'selectedTime' }}"
-                on:select="{({ detail }) => setValue('selectedTime', detail.value)}"
+                on:select="{({ detail }) =>
+                  setValue('selectedTime', detail.value)}"
                 hasError="{touched['selectedTime'] && errors['selectedTime']}"
                 items="{timeSlotOptionsFiltered}"
                 on:clear="{() => setValue('selectedTime', undefined)}"
                 selectedValue="{findSelectedTimeSlot(values)}"
-                inputStyles="form-select relative block w-full rounded-md
+                inputStyles="form-select relative block w-full
                 bg-transparent focus:z-10 transition ease-in-out duration-150
-                sm:text-sm sm:leading-5"
-              />
+                sm:text-sm sm:leading-5 rounded-md shadow-sm" />
 
               {#if touched['selectedTime'] && errors['selectedTime']}
                 <p class="text-red-600 italic">{errors['selectedTime']}</p>
@@ -367,15 +341,16 @@
               <Select
                 bind:this="{timezoneSelect}"
                 inputAttributes="{{ name: 'selectedTimezone' }}"
-                on:select="{({ detail }) => setValue('selectedTimezone', detail.value)}"
-                hasError="{touched['selectedTimezone'] && errors['selectedTimezone']}"
+                on:select="{({ detail }) =>
+                  setValue('selectedTimezone', detail.value)}"
+                hasError="{touched['selectedTimezone'] &&
+                  errors['selectedTimezone']}"
                 items="{timeZoneOptions}"
                 on:clear="{() => setValue('selectedTimezone', undefined)}"
                 selectedValue="{findSelectedTimezone(values)}"
                 inputStyles="form-select relative block w-full rounded-md
                 bg-transparent focus:z-10 transition ease-in-out duration-150
-                sm:text-sm sm:leading-5"
-              />
+                sm:text-sm sm:leading-5" />
 
               {#if touched['selectedTimezone'] && errors['selectedTimezone']}
                 <p class="text-red-600 italic">{errors['selectedTimezone']}</p>
@@ -388,13 +363,11 @@
 
     <div
       class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start
-        sm:border-t sm:border-gray-200 sm:pt-5"
-    >
+        sm:border-t sm:border-gray-200 sm:pt-5">
       <label
         for="activity_duration"
         class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px
-          sm:pt-2"
-      >
+          sm:pt-2">
         Estimated Duration (hours):
       </label>
 
@@ -403,15 +376,16 @@
           <Select
             bind:this="{estimatedDurationSelect}"
             inputAttributes="{{ name: 'selectedDuration' }}"
-            on:select="{({ detail }) => setValue('selectedDuration', detail.value)}"
-            hasError="{touched['selectedDuration'] && errors['selectedDuration']}"
+            on:select="{({ detail }) =>
+              setValue('selectedDuration', detail.value)}"
+            hasError="{touched['selectedDuration'] &&
+              errors['selectedDuration']}"
             items="{estimatedDurationOptions}"
             on:clear="{() => setValue('selectedDuration', undefined)}"
             selectedValue="{findSelectedDuration(values)}"
             inputStyles="form-select relative block w-full rounded-md
             bg-transparent focus:z-10 transition ease-in-out duration-150
-            sm:text-sm sm:leading-5"
-          />
+            sm:text-sm sm:leading-5" />
 
           {#if touched['selectedDuration'] && errors['selectedDuration']}
             <p class="text-red-600 italic">{errors['selectedDuration']}</p>
@@ -431,8 +405,7 @@
               text-thatBlue-500 bg-white hover:bg-thatBlue-500 hover:text-white
               focus:outline-none focus:ring-thatBlue-500
               focus:bg-thatBlue-500 focus:text-white focus:border-thatBlue-800
-              active:bg-thatBlue-800 transition duration-150 ease-in-out"
-          >
+              active:bg-thatBlue-800 transition duration-150 ease-in-out">
             {initialValues ? 'Update' : 'Create'}
           </button>
         </span>
@@ -447,8 +420,7 @@
                 text-sm leading-5 font-medium text-white bg-red-400
                 hover:bg-red-600 focus:outline-none focus:border-red-700
                 focus:ring-red active:bg-red-700 transition
-                duration-150 ease-in-out"
-            >
+                duration-150 ease-in-out">
               Cancel / Withdraw
             </button>
           </span>

@@ -11,9 +11,11 @@ function createConfig(metaContext) {
     id: 'pagingMachine',
     initial: 'init',
     context: {
+      ...metaContext,
       meta: metaContext || undefined,
       items: [],
       cursor: null,
+      count: 0,
     },
 
     states: {

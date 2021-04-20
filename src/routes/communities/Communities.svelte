@@ -46,16 +46,13 @@
 
               <ul
                 class="grid grid-cols-1 gap-6 sm:grid-cols-3 md:grid-cols-4
-                  lg:grid-cols-5"
-              >
+                  lg:grid-cols-5">
                 {#each $state.context.items as c (c.id)}
                   <li
-                    class="col-span-1 bg-white rounded-lg shadow transform hover:scale-110 hover:bg-that-offWhite"
-                  >
+                    class="col-span-1 bg-white rounded-lg shadow transition duration-500 ease-in-out transform hover:scale-105 hover:bg-that-offWhite">
                     <Link
                       href="{`/communities/${c.slug}`}"
-                      class="h-full flex flex-col justify-between p-4 text-center focus:outline-none"
-                    >
+                      class="h-full flex flex-col justify-between p-4 text-center focus:outline-none">
                       <CommunityCard community="{c}" />
                     </Link>
                   </li>
@@ -64,8 +61,7 @@
                 <SvelteInfiniteScroll
                   window
                   threshold="{100}"
-                  on:loadMore="{handleNext}"
-                />
+                  on:loadMore="{handleNext}" />
               </ul>
 
               {#if ['loadingNext', 'loadedAll'].some($state.matches)}

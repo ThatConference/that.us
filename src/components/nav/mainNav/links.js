@@ -1,7 +1,7 @@
 export default [
   {
-    text: 'Getting Started',
-    href: '/support/welcome',
+    text: 'Events',
+    href: '/events',
   },
   {
     text: 'Activities',
@@ -19,5 +19,9 @@ export default [
   {
     text: 'Partners',
     href: '/partners',
+  },
+  {
+    text: 'Help',
+    href: '/support/welcome',
   },
 ];

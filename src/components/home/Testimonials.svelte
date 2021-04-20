@@ -1,8 +1,7 @@
 <script>
-  import { fade } from 'svelte/transition';
+  import { Link } from 'yrv';
 
-  // utilities
-  import { login } from '../../utilities/security';
+  import { isAuthenticated, thatProfile } from '../../utilities/security';
 </script>
 
 <section class="bg-white py-12 lg:py-16 mt-12">
@@ -13,8 +12,7 @@
       width="404"
       height="784"
       fill="none"
-      viewBox="0 0 404 575"
-    >
+      viewBox="0 0 404 575">
       <defs>
         <pattern
           id="56409614-3d62-4985-9a10-7ca758a8f4f0"
@@ -22,23 +20,20 @@
           y="0"
           width="20"
           height="20"
-          patternUnits="userSpaceOnUse"
-        >
+          patternUnits="userSpaceOnUse">
           <rect
             x="0"
             y="0"
             width="4"
             height="4"
             class="text-thatBlue-100"
-            fill="currentColor"
-          ></rect>
+            fill="currentColor"></rect>
         </pattern>
       </defs>
       <rect
         width="404"
         height="784"
-        fill="url(#56409614-3d62-4985-9a10-7ca758a8f4f0)"
-      ></rect>
+        fill="url(#56409614-3d62-4985-9a10-7ca758a8f4f0)"></rect>
     </svg>
 
     <div class="relative lg:flex lg:items-center">
@@ -46,8 +41,7 @@
         <img
           class="h-64 w-64 rounded-full xl:h-80 xl:w-80"
           src="https://that.imgix.net/members/1dcd59be-4677-474d-8087-e0b74e8ab810.jpeg?mask=ellipse&w=500&h=500&fit=crop"
-          alt="Clark Sell"
-        />
+          alt="Clark Sell" />
       </div>
 
       <div class="relative lg:ml-10">
@@ -56,8 +50,7 @@
           h-36 w-36 text-thatBlue-200 opacity-50"
           stroke="currentColor"
           fill="none"
-          viewBox="0 0 144 144"
-        >
+          viewBox="0 0 144 144">
           <path
             stroke-width="2"
             d="M41.485 15C17.753 31.753 1 59.208 1 89.455c0 24.664 14.891 39.09
@@ -71,21 +64,42 @@
           ></path>
         </svg>
         <blockquote class="relative">
-          <div class="text-2xl leading-9 font-medium text-gray-900">
-            <p>
-              Our mission is simple, foster a community of geeks who want to
-              help one another be awesome. THAT.us is a safe place for all of
-              the geeks and geeklings from anywhere, to easily connect and
-              support one another in achieving their best self, each and every
-              day. Together we can accomplish amazing things and we all have a
-              role in making our community the best it can be.
-              <button
-                class="text-thatOrange-400 hover:text-thatOrange-500"
-                on:click="{() => login(document.location.pathname, true)}"
-              >
-                Join us today!
-              </button>
-            </p>
+          <div class="prose sm:text-lg md:text-xl text-gray-500">
+            {#if !$isAuthenticated}
+              <p>
+                Our mission is simple, foster a community of geeks who want to
+                help one another be awesome. THAT.us is a safe place for all of
+                the geeks and geeklings from anywhere, to easily connect and
+                support one another in achieving their best self, each and every
+                day. Together we can accomplish amazing things and we all have a
+                role in making our community the best it can be.
+                <Link
+                  class="text-thatOrange-400 hover:text-thatOrange-500"
+                  href="/membership/pricing">
+                  Join us today!
+                </Link>
+              </p>
+            {:else if !$thatProfile?.isMember}
+              <p>
+                Our mission is simple, foster a community of geeks who want to
+                help one another be awesome. We could create a free platform,
+                but then you become the product. To that, we say no thank you;
+                we're the product, not you. We're taking the approach of
+                creating a monetization approach of helping us help you.
+              </p>
+              <p>
+                Daily usage of THAT.us is free and allows anyone to create and
+                join daily activities. Monthly events cost $15 per person. For
+                access to all online events and other benefits, we've created
+                THAT Membership. THAT Membership is $150 per year, gives you
+                full access and even a discount on a THAT Conference ticket.
+                <Link
+                  class="text-thatOrange-400 hover:text-thatOrange-500"
+                  href="/membership/pricing">
+                  Upgrade today.
+                </Link>
+              </p>
+            {/if}
           </div>
           <footer class="mt-8">
             <div class="flex">
@@ -93,8 +107,7 @@
                 <img
                   class="h-12 w-12 rounded-full"
                   src="https://that.imgix.net/members/5ec3a772-104d-4f6c-a577-9ea30baea982.jpeg?mask=ellipse&w=500&h=500&fit=crop"
-                  alt="Clark Sell"
-                />
+                  alt="Clark Sell" />
               </div>
               <div class="ml-4 lg:ml-0">
                 <div class="text-base leading-6 font-medium text-that-blue">

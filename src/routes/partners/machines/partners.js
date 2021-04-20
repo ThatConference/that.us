@@ -15,7 +15,7 @@ function createServices() {
     },
 
     services: {
-      load: () => getEventPartners(),
+      load: context => getEventPartners(context.meta.eventSlug),
       loadNext: context => getNextEventPartners(context.cursor), // todo stubbed until we have paged partners
     },
 
@@ -44,10 +44,10 @@ function createServices() {
   };
 }
 
-function create() {
+function create(eventSlug) {
   const services = createServices();
 
-  return Machine({ ...createPagingConfig() }, { ...services });
+  return Machine({ ...createPagingConfig({ eventSlug }) }, { ...services });
 }
 
 export default create;
