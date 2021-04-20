@@ -7,7 +7,7 @@
 
   import config from '../../../../config';
   import { login } from '../../../../utilities/security';
-  import Notices from './_Notices.svelte';
+  import Notices from '../_Notices.svelte';
 
   import { Check, Ban } from '../../../../elements/svgs';
   import {

@@ -4,6 +4,8 @@
   import dayjs from 'dayjs';
   import { fade } from 'svelte/transition';
 
+  import { StandardScroll } from '../../../../elements/links';
+
   const venue = event.venues[0];
 </script>
 
@@ -41,6 +43,39 @@
       <div class="mt-12 sm:mt-0">
         <img class="h-48 sm:h-96 " src="{event.logo}" alt="" />
       </div>
+    </div>
+
+    <div class="mt-24 py-12 grid gap-8 lg:gap-2 grid-cols-3 text-center">
+      <div class="rounded-md shadow">
+        <StandardScroll href="#professionals">
+          <span class="font-extrabold uppercase">Professionals</span>
+        </StandardScroll>
+      </div>
+      <div class="rounded-md shadow">
+        <StandardScroll href="#workshops">
+          <span class="font-extrabold uppercase">Workshops</span>
+        </StandardScroll>
+      </div>
+      <div class="rounded-md shadow">
+        <StandardScroll href="#families">
+          <span class="font-extrabold uppercase">Families</span>
+        </StandardScroll>
+      </div>
+    </div>
+
+    <div class="p-10 text-gray-500 flex justify-center">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="animate-bounce h-6 w-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor">
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+      </svg>
     </div>
   </div>
 </div>

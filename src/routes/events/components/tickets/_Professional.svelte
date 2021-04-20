@@ -25,7 +25,7 @@
         </div>
 
         <div class="lg:w-3/4 lg:pl-12">
-          <p class="mt-12 prose-lg text-gray-500">
+          <p class="mt-12 prose-xl text-gray-500">
             As a Camper you receive up to 4 days of 200 professional sessions
             across a wide range of technologies, platforms and disciplines of
             all levels. You can also access over 10,000 sq. ft. of open spaces
@@ -35,7 +35,7 @@
             level up your skills, career and take charge of YOU.
           </p>
 
-          <p class="mt-12 prose-lg text-gray-500">
+          <p class="mt-12 prose-xl text-gray-500">
             Each day starts with an inspiring keynote, breakfast and beverages.
             Then you’re off on your camping adventure to join in the many
             professional sessions, share your ideas and experiences in a

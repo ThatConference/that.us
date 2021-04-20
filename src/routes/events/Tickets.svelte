@@ -11,9 +11,9 @@
   // page components
   import Hero from './components/tickets/_Hero.svelte';
   import Professional from './components/tickets/_Professional.svelte';
-
-  // shared elements
-  import { Highlight as HighlightLink } from '../../elements/links';
+  import Workshops from './components/tickets/_Workshops.svelte';
+  import Families from './components/tickets/_Families.svelte';
+  import Notices from './components/_Notices.svelte';
 
   // utilities
   import metaTagsStore from '../../store/metaTags';
@@ -64,8 +64,17 @@
       <Hero event="{event}" />
     </section>
 
-    <section>
+    <section id="professionals">
       <Professional event="{event}" />
+      <Notices />
+    </section>
+
+    <section id="workshops">
+      <Workshops event="{event}" />
+    </section>
+
+    <section id="families">
+      <Families event="{event}" />
     </section>
   {/await}
 </Layout>
