@@ -104,11 +104,19 @@
             <p class="text-lg leading-6 font-medium text-gray-900">
               Year Commitment, Automatic Renewal
             </p>
-            <div
-              class="mt-4 flex items-center justify-center text-5xl font-extrabold text-gray-900">
-              <span> ${membershipDetails.price} </span>
-              <span class="ml-3 text-xl font-medium text-gray-500"> USD </span>
+
+            <div class="mt-4 flex items-center justify-center">
+              <span
+                class="px-3 flex items-start text-6xl tracking-tight text-gray-900">
+                <span class="mr-2 text-4xl font-medium">$</span>
+                <span class="font-extrabold">{membershipDetails.price}</span>
+                <span
+                  class="mt-2 ml-2 text-xl font-medium tracking-wide text-gray-400">
+                  USD
+                </span>
+              </span>
             </div>
+
             <p class="mt-4 text-sm">
               <Link
                 href="/membership/pricing"

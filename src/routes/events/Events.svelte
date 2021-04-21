@@ -4,7 +4,7 @@
   import { Link } from 'yrv';
   import { sortBy, take, drop } from 'lodash';
 
-  import Hero from './components/_EventsHero.svelte';
+  import Hero from './components/events/_EventsHero.svelte';
   import EventCard from './components/_EventCard.svelte';
   import Layout from '../../elements/layouts/ContentLayout.svelte';
   import CardLoader from '../../components/CardLoader.svelte';

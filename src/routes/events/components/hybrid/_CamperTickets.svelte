@@ -15,7 +15,10 @@
     Highlight as HighlightButton,
   } from '../../../../elements/buttons';
 
-  import { Standard as StandardLink } from '../../../../elements/links';
+  import {
+    Standard as StandardLink,
+    Highlight as HighlightLink,
+  } from '../../../../elements/links';
 
   const { id, name } = $router.params;
   const eventSlug = `${id}/${name}`;
@@ -61,8 +64,11 @@
 
       <div class="mt-8">
         <div class="flex flex-col">
-          <StandardLink href="{`/events/${eventSlug}/tickets`}"
-            >VIEW ALL TICKET OPTIONS</StandardLink>
+          <HighlightLink href="{`/events/${eventSlug}/tickets`}">
+            <span class="text-xl uppercase font-bold tracking-wider">
+              View all ticket options
+            </span>
+          </HighlightLink>
         </div>
       </div>
     </div>
@@ -81,13 +87,17 @@
                   <div>
                     <h3
                       class="text-center text-2xl font-bold uppercase text-gray-500">
-                      Pre-Conference
+                      Workshops
                     </h3>
                     <div class="mt-4 flex items-center justify-center">
                       <span
                         class="px-3 flex items-start text-6xl tracking-tight text-gray-900">
-                        <span class="mt-2 mr-2 text-4xl font-medium"> $ </span>
-                        <span class="font-extrabold"> 99 </span>
+                        <span class="mt-2 mr-2 text-4xl font-medium">$</span>
+                        <span class="font-extrabold">99</span>
+                        <span
+                          class="mt-2 ml-2 text-xl font-medium tracking-wide text-gray-400">
+                          USD
+                        </span>
                       </span>
                     </div>
                   </div>
@@ -161,6 +171,10 @@
                       <span class="mt-2 mr-2 text-4xl font-medium"> $ </span>
                       <span class="font-extrabold">
                         {membership?.price || 749}
+                      </span>
+                      <span
+                        class="mt-2 ml-2 text-xl font-medium tracking-wide text-gray-400">
+                        USD
                       </span>
                     </span>
                   </div>
@@ -237,8 +251,12 @@
                     <div class="mt-4 flex items-center justify-center">
                       <span
                         class="px-3 flex items-start text-6xl tracking-tight text-gray-900">
-                        <span class="mt-2 mr-2 text-4xl font-medium"> $ </span>
-                        <span class="font-extrabold"> 149 </span>
+                        <span class="mt-2 mr-2 text-4xl font-medium">$</span>
+                        <span class="font-extrabold">149</span>
+                        <span
+                          class="mt-2 ml-2 text-xl font-medium tracking-wide text-gray-400">
+                          USD
+                        </span>
                       </span>
                     </div>
                   </div>

@@ -1,9 +1,8 @@
 <script>
   import { createEventDispatcher } from 'svelte';
 
-  import { Standard as StandardButton } from '../../../elements/buttons';
-  import { Standard as StandardLink } from '../../../elements/links';
-  import { CTA } from '../../../elements';
+  import { Standard as StandardButton } from '../../../../elements/buttons';
+  import { CTA } from '../../../../elements';
 
   const dispatch = createEventDispatcher();
 </script>

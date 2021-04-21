@@ -2,7 +2,6 @@
   export let event;
 
   import dayjs from 'dayjs';
-
   import Icon from 'svelte-awesome';
   import {
     commentsO,
@@ -11,10 +10,10 @@
     desktop,
     users,
   } from 'svelte-awesome/icons';
-
   import { createEventDispatcher } from 'svelte';
-  import { Standard as StandardButton } from '../../../elements/buttons';
-  import { Check } from '../../../elements/svgs';
+
+  import { Standard as StandardButton } from '../../../../elements/buttons';
+  import { Check } from '../../../../elements/svgs';
 
   import ActivityTypes from './_ActivityTypes.svelte';
 

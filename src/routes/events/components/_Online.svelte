@@ -5,23 +5,19 @@
   import { fade } from 'svelte/transition';
   import { navigateTo } from 'yrv';
 
+  import Layout from '../../../elements/layouts/LandingLayout.svelte';
+  import { Highlight as HighlightLink } from '../../../elements/links';
   import Nav from '../../../components/nav/interiorNav/Top.svelte';
   import SponsorSimple from '../../../components/SponsorSimple.svelte';
   import UpNextEvent from '../../../components/activities/UpNextEvent.svelte';
-  import {
-    Standard as StandardLink,
-    Highlight as HighlightLink,
-  } from '../../../elements/links';
-  import Layout from '../../../elements/layouts/LandingLayout.svelte';
 
-  import config from '../../../config';
-
-  import CTA from './_EventCTA.svelte';
-  import OnlineHero from './_OnlineHero.svelte';
-  import EventFollowers from './_EventFollowers.svelte';
-  import EventTicket from './_EventTicket.svelte';
-  import FAQ from './_FAQ.svelte';
   import Membership from './_MembershipCard.svelte';
+  import FAQ from './_FAQ.svelte';
+
+  import CTA from './online/_EventCTA.svelte';
+  import OnlineHero from './online/_OnlineHero.svelte';
+  import EventFollowers from './online/_EventFollowers.svelte';
+  import EventTicket from './online/_EventTicket.svelte';
 
   const { send } = getContext('cart');
 
