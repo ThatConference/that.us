@@ -1,6 +1,8 @@
 <script>
   export let event;
 
+  console.log({ event });
+
   import { getContext } from 'svelte';
   import { fade } from 'svelte/transition';
   import { navigateTo } from 'yrv';
@@ -20,6 +22,23 @@
   import Membership from './_MembershipCard.svelte';
 
   const { send } = getContext('cart');
+
+  function handleHybridTicketPurchase(e, quantity = 1) {
+    const eventTicket = event.products
+      .filter(p => p.isEnabled)
+      .find(p => p.uiReference === e.ref);
+
+    const isBulkPurchase = quantity > 1 ? true : false;
+
+    send('ADD_ITEM', {
+      eventId: e.eventId,
+      ...eventTicket,
+      isBulkPurchase,
+      quantity,
+    });
+
+    navigateTo('/orders/summary');
+  }
 
   function handleAddMembershipClick(eventId, eventProducts, quantity = 1) {
     const eventTicket = eventProducts
@@ -51,7 +70,10 @@
   </section>
 
   <section id="tickets">
-    <CamperTickets />
+    <CamperTickets
+      event="{event}"
+      on:purchase-hybrid-ticket="{({ detail }) =>
+        handleHybridTicketPurchase(detail)}" />
   </section>
 
   <section>

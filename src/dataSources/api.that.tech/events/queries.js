@@ -9,6 +9,8 @@ const productBaseFieldsFragment = `
     productType: type
     price
     isEnabled
+    uiReference
+    shortDescription
   }
 `;
 
