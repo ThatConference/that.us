@@ -1,6 +1,6 @@
 <script>
   import { onMount, getContext } from 'svelte';
-  import { Link } from 'yrv';
+  import { Link, router } from 'yrv';
 
   import Layout from './components/_Layout.svelte';
   import metaTagsStore from '../../store/metaTags';
@@ -18,7 +18,9 @@
   let formDataPrefill;
   onMount(() => {
     send('CLEAR_CART');
-    formDataPrefill = `memberId=${$thatProfile.id}&memberEmail=${$thatProfile.email}&firstName=${$thatProfile.firstName}&lastName=${$thatProfile.lastName}`;
+    const [_, queryString] = window.location.search.split('?');
+
+    formDataPrefill = `memberId=${$thatProfile.id}&memberEmail=${$thatProfile.email}&firstName=${$thatProfile.firstName}&lastName=${$thatProfile.lastName}&${queryString}`;
   });
 
   metaTagsStore.set({
