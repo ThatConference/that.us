@@ -1,9 +1,6 @@
 export const ticketBreakdown = [
   {
-    title: 'Workshops',
-    price: '$99',
-    description: 'Camper access to the Pre-Conference Workshops.',
-    productId: '123',
+    uiReference: 'WORKSHOPS',
     includes: [
       {
         title: 'Event Access',
@@ -24,10 +21,7 @@ export const ticketBreakdown = [
     ],
   },
   {
-    title: 'Virtual Camper',
-    price: '$199',
-    description: 'Camper access to the Pre-Conference Workshops.',
-    productId: '123',
+    uiReference: 'VIRTUAL_CAMPER',
     includes: [
       {
         title: 'Event Access',
@@ -44,10 +38,7 @@ export const ticketBreakdown = [
     ],
   },
   {
-    title: 'Camper No Food',
-    price: '$399',
-    description: 'Camper access to the Pre-Conference Workshops.',
-    productId: '123',
+    uiReference: 'CAMPER_NO_FOOD',
     includes: [
       {
         title: 'Event Access',
@@ -77,10 +68,7 @@ export const ticketBreakdown = [
     ],
   },
   {
-    title: 'Camper',
-    price: '$699',
-    description: 'Camper access to the Pre-Conference Workshops.',
-    productId: '123',
+    uiReference: 'CAMPER',
     includes: [
       {
         title: 'Event Access',
@@ -122,10 +110,7 @@ export const ticketBreakdown = [
     ],
   },
   {
-    title: 'Everything Camper',
-    price: '$779',
-    description: 'Camper access to the Pre-Conference Workshops.',
-    productId: '123',
+    uiReference: 'EVERYTHING_CAMPER',
     includes: [
       {
         title: 'Event Access',

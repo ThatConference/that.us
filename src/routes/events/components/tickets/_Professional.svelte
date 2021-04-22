@@ -1,4 +1,9 @@
 <script>
+  export let event;
+
+  import { keyBy } from 'lodash';
+  import { createEventDispatcher } from 'svelte';
+
   import {
     Standard as StandardButton,
     HighlightShell,
@@ -6,6 +11,22 @@
 
   import RowDetails from './_TBL-Row.svelte';
   import pricingBreakdown, { ticketBreakdown } from './pricingData';
+
+  const dispatch = createEventDispatcher();
+
+  const { products } = event;
+
+  const eventTickets = keyBy(
+    products.filter(t => t.uiReference),
+    i => i.uiReference,
+  );
+
+  function handlePurchase(ref) {
+    dispatch('purchase-hybrid-ticket', {
+      eventId: event.id,
+      ref,
+    });
+  }
 </script>
 
 <div class="relative">
@@ -57,16 +78,16 @@
             <div class="flex items-center">
               <div class="w-3/4">
                 <h2 class="text-3xl leading-6 font-bold text-gray-900">
-                  {ticket.title}
+                  {eventTickets[ticket.uiReference].name}
                 </h2>
                 <p class="mt-4 prose-md text-gray-500">
-                  {ticket.description}
+                  {eventTickets[ticket.uiReference].shortDescription}
                 </p>
               </div>
 
               <div class="w-1/3 flex justify-center">
                 <p class="text-5xl font-extrabold text-gray-900">
-                  {ticket.price}
+                  {eventTickets[ticket.uiReference].price}
                 </p>
               </div>
             </div>
@@ -112,7 +133,7 @@
     <div
       class="hidden lg:block bg-white shadow-lg rounded-lg py-16 sm:py-20 sm:px-6 lg:px-8 ">
       <table class="w-full h-px table-fixed">
-        <caption class="sr-only"> Pricing plan comparison </caption>
+        <caption class="sr-only">Pricing plan comparison</caption>
 
         <thead>
           <tr>
@@ -124,8 +145,8 @@
 
             {#each ticketBreakdown as ticket}
               <th
-                class="w-1/6 pb-4 px-6 text-lg leading-6 font-medium text-gray-900 text-left"
-                scope="col">{ticket.title}</th>
+                class="w-1/6 pb-4 px-6 text-lg align-top text-center leading-6 font-medium text-gray-900"
+                scope="col">{eventTickets[ticket.uiReference].name}</th>
             {/each}
           </tr>
         </thead>
@@ -138,18 +159,26 @@
 
             {#each ticketBreakdown as ticket}
               <td class="h-full py-8 px-6 align-top">
-                <div class="h-full flex flex-col justify-between">
-                  <div>
-                    <p>
-                      <span class="text-4xl font-extrabold text-gray-900"
-                        >{ticket.price}</span>
-                    </p>
-                    <p class="mt-4 text-sm text-gray-500">
-                      {ticket.description}
-                    </p>
+                <div class="h-full flex flex-col ">
+                  <div class="mt-4 flex items-center">
+                    <span
+                      class="px-3 flex items-start text-6xl tracking-tight text-gray-900">
+                      <span class="mt-2 mr-2 text-4xl font-medium">$</span>
+                      <span class="font-extrabold">
+                        {eventTickets[ticket.uiReference].price}
+                      </span>
+                    </span>
                   </div>
+
+                  <p class="flex-grow mt-4 text-sm text-gray-500">
+                    {eventTickets[ticket.uiReference].shortDescription}
+                  </p>
+
                   <div class="mt-6">
-                    <StandardButton>Purchase</StandardButton>
+                    <StandardButton
+                      on:click="{() => handlePurchase(ticket.uiReference)}">
+                      Purchase
+                    </StandardButton>
                   </div>
                 </div>
               </td>
@@ -176,21 +205,30 @@
             <th class="sr-only" scope="row">Choose your plan</th>
 
             <td class="pt-5 px-6">
-              <StandardButton>Purchase</StandardButton>
+              <StandardButton on:click="{() => handlePurchase('WORKSHOPS')}"
+                >Purchase</StandardButton>
             </td>
 
             <td class="pt-5 px-6">
-              <StandardButton>Purchase</StandardButton>
+              <StandardButton
+                on:click="{() => handlePurchase('VIRTUAL_CAMPER')}"
+                >Purchase</StandardButton>
             </td>
 
             <td class="pt-5 px-6">
-              <StandardButton>Purchase</StandardButton>
+              <StandardButton
+                on:click="{() => handlePurchase('CAMPER_NO_FOOD')}"
+                >Purchase</StandardButton>
             </td>
             <td class="pt-5 px-6">
-              <StandardButton>Purchase</StandardButton>
+              <StandardButton on:click="{() => handlePurchase('CAMPER')}"
+                >Purchase</StandardButton>
             </td>
             <td class="pt-5 px-6">
-              <StandardButton>Purchase</StandardButton>
+              <StandardButton
+                on:click="{() => handlePurchase('EVERYTHING_CAMPER')}">
+                Purchase
+              </StandardButton>
             </td>
           </tr>
         </tfoot>

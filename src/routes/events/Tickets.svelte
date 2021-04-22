@@ -33,8 +33,27 @@
     },
   });
 
-  function queryEvent() {
-    return eventsApi(getClient()).queryEventBySlug(eventSlug);
+  let event; //used later in the handler
+  async function queryEvent() {
+    event = await eventsApi(getClient()).queryEventBySlug(eventSlug);
+    return event;
+  }
+
+  function handleHybridTicketPurchase(e, quantity = 1) {
+    const eventTicket = event.products
+      .filter(p => p.isEnabled)
+      .find(p => p.uiReference === e.ref);
+
+    const isBulkPurchase = quantity > 1 ? true : false;
+
+    send('ADD_ITEM', {
+      eventId: e.eventId,
+      ...eventTicket,
+      isBulkPurchase,
+      quantity,
+    });
+
+    navigateTo('/orders/summary');
   }
 
   function handleAddMembershipClick(eventId, eventProducts, quantity = 1) {
@@ -57,15 +76,16 @@
   <section in:fade slot="nav">
     <Nav />
   </section>
-  {#await queryEvent()}
-    <div>loading awesome shit</div>
-  {:then event}
+  {#await queryEvent() then event}
     <section>
       <Hero event="{event}" />
     </section>
 
     <section id="professionals">
-      <Professional event="{event}" />
+      <Professional
+        event="{event}"
+        on:purchase-hybrid-ticket="{({ detail }) =>
+          handleHybridTicketPurchase(detail)}" />
       <Notices />
     </section>
 
@@ -74,7 +94,10 @@
     </section>
 
     <section id="families">
-      <Families event="{event}" />
+      <Families
+        event="{event}"
+        on:purchase-hybrid-ticket="{({ detail }) =>
+          handleHybridTicketPurchase(detail)}" />
     </section>
   {/await}
 </Layout>

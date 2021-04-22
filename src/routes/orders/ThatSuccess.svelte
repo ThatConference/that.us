@@ -15,6 +15,7 @@
   import QuestionModal from './components/_QuestionModal.svelte';
   import ordersApi from '../../dataSources/api.that.tech/orders/mutations';
 
+  const apiClient = getClient();
   const { send } = getContext('cart');
   const { eventId } = qs.parse(location.search);
 
@@ -41,7 +42,7 @@
 
   async function handleOnSubmit(e) {
     const mutationResult = await ordersApi(
-      getClient(),
+      apiClient,
     ).markSurveyQuestionsCompleted(eventId);
 
     questionsCompleted = mutationResult;

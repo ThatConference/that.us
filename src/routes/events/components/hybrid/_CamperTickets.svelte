@@ -1,14 +1,12 @@
 <script>
   // export let eventTicket;
   export let event;
-  export let membership;
 
   import { router } from 'yrv';
   import { createEventDispatcher } from 'svelte';
+  import { keyBy } from 'lodash';
 
-  import { login } from '../../../../utilities/security';
   import Notices from '../_Notices.svelte';
-
   import { Check, Ban } from '../../../../elements/svgs';
   import { Highlight as HighlightLink } from '../../../../elements/links';
   import {
@@ -20,13 +18,27 @@
   const { id, name } = $router.params;
   const eventSlug = `${id}/${name}`;
 
-  //todo: get our 4 products
   const { products } = event;
+  const eventTickets = keyBy(
+    products.filter(t => t.uiReference),
+    i => i.uiReference,
+  );
 
-  // prettier-ignore
-  const ticketEverything = products.find(t => t.uiReference === 'EVERYTHING_CAMPER');
-  const ticketWorkshops = products.find(t => t.uiReference === 'WORKSHOPS');
-  const ticketVirtual = products.find(t => t.uiReference === 'VIRTUAL_CAMPER');
+  // todo.. get memberships type
+
+  function handleTicketPurchase(ref) {
+    dispatch('purchase-hybrid-ticket', {
+      eventId: event.id,
+      ref,
+    });
+  }
+
+  function handleMembershipPurchase(ref) {
+    dispatch('purchase-membership-ticket', {
+      eventId: event.id,
+      ref,
+    });
+  }
 </script>
 
 <div>
@@ -72,14 +84,14 @@
                   <div>
                     <h3
                       class="text-center text-2xl font-bold uppercase text-gray-500">
-                      Workshops
+                      {eventTickets['WORKSHOPS'].name}
                     </h3>
                     <div class="mt-4 flex items-center justify-center">
                       <span
                         class="px-3 flex items-start text-6xl tracking-tight text-gray-900">
                         <span class="mt-2 mr-2 text-4xl font-medium">$</span>
                         <span class="font-extrabold"
-                          >{ticketWorkshops.price}</span>
+                          >{eventTickets['WORKSHOPS'].price}</span>
                         <span
                           class="mt-2 ml-2 text-xl font-medium tracking-wide text-gray-400">
                           USD
@@ -121,11 +133,7 @@
                   <div class="mt-8">
                     <div class="flex flex-col">
                       <StandardButton
-                        on:click="{() =>
-                          dispatch('purchase-hybrid-ticket', {
-                            eventId: event.id,
-                            ref: ticketWorkshops.uiReference,
-                          })}">
+                        on:click="{() => handleTicketPurchase('WORKSHOPS')}">
                         Purchase
                       </StandardButton>
                     </div>
@@ -153,14 +161,14 @@
                 <div>
                   <h3
                     class="text-center text-2xl font-bold uppercase text-gray-500">
-                    THAT Everything
+                    {eventTickets['EVERYTHING_CAMPER'].name}
                   </h3>
                   <div class="mt-4 flex items-center justify-center">
                     <span
                       class="px-3 flex items-start text-6xl tracking-tight text-gray-900">
                       <span class="mt-2 mr-2 text-4xl font-medium"> $ </span>
                       <span class="font-extrabold">
-                        {ticketEverything.price}
+                        {eventTickets['EVERYTHING_CAMPER'].price}
                       </span>
                       <span
                         class="mt-2 ml-2 text-xl font-medium tracking-wide text-gray-400">
@@ -220,10 +228,7 @@
                   <div class="flex flex-col">
                     <HighlightButton
                       on:click="{() =>
-                        dispatch('purchase-hybrid-ticket', {
-                          eventId: event.id,
-                          ref: ticketEverything.uiReference,
-                        })}">
+                        handleTicketPurchase('EVERYTHING_CAMPER')}">
                       Purchase
                     </HighlightButton>
                   </div>
@@ -240,14 +245,15 @@
                   <div>
                     <h3
                       class="text-center text-2xl font-bold uppercase text-gray-500">
-                      Online Only
+                      {eventTickets['VIRTUAL_CAMPER'].name}
                     </h3>
                     <div class="mt-4 flex items-center justify-center">
                       <span
                         class="px-3 flex items-start text-6xl tracking-tight text-gray-900">
                         <span class="mt-2 mr-2 text-4xl font-medium">$</span>
-                        <span class="font-extrabold"
-                          >{ticketVirtual.price}</span>
+                        <span class="font-extrabold">
+                          {eventTickets['VIRTUAL_CAMPER'].price}
+                        </span>
                         <span
                           class="mt-2 ml-2 text-xl font-medium tracking-wide text-gray-400">
                           USD
@@ -290,10 +296,7 @@
                     <div class="flex flex-col">
                       <StandardButton
                         on:click="{() =>
-                          dispatch('purchase-hybrid-ticket', {
-                            eventId: event.id,
-                            ref: ticketVirtual.uiReference,
-                          })}">
+                          handleTicketPurchase('VIRTUAL_CAMPER')}">
                         Purchase
                       </StandardButton>
                     </div>
