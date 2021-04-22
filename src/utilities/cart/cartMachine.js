@@ -36,10 +36,21 @@ function createServices() {
       isTicketOrMemberhip: (context, event) => {
         // triggers just replacing the item in the cart.
         if (isEmpty(context.cart)) return false;
-        if (event.productType !== 'MEMBERSHIP') return false;
+
+        if (
+          event.productType === 'MEMBERSHIP' &&
+          !context.productTypes.includes('MEMBERSHIP')
+        )
+          return true;
+
+        if (
+          event.productType !== 'MEMBERSHIP' &&
+          context.productTypes.includes('MEMBERSHIP')
+        )
+          return true;
 
         // cannot have a membership mixed with tickets.
-        return true;
+        return false;
       },
 
       isSameEvent: (context, event) => {
