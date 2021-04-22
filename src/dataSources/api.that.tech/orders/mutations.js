@@ -15,10 +15,10 @@ export const MUTATION_CREATE_CHECKOUT_SESSION = `
 `;
 
 export const MUTATION_MARK_SURVEY_QUESTIONS_COMPLETED = `
-  mutation createCheckoutSession($eventId: Id!) {
+  mutation createCheckoutSession($eventId: ID!) {
     orders {
       me {
-        markQuestionsCompleted(eventId: $eventId)
+        markQuestionsComplete(eventId: $eventId)
       }
     }
   }
@@ -52,9 +52,7 @@ export default client => {
 
   function markSurveyQuestionsCompleted(eventId) {
     const variables = {
-      checkout: {
-        eventId,
-      },
+      eventId,
     };
 
     return client
