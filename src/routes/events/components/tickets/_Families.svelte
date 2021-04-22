@@ -1,12 +1,23 @@
 <script>
+  export let event;
+
+  import { createEventDispatcher } from 'svelte';
+
   import TicketCard from '../_TicketCard.svelte';
+
+  const dispatch = createEventDispatcher();
+  const { products } = event;
+
+  const campSwagTicket = products.find(p => p.uiReference === 'SWAG');
+  const hogRoastTicket = products.find(p => p.uiReference === 'HOG_ROAST');
 
   const familyTickets = [
     {
-      title: 'Geekling',
+      uiReference: 'GEEKLING',
+      name: 'Geekling',
       price: '79',
-      description: 'adf asdf adf asdf asdfa sdfadfas dasdfasdfa',
-      ticketId: '12345',
+      shortDescription: '',
+      longDescription: '',
       includes: [
         'Family Pre-Conference',
         'THAT Badge',
@@ -17,10 +28,11 @@
       ],
     },
     {
-      title: 'Campmate',
+      uiReference: 'CAMPMATE',
+      name: 'Campmate',
       price: '99',
-      description: '',
-      ticketId: '12345',
+      shortDescription: '',
+      longDescription: '',
       includes: [
         'Family Pre-Conference',
         'THAT Badge',
@@ -31,13 +43,21 @@
       ],
     },
     {
-      title: 'Hog Roast Only',
-      price: '49',
-      description: '',
-      ticketId: '12345',
+      ...campSwagTicket,
+      includes: ['Hog Roast'],
+    },
+    {
+      ...hogRoastTicket,
       includes: ['Hog Roast'],
     },
   ];
+
+  function handlePurchase(ref) {
+    dispatch('purchase-hybrid-ticket', {
+      eventId: event.id,
+      ref,
+    });
+  }
 </script>
 
 <div class="relative">
@@ -72,10 +92,13 @@
     <div class="mt-8 pb-16 sm:mt-12 sm:pb-20 lg:pb-28">
       <div class="relative">
         <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div
-            class="flex flex-col md:flex-row justify-center md:space-x-4 space-y-16 md:space-y-0">
+          <!-- <div
+            class="flex flex-col md:flex-row justify-center md:space-x-4 space-y-16 md:space-y-0"> -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
             {#each familyTickets as ticket}
-              <TicketCard ticketDetails="{ticket}" />
+              <TicketCard
+                ticketDetails="{ticket}"
+                on:click="{() => handlePurchase(ticket.uiReference)}" />
             {/each}
           </div>
         </div>

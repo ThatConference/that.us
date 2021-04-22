@@ -13,7 +13,7 @@
       <div class="flex justify-center transform -translate-y-1/2">
         <span
           class="inline-flex rounded-full bg-thatOrange-500 px-6 py-1 text-md font-bold tracking-wider uppercase text-white">
-          {ticketDetails.title}
+          {ticketDetails.name}
         </span>
       </div>
     </div>
@@ -29,7 +29,7 @@
 
       <div class="mt-5">
         <p class="text-lg text-gray-500">
-          {ticketDetails.description}
+          {ticketDetails.shortDescription}
         </p>
       </div>
     </div>
@@ -50,7 +50,9 @@
 
       <div class="relative mt-2 p-4">
         <StandardShell>
-          <button class="w-full px-8 md:px-10 py-2">Purchase</button>
+          <button on:click class="w-full px-8 md:px-10 py-2">
+            Purchase
+          </button>
         </StandardShell>
       </div>
     </div>

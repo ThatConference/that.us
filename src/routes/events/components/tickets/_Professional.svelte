@@ -86,15 +86,23 @@
               </div>
 
               <div class="w-1/3 flex justify-center">
-                <p class="text-5xl font-extrabold text-gray-900">
-                  {eventTickets[ticket.uiReference].price}
-                </p>
+                <div class="mt-4 flex items-center">
+                  <span
+                    class="px-3 flex items-start text-6xl tracking-tight text-gray-900">
+                    <span class="mt-2 mr-2 text-4xl font-medium">$</span>
+                    <span class="font-extrabold">
+                      {eventTickets[ticket.uiReference].price}
+                    </span>
+                  </span>
+                </div>
               </div>
             </div>
 
             <div class="mt-6">
               <HighlightShell>
-                <button class="w-full px-8 md:px-10 py-2">Purchase</button>
+                <button
+                  on:click="{() => handlePurchase(ticket.uiReference)}"
+                  class="w-full px-8 md:px-10 py-2">Purchase</button>
               </HighlightShell>
             </div>
           </div>
@@ -121,7 +129,9 @@
           <div class="mt-6">
             <div class="border-t border-gray-200 px-4 pt-5">
               <HighlightShell>
-                <button class="w-full px-8 md:px-10 py-2">Purchase</button>
+                <button
+                  on:click="{() => handlePurchase(ticket.uiReference)}"
+                  class="w-full px-8 md:px-10 py-2">Purchase</button>
               </HighlightShell>
             </div>
           </div>

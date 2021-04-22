@@ -1,8 +1,6 @@
 <script>
   export let event;
 
-  console.log({ event });
-
   import { getContext } from 'svelte';
   import { fade } from 'svelte/transition';
   import { navigateTo } from 'yrv';
@@ -22,36 +20,32 @@
   import Membership from './_MembershipCard.svelte';
 
   const { send } = getContext('cart');
+  const { products } = event;
 
-  function handleHybridTicketPurchase(e, quantity = 1) {
-    const eventTicket = event.products
+  function handleOnTicketPurchase(e) {
+    const eventTicket = products
       .filter(p => p.isEnabled)
       .find(p => p.uiReference === e.ref);
 
-    const isBulkPurchase = quantity > 1 ? true : false;
-
     send('ADD_ITEM', {
-      eventId: e.eventId,
+      eventId: event.id,
       ...eventTicket,
-      isBulkPurchase,
-      quantity,
     });
 
     navigateTo('/orders/summary');
   }
 
-  function handleAddMembershipClick(eventId, eventProducts, quantity = 1) {
-    const eventTicket = eventProducts
+  function handleOnPurchaseMembership(e) {
+    const eventTicket = products
       .filter(f => f.isEnabled)
       .find(e => e.productType === 'MEMBERSHIP');
-    const isBulkPurchase = quantity > 1 ? true : false;
 
     send('ADD_ITEM', {
-      eventId,
+      eventId: event.id,
       ...eventTicket,
-      isBulkPurchase,
-      quantity,
+      quantity: 1,
     });
+
     navigateTo('/orders/summary');
   }
 </script>
@@ -73,14 +67,13 @@
     <CamperTickets
       event="{event}"
       on:purchase-hybrid-ticket="{({ detail }) =>
-        handleHybridTicketPurchase(detail)}" />
+        handleOnTicketPurchase(detail)}" />
   </section>
 
   <section>
     <Membership
       event="{event}"
-      on:purchase-membership="{() =>
-        handleAddMembershipClick(event.id, event.products)}">
+      on:purchase-membership="{handleOnPurchaseMembership}">
       <div slot="header">
         <div class="text-center">
           <h2

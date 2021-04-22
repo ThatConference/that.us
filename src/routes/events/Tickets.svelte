@@ -39,35 +39,16 @@
     return event;
   }
 
-  function handleHybridTicketPurchase(e, quantity = 1) {
+  function handleOnTicketPurchase(e) {
     const eventTicket = event.products
       .filter(p => p.isEnabled)
       .find(p => p.uiReference === e.ref);
 
-    const isBulkPurchase = quantity > 1 ? true : false;
-
     send('ADD_ITEM', {
-      eventId: e.eventId,
+      eventId: event.id,
       ...eventTicket,
-      isBulkPurchase,
-      quantity,
     });
 
-    navigateTo('/orders/summary');
-  }
-
-  function handleAddMembershipClick(eventId, eventProducts, quantity = 1) {
-    const eventTicket = eventProducts
-      .filter(f => f.isEnabled)
-      .find(e => e.productType === 'MEMBERSHIP');
-    const isBulkPurchase = quantity > 1 ? true : false;
-
-    send('ADD_ITEM', {
-      eventId,
-      ...eventTicket,
-      isBulkPurchase,
-      quantity,
-    });
     navigateTo('/orders/summary');
   }
 </script>
@@ -85,19 +66,22 @@
       <Professional
         event="{event}"
         on:purchase-hybrid-ticket="{({ detail }) =>
-          handleHybridTicketPurchase(detail)}" />
+          handleOnTicketPurchase(detail)}" />
       <Notices />
     </section>
 
     <section id="workshops">
-      <Workshops event="{event}" />
+      <Workshops
+        event="{event}"
+        on:purchase-hybrid-ticket="{({ detail }) =>
+          handleOnTicketPurchase(detail)}" />
     </section>
 
     <section id="families">
       <Families
         event="{event}"
         on:purchase-hybrid-ticket="{({ detail }) =>
-          handleHybridTicketPurchase(detail)}" />
+          handleOnTicketPurchase(detail)}" />
     </section>
   {/await}
 </Layout>

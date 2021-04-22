@@ -12,6 +12,10 @@
     .find(e => e.productType === 'MEMBERSHIP');
 
   const dispatch = createEventDispatcher();
+
+  function handlePurchaseMembershipOnClick() {
+    dispatch('purchase-membership');
+  }
 </script>
 
 <div class="relative bg-thatBlue-100 bg-opacity-25">
@@ -126,8 +130,7 @@
             </p>
             <div class="mt-8">
               <div class="flex flex-col">
-                <HighlightButton
-                  on:click="{() => dispatch('purchase-membership')}">
+                <HighlightButton on:click="{handlePurchaseMembershipOnClick}">
                   Purchase
                 </HighlightButton>
               </div>

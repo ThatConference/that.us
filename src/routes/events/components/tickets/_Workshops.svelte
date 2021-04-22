@@ -1,6 +1,23 @@
 <script>
+  export let event;
+
+  import { createEventDispatcher } from 'svelte';
+
   import { Standard as StandardButton } from '../../../../elements/buttons';
   import { CheckFull } from '../../../../elements/svgs';
+
+  const dispatch = createEventDispatcher();
+
+  const worshopTicket = event.products
+    .filter(p => p.isEnabled)
+    .find(p => p.uiReference === 'WORKSHOPS');
+
+  function handlePurchase(ref) {
+    dispatch('purchase-hybrid-ticket', {
+      eventId: event.id,
+      ref,
+    });
+  }
 </script>
 
 <div class="relative pt-12 sm:pt-16 lg:pt-24">
@@ -108,7 +125,7 @@
             class="py-8 px-6 text-center bg-gray-100 lg:flex-shrink-0 lg:flex lg:flex-col lg:justify-center lg:p-12">
             <div
               class="mt-4 flex items-center justify-center text-5xl font-extrabold text-gray-900">
-              <span>$99</span>
+              <span>${worshopTicket.price}</span>
             </div>
             <p class="mt-4 text-sm">
               <a href="#" class="font-medium text-gray-500 underline">
@@ -117,7 +134,9 @@
             </p>
 
             <div class="mt-6">
-              <StandardButton>Purchase</StandardButton>
+              <StandardButton
+                on:click="{() => handlePurchase(worshopTicket.uiReference)}"
+                >Purchase</StandardButton>
             </div>
           </div>
         </div>
