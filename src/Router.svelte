@@ -8,7 +8,7 @@
   const { eventId } = config;
 
   function isLoggedIn() {
-    documentReferrer = $router.path;
+    documentReferrer = `${$router.path}${window.location.search}`;
     return $isAuthenticated;
   }
 
