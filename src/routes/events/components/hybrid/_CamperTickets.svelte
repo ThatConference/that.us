@@ -61,11 +61,13 @@
 
       <div class="mt-8">
         <div class="flex flex-col">
-          <HighlightLink href="{`/events/${eventSlug}/tickets`}">
-            <span class="text-xl uppercase font-bold tracking-wider">
-              View all ticket options
-            </span>
-          </HighlightLink>
+          <div class="animate-pulse">
+            <HighlightLink href="{`/events/${eventSlug}/tickets`}">
+              <span class="text-xl uppercase font-bold tracking-wider">
+                View all ticket options
+              </span>
+            </HighlightLink>
+          </div>
         </div>
       </div>
     </div>
