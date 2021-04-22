@@ -1,6 +1,8 @@
 <script>
   import { onMount, getContext } from 'svelte';
-  import { Link, router } from 'yrv';
+  import { Link } from 'yrv';
+  import { getClient } from '@urql/svelte';
+  import qs from 'query-string';
 
   import Layout from './components/_Layout.svelte';
   import metaTagsStore from '../../store/metaTags';
@@ -11,11 +13,14 @@
 
   import { thatProfile } from '../../utilities/security';
   import QuestionModal from './components/_QuestionModal.svelte';
+  import ordersApi from '../../dataSources/api.that.tech/orders/mutations';
 
   const { send } = getContext('cart');
+  const { eventId } = qs.parse(location.search);
 
-  // todo. not sure if this route will work with the additional script
+  let questionsCompleted = false;
   let formDataPrefill;
+
   onMount(() => {
     send('CLEAR_CART');
     const [_, queryString] = window.location.search.split('?');
@@ -34,11 +39,12 @@
     },
   });
 
-  let questionsCompleted = false;
+  async function handleOnSubmit(e) {
+    const mutationResult = await ordersApi(
+      getClient(),
+    ).markSurveyQuestionsCompleted(eventId);
 
-  function handleOnSubmit(e) {
-    //todo post to the api that this was completed.
-    questionsCompleted = true;
+    questionsCompleted = mutationResult;
   }
 
   function handleOnLoad() {

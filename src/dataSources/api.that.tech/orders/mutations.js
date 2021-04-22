@@ -14,6 +14,16 @@ export const MUTATION_CREATE_CHECKOUT_SESSION = `
   }
 `;
 
+export const MUTATION_MARK_SURVEY_QUESTIONS_COMPLETED = `
+  mutation createCheckoutSession($eventId: Id!) {
+    orders {
+      me {
+        markQuestionsCompleted(eventId: $eventId)
+      }
+    }
+  }
+`;
+
 export default client => {
   function createCheckoutSession(eventId, lineItems) {
     const variables = {
@@ -40,5 +50,29 @@ export default client => {
       });
   }
 
-  return { createCheckoutSession };
+  function markSurveyQuestionsCompleted(eventId) {
+    const variables = {
+      checkout: {
+        eventId,
+      },
+    };
+
+    return client
+      .mutation(MUTATION_MARK_SURVEY_QUESTIONS_COMPLETED, variables)
+      .toPromise()
+      .then(({ data, error }) => {
+        if (error) log(error, 'MUTATION_MARK_SURVEY_QUESTIONS_COMPLETED');
+
+        let results;
+
+        if (data) {
+          const { markQuestionsCompleted } = data.orders.me;
+          results = markQuestionsCompleted || false;
+        }
+
+        return results;
+      });
+  }
+
+  return { createCheckoutSession, markSurveyQuestionsCompleted };
 };
