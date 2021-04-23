@@ -59,9 +59,9 @@
 </svelte:head>
 
 {#if !questionsCompleted}
-  <div class="">
+  <div class="overscroll-none">
     <div
-      class="z-50 absolute inset-0 min-h-screen min-w-screen bg-gray-500 opacity-75">
+      class="z-50 fixed inset-0 min-h-screen min-w-screen bg-gray-500 opacity-75">
     </div>
     <QuestionModal>
       <div
