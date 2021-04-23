@@ -36,6 +36,23 @@ export const QUERY_ME_FOLLOWING_PARTNERS = `
   }
 `;
 
+export const QUERY_ME_DISCOUNT_CODES = `
+  query queryMeDiscountCodes {
+    members {
+      me {
+        discountCodes {
+          id
+          title
+          code
+          type
+          createdAt
+          expiresAt
+        }
+      }
+    }
+  }
+`;
+
 export default client => {
   const queryMeFollowingCommunities = () => {
     const variables = {};
@@ -76,9 +93,23 @@ export default client => {
       });
   };
 
+  const queryMeDiscountCodes = () => {
+    const variables = {};
+    return client
+      .query(QUERY_ME_DISCOUNT_CODES, variables)
+      .toPromise()
+      .then(({ data, error }) => {
+        if (error) log(error, 'QUERY_ME_DISCOUNT_CODES');
+
+        const { discountCodes } = data.members.me;
+        return discountCodes || [];
+      });
+  };
+
   return {
     queryMeFollowingCommunities,
     queryMeFollowingMembers,
     queryMeFollowingPartners,
+    queryMeDiscountCodes,
   };
 };

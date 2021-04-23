@@ -14,3 +14,6 @@ export { default as Ticket } from './Ticket.svelte';
 export { default as ChevronRight } from './ChevronRight.svelte';
 export { default as Chevron } from './Chevron.svelte';
 export { default as CheckFull } from './CheckFull.svelte';
+export { default as Membership } from './Membership.svelte';
+export { default as Warning } from './Warning.svelte';
+export { default as Store } from './Store.svelte';
