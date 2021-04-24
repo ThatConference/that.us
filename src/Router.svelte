@@ -15,6 +15,7 @@
   // root
   import Home from './routes/home/Home.svelte';
   import Login from './routes/Login.svelte';
+  import Signup from './routes/Signup.svelte';
   import LoginSuccess from './routes/LoginSuccess.svelte';
   import Logout from './routes/Logout.svelte';
   import NotFound from './routes/NotFound.svelte';
@@ -79,6 +80,7 @@
 <Router>
   <Route exact component="{Home}" />
   <Route exact path="/login" component="{Login}" documentReferrer="{documentReferrer}" />
+  <Route exact path="/signup" component="{Signup}" documentReferrer="{documentReferrer}" />
   <Route exact path="/login-success" component="{LoginSuccess}" />
   <Route exact path="/logout" component="{Logout}" />
   <Route exact path="/changelog" component="{ChangeLog}" />
