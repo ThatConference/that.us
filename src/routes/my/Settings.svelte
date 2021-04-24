@@ -18,7 +18,7 @@
   import Tickets from './components/_Tickets.svelte';
   import MembershipSettings from './components/_MembershipSettings.svelte';
 
-  let settingsComponent;
+  $: settingsComponent = Profile;
 
   const asideSelected = {
     item:

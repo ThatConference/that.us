@@ -74,7 +74,9 @@
   {:else}
     <div class="mt-8">
       {#await queryDiscountCodes()}
-        <Waiting />
+        <div class="mt-8 w-full flex flex-col items-center justify-center">
+          <Waiting />
+        </div>
       {:then codes}
         <div class="bg-white shadow overflow-hidden sm:rounded-md">
           <ul class="divide-y divide-gray-200">
