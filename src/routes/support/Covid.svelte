@@ -3,7 +3,7 @@
 
   import Layout from './_Layout.svelte';
   import Header from './_Header.svelte';
-  import WelcomeQuote from './_WelcomeQuote.svelte';
+  import MemoryHighlight from './_MemoryHighlight.svelte';
 
   import {
     Highlight as HighlightLink,
@@ -13,99 +13,108 @@
   import metaTagsStore from '../../store/metaTags';
 
   metaTagsStore.set({
-    title: 'COVID Policies - THAT',
+    title: 'Getting Started - THAT',
     description: '',
     openGraph: {
       type: 'website',
-      url: `https://that.us/support/covid-policies`,
+      url: `https://that.us/support/welcome`,
     },
   });
 </script>
 
 <Layout>
-  <Header>Welcome to THAT!</Header>
-  <section>
-    <div
-      class="relative text-base max-w-prose mx-auto mb-8 lg:max-w-5xl lg:mx-0
-        lg:pr-72 text-lg text-gray-500 leading-7">
+  <Header center="true" pretext="THAT Campsite">COVID Policies</Header>
+  <section class="max-w-prose mx-auto text-gray-500 ">
+    <div class="mb-12 relative text-gray-500 prose-lg">
       <p>
-        Here at THAT, it's our mission to help foster the best community of
-        geeks on this planet. Our vision, create an interactive platform
-        connecting Geeks and Geeklings across the globe in such a way they can
-        help one another whenever and wherever regardless of topic or format.
-      </p>
-
-      <p class="mt-8">
-        We created THAT to fill a gap between the times when we cannot
-        physically connect. We believe peer-to-peer learning is one of the most
-        powerful ways we can help one another any day of the year.
+        While THAT Conference 2021 will be held as a digital-first platform, we
+        are committed to the health and safety of all in-person participants of
+        the conference. We are constantly monitoring the CDC guidelines and
+        working with the Kalahari Meeting and Convention team to accommodate
+        healthy practices in the convention center. While there are risks
+        associated with attending an event during a pandemic, the following
+        procedures have been created to minimize those risks. We continue to
+        update this page as needed based on federal, state, and local mandates
+        and recommendations.
       </p>
     </div>
-    <div
-      class="lg:grid lg:grid-cols-2 lg:gap-8 lg:items-start text-base text-lg
-        text-gray-500 leading-7">
-      <div class="relative mb-12 lg:mb-0">
-        <div
-          class="mb-10 prose mx-auto lg:max-w-none text-base text-lg
-            text-gray-500 leading-7">
-          <h2>The What</h2>
 
-          <p>
-            Let’s say you want to have a code review or a design review, great.
-            Maybe you want to share your experience with the latest JavaScript
-            framework or seek some geek parenting advice. There are no limits,
-            there are no artificial boundaries. Just people helping people be
-            awesome.
-          </p>
-
-          <p class="mt-8">
-            In short, anyone, at any time can create what we call an Activity.
-            The format of an Activity is simple, a video call in the browser, no
-            tools required. Every Activity has a chat window, you're able to
-            share your desktop, your webcam and mic are enabled. Our goal is to
-            create the best virtual face-to-face conversation possible but give
-            you the room to have any type of conversation you need. We're
-            grateful you're here and now we want to make sure you have the
-            information you need to get involved with THAT.
-          </p>
-
-          <p>Things we you should know:</p>
+    <div class="relative mb-12 lg:mb-0 max-w-prose mx-auto">
+      <div class="mb-10 flex flex-col justify-start space-y-10">
+        <div class="prose prose-lg text-gray-500">
+          <h2>What we are doing.</h2>
           <ul>
             <li>
-              <Link href="/support/what-is-an-activity">
-                What is an Activity?
-              </Link>
+              THAT Conference will be the only group to occupy the 212,000 sq ft
+              convention center space allowing us to follow social distancing
+              guidelines.
             </li>
             <li>
-              <Link href="/support/joining-an-activity">
-                How to join an Activity.
-              </Link>
+              We will operate at a reduced capacity in the convention center.
+              Tables in common spaces and seating in session rooms will be
+              spaced appropriately to ensure social distancing.
             </li>
             <li>
-              <Link href="/support/creating-an-activity">
-                How to create an Activity.
-              </Link>
+              We will operate at a reduced capacity in the convention center.
+              Tables in common spaces and seating in session rooms will be
+              spaced appropriately to ensure social distancing.
             </li>
             <li>
-              <Link href="/support/staying-up-to-date">
-                How to stay up to date.
-              </Link>
+              A meeting room enter/exit strategy will exist to reduce the flow
+              of people in the hallways.
             </li>
             <li>
-              <Link href="/my/settings/profile"
-                >Keep your profile up to date.</Link>
+              A meeting room enter/exit strategy will exist to reduce the flow
+              of people in the hallways.
+            </li>
+            <li>
+              High touchpoint areas will be reduced as much as possible and
+              sanitation will occur between use.
+            </li>
+            <li>
+              All used meeting rooms will be fumigated at the end of each night.
             </li>
           </ul>
         </div>
-        <div class="flex space-x-4 text-base max-w-prose mx-auto lg:max-w-none">
-          <StandardLink href="/activities">Upcoming Activities</StandardLink>
-          <HighlightLink href="/support/what-is-an-activity">
-            What is an Activity?
-          </HighlightLink>
+
+        <div class="prose prose-lg text-gray-500">
+          <h2>What the Kalahari is doing.</h2>
+          <p>
+            The Kalahari has implemented several wellness initiatives throughout
+            the resort and convention center. Click here for more information
+            <a
+              href="https://www.kalahariresorts.com/what-we-are-doing-to-ensure-a-safe-getaway/">
+              https://www.kalahariresorts.com/what-we-are-doing-to-ensure-a-safe-getaway/
+            </a>
+          </p>
         </div>
-      </div>
-      <div class="relative text-base max-w-prose mx-auto lg:max-w-none">
-        <WelcomeQuote />
+
+        <div class="prose prose-lg text-gray-500">
+          <h2>Our Recommendations</h2>
+          <ul>
+            <li>
+              The Kalahari has implemented several wellness initiatives
+              throughout the resort and convention center. Click here for more
+              information
+              [https://www.kalahariresorts.com/what-we-are-doing-to-ensure-a-safe-getaway/](https://www.kalahariresorts.com/what-we-are-doing-to-ensure-a-safe-getaway/)
+            </li>
+            <li>Use no touch gestures as a way of greeting individuals.</li>
+            <li>
+              If you have any medical condition that could be aggravated by
+              COVID we ask that you do not attend in person.
+            </li>
+            <li>Wash your hands frequently.</li>
+            <li>
+              Please consider public health guidelines when gathering outside of
+              the convention center.
+            </li>
+            <li>Stay at home if you are not feeling well.</li>
+            <li>
+              Stay in your room if you are attending in-person and are not
+              feeling well.
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
