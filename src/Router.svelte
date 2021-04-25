@@ -38,6 +38,7 @@
   import ChangeLog from './routes/releases/ChangeLog.svelte';
   import ChangeLogMissed from './routes/releases/Missed.svelte';
   import CovidPolicies from './routes/support/Covid.svelte';
+  import Travel from './routes/support/Travel.svelte';
 
   // my
   import Settings from './routes/my/Settings.svelte';
@@ -126,6 +127,7 @@
     <Route exact path="/creating-an-activity" component="{CreateAnActivity}" />
     <Route exact path="/staying-up-to-date" component="{StayingUpToDate}" />
     <Route exact path="/covid-policies" component="{CovidPolicies}" />
+    <Route exact path="/travel" component="{Travel}" />
   </Router>
 
   <Router path='/activities'>

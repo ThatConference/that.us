@@ -86,15 +86,15 @@
     </div>
   {/if}
 
-  <div class="mt-12 border-t">
+  <!-- <div class="mt-12 border-t">
     <div class="pt-6">
       <ClaimTicketForm handleSubmit="{handleClaimTicket}" />
     </div>
-  </div>
+  </div> -->
 </div>
 
-{#if failedClaim}
+<!-- {#if failedClaim}
   <Warning
     message="We were unable to claim that ticket number. Please re-check and try
     again." />
-{/if}
+{/if} -->
