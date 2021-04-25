@@ -75,13 +75,23 @@
       event="{event}"
       on:purchase-membership="{handleOnPurchaseMembership}">
       <div slot="header">
-        <div class="text-center">
+        <div class="relative flex flex-col items-center justify-center">
           <h2
-            class="text-3xl font-extrabold text-thatBlue-800 sm:text-4xl lg:text-5xl">
+            class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-thatBlue-800 ">
             Go beyond camp.
           </h2>
-          <p class="mt-4 text-xl text-gray-600">
-            TODO:// We created THAT so we could connect every day of the year.
+
+          <p
+            class="text-center max-w-6xl mx-auto text-xl sm:mt-5 sm:text-2xl text-gray-500">
+            We created THAT to fill a gap between the times when we cannot
+            physically connect. We believe peer-to-peer learning is one of the
+            most powerful ways we can help one another any day of the year.
+          </p>
+
+          <p
+            class="text-center max-w-6xl mx-auto text-xl sm:mt-5 sm:text-2xl text-gray-500">
+            Every month we host THAT Online aimed at bringing us all together to
+            recenter and recharge.
           </p>
         </div>
       </div>

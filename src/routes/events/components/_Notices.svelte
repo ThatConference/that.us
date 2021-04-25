@@ -47,11 +47,11 @@
         </h3>
 
         <div class="mt-4 prose text-lg text-gray-500">
-          todo: WE NEED WORDS
-          <a
-            href="mailto:hello@that.us?subject=Ticket Discounts"
-            rel="noopener"
-            target="_blank">hello@that.us</a>
+          While THAT Conference 2021 will be held as a digital-first platform,
+          we are committed to the health and safety of all in-person
+          participants of the conference. We are constantly monitoring the CDC
+          guidelines and working with the Kalahari Meeting and Convention team
+          to accommodate healthy practices in the convention center.
         </div>
       </div>
 

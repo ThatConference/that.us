@@ -47,21 +47,21 @@
         <div class="col-span-3">
           <p class="prose mt-6 max-w-5xl text-center text-xl text-gray-500">
             THAT Conference is unlike any other technical conference. This
-            unique four days of summer camp is full of workshops, sessions, open
-            spaces, family events and networking all nestled in the gorgeous
-            Kalahari Resort and Waterpark. This family friendly event is
-            comprised of professional and family tracks so there is something to
-            learn and experience at all ages.
+            unique four-day summer camp is full of workshops, sessions, open
+            spaces, family events, and networking, all nestled in the gorgeous
+            Kalahari Resort and Waterpark. This family-friendly event is
+            comprised of professional and family tracks, so there is something
+            to learn and experience at all ages.
           </p>
 
           <p class="prose mt-10 max-w-3xl text-center text-xl text-gray-500">
             Whether you choose to interact face-to-face and learn from industry
             leaders, go hands-on in our dedicated Maker space, expand your mind
-            through yoga or network in the hallways with THAT incredible
+            through yoga, or network in the hallways with THAT incredible
             community, you choose the avenues that best fulfill your needs. Not
-            only is there a variety of learning opportunities, we take our
-            camping seriously with lots of bacon, a pig roast family dinner and
-            bonding over the campfire to share stories.
+            only is there a variety of learning opportunities, but we also take
+            our camping seriously with lots of bacon, a pig roast family dinner,
+            and bonding over the campfire to share stories.
           </p>
         </div>
         <div class="col-span-2 flex flex-col justify-center">

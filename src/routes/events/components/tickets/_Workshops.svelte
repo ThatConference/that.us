@@ -30,9 +30,9 @@
         </h2>
 
         <p class="mt-12 prose-xl text-gray-500">
-          Join us for a jammed packed full day of multi-hour hands on workshops
+          Join us for a jammed-packed full day of multi-hour hands-on workshops
           the day before THAT Conference kicks off. This allows you to get
-          deeper into specifics across a range of technologies and learn from
+          deeper into specifics across various technologies and learn from
           industry leaders just as passionate about code as you are.
         </p>
       </div>
@@ -59,8 +59,7 @@
             <p class="mt-6 prose-xl text-gray-500">
               This incredible opportunity enables you to work directly with
               professionals ready to share their knowledge and enthusiasm while
-              helping you grow your career. Don't forget to bring your own
-              laptop.
+              helping you grow your career. Don't forget to bring your laptop.
             </p>
 
             <div class="mt-8">
@@ -127,11 +126,11 @@
               class="mt-4 flex items-center justify-center text-5xl font-extrabold text-gray-900">
               <span>${worshopTicket.price}</span>
             </div>
-            <p class="mt-4 text-sm">
-              <a href="#" class="font-medium text-gray-500 underline">
+            <!-- <p class="mt-4 text-sm">
+              <Link href="#" class="font-medium text-gray-500 underline">
                 View the Schedule
-              </a>
-            </p>
+              </Link>
+            </p> -->
 
             <div class="mt-6">
               <StandardButton
@@ -143,7 +142,7 @@
 
         <div class="py-4 flex justify-center lg:justify-end">
           <p class="italic text-red-500">
-            *** please note workshops are only avaiable in-person and will not
+            *** please note workshops are only available in-person and will not
             be streamed.
           </p>
         </div>

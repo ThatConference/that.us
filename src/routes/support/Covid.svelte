@@ -55,17 +55,16 @@
               spaced appropriately to ensure social distancing.
             </li>
             <li>
-              We will operate at a reduced capacity in the convention center.
-              Tables in common spaces and seating in session rooms will be
-              spaced appropriately to ensure social distancing.
+              Hand sanitizing stations will be available outside meeting rooms
+              and throughout the convention center.
             </li>
             <li>
               A meeting room enter/exit strategy will exist to reduce the flow
               of people in the hallways.
             </li>
             <li>
-              A meeting room enter/exit strategy will exist to reduce the flow
-              of people in the hallways.
+              All THAT Conference staff members will wear masks and have daily
+              temperatures taken.
             </li>
             <li>
               High touchpoint areas will be reduced as much as possible and
@@ -93,10 +92,9 @@
           <h2>Our Recommendations</h2>
           <ul>
             <li>
-              The Kalahari has implemented several wellness initiatives
-              throughout the resort and convention center. Click here for more
-              information
-              [https://www.kalahariresorts.com/what-we-are-doing-to-ensure-a-safe-getaway/](https://www.kalahariresorts.com/what-we-are-doing-to-ensure-a-safe-getaway/)
+              All participants are encouraged to wear masks throughout the
+              convention center when unable to maintain 6 feet of social
+              distance. All staff members will be wearing masks.
             </li>
             <li>Use no touch gestures as a way of greeting individuals.</li>
             <li>

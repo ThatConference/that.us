@@ -11,7 +11,7 @@ export const ticketBreakdown = [
         includes: [{ title: 'Monday Lunch' }],
       },
       {
-        title: 'Other ???',
+        title: 'Social',
         includes: [{ title: 'Welcome Reception' }],
       },
       {
@@ -33,7 +33,7 @@ export const ticketBreakdown = [
       },
       {
         title: 'Other',
-        includes: [{ title: 'T-Shirt' }],
+        includes: [{ title: 'T-Shirt (US Only)' }],
       },
     ],
   },
@@ -49,7 +49,7 @@ export const ticketBreakdown = [
         ],
       },
       {
-        title: 'Other ???',
+        title: 'Social',
         includes: [
           { title: 'Welcome Reception' },
           { title: 'Game Night' },
@@ -84,14 +84,14 @@ export const ticketBreakdown = [
           { title: 'Tuesday Breakfast & Lunch' },
           { title: 'Happy Hour' },
           { title: 'Wednesday Breakfast & Lunch' },
-          { title: 'Wednesday Hog Roast' },
+          { title: 'Wednesday Pig Roast' },
           { title: 'Thursday Breakfast & Lunch' },
           { title: 'Closing Smores Bar' },
           { title: 'All Day Caffeine & H20' },
         ],
       },
       {
-        title: 'Other ???',
+        title: 'Social',
         includes: [
           { title: 'Welcome Reception' },
           { title: 'Game Night' },
@@ -128,14 +128,14 @@ export const ticketBreakdown = [
           { title: 'Tuesday Breakfast & Lunch' },
           { title: 'Happy Hour' },
           { title: 'Wednesday Breakfast & Lunch' },
-          { title: 'Wednesday Hog Roast' },
+          { title: 'Wednesday Pig Roast' },
           { title: 'Thursday Breakfast & Lunch' },
           { title: 'Closing Smores Bar' },
           { title: 'All Day Caffeine & H20' },
         ],
       },
       {
-        title: 'Other ???',
+        title: 'Social',
         includes: [
           { title: 'Welcome Reception' },
           { title: 'Game Night' },
@@ -191,7 +191,7 @@ const pricingBreakdown = [
         isIncluded: [false, false, false, true, true],
       },
       {
-        title: 'Wednesday Hog Roast',
+        title: 'Wednesday Pig Roast',
         isIncluded: [false, false, false, true, true],
       },
       {
@@ -210,7 +210,7 @@ const pricingBreakdown = [
   },
 
   {
-    title: 'Other ???',
+    title: 'Social',
     includes: [
       {
         title: 'Welcome Reception',
@@ -231,7 +231,7 @@ const pricingBreakdown = [
         title: 'Conference Badge',
         isIncluded: [true, false, true, true, true],
       },
-      { title: 'T-Shirt', isIncluded: [false, true, true, true, true] },
+      { title: 'T-Shirt', isIncluded: [false, 'US Only', true, true, true] },
       { title: 'THAT Gift', isIncluded: [false, false, true, true, true] },
       { title: 'Wifi Access', isIncluded: [true, false, true, true, true] },
     ],

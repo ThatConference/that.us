@@ -86,7 +86,7 @@
                     Interested In Partnership Opportunities?
                   </h2>
                   <p class="prose text-gray-500 text-xl">
-                    We partner with industry leading organizations and companies
+                    We partner with industry-leading organizations and companies
                     that are looking to connect with software developers and
                     practitioners.
                   </p>

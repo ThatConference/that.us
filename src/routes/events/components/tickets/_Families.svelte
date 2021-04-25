@@ -12,43 +12,48 @@
   const hogRoastTicket = products.find(p => p.uiReference === 'HOG_ROAST');
 
   const familyTickets = [
-    {
-      uiReference: 'GEEKLING',
-      name: 'Geekling',
-      price: '79',
-      shortDescription: '',
-      longDescription: '',
-      includes: [
-        'Family Pre-Conference',
-        'THAT Badge',
-        'T-Shirt',
-        'Waterpark Party Access',
-        'Hog Roast',
-        'Game Night',
-      ],
-    },
-    {
-      uiReference: 'CAMPMATE',
-      name: 'Campmate',
-      price: '99',
-      shortDescription: '',
-      longDescription: '',
-      includes: [
-        'Family Pre-Conference',
-        'THAT Badge',
-        'T-Shirt',
-        'Waterpark Party Access',
-        'Hog Roast',
-        'Game Night',
-      ],
-    },
+    // {
+    //   uiReference: 'GEEKLING',
+    //   name: 'Geekling',
+    //   price: '79',
+    //   shortDescription: '',
+    //   longDescription: '',
+    //   includes: [
+    //     'Family Pre-Conference',
+    //     'THAT Badge',
+    //     'T-Shirt',
+    //     'Waterpark Party Access',
+    //     'Hog Roast',
+    //     'Game Night',
+    //   ],
+    // },
+    // {
+    //   uiReference: 'CAMPMATE',
+    //   name: 'Campmate',
+    //   price: '99',
+    //   shortDescription: '',
+    //   longDescription: '',
+    //   includes: [
+    //     'Family Pre-Conference',
+    //     'THAT Badge',
+    //     'T-Shirt',
+    //     'Waterpark Party Access',
+    //     'Hog Roast',
+    //     'Game Night',
+    //   ],
+    // },
     {
       ...campSwagTicket,
-      includes: ['Hog Roast'],
+      includes: [
+        'THAT Badge',
+        'Access to family activities.',
+        'THAT t-shirt',
+        'Waterpark Party Access',
+      ],
     },
     {
       ...hogRoastTicket,
-      includes: ['Hog Roast'],
+      includes: ['Pig Roast', 'Waterpark Party Access'],
     },
   ];
 
@@ -87,6 +92,20 @@
           sessions.
         </p>
       </div>
+
+      <div class="py-12 max-w-prose mx-auto">
+        <h2 class="text-center text-2xl italic font-extrabold text-red-500 ">
+          Please note for 2021
+        </h2>
+
+        <p class="mt-6 prose-xl text-red-500">
+          This year we made the difficult decision not to have a dedicated
+          family track. This means THAT Conference will not formally organize
+          family sessions, activities, or events. Rather, this year we will
+          dedicate space for family activities and ask the families who come to
+          self-organize in the spirit of our open spaces.
+        </p>
+      </div>
     </div>
 
     <div class="mt-8 pb-16 sm:mt-12 sm:pb-20 lg:pb-28">
@@ -100,6 +119,12 @@
                 ticketDetails="{ticket}"
                 on:click="{() => handlePurchase(ticket.uiReference)}" />
             {/each}
+          </div>
+
+          <div class="py-4 flex justify-center lg:justify-end">
+            <p class="italic text-red-500">
+              *** please note these tickets are only for in-person campers.
+            </p>
           </div>
         </div>
       </div>
