@@ -1,13 +1,12 @@
 <script>
   export let event;
 
+  import { Link } from 'yrv';
   import dayjs from 'dayjs';
 
-  import {
-    Standard as StandardLink,
-    Highlight as HighlightLink,
-    StandardScroll,
-  } from '../../../../elements/links';
+  import { StandardScroll } from '../../../../elements/links';
+
+  import { Shell } from '../../../../elements/buttons';
 </script>
 
 <div class="relative bg-thatBlue-200 bg-opacity-25">
@@ -41,10 +40,14 @@
             <span class="font-extrabold uppercase">Sponsorships</span>
           </StandardScroll>
         </div>
-        <div class="rounded-md shadow">
-          <StandardScroll href="#travel">
-            <span class="font-extrabold uppercase">Travel</span>
-          </StandardScroll>
+        <div class="rounded-md shadow flex">
+          <div class="flex-grow">
+            <Shell>
+              <Link href="/support/travel">
+                <div class="px-4 py-2 font-extrabold uppercase">Travel</div>
+              </Link>
+            </Shell>
+          </div>
         </div>
         <div class="rounded-md shadow">
           <StandardScroll href="#upnext">
