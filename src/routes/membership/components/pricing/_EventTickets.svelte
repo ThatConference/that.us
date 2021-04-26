@@ -6,7 +6,6 @@
 
   import { Standard as StandardButton } from '../../../../elements/buttons';
   import { Check, Ban } from '../../../../elements/svgs';
-  import { login } from '../../../../utilities/security';
 
   const { send } = getContext('cart');
 
@@ -80,8 +79,7 @@
                   </p>
                 </li>
               </ul>
-              <StandardButton
-                on:click="{() => login('/my/settings/profile', true)}">
+              <StandardButton on:click="{() => navigateTo('/signup')}">
                 Create Your Account
               </StandardButton>
             </div>

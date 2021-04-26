@@ -268,8 +268,7 @@
                   </ul>
                   <div class="mt-8">
                     <div class="flex flex-col">
-                      <StandardButton
-                        on:click="{() => login('/my/settings/profile', true)}">
+                      <StandardButton on:click="{() => navigateTo('/signup')}">
                         Create an Account
                       </StandardButton>
                     </div>
