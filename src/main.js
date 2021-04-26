@@ -5,6 +5,7 @@ import { inspect } from '@xstate/inspect';
 import * as Sentry from '@sentry/browser';
 import { Integrations } from '@sentry/tracing';
 import LogRocket from 'logrocket';
+import { isNil } from 'lodash';
 
 import config, { debug, logging } from './config';
 import App from './App.svelte';
@@ -25,7 +26,7 @@ Sentry.init({
   integrations: [new Integrations.BrowserTracing()],
   beforeSend(event) {
     const logRocketSession = LogRocket.sessionURL;
-    if (logRocketSession !== null) {
+    if (!isNil(logRocketSession)) {
       event.extra.LogRocket = logRocketSession;
     }
 
