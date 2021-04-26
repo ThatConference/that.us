@@ -113,7 +113,7 @@ function createServices() {
       clearLocalStorage: () => window.localStorage.removeItem(cartKeyName),
 
       addItem: assign({
-        eventId: (_, event) => event.eventId,
+        eventId: (context, event) => context.eventId || event.eventId,
         productTypes: (context, event) => [
           ...context.productTypes,
           event.productType,
@@ -123,7 +123,14 @@ function createServices() {
             throw new Error('No id passed into addItem');
           }
 
-          const { id, quantity = 1, price, name, description } = event;
+          const {
+            id,
+            quantity = 1,
+            price,
+            name,
+            description,
+            productType,
+          } = event;
 
           const currentCart = context.cart;
 
@@ -144,6 +151,7 @@ function createServices() {
             id,
             name,
             description,
+            productType,
             price,
             isBulkPurchase: currentCart[id].qty > 1,
           };
