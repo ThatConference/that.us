@@ -77,14 +77,17 @@
             class="py-1 rounded-md bg-white ring-1 ring-black ring-opacity-5">
             <div
               class="block px-4 py-2 text-sm hover:bg-gray-100 text-gray-700 border-b">
-              <Link href="/my/settings/profile">
+              <Link
+                href="/my/settings/profile"
+                on:click="{() => (visible = false)}">
                 <p>{$thatProfile.firstName} {$thatProfile.lastName}</p>
                 <p class="truncate pt-2">{$thatProfile.email}</p>
               </Link>
             </div>
 
             <Link
-              href="/my/settings"
+              href="/my/settings/profile"
+              on:click="{() => (visible = false)}"
               class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
               My Settings
             </Link>

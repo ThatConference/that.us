@@ -39,7 +39,7 @@
       <Link
         href="/events"
         open
-        class="px-3 py-2 rounded-md text-sm font-medium text-gray-300
+        class="ml-1 px-3 py-2 rounded-md text-sm font-medium text-gray-300
           hover:text-white hover:bg-that-blue focus:outline-none
           focus:text-white focus:bg-that-blue">
         <DesktopLink>Events</DesktopLink>
@@ -48,7 +48,7 @@
       <Link
         href="/activities"
         open
-        class="px-3 py-2 rounded-md text-sm font-medium text-gray-300
+        class="ml-1 px-3 py-2 rounded-md text-sm font-medium text-gray-300
           hover:text-white hover:bg-that-blue focus:outline-none
           focus:text-white focus:bg-that-blue">
         <DesktopLink>Activities</DesktopLink>
@@ -56,7 +56,7 @@
 
       <Link
         href="/members"
-        class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300
+        class="ml-1 px-3 py-2 rounded-md text-sm font-medium text-gray-300
           hover:text-white hover:bg-that-blue focus:outline-none
           focus:text-white focus:bg-that-blue">
         <DesktopLink>Members</DesktopLink>
@@ -64,7 +64,7 @@
 
       <Link
         href="/communities"
-        class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300
+        class="ml-1 px-3 py-2 rounded-md text-sm font-medium text-gray-300
           hover:text-white hover:bg-that-blue focus:outline-none
           focus:text-white focus:bg-that-blue">
         <DesktopLink>Communities</DesktopLink>
@@ -72,7 +72,7 @@
 
       <Link
         href="/partners"
-        class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300
+        class="ml-1 px-3 py-2 rounded-md text-sm font-medium text-gray-300
           hover:text-white hover:bg-that-blue focus:outline-none
           focus:text-white focus:bg-that-blue">
         <DesktopLink>Partners</DesktopLink>
@@ -81,7 +81,7 @@
       <div>
         <button
           href="/help"
-          class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300
+          class="ml-1 px-3 py-2 rounded-md text-sm font-medium text-gray-300
             hover:text-white hover:bg-that-blue focus:outline-none
             focus:text-white focus:bg-that-blue"
           on:click|preventDefault="{() => (helpVisible = !helpVisible)}">
@@ -135,8 +135,7 @@
   <div class="ml-4 flex items-center justify-center md:ml-6">
     {#if $hasNotifications}
       <button
-        class="max-w-xs h-10 w-10 rounded-full text-white focus:outline-none
-    duration-150 ease-in-out hover:bg-thatBlue-500"
+        class="max-w-xs h-10 w-10 rounded-full text-white focus:outline-none duration-150 ease-in-out hover:bg-thatBlue-500"
         class:shadow-solid="{activityVisible}"
         class:bg-thatBlue-500="{activityVisible}"
         aria-label="Notifications"
@@ -161,7 +160,7 @@
             <Cart />
 
             {#if cartItems > 0}
-              <span class="absolute bottom-0 right-0 block">
+              <span class="animate-pulse absolute bottom-0 right-0 block">
                 <span
                   class="inline-flex items-center justify-center h-4 w-4 rounded-full bg-gray-500">
                   <span class="text-xs font-medium leading-none text-white"

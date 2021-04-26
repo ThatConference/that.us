@@ -1,11 +1,12 @@
 <script>
   import { getContext } from 'svelte';
   import { getClient } from '@urql/svelte';
-  import { Cart as CartModal } from '../../../elements/modals';
+  import { navigateTo } from 'yrv';
 
+  import { Cart as CartModal } from '../../../elements/modals';
   import CartItem from './_CartItem.svelte';
   import { Standard as StandardButton } from '../../../elements/buttons';
-  import { LinkButton } from '../../../elements';
+  import { Standard as StandardLink } from '../../../elements/links';
 
   import orderMutations from '../../../dataSources/api.that.tech/orders/mutations';
   import config from '../../../config';
@@ -105,9 +106,14 @@
       </div>
     </div>
 
-    <div class="flex flex-col">
-      <div class="relative">
-        <LinkButton href="/membership/pricing" text="View Membership Options" />
+    <div class="flex space-x-4">
+      <div>
+        <StandardLink href="/events">View Upcoming Events</StandardLink>
+      </div>
+      <div>
+        <StandardLink href="/membership/pricing">
+          View Membership Options
+        </StandardLink>
       </div>
     </div>
   </section>
@@ -192,9 +198,15 @@
 
     <div class="flex justify-end">
       {#if $state.matches('verification.verified')}
-        <StandardButton on:click="{handleCheckout}">
-          Continue to Complete Purchase
-        </StandardButton>
+        <div class="flex space-x-4">
+          <StandardButton on:click="{() => history.back()}">
+            Continue Shopping
+          </StandardButton>
+
+          <StandardButton on:click="{handleCheckout}">
+            Continue to Complete Purchase
+          </StandardButton>
+        </div>
       {:else}
         <div
           class="px-8 py-2 rounded-md shadow text-base leading-6 font-medium text-white bg-gray-200 md:text-lg md:px-10">

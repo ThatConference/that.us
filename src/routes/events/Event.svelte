@@ -16,11 +16,11 @@
   let eventFormat;
 
   metaTagsStore.set({
-    title: 'Events - THAT',
+    title: 'Event - THAT',
     description: 'Upcoming and Past Events at THAT',
     openGraph: {
       type: 'website',
-      url: 'https://that.us/events',
+      url: `https://that.us/events/${eventSlug}`,
     },
   });
 

@@ -8,12 +8,11 @@
     class="mx-auto max-h-32 "
     src="{community.logo}"
     alt="{community.name}"
-  />
+    loading="lazy" />
 </span>
 
 <h3
-  class="mt-4 text-gray-500 font-bold leading-5 text-md tracking-tight uppercase"
->
+  class="mt-4 text-gray-500 font-bold leading-5 text-md tracking-tight uppercase">
   {`${community.name}`}
 </h3>
 

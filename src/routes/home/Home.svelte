@@ -69,7 +69,11 @@
 
     <div in:fade="{{ delay: 800 }}">
       <div class="relative flex flex-col items-center">
-        <img class="h-72" src="/images/THAT-Logo-Words.svg" alt="THAT" />
+        <img
+          class="h-72"
+          src="/images/THAT-Logo-Words.svg"
+          alt="THAT"
+          loading="lazy" />
       </div>
 
       <UpNext stateMachineService="{$state.context.upNextActor}" />

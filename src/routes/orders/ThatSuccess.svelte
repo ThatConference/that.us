@@ -1,6 +1,8 @@
 <script>
   import { onMount, getContext } from 'svelte';
   import { Link } from 'yrv';
+  import { getClient } from '@urql/svelte';
+  import qs from 'query-string';
 
   import Layout from './components/_Layout.svelte';
   import metaTagsStore from '../../store/metaTags';
@@ -11,14 +13,20 @@
 
   import { thatProfile } from '../../utilities/security';
   import QuestionModal from './components/_QuestionModal.svelte';
+  import ordersApi from '../../dataSources/api.that.tech/orders/mutations';
 
+  const apiClient = getClient();
   const { send } = getContext('cart');
+  const { eventId } = qs.parse(location.search);
 
-  // todo. not sure if this route will work with the additional script
+  let questionsCompleted = false;
   let formDataPrefill;
+
   onMount(() => {
     send('CLEAR_CART');
-    formDataPrefill = `memberId=${$thatProfile.id}&memberEmail=${$thatProfile.email}&firstName=${$thatProfile.firstName}&lastName=${$thatProfile.lastName}`;
+    const [_, queryString] = window.location.search.split('?');
+
+    formDataPrefill = `memberId=${$thatProfile.id}&memberEmail=${$thatProfile.email}&firstName=${$thatProfile.firstName}&lastName=${$thatProfile.lastName}&${queryString}`;
   });
 
   metaTagsStore.set({
@@ -32,11 +40,12 @@
     },
   });
 
-  let questionsCompleted = false;
+  async function handleOnSubmit(e) {
+    const mutationResult = await ordersApi(
+      apiClient,
+    ).markSurveyQuestionsCompleted(eventId);
 
-  function handleOnSubmit(e) {
-    //todo post to the api that this was completed.
-    questionsCompleted = true;
+    questionsCompleted = mutationResult;
   }
 
   function handleOnLoad() {
@@ -50,9 +59,9 @@
 </svelte:head>
 
 {#if !questionsCompleted}
-  <div class="">
+  <div class="overscroll-none">
     <div
-      class="z-50 absolute inset-0 min-h-screen min-w-screen bg-gray-500 opacity-75">
+      class="z-50 fixed inset-0 min-h-screen min-w-screen bg-gray-500 opacity-75">
     </div>
     <QuestionModal>
       <div

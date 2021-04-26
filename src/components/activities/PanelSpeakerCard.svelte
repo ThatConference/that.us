@@ -19,14 +19,14 @@
           class="w-40 h-40 rounded-full"
           src="{userProfileImage}"
           alt="{`${speaker.firstName} ${speaker.lastName}`}"
-        />
+          loading="lazy" />
 
         {#if speaker.earnedMeritBadges.length > 0}
           <span class="absolute bottom-0 left-0 block h-15 w-15">
             <img
               src="{speaker.earnedMeritBadges[0].image}"
               alt="{speaker.earnedMeritBadges[0].name}"
-            />
+              loading="lazy" />
           </span>
         {/if}
       </span>
@@ -36,8 +36,7 @@
   <div class="flex justify-center text-center mt-2">
     <span
       class="text-xl leading-none font-extrabold text-gray-900 sm:text-l
-      lg:text-2xl"
-    >
+      lg:text-2xl">
       {`${speaker.firstName} ${speaker.lastName}`}
     </span>
   </div>

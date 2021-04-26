@@ -8,13 +8,14 @@
   const { eventId } = config;
 
   function isLoggedIn() {
-    documentReferrer = $router.path;
+    documentReferrer = `${$router.path}${window.location.search}`;
     return $isAuthenticated;
   }
 
   // root
   import Home from './routes/home/Home.svelte';
   import Login from './routes/Login.svelte';
+  import Signup from './routes/Signup.svelte';
   import LoginSuccess from './routes/LoginSuccess.svelte';
   import Logout from './routes/Logout.svelte';
   import NotFound from './routes/NotFound.svelte';
@@ -36,6 +37,8 @@
   import StayingUpToDate from './routes/support/StayingUpToDate.svelte';
   import ChangeLog from './routes/releases/ChangeLog.svelte';
   import ChangeLogMissed from './routes/releases/Missed.svelte';
+  import CovidPolicies from './routes/support/Covid.svelte';
+  import Travel from './routes/support/Travel.svelte';
 
   // my
   import Settings from './routes/my/Settings.svelte';
@@ -70,6 +73,7 @@
   import EventPartners from './routes/partners/EventPartners.svelte';
   import EventList from './routes/events/Events.svelte';
   import EventLanding from './routes/events/Event.svelte';
+  import Tickets from './routes/events/Tickets.svelte';
 </script>
 
 <!-- prettier-ignore -->
@@ -77,6 +81,7 @@
 <Router>
   <Route exact component="{Home}" />
   <Route exact path="/login" component="{Login}" documentReferrer="{documentReferrer}" />
+  <Route exact path="/signup" component="{Signup}" documentReferrer="{documentReferrer}" />
   <Route exact path="/login-success" component="{LoginSuccess}" />
   <Route exact path="/logout" component="{Logout}" />
   <Route exact path="/changelog" component="{ChangeLog}" />
@@ -121,6 +126,8 @@
     <Route exact path="/joining-an-activity" component="{JoiningAnActivity}" />
     <Route exact path="/creating-an-activity" component="{CreateAnActivity}" />
     <Route exact path="/staying-up-to-date" component="{StayingUpToDate}" />
+    <Route exact path="/covid-policies" component="{CovidPolicies}" />
+    <Route exact path="/travel" component="{Travel}" />
   </Router>
 
   <Router path='/activities'>
@@ -135,6 +142,7 @@
   <Router path="/events">
     <Route exact path="/" component="{EventList}" />
     <Route exact path="/:id/:name" component="{EventLanding}" />
+    <Route exact path="/:id/:name/tickets" component="{Tickets}" />
     <Route exact path="/:id/:name/partners" component="{EventPartners}" />
   </Router>
 

@@ -11,11 +11,21 @@
   import NotReady from './components/pricing/_NotReady.svelte';
   import PricingCore from './components/pricing/_PricingCore.svelte';
 
+  import metaTagsStore from '../../store/metaTags';
   import pricingMachine from './machines/pricing';
   import config from '../../config';
 
   const { state } = useMachine(pricingMachine(config.eventId), {
     devTools: debug.xstate,
+  });
+
+  metaTagsStore.set({
+    title: 'Membership Pricing - THAT',
+    description: 'Become a member and save today',
+    openGraph: {
+      type: 'website',
+      url: `https://that.us/membership/pricing`,
+    },
   });
 </script>
 

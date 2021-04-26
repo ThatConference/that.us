@@ -75,7 +75,7 @@
                 role in making our community the best it can be.
                 <Link
                   class="text-thatOrange-400 hover:text-thatOrange-500"
-                  href="/membership/pricing">
+                  href="/signup">
                   Join us today!
                 </Link>
               </p>

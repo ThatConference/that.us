@@ -5,23 +5,19 @@
   import { fade } from 'svelte/transition';
   import { navigateTo } from 'yrv';
 
+  import Layout from '../../../elements/layouts/LandingLayout.svelte';
+  import { Highlight as HighlightLink } from '../../../elements/links';
   import Nav from '../../../components/nav/interiorNav/Top.svelte';
   import SponsorSimple from '../../../components/SponsorSimple.svelte';
   import UpNextEvent from '../../../components/activities/UpNextEvent.svelte';
-  import {
-    Standard as StandardLink,
-    Highlight as HighlightLink,
-  } from '../../../elements/links';
-  import Layout from '../../../elements/layouts/LandingLayout.svelte';
 
-  import config from '../../../config';
-
-  import CTA from './_EventCTA.svelte';
-  import OnlineHero from './_OnlineHero.svelte';
-  import EventFollowers from './_EventFollowers.svelte';
-  import EventTicket from './_EventTicket.svelte';
-  import FAQ from './_FAQ.svelte';
   import Membership from './_MembershipCard.svelte';
+  import FAQ from './_FAQ.svelte';
+
+  import CTA from './online/_EventCTA.svelte';
+  import OnlineHero from './online/_OnlineHero.svelte';
+  import EventFollowers from './online/_EventFollowers.svelte';
+  import EventTicket from './online/_EventTicket.svelte';
 
   const { send } = getContext('cart');
 
@@ -79,7 +75,21 @@
     <Membership
       event="{event}"
       on:purchase-membership="{() =>
-        handleAddMembershipClick(event.id, event.products)}" />
+        handleAddMembershipClick(event.id, event.products)}">
+      <div slot="header">
+        <div class="text-center">
+          <h2
+            class="text-3xl font-extrabold text-thatBlue-800 sm:text-4xl lg:text-5xl">
+            Support Us, Supporting You.
+          </h2>
+          <p class="mt-4 text-xl text-gray-600">
+            We could create a free platform, but then you become the product. To
+            that we say no thank you, we're the product. We're taking the
+            approach of creating a monetization strategy of help us, help you.
+          </p>
+        </div>
+      </div>
+    </Membership>
   </section>
 
   <section>
@@ -107,31 +117,7 @@
   </section>
 
   <section class="mx-auto max-w-7xl pb-12">
-    <SponsorSimple eventId="{event.eventId}">
-      <div slot="header">
-        <div
-          class="pb-12 text-3xl sm:text-4xl leading-8 sm:leading-10 font-extrabold tracking-tight text-thatBlue-800">
-          <h1 class="block text-center sm:text-left">Event Partners</h1>
-        </div>
-      </div>
-    </SponsorSimple>
-
-    <div class="relative pt-16 flex justify-end space-x-4">
-      <div
-        class="px-8 py-3 border-2 border-transparent leading-6 font-medium rounded-md
-      shadow md:py-4 md:text-lg md:px-10 transition duration-150 ease-in-out
-      text-base text-white bg-thatOrange-400 hover:bg-thatOrange-500
-      focus:outline-none focus:border-thatOrange-700
-      focus:ring-that-orange">
-        <a href="mailto:hello@that.us?subject=Let's Partner">
-          Partner with us!
-        </a>
-      </div>
-
-      <StandardLink href="/events/{event.slug}/partners">
-        View all Partners
-      </StandardLink>
-    </div>
+    <SponsorSimple eventId="{event.eventId}" />
   </section>
 
   <section>

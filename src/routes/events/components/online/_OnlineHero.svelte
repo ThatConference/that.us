@@ -5,8 +5,8 @@
   import dayjs from 'dayjs';
   import { Link } from 'yrv';
 
-  import { ChevronRight } from '../../../elements/svgs';
-  import { Code } from '../../../elements/svgs/illustrations';
+  import { ChevronRight } from '../../../../elements/svgs';
+  import { Code } from '../../../../elements/svgs/illustrations';
 
   const ticket = event.products
     .filter(f => f.isEnabled)

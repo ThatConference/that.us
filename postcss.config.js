@@ -2,7 +2,7 @@
 /* eslint-disable no-undef */
 
 const plugins = {
-  '@tailwindcss/jit': {},
+  tailwindcss: {},
   autoprefixer: {},
 };
 

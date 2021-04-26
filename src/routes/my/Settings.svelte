@@ -1,7 +1,13 @@
 <script>
   import { navigateTo, router } from 'yrv';
 
-  import { User, Badge, CreditCard, Ticket } from '../../elements/svgs';
+  import {
+    User,
+    Badge,
+    CreditCard,
+    Ticket,
+    Membership,
+  } from '../../elements/svgs';
   import Nav from '../../components/nav/interiorNav/Top.svelte';
   import StackedLayout from '../../elements/layouts/StackedLayout.svelte';
   import { ActionHeader } from '../../elements';
@@ -10,8 +16,9 @@
   import Badges from './components/_Badges.svelte';
   import OrderHistory from './components/_OrderHistory.svelte';
   import Tickets from './components/_Tickets.svelte';
+  import MembershipSettings from './components/_MembershipSettings.svelte';
 
-  let settingsComponent;
+  $: settingsComponent = Profile;
 
   const asideSelected = {
     item:
@@ -44,6 +51,10 @@
 
     case 'badges':
       settingsComponent = Badges;
+      break;
+
+    case 'membership':
+      settingsComponent = MembershipSettings;
       break;
 
     case 'tickets':
@@ -104,6 +115,22 @@
                     ? asideSelected.image
                     : asideDefault.image}" />
                 <span class="truncate"> Merit Badges </span>
+              </a>
+
+              <a
+                href="/my/settings/membership"
+                on:click|preventDefault="{() => {
+                  navigateTo('/my/settings/membership');
+                  settingsComponent = MembershipSettings;
+                }}"
+                class="{settingsComponent === MembershipSettings
+                  ? asideSelected.item
+                  : asideDefault.item}">
+                <Membership
+                  classes="{settingsComponent === MembershipSettings
+                    ? asideSelected.image
+                    : asideDefault.image}" />
+                <span class="truncate"> Membership Settings </span>
               </a>
 
               <a

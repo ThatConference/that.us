@@ -28,13 +28,15 @@
                   <img
                     class="w-48 h-48 rounded-full"
                     src="{userProfileImage}"
-                    alt="{`${host.firstName} ${host.lastName}`}" />
+                    alt="{`${host.firstName} ${host.lastName}`}"
+                    loading="lazy" />
 
                   {#if host.earnedMeritBadges.length > 0}
                     <span class="absolute bottom-0 left-0 block h-20 w-20">
                       <img
                         src="{host.earnedMeritBadges[0].image}"
-                        alt="{host.earnedMeritBadges[0].name}" />
+                        alt="{host.earnedMeritBadges[0].name}"
+                        loading="lazy" />
                     </span>
                   {/if}
                 </span>
@@ -67,4 +69,3 @@
     </div>
   </div>
 </div>
-

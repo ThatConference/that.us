@@ -6,7 +6,11 @@
   in:fade="{{ delay: 300, duration: 2000 }}"
   class="relative bg-white rounded-lg shadow-lg">
   <div class="rounded-t-lg px-6 py-8 sm:px-10 sm:pt-10 sm:pb-8">
-    <img src="/images/THAT-Full-Wide.svg" alt="THAT" class="h-8" />
+    <img
+      src="/images/THAT-Full-Wide.svg"
+      alt="THAT"
+      class="h-8"
+      loading="lazy" />
     <div class="relative text-lg text-gray-700 leading-7 font-medium mt-8">
       <svg
         class="absolute top-0 left-0 transform -translate-x-4 -translate-y-2 h-8
@@ -32,7 +36,8 @@
       <img
         class="w-12 h-12 sm:w-20 sm:h-20 rounded-full bg-indigo-300"
         src="https://that.imgix.net/members/1dcd59be-4677-474d-8087-e0b74e8ab810.jpeg?mask=ellipse&w=500&h=500&fit=crop"
-        alt="" />
+        alt=""
+        loading="lazy" />
     </div>
     <span class="text-thatBlue-200 font-semibold leading-6">
       <strong class="text-white font-semibold">Clark Sell</strong>

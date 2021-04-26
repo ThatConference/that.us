@@ -37,8 +37,11 @@
 </script>
 
 <div class="h-full flex flex-col rounded-lg shadow-lg overflow-hidden">
-  <div class="flex-shrink-0">
-    <img class="py-4 h-48 w-full object-fit" src="{event.logo || ''}" alt="" />
+  <div class="flex-shrink-0 bg-gray-50 py-4">
+    <img
+      class="py-4 h-48 w-full object-fit"
+      src="{event.logo || '/images/Trees-Solid.svg'}"
+      alt="" />
   </div>
   <div class="flex-1 bg-white p-6 flex flex-col justify-between">
     <div class="flex-1">
