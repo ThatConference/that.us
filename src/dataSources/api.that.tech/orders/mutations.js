@@ -64,8 +64,8 @@ export default client => {
         let results;
 
         if (data) {
-          const { markQuestionsCompleted } = data.orders.me;
-          results = markQuestionsCompleted || false;
+          const { markQuestionsComplete } = data.orders.me;
+          results = markQuestionsComplete || false;
         }
 
         return results;

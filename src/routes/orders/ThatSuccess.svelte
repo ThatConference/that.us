@@ -19,7 +19,7 @@
   const { send } = getContext('cart');
   const { eventId } = qs.parse(location.search);
 
-  let questionsCompleted = false;
+  $: questionsCompleted = false;
   let formDataPrefill;
 
   onMount(() => {
@@ -40,12 +40,13 @@
     },
   });
 
-  async function handleOnSubmit(e) {
-    const mutationResult = await ordersApi(
-      apiClient,
-    ).markSurveyQuestionsCompleted(eventId);
-
-    questionsCompleted = mutationResult;
+  function handleOnSubmit(e) {
+    return ordersApi(apiClient)
+      .markSurveyQuestionsCompleted(eventId)
+      .then(results => {
+        console.log({ results });
+        questionsCompleted = results;
+      });
   }
 
   function handleOnLoad() {

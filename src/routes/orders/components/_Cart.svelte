@@ -1,7 +1,7 @@
 <script>
   import { getContext } from 'svelte';
   import { getClient } from '@urql/svelte';
-  import { navigateTo } from 'yrv';
+  import * as Sentry from '@sentry/browser';
 
   import { Cart as CartModal } from '../../../elements/modals';
   import CartItem from './_CartItem.svelte';
@@ -16,16 +16,25 @@
   const { state, send } = getContext('cart');
 
   function handleCheckout() {
-    const currentCart = $state.context.cart;
-    const lineItems = Object.keys(currentCart).map(i => ({
+    Sentry.addBreadcrumb({
+      category: 'checkout',
+      message: 'handle checkout called',
+      level: Sentry.Severity.Info,
+    });
+
+    const { eventId, cart } = $state.context;
+    Sentry.setContext('cart', cart);
+
+    const lineItems = Object.keys(cart).map(i => ({
       productId: i,
-      quantity: currentCart[i].qty,
-      isBulkPurchase: currentCart[i].isBulkPurchase,
+      quantity: cart[i].qty,
+      isBulkPurchase: cart[i].isBulkPurchase,
     }));
 
-    //todo.. add some more breadcrumbing and messaging.
-    orderMutations(client)
-      .createCheckoutSession($state.context.eventId, lineItems)
+    Sentry.setContext('lineItems', lineItems);
+
+    return orderMutations(client)
+      .createCheckoutSession(eventId, lineItems)
       .then(session => stripe.redirectToCheckout({ sessionId: session }))
       .then(function (result) {
         // If redirectToCheckout fails due to a browser or network error, you should display the localized error message to your customer using error.message.
@@ -34,7 +43,7 @@
         }
       })
       .catch(function (error) {
-        console.error('Error:', error);
+        Sentry.captureException(error);
       });
   }
 
