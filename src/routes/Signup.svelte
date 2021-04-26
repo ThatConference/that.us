@@ -6,6 +6,16 @@
 
   import WelcomeQuote from './support/_WelcomeQuote.svelte';
   import Layout from '../elements/layouts/ContentLayout.svelte';
+  import metaTagsStore from '../store/metaTags';
+
+  metaTagsStore.set({
+    title: 'Sign up - THAT',
+    description: 'Create your profile today and get involved.',
+    openGraph: {
+      type: 'website',
+      url: `https://that.us/signup`,
+    },
+  });
 </script>
 
 <Layout>

@@ -13,11 +13,11 @@
   import metaTagsStore from '../../store/metaTags';
 
   metaTagsStore.set({
-    title: 'Getting Started - THAT',
+    title: 'Travel Information - THAT',
     description: '',
     openGraph: {
       type: 'website',
-      url: `https://that.us/support/welcome`,
+      url: `https://that.us/support/travel`,
     },
   });
 </script>
