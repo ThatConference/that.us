@@ -3,7 +3,7 @@ import { log } from '../utilities/error';
 const defaultPageSize = 10;
 
 const myOrdersFragment = `
-  fragment orderFields on Order {  
+  fragment orderFields on MeOrder {  
     id
     total
     orderDate
