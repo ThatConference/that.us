@@ -8,7 +8,8 @@
   import { sortBy } from 'lodash';
   import dayjs from 'dayjs';
   import isSameOrBefore from 'dayjs/plugin/isSameOrBefore';
-  import { Input } from 'sveltejs-forms'; //https://github.com/mdauner/sveltejs-forms
+  import isBetween from 'dayjs/plugin/isBetween';
+  import { Input } from 'sveltejs-forms';
 
   import { CheckFull } from '../../../../elements/svgs';
   import eventsApi from '../../../../dataSources/api.that.tech/events/queries';
@@ -17,6 +18,8 @@
   import EventNoAccess from './components/_EventNoAccess.svelte';
 
   dayjs.extend(isSameOrBefore);
+  dayjs.extend(isBetween);
+
   const { queryEvents: queryEventsApi, canAddSession } = eventsApi(getClient());
 
   const dispatch = createEventDispatcher();
@@ -45,7 +48,6 @@
       allEvents
         .filter(i => i.type === 'ONLINE')
         .filter(i => i.isActive)
-        // .filter(i => i.isFeatured)
         .filter(i => dayjs().isSameOrBefore(i.endDate, 'day')),
       'endDate',
     );
@@ -54,8 +56,13 @@
       allEvents
         .filter(i => i.type === 'MULTI_DAY' || i.type === 'HYBRID_MULTI_DAY')
         .filter(i => i.isActive)
-        // .filter(i => i.isFeatured)
-        .filter(i => dayjs().isSameOrBefore(i.endDate, 'day')),
+        .filter(i =>
+          dayjs().isBetween(
+            dayjs(i.callForSpeakersOpenDate),
+            dayjs(i.callForSpeakersCloseDate),
+            'day',
+          ),
+        ),
       'endDate',
     );
 
@@ -185,7 +192,14 @@
                   {#if event.id !== eventSelected}
                     <div
                       class="flex-1 flex items-center justify-between border border-gray-200 bg-white hover:bg-gray-50 rounded-md truncate">
-                      <div class="flex-1 px-4 py-2 text-sm truncate">
+                      <div class="flex-shrink-0">
+                        <img
+                          class="p-2 h-14 object-fit"
+                          alt=""
+                          src="{event.logo}" />
+                      </div>
+
+                      <div class="flex-1 px-2 py-2 text-sm truncate">
                         <p class="text-gray-900 font-medium">
                           {event.name}
                         </p>
@@ -198,7 +212,14 @@
                   {:else}
                     <div
                       class="flex-1 flex items-center justify-between border border-green-500 bg-green-100 rounded-md truncate">
-                      <div class="flex-1 px-4 py-2 text-sm truncate">
+                      <div class="flex-shrink-0">
+                        <img
+                          class="p-2 h-14 object-fit"
+                          alt=""
+                          src="{event.logo}" />
+                      </div>
+
+                      <div class="flex-1 px-2 py-2 text-sm truncate">
                         <p class="text-gray-900 font-bold">
                           {event.name}
                         </p>
@@ -224,6 +245,98 @@
           {/await}
         </li>
       {/each}
+
+      <!-- divider for Hybrid Events-->
+      {#if activeEvents.hybrid.length > 0}
+        <div class="col-span-1 sm:col-span-2 relative m-4">
+          <div class="absolute inset-0 flex items-center" aria-hidden="true">
+            <div class="w-full border-t border-gray-300"></div>
+          </div>
+          <div class="relative flex justify-center">
+            <span
+              class="uppercase tracking-wider px-2 bg-gray-100 rounded-md text-sm text-gray-500">
+              Upcoming Hybrid, In-Person Events
+            </span>
+          </div>
+        </div>
+
+        {#each activeEvents.hybrid as event, i (i)}
+          <li
+            in:fade="{{ delay: i * 200 }}"
+            class="col-span-1 shadow-sm rounded-md">
+            {#await canAddSession(event.id) then accessResults}
+              {#if accessResults}
+                <div
+                  class="transition duration-500 ease-in-out transform hover:scale-105">
+                  <input
+                    type="radio"
+                    id="{event.name}"
+                    bind:group="{eventSelected}"
+                    value="{event.id}"
+                    on:change="{handleOnChange}" />
+
+                  <label for="{event.name}" class="h-full flex">
+                    {#if event.id !== eventSelected}
+                      <div
+                        class="flex-1 flex items-center justify-between border border-gray-200 bg-white hover:bg-gray-50 rounded-md truncate">
+                        <div class="flex-shrink-0">
+                          <img
+                            class="p-2 h-14 object-fit"
+                            alt=""
+                            src="{event.logo}" />
+                        </div>
+
+                        <div class="flex-1 px-2 py-2 text-sm truncate">
+                          <p class="text-gray-900 font-medium">
+                            {event.name}
+                          </p>
+
+                          <p class="text-gray-500">
+                            {dayjs(event.startDate).format(
+                              'dddd, MMMM D, YYYY',
+                            )}
+                          </p>
+                        </div>
+                      </div>
+                    {:else}
+                      <div
+                        class="flex-1 flex items-center justify-between border border-green-500 bg-green-100 rounded-md truncate">
+                        <div class="flex-shrink-0">
+                          <img
+                            class="p-2 h-14 object-fit"
+                            alt=""
+                            src="{event.logo}" />
+                        </div>
+
+                        <div class="flex-1 px-2 py-2 text-sm truncate">
+                          <p class="text-gray-900 font-bold">
+                            {event.name}
+                          </p>
+
+                          <p class="text-gray-500">
+                            {dayjs(event.startDate).format(
+                              'dddd, MMMM D, YYYY',
+                            )}
+                          </p>
+                        </div>
+
+                        <div class="flex-shrink-0 pr-4">
+                          <span
+                            class="h-6 w-6 rounded-full bg-green-500 bg-opacity-60 flex items-center justify-center">
+                            <CheckFull height="h-4" width="w-4" />
+                          </span>
+                        </div>
+                      </div>
+                    {/if}
+                  </label>
+                </div>
+              {:else}
+                <EventNoAccess event="{event}" />
+              {/if}
+            {/await}
+          </li>
+        {/each}
+      {/if}
     </ul>
   </div>
 {/await}

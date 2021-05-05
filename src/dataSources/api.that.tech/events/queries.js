@@ -93,6 +93,8 @@ const eventFieldsFragment = `
     isFeatured
     isActive
     logo
+    callForSpeakersOpenDate
+    callForSpeakersCloseDate
     
     theme { 
       heroSlug
