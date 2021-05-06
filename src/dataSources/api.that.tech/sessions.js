@@ -209,7 +209,7 @@ export const CREATE_SESSION = `
   mutation CREATE_SESSION($eventId: ID!, $newSession: OpenSpaceCreateInput!) {
     sessions {
       create(eventId: $eventId) {
-        openSpace(openspace: $newSession) {
+        openSpace (session: $newSession) {
           ...coreFields
         }
       }
@@ -223,7 +223,7 @@ export const UPDATE_SESSION_BY_ID = `
     sessions {
       session(id: $sessionId) {
         update {
-          openSpace (openspace: $session) {
+          openSpace (session: $session) {
             ...coreFields
           }
         }
