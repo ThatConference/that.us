@@ -1,6 +1,6 @@
 <script>
   import { Link } from 'yrv';
-  import Youtube from '@sveltecasts/svelte-youtube';
+  // import Youtube from '@sveltecasts/svelte-youtube';
 
   // utilities
   import { login, isAuthenticated } from '../../utilities/security';
@@ -115,7 +115,7 @@
           <div
             class="flex flex-col items-center justify-center md:max-w-2xl
               md:mx-auto lg:col-span-5">
-            <Youtube width="{426}" height="{240}" videoId="cAftppcmqRE" />
+            <!-- <Youtube width="{426}" height="{240}" videoId="cAftppcmqRE" /> -->
           </div>
 
           <div

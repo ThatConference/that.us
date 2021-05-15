@@ -39,6 +39,7 @@
     <div class="relative lg:flex lg:items-center">
       <div class="hidden lg:block lg:flex-shrink-0">
         <img
+          loading="lazy"
           class="h-64 w-64 rounded-full xl:h-80 xl:w-80"
           src="https://that.imgix.net/members/1dcd59be-4677-474d-8087-e0b74e8ab810.jpeg?mask=ellipse&w=500&h=500&fit=crop"
           alt="Clark Sell" />

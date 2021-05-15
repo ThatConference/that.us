@@ -6,7 +6,6 @@
   import ProfileForm from '../../../components/my/ProfileForm.svelte';
 
   import memberApi from '../../../dataSources/api.that.tech/members/mutations';
-  import { tagEvent } from '../../../utilities/gtag';
   import logEvent from '../../../utilities/eventTrack';
   import { user, thatProfile } from '../../../utilities/security.js';
   import metaTagsStore from '../../../store/metaTags';
@@ -35,7 +34,6 @@
     const updateResults = await createProfile({ profileLinks: [], ...values });
 
     thatProfile.set(updateResults);
-    tagEvent('profile_created', 'account', $user.sub);
     logEvent('profile_created');
 
     setSubmitting(false);
@@ -59,7 +57,6 @@
 
     const updateResults = await updateProfile(updatedProfile);
 
-    tagEvent('profile_update', 'account', $user.sub);
     logEvent('profile_update');
 
     thatProfile.set(updateResults);
@@ -84,5 +81,4 @@
 <ProfileForm
   handleSubmit="{isNewProfile ? handleNew : handleUpdate}"
   profile="{currentProfile}"
-  isNewProfile="{isNewProfile}"
-/>
+  isNewProfile="{isNewProfile}" />

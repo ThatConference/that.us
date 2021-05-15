@@ -44,7 +44,6 @@
     return ordersApi(apiClient)
       .markSurveyQuestionsCompleted(eventId)
       .then(results => {
-        console.log({ results });
         questionsCompleted = results;
       });
   }

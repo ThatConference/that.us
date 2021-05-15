@@ -1,12 +1,10 @@
 <script>
-  import { Form, Input } from 'sveltejs-forms'; //https://github.com/mdauner/sveltejs-forms
-  import { tagEvent } from '../../utilities/gtag';
+  import { Form, Input } from 'sveltejs-forms';
   import { Waiting } from '../../elements';
 
   let submitted = false;
 
   function handleSubmit({ detail: { values, setSubmitting, resetForm } }) {
-    tagEvent('newsletter_signup', 'user', values.email);
     setSubmitting(true);
 
     const data = new FormData();

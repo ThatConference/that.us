@@ -4,7 +4,7 @@
   import Nav from '../../components/nav/interiorNav/Top.svelte';
   import Sponsor from '../../components/SponsorSimple.svelte';
   import CardLoader from '../../components/CardLoader.svelte';
-  import ActivityList from '../../components/activities/List.svelte';
+  import SubmissionList from './components/_SubmissionList.svelte';
 
   import StackedLayout from '../../elements/layouts/StackedLayout.svelte';
   import {
@@ -45,17 +45,12 @@
       <CardLoader />
     {:then activities}
       {#if activities.length > 0}
-        <ActivityList
-          activities="{activities}"
-          reverse="{true}"
-          editMode="{true}"
-        />
+        <SubmissionList activities="{activities}" />
       {:else}
         <div class="p-12">
           <ModalWarning
             title="You have no activities submitted?"
-            text="Why not? Submit something today!"
-          />
+            text="Why not? Submit something today!" />
         </div>
       {/if}
     {:catch error}
@@ -63,8 +58,7 @@
         title="KABOOM!"
         text="I'm sorry, bugs are features right? If I were you, I'd refresh the
         page right now."
-        action="{{ title: 'Return to Activities', href: '/activities' }}"
-      />
+        action="{{ title: 'Return to Activities', href: '/activities' }}" />
     {/await}
   </div>
 

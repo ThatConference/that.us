@@ -1,7 +1,7 @@
 <script>
   // 3rd Party
   import { getClient } from '@urql/svelte';
-  import { Link, navigateTo } from 'yrv';
+  import { navigateTo } from 'yrv';
   import Typewriter from 'svelte-typewriter';
   import Icon from 'svelte-awesome';
   import { plus } from 'svelte-awesome/icons';
@@ -14,30 +14,30 @@
   import ActivityForm from './components/form/ActivityForm.svelte';
 
   // data
-  import sessionsApi from '../../dataSources/api.that.tech/sessions.js';
+  import sessionsApi from '../../dataSources/api.that.tech/sessions/mutations';
 
   // utilities
   import metaTagsStore from '../../store/metaTags';
-  import { tagEvent } from '../../utilities/gtag';
   import logEvent from '../../utilities/eventTrack';
   import { formatCreate } from './lib/formatRequest';
-  import { user } from '../../utilities/security.js';
 
-  const { create } = sessionsApi(getClient());
+  const { createSession } = sessionsApi(getClient());
 
   async function handleSubmit({
     detail: { values, setSubmitting, resetForm },
   }) {
     setSubmitting(true);
 
-    const newActivity = formatCreate(values);
-    const { id } = await create(newActivity, values.eventId);
+    const { eventId } = values;
+    const { activity, type } = formatCreate(values);
 
-    tagEvent('activity_created', 'activity', $user.sub);
+    await createSession(eventId, type, activity);
+
     logEvent('activity_created');
 
+    resetForm();
     setSubmitting(false);
-    navigateTo(`/activities/${id}?edit=true&isNew=true`, { replace: true });
+    navigateTo('/my/submissions');
   }
 
   metaTagsStore.set({

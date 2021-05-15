@@ -10,7 +10,6 @@
   // utilities
   import metaTagsStore from '../../../store/metaTags';
   import logEvent from '../../../utilities/eventTrack';
-  import { tagEvent } from '../../../utilities/gtag';
 
   import { user, thatProfile, refreshMe } from '../../../utilities/security.js';
 
@@ -33,8 +32,6 @@
     const badgeEarned = await claimTicket(ticketReference);
 
     if (badgeEarned) {
-      tagEvent('badgeClaimed', 'account', badgeEarned.id);
-
       logEvent('badge_claimed');
 
       awardedBadge = badgeEarned;
@@ -45,7 +42,6 @@
       failedClaim = true;
     }
 
-    tagEvent('claim_badge', 'account', $user.sub);
     setSubmitting(false);
   }
 
