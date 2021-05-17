@@ -19,7 +19,7 @@
 
   // todo this works for now, but doesn't account for after call for speakers.
   const sessionTypeOptions = sessionType.options.filter(
-    i => i.value !== 'OPEN_SPACE',
+    i => !['OPEN_SPACE', 'PANEL'].includes(i.value),
   );
 
   let selectedPriamaryCategoryValue = initialData.primaryCategory || undefined;
