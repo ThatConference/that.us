@@ -60,6 +60,11 @@ const onBaseFields = `
   fragment onBaseFields on Base {
     id
     eventId
+    event {
+      id
+      startDate
+      endDate
+    }
     slug
     title
     shortDescription
