@@ -44,7 +44,7 @@
       </div>
       <div>
         <p class="mt-1 text-sm text-gray-400">
-          Tl;DR; let's cut right to it. What this activity all about?
+          TL;DR; let's cut right to it. What this activity all about?
         </p>
       </div>
       <div class="mt-4">
