@@ -71,16 +71,22 @@ function formatForType(activity) {
     case 'KEYNOTE':
       newActivity.status = 'SUBMITTED';
       newActivity.durationInMinutes = 90;
+      newActivity.startTime = null;
+      newActivity.location = null;
       delete newActivity.prerequisites;
       break;
 
     case 'REGULAR':
       newActivity.status = 'SUBMITTED';
       newActivity.durationInMinutes = 60;
+      newActivity.startTime = null;
+      newActivity.location = null;
       break;
 
     case 'WORKSHOP':
       newActivity.status = 'SUBMITTED';
+      newActivity.startTime = null;
+      newActivity.location = null;
 
       switch (newActivity.duration) {
         case 'QUARTER_DAY':
@@ -103,6 +109,8 @@ function formatForType(activity) {
     case 'PANEL':
       newActivity.status = 'SUBMITTED';
       newActivity.durationInMinutes = 60;
+      newActivity.startTime = null;
+      newActivity.location = null;
       break;
 
     case 'OPEN_SPACE':
