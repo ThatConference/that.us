@@ -78,6 +78,11 @@
   }
 </script>
 
+<svelte:head>
+  <script src="https://js.stripe.com/v3/">
+  </script>
+</svelte:head>
+
 {#if $state.matches('cart.cartError.invalidEvent')}
   <CartModal
     title="Purchasing Limitation"
