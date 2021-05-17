@@ -43,7 +43,7 @@
     );
   }
 
-  function handleSubmit({ detail: { values, setSubmitting, resetForm } }) {
+  function handleSubmit({ detail: { values, resetForm } }) {
     const { name, url, description } = values;
     const item = {
       id: uuidv4(),
