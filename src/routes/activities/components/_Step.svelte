@@ -4,6 +4,9 @@
   export let isLastItem = false;
   export let stepNumber;
 
+  import Icon from 'svelte-awesome';
+  import { flagCheckered } from 'svelte-awesome/icons';
+
   import { CheckFull } from '../../../elements/svgs';
 </script>
 
@@ -24,7 +27,11 @@
       {:else}
         <span
           class="h-8 w-8 bg-white rounded-full flex items-center justify-center ring-4 ring-gray-300">
-          <span class="text-sm text-gray-500">{stepNumber}</span>
+          {#if isLastItem}
+            <Icon data="{flagCheckered}" class="text-gray-500 w-4 h-4" />
+          {:else}
+            <span class="text-sm text-gray-500">{stepNumber}</span>
+          {/if}
         </span>
       {/if}
     </div>

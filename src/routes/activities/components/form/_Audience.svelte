@@ -8,7 +8,9 @@
   const { targetAudience } = dropDownValues;
 
   let selectedtargetAudienceValue = initialData.targetAudience
-    ? targetAudience.options.find(i => i.value === initialData.targetAudience)
+    ? targetAudience.options.filter(i =>
+        initialData.targetAudience.includes(i.value),
+      )
     : undefined;
 </script>
 

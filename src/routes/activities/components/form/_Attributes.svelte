@@ -27,8 +27,8 @@
     : undefined;
 
   let selectedSecondaryCategoriesValue = initialData.secondaryCategory
-    ? sessionCategory.options.find(
-        i => i.value === initialData.secondaryCategory,
+    ? sessionCategory.options.filter(i =>
+        initialData.secondaryCategory.includes(i.value),
       )
     : undefined;
 
