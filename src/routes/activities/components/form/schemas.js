@@ -52,7 +52,7 @@ const extendedValidation = {
   primaryCategory: yup
     .string()
     .ensure()
-    .trim()
+
     .required('Please add a primary category.'),
 
   secondaryCategory: yup.array().nullable(),
@@ -65,7 +65,7 @@ const extendedValidation = {
     .of(yup.string())
     .min(1, 'Please select your intended audience.'),
 
-  prerequisites: yup.string().ensure(),
+  prerequisites: yup.string().trim(),
 
   /* 
     activity resources
