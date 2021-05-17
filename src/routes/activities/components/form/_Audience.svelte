@@ -7,7 +7,9 @@
 
   const { targetAudience } = dropDownValues;
 
-  let selectedtargetAudienceValue = initialData.targetAudience || undefined;
+  let selectedtargetAudienceValue = initialData.targetAudience
+    ? targetAudience.options.find(i => i.value === initialData.targetAudience)
+    : undefined;
 </script>
 
 <div class="px-4 sm:px-6">
