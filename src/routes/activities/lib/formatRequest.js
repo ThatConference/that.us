@@ -72,6 +72,7 @@ function formatForType(activity) {
     case 'KEYNOTE':
       newActivity.status = 'SUBMITTED';
       newActivity.durationInMinutes = 90;
+      delete newActivity.prerequisites;
       break;
 
     case 'REGULAR':
