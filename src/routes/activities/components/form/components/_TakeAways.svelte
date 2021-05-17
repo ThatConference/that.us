@@ -1,9 +1,23 @@
+<script context="module">
+  import * as yup from 'yup';
+
+  const schema = yup.object().shape({
+    takeaway: yup
+      .string()
+      .trim()
+      .required(
+        'Please add something a geek should expect to learn during this activity.',
+      ),
+  });
+</script>
+
 <script>
   export let setField;
   export let initialData;
 
-  import { Input } from 'sveltejs-forms'; //https://github.com/mdauner/sveltejs-forms
+  import { Input, Form } from 'sveltejs-forms';
   import { v4 as uuidv4 } from 'uuid';
+
   import { Shell as ShellButton } from '../../../../../elements/buttons';
 
   let newItem;
@@ -19,23 +33,20 @@
     );
   }
 
-  function isPopulated(str) {
-    return str.length > 0;
-  }
+  function handleSubmit({ detail: { values, resetForm } }) {
+    const { takeaway } = values;
 
-  function addItem() {
-    if (newItem && isPopulated(newItem)) {
-      const item = {
-        title: newItem.trim(),
-        id: uuidv4(),
-      };
+    const item = {
+      title: takeaway.trim(),
+      id: uuidv4(),
+    };
 
-      items = [...items, item];
-      newItem = '';
+    items = [...items, item];
 
-      document.querySelector('#takeAwayInput').focus();
-      updateField();
-    }
+    updateField();
+
+    resetForm();
+    document.querySelector('#takeAwayInput').focus();
   }
 
   function removeItem(id) {
@@ -50,16 +61,20 @@
 </script>
 
 <div>
-  <Input hidden name="takeaways" bind:value="{items}" />
-  <form on:submit|preventDefault="{addItem}">
+  <Form
+    schema="{schema}"
+    validateOnBlur="{false}"
+    validateOnChange="{false}"
+    on:submit="{handleSubmit}">
     <div
       class="w-full flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-8 sm:items-center">
       <div class="flex-grow">
-        <input
+        <Input
           id="takeAwayInput"
-          bind:value="{newItem}"
-          placeholder="E.g. do some stuff"
+          name="takeaway"
+          type="text"
           spellcheck="true"
+          placeholder="E.g. Learn how to become more awesome."
           class="form-input w-full sm:text-sm sm:leading-5 hover:border-gray-700" />
       </div>
       <div class="flex-none">
@@ -72,7 +87,7 @@
         </ShellButton>
       </div>
     </div>
-  </form>
+  </Form>
 
   <div>
     <ul>
