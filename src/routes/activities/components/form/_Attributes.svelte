@@ -22,8 +22,15 @@
     i => !['OPEN_SPACE', 'PANEL'].includes(i.value),
   );
 
-  let selectedPriamaryCategoryValue = initialData.primaryCategory || undefined;
-  let selectedSecondaryCategoriesValue = initialData.secondaryCategory || [];
+  let selectedPriamaryCategoryValue = initialData.primaryCategory
+    ? sessionCategory.options.find(i => i.value === initialData.primaryCategory)
+    : undefined;
+
+  let selectedSecondaryCategoriesValue = initialData.secondaryCategory
+    ? sessionCategory.options.find(
+        i => i.value === initialData.secondaryCategory,
+      )
+    : undefined;
 
   let activityTypeSelected = initialData.type || undefined;
   let activityCategorySelected = initialData.category || undefined;
