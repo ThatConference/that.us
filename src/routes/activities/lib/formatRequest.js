@@ -40,7 +40,6 @@ function cleanValuesForUpdate(values) {
   delete newValues.selectedTime;
   delete newValues.selectedTimezone;
   delete newValues.selectedDuration;
-  delete newValues.eventId;
 
   return newValues;
 }
