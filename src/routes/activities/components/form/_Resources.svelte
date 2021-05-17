@@ -16,7 +16,8 @@
       </label>
       <div>
         <p class="mt-1 text-sm text-gray-400">
-          What are some items the geek attending should come away with?
+          List a few items someone should expect to walk away with after
+          attending this activity.
         </p>
       </div>
       <div class="mt-4">
@@ -32,8 +33,9 @@
       </label>
       <div>
         <p class="mt-1 text-sm text-gray-400">
-          Here is where you can provide pointers to any applicable resources,
-          your presentation, etc. You will be able to this list later.
+          Please provide links to any helpful resources, your presentation,
+          SDK's, that someone might want after attending. You will be able to
+          add or edit this list later.
         </p>
       </div>
       <div class="mt-4">

@@ -21,8 +21,8 @@
       {/if}
       <div>
         <p class="mt-1 text-sm text-gray-400">
-          What are, if any, the things a geek should know before attending this
-          activity?
+          What are, if any, the things a geek should know or have before
+          attending this activity?
         </p>
       </div>
       <div class="mt-4">
