@@ -23,9 +23,9 @@
           class="absolute top-0 left-0 transform -translate-x-4 -translate-y-4 block h-2 w-2 rounded-full bg-red-400"
         ></span>
       </div>
-      <div>
+      <!-- <div>
         <p class="mt-1 text-sm text-gray-400">write me</p>
-      </div>
+      </div> -->
       <div class="mt-4">
         <Input hidden name="duration" value="{durationSelected}" />
         <div class="w-full">
@@ -74,7 +74,11 @@
         ></span>
       </div>
       <div>
-        <p class="mt-1 text-sm text-gray-400">WRITE ME</p>
+        <p class="mt-1 text-sm text-gray-400">
+          Please break down the overall flow of this workshop. We recognize
+          things will likely change, but help every understand in detail what
+          will be covered.
+        </p>
       </div>
       <div class="mt-4">
         <Input

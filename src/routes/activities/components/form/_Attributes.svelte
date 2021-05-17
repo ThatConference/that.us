@@ -48,7 +48,7 @@
       <label
         for="activity_tags"
         class="block text-sm font-medium text-gray-700">
-        Your Desired Location
+        Select the Desired Location
       </label>
       <div class="relative">
         <span
@@ -57,7 +57,9 @@
       </div>
       <div>
         <p class="mt-1 text-sm text-gray-400">
-          You can choose to speak online, in-person or either.
+          You can select to speak online, in-person, or either. Online sessions
+          are meant to be more interactive than a typical eyes-forward
+          presentation.
         </p>
       </div>
       <div class="mt-4">
@@ -107,9 +109,7 @@
         ></span>
       </div>
       <div>
-        <p class="mt-1 text-sm text-gray-400">
-          You can choose to speak online, in-person or either.
-        </p>
+        <p class="mt-1 text-sm text-gray-400">Who is this intended for?</p>
       </div>
       <div class="mt-4">
         <Input hidden name="category" value="{activityCategorySelected}" />
@@ -158,7 +158,7 @@
       </div>
       <div>
         <p class="mt-1 text-sm text-gray-400">
-          You can choose to speak online, in-person or either.
+          What is the overall format for this activity?
         </p>
       </div>
       <div class="mt-4">

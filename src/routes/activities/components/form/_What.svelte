@@ -20,7 +20,7 @@
 
       <div>
         <p class="mt-1 text-sm text-gray-400">
-          1 sentence explination of this activity.
+          Provide a distinguishing name explaining this activity.
         </p>
       </div>
       <div class="mt-4">
@@ -44,7 +44,7 @@
       </div>
       <div>
         <p class="mt-1 text-sm text-gray-400">
-          Tell us in 3 sentences or less what this activity is.
+          Tl;DR; let's cut right to it. What this activity all about?
         </p>
       </div>
       <div class="mt-4">

@@ -28,8 +28,8 @@
       </div>
       <div>
         <p class="mt-1 text-sm text-gray-400">
-          Are you and authority? Super passionate about this topic? Brag about
-          yourself, we want you too.
+          Are you an authority? Super passionate about this topic? Brag about
+          yourself; we want you to.
         </p>
       </div>
       <div class="mt-4">
@@ -55,9 +55,9 @@
               class="absolute top-0 left-0 transform -translate-x-4 -translate-y-4 block h-2 w-2 rounded-full bg-red-400"
             ></span>
           </div>
-          <div>
+          <!-- <div>
             <p class="mt-1 text-sm text-gray-400">...WRITE ME...</p>
-          </div>
+          </div> -->
         </div>
 
         <div>
@@ -91,9 +91,9 @@
           </div>
           <div>
             <p class="mt-1 text-sm text-gray-400">
-              If selected, and if we're able to record or stream any activities
-              would you mind being recorded. If selected you would need to sign
-              a release form.
+              If selected, and if we can record or stream any activities, would
+              you mind being recorded? If selected and desired, you will need to
+              sign a release form.
             </p>
           </div>
         </div>

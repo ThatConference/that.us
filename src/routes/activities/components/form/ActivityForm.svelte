@@ -197,7 +197,7 @@
           <SectionTitle
             stepNumber="2"
             title="Describe this Activity"
-            description="Let's " />
+            description="Tell everyone about this activity/session." />
 
           <WhatSection
             touched="{touched}"
@@ -209,7 +209,7 @@
           <!-- when section -->
           <section in:fade class="mt-8">
             <SectionTitle
-              title="Schedule a Time"
+              title="Schedule the Time"
               stepNumber="3"
               description="Pick a day and time you will be hosting this activity." />
 
@@ -227,7 +227,7 @@
             <SectionTitle
               title="Activity Attributes"
               stepNumber="3"
-              description="It's meta time. Let's add some attributes about this activity to best help us sort, and help geeks find it." />
+              description="It's meta data time. Let's add some attributes about this activity to help us best sort and help categorize it." />
 
             <AttributesSection
               initialData="{formattedInitial}"
@@ -242,7 +242,7 @@
             <SectionTitle
               title="Target Audience"
               stepNumber="4"
-              description="Help describe who this activity will benifit from the most." />
+              description="Who will benefit the most from this activity? Who should attend?" />
 
             <AudienceSection
               dropDownValues="{dropDownValues}"
@@ -257,7 +257,7 @@
               <SectionTitle
                 title="Workshop Details"
                 stepNumber="5"
-                description="asdf." />
+                description="Explain in more detail what this workshop is all about." />
 
               <WorkshopSection
                 initialData="{formattedInitial}"
@@ -278,9 +278,9 @@
 
           <section in:fade class="mt-8">
             <SectionTitle
-              title="Activity Resources"
+              title="Activity Takeaways and Resources"
               stepNumber="6"
-              description="Detail out the supporting references geeks can refer to." />
+              description="Do you have some supporting resources for folks? Add them here for others to easily reference later." />
 
             <ResourcesSection
               initialData="{formattedInitial}"
@@ -319,7 +319,7 @@
 
       <section class="lg:col-start-3 lg:col-span-1 relative">
         <div class="sticky top-8">
-          <Steps>
+          <Steps isShortForm="{!showLongForm}">
             <div slot="actions">
               <div class="flex flex-col space-y-4">
                 {#if canCancelActivityAction()}
