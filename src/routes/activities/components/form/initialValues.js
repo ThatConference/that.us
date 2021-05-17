@@ -30,7 +30,7 @@ export function formatActivityInitialInput(currentData) {
   const results = {
     ...currentData,
     event: {
-      id: eventId || id,
+      id,
       startDate,
       endDate,
     },
