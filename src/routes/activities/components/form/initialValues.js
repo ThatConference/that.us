@@ -17,6 +17,8 @@ export function formatActivityInitialInput(currentData) {
     shortDescription,
     tags,
     targetAudience,
+    isMinor,
+    canRecord,
   } = currentData;
 
   const initDurationInMinutes = durationInMinutes
@@ -26,8 +28,6 @@ export function formatActivityInitialInput(currentData) {
     : undefined;
 
   const results = {
-    canRecord: false,
-    isMinor: false,
     ...currentData,
     event: {
       id: eventId || id,
@@ -42,6 +42,8 @@ export function formatActivityInitialInput(currentData) {
     selectedTimezone: dayjs.tz.guess(),
     selectedDuration: initDurationInMinutes,
     targetAudience: targetAudience || [],
+    canRecord: canRecord || false,
+    isMinor: isMinor || false,
   };
 
   return results;
