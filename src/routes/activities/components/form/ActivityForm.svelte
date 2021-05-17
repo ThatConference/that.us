@@ -227,7 +227,7 @@
             <SectionTitle
               title="Activity Attributes"
               stepNumber="3"
-              description="It's meta data time. Let's add some attributes about this activity to help us best sort and help categorize it." />
+              description="It's meta data time. Let's add some attributes about this activity to help us best sort and categorize it." />
 
             <AttributesSection
               initialData="{formattedInitial}"

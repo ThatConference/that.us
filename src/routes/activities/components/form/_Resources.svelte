@@ -35,7 +35,7 @@
         <p class="mt-1 text-sm text-gray-400">
           Please provide links to any helpful resources, your presentation,
           SDK's, that someone might want after attending. You will be able to
-          this list later.
+          add or edit this list later.
         </p>
       </div>
       <div class="mt-4">

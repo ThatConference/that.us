@@ -76,7 +76,7 @@
       <div>
         <p class="mt-1 text-sm text-gray-400">
           Please break down the overall flow of this workshop. We recognize
-          things will likely change, but help every understand in detail what
+          things will likely change, but help everyone understand in detail what
           will be covered.
         </p>
       </div>
