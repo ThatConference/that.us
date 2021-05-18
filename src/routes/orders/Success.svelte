@@ -16,7 +16,7 @@
   });
 
   metaTagsStore.set({
-    title: 'Payment Recieved - THAT',
+    title: 'Payment Received - THAT',
     description: 'Your payment was successfully received.',
     nofollow: true,
     noindex: true,
@@ -32,7 +32,7 @@
     <div class="text-base max-w-prose mx-auto lg:max-w-none">
       <h2
         class="text-base text-thatOrange-400 font-semibold tracking-wide uppercase">
-        Payment Recieved
+        Payment Received
       </h2>
       <p
         class="mt-6 text-4xl sm:text-5xl sm:tracking-tight lg:text-6xl leading-8 font-extrabold tracking-tight text-gray-900">

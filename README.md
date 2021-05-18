@@ -1,7 +1,7 @@
 # THAT.US
 
 [![GitHub issues open](https://img.shields.io/github/issues/thatconference/that.us.svg)](https://github.com/thatconference/that.us/issues) [![release](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/thatconference/that.us/issues) <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-34-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-35-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 ## Get started
@@ -83,6 +83,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="http://saltydogllc.com"><img src="https://avatars1.githubusercontent.com/u/8174668?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Eric Selje</b></sub></a><br /><a href="https://github.com/ThatConference/that.us/issues?q=author%3Aeselje" title="Bug reports">🐛</a></td>
     <td align="center"><a href="http://www.mattmillican.com"><img src="https://avatars0.githubusercontent.com/u/810260?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Matt Millican</b></sub></a><br /><a href="https://github.com/ThatConference/that.us/issues?q=author%3Ammillican" title="Bug reports">🐛</a></td>
     <td align="center"><a href="http://michaelwales.com/"><img src="https://avatars.githubusercontent.com/u/37906?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Michael Wales</b></sub></a><br /><a href="https://github.com/ThatConference/that.us/commits?author=walesmd" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/ategen3rt"><img src="https://avatars.githubusercontent.com/u/36305171?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Adam J Tegen</b></sub></a><br /><a href="https://github.com/ThatConference/that.us/commits?author=ategen3rt" title="Code">💻</a></td>
   </tr>
 </table>
 
