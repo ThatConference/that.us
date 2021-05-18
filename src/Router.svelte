@@ -51,6 +51,7 @@
   import Create from './routes/activities/Create.svelte';
   import EditActivity from './routes/activities/Edit.svelte';
   import EventActivities from './routes/activities/Event.svelte';
+  import CallForCounselors from './routes/activities/CallForCounselors.svelte';
 
   // Communities
   import Community from './routes/communities/Community.svelte';
@@ -142,6 +143,7 @@
     <Route exact path="/:id" component="{Activity}" />
     <Route exact path="/:id/:name" component="{EventActivities}" />
     <Route exact path="/create" redirect="{`/activities/create#/event/${eventId}`}" />
+    <Route exact path="/call-for-counselors" component="{CallForCounselors}" />
     <Route exact path="/create#/event/:eventId" component="{Create}" condition="{isLoggedIn}" redirect="/login" />
     <Route path="/edit/*activityId" component="{EditActivity}" condition="{isLoggedIn}" redirect="/login"/>  
   </Router>
