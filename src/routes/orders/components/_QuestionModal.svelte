@@ -3,7 +3,7 @@
 
   import { Check } from '../../../elements/svgs';
 
-  export let title = 'Payment Recieved, Thank You!';
+  export let title = 'Payment Received, Thank You!';
   export let text =
     'We have a few follow-up questions for you to answer. Not only does this help us to better service you, but we need your shirt size.';
 </script>
