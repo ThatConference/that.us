@@ -69,9 +69,9 @@
   import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
   import isToday from 'dayjs/plugin/isToday';
   import isBetween from 'dayjs/plugin/isBetween';
-  import { Input } from 'sveltejs-forms'; //https://github.com/mdauner/sveltejs-forms
-  import Datepicker from 'svelte-calendar'; //https://github.com/6eDesign/svelte-calendar
-  import Select from 'svelte-select'; //https://github.com/rob-balfre/svelte-select
+  import { Input } from 'sveltejs-forms';
+  import Datepicker from 'svelte-calendar';
+  import Select from 'svelte-select';
 
   import config from '../../../../config';
 

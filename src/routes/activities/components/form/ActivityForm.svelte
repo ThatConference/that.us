@@ -1,24 +1,3 @@
-<script context="module">
-  const schema = yup.object().shape({
-    eventId: yup.string().required('Please select an event.'),
-    title: yup.string().ensure().trim().required('Please enter a title.'),
-    shortDescription: yup
-      .string()
-      .ensure()
-      .trim()
-      .required('Please add a short description.'),
-    tags: yup.array().ensure().of(yup.string()),
-    selectedDay: yup.string().required('Please select a day.'),
-    selectedTime: yup.string().required('Please select a starting time.'),
-    selectedTimezone: yup
-      .string()
-      .required('Please select the appropiate timezone.'),
-    selectedDuration: yup
-      .string()
-      .required('Please select an estimated duration.'),
-  });
-</script>
-
 <script>
   export let initialData;
   export let handleWithdraw;
@@ -26,24 +5,33 @@
 
   import { fade } from 'svelte/transition';
   import dayjs from 'dayjs';
-
-  import { Form } from 'sveltejs-forms'; //https://github.com/mdauner/sveltejs-forms
+  import { Form } from 'sveltejs-forms';
   import { isEmpty } from 'lodash';
   import { router } from 'yrv';
-  import * as yup from 'yup';
+  import { getClient } from '@urql/svelte';
+
+  import { openSpaces, online, standard, workshop } from './schemas';
 
   import { formatActivityInitialInput } from './initialValues';
   import { Waiting, ModalError } from '../../../../elements';
   import { thatProfile } from '../../../../utilities/security.js';
   import ErrorNotificaiton from '../../../../components/notifications/Error.svelte';
-  import { Standard as StandardLink } from '../../../../elements/links';
+
+  import sessionsQueryApi from '../../../../dataSources/api.that.tech/sessions/queries';
 
   import Steps from '../_Steps.svelte';
   import SectionTitle from './_SectionTitle.svelte';
   import EventSection from './_Event.svelte';
   import WhatSection from './_What.svelte';
   import WhenSection from './_When.svelte';
+  import AttributesSection from './_Attributes.svelte';
+  import AudienceSection from './_Audience.svelte';
+  import ResourcesSection from './_Resources.svelte';
+  import SupportSection from './_Support.svelte';
+  import WorkshopSection from './_WorkshopDetails.svelte';
+  import PrerequisitesSection from './_Prerequisites.svelte';
 
+  const { querySessionDropDownValues } = sessionsQueryApi(getClient());
   const { eventId } = $router.params;
   const formattedInitial = formatActivityInitialInput({
     event: {
@@ -53,14 +41,60 @@
   });
 
   let createDisabled = true;
+
   $: eventSelected = {};
+  $: activityTypeSelected = initialData?.type || undefined;
+  $: validationSchema = openSpaces;
+  let showLongForm = false;
 
   $: if (!isEmpty($thatProfile)) {
     createDisabled = false;
   }
 
+  function getSteps() {}
+
   function handleEventSelected({ detail }) {
+    const { type } = detail;
+
+    switch (type) {
+      case 'DAILY':
+        showLongForm = false;
+        validationSchema = openSpaces;
+        break;
+
+      case 'ONLINE':
+        showLongForm = false;
+        validationSchema = online;
+        break;
+
+      case 'MULTI_DAY':
+      case 'HYBRID_MULTI_DAY':
+        showLongForm = true;
+
+        switch (activityTypeSelected) {
+          case 'WORKSHOP':
+            validationSchema = workshop;
+            break;
+
+          default:
+            validationSchema = standard;
+            break;
+        }
+
+        break;
+
+      default:
+        showLongForm = false;
+        validationSchema = openSpaces;
+        break;
+    }
+
     eventSelected = { ...detail };
+  }
+
+  function handleActivityTypeSelected({ detail }) {
+    activityTypeSelected = detail;
+    handleEventSelected({ detail: eventSelected });
   }
 
   function canCancelActivityAction() {
@@ -69,8 +103,16 @@
     if (handleWithdraw) {
       if (dayjs(formattedInitial.startTime).isSameOrAfter(dayjs(), 'day'))
         results = true;
+
+      if (['SUBMITTED', 'DRAFT'].includes(formattedInitial.status))
+        results = true;
     }
+
     return results;
+  }
+
+  function getDropDownValues() {
+    return querySessionDropDownValues();
   }
 
   function handleReset() {
@@ -95,104 +137,229 @@
     returnTo="{{ title: 'Return to Activities', href: '/activities' }}" />
 {/if}
 
-<Form
-  schema="{schema}"
-  initialValues="{formattedInitial}"
-  validateOnBlur="{false}"
-  validateOnChange="{false}"
-  on:submit="{handleSubmit}"
-  on:reset="{handleReset}"
-  let:isSubmitting
-  let:isValid
-  let:setValue
-  let:values
-  let:errors
-  let:touched>
-  <div class="grid grid-cols-1 gap-12 lg:grid-flow-col-dense lg:grid-cols-3">
-    <div class="space-y-6 lg:col-start-1 lg:col-span-2">
-      <!-- event section -->
-      <section in:fade>
-        <SectionTitle title="Select a Location" stepNumber="1" />
-
-        <EventSection
-          setField="{setValue}"
-          eventId="{formattedInitial.event.id}"
-          on:event-selected="{handleEventSelected}" />
-      </section>
-
-      <!-- what section -->
-      <section in:fade="{{ delay: 200 }}" class="mt-8">
-        <SectionTitle title="Describe the Activity" stepNumber="2" />
-        <WhatSection setField="{setValue}" initialData="{formattedInitial}" />
-      </section>
-
-      {#if eventSelected}
-        <!-- when section -->
-        <section in:fade class="mt-8">
-          <SectionTitle title="Schedule a Time" stepNumber="3" />
-
-          <WhenSection
-            touched="{touched}"
-            errors="{errors}"
-            values="{formattedInitial}"
-            setField="{setValue}"
-            event="{eventSelected}" />
-        </section>
-      {/if}
-    </div>
-
-    <section class="lg:col-start-3 lg:col-span-1 relative">
-      <div class="sticky top-8">
-        <Steps>
-          <div slot="actions">
-            <div class="flex flex-col space-y-4">
-              {#if canCancelActivityAction()}
-                <span class="inline-flex rounded-md shadow-sm">
-                  <button
-                    disabled="{isValid}"
-                    on:click|preventDefault="{handleWithdraw}"
-                    tabindex="-1"
-                    class="w-full py-2 px-4 order 
-                      border-2 border-transparent rounded-md
-                      text-sm leading-5 font-medium text-white 
-                      bg-red-400
-                      active:bg-red-700 
-                      hover:bg-red-600 
-                      focus:outline-none focus:border-red-700 focus:ring-red 
-                      transition duration-150 ease-in-out">
-                    Cancel / Withdraw
-                  </button>
-                </span>
-              {/if}
-
-              <span class="inline-flex rounded-md shadow-sm">
-                <button
-                  type="submit"
-                  class="w-full py-2 px-4
-                    border-2 border-thatBlue-500 rounded-md
-                    text-sm leading-5 font-medium 
-                  text-thatBlue-500 bg-white 
-                  hover:bg-thatBlue-500 hover:text-white
-                    focus:outline-none focus:ring-thatBlue-500 focus:bg-thatBlue-500 focus:text-white focus:border-thatBlue-800
-                  active:bg-thatBlue-800 
-                  transition duration-150 ease-in-out">
-                  {initialData ? 'Update Activity' : 'Submit Activity'}
-                </button>
-              </span>
+{#await getDropDownValues()}
+  <div in:fade class="px-4 sm:px-6 py-5 ">
+    <div class="grid grid-cols-1 gap-5 sm:gap-6 sm:grid-cols-2">
+      <div class="col-span-1 shadow-sm rounded-md">
+        <div in:fade class="shadow-sm rounded-md bg-white p-4 w-full mx-auto">
+          <div class="animate-pulse">
+            <div class="flex-1 space-y-2">
+              <div class="h-3 bg-gray-400 rounded w-1/2"></div>
+              <div class="h-3 bg-gray-300 rounded w-3/4"></div>
             </div>
           </div>
-        </Steps>
+        </div>
       </div>
-    </section>
-  </div>
 
-  {#if isValid === false}
-    <ErrorNotificaiton message="Please correct the issues listed above." />
-  {/if}
-
-  {#if isSubmitting}
-    <div class="py-24 flex flex-grow justify-center">
-      <Waiting />
+      <div class="col-span-1 shadow-sm rounded-md">
+        <div in:fade class="shadow-sm rounded-md bg-white p-4 w-full mx-auto">
+          <div class="animate-pulse">
+            <div class="flex-1 space-y-2">
+              <div class="h-3 bg-gray-400 rounded w-1/2"></div>
+              <div class="h-3 bg-gray-300 rounded w-3/4"></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  {/if}
-</Form>
+  </div>
+{:then dropDownValues}
+  <Form
+    schema="{validationSchema}"
+    initialValues="{formattedInitial}"
+    validateOnBlur="{false}"
+    validateOnChange="{false}"
+    on:submit="{handleSubmit}"
+    on:reset="{handleReset}"
+    let:isSubmitting
+    let:isValid
+    let:setValue
+    let:values
+    let:errors
+    let:touched>
+    <div class="grid grid-cols-1 gap-12 lg:grid-flow-col-dense lg:grid-cols-3">
+      <div class="space-y-6 lg:col-start-1 lg:col-span-2">
+        <!-- event section -->
+        <section in:fade>
+          <SectionTitle
+            stepNumber="1"
+            title="Select a Location/Event"
+            description="Where do you want to host this activity?" />
+
+          <EventSection
+            setField="{setValue}"
+            eventId="{formattedInitial.event.id}"
+            on:event-selected="{handleEventSelected}" />
+        </section>
+
+        <!-- what section -->
+        <section in:fade="{{ delay: 200 }}" class="mt-8">
+          <SectionTitle
+            stepNumber="2"
+            title="Describe this Activity"
+            description="Tell everyone about this activity/session." />
+
+          <WhatSection
+            touched="{touched}"
+            setField="{setValue}"
+            eventType="{eventSelected.type}" />
+        </section>
+
+        <div class:hidden="{showLongForm}">
+          <!-- when section -->
+          <section in:fade class="mt-8">
+            <SectionTitle
+              title="Schedule the Time"
+              stepNumber="3"
+              description="Pick a day and time you will be hosting this activity." />
+
+            <WhenSection
+              touched="{touched}"
+              errors="{errors}"
+              values="{formattedInitial}"
+              setField="{setValue}"
+              event="{eventSelected}" />
+          </section>
+        </div>
+
+        <div class:hidden="{!showLongForm}">
+          <section in:fade class="mt-8">
+            <SectionTitle
+              title="Activity Attributes"
+              stepNumber="3"
+              description="It's meta data time. Let's add some attributes about this activity to help us best sort and categorize it." />
+
+            <AttributesSection
+              initialData="{formattedInitial}"
+              dropDownValues="{dropDownValues}"
+              setField="{setValue}"
+              touched="{touched}"
+              errors="{errors}"
+              on:activity-type-selected="{handleActivityTypeSelected}" />
+          </section>
+
+          <section in:fade class="mt-8">
+            <SectionTitle
+              title="Target Audience"
+              stepNumber="4"
+              description="Who will benefit the most from this activity? Who should attend?" />
+
+            <AudienceSection
+              dropDownValues="{dropDownValues}"
+              initialData="{formattedInitial}"
+              setField="{setValue}"
+              touched="{touched}"
+              errors="{errors}" />
+          </section>
+
+          <div class:hidden="{!['WORKSHOP'].includes(activityTypeSelected)}">
+            <section in:fade class="mt-8">
+              <SectionTitle
+                title="Workshop Details"
+                stepNumber="5"
+                description="Explain in more detail what this workshop is all about." />
+
+              <WorkshopSection
+                initialData="{formattedInitial}"
+                dropDownValues="{dropDownValues}"
+                setField="{setValue}"
+                touched="{touched}"
+                errors="{errors}" />
+            </section>
+          </div>
+
+          <div
+            class:hidden="{!['WORKSHOP', 'REGULAR'].includes(
+              activityTypeSelected,
+            )}">
+            <PrerequisitesSection
+              isRequired="{['WORKSHOP'].includes(activityTypeSelected)}" />
+          </div>
+
+          <section in:fade class="mt-8">
+            <SectionTitle
+              title="Activity Takeaways and Resources"
+              stepNumber="6"
+              description="Do you have some supporting resources for folks? Add them here for others to easily reference later." />
+
+            <ResourcesSection
+              initialData="{formattedInitial}"
+              dropDownValues="{dropDownValues}"
+              setField="{setValue}"
+              touched="{touched}"
+              errors="{errors}" />
+          </section>
+
+          <section in:fade class="mt-8">
+            <SectionTitle
+              title="Help us, Help You"
+              stepNumber="7"
+              description="We want you to be your best you. How can we help?" />
+
+            <SupportSection
+              initialData="{formattedInitial}"
+              dropDownValues="{dropDownValues}"
+              setField="{setValue}"
+              touched="{touched}"
+              errors="{errors}" />
+          </section>
+        </div>
+
+        {#if isValid === false}
+          <ErrorNotificaiton
+            message="Please correct the issues listed above." />
+        {/if}
+
+        {#if isSubmitting}
+          <div class="py-24 flex flex-grow justify-center">
+            <Waiting />
+          </div>
+        {/if}
+      </div>
+
+      <section class="lg:col-start-3 lg:col-span-1 relative">
+        <div class="sticky top-8">
+          <Steps isShortForm="{!showLongForm}">
+            <div slot="actions">
+              <div class="flex flex-col space-y-4">
+                {#if canCancelActivityAction()}
+                  <span class="inline-flex rounded-md shadow-sm">
+                    <button
+                      disabled="{isValid}"
+                      on:click|preventDefault="{handleWithdraw}"
+                      tabindex="-1"
+                      class="w-full py-2 px-4 order 
+                          border-2 border-transparent rounded-md
+                          text-sm leading-5 font-medium text-white 
+                          bg-red-400
+                          active:bg-red-700 
+                          hover:bg-red-600 
+                          focus:outline-none focus:border-red-700 focus:ring-red 
+                          transition duration-150 ease-in-out">
+                      Cancel / Withdraw
+                    </button>
+                  </span>
+                {/if}
+
+                <span class="inline-flex rounded-md shadow-sm">
+                  <button
+                    type="submit"
+                    class="w-full py-2 px-4
+                      border-2 border-thatBlue-500 rounded-md
+                      text-sm leading-5 font-medium 
+                    text-thatBlue-500 bg-white 
+                    hover:bg-thatBlue-500 hover:text-white
+                      focus:outline-none focus:ring-thatBlue-500 focus:bg-thatBlue-500 focus:text-white focus:border-thatBlue-800
+                    active:bg-thatBlue-800 
+                    transition duration-150 ease-in-out">
+                    {initialData ? 'Update Activity' : 'Submit Activity'}
+                  </button>
+                </span>
+              </div>
+            </div>
+          </Steps>
+        </div>
+      </section>
+    </div>
+  </Form>
+{/await}

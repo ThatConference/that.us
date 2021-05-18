@@ -22,7 +22,7 @@ export const logMessage = (error, tag) => {
     Sentry.setExtra('graph combinedError', error);
     Sentry.setExtra('graph combinedError raw', JSON.stringify(error));
 
-    Sentry.captureException(new Error(error), {
+    Sentry.captureMessage('api.that.tech error', {
       tags: {
         api_that_tech: tag,
       },

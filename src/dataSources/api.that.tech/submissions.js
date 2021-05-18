@@ -1,7 +1,7 @@
-import { log } from './utilities/error';
+import { logMessage } from './utilities/error';
 
-export const QUERY_SUBMISSIONS = `
-  query getMySubmissions {
+export const QUERY_MY_SUBMISSIONS = `
+  query QUERY_MY_SUBMISSIONS {
     sessions {
       me {
         submitted {
@@ -9,27 +9,14 @@ export const QUERY_SUBMISSIONS = `
             id
             eventId
             type
-            status
             title
             shortDescription
-            status
             startTime
-            tags
-            communities
             durationInMinutes
-            speakers {
-              id
-              firstName
-              lastName
-              profileImage
-              profileSlug
-              earnedMeritBadges {
-                id
-                name
-                image
-                description
-              }
-            }
+            status
+            tags         
+            createdAt
+            lastUpdatedAt   
           }
         }
       }
@@ -40,23 +27,20 @@ export const QUERY_SUBMISSIONS = `
 export default client => {
   const queryMySubmissions = () =>
     client
-      .query(QUERY_SUBMISSIONS)
+      .query(QUERY_MY_SUBMISSIONS)
       .toPromise()
       .then(({ data, error }) => {
-        if (error) log(error, 'QUERY_SUBMISSIONS');
+        if (error) logMessage(error, 'QUERY_MY_SUBMISSIONS'); // todo.. not sure about this one.
 
         let results = [];
         const { submitted } = data.sessions.me;
 
         if (submitted) {
-          results = submitted
-            .filter(s => s.type === 'OPEN_SPACE')
-            .filter(s => s.status === 'ACCEPTED');
-
-          results.sort((a, b) => new Date(a.startTime) - new Date(b.startTime));
+          results = [...submitted];
+          results.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
         }
 
-        return results;
+        return results.reverse();
       });
 
   return { queryMySubmissions };
