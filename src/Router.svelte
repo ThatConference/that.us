@@ -143,8 +143,9 @@
     <Route exact path="/:id" component="{Activity}" />
     <Route exact path="/:id/:name" component="{EventActivities}" />
     <Route exact path="/create" redirect="{`/activities/create#/event/${eventId}`}" />
-    <Route exact path="/call-for-counselors" component="{CallForCounselors}" />
     <Route exact path="/create#/event/:eventId" component="{Create}" condition="{isLoggedIn}" redirect="/login" />
+    <Route exact path="/call-for-counselors" redirect="/activities/call-for-counselors/wi/2021" />
+    <Route exact path="/call-for-counselors/:state/:year" component="{CallForCounselors}" />
     <Route path="/edit/*activityId" component="{EditActivity}" condition="{isLoggedIn}" redirect="/login"/>  
   </Router>
   
