@@ -71,7 +71,7 @@
 
   <div>
     <p class="text-center pt-4 prose-lg text-gray-500">
-      Have more quesitons, just drop is an email or hit us up in the chat.
+      Have more questions? Just drop us an email or hit us up in the chat.
       <a
         href="mailto:hello@that.us?subject=Adding a new community to THAT.us"
         rel="noopener"
@@ -87,10 +87,10 @@
       class="space-y-10 lg:space-y-0 lg:grid lg:grid-cols-2 lg:gap-x-12 lg:gap-y-10">
       {#each questions as q}
         <div>
-          <dt class="font-semibold text-gray-600">
+          <dt class="font-semibold prose-lg text-gray-600">
             {q.q}
           </dt>
-          <dd class="mt-3 text-gray-500">
+          <dd class="mt-3 prose-lg text-gray-500">
             {q.a}
           </dd>
         </div>

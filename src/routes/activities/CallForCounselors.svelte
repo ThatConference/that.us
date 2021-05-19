@@ -187,7 +187,7 @@
                 </h2>
               </div>
               <div>
-                <p class="prose">
+                <p class="prose-lg text-gray-500">
                   You can apply to speak for the following audiences and
                   formats:
                 </p>
