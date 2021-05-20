@@ -58,7 +58,7 @@
 
         <p class="prose text-center text-gray-500">
           For each talk accepted we cover 2 standard room nights at the
-          Kalahari, up to a 3 nights max per family!
+          Kalahari, up to a 3 nights max per family.
         </p>
       </div>
     </Link>

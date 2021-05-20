@@ -28,7 +28,7 @@
     {
       q: 'How do I get reimbursed for my room?',
       a:
-        'We will work with the Resort and magically apply the credit to your bill. You are responsible for any other expenses incurred. We reimburse the cost of a standard room rate.',
+        'We will work with the resort and magically apply the credit to your bill. You are responsible for any other expenses incurred. We reimburse the cost of a standard room rate.',
     },
     {
       q: 'Can my family come?',

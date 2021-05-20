@@ -152,9 +152,9 @@
                 Online activities are solely delivered online, authentic to
                 their audience. They are meant to be very interactive, global,
                 and happen at any time for any length of time. They're limited
-                to 100 people, but some of the best, most engaging happen with
-                just a few geeks. The possibilities are endless, and we're
-                excited to have this addition.
+                to 100 people, but some of the best, most engaging activities
+                happen with just a few geeks. The possibilities are endless, and
+                we're excited to have this addition.
               </p>
             </div>
             <div class="pt-12 flex">
@@ -183,7 +183,7 @@
               <div>
                 <h2
                   class="text-center sm:text-left text-4xl font-extrabold tracking-tighter uppercase text-thatBlue-800">
-                  Talk Audiences And Formats
+                  Audiences And Formats
                 </h2>
               </div>
               <div>
