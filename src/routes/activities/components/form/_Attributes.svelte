@@ -6,7 +6,6 @@
   import { createEventDispatcher } from 'svelte';
 
   import { Input } from 'sveltejs-forms';
-  import Tags from 'svelte-tags-input';
   import Select from 'svelte-select';
 
   const {
@@ -264,32 +263,6 @@
           {#if touched['secondaryCategory'] && errors['secondaryCategory']}
             <p class="text-red-600 italic">{errors['secondaryCategory']}</p>
           {/if}
-        </div>
-      </div>
-    </div>
-
-    <div class="sm:col-span-6">
-      <label
-        for="activity_tags"
-        class="block text-sm font-medium text-gray-700">
-        Search Tags
-      </label>
-      <div>
-        <p class="mt-1 text-sm text-gray-400">
-          Set 5 or less 'tags' to help categorize this chat. (return/enter is
-          the delimiter)
-        </p>
-      </div>
-      <div class="mt-4">
-        <div class="w-full tag-form-input">
-          <Tags
-            name="tags"
-            tags="{initialData.tags}"
-            on:tags="{({ detail }) => setField('tags', detail.tags)}"
-            allowBlur="{true}"
-            maxTags="{5}"
-            onlyUnique="{true}"
-            class="form-input w-full sm:text-sm sm:leading-5 hover:border-gray-700" />
         </div>
       </div>
     </div>

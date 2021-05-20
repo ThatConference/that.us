@@ -8,6 +8,8 @@
   const shortForm = [
     'Select a Location/Event',
     'Describe this Activity',
+    'Activity Attributes',
+    'Activity Takeaways and Resources',
     'Schedule the Time.',
     'Submit activity.',
   ];
