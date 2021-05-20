@@ -30,6 +30,7 @@
   import SupportSection from './_Support.svelte';
   import WorkshopSection from './_WorkshopDetails.svelte';
   import PrerequisitesSection from './_Prerequisites.svelte';
+  import TagsSection from './_Tags.svelte';
 
   const { querySessionDropDownValues } = sessionsQueryApi(getClient());
   const { eventId } = $router.params;
@@ -179,7 +180,7 @@
     let:touched>
     <div class="grid grid-cols-1 gap-12 lg:grid-flow-col-dense lg:grid-cols-3">
       <div class="space-y-6 lg:col-start-1 lg:col-span-2">
-        <!-- event section -->
+        <!-- event selector -->
         <section in:fade>
           <SectionTitle
             stepNumber="1"
@@ -193,7 +194,7 @@
         </section>
 
         <!-- what section -->
-        <section in:fade="{{ delay: 200 }}" class="mt-8">
+        <section in:fade class="mt-8">
           <SectionTitle
             stepNumber="2"
             title="Describe this Activity"
@@ -205,30 +206,13 @@
             eventType="{eventSelected.type}" />
         </section>
 
-        <div class:hidden="{showLongForm}">
-          <!-- when section -->
-          <section in:fade class="mt-8">
-            <SectionTitle
-              title="Schedule the Time"
-              stepNumber="3"
-              description="Pick a day and time you will be hosting this activity." />
+        <section in:fade class="mt-8">
+          <SectionTitle
+            title="Activity Attributes"
+            stepNumber="3"
+            description="It's meta data time. Let's add some attributes about this activity to help us best sort and categorize it." />
 
-            <WhenSection
-              touched="{touched}"
-              errors="{errors}"
-              values="{formattedInitial}"
-              setField="{setValue}"
-              event="{eventSelected}" />
-          </section>
-        </div>
-
-        <div class:hidden="{!showLongForm}">
-          <section in:fade class="mt-8">
-            <SectionTitle
-              title="Activity Attributes"
-              stepNumber="3"
-              description="It's meta data time. Let's add some attributes about this activity to help us best sort and categorize it." />
-
+          <div class:hidden="{!showLongForm}">
             <AttributesSection
               initialData="{formattedInitial}"
               dropDownValues="{dropDownValues}"
@@ -236,38 +220,46 @@
               touched="{touched}"
               errors="{errors}"
               on:activity-type-selected="{handleActivityTypeSelected}" />
-          </section>
+          </div>
 
-          <section in:fade class="mt-8">
-            <SectionTitle
-              title="Target Audience"
-              stepNumber="4"
-              description="Who will benefit the most from this activity? Who should attend?" />
-
-            <AudienceSection
-              dropDownValues="{dropDownValues}"
+          <div>
+            <TagsSection
               initialData="{formattedInitial}"
+              setField="{setValue}" />
+          </div>
+        </section>
+
+        <section in:fade class:hidden="{!showLongForm}" class="mt-8">
+          <SectionTitle
+            title="Target Audience"
+            stepNumber="4"
+            description="Who will benefit the most from this activity? Who should attend?" />
+
+          <AudienceSection
+            dropDownValues="{dropDownValues}"
+            initialData="{formattedInitial}"
+            setField="{setValue}"
+            touched="{touched}"
+            errors="{errors}" />
+        </section>
+
+        <section in:fade class:hidden="{!showLongForm}" class="mt-8">
+          <div class:hidden="{!['WORKSHOP'].includes(activityTypeSelected)}">
+            <SectionTitle
+              title="Workshop Details"
+              stepNumber="5"
+              description="Explain in more detail what this workshop is all about." />
+
+            <WorkshopSection
+              initialData="{formattedInitial}"
+              dropDownValues="{dropDownValues}"
               setField="{setValue}"
               touched="{touched}"
               errors="{errors}" />
-          </section>
-
-          <div class:hidden="{!['WORKSHOP'].includes(activityTypeSelected)}">
-            <section in:fade class="mt-8">
-              <SectionTitle
-                title="Workshop Details"
-                stepNumber="5"
-                description="Explain in more detail what this workshop is all about." />
-
-              <WorkshopSection
-                initialData="{formattedInitial}"
-                dropDownValues="{dropDownValues}"
-                setField="{setValue}"
-                touched="{touched}"
-                errors="{errors}" />
-            </section>
           </div>
+        </section>
 
+        <section class:hidden="{!showLongForm}">
           <div
             class:hidden="{!['WORKSHOP', 'REGULAR'].includes(
               activityTypeSelected,
@@ -275,35 +267,50 @@
             <PrerequisitesSection
               isRequired="{['WORKSHOP'].includes(activityTypeSelected)}" />
           </div>
+        </section>
 
-          <section in:fade class="mt-8">
-            <SectionTitle
-              title="Activity Takeaways and Resources"
-              stepNumber="6"
-              description="Do you have some supporting resources for folks? Add them here for others to easily reference later." />
+        <section in:fade class="mt-8">
+          <SectionTitle
+            title="Activity Takeaways and Resources"
+            stepNumber="6"
+            description="Do you have some supporting resources for folks? Add them here for others to easily reference later." />
 
-            <ResourcesSection
-              initialData="{formattedInitial}"
-              dropDownValues="{dropDownValues}"
-              setField="{setValue}"
-              touched="{touched}"
-              errors="{errors}" />
-          </section>
+          <ResourcesSection
+            initialData="{formattedInitial}"
+            dropDownValues="{dropDownValues}"
+            setField="{setValue}"
+            touched="{touched}"
+            errors="{errors}" />
+        </section>
 
-          <section in:fade class="mt-8">
-            <SectionTitle
-              title="Help us, Help You"
-              stepNumber="7"
-              description="We want you to be your best you. How can we help?" />
+        <section in:fade class:hidden="{!showLongForm}" class="mt-8">
+          <SectionTitle
+            title="Help us, Help You"
+            stepNumber="7"
+            description="We want you to be your best you. How can we help?" />
 
-            <SupportSection
-              initialData="{formattedInitial}"
-              dropDownValues="{dropDownValues}"
-              setField="{setValue}"
-              touched="{touched}"
-              errors="{errors}" />
-          </section>
-        </div>
+          <SupportSection
+            initialData="{formattedInitial}"
+            dropDownValues="{dropDownValues}"
+            setField="{setValue}"
+            touched="{touched}"
+            errors="{errors}" />
+        </section>
+
+        <!-- when section -->
+        <section in:fade class:hidden="{showLongForm}" class="mt-8">
+          <SectionTitle
+            title="Schedule the Time"
+            stepNumber="3"
+            description="Pick a day and time you will be hosting this activity." />
+
+          <WhenSection
+            touched="{touched}"
+            errors="{errors}"
+            values="{formattedInitial}"
+            setField="{setValue}"
+            event="{eventSelected}" />
+        </section>
 
         {#if isValid === false}
           <ErrorNotificaiton

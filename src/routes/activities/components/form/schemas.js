@@ -8,8 +8,24 @@ const baseValidation = {
     .ensure()
     .trim()
     .required('Please add a short description.'),
+
   tags: yup.array().ensure().of(yup.string()),
-  // status
+
+  /* 
+    activity resources
+  */
+  takeaways: yup.array().ensure().of(yup.string()),
+
+  supportingArtifacts: yup.array().of(
+    yup.object().shape({
+      name: yup
+        .string()
+        .trim()
+        .required('Please add a title for this resource.'),
+      url: yup.string().url().required('Please add a url for this resource.'),
+      description: yup.string().trim(),
+    }),
+  ),
 };
 
 const scheduleValidation = {
@@ -66,22 +82,6 @@ const extendedValidation = {
     .min(1, 'Please select your intended audience.'),
 
   prerequisites: yup.string().trim(),
-
-  /* 
-    activity resources
-  */
-  takeaways: yup.array().ensure().of(yup.string()),
-
-  supportingArtifacts: yup.array().of(
-    yup.object().shape({
-      name: yup
-        .string()
-        .trim()
-        .required('Please add a title for this resource.'),
-      url: yup.string().url().required('Please add a url for this resource.'),
-      description: yup.string().trim(),
-    }),
-  ),
 
   /*
     help us help you
