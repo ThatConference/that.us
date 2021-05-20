@@ -153,6 +153,42 @@ export const QUERY_EVENT_BY_SLUG = `
   }
 `;
 
+export const QUERY_EVENT_FOR_CFP = `
+  query QUERY_EVENT_FOR_CFP ($slug: String) {
+    events {
+      event (findBy: {slug: $slug}) {
+        get {
+          id
+          name
+          description
+          slogan
+          type  
+          startDate
+          endDate
+          year
+          slug
+          logo
+          callForSpeakersOpenDate
+          callForSpeakersCloseDate
+          isCallForSpeakersOpen
+          milestones{
+            title
+            description
+            dueDate
+          }
+          venues {
+            name
+            address
+            city
+            state
+            zip
+          }
+        }
+      }
+    }
+  }
+`;
+
 export const QUERY_EVENTS_BY_COMMUNITY = `
   ${eventFieldsFragment}
   query QUERY_EVENTS_BY_COMMUNITY ($slug: Slug) {
@@ -198,6 +234,22 @@ export default client => {
 
     return client
       .query(QUERY_EVENT_BY_SLUG, variables, {
+        fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
+      })
+      .toPromise()
+      .then(({ data, error }) => {
+        if (error) log(error, 'QUERY_EVENT_BY_SLUG');
+
+        const { event } = data.events;
+        return event ? event.get : null;
+      });
+  }
+
+  function queryEventForCfp(slug) {
+    const variables = { slug };
+
+    return client
+      .query(QUERY_EVENT_FOR_CFP, variables, {
         fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
       })
       .toPromise()
@@ -273,6 +325,7 @@ export default client => {
     queryEvents,
     queryEventsByCommunity,
     queryEventBySlug,
+    queryEventForCfp,
     canAddSession,
     canAccessEvent,
   };
