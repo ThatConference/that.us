@@ -29,31 +29,45 @@
         </p>
       </div>
 
-      <div class="p-8 grid gap-8 lg:gap-2 grid-cols-2 lg:grid-cols-6">
-        <div class="lg:col-start-2 rounded-md shadow">
+      <div
+        class="relative p-8 flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+        <div class="flex-1 rounded-md shadow">
           <StandardScroll href="#tickets">
             <span class="font-extrabold uppercase">Tickets</span>
           </StandardScroll>
         </div>
-        <div class="rounded-md shadow">
+
+        <div class="flex-1 rounded-md shadow">
           <StandardScroll href="#sponsors">
             <span class="font-extrabold uppercase">Sponsorships</span>
           </StandardScroll>
         </div>
-        <div class="rounded-md shadow flex">
-          <div class="flex-grow">
+
+        <div class="flex-1 rounded-md shadow">
+          <Shell>
+            <Link href="/support/travel">
+              <div class="px-4 py-2 font-extrabold uppercase">Travel</div>
+            </Link>
+          </Shell>
+        </div>
+
+        {#if event.isCallForSpeakersOpen === true}
+          <div class="flex-1 rounded-md shadow">
             <Shell>
-              <Link href="/support/travel">
-                <div class="px-4 py-2 font-extrabold uppercase">Travel</div>
+              <Link href="{`/activities/call-for-counselors/${event.slug}`}">
+                <div class="px-4 py-2 font-extrabold uppercase">
+                  Call For Counselors
+                </div>
               </Link>
             </Shell>
           </div>
-        </div>
-        <div class="rounded-md shadow">
-          <StandardScroll href="#upnext">
-            <span class="font-extrabold uppercase">Schedule</span>
-          </StandardScroll>
-        </div>
+        {:else}
+          <div class="flex-1 rounded-md shadow">
+            <StandardScroll href="#upnext">
+              <span class="font-extrabold uppercase">Schedule</span>
+            </StandardScroll>
+          </div>
+        {/if}
       </div>
 
       <div class="p-10 text-gray-500 flex justify-center">

@@ -18,6 +18,7 @@
   import CamperTickets from './hybrid/_CamperTickets.svelte';
   import UpNextEvent from '../../../components/activities/UpNextEvent.svelte';
   import Membership from './_MembershipCard.svelte';
+  import CallForSpeakers from '../../../components/cta/_CallForSpeakers.svelte';
 
   const { send } = getContext('cart');
   const { products } = event;
@@ -99,13 +100,17 @@
   </section>
 
   <section id="upnext">
-    <UpNextEvent event="{event}">
-      <div slot="action">
-        <HighlightLink href="{`/activities/${event.slug}`}">
-          View the entire schedule
-        </HighlightLink>
-      </div>
-    </UpNextEvent>
+    {#if event.isCallForSpeakersOpen === true}
+      <CallForSpeakers event="{event}" />
+    {:else}
+      <UpNextEvent event="{event}">
+        <div slot="action">
+          <HighlightLink href="{`/activities/${event.slug}`}">
+            View the entire schedule
+          </HighlightLink>
+        </div>
+      </UpNextEvent>
+    {/if}
   </section>
 
   <section id="sponsors">
