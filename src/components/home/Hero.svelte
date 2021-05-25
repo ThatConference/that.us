@@ -1,6 +1,7 @@
 <script>
   import { Link } from 'yrv';
   // import Youtube from '@sveltecasts/svelte-youtube';
+  import CfpCta from '../cta/_HomePageCFP.svelte';
 
   // utilities
   import { login, isAuthenticated } from '../../utilities/security';
@@ -103,25 +104,22 @@
         </div>
       </div>
 
-      <div class="mt-16">
-        <h2
-          class="sm:text-center lg:text-left pb-16 text-4xl tracking-tight
-            leading-10 font-extrabold text-thatBlue-800 sm:text-5xl
-            sm:leading-none md:text-6xl">
-          Real people, real conversations.
-        </h2>
-
-        <div class="lg:grid lg:grid-cols-12 lg:gap-8">
+      <div class="pt-24">
+        <div class="lg:grid lg:grid-cols-12 lg:gap-24 lg:place-items-center">
           <div
-            class="flex flex-col items-center justify-center md:max-w-2xl
-              md:mx-auto lg:col-span-5">
-            <!-- <Youtube width="{426}" height="{240}" videoId="cAftppcmqRE" /> -->
+            class="flex flex-col items-center justify-center md:max-w-2xl md:mx-auto lg:col-span-5">
+            <CfpCta />
           </div>
 
           <div
-            class="mt-12 sm-mt-0 sm:text-center md:max-w-2xl md:mx-auto
-              lg:col-start-6 lg:col-span-7 lg:text-left">
+            class="mt-12 sm-mt-0 sm:text-center md:max-w-2xl md:mx-auto lg:col-start-6 lg:col-span-7 lg:text-left">
             <div class="flex flex-col space-y-6">
+              <h2
+                class="sm:text-center lg:text-left pb-16 text-4xl tracking-tight
+                  leading-10 font-extrabold text-thatBlue-800 sm:text-5xl
+                  sm:leading-none md:text-6xl">
+                Online or In-Person
+              </h2>
               <div class="prose sm:text-lg md:text-xl text-gray-500">
                 <p>
                   Nothing will ever replace having a face-to-face conversation
