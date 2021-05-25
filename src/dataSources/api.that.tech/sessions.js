@@ -16,7 +16,11 @@ const coreSessionFields = `
     durationInMinutes
     slug
     communities
-    location
+    location {
+      destination
+      isOnline
+      url
+    }
   }
 `;
 

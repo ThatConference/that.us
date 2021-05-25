@@ -75,7 +75,11 @@ const onBaseFields = `
     status
     durationInMinutes
     startTime
-    location
+    location {
+      destination
+      isOnline
+      url
+    }
     tags
     takeaways
     supportingArtifacts {
