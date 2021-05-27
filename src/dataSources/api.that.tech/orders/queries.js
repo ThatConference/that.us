@@ -87,6 +87,81 @@ export const QUERY_MY_ALLOCATIONS = `
   }
 `;
 
+const allocationsFragment = `
+  fragment allocationsFragment on PagedMeOrders {
+    cursor
+    count
+    
+    orders {
+      id
+      orderDate
+      total
+      
+      orderAllocations {
+        id
+        isAllocated
+
+        allocatedTo {
+          ... on PrivateProfile {
+            firstName
+            lastInitial
+          }
+          ... on PublicProfile {
+            firstName
+            lastName
+          }
+        }
+        
+        event {
+          name
+          logo
+          slug
+        }
+
+        product {
+          ... on ProductBase {
+            name            
+            ticketType: type
+          }
+        }
+        
+        allocatedTo {
+          ... on PrivateProfile {
+            firstName
+            lastInitial              
+          }
+        }
+      }
+    }
+  }
+`;
+
+export const QUERY_MY_BULK_ALLOCATIONS = `
+  ${allocationsFragment}
+  query QUERY_MY_BULK_ALLOCATIONS($pageSize: Int) {
+    orders {
+      me {
+        all(pageSize: $pageSize) {
+          ...allocationsFragment
+        }
+      }
+    }
+  }
+`;
+
+export const QUERY_MY_BULK_ALLOCATIONS_NEXT = `
+  ${allocationsFragment}
+  query QUERY_MY_BULK_ALLOCATIONS_NEXT($pageSize: Int, $cursor: String) {
+    orders {
+      me {
+        all(pageSize: $pageSize, cursor: $cursor) {
+          ...allocationsFragment
+        }
+      }
+    }
+  }
+`;
+
 export default client => {
   function queryMyOrders(pageSize = defaultPageSize) {
     const variables = {
@@ -157,11 +232,46 @@ export default client => {
     );
   }
 
+  function queryMyBulkAllocations(pageSize = defaultPageSize) {
+    const variables = {
+      pageSize,
+    };
+
+    return client
+      .query(QUERY_MY_BULK_ALLOCATIONS, variables)
+      .toPromise()
+      .then(({ data, error }) => {
+        if (error) log(error, 'QUERY_MY_BULK_ALLOCATIONS');
+
+        const { orders } = data;
+        return orders ? orders.me.all : null;
+      });
+  }
+
+  function queryMyBulkAllocationsNext(cursor, pageSize = defaultPageSize) {
+    const variables = {
+      cursor,
+      pageSize,
+    };
+
+    return client
+      .query(QUERY_MY_BULK_ALLOCATIONS_NEXT, variables)
+      .toPromise()
+      .then(({ data, error }) => {
+        if (error) log(error, 'QUERY_MY_BULK_ALLOCATIONS_NEXT');
+
+        const { orders } = data;
+        return orders ? orders.me.all : null;
+      });
+  }
+
   return {
     queryMyOrders,
     queryMyOrdersNext,
     queryOrderReceiptUrl,
     queryMyAllocations,
     queryMyTicketAllocations,
+    queryMyBulkAllocations,
+    queryMyBulkAllocationsNext,
   };
 };

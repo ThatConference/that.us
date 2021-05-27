@@ -3,31 +3,32 @@ import { Machine, assign } from 'xstate';
 import { uniqBy } from 'lodash';
 
 import { log } from '../../../utilities/error';
-import createPagingConfig from '../../../machines/paging';
+import pagingConfig from '../../../machines/paging';
 import ordersApi from '../../../dataSources/api.that.tech/orders/queries';
 
 function createServices() {
-  const { queryMyOrders, queryMyOrdersNext } = ordersApi(getClient());
+  const { queryMyBulkAllocations, queryMyBulkAllocationsNext } = ordersApi(
+    getClient(),
+  );
 
   return {
     guards: {
-      hasMore: (_, { data }) => data.count !== 0,
+      hasMore: (_, { data }) => data.count > 0,
     },
 
     services: {
-      load: () => queryMyOrders(),
-      loadNext: context => queryMyOrdersNext(context.cursor),
+      load: () => queryMyBulkAllocations(),
+      loadNext: context => queryMyBulkAllocationsNext(context.cursor),
     },
 
     actions: {
       logError: (context, event) =>
         log({
-          error: 'order history state machine ended in the error state.',
+          error: 'bulk allocations state machine ended in the error state.',
           extra: { context, event },
-          tags: { stateMachine: 'orderHistory' },
+          tags: { stateMachine: 'bulkAllocations' },
         }),
 
-      // todo: will need to add the correct data structure once we have paged communities
       loadSuccess: assign({
         items: (_, { data }) => data.orders,
         cursor: (_, { data }) => data.cursor,
@@ -37,6 +38,7 @@ function createServices() {
       loadNextSuccess: assign({
         items: (context, { data }) =>
           uniqBy([...context.items, ...data.orders], i => i.id),
+        // items: (context, { data }) => [...context.items, ...data.orders],
         cursor: (_, { data }) => data.cursor,
         count: (_, { data }) => data.count,
       }),
@@ -46,7 +48,7 @@ function createServices() {
 
 function create() {
   const services = createServices();
-  return Machine({ ...createPagingConfig() }, { ...services });
+  return Machine({ ...pagingConfig() }, { ...services });
 }
 
 export default create;
