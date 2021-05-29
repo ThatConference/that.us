@@ -5,12 +5,11 @@
   import isBetween from 'dayjs/plugin/isBetween';
   import { sortBy } from 'lodash';
 
-  import { debug } from '../../../config';
-  import metaTagsStore from '../../../store/metaTags';
-  import createMachine from '../machines/allocations';
-
   import { Waiting } from '../../../elements';
-  import { tag } from 'svelte-awesome/icons';
+
+  import metaTagsStore from '../../../store/metaTags';
+  import { debug } from '../../../config';
+  import createMachine from '../machines/allocations';
 
   dayjs.extend(isBetween);
 
