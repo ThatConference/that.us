@@ -7,8 +7,8 @@
       .email()
       .trim()
       .required('Please enter your email address.'),
-    orderId: yup.string().required('Please enter your email address.'),
-    allocationId: yup.string().required('Please enter your email address.'),
+    orderId: yup.string().required('orderId is missing.'),
+    allocationId: yup.string().required('allocationId is missing.'),
   });
 </script>
 
