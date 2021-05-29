@@ -93,7 +93,7 @@
           </div>
         </div>
       {:else}
-        <div class="rounded shadow-lg">
+        <div>
           <Input
             type="email"
             name="emailAddress"
@@ -115,16 +115,19 @@
           </Link>
         </ShellButton>
       {:else}
-        <ShellButton>
-          <button
-            type="submit"
-            class="text-center w-full px-8 md:px-10 py-1 text-sm leading-5 font-medium ">
-            <span>
-              <Icon data="{share}" class="-ml-1 mr-2 h-4 w-4" />
-            </span>
-            Transfer Ticket
-          </button>
-        </ShellButton>
+        <button
+          type="submit"
+          class="text-center w-full h-full bg-white rounded-md shadow 
+          border-2 border-thatBlue-500
+          text-base leading-6 md:text-lg font-medium text-thatBlue-500 
+          hover:bg-thatBlue-500 hover:text-white 
+          focus:bg-thatBlue-500 focus:text-white focus:outline-none focus:ring-thatBlue-500 focus:border-thatBlue-800 
+          transition duration-150 ease-in-out">
+          <span>
+            <Icon data="{share}" class="-ml-1 mr-2 h-4 w-4" />
+          </span>
+          Transfer Ticket
+        </button>
       {/if}
     </div>
   </div>
