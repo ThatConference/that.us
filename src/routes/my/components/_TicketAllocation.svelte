@@ -38,7 +38,9 @@
   let isAllocated = allocation.isAllocated;
 
   if (allocation.isAllocated) {
-    allocatedTo = `${allocation.allocatedTo.firstName} ${allocation.allocatedTo.lastName}`;
+    allocatedTo = `${allocation.allocatedTo.firstName} ${
+      allocation.allocatedTo.lastInitial || allocation.allocatedTo.lastName
+    }`;
   }
 
   async function handleSubmit({ detail: { values, resetForm } }) {
@@ -50,7 +52,9 @@
     errorMessage = r.message;
 
     if (r.result)
-      allocatedTo = `${r.allocatedTo.firstName} ${r.allocatedTo.lastName}`;
+      allocatedTo = `${r.allocatedTo.firstName} ${
+        r.allocatedTo.lastInitial || r.allocatedTo.lastName
+      }`;
   }
 </script>
 
