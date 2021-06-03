@@ -21,7 +21,7 @@
 
           <span
             class="pl:2 text-that-orange font-extrabold hover:text-thatOrange-500">
-            {dayjs(event.callForSpeakersEndDate).format('dddd, MMMM D, YYYY')}
+            {dayjs(event.callForSpeakersCloseDate).format('dddd, MMMM D, YYYY')}
           </span>
         </p>
 
