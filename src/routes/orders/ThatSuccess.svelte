@@ -17,7 +17,7 @@
 
   const apiClient = getClient();
   const { send } = getContext('cart');
-  const { eventId } = qs.parse(location.search);
+  const { eventId, orderReference } = qs.parse(location.search);
 
   $: questionsCompleted = false;
   let formDataPrefill;
@@ -42,7 +42,7 @@
 
   function handleOnSubmit(e) {
     return ordersApi(apiClient)
-      .markSurveyQuestionsCompleted(eventId)
+      .markSurveyQuestionsCompleted(eventId, orderReference)
       .then(results => {
         questionsCompleted = results;
       });
