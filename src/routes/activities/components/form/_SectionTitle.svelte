@@ -26,7 +26,9 @@
       </span>
     </div>
   </div>
-  <p class="px-14 py-2 text-sm text-gray-400">
-    {description}
-  </p>
+  {#if description}
+    <p class="px-14 py-2 text-sm text-gray-400">
+      {description}
+    </p>
+  {/if}
 </div>

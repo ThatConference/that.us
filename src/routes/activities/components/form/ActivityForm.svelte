@@ -185,8 +185,12 @@
         <section in:fade>
           <SectionTitle
             stepNumber="1"
-            title="Select a Location/Event"
-            description="Where do you want to host this activity?" />
+            title="{isBackdoor
+              ? 'Selected Location/Event'
+              : `Select a Location/Event`}"
+            description="{isBackdoor
+              ? ''
+              : 'Where do you want to host this activity?'}" />
 
           <EventSection
             isBackdoor="{isBackdoor}"
