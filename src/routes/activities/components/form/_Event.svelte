@@ -114,8 +114,7 @@
     {#if isBackdoor}
       <ul class="grid grid-cols-1 gap-5 sm:gap-6 sm:grid-cols-2">
         <li class="col-span-1 shadow-sm rounded-md">
-          <div
-            class="transition duration-500 ease-in-out transform hover:scale-105">
+          <div class="transition duration-500 ease-in-out transform">
             <label for="{activeEvents.backdoor.name}" class="h-full flex">
               <div
                 class="flex-1 flex items-center justify-between border border-green-500 bg-green-100 rounded-md truncate">
@@ -239,7 +238,7 @@
                   <label for="{event.name}" class="h-full flex">
                     {#if event.id !== eventSelected}
                       <div
-                        class="flex-1 flex items-center justify-between border border-gray-200 bg-white hover:bg-gray-50 rounded-md truncate">
+                        class="flex-1 flex items-center justify-between border border-gray-200 bg-white hover:bg-gray-50 rounded-md truncate cursor-pointer">
                         <div class="flex-shrink-0">
                           <img
                             class="p-2 h-14 object-fit"
