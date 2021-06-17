@@ -49,6 +49,7 @@
   import Daily from './routes/activities/Daily.svelte';
   import Activity from './routes/activities/Activity.svelte';
   import Create from './routes/activities/Create.svelte';
+  import PostCreate from './routes/activities/PostCreate.svelte';
   import EditActivity from './routes/activities/Edit.svelte';
   import EventActivities from './routes/activities/Event.svelte';
   import CallForCounselors from './routes/activities/CallForCounselors.svelte';
@@ -144,6 +145,7 @@
     <Route exact path="/:id/:name" component="{EventActivities}" />
     <Route exact path="/create" redirect="{`/activities/create#/event/${eventId}`}" />
     <Route exact path="/create#/event/:eventId" component="{Create}" condition="{isLoggedIn}" redirect="/login" />
+    <Route exact path="/post-create#/event/:eventId" component="{PostCreate}" condition="{isLoggedIn}" redirect="/login" />
     <Route exact path="/call-for-counselors" redirect="/activities/call-for-counselors/wi/2021" />
     <Route exact path="/call-for-counselors/:state/:year" component="{CallForCounselors}" />
     <Route path="/edit/*activityId" component="{EditActivity}" condition="{isLoggedIn}" redirect="/login"/>  

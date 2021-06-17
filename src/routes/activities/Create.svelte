@@ -1,4 +1,6 @@
 <script>
+  export let isBackdoor = false;
+
   // 3rd Party
   import { getClient } from '@urql/svelte';
   import { navigateTo } from 'yrv';
@@ -100,7 +102,7 @@
     </div>
 
     <div class="mt-8 sm:px-6 max-w-3xl lg:max-w-7xl mx-auto">
-      <ActivityForm handleSubmit="{handleSubmit}" />
+      <ActivityForm handleSubmit="{handleSubmit}" isBackdoor="{isBackdoor}" />
     </div>
   </div>
 </StackedLayout>

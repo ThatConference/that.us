@@ -1,4 +1,5 @@
 <script>
+  export let isBackdoor = false;
   export let initialData;
   export let handleWithdraw;
   export let handleSubmit;
@@ -188,6 +189,7 @@
             description="Where do you want to host this activity?" />
 
           <EventSection
+            isBackdoor="{isBackdoor}"
             setField="{setValue}"
             eventId="{formattedInitial.event.id}"
             on:event-selected="{handleEventSelected}" />
