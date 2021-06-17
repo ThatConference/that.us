@@ -227,7 +227,9 @@
             {#await canAddSession(event.id) then accessResults}
               {#if accessResults}
                 <div
-                  class="transition duration-500 ease-in-out transform hover:scale-105">
+                  class="{`transition duration-500 ease-in-out transform ${
+                    event.id !== eventSelected ? 'hover:scale-105' : ''
+                  }`}">
                   <input
                     type="radio"
                     id="{event.name}"
