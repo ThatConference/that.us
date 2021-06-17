@@ -15,7 +15,7 @@ export const MUTATION_CREATE_CHECKOUT_SESSION = `
 `;
 
 export const MUTATION_MARK_SURVEY_QUESTIONS_COMPLETED = `
-  mutation createCheckoutSession($eventId: ID!, $orderReference: String) {
+  mutation createCheckoutSession($eventId: ID!, $orderReference: String!) {
     orders {
       me {
         markQuestionsComplete(eventId: $eventId, orderReference: $orderReference)
