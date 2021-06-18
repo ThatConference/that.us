@@ -95,5 +95,6 @@ export default {
   ],
   watch: {
     clearScreen: false,
+    buildDelay: 2000,
   },
 };

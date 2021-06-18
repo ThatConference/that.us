@@ -2,6 +2,7 @@
 const colors = require('tailwindcss/colors');
 
 module.exports = {
+  mode: 'jit',
   theme: {
     interFontFeatures: {
       default: ['calt', 'liga', 'kern'],
