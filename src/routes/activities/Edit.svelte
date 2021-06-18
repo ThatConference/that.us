@@ -136,7 +136,8 @@
           <ActivityForm
             handleSubmit="{handleSubmit}"
             handleWithdraw="{handleWithdraw}"
-            initialData="{activity}" />
+            initialData="{activity}"
+            isBackdoor />
         </div>
       {:else}
         <ModalError
