@@ -97,6 +97,7 @@
           <Input
             type="email"
             name="emailAddress"
+            placeholder="E.g. hello@that.us"
             class="form-input block h-12 w-full sm:text-sm sm:leading-5 hover:border-gray-700" />
         </div>
       {/if}
