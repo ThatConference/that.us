@@ -6,7 +6,7 @@
 
   import { fade } from 'svelte/transition';
   import dayjs from 'dayjs';
-  import { Form } from 'sveltejs-forms';
+  import { Form, Input } from 'sveltejs-forms';
   import { isEmpty } from 'lodash';
   import { router } from 'yrv';
   import { getClient } from '@urql/svelte';
@@ -179,6 +179,10 @@
     let:values
     let:errors
     let:touched>
+    <div>
+      <Input hidden name="status" />
+    </div>
+
     <div class="grid grid-cols-1 gap-12 lg:grid-flow-col-dense lg:grid-cols-3">
       <div class="space-y-6 lg:col-start-1 lg:col-span-2">
         <!-- event selector -->
