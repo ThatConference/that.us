@@ -65,24 +65,23 @@ function formatForType(activity) {
     selectedTime,
     selectedTimezone,
     selectedDuration,
+    status,
   } = newActivity;
+
+  newActivity.status = status || 'SUBMITTED';
 
   switch (newActivity.type) {
     case 'KEYNOTE':
-      newActivity.status = 'SUBMITTED';
       newActivity.durationInMinutes = 90;
       delete newActivity.prerequisites;
       break;
 
     case 'REGULAR':
-      newActivity.status = 'SUBMITTED';
       newActivity.durationInMinutes = 60;
 
       break;
 
     case 'WORKSHOP':
-      newActivity.status = 'SUBMITTED';
-
       switch (newActivity.duration) {
         case 'QUARTER_DAY':
           newActivity.durationInMinutes = 120;
@@ -102,7 +101,6 @@ function formatForType(activity) {
       break;
 
     case 'PANEL':
-      newActivity.status = 'SUBMITTED';
       newActivity.durationInMinutes = 60;
       break;
 

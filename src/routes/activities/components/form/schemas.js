@@ -10,6 +10,7 @@ const baseValidation = {
     .required('Please add a short description.'),
 
   tags: yup.array().ensure().of(yup.string()),
+  status: yup.string(),
 
   /* 
     activity resources
