@@ -76,6 +76,9 @@
   import EventList from './routes/events/Events.svelte';
   import EventLanding from './routes/events/Event.svelte';
   import Tickets from './routes/events/Tickets.svelte';
+
+  // speakers
+  import SpeakersAccept from './routes/speakers/Accept.svelte';
 </script>
 
 <!-- prettier-ignore -->
@@ -90,6 +93,8 @@
   <Route exact path="/changelog-missed" component="{ChangeLogMissed}" />
 
   <Route exact path="/membership/pricing" component="{Pricing}" />
+  <Route path="/speakers/accept"  component="{SpeakersAccept}" condition="{isLoggedIn}" redirect="/login" />
+  
   <Route exact path="/not-found" component="{NotFound}" />
   
   <Router path="/join">
