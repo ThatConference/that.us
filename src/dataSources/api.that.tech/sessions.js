@@ -158,6 +158,11 @@ export const QUERY_NEXT_SESSIONS = `
         count
         sessions {
           ...coreFields
+          event {
+            id
+            name
+            slug
+          }
           speakers {
             ...coreSpeakerFields
           }
