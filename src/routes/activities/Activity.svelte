@@ -13,9 +13,22 @@
 
   // data sources
   import sessionsApi from '../../dataSources/api.that.tech/sessions';
+  import sessionsQueryApi from '../../dataSources/api.that.tech/sessions/queries';
+
+  const { querySessionDropDownValues } = sessionsQueryApi(getClient());
+  function getSessionLookupValues() {
+    return querySessionDropDownValues();
+  }
 
   const { id } = router.params;
   const { getById } = sessionsApi(getClient());
+
+  const getSessionData = async sessionId => {
+    const session = getById(sessionId);
+    const sessionLookups = getSessionLookupValues();
+
+    return Promise.all([session, sessionLookups]);
+  };
 </script>
 
 <StackedLayout>
@@ -24,12 +37,15 @@
     <ActionHeader title="Activity Details" />
   </div>
   <div slot="body">
-    {#await getById(id)}
+    {#await getSessionData(id)}
       <div class="flex items-center justify-center">
         <FacebookLoader uniqueKey="loading" />
       </div>
-    {:then activities}
-      <ActivityDetails {...activities} />
+    {:then [activity, sessionLookups]}
+      <ActivityDetails
+        {...activity}
+        sessionLocation="{activity.location}"
+        sessionLookups="{sessionLookups}" />
     {:catch error}
       <ModalError
         title="No Activities Found"

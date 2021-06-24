@@ -37,6 +37,10 @@ export const QUERY_SESSION_DROPDOWN_VALUES = `
     sessionCategory: __type(name: "SessionCategory") {
       ${enumValues}
     }
+
+    sessionLocationDestinations: __type(name: "SessionLocationDestination") {
+      ${enumValues}
+    }
     
     sessionType: __type(name: "SessionType") {
       ${enumValues}

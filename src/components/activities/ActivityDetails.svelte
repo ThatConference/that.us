@@ -11,6 +11,12 @@
   export let favoritedBy = [];
   export let eventId;
   export let event;
+  export let targetLocation;
+  export let sessionLocation;
+  export let type;
+  export let sessionLookups;
+
+  //console.log(sessionLookups);
 
   // 3rd Party
   import { onMount } from 'svelte';
@@ -20,7 +26,16 @@
   import relativeTime from 'dayjs/plugin/relativeTime';
   import Icon from 'svelte-awesome';
   import { Link } from 'yrv';
-  import { heartO, heart, signIn, cog } from 'svelte-awesome/icons';
+  import {
+    cog,
+    exchange,
+    globe,
+    heartO,
+    heart,
+    mapMarker,
+    signIn,
+    user,
+  } from 'svelte-awesome/icons';
   import qs from 'query-string';
   import { getClient } from '@urql/svelte';
   import { isEmpty, find } from 'lodash';
@@ -53,6 +68,23 @@
     getClient(),
   );
   const isDailyActivity = config.eventId === eventId;
+
+  // Enum Lookups
+  let sessionTargetLocation =
+    sessionLookups.targetLocation.options.find(x => x.value === targetLocation)
+      ?.label || 'Online';
+  let sessionTargetLocationIcon =
+    targetLocation === 'EITHER'
+      ? exchange
+      : targetLocation === 'IN_PERSON'
+      ? user
+      : globe;
+  let sessionType = sessionLookups.sessionType.options.find(
+    x => x.value === type,
+  )?.label;
+  let sessionLocationDestination = sessionLookups.sessionLocationDestinations.options.find(
+    x => x.value === sessionLocation?.destination,
+  )?.label;
 
   let host = speakers[0];
   let imageCrop = '?mask=ellipse&w=500&h=500&fit=crop';
@@ -306,7 +338,6 @@
   </div>
 
   <!-- body -->
-
   <div class="w-full flex flex-col sm:flex-row space-x-6">
     <div class="flex-auto px-4 py-5 sm:px-6 text-center md:text-left">
       <!-- Title -->
@@ -318,7 +349,7 @@
 
       <!-- Start Time -->
       <p
-        class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:mx-auto md:mt-5
+        class="mt-3 text-base text-gray-700 sm:mt-5 sm:text-lg sm:mx-auto md:mt-5
         md:text-xl lg:mx-0">
         {#if durationInMinutes <= 60}
           {dayjs(startTime).format('dddd, MMMM D, YYYY - h:mm A')}, for
@@ -330,6 +361,24 @@
           hours.
         {/if}
       </p>
+
+      <!-- Location -->
+      <p
+        class="mt-1 text-base text-gray-700 sm:mt-2 sm:text-lg sm:mx-auto md:mt-1
+        md:text-xl lg:mx-0">
+        <Icon
+          data="{sessionTargetLocationIcon}"
+          class="h-4 w-4 pb-0.5 mr-2" />{sessionTargetLocation}
+        {sessionType}
+      </p>
+
+      {#if targetLocation === 'IN_PERSON' && sessionLocationDestination}
+        <p
+          class="mt-1 text-base text-gray-700 sm:mt-2 sm:text-lg sm:mx-auto md:mt-1
+    md:text-xl lg:mx-0">
+          <Icon data="{mapMarker}" class="h-4 w-4 pb-0.5 mr-2" />Room: {sessionLocationDestination}
+        </p>
+      {/if}
 
       <!-- Description -->
       <p
