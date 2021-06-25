@@ -15,7 +15,7 @@
   <meta property="og:image" content="https://that.us/images/og-logo.png" />
 */
 
-const create = (metaData) => {
+const create = metaData => {
   const results = [];
 
   const noindex = metaData ? metaData.noindex : false;
