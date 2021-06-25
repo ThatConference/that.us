@@ -141,9 +141,7 @@
     return [];
   }
 
-  onMount(() => {
-    fuse = new Fuse(activities, options);
-  });
+  $: fuse = new Fuse(activities, options);
 </script>
 
 <div class="relative">
