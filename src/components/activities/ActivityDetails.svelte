@@ -16,8 +16,6 @@
   export let type;
   export let sessionLookups;
 
-  //console.log(sessionLookups);
-
   // 3rd Party
   import { onMount } from 'svelte';
   import dayjs from 'dayjs';
@@ -284,7 +282,7 @@
           {/if}
         {/if}
 
-        {#if !hasExpired}
+        {#if !hasExpired && targetLocation != 'IN_PERSON'}
           {#if canJoin}
             <div class="mt-2 mx-2 rounded-md shadow-sm">
               <Link
@@ -405,8 +403,10 @@
     </div>
 
     {#if !isDailyActivity}
-      <div class="sm:w-1/2 p-6 flex flex-col items-center">
-        <img src="{event.logo}" alt="Event Logo" loading="lazy" />
+      <div class="sm:w-1/2 py-6 flex flex-col items-center">
+        <a href="{`/events/${event.slug}`}" class="w-full">
+          <img src="{event.logo}" alt="Event Logo" loading="lazy" />
+        </a>
       </div>
     {/if}
   </div>

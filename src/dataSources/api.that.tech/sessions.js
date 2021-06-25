@@ -72,6 +72,7 @@ export const QUERY_SESSION_BY_ID = `
           startDate
           endDate
           logo
+          slug
         }
         speakers {
           firstName
