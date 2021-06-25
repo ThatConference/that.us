@@ -17,7 +17,7 @@ function createServices() {
     },
 
     services: {
-      load: () => querySessionsByDate({ pageSize: 75 }),
+      load: () => querySessionsByDate({ pageSize: 100 }),
       loadNext: context => queryNextSessions({ cursor: context.cursor }),
     },
 
