@@ -282,53 +282,55 @@
           {/if}
         {/if}
 
-        {#if !hasExpired && targetLocation != 'IN_PERSON'}
-          {#if canJoin}
-            <div class="mt-2 mx-2 rounded-md shadow-sm">
-              <Link
-                type="button"
-                href="/join/{id}"
-                class="relative inline-flex justify-center py-2 px-4 border-2
+        {#if !hasExpired}
+          <div class="mt-2 mx-2 rounded-md shadow-sm">
+            <div
+              class="border-2 border-thatBlue-500 text-sm leading-5
+              font-medium rounded-md text-thatBlue-500 bg-white
+              hover:bg-thatBlue-500 hover:text-white focus:outline-none
+              focus:ring-thatBlue-500 focus:bg-thatBlue-500
+              focus:text-white focus:border-thatBlue-800
+              active:bg-thatBlue-800 transition duration-150 ease-in-out">
+              <CalendarButton
+                title="{title}"
+                shortDescription="{shortDescription}"
+                id="{id}"
+                startTime="{startTime}"
+                durationInMinutes="{durationInMinutes}"
+                slug="{slug}" />
+            </div>
+          </div>
+
+          {#if targetLocation != 'IN_PERSON'}
+            {#if canJoin}
+              <div class="mt-2 mx-2 rounded-md shadow-sm">
+                <Link
+                  type="button"
+                  href="/join/{id}"
+                  class="relative inline-flex justify-center py-2 px-4 border-2
                   border-thatBlue-500 text-sm leading-5 font-medium rounded-md
                   text-thatBlue-500 bg-white hover:bg-thatBlue-500
                   hover:text-white focus:outline-none
                   focus:ring-thatBlue-500 focus:bg-thatBlue-500
                   focus:text-white focus:border-thatBlue-800
                   active:bg-thatBlue-800 transition duration-150 ease-in-out">
-                <Icon
-                  data="{signIn}"
-                  class="-ml-1 mr-2 h-4 w-4 text-gray-400" />
-                <span>Join In</span>
-              </Link>
-            </div>
-          {:else}
-            <div class="mt-2 mx-2 rounded-md shadow-sm">
-              <div
-                class="border-2 border-thatBlue-500 text-sm leading-5
-                  font-medium rounded-md text-thatBlue-500 bg-white
-                  hover:bg-thatBlue-500 hover:text-white focus:outline-none
-                  focus:ring-thatBlue-500 focus:bg-thatBlue-500
-                  focus:text-white focus:border-thatBlue-800
-                  active:bg-thatBlue-800 transition duration-150 ease-in-out">
-                <CalendarButton
-                  title="{title}"
-                  shortDescription="{shortDescription}"
-                  id="{id}"
-                  startTime="{startTime}"
-                  durationInMinutes="{durationInMinutes}"
-                  slug="{slug}" />
+                  <Icon
+                    data="{signIn}"
+                    class="-ml-1 mr-2 h-4 w-4 text-gray-400" />
+                  <span>Join In</span>
+                </Link>
               </div>
-            </div>
-
-            <span class="mt-2 mx-2 rounded-md shadow-sm">
-              <div
-                class="relative inline-flex items-center px-4 py-2 border-2
+            {:else}
+              <span class="mt-2 mx-2 rounded-md shadow-sm">
+                <div
+                  class="relative inline-flex items-center px-4 py-2 border-2
                   border-gray-300 text-sm leading-5 font-medium rounded-md
                   text-gray-400 bg-white">
-                <Icon data="{signIn}" class="-ml-1 mr-2 h-4 w-4" />
-                <span>Join {timeLeftToJoin}</span>
-              </div>
-            </span>
+                  <Icon data="{signIn}" class="-ml-1 mr-2 h-4 w-4" />
+                  <span>Join {timeLeftToJoin}</span>
+                </div>
+              </span>
+            {/if}
           {/if}
         {/if}
       </div>
