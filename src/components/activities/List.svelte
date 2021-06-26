@@ -36,8 +36,7 @@
       'shortDescription',
       'tags',
       'communities',
-      'speakers.firstName',
-      'speakers.lastName',
+      'speakers.fullName',
     ],
   };
 
@@ -141,7 +140,20 @@
     return [];
   }
 
-  $: fuse = new Fuse(activities, options);
+  $: fuse = new Fuse(
+    activities.map(activity => {
+      return {
+        ...activity,
+        speakers: activity.speakers.map(speaker => {
+          return {
+            ...speaker,
+            fullName: `${speaker.firstName} ${speaker.lastName}`,
+          };
+        }),
+      };
+    }),
+    options,
+  );
 </script>
 
 <div class="relative">
