@@ -184,14 +184,18 @@
     {#each sorted as day, d}
       <div>
         <h2
-          class="sticky top-0 z-20 bg-gray-100 text-xl md:text-4xl leading-9 font-extrabold tracking-tight text-thatBlue-800 sm:leading-10 pt-4 mb-7 sm:mb-9 whitespace-nowrap">
+          class="sticky top-0 z-20 bg-gray-100 text-xl md:text-4xl leading-9 
+                 font-extrabold tracking-tight text-thatBlue-800 sm:leading-10 
+                 pt-4 mb-7 sm:mb-9 whitespace-nowrap -ml-5 sm:-ml-6 pl-5 sm:pl-6 -mr-5 sm:-mr-6">
           {dayjs(day.dayOfYear).format("dddd, MMMM D, 'YY")}
         </h2>
 
         {#each day.timeSlots as ts, t}
           <div class="relative">
             <h2
-              class="sticky top-11 sm:top-13 z-10 bg-gray-100 text-xl md:text-4xl leading-9 font-extrabold tracking-tight text-thatOrange-400 sm:leading-10 whitespace-nowrap">
+              class="sticky top-11 sm:top-13 z-10 bg-gray-100 text-xl md:text-4xl 
+                     leading-9 font-extrabold tracking-tight text-thatOrange-400 
+                     sm:leading-10 whitespace-nowrap -ml-5 sm:-ml-6 pl-5 sm:pl-6 -mr-5 sm:-mr-6">
               {#if !dayjs(ts.timeSlot).isValid()}
                 Unscheduled
               {:else}{dayjs(ts.timeSlot).format('hh:mm a')}{/if}
