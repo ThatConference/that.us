@@ -150,7 +150,7 @@
             src="/images/Trees-Solid-White.svg"
             class="h-5"
             alt="THAT Trees" />
-          <span class="text-white uppercase text-xs">Certified</span>
+          <span class="text-white uppercase text-xs">Counselor</span>
         </div>
       </div>
     </div>

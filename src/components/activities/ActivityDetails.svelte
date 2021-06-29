@@ -185,21 +185,21 @@
   <!--header-->
   <div class="px-4 py-5 border-b border-gray-300 sm:px-6">
     <div
-      class="-ml-4 -mt-4 flex justify-between items-center flex-wrap
+      class="flex justify-between md:items-end items-center flex-wrap
         sm:flex-nowrap flex-col md:flex-row">
-      <div class="ml-4 mt-4">
-        <div class="flex items-center">
+      <div class="">
+        <div class="flex md:flex-row flex-col items-center md:items-end">
           <div class="flex-shrink-0">
             <Link href="/members/{host.profileSlug}" open>
               <span class="inline-block relative">
                 <img
-                  class="h-12 w-12 rounded-full"
+                  class="h-24 w-24 rounded-full"
                   src="{userProfileImage}"
                   alt=""
                   loading="lazy" />
 
                 {#if host.earnedMeritBadges.length > 0}
-                  <span class="absolute bottom-0 left-0 block h-5 w-5">
+                  <span class="absolute bottom-0 left-0 block h-8 w-8">
                     <img
                       src="{host.earnedMeritBadges[0].image}"
                       alt="{host.earnedMeritBadges[0].name}"
@@ -209,21 +209,36 @@
               </span>
             </Link>
           </div>
-          <div class="ml-4">
-            <h3 class="text-lg leading-6 font-medium text-gray-900">
-              {`${host.firstName} ${host.lastName}`}
-            </h3>
-
-            <div>
-              {#each host.profileLinks as link}
-                <SocialLink href="{link.url}" network="{link.linkType}" />
+          <div class="md:ml-4">
+            <div class="flex flex-col md:items-start items-center">
+              <h3
+                class="text-lg leading-6 font-medium text-gray-900 inline-block">
+                {`${host.firstName} ${host.lastName}`}
+              </h3>
+              {#if type === 'REGULAR' || type === 'WORKSHOP'}
+                <span class="flex flex-row items-center overflow-clip">
+                  <img
+                    src="/images/Trees-Solid.svg"
+                    class="h-5 inline mr-2"
+                    alt="THAT Trees" />
+                  <span class="text-that-red text-lg font-medium inline"
+                    >Counselor</span>
+                </span>
+              {/if}
+            </div>
+            <div class="md:text-left text-center">
+              {#each host.profileLinks as link, i}
+                <SocialLink
+                  href="{link.url}"
+                  network="{link.linkType}"
+                  isLast="{i === host.profileLinks?.length - 1}" />
               {/each}
             </div>
           </div>
         </div>
       </div>
 
-      <div class="pt-4 -m-2 flex flex-wrap justify-center items-center">
+      <div class="flex flex-wrap justify-center items-center mt-2 md:mt-0">
         {#if !hasExpired}
           {#if $isAuthenticated && !incompleteProfile}
             <div class="mt-2 mx-2 rounded-md shadow-sm">
