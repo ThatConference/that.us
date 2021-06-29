@@ -215,14 +215,10 @@
                 class="text-lg leading-6 font-medium text-gray-900 inline-block">
                 {`${host.firstName} ${host.lastName}`}
               </h3>
-              {#if type === 'REGULAR' || type === 'WORKSHOP'}
+              {#if type !== 'OPEN_SPACE' && host.profileSlug != 'thatconference'}
                 <span class="flex flex-row items-center overflow-clip">
-                  <img
-                    src="/images/Trees-Solid.svg"
-                    class="h-5 inline mr-2"
-                    alt="THAT Trees" />
                   <span class="text-that-red text-lg font-medium inline"
-                    >Counselor</span>
+                    >Camp Counselor</span>
                 </span>
               {/if}
             </div>

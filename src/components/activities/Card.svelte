@@ -141,15 +141,12 @@
   class="{`w-full h-full flex flex-col ${
     requiresAccessToJoin ? 'rounded-lg border-t-4 border-red-500' : ''
   }`}">
-  {#if type === 'REGULAR' || type === 'WORKSHOP'}
+  {#if type !== 'OPEN_SPACE' && host.profileSlug != 'thatconference'}
     <div class="relative w-full text-center">
       <div
-        class="inline-block absolute top-8 right-0 bg-that-red rounded-l-lg p-2 shadow-sm">
-        <div class="flex flex-col">
-          <img
-            src="/images/Trees-Solid-White.svg"
-            class="h-5"
-            alt="THAT Trees" />
+        class="inline-block absolute top-8 right-0 bg-that-red rounded-l-xl p-2 pl-3 shadow-sm">
+        <div class="flex flex-col items-center">
+          <span class="text-white uppercase text-xs">Camp</span>
           <span class="text-white uppercase text-xs">Counselor</span>
         </div>
       </div>
