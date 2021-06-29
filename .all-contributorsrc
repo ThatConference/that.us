@@ -350,6 +350,15 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "RunDLL32-Steve",
+      "name": "Steven Millard",
+      "avatar_url": "https://avatars.githubusercontent.com/u/40435775?v=4",
+      "profile": "https://github.com/RunDLL32-Steve",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
