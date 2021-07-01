@@ -16,17 +16,41 @@ function createServices() {
 
       isDuplicateMembership: (context, event) => {
         // triggers just replacing the item in the cart.
-        if (isEmpty(context.cart)) return false;
-        if (event.productType !== 'MEMBERSHIP') return false;
 
-        const result = event.productType === context.productType;
-        return result;
+        if (isEmpty(context.cart)) return false;
+
+        if (event.productType !== 'MEMBERSHIP') {
+          return false;
+        }
+
+        if (
+          event.productType === 'MEMBERSHIP' &&
+          context.productTypes.includes('MEMBERSHIP')
+        ) {
+          return true;
+        }
+
+        return false;
       },
 
-      isSameTicketType: (context, event) => {
+      isTicketOrMemberhip: (context, event) => {
+        // triggers just replacing the item in the cart.
         if (isEmpty(context.cart)) return false;
 
-        return event.productType !== context.productType;
+        if (
+          event.productType === 'MEMBERSHIP' &&
+          !context.productTypes.includes('MEMBERSHIP')
+        )
+          return true;
+
+        if (
+          event.productType !== 'MEMBERSHIP' &&
+          context.productTypes.includes('MEMBERSHIP')
+        )
+          return true;
+
+        // cannot have a membership mixed with tickets.
+        return false;
       },
 
       isSameEvent: (context, event) => {
@@ -57,24 +81,24 @@ function createServices() {
         const {
           lineItems = {},
           eventId = undefined,
-          productType = undefined,
+          productTypes = [],
         } = results;
 
         return {
           eventId,
           cart: lineItems,
-          productType,
+          productTypes,
         };
       }),
 
       setLocalStorage: context => {
-        const { cart, eventId, productType } = context;
+        const { cart, eventId, productTypes } = context;
 
         const localCart = {
           version: cartVersion,
           lineItems: cart,
           eventId,
-          productType,
+          productTypes,
         };
 
         window.localStorage.setItem(cartKeyName, JSON.stringify(localCart));
@@ -83,14 +107,17 @@ function createServices() {
       clearCart: assign({
         cart: () => ({}),
         eventId: () => undefined,
-        productType: () => undefined,
+        productTypes: () => [],
       }),
 
       clearLocalStorage: () => window.localStorage.removeItem(cartKeyName),
 
       addItem: assign({
-        eventId: (_, event) => event.eventId,
-        productType: (_, event) => event.productType,
+        eventId: (context, event) => context.eventId || event.eventId,
+        productTypes: (context, event) => [
+          ...context.productTypes,
+          event.productType,
+        ],
         cart: (context, event) => {
           if (!event.id) {
             throw new Error('No id passed into addItem');
@@ -102,8 +129,9 @@ function createServices() {
             price,
             name,
             description,
-            isBulkPurchase,
+            productType,
           } = event;
+
           const currentCart = context.cart;
 
           if (currentCart[id]) {
@@ -123,8 +151,9 @@ function createServices() {
             id,
             name,
             description,
+            productType,
             price,
-            isBulkPurchase,
+            isBulkPurchase: currentCart[id].qty > 1,
           };
 
           return currentCart;

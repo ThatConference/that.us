@@ -68,7 +68,8 @@
           <img
             class="w-full rounded-lg shadow"
             src="/images/ActivityDetailExample.jpg"
-            alt="" />
+            alt=""
+            loading="lazy" />
           <figcaption>
             Example: product review and sprint planning Activity.
           </figcaption>

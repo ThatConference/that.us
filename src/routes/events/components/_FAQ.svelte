@@ -38,6 +38,6 @@
   ];
 </script>
 
-<div class="">
+<div>
   <FAQS faqs="{faqs}" />
 </div>

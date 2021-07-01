@@ -1,7 +1,7 @@
 <script>
   export let followers = [];
 
-  import MemberCard from '../../../components/members/MemberCard.svelte';
+  import MemberCard from '../../../../components/members/MemberCard.svelte';
 </script>
 
 <div class="max-w-screen-xl mx-auto px-8">

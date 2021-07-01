@@ -3,23 +3,20 @@
 
   import { Check } from '../../../elements/svgs';
 
-  export let title = 'Payment Recieved, Thank You!';
+  export let title = 'Payment Received, Thank You!';
   export let text =
     'We have a few follow-up questions for you to answer. Not only does this help us to better service you, but we need your shirt size.';
 </script>
 
 <div in:fade>
   <div
-    class="pt-20 fixed z-50 inset-0 overscroll-none overflow-y-auto "
+    class="fixed z-50 inset-0 overscroll-none overflow-y-auto"
     aria-labelledby="modal-title"
     role="dialog"
     aria-modal="true">
-    <div class="block min-h-screen pt-4 sm:p-10 px-4 pb-20 text-center">
+    <div class="block min-h-screen text-center pt-20">
       <div
-        class="inline-block bg-white rounded-lg px-4 pt-5 pb-4 overflow-auto shadow-xl sm:max-w-xl sm:w-full sm:p-6"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="modal-headline">
+        class="inline-block bg-white rounded-lg px-4 pt-5 pb-4 overflow-auto shadow-xl sm:max-w-xl sm:w-full sm:p-6">
         <div>
           <div
             class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100">

@@ -69,9 +69,9 @@
   import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
   import isToday from 'dayjs/plugin/isToday';
   import isBetween from 'dayjs/plugin/isBetween';
-  import { Input } from 'sveltejs-forms'; //https://github.com/mdauner/sveltejs-forms
-  import Datepicker from 'svelte-calendar'; //https://github.com/6eDesign/svelte-calendar
-  import Select from 'svelte-select'; //https://github.com/rob-balfre/svelte-select
+  import { Input } from 'sveltejs-forms';
+  import Datepicker from 'svelte-calendar';
+  import Select from 'svelte-select';
 
   import config from '../../../../config';
 
@@ -148,11 +148,18 @@
 
 <div class="px-4 sm:px-6 py-5 ">
   <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start">
-    <label
-      for="selectedDay"
-      class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
-      Select a Day:
-    </label>
+    <div>
+      <label
+        for="selectedDay"
+        class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
+        Select a Day:
+      </label>
+      <div class="relative">
+        <span
+          class="absolute top-0 left-0 transform -translate-x-4 -translate-y-4 block h-2 w-2 rounded-full bg-red-400"
+        ></span>
+      </div>
+    </div>
 
     <div class="mt-1 sm:mt-0 sm:col-span-2">
       <div class="max-w-lg sm:text-sm sm:leading-5">
@@ -171,11 +178,18 @@
 
   <div
     class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:pt-5">
-    <label
-      for="activity_startTime"
-      class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
-      Select a Time:
-    </label>
+    <div>
+      <label
+        for="activity_startTime"
+        class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
+        Select a Time:
+      </label>
+      <div class="relative">
+        <span
+          class="absolute top-0 left-0 transform -translate-x-4 -translate-y-4 block h-2 w-2 rounded-full bg-red-400"
+        ></span>
+      </div>
+    </div>
 
     <div class="mt-1 sm:mt-0 sm:col-span-2">
       <div class="flex space-x-8 max-w-lg">
@@ -232,11 +246,18 @@
 
   <div
     class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:pt-5">
-    <label
-      for="activity_duration"
-      class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
-      Estimated Duration (hours):
-    </label>
+    <div>
+      <label
+        for="activity_duration"
+        class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
+        Estimated Duration (hours):
+      </label>
+      <div class="relative">
+        <span
+          class="absolute top-0 left-0 transform -translate-x-4 -translate-y-4 block h-2 w-2 rounded-full bg-red-400"
+        ></span>
+      </div>
+    </div>
 
     <div class="mt-1 sm:mt-0 sm:col-span-2">
       <div class="w-32">

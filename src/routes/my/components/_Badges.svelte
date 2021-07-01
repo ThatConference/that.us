@@ -10,7 +10,6 @@
   // utilities
   import metaTagsStore from '../../../store/metaTags';
   import logEvent from '../../../utilities/eventTrack';
-  import { tagEvent } from '../../../utilities/gtag';
 
   import { user, thatProfile, refreshMe } from '../../../utilities/security.js';
 
@@ -33,8 +32,6 @@
     const badgeEarned = await claimTicket(ticketReference);
 
     if (badgeEarned) {
-      tagEvent('badgeClaimed', 'account', badgeEarned.id);
-
       logEvent('badge_claimed');
 
       awardedBadge = badgeEarned;
@@ -45,7 +42,6 @@
       failedClaim = true;
     }
 
-    tagEvent('claim_badge', 'account', $user.sub);
     setSubmitting(false);
   }
 
@@ -70,10 +66,13 @@
         <div class="flex space-x-3 justify-around">
           {#each awardedBadges as badge (badge.id)}
             <div class="flex flex-col items-center">
-              <img class="h-24 w-24" src="{badge.image}" alt="{badge.name}" />
+              <img
+                class="h-24 w-24"
+                src="{badge.image}"
+                alt="{badge.name}"
+                loading="lazy" />
               <h2
-                class="text-xl leading-6 font-bold tracking-tight text-gray-500"
-              >
+                class="text-xl leading-6 font-bold tracking-tight text-gray-500">
                 {badge.name}
               </h2>
             </div>
@@ -83,16 +82,15 @@
     </div>
   {/if}
 
-  <div class="mt-12 border-t">
+  <!-- <div class="mt-12 border-t">
     <div class="pt-6">
       <ClaimTicketForm handleSubmit="{handleClaimTicket}" />
     </div>
-  </div>
+  </div> -->
 </div>
 
-{#if failedClaim}
+<!-- {#if failedClaim}
   <Warning
     message="We were unable to claim that ticket number. Please re-check and try
-    again."
-  />
-{/if}
+    again." />
+{/if} -->

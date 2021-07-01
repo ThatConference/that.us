@@ -12,22 +12,16 @@
     .find(e => e.productType === 'MEMBERSHIP');
 
   const dispatch = createEventDispatcher();
+
+  function handlePurchaseMembershipOnClick() {
+    dispatch('purchase-membership');
+  }
 </script>
 
 <div class="relative bg-thatBlue-100 bg-opacity-25">
   <div class="pt-12 sm:pt-16 lg:pt-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center">
-        <h2
-          class="text-3xl font-extrabold text-thatBlue-800 sm:text-4xl lg:text-5xl">
-          Support Us, Supporting You.
-        </h2>
-        <p class="mt-4 text-xl text-gray-600">
-          We could create a free platform, but then you become the product. To
-          that we say no thank you, we're the product. We're taking the approach
-          of creating a monetization strategy of help us, help you.
-        </p>
-      </div>
+      <slot name="header" />
     </div>
   </div>
   <div class="mt-8 pb-16 sm:mt-12 sm:pb-20 lg:pb-28">
@@ -114,11 +108,19 @@
             <p class="text-lg leading-6 font-medium text-gray-900">
               Year Commitment, Automatic Renewal
             </p>
-            <div
-              class="mt-4 flex items-center justify-center text-5xl font-extrabold text-gray-900">
-              <span> ${membershipDetails.price} </span>
-              <span class="ml-3 text-xl font-medium text-gray-500"> USD </span>
+
+            <div class="mt-4 flex items-center justify-center">
+              <span
+                class="px-3 flex items-start text-6xl tracking-tight text-gray-900">
+                <span class="mr-2 text-4xl font-medium">$</span>
+                <span class="font-extrabold">{membershipDetails.price}</span>
+                <span
+                  class="mt-2 ml-2 text-xl font-medium tracking-wide text-gray-400">
+                  USD
+                </span>
+              </span>
             </div>
+
             <p class="mt-4 text-sm">
               <Link
                 href="/membership/pricing"
@@ -128,8 +130,7 @@
             </p>
             <div class="mt-8">
               <div class="flex flex-col">
-                <HighlightButton
-                  on:click="{() => dispatch('purchase-membership')}">
+                <HighlightButton on:click="{handlePurchaseMembershipOnClick}">
                   Purchase
                 </HighlightButton>
               </div>

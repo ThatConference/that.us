@@ -45,8 +45,7 @@
               {/if}
 
               <ul
-                class="grid grid-cols-1 gap-6 sm:grid-cols-3 md:grid-cols-4
-                  lg:grid-cols-5">
+                class="grid grid-cols-1 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
                 {#each $state.context.items as c (c.id)}
                   <li
                     class="col-span-1 bg-white rounded-lg shadow transition duration-500 ease-in-out transform hover:scale-105 hover:bg-that-offWhite">

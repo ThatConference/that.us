@@ -45,7 +45,8 @@
               <img
                 class="w-96"
                 src="{partner.companyLogo}"
-                alt="{partner.companyName}" />
+                alt="{partner.companyName}"
+                loading="lazy" />
             </Link>
           </div>
 

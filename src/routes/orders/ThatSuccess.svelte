@@ -1,6 +1,8 @@
 <script>
   import { onMount, getContext } from 'svelte';
   import { Link } from 'yrv';
+  import { getClient } from '@urql/svelte';
+  import qs from 'query-string';
 
   import Layout from './components/_Layout.svelte';
   import metaTagsStore from '../../store/metaTags';
@@ -11,18 +13,24 @@
 
   import { thatProfile } from '../../utilities/security';
   import QuestionModal from './components/_QuestionModal.svelte';
+  import ordersApi from '../../dataSources/api.that.tech/orders/mutations';
 
+  const apiClient = getClient();
   const { send } = getContext('cart');
+  const { eventId, orderReference } = qs.parse(location.search);
 
-  // todo. not sure if this route will work with the additional script
+  $: questionsCompleted = false;
   let formDataPrefill;
+
   onMount(() => {
     send('CLEAR_CART');
-    formDataPrefill = `memberId=${$thatProfile.id}&memberEmail=${$thatProfile.email}&firstName=${$thatProfile.firstName}&lastName=${$thatProfile.lastName}`;
+    const [_, queryString] = window.location.search.split('?');
+
+    formDataPrefill = `memberId=${$thatProfile.id}&memberEmail=${$thatProfile.email}&firstName=${$thatProfile.firstName}&lastName=${$thatProfile.lastName}&${queryString}`;
   });
 
   metaTagsStore.set({
-    title: 'Payment Recieved - THAT',
+    title: 'Payment Received - THAT',
     description: 'Your payment was successfully received.',
     nofollow: true,
     noindex: true,
@@ -32,11 +40,12 @@
     },
   });
 
-  let questionsCompleted = false;
-
   function handleOnSubmit(e) {
-    //todo post to the api that this was completed.
-    questionsCompleted = true;
+    return ordersApi(apiClient)
+      .markSurveyQuestionsCompleted(eventId, orderReference)
+      .then(results => {
+        questionsCompleted = results;
+      });
   }
 
   function handleOnLoad() {
@@ -50,9 +59,9 @@
 </svelte:head>
 
 {#if !questionsCompleted}
-  <div class="">
+  <div class="overscroll-none">
     <div
-      class="z-50 absolute inset-0 min-h-screen min-w-screen bg-gray-500 opacity-75">
+      class="z-50 fixed inset-0 min-h-screen min-w-screen bg-gray-500 opacity-75">
     </div>
     <QuestionModal>
       <div
@@ -69,7 +78,7 @@
     <div class="text-base max-w-prose mx-auto lg:max-w-none">
       <h2
         class="text-base text-thatOrange-400 font-semibold tracking-wide uppercase">
-        Payment Recieved
+        Payment Received
       </h2>
       <p
         class="mt-6 text-4xl sm:text-5xl sm:tracking-tight lg:text-6xl leading-8 font-extrabold tracking-tight text-gray-900">

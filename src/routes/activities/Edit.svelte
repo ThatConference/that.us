@@ -8,32 +8,41 @@
 
   // ui support
   import StackedLayout from '../../elements/layouts/StackedLayout.svelte';
-  import { ActionHeader, LinkButton, ModalError } from '../../elements';
+  import { ActionHeader, ModalError } from '../../elements';
   import Nav from '../../components/nav/interiorNav/Top.svelte';
   import CardLoader from '../../components/CardLoader.svelte';
   import ActivityForm from './components/form/ActivityForm.svelte';
 
   // utilities
   import metaTagsStore from '../../store/metaTags';
-  import { tagEvent } from '../../utilities/gtag';
   import logEvent from '../../utilities/eventTrack';
-  import { user } from '../../utilities/security.js';
   import { formatUpdate } from './lib/formatRequest';
 
   // data
-  import sessionsApi from '../../dataSources/api.that.tech/sessions.js';
+  import sessionsMutationsApi from '../../dataSources/api.that.tech/sessions/mutations';
+  import sessionsQueryApi from '../../dataSources/api.that.tech/sessions/queries';
 
   const { activityId } = router.params;
+  const { updateSession } = sessionsMutationsApi(getClient());
+  const { queryMySessionById } = sessionsQueryApi(getClient());
 
-  const { update, getById } = sessionsApi(getClient());
-  const activityDetails = getById(activityId);
+  let activityDetails;
 
-  async function handleWithdraw(e) {
-    await update(activityId, {
-      status: 'CANCELLED',
+  async function querySession(sessionId) {
+    return queryMySessionById(sessionId).then(sessionRetrieved => {
+      activityDetails = sessionRetrieved;
+      return sessionRetrieved;
+    });
+  }
+
+  async function handleWithdraw() {
+    const status =
+      activityDetails.type === 'OPEN_SPACE' ? 'CANCELLED' : 'WITHDREW';
+
+    await updateSession(activityId, activityDetails.type, {
+      status,
     });
 
-    tagEvent('activity_withdraw', 'activity', $user.sub);
     logEvent('activity_withdraw');
 
     navigateTo(`/my/submissions`, { replace: true });
@@ -42,17 +51,20 @@
   async function handleSubmit({
     detail: { values, setSubmitting, resetForm },
   }) {
-    const updatedActivity = formatUpdate(values);
-    await update(activityId, updatedActivity);
+    const { activity, type } = formatUpdate(values);
 
-    tagEvent('activity_update', 'activity', $user.sub);
+    await updateSession(activityId, type, activity);
+
     logEvent('activity_updated');
 
     setSubmitting(false);
     resetForm();
-    navigateTo(`/activities/${activityId}?edit=true&isUpdated=true`, {
-      replace: true,
-    });
+
+    if (activity.status === 'ACCEPTED') {
+      navigateTo(`/activities/${activityId}?edit=true&isUpdated=true`);
+    } else {
+      navigateTo(`/my/submissions`);
+    }
   }
 
   metaTagsStore.set({
@@ -116,7 +128,7 @@
       </div>
     </div>
 
-    {#await activityDetails}
+    {#await querySession(activityId)}
       <CardLoader />
     {:then activity}
       {#if activity}
@@ -124,7 +136,8 @@
           <ActivityForm
             handleSubmit="{handleSubmit}"
             handleWithdraw="{handleWithdraw}"
-            initialData="{activity}" />
+            initialData="{activity}"
+            isBackdoor />
         </div>
       {:else}
         <ModalError

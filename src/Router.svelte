@@ -8,13 +8,14 @@
   const { eventId } = config;
 
   function isLoggedIn() {
-    documentReferrer = $router.path;
+    documentReferrer = `${$router.path}${window.location.search}`;
     return $isAuthenticated;
   }
 
   // root
   import Home from './routes/home/Home.svelte';
   import Login from './routes/Login.svelte';
+  import Signup from './routes/Signup.svelte';
   import LoginSuccess from './routes/LoginSuccess.svelte';
   import Logout from './routes/Logout.svelte';
   import NotFound from './routes/NotFound.svelte';
@@ -36,6 +37,8 @@
   import StayingUpToDate from './routes/support/StayingUpToDate.svelte';
   import ChangeLog from './routes/releases/ChangeLog.svelte';
   import ChangeLogMissed from './routes/releases/Missed.svelte';
+  import CovidPolicies from './routes/support/Covid.svelte';
+  import Travel from './routes/support/Travel.svelte';
 
   // my
   import Settings from './routes/my/Settings.svelte';
@@ -46,8 +49,10 @@
   import Daily from './routes/activities/Daily.svelte';
   import Activity from './routes/activities/Activity.svelte';
   import Create from './routes/activities/Create.svelte';
+  import PostCreate from './routes/activities/PostCreate.svelte';
   import EditActivity from './routes/activities/Edit.svelte';
   import EventActivities from './routes/activities/Event.svelte';
+  import CallForCounselors from './routes/activities/CallForCounselors.svelte';
 
   // Communities
   import Community from './routes/communities/Community.svelte';
@@ -70,6 +75,10 @@
   import EventPartners from './routes/partners/EventPartners.svelte';
   import EventList from './routes/events/Events.svelte';
   import EventLanding from './routes/events/Event.svelte';
+  import Tickets from './routes/events/Tickets.svelte';
+
+  // speakers
+  import SpeakersAccept from './routes/speakers/Accept.svelte';
 </script>
 
 <!-- prettier-ignore -->
@@ -77,12 +86,15 @@
 <Router>
   <Route exact component="{Home}" />
   <Route exact path="/login" component="{Login}" documentReferrer="{documentReferrer}" />
+  <Route exact path="/signup" component="{Signup}" documentReferrer="{documentReferrer}" />
   <Route exact path="/login-success" component="{LoginSuccess}" />
   <Route exact path="/logout" component="{Logout}" />
   <Route exact path="/changelog" component="{ChangeLog}" />
   <Route exact path="/changelog-missed" component="{ChangeLogMissed}" />
 
   <Route exact path="/membership/pricing" component="{Pricing}" />
+  <Route path="/speakers/accept"  component="{SpeakersAccept}" condition="{isLoggedIn}" redirect="/login" />
+  
   <Route exact path="/not-found" component="{NotFound}" />
   
   <Router path="/join">
@@ -121,23 +133,29 @@
     <Route exact path="/joining-an-activity" component="{JoiningAnActivity}" />
     <Route exact path="/creating-an-activity" component="{CreateAnActivity}" />
     <Route exact path="/staying-up-to-date" component="{StayingUpToDate}" />
+    <Route exact path="/covid-policies" component="{CovidPolicies}" />
+    <Route exact path="/travel" component="{Travel}" />
   </Router>
 
+  <Router path="/events">
+    <Route exact path="/" component="{EventList}" />
+    <Route exact path="/:id/:name" component="{EventLanding}" />
+    <Route exact path="/:id/:name/tickets" component="{Tickets}" />
+    <Route exact path="/:id/:name/partners" component="{EventPartners}" />
+  </Router>
+  
   <Router path='/activities'>
     <Route exact component="{Daily}" />
     <Route exact path="/:id" component="{Activity}" />
     <Route exact path="/:id/:name" component="{EventActivities}" />
     <Route exact path="/create" redirect="{`/activities/create#/event/${eventId}`}" />
     <Route exact path="/create#/event/:eventId" component="{Create}" condition="{isLoggedIn}" redirect="/login" />
-    <Route path="/edit/:activityId" component="{EditActivity}" condition="{isLoggedIn}" redirect="/login" />
+    <Route exact path="/post-create#/event/:eventId" component="{PostCreate}" condition="{isLoggedIn}" redirect="/login" />
+    <Route exact path="/call-for-counselors" redirect="/activities/call-for-counselors/wi/2021" />
+    <Route exact path="/call-for-counselors/:state/:year" component="{CallForCounselors}" />
+    <Route path="/edit/*activityId" component="{EditActivity}" condition="{isLoggedIn}" redirect="/login"/>  
   </Router>
-
-  <Router path="/events">
-    <Route exact path="/" component="{EventList}" />
-    <Route exact path="/:id/:name" component="{EventLanding}" />
-    <Route exact path="/:id/:name/partners" component="{EventPartners}" />
-  </Router>
-
+  
   <Router path="/my">
     <Route exact redirect="/my/settings/profile" />
     <Route exact path="/settings" redirect="/my/settings/profile" />

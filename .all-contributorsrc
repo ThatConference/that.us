@@ -323,6 +323,33 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "ategen3rt",
+      "name": "Adam J Tegen",
+      "avatar_url": "https://avatars.githubusercontent.com/u/36305171?v=4",
+      "profile": "https://github.com/ategen3rt",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "joshpierce",
+      "name": "Joshua Pierce",
+      "avatar_url": "https://avatars.githubusercontent.com/u/8643537?v=4",
+      "profile": "https://github.com/joshpierce",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "blitzmann",
+      "name": "Ryan Holmes",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3904767?v=4",
+      "profile": "https://github.com/blitzmann",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,

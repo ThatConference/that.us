@@ -30,7 +30,8 @@
                   <img
                     class="w-16 h-16 rounded-full lg:w-20 lg:h-20"
                     src="{member.profileImage}{imageCrop}"
-                    alt="{`${member.firstName} ${member.lastName}`}" />
+                    alt="{`${member.firstName} ${member.lastName}`}"
+                    loading="lazy" />
                   <div class="font-medium text-lg leading-6 space-y-1">
                     <h4>{`${member.firstName} ${member.lastName}`}</h4>
                     <p class="text-that-orange">{member.jobTitle}</p>

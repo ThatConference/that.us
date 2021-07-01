@@ -7,6 +7,7 @@ function createConfig(metaContext) {
       eventId: undefined,
       cart: {},
       checkoutSessionId: undefined,
+      productTypes: [],
     },
     states: {
       verification: {
@@ -32,7 +33,7 @@ function createConfig(metaContext) {
               target: '.cartError.duplicateMembership',
             },
             {
-              cond: 'isSameTicketType',
+              cond: 'isTicketOrMemberhip',
               target: '.cartError.invalidProductType',
             },
             {

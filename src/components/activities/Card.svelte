@@ -8,6 +8,7 @@
   export let speakers;
   export let tags = [];
   export let eventId;
+  export let targetLocation;
 
   // 3rd party
   import { onMount } from 'svelte';
@@ -17,7 +18,14 @@
   import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
   import relativeTime from 'dayjs/plugin/relativeTime';
   import Icon from 'svelte-awesome';
-  import { info, heart, signIn, cog, caretDown } from 'svelte-awesome/icons';
+  import {
+    info,
+    heart,
+    signIn,
+    cog,
+    caretDown,
+    user,
+  } from 'svelte-awesome/icons';
   import qs from 'query-string';
   import { getClient } from '@urql/svelte';
   import { isEmpty, find } from 'lodash';
@@ -137,13 +145,15 @@
         <img
           class="w-15 h-15 rounded-full"
           src="{userProfileImage}"
-          alt="{`${host.firstName} ${host.lastName}`}" />
+          alt="{`${host.firstName} ${host.lastName}`}"
+          loading="lazy" />
 
         {#if host.earnedMeritBadges.length > 0}
           <span class="absolute bottom-0 left-0 block h-6 w-6">
             <img
               src="{host.earnedMeritBadges[0].image}"
-              alt="{host.earnedMeritBadges[0].name}" />
+              alt="{host.earnedMeritBadges[0].name}"
+              loading="lazy" />
           </span>
         {/if}
       </span>
@@ -248,7 +258,18 @@
   {#if !hasExpired}
     <div class="flex-none border-t border-gray-200">
       <div class="-mt-px flex">
-        {#if canJoin}
+        {#if targetLocation === 'IN_PERSON'}
+          <div class="-ml-px w-0 flex-1 flex">
+            <div
+              class="relative w-0 flex-1 inline-flex items-center justify-center
+              py-2 text-xs leading-4 text-white font-medium border
+              border-transparent rounded-br-lg rounded-bl-lg transition ease-in-out
+              duration-150 bg-that-blue pointer-cursor">
+              <Icon data="{user}" class="-ml-1 mr-2 h-4 w-4" />
+              <span>In-Person</span>
+            </div>
+          </div>
+        {:else if canJoin}
           <div class="-ml-px w-0 flex-1 flex">
             <CardLink href="/join/{id}" icon="{signIn}" text="{'Join In'}" />
           </div>
@@ -257,7 +278,7 @@
             <div
               class="relative w-0 flex-1 inline-flex items-center justify-center
                 py-2 text-xs leading-4 text-gray-300 font-medium border
-                border-transparent rounded-br-lg transition ease-in-out
+                border-transparent rounded-br-lg rounded-bl-lg transition ease-in-out
                 duration-150">
               <Icon data="{signIn}" class="-ml-1 mr-2 h-4 w-4" />
               <span>Join {timeLeftToJoin}</span>

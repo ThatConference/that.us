@@ -18,8 +18,8 @@
     {#each links as l}
       <Link
         href="{l.href}"
-        class="ml-4 px-3 py-2 font-medium text-sm text-gray-500  rounded-md
-        hover:text-white hover:bg-that-blue focus:outline-none
+        class="ml-1 px-3 py-2 font-medium text-sm text-gray-500  rounded-md
+        hover:text-white hover:bg-that-blue hover:bg-opacity-50 focus:outline-none
           focus:text-white focus:bg-that-blue
           transition duration-150 ease-in-out">
         <div class="flex items-center">
@@ -39,7 +39,7 @@
         <Link href="/orders/summary">
           <Cart />
           {#if cartItems > 0}
-            <span class="absolute bottom-0 right-0 block">
+            <span class="animate-pulse absolute bottom-0 right-0 block">
               <span
                 class="inline-flex items-center justify-center h-4 w-4 rounded-full bg-gray-500">
                 <span class="text-xs font-medium leading-none text-white"

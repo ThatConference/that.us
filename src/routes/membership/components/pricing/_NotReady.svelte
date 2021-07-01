@@ -1,5 +1,6 @@
 <script>
-  import { login } from '../../../../utilities/security';
+  import { navigateTo } from 'yrv';
+
   import { Highlight as HighlightButton } from '../../../../elements/buttons';
 </script>
 
@@ -19,7 +20,7 @@
       </div>
 
       <div class="mt-8 w-full">
-        <HighlightButton on:click="{() => login('/my/settings/profile', true)}">
+        <HighlightButton on:click="{() => navigateTo('/signup')}">
           Create An Account
         </HighlightButton>
       </div>

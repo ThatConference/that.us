@@ -3,6 +3,8 @@ import dayjs from 'dayjs';
 import { stripAuthorizationHeader } from './utilities';
 import { log } from './utilities/error';
 
+const defaultPageSize = 50;
+
 const coreSessionFields = `
   fragment coreFields on AcceptedSession {
     id
@@ -16,7 +18,12 @@ const coreSessionFields = `
     durationInMinutes
     slug
     communities
-    location
+    targetLocation
+    location {
+      destination
+      isOnline
+      url
+    }
   }
 `;
 
@@ -65,6 +72,7 @@ export const QUERY_SESSION_BY_ID = `
           startDate
           endDate
           logo
+          slug
         }
         speakers {
           firstName
@@ -154,6 +162,11 @@ export const QUERY_NEXT_SESSIONS = `
         count
         sessions {
           ...coreFields
+          event {
+            id
+            name
+            slug
+          }
           speakers {
             ...coreSpeakerFields
           }
@@ -209,7 +222,7 @@ export const CREATE_SESSION = `
   mutation CREATE_SESSION($eventId: ID!, $newSession: OpenSpaceCreateInput!) {
     sessions {
       create(eventId: $eventId) {
-        openSpace(openspace: $newSession) {
+        openSpace (session: $newSession) {
           ...coreFields
         }
       }
@@ -223,7 +236,7 @@ export const UPDATE_SESSION_BY_ID = `
     sessions {
       session(id: $sessionId) {
         update {
-          openSpace (openspace: $session) {
+          openSpace (session: $session) {
             ...coreFields
           }
         }
@@ -275,10 +288,14 @@ export default client => {
         return all || [];
       });
 
-  const querySessions = ({ eventId, pageSize = 50 }) =>
+  const querySessions = ({ eventId, pageSize = defaultPageSize }) =>
     query(QUERY_SESSIONS, { eventId, pageSize });
 
-  const querySessionsBySlug = ({ slug, cursor, pageSize = 50 }) => {
+  const querySessionsBySlug = ({
+    slug,
+    cursor,
+    pageSize = defaultPageSize,
+  }) => {
     const variables = {
       slug,
       pageSize,
@@ -324,11 +341,11 @@ export default client => {
       });
   };
 
-  const queryNextSessions = ({ pageSize = 50, cursor }) =>
+  const queryNextSessions = ({ pageSize = defaultPageSize, cursor }) =>
     query(QUERY_NEXT_SESSIONS, { pageSize, cursor });
 
   const querySessionsByDate = ({
-    pageSize = 50,
+    pageSize = defaultPageSize,
     asOfDate = dayjs().startOf('day'),
   }) =>
     query(
@@ -341,7 +358,7 @@ export default client => {
 
   const queryNextSessionsByDate = ({
     cursor,
-    pageSize = 50,
+    pageSize = defaultPageSize,
     asOfDate = dayjs().startOf('day'),
   }) =>
     query(

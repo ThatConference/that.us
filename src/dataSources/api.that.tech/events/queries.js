@@ -9,6 +9,8 @@ const productBaseFieldsFragment = `
     productType: type
     price
     isEnabled
+    uiReference
+    shortDescription
   }
 `;
 
@@ -91,14 +93,20 @@ const eventFieldsFragment = `
     isFeatured
     isActive
     logo
+    callForSpeakersOpenDate
+    callForSpeakersCloseDate
+    isCallForSpeakersOpen
     
     theme { 
       heroSlug
     }
 
     venues {
+      name
+      address
       city
       state
+      zip
     }
 
     products {
@@ -140,6 +148,42 @@ export const QUERY_EVENT_BY_SLUG = `
       event (findBy: {slug: $slug}) {
         get {
           ...eventFields
+        }
+      }
+    }
+  }
+`;
+
+export const QUERY_EVENT_FOR_CFP = `
+  query QUERY_EVENT_FOR_CFP ($slug: String) {
+    events {
+      event (findBy: {slug: $slug}) {
+        get {
+          id
+          name
+          description
+          slogan
+          type  
+          startDate
+          endDate
+          year
+          slug
+          logo
+          callForSpeakersOpenDate
+          callForSpeakersCloseDate
+          isCallForSpeakersOpen
+          milestones{
+            title
+            description
+            dueDate
+          }
+          venues {
+            name
+            address
+            city
+            state
+            zip
+          }
         }
       }
     }
@@ -191,6 +235,22 @@ export default client => {
 
     return client
       .query(QUERY_EVENT_BY_SLUG, variables, {
+        fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
+      })
+      .toPromise()
+      .then(({ data, error }) => {
+        if (error) log(error, 'QUERY_EVENT_BY_SLUG');
+
+        const { event } = data.events;
+        return event ? event.get : null;
+      });
+  }
+
+  function queryEventForCfp(slug) {
+    const variables = { slug };
+
+    return client
+      .query(QUERY_EVENT_FOR_CFP, variables, {
         fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
       })
       .toPromise()
@@ -266,6 +326,7 @@ export default client => {
     queryEvents,
     queryEventsByCommunity,
     queryEventBySlug,
+    queryEventForCfp,
     canAddSession,
     canAccessEvent,
   };

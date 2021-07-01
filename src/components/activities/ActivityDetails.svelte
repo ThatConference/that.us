@@ -11,6 +11,10 @@
   export let favoritedBy = [];
   export let eventId;
   export let event;
+  export let targetLocation;
+  export let sessionLocation;
+  export let type;
+  export let sessionLookups;
 
   // 3rd Party
   import { onMount } from 'svelte';
@@ -20,7 +24,16 @@
   import relativeTime from 'dayjs/plugin/relativeTime';
   import Icon from 'svelte-awesome';
   import { Link } from 'yrv';
-  import { heartO, heart, signIn, cog } from 'svelte-awesome/icons';
+  import {
+    cog,
+    exchange,
+    globe,
+    heartO,
+    heart,
+    mapMarker,
+    signIn,
+    user,
+  } from 'svelte-awesome/icons';
   import qs from 'query-string';
   import { getClient } from '@urql/svelte';
   import { isEmpty, find } from 'lodash';
@@ -53,6 +66,23 @@
     getClient(),
   );
   const isDailyActivity = config.eventId === eventId;
+
+  // Enum Lookups
+  let sessionTargetLocation =
+    sessionLookups.targetLocation.options.find(x => x.value === targetLocation)
+      ?.label || 'Online';
+  let sessionTargetLocationIcon =
+    targetLocation === 'EITHER'
+      ? exchange
+      : targetLocation === 'IN_PERSON'
+      ? user
+      : globe;
+  let sessionType = sessionLookups.sessionType.options.find(
+    x => x.value === type,
+  )?.label;
+  let sessionLocationDestination = sessionLookups.sessionLocationDestinations.options.find(
+    x => x.value === sessionLocation?.destination,
+  )?.label;
 
   let host = speakers[0];
   let imageCrop = '?mask=ellipse&w=500&h=500&fit=crop';
@@ -165,13 +195,15 @@
                 <img
                   class="h-12 w-12 rounded-full"
                   src="{userProfileImage}"
-                  alt="" />
+                  alt=""
+                  loading="lazy" />
 
                 {#if host.earnedMeritBadges.length > 0}
                   <span class="absolute bottom-0 left-0 block h-5 w-5">
                     <img
                       src="{host.earnedMeritBadges[0].image}"
-                      alt="{host.earnedMeritBadges[0].name}" />
+                      alt="{host.earnedMeritBadges[0].name}"
+                      loading="lazy" />
                   </span>
                 {/if}
               </span>
@@ -251,52 +283,54 @@
         {/if}
 
         {#if !hasExpired}
-          {#if canJoin}
-            <div class="mt-2 mx-2 rounded-md shadow-sm">
-              <Link
-                type="button"
-                href="/join/{id}"
-                class="relative inline-flex justify-center py-2 px-4 border-2
+          <div class="mt-2 mx-2 rounded-md shadow-sm">
+            <div
+              class="border-2 border-thatBlue-500 text-sm leading-5
+              font-medium rounded-md text-thatBlue-500 bg-white
+              hover:bg-thatBlue-500 hover:text-white focus:outline-none
+              focus:ring-thatBlue-500 focus:bg-thatBlue-500
+              focus:text-white focus:border-thatBlue-800
+              active:bg-thatBlue-800 transition duration-150 ease-in-out">
+              <CalendarButton
+                title="{title}"
+                shortDescription="{shortDescription}"
+                id="{id}"
+                startTime="{startTime}"
+                durationInMinutes="{durationInMinutes}"
+                slug="{slug}" />
+            </div>
+          </div>
+
+          {#if targetLocation != 'IN_PERSON'}
+            {#if canJoin}
+              <div class="mt-2 mx-2 rounded-md shadow-sm">
+                <Link
+                  type="button"
+                  href="/join/{id}"
+                  class="relative inline-flex justify-center py-2 px-4 border-2
                   border-thatBlue-500 text-sm leading-5 font-medium rounded-md
                   text-thatBlue-500 bg-white hover:bg-thatBlue-500
                   hover:text-white focus:outline-none
                   focus:ring-thatBlue-500 focus:bg-thatBlue-500
                   focus:text-white focus:border-thatBlue-800
                   active:bg-thatBlue-800 transition duration-150 ease-in-out">
-                <Icon
-                  data="{signIn}"
-                  class="-ml-1 mr-2 h-4 w-4 text-gray-400" />
-                <span>Join In</span>
-              </Link>
-            </div>
-          {:else}
-            <div class="mt-2 mx-2 rounded-md shadow-sm">
-              <div
-                class="border-2 border-thatBlue-500 text-sm leading-5
-                  font-medium rounded-md text-thatBlue-500 bg-white
-                  hover:bg-thatBlue-500 hover:text-white focus:outline-none
-                  focus:ring-thatBlue-500 focus:bg-thatBlue-500
-                  focus:text-white focus:border-thatBlue-800
-                  active:bg-thatBlue-800 transition duration-150 ease-in-out">
-                <CalendarButton
-                  title="{title}"
-                  shortDescription="{shortDescription}"
-                  id="{id}"
-                  startTime="{startTime}"
-                  durationInMinutes="{durationInMinutes}"
-                  slug="{slug}" />
+                  <Icon
+                    data="{signIn}"
+                    class="-ml-1 mr-2 h-4 w-4 text-gray-400" />
+                  <span>Join In</span>
+                </Link>
               </div>
-            </div>
-
-            <span class="mt-2 mx-2 rounded-md shadow-sm">
-              <div
-                class="relative inline-flex items-center px-4 py-2 border-2
+            {:else}
+              <span class="mt-2 mx-2 rounded-md shadow-sm">
+                <div
+                  class="relative inline-flex items-center px-4 py-2 border-2
                   border-gray-300 text-sm leading-5 font-medium rounded-md
                   text-gray-400 bg-white">
-                <Icon data="{signIn}" class="-ml-1 mr-2 h-4 w-4" />
-                <span>Join {timeLeftToJoin}</span>
-              </div>
-            </span>
+                  <Icon data="{signIn}" class="-ml-1 mr-2 h-4 w-4" />
+                  <span>Join {timeLeftToJoin}</span>
+                </div>
+              </span>
+            {/if}
           {/if}
         {/if}
       </div>
@@ -304,7 +338,6 @@
   </div>
 
   <!-- body -->
-
   <div class="w-full flex flex-col sm:flex-row space-x-6">
     <div class="flex-auto px-4 py-5 sm:px-6 text-center md:text-left">
       <!-- Title -->
@@ -316,7 +349,7 @@
 
       <!-- Start Time -->
       <p
-        class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:mx-auto md:mt-5
+        class="mt-3 text-base text-gray-700 sm:mt-5 sm:text-lg sm:mx-auto md:mt-5
         md:text-xl lg:mx-0">
         {#if durationInMinutes <= 60}
           {dayjs(startTime).format('dddd, MMMM D, YYYY - h:mm A')}, for
@@ -328,6 +361,24 @@
           hours.
         {/if}
       </p>
+
+      <!-- Location -->
+      <p
+        class="mt-1 text-base text-gray-700 sm:mt-2 sm:text-lg sm:mx-auto md:mt-1
+        md:text-xl lg:mx-0">
+        <Icon
+          data="{sessionTargetLocationIcon}"
+          class="h-4 w-4 pb-0.5 mr-2" />{sessionTargetLocation}
+        {sessionType}
+      </p>
+
+      {#if targetLocation === 'IN_PERSON' && sessionLocationDestination}
+        <p
+          class="mt-1 text-base text-gray-700 sm:mt-2 sm:text-lg sm:mx-auto md:mt-1
+    md:text-xl lg:mx-0">
+          <Icon data="{mapMarker}" class="h-4 w-4 pb-0.5 mr-2" />Room: {sessionLocationDestination}
+        </p>
+      {/if}
 
       <!-- Description -->
       <p
@@ -354,8 +405,10 @@
     </div>
 
     {#if !isDailyActivity}
-      <div class="sm:w-1/2 p-6 flex flex-col items-center">
-        <img src="{event.logo}" alt="Event Logo" />
+      <div class="sm:w-1/2 py-6 flex flex-col items-center">
+        <a href="{`/events/${event.slug}`}" class="w-full">
+          <img src="{event.logo}" alt="Event Logo" loading="lazy" />
+        </a>
       </div>
     {/if}
   </div>

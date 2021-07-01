@@ -72,7 +72,10 @@ export async function setupAuth(client) {
     thatProfile.set(await queryMe(client));
 
     if (redirectResult)
-      navigateTo(redirectResult.appState.pathname, { replace: true });
+      navigateTo(
+        `${redirectResult.appState.pathname}${redirectResult.appState.search}`,
+        { replace: true },
+      );
   }
 }
 
