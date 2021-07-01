@@ -1,48 +1,12 @@
 <script>
-  import { getClient } from '@urql/svelte';
-
-  import Warning from '../../../components/notifications/Warning.svelte';
-  import ClaimTicketForm from '../../../components/my/ClaimTicketForm.svelte';
-
-  // data
-  import memberApi from '../../../dataSources/api.that.tech/members/mutations';
-
   // utilities
   import metaTagsStore from '../../../store/metaTags';
-  import logEvent from '../../../utilities/eventTrack';
-
-  import { user, thatProfile, refreshMe } from '../../../utilities/security.js';
-
-  const { claimTicket } = memberApi(getClient());
-
-  let awardedBadge;
-  let failedClaim = false;
+  import { thatProfile } from '../../../utilities/security.js';
+  import { Warning } from '../../../elements/svgs';
 
   let awardedBadges = [];
   $: if ($thatProfile.earnedMeritBadges) {
     awardedBadges = [...$thatProfile.earnedMeritBadges];
-  }
-
-  async function handleClaimTicket({
-    detail: { values, setSubmitting, resetForm },
-  }) {
-    failedClaim = false;
-
-    const { ticketReference } = values;
-    const badgeEarned = await claimTicket(ticketReference);
-
-    if (badgeEarned) {
-      logEvent('badge_claimed');
-
-      awardedBadge = badgeEarned;
-
-      await refreshMe();
-      resetForm();
-    } else {
-      failedClaim = true;
-    }
-
-    setSubmitting(false);
   }
 
   metaTagsStore.set({
@@ -58,39 +22,39 @@
 </script>
 
 <div>
-  {#if awardedBadges.length > 0}
-    <div>
-      <h2 class="text-xl leading-6 font-bold text-gray-900">Merit Badges</h2>
+  <header>
+    <h2 class="text-xl leading-6 font-bold text-gray-900">Your Merit Badges</h2>
+  </header>
 
-      <div class="mt-12">
-        <div class="flex space-x-3 justify-around">
-          {#each awardedBadges as badge (badge.id)}
-            <div class="flex flex-col items-center">
-              <img
-                class="h-24 w-24"
-                src="{badge.image}"
-                alt="{badge.name}"
-                loading="lazy" />
-              <h2
-                class="text-xl leading-6 font-bold tracking-tight text-gray-500">
-                {badge.name}
-              </h2>
-            </div>
-          {/each}
+  {#if awardedBadges.length > 0}
+    <div class="mt-12">
+      <div class="flex space-x-3 justify-around">
+        {#each awardedBadges as badge (badge.id)}
+          <div class="flex flex-col items-center">
+            <img
+              class="h-24 w-24"
+              src="{badge.image}"
+              alt="{badge.name}"
+              loading="lazy" />
+            <h2
+              class="text-xl leading-6 font-bold tracking-tight text-gray-500">
+              {badge.name}
+            </h2>
+          </div>
+        {/each}
+      </div>
+    </div>
+  {:else}
+    <div class="mt-8">
+      <div class="flex items-center">
+        <div class="mr-4">
+          <Warning classes="h-12 w-12 text-red-500" />
         </div>
+
+        <h2 class="prose-xl text-gray-500">
+          Wait, our records seem to indicate you don't have a merit badge yet.
+        </h2>
       </div>
     </div>
   {/if}
-
-  <!-- <div class="mt-12 border-t">
-    <div class="pt-6">
-      <ClaimTicketForm handleSubmit="{handleClaimTicket}" />
-    </div>
-  </div> -->
 </div>
-
-<!-- {#if failedClaim}
-  <Warning
-    message="We were unable to claim that ticket number. Please re-check and try
-    again." />
-{/if} -->
