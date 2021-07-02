@@ -140,6 +140,9 @@
         }
       }
 
+      socialLinkValues[link.linkType] = result;
+    }
+
     return result;
   }
 
