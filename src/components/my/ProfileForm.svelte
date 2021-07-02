@@ -108,9 +108,12 @@
 
     // if we have a value.. add it back
     if (!isEmpty(userValue)) {
-      socialLinksState.push(
-        buildSocialLink(link.linkType, link.slug, userValue),
-      );
+      let slug = '';
+      if (Array.isArray(link.slug))
+        slug = slugValues[link.linkType] || link.slug[0];
+      else slug = link.slug;
+
+      socialLinksState.push(buildSocialLink(link.linkType, slug, userValue));
     }
 
     return socialLinksState;
@@ -125,10 +128,17 @@
       );
 
       if (socialLink) {
-        let [slug, value] = socialLink.url.split(link.slug);
-        result = value;
+        // If link.slugs is an array, match socialLink.url with the proper element
+        if (Array.isArray(link.slug)) {
+          link.slug.forEach(el => {
+            const [, value] = socialLink.url.split(el);
+            if (value) result = value;
+          });
+        } else {
+          const [, value] = socialLink.url.split(link.slug);
+          result = value;
+        }
       }
-    }
 
     return result;
   }
