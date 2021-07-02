@@ -65,7 +65,7 @@
       linkType: 'YOUTUBE',
       name: 'youtube',
       icon: youtubePlay,
-      slug: 'https://youtube.com/',
+      slug: ['https://youtube.com/channel/', 'https://youtube.com/c/'],
     },
     {
       linkType: 'TWITCH',
