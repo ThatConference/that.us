@@ -75,11 +75,6 @@
     },
   ];
 
-  let youtubeSuffix = 'https://youtube.com/channel/';
-  function setYoutubeSuffix(userSelection) {
-    youtubeSuffix = userSelection;
-  }
-
   const { isSlugTaken } = memberApi(getClient());
 
   let initialValues;
