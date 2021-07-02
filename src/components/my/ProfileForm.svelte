@@ -466,55 +466,35 @@
         <div class="sm:col-span-4">
           {#each socialLinks as link}
             <!-- todo - shadow isn't aligned properly <div class="mt-4 flex rounded-md shadow-sm"> -->
-            {#if link.linkType !== 'YOUTUBE'}
-              <div class="mt-4 flex border rounded-md shadow-sm">
-                <span
-                  class="inline-flex items-center px-3 rounded-l-md border
-                    border-r-0 border-gray-300 bg-gray-50 text-gray-500 sm:text-sm
-                    w-1/4">
-                  <span class="w-6">
-                    <Icon data="{link.icon}" />
-                  </span>
-                  {link.slug}
+            <div class="mt-4 flex border rounded-md shadow-sm">
+              <div
+                class="inline-flex items-center px-3 rounded-l-md border
+                  border-r-0 border-gray-300 bg-gray-50 text-gray-500 sm:text-sm
+                  w-1/3">
+                <span class="w-6">
+                  <Icon data="{link.icon}" />
                 </span>
-                <Input name="profileLinks" hidden />
-                <input
-                  type="text"
-                  name="{link.name}"
-                  value="{getInitialSocailLinkValue(link)}"
-                  on:change="{e => setValue('profileLinks', updateLinksInputValues(link, e.target.value))}"
-                  class="flex-1 form-input block w-full min-w-0 border rounded-none
-                    rounded-r-md transition duration-150 ease-in-out sm:text-sm
-                    sm:leading-5" />
-              </div>
-              <!-- Special YouTube input handling due to the differences in channel links -->
-            {:else}
-              <div class="mt-4 flex border rounded-md shadow-sm">
-                <div
-                  class="inline-flex items-center px-3 rounded-l-md border
-                    border-r-0 border-gray-300 bg-gray-50 text-gray-500 sm:text-sm
-                    w-1/4">
-                  <span class="w-6">
-                    <Icon data="{link.icon}" />
-                  </span>
+                {#if Array.isArray(link.slug)}
                   <select
-                    class="w-full p-1 bg-transparent text-gray-500 sm:text-sm border-none focus:border-thatBlue-200 focus:ring focus:ring-thatBlue-100 focus:ring-opacity-50 outline-none cursor-pointer"
-                    on:blur="{e => setYoutubeSuffix(e.target.value)}">
-                    <option>{`${link.slug}channel/`}</option>
-                    <option>{`${link.slug}c/`}</option>
+                    class="form-input w-full p-1 bg-transparent text-gray-500 sm:text-sm border-none outline-none cursor-pointer"
+                    value="{getInitialSelectValue(link)}"
+                    on:blur="{e => setValue('profileLinks', updateLinkSlugValue(link, e.target.value))}">
+                    {#each link.slug as slug}
+                      <option value="{slug}">{slug}</option>
+                    {/each}
                   </select>
-                </div>
-                <Input name="profileLinks" hidden />
-                <input
-                  type="text"
-                  name="{link.name}"
-                  value="{getInitialSocailLinkValue(link)}"
-                  on:change="{e => setValue('profileLinks', updateLinksInputValues(link, `${youtubeSuffix}${e.target.value}`))}"
-                  class="flex-1 form-input block w-full min-w-0 border rounded-none
-                    rounded-r-md transition duration-150 ease-in-out sm:text-sm
-                    sm:leading-5" />
+                {:else}{link.slug}{/if}
               </div>
-            {/if}
+              <Input name="profileLinks" hidden />
+              <input
+                type="text"
+                name="{link.name}"
+                value="{getInitialSocialLinkValue(link)}"
+                on:change="{e => setValue('profileLinks', updateLinksInputValues(link, e.target.value))}"
+                class="flex-1 form-input block w-full min-w-0 border rounded-none
+                  rounded-r-md transition duration-150 ease-in-out sm:text-sm
+                  sm:leading-5" />
+            </div>
           {/each}
         </div>
       </div>
