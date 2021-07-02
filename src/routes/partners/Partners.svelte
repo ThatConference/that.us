@@ -7,10 +7,13 @@
   import Hero from '../../components/partners/Hero.svelte';
   import PartnerCard from '../../components/partners/PartnerCard.svelte';
   import { Waiting } from '../../elements';
+  import ScrollThreshold from '../../components/ScrollThreshold.svelte';
 
   import metaTagsStore from '../../store/metaTags';
   import partnerMachine from './machines/partners';
   import { debug } from '../../config';
+
+  let scrollThreshold = 1200;
 
   metaTagsStore.set({
     title: 'Partners - THAT',
@@ -31,6 +34,7 @@
   }
 </script>
 
+<ScrollThreshold bind:scrollThreshold />
 <Layout>
   <main class="overflow-hidden">
     <div class="relative pb-16 md:pb-20 lg:pb-24 xl:pb-32">
@@ -55,7 +59,7 @@
             {/each}
             <SvelteInfiniteScroll
               window
-              threshold="{100}"
+              threshold="{scrollThreshold}"
               on:loadMore="{handleNext}" />
           </ul>
           {#if ['loadingNext', 'loadedAll'].some($state.matches)}

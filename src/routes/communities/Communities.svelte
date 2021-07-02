@@ -7,10 +7,13 @@
   import { Waiting } from '../../elements';
   import Layout from '../../elements/layouts/ContentLayout.svelte';
   import CommunityCard from '../../components/communities/CommunityCard.svelte';
+  import ScrollThreshold from '../../components/ScrollThreshold.svelte';
 
   import createMachine from './machines/communities';
   import metaTagsStore from '../../store/metaTags';
   import { debug } from '../../config';
+
+  let scrollThreshold = 1200;
 
   const { state, send } = useMachine(createMachine(), {
     devTools: debug.xstate,
@@ -30,6 +33,7 @@
   }
 </script>
 
+<ScrollThreshold bind:scrollThreshold />
 <Layout>
   <main class="overflow-hidden">
     <div class="relative pb-16 md:pb-20 lg:pb-24 xl:pb-32">
@@ -59,7 +63,7 @@
 
                 <SvelteInfiniteScroll
                   window
-                  threshold="{100}"
+                  threshold="{scrollThreshold}"
                   on:loadMore="{handleNext}" />
               </ul>
 
