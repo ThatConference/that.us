@@ -146,6 +146,45 @@
     return result;
   }
 
+  function getInitialSelectValue(link) {
+    // initial state should be the first element in slug array
+    let result = link.slug[0];
+
+    if (!isNewProfile && profile.profileLinks) {
+      const [socialLink] = profile.profileLinks.filter(
+        i => i.linkType === link.linkType,
+      );
+      link.slug.forEach(el => {
+        const [, value] = socialLink.url.split(el);
+        if (value) {
+          result = el;
+          slugValues[link.linkType] = el;
+        }
+      });
+    }
+
+    return result;
+  }
+
+  function updateLinkSlugValue(link, userValue) {
+    const urlEnding = socialLinkValues[link.linkType];
+    slugValues[link.linkType] = userValue;
+
+    // clear out the value regardless.
+    socialLinksState = socialLinksState.filter(
+      i => i.linkType !== link.linkType,
+    );
+
+    // if we have a value.. add it back
+    if (!isEmpty(userValue)) {
+      socialLinksState.push(
+        buildSocialLink(link.linkType, userValue, urlEnding),
+      );
+    }
+
+    return socialLinksState;
+  }
+
   if (isNewProfile) {
     initialValues = {
       firstName: undefined,
