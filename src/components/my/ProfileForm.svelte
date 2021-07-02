@@ -85,6 +85,8 @@
   let initialValues;
   let profileImageUploading;
   let profileImageUrl;
+  let slugValues = {};
+  let socialLinkValues = {};
 
   // clear out __typename
   if (profile) omitDeep(profile, ['__typename']);
