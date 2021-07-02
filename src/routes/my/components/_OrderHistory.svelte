@@ -8,6 +8,7 @@
 
   import { Waiting } from '../../../elements';
   import { Ticket, ChevronRight, Chevron } from '../../../elements/svgs';
+  import ScrollThreshold from '../../../components/ScrollThreshold.svelte';
 
   import metaTagsStore from '../../../store/metaTags';
   import { debug } from '../../../config';
@@ -19,6 +20,7 @@
   dayjs.extend(isBetween);
 
   const { queryOrderReceiptUrl } = orderQueryApi(getClient());
+  let scrollThreshold = 1200;
 
   metaTagsStore.set({
     title: 'Order History - THAT',
@@ -51,6 +53,7 @@
   }
 </script>
 
+<ScrollThreshold bind:scrollThreshold />
 <div>
   <header>
     <h2 class="text-xl leading-6 font-bold text-gray-900">Order History</h2>
@@ -126,7 +129,7 @@
         </li>
         <SvelteInfiniteScroll
           window
-          threshold="{100}"
+          threshold="{ScrollThreshold}"
           on:loadMore="{handleNext}" />
       {/each}
     </ul>

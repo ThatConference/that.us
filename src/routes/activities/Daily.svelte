@@ -9,6 +9,7 @@
   import Sponsor from '../../components/SponsorSimple.svelte';
   import ActivityList from '../../components/activities/List.svelte';
   import CardLoader from '../../components/CardLoader.svelte';
+  import ScrollThreshold from '../../components/ScrollThreshold.svelte';
 
   // elements
   import { Waiting, ActionHeader, LinkButton } from '../../elements';
@@ -22,9 +23,7 @@
   import { debug } from '../../config';
 
   let createDisabled = true;
-  let width;
   let scrollThreshold = 1200;
-  $: scrollThreshold = width > 768 ? 1200 : 2500;
 
   const { state, send } = useMachine(createMachine(), {
     devTools: debug.xstate,
@@ -50,9 +49,9 @@
   }
 </script>
 
+<ScrollThreshold bind:scrollThreshold />
 <StackedLayout>
   <div slot="header">
-    <div bind:clientWidth="{width}"></div>
     <Nav />
     <ActionHeader title="Daily Activities">
       {#if !createDisabled}
