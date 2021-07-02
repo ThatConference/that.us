@@ -116,7 +116,7 @@
     return socialLinksState;
   }
 
-  function getInitialSocailLinkValue(link) {
+  function getInitialSocialLinkValue(link) {
     let result = '';
 
     if (!isNewProfile && profile.profileLinks) {
