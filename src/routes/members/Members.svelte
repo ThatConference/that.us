@@ -9,8 +9,11 @@
   import Hero from '../../components/members/Hero.svelte';
   import MemberCard from '../../components/members/MemberCard.svelte';
   import { debug } from '../../config';
+  import ScrollThreshold from '../../components/ScrollThreshold.svelte';
 
   import memberMachine from './machines/members';
+
+  let scrollThreshold = 1200;
 
   const { state, send } = useMachine(memberMachine(), {
     devTools: debug.xstate,
@@ -31,6 +34,7 @@
   }
 </script>
 
+<ScrollThreshold bind:scrollThreshold />
 <Layout>
   <main class="overflow-hidden">
     <div class="relative pb-16 md:pb-20 lg:pb-24 xl:pb-32">
@@ -41,15 +45,13 @@
             <div class="px-8">
               {#if ['init'].some($state.matches)}
                 <div
-                  class="mb-24 w-full flex flex-col items-center justify-center"
-                >
+                  class="mb-24 w-full flex flex-col items-center justify-center">
                   <Waiting />
                 </div>
               {/if}
               <ul
                 class="grid grid-cols-1 gap-6 sm:grid-cols-3 md:grid-cols-4
-                  lg:grid-cols-5"
-              >
+                  lg:grid-cols-5">
                 {#each $state.context.items as m, i (m.id)}
                   <li class="col-span-1">
                     <MemberCard {...m} />
@@ -57,9 +59,8 @@
                 {/each}
                 <SvelteInfiniteScroll
                   window
-                  threshold="{100}"
-                  on:loadMore="{handleNext}"
-                />
+                  threshold="{scrollThreshold}"
+                  on:loadMore="{handleNext}" />
               </ul>
               {#if ['loadingNext', 'loadedAll'].some($state.matches)}
                 <div class="flex flex-grow justify-center py-12">
