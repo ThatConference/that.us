@@ -12,11 +12,22 @@
 
   import { Waiting } from '../../elements';
   import eventsApi from '../../dataSources/api.that.tech/events/queries';
+  import metaTagsStore from '../../store/metaTags';
 
   const { eventId } = qs.parse(location.search);
   const { send } = getContext('cart');
 
   let event;
+
+  metaTagsStore.set({
+    title: 'Promotions - THAT',
+    description: 'Let us help.',
+    openGraph: {
+      type: 'website',
+      url: `https://that.us/promo`,
+    },
+  });
+
   async function queryEvent() {
     event = await eventsApi(getClient()).queryEventById(eventId);
     console.log({ event });

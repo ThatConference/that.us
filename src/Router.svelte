@@ -169,7 +169,7 @@
   
   <Router path="/promo">
     <Route exact path="/" component="{Promo}" />
-    <Route exact path="/pandemic" redirect="/promo/claim?eventId=7wiuRWI7EZjcdF4e9MDz" />
+    <Route exact path="/10years" redirect="/promo/claim?eventId=7wiuRWI7EZjcdF4e9MDz" />
     <Route path="/claim" component="{Promo}" />
   </Router>
   

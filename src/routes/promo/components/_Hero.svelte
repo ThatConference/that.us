@@ -60,7 +60,7 @@
         <div class="relative">
           <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div
-              class="max-w-md mx-auto space-y-4 lg:max-w-5xl lg:grid lg:grid-cols-2 lg:gap-5 lg:space-y-0">
+              class="max-w-md mx-auto space-y-4 lg:max-w-6xl lg:grid lg:grid-cols-2 lg:gap-5 lg:space-y-0">
               <div class="relative flex flex-col rounded-lg shadow-lg">
                 <div>
                   <div
@@ -84,15 +84,31 @@
                       </h3>
 
                       <div class="flex">
-                        <span
-                          class="px-3 flex items-start text-6xl tracking-tight text-gray-900">
-                          <span class="mt-2 mr-2 text-4xl font-medium">
-                            $
+                        <div>
+                          <span class="line-through text-red-500">
+                            <span
+                              class="px-3 flex items-start text-5xl tracking-tight text-gray-900">
+                              <span class="mt-2 mr-2 text-3xl font-medium">
+                                $
+                              </span>
+                              <span class="font-extrabold">
+                                {eventTickets['VIRTUAL_CAMPER'].price}
+                              </span>
+                            </span>
                           </span>
-                          <span class="font-extrabold">
-                            {eventTickets['PROMO_VIRTUAL_CAMPER'].price}
+                        </div>
+
+                        <div>
+                          <span
+                            class="px-3 flex items-start text-5xl tracking-tight text-gray-900">
+                            <span class="mt-2 mr-2 text-3xl font-medium">
+                              $
+                            </span>
+                            <span class="font-extrabold">
+                              {eventTickets['PROMO_VIRTUAL_CAMPER'].price}
+                            </span>
                           </span>
-                        </span>
+                        </div>
                       </div>
                     </div>
 
@@ -189,15 +205,31 @@
                       </h3>
 
                       <div class="flex">
-                        <span
-                          class="px-3 flex items-start text-6xl tracking-tight text-gray-900">
-                          <span class="mt-2 mr-2 text-4xl font-medium">
-                            $
+                        <div>
+                          <span class="line-through text-red-500">
+                            <span
+                              class="px-3 flex items-start text-5xl tracking-tight text-gray-900">
+                              <span class="mt-2 mr-2 text-3xl font-medium">
+                                $
+                              </span>
+                              <span class="font-extrabold">
+                                {eventTickets['VIRTUAL_CAMPER'].price}
+                              </span>
+                            </span>
                           </span>
-                          <span class="font-extrabold">
-                            {eventTickets['PROMO_CAMPER_NO_FOOD'].price}
+                        </div>
+
+                        <div>
+                          <span
+                            class="px-3 flex items-start text-5xl tracking-tight text-gray-900">
+                            <span class="mt-2 mr-2 text-3xl font-medium">
+                              $
+                            </span>
+                            <span class="font-extrabold">
+                              {eventTickets['PROMO_CAMPER_NO_FOOD'].price}
+                            </span>
                           </span>
-                        </span>
+                        </div>
                       </div>
                     </div>
                     <div>
