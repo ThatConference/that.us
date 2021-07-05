@@ -35,7 +35,7 @@
 
       <p
         class="text-center max-w-6xl mx-auto text-xl text-gray-300 sm:mt-5 sm:text-2xl">
-        Are you paying for your own ticket? Did your companies educational
+        Are you paying for your own ticket? Did your company's educational
         budget disappear? Or maybe you're someone who is a freelancer or a
         student trying to get into the community. For a limited time, we're
         offering one post-pandemic fantastic promotion to join us either ON THAT

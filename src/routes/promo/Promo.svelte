@@ -10,6 +10,7 @@
   import Hero from './components/_Hero.svelte';
   import FAQ from './components/_FAQ.svelte';
 
+  import { Waiting } from '../../elements';
   import eventsApi from '../../dataSources/api.that.tech/events/queries';
 
   const { eventId } = qs.parse(location.search);
@@ -41,17 +42,20 @@
     <Nav />
   </section>
 
-  {#await queryEvent() then event}
+  {#await queryEvent()}
+    <div class="flex flex-grow justify-center py-12">
+      <Waiting />
+    </div>
+  {:then event}
     <section in:fade>
       <Hero
         event="{event}"
         on:purchase-promo-ticket="{({ detail }) =>
           handleOnTicketPurchase(detail)}" />
     </section>
+
+    <section in:fade>
+      <FAQ />
+    </section>
   {/await}
-
-  <section in:fade>
-    <FAQ/>
-  </section>
-
 </Layout>
