@@ -213,7 +213,7 @@
                                 $
                               </span>
                               <span class="font-extrabold">
-                                {eventTickets['VIRTUAL_CAMPER'].price}
+                                {eventTickets['CAMPER_NO_FOOD'].price}
                               </span>
                             </span>
                           </span>
