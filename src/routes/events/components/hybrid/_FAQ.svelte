@@ -3,33 +3,28 @@
 
   const faqs = [
     {
-      q: 'Why are you charging?',
-      a:
-        'Each user is charged a fee to access THAT Online events. The cost goes towards the running of the events along with the utilities and maintenance of the system.',
-    },
-    {
-      q: 'Why do you offer a membership?',
-      a:
-        "A membership allows you to access all online monthly events throughout the year for a one time annual fee. You don't need to worry about purchasing each individual online event. You will have the freedom to access the information as you choose without the worry of remembering to purchase each month.",
-    },
-    {
       q: 'Can I buy on behalf of someone else?',
       a:
-        'Unfortunately, this option is not available at this time but we are working on it.',
+        'Yes. Once the ticket is purchased you can visit your order history and assign it to any member of THAT. https://that.us/my/settings/order-history',
+    },
+    {
+      q: 'Can I transfer my ticket?',
+      a:
+        'Yes, visit your order history and assign it to any member of THAT. https://that.us/my/settings/order-history',
     },
     {
       q: 'Can I buy bulk tickets?',
       a:
-        'Sorta. This is a feature in progress but email us @ hello@that.us and we will handle it manually.',
+        'Yes, although if you would like a bulk discount please email us @ hello@that.us.',
     },
     {
-      q: 'Can I transfer my membership or ticket?',
-      a: 'Unfortunately, this capability is not available at this time.',
+      q: 'Where do I find my annual membership discount code?',
+      a: 'https://that.us/my/settings/membership',
     },
     {
-      q: 'Can I cancel my annual membership?',
+      q: 'Do you have a discounted rate on room and board?',
       a:
-        'Yes, but we will miss you. You can cancel your annual membership at any time by heading to  https://that.us/my/settings/order-history. After cancelling your membership, you will still have access to THAT.us until the last day of your billing cycle. You will not receive a pro-rated refund for the remainder of your billing cycle.',
+        'Yes, more information can be found here: https://that.us/support/travel',
     },
     {
       q: "I'm interested in becoming a sponsor.",

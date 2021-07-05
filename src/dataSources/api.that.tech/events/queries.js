@@ -154,6 +154,19 @@ export const QUERY_EVENT_BY_SLUG = `
   }
 `;
 
+export const QUERY_EVENT_BY_ID = `
+  ${eventFieldsFragment}
+  query QUERY_EVENT_BY_ID ($eventId: ID) {
+    events {
+      event (findBy: {id: $eventId}) {
+        get {
+          ...eventFields
+        }
+      }
+    }
+  }
+`;
+
 export const QUERY_EVENT_FOR_CFP = `
   query QUERY_EVENT_FOR_CFP ($slug: String) {
     events {
@@ -246,6 +259,22 @@ export default client => {
       });
   }
 
+  function queryEventById(eventId) {
+    const variables = { eventId };
+
+    return client
+      .query(QUERY_EVENT_BY_ID, variables, {
+        fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
+      })
+      .toPromise()
+      .then(({ data, error }) => {
+        if (error) log(error, 'QUERY_EVENT_BY_ID');
+
+        const { event } = data.events;
+        return event ? event.get : null;
+      });
+  }
+
   function queryEventForCfp(slug) {
     const variables = { slug };
 
@@ -326,6 +355,7 @@ export default client => {
     queryEvents,
     queryEventsByCommunity,
     queryEventBySlug,
+    queryEventById,
     queryEventForCfp,
     canAddSession,
     canAccessEvent,
