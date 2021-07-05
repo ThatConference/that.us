@@ -9,7 +9,7 @@
     },
     {
       q: 'Can I buy bulk tickets?',
-      a: 'You can, but not promotional tickets.',
+      a: 'You can, but not these promotional tickets.',
     },
     {
       q: 'Can I transfer my ticket?',
@@ -19,6 +19,21 @@
     {
       q: "I'm interested in becoming a sponsor.",
       a: "That's wonderful to hear. Please contact us at partnerships@that.us.",
+    },
+    {
+      q:
+        'I already bought these tickets at a higher price, can I get a refund.',
+      a: 'No.',
+    },
+    {
+      q:
+        'I already bought these tickets at a higher price, can I get a refund.',
+      a: 'No.',
+    },
+    {
+      q: 'Do you have a discounted rate on room and board?',
+      a:
+        'Yes, more information can be found here: https://that.us/support/travel',
     },
   ];
 </script>
