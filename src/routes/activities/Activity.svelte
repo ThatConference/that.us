@@ -34,7 +34,7 @@
 <StackedLayout>
   <div slot="header">
     <Nav />
-    <ActionHeader title="Activity Details" />
+    <ActionHeader title="Activity Spotlight" />
   </div>
   <div slot="body">
     {#await getSessionData(id)}
