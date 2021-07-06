@@ -2,6 +2,7 @@
   import { Link } from 'yrv';
   // import Youtube from '@sveltecasts/svelte-youtube';
   import CfpCta from '../cta/_HomePageCFP.svelte';
+  import TicketsOnSale from '../cta/_TicketsOnSale.svelte';
 
   // utilities
   import { login, isAuthenticated } from '../../utilities/security';
@@ -108,7 +109,8 @@
         <div class="lg:grid lg:grid-cols-12 lg:gap-24 lg:place-items-center">
           <div
             class="flex flex-col items-center justify-center md:max-w-2xl md:mx-auto lg:col-span-5">
-            <CfpCta />
+            <!-- <CfpCta /> -->
+            <TicketsOnSale />
           </div>
 
           <div
