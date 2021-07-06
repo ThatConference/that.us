@@ -37,6 +37,7 @@
       'tags',
       'communities',
       'speakers.fullName',
+      'type',
     ],
   };
 

@@ -79,6 +79,9 @@
 
   // speakers
   import SpeakersAccept from './routes/speakers/Accept.svelte';
+
+  // Promotions
+  import Promo from './routes/promo/Promo.svelte';
 </script>
 
 <!-- prettier-ignore -->
@@ -162,6 +165,12 @@
     <Route exact path="/settings/:aside" component="{Settings}" condition="{isLoggedIn}" redirect="/login" />
     <Route exact path="/favorites" component="{MyFavorites}" condition="{isLoggedIn}" redirect="/login" />
     <Route exact path="/submissions" component="{MySubmissions}" condition="{isLoggedIn}" redirect="/login" />
+  </Router>
+  
+  <Router path="/promo">
+    <Route exact path="/" component="{Promo}" />
+    <Route exact path="/10years" redirect="/promo/claim?eventId=7wiuRWI7EZjcdF4e9MDz" />
+    <Route path="/claim" component="{Promo}" />
   </Router>
   
   <Route fallback>

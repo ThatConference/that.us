@@ -16,7 +16,7 @@
   import PanelSpeakers from './PanelSpeakers.svelte';
 
   let splitTitle = title.replace(/([.?!])\s*(?=[A-Z])/g, '$1|').split('|');
-  let showMore = false;
+  let showMore = true;
 </script>
 
 <div
@@ -113,38 +113,6 @@
                       active:bg-gray-50 active:text-gray-800 w-32">
                     <Icon data="{youtubePlay}" class="-ml-1 mr-2 h-5 w-5" />
                     <span>YouTube</span>
-                  </Link>
-                </div>
-
-                <div class="inline-flex m-3 rounded-md shadow-md">
-                  <Link
-                    open
-                    href="https://facebook.com/thatconference"
-                    type="button"
-                    class="relative inline-flex items-center justify-center
-                      px-4 py-2 border border-gray-300 text-sm leading-5
-                      font-medium rounded-md text-gray-700 bg-white
-                      hover:text-blue-700 focus:outline-none
-                      focus:ring-blue focus:border-blue-300
-                      active:bg-gray-50 active:text-gray-800 w-32">
-                    <Icon data="{facebook}" class="-ml-1 mr-2 h-5 w-5" />
-                    <span>Facebook</span>
-                  </Link>
-                </div>
-
-                <div class="inline-flex m-3 rounded-md shadow-md">
-                  <Link
-                    open
-                    href="https://twitch.com/thatconference"
-                    type="button"
-                    class="relative inline-flex items-center justify-center
-                      px-4 py-2 border border-gray-300 text-sm leading-5
-                      font-medium rounded-md text-gray-700 bg-white
-                      hover:text-indigo-700 focus:outline-none
-                      focus:ring-indigo focus:border-indigo-300
-                      active:bg-gray-50 active:text-gray-800 w-32">
-                    <Icon data="{twitch}" class="-ml-1 mr-2 h-5 w-5" />
-                    <span>Twitch</span>
                   </Link>
                 </div>
               {/if}

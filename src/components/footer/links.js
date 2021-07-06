@@ -35,7 +35,7 @@ export const supportLinks = [
     href: '/changelog',
   },
   {
-    text: 'Sytem Status',
+    text: 'System Status',
     href: 'http://status.that.tech',
   },
 ];
