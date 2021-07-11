@@ -17,10 +17,10 @@
     isAuthenticated,
     token,
     thatProfile,
-  } from '../../utilities/security.js';
-  import createMachine from './machines/partner';
-  import metaTagsStore from '../../store/metaTags';
-  import { debug } from '../../config';
+  } from '../../../utilities/security';
+  import createMachine from '../machines/partner';
+  import metaTagsStore from '../../../store/metaTags';
+  import { debug } from '../../../config';
 
   const { state, send } = useMachine(createMachine(slug), {
     devTools: debug.xstate,
@@ -61,10 +61,10 @@
       <Hero
         partner="{$state.context.profile}"
         isFollowing="{$state.context.isFollowing}"
-        on:TOGGLE_FOLLOW="{() => send('FOLLOW', {
+        on:TOGGLE_FOLLOW="{() =>
+          send('FOLLOW', {
             id: $state.context.profile.id,
-          })}"
-      />
+          })}" />
     </div>
 
     {#if $state.context.profile.members && $state.context.profile.members.length > 0}
@@ -82,17 +82,16 @@
     <div in:fade="{{ delay: getDelay(true) }}">
       <div in:fade="{{ delay: getDelay() }}">
         <Followers
-          stateMachineService="{$state.context.followMachineServices}"
-        />
+          stateMachineService="{$state.context.followMachineServices}" />
       </div>
 
       <CTA
         partner="{$state.context.profile}"
         isFollowing="{$state.context.isFollowing}"
-        on:TOGGLE_FOLLOW="{() => send('FOLLOW', {
+        on:TOGGLE_FOLLOW="{() =>
+          send('FOLLOW', {
             id: $state.context.profile.id,
-          })}"
-      />
+          })}" />
     </div>
   </div>
 {/if}

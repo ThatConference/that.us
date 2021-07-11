@@ -80,10 +80,7 @@
 
   router.subscribe(e => {
     if (!e.initial) {
-      // https://developers.google.com/analytics/devguides/collection/gtagjs/pages
-      window.gtag('config', config.gtag, {
-        page_path: e.path,
-      });
+      window.woopra.track();
     }
   });
 
@@ -115,7 +112,7 @@
   onDestroy(unsub);
 
   $: if ($thatProfile) {
-    let { id, email } = $thatProfile;
+    let { id, email, firstName, lastName } = $thatProfile;
 
     Sentry.configureScope(scope => {
       scope.setUser({
@@ -126,6 +123,12 @@
 
     LogRocket.identify(id, {
       email,
+    });
+
+    woopra.identify({
+      id,
+      email,
+      name: `${firstName} ${lastName}`,
     });
   }
 </script>

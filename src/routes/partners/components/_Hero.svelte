@@ -8,10 +8,10 @@
   import Clipboard from 'clipboard';
   import { Link } from 'yrv';
 
-  import { Standard as StandardButton } from '../../elements/buttons';
-  import { Standard as StandardLink } from '../../elements/links';
-  import { SocialLink } from '../../components/social';
-  import { isAuthenticated } from '../../utilities/security.js';
+  import { Standard as StandardButton } from '../../../elements/buttons';
+  import { Standard as StandardLink } from '../../../elements/links';
+  import { SocialLink } from '../../../components/social';
+  import { isAuthenticated } from '../../../utilities/security';
 
   const dispatch = createEventDispatcher();
   let clipboard;
