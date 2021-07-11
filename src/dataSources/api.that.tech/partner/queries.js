@@ -1,3 +1,5 @@
+import dayjs from 'dayjs';
+import { uniqBy } from 'lodash';
 import { log } from '../utilities/error';
 
 import { stripAuthorizationHeader } from '../utilities';
@@ -120,6 +122,58 @@ export const QUERY_NEXT_FOLLOWERS = `
   }
 `;
 
+export const QUERY_UPCOMING_PARTNERS = `
+  ${socialLinksFieldsFragment}
+  ${coreFieldsFragment}
+  query QUERY_UPCOMING_PARTNERS {
+    events {
+      all {
+        endDate
+        isActive
+        partners {
+          ...coreFieldsFragment
+          level
+          ...socialLinksFieldsFragment
+        }
+      }
+    }
+  }
+`;
+
+export const QUERY_PAST_PARTNERS = `
+  ${socialLinksFieldsFragment}
+  ${coreFieldsFragment}
+  query QUERY_PAST_PARTNERS {
+    partners {
+      all {
+        ...coreFieldsFragment
+        ...socialLinksFieldsFragment
+      }
+    }
+  }
+`;
+
+export const QUERY_EVENT_PARTNERS = `
+  ${socialLinksFieldsFragment}
+  ${coreFieldsFragment}
+  query QUERY_EVENT_PARTNERS ($slug: String!) {
+    events {
+      event (findBy: { slug: $slug }) {
+        get {
+          logo
+          name
+          partners {
+            ...coreFieldsFragment
+            level
+            placement
+            ...socialLinksFieldsFragment
+          }
+        }
+      }
+    }
+  }
+`;
+
 function createSocialLinks(partner) {
   const socialLinks = [];
 
@@ -168,9 +222,6 @@ export default client => {
       });
   }
 
-  const getEventPartners = (slug = config.eventSlug) => query(slug);
-  const getNextEventPartners = (slug = config.eventSlug) => null; // todo stubbed out until we have paged partners
-
   const getPartner = slug => {
     const variables = { slug };
     return client
@@ -218,9 +269,112 @@ export default client => {
       });
   };
 
+  function getUpcomingPartners() {
+    return client
+      .query(QUERY_UPCOMING_PARTNERS, {
+        fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
+      })
+      .toPromise()
+      .then(({ data, error }) => {
+        if (error) log(error, 'QUERY_UPCOMING_PARTNERS');
+
+        let results = [];
+        if (data) {
+          const { all } = data.events;
+
+          results = uniqBy(
+            all
+              .filter(e => e.isActive)
+              .filter(e =>
+                dayjs().isBefore(dayjs(e.endDate).add(30, 'day'), 'day'),
+              )
+              .reduce((acc, current) => [...acc, ...current.partners], [])
+              .map(p => ({
+                ...p,
+                socialLinks: createSocialLinks(p),
+              })),
+            'id',
+          );
+        }
+
+        return results;
+      });
+  }
+
+  function getUpcomingPartnersNext(cursor) {
+    // not implemented yet
+    return [];
+  }
+
+  function getPastPartners() {
+    return client
+      .query(QUERY_PAST_PARTNERS, {
+        fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
+      })
+      .toPromise()
+      .then(({ data, error }) => {
+        if (error) log(error, 'QUERY_PAST_PARTNERS');
+
+        let results = [];
+        if (data) {
+          const { all } = data.partners;
+          results = uniqBy(
+            all.map(p => ({
+              ...p,
+              socialLinks: createSocialLinks(p),
+            })),
+            'id',
+          );
+        }
+
+        return results;
+      });
+  }
+
+  function getPastPartnersNext(cursor) {
+    // not implemented yet
+    return [];
+  }
+
+  function getEventPartners(slug = config.eventSlug) {
+    const variables = { slug };
+
+    return client
+      .query(QUERY_EVENT_PARTNERS, variables, {
+        fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
+      })
+      .toPromise()
+      .then(({ data, error }) => {
+        if (error) log(error, 'QUERY_EVENT_PARTNERS');
+
+        let results = [];
+        if (data) {
+          const { get } = data.events.event;
+          const { partners } = get;
+
+          const modifiedPartners = partners.map(p => ({
+            ...p,
+            socialLinks: createSocialLinks(p),
+          }));
+
+          results = modifiedPartners;
+
+          results = {
+            ...get,
+            partners: [...modifiedPartners],
+          };
+        }
+
+        return results;
+      });
+  }
+
   return {
+    getPastPartners,
+    getPastPartnersNext,
+    getUpcomingPartners,
+    getUpcomingPartnersNext,
     getEventPartners,
-    getNextEventPartners,
     getPartner,
     queryFollowers,
     queryNextFollowers,

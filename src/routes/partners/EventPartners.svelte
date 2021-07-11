@@ -1,21 +1,19 @@
 <script>
-  import SvelteInfiniteScroll from 'svelte-infinite-scroll';
-  import { useMachine } from 'xstate-svelte';
   import { Link, router } from 'yrv';
+  import { getClient } from '@urql/svelte';
+  import { groupBy } from 'lodash';
 
   import Layout from '../../elements/layouts/ContentLayout.svelte';
-  import Hero from '../../components/partners/Hero.svelte';
-  import PartnerCard from '../../components/partners/PartnerCard.svelte';
-  import { Waiting } from '../../elements';
-  import ScrollThreshold from '../../components/ScrollThreshold.svelte';
-
+  import PartnerLevel from './components/_EventPartnerLevel.svelte';
   import metaTagsStore from '../../store/metaTags';
-  import partnerMachine from './machines/partners';
-  import { debug } from '../../config';
+
+  import partnerQueryApi from '../../dataSources/api.that.tech/partner/queries';
+  import Hero from './components/_EventHero.svelte';
+
+  const { getEventPartners } = partnerQueryApi(getClient());
 
   let { id, name } = $router.params;
   let eventSlug = `${id}/${name}`;
-  let scrollThreshold = 1200;
 
   metaTagsStore.set({
     title: 'Partners - THAT',
@@ -27,51 +25,48 @@
     },
   });
 
-  const { state, send } = useMachine(partnerMachine(eventSlug), {
-    devTools: debug.xstate,
-  });
+  async function queryEventPartners(slug) {
+    const data = await getEventPartners(slug);
+    const levels = groupBy(data.partners, 'level');
 
-  function handleNext() {
-    send('NEXT');
+    return { data, levels };
   }
 </script>
 
-<ScrollThreshold bind:scrollThreshold />
 <Layout>
-  <main class="overflow-hidden">
+  <main>
     <div class="relative pb-16 md:pb-20 lg:pb-24 xl:pb-32">
-      <div class="mt-32 mx-auto max-w-screen-xl px-4 sm:px-6 xl:mt-40">
-        <Hero />
+      {#await queryEventPartners(eventSlug) then event}
+        <div class="py-16 bg-opactity-75 bg-gradient-to-t from-gray-200">
+          <Hero event="{event.data}" />
+        </div>
 
-        <div class="mt-12 py-12">
-          {#if ['init'].some($state.matches)}
-            <div class="mb-24 w-full flex flex-col items-center justify-center">
-              <Waiting />
-            </div>
+        <div class="mx-auto max-w-screen-xl px-4 sm:px-6">
+          {#if event.levels['PIONEER']}
+            <PartnerLevel
+              header="Pioneer Sponsors"
+              partners="{event.levels['PIONEER']}" />
           {/if}
 
-          <ul
-            class="grid grid-cols-1 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-            {#each $state.context.items as p, i (p.id)}
-              <li
-                class="col-span-1 flex flex-col text-center bg-white rounded-lg shadow transition duration-500 ease-in-out transform hover:scale-105 hover:bg-that-offWhite">
-                <Link open href="{`/partners/${p.slug}`}">
-                  <PartnerCard {...p} />
-                </Link>
-              </li>
-            {/each}
-            <SvelteInfiniteScroll
-              window
-              threshold="{scrollThreshold}"
-              on:loadMore="{handleNext}" />
-          </ul>
-          {#if ['loadingNext', 'loadedAll'].some($state.matches)}
-            <div class="flex flex-grow justify-center py-12">
-              <Waiting />
-            </div>
+          {#if event.levels['EXPLORER']}
+            <PartnerLevel
+              header="Explorer Sponsors"
+              partners="{event.levels['EXPLORER']}" />
+          {/if}
+
+          {#if event.levels['SCOUT']}
+            <PartnerLevel
+              header="Scout Sponsors"
+              partners="{event.levels['SCOUT']}" />
+          {/if}
+
+          {#if event.levels['MEDIA']}
+            <PartnerLevel
+              header="Media Sponsors"
+              partners="{event.levels['MEDIA']}" />
           {/if}
         </div>
-      </div>
+      {/await}
     </div>
   </main>
 </Layout>

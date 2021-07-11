@@ -1,15 +1,13 @@
 import { getClient } from '@urql/svelte';
 import { Machine, assign } from 'xstate';
-import { uniqBy } from 'lodash';
+import { uniqBy, sortBy } from 'lodash';
 
 import { log } from '../../../utilities/error';
 import partnersApi from '../../../dataSources/api.that.tech/partner/queries';
 import createPagingConfig from '../../../machines/paging';
 
 function createServices() {
-  const { getUpcomingPartners, getUpcomingPartnersNext } = partnersApi(
-    getClient(),
-  );
+  const { getPastPartners, getPastPartnersNext } = partnersApi(getClient());
 
   return {
     guards: {
@@ -17,8 +15,8 @@ function createServices() {
     },
 
     services: {
-      load: context => getUpcomingPartners(),
-      loadNext: context => getUpcomingPartnersNext(), // todo stubbed until we have paged partners
+      load: context => getPastPartners(),
+      loadNext: context => getPastPartnersNext(context.cursor), // todo stubbed until we have paged partners
     },
 
     actions: {
@@ -30,8 +28,8 @@ function createServices() {
         }),
 
       loadSuccess: assign({
-        items: (_, { data }) => data,
-        cursor: (_, { data }) => undefined, // todo add once we have paged partners
+        items: (_, { data }) => sortBy(data, 'companyName'),
+        cursor: () => undefined, // todo add once we have paged partners
       }),
 
       // todo... we add to the object
@@ -46,10 +44,10 @@ function createServices() {
   };
 }
 
-function create(eventSlug) {
+function create() {
   const services = createServices();
 
-  return Machine({ ...createPagingConfig({ eventSlug }) }, { ...services });
+  return Machine({ ...createPagingConfig() }, { ...services });
 }
 
 export default create;

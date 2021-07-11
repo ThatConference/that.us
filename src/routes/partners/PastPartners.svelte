@@ -4,24 +4,24 @@
   import { Link } from 'yrv';
 
   import Layout from '../../elements/layouts/ContentLayout.svelte';
-  import Hero from './components/_PartnersHero.svelte';
+  import Hero from './components/_PastPartnersHero.svelte';
   import PartnerCard from '../../components/partners/PartnerCard.svelte';
   import { Waiting } from '../../elements';
   import ScrollThreshold from '../../components/ScrollThreshold.svelte';
 
   import metaTagsStore from '../../store/metaTags';
-  import partnerMachine from './machines/partners';
+  import partnerMachine from './machines/pastPartners';
   import { debug } from '../../config';
 
   let scrollThreshold = 1200;
 
   metaTagsStore.set({
-    title: 'Partners - THAT',
+    title: 'Past Partners - THAT',
     description:
       'Thank you to those who support our great community every day.',
     openGraph: {
       type: 'website',
-      url: `https://that.us/partners`,
+      url: `https://that.us/partners/past`,
     },
   });
 
