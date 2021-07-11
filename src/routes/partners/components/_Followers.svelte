@@ -4,8 +4,8 @@
   import { useService } from 'xstate-svelte';
 
   // import { Standard as StandardButton } from '../../elements/buttons';
-  import { Avatars } from '../../elements';
-  import { debug } from '../../config';
+  import { Avatars } from '../../../elements';
+  import { debug } from '../../../config';
 
   const { state } = useService(stateMachineService, { devTools: debug.xstate });
 </script>
