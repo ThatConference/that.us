@@ -52,7 +52,7 @@
     </h2>
   </header>
 
-  {#if !$thatProfile.isMember}
+  {#if !$thatProfile?.isMember}
     <div class="mt-8">
       <div class="flex items-center">
         <div class="mr-4">

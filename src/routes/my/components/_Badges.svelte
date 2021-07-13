@@ -5,7 +5,7 @@
   import { Warning } from '../../../elements/svgs';
 
   let awardedBadges = [];
-  $: if ($thatProfile.earnedMeritBadges) {
+  $: if ($thatProfile?.earnedMeritBadges) {
     awardedBadges = [...$thatProfile.earnedMeritBadges];
   }
 

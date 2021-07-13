@@ -130,7 +130,7 @@
     activity until that's complete."
     action="{{ title: 'Create Profile', href: '/my/settings/profile' }}"
     returnTo="{{ title: 'Return to Activities', href: '/activities' }}" />
-{:else if !$thatProfile.canFeature}
+{:else if !$thatProfile?.canFeature}
   <ModalError
     title="Your Profile Isn't Public."
     text="It appears we cannot feature your profile. You need to have a public
