@@ -31,7 +31,7 @@
               class="absolute bottom-0 right-0 block h-3.5 w-3.5 rounded-full bg-red-400"
             ></span>
           </div>
-        {:else if $thatProfile.profileImage}
+        {:else if $thatProfile?.profileImage}
           <img
             class="h-10 w-10 rounded-full"
             src="{$thatProfile.profileImage}?w=256&h=256&fit=crop"
