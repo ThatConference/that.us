@@ -30,7 +30,7 @@
         </h2>
 
         <p class="mt-12 prose-xl text-gray-500">
-          Join us for a jammed-packed full day of multi-hour hands-on workshops
+          Join us for a jam-packed full day of multi-hour hands-on workshops
           the day before THAT Conference kicks off. This allows you to get
           deeper into specifics across various technologies and learn from
           industry leaders just as passionate about code as you are.
