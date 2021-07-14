@@ -5,6 +5,7 @@
   import { v4 as uuidv4 } from 'uuid';
   import * as Sentry from '@sentry/browser';
   import LogRocket from 'logrocket';
+  import { isEmpty } from 'lodash';
 
   import config from './config';
   import { token, thatProfile, setupAuth } from './utilities/security.js';
@@ -111,7 +112,7 @@
 
   onDestroy(unsub);
 
-  $: if ($thatProfile) {
+  $: if (!isEmpty($thatProfile)) {
     let { id, email, firstName, lastName } = $thatProfile;
 
     Sentry.configureScope(scope => {
