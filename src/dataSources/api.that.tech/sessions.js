@@ -24,6 +24,15 @@ const coreSessionFields = `
       isOnline
       url
     }
+    agenda
+    longDescription
+    prerequisites
+    takeaways
+    supportingArtifacts {
+      name
+      url
+      description
+    }
   }
 `;
 
@@ -33,6 +42,14 @@ const coreOpenSpaceFields = `
     eventId
     title
     shortDescription
+    longDescription
+    prerequisites
+    takeaways
+    supportingArtifacts {
+      name
+      url
+      description
+    }
     tags
     type
     status
