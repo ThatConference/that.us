@@ -167,9 +167,14 @@
     }
   });
 
-  let userProfileImage = host.profileImage
-    ? `${host.profileImage}${imageCrop}`
-    : config.defaultProfileImage;
+  function showBackground(i) {
+    const result = i % 2;
+    return result != 0;
+  }
+
+  function getProfileImage(imageUrl) {
+    return imageUrl ? `${imageUrl}${imageCrop}` : config.defaultProfileImage;
+  }
 
   metaTagsStore.set({
     title: `${title} - THAT`,
@@ -181,11 +186,6 @@
       url: `https://that.us/activities/${id}`,
     },
   });
-
-  function showBackground(i) {
-    const result = i % 2;
-    return result != 0;
-  }
 </script>
 
 {#if isNew}
@@ -202,50 +202,54 @@
     <div
       class="flex justify-between md:items-end items-center flex-wrap
         sm:flex-nowrap flex-col md:flex-row">
-      <div class="">
-        <div class="flex md:flex-row flex-col items-center md:items-end">
-          <div class="flex-shrink-0">
-            <Link href="/members/{host.profileSlug}" open>
-              <span class="inline-block relative">
-                <img
-                  class="h-24 w-24 rounded-full"
-                  src="{userProfileImage}"
-                  alt=""
-                  loading="lazy" />
-
-                {#if host.earnedMeritBadges.length > 0}
-                  <span class="absolute bottom-0 left-0 block h-8 w-8">
+      <div>
+        <div class="pb-4 grid grid-cols-2 gap-12">
+          {#each speakers as s}
+            <div class="flex md:flex-row flex-col items-center md:items-end">
+              <div class="flex-shrink-0">
+                <Link href="/members/{s.profileSlug}" open>
+                  <span class="inline-block relative">
                     <img
-                      src="{host.earnedMeritBadges[0].image}"
-                      alt="{host.earnedMeritBadges[0].name}"
+                      class="h-24 w-24 rounded-full"
+                      src="{getProfileImage(s.profileImage)}"
+                      alt=""
                       loading="lazy" />
+
+                    {#if s.earnedMeritBadges.length > 0}
+                      <span class="absolute bottom-0 left-0 block h-8 w-8">
+                        <img
+                          src="{s.earnedMeritBadges[0].image}"
+                          alt="{s.earnedMeritBadges[0].name}"
+                          loading="lazy" />
+                      </span>
+                    {/if}
                   </span>
-                {/if}
-              </span>
-            </Link>
-          </div>
-          <div class="md:ml-4">
-            <div class="flex flex-col md:items-start items-center">
-              <h3
-                class="text-lg leading-6 font-medium text-gray-900 inline-block">
-                {`${host.firstName} ${host.lastName}`}
-              </h3>
-              {#if type !== 'OPEN_SPACE' && host.profileSlug != 'thatconference'}
-                <span class="flex flex-row items-center overflow-clip">
-                  <span class="text-that-red text-lg font-medium inline"
-                    >Camp Counselor</span>
-                </span>
-              {/if}
+                </Link>
+              </div>
+              <div class="md:ml-4">
+                <div class="flex flex-col md:items-start items-center">
+                  <h3
+                    class="text-lg leading-6 font-medium text-gray-900 inline-block">
+                    {`${s.firstName} ${s.lastName}`}
+                  </h3>
+                  {#if type !== 'OPEN_SPACE' && s.profileSlug != 'thatconference'}
+                    <span class="flex flex-row items-center overflow-clip">
+                      <span class="text-that-red text-lg font-medium inline"
+                        >Camp Counselor</span>
+                    </span>
+                  {/if}
+                </div>
+                <div class="md:text-left text-center">
+                  {#each s.profileLinks as link, i}
+                    <SocialLink
+                      href="{link.url}"
+                      network="{link.linkType}"
+                      isLast="{i === s.profileLinks?.length - 1}" />
+                  {/each}
+                </div>
+              </div>
             </div>
-            <div class="md:text-left text-center">
-              {#each host.profileLinks as link, i}
-                <SocialLink
-                  href="{link.url}"
-                  network="{link.linkType}"
-                  isLast="{i === host.profileLinks?.length - 1}" />
-              {/each}
-            </div>
-          </div>
+          {/each}
         </div>
       </div>
 
