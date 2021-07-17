@@ -200,12 +200,11 @@
   <!--header-->
   <div class="px-4 py-5 border-b border-gray-300 sm:px-6">
     <div
-      class="flex justify-between md:items-end items-center flex-wrap
-        sm:flex-nowrap flex-col md:flex-row">
-      <div>
-        <div class="pb-4 grid grid-cols-2 gap-12">
+      class="flex justify-between md:items-end items-center flex-wrap sm:flex-nowrap flex-col md:flex-row">
+      <div class="block">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-12">
           {#each speakers as s}
-            <div class="flex md:flex-row flex-col items-center md:items-end">
+            <div class="flex md:flex-row flex-col items-center">
               <div class="flex-shrink-0">
                 <Link href="/members/{s.profileSlug}" open>
                   <span class="inline-block relative">
@@ -226,7 +225,7 @@
                   </span>
                 </Link>
               </div>
-              <div class="md:ml-4">
+              <div class="flex-initial md:ml-4">
                 <div class="flex flex-col md:items-start items-center">
                   <h3
                     class="text-lg leading-6 font-medium text-gray-900 inline-block">
@@ -378,7 +377,7 @@
       </h2>
 
       <div
-        class="py-8 flex flex-col sm:flex-row justify-center sm:justify-start items-center space-x-0 sm:space-x-8 space-y-4 sm:spaace-y-0">
+        class="py-4 flex flex-col sm:flex-row justify-center sm:justify-start items-center space-x-0 sm:space-x-8 space-y-4 sm:spaace-y-0">
         {#if !isDailyActivity}
           <div class="h-24 w-24">
             <a href="{`/events/${event.slug}`}" class="w-full h-full">
@@ -390,7 +389,7 @@
         <div>
           <!-- Start Time -->
           <p
-            class="mt-3 text-base text-gray-700 sm:mt-5 sm:text-lg sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
+            class="text-base text-gray-700  sm:text-lg sm:mx-auto md:text-xl lg:mx-0">
             {#if durationInMinutes <= 60}
               {dayjs(startTime).format('dddd, MMMM D, YYYY - h:mm A')}, for
               {dayjs.duration(durationInMinutes, 'minutes').as('hours')}
