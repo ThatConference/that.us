@@ -170,6 +170,7 @@ export default client => {
     return client
       .query(QUERY_MEMBERS_INITAL, variables, {
         fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
+        requestPolicy: 'cache-and-network',
       })
       .toPromise()
       .then(({ data, error }) => {
