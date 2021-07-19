@@ -13,6 +13,8 @@
   import Goals from './components/_Goals.svelte';
   import Followers from './components/_Followers.svelte';
   import CTA from './components/_CTA.svelte';
+  import JobListings from './components/_JobListings.svelte';
+  import FeaturedSessions from './components/_FeaturedSessions.svelte';
 
   // utilities
   import { isAuthenticated, token } from '../../utilities/security';
@@ -68,15 +70,27 @@
             })}" />
       </div>
 
-      {#if $state.context.profile.members && $state.context.profile.members.length > 0}
+      {#if $state?.context?.profile?.members?.length > 0}
         <div in:fade="{{ delay: getDelay() }}">
           <FeaturedMembers members="{$state.context.profile.members}" />
         </div>
       {/if}
 
-      {#if $state.context.profile.goals && $state.context.profile.goals.length > 0}
+      {#if $state?.context?.profile?.goals?.length > 0}
         <div in:fade="{{ delay: getDelay() }}">
           <Goals goals="{$state.context.profile.goals}" />
+        </div>
+      {/if}
+
+      {#if $state?.context?.profile?.sessions?.length > 0}
+        <div in:fade="{{ delay: getDelay() }}">
+          <FeaturedSessions sessions="{$state.context.profile.sessions}" />
+        </div>
+      {/if}
+
+      {#if $state?.context?.profile?.jobListings?.length > 0}
+        <div in:fade="{{ delay: getDelay() }}">
+          <JobListings listings="{$state.context.profile.jobListings}" />
         </div>
       {/if}
 
