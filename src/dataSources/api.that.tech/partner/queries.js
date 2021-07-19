@@ -14,6 +14,50 @@ const coreFieldsFragment = `
   }
 `;
 
+const jobListingsFragment = `
+  fragment jobListingsFragment on Partner {
+    jobListings {
+      id
+      slug
+      title
+      description
+      jobType
+      experienceLevel
+      applyNowLink
+      role
+    }
+  }
+`;
+
+const featuredSessionsFragment = `
+  fragment featuredSessionsFragment on Partner {
+    sessions {
+      id
+      title
+      shortDescription
+      startTime
+      event {
+        logo
+      }
+      speakers {
+        profileImage
+        profileSlug
+        firstName
+        lastName
+        earnedMeritBadges {
+          id
+          name
+          image
+          description
+        }
+      }
+
+      tags
+      
+    }
+  }
+`;
+
 const socialLinksFieldsFragment = `
   fragment socialLinksFieldsFragment on Partner {
     linkedIn
@@ -23,6 +67,25 @@ const socialLinksFieldsFragment = `
     twitter
     facebook
     twitch
+  }
+`;
+
+const enumValues = `
+  options: enumValues {
+    label: description
+    value: name
+  }
+`;
+
+export const QUERY_PARTNER_DROPDOWN_VALUES = `
+  query QUERY_PARTNER_DROPDOWN_VALUES {
+    jobType: __type(name: "JobType") {
+      ${enumValues}
+    }
+    
+    experienceLevel: __type(name: "ExperienceLevel") {
+      ${enumValues}
+    }
   }
 `;
 
@@ -47,27 +110,21 @@ export const QUERY_PARTNERS = `
 export const QUERY_PARTNER = `
   ${socialLinksFieldsFragment}
   ${coreFieldsFragment}
+  ${jobListingsFragment}
+  ${featuredSessionsFragment}
   query queryPartner($slug: Slug!) {
     partners {
       partner(findBy: { slug: $slug }) {
         ...coreFieldsFragment
+        ...jobListingsFragment
+        ...socialLinksFieldsFragment
+        ...featuredSessionsFragment
         website
         aboutUs
         city
         state
         goals
-      
-        jobListings {
-          id
-          slug
-          title
-          description
-          jobType
-          experienceLevel
-          applyNowLink
-          role
-        }
-        
+
         members {
           id
           firstName
@@ -76,8 +133,6 @@ export const QUERY_PARTNER = `
           profileImage
           profileSlug
         }
-        
-        ...socialLinksFieldsFragment
       }
     }
   }
@@ -174,6 +229,29 @@ export const QUERY_EVENT_PARTNERS = `
   }
 `;
 
+export const QUERY_PARTNER_JOB_LISTING = `
+  ${socialLinksFieldsFragment}
+  query QUERY_PARTNER_JOB_LISTING ($partner: Slug, $slug: String!) {
+    partners {
+      partner (findBy: { slug: $partner }) {
+        companyName
+        companyLogo
+        website
+        ...socialLinksFieldsFragment
+        jobListing(slug: $slug) {
+          title
+          description
+          jobType
+          experienceLevel
+          applyNowLink
+          remote
+          role
+        }
+      }
+    }
+  }
+`;
+
 function createSocialLinks(partner) {
   const socialLinks = [];
 
@@ -233,6 +311,7 @@ export default client => {
         if (error) log(error, 'query_partners');
 
         const { partner } = data.partners;
+
         return partner
           ? { ...partner, socialLinks: createSocialLinks(partner) }
           : null;
@@ -369,6 +448,40 @@ export default client => {
       });
   }
 
+  function queryPartnerDropDownValues() {
+    const variables = {};
+
+    return client
+      .query(QUERY_PARTNER_DROPDOWN_VALUES, variables, {
+        fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
+      })
+      .toPromise()
+      .then(({ data, error }) => {
+        if (error) log(error, 'QUERY_PARTNER_DROPDOWN_VALUES');
+
+        return data;
+      });
+  }
+
+  function queryPartnerJobListing(partnerSlug, jobSlug) {
+    const variables = { partner: partnerSlug, slug: jobSlug };
+
+    return client
+      .query(QUERY_PARTNER_JOB_LISTING, variables, {
+        fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
+      })
+      .toPromise()
+      .then(({ data, error }) => {
+        if (error) log(error, 'QUERY_PARTNER_JOB_LISTING');
+
+        const { partner } = data.partners;
+        return {
+          ...partner,
+          socialLinks: createSocialLinks(partner),
+        };
+      });
+  }
+
   return {
     getPastPartners,
     getPastPartnersNext,
@@ -378,5 +491,7 @@ export default client => {
     getPartner,
     queryFollowers,
     queryNextFollowers,
+    queryPartnerDropDownValues,
+    queryPartnerJobListing,
   };
 };

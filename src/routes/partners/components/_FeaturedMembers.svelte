@@ -3,7 +3,9 @@
 
   import { Link } from 'yrv';
 
-  let imageCrop = '?auto=format&fit=facearea&facepad=2&w=256&h=256&q=80';
+  import config from '../../../config';
+
+  let imageCrop = '?auto=format&mask=ellipse&fit=crop&w=256&h=256&q=80';
 </script>
 
 <div class="bg-that-offWhite bg-opacity-50">
@@ -28,8 +30,10 @@
               <Link href="/members/{member.profileSlug}">
                 <div class="flex items-center space-x-4 lg:space-x-6">
                   <img
-                    class="w-16 h-16 rounded-full lg:w-20 lg:h-20"
-                    src="{member.profileImage}{imageCrop}"
+                    class="w-16 h-16 rounded-full lg:w-24 lg:h-24"
+                    src="{`${
+                      member.profileImage || config.defaultProfileImage
+                    }${imageCrop}`}"
                     alt="{`${member.firstName} ${member.lastName}`}"
                     loading="lazy" />
                   <div class="font-medium text-lg leading-6 space-y-1">

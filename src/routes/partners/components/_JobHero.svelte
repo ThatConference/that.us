@@ -1,33 +1,12 @@
 <script>
   export let partner;
-  export let isFollowing = false;
 
-  import { onMount, onDestroy, createEventDispatcher } from 'svelte';
-  import Icon from 'svelte-awesome';
-  import { share } from 'svelte-awesome/icons';
-  import Clipboard from 'clipboard';
   import { Link } from 'yrv';
 
   import { Standard as StandardButton } from '../../../elements/buttons';
   import { Standard as StandardLink } from '../../../elements/links';
   import { SocialLink } from '../../../components/social';
   import { isAuthenticated } from '../../../utilities/security';
-
-  const dispatch = createEventDispatcher();
-  let clipboard;
-  let copiedText;
-
-  onMount(() => {
-    clipboard = new Clipboard('#shareUrl');
-
-    clipboard.on('success', function (e) {
-      copiedText = 'Copied!';
-    });
-  });
-
-  onDestroy(() => {
-    clipboard.destroy();
-  });
 </script>
 
 <section class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -35,7 +14,7 @@
     <div class="flex flex-col space-y-8">
       <h1
         class="text-base leading-6 text-thatOrange-400 font-semibold tracking-wide uppercase">
-        PARTNER SPOTLIGHT
+        Career Opportunities at {partner.companyName}
       </h1>
       <div class="flex justify-between">
         <div>
@@ -69,28 +48,20 @@
               class="h-3/4"
               href="{partner.website}?utm_source=THAT"
               open="{true}">
-              Visit
+              Visit Us
             </StandardLink>
 
-            <StandardButton
-              class="h-3/4"
-              on:click="{() => dispatch('TOGGLE_FOLLOW')}">
-              Connect
-            </StandardButton>
-
-            {#if $isAuthenticated}
-              <StandardButton
+            <!-- <StandardButton class="h-3/4">Connect with Us</StandardButton> -->
+            {#if partner?.jobListing?.applyNowLink}
+              <StandardLink
                 class="h-3/4"
-                on:click="{() => dispatch('TOGGLE_FOLLOW')}">
-                {#if !isFollowing}Follow{:else}Un-Follow{/if}
-              </StandardButton>
+                href="{partner?.jobListing?.applyNowLink}?utm_source=THAT"
+                open="{true}">
+                Apply Now
+              </StandardLink>
             {/if}
           </div>
         </div>
-      </div>
-
-      <div class="leading-8 text-gray-800">
-        <p class="prose-xl lineBreaks">{partner.aboutUs || ''}</p>
       </div>
     </div>
   </div>
