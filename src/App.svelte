@@ -5,6 +5,7 @@
   import { v4 as uuidv4 } from 'uuid';
   import * as Sentry from '@sentry/browser';
   import LogRocket from 'logrocket';
+  import { isEmpty } from 'lodash';
 
   import config from './config';
   import { token, thatProfile, setupAuth } from './utilities/security.js';
@@ -44,7 +45,7 @@
     document.getElementById('tidio-chat-iframe').style.zIndex = '40';
 
     unsub = thatProfile.subscribe(currentUser => {
-      if (currentUser) {
+      if (!isEmpty(currentUser)) {
         window.tidioChatApi.setVisitorData({
           distinct_id: currentUser.id,
           email: currentUser.email,
@@ -80,10 +81,7 @@
 
   router.subscribe(e => {
     if (!e.initial) {
-      // https://developers.google.com/analytics/devguides/collection/gtagjs/pages
-      window.gtag('config', config.gtag, {
-        page_path: e.path,
-      });
+      window.woopra.track();
     }
   });
 
@@ -114,8 +112,8 @@
 
   onDestroy(unsub);
 
-  $: if ($thatProfile) {
-    let { id, email } = $thatProfile;
+  $: if (!isEmpty($thatProfile)) {
+    let { id, email, firstName, lastName } = $thatProfile;
 
     Sentry.configureScope(scope => {
       scope.setUser({
@@ -126,6 +124,12 @@
 
     LogRocket.identify(id, {
       email,
+    });
+
+    woopra.identify({
+      id,
+      email,
+      name: `${firstName} ${lastName}`,
     });
   }
 </script>

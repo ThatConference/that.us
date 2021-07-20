@@ -1,19 +1,6 @@
 <script>
-  export let title;
-  export let shortDescription;
-  export let speakers;
-  export let id;
-  export let tags;
-  export let startTime;
-  export let status;
-  export let durationInMinutes;
-  export let slug;
-  export let favoritedBy = [];
-  export let eventId;
-  export let event;
-  export let targetLocation;
+  export let activity;
   export let sessionLocation;
-  export let type;
   export let sessionLookups;
 
   // 3rd Party
@@ -33,6 +20,7 @@
     mapMarker,
     signIn,
     user,
+    externalLink,
   } from 'svelte-awesome/icons';
   import qs from 'query-string';
   import { getClient } from '@urql/svelte';
@@ -61,6 +49,28 @@
   dayjs.extend(isBetween);
   dayjs.extend(isSameOrAfter);
   dayjs.extend(relativeTime);
+
+  const {
+    title,
+    shortDescription,
+    speakers,
+    id,
+    tags,
+    startTime,
+    status,
+    durationInMinutes,
+    slug,
+    favoritedBy = [],
+    eventId,
+    event,
+    targetLocation,
+    type,
+    longDescription,
+    prerequisites,
+    takeaways,
+    agenda,
+    supportingArtifacts,
+  } = activity;
 
   const { toggle, get: getFavorites, favoritesStore: favorites } = favoritesApi(
     getClient(),
@@ -157,9 +167,14 @@
     }
   });
 
-  let userProfileImage = host.profileImage
-    ? `${host.profileImage}${imageCrop}`
-    : config.defaultProfileImage;
+  function showBackground(i) {
+    const result = i % 2;
+    return result != 0;
+  }
+
+  function getProfileImage(imageUrl) {
+    return imageUrl ? `${imageUrl}${imageCrop}` : config.defaultProfileImage;
+  }
 
   metaTagsStore.set({
     title: `${title} - THAT`,
@@ -185,52 +200,55 @@
   <!--header-->
   <div class="px-4 py-5 border-b border-gray-300 sm:px-6">
     <div
-      class="flex justify-between md:items-end items-center flex-wrap
-        sm:flex-nowrap flex-col md:flex-row">
-      <div class="">
-        <div class="flex md:flex-row flex-col items-center md:items-end">
-          <div class="flex-shrink-0">
-            <Link href="/members/{host.profileSlug}" open>
-              <span class="inline-block relative">
-                <img
-                  class="h-24 w-24 rounded-full"
-                  src="{userProfileImage}"
-                  alt=""
-                  loading="lazy" />
-
-                {#if host.earnedMeritBadges.length > 0}
-                  <span class="absolute bottom-0 left-0 block h-8 w-8">
+      class="flex justify-between md:items-end items-center flex-wrap sm:flex-nowrap flex-col md:flex-row">
+      <div class="block">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-12">
+          {#each speakers as s}
+            <div class="flex md:flex-row flex-col items-center">
+              <div class="flex-shrink-0">
+                <Link href="/members/{s.profileSlug}" open>
+                  <span class="inline-block relative">
                     <img
-                      src="{host.earnedMeritBadges[0].image}"
-                      alt="{host.earnedMeritBadges[0].name}"
+                      class="h-24 w-24 rounded-full"
+                      src="{getProfileImage(s.profileImage)}"
+                      alt=""
                       loading="lazy" />
+
+                    {#if s.earnedMeritBadges.length > 0}
+                      <span class="absolute bottom-0 left-0 block h-8 w-8">
+                        <img
+                          src="{s.earnedMeritBadges[0].image}"
+                          alt="{s.earnedMeritBadges[0].name}"
+                          loading="lazy" />
+                      </span>
+                    {/if}
                   </span>
-                {/if}
-              </span>
-            </Link>
-          </div>
-          <div class="md:ml-4">
-            <div class="flex flex-col md:items-start items-center">
-              <h3
-                class="text-lg leading-6 font-medium text-gray-900 inline-block">
-                {`${host.firstName} ${host.lastName}`}
-              </h3>
-              {#if type !== 'OPEN_SPACE' && host.profileSlug != 'thatconference'}
-                <span class="flex flex-row items-center overflow-clip">
-                  <span class="text-that-red text-lg font-medium inline"
-                    >Camp Counselor</span>
-                </span>
-              {/if}
+                </Link>
+              </div>
+              <div class="flex-initial md:ml-4">
+                <div class="flex flex-col md:items-start items-center">
+                  <h3
+                    class="text-lg leading-6 font-medium text-gray-900 inline-block">
+                    {`${s.firstName} ${s.lastName}`}
+                  </h3>
+                  {#if type !== 'OPEN_SPACE' && s.profileSlug != 'thatconference'}
+                    <span class="flex flex-row items-center overflow-clip">
+                      <span class="text-that-red text-lg font-medium inline"
+                        >Camp Counselor</span>
+                    </span>
+                  {/if}
+                </div>
+                <div class="md:text-left text-center">
+                  {#each s.profileLinks as link, i}
+                    <SocialLink
+                      href="{link.url}"
+                      network="{link.linkType}"
+                      isLast="{i === s.profileLinks?.length - 1}" />
+                  {/each}
+                </div>
+              </div>
             </div>
-            <div class="md:text-left text-center">
-              {#each host.profileLinks as link, i}
-                <SocialLink
-                  href="{link.url}"
-                  network="{link.linkType}"
-                  isLast="{i === host.profileLinks?.length - 1}" />
-              {/each}
-            </div>
-          </div>
+          {/each}
         </div>
       </div>
 
@@ -354,59 +372,147 @@
       <!-- Title -->
       <h2
         class="text-2xl sm:text-3xl md:text-4xl tracking-tight leading-10
-        font-extrabold text-gray-900 sm:leading-none">
+        font-extrabold text-thatBlue-800 sm:leading-none">
         {title}
       </h2>
 
-      <!-- Start Time -->
-      <p
-        class="mt-3 text-base text-gray-700 sm:mt-5 sm:text-lg sm:mx-auto md:mt-5
-        md:text-xl lg:mx-0">
-        {#if durationInMinutes <= 60}
-          {dayjs(startTime).format('dddd, MMMM D, YYYY - h:mm A')}, for
-          {dayjs.duration(durationInMinutes, 'minutes').as('hours')}
-          hour.
-        {:else}
-          {dayjs(startTime).format('dddd, MMMM D, YYYY - h:mm A')}, for
-          {dayjs.duration(durationInMinutes, 'minutes').as('hours')}
-          hours.
+      <div
+        class="py-4 flex flex-col sm:flex-row justify-center sm:justify-start items-center space-x-0 sm:space-x-8 space-y-4 sm:spaace-y-0">
+        {#if !isDailyActivity}
+          <div class="h-24 w-24">
+            <a href="{`/events/${event.slug}`}" class="w-full h-full">
+              <img src="{event.logo}" alt="Event Logo" loading="lazy" />
+            </a>
+          </div>
         {/if}
-      </p>
 
-      <!-- Location -->
-      <p
-        class="mt-1 text-base text-gray-700 sm:mt-2 sm:text-lg sm:mx-auto md:mt-1
-        md:text-xl lg:mx-0">
-        <Icon
-          data="{sessionTargetLocationIcon}"
-          class="h-4 w-4 pb-0.5 mr-2" />{sessionTargetLocation}
-        {sessionType}
-      </p>
+        <div>
+          <!-- Start Time -->
+          <p
+            class="text-base text-gray-700  sm:text-lg sm:mx-auto md:text-xl lg:mx-0">
+            {#if durationInMinutes <= 60}
+              {dayjs(startTime).format('dddd, MMMM D, YYYY - h:mm A')}, for
+              {dayjs.duration(durationInMinutes, 'minutes').as('hours')}
+              hour.
+            {:else}
+              {dayjs(startTime).format('dddd, MMMM D, YYYY - h:mm A')}, for
+              {dayjs.duration(durationInMinutes, 'minutes').as('hours')}
+              hours.
+            {/if}
+          </p>
 
-      {#if targetLocation === 'IN_PERSON' && sessionLocationDestination}
-        <p
-          class="mt-1 text-base text-gray-700 sm:mt-2 sm:text-lg sm:mx-auto md:mt-1
-    md:text-xl lg:mx-0">
-          <Icon data="{mapMarker}" class="h-4 w-4 pb-0.5 mr-2" />Room: {sessionLocationDestination}
-        </p>
-      {/if}
+          <!-- Location -->
+          <p
+            class="mt-1 text-base text-gray-700 sm:mt-2 sm:text-lg sm:mx-auto md:mt-1 md:text-xl lg:mx-0">
+            <Icon
+              data="{sessionTargetLocationIcon}"
+              class="h-4 w-4 pb-0.5 mr-2" />{sessionTargetLocation}
+            {sessionType}
+          </p>
 
-      <!-- Description -->
-      <p
-        class="lineBreaks mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:mx-auto md:mt-5
-        md:text-xl lg:mx-0">
-        {shortDescription}
-      </p>
+          {#if targetLocation === 'IN_PERSON' && sessionLocationDestination}
+            <p
+              class="mt-1 text-base text-gray-700 sm:mt-2 sm:text-lg sm:mx-auto md:mt-1 md:text-xl lg:mx-0">
+              <Icon data="{mapMarker}" class="h-4 w-4 pb-0.5 mr-2" />Room: {sessionLocationDestination}
+            </p>
+          {/if}
+        </div>
+      </div>
 
       <!-- Tags -->
-      <div class="flex flex-wrap content-start space-x-4 py-12">
+      <div
+        class="mt-4 text-base text-gray-700 sm:text-lg sm:mx-auto  md:text-xl lg:mx-0 flex flex-wrap content-start space-x-4">
         {#each tags as t}
           <Tag>{t}</Tag>
         {/each}
       </div>
 
+      <!-- Description -->
+      <p
+        class="mt-3 sm:mt-5 sm:mx-auto lg:mx-0 prose lineBreaks text-gray-500 sm:text-lg md:text-xl">
+        {#if longDescription}
+          {longDescription}
+        {:else}
+          {shortDescription}
+        {/if}
+      </p>
+
+      {#if type === 'WORKSHOP'}
+        <div class="mt-12">
+          <h3
+            class="text-xl sm:text-2xl leading-8 font-extrabold tracking-tight text-thatBlue-800">
+            Agenda
+          </h3>
+          <p
+            class="mt-3 sm:mt-5 sm:mx-auto lg:mx-0 prose lineBreaks text-gray-500 sm:text-lg md:text-xl">
+            {#if agenda}
+              {agenda}
+            {/if}
+          </p>
+        </div>
+      {/if}
+
+      {#if prerequisites}
+        <div class="mt-12">
+          <h3
+            class="text-xl sm:text-2xl leading-8 font-extrabold tracking-tight text-thatBlue-800">
+            Prerequisites
+          </h3>
+          <p
+            class="mt-3 sm:mt-5 sm:mx-auto lg:mx-0 prose lineBreaks text-gray-500 sm:text-lg md:text-xl">
+            {prerequisites}
+          </p>
+        </div>
+      {/if}
+
+      {#if takeaways?.length > 0}
+        <div class="mt-12">
+          <h3
+            class="text-xl sm:text-2xl leading-8 font-extrabold tracking-tight text-thatBlue-800">
+            Take Aways
+          </h3>
+          <div class="prose">
+            <ul>
+              {#each takeaways as t}
+                <li>
+                  {t}
+                </li>
+              {/each}
+            </ul>
+          </div>
+        </div>
+      {/if}
+
+      {#if supportingArtifacts?.length > 0}
+        <div class="mt-12">
+          <h3
+            class="text-xl sm:text-2xl leading-8 font-extrabold tracking-tight text-thatBlue-800">
+            Supporting Resources
+          </h3>
+          <div class="mt-2">
+            <ul>
+              {#each supportingArtifacts as sa, i}
+                <li
+                  class="px-4 flex space-x-3 items-center hover:text-that-blue cursor-pointer pb-2"
+                  class:bg-gray-50="{showBackground(i)}">
+                  <div>
+                    <Icon data="{externalLink}" class="h-4 w-4" />
+                  </div>
+                  <div class="flex-grow p-2 rounded-md">
+                    <Link open href="{sa.url}">
+                      <p>{sa.name}</p>
+                      <p class="mt-1 text-sm text-gray-400">{sa.description}</p>
+                    </Link>
+                  </div>
+                </li>
+              {/each}
+            </ul>
+          </div>
+        </div>
+      {/if}
+
       <!-- Avatars -->
-      <div class="flex flex-wrap items-center text-red-400 space-x-1">
+      <div class="py-12 flex flex-wrap items-center text-red-400 space-x-1">
         <Icon data="{heartO}" class="h-8 w-8" />
         <span>favorited by:</span>
         <div class="md:pl-2">
@@ -414,13 +520,5 @@
         </div>
       </div>
     </div>
-
-    {#if !isDailyActivity}
-      <div class="sm:w-1/2 py-6 flex flex-col items-center">
-        <a href="{`/events/${event.slug}`}" class="w-full">
-          <img src="{event.logo}" alt="Event Logo" loading="lazy" />
-        </a>
-      </div>
-    {/if}
   </div>
 </div>

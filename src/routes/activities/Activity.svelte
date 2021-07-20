@@ -34,21 +34,21 @@
 <StackedLayout>
   <div slot="header">
     <Nav />
-    <ActionHeader title="Activity Details" />
+    <ActionHeader title="Activity Spotlight" />
   </div>
   <div slot="body">
     {#await getSessionData(id)}
-      <div class="flex items-center justify-center">
+      <div class="flex justify-center sm:justify-start">
         <FacebookLoader uniqueKey="loading" />
       </div>
     {:then [activity, sessionLookups]}
       <ActivityDetails
-        {...activity}
+        activity="{activity}"
         sessionLocation="{activity.location}"
         sessionLookups="{sessionLookups}" />
     {:catch error}
       <ModalError
-        title="No Activities Found"
+        title="No Activitie Found"
         text="I'm sorry we weren't able to find the activity you requested."
         action="{{ title: 'Return to Activities', href: '/activities' }}" />
     {/await}

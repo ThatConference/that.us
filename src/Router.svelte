@@ -27,6 +27,8 @@
   // partners
   import Partners from './routes/partners/Partners.svelte';
   import Partner from './routes/partners/Partner.svelte';
+  import Job from './routes/partners/Job.svelte';
+  import PastPartners from './routes/partners/PastPartners.svelte';
 
   // support
   import FaqPage from './routes/support/FAQ.svelte';
@@ -108,6 +110,8 @@
   <Router path="/partners">
     <Route exact component="{Partners}" />
     <Route exact path="/:partner" component="{Partner}" />
+    <Route exact path="/:partner/jobs/:job" component="{Job}" />
+    <Route exact path="/past" component="{PastPartners}" />
   </Router>
 
   <Router path="/members">

@@ -321,26 +321,30 @@
   let:touched>
   <div>
     <div>
-      <div>
-        <h2 class="text-xl leading-6 font-bold text-gray-900">Your Profile</h2>
+      <h2 class="text-xl leading-6 font-bold text-gray-900">Your Profile</h2>
 
-        <p class="mt-4 text-sm leading-5 text-gray-500">
-          This information is what we feature about you if you choose to make
-          your profile public.
-        </p>
+      <p class="mt-4 text-sm leading-5 text-gray-500">
+        This information is what we feature about you if you choose to make your
+        profile public.
+      </p>
 
-        <p class="mt-4 text-sm leading-5 text-gray-500">
-          To submit any type activity your profile will have to be public.
-        </p>
-      </div>
-
-      <div class="mt-6 grid grid-cols-1 gap-y-6 sm:grid-cols-6">
+      <p class="mt-4 text-sm leading-5 text-gray-500">
+        To submit any type activity, your profile will have to be public.
+      </p>
+    </div>
+    <div class="px-4">
+      <div class="mt-6 grid grid-cols-1 gap-y-4 gap-x-4 sm:grid-cols-6">
         <div class="sm:col-span-3">
           <label
             for="first_name"
             class="block text-sm font-medium leading-5 text-gray-700">
             First or Given Name
           </label>
+          <div class="relative">
+            <span
+              class="absolute top-0 left-0 transform -translate-x-4 -translate-y-4 block h-2 w-2 rounded-full bg-red-400">
+            </span>
+          </div>
           <div class="mt-1 border rounded-md shadow-sm">
             <Input
               name="firstName"
@@ -357,6 +361,11 @@
             class="block text-sm font-medium leading-5 text-gray-700">
             Last or Family Name
           </label>
+          <div class="relative">
+            <span
+              class="absolute top-0 left-0 transform -translate-x-4 -translate-y-4 block h-2 w-2 rounded-full bg-red-400">
+            </span>
+          </div>
           <div class="mt-1 border rounded-md shadow-sm">
             <Input
               name="lastName"
@@ -371,6 +380,11 @@
             class="block text-sm font-medium leading-5 text-gray-700">
             Member Page Slug
           </label>
+          <div class="relative">
+            <span
+              class="absolute top-0 left-0 transform -translate-x-4 -translate-y-4 block h-2 w-2 rounded-full bg-red-400">
+            </span>
+          </div>
           <!-- todo .. shadow doesn't align correctly <div class="mt-1 flex rounded-md shadow-sm"> -->
           <div class="mt-1 flex">
             <span
@@ -404,6 +418,11 @@
             class="block text-sm font-medium leading-5 text-gray-700">
             About Yourself
           </label>
+          <div class="relative">
+            <span
+              class="absolute top-0 left-0 transform -translate-x-4 -translate-y-4 block h-2 w-2 rounded-full bg-red-400">
+            </span>
+          </div>
           <p class="mt-2 text-sm text-gray-500">
             Write a few sentences about yourself.
           </p>
@@ -561,7 +580,7 @@
 
         <div class="mt-6">
           <div class="sm:col-span-4">
-            <div class="mt-6 grid grid-cols-1 gap-y-6  sm:grid-cols-6">
+            <div class="mt-6 grid grid-cols-1 gap-y-4 sm:grid-cols-6">
               <div
                 class="sm:col-span-4 block text-sm font-medium leading-5 text-gray-700">
                 <label for="interests">
@@ -579,13 +598,14 @@
                     allowBlur="{true}"
                     maxTags="{25}"
                     onlyUnique="{true}"
-                    on:tags="{({ detail }) => setValue('tags', detail.interests)}"
+                    on:tags="{({ detail }) =>
+                      setValue('tags', detail.interests)}"
                     class="form-input block w-full transition duration-150 ease-in-out text-sm leading-5 rounded-md shadow-sm" />
                 </div>
               </div>
             </div>
 
-            <div class="mt-6 grid grid-cols-1 gap-y-6  sm:grid-cols-6">
+            <div class="mt-6 grid grid-cols-1 gap-y-4 sm:grid-cols-6">
               <div class="sm:col-span-4">
                 <label
                   for="lifeHack"
@@ -622,7 +642,7 @@
               Yes, please feature me.
             </label>
 
-            <div class="mt-2 flex items-center">
+            <div class="mt-2 flex items-start">
               <Checkbox
                 name="canFeature"
                 checked="{profile.canFeature}"
@@ -646,23 +666,28 @@
         </div>
 
         <div class="mt-8 border-t border-gray-200 pt-8">
-          <div>
-            <h3 class="text-lg leading-6 font-medium text-gray-900">
-              Personal Information
-            </h3>
-            <p class="mt-1 text-sm leading-5 text-gray-500">
-              This information is private to THAT and allows us to better
-              connect with you.
-            </p>
-          </div>
+          <h3 class="text-lg leading-6 font-medium text-gray-900">
+            Personal Information
+          </h3>
+          <p class="mt-1 text-sm leading-5 text-gray-500">
+            This information is private to THAT and allows us to better connect
+            with you.
+          </p>
+        </div>
 
-          <div class="mt-6 grid grid-cols-1 gap-y-6 sm:grid-cols-6">
+        <div class="px-4">
+          <div class="mt-6 grid grid-cols-1 gap-y-4 sm:grid-cols-6">
             <div class="sm:col-span-4">
               <label
                 for="email"
                 class="block text-sm font-medium leading-5 text-gray-700">
                 Email address
               </label>
+              <div class="relative">
+                <span
+                  class="absolute top-0 left-0 transform -translate-x-4 -translate-y-4 block h-2 w-2 rounded-full bg-red-400">
+                </span>
+              </div>
               <div class="mt-1 border rounded-md shadow-sm">
                 <Input
                   type="email"
@@ -686,14 +711,19 @@
             </p>
           </div>
 
-          <div class="mt-6">
+          <div class="px-4 mt-6">
             <fieldset>
               <legend class="text-base font-medium text-gray-900">
                 Do you agree to our:
               </legend>
+              <div class="relative">
+                <span
+                  class="absolute top-0 left-0 transform -translate-x-4 -translate-y-4 block h-2 w-2 rounded-full bg-red-400">
+                </span>
+              </div>
 
               <div class="mt-4">
-                <div class="relative flex items-center">
+                <div class="relative flex items-start">
                   <Checkbox
                     name="acceptedCodeOfConduct"
                     checked="{profile.acceptedCodeOfConduct}"
@@ -724,7 +754,7 @@
                   </div>
                 </div>
                 <div class="mt-4">
-                  <div class="relative flex items-center">
+                  <div class="relative flex items-start">
                     <Checkbox
                       name="acceptedAntiHarassmentPolicy"
                       checked="{profile.acceptedAntiHarassmentPolicy}"
@@ -755,7 +785,7 @@
                   </div>
 
                   <div class="mt-4">
-                    <div class="relative flex items-center">
+                    <div class="relative flex items-start">
                       <Checkbox
                         name="acceptedCommitmentToDiversity"
                         checked="{profile.acceptedCommitmentToDiversity}"
@@ -790,7 +820,7 @@
                     </div>
 
                     <div class="mt-4">
-                      <div class="relative flex items-center">
+                      <div class="relative flex items-start">
                         <Checkbox
                           name="acceptedTermsOfService"
                           checked="{profile.acceptedTermsOfService}"
@@ -823,7 +853,7 @@
                     </div>
 
                     <div class="mt-4">
-                      <div class="relative flex items-center">
+                      <div class="relative flex items-start">
                         <Checkbox
                           name="isOver13"
                           checked="{profile.isOver13}"
@@ -870,7 +900,7 @@
               </legend>
 
               <div class="mt-4">
-                <div class="relative flex ">
+                <div class="relative flex items-start">
                   <Checkbox
                     name="isDeactivated"
                     checked="{profile.isDeactivated}"

@@ -8,10 +8,10 @@
   import Clipboard from 'clipboard';
   import { Link } from 'yrv';
 
-  import { Standard as StandardButton } from '../../elements/buttons';
-  import { Standard as StandardLink } from '../../elements/links';
-  import { SocialLink } from '../../components/social';
-  import { isAuthenticated } from '../../utilities/security.js';
+  import { Standard as StandardButton } from '../../../elements/buttons';
+  import { Standard as StandardLink } from '../../../elements/links';
+  import { SocialLink } from '../../../components/social';
+  import { isAuthenticated } from '../../../utilities/security';
 
   const dispatch = createEventDispatcher();
   let clipboard;
@@ -65,27 +65,19 @@
 
         <div class="flex flex-col space-y-8">
           <div class="flex justify-end space-x-4">
-            <button
-              id="shareUrl"
-              data-clipboard-text="{`https://that.us/partners/${partner.slug}`}"
-              class="px-4 py-2 rounded-md shadow text-base leading-6 font-medium border-2
-            border-thatBlue-500 text-thatBlue-500 bg-white hover:bg-thatBlue-500
-            hover:text-white focus:bg-thatBlue-500 focus:text-white focus:outline-none
-            focus:ring-thatBlue-500 focus:border-thatBlue-800 transition
-            duration-150 ease-in-out md:text-lg md:px-10">
-              {#if copiedText}
-                <span>{copiedText}</span>
-              {:else}
-                <Icon data="{share}" class="" />
-              {/if}
-            </button>
-
             <StandardLink
               class="h-3/4"
               href="{partner.website}?utm_source=THAT"
               open="{true}">
-              Visit Us
+              Visit
             </StandardLink>
+
+            <StandardButton
+              class="h-3/4"
+              on:click="{() => dispatch('TOGGLE_FOLLOW')}">
+              Connect
+            </StandardButton>
+
             {#if $isAuthenticated}
               <StandardButton
                 class="h-3/4"
@@ -97,8 +89,8 @@
         </div>
       </div>
 
-      <div class="leading-8 text-lg font-medium text-gray-900">
-        <p class="lineBreaks">{partner.aboutUs || ''}</p>
+      <div class="leading-8 text-gray-800">
+        <p class="prose-xl lineBreaks">{partner.aboutUs || ''}</p>
       </div>
     </div>
   </div>

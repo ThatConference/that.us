@@ -1,3 +1,5 @@
+import dayjs from 'dayjs';
+import { uniqBy } from 'lodash';
 import { log } from '../utilities/error';
 
 import { stripAuthorizationHeader } from '../utilities';
@@ -12,6 +14,50 @@ const coreFieldsFragment = `
   }
 `;
 
+const jobListingsFragment = `
+  fragment jobListingsFragment on Partner {
+    jobListings {
+      id
+      slug
+      title
+      description
+      jobType
+      experienceLevel
+      applyNowLink
+      role
+    }
+  }
+`;
+
+const featuredSessionsFragment = `
+  fragment featuredSessionsFragment on Partner {
+    sessions {
+      id
+      title
+      shortDescription
+      startTime
+      event {
+        logo
+      }
+      speakers {
+        profileImage
+        profileSlug
+        firstName
+        lastName
+        earnedMeritBadges {
+          id
+          name
+          image
+          description
+        }
+      }
+
+      tags
+      
+    }
+  }
+`;
+
 const socialLinksFieldsFragment = `
   fragment socialLinksFieldsFragment on Partner {
     linkedIn
@@ -21,6 +67,25 @@ const socialLinksFieldsFragment = `
     twitter
     facebook
     twitch
+  }
+`;
+
+const enumValues = `
+  options: enumValues {
+    label: description
+    value: name
+  }
+`;
+
+export const QUERY_PARTNER_DROPDOWN_VALUES = `
+  query QUERY_PARTNER_DROPDOWN_VALUES {
+    jobType: __type(name: "JobType") {
+      ${enumValues}
+    }
+    
+    experienceLevel: __type(name: "ExperienceLevel") {
+      ${enumValues}
+    }
   }
 `;
 
@@ -45,27 +110,21 @@ export const QUERY_PARTNERS = `
 export const QUERY_PARTNER = `
   ${socialLinksFieldsFragment}
   ${coreFieldsFragment}
+  ${jobListingsFragment}
+  ${featuredSessionsFragment}
   query queryPartner($slug: Slug!) {
     partners {
       partner(findBy: { slug: $slug }) {
         ...coreFieldsFragment
+        ...jobListingsFragment
+        ...socialLinksFieldsFragment
+        ...featuredSessionsFragment
         website
         aboutUs
         city
         state
         goals
-      
-        jobListings {
-          id
-          slug
-          title
-          description
-          jobType
-          experienceLevel
-          applyNowLink
-          role
-        }
-        
+
         members {
           id
           firstName
@@ -74,8 +133,6 @@ export const QUERY_PARTNER = `
           profileImage
           profileSlug
         }
-        
-        ...socialLinksFieldsFragment
       }
     }
   }
@@ -114,6 +171,81 @@ export const QUERY_NEXT_FOLLOWERS = `
             firstName
             lastName
           }
+        }
+      }
+    }
+  }
+`;
+
+export const QUERY_UPCOMING_PARTNERS = `
+  ${socialLinksFieldsFragment}
+  ${coreFieldsFragment}
+  query QUERY_UPCOMING_PARTNERS {
+    events {
+      all {
+        endDate
+        isActive
+        partners {
+          ...coreFieldsFragment
+          level
+          ...socialLinksFieldsFragment
+        }
+      }
+    }
+  }
+`;
+
+export const QUERY_PAST_PARTNERS = `
+  ${socialLinksFieldsFragment}
+  ${coreFieldsFragment}
+  query QUERY_PAST_PARTNERS {
+    partners {
+      all {
+        ...coreFieldsFragment
+        ...socialLinksFieldsFragment
+      }
+    }
+  }
+`;
+
+export const QUERY_EVENT_PARTNERS = `
+  ${socialLinksFieldsFragment}
+  ${coreFieldsFragment}
+  query QUERY_EVENT_PARTNERS ($slug: String!) {
+    events {
+      event (findBy: { slug: $slug }) {
+        get {
+          logo
+          name
+          partners {
+            ...coreFieldsFragment
+            level
+            placement
+            ...socialLinksFieldsFragment
+          }
+        }
+      }
+    }
+  }
+`;
+
+export const QUERY_PARTNER_JOB_LISTING = `
+  ${socialLinksFieldsFragment}
+  query QUERY_PARTNER_JOB_LISTING ($partner: Slug, $slug: String!) {
+    partners {
+      partner (findBy: { slug: $partner }) {
+        companyName
+        companyLogo
+        website
+        ...socialLinksFieldsFragment
+        jobListing(slug: $slug) {
+          title
+          description
+          jobType
+          experienceLevel
+          applyNowLink
+          remote
+          role
         }
       }
     }
@@ -168,9 +300,6 @@ export default client => {
       });
   }
 
-  const getEventPartners = (slug = config.eventSlug) => query(slug);
-  const getNextEventPartners = (slug = config.eventSlug) => null; // todo stubbed out until we have paged partners
-
   const getPartner = slug => {
     const variables = { slug };
     return client
@@ -182,6 +311,7 @@ export default client => {
         if (error) log(error, 'query_partners');
 
         const { partner } = data.partners;
+
         return partner
           ? { ...partner, socialLinks: createSocialLinks(partner) }
           : null;
@@ -218,11 +348,150 @@ export default client => {
       });
   };
 
+  function getUpcomingPartners() {
+    return client
+      .query(QUERY_UPCOMING_PARTNERS, {
+        fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
+      })
+      .toPromise()
+      .then(({ data, error }) => {
+        if (error) log(error, 'QUERY_UPCOMING_PARTNERS');
+
+        let results = [];
+        if (data) {
+          const { all } = data.events;
+
+          results = uniqBy(
+            all
+              .filter(e => e.isActive)
+              .filter(e =>
+                dayjs().isBefore(dayjs(e.endDate).add(30, 'day'), 'day'),
+              )
+              .reduce((acc, current) => [...acc, ...current.partners], [])
+              .map(p => ({
+                ...p,
+                socialLinks: createSocialLinks(p),
+              })),
+            'id',
+          );
+        }
+
+        return results;
+      });
+  }
+
+  function getUpcomingPartnersNext(cursor) {
+    // not implemented yet
+    return [];
+  }
+
+  function getPastPartners() {
+    return client
+      .query(QUERY_PAST_PARTNERS, {
+        fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
+      })
+      .toPromise()
+      .then(({ data, error }) => {
+        if (error) log(error, 'QUERY_PAST_PARTNERS');
+
+        let results = [];
+        if (data) {
+          const { all } = data.partners;
+          results = uniqBy(
+            all.map(p => ({
+              ...p,
+              socialLinks: createSocialLinks(p),
+            })),
+            'id',
+          );
+        }
+
+        return results;
+      });
+  }
+
+  function getPastPartnersNext(cursor) {
+    // not implemented yet
+    return [];
+  }
+
+  function getEventPartners(slug = config.eventSlug) {
+    const variables = { slug };
+
+    return client
+      .query(QUERY_EVENT_PARTNERS, variables, {
+        fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
+      })
+      .toPromise()
+      .then(({ data, error }) => {
+        if (error) log(error, 'QUERY_EVENT_PARTNERS');
+
+        let results = [];
+        if (data) {
+          const { get } = data.events.event;
+          const { partners } = get;
+
+          const modifiedPartners = partners.map(p => ({
+            ...p,
+            socialLinks: createSocialLinks(p),
+          }));
+
+          results = modifiedPartners;
+
+          results = {
+            ...get,
+            partners: [...modifiedPartners],
+          };
+        }
+
+        return results;
+      });
+  }
+
+  function queryPartnerDropDownValues() {
+    const variables = {};
+
+    return client
+      .query(QUERY_PARTNER_DROPDOWN_VALUES, variables, {
+        fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
+      })
+      .toPromise()
+      .then(({ data, error }) => {
+        if (error) log(error, 'QUERY_PARTNER_DROPDOWN_VALUES');
+
+        return data;
+      });
+  }
+
+  function queryPartnerJobListing(partnerSlug, jobSlug) {
+    const variables = { partner: partnerSlug, slug: jobSlug };
+
+    return client
+      .query(QUERY_PARTNER_JOB_LISTING, variables, {
+        fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
+      })
+      .toPromise()
+      .then(({ data, error }) => {
+        if (error) log(error, 'QUERY_PARTNER_JOB_LISTING');
+
+        const { partner } = data.partners;
+        return {
+          ...partner,
+          socialLinks: createSocialLinks(partner),
+        };
+      });
+  }
+
   return {
+    getPastPartners,
+    getPastPartnersNext,
+    getUpcomingPartners,
+    getUpcomingPartnersNext,
     getEventPartners,
-    getNextEventPartners,
     getPartner,
     queryFollowers,
     queryNextFollowers,
+    queryPartnerDropDownValues,
+    queryPartnerJobListing,
   };
 };

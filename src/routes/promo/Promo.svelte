@@ -30,7 +30,6 @@
 
   async function queryEvent() {
     event = await eventsApi(getClient()).queryEventById(eventId);
-    console.log({ event });
     return event;
   }
 
