@@ -13,7 +13,7 @@
     <div class="grid grid-cols-1 gap-12 lg:grid-cols-3 lg:gap-8">
       <div class="space-y-5 sm:space-y-4">
         <h2
-          class="text-3xl leading-9 font-extrabold tracking-tight sm:text-4xl">
+          class="text-3xl leading-9 font-extrabold tracking-tight sm:text-4xl text-thatBlue-800">
           Meet our team
         </h2>
         <p class="text-xl leading-7 text-gray-500">
