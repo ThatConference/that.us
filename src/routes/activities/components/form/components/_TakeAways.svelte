@@ -15,6 +15,7 @@
   export let setField;
   export let initialData;
 
+  import { onMount } from 'svelte';
   import { Input, Form } from 'sveltejs-forms';
   import { v4 as uuidv4 } from 'uuid';
 
@@ -58,6 +59,10 @@
     const result = i % 2;
     return result != 0;
   }
+
+  onMount(() => {
+    updateField();
+  });
 </script>
 
 <div>
