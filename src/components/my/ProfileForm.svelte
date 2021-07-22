@@ -65,7 +65,7 @@
       linkType: 'YOUTUBE',
       name: 'youtube',
       icon: youtubePlay,
-      slug: 'https://youtube.com/channel/',
+      slug: ['https://youtube.com/channel/', 'https://youtube.com/c/'],
     },
     {
       linkType: 'TWITCH',
@@ -80,6 +80,8 @@
   let initialValues;
   let profileImageUploading;
   let profileImageUrl;
+  let slugValues = {};
+  let socialLinkValues = {};
 
   // clear out __typename
   if (profile) omitDeep(profile, ['__typename']);
@@ -101,15 +103,18 @@
 
     // if we have a value.. add it back
     if (!isEmpty(userValue)) {
-      socialLinksState.push(
-        buildSocialLink(link.linkType, link.slug, userValue),
-      );
+      let slug = '';
+      if (Array.isArray(link.slug))
+        slug = slugValues[link.linkType] || link.slug[0];
+      else slug = link.slug;
+
+      socialLinksState.push(buildSocialLink(link.linkType, slug, userValue));
     }
 
     return socialLinksState;
   }
 
-  function getInitialSocailLinkValue(link) {
+  function getInitialSocialLinkValue(link) {
     let result = '';
 
     if (!isNewProfile && profile.profileLinks) {
@@ -118,12 +123,61 @@
       );
 
       if (socialLink) {
-        let [slug, value] = socialLink.url.split(link.slug);
-        result = value;
+        // If link.slugs is an array, match socialLink.url with the proper element
+        if (Array.isArray(link.slug)) {
+          link.slug.forEach(el => {
+            const [, value] = socialLink.url.split(el);
+            if (value) result = value;
+          });
+        } else {
+          const [, value] = socialLink.url.split(link.slug);
+          result = value;
+        }
       }
+
+      socialLinkValues[link.linkType] = result;
     }
 
     return result;
+  }
+
+  function getInitialSelectValue(link) {
+    // initial state should be the first element in slug array
+    let result = link.slug[0];
+
+    if (!isNewProfile && profile.profileLinks) {
+      const [socialLink] = profile.profileLinks.filter(
+        i => i.linkType === link.linkType,
+      );
+      link.slug.forEach(el => {
+        const [, value] = socialLink.url.split(el);
+        if (value) {
+          result = el;
+          slugValues[link.linkType] = el;
+        }
+      });
+    }
+
+    return result;
+  }
+
+  function updateLinkSlugValue(link, userValue) {
+    const urlEnding = socialLinkValues[link.linkType];
+    slugValues[link.linkType] = userValue;
+
+    // clear out the value regardless.
+    socialLinksState = socialLinksState.filter(
+      i => i.linkType !== link.linkType,
+    );
+
+    // if we have a value.. add it back
+    if (!isEmpty(userValue)) {
+      socialLinksState.push(
+        buildSocialLink(link.linkType, userValue, urlEnding),
+      );
+    }
+
+    return socialLinksState;
   }
 
   if (isNewProfile) {
@@ -275,7 +329,7 @@
       </p>
 
       <p class="mt-4 text-sm leading-5 text-gray-500">
-        To submit any type activity your profile will have to be public.
+        To submit any type activity, your profile will have to be public.
       </p>
     </div>
     <div class="px-4">
@@ -438,8 +492,7 @@
                   <path
                     d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904
                     0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0
-                    018 0z"
-                  ></path>
+                    018 0z"></path>
                 </svg>
               {/if}
             </span>
@@ -447,8 +500,9 @@
               <input
                 name="profileImage"
                 type="file"
-                on:change="{e =>
-                  postProfilePicture(e).then(r => setValue('profileImage', r))}"
+                on:change="{e => postProfilePicture(e).then(r =>
+                    setValue('profileImage', r),
+                  )}"
                 accept="image/x-png,image/png,.png,image/jpeg,.jpg,.jpeg,image/gif,.gif"
                 class="py-2 px-3 border border-gray-300 rounded-md text-sm
                   leading-4 font-medium text-gray-700 hover:text-gray-500
@@ -481,25 +535,30 @@
           {#each socialLinks as link}
             <!-- todo - shadow isn't aligned properly <div class="mt-4 flex rounded-md shadow-sm"> -->
             <div class="mt-4 flex border rounded-md shadow-sm">
-              <span
+              <div
                 class="inline-flex items-center px-3 rounded-l-md border
                   border-r-0 border-gray-300 bg-gray-50 text-gray-500 sm:text-sm
-                  w-1/4">
+                  w-1/3">
                 <span class="w-6">
                   <Icon data="{link.icon}" />
                 </span>
-                {link.slug}
-              </span>
+                {#if Array.isArray(link.slug)}
+                  <select
+                    class="form-input w-full p-1 bg-transparent text-gray-500 sm:text-sm border-none outline-none cursor-pointer"
+                    value="{getInitialSelectValue(link)}"
+                    on:blur="{e => setValue('profileLinks', updateLinkSlugValue(link, e.target.value))}">
+                    {#each link.slug as slug}
+                      <option value="{slug}">{slug}</option>
+                    {/each}
+                  </select>
+                {:else}{link.slug}{/if}
+              </div>
               <Input name="profileLinks" hidden />
               <input
                 type="text"
                 name="{link.name}"
-                value="{getInitialSocailLinkValue(link)}"
-                on:change="{e =>
-                  setValue(
-                    'profileLinks',
-                    updateLinksInputValues(link, e.target.value),
-                  )}"
+                value="{getInitialSocialLinkValue(link)}"
+                on:change="{e => setValue('profileLinks', updateLinksInputValues(link, e.target.value))}"
                 class="flex-1 form-input block w-full min-w-0 border rounded-none
                   rounded-r-md transition duration-150 ease-in-out sm:text-sm
                   sm:leading-5" />
@@ -668,8 +727,7 @@
                   <Checkbox
                     name="acceptedCodeOfConduct"
                     checked="{profile.acceptedCodeOfConduct}"
-                    on:change="{({ detail }) =>
-                      setValue('acceptedCodeOfConduct', detail)}"
+                    on:change="{({ detail }) => setValue('acceptedCodeOfConduct', detail)}"
                     size="2.5rem"
                     class="flex-none" />
 
@@ -700,8 +758,7 @@
                     <Checkbox
                       name="acceptedAntiHarassmentPolicy"
                       checked="{profile.acceptedAntiHarassmentPolicy}"
-                      on:change="{({ detail }) =>
-                        setValue('acceptedAntiHarassmentPolicy', detail)}"
+                      on:change="{({ detail }) => setValue('acceptedAntiHarassmentPolicy', detail)}"
                       size="2.5rem"
                       class="flex-none" />
 
@@ -732,8 +789,7 @@
                       <Checkbox
                         name="acceptedCommitmentToDiversity"
                         checked="{profile.acceptedCommitmentToDiversity}"
-                        on:change="{({ detail }) =>
-                          setValue('acceptedCommitmentToDiversity', detail)}"
+                        on:change="{({ detail }) => setValue('acceptedCommitmentToDiversity', detail)}"
                         size="2.5rem"
                         class="flex-none" />
 
@@ -768,8 +824,7 @@
                         <Checkbox
                           name="acceptedTermsOfService"
                           checked="{profile.acceptedTermsOfService}"
-                          on:change="{({ detail }) =>
-                            setValue('acceptedTermsOfService', detail)}"
+                          on:change="{({ detail }) => setValue('acceptedTermsOfService', detail)}"
                           size="2.5rem"
                           class="flex-none" />
 
@@ -802,8 +857,7 @@
                         <Checkbox
                           name="isOver13"
                           checked="{profile.isOver13}"
-                          on:change="{({ detail }) =>
-                            setValue('isOver13', detail)}"
+                          on:change="{({ detail }) => setValue('isOver13', detail)}"
                           size="2.5rem"
                           class="flex-none" />
 
@@ -850,8 +904,7 @@
                   <Checkbox
                     name="isDeactivated"
                     checked="{profile.isDeactivated}"
-                    on:change="{({ detail }) =>
-                      setValue('isDeactivated', detail)}"
+                    on:change="{({ detail }) => setValue('isDeactivated', detail)}"
                     size="2.5rem"
                     class="flex-none" />
 
