@@ -249,6 +249,7 @@ export default client => {
     return client
       .query(QUERY_EVENT_BY_SLUG, variables, {
         fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
+        requestPolicy: 'cache-and-network',
       })
       .toPromise()
       .then(({ data, error }) => {
@@ -265,6 +266,7 @@ export default client => {
     return client
       .query(QUERY_EVENT_BY_ID, variables, {
         fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
+        requestPolicy: 'cache-and-network',
       })
       .toPromise()
       .then(({ data, error }) => {
@@ -297,6 +299,7 @@ export default client => {
     return client
       .query(QUERY_EVENTS, variables, {
         fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
+        requestPolicy: 'cache-and-network',
       })
       .toPromise()
       .then(({ data, error }) => {
@@ -313,6 +316,7 @@ export default client => {
     return client
       .query(QUERY_EVENTS_BY_COMMUNITY, variables, {
         fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
+        requestPolicy: 'cache-and-network',
       })
       .toPromise()
       .then(({ data, error }) => {

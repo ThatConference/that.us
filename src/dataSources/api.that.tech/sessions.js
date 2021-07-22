@@ -296,6 +296,7 @@ export default client => {
             ...stripAuthorizationHeader(client),
           },
         },
+        requestPolicy: 'cache-and-network',
       })
       .toPromise()
       .then(({ data, error }) => {
