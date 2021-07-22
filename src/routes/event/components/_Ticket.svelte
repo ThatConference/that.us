@@ -7,7 +7,7 @@
   import { CheckFull } from '../../../elements/svgs';
   import { Standard as StandardButton } from '../../../elements/buttons';
   import CheckInModal from './_CheckinModal.svelte';
-  import EditCheckinModal from './_EditCheckinModal.svelte';
+  import EditCheckinModal from './_EditCheckInModal.svelte';
 
   const { allocatedTo, purchasedBy } = ticket;
   let imageCrop = '?auto=format&mask=ellipse&fit=crop&w=256&h=256&q=80';
