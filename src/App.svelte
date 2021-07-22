@@ -1,6 +1,6 @@
 <script>
   import { onMount, onDestroy, setContext } from 'svelte';
-  import { initClient } from '@urql/svelte';
+  import { initClient, setClient } from '@urql/svelte';
   import { router } from 'yrv';
   import { v4 as uuidv4 } from 'uuid';
   import * as Sentry from '@sentry/browser';
@@ -78,6 +78,8 @@
     // requestPolicy: 'cache-and-network',
     requestPolicy: 'network-only',
   });
+
+  setClient(client);
 
   router.subscribe(e => {
     if (!e.initial) {

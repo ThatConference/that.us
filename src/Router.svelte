@@ -79,6 +79,9 @@
   import EventLanding from './routes/events/Event.svelte';
   import Tickets from './routes/events/Tickets.svelte';
 
+  // event
+  import Checkin from './routes/event/Checkin.svelte';
+
   // speakers
   import SpeakersAccept from './routes/speakers/Accept.svelte';
 
@@ -151,6 +154,12 @@
     <Route exact path="/:id/:name/partners" component="{EventPartners}" />
   </Router>
   
+  <Router path="/event">
+    <Route exact path="/" component="{NotFound}" />
+    <Route exact path="/:eventName/:year/checkin" component="{Checkin}" condition="{isLoggedIn}" redirect="/login" />
+    
+  </Router>
+  
   <Router path='/activities'>
     <Route exact component="{Daily}" />
     <Route exact path="/:id" component="{Activity}" />
@@ -176,6 +185,10 @@
     <Route exact path="/10years" redirect="/promo/claim?eventId=7wiuRWI7EZjcdF4e9MDz" />
     <Route path="/claim" component="{Promo}" />
   </Router>
+
+  <!-- Badge Redirects -->
+  <Route exact path="/camp" redirect="/activities/wi/2021" />
+  <Route exact path="/family" redirect="/activities/wi/2021?track=family" />
   
   <Route fallback>
     <NotFound />
