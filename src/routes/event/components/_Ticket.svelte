@@ -2,6 +2,7 @@
   export let ticket;
 
   import dayjs from 'dayjs';
+  import { Shell } from '../../../elements/buttons';
 
   import config from '../../../config';
   import { CheckFull } from '../../../elements/svgs';
@@ -73,14 +74,27 @@
     <div>
       <div class="flex sm:justify-end">
         {#if !ticket.hasCheckedIn}
-          <StandardButton on:click="{() => (checkInClicked = !checkInClicked)}">
-            <span class="text-lg">Check-In</span>
-          </StandardButton>
+          <div class="flex">
+            <Shell>
+              <button
+                class="w-full py-4 px-6 text-sm leading-5 font-medium"
+                on:click|stopPropagation|preventDefault="{() =>
+                  (checkInClicked = !checkInClicked)}">
+                <span class="text-lg">Check-In</span>
+              </button>
+            </Shell>
+          </div>
         {:else}
-          <StandardButton
-            on:click="{() => (editCheckInClicked = !editCheckInClicked)}">
-            <span class="text-lg">Edit CheckIn</span>
-          </StandardButton>
+          <div class="flex">
+            <Shell>
+              <button
+                class="w-full py-4 px-6 text-sm leading-5 font-medium"
+                on:click|stopPropagation|preventDefault="{() =>
+                  (editCheckInClicked = !editCheckInClicked)}">
+                <span class="text-lg">Edit CheckIn</span>
+              </button>
+            </Shell>
+          </div>
         {/if}
       </div>
     </div>
