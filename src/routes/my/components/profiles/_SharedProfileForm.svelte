@@ -43,8 +43,10 @@
       </p>
 
       <p class="mt-4 text-sm leading-5 text-gray-500">
-        If you're shared profile is left blank, we use the same fields found on
-        your main profile as the default.
+        Below is the information we'll share with sponsors. By default it takes
+        information from your main profile. Edit the fields below to change
+        what's shared. This will not change the information on your main
+        profile.
       </p>
     </div>
 
