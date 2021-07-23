@@ -12,24 +12,21 @@
   import StackedLayout from '../../elements/layouts/StackedLayout.svelte';
   import { ActionHeader } from '../../elements';
 
-  import Profile from './components/_Profile.svelte';
   import Badges from './components/_Badges.svelte';
   import OrderHistory from './components/_OrderHistory.svelte';
   import Tickets from './components/_Tickets.svelte';
   import MembershipSettings from './components/_MembershipSettings.svelte';
 
-  $: settingsComponent = Profile;
+  $: settingsComponent = Badges;
 
   const asideSelected = {
-    item:
-      'bg-thatBlue-100 bg-opacity-25 hover:bg-opacity-25 hover:bg-thatBlue-100 border-thatBlue-500 text-thatBlue-700 hover:text-thatBlue-700 group mt-1 border-l-4 px-3 py-2 flex items-center text-sm font-medium',
+    item: 'bg-thatBlue-100 bg-opacity-25 hover:bg-opacity-25 hover:bg-thatBlue-100 border-thatBlue-500 text-thatBlue-700 hover:text-thatBlue-700 group mt-1 border-l-4 px-3 py-2 flex items-center text-sm font-medium',
     image:
       'text-thatBlue-500 group-hover:text-thatBlue-500 flex-shrink-0 -ml-1 mr-3 h-6 w-6',
   };
 
   const asideDefault = {
-    item:
-      'border-transparent text-gray-900 hover:bg-gray-50 hover:text-gray-900 group mt-1 border-l-4 px-3 py-2 flex items-center text-sm font-medium',
+    item: 'border-transparent text-gray-900 hover:bg-gray-50 hover:text-gray-900 group mt-1 border-l-4 px-3 py-2 flex items-center text-sm font-medium',
     image:
       'text-gray-400 group-hover:text-gray-500 flex-shrink-0 -ml-1 mr-3 h-6 w-6',
   };
@@ -45,10 +42,6 @@
   };
 
   $: switch ($router.params.aside) {
-    case 'profile':
-      settingsComponent = Profile;
-      break;
-
     case 'badges':
       settingsComponent = Badges;
       break;
@@ -66,8 +59,8 @@
       break;
 
     default:
-      // navigateTo('/my/settings/profile'); // todo not sure if we want to do this or not.
-      settingsComponent = Profile;
+      // navigateTo('/my/profiles/primary'); // todo not sure if we want to do this or not.
+      settingsComponent = Badges;
       break;
   }
 </script>
@@ -85,22 +78,6 @@
         <aside class="py-6 lg:col-span-3">
           <div class="sticky top-4">
             <nav>
-              <a
-                href="/my/settings/profile"
-                on:click|preventDefault="{() => {
-                  navigateTo('/my/settings/profile');
-                  settingsComponent = Profile;
-                }}"
-                class="{settingsComponent === Profile
-                  ? asideSelected.item
-                  : asideDefault.item}">
-                <User
-                  classes="{settingsComponent === Profile
-                    ? asideSelected.image
-                    : asideDefault.image}" />
-                <span class="truncate"> Your Profile </span>
-              </a>
-
               <a
                 href="/my/settings/badges"
                 on:click|preventDefault="{() => {

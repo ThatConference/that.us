@@ -128,14 +128,14 @@
     title="Oh NO! You have an incomplete profile!"
     text="It appears you haven't created your profile yet. You can't create an
     activity until that's complete."
-    action="{{ title: 'Create Profile', href: '/my/settings/profile' }}"
+    action="{{ title: 'Create Profile', href: '/my/profiles/primary' }}"
     returnTo="{{ title: 'Return to Activities', href: '/activities' }}" />
 {:else if !$thatProfile?.canFeature}
   <ModalError
     title="Your Profile Isn't Public."
     text="It appears we cannot feature your profile. You need to have a public
     profile to create an activity."
-    action="{{ title: 'Update Profile', href: '/my/settings/profile' }}"
+    action="{{ title: 'Update Profile', href: '/my/profiles/primary' }}"
     returnTo="{{ title: 'Return to Activities', href: '/activities' }}" />
 {/if}
 

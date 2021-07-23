@@ -92,7 +92,7 @@
               </Link>
             </li>
             <li>
-              <Link href="/my/settings/profile"
+              <Link href="/my/profiles/primary"
                 >Keep your profile up to date.</Link>
             </li>
           </ul>

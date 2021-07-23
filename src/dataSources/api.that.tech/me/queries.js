@@ -53,6 +53,24 @@ export const QUERY_ME_DISCOUNT_CODES = `
   }
 `;
 
+export const QUERY_ME_SHARED_PROFILE = `
+  query QUERY_ME_SHARED_PROFILE {
+    members {
+      profiles {
+        shared {
+          id
+          firstName
+          lastName
+          email
+          phone
+          city
+          state
+        }
+      }
+    }
+  }
+`;
+
 export default client => {
   const queryMeFollowingCommunities = () => {
     const variables = {};
@@ -106,10 +124,25 @@ export default client => {
       });
   };
 
+  const queryMeSharedProfile = () => {
+    const variables = {};
+    return client
+      .query(QUERY_ME_SHARED_PROFILE, variables)
+      .toPromise()
+      .then(({ data, error }) => {
+        if (error) log(error, 'QUERY_ME_SHARED_PROFILE');
+
+        const { shared } = data.members.profiles;
+
+        return shared;
+      });
+  };
+
   return {
     queryMeFollowingCommunities,
     queryMeFollowingMembers,
     queryMeFollowingPartners,
     queryMeDiscountCodes,
+    queryMeSharedProfile,
   };
 };

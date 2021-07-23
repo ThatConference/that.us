@@ -43,7 +43,7 @@
         if you're not already. If you still need an account simply
         <Link href="/login?signup=true">create one here</Link>, and then update
         your
-        <Link href="/my/settings/profile">profile accordingly</Link>. Once
+        <Link href="/my/profiles/primary">profile accordingly</Link>. Once
         completed you can then create a
         <Link href="/activity/create">New Activity</Link>. It's here where you
         will detail out the conversation, inviting others to join in. The
