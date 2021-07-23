@@ -29,6 +29,7 @@
   import Partner from './routes/partners/Partner.svelte';
   import Job from './routes/partners/Job.svelte';
   import PastPartners from './routes/partners/PastPartners.svelte';
+  import PartnerLeads from './routes/partners/Leads.svelte';
 
   // support
   import FaqPage from './routes/support/FAQ.svelte';
@@ -116,6 +117,8 @@
     <Route exact path="/:partner" component="{Partner}" />
     <Route exact path="/:partner/jobs/:job" component="{Job}" />
     <Route exact path="/past" component="{PastPartners}" />
+    <Route exact path="/leads" redirect="/partners/leads/7wiuRWI7EZjcdF4e9MDz" />
+    <Route exact path="/leads/:eventId" component="{PartnerLeads}" condition="{isLoggedIn}" redirect="/login"/>
   </Router>
 
   <Router path="/members">
