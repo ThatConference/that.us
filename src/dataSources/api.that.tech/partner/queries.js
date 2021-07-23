@@ -356,8 +356,7 @@ export default client => {
       });
   }
 
-  function getUpcomingPartnersNext(cursor) {
-    // not implemented yet
+  async function getUpcomingPartnersNext(cursor) {
     return [];
   }
 
@@ -387,7 +386,7 @@ export default client => {
       });
   }
 
-  function getPastPartnersNext(cursor) {
+  async function getPastPartnersNext(cursor) {
     // not implemented yet
     return [];
   }

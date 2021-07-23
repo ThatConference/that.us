@@ -6,6 +6,8 @@
 
   import { Standard as StandardLink } from '../../../elements/links';
   import { Standard as StandardButton } from '../../../elements/buttons';
+
+  import MobileUsersProfile from '../_MobileUsersProfile.svelte';
 </script>
 
 {#each links as l}
@@ -21,7 +23,7 @@
 
 <div class="my-4 sm:my-4 px-4 sm:px-6 flex flex-col space-y-5">
   {#if $isAuthenticated}
-    <StandardLink href="/logout">Logout</StandardLink>
+    <MobileUsersProfile darkMode="{true}" />
   {:else}
     <StandardButton on:click="{() => login(document.location.pathname, false)}">
       Log in

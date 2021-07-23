@@ -86,7 +86,7 @@
         <ul>
           <li>If you're speaking in-person, reserve your room ASAP.</li>
           <li>
-            <Link href="/my/settings/profile"
+            <Link href="/my/profiles/primary"
               >Review and update your profile.</Link>
           </li>
 

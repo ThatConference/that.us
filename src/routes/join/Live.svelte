@@ -250,7 +250,7 @@
   <ModalError
     title="Oh NO! You have an incomplete profile!"
     text="It appears you haven't created your profile yet. You can't join an activity until that's complete."
-    action="{{ title: 'Create Profile', href: '/my/settings/profile' }}"
+    action="{{ title: 'Create Profile', href: '/my/profiles/primary' }}"
     returnTo="{{ title: 'Return to Activities', href: '/activities' }}" />
 {/if}
 

@@ -17,8 +17,8 @@ function createServices() {
     },
 
     services: {
-      load: context => getUpcomingPartners(),
-      loadNext: context => getUpcomingPartnersNext(), // todo stubbed until we have paged partners
+      load: () => getUpcomingPartners(),
+      loadNext: () => getUpcomingPartnersNext(),
     },
 
     actions: {
@@ -31,17 +31,15 @@ function createServices() {
 
       loadSuccess: assign({
         items: (_, { data }) => data,
-        cursor: (_, { data }) => undefined, // todo add once we have paged partners
+        cursor: () => undefined,
       }),
 
-      // todo... we add to the object
       loadNextSuccess: assign({
-        items: (context, event) =>
-          uniqBy([...context.items, ...event.data], i => i.id),
-        cursor: (_, { data }) => data.cursor,
+        items: context => [...context.items],
+        cursor: () => undefined,
       }),
 
-      loadedAllSuccess: () => {}, // stub action for now.
+      loadedAllSuccess: () => {},
     },
   };
 }

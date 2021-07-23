@@ -46,6 +46,7 @@
   import Settings from './routes/my/Settings.svelte';
   import MyFavorites from './routes/my/Favorites.svelte';
   import MySubmissions from './routes/my/Submissions.svelte';
+  import Profiles from './routes/my/Profiles.svelte';
 
   // Activities
   import Daily from './routes/activities/Daily.svelte';
@@ -173,9 +174,14 @@
   </Router>
   
   <Router path="/my">
-    <Route exact redirect="/my/settings/profile" />
-    <Route exact path="/settings" redirect="/my/settings/profile" />
+    <Route exact redirect="/my/settings/badges" />
+    <Route exact path="/settings" redirect="/my/settings/badges" />
     <Route exact path="/settings/:aside" component="{Settings}" condition="{isLoggedIn}" redirect="/login" />
+    <Route exact path="/settings/profile" redirect="/my/profiles/primary" />
+    
+    <Route exact path="/profiles" redirect="/my/profiles/primary" />
+    <Route exact path="/profiles/:aside" component="{Profiles}" condition="{isLoggedIn}" redirect="/login" />
+    
     <Route exact path="/favorites" component="{MyFavorites}" condition="{isLoggedIn}" redirect="/login" />
     <Route exact path="/submissions" component="{MySubmissions}" condition="{isLoggedIn}" redirect="/login" />
   </Router>

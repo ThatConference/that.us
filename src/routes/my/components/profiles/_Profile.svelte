@@ -3,12 +3,12 @@
   import { isNil, isEmpty } from 'lodash';
   import { getClient } from '@urql/svelte';
 
-  import ProfileForm from '../../../components/my/ProfileForm.svelte';
+  import ProfileForm from './ProfileForm.svelte';
 
-  import memberApi from '../../../dataSources/api.that.tech/members/mutations';
-  import logEvent from '../../../utilities/eventTrack';
-  import { user, thatProfile } from '../../../utilities/security.js';
-  import metaTagsStore from '../../../store/metaTags';
+  import memberApi from '../../../../dataSources/api.that.tech/members/mutations';
+  import logEvent from '../../../../utilities/eventTrack';
+  import { user, thatProfile } from '../../../../utilities/security.js';
+  import metaTagsStore from '../../../../store/metaTags';
 
   const { createProfile, updateProfile } = memberApi(getClient());
 
@@ -73,7 +73,7 @@
     noindex: true,
     openGraph: {
       type: 'website',
-      url: `https://that.us/my/settings/profile`,
+      url: `https://that.us/my/profiles/primary`,
     },
   });
 </script>
