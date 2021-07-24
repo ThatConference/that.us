@@ -64,14 +64,20 @@
         allEvents
           .filter(i => i.type === 'MULTI_DAY' || i.type === 'HYBRID_MULTI_DAY')
           .filter(i => i.isActive)
-          .filter(i =>
-            dayjs().isBetween(
-              dayjs(i.callForSpeakersOpenDate),
-              dayjs(i.callForSpeakersCloseDate),
-              'day',
-            ),
+          .filter(
+            i =>
+              dayjs().isBetween(
+                dayjs(i.callForSpeakersOpenDate),
+                dayjs(i.callForSpeakersCloseDate),
+                'day',
+              ) ||
+              dayjs().isBetween(
+                dayjs(i.startDate).subtract(2, 'week'),
+                dayjs(i.endDate),
+                'day',
+              ),
+            'endDate',
           ),
-        'endDate',
       );
     }
 

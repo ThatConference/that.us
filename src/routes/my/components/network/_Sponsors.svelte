@@ -3,6 +3,7 @@
   import dayjs from 'dayjs';
   import { Circle3 } from 'svelte-loading-spinners';
   import { Link } from 'yrv';
+  import { sortBy } from 'lodash';
 
   import meNetworkQueryApi from '../../../../dataSources/api.that.tech/me/network/queries';
 
@@ -20,6 +21,10 @@
       url: `https://that.us/my/network/sponsors`,
     },
   });
+
+  function queryMyNetwork() {
+    return queryMySponsorNetwork().then(r => sortBy(r, 'createdAt').reverse());
+  }
 </script>
 
 <div>
@@ -31,7 +36,7 @@
     <!-- <p class="mt-4 text-sm leading-5 text-gray-500">add copy here</p> -->
 
     <div class="px-4 py-8">
-      {#await queryMySponsorNetwork()}
+      {#await queryMyNetwork()}
         <div class="flex flex-col items-center">
           <Circle3
             size="{'60'}"

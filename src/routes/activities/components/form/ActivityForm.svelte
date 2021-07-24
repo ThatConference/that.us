@@ -1,5 +1,6 @@
 <script>
   export let isBackdoor = false;
+  export let isEdit = false;
   export let initialData;
   export let handleWithdraw;
   export let handleSubmit;
@@ -53,8 +54,6 @@
     createDisabled = false;
   }
 
-  function getSteps() {}
-
   function handleEventSelected({ detail }) {
     const { type } = detail;
 
@@ -71,7 +70,19 @@
 
       case 'MULTI_DAY':
       case 'HYBRID_MULTI_DAY':
-        showLongForm = true;
+        if (!isEdit) {
+          if (
+            dayjs().isBetween(
+              dayjs(eventSelected.startDate).subtract(2, 'week'),
+              dayjs(eventSelected.endDate),
+              'day',
+            )
+          ) {
+            showLongForm = false;
+          } else {
+            showLongForm = true;
+          }
+        }
 
         switch (activityTypeSelected) {
           case 'WORKSHOP':

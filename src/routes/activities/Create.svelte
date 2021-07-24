@@ -102,7 +102,10 @@
     </div>
 
     <div class="mt-8 sm:px-6 max-w-3xl lg:max-w-7xl mx-auto">
-      <ActivityForm handleSubmit="{handleSubmit}" isBackdoor="{isBackdoor}" />
+      <ActivityForm
+        handleSubmit="{handleSubmit}"
+        isBackdoor="{isBackdoor}"
+        isEdit="{false}" />
     </div>
   </div>
 </StackedLayout>
