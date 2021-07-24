@@ -124,7 +124,8 @@ export const QUERY_PARTNER = `
         city
         state
         goals
-
+        callToAction
+        callToActionUrl
         members {
           id
           firstName
