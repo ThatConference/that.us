@@ -125,6 +125,7 @@ export const QUERY_PARTNER = `
         state
         goals
         callToAction
+        callToActionSpotlight
         callToActionUrl
         members {
           id

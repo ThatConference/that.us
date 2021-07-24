@@ -83,10 +83,10 @@
         </div>
       {/if}
 
-      {#if $state?.context?.profile?.callToAction}
+      {#if $state?.context?.profile?.callToActionSpotlight}
         <div in:fade="{{ delay: getDelay() }}">
           <PartnerCta
-            action="{$state.context.profile.callToAction}"
+            action="{$state.context.profile.callToActionSpotlight}"
             url="{$state.context.profile.callToActionUrl}" />
         </div>
       {/if}
