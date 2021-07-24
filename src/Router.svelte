@@ -1,14 +1,19 @@
 <script>
-  import { Router, router, Route } from 'yrv';
+  import { Router, router, Route, navigateTo } from 'yrv';
 
   import config from './config';
-  import { isAuthenticated } from './utilities/security.js';
+  import { isAuthenticated, user } from './utilities/security.js';
 
   let documentReferrer;
   const { eventId } = config;
 
   function isLoggedIn() {
     documentReferrer = `${$router.path}${window.location.search}`;
+
+    if (!$user.email_verified) {
+      navigateTo('/verify-account');
+    }
+
     return $isAuthenticated;
   }
 
@@ -19,6 +24,7 @@
   import LoginSuccess from './routes/LoginSuccess.svelte';
   import Logout from './routes/Logout.svelte';
   import NotFound from './routes/NotFound.svelte';
+  import VerifyAccount from './routes/VerifyAccount.svelte';
 
   // Members
   import Members from './routes/members/Members.svelte';
@@ -48,6 +54,7 @@
   import MyFavorites from './routes/my/Favorites.svelte';
   import MySubmissions from './routes/my/Submissions.svelte';
   import Profiles from './routes/my/Profiles.svelte';
+  import Network from './routes/my/Network.svelte';
 
   // Activities
   import Daily from './routes/activities/Daily.svelte';
@@ -106,6 +113,7 @@
   <Route path="/speakers/accept"  component="{SpeakersAccept}" condition="{isLoggedIn}" redirect="/login" />
   
   <Route exact path="/not-found" component="{NotFound}" />
+  <Route exact path="/verify-account" component="{VerifyAccount}" />
   
   <Router path="/join">
     <Route exact path="/access-denied/:activityId" component="{JoinAccessDenied}" />
@@ -179,11 +187,15 @@
   <Router path="/my">
     <Route exact redirect="/my/settings/badges" />
     <Route exact path="/settings" redirect="/my/settings/badges" />
+    
     <Route exact path="/settings/:aside" component="{Settings}" condition="{isLoggedIn}" redirect="/login" />
     <Route exact path="/settings/profile" redirect="/my/profiles/primary" />
     
     <Route exact path="/profiles" redirect="/my/profiles/primary" />
     <Route exact path="/profiles/:aside" component="{Profiles}" condition="{isLoggedIn}" redirect="/login" />
+
+    <Route exact path="/network" redirect="/my/network/sponsors" />
+    <Route exact path="/network/:aside" component="{Network}" condition="{isLoggedIn}" redirect="/login" />
     
     <Route exact path="/favorites" component="{MyFavorites}" condition="{isLoggedIn}" redirect="/login" />
     <Route exact path="/submissions" component="{MySubmissions}" condition="{isLoggedIn}" redirect="/login" />
