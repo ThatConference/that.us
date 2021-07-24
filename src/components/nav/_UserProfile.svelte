@@ -100,6 +100,13 @@
             </Link>
 
             <Link
+              href="/my/network"
+              on:click="{() => (visible = false)}"
+              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+              My Network
+            </Link>
+
+            <Link
               href="/my/favorites"
               class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
               My Favorites
