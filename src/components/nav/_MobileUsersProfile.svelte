@@ -22,6 +22,10 @@
       text: 'My Settings',
     },
     {
+      link: '/my/network',
+      text: 'My Network',
+    },
+    {
       link: '/my/submissions',
       text: 'My Submissions',
     },
