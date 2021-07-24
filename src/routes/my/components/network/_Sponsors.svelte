@@ -2,6 +2,7 @@
   import { getClient } from '@urql/svelte';
   import dayjs from 'dayjs';
   import { Circle3 } from 'svelte-loading-spinners';
+  import { Link } from 'yrv';
 
   import meNetworkQueryApi from '../../../../dataSources/api.that.tech/me/network/queries';
 
@@ -10,13 +11,13 @@
   const { queryMySponsorNetwork } = meNetworkQueryApi(getClient());
 
   metaTagsStore.set({
-    title: 'Your Network - THAT',
-    description: 'Create or update your THAT profile.',
+    title: 'Your Sponsor Network - THAT',
+    description: '',
     nofollow: true,
     noindex: true,
     openGraph: {
       type: 'website',
-      url: `https://that.us/my/network/shared`,
+      url: `https://that.us/my/network/sponsors`,
     },
   });
 </script>
@@ -45,7 +46,7 @@
           <ul class="divide-y divide-gray-200">
             {#each contacts as c}
               <li>
-                <a
+                <Link
                   href="/partners/{c.partner.slug}"
                   class="block hover:bg-gray-50">
                   <div class="flex items-center px-4 py-4 sm:px-6">
@@ -125,7 +126,7 @@
                       </svg>
                     </div>
                   </div>
-                </a>
+                </Link>
               </li>
             {/each}
           </ul>
