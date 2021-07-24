@@ -1,6 +1,7 @@
 <script>
   import { getClient } from '@urql/svelte';
   import dayjs from 'dayjs';
+  import { Circle3 } from 'svelte-loading-spinners';
 
   import meNetworkQueryApi from '../../../../dataSources/api.that.tech/me/network/queries';
 
@@ -29,7 +30,17 @@
     <!-- <p class="mt-4 text-sm leading-5 text-gray-500">add copy here</p> -->
 
     <div class="px-4 py-8">
-      {#await queryMySponsorNetwork() then contacts}
+      {#await queryMySponsorNetwork()}
+        <div class="flex flex-col items-center">
+          <Circle3
+            size="{'60'}"
+            unit="{'px'}"
+            ballTopLeft="#f74646"
+            ballTopRight="#ff834d"
+            ballBottomLeft="#26529A"
+            ballBottomRight="#555555" />
+        </div>
+      {:then contacts}
         <div class="bg-white shadow overflow-hidden sm:rounded-md">
           <ul class="divide-y divide-gray-200">
             {#each contacts as c}
