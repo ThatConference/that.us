@@ -359,17 +359,7 @@
       "contributions": [
         "code"
       ]
-    },
-    {
-      "login": "SQrL143",
-      "name": "Bryan Shannon",
-      "avatar_url": "https://avatars.githubusercontent.com/u/26024995?s=400&v=4",
-      "profile": "https://github.com/SQrL143",
-      "contributions": [
-        "bug",
-        "user testing"
-      ]
-    },
+    }
   ],
   "contributorsPerLine": 7,
   "projectName": "that.us",
