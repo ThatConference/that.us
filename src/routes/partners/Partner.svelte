@@ -15,6 +15,7 @@
   import CTA from './components/_CTA.svelte';
   import JobListings from './components/_JobListings.svelte';
   import FeaturedSessions from './components/_FeaturedSessions.svelte';
+  import PartnerCta from './components/_PartnerCta.svelte';
 
   // utilities
   import { isAuthenticated, token } from '../../utilities/security';
@@ -79,6 +80,14 @@
       {#if $state?.context?.profile?.goals?.length > 0}
         <div in:fade="{{ delay: getDelay() }}">
           <Goals goals="{$state.context.profile.goals}" />
+        </div>
+      {/if}
+
+      {#if $state?.context?.profile?.callToAction}
+        <div in:fade="{{ delay: getDelay() }}">
+          <PartnerCta
+            action="{$state.context.profile.callToAction}"
+            url="{$state.context.profile.callToActionUrl}" />
         </div>
       {/if}
 
