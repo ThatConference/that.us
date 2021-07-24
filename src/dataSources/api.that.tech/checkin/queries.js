@@ -40,6 +40,7 @@ const QUERY_EVENT_REGISTRATIONS = `
               hasCheckedIn
               checkedInAt
               partnerPin
+              receivedSwag
               checkedInBy {
                 ...registrationProfileFragment
               }

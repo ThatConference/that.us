@@ -13,6 +13,7 @@
   const { eventId } = $router.params;
 
   let pinNumber = '';
+  let partnerNotes;
   let waiting = false;
 
   let contactExchangeError = false;
@@ -22,7 +23,7 @@
     waiting = true;
     woopra.track('event_contact_exchanged');
 
-    const { result, message } = await addPin(eventId, pinNumber);
+    const { result, message } = await addPin(eventId, pinNumber, partnerNotes);
 
     waiting = false;
 
@@ -132,6 +133,18 @@
               <span class="text-lg">Connect</span>
             </button>
           </Shell>
+        </div>
+
+        <div>
+          <textarea
+            name="notes"
+            type="textarea"
+            rows="10"
+            multiline="{true}"
+            bind:value="{partnerNotes}"
+            class="border border-gray-300 rounded-md  form-input w-full sm:text-sm sm:leading-5 hover:border-gray-700"
+            placeholder="E.g. Jane would be a great fit for our company."
+          ></textarea>
         </div>
       </div>
     {/if}

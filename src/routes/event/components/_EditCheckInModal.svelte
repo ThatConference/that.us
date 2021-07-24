@@ -3,17 +3,21 @@
   export let eventId;
   export let title;
   export let text;
+  export let isOwedShirt = false;
 
   import { getClient } from '@urql/svelte';
   import { createEventDispatcher } from 'svelte';
   import { Circle3 } from 'svelte-loading-spinners';
+  import Checkbox from 'svelte-checkbox';
 
   import Panel from '../../../components/numberPad/Panel.svelte';
   import { Shell } from '../../../elements/buttons';
   import checkinMutationApi from '../../../dataSources/api.that.tech/checkin/mutations';
 
   const dispatch = createEventDispatcher();
-  const { setPartnerPin, revertCheckIn } = checkinMutationApi(getClient());
+  const { setPartnerPin, revertCheckIn, setReceivedSwag } = checkinMutationApi(
+    getClient(),
+  );
 
   let pinNumber = '';
   let waiting = false;
@@ -60,6 +64,26 @@
   function tryAgain() {
     checkInError = false;
     checkInErroMessage = undefined;
+  }
+
+  async function handleOweSwag() {
+    waiting = true;
+    woopra.track('event_inperson_edit_checkin');
+
+    const { result, message } = await setReceivedSwag(
+      eventId,
+      ticketId,
+      !isOwedShirt,
+    );
+
+    waiting = false;
+
+    if (result) {
+      dispatch('checkinUpdated');
+    } else {
+      checkInError = false;
+      checkInErroMessage = message;
+    }
   }
 </script>
 
@@ -156,6 +180,23 @@
                   class="w-full py-4 text-sm leading-5 font-medium"
                   on:click="{() => (setPin = true)}">
                   <span class="text-lg">Reset Pin</span>
+                </button>
+              </Shell>
+            </div>
+
+            <div class="flex space-x-4 items-center">
+              <div>
+                <Checkbox
+                  name="isOwedShirt"
+                  bind:checked="{isOwedShirt}"
+                  size="3.5rem"
+                  class="flex-none" />
+              </div>
+              <Shell>
+                <button
+                  class="w-full py-4 text-sm leading-5 font-medium"
+                  on:click="{() => handleOweSwag()}">
+                  <span class="text-lg">Owe Shirt</span>
                 </button>
               </Shell>
             </div>

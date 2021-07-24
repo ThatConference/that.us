@@ -6,7 +6,6 @@
 
   import config from '../../../config';
   import { CheckFull } from '../../../elements/svgs';
-  import { Standard as StandardButton } from '../../../elements/buttons';
   import CheckInModal from './_CheckinModal.svelte';
   import EditCheckinModal from './_EditCheckInModal.svelte';
 
@@ -144,6 +143,7 @@
     text="Revert or update a users checkin."
     eventId="{ticket.event.id}"
     ticketId="{ticket.id}"
+    isOwedShirt="{!ticket.receivedSwag}"
     on:checkinUpdated="{e => {
       editCheckInClicked = false;
     }}"

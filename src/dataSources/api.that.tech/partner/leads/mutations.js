@@ -32,12 +32,9 @@ export default client => {
 
         let results;
 
-        console.log({ data });
-
         if (data) {
           const { add } = data.partners.us.leads;
           results = add;
-          console.log({ add });
         }
 
         return results;

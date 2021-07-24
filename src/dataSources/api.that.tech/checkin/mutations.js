@@ -48,6 +48,22 @@ export const MUTATION_SET_PIN = `
   }
 `;
 
+export const MUTATION_SET_RECEIVED_SWAG = `
+  mutation MUTATION_SET_RECEIVED_SWAG($eventId: ID!, $orderAllocationId: ID!, $receivedSwag: Boolean!) {
+    events {
+      event(id: $eventId) {
+        registration {
+          receivedResult: setReceivedSwag(orderAllocationId: $orderAllocationId, received: $receivedSwag) {
+            result
+            message
+            pinSet
+          }
+        }
+      }
+    }
+  }
+`;
+
 export default client => {
   function checkIn(eventId, orderAllocationId, pinNumber) {
     const variables = { eventId, orderAllocationId, pinNumber };
@@ -106,5 +122,24 @@ export default client => {
       });
   }
 
-  return { checkIn, revertCheckIn, setPartnerPin };
+  function setReceivedSwag(eventId, orderAllocationId, receivedSwag) {
+    const variables = { eventId, orderAllocationId, receivedSwag };
+    return client
+      .mutation(MUTATION_SET_RECEIVED_SWAG, variables)
+      .toPromise()
+      .then(({ data, error }) => {
+        if (error) log(error, 'MUTATION_SET_RECEIVED_SWAG');
+
+        let results;
+
+        if (data) {
+          const { receivedResult } = data.events.event.registration;
+          results = receivedResult;
+        }
+
+        return results;
+      });
+  }
+
+  return { checkIn, revertCheckIn, setPartnerPin, setReceivedSwag };
 };
