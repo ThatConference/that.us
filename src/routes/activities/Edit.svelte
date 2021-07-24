@@ -137,7 +137,8 @@
             handleSubmit="{handleSubmit}"
             handleWithdraw="{handleWithdraw}"
             initialData="{activity}"
-            isBackdoor />
+            isBackdoor="{false}"
+            isEdit="{true}" />
         </div>
       {:else}
         <ModalError
