@@ -2,6 +2,7 @@
   import { getClient } from '@urql/svelte';
   import { Circle3 } from 'svelte-loading-spinners';
   import dayjs from 'dayjs';
+  import { sortBy } from 'lodash';
 
   import metaTagsStore from '../../store/metaTags';
   import ProfileLayout from '../../elements/layouts/Profile.svelte';
@@ -19,6 +20,10 @@
       url: 'https://that.us/my/partners/my-network',
     },
   });
+
+  function queryNetwork() {
+    return queryMyNetwork().then(r => sortBy(r, 'createdAt').reverse());
+  }
 </script>
 
 <ProfileLayout>
@@ -32,7 +37,7 @@
         </h2>
       </div>
 
-      {#await queryMyNetwork()}
+      {#await queryNetwork()}
         <div class="flex flex-col items-center">
           <Circle3
             size="{'60'}"
