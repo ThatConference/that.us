@@ -1,6 +1,8 @@
 <script>
   import { getClient } from '@urql/svelte';
   import dayjs from 'dayjs';
+  import { Circle3 } from 'svelte-loading-spinners';
+  import { Link } from 'yrv';
 
   import meNetworkQueryApi from '../../../../dataSources/api.that.tech/me/network/queries';
 
@@ -9,13 +11,13 @@
   const { queryMySponsorNetwork } = meNetworkQueryApi(getClient());
 
   metaTagsStore.set({
-    title: 'Your Network - THAT',
-    description: 'Create or update your THAT profile.',
+    title: 'Your Sponsor Network - THAT',
+    description: '',
     nofollow: true,
     noindex: true,
     openGraph: {
       type: 'website',
-      url: `https://that.us/my/network/shared`,
+      url: `https://that.us/my/network/sponsors`,
     },
   });
 </script>
@@ -29,12 +31,22 @@
     <!-- <p class="mt-4 text-sm leading-5 text-gray-500">add copy here</p> -->
 
     <div class="px-4 py-8">
-      {#await queryMySponsorNetwork() then contacts}
+      {#await queryMySponsorNetwork()}
+        <div class="flex flex-col items-center">
+          <Circle3
+            size="{'60'}"
+            unit="{'px'}"
+            ballTopLeft="#f74646"
+            ballTopRight="#ff834d"
+            ballBottomLeft="#26529A"
+            ballBottomRight="#555555" />
+        </div>
+      {:then contacts}
         <div class="bg-white shadow overflow-hidden sm:rounded-md">
           <ul class="divide-y divide-gray-200">
             {#each contacts as c}
               <li>
-                <a
+                <Link
                   href="/partners/{c.partner.slug}"
                   class="block hover:bg-gray-50">
                   <div class="flex items-center px-4 py-4 sm:px-6">
@@ -114,7 +126,7 @@
                       </svg>
                     </div>
                   </div>
-                </a>
+                </Link>
               </li>
             {/each}
           </ul>
