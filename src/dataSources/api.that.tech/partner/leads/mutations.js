@@ -15,6 +15,21 @@ export const MUTATION_ADD_PIN = `
   }
 `;
 
+export const MUTATION_ADD_LEAD = `
+  mutation MUTATION_ADD_LEAD($eventId: ID!, $partnerId: ID, $membersNotes: String) {
+    partners {
+      me (findBy: {id: $partnerId }) {
+        leads {
+          add (lead: {eventId: $eventId, membersNotes: $membersNotes}) {
+            result
+            message
+          }
+        }
+      }
+    }
+  }
+`;
+
 export default client => {
   function addPin(eventId, partnerPin, partnersNotes) {
     const variables = {
@@ -24,6 +39,7 @@ export default client => {
         partnersNotes,
       },
     };
+
     return client
       .mutation(MUTATION_ADD_PIN, variables)
       .toPromise()
@@ -41,5 +57,29 @@ export default client => {
       });
   }
 
-  return { addPin };
+  function addLead(partnerId, eventId = '7wiuRWI7EZjcdF4e9MDz', membersNotes) {
+    const variables = {
+      partnerId,
+      eventId,
+      membersNotes,
+    };
+
+    return client
+      .mutation(MUTATION_ADD_LEAD, variables)
+      .toPromise()
+      .then(({ data, error }) => {
+        if (error) log(error, 'MUTATION_ADD_LEAD');
+
+        let results;
+
+        if (data) {
+          const { add } = data.partners.me.leads;
+          results = add;
+        }
+
+        return results;
+      });
+  }
+
+  return { addPin, addLead };
 };

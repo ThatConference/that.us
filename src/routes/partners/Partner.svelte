@@ -65,8 +65,13 @@
         <Hero
           partner="{$state.context.profile}"
           isFollowing="{$state.context.isFollowing}"
+          wasContactExchanged="{$state.context.leadAdded}"
           on:TOGGLE_FOLLOW="{() =>
             send('FOLLOW', {
+              id: $state.context.profile.id,
+            })}"
+          on:XCHANGE_CONTACT="{() =>
+            send('XCHANGE_CONTACT', {
               id: $state.context.profile.id,
             })}" />
       </div>

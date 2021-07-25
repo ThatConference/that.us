@@ -1,11 +1,9 @@
 <script>
   export let partner;
   export let isFollowing = false;
+  export let wasContactExchanged = false;
 
-  import { onMount, onDestroy, createEventDispatcher } from 'svelte';
-  import Icon from 'svelte-awesome';
-  import { share } from 'svelte-awesome/icons';
-  import Clipboard from 'clipboard';
+  import { createEventDispatcher } from 'svelte';
   import { Link } from 'yrv';
 
   import { Standard as StandardButton } from '../../../elements/buttons';
@@ -14,20 +12,6 @@
   import { isAuthenticated } from '../../../utilities/security';
 
   const dispatch = createEventDispatcher();
-  let clipboard;
-  let copiedText;
-
-  onMount(() => {
-    clipboard = new Clipboard('#shareUrl');
-
-    clipboard.on('success', function (e) {
-      copiedText = 'Copied!';
-    });
-  });
-
-  onDestroy(() => {
-    clipboard.destroy();
-  });
 </script>
 
 <section class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -72,13 +56,18 @@
               Visit
             </StandardLink>
 
-            <StandardButton
-              class="h-3/4"
-              on:click="{() => dispatch('TOGGLE_FOLLOW')}">
-              Connect
-            </StandardButton>
-
             {#if $isAuthenticated}
+              <!-- TODO.. Needs a bit of work.
+                <StandardButton
+                  class="h-3/4"
+                  on:click="{() => dispatch('XCHANGE_CONTACT')}">
+                  {#if !wasContactExchanged}
+                    Exhange Contact Information
+                  {:else}
+                    Contact Exchang ed
+                  {/if}
+                </StandardButton> -->
+
               <StandardButton
                 class="h-3/4"
                 on:click="{() => dispatch('TOGGLE_FOLLOW')}">

@@ -6,6 +6,7 @@ import { isValidSlug } from '../../../machines/guards/slug';
 import { log } from '../../../utilities/error';
 import partnerQueryApi from '../../../dataSources/api.that.tech/partner/queries';
 import partnerMutationsApi from '../../../dataSources/api.that.tech/partner/mutations';
+import partnerLeadsMutationsApi from '../../../dataSources/api.that.tech/partner/leads/mutations';
 import meQueryApi from '../../../dataSources/api.that.tech/me/queries';
 
 import createPartnerConfig from './partnerConfig';
@@ -15,6 +16,7 @@ function createServices(client) {
   const { getPartner } = partnerQueryApi(client);
   const { toggleFollow } = partnerMutationsApi(client);
   const { queryMeFollowingPartners } = meQueryApi(client);
+  const { addLead } = partnerLeadsMutationsApi(client);
 
   return {
     guards: {
@@ -30,6 +32,7 @@ function createServices(client) {
       queryProfile: context => getPartner(context.slug),
       queryMyFollowing: () => queryMeFollowingPartners(),
       toggleFollow: context => toggleFollow(context.profile.id),
+      addLeadMutate: context => addLead(context.profile.id),
     },
 
     actions: {
@@ -60,6 +63,10 @@ function createServices(client) {
 
       toggleFollowSuccess: assign({
         isFollowing: (_, event) => event.data,
+      }),
+
+      addLeadSuccess: assign({
+        leadAdded: (_, event) => event.result,
       }),
 
       createFollowMachineServices: assign({
