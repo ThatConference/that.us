@@ -45,10 +45,13 @@
 
   let createDisabled = true;
 
-  $: eventSelected = {};
+  $: eventSelected = {
+    startDate: initialData?.startDate,
+    endDate: initialData?.endDate,
+  };
   $: activityTypeSelected = initialData?.type || undefined;
   $: validationSchema = openSpaces;
-  let showLongForm = false;
+  $: showLongForm = false;
 
   $: if (!isEmpty($thatProfile)) {
     createDisabled = false;
@@ -70,7 +73,7 @@
 
       case 'MULTI_DAY':
       case 'HYBRID_MULTI_DAY':
-        if (!isEdit) {
+        if (!isBackdoor && !isEdit) {
           if (
             dayjs().isBetween(
               dayjs(eventSelected.startDate).subtract(2, 'week'),
@@ -79,19 +82,37 @@
             )
           ) {
             showLongForm = false;
-          } else {
-            showLongForm = true;
+            validationSchema = openSpaces;
+            break;
           }
         }
 
         switch (activityTypeSelected) {
-          case 'WORKSHOP':
-            validationSchema = workshop;
-            break;
-
-          default:
+          case 'REGULAR':
+          case 'KEYNOTE':
+          case 'PANEL': {
+            showLongForm = true;
             validationSchema = standard;
             break;
+          }
+
+          case 'WORKSHOP': {
+            showLongForm = true;
+            validationSchema = workshop;
+            break;
+          }
+
+          case 'OPEN_SPACE': {
+            showLongForm = false;
+            validationSchema = openSpaces;
+            break;
+          }
+
+          default: {
+            showLongForm = true;
+            validationSchema = standard;
+            break;
+          }
         }
 
         break;

@@ -235,7 +235,6 @@ export default client => {
       .toPromise()
       .then(({ data, error }) => {
         if (error) log(error, mutation);
-
         return data.sessions.session.update.session;
       });
   }
