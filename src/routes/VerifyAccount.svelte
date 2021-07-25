@@ -3,11 +3,11 @@
   import { Standard as StandardLink } from '../elements/links';
 
   metaTagsStore.set({
-    title: 'Page Not Found - THAT',
-    description: 'The page you are looking for is not at this address.',
+    title: 'Accout Verification- THAT',
+    description: 'Your account is unverified.',
     openGraph: {
       type: 'website',
-      url: `https://that.us/not-found`,
+      url: `https://that.us/verify-account`,
     },
   });
 </script>
