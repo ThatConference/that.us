@@ -29,9 +29,6 @@ function createConfig(slug) {
 
     states: {
       validating: {
-        meta: {
-          message: 'validating community slug',
-        },
         on: {
           '': [
             {
@@ -45,17 +42,11 @@ function createConfig(slug) {
         },
       },
       loading: {
-        meta: {
-          message: 'loading profile data',
-        },
         invoke: {
           id: 'queryProfile',
           src: 'queryProfile',
           onDone: [
             {
-              meta: {
-                message: 'profile api call a success.',
-              },
               cond: 'profileFound',
               actions: ['queryProfileSuccess', 'createFollowMachineServices'],
               target: 'profileLoaded',
@@ -70,10 +61,6 @@ function createConfig(slug) {
       },
 
       profileLoaded: {
-        meta: {
-          message: 'user data loaded, now idle.',
-        },
-
         initial: 'unknown',
 
         on: {
@@ -85,9 +72,6 @@ function createConfig(slug) {
 
         states: {
           unknown: {
-            meta: {
-              message: 'user security status is unknown.',
-            },
             on: {
               '': [
                 {
@@ -103,65 +87,58 @@ function createConfig(slug) {
           },
 
           authenticated: {
-            meta: {
-              message: 'user is currently authenticated',
-            },
-
             initial: 'loadFollowing',
 
             on: {
               FOLLOW: '.toggleFollow',
+              XCHANGE_CONTACT: '.addContact',
             },
 
             states: {
               loadFollowing: {
-                meta: {
-                  message: 'loading what communities the user follows.',
-                },
-
                 invoke: {
                   id: 'queryMyFollowing',
                   src: 'queryMyFollowing',
                   onDone: [
                     {
-                      meta: {
-                        message: 'load following api success.',
-                      },
                       actions: ['queryMyFollowingSuccess'],
                       target: 'loaded',
                     },
                   ],
 
                   onError: {
-                    meta: {
-                      message: 'toggle follow api errored.',
-                    },
                     target: 'error',
                   },
                 },
               },
 
               toggleFollow: {
-                meta: {
-                  message: 'user requested to follow this profile.',
-                },
-
                 invoke: {
                   id: 'toggleFollow',
                   src: 'toggleFollow',
                   onDone: [
                     {
-                      meta: {
-                        message: 'toggle follow api success.',
-                      },
                       actions: ['refreshFollowers'],
                       target: 'loadFollowing',
                     },
                   ],
                   onError: {
-                    meta: {
-                      message: 'toggle follow api errored.',
+                    target: 'error',
+                  },
+                },
+              },
+
+              addContact: {
+                invoke: {
+                  id: 'addLeadMutate',
+                  src: 'addLeadMutate',
+                  onDone: [
+                    {
+                      actions: ['addLeadSuccess'],
+                      target: 'loaded',
                     },
+                  ],
+                  onError: {
                     target: 'error',
                   },
                 },
@@ -175,18 +152,11 @@ function createConfig(slug) {
               },
             },
           },
-          unAuthenticated: {
-            meta: {
-              message: 'user is currently NOT authenticated',
-            },
-          },
+          unAuthenticated: {},
         },
       },
 
       notFound: {
-        meta: {
-          message: 'profile not found.',
-        },
         entry: 'notFound',
         type: 'final',
       },
