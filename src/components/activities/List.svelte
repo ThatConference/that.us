@@ -13,6 +13,7 @@
   import Icon from 'svelte-awesome';
   import { filter as filterIcon } from 'svelte-awesome/icons';
   import { getClient } from '@urql/svelte';
+  import { Circle3 } from 'svelte-loading-spinners';
 
   // ui support
   import Card from './Card.svelte';
@@ -165,7 +166,17 @@
   );
 </script>
 
-{#await getSessionLookupValues() then sessionEnumLookups}
+{#await getSessionLookupValues()}
+  <div class="flex flex-col items-center">
+    <Circle3
+      size="{'60'}"
+      unit="{'px'}"
+      ballTopLeft="#f74646"
+      ballTopRight="#ff834d"
+      ballBottomLeft="#26529A"
+      ballBottomRight="#555555" />
+  </div>
+{:then sessionEnumLookups}
   <div class="relative">
     <div class="sticky z-30 top-0 ">
       <div class="absolute top-0 right-0 border-gray-200 pt-4">
