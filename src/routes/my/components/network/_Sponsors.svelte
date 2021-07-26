@@ -30,7 +30,7 @@
 <div>
   <div>
     <h2 class="text-xl leading-6 font-bold text-gray-900">
-      Sponsors You've Meet
+      Sponsors You've Met
     </h2>
 
     <!-- <p class="mt-4 text-sm leading-5 text-gray-500">add copy here</p> -->
