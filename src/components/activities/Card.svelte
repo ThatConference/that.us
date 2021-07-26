@@ -142,9 +142,8 @@
   };
 
   function lookupEnumLabel(location) {
-    return;
-    sessionEnumLookups.sessionLocationDestinations?.options.find(
-      x => x.value === location?.destination,
+    return sessionEnumLookups.sessionLocationDestinations?.options.find(
+      x => x.value === location,
     )?.label;
   }
 </script>
