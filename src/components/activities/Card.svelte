@@ -52,11 +52,6 @@
   import { Tag } from '../../elements';
   import CardLink from './CardLink.svelte';
 
-  let sessionLocationDestination =
-    sessionEnumLookups.sessionLocationDestinations.options.find(
-      x => x.value === location?.destination,
-    )?.label;
-
   dayjs.extend(isBetween);
   dayjs.extend(isSameOrAfter);
   dayjs.extend(relativeTime);
@@ -122,7 +117,7 @@
       hasExpired = dayjs().isAfter(currentEndTime);
 
       if (!inSession) {
-        const { join } = qs.parse(location.search);
+        const { join } = qs.parse(window.location.search);
         if (join) isInWindow = true;
       }
     }, 1000);
@@ -145,6 +140,13 @@
 
     return canEditMe;
   };
+
+  function lookupEnumLabel(location) {
+    return;
+    sessionEnumLookups.sessionLocationDestinations?.options.find(
+      x => x.value === location?.destination,
+    )?.label;
+  }
 </script>
 
 <div
@@ -296,7 +298,7 @@
               <span>In-Person</span>
               <span class="ml-2">
                 <Icon data="{mapMarker}" class="h-4 w-4 pb-0.5 mr-2" />
-                Room: {sessionLocationDestination}
+                Room: {lookupEnumLabel(location.destination)}
               </span>
             </div>
           </div>
