@@ -72,9 +72,11 @@
     supportingArtifacts,
   } = activity;
 
-  const { toggle, get: getFavorites, favoritesStore: favorites } = favoritesApi(
-    getClient(),
-  );
+  const {
+    toggle,
+    get: getFavorites,
+    favoritesStore: favorites,
+  } = favoritesApi(getClient());
   const isDailyActivity = config.eventId === eventId;
 
   // Enum Lookups
@@ -90,9 +92,10 @@
   let sessionType = sessionLookups.sessionType.options.find(
     x => x.value === type,
   )?.label;
-  let sessionLocationDestination = sessionLookups.sessionLocationDestinations.options.find(
-    x => x.value === sessionLocation?.destination,
-  )?.label;
+  let sessionLocationDestination =
+    sessionLookups.sessionLocationDestinations.options.find(
+      x => x.value === sessionLocation?.destination,
+    )?.label;
 
   let host = speakers[0];
   let imageCrop = '?mask=ellipse&w=500&h=500&fit=crop';
@@ -330,7 +333,25 @@
             </div>
           </div>
 
-          {#if targetLocation != 'IN_PERSON'}
+          {#if activity.type === 'KEYNOTE'}
+            <div class="mt-2 mx-2 rounded-md shadow-sm">
+              <Link
+                type="button"
+                href="https://youtube.com/c/thatconference"
+                class="relative inline-flex justify-center py-2 px-4 border-2
+              border-thatBlue-500 text-sm leading-5 font-medium rounded-md
+              text-thatBlue-500 bg-white hover:bg-thatBlue-500
+              hover:text-white focus:outline-none
+              focus:ring-thatBlue-500 focus:bg-thatBlue-500
+              focus:text-white focus:border-thatBlue-800
+              active:bg-thatBlue-800 transition duration-150 ease-in-out">
+                <Icon
+                  data="{signIn}"
+                  class="-ml-1 mr-2 h-4 w-4 text-gray-400" />
+                <span>Watch on YouTube</span>
+              </Link>
+            </div>
+          {:else if targetLocation != 'IN_PERSON'}
             {#if canJoin}
               <div class="mt-2 mx-2 rounded-md shadow-sm">
                 <Link
