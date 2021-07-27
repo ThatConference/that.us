@@ -2,12 +2,15 @@
   export let ticket;
 
   import dayjs from 'dayjs';
-  import { Shell } from '../../../elements/buttons';
+  import advancedFormat from 'dayjs/plugin/advancedFormat';
 
+  import { Shell } from '../../../elements/buttons';
   import config from '../../../config';
   import { CheckFull } from '../../../elements/svgs';
   import CheckInModal from './_CheckinModal.svelte';
   import EditCheckinModal from './_EditCheckInModal.svelte';
+
+  dayjs.extend(advancedFormat);
 
   const { allocatedTo, purchasedBy } = ticket;
   let imageCrop = '?auto=format&mask=ellipse&fit=crop&w=256&h=256&q=80';
@@ -116,7 +119,9 @@
             </span>
             checked-in at:
             <time class="pl-2 font-bold" datetime="{ticket.orderDate}">
-              {dayjs(ticket.checkedInAt).format('dddd, MMMM D, YYYY @ h:mm A')}
+              {dayjs(ticket.checkedInAt).format(
+                'dddd, MMMM D, YYYY z @ h:mm A',
+              )}
             </time>
           </div>
         {/if}

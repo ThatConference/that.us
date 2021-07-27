@@ -8,9 +8,11 @@
   import { caretDown } from 'svelte-awesome/icons';
   import { Link } from 'yrv';
   import dayjs from 'dayjs';
+  import advancedFormat from 'dayjs/plugin/advancedFormat';
 
   import { truncate, isLongerThan } from '../utilities/truncate';
 
+  dayjs.extend(advancedFormat);
   let expandDescription = false;
 </script>
 
@@ -42,7 +44,7 @@
       </div>
 
       <p class="text-thatBlue-200 text-sm italic">
-        {dayjs(startTime).format('dddd, MMMM D, YYYY - h:mm A')}
+        {dayjs(startTime).format('dddd, MMMM D, YYYY - h:mm A z')}
       </p>
     </div>
   </div>

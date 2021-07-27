@@ -9,6 +9,8 @@
   import isBetween from 'dayjs/plugin/isBetween';
   import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
   import relativeTime from 'dayjs/plugin/relativeTime';
+  import advancedFormat from 'dayjs/plugin/advancedFormat';
+
   import Icon from 'svelte-awesome';
   import { Link } from 'yrv';
   import {
@@ -49,6 +51,7 @@
   dayjs.extend(isBetween);
   dayjs.extend(isSameOrAfter);
   dayjs.extend(relativeTime);
+  dayjs.extend(advancedFormat);
 
   const {
     title,
@@ -412,11 +415,11 @@
           <p
             class="text-base text-gray-700  sm:text-lg sm:mx-auto md:text-xl lg:mx-0">
             {#if durationInMinutes <= 60}
-              {dayjs(startTime).format('dddd, MMMM D, YYYY - h:mm A')}, for
+              {dayjs(startTime).format('dddd, MMMM D, YYYY - h:mm A z')}, for
               {dayjs.duration(durationInMinutes, 'minutes').as('hours')}
               hour.
             {:else}
-              {dayjs(startTime).format('dddd, MMMM D, YYYY - h:mm A')}, for
+              {dayjs(startTime).format('dddd, MMMM D, YYYY - h:mm A z')}, for
               {dayjs.duration(durationInMinutes, 'minutes').as('hours')}
               hours.
             {/if}

@@ -6,6 +6,7 @@
 
   import { Link } from 'yrv';
   import dayjs from 'dayjs';
+  import advancedFormat from 'dayjs/plugin/advancedFormat';
 
   import config, { imageCrops } from '../config';
 
@@ -13,6 +14,8 @@
   let userProfileImage = host.profileImage
     ? `${host.profileImage}${imageCrops.profile}`
     : config.defaultProfileImage;
+
+  dayjs.extend(advancedFormat);
 </script>
 
 <Link href="/activities/{id}">
@@ -30,7 +33,7 @@
         <h4 class="text-white">{title}</h4>
 
         <p class="text-thatBlue-200 text-sm italic">
-          {dayjs(startTime).format('dddd, MMMM D, YYYY - h:mm A')}
+          {dayjs(startTime).format('dddd, MMMM D, YYYY - h:mm A z')}
         </p>
 
         <p class="text-thatBlue-200 text-right">

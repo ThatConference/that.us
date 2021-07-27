@@ -11,11 +11,14 @@
     users,
   } from 'svelte-awesome/icons';
   import { createEventDispatcher } from 'svelte';
+  import advancedFormat from 'dayjs/plugin/advancedFormat';
 
   import { Standard as StandardButton } from '../../../../elements/buttons';
   import { Check } from '../../../../elements/svgs';
 
   import ActivityTypes from './_ActivityTypes.svelte';
+
+  dayjs.extend(advancedFormat);
 
   const ticket = event.products
     .filter(f => f.isEnabled)
@@ -139,7 +142,7 @@
                 {event.name}
               </p>
               <p class="text-lg text-gray-500">
-                {dayjs(event.startDate).format('dddd, MMMM D, YYYY - h:mm A')}
+                {dayjs(event.startDate).format('dddd, MMMM D, YYYY - h:mm A z')}
               </p>
             </div>
             <div
