@@ -3,6 +3,9 @@
 
   import { Link } from 'yrv';
   import dayjs from 'dayjs';
+  import advancedFormat from 'dayjs/plugin/advancedFormat';
+
+  dayjs.extend(advancedFormat);
 </script>
 
 <section class="py-12 lg:py-16 bg-thatBlue-700">
@@ -16,7 +19,7 @@
       <span class="tracking-normal font-normal text-thatOrange-400 text-2xl">
         Submissions open through
         <span class="font-semibold">
-          {dayjs(event.callForSpeakersCloseDate).format('dddd, MMMM D, YYYY')}
+          {dayjs(event.callForSpeakersCloseDate).format('dddd, MMMM D, YYYY z')}
         </span>
       </span>
     </h2>

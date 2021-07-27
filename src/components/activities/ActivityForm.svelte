@@ -47,6 +47,7 @@
   import duration from 'dayjs/plugin/duration';
   import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
   import isToday from 'dayjs/plugin/isToday';
+  import advancedFormat from 'dayjs/plugin/advancedFormat';
 
   import Datepicker from 'svelte-calendar'; //https://github.com/6eDesign/svelte-calendar
 
@@ -65,6 +66,7 @@
   dayjs.extend(duration);
   dayjs.extend(isSameOrAfter);
   dayjs.extend(isToday);
+  dayjs.extend(advancedFormat);
 
   const selectedTimezoneDefault = dayjs.tz.guess();
   let createDisabled = true;
@@ -290,7 +292,7 @@
             end="{dayjs().add(6, 'month').toDate()}"
             bind:selected="{selectedDateValue}"
             style="rounded-md shadow-sm"
-            format="{dayjs(selectedDateValue).format('dddd, MMM D, YYYY')}"
+            format="{dayjs(selectedDateValue).format('dddd, MMM D, YYYY z')}"
             on:dateSelected="{({ detail: { date } }) =>
               setValue('selectedDay', dayjs(date).format('YYYY-MM-DD'))}" />
         </div>

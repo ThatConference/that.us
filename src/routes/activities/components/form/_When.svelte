@@ -72,6 +72,7 @@
   import { Input } from 'sveltejs-forms';
   import Datepicker from 'svelte-calendar';
   import Select from 'svelte-select';
+  import advancedFormat from 'dayjs/plugin/advancedFormat';
 
   import config from '../../../../config';
 
@@ -81,6 +82,7 @@
   dayjs.extend(isSameOrAfter);
   dayjs.extend(isToday);
   dayjs.extend(isBetween);
+  dayjs.extend(advancedFormat);
 
   // control bindings
   let estimatedDurationSelect;
@@ -168,7 +170,7 @@
           start="{startDate}"
           end="{endDate}"
           bind:selected="{selectedDateValue}"
-          format="{dayjs(selectedDateValue).format('dddd, MMM D, YYYY')}"
+          format="{dayjs(selectedDateValue).format('dddd, MMM D, YYYY z')}"
           style="form-input  sm:text-sm sm:leading-5 rounded-md shadow-sm hover:border-gray-700"
           on:dateSelected="{({ detail: { date } }) =>
             setField('selectedDay', dayjs(date).format('YYYY-MM-DD'))}" />
