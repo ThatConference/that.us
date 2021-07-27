@@ -29,6 +29,7 @@
 
     if (result) {
       pinNumber = '';
+      partnerNotes = undefined;
     } else {
       contactExchangeError = true;
       comtactExchangeErrorMessage = message;
