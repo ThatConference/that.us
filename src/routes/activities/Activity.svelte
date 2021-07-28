@@ -44,7 +44,7 @@
       </div>
     {:then [activity, sessionLookups]}
       <ActivityDetails
-        activity="{activity}"
+        activity="{activity} in your timezone"
         sessionLocation="{activity.location}"
         sessionLookups="{sessionLookups}" />
     {:catch error}
