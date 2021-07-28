@@ -1,3 +1,6 @@
+/* eslint-disable no-plusplus */
+/* eslint-disable no-undef */
+/* eslint-disable consistent-return */
 export function csvGenerator(
   totalData,
   actualHeaderKey,
