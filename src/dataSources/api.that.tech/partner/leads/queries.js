@@ -19,6 +19,8 @@ const QUERY_MY_NETWORK_SPONSORS = `
           all {
             id
             createdAt
+            partnerPin
+            partnersNotes
             
             partner {
               companyName
@@ -30,6 +32,10 @@ const QUERY_MY_NETWORK_SPONSORS = `
               name
               slug
               logo
+            }
+            
+            partnerContact {
+              ...sharedProfileFragment
             }
 
             member {

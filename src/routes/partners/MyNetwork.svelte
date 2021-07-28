@@ -4,6 +4,8 @@
   import dayjs from 'dayjs';
   import { sortBy } from 'lodash';
 
+  import { Shell } from '../../elements/buttons';
+  import { csvGenerator } from '../../utilities/csv';
   import metaTagsStore from '../../store/metaTags';
   import ProfileLayout from '../../elements/layouts/Profile.svelte';
   import partnerNetworkApi from '../../dataSources/api.that.tech/partner/leads/queries';
@@ -24,17 +26,63 @@
   function queryNetwork() {
     return queryMyNetwork().then(r => sortBy(r, 'createdAt').reverse());
   }
+
+  async function downloadHandler() {
+    const tableData = await queryNetwork().then(i => {
+      return i.map(y => ({
+        id: y.id,
+        event: y.event.name,
+        createdAt: y.createdAt,
+        pinNumber: y.partnerPin,
+        partnerFirstName: y.partnerContact?.firstName
+          ? y.partnerContact?.firstName
+          : '',
+        partnerLastName: y.partnerContact?.lastName
+          ? y.partnerContact.lastName
+          : '',
+        firstName: y.member.firstName,
+        lastName: y.member.lastName,
+        email: y.member.email,
+        partnersNotes: y.partnersNotes ? y.partnersNotes : '',
+      }));
+    });
+
+    let tableHeader = [
+      'Id',
+      'Event',
+      'Created At',
+      'Pin Number',
+      'Partner First Name',
+      'Partner Last Name',
+      'Attendee First Name',
+      'Attendee Last Name',
+      'Attendee Email',
+      'Partners Notes',
+    ];
+    let tableKeys = Object.keys(tableData[0]);
+    csvGenerator(tableData, tableKeys, tableHeader, 'THAT-My-Network.csv');
+  }
 </script>
 
 <ProfileLayout>
   <div class="relative mx-auto px-4 max-w-screen-xl sm:px-6 lg:px-8">
     <div class="space-y-12">
       <div
-        class="space-y-5 sm:space-y-4 md:max-w-xl lg:max-w-3xl xl:max-w-none">
+        class="space-y-5 sm:space-y-4 md:max-w-xl lg:max-w-3xl xl:max-w-none flex items-center justify-between">
         <h2
           class="text-3xl leading-9 font-extrabold text-thatBlue-800 tracking-tight sm:text-4xl">
           My Network
         </h2>
+
+        <div class="flex">
+          <Shell>
+            <button
+              class="w-full py-4 px-8 text-sm leading-5 font-medium"
+              on:click="{downloadHandler}">
+              <span class="text-lg">Download</span>
+            </button>
+          </Shell>
+        </div>
       </div>
 
       {#await queryNetwork()}
