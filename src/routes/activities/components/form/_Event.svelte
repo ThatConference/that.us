@@ -69,12 +69,10 @@
               dayjs().isBetween(
                 dayjs(i.callForSpeakersOpenDate),
                 dayjs(i.callForSpeakersCloseDate),
-                'day',
               ) ||
               dayjs().isBetween(
                 dayjs(i.startDate).subtract(2, 'week'),
                 dayjs(i.endDate),
-                'day',
               ),
             'endDate',
           ),
