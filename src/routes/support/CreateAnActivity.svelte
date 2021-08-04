@@ -69,7 +69,7 @@
         </li>
         <li>
           <strong class="italic">Date and Start Time: </strong>This sets our
-          Activity's start day and time. Mind you people from all over the world
+          Activity's start day and time (in your timezone). Mind you people from all over the world
           are joining and you can pick anytime throughout the day as to best
           overlap with different timezones.
         </li>

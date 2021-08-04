@@ -38,13 +38,18 @@
     <ActionHeader title="Activity Spotlight" />
   </div>
   <div slot="body">
+    <h3
+      class="sticky top-4 z-20 mr-4 text-thatRed-500 text-sm leading-5 text-left
+lowercase italic invisible lg:visible">
+      <span>* Scheduled times are represented in your timezone.</span>
+    </h3>
     {#await getSessionData(id)}
       <div class="flex justify-center sm:justify-start">
         <FacebookLoader uniqueKey="loading" />
       </div>
     {:then [activity, sessionLookups]}
       <ActivityDetails
-        activity="{activity} in your timezone"
+        activity="{activity}"
         sessionLocation="{activity.location}"
         sessionLookups="{sessionLookups}" />
     {:catch error}
