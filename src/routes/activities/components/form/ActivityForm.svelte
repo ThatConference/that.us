@@ -58,7 +58,7 @@
   }
 
   function handleEventSelected({ detail }) {
-    const { type } = detail;
+    const { type, startDate, endDate } = detail;
 
     switch (type) {
       case 'DAILY':
@@ -76,8 +76,8 @@
         if (!isBackdoor && !isEdit) {
           if (
             dayjs().isBetween(
-              dayjs(eventSelected.startDate).subtract(2, 'week'),
-              dayjs(eventSelected.endDate),
+              dayjs(startDate).subtract(2, 'week'),
+              dayjs(endDate),
               'day',
             )
           ) {
