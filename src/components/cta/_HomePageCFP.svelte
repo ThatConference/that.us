@@ -6,7 +6,7 @@
   import eventsApi from '../../dataSources/api.that.tech/events/queries';
 
   function queryEvent() {
-    return eventsApi(getClient()).queryEventForCfp('wi/2021');
+    return eventsApi(getClient()).queryEventForCfp('tx/2022');
   }
 </script>
 
@@ -43,9 +43,9 @@
                 <div class="p-8 ">
                   <p
                     class="font-extrabold text-xl tracking-tight text-gray-500">
-                    {dayjs(event.startDate).format('MMMM D, YYYY')} - {dayjs(
+                    {dayjs(event.startDate).format('MMM D, YYYY')} - {dayjs(
                       event.endDate,
-                    ).format('MMMM D, YYYY')}
+                    ).format('MMM D, YYYY')}
                   </p>
                   <p class="font-semibold text-lg tracking-tight text-gray-500">
                     {event.venues[0].name}

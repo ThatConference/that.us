@@ -109,8 +109,8 @@
         <div class="lg:grid lg:grid-cols-12 lg:gap-24 lg:place-items-center">
           <div
             class="flex flex-col items-center justify-center md:max-w-2xl md:mx-auto lg:col-span-5">
-            <!-- <CfpCta /> -->
-            <TicketsOnSale />
+            <CfpCta />
+            <!-- <TicketsOnSale /> -->
           </div>
 
           <div

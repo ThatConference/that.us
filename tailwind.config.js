@@ -25,9 +25,6 @@ module.exports = {
     },
     extend: {
       colors: {
-        cyan: colors.cyan,
-        teal: colors.teal,
-        'light-blue': colors.sky,
         'that-offWhite': '#F7F7F7',
         'that-grey': '#555555',
         'that-gray': '#555555',
