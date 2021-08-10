@@ -10,9 +10,14 @@
   function isLoggedIn() {
     documentReferrer = `${$router.path}${window.location.search}`;
 
-    // if (!$user.email_verified) {
-    //   navigateTo('/verify-account');
-    // }
+    if ($isAuthenticated) {
+      const [provider] = $user?.sub.split('|');
+      if (provider !== 'twitter') {
+        if (!$user.email_verified) {
+          navigateTo('/verify-account');
+        }
+      }
+    }
 
     return $isAuthenticated;
   }
