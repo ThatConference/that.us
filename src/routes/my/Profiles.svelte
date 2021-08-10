@@ -1,6 +1,8 @@
 <script>
   import { navigateTo, router } from 'yrv';
+  import { isEmpty } from 'lodash';
 
+  import { thatProfile } from '../../utilities/security';
   import { User, Badge } from '../../elements/svgs';
   import Nav from '../../components/nav/interiorNav/Top.svelte';
   import StackedLayout from '../../elements/layouts/StackedLayout.svelte';
@@ -77,21 +79,23 @@
                 <span class="truncate"> Your Profile </span>
               </a>
 
-              <a
-                href="/my/profiles/shared"
-                on:click|preventDefault="{() => {
-                  navigateTo('/my/profiles/shared');
-                  profileComponent = SharedProfile;
-                }}"
-                class="{profileComponent === SharedProfile
-                  ? asideSelected.item
-                  : asideDefault.item}">
-                <Badge
-                  classes="{profileComponent === SharedProfile
-                    ? asideSelected.image
-                    : asideDefault.image}" />
-                <span class="truncate">Shared Profile </span>
-              </a>
+              {#if !isEmpty($thatProfile)}
+                <a
+                  href="/my/profiles/shared"
+                  on:click|preventDefault="{() => {
+                    navigateTo('/my/profiles/shared');
+                    profileComponent = SharedProfile;
+                  }}"
+                  class="{profileComponent === SharedProfile
+                    ? asideSelected.item
+                    : asideDefault.item}">
+                  <Badge
+                    classes="{profileComponent === SharedProfile
+                      ? asideSelected.image
+                      : asideDefault.image}" />
+                  <span class="truncate">Shared Profile </span>
+                </a>
+              {/if}
             </nav>
           </div>
         </aside>

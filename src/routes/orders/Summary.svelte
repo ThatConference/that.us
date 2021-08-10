@@ -26,13 +26,17 @@
   });
 </script>
 
+<svelte:head>
+  <script src="https://js.stripe.com/v3/">
+  </script>
+</svelte:head>
+
 {#if ['waiting', 'ready'].some($state.matches)}
   <Layout>
     <div class="lg:flex lg:justify-between">
       <div>
         <h2
-          class="text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl"
-        >
+          class="text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl">
           Order Summary
         </h2>
 
