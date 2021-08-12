@@ -3,9 +3,11 @@
 
   import { Link } from 'yrv';
   import dayjs from 'dayjs';
+  import advancedFormat from 'dayjs/plugin/advancedFormat';
 
   import { Ban } from '../../../../../elements/svgs';
 
+  dayjs.extend(advancedFormat);
   let hasAccessHover = false;
 </script>
 
@@ -21,7 +23,7 @@
         </p>
 
         <p>
-          {dayjs(event.startDate).format('dddd, MMMM D, YYYY')}
+          {dayjs(event.startDate).format('dddd, MMMM D, YYYY z')}
         </p>
       </div>
       <div class="flex-shrink-0 pr-4">

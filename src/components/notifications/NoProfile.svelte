@@ -26,8 +26,7 @@
   {#if !dismissed}
     <div
       class="fixed bottom-0 inset-x-0 pb-2 sm:pb-5"
-      transition:fade="{{ duration: 1000 }}"
-    >
+      transition:fade="{{ duration: 1000 }}">
       <div class="max-w-screen-xl mx-auto px-2 sm:px-6 lg:px-8">
         <div class="p-2 rounded-lg bg-red-400 shadow-lg sm:p-3">
           <div class="flex items-center justify-between flex-wrap">
@@ -46,17 +45,15 @@
             </div>
             <div
               class="order-3 mt-2 flex-shrink-0 w-full sm:order-2 sm:mt-0
-                sm:w-auto"
-            >
+                sm:w-auto">
               <div class="rounded-md shadow-sm">
                 <Link
-                  href="/my/settings/profile"
+                  href="/my/profiles/primary"
                   class="flex items-center justify-center px-4 py-2 border
                     border-transparent text-sm leading-5 font-medium rounded-md
                     text-indigo-600 bg-white hover:text-indigo-500
                     focus:outline-none focus:ring transition
-                    ease-in-out duration-150"
-                >
+                    ease-in-out duration-150">
                   Create Profile
                 </Link>
               </div>
@@ -68,14 +65,12 @@
                   focus:outline-none focus:bg-indigo-500 transition ease-in-out
                   duration-150"
                 aria-label="Dismiss"
-                on:click="{() => (dismissed = !dismissed)}"
-              >
+                on:click="{() => (dismissed = !dismissed)}">
                 <svg
                   class="h-6 w-6 text-white"
                   fill="none"
                   viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
+                  stroke="currentColor">
                   <path
                     stroke-linecap="round"
                     stroke-linejoin="round"

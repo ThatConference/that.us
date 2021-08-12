@@ -24,11 +24,11 @@
   import { isEmpty } from 'lodash';
   import omitDeep from 'omit-deep';
 
-  import config from '../../config';
-  import memberApi from '../../dataSources/api.that.tech/members/queries';
-  import { Waiting } from '../../elements';
-  import { token } from '../../utilities/security.js';
-  import ErrorNotificaiton from '../../components/notifications/Error.svelte';
+  import config from '../../../../config';
+  import memberApi from '../../../../dataSources/api.that.tech/members/queries';
+  import { Waiting } from '../../../../elements';
+  import { token } from '../../../../utilities/security.js';
+  import ErrorNotificaiton from '../../../../components/notifications/Error.svelte';
 
   const socialLinks = [
     {

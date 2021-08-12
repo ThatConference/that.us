@@ -9,7 +9,7 @@
     login,
     isAuthenticated,
     thatProfile,
-  } from '../../utilities/security.js';
+  } from '../../utilities/security';
 
   let visible;
 </script>
@@ -57,7 +57,7 @@
           <div
             class="py-1 rounded-md bg-white ring-1 ring-black ring-opacity-5">
             <Link
-              href="/my/settings/profile"
+              href="/my/profiles/primary"
               class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
               Create Profile
             </Link>
@@ -78,7 +78,7 @@
             <div
               class="block px-4 py-2 text-sm hover:bg-gray-100 text-gray-700 border-b">
               <Link
-                href="/my/settings/profile"
+                href="/my/profiles/primary"
                 on:click="{() => (visible = false)}">
                 <p>{$thatProfile.firstName} {$thatProfile.lastName}</p>
                 <p class="truncate pt-2">{$thatProfile.email}</p>
@@ -86,11 +86,26 @@
             </div>
 
             <Link
-              href="/my/settings/profile"
+              href="/my/profiles/primary"
+              on:click="{() => (visible = false)}"
+              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+              My Profiles
+            </Link>
+
+            <Link
+              href="/my/settings/badges"
               on:click="{() => (visible = false)}"
               class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
               My Settings
             </Link>
+
+            <Link
+              href="/my/network"
+              on:click="{() => (visible = false)}"
+              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+              My Network
+            </Link>
+
             <Link
               href="/my/favorites"
               class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">

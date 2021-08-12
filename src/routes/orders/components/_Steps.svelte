@@ -51,8 +51,7 @@
 
 <nav aria-label="Progress">
   <ol
-    class="border border-gray-300 rounded-md divide-y divide-gray-300 md:flex md:divide-y-0"
-  >
+    class="border border-gray-300 rounded-md divide-y divide-gray-300 md:flex md:divide-y-0">
     <li class="relative md:flex-1 md:flex">
       {#if stepOneComplete}
         <StepComplete stepName="Login" />
@@ -61,20 +60,17 @@
           step="1"
           isActive="{$state.matches('pendingLogin')}"
           stepName="Login"
-          on:click="{() => login('/orders/summary')}"
-        />
+          on:click="{() => login('/orders/summary')}" />
       {/if}
 
       <div
         class="hidden md:block absolute top-0 right-0 h-full w-5"
-        aria-hidden="true"
-      >
+        aria-hidden="true">
         <svg
           class="h-full w-full text-gray-300"
           viewBox="0 0 22 80"
           fill="none"
-          preserveAspectRatio="none"
-        >
+          preserveAspectRatio="none">
           <path
             d="M0 -2L20 40L0 82"
             vector-effect="non-scaling-stroke"
@@ -93,20 +89,17 @@
           isActive="{$state.matches('authenticated.pendingProfile')}"
           stepName="Profile Completed"
           on:click="{() =>
-            navigateTo('/my/settings/profile', { replace: true })}"
-        />
+            navigateTo('/my/profiles/primary', { replace: true })}" />
       {/if}
 
       <div
         class="hidden md:block absolute top-0 right-0 h-full w-5"
-        aria-hidden="true"
-      >
+        aria-hidden="true">
         <svg
           class="h-full w-full text-gray-300"
           viewBox="0 0 22 80"
           fill="none"
-          preserveAspectRatio="none"
-        >
+          preserveAspectRatio="none">
           <path
             d="M0 -2L20 40L0 82"
             vector-effect="non-scaling-stroke"
@@ -126,20 +119,17 @@
             'authenticated.profileCompleted.pendingVerification',
           )}"
           stepName="Verify Order"
-          on:click="{() => navigateTo('/orders/summary', { replace: true })}"
-        />
+          on:click="{() => navigateTo('/orders/summary', { replace: true })}" />
       {/if}
 
       <div
         class="hidden md:block absolute top-0 right-0 h-full w-5"
-        aria-hidden="true"
-      >
+        aria-hidden="true">
         <svg
           class="h-full w-full text-gray-300"
           viewBox="0 0 22 80"
           fill="none"
-          preserveAspectRatio="none"
-        >
+          preserveAspectRatio="none">
           <path
             d="M0 -2L20 40L0 82"
             vector-effect="non-scaling-stroke"
@@ -167,8 +157,7 @@
     <div class="mt-3 text-sm">
       <Link
         on:click="{() => login('/orders/summary')}"
-        class="font-medium text-thatOrange-400 hover:text-thatOrange-500"
-      >
+        class="font-medium text-thatOrange-400 hover:text-thatOrange-500">
         Login
         <span aria-hidden="true">&rarr;</span>
       </Link>
@@ -185,9 +174,8 @@
     </div>
     <div class="mt-3 text-sm">
       <Link
-        href="/my/settings/profile"
-        class="font-medium text-thatOrange-400 hover:text-thatOrange-500"
-      >
+        href="/my/profiles/primary"
+        class="font-medium text-thatOrange-400 hover:text-thatOrange-500">
         Complete Your Profile
         <span aria-hidden="true">&rarr;</span>
       </Link>

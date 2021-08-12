@@ -12,6 +12,7 @@
   export let setField;
   export let initialData;
 
+  import { onMount } from 'svelte';
   import { v4 as uuidv4 } from 'uuid';
   import { Input, Form } from 'sveltejs-forms';
   import { Link } from 'yrv';
@@ -69,6 +70,10 @@
     const result = i % 2;
     return result != 0;
   }
+
+  onMount(() => {
+    updateField();
+  });
 </script>
 
 <div>

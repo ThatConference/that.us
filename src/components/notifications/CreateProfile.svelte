@@ -17,9 +17,8 @@
           </span>
           <span class="block sm:ml-2 sm:inline-block">
             <Link
-              href="/my/settings/profile"
-              class="text-white font-bold underline"
-            >
+              href="/my/profiles/primary"
+              class="text-white font-bold underline">
               Create Your Profile &rarr;
             </Link>
           </span>
@@ -27,21 +26,18 @@
       </div>
       <div
         class="absolute inset-y-0 right-0 pt-1 pr-1 flex items-start sm:pt-1
-          sm:pr-2 sm:items-start"
-      >
+          sm:pr-2 sm:items-start">
         <button
           type="button"
           class="flex p-2 rounded-md hover:bg-indigo-500 focus:outline-none
             focus:bg-indigo-500 transition ease-in-out duration-150"
           aria-label="Dismiss"
-          on:click="{() => (wasDismissed = !wasDismissed)}"
-        >
+          on:click="{() => (wasDismissed = !wasDismissed)}">
           <svg
             class="h-6 w-6 text-white"
             fill="none"
             viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
+            stroke="currentColor">
             <path
               stroke-linecap="round"
               stroke-linejoin="round"

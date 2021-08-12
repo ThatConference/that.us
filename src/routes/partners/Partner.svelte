@@ -15,6 +15,7 @@
   import CTA from './components/_CTA.svelte';
   import JobListings from './components/_JobListings.svelte';
   import FeaturedSessions from './components/_FeaturedSessions.svelte';
+  import PartnerCta from './components/_PartnerCta.svelte';
 
   // utilities
   import { isAuthenticated, token } from '../../utilities/security';
@@ -64,8 +65,13 @@
         <Hero
           partner="{$state.context.profile}"
           isFollowing="{$state.context.isFollowing}"
+          wasContactExchanged="{$state.context.leadAdded}"
           on:TOGGLE_FOLLOW="{() =>
             send('FOLLOW', {
+              id: $state.context.profile.id,
+            })}"
+          on:XCHANGE_CONTACT="{() =>
+            send('XCHANGE_CONTACT', {
               id: $state.context.profile.id,
             })}" />
       </div>
@@ -79,6 +85,14 @@
       {#if $state?.context?.profile?.goals?.length > 0}
         <div in:fade="{{ delay: getDelay() }}">
           <Goals goals="{$state.context.profile.goals}" />
+        </div>
+      {/if}
+
+      {#if $state?.context?.profile?.callToActionSpotlight}
+        <div in:fade="{{ delay: getDelay() }}">
+          <PartnerCta
+            action="{$state.context.profile.callToActionSpotlight}"
+            url="{$state.context.profile.callToActionUrl}" />
         </div>
       {/if}
 

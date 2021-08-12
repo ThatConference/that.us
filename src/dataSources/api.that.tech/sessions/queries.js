@@ -158,6 +158,7 @@ export default client => {
     return client
       .query(QUERY_SESSION_DROPDOWN_VALUES, variables, {
         fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
+        requestPolicy: 'cache-and-network',
       })
       .toPromise()
       .then(({ data, error }) => {

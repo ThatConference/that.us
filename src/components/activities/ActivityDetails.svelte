@@ -9,6 +9,8 @@
   import isBetween from 'dayjs/plugin/isBetween';
   import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
   import relativeTime from 'dayjs/plugin/relativeTime';
+  import advancedFormat from 'dayjs/plugin/advancedFormat';
+
   import Icon from 'svelte-awesome';
   import { Link } from 'yrv';
   import {
@@ -49,6 +51,7 @@
   dayjs.extend(isBetween);
   dayjs.extend(isSameOrAfter);
   dayjs.extend(relativeTime);
+  dayjs.extend(advancedFormat);
 
   const {
     title,
@@ -72,9 +75,11 @@
     supportingArtifacts,
   } = activity;
 
-  const { toggle, get: getFavorites, favoritesStore: favorites } = favoritesApi(
-    getClient(),
-  );
+  const {
+    toggle,
+    get: getFavorites,
+    favoritesStore: favorites,
+  } = favoritesApi(getClient());
   const isDailyActivity = config.eventId === eventId;
 
   // Enum Lookups
@@ -90,9 +95,10 @@
   let sessionType = sessionLookups.sessionType.options.find(
     x => x.value === type,
   )?.label;
-  let sessionLocationDestination = sessionLookups.sessionLocationDestinations.options.find(
-    x => x.value === sessionLocation?.destination,
-  )?.label;
+  let sessionLocationDestination =
+    sessionLookups.sessionLocationDestinations.options.find(
+      x => x.value === sessionLocation?.destination,
+    )?.label;
 
   let host = speakers[0];
   let imageCrop = '?mask=ellipse&w=500&h=500&fit=crop';
@@ -330,7 +336,25 @@
             </div>
           </div>
 
-          {#if targetLocation != 'IN_PERSON'}
+          {#if activity.type === 'KEYNOTE'}
+            <div class="mt-2 mx-2 rounded-md shadow-sm">
+              <Link
+                type="button"
+                href="https://youtube.com/c/thatconference"
+                class="relative inline-flex justify-center py-2 px-4 border-2
+              border-thatBlue-500 text-sm leading-5 font-medium rounded-md
+              text-thatBlue-500 bg-white hover:bg-thatBlue-500
+              hover:text-white focus:outline-none
+              focus:ring-thatBlue-500 focus:bg-thatBlue-500
+              focus:text-white focus:border-thatBlue-800
+              active:bg-thatBlue-800 transition duration-150 ease-in-out">
+                <Icon
+                  data="{signIn}"
+                  class="-ml-1 mr-2 h-4 w-4 text-gray-400" />
+                <span>Watch on YouTube</span>
+              </Link>
+            </div>
+          {:else if targetLocation != 'IN_PERSON'}
             {#if canJoin}
               <div class="mt-2 mx-2 rounded-md shadow-sm">
                 <Link
@@ -391,11 +415,11 @@
           <p
             class="text-base text-gray-700  sm:text-lg sm:mx-auto md:text-xl lg:mx-0">
             {#if durationInMinutes <= 60}
-              {dayjs(startTime).format('dddd, MMMM D, YYYY - h:mm A')}, for
+              {dayjs(startTime).format('dddd, MMMM D, YYYY - h:mm A z')}, for
               {dayjs.duration(durationInMinutes, 'minutes').as('hours')}
               hour.
             {:else}
-              {dayjs(startTime).format('dddd, MMMM D, YYYY - h:mm A')}, for
+              {dayjs(startTime).format('dddd, MMMM D, YYYY - h:mm A z')}, for
               {dayjs.duration(durationInMinutes, 'minutes').as('hours')}
               hours.
             {/if}

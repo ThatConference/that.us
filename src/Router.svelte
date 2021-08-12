@@ -1,14 +1,24 @@
 <script>
-  import { Router, router, Route } from 'yrv';
+  import { Router, router, Route, navigateTo } from 'yrv';
 
   import config from './config';
-  import { isAuthenticated } from './utilities/security.js';
+  import { isAuthenticated, user } from './utilities/security.js';
 
   let documentReferrer;
   const { eventId } = config;
 
   function isLoggedIn() {
     documentReferrer = `${$router.path}${window.location.search}`;
+
+    if ($isAuthenticated) {
+      const [provider] = $user?.sub.split('|');
+      if (provider !== 'twitter') {
+        if (!$user.email_verified) {
+          navigateTo('/verify-account');
+        }
+      }
+    }
+
     return $isAuthenticated;
   }
 
@@ -19,6 +29,7 @@
   import LoginSuccess from './routes/LoginSuccess.svelte';
   import Logout from './routes/Logout.svelte';
   import NotFound from './routes/NotFound.svelte';
+  import VerifyAccount from './routes/VerifyAccount.svelte';
 
   // Members
   import Members from './routes/members/Members.svelte';
@@ -29,6 +40,8 @@
   import Partner from './routes/partners/Partner.svelte';
   import Job from './routes/partners/Job.svelte';
   import PastPartners from './routes/partners/PastPartners.svelte';
+  import PartnerLeads from './routes/partners/Leads.svelte';
+  import PartnerNetwork from './routes/partners/MyNetwork.svelte';
 
   // support
   import FaqPage from './routes/support/FAQ.svelte';
@@ -46,6 +59,8 @@
   import Settings from './routes/my/Settings.svelte';
   import MyFavorites from './routes/my/Favorites.svelte';
   import MySubmissions from './routes/my/Submissions.svelte';
+  import Profiles from './routes/my/Profiles.svelte';
+  import Network from './routes/my/Network.svelte';
 
   // Activities
   import Daily from './routes/activities/Daily.svelte';
@@ -79,6 +94,9 @@
   import EventLanding from './routes/events/Event.svelte';
   import Tickets from './routes/events/Tickets.svelte';
 
+  // event
+  import Checkin from './routes/event/Checkin.svelte';
+
   // speakers
   import SpeakersAccept from './routes/speakers/Accept.svelte';
 
@@ -101,6 +119,7 @@
   <Route path="/speakers/accept"  component="{SpeakersAccept}" condition="{isLoggedIn}" redirect="/login" />
   
   <Route exact path="/not-found" component="{NotFound}" />
+  <Route exact path="/verify-account" component="{VerifyAccount}" />
   
   <Router path="/join">
     <Route exact path="/access-denied/:activityId" component="{JoinAccessDenied}" />
@@ -112,6 +131,11 @@
     <Route exact path="/:partner" component="{Partner}" />
     <Route exact path="/:partner/jobs/:job" component="{Job}" />
     <Route exact path="/past" component="{PastPartners}" />
+    
+    <Route exact path="/leads" redirect="/partners/leads/7wiuRWI7EZjcdF4e9MDz" />
+    <Route exact path="/leads/:eventId" component="{PartnerLeads}" condition="{isLoggedIn}" redirect="/login"/>
+    
+    <Route exact path="/my-network" component="{PartnerNetwork}" condition="{isLoggedIn}" redirect="/login"/>
   </Router>
 
   <Router path="/members">
@@ -151,6 +175,12 @@
     <Route exact path="/:id/:name/partners" component="{EventPartners}" />
   </Router>
   
+  <Router path="/event">
+    <Route exact path="/" component="{NotFound}" />
+    <Route exact path="/:eventName/:year/checkin" component="{Checkin}" condition="{isLoggedIn}" redirect="/login" />
+    
+  </Router>
+  
   <Router path='/activities'>
     <Route exact component="{Daily}" />
     <Route exact path="/:id" component="{Activity}" />
@@ -164,9 +194,18 @@
   </Router>
   
   <Router path="/my">
-    <Route exact redirect="/my/settings/profile" />
-    <Route exact path="/settings" redirect="/my/settings/profile" />
+    <Route exact redirect="/my/settings/badges" />
+    <Route exact path="/settings" redirect="/my/settings/badges" />
+    
     <Route exact path="/settings/:aside" component="{Settings}" condition="{isLoggedIn}" redirect="/login" />
+    <Route exact path="/settings/profile" redirect="/my/profiles/primary" />
+    
+    <Route exact path="/profiles" redirect="/my/profiles/primary" />
+    <Route exact path="/profiles/:aside" component="{Profiles}" condition="{isLoggedIn}" redirect="/login" />
+
+    <Route exact path="/network" redirect="/my/network/sponsors" />
+    <Route exact path="/network/:aside" component="{Network}" condition="{isLoggedIn}" redirect="/login" />
+    
     <Route exact path="/favorites" component="{MyFavorites}" condition="{isLoggedIn}" redirect="/login" />
     <Route exact path="/submissions" component="{MySubmissions}" condition="{isLoggedIn}" redirect="/login" />
   </Router>
@@ -176,6 +215,10 @@
     <Route exact path="/10years" redirect="/promo/claim?eventId=7wiuRWI7EZjcdF4e9MDz" />
     <Route path="/claim" component="{Promo}" />
   </Router>
+
+  <!-- Badge Redirects -->
+  <Route exact path="/camp" redirect="/activities/wi/2021" />
+  <Route exact path="/family" redirect="/activities/wi/2021?track=family" />
   
   <Route fallback>
     <NotFound />

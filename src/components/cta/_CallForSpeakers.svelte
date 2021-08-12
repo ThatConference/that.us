@@ -2,7 +2,11 @@
   export let event;
 
   import dayjs from 'dayjs';
+  import advancedFormat from 'dayjs/plugin/advancedFormat';
+
   import { Highlight as HighlightLink } from '../../elements/links';
+
+  dayjs.extend(advancedFormat);
 </script>
 
 <div class="mt-24 bg-that-navy">
@@ -21,7 +25,9 @@
 
           <span
             class="pl:2 text-that-orange font-extrabold hover:text-thatOrange-500">
-            {dayjs(event.callForSpeakersCloseDate).format('dddd, MMMM D, YYYY')}
+            {dayjs(event.callForSpeakersCloseDate).format(
+              'dddd, MMMM D, YYYY z',
+            )}
           </span>
         </p>
 

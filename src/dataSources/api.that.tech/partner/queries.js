@@ -124,7 +124,9 @@ export const QUERY_PARTNER = `
         city
         state
         goals
-
+        callToAction
+        callToActionSpotlight
+        callToActionUrl
         members {
           id
           firstName
@@ -274,37 +276,12 @@ function createSocialLinks(partner) {
 }
 
 export default client => {
-  function query(slug) {
-    const variables = { slug };
-    return client
-      .query(QUERY_PARTNERS, variables, {
-        fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
-      })
-      .toPromise()
-      .then(({ data, error }) => {
-        if (error) log(error, 'query_partners');
-
-        let results = [];
-        if (data) {
-          const { partners } = data.events.event.get;
-
-          const modifiedPartners = partners.map(p => ({
-            ...p,
-            socialLinks: createSocialLinks(p),
-          }));
-
-          results = modifiedPartners;
-        }
-
-        return results;
-      });
-  }
-
   const getPartner = slug => {
     const variables = { slug };
     return client
       .query(QUERY_PARTNER, variables, {
         fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
+        requestPolicy: 'cache-and-network',
       })
       .toPromise()
       .then(({ data, error }) => {
@@ -352,6 +329,7 @@ export default client => {
     return client
       .query(QUERY_UPCOMING_PARTNERS, {
         fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
+        requestPolicy: 'cache-and-network',
       })
       .toPromise()
       .then(({ data, error }) => {
@@ -380,8 +358,7 @@ export default client => {
       });
   }
 
-  function getUpcomingPartnersNext(cursor) {
-    // not implemented yet
+  async function getUpcomingPartnersNext(cursor) {
     return [];
   }
 
@@ -389,6 +366,7 @@ export default client => {
     return client
       .query(QUERY_PAST_PARTNERS, {
         fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
+        requestPolicy: 'cache-and-network',
       })
       .toPromise()
       .then(({ data, error }) => {
@@ -410,7 +388,7 @@ export default client => {
       });
   }
 
-  function getPastPartnersNext(cursor) {
+  async function getPastPartnersNext(cursor) {
     // not implemented yet
     return [];
   }
@@ -421,6 +399,7 @@ export default client => {
     return client
       .query(QUERY_EVENT_PARTNERS, variables, {
         fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
+        requestPolicy: 'cache-and-network',
       })
       .toPromise()
       .then(({ data, error }) => {
@@ -454,6 +433,7 @@ export default client => {
     return client
       .query(QUERY_PARTNER_DROPDOWN_VALUES, variables, {
         fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
+        requestPolicy: 'cache-and-network',
       })
       .toPromise()
       .then(({ data, error }) => {
@@ -469,6 +449,7 @@ export default client => {
     return client
       .query(QUERY_PARTNER_JOB_LISTING, variables, {
         fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
+        requestPolicy: 'cache-and-network',
       })
       .toPromise()
       .then(({ data, error }) => {

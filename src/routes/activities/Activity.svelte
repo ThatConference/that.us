@@ -16,6 +16,7 @@
   import sessionsQueryApi from '../../dataSources/api.that.tech/sessions/queries';
 
   const { querySessionDropDownValues } = sessionsQueryApi(getClient());
+
   function getSessionLookupValues() {
     return querySessionDropDownValues();
   }

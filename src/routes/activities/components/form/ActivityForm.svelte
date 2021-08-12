@@ -1,5 +1,6 @@
 <script>
   export let isBackdoor = false;
+  export let isEdit = false;
   export let initialData;
   export let handleWithdraw;
   export let handleSubmit;
@@ -44,19 +45,20 @@
 
   let createDisabled = true;
 
-  $: eventSelected = {};
+  $: eventSelected = {
+    startDate: initialData?.startDate,
+    endDate: initialData?.endDate,
+  };
   $: activityTypeSelected = initialData?.type || undefined;
   $: validationSchema = openSpaces;
-  let showLongForm = false;
+  $: showLongForm = false;
 
   $: if (!isEmpty($thatProfile)) {
     createDisabled = false;
   }
 
-  function getSteps() {}
-
   function handleEventSelected({ detail }) {
-    const { type } = detail;
+    const { type, startDate, endDate } = detail;
 
     switch (type) {
       case 'DAILY':
@@ -71,16 +73,46 @@
 
       case 'MULTI_DAY':
       case 'HYBRID_MULTI_DAY':
-        showLongForm = true;
+        if (!isBackdoor && !isEdit) {
+          if (
+            dayjs().isBetween(
+              dayjs(startDate).subtract(2, 'week'),
+              dayjs(endDate),
+              'day',
+            )
+          ) {
+            showLongForm = false;
+            validationSchema = openSpaces;
+            break;
+          }
+        }
 
         switch (activityTypeSelected) {
-          case 'WORKSHOP':
-            validationSchema = workshop;
-            break;
-
-          default:
+          case 'REGULAR':
+          case 'KEYNOTE':
+          case 'PANEL': {
+            showLongForm = true;
             validationSchema = standard;
             break;
+          }
+
+          case 'WORKSHOP': {
+            showLongForm = true;
+            validationSchema = workshop;
+            break;
+          }
+
+          case 'OPEN_SPACE': {
+            showLongForm = false;
+            validationSchema = openSpaces;
+            break;
+          }
+
+          default: {
+            showLongForm = true;
+            validationSchema = standard;
+            break;
+          }
         }
 
         break;
@@ -128,14 +160,14 @@
     title="Oh NO! You have an incomplete profile!"
     text="It appears you haven't created your profile yet. You can't create an
     activity until that's complete."
-    action="{{ title: 'Create Profile', href: '/my/settings/profile' }}"
+    action="{{ title: 'Create Profile', href: '/my/profiles/primary' }}"
     returnTo="{{ title: 'Return to Activities', href: '/activities' }}" />
 {:else if !$thatProfile?.canFeature}
   <ModalError
     title="Your Profile Isn't Public."
     text="It appears we cannot feature your profile. You need to have a public
     profile to create an activity."
-    action="{{ title: 'Update Profile', href: '/my/settings/profile' }}"
+    action="{{ title: 'Update Profile', href: '/my/profiles/primary' }}"
     returnTo="{{ title: 'Return to Activities', href: '/activities' }}" />
 {/if}
 

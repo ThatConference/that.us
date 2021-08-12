@@ -10,6 +10,8 @@
   export let tags = [];
   export let eventId;
   export let targetLocation;
+  export let location;
+  export let sessionEnumLookups;
 
   // 3rd party
   import { onMount } from 'svelte';
@@ -24,6 +26,7 @@
     heart,
     signIn,
     cog,
+    mapMarker,
     caretDown,
     user,
   } from 'svelte-awesome/icons';
@@ -53,9 +56,11 @@
   dayjs.extend(isSameOrAfter);
   dayjs.extend(relativeTime);
 
-  const { toggle, get: getFavorites, favoritesStore: favorites } = favoritesApi(
-    getClient(),
-  );
+  const {
+    toggle,
+    get: getFavorites,
+    favoritesStore: favorites,
+  } = favoritesApi(getClient());
   let host = speakers[0];
 
   let imageCrop = '?mask=ellipse&w=500&h=500&fit=crop';
@@ -112,7 +117,7 @@
       hasExpired = dayjs().isAfter(currentEndTime);
 
       if (!inSession) {
-        const { join } = qs.parse(location.search);
+        const { join } = qs.parse(window.location.search);
         if (join) isInWindow = true;
       }
     }, 1000);
@@ -135,6 +140,12 @@
 
     return canEditMe;
   };
+
+  function lookupEnumLabel(location) {
+    return sessionEnumLookups.sessionLocationDestinations?.options.find(
+      x => x.value === location,
+    )?.label;
+  }
 </script>
 
 <div
@@ -173,13 +184,15 @@
     </Link>
 
     <div class="flex flex-col text-center justify-center w-full">
-      <h3
-        class="text-gray-900 text-base leading-5 font-medium break-words pt-1">
-        {title}
-      </h3>
-      <h3 class="text-gray-400 text-sm leading-5 pt-1">
-        {`${host.firstName} ${host.lastName}`}
-      </h3>
+      <Link href="/activities/{id}">
+        <h3
+          class="text-gray-900 text-base leading-5 font-medium break-words pt-1">
+          {title}
+        </h3>
+        <h3 class="text-gray-400 text-sm leading-5 pt-1">
+          {`${host.firstName} ${host.lastName}`}
+        </h3>
+      </Link>
     </div>
   </div>
 
@@ -282,6 +295,10 @@
               duration-150 bg-that-blue pointer-cursor">
               <Icon data="{user}" class="-ml-1 mr-2 h-4 w-4" />
               <span>In-Person</span>
+              <span class="ml-2">
+                <Icon data="{mapMarker}" class="h-4 w-4 pb-0.5 mr-2" />
+                Room: {lookupEnumLabel(location.destination)}
+              </span>
             </div>
           </div>
         {:else if canJoin}

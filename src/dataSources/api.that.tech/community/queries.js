@@ -108,6 +108,7 @@ export default client => {
     client
       .query(QUERY_ALL_COMMUNITIES, {
         fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
+        requestPolicy: 'cache-and-network',
       })
       .toPromise()
       .then(({ data, error }) => {
@@ -125,6 +126,7 @@ export default client => {
     return client
       .query(QUERY_COMMUNITY_BY_SLUG, variables, {
         fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
+        requestPolicy: 'cache-and-network',
       })
       .toPromise()
       .then(({ data, error }) => {
@@ -144,6 +146,7 @@ export default client => {
     return client
       .query(QUERY_COMMUNITY_ACTIVITIES, variables, {
         fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
+        requestPolicy: 'cache-and-network',
       })
       .toPromise()
       .then(({ data, error }) => {
@@ -164,6 +167,7 @@ export default client => {
     return client
       .query(QUERY_NEXT_COMMUNITY_ACTIVITIES, variables, {
         fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
+        requestPolicy: 'cache-and-network',
       })
       .toPromise()
       .then(({ data, error }) => {

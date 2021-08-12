@@ -47,6 +47,7 @@
   import duration from 'dayjs/plugin/duration';
   import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
   import isToday from 'dayjs/plugin/isToday';
+  import advancedFormat from 'dayjs/plugin/advancedFormat';
 
   import Datepicker from 'svelte-calendar'; //https://github.com/6eDesign/svelte-calendar
 
@@ -65,6 +66,7 @@
   dayjs.extend(duration);
   dayjs.extend(isSameOrAfter);
   dayjs.extend(isToday);
+  dayjs.extend(advancedFormat);
 
   const selectedTimezoneDefault = dayjs.tz.guess();
   let createDisabled = true;
@@ -180,14 +182,14 @@
     title="Oh NO! You have an incomplete profile!"
     text="It appears you haven't created your profile yet. You can't create a
     activity until that's complete."
-    action="{{ title: 'Create Profile', href: '/my/settings/profile' }}"
+    action="{{ title: 'Create Profile', href: '/my/profiles/primary' }}"
     returnTo="{{ title: 'Return to Activities', href: '/activities' }}" />
 {:else if !$thatProfile?.canFeature}
   <ModalError
     title="Your Profile Isn't Public."
     text="It appears we cannot feature your profile. You need to have a public
     profile to create a activity."
-    action="{{ title: 'Update Profile', href: '/my/settings/profile' }}"
+    action="{{ title: 'Update Profile', href: '/my/profiles/primary' }}"
     returnTo="{{ title: 'Return to Activities', href: '/activities' }}" />
 {/if}
 
@@ -290,7 +292,7 @@
             end="{dayjs().add(6, 'month').toDate()}"
             bind:selected="{selectedDateValue}"
             style="rounded-md shadow-sm"
-            format="{dayjs(selectedDateValue).format('dddd, MMM D, YYYY')}"
+            format="{dayjs(selectedDateValue).format('dddd, MMM D, YYYY z')}"
             on:dateSelected="{({ detail: { date } }) =>
               setValue('selectedDay', dayjs(date).format('YYYY-MM-DD'))}" />
         </div>
