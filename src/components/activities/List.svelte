@@ -14,12 +14,15 @@
   import { filter as filterIcon } from 'svelte-awesome/icons';
   import { getClient } from '@urql/svelte';
   import { Circle3 } from 'svelte-loading-spinners';
+  import advancedFormat from 'dayjs/plugin/advancedFormat';
 
   // ui support
   import Card from './Card.svelte';
   import KeynoteCard from './KeynoteCard.svelte';
   import FilterSlideOver from './FilterSlideOver.svelte';
   import sessionsQueryApi from '../../dataSources/api.that.tech/sessions/queries';
+
+  dayjs.extend(advancedFormat);
 
   const { querySessionDropDownValues } = sessionsQueryApi(getClient());
 
@@ -231,7 +234,9 @@
                      sm:leading-10 whitespace-nowrap -ml-5 sm:-ml-6 pl-5 sm:pl-6 -mr-5 sm:-mr-6">
                 {#if !dayjs(ts.timeSlot).isValid()}
                   Unscheduled
-                {:else}{dayjs(ts.timeSlot).format('hh:mm a')}{/if}
+                {:else}
+                  {dayjs(ts.timeSlot).format('h:mm A z')}
+                {/if}
               </h2>
 
               <div class="mb-12">
