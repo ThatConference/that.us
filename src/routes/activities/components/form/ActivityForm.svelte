@@ -344,7 +344,7 @@
           <SectionTitle
             title="Schedule the Time"
             stepNumber="3"
-            description="Pick a day and time you will be hosting this activity." />
+            description="Pick a day and time (in your time zone) you will be hosting this activity." />
 
           <WhenSection
             touched="{touched}"
