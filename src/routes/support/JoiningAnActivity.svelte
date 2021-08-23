@@ -25,8 +25,8 @@
     <div class="prose prose-lg text-gray-500 mx-auto">
       <p>
         <strong>Click the join button.</strong> Yes, it's just THAT simple. The join
-        button enables itself 5 minutes before the scheduled start time and will
-        remain active for the duration of the activity. THAT works in any browser
+        button enables itself 5 minutes before the scheduled start time (in your timezone0) 
+        and will remain active for the duration of the activity. THAT works in any browser
         and you just need to enable your webcam and microphone. We do require everyone
         to log in before joining any Activity. Your mic will always be muted by default
         and your camera will be enabled. Activities are currently limited to 100

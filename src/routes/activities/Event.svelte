@@ -72,12 +72,6 @@
         {/if}
       {/if}
     </ActionHeader>
-    <!-- <h3
-      class="sticky top-4 z-20 mr-4 text-thatRed-500 text-sm leading-5 text-left
-        lowercase italic invisible lg:visible"
-    >
-      <span>* Scheduled times are represented in your timezone.</span>
-    </h3> -->
   </div>
 
   <div slot="body">
