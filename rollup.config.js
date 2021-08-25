@@ -10,6 +10,7 @@ import sveltePreprocess from 'svelte-preprocess';
 import json from '@rollup/plugin-json';
 import css from 'rollup-plugin-css-only';
 import nodePolyfills from 'rollup-plugin-node-polyfills';
+import { mdsvex } from 'mdsvex';
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -60,7 +61,16 @@ export default {
     }),
 
     svelte({
-      preprocess: sveltePreprocess({ postcss: true }),
+      extensions: ['.svelte', '.svx', '.md'],
+      preprocess: [
+        mdsvex({
+          extensions: ['.svx', '.md'],
+          layout: {
+            support: './src/elements/layouts/markdown/Support.svelte',
+          },
+        }),
+        sveltePreprocess({ postcss: true }),
+      ],
       compilerOptions: {
         // enable run-time checks when not in production
         dev: !production,

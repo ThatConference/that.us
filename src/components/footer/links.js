@@ -47,31 +47,29 @@ export const companyLinks = [
   },
   {
     text: 'Code of Conduct',
-    href: 'https://www.thatconference.com/code-of-conduct?utm_source=THAT',
+    href: '/support/code-of-conduct',
   },
   {
     text: 'Commitment to Diversity',
-    href:
-      'https://www.thatconference.com/commitment-to-diversity?utm_source=THAT',
+    href: '/support/commitment-to-diversity',
   },
   {
     text: 'Anti-Harassment Policy',
-    href:
-      'https://www.thatconference.com/anti-harassment-policy?utm_source=THAT',
+    href: '/support/anti-harassment',
   },
 ];
 
 export const legalLinks = [
   {
     text: 'Privacy',
-    href: 'https://www.thatconference.com/privacy-policy?utm_source=THAT',
+    href: '/support/privacy-policy',
   },
   {
     text: 'Terms of Use',
-    href: 'https://www.thatconference.com/terms-of-use?utm_source=THAT',
+    href: '/support/terms-of-use',
   },
   {
     text: 'Copyright Policy',
-    href: 'https://www.thatconference.com/copyright?utm_source=THAT',
+    href: '/support/copyright',
   },
 ];

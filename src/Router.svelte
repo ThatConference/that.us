@@ -55,6 +55,13 @@
   import CovidPolicies from './routes/support/Covid.svelte';
   import Travel from './routes/support/Travel.svelte';
 
+  import Copyright from './routes/support/Copyright.md';
+  import TermsOfUse from './routes/support/Terms-Of-Use.md';
+  import AntiHarassment from './routes/support/Anti-Harassment-Policy.md';
+  import CodeOfConduct from './routes/support/Code-Of-Conduct.md';
+  import CommitmentToDiversity from './routes/support/Commitment-To-Diversity.md';
+  import PrivacyPolicy from './routes/support/Privacy-Policy.md';
+
   // my
   import Settings from './routes/my/Settings.svelte';
   import MyFavorites from './routes/my/Favorites.svelte';
@@ -166,6 +173,16 @@
     <Route exact path="/staying-up-to-date" component="{StayingUpToDate}" />
     <Route exact path="/covid-policies" component="{CovidPolicies}" />
     <Route exact path="/travel" component="{Travel}" />
+    
+    <Route exact path="/copyright" component="{Copyright}" />
+    <Route exact path="/terms-of-use" component="{TermsOfUse}" />
+    <Route exact path="/anti-harassment" component="{AntiHarassment}" />
+    <Route exact path="/code-of-conduct" component="{CodeOfConduct}" />
+    <Route exact path="/commitment-to-diversity" component="{CommitmentToDiversity}" />
+    <Route exact path="/privacy-policy" component="{PrivacyPolicy}" />
+    
+
+
   </Router>
 
   <Router path="/events">
