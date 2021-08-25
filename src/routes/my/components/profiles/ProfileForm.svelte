@@ -500,9 +500,8 @@
               <input
                 name="profileImage"
                 type="file"
-                on:change="{e => postProfilePicture(e).then(r =>
-                    setValue('profileImage', r),
-                  )}"
+                on:change="{e =>
+                  postProfilePicture(e).then(r => setValue('profileImage', r))}"
                 accept="image/x-png,image/png,.png,image/jpeg,.jpg,.jpeg,image/gif,.gif"
                 class="py-2 px-3 border border-gray-300 rounded-md text-sm
                   leading-4 font-medium text-gray-700 hover:text-gray-500
@@ -546,7 +545,11 @@
                   <select
                     class="form-input w-full p-1 bg-transparent text-gray-500 sm:text-sm border-none outline-none cursor-pointer"
                     value="{getInitialSelectValue(link)}"
-                    on:blur="{e => setValue('profileLinks', updateLinkSlugValue(link, e.target.value))}">
+                    on:blur="{e =>
+                      setValue(
+                        'profileLinks',
+                        updateLinkSlugValue(link, e.target.value),
+                      )}">
                     {#each link.slug as slug}
                       <option value="{slug}">{slug}</option>
                     {/each}
@@ -558,7 +561,11 @@
                 type="text"
                 name="{link.name}"
                 value="{getInitialSocialLinkValue(link)}"
-                on:change="{e => setValue('profileLinks', updateLinksInputValues(link, e.target.value))}"
+                on:change="{e =>
+                  setValue(
+                    'profileLinks',
+                    updateLinksInputValues(link, e.target.value),
+                  )}"
                 class="flex-1 form-input block w-full min-w-0 border rounded-none
                   rounded-r-md transition duration-150 ease-in-out sm:text-sm
                   sm:leading-5" />
@@ -727,7 +734,8 @@
                   <Checkbox
                     name="acceptedCodeOfConduct"
                     checked="{profile.acceptedCodeOfConduct}"
-                    on:change="{({ detail }) => setValue('acceptedCodeOfConduct', detail)}"
+                    on:change="{({ detail }) =>
+                      setValue('acceptedCodeOfConduct', detail)}"
                     size="2.5rem"
                     class="flex-none" />
 
@@ -736,7 +744,7 @@
                       <Link
                         open
                         tabindex="-1"
-                        href="https://www.thatconference.com/code-of-conduct"
+                        href="/support/code-of-conduct"
                         class="font-medium text-indigo-600 hover:text-indigo-500
                         transition duration-150 ease-in-out">
                         Code of Conduct
@@ -758,7 +766,8 @@
                     <Checkbox
                       name="acceptedAntiHarassmentPolicy"
                       checked="{profile.acceptedAntiHarassmentPolicy}"
-                      on:change="{({ detail }) => setValue('acceptedAntiHarassmentPolicy', detail)}"
+                      on:change="{({ detail }) =>
+                        setValue('acceptedAntiHarassmentPolicy', detail)}"
                       size="2.5rem"
                       class="flex-none" />
 
@@ -767,7 +776,7 @@
                         <Link
                           open
                           tabindex="-1"
-                          href="https://www.thatconference.com/anti-harassment-policy"
+                          href="/suppoprt/anti-harassment"
                           class="font-medium text-indigo-600 hover:text-indigo-500
                           transition duration-150 ease-in-out">
                           Commitment Anti-Harassment
@@ -789,7 +798,8 @@
                       <Checkbox
                         name="acceptedCommitmentToDiversity"
                         checked="{profile.acceptedCommitmentToDiversity}"
-                        on:change="{({ detail }) => setValue('acceptedCommitmentToDiversity', detail)}"
+                        on:change="{({ detail }) =>
+                          setValue('acceptedCommitmentToDiversity', detail)}"
                         size="2.5rem"
                         class="flex-none" />
 
@@ -798,7 +808,7 @@
                           <Link
                             open
                             tabindex="-1"
-                            href="https://www.thatconference.com/commitment-to-diversity"
+                            href="/support/commitment-to-diversity"
                             class="font-medium text-indigo-600
                             hover:text-indigo-500 transition duration-150
                             ease-in-out">
@@ -824,7 +834,8 @@
                         <Checkbox
                           name="acceptedTermsOfService"
                           checked="{profile.acceptedTermsOfService}"
-                          on:change="{({ detail }) => setValue('acceptedTermsOfService', detail)}"
+                          on:change="{({ detail }) =>
+                            setValue('acceptedTermsOfService', detail)}"
                           size="2.5rem"
                           class="flex-none" />
 
@@ -835,7 +846,7 @@
                             <Link
                               open
                               tabindex="-1"
-                              href="https://www.thatconference.com/terms-of-use"
+                              href="/support/terms-of-use"
                               class="font-medium text-indigo-600
                               hover:text-indigo-500 transition duration-150
                               ease-in-out">
@@ -857,7 +868,8 @@
                         <Checkbox
                           name="isOver13"
                           checked="{profile.isOver13}"
-                          on:change="{({ detail }) => setValue('isOver13', detail)}"
+                          on:change="{({ detail }) =>
+                            setValue('isOver13', detail)}"
                           size="2.5rem"
                           class="flex-none" />
 
@@ -904,7 +916,8 @@
                   <Checkbox
                     name="isDeactivated"
                     checked="{profile.isDeactivated}"
-                    on:change="{({ detail }) => setValue('isDeactivated', detail)}"
+                    on:change="{({ detail }) =>
+                      setValue('isDeactivated', detail)}"
                     size="2.5rem"
                     class="flex-none" />
 
@@ -913,7 +926,7 @@
                       <Link
                         tabindex="-1"
                         open
-                        href="https://www.thatconference.com/code-of-conduct"
+                        href="/support/code-of-conduct"
                         class="font-medium text-indigo-600 hover:text-indigo-500
                         transition duration-150 ease-in-out">
                         Deactivate my account.
