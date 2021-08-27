@@ -5,7 +5,7 @@
 	import { plus } from 'svelte-awesome/icons';
 
 	import { Activity, Cart } from '$elements/svgs';
-	import { hasNotifications } from '$store/notificationCenter';
+	import { hasNotifications } from '$stores/notificationCenter';
 
 	import ActivitySlideOver from '../../activityCenter/ActivitySlideOver.svelte';
 	import DesktopLink from './_DesktopLink.svelte';

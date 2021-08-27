@@ -9,7 +9,7 @@
 	import { ChevronRight } from '$elements/svgs';
 	import ScrollThreshold from '$components/ScrollThreshold.svelte';
 
-	import metaTagsStore from '$store/metaTags';
+	import metaTagsStore from '$stores/metaTags';
 	import { debug } from '$utils/config';
 	import createMachine from '../machines/bulkAllocations';
 	import orderQueryApi from '$dataSources/api.that.tech/orders/queries';

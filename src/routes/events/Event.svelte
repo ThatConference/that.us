@@ -3,7 +3,7 @@
 	import { page } from '$app/stores';
 
 	import seoMetaTags from '$utils/seo/metaTags';
-	import currentEvent from '$store/currentEvent';
+	import currentEvent from '$stores/currentEvent';
 	import eventsApi from '$dataSources/api.that.tech/events/queries';
 
 	import Hybrid from './_components/_Hybrid.sveltee';

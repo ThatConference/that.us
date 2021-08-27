@@ -11,7 +11,7 @@
 	import ActivityList from '$components/activities/List.svelte';
 
 	import favoritesApi from '$dataSources/api.that.tech/favorites';
-	import currentEvent from '$store/currentEvent';
+	import currentEvent from '$stores/currentEvent';
 
 	const metaTags = seoMetaTags({
 		title: 'My Favorites - THAT',

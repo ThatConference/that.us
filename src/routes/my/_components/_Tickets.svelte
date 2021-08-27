@@ -7,7 +7,7 @@
 	import { Waiting } from '$elements';
 
 	import { debug } from '$utils/config';
-	import metaTagsStore from '$store/metaTags';
+	import metaTagsStore from '$stores/metaTags';
 	import createMachine from '../machines/allocations';
 
 	dayjs.extend(isBetween);

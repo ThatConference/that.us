@@ -3,7 +3,7 @@
 
 	import { getClient } from '@urql/svelte';
 
-	import currentEvent from '../store/currentEvent';
+	import currentEvent from '$stores/currentEvent';
 	import { Standard as StandardLink } from '$elements/links';
 
 	const GET_PARTNERS = `

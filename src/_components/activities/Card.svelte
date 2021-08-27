@@ -32,8 +32,8 @@
 
 	// data
 	import favoritesApi from '$dataSources/api.that.tech/favorites';
-	import { show } from '$store/profileNotification';
-	import currentEvent from '$store/currentEvent';
+	import { show } from '$stores/profileNotification';
+	import currentEvent from '$stores/currentEvent';
 
 	// UI Elements
 	import { Tag } from '$elements';

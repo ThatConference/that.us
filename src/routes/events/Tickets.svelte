@@ -15,7 +15,7 @@
 	import Families from './_components/tickets/_Families.svelte';
 	import Notices from './_components/_Notices.svelte';
 
-	import metaTagsStore from '$store/metaTags';
+	import metaTagsStore from '$stores/metaTags';
 	import eventsApi from '$dataSources/api.that.tech/events/queries';
 
 	const { send } = getContext('cart');

@@ -7,7 +7,7 @@
 	import Layout from '$elements/layouts/ContentLayout.svelte';
 	import ReleaseNote from '$components/releaseNotes/Release.svelte';
 
-	import { showReleaseNotes } from '$store/siteVersion';
+	import { showReleaseNotes } from '$stores/siteVersion';
 
 	const metaTags = seoMetaTags({
 		title: 'Changelog - THAT',

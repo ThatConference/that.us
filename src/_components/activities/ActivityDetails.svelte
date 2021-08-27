@@ -32,7 +32,7 @@
 	import { truncate, isLongerThan } from '$utils/truncate';
 	import { isAuthenticated, login, thatProfile } from '$utils/security';
 	import favoritesApi from '$dataSources/api.that.tech/favorites';
-	import currentEvent from '$store/currentEvent';
+	import currentEvent from '$stores/currentEvent';
 	import { Avatars, Tag } from '$elements';
 
 	import CalendarButton from './elements/CalendarButton.svelte';

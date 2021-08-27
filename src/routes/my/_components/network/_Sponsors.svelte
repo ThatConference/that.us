@@ -5,7 +5,7 @@
 	import { sortBy } from 'lodash';
 
 	import meNetworkQueryApi from '$dataSources/api.that.tech/me/network/queries';
-	import metaTagsStore from '$store/metaTags';
+	import metaTagsStore from '$stores/metaTags';
 
 	const { queryMySponsorNetwork } = meNetworkQueryApi(getClient());
 
