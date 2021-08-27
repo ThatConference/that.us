@@ -1,39 +1,39 @@
 function createConfig(metaContext) {
-  return {
-    id: 'home',
-    initial: 'init',
+	return {
+		id: 'home',
+		initial: 'init',
 
-    context: {
-      meta: metaContext || undefined,
-      upNextActor: undefined,
-      statsActor: undefined,
-    },
+		context: {
+			meta: metaContext || undefined,
+			upNextActor: undefined,
+			statsActor: undefined
+		},
 
-    states: {
-      init: {
-        meta: {
-          message: 'loading community data',
-        },
-        on: {
-          '': {
-            actions: ['createActors'],
-            target: 'loaded',
-          },
-        },
-      },
+		states: {
+			init: {
+				meta: {
+					message: 'loading community data'
+				},
+				on: {
+					always: {
+						actions: ['createActors'],
+						target: 'loaded'
+					}
+				}
+			},
 
-      loaded: {
-        meta: {
-          message: 'loading community data',
-        },
-      },
+			loaded: {
+				meta: {
+					message: 'loading community data'
+				}
+			},
 
-      error: {
-        entry: 'logError',
-        type: 'final',
-      },
-    },
-  };
+			error: {
+				entry: 'logError',
+				type: 'final'
+			}
+		}
+	};
 }
 
 export default createConfig;
