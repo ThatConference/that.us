@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+		
+    <title>THAT</title>
+    <meta name="description" content="THAT is your new go-to peer-to-peer learning platform where real practitioners come together daily, monthly, and yearly.  Join on the 15th of every month for THAT Online and this July at THAT Conference.">
+    
+    <meta name="twitter:creator" content="@thatconference" />
+    <meta name="twitter:site" content="https://that.us" />
+    <meta name="twitter:title" content="THAT" />
+    <meta name="twitter:description" content="THAT is your new go-to peer-to-peer learning platform where real practitioners come together daily, monthly, and yearly.  Join on the 15th of every month for THAT Online and this July at THAT Conference." />
+    
+    <meta property="og:title" content="THAT" />
+    <meta property="og:description" content="THAT is your new go-to peer-to-peer learning platform where real practitioners come together daily, monthly, and yearly.  Join on the 15th of every month for THAT Online and this July at THAT Conference." />
+    <meta property="og:url" content="https://that.us/" />
+    <meta property="og:site_name" content="THAT" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:image" content="https://that.us/favicon.png" />
+    
+    <a rel="preconnect" href="https://images.that.tech">
+    <a rel="preconnect" href="https://that.imgix.net">
+    <a rel="preconnect" href="https://code.tidio.co">
+    <a rel="preconnect" href="https://js.stripe.com">
+            
+    <a rel="canonical" href="https://www.that.us/" />
+            
+    <a rel="icon" href="/favicon.ico" />
+    <a rel="icon" type="image/png" href="/favicon.png" />
+    <a rel="shortcut icon" type="image/png" href="/favicon.png" />
+    
+    <a rel="icon" href="/favicon-16x16.png" sizes="16x16">
+    <a rel="icon" href="/favicon-32x32.png" sizes="32x32">
+    <a rel="icon" href="/favicon-96x96.png" sizes="96x96">
+    <a rel="icon" href="/favicon-128x128.png" sizes="128x128">
+    <a rel="icon" href="/favicon-256x256.png" sizes="256x256">
+    <a rel="icon" href="/favicon-512x512.png" sizes="512x512">
+
+    <a rel="apple-touch-icon" href="/favicon.png" />
+
+    <a
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+
+		%svelte.head%
+	
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "Organization",
+        "url": "https://that.us",
+        "logo": "https://that.us/images/og-logo.png"
+      }
+    </script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "Organization",
+        "name": "THAT",
+        "url": "https://that.us",
+        "sameAs": [
+          "https://thatconference.com",
+          "https://www.facebook.com/THATconference/",
+          "https://www.instagram.com/THATconference/",
+          "https://twitter.com/THATconference",
+          "https://medium.com/THAT-conference",
+          "https://www.youtube.com/THATconference/",
+          "https://www.flickr.com/photos/THATconference/",
+          "https://www.linkedin.com/company/THAT-conference",
+          "https://github.com/THATconference",
+          "https://that.live"
+        ]
+      }
+    </script>
+		
+    <!-- stripe -->
+    <script defer async src="https://js.stripe.com/v3/"></script>
+
+    <!-- woopra -->
+    <script>
+      !function(){var a,b,c,d=window,e=document,f=arguments,g="script",h=["config","track","trackForm","trackClick","identify","visit","push","call"],i=function(){var a,b=this,c=function(a){b[a]=function(){return b._e.push([a].concat(Array.prototype.slice.call(arguments,0))),b}};for(b._e=[],a=0;a<h.length;a++)c(h[a])};for(d.__woo=d.__woo||{},a=0;a<f.length;a++)d.__woo[f[a]]=d[f[a]]=d[f[a]]||new i;b=e.createElement(g),b.async=1,b.src="//static.woopra.com/js/w.js",c=e.getElementsByTagName(g)[0],c.parentNode.insertBefore(b,c)}("woopra");
+      woopra.config({
+       domain: "that.us"
+      });
+  
+      woopra.track();
+    </script>
+
+    <!-- tidio chat bot -->
+    <script defer async src="//code.tidio.co/qcwuuigfzw3cjegsc2fyo0sniyh3c3ue.js">
+    </script>
+
+    <!-- GA -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'UA-21705613-11');
+      // set true to disable Google Analytics
+      window['ga-disable-UA-21705613-11'] = window.origin.includes('localhost');
+    </script>
+
+	</head>
+	<body>
+		<div id="svelte">%svelte.body%</div>
+	</body>
+</html>

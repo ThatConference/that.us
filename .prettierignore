@@ -1,2 +1,4 @@
-public/**
+.svelte-kit/**
+static/**
+build/**
 node_modules/**

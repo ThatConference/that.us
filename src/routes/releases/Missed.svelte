@@ -1,83 +1,89 @@
 <script>
-  import { onMount } from 'svelte';
+	import { onMount } from 'svelte';
+	import archieml from 'archieml';
+	import { last } from 'lodash';
 
-  import archieml from 'archieml';
-  import { last } from 'lodash';
-  import { Link } from 'yrv';
+	import seoMetaTags from '$utils/seo/metaTags';
+	import Layout from '$elements/layouts/ContentLayout.svelte';
+	import ReleaseNote from '$components/releaseNotes/Release.svelte';
 
-  import Layout from '../../elements/layouts/ContentLayout.svelte';
-  import ReleaseNote from '../../components/releaseNotes/Release.svelte';
-  import metaTagsStore from '../../store/metaTags';
-  import { showReleaseNotes } from '../../store/siteVersion';
+	import { showReleaseNotes } from '$store/siteVersion';
 
-  let versionLastSeen;
+	const metaTags = seoMetaTags({
+		title: 'Changelog - THAT',
+		description: "This is what you've missed since your last visit.",
+		openGraph: {
+			type: 'website',
+			url: `https://that.us/changelog-missed`
+		}
+	});
 
-  let getReleases = fetch('_releaseNotes/manifest.aml')
-    .then(response => response.text())
-    .then(r => {
-      const { releases } = archieml.load(r);
+	let versionLastSeen;
 
-      let missedReleases = [];
-      if (versionLastSeen) {
-        missedReleases = releases.slice(releases.indexOf(versionLastSeen) + 1);
-      } else {
-        missedReleases = releases;
-      }
+	let getReleases = fetch('_releaseNotes/manifest.aml')
+		.then((response) => response.text())
+		.then((r) => {
+			const { releases } = archieml.load(r);
 
-      // has to be before we reverse it.
-      if (missedReleases.length > 0)
-        window.localStorage.setItem('versionLastSeen', last(missedReleases));
+			let missedReleases = [];
+			if (versionLastSeen) {
+				missedReleases = releases.slice(releases.indexOf(versionLastSeen) + 1);
+			} else {
+				missedReleases = releases;
+			}
 
-      missedReleases.reverse();
-      showReleaseNotes.set(false);
-      return missedReleases;
-    });
+			// has to be before we reverse it.
+			if (missedReleases.length > 0)
+				window.localStorage.setItem('versionLastSeen', last(missedReleases));
 
-  onMount(async () => {
-    versionLastSeen = window.localStorage.getItem('versionLastSeen');
-  });
+			missedReleases.reverse();
+			showReleaseNotes.set(false);
+			return missedReleases;
+		});
 
-  metaTagsStore.set({
-    title: 'Changelog - THAT',
-    description: "This is what you've missed since your last visit.",
-    openGraph: {
-      type: 'website',
-      url: `https://that.us/changelog-missed`,
-    },
-  });
+	onMount(async () => {
+		versionLastSeen = window.localStorage.getItem('versionLastSeen');
+	});
 </script>
 
-<Layout>
-  <div class="py-16 bg-white">
-    <div class="relative max-w-7xl mx-auto">
-      <div class="mb-12">
-        <h3
-          class="text-3xl leading-8 font-extrabold tracking-tight text-gray-900
-            sm:text-4xl sm:leading-10">
-          Since your last visit...
-        </h3>
-        <div>
-          <Link
-            href="/changelog"
-            class="pointer text-thatBlue-500 hover:text-thatBlue-900">
-            Checkout our past releases.
-          </Link>
-        </div>
-      </div>
+<svelte:head>
+	<title>{metaTags.title}</title>
 
-      {#await getReleases then results}
-        {#if results.length > 0}
-          {#each results as release}
-            <div class="mb-20">
-              <ReleaseNote releaseNotes="{`_releaseNotes/${release}.aml`}" />
-            </div>
-          {/each}
-        {:else}
-          <div>
-            <p>You're all caught up!</p>
-          </div>
-        {/if}
-      {/await}
-    </div>
-  </div>
+	{#each metaTags as tag}
+		<meta {...tag} />
+	{/each}
+</svelte:head>
+
+<Layout>
+	<div class="py-16 bg-white">
+		<div class="relative max-w-7xl mx-auto">
+			<div class="mb-12">
+				<h3
+					class="text-3xl leading-8 font-extrabold tracking-tight text-gray-900
+            sm:text-4xl sm:leading-10"
+				>
+					Since your last visit...
+				</h3>
+				<div>
+					<a href="/changelog" class="pointer text-thatBlue-500 hover:text-thatBlue-900">
+						Checkout our past releases.
+					</a>
+				</div>
+			</div>
+
+			{#await getReleases then results}
+				{#if results.length > 0}
+					{#each results as release}
+						<div class="mb-20">
+							<ReleaseNote releaseNotes={`_releaseNotes/${release}.aml`} />
+						</div>
+					{/each}
+				{:else}
+					<div>
+						<p>You're all caught up!</p>
+					</div>
+				{/if}
+			{/await}
+		</div>
+	</div>
 </Layout>

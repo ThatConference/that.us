@@ -1,6 +1,6 @@
 <script>
-  import { navigateTo } from 'yrv';
+	import { goto } from '$app/navigation';
 
-  let currentPath = window.location.pathname.replace('sessions', 'activities');
-  navigateTo(`${currentPath}${window.location.search}`);
+	let currentPath = window.location.pathname.replace('sessions', 'activities');
+	goto(`${currentPath}${window.location.search}`);
 </script>

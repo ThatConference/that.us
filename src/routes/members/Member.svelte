@@ -1,12 +1,12 @@
 <script>
-  export let router;
+	import { page } from '$app/stores';
 
-  import MemberCore from './_MemberCore.svelte';
-  import ProfileLayout from '../../elements/layouts/Profile.svelte';
+	import MemberCore from './_components/_MemberCore.svelte';
+	import ProfileLayout from '$elements/layouts/Profile.svelte';
 
-  const { member } = router.params;
+	const { member } = $page.params;
 </script>
 
 <ProfileLayout>
-  <MemberCore slug="{member}" />
+	<MemberCore slug={member} />
 </ProfileLayout>

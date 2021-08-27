@@ -1,109 +1,128 @@
 <script>
-  import { navigateTo, router } from 'yrv';
-  import { isEmpty } from 'lodash';
+	import { goto } from '$app/navigation';
+	import { page } from '$app/stores'; // todo.. totally broke
 
-  import { thatProfile } from '../../utilities/security';
-  import { User, Badge } from '../../elements/svgs';
-  import Nav from '../../components/nav/interiorNav/Top.svelte';
-  import StackedLayout from '../../elements/layouts/StackedLayout.svelte';
-  import { ActionHeader } from '../../elements';
+	import { isEmpty } from 'lodash';
 
-  import Profile from './components/profiles/_Profile.svelte';
-  import SharedProfile from './components/profiles/_SharedProfile.svelte';
+	import { thatProfile } from '$utils/security';
+	import seoMetaTags from '$utils/seo/metaTags';
+	import { ActionHeader } from '$elements';
+	import { User, Badge } from '$elements/svgs';
+	import StackedLayout from '$elements/layouts/StackedLayout.svelte';
 
-  $: profileComponent = Profile;
+	import Nav from '$components/nav/interiorNav/Top.svelte';
+	import Profile from './_components/profiles/_Profile.svelte';
+	import SharedProfile from './_components/profiles/_SharedProfile.svelte';
 
-  const asideSelected = {
-    item: 'bg-thatBlue-100 bg-opacity-25 hover:bg-opacity-25 hover:bg-thatBlue-100 border-thatBlue-500 text-thatBlue-700 hover:text-thatBlue-700 group mt-1 border-l-4 px-3 py-2 flex items-center text-sm font-medium',
-    image:
-      'text-thatBlue-500 group-hover:text-thatBlue-500 flex-shrink-0 -ml-1 mr-3 h-6 w-6',
-  };
+	const metaTags = seoMetaTags({
+		title: 'My Profiles - THAT',
+		description: 'Your Profiles.',
+		openGraph: {
+			type: 'website',
+			url: `https://that.us/my/profiles`
+		},
+		nofollow: true,
+		noindex: true
+	});
 
-  const asideDefault = {
-    item: 'border-transparent text-gray-900 hover:bg-gray-50 hover:text-gray-900 group mt-1 border-l-4 px-3 py-2 flex items-center text-sm font-medium',
-    image:
-      'text-gray-400 group-hover:text-gray-500 flex-shrink-0 -ml-1 mr-3 h-6 w-6',
-  };
+	const asideSelected = {
+		item: 'bg-thatBlue-100 bg-opacity-25 hover:bg-opacity-25 hover:bg-thatBlue-100 border-thatBlue-500 text-thatBlue-700 hover:text-thatBlue-700 group mt-1 border-l-4 px-3 py-2 flex items-center text-sm font-medium',
+		image: 'text-thatBlue-500 group-hover:text-thatBlue-500 flex-shrink-0 -ml-1 mr-3 h-6 w-6'
+	};
 
-  const isSelected = component => {
-    let results = asideDefault;
+	const asideDefault = {
+		item: 'border-transparent text-gray-900 hover:bg-gray-50 hover:text-gray-900 group mt-1 border-l-4 px-3 py-2 flex items-center text-sm font-medium',
+		image: 'text-gray-400 group-hover:text-gray-500 flex-shrink-0 -ml-1 mr-3 h-6 w-6'
+	};
 
-    if (profileComponent === component) {
-      results = asideSelected;
-    }
+	$: profileComponent = Profile;
 
-    return results;
-  };
+	const isSelected = (component) => {
+		let results = asideDefault;
 
-  $: switch ($router.params.aside) {
-    case 'primary':
-      profileComponent = Profile;
-      break;
+		if (profileComponent === component) {
+			results = asideSelected;
+		}
 
-    case 'shared':
-      profileComponent = SharedProfile;
-      break;
+		return results;
+	};
 
-    default:
-      profileComponent = Profile;
-      break;
-  }
+	$: switch ($page.params.aside) {
+		case 'primary':
+			profileComponent = Profile;
+			break;
+
+		case 'shared':
+			profileComponent = SharedProfile;
+			break;
+
+		default:
+			profileComponent = Profile;
+			break;
+	}
 </script>
 
+<svelte:head>
+	<title>{metaTags.title}</title>
+
+	{#each metaTags as tag}
+		<meta {...tag} />
+	{/each}
+</svelte:head>
+
 <StackedLayout>
-  <div slot="header">
-    <Nav />
-    <ActionHeader title="Your Profiles" />
-  </div>
+	<div slot="header">
+		<Nav />
+		<ActionHeader title="Your Profiles" />
+	</div>
 
-  <div slot="body">
-    <main class="-mx-6 relative">
-      <div
-        class="divide-y divide-gray-200 lg:grid lg:grid-cols-12 lg:divide-y-0 lg:divide-x">
-        <aside class="py-6 lg:col-span-3">
-          <div class="sticky top-4">
-            <nav>
-              <a
-                href="/my/profiles/primary"
-                on:click|preventDefault="{() => {
-                  navigateTo('/my/profiles/primary');
-                  profileComponent = Profile;
-                }}"
-                class="{profileComponent === Profile
-                  ? asideSelected.item
-                  : asideDefault.item}">
-                <User
-                  classes="{profileComponent === Profile
-                    ? asideSelected.image
-                    : asideDefault.image}" />
-                <span class="truncate"> Your Profile </span>
-              </a>
+	<div slot="body">
+		<main class="-mx-6 relative">
+			<div class="divide-y divide-gray-200 lg:grid lg:grid-cols-12 lg:divide-y-0 lg:divide-x">
+				<aside class="py-6 lg:col-span-3">
+					<div class="sticky top-4">
+						<nav>
+							<a
+								href="/my/profiles/primary"
+								on:click|preventDefault={() => {
+									goto('/my/profiles/primary');
+									profileComponent = Profile;
+								}}
+								class={profileComponent === Profile ? asideSelected.item : asideDefault.item}
+							>
+								<User
+									classes={profileComponent === Profile ? asideSelected.image : asideDefault.image}
+								/>
+								<span class="truncate"> Your Profile </span>
+							</a>
 
-              {#if !isEmpty($thatProfile)}
-                <a
-                  href="/my/profiles/shared"
-                  on:click|preventDefault="{() => {
-                    navigateTo('/my/profiles/shared');
-                    profileComponent = SharedProfile;
-                  }}"
-                  class="{profileComponent === SharedProfile
-                    ? asideSelected.item
-                    : asideDefault.item}">
-                  <Badge
-                    classes="{profileComponent === SharedProfile
-                      ? asideSelected.image
-                      : asideDefault.image}" />
-                  <span class="truncate">Shared Profile </span>
-                </a>
-              {/if}
-            </nav>
-          </div>
-        </aside>
+							{#if !isEmpty($thatProfile)}
+								<a
+									href="/my/profiles/shared"
+									on:click|preventDefault={() => {
+										goto('/my/profiles/shared');
+										profileComponent = SharedProfile;
+									}}
+									class={profileComponent === SharedProfile
+										? asideSelected.item
+										: asideDefault.item}
+								>
+									<Badge
+										classes={profileComponent === SharedProfile
+											? asideSelected.image
+											: asideDefault.image}
+									/>
+									<span class="truncate">Shared Profile </span>
+								</a>
+							{/if}
+						</nav>
+					</div>
+				</aside>
 
-        <div class="divide-y divide-gray-200 lg:col-span-9 py-4 px-4">
-          <svelte:component this="{profileComponent}" />
-        </div>
-      </div>
-    </main>
-  </div>
+				<div class="divide-y divide-gray-200 lg:col-span-9 py-4 px-4">
+					<svelte:component this={profileComponent} />
+				</div>
+			</div>
+		</main>
+	</div>
 </StackedLayout>

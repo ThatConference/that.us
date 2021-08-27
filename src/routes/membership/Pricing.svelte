@@ -1,49 +1,53 @@
 <script>
-  import { useMachine } from 'xstate-svelte';
+	import { useMachine } from 'xstate-svelte';
 
-  import { Logo } from '../../elements';
-  import { debug } from '../../config';
+	import seoMetaTags from '$utils/seo/metaTags';
+	import { debug } from '$utils/config';
+	import config from '$utils/config';
+	import { Logo } from '$elements';
 
-  import Layout from './components/_Layout.svelte';
-  import Hero from './components/pricing/_Hero.svelte';
-  import Quote from './components/pricing/_Quote.svelte';
-  import FAQs from './components/pricing/_FAQs.svelte';
-  import NotReady from './components/pricing/_NotReady.svelte';
-  import PricingCore from './components/pricing/_PricingCore.svelte';
+	import pricingMachine from './_machines/pricing';
 
-  import metaTagsStore from '../../store/metaTags';
-  import pricingMachine from './machines/pricing';
-  import config from '../../config';
+	import PricingCore from './_components/pricing/_PricingCore.svelte';
+	import Layout from './_components/_Layout.svelte';
+	import Hero from './_components/pricing/_Hero.svelte';
+	import Quote from './_components/pricing/_Quote.svelte';
+	import FAQs from './_components/pricing/_FAQs.svelte';
+	import NotReady from './_components/pricing/_NotReady.svelte';
 
-  const { state } = useMachine(pricingMachine(config.eventId), {
-    devTools: debug.xstate,
-  });
+	const metaTags = seoMetaTags({
+		title: 'Membership Pricing - THAT',
+		description: 'Become a member and save today',
+		openGraph: {
+			type: 'website',
+			url: `https://that.us/membership/pricing`
+		}
+	});
 
-  metaTagsStore.set({
-    title: 'Membership Pricing - THAT',
-    description: 'Become a member and save today',
-    openGraph: {
-      type: 'website',
-      url: `https://that.us/membership/pricing`,
-    },
-  });
+	const { state } = useMachine(pricingMachine(config.eventId), {
+		devTools: debug.xstate
+	});
 </script>
 
+<svelte:head>
+	<title>{metaTags.title}</title>
+
+	{#each metaTags as tag}
+		<meta {...tag} />
+	{/each}
+</svelte:head>
+
 {#if $state.matches('ready')}
-  <Layout>
-    <Hero
-      eventTicket="{$state.context.eventTicket}"
-      membership="{$state.context.membership}" />
+	<Layout>
+		<Hero eventTicket={$state.context.eventTicket} membership={$state.context.membership} />
 
-    <Quote />
+		<Quote />
 
-    <Logo height="40" uri="/images/THAT-Logo-Words.svg" />
+		<Logo height="40" uri="/images/THAT-Logo-Words.svg" />
 
-    <PricingCore
-      eventTicket="{$state.context.eventTicket}"
-      membership="{$state.context.membership}" />
+		<PricingCore eventTicket={$state.context.eventTicket} membership={$state.context.membership} />
 
-    <FAQs />
-    <NotReady />
-  </Layout>
+		<FAQs />
+		<NotReady />
+	</Layout>
 {/if}
