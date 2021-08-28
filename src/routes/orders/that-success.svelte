@@ -9,7 +9,7 @@
 	import { Highlight as HighlightLink, Standard as StandardLink } from '$elements/links';
 
 	import Layout from './_components/_Layout.svelte';
-	import QuestionModal from './_components/_QuestionModal.sveltee';
+	import QuestionModal from './_components/_QuestionModal.svelte';
 
 	const metaTags = seoMetaTags({
 		title: 'Payment Received - THAT',

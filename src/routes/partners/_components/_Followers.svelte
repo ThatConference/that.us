@@ -4,7 +4,7 @@
 	import { useService } from 'xstate-svelte';
 
 	import { Avatars } from '$elements';
-	import { debug } from '$config';
+	import { debug } from '$utils/$config';
 
 	const { state } = useService(stateMachineService, { devTools: debug.xstate });
 </script>
