@@ -1,6 +1,13 @@
-.DS_Store
+# folders
 node_modules
-/.svelte-kit
-/package
+package
+__testCoverage__
+public
 
+# files
+.DS_Store
+/.svelte-kit
+
+# env settings
 .env
+.env.production
