@@ -6,12 +6,12 @@
 	import currentEvent from '$stores/currentEvent';
 	import eventsApi from '$dataSources/api.that.tech/events/queries';
 
-	import Hybrid from './_components/_Hybrid.sveltee';
-	import MultiDay from './_components/_MultiDay.sveltee';
-	import Online from './_components/_Online.sveltee';
+	import Hybrid from '../_components/_Hybrid.svelte';
+	import MultiDay from '../_components/_MultiDay.svelte';
+	import Online from '../_components/_Online.svelte';
 
-	const { id, name } = $page.params;
-	const eventSlug = `${id}/${name}`;
+	const { event, date } = $page.params;
+	const eventSlug = `${event}/${date}`;
 
 	const metaTags = seoMetaTags({
 		title: 'Event - THAT',
@@ -21,9 +21,8 @@
 			url: `https://that.us/events/${eventSlug}`
 		}
 	});
-	
-	let eventFormat;
 
+	let eventFormat;
 
 	function queryEvent() {
 		return eventsApi(getClient())
