@@ -17,5 +17,8 @@
 		"editor.defaultFormatter": "svelte.svelte-vscode"
 	},
 	"javascript.updateImportsOnFileMove.enabled": "never",
-	"javascript.suggest.autoImports": false
+	"javascript.suggest.autoImports": false,
+	"typescript.updateImportsOnFileMove.enabled": "never",
+	"svelte.plugin.svelte.format.config.svelteBracketNewLine": false,
+	"svelte.plugin.svelte.rename.enable": false
 }
