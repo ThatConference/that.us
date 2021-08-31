@@ -1,12 +1,11 @@
-import { getClient } from '@urql/svelte';
 import { Machine, assign } from 'xstate';
 
 import { log } from '$utils/error';
 import createPagingConfig from '$machines/paging';
 import communityQueryApi from '$dataSources/api.that.tech/community/queries';
 
-function createServices(client) {
-	const { queryCommunityActivities, queryNextCommunityActivities } = communityQueryApi(client);
+function createServices() {
+	const { queryCommunityActivities, queryNextCommunityActivities } = communityQueryApi();
 
 	return {
 		guards: {
@@ -49,8 +48,8 @@ function createServices(client) {
 	};
 }
 
-function create(meta, client = getClient()) {
-	const services = createServices(client);
+function create(meta) {
+	const services = createServices();
 	return Machine({ ...createPagingConfig(meta) }, { ...services });
 }
 

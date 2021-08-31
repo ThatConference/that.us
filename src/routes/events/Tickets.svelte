@@ -3,7 +3,6 @@
 	import { fade } from 'svelte/transition';
 	import { goto } from '$app/nativation';
 	import { page } from '$app/stores';
-	import { getClient } from '@urql/svelte';
 
 	import seoMetaTags from '$utils/seo/metaTags';
 	import Layout from '$elements/layouts/LandingLayout.svelte';
@@ -15,7 +14,6 @@
 	import Families from './_components/tickets/_Families.svelte';
 	import Notices from './_components/_Notices.svelte';
 
-	import metaTagsStore from '$stores/metaTags';
 	import eventsApi from '$dataSources/api.that.tech/events/queries';
 
 	const { send } = getContext('cart');
@@ -34,7 +32,7 @@
 	let event; //used later in the handler
 
 	async function queryEvent() {
-		event = await eventsApi(getClient()).queryEventBySlug(eventSlug);
+		event = await eventsApi().queryEventBySlug(eventSlug);
 		return event;
 	}
 

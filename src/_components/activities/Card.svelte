@@ -22,7 +22,6 @@
 	import Icon from 'svelte-awesome';
 	import { info, heart, signIn, cog, mapMarker, caretDown, user } from 'svelte-awesome/icons';
 	import { page } from '$app/stores';
-	import { getClient } from '@urql/svelte';
 	import { isEmpty, find } from 'lodash';
 
 	// utilties
@@ -44,7 +43,7 @@
 	dayjs.extend(relativeTime);
 
 	const { login, isAuthenticated, thatProfile } = getAuth();
-	const { toggle, get: getFavorites, favoritesStore: favorites } = favoritesApi(getClient());
+	const { toggle, get: getFavorites, favoritesStore: favorites } = favoritesApi();
 	let host = speakers[0];
 
 	let imageCrop = '?mask=ellipse&w=500&h=500&fit=crop';

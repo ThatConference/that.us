@@ -2,7 +2,6 @@
 	export let isBackdoor = false;
 
 	import { goto } from '$app/navigation';
-	import { getClient } from '@urql/svelte';
 	import Typewriter from 'svelte-typewriter';
 	import Icon from 'svelte-awesome';
 	import { plus } from 'svelte-awesome/icons';
@@ -28,7 +27,7 @@
 		}
 	});
 
-	const { createSession } = sessionsApi(getClient());
+	const { createSession } = sessionsApi();
 
 	async function handleSubmit({ detail: { values, setSubmitting, resetForm } }) {
 		setSubmitting(true);

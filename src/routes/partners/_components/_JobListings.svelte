@@ -1,7 +1,6 @@
 <script>
 	export let listings = [];
 
-	import { getClient } from '@urql/svelte';
 	import { fade } from 'svelte/transition';
 
 	import { page } from '$app/stores';
@@ -9,7 +8,7 @@
 	import partnerQueryApi from '$dataSources/api.that.tech/partner/queries';
 
 	const { partner } = $page.params;
-	const { queryPartnerDropDownValues } = partnerQueryApi(getClient());
+	const { queryPartnerDropDownValues } = partnerQueryApi();
 </script>
 
 {#await queryPartnerDropDownValues() then dropDownValues}

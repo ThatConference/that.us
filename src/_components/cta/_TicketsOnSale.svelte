@@ -1,11 +1,10 @@
 <script>
-	import { getClient } from '@urql/svelte';
 	import dayjs from 'dayjs';
 
 	import eventsApi from '$dataSources/api.that.tech/events/queries';
 
 	function queryEvent() {
-		return eventsApi(getClient()).queryEventForCfp('wi/2021');
+		return eventsApi().queryEventForCfp('wi/2021');
 	}
 </script>
 

@@ -24,7 +24,6 @@
 		externalLink
 	} from 'svelte-awesome/icons';
 	import { page } from '$app/stores';
-	import { getClient } from '@urql/svelte';
 	import { isEmpty, find } from 'lodash';
 
 	import seoMetaTags from '$utils/seo/metaTags';
@@ -67,7 +66,7 @@
 		supportingArtifacts
 	} = activity;
 
-	const { toggle, get: getFavorites, favoritesStore: favorites } = favoritesApi(getClient());
+	const { toggle, get: getFavorites, favoritesStore: favorites } = favoritesApi();
 	const isDailyActivity = config.eventId === eventId;
 
 	// Enum Lookups

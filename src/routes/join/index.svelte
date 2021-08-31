@@ -4,7 +4,6 @@
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 	import Icon from 'svelte-awesome';
-	import { getClient } from '@urql/svelte';
 	import { expand as expandIcon, compress as compressIcon } from 'svelte-awesome/icons';
 
 	import seoMetaTags from '$utils/seo/metaTags';
@@ -20,8 +19,8 @@
 
 	const { isAuthenticated, thatProfile, user } = getAuth();
 	const { activityId } = $page.params;
-	const { setAttendance, querySessionById } = sessionsApi(getClient());
-	const { canAccessEvent } = eventsApi(getClient());
+	const { setAttendance, querySessionById } = sessionsApi();
+	const { canAccessEvent } = eventsApi();
 
 	const imageCrop = '?mask=ellipse&w=500&h=500&fit=crop';
 	const jitsiFrameTopBuffer = 340;

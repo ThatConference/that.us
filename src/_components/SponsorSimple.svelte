@@ -1,7 +1,7 @@
 <script>
 	export let eventId = $currentEvent.eventId;
 
-	import { getClient } from '@urql/svelte';
+	import gFetch from '$utils/gfetch';
 
 	import currentEvent from '$stores/currentEvent';
 	import { Standard as StandardLink } from '$elements/links';
@@ -28,9 +28,9 @@
 	const PARTNER_LEVELS_TO_DISPLAY = ['CORPORATE_PARTNER', 'PARTNER', 'PIONEER'];
 
 	function queryPartners() {
-		return getClient()
-			.query(GET_PARTNERS, { id: eventId })
-			.toPromise()
+		return gFetch()
+			.query({ query: GET_PARTNERS, variables: { id: eventId } })
+
 			.then((p) => {
 				const results = p.data.events.event.get;
 

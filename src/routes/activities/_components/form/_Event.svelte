@@ -5,7 +5,6 @@
 
 	import { createEventDispatcher } from 'svelte';
 	import { fade } from 'svelte/transition';
-	import { getClient } from '@urql/svelte';
 	import { sortBy } from 'lodash';
 	import dayjs from 'dayjs';
 	import isSameOrBefore from 'dayjs/plugin/isSameOrBefore';
@@ -21,7 +20,7 @@
 	dayjs.extend(isSameOrBefore);
 	dayjs.extend(isBetween);
 
-	const { queryEvents: queryEventsApi, canAddSession } = eventsApi(getClient());
+	const { queryEvents: queryEventsApi, canAddSession } = eventsApi();
 
 	const dispatch = createEventDispatcher();
 	let events;

@@ -1,6 +1,5 @@
 <script>
 	import { fade } from 'svelte/transition';
-	import { getClient } from '@urql/svelte';
 	import { sortBy, take, drop } from 'lodash';
 	import dayjs from 'dayjs';
 
@@ -23,7 +22,7 @@
 	});
 
 	function queryEvents() {
-		return eventsApi(getClient())
+		return eventsApi()
 			.queryEventsByCommunity()
 			.then((r) => sortBy(r, 'endDate').reverse())
 			.then((r) => {

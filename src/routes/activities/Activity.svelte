@@ -1,6 +1,5 @@
 <script>
 	import { page } from '$app/stores';
-	import { getClient } from '@urql/svelte';
 	import { FacebookLoader } from 'svelte-content-loader';
 
 	import seoMetaTags from '$utils/seo/metaTags';
@@ -13,8 +12,8 @@
 	import sessionsQueryApi from '$dataSources/api.that.tech/sessions/queries';
 
 	const { id } = $page.params;
-	const { getById } = sessionsApi(getClient());
-	const { querySessionDropDownValues } = sessionsQueryApi(getClient());
+	const { getById } = sessionsApi();
+	const { querySessionDropDownValues } = sessionsQueryApi();
 
 	const metaTags = seoMetaTags({
 		title: 'Activity - THAT',

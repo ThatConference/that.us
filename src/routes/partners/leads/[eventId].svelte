@@ -1,7 +1,6 @@
 <script>
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
-	import { getClient } from '@urql/svelte';
 	import { Circle3 } from 'svelte-loading-spinners';
 
 	import seoMetaTags from '$utils/seo/metaTags';
@@ -20,7 +19,7 @@
 		nofollow: true
 	});
 
-	const { addPin } = leadsMutationApi(getClient());
+	const { addPin } = leadsMutationApi();
 	const eventId = page.slug;
 
 	let pinNumber = '';

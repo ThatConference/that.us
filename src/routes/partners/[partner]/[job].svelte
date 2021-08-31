@@ -1,6 +1,5 @@
 <script>
 	import { page } from '$app/stores';
-	import { getClient } from '@urql/svelte';
 
 	import ProfileLayout from '$elements/layouts/Profile.svelte';
 	import partnerQueryApi from '$dataSources/api.that.tech/partner/queries';
@@ -9,7 +8,7 @@
 	import JobDetails from '../_components/_JobDetails.svelte';
 
 	const { partner, job } = $page.params;
-	const { queryPartnerJobListing } = partnerQueryApi(getClient());
+	const { queryPartnerJobListing } = partnerQueryApi();
 </script>
 
 <ProfileLayout>

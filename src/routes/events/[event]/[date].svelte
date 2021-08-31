@@ -1,5 +1,4 @@
 <script>
-	import { getClient } from '@urql/svelte';
 	import { page } from '$app/stores';
 
 	import seoMetaTags from '$utils/seo/metaTags';
@@ -25,7 +24,7 @@
 	let eventFormat;
 
 	function queryEvent() {
-		return eventsApi(getClient())
+		return eventsApi()
 			.queryEventBySlug(eventSlug)
 			.then((event) => {
 				currentEvent.set({ eventId: event.id, title: event.name });

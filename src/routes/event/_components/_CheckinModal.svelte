@@ -4,7 +4,6 @@
 	export let title;
 	export let text;
 
-	import { getClient } from '@urql/svelte';
 	import { createEventDispatcher } from 'svelte';
 	import { Circle3 } from 'svelte-loading-spinners';
 
@@ -13,7 +12,7 @@
 	import checkinMutationApi from '$dataSources/api.that.tech/checkin/mutations';
 
 	const dispatch = createEventDispatcher();
-	const { checkIn } = checkinMutationApi(getClient());
+	const { checkIn } = checkinMutationApi();
 
 	let pinNumber = '';
 	let waiting = false;

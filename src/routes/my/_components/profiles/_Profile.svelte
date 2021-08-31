@@ -1,16 +1,16 @@
 <script>
 	import { goto } from '$app/navigation';
 	import { isNil, isEmpty } from 'lodash';
-	import { getClient } from '@urql/svelte';
 
 	import ProfileForm from './ProfileForm.svelte';
 
 	import memberApi from '$dataSources/api.that.tech/members/mutations';
 	import logEvent from '$utils/eventTrack';
-	import { user, thatProfile } from '$utils/security.js';
+	import { getAuth } from '$utils/security';
 	import metaTagsStore from '$stores/metaTags';
 
-	const { createProfile, updateProfile } = memberApi(getClient());
+	const { user, thatProfile } = getAuth();
+	const { createProfile, updateProfile } = memberApi();
 
 	let isNewProfile;
 	let currentProfile;

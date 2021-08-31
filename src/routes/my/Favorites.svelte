@@ -1,6 +1,4 @@
 <script>
-	import { getClient } from '@urql/svelte';
-
 	import seoMetaTags from '$utils/seo/metaTags';
 	import { ModalError, ModalWarning, ActionHeader, LinkButton } from '$elements';
 	import StackedLayout from '$elements/layouts/StackedLayout.svelte';
@@ -24,7 +22,7 @@
 		nofollow: true
 	});
 
-	const { get } = favoritesApi(getClient());
+	const { get } = favoritesApi();
 </script>
 
 <svelte:head>

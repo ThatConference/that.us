@@ -1,11 +1,9 @@
 <script>
 	export let jobListing;
 
-	import { getClient } from '@urql/svelte';
-
 	import partnerQueryApi from '$dataSources/api.that.tech/partner/queries';
 
-	const { queryPartnerDropDownValues } = partnerQueryApi(getClient());
+	const { queryPartnerDropDownValues } = partnerQueryApi();
 
 	function getJobAttributes(dropDownValues) {
 		return [

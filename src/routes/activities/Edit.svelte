@@ -1,6 +1,5 @@
 <script>
 	import { page } from '$app/stores';
-	import { getClient } from '@urql/svelte';
 	import { goto } from '$app/navigation';
 	import Typewriter from 'svelte-typewriter';
 	import Icon from 'svelte-awesome';
@@ -21,8 +20,8 @@
 	import ActivityForm from './_components/form/ActivityForm.svelte';
 
 	const { activityId } = $page.params;
-	const { updateSession } = sessionsMutationsApi(getClient());
-	const { queryMySessionById } = sessionsQueryApi(getClient());
+	const { updateSession } = sessionsMutationsApi();
+	const { queryMySessionById } = sessionsQueryApi();
 
 	const metaTags = seoMetaTags({
 		title: 'Edit Activity - THAT',

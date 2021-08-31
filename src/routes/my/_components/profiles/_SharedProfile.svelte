@@ -1,5 +1,4 @@
 <script>
-	import { getClient } from '@urql/svelte';
 	import { isEmpty } from 'lodash';
 
 	import { Warning } from '$elements/svgs';
@@ -11,8 +10,8 @@
 	import metaTagsStore from '../../../../store/metaTags';
 
 	const { thatProfile } = getAuth();
-	const { queryMeSharedProfile } = meQueryApi(getClient());
-	const { updateSharedProfile } = meMutationsApi(getClient());
+	const { queryMeSharedProfile } = meQueryApi();
+	const { updateSharedProfile } = meMutationsApi();
 
 	async function handleUpdate({ detail: { values, setSubmitting, resetForm } }) {
 		setSubmitting(true);

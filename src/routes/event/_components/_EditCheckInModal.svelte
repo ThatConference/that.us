@@ -5,7 +5,6 @@
 	export let text;
 	export let isOwedShirt = false;
 
-	import { getClient } from '@urql/svelte';
 	import { createEventDispatcher } from 'svelte';
 	import { Circle3 } from 'svelte-loading-spinners';
 	import Checkbox from 'svelte-checkbox';
@@ -15,7 +14,7 @@
 	import checkinMutationApi from '$dataSources/api.that.tech/checkin/mutations';
 
 	const dispatch = createEventDispatcher();
-	const { setPartnerPin, revertCheckIn, setReceivedSwag } = checkinMutationApi(getClient());
+	const { setPartnerPin, revertCheckIn, setReceivedSwag } = checkinMutationApi();
 
 	let pinNumber = '';
 	let waiting = false;

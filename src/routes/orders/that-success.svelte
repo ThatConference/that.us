@@ -1,7 +1,6 @@
 <script>
 	import { page } from '$app/stores';
 	import { onMount, getContext } from 'svelte';
-	import { getClient } from '@urql/svelte';
 
 	import seoMetaTags from '$utils/seo/metaTags';
 	import { getAuth } from '$utils/security';
@@ -23,7 +22,6 @@
 		nofollow: true
 	});
 
-	const apiClient = getClient();
 	const { send } = getContext('cart');
 
 	const eventId = $page.query.get('eventId');
@@ -40,7 +38,7 @@
 	});
 
 	function handleOnSubmit(e) {
-		return ordersApi(apiClient)
+		return ordersApi()
 			.markSurveyQuestionsCompleted(eventId, orderReference)
 			.then((results) => {
 				questionsCompleted = results;

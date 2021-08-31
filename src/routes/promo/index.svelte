@@ -3,7 +3,6 @@
 	import { getContext } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import { page } from '$app/stores';
-	import { getClient } from '@urql/svelte';
 
 	import { Waiting } from '$elements';
 	import seoMetaTags from '$utils/seo/metaTags';
@@ -29,7 +28,7 @@
 	let event;
 
 	async function queryEvent() {
-		event = await eventsApi(getClient()).queryEventById(eventId);
+		event = await eventsApi().queryEventById(eventId);
 		return event;
 	}
 

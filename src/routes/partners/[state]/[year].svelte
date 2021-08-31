@@ -1,6 +1,5 @@
 <script>
 	import { page } from '$app/stores';
-	import { getClient } from '@urql/svelte';
 	import { groupBy } from 'lodash';
 
 	import seoMetaTags from '$utils/seo/metaTags';
@@ -22,7 +21,7 @@
 		}
 	});
 
-	const { getEventPartners } = partnerQueryApi(getClient());
+	const { getEventPartners } = partnerQueryApi();
 
 	async function queryEventPartners(slug) {
 		const data = await getEventPartners(slug);

@@ -1,6 +1,5 @@
 <script>
 	import { onMount, onDestroy } from 'svelte';
-	import { getClient } from '@urql/svelte';
 	import dayjs from 'dayjs';
 	import Clipboard from 'clipboard';
 
@@ -13,7 +12,7 @@
 	import metaTagsStore from '../../../store/metaTags';
 
 	const { thatProfile } = getAuth();
-	const { queryMeDiscountCodes } = meQueryApi(getClient());
+	const { queryMeDiscountCodes } = meQueryApi();
 
 	function queryDiscountCodes() {
 		return queryMeDiscountCodes();

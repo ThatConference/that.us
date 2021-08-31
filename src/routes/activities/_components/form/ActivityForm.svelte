@@ -10,7 +10,6 @@
 	import dayjs from 'dayjs';
 	import { Form, Input } from 'sveltejs-forms';
 	import { isEmpty } from 'lodash';
-	import { getClient } from '@urql/svelte';
 
 	import { getAuth } from '$utils/security';
 	import { Waiting, ModalError } from '$elements';
@@ -34,7 +33,7 @@
 	import TagsSection from './_Tags.svelte';
 
 	const { thatProfile } = getAuth();
-	const { querySessionDropDownValues } = sessionsQueryApi(getClient());
+	const { querySessionDropDownValues } = sessionsQueryApi();
 	const { eventId } = $page.params;
 	const formattedInitial = formatActivityInitialInput({
 		event: {
