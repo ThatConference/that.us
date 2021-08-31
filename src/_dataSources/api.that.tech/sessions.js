@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
 
-import gFetch from '$utils/gFetch';
+import gFetch from '$utils/gfetch';
 import { stripAuthorizationHeader } from './utilities';
 import { log } from './utilities/error';
 

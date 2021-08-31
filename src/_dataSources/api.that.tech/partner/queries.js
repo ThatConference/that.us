@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 import lodash from 'lodash';
 
-import gFetch from '$utils/gFetch';
+import gFetch from '$utils/gfetch';
 import config from '$utils/config';
 
 import { log } from '../utilities/error';

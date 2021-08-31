@@ -1,6 +1,6 @@
 import { writable } from 'svelte/store';
 
-import gFetch from '$utils/gFetch';
+import gFetch from '$utils/gfetch';
 import { log } from './utilities/error';
 
 const favoriteFragment = `

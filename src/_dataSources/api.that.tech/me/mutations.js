@@ -1,4 +1,4 @@
-import gFetch from '$utils/gFetch';
+import gFetch from '$utils/gfetch';
 import { log } from '../utilities/error';
 
 export const MUTATION_UPDATE_SHARED_PROFILE = `

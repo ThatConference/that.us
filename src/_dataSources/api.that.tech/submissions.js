@@ -1,4 +1,4 @@
-import gFetch from '$utils/gFetch';
+import gFetch from '$utils/gfetch';
 
 import { logMessage } from './utilities/error';
 

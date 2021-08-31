@@ -1,4 +1,4 @@
-import gFetch from '$utils/gFetch';
+import gFetch from '$utils/gfetch';
 
 import { log } from '../utilities/error';
 import { stripAuthorizationHeader } from '../utilities';
