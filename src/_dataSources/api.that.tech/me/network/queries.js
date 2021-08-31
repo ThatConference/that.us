@@ -1,3 +1,5 @@
+import gFetch from '$utils/gFetch';
+
 import { log } from '../utilities/error';
 
 const sharedProfileFragment = `
@@ -42,28 +44,30 @@ const QUERY_MY_NETWORK_SPONSORS = `
   }   
 `;
 
-export default client => {
-  function queryMySponsorNetwork() {
-    const variables = {};
-    return client
-      .query(QUERY_MY_NETWORK_SPONSORS, variables, {
-        requestPolicy: 'cache-and-network',
-      })
-      .toPromise()
-      .then(({ data, error }) => {
-        if (error) log(error, 'QUERY_MY_NETWORK_SPONSORS');
+export default () => {
+	const client = gFetch();
 
-        let results = [];
-        if (data) {
-          const { all } = data.partners.me.leads;
-          results = all;
-        }
+	function queryMySponsorNetwork() {
+		const variables = {};
+		return client
+			.query(QUERY_MY_NETWORK_SPONSORS, variables, {
+				requestPolicy: 'cache-and-network'
+			})
+			.toPromise()
+			.then(({ data, error }) => {
+				if (error) log(error, 'QUERY_MY_NETWORK_SPONSORS');
 
-        return results;
-      });
-  }
+				let results = [];
+				if (data) {
+					const { all } = data.partners.me.leads;
+					results = all;
+				}
 
-  return {
-    queryMySponsorNetwork,
-  };
+				return results;
+			});
+	}
+
+	return {
+		queryMySponsorNetwork
+	};
 };

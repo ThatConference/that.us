@@ -1,3 +1,5 @@
+import gFetch from '$utils/gFetch';
+
 import { log } from '../utilities/error';
 
 export const MUTATION_CHECK_IN_USER = `
@@ -64,82 +66,84 @@ export const MUTATION_SET_RECEIVED_SWAG = `
   }
 `;
 
-export default client => {
-  function checkIn(eventId, orderAllocationId, pinNumber) {
-    const variables = { eventId, orderAllocationId, pinNumber };
-    return client
-      .mutation(MUTATION_CHECK_IN_USER, variables)
-      .toPromise()
-      .then(({ data, error }) => {
-        if (error) log(error, 'MUTATION_CHECK_IN_USER');
+export default () => {
+	const client = gFetch();
 
-        let results;
+	function checkIn(eventId, orderAllocationId, pinNumber) {
+		const variables = { eventId, orderAllocationId, pinNumber };
+		return client
+			.mutation(MUTATION_CHECK_IN_USER, variables)
+			.toPromise()
+			.then(({ data, error }) => {
+				if (error) log(error, 'MUTATION_CHECK_IN_USER');
 
-        if (data) {
-          const { checkInResult } = data.events.event.registration;
-          results = checkInResult;
-        }
+				let results;
 
-        return results;
-      });
-  }
+				if (data) {
+					const { checkInResult } = data.events.event.registration;
+					results = checkInResult;
+				}
 
-  function revertCheckIn(eventId, orderAllocationId) {
-    const variables = { eventId, orderAllocationId };
-    return client
-      .mutation(MUTATION_REVERT_CHECKIN, variables)
-      .toPromise()
-      .then(({ data, error }) => {
-        if (error) log(error, 'MUTATION_REVERT_CHECKIN');
+				return results;
+			});
+	}
 
-        let results;
+	function revertCheckIn(eventId, orderAllocationId) {
+		const variables = { eventId, orderAllocationId };
+		return client
+			.mutation(MUTATION_REVERT_CHECKIN, variables)
+			.toPromise()
+			.then(({ data, error }) => {
+				if (error) log(error, 'MUTATION_REVERT_CHECKIN');
 
-        if (data) {
-          const { checkInResult } = data.events.event.registration;
-          results = checkInResult;
-        }
+				let results;
 
-        return results;
-      });
-  }
+				if (data) {
+					const { checkInResult } = data.events.event.registration;
+					results = checkInResult;
+				}
 
-  function setPartnerPin(eventId, orderAllocationId, pinNumber) {
-    const variables = { eventId, orderAllocationId, pinNumber };
-    return client
-      .mutation(MUTATION_SET_PIN, variables)
-      .toPromise()
-      .then(({ data, error }) => {
-        if (error) log(error, 'MUTATION_SET_PIN');
+				return results;
+			});
+	}
 
-        let results;
+	function setPartnerPin(eventId, orderAllocationId, pinNumber) {
+		const variables = { eventId, orderAllocationId, pinNumber };
+		return client
+			.mutation(MUTATION_SET_PIN, variables)
+			.toPromise()
+			.then(({ data, error }) => {
+				if (error) log(error, 'MUTATION_SET_PIN');
 
-        if (data) {
-          const { checkInResult } = data.events.event.registration;
-          results = checkInResult;
-        }
+				let results;
 
-        return results;
-      });
-  }
+				if (data) {
+					const { checkInResult } = data.events.event.registration;
+					results = checkInResult;
+				}
 
-  function setReceivedSwag(eventId, orderAllocationId, receivedSwag) {
-    const variables = { eventId, orderAllocationId, receivedSwag };
-    return client
-      .mutation(MUTATION_SET_RECEIVED_SWAG, variables)
-      .toPromise()
-      .then(({ data, error }) => {
-        if (error) log(error, 'MUTATION_SET_RECEIVED_SWAG');
+				return results;
+			});
+	}
 
-        let results;
+	function setReceivedSwag(eventId, orderAllocationId, receivedSwag) {
+		const variables = { eventId, orderAllocationId, receivedSwag };
+		return client
+			.mutation(MUTATION_SET_RECEIVED_SWAG, variables)
+			.toPromise()
+			.then(({ data, error }) => {
+				if (error) log(error, 'MUTATION_SET_RECEIVED_SWAG');
 
-        if (data) {
-          const { receivedResult } = data.events.event.registration;
-          results = receivedResult;
-        }
+				let results;
 
-        return results;
-      });
-  }
+				if (data) {
+					const { receivedResult } = data.events.event.registration;
+					results = receivedResult;
+				}
 
-  return { checkIn, revertCheckIn, setPartnerPin, setReceivedSwag };
+				return results;
+			});
+	}
+
+	return { checkIn, revertCheckIn, setPartnerPin, setReceivedSwag };
 };

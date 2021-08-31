@@ -1,3 +1,5 @@
+import gFetch from '$utils/gFetch';
+
 import { log } from '../utilities/error';
 import { stripAuthorizationHeader } from '../utilities';
 
@@ -242,39 +244,29 @@ export const QUERY_CAN_ADD_SESSION = `
   }
 `;
 
-export default (client) => {
+export default () => {
+	const client = gFetch();
+
 	function queryEventBySlug(slug) {
 		const variables = { slug };
 
-		return client
-			.query(QUERY_EVENT_BY_SLUG, variables, {
-				fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
-				requestPolicy: 'cache-and-network'
-			})
-			.toPromise()
-			.then(({ data, error }) => {
-				if (error) log(error, 'QUERY_EVENT_BY_SLUG');
+		return client.query({ query: QUERY_EVENT_BY_SLUG, variables }).then(({ data, error }) => {
+			if (error) log(error, 'QUERY_EVENT_BY_SLUG');
 
-				const { event } = data.events;
-				return event ? event.get : null;
-			});
+			const { event } = data.events;
+			return event ? event.get : null;
+		});
 	}
 
 	function queryEventById(eventId) {
 		const variables = { eventId };
 
-		return client
-			.query(QUERY_EVENT_BY_ID, variables, {
-				fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
-				requestPolicy: 'cache-and-network'
-			})
-			.toPromise()
-			.then(({ data, error }) => {
-				if (error) log(error, 'QUERY_EVENT_BY_ID');
+		return client.query({ query: QUERY_EVENT_BY_ID, variables }).then(({ data, error }) => {
+			if (error) log(error, 'QUERY_EVENT_BY_ID');
 
-				const { event } = data.events;
-				return event ? event.get : null;
-			});
+			const { event } = data.events;
+			return event ? event.get : null;
+		});
 	}
 
 	function queryEventForCfp(slug) {
@@ -290,19 +282,12 @@ export default (client) => {
 
 	function queryEvents() {
 		const variables = {};
+		return client.query({ query: QUERY_EVENTS, variables }).then(({ data, error }) => {
+			if (error) log(error, 'QUERY_EVENTS');
 
-		return client
-			.query(QUERY_EVENTS, variables, {
-				fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
-				requestPolicy: 'cache-and-network'
-			})
-			.toPromise()
-			.then(({ data, error }) => {
-				if (error) log(error, 'QUERY_EVENTS');
-
-				const { all } = data.events;
-				return all || [];
-			});
+			const { all } = data.events;
+			return all || [];
+		});
 	}
 
 	function queryEventsByCommunity(slug = 'that') {

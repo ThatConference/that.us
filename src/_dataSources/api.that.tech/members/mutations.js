@@ -1,3 +1,4 @@
+import gFetch from '$utils/gFetch';
 import { log } from '../utilities/error';
 
 const profileFieldsFragment = `
@@ -86,69 +87,70 @@ export const MUTATION_FOLLOW_MEMBER_TOGGLE = `
   }
 `;
 
-export default client => {
-  const createProfile = profile => {
-    const variables = { profile };
-    return client
-      .mutation(MUTATION_CREATE, variables)
-      .toPromise()
-      .then(({ data, error }) => {
-        if (error) log(error, 'mutate_members');
+export default () => {
+	const client = gFetch();
 
-        return data.members.create;
-      });
-  };
+	const createProfile = (profile) => {
+		const variables = { profile };
+		return client
+			.mutation(MUTATION_CREATE, variables)
+			.toPromise()
+			.then(({ data, error }) => {
+				if (error) log(error, 'mutate_members');
 
-  const updateProfile = profile => {
-    const variables = { profile };
-    return client
-      .mutation(MUTATION_UPDATE, variables)
-      .toPromise()
-      .then(({ data, error }) => {
-        if (error) log(error, 'mutate_members');
+				return data.members.create;
+			});
+	};
 
-        return data.members.member.update;
-      });
-  };
+	const updateProfile = (profile) => {
+		const variables = { profile };
+		return client
+			.mutation(MUTATION_UPDATE, variables)
+			.toPromise()
+			.then(({ data, error }) => {
+				if (error) log(error, 'mutate_members');
 
-  const claimTicket = ticketReference => {
-    const variables = { ticketReference };
-    return client
-      .mutation(CLAIM_TICKET, variables)
-      .toPromise()
-      .then(({ data, error }) => {
-        if (error) log(error, 'mutate_members');
+				return data.members.member.update;
+			});
+	};
 
-        let claimed = null;
-        if (data.members.member.claimTicket)
-          claimed = data.members.member.claimTicket;
+	const claimTicket = (ticketReference) => {
+		const variables = { ticketReference };
+		return client
+			.mutation(CLAIM_TICKET, variables)
+			.toPromise()
+			.then(({ data, error }) => {
+				if (error) log(error, 'mutate_members');
 
-        return claimed;
-      });
-  };
+				let claimed = null;
+				if (data.members.member.claimTicket) claimed = data.members.member.claimTicket;
 
-  function toggleFollow(slug) {
-    const variables = { target: { slug } };
-    return client
-      .mutation(MUTATION_FOLLOW_MEMBER_TOGGLE, variables)
-      .toPromise()
-      .then(({ data, error }) => {
-        if (error) log(error, 'mutate_members');
+				return claimed;
+			});
+	};
 
-        let results = false;
-        if (data) {
-          const { followToggle } = data.members.member;
-          results = !!followToggle;
-        }
+	function toggleFollow(slug) {
+		const variables = { target: { slug } };
+		return client
+			.mutation(MUTATION_FOLLOW_MEMBER_TOGGLE, variables)
+			.toPromise()
+			.then(({ data, error }) => {
+				if (error) log(error, 'mutate_members');
 
-        return results;
-      });
-  }
+				let results = false;
+				if (data) {
+					const { followToggle } = data.members.member;
+					results = !!followToggle;
+				}
 
-  return {
-    createProfile,
-    updateProfile,
-    claimTicket,
-    toggleFollow,
-  };
+				return results;
+			});
+	}
+
+	return {
+		createProfile,
+		updateProfile,
+		claimTicket,
+		toggleFollow
+	};
 };

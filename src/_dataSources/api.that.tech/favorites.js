@@ -1,5 +1,6 @@
 import { writable } from 'svelte/store';
 
+import gFetch from '$utils/gFetch';
 import { log } from './utilities/error';
 
 const favoriteFragment = `
@@ -53,77 +54,76 @@ export const QUERY_MY_FAVORITES = `
   }
 `;
 
-export default client => {
-  const favoritesStore = writable([]);
+export default () => {
+	const client = gFetch();
+	const favoritesStore = writable([]);
 
-  function query(eventId) {
-    const variables = {
-      eventId: 'ANY',
-    };
+	function query(eventId) {
+		const variables = {
+			eventId: 'ANY'
+		};
 
-    return client
-      .query(QUERY_MY_FAVORITES, variables)
-      .toPromise()
-      .then(({ data, error }) => {
-        if (error) log(error, 'query_favorites');
+		return client
+			.query(QUERY_MY_FAVORITES, variables)
+			.toPromise()
+			.then(({ data, error }) => {
+				if (error) log(error, 'query_favorites');
 
-        let results = [];
+				let results = [];
 
-        // set the store
-        if (data && !error) {
-          const { favorites } = data.sessions.me;
+				// set the store
+				if (data && !error) {
+					const { favorites } = data.sessions.me;
 
-          results = favorites;
+					results = favorites;
 
-          results = results.filter(s => s).filter(s => s.status === 'ACCEPTED');
-          results.sort((a, b) => new Date(a.startTime) - new Date(b.startTime));
+					results = results.filter((s) => s).filter((s) => s.status === 'ACCEPTED');
+					results.sort((a, b) => new Date(a.startTime) - new Date(b.startTime));
 
-          favoritesStore.set(results); // set the store
-        }
+					favoritesStore.set(results); // set the store
+				}
 
-        return results;
-      });
-  }
+				return results;
+			});
+	}
 
-  async function toggle(sessionId, eventId) {
-    const mutationVariables = {
-      eventId,
-      sessionId,
-    };
-    let results = false;
+	async function toggle(sessionId, eventId) {
+		const mutationVariables = {
+			eventId,
+			sessionId
+		};
+		let results = false;
 
-    const { data, error } = await client
-      .mutation(TOGGLE_FAVORITE, mutationVariables)
-      .toPromise();
+		const { data, error } = await client.mutation(TOGGLE_FAVORITE, mutationVariables).toPromise();
 
-    if (error) log(error, 'mutate_favorites');
+		if (error) log(error, 'mutate_favorites');
 
-    // update store
-    if (data) {
-      const { toggle: fav } = data.sessions.favoriting;
-      if (fav) {
-        // is toggled
-        favoritesStore.update(i => [...i, fav]);
-        results = true;
-      } else {
-        // not toggled
-        favoritesStore.update(favs => favs.filter(i => i.id !== sessionId));
-        results = false;
-      }
-    }
+		// update store
+		if (data) {
+			const { toggle: fav } = data.sessions.favoriting;
+			if (fav) {
+				// is toggled
+				favoritesStore.update((i) => [...i, fav]);
+				results = true;
+			} else {
+				// not toggled
+				favoritesStore.update((favs) => favs.filter((i) => i.id !== sessionId));
+				results = false;
+			}
+		}
 
-    return results;
-  }
+		return results;
+	}
 
-  const get = eventId => query(eventId);
-  const getIds = eventId => query(eventId).then(r => r.map(i => i.id));
+	const get = (eventId) => query(eventId);
+	const getIds = (eventId) => query(eventId).then((r) => r.map((i) => i.id));
 
-  // favoritesStore.set(query());
+	// favoritesStore.set(query());
 
-  return {
-    favoritesStore,
-    get,
-    getIds,
-    toggle,
-  };
+	return {
+		favoritesStore,
+		get,
+		getIds,
+		toggle
+	};
 };

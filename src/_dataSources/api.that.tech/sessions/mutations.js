@@ -1,3 +1,5 @@
+import gFetch from '$utils/gFetch';
+
 import { log } from '../utilities/error';
 
 const baseSessionFields = `
@@ -150,94 +152,96 @@ export const MUTATION_UPDATE_PANEL = `
 `;
 
 function mapCreateMutation(type) {
-  let mutation;
+	let mutation;
 
-  switch (type) {
-    case 'KEYNOTE':
-      mutation = MUTATION_CREATE_KEYNOTE;
-      break;
+	switch (type) {
+		case 'KEYNOTE':
+			mutation = MUTATION_CREATE_KEYNOTE;
+			break;
 
-    case 'OPEN_SPACE':
-      mutation = MUTATION_CREATE_OPENSPACE;
-      break;
+		case 'OPEN_SPACE':
+			mutation = MUTATION_CREATE_OPENSPACE;
+			break;
 
-    case 'REGULAR':
-      mutation = MUTATION_CREATE_REGULAR;
-      break;
+		case 'REGULAR':
+			mutation = MUTATION_CREATE_REGULAR;
+			break;
 
-    case 'WORKSHOP':
-      mutation = MUTATION_CREATE_WORKSHOP;
-      break;
+		case 'WORKSHOP':
+			mutation = MUTATION_CREATE_WORKSHOP;
+			break;
 
-    case 'PANEL':
-      mutation = MUTATION_CREATE_PANEL;
-      break;
+		case 'PANEL':
+			mutation = MUTATION_CREATE_PANEL;
+			break;
 
-    default:
-      throw new Error('Session Type not mapped thus no mutation found.');
-  }
+		default:
+			throw new Error('Session Type not mapped thus no mutation found.');
+	}
 
-  return mutation;
+	return mutation;
 }
 
 function mapUpdateMutation(type) {
-  let mutation;
+	let mutation;
 
-  switch (type) {
-    case 'KEYNOTE':
-      mutation = MUTATION_UPDATE_KEYNOTE;
-      break;
+	switch (type) {
+		case 'KEYNOTE':
+			mutation = MUTATION_UPDATE_KEYNOTE;
+			break;
 
-    case 'OPEN_SPACE':
-      mutation = MUTATION_UPDATE_OPENSPACE;
-      break;
+		case 'OPEN_SPACE':
+			mutation = MUTATION_UPDATE_OPENSPACE;
+			break;
 
-    case 'REGULAR':
-      mutation = MUTATION_UPDATE_REGULAR;
-      break;
+		case 'REGULAR':
+			mutation = MUTATION_UPDATE_REGULAR;
+			break;
 
-    case 'WORKSHOP':
-      mutation = MUTATION_UPDATE_WORKSHOP;
-      break;
+		case 'WORKSHOP':
+			mutation = MUTATION_UPDATE_WORKSHOP;
+			break;
 
-    case 'PANEL':
-      mutation = MUTATION_UPDATE_PANEL;
-      break;
+		case 'PANEL':
+			mutation = MUTATION_UPDATE_PANEL;
+			break;
 
-    default:
-      throw new Error('Session Type not mapped thus no mutation found.');
-  }
+		default:
+			throw new Error('Session Type not mapped thus no mutation found.');
+	}
 
-  return mutation;
+	return mutation;
 }
 
-export default client => {
-  function createSession(eventId, sessionType, session) {
-    const variables = { eventId, session };
-    const mutation = mapCreateMutation(sessionType);
+export default () => {
+	const client = gFetch();
 
-    return client
-      .mutation(mutation, variables)
-      .toPromise()
-      .then(({ data, error }) => {
-        if (error) log(error, mutation);
+	function createSession(eventId, sessionType, session) {
+		const variables = { eventId, session };
+		const mutation = mapCreateMutation(sessionType);
 
-        return data.sessions.create.session;
-      });
-  }
+		return client
+			.mutation(mutation, variables)
+			.toPromise()
+			.then(({ data, error }) => {
+				if (error) log(error, mutation);
 
-  function updateSession(sessionId, sessionType, session) {
-    const variables = { sessionId, session };
-    const mutation = mapUpdateMutation(sessionType);
+				return data.sessions.create.session;
+			});
+	}
 
-    return client
-      .mutation(mutation, variables)
-      .toPromise()
-      .then(({ data, error }) => {
-        if (error) log(error, mutation);
-        return data.sessions.session.update.session;
-      });
-  }
+	function updateSession(sessionId, sessionType, session) {
+		const variables = { sessionId, session };
+		const mutation = mapUpdateMutation(sessionType);
 
-  return { createSession, updateSession };
+		return client
+			.mutation(mutation, variables)
+			.toPromise()
+			.then(({ data, error }) => {
+				if (error) log(error, mutation);
+				return data.sessions.session.update.session;
+			});
+	}
+
+	return { createSession, updateSession };
 };

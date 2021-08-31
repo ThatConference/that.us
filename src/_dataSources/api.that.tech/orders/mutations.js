@@ -1,3 +1,4 @@
+import gFetch from '$utils/gFetch';
 import { log } from '../utilities/error';
 
 export const MUTATION_CREATE_CHECKOUT_SESSION = `
@@ -51,82 +52,84 @@ export const MUTATION_ALLOCATE_TICKET = `
   }
 `;
 
-export default client => {
-  function createCheckoutSession(eventId, lineItems) {
-    const variables = {
-      checkout: {
-        eventId,
-        products: lineItems,
-      },
-    };
+export default () => {
+	const client = gFetch();
 
-    return client
-      .mutation(MUTATION_CREATE_CHECKOUT_SESSION, variables)
-      .toPromise()
-      .then(({ data, error }) => {
-        if (error) log(error, 'mutate_orders');
+	function createCheckoutSession(eventId, lineItems) {
+		const variables = {
+			checkout: {
+				eventId,
+				products: lineItems
+			}
+		};
 
-        let results;
+		return client
+			.mutation(MUTATION_CREATE_CHECKOUT_SESSION, variables)
+			.toPromise()
+			.then(({ data, error }) => {
+				if (error) log(error, 'mutate_orders');
 
-        if (data) {
-          const { checkout } = data.orders.me;
-          results = checkout ? checkout.stripe.create : undefined;
-        }
+				let results;
 
-        return results;
-      });
-  }
+				if (data) {
+					const { checkout } = data.orders.me;
+					results = checkout ? checkout.stripe.create : undefined;
+				}
 
-  function markSurveyQuestionsCompleted(eventId, orderReference) {
-    const variables = {
-      eventId,
-      orderReference,
-    };
+				return results;
+			});
+	}
 
-    return client
-      .mutation(MUTATION_MARK_SURVEY_QUESTIONS_COMPLETED, variables)
-      .toPromise()
-      .then(({ data, error }) => {
-        if (error) log(error, 'MUTATION_MARK_SURVEY_QUESTIONS_COMPLETED');
+	function markSurveyQuestionsCompleted(eventId, orderReference) {
+		const variables = {
+			eventId,
+			orderReference
+		};
 
-        let results;
+		return client
+			.mutation(MUTATION_MARK_SURVEY_QUESTIONS_COMPLETED, variables)
+			.toPromise()
+			.then(({ data, error }) => {
+				if (error) log(error, 'MUTATION_MARK_SURVEY_QUESTIONS_COMPLETED');
 
-        if (data) {
-          const { markQuestionsComplete } = data.orders.me;
-          results = markQuestionsComplete || false;
-        }
+				let results;
 
-        return results;
-      });
-  }
+				if (data) {
+					const { markQuestionsComplete } = data.orders.me;
+					results = markQuestionsComplete || false;
+				}
 
-  function allocateTicket(orderId, allocationId, emailAddress) {
-    const variables = {
-      orderId,
-      allocationId,
-      emailAddress,
-    };
+				return results;
+			});
+	}
 
-    return client
-      .mutation(MUTATION_ALLOCATE_TICKET, variables)
-      .toPromise()
-      .then(({ data, error }) => {
-        if (error) log(error, 'MUTATION_ALLOCATE_TICKET');
+	function allocateTicket(orderId, allocationId, emailAddress) {
+		const variables = {
+			orderId,
+			allocationId,
+			emailAddress
+		};
 
-        let results;
+		return client
+			.mutation(MUTATION_ALLOCATE_TICKET, variables)
+			.toPromise()
+			.then(({ data, error }) => {
+				if (error) log(error, 'MUTATION_ALLOCATE_TICKET');
 
-        if (data) {
-          const { allocateTo } = data.orders.me.order.orderAllocation;
-          results = allocateTo;
-        }
+				let results;
 
-        return results;
-      });
-  }
+				if (data) {
+					const { allocateTo } = data.orders.me.order.orderAllocation;
+					results = allocateTo;
+				}
 
-  return {
-    createCheckoutSession,
-    markSurveyQuestionsCompleted,
-    allocateTicket,
-  };
+				return results;
+			});
+	}
+
+	return {
+		createCheckoutSession,
+		markSurveyQuestionsCompleted,
+		allocateTicket
+	};
 };

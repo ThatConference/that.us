@@ -1,3 +1,5 @@
+import gFetch from '$utils/gFetch';
+
 import { logMessage } from './utilities/error';
 
 export const QUERY_MY_SUBMISSIONS = `
@@ -24,24 +26,26 @@ export const QUERY_MY_SUBMISSIONS = `
   }
 `;
 
-export default client => {
-  const queryMySubmissions = () =>
-    client
-      .query(QUERY_MY_SUBMISSIONS)
-      .toPromise()
-      .then(({ data, error }) => {
-        if (error) logMessage(error, 'QUERY_MY_SUBMISSIONS'); // todo.. not sure about this one.
+export default () => {
+	const client = gFetch();
 
-        let results = [];
-        const { submitted } = data.sessions.me;
+	const queryMySubmissions = () =>
+		client
+			.query({ query: QUERY_MY_SUBMISSIONS })
 
-        if (submitted) {
-          results = [...submitted];
-          results.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
-        }
+			.then(({ data, error }) => {
+				if (error) logMessage(error, 'QUERY_MY_SUBMISSIONS'); // todo.. not sure about this one.
 
-        return results.reverse();
-      });
+				let results = [];
+				const { submitted } = data.sessions.me;
 
-  return { queryMySubmissions };
+				if (submitted) {
+					results = [...submitted];
+					results.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
+				}
+
+				return results.reverse();
+			});
+
+	return { queryMySubmissions };
 };

@@ -1,3 +1,4 @@
+import gFetch from '$utils/gFetch';
 import { log } from '../utilities/error';
 
 export const MUTATION_UPDATE_SHARED_PROFILE = `
@@ -22,25 +23,27 @@ export const MUTATION_UPDATE_SHARED_PROFILE = `
   }
 `;
 
-export default client => {
-  function updateSharedProfile(sharedProfile) {
-    const variables = { sharedProfile };
-    return client
-      .mutation(MUTATION_UPDATE_SHARED_PROFILE, variables)
-      .toPromise()
-      .then(({ data, error }) => {
-        if (error) log(error, 'MUTATION_CHECK_IN_USER');
+export default () => {
+	const client = gFetch();
 
-        let results;
+	function updateSharedProfile(sharedProfile) {
+		const variables = { sharedProfile };
+		return client
+			.mutation(MUTATION_UPDATE_SHARED_PROFILE, variables)
+			.toPromise()
+			.then(({ data, error }) => {
+				if (error) log(error, 'MUTATION_CHECK_IN_USER');
 
-        if (data) {
-          const { update } = data.members.member.profiles.shared;
-          results = update;
-        }
+				let results;
 
-        return results;
-      });
-  }
+				if (data) {
+					const { update } = data.members.member.profiles.shared;
+					results = update;
+				}
 
-  return { updateSharedProfile };
+				return results;
+			});
+	}
+
+	return { updateSharedProfile };
 };

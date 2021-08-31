@@ -1,3 +1,4 @@
+import gFetch from '$utils/gFetch';
 import { log } from '../utilities/error';
 
 const defaultPageSize = 10;
@@ -162,116 +163,116 @@ export const QUERY_MY_BULK_ALLOCATIONS_NEXT = `
   }
 `;
 
-export default client => {
-  function queryMyOrders(pageSize = defaultPageSize) {
-    const variables = {
-      pageSize,
-    };
+export default () => {
+	const client = gFetch();
 
-    return client
-      .query(QUERY_MY_ORDERS, variables)
-      .toPromise()
-      .then(({ data, error }) => {
-        if (error) log(error, 'QUERY_MY_ORDERS');
+	function queryMyOrders(pageSize = defaultPageSize) {
+		const variables = {
+			pageSize
+		};
 
-        const { orders } = data;
-        return orders ? orders.me.all : null;
-      });
-  }
+		return client
+			.query(QUERY_MY_ORDERS, variables)
+			.toPromise()
+			.then(({ data, error }) => {
+				if (error) log(error, 'QUERY_MY_ORDERS');
 
-  function queryMyOrdersNext(cursor, pageSize = defaultPageSize) {
-    const variables = {
-      cursor,
-      pageSize,
-    };
+				const { orders } = data;
+				return orders ? orders.me.all : null;
+			});
+	}
 
-    return client
-      .query(QUERY_NEXT_MY_ORDERS, variables)
-      .toPromise()
-      .then(({ data, error }) => {
-        if (error) log(error, 'QUERY_NEXT_MY_ORDERS');
+	function queryMyOrdersNext(cursor, pageSize = defaultPageSize) {
+		const variables = {
+			cursor,
+			pageSize
+		};
 
-        const { orders } = data;
-        return orders ? orders.me.all : null;
-      });
-  }
+		return client
+			.query(QUERY_NEXT_MY_ORDERS, variables)
+			.toPromise()
+			.then(({ data, error }) => {
+				if (error) log(error, 'QUERY_NEXT_MY_ORDERS');
 
-  function queryOrderReceiptUrl(orderId) {
-    const variables = {
-      orderId,
-    };
+				const { orders } = data;
+				return orders ? orders.me.all : null;
+			});
+	}
 
-    return client
-      .query(QUERY_ORDER_RECEIPT, variables)
-      .toPromise()
-      .then(({ data, error }) => {
-        if (error) log(error, 'QUERY_NEXT_MY_ORDERS');
+	function queryOrderReceiptUrl(orderId) {
+		const variables = {
+			orderId
+		};
 
-        const { receipt } = data.orders.me.order;
-        return receipt || null;
-      });
-  }
+		return client
+			.query(QUERY_ORDER_RECEIPT, variables)
+			.toPromise()
+			.then(({ data, error }) => {
+				if (error) log(error, 'QUERY_NEXT_MY_ORDERS');
 
-  function queryMyAllocations() {
-    const variables = {};
+				const { receipt } = data.orders.me.order;
+				return receipt || null;
+			});
+	}
 
-    return client
-      .query(QUERY_MY_ALLOCATIONS, variables)
-      .toPromise()
-      .then(({ data, error }) => {
-        if (error) log(error, 'QUERY_MY_ALLOCATIONS');
+	function queryMyAllocations() {
+		const variables = {};
 
-        const { allocations } = data.orders.me;
-        return allocations || [];
-      });
-  }
+		return client
+			.query(QUERY_MY_ALLOCATIONS, variables)
+			.toPromise()
+			.then(({ data, error }) => {
+				if (error) log(error, 'QUERY_MY_ALLOCATIONS');
 
-  function queryMyTicketAllocations() {
-    return queryMyAllocations().then(r =>
-      r.filter(t => t.product.type === 'TICKET'),
-    );
-  }
+				const { allocations } = data.orders.me;
+				return allocations || [];
+			});
+	}
 
-  function queryMyBulkAllocations(pageSize = defaultPageSize) {
-    const variables = {
-      pageSize,
-    };
+	function queryMyTicketAllocations() {
+		return queryMyAllocations().then((r) => r.filter((t) => t.product.type === 'TICKET'));
+	}
 
-    return client
-      .query(QUERY_MY_BULK_ALLOCATIONS, variables)
-      .toPromise()
-      .then(({ data, error }) => {
-        if (error) log(error, 'QUERY_MY_BULK_ALLOCATIONS');
+	function queryMyBulkAllocations(pageSize = defaultPageSize) {
+		const variables = {
+			pageSize
+		};
 
-        const { orders } = data;
-        return orders ? orders.me.all : null;
-      });
-  }
+		return client
+			.query(QUERY_MY_BULK_ALLOCATIONS, variables)
+			.toPromise()
+			.then(({ data, error }) => {
+				if (error) log(error, 'QUERY_MY_BULK_ALLOCATIONS');
 
-  function queryMyBulkAllocationsNext(cursor, pageSize = defaultPageSize) {
-    const variables = {
-      cursor,
-      pageSize,
-    };
+				const { orders } = data;
+				return orders ? orders.me.all : null;
+			});
+	}
 
-    return client
-      .query(QUERY_MY_BULK_ALLOCATIONS_NEXT, variables)
-      .toPromise()
-      .then(({ data, error }) => {
-        if (error) log(error, 'QUERY_MY_BULK_ALLOCATIONS_NEXT');
+	function queryMyBulkAllocationsNext(cursor, pageSize = defaultPageSize) {
+		const variables = {
+			cursor,
+			pageSize
+		};
 
-        const { orders } = data;
-        return orders ? orders.me.all : null;
-      });
-  }
+		return client
+			.query(QUERY_MY_BULK_ALLOCATIONS_NEXT, variables)
+			.toPromise()
+			.then(({ data, error }) => {
+				if (error) log(error, 'QUERY_MY_BULK_ALLOCATIONS_NEXT');
 
-  return {
-    queryMyOrders,
-    queryMyOrdersNext,
-    queryOrderReceiptUrl,
-    queryMyAllocations,
-    queryMyTicketAllocations,
-    queryMyBulkAllocations,
-    queryMyBulkAllocationsNext,
-  };
+				const { orders } = data;
+				return orders ? orders.me.all : null;
+			});
+	}
+
+	return {
+		queryMyOrders,
+		queryMyOrdersNext,
+		queryOrderReceiptUrl,
+		queryMyAllocations,
+		queryMyTicketAllocations,
+		queryMyBulkAllocations,
+		queryMyBulkAllocationsNext
+	};
 };

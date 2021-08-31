@@ -1,3 +1,4 @@
+import gFetch from '$utils/gFetch';
 import { log } from '../utilities/error';
 
 export const QUERY_ME_FOLLOWING_COMMUNITIES = `
@@ -71,78 +72,80 @@ export const QUERY_ME_SHARED_PROFILE = `
   }
 `;
 
-export default client => {
-  const queryMeFollowingCommunities = () => {
-    const variables = {};
-    return client
-      .query(QUERY_ME_FOLLOWING_COMMUNITIES, variables)
-      .toPromise()
-      .then(({ data, error }) => {
-        if (error) log(error, 'query_me');
+export default () => {
+	const client = gFetch();
 
-        const { me } = data.communities;
-        return me ? me.favorites.ids : [];
-      });
-  };
+	const queryMeFollowingCommunities = () => {
+		const variables = {};
+		return client
+			.query(QUERY_ME_FOLLOWING_COMMUNITIES, variables)
+			.toPromise()
+			.then(({ data, error }) => {
+				if (error) log(error, 'query_me');
 
-  const queryMeFollowingMembers = () => {
-    const variables = {};
-    return client
-      .query(QUERY_ME_FOLLOWING_MEMBERS, variables)
-      .toPromise()
-      .then(({ data, error }) => {
-        if (error) log(error, 'query_me');
+				const { me } = data.communities;
+				return me ? me.favorites.ids : [];
+			});
+	};
 
-        const { me } = data.members;
-        return me ? me.following.ids : [];
-      });
-  };
+	const queryMeFollowingMembers = () => {
+		const variables = {};
+		return client
+			.query(QUERY_ME_FOLLOWING_MEMBERS, variables)
+			.toPromise()
+			.then(({ data, error }) => {
+				if (error) log(error, 'query_me');
 
-  const queryMeFollowingPartners = () => {
-    const variables = {};
-    return client
-      .query(QUERY_ME_FOLLOWING_PARTNERS, variables)
-      .toPromise()
-      .then(({ data, error }) => {
-        if (error) log(error, 'query_me');
+				const { me } = data.members;
+				return me ? me.following.ids : [];
+			});
+	};
 
-        const { me } = data.partners;
-        return me ? me.favorites.ids : [];
-      });
-  };
+	const queryMeFollowingPartners = () => {
+		const variables = {};
+		return client
+			.query(QUERY_ME_FOLLOWING_PARTNERS, variables)
+			.toPromise()
+			.then(({ data, error }) => {
+				if (error) log(error, 'query_me');
 
-  const queryMeDiscountCodes = () => {
-    const variables = {};
-    return client
-      .query(QUERY_ME_DISCOUNT_CODES, variables)
-      .toPromise()
-      .then(({ data, error }) => {
-        if (error) log(error, 'QUERY_ME_DISCOUNT_CODES');
+				const { me } = data.partners;
+				return me ? me.favorites.ids : [];
+			});
+	};
 
-        const { discountCodes } = data.members.me;
-        return discountCodes || [];
-      });
-  };
+	const queryMeDiscountCodes = () => {
+		const variables = {};
+		return client
+			.query(QUERY_ME_DISCOUNT_CODES, variables)
+			.toPromise()
+			.then(({ data, error }) => {
+				if (error) log(error, 'QUERY_ME_DISCOUNT_CODES');
 
-  const queryMeSharedProfile = () => {
-    const variables = {};
-    return client
-      .query(QUERY_ME_SHARED_PROFILE, variables)
-      .toPromise()
-      .then(({ data, error }) => {
-        if (error) log(error, 'QUERY_ME_SHARED_PROFILE');
+				const { discountCodes } = data.members.me;
+				return discountCodes || [];
+			});
+	};
 
-        const { shared } = data.members.profiles;
+	const queryMeSharedProfile = () => {
+		const variables = {};
+		return client
+			.query(QUERY_ME_SHARED_PROFILE, variables)
+			.toPromise()
+			.then(({ data, error }) => {
+				if (error) log(error, 'QUERY_ME_SHARED_PROFILE');
 
-        return shared;
-      });
-  };
+				const { shared } = data.members.profiles;
 
-  return {
-    queryMeFollowingCommunities,
-    queryMeFollowingMembers,
-    queryMeFollowingPartners,
-    queryMeDiscountCodes,
-    queryMeSharedProfile,
-  };
+				return shared;
+			});
+	};
+
+	return {
+		queryMeFollowingCommunities,
+		queryMeFollowingMembers,
+		queryMeFollowingPartners,
+		queryMeDiscountCodes,
+		queryMeSharedProfile
+	};
 };

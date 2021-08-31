@@ -1,3 +1,5 @@
+import gFetch from '$utils/gFetch';
+
 import { log } from './utilities/error';
 
 export const QUERY_ME = `
@@ -39,7 +41,9 @@ export const QUERY_ME = `
     }
 `;
 
-export default (client) => {
+export default () => {
+	const client = gFetch();
+
 	const queryMe = () =>
 		client.query({ query: QUERY_ME }).then(({ data, error }) => {
 			if (error) log(error, 'query_favorites');

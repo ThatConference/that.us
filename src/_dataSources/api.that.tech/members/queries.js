@@ -1,3 +1,4 @@
+import gFetch from '$utils/gFetch';
 import { log } from '../utilities/error';
 import { stripAuthorizationHeader } from '../utilities';
 
@@ -150,7 +151,9 @@ export const QUERY_NEXT_FOLLOWERS = `
   }
 `;
 
-export default (client) => {
+export default () => {
+	const client = gFetch();
+
 	const isSlugTaken = (slug) => {
 		const variables = { slug };
 		return client

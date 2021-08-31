@@ -1,5 +1,6 @@
 import dayjs from 'dayjs';
 
+import gFetch from '$utils/gFetch';
 import { stripAuthorizationHeader } from './utilities';
 import { log } from './utilities/error';
 
@@ -287,173 +288,140 @@ export const QUERY_SESSION_BY_ID_SHORT = `
   }
 `;
 
-export default client => {
-  const query = (graphQuery, variables) =>
-    client
-      .query(graphQuery, variables, {
-        fetchOptions: {
-          headers: {
-            ...stripAuthorizationHeader(client),
-          },
-        },
-        requestPolicy: 'cache-and-network',
-      })
-      .toPromise()
-      .then(({ data, error }) => {
-        if (error) log(error, 'query_sessions');
+export default () => {
+	const client = gFetch();
 
-        const { all } = data.sessions;
-        return all || [];
-      });
+	const query = (graphQuery, variables) =>
+		client.query({ query: graphQuery, variables }).then(({ data, error }) => {
+			if (error) log(error, 'query_sessions');
 
-  const querySessions = ({ eventId, pageSize = defaultPageSize }) =>
-    query(QUERY_SESSIONS, { eventId, pageSize });
+			const { all } = data.sessions;
+			return all || [];
+		});
 
-  const querySessionsBySlug = ({
-    slug,
-    cursor,
-    pageSize = defaultPageSize,
-  }) => {
-    const variables = {
-      slug,
-      pageSize,
-      cursor,
-    };
+	const querySessions = ({ eventId, pageSize = defaultPageSize }) =>
+		query(QUERY_SESSIONS, { eventId, pageSize });
 
-    return client
-      .query(QUERY_SESSIONS_BY_SLUG, variables, {
-        fetchOptions: {
-          headers: {
-            ...stripAuthorizationHeader(client),
-          },
-        },
-      })
-      .toPromise()
-      .then(({ data, error }) => {
-        if (error) log(error, 'QUERY_SESSIONS_BY_SLUG');
+	const querySessionsBySlug = ({ slug, cursor, pageSize = defaultPageSize }) => {
+		const variables = {
+			slug,
+			pageSize,
+			cursor
+		};
 
-        const { get } = data.events.event;
-        return get || null;
-      });
-  };
+		return client.query({ query: QUERY_SESSIONS_BY_SLUG, variables }).then(({ data, error }) => {
+			if (error) log(error, 'QUERY_SESSIONS_BY_SLUG');
 
-  const querySessionById = sessionId => {
-    const variables = {
-      sessionId,
-    };
+			const { get } = data.events.event;
+			return get || null;
+		});
+	};
 
-    return client
-      .query(QUERY_SESSION_BY_ID_SHORT, variables, {
-        fetchOptions: {
-          headers: {
-            ...stripAuthorizationHeader(client),
-          },
-        },
-      })
-      .toPromise()
-      .then(({ data, error }) => {
-        if (error) log(error, 'QUERY_SESSION_BY_ID_SHORT');
+	const querySessionById = (sessionId) => {
+		const variables = {
+			sessionId
+		};
 
-        const { session } = data.sessions;
-        return session || null;
-      });
-  };
+		return client
+			.query({ query: QUERY_SESSION_BY_ID_SHORT, variables })
+			.toPromise()
+			.then(({ data, error }) => {
+				if (error) log(error, 'QUERY_SESSION_BY_ID_SHORT');
 
-  const queryNextSessions = ({ pageSize = defaultPageSize, cursor }) =>
-    query(QUERY_NEXT_SESSIONS, { pageSize, cursor });
+				const { session } = data.sessions;
+				return session || null;
+			});
+	};
 
-  const querySessionsByDate = ({
-    pageSize = defaultPageSize,
-    asOfDate = dayjs().startOf('day'),
-  }) =>
-    query(
-      QUERY_SESSIONS_BY_DATE,
-      { asOfDate, pageSize },
-      {
-        fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
-      },
-    );
+	const queryNextSessions = ({ pageSize = defaultPageSize, cursor }) =>
+		query(QUERY_NEXT_SESSIONS, { pageSize, cursor });
 
-  const queryNextSessionsByDate = ({
-    cursor,
-    pageSize = defaultPageSize,
-    asOfDate = dayjs().startOf('day'),
-  }) =>
-    query(
-      QUERY_NEXT_SESSIONS_BY_DATE,
-      { asOfDate, pageSize, cursor },
-      {
-        fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
-      },
-    );
+	function querySessionsByDate({ pageSize = defaultPageSize, asOfDate }) {
+		asOfDate = asOfDate || dayjs().startOf('day');
+		const variables = { asOfDate, pageSize };
 
-  const getById = sessionId => {
-    const variables = { sessionId };
+		return query({
+			query: QUERY_SESSIONS_BY_DATE,
+			variables
+		});
+	}
 
-    return client
-      .query(QUERY_SESSION_BY_ID, variables, {
-        fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
-      })
-      .toPromise()
-      .then(({ data, error }) => {
-        if (error) log(error, 'query_sessions');
+	const queryNextSessionsByDate = ({
+		cursor,
+		pageSize = defaultPageSize,
+		asOfDate = dayjs().startOf('day')
+	}) =>
+		query(
+			QUERY_NEXT_SESSIONS_BY_DATE,
+			{ asOfDate, pageSize, cursor },
+			{
+				fetchOptions: { headers: { ...stripAuthorizationHeader(client) } }
+			}
+		);
 
-        return data.sessions.session;
-      });
-  };
+	const getById = (sessionId) => {
+		const variables = { sessionId };
 
-  const create = (sessionDetails, eventId) => {
-    const mutationVariables = {
-      eventId,
-      newSession: {
-        ...sessionDetails,
-      },
-    };
+		return client
+			.query(QUERY_SESSION_BY_ID, variables, {
+				fetchOptions: { headers: { ...stripAuthorizationHeader(client) } }
+			})
+			.then(({ data, error }) => {
+				if (error) log(error, 'query_sessions');
 
-    return client
-      .mutation(CREATE_SESSION, mutationVariables)
-      .toPromise()
-      .then(({ data, error }) => {
-        if (error) log(error, 'query_sessions');
+				return data.sessions.session;
+			});
+	};
 
-        return data.sessions.create.openSpace;
-      });
-  };
+	const create = (sessionDetails, eventId) => {
+		const variables = {
+			eventId,
+			newSession: {
+				...sessionDetails
+			}
+		};
 
-  const update = (sessionId, session) => {
-    const mutationVariables = {
-      sessionId,
-      session,
-    };
+		return client.mutation(CREATE_SESSION, variables).then(({ data, error }) => {
+			if (error) log(error, 'query_sessions');
 
-    return client
-      .mutation(UPDATE_SESSION_BY_ID, mutationVariables)
-      .toPromise()
-      .then(({ data, error }) => {
-        if (error) log(error, 'query_sessions');
+			return data.sessions.create.openSpace;
+		});
+	};
 
-        return data.sessions.session.update.openSpace;
-      });
-  };
+	const update = (sessionId, session) => {
+		const variables = {
+			sessionId,
+			session
+		};
 
-  const setAttendance = sessionId => {
-    const mutationVariables = {
-      sessionId,
-    };
+		return client
+			.mutation({ mutation: UPDATE_SESSION_BY_ID, variables })
 
-    return client.mutation(SET_ATTENDANCE, mutationVariables).toPromise();
-  };
+			.then(({ data, error }) => {
+				if (error) log(error, 'query_sessions');
 
-  return {
-    querySessions,
-    querySessionsBySlug,
-    querySessionById,
-    queryNextSessions,
-    querySessionsByDate,
-    queryNextSessionsByDate,
-    getById,
-    create,
-    update,
-    setAttendance,
-  };
+				return data.sessions.session.update.openSpace;
+			});
+	};
+
+	const setAttendance = (sessionId) => {
+		const variables = {
+			sessionId
+		};
+
+		return client.mutation({ mutation: SET_ATTENDANCE, variables });
+	};
+
+	return {
+		querySessions,
+		querySessionsBySlug,
+		querySessionById,
+		queryNextSessions,
+		querySessionsByDate,
+		queryNextSessionsByDate,
+		getById,
+		create,
+		update,
+		setAttendance
+	};
 };

@@ -1,3 +1,4 @@
+import gFetch from '$utils/gFetch';
 import { log } from '../utilities/error';
 
 export const MUTATION_ADD_PIN = `
@@ -30,56 +31,58 @@ export const MUTATION_ADD_LEAD = `
   }
 `;
 
-export default client => {
-  function addPin(eventId, partnerPin, partnersNotes) {
-    const variables = {
-      leadInput: {
-        eventId,
-        partnerPin,
-        partnersNotes,
-      },
-    };
+export default () => {
+	const client = gFetch();
 
-    return client
-      .mutation(MUTATION_ADD_PIN, variables)
-      .toPromise()
-      .then(({ data, error }) => {
-        if (error) log(error, 'MUTATION_ADD_PIN');
+	function addPin(eventId, partnerPin, partnersNotes) {
+		const variables = {
+			leadInput: {
+				eventId,
+				partnerPin,
+				partnersNotes
+			}
+		};
 
-        let results;
+		return client
+			.mutation(MUTATION_ADD_PIN, variables)
+			.toPromise()
+			.then(({ data, error }) => {
+				if (error) log(error, 'MUTATION_ADD_PIN');
 
-        if (data) {
-          const { add } = data.partners.us.leads;
-          results = add;
-        }
+				let results;
 
-        return results;
-      });
-  }
+				if (data) {
+					const { add } = data.partners.us.leads;
+					results = add;
+				}
 
-  function addLead(partnerId, eventId = '7wiuRWI7EZjcdF4e9MDz', membersNotes) {
-    const variables = {
-      partnerId,
-      eventId,
-      membersNotes,
-    };
+				return results;
+			});
+	}
 
-    return client
-      .mutation(MUTATION_ADD_LEAD, variables)
-      .toPromise()
-      .then(({ data, error }) => {
-        if (error) log(error, 'MUTATION_ADD_LEAD');
+	function addLead(partnerId, eventId = '7wiuRWI7EZjcdF4e9MDz', membersNotes) {
+		const variables = {
+			partnerId,
+			eventId,
+			membersNotes
+		};
 
-        let results;
+		return client
+			.mutation(MUTATION_ADD_LEAD, variables)
+			.toPromise()
+			.then(({ data, error }) => {
+				if (error) log(error, 'MUTATION_ADD_LEAD');
 
-        if (data) {
-          const { add } = data.partners.me.leads;
-          results = add;
-        }
+				let results;
 
-        return results;
-      });
-  }
+				if (data) {
+					const { add } = data.partners.me.leads;
+					results = add;
+				}
 
-  return { addPin, addLead };
+				return results;
+			});
+	}
+
+	return { addPin, addLead };
 };

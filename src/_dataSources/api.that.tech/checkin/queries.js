@@ -1,3 +1,5 @@
+import gFetch from '$utils/gFetch';
+
 import { log } from '../utilities/error';
 
 const registrationProfileFragment = `
@@ -67,30 +69,32 @@ const QUERY_EVENT_REGISTRATIONS = `
   }   
 `;
 
-export default client => {
-  function queryEventRegistrations(eventSlug) {
-    const variables = {
-      eventSlug,
-    };
-    return client
-      .query(QUERY_EVENT_REGISTRATIONS, variables, {
-        requestPolicy: 'cache-and-network',
-      })
-      .toPromise()
-      .then(({ data, error }) => {
-        if (error) log(error, 'QUERY_EVENT_REGISTRATIONS');
+export default () => {
+	const client = gFetch();
 
-        let results = [];
-        if (data) {
-          const { all } = data.events.event.registration;
-          results = all;
-        }
+	function queryEventRegistrations(eventSlug) {
+		const variables = {
+			eventSlug
+		};
+		return client
+			.query(QUERY_EVENT_REGISTRATIONS, variables, {
+				requestPolicy: 'cache-and-network'
+			})
+			.toPromise()
+			.then(({ data, error }) => {
+				if (error) log(error, 'QUERY_EVENT_REGISTRATIONS');
 
-        return results;
-      });
-  }
+				let results = [];
+				if (data) {
+					const { all } = data.events.event.registration;
+					results = all;
+				}
 
-  return {
-    queryEventRegistrations,
-  };
+				return results;
+			});
+	}
+
+	return {
+		queryEventRegistrations
+	};
 };

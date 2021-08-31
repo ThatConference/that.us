@@ -1,3 +1,5 @@
+import gFetch from '$utils/gFetch';
+
 import { log } from '../utilities/error';
 import { stripAuthorizationHeader } from '../utilities';
 
@@ -27,22 +29,24 @@ export const QUERY_EVENT_PRODUCTS = `
   }
 `;
 
-export default client => {
-  function queryProductsByEvent(eventId) {
-    const variables = { eventId };
+export default () => {
+	const client = gFetch();
 
-    return client
-      .query(QUERY_EVENT_PRODUCTS, variables, {
-        fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
-      })
-      .toPromise()
-      .then(({ data, error }) => {
-        if (error) log(error, 'QUERY_EVENT_PRODUCTS');
+	function queryProductsByEvent(eventId) {
+		const variables = { eventId };
 
-        const { event } = data.events;
-        return event ? event.get.products : [];
-      });
-  }
+		return client
+			.query(QUERY_EVENT_PRODUCTS, variables, {
+				fetchOptions: { headers: { ...stripAuthorizationHeader(client) } }
+			})
+			.toPromise()
+			.then(({ data, error }) => {
+				if (error) log(error, 'QUERY_EVENT_PRODUCTS');
 
-  return { queryProductsByEvent };
+				const { event } = data.events;
+				return event ? event.get.products : [];
+			});
+	}
+
+	return { queryProductsByEvent };
 };

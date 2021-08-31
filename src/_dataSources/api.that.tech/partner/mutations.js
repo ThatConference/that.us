@@ -1,3 +1,4 @@
+import gFetch from '$utils/gFetch';
 import { log } from '../utilities/error';
 
 export const MUTATION_FOLLOW_PARTNER_TOGGLE = `
@@ -12,25 +13,27 @@ export const MUTATION_FOLLOW_PARTNER_TOGGLE = `
   }
 `;
 
-export default client => {
-  function toggleFollow(partnerId) {
-    const variables = { partnerId };
-    return client
-      .mutation(MUTATION_FOLLOW_PARTNER_TOGGLE, variables)
-      .toPromise()
-      .then(({ data, error }) => {
-        if (error) log(error, 'mutate_partners');
+export default () => {
+	const client = gFetch();
 
-        let results = false;
+	function toggleFollow(partnerId) {
+		const variables = { partnerId };
+		return client
+			.mutation(MUTATION_FOLLOW_PARTNER_TOGGLE, variables)
+			.toPromise()
+			.then(({ data, error }) => {
+				if (error) log(error, 'mutate_partners');
 
-        if (data) {
-          const { toggle } = data.partners.favoriting;
-          results = !!toggle;
-        }
+				let results = false;
 
-        return results;
-      });
-  }
+				if (data) {
+					const { toggle } = data.partners.favoriting;
+					results = !!toggle;
+				}
 
-  return { toggleFollow };
+				return results;
+			});
+	}
+
+	return { toggleFollow };
 };

@@ -1,3 +1,5 @@
+import gFetch from '$utils/gFetch';
+
 import { log, logMessage } from '../utilities/error';
 import { stripAuthorizationHeader } from '../utilities';
 
@@ -151,35 +153,37 @@ export const QUERY_MY_SESSION_BY_ID = `
   }
 `;
 
-export default client => {
-  function querySessionDropDownValues() {
-    const variables = {};
+export default () => {
+	const client = gFetch();
 
-    return client
-      .query(QUERY_SESSION_DROPDOWN_VALUES, variables, {
-        fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
-        requestPolicy: 'cache-and-network',
-      })
-      .toPromise()
-      .then(({ data, error }) => {
-        if (error) log(error, 'QUERY_SESSION_DROPDOWN_VALUES');
+	function querySessionDropDownValues() {
+		const variables = {};
 
-        return data;
-      });
-  }
+		return client
+			.query(QUERY_SESSION_DROPDOWN_VALUES, variables, {
+				fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
+				requestPolicy: 'cache-and-network'
+			})
+			.toPromise()
+			.then(({ data, error }) => {
+				if (error) log(error, 'QUERY_SESSION_DROPDOWN_VALUES');
 
-  function queryMySessionById(sessionId) {
-    const variables = { sessionId };
+				return data;
+			});
+	}
 
-    return client
-      .query(QUERY_MY_SESSION_BY_ID, variables)
-      .toPromise()
-      .then(({ data, error }) => {
-        if (error) logMessage(error, 'QUERY_MY_SESSION_BY_ID');
+	function queryMySessionById(sessionId) {
+		const variables = { sessionId };
 
-        return data.sessions.me.session;
-      });
-  }
+		return client
+			.query(QUERY_MY_SESSION_BY_ID, variables)
+			.toPromise()
+			.then(({ data, error }) => {
+				if (error) logMessage(error, 'QUERY_MY_SESSION_BY_ID');
 
-  return { querySessionDropDownValues, queryMySessionById };
+				return data.sessions.me.session;
+			});
+	}
+
+	return { querySessionDropDownValues, queryMySessionById };
 };
