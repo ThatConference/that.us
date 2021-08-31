@@ -7,11 +7,16 @@
 	import Icon from 'svelte-awesome';
 	import { caretDown } from 'svelte-awesome/icons';
 	import dayjs from 'dayjs';
+	import utc from 'dayjs/plugin/utc';
+	import timezone from 'dayjs/plugin/timezone';
 	import advancedFormat from 'dayjs/plugin/advancedFormat';
 
 	import { truncate, isLongerThan } from '$utils/truncate';
 
+	dayjs.extend(utc);
+	dayjs.extend(timezone);
 	dayjs.extend(advancedFormat);
+
 	let expandDescription = false;
 </script>
 

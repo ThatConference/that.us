@@ -1,6 +1,6 @@
 <script>
-	import CfpCta from '../cta/_HomePageCFP.svelte';
-	import TicketsOnSale from '../cta/_TicketsOnSale.svelte';
+	import CfpCta from '$components/cta/_HomePageCFP.svelte';
+	import TicketsOnSale from '$components/cta/_TicketsOnSale.svelte';
 
 	import { getAuth } from '$utils/security';
 	const { isAuthenticated } = getAuth();

@@ -2,10 +2,14 @@
 	export let event;
 
 	import dayjs from 'dayjs';
+	import utc from 'dayjs/plugin/utc';
+	import timezone from 'dayjs/plugin/timezone';
 	import advancedFormat from 'dayjs/plugin/advancedFormat';
 
 	import { Highlight as HighlightLink } from '$elements/links';
 
+	dayjs.extend(utc);
+	dayjs.extend(timezone);
 	dayjs.extend(advancedFormat);
 </script>
 

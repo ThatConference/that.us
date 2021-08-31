@@ -6,6 +6,8 @@
 
 	import dayjs from 'dayjs';
 	import advancedFormat from 'dayjs/plugin/advancedFormat';
+	import utc from 'dayjs/plugin/utc';
+	import timezone from 'dayjs/plugin/timezone';
 
 	import config, { imageCrops } from '$utils/config';
 
@@ -14,6 +16,8 @@
 		? `${host.profileImage}${imageCrops.profile}`
 		: config.defaultProfileImage;
 
+	dayjs.extend(utc);
+	dayjs.extend(timezone);
 	dayjs.extend(advancedFormat);
 </script>
 

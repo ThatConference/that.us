@@ -13,6 +13,8 @@
 	import Icon from 'svelte-awesome';
 	import { filter as filterIcon } from 'svelte-awesome/icons';
 	import { Circle3 } from 'svelte-loading-spinners';
+	import utc from 'dayjs/plugin/utc';
+	import timezone from 'dayjs/plugin/timezone';
 	import advancedFormat from 'dayjs/plugin/advancedFormat';
 
 	// ui support
@@ -21,6 +23,8 @@
 	import FilterSlideOver from './FilterSlideOver.svelte';
 	import sessionsQueryApi from '$dataSources/api.that.tech/sessions/queries';
 
+	dayjs.extend(utc);
+	dayjs.extend(timezone);
 	dayjs.extend(advancedFormat);
 
 	const { querySessionDropDownValues } = sessionsQueryApi();

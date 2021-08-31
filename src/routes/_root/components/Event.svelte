@@ -1,13 +1,15 @@
 <script>
-	export let name;
-	export let startDate;
-	export let endDate;
-	export let description;
-	export let slug;
+	export let event;
 
 	import dayjs from 'dayjs';
+	import utc from 'dayjs/plugin/utc';
+	import timezone from 'dayjs/plugin/timezone';
 	import advancedFormat from 'dayjs/plugin/advancedFormat';
 
+	const { name, startDate, endDate, description, slug } = event;
+
+	dayjs.extend(utc);
+	dayjs.extend(timezone);
 	dayjs.extend(advancedFormat);
 </script>
 
@@ -35,7 +37,6 @@
 					<h3 class="text-gray-900 text-md font-bold truncate">
 						{name}
 					</h3>
-
 					<p class="pt-2 text-gray-500 text-sm truncate">
 						{dayjs(startDate).format('dddd, MMMM D, YYYY - h:mm A z')}
 						{dayjs(endDate).format('dddd, MMMM D, YYYY - h:mm A z')}

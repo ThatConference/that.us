@@ -2,14 +2,19 @@
 	export let ticket;
 
 	import dayjs from 'dayjs';
+	import utc from 'dayjs/plugin/utc';
+	import timezone from 'dayjs/plugin/timezone';
 	import advancedFormat from 'dayjs/plugin/advancedFormat';
 
 	import { Shell } from '$elements/buttons';
 	import config from '$utils/config';
 	import { CheckFull } from '$elements/svgs';
+
 	import CheckInModal from './_CheckinModal.svelte';
 	import EditCheckinModal from './_EditCheckInModal.svelte';
 
+	dayjs.extend(utc);
+	dayjs.extend(timezone);
 	dayjs.extend(advancedFormat);
 
 	const { allocatedTo, purchasedBy } = ticket;

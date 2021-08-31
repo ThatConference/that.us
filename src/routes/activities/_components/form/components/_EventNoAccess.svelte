@@ -2,11 +2,16 @@
 	export let event;
 
 	import dayjs from 'dayjs';
+	import utc from 'dayjs/plugin/utc';
+	import timezone from 'dayjs/plugin/timezone';
 	import advancedFormat from 'dayjs/plugin/advancedFormat';
 
-	import { Ban } from '../../../../../elements/svgs';
+	import { Ban } from '$elements/svgs';
 
+	dayjs.extend(utc);
+	dayjs.extend(timezone);
 	dayjs.extend(advancedFormat);
+
 	let hasAccessHover = false;
 </script>
 

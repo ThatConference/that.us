@@ -23,10 +23,8 @@
 	import { getAuth } from '$utils/security';
 	import Layout from '$elements/layouts/ContentLayout.svelte';
 	import Seo from '$components/Seo.svelte';
+	import UpNext from '$components/activities/UpNext.svelte';
 
-	const { thatProfile, isAuthenticated } = getAuth();
-
-	// import UpNext from '$components/activities/UpNext.svelte';
 	import {
 		Hero,
 		Testimonials,
@@ -36,17 +34,14 @@
 		Stats,
 		Events,
 		NewMembers
-	} from '$components/home';
+	} from './_root/components';
 
 	import currentEvent from '$stores/currentEvent';
 
 	import WelcomeBack from './_root/components/_WelcomeBack.svelte';
 	import createMachine from './_root/machines/home';
 
-	let { state } = useMachine(createMachine({ id: $currentEvent.eventId }), {
-		debug: true
-	});
-
+	const { thatProfile, isAuthenticated } = getAuth();
 	const metaTags = ((title = 'Welcome to THAT!') => ({
 		title,
 		tags: seoMetaTags({
@@ -55,6 +50,10 @@
 				'THAT is your new go-to peer-to-peer learning platform where real practitioners come together daily, monthly, and yearly.  Join on the 15th of every month for THAT Online and this July at THAT Conference.'
 		})
 	}))();
+
+	let { state } = useMachine(createMachine({ id: $currentEvent.eventId }), {
+		debug: true
+	});
 </script>
 
 <Seo title={metaTags.title} tags={metaTags.tags} />
@@ -66,7 +65,7 @@
 		</div>
 
 		<div in:fade={{ delay: 400 }}>
-			<!-- <UpNext stateMachineService={$state.context.upNextActor} /> -->
+			<UpNext stateMachineService={$state.context.upNextActor} />
 		</div>
 
 		<div in:fade={{ delay: 600 }}>
@@ -96,7 +95,7 @@
 				<img class="h-72" src="/images/THAT-Logo-Words.svg" alt="THAT" loading="lazy" />
 			</div>
 
-			<!-- <UpNext stateMachineService={$state.context.upNextActor} /> -->
+			<UpNext stateMachineService={$state.context.upNextActor} />
 			<Events />
 
 			{#if !$isAuthenticated}

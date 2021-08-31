@@ -60,9 +60,9 @@
 					class="space-y-12 lg:grid lg:grid-cols-2 lg:items-start lg:gap-y-8
           lg:gap-x-12 lg:space-y-0"
 				>
-					{#each online as e}
+					{#each online as event}
 						<li>
-							<Event {...e} />
+							<Event {event} />
 						</li>
 					{/each}
 				</ul>
@@ -76,9 +76,9 @@
 					class="space-y-12 lg:grid lg:grid-cols-2 lg:items-start lg:gap-y-8
           lg:gap-x-12 lg:space-y-0"
 				>
-					{#each hybrid as h}
+					{#each hybrid as event}
 						<li>
-							<Event {...h} />
+							<Event {event} />
 						</li>
 					{/each}
 				</ul>

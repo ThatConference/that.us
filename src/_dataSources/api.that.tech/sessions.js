@@ -340,24 +340,31 @@ export default () => {
 		asOfDate = asOfDate || dayjs().startOf('day');
 		const variables = { asOfDate, pageSize };
 
-		return query({
-			query: QUERY_SESSIONS_BY_DATE,
-			variables
-		});
+		return client
+			.query({
+				query: QUERY_SESSIONS_BY_DATE,
+				variables
+			})
+			.then(({ data, error }) => {
+				if (error) log(error, 'QUERY_SESSIONS_BY_DATE');
+
+				const { all } = data.sessions;
+				return all || [];
+			});
 	}
 
-	const queryNextSessionsByDate = ({
+	function queryNextSessionsByDate({
 		cursor,
 		pageSize = defaultPageSize,
 		asOfDate = dayjs().startOf('day')
-	}) =>
-		query(
-			QUERY_NEXT_SESSIONS_BY_DATE,
-			{ asOfDate, pageSize, cursor },
-			{
-				fetchOptions: { headers: { ...stripAuthorizationHeader(client) } }
-			}
-		);
+	}) {
+		const variables = { asOfDate, pageSize, cursor };
+
+		return query({
+			query: QUERY_NEXT_SESSIONS_BY_DATE,
+			variables
+		});
+	}
 
 	const getById = (sessionId) => {
 		const variables = { sessionId };

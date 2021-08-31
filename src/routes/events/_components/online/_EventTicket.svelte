@@ -5,6 +5,8 @@
 	import Icon from 'svelte-awesome';
 	import { commentsO, hashtag, clockO, desktop, users } from 'svelte-awesome/icons';
 	import { createEventDispatcher } from 'svelte';
+	import utc from 'dayjs/plugin/utc';
+	import timezone from 'dayjs/plugin/timezone';
 	import advancedFormat from 'dayjs/plugin/advancedFormat';
 
 	import { Standard as StandardButton } from '$elements/buttons';
@@ -12,6 +14,8 @@
 
 	import ActivityTypes from './_ActivityTypes.svelte';
 
+	dayjs.extend(utc);
+	dayjs.extend(timezone);
 	dayjs.extend(advancedFormat);
 
 	const ticket = event.products.filter((f) => f.isEnabled).find((e) => e.productType === 'TICKET');
