@@ -1,10 +1,11 @@
 <script>
-	import links from './links';
-
-	import { login, isAuthenticated } from '$utils/security.js';
+	import { getAuth } from '$utils/security';
 	import { Standard as StandardButton } from '$elements/buttons';
 
+	import links from './links';
 	import MobileUsersProfile from '../_MobileUsersProfile.svelte';
+
+	const { login, isAuthenticated } = getAuth();
 </script>
 
 {#each links as l}

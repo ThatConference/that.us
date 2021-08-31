@@ -5,31 +5,31 @@
 	import { page } from '$app/stores';
 
 	import seoMetaTags from '$utils/seo/metaTags';
-	import { login } from '$utils/security.js';
+	import { getAuth } from '$utils/security';
 	import { ModalNoAction } from '$elements';
 
+	import Seo from '$components/Seo.svelte';
+
+	const { login } = getAuth();
 	const signup = $page.query.get('signup') || false;
 
-	const metaTags = seoMetaTags({
-		title: 'Login - THAT',
-		description: 'Login to your THAT account.',
-		openGraph: {
-			type: 'website',
-			url: `https://that.us/login`
-		}
-	});
+	const metaTags = ((title = 'Login - THAT') => ({
+		title,
+		tags: seoMetaTags({
+			title,
+			description: 'Login to your THAT account.',
+			openGraph: {
+				url: `https://that.us/login`
+			}
+		})
+	}))();
 
 	onMount(async () => {
 		await login(documentReferrer, signup);
 	});
 </script>
 
-<svelte:head>
-	<title>{metaTags.title}</title>
-	{#each metaTags as tag}
-		<meta {...tag} />
-	{/each}
-</svelte:head>
+<Seo title={metaTags.title} tags={metaTags.tags} />
 
 <div>
 	<ModalNoAction

@@ -1,28 +1,28 @@
 <script>
 	import { fade } from 'svelte/transition';
 
+	import { getAuth } from '$utils/security';
 	import seoMetaTags from '$utils/seo/metaTags';
-	import { login } from '$utils/security';
 
-	import WelcomeQuote from './support/_components/_WelcomeQuote.svelte';
+	import Seo from '$components/Seo.svelte';
 	import Layout from '$elements/layouts/ContentLayout.svelte';
 
-	const metaTags = seoMetaTags({
-		title: 'Sign up - THAT',
-		description: 'Create your profile today and get involved.',
-		openGraph: {
-			type: 'website',
-			url: `https://that.us/signup`
-		}
-	});
+	import WelcomeQuote from './support/_components/_WelcomeQuote.svelte';
+
+	const { login } = getAuth();
+	const metaTags = ((title = 'Signup - THAT') => ({
+		title,
+		tags: seoMetaTags({
+			title,
+			description: 'Create your account today and join in the conversation.',
+			openGraph: {
+				url: `https://that.us/signup`
+			}
+		})
+	}))();
 </script>
 
-<svelte:head>
-	<title>{metaTags.title}</title>
-	{#each metaTags as tag}
-		<meta {...tag} />
-	{/each}
-</svelte:head>
+<Seo title={metaTags.title} tags={metaTags.tags} />
 
 <Layout>
 	<div class="py-20 overflow-hidden">

@@ -1,5 +1,7 @@
 <script>
-	import { thatProfile } from '$utils/security';
+	import { getAuth } from '$utils/security';
+
+	const { thatProfile } = getAuth();
 </script>
 
 <section class="py-12 lg:py-16 bg-white">

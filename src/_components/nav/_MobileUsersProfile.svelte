@@ -5,8 +5,9 @@
 	import Icon from 'svelte-awesome';
 	import { isEmpty } from 'lodash';
 
-	import { login, isAuthenticated, thatProfile } from '$utils/security.js';
+	import { getAuth } from '$utils/security';
 
+	const { login, isAuthenticated, thatProfile } = getAuth();
 	const loggedInMenuItems = [
 		{
 			link: '/my/profiles',

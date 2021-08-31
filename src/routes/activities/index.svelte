@@ -15,9 +15,10 @@
 
 	import seoMetaTags from '$utils/seo/metaTags';
 	import { debug } from '$utils/config';
-	import { thatProfile } from '$utils/security';
+	import { getAuth } from '$utils/security';
 	import createMachine from './_machines/daily';
 
+	const { thatProfile } = getAuth();
 	const metaTags = seoMetaTags({
 		title: 'Daily Activities - THAT',
 		description: `THAT Daily Activities || 'Activities'}.`,

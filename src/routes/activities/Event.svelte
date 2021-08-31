@@ -7,7 +7,7 @@
 	import { isEmpty } from 'lodash';
 
 	import seoMetaTags from '$utils/seo/metaTags';
-	import { thatProfile } from '$utils/security';
+	import { getAuth } from '$utils/security';
 	import { debug } from '$utils/config';
 
 	import Nav from '$components/nav/interiorNav/Top.svelte';
@@ -22,6 +22,7 @@
 
 	import createMachine from './_machines/event';
 
+	const { thatProfile } = getAuth();
 	const { id, name } = $page.params;
 	const eventSlug = `${id}/${name}`;
 

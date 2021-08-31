@@ -4,9 +4,10 @@
 	import Icon from 'svelte-awesome';
 	import { plusCircle } from 'svelte-awesome/icons';
 
-	import { isAuthenticated, thatProfile } from '$utils/security';
+	import { getAuth } from '$utils/security';
 	import { imageCrops } from '$utils/config';
 
+	const { isAuthenticated, thatProfile } = getAuth();
 	const baseSlug = '/activities/create';
 
 	let isHover = false;

@@ -1,11 +1,8 @@
 <script>
-	import { getClient } from '@urql/svelte';
+	export let members = [];
 
 	import { Standard as StandardLink } from '$elements/links';
 	import MemberCard from '$components/members/MemberCard.svelte';
-	import membersApi from '$dataSources/api.that.tech/members/queries';
-
-	const { queryMembers } = membersApi(getClient());
 </script>
 
 <section class="relative py-12 lg:py-16">
@@ -58,18 +55,16 @@
 		</div>
 
 		<div class="relative">
-			{#await queryMembers(15) then { members }}
-				<ul
-					class="grid grid-cols-1 gap-6 sm:grid-cols-3 md:grid-cols-4
+			<ul
+				class="grid grid-cols-1 gap-6 sm:grid-cols-3 md:grid-cols-4
           lg:grid-cols-5"
-				>
-					{#each members as m (m.id)}
-						<li class="col-span-1">
-							<MemberCard {...m} />
-						</li>
-					{/each}
-				</ul>
-			{/await}
+			>
+				{#each members as m (m.id)}
+					<li class="col-span-1">
+						<MemberCard {...m} />
+					</li>
+				{/each}
+			</ul>
 		</div>
 
 		<div class="relative py-12 flex justify-end">

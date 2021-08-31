@@ -5,11 +5,12 @@
 
 	import { createEventDispatcher } from 'svelte';
 
-	import { isAuthenticated } from '$utils/security';
+	import { getAuth } from '$utils/security';
 	import { Standard as StandardButton } from '$elements/buttons';
 	import { Standard as StandardLink } from '$elements/links';
 	import { SocialLink } from '$components/social';
 
+	const { isAuthenticated } = getAuth();
 	const dispatch = createEventDispatcher();
 </script>
 

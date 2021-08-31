@@ -3,13 +3,14 @@
 	import { isEmpty } from 'lodash';
 
 	import { Warning } from '$elements/svgs';
-	import { thatProfile } from '$utils/security';
+	import { getAuth } from '$utils/security';
 	import SharedProfileForm from './_SharedProfileForm.svelte';
 
 	import meQueryApi from '$dataSources/api.that.tech/me/queries';
 	import meMutationsApi from '$dataSources/api.that.tech/me/mutations';
 	import metaTagsStore from '../../../../store/metaTags';
 
+	const { thatProfile } = getAuth();
 	const { queryMeSharedProfile } = meQueryApi(getClient());
 	const { updateSharedProfile } = meMutationsApi(getClient());
 

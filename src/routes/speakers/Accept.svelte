@@ -2,12 +2,13 @@
 	import { onMount } from 'svelte';
 
 	import seoMetaTags from '$utils/seo/metaTags';
-	import { thatProfile } from '$utils/security';
+	import { getAuth } from '$utils/security';
 	import { Highlight as HighlightLink, Standard as StandardLink } from '$elements/links';
 
 	import Layout from './_components/_Layout.svelte';
 	import QuestionModal from './_components/_QuestionModal.svelte';
 
+	const { thatProfile } = getAuth();
 	const metaTags = seoMetaTags({
 		title: 'Speaker Acceptance - THAT',
 		description: '',

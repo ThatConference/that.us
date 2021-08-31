@@ -3,7 +3,7 @@
 	import { fade } from 'svelte/transition';
 	import { useMachine } from 'xstate-svelte';
 
-	import { isAuthenticated, token } from '$utils/security';
+	import { getAuth } from '$utils/security';
 	import { debug } from '$utils/config';
 	import seoMetaTags from '$utils/seo/metaTags';
 	import ProfileLayout from '$elements/layouts/Profile.svelte';
@@ -19,6 +19,7 @@
 
 	import createMachine from '../_machines/partner';
 
+	const { isAuthenticated, token } = getAuth();
 	const { partner } = $page.params;
 
 	const { state, send } = useMachine(createMachine(partner), {

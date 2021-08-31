@@ -8,9 +8,9 @@
 	export let earnedMeritBadges = [];
 	export let profileLinks = [];
 
+	import config from '$utils/config';
 	import SocialLinks from '$components/social/SocialLink.svelte';
 	let imageCrop = '?mask=ellipse&w=500&h=500&fit=crop';
-	import config from '$utils/config';
 
 	let userProfileImage = profileImage ? `${profileImage}${imageCrop}` : config.defaultProfileImage;
 </script>

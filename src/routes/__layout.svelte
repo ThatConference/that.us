@@ -1,35 +1,26 @@
+<script context="module">
+</script>
+
 <script>
 	import { browser } from '$app/env';
+	import { v4 as uuidv4 } from 'uuid';
 
 	import { onMount, onDestroy, setContext } from 'svelte';
-	import { initClient, setClient } from '@urql/svelte';
-	import { v4 as uuidv4 } from 'uuid';
+
 	import * as Sentry from '@sentry/browser';
 	import LogRocket from 'logrocket';
 	import { isEmpty } from 'lodash';
 
-	import seoMetaTags from '$utils/seo/metaTags';
+	import { createAuth } from '$utils/security.js';
 	import config from '$utils/config';
-	import { token, thatProfile, setupAuth } from '$utils/security.js';
 	import cart from '$utils/cart';
-
-	import currentEvent from '$stores/currentEvent';
-	import { showReleaseNotes } from '$stores/siteVersion';
-	import { messages } from '$stores/notificationCenter';
 
 	import Tailwindcss from '$elements/Tailwindcss.svelte';
 
-	const metaTags = seoMetaTags({
-		title: 'THAT',
-		description: 'Welcome to THAT.',
-		openGraph: {
-			type: 'website',
-			url: `https://that.us/`
-		}
-	});
+	// import { showReleaseNotes } from '$stores/siteVersion';
+	// import { messages } from '$stores/notificationCenter';
 
-	// let unsub;
-	currentEvent.set({ eventId: config.eventId, title: 'THAT' }); // setting the default event
+	const { isAuthenticated, thatProfile } = createAuth();
 
 	setContext('cart', cart);
 
@@ -72,21 +63,19 @@
 	// 	});
 	// }
 
-	let client = initClient({
-		url: config.api,
-		fetchOptions: () => ({
-			headers: {
-				authorization: $token ? `Bearer ${$token}` : '',
-				'that-site': 'that.us',
-				'that-correlation-id': createCorrelationId()
-			}
-		}),
-		// todo.. this needs to be revisited... and when we get a new graph client.
-		// requestPolicy: 'cache-and-network',
-		requestPolicy: 'network-only'
-	});
-
-	setClient(client);
+	// let client = initClient({
+	// 	url: config.api,
+	// 	fetchOptions: () => ({
+	// 		headers: {
+	// 			authorization: $token ? `Bearer ${$token}` : '',
+	// 			'that-site': 'that.us'
+	// 			// 'that-correlation-id': createCorrelationId()
+	// 		}
+	// 	}),
+	// 	// todo.. this needs to be revisited... and when we get a new graph client.
+	// 	// requestPolicy: 'cache-and-network',
+	// 	requestPolicy: 'network-only'
+	// });
 
 	// router.subscribe((e) => {
 	// 	if (!e.initial) {
@@ -95,8 +84,6 @@
 	// });
 
 	onMount(() => {
-		setupAuth(client);
-
 		// if ($showReleaseNotes) {
 		// 	messages.update((m) => [
 		// 		...m,
@@ -106,7 +93,6 @@
 		// 		}
 		// 	]);
 		// }
-
 		// if (browser) {
 		// 	if (window.tidioChatApi) {
 		// 		window.tidioChatApi.on('ready', onTidioChatApiReady);
@@ -140,17 +126,10 @@
 	// }
 </script>
 
-<svelte:head>
-	<title>{metaTags.title}</title>
-
-	{#each metaTags as tag}
-		<meta {...tag} />
-	{/each}
-</svelte:head>
-
-<main>
+<div>
+	<slot />
 	<Tailwindcss />
-</main>
+</div>
 
 <style global>
 	.tag-form-input :global(.svelte-tags-input-tag) {

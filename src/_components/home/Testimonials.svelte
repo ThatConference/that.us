@@ -1,5 +1,6 @@
 <script>
-	import { isAuthenticated, thatProfile } from '$utils/security';
+	import { getAuth } from '$utils/security';
+	const { isAuthenticated, thatProfile } = getAuth();
 </script>
 
 <section class="bg-white py-12 lg:py-16 mt-12">

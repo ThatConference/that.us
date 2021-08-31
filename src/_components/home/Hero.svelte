@@ -2,7 +2,8 @@
 	import CfpCta from '../cta/_HomePageCFP.svelte';
 	import TicketsOnSale from '../cta/_TicketsOnSale.svelte';
 
-	import { isAuthenticated } from '$utils/security';
+	import { getAuth } from '$utils/security';
+	const { isAuthenticated } = getAuth();
 </script>
 
 <section class="relative overflow-x-hidden">

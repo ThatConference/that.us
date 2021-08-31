@@ -30,7 +30,7 @@
 	import seoMetaTags from '$utils/seo/metaTags';
 	import config from '$utils/config';
 	import { truncate, isLongerThan } from '$utils/truncate';
-	import { isAuthenticated, login, thatProfile } from '$utils/security';
+	import { getAuth } from '$utils/security';
 	import favoritesApi from '$dataSources/api.that.tech/favorites';
 	import currentEvent from '$stores/currentEvent';
 	import { Avatars, Tag } from '$elements';
@@ -44,6 +44,7 @@
 	dayjs.extend(relativeTime);
 	dayjs.extend(advancedFormat);
 
+	const { isAuthenticated, login, thatProfile } = getAuth();
 	const {
 		title,
 		shortDescription,

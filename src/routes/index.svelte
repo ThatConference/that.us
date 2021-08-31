@@ -1,9 +1,32 @@
+<script context="module">
+	import gFetch from '$utils/gfetch';
+	import membersApi from '$dataSources/api.that.tech/members/queries';
+
+	export async function load({ page, fetch, session, context }) {
+		const { queryMembers } = membersApi(gFetch(fetch));
+
+		return {
+			props: {
+				members: await queryMembers(15).then((r) => r.members)
+			}
+		};
+	}
+</script>
+
 <script>
+	export let members;
+
 	import { fade } from 'svelte/transition';
 	import { useMachine } from 'xstate-svelte';
 
+	import seoMetaTags from '$utils/seo/metaTags';
+	import { getAuth } from '$utils/security';
 	import Layout from '$elements/layouts/ContentLayout.svelte';
-	import UpNext from '$components/activities/UpNext.svelte';
+	import Seo from '$components/Seo.svelte';
+
+	const { thatProfile, isAuthenticated } = getAuth();
+
+	// import UpNext from '$components/activities/UpNext.svelte';
 	import {
 		Hero,
 		Testimonials,
@@ -15,37 +38,30 @@
 		NewMembers
 	} from '$components/home';
 
-	import { isAuthenticated, thatProfile } from '$utils/security';
-	import seoMetaTags from '$utils/seo/metaTags';
-	import currentEvent from '$stores/currentEvent';
+	// import currentEvent from '$stores/currentEvent';
 
-	import WelcomeBack from './_root/components/_WelcomeBack.svelte';
-	import createMachine from './_root/machines/home';
+	// import WelcomeBack from './_root/components/_WelcomeBack.svelte';
+	// import createMachine from './_root/machines/home';
 
-	const { state } = useMachine(createMachine({ id: $currentEvent.eventId }), {
-		debug: true
-	});
+	// let { state } = useMachine(createMachine({ id: $currentEvent.eventId }, getClient()), {
+	// 	debug: true
+	// });
 
-	const metaTags = seoMetaTags({
-		title: 'Welcome to THAT!',
-		description: 'todo',
-		openGraph: {
-			type: 'website',
-			url: `https://that.us/`
-		}
-	});
+	const metaTags = ((title = 'Welcome to THAT!') => ({
+		title,
+		tags: seoMetaTags({
+			title,
+			description:
+				'THAT is your new go-to peer-to-peer learning platform where real practitioners come together daily, monthly, and yearly.  Join on the 15th of every month for THAT Online and this July at THAT Conference.'
+		})
+	}))();
 </script>
 
-<svelte:head>
-	<title>{metaTags.title}</title>
-	{#each metaTags as tag}
-		<meta {...tag} />
-	{/each}
-</svelte:head>
+<Seo title={metaTags.title} tags={metaTags.tags} />
 
 <Layout>
 	{#if $thatProfile?.isMember}
-		<div in:fade={{ delay: 200 }}>
+		<!-- <div in:fade={{ delay: 200 }}>
 			<WelcomeBack />
 		</div>
 		<div in:fade={{ delay: 400 }}>
@@ -58,21 +74,21 @@
 			<Stats stateMachineService={$state.context.statsActor} />
 			<NewMembers />
 			<Newsletter />
-		</div>
+		</div> -->
 	{:else}
 		<div in:fade={{ delay: 200 }}>
 			<Hero />
 		</div>
-
+		<!-- 
 		<div in:fade={{ delay: 400 }}>
 			<Stats stateMachineService={$state.context.statsActor} />
-		</div>
+		</div> -->
 
-		<div in:fade={{ delay: 600 }}>
+		<!-- <div in:fade={{ delay: 600 }}>
 			<Testimonials />
-		</div>
+		</div> -->
 
-		<div in:fade={{ delay: 800 }}>
+		<!-- <div in:fade={{ delay: 800 }}>
 			<div class="relative flex flex-col items-center">
 				<img class="h-72" src="/images/THAT-Logo-Words.svg" alt="THAT" loading="lazy" />
 			</div>
@@ -88,6 +104,6 @@
 
 			<NewMembers />
 			<Newsletter />
-		</div>
+		</div> -->
 	{/if}
 </Layout>

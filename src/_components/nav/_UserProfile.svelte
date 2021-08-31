@@ -3,9 +3,9 @@
 	import { user as userIcon } from 'svelte-awesome/icons';
 	import Icon from 'svelte-awesome';
 	import { isEmpty } from 'lodash';
+	import { getAuth } from '$utils/security';
 
-	import { login, isAuthenticated, thatProfile } from '$utils/security';
-
+	const { login, isAuthenticated, thatProfile } = getAuth();
 	let visible;
 </script>
 

@@ -8,10 +8,11 @@
 	import { Standard as StandardLink } from '$elements/links';
 	import { Warning, Store, Ticket } from '$elements/svgs';
 
-	import { thatProfile } from '$utils/security';
+	import { getAuth } from '$utils/security';
 	import meQueryApi from '$dataSources/api.that.tech/me/queries';
 	import metaTagsStore from '../../../store/metaTags';
 
+	const { thatProfile } = getAuth();
 	const { queryMeDiscountCodes } = meQueryApi(getClient());
 
 	function queryDiscountCodes() {

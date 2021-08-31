@@ -4,7 +4,7 @@
 
 	import { isEmpty } from 'lodash';
 
-	import { thatProfile } from '$utils/security';
+	import { getAuth } from '$utils/security';
 	import seoMetaTags from '$utils/seo/metaTags';
 	import { ActionHeader } from '$elements';
 	import { User, Badge } from '$elements/svgs';
@@ -14,6 +14,7 @@
 	import Profile from './_components/profiles/_Profile.svelte';
 	import SharedProfile from './_components/profiles/_SharedProfile.svelte';
 
+	const { thatProfile } = getAuth();
 	const metaTags = seoMetaTags({
 		title: 'My Profiles - THAT',
 		description: 'Your Profiles.',

@@ -19,7 +19,7 @@
 	import Tags from 'svelte-tags-input';
 	import * as yup from 'yup';
 	import Checkbox from 'svelte-checkbox';
-	import fetch from 'isomorphic-unfetch';
+	import fetch from 'cross-fetch';
 	import { isEmpty } from 'lodash';
 	import omitDeep from 'omit-deep';
 

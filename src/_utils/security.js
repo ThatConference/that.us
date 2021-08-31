@@ -1,97 +1,127 @@
 /* eslint-disable no-undef */
-import { onMount } from 'svelte';
+import { onMount, setContext, getContext } from 'svelte';
 import { writable } from 'svelte/store';
-import { goto } from '$app/navigation';
-import { page } from '$app/stores';
-
 import createAuth0Client from '@auth0/auth0-spa-js';
-import { getClient } from '@urql/svelte';
 
+import gFetch from '$utils/gfetch';
+import { goto } from '$app/navigation';
 import { securityConfig } from '$utils/config';
 import meApi from '$dataSources/api.that.tech/me';
+
 import logEvent from './eventTrack';
 
-securityConfig.redirect_uri = `https://${page.host}/login-success`;
+const isLoading = writable(true);
+const user = writable({});
+const thatProfile = writable({});
+const token = writable('');
+const isAuthenticated = writable(false);
+const refreshRate = 10 * 60 * 60 * 1000;
 
-export const user = writable({});
-export const thatProfile = writable({});
-export const token = writable('');
-export const isAuthenticated = writable(false);
-// export const auth0Promise = createAuth0Client(securityConfig);
-let auth0Promise;
+let AUTH_KEY = {};
 
-export const logout = async () => {
-	const auth0 = await auth0Promise;
+function createAuth() {
+	let apiClient = gFetch();
+	let auth0 = null;
+	let intervalId = undefined;
 
-	logEvent('logout');
-
-	await auth0.logout({
-		returnTo: window.location.origin
-	});
-};
-
-export const login = async (documentReferrer, signup = false) => {
-	const auth0 = await auth0Promise;
-
-	const appState = {
-		pathname: documentReferrer,
-		search: window.location.search
-	};
-
-	let authParams = {
-		redirect_uri: securityConfig.redirect_uri,
-		appState
-	};
-
-	if (signup) {
-		authParams = {
-			...authParams,
-			screen_hint: 'signup'
-		};
-	}
-
-	logEvent('login');
-	await auth0.loginWithRedirect(authParams);
-};
-
-export async function setupAuth(client) {
 	onMount(async () => {
-		console.log('1');
-		auth0Promise = createAuth0Client(securityConfig);
-		const auth0 = await auth0Promise;
-		const query = window.location.search;
-
+		securityConfig.redirect_uri = `${window.location.origin}/login-success`;
+		auth0 = await createAuth0Client(securityConfig);
 		let redirectResult;
+
+		const query = window.location.search;
 
 		if (query.includes('code=') && query.includes('state=')) {
 			redirectResult = await auth0.handleRedirectCallback();
 		}
 
+		// todo.. all of these could be in a promise.all.. to speed up those calls.
 		if (await auth0.isAuthenticated()) {
 			isAuthenticated.set(true);
 
 			// set the base profile from auth0
-			console.log('asdf');
 			user.set(await auth0.getUser());
 			token.set(await auth0.getTokenSilently());
 
+			// refresh token after specific period or things will stop
+			// working. Useful for long-lived apps like dashboards.
+			intervalId = setInterval(async () => {
+				authToken.set(await auth0.getTokenSilently());
+			}, refreshRate);
+
 			// set the THAT membership profile
-			const { queryMe } = meApi(client);
-			thatProfile.set(await queryMe(client));
+			const { queryMe } = meApi(apiClient);
+			thatProfile.set(await queryMe());
 
 			if (redirectResult)
-				goto(`${redirectResult.appState.pathname}${redirectResult.appState.search}`, {
-					replace: true
-				});
+				goto(`${redirectResult.appState.pathname}${redirectResult.appState.search}`);
 		}
+
+		isLoading.set(false);
+
+		// clear token refresh interval on component unmount
+		return () => {
+			intervalId && clearInterval(intervalId);
+		};
 	});
-}
 
-export async function refreshMe() {
-	const auth0 = await auth0Promise;
+	async function login(documentReferrer, signup = false) {
+		const appState = {
+			pathname: documentReferrer,
+			search: window.location.search
+		};
 
-	if (await auth0.isAuthenticated()) {
-		const { queryMe } = meApi(getClient());
-		thatProfile.set(await queryMe(getClient()));
+		let authParams = {
+			redirect_uri: securityConfig.redirect_uri,
+			appState
+		};
+
+		console.log(authParams);
+
+		if (signup) {
+			authParams = {
+				...authParams,
+				screen_hint: 'signup'
+			};
+		}
+
+		logEvent('login');
+		await auth0.loginWithRedirect(authParams);
 	}
+
+	async function logout() {
+		logEvent('logout');
+
+		const authClient = await createAuth0Client(securityConfig);
+		authClient.logout({
+			returnTo: window.location.origin
+		});
+	}
+
+	// I think this will fail on the else..
+	async function refresh() {
+		if (await auth0.isAuthenticated()) {
+			const { queryMe } = meApi(apiClient);
+			thatProfile.set(await queryMe());
+		}
+	}
+
+	const auth = {
+		isAuthenticated,
+		user,
+		thatProfile,
+		token,
+		login,
+		logout,
+		refresh
+	};
+
+	setContext(AUTH_KEY, auth);
+	return auth;
 }
+
+function getAuth() {
+	return getContext(AUTH_KEY);
+}
+
+export { createAuth, getAuth };

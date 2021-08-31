@@ -27,7 +27,7 @@
 
 	// utilties
 	import config from '$utils/config';
-	import { login, isAuthenticated, thatProfile } from '$utils/security';
+	import { getAuth } from '$utils/security';
 	import { truncate, isLongerThan } from '$utils/truncate';
 
 	// data
@@ -43,6 +43,7 @@
 	dayjs.extend(isSameOrAfter);
 	dayjs.extend(relativeTime);
 
+	const { login, isAuthenticated, thatProfile } = getAuth();
 	const { toggle, get: getFavorites, favoritesStore: favorites } = favoritesApi(getClient());
 	let host = speakers[0];
 
