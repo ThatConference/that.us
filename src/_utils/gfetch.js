@@ -34,9 +34,25 @@ function init(fetch, url) {
 		//todo.. we should put a catch in here and redirect to the right places.. or at least log better.
 	}
 
+	function mutate({ mutation, variables = {} }) {
+		return _fetch(_url, {
+			method: 'POST',
+			headers,
+			body: JSON.stringify({
+				mutation: `
+            ${mutation}
+          `,
+				variables
+			})
+		}).then((res) => res.json());
+
+		//todo.. we should put a catch in here and redirect to the right places.. or at least log better.
+	}
+
 	return {
 		updateHeaders,
-		query
+		query,
+		mutate
 	};
 }
 
