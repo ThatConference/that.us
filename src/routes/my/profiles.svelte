@@ -2,7 +2,7 @@
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores'; // todo.. totally broke
 
-	import { isEmpty } from 'lodash';
+	import lodash from 'lodash';
 
 	import { getAuth } from '$utils/security';
 	import seoMetaTags from '$utils/seo/metaTags';
@@ -14,6 +14,7 @@
 	import Profile from './_components/profiles/_Profile.svelte';
 	import SharedProfile from './_components/profiles/_SharedProfile.svelte';
 
+	const { isEmpty } = lodash;
 	const { thatProfile } = getAuth();
 	const metaTags = seoMetaTags({
 		title: 'My Profiles - THAT',

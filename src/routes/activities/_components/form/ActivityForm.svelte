@@ -9,7 +9,7 @@
 	import { fade } from 'svelte/transition';
 	import dayjs from 'dayjs';
 	import { Form, Input } from 'sveltejs-forms';
-	import { isEmpty } from 'lodash';
+	import lodash from 'lodash';
 
 	import { getAuth } from '$utils/security';
 	import { Waiting, ModalError } from '$elements';
@@ -32,6 +32,7 @@
 	import PrerequisitesSection from './_Prerequisites.svelte';
 	import TagsSection from './_Tags.svelte';
 
+	const { isEmpty } = lodash;
 	const { thatProfile } = getAuth();
 	const { querySessionDropDownValues } = sessionsQueryApi();
 	const { eventId } = $page.params;

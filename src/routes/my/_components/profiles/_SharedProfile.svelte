@@ -1,5 +1,5 @@
 <script>
-	import { isEmpty } from 'lodash';
+	import lodash from 'lodash';
 
 	import { Warning } from '$elements/svgs';
 	import { getAuth } from '$utils/security';
@@ -8,6 +8,7 @@
 	import meQueryApi from '$dataSources/api.that.tech/me/queries';
 	import meMutationsApi from '$dataSources/api.that.tech/me/mutations';
 
+	const { isEmpty } = lodash;
 	const { thatProfile } = getAuth();
 	const { queryMeSharedProfile } = meQueryApi();
 	const { updateSharedProfile } = meMutationsApi();

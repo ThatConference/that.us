@@ -1,10 +1,11 @@
 <script>
 	import dayjs from 'dayjs';
 	import { Circle3 } from 'svelte-loading-spinners';
-	import { sortBy } from 'lodash';
+	import lodash from 'lodash';
 
 	import meNetworkQueryApi from '$dataSources/api.that.tech/me/network/queries';
 
+	const { sortBy } = lodash;
 	const { queryMySponsorNetwork } = meNetworkQueryApi();
 
 	//todo add seo

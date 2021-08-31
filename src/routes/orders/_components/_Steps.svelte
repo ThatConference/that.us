@@ -2,7 +2,7 @@
 	export let stateMachine;
 
 	import { useService } from 'xstate-svelte';
-	import { isEmpty } from 'lodash';
+	import lodash from 'lodash';
 
 	import { goto } from '$app/navigation';
 
@@ -11,6 +11,7 @@
 	import StepComplete from '$elements/svgs/StepComplete.svelte';
 	import Step from '$elements/svgs/Step.svelte';
 
+	const { isEmpty } = lodash;
 	const { isAuthenticated, token, thatProfile, login } = getAuth();
 	const { state, send, service } = useService(stateMachine, {
 		devTools: debug.xstate

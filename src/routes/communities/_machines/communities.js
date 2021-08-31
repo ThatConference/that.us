@@ -1,10 +1,11 @@
 import { createMachine, assign } from 'xstate';
-import { uniqBy } from 'lodash';
+import lodash from 'lodash';
 
 import { log } from '$utils/error';
 import createPagingConfig from '$machines/paging';
 import communitiesApi from '$dataSources/api.that.tech/community/queries';
 
+const { uniqBy } = lodash;
 function createServices() {
 	const { queryNextAllCommunities, queryAllCommunities } = communitiesApi();
 

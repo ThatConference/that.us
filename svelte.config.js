@@ -3,6 +3,9 @@ import preprocess from 'svelte-preprocess';
 import { resolve } from 'path';
 import { mdsvex } from 'mdsvex';
 
+// import localAdapter from '@sveltejs/adapter-node';
+import vercelAdapter from '@sveltejs/adapter-vercel';
+
 const config = {
 	extensions: ['.svelte', '.svx', '.md'],
 	kit: {
@@ -20,7 +23,8 @@ const config = {
 					$machines: resolve('src/_machines')
 				}
 			}
-		}
+		},
+		adapter: vercelAdapter()
 	},
 
 	preprocess: [

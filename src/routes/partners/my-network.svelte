@@ -1,7 +1,7 @@
 <script>
 	import { Circle3 } from 'svelte-loading-spinners';
 	import dayjs from 'dayjs';
-	import { sortBy } from 'lodash';
+	import lodash from 'lodash';
 
 	import seoMetaTags from '$utils/seo/metaTags';
 	import { csvGenerator } from '$utils/csv';
@@ -9,6 +9,7 @@
 	import ProfileLayout from '$elements/layouts/Profile.svelte';
 	import partnerNetworkApi from '$dataSources/api.that.tech/partner/leads/queries';
 
+	const { sortBy } = lodash;
 	const metaTags = seoMetaTags({
 		title: 'Partner Network - THAT',
 		description: '',

@@ -1,13 +1,14 @@
 <script>
 	export let bodyBackgroundColor = 'bg-gray-100';
 
-	import { isEmpty } from 'lodash';
+	import lodash from 'lodash';
 
 	import { getAuth } from '$utils/security';
 	import { Footer } from '$components';
 	import CreateProfileNotification from '$components/notifications/CreateProfile.svelte';
 	import NoProfile from '$components/notifications/NoProfile.svelte';
 
+	const { isEmpty } = lodash;
 	const { isAuthenticated, thatProfile } = getAuth();
 </script>
 

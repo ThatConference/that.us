@@ -1,7 +1,7 @@
 <script>
 	import { useMachine } from 'xstate-svelte';
 	import SvelteInfiniteScroll from 'svelte-infinite-scroll';
-	import { isEmpty } from 'lodash';
+	import lodash from 'lodash';
 
 	import Nav from '$components/nav/interiorNav/Top.svelte';
 	import Sponsor from '$components/SponsorSimple.svelte';
@@ -18,6 +18,7 @@
 	import { getAuth } from '$utils/security';
 	import createMachine from './_machines/daily';
 
+	const { isEmpty } = lodash;
 	const { thatProfile } = getAuth();
 	const metaTags = seoMetaTags({
 		title: 'Daily Activities - THAT',

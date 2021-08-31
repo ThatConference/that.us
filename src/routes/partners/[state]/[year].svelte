@@ -1,6 +1,6 @@
 <script>
 	import { page } from '$app/stores';
-	import { groupBy } from 'lodash';
+	import lodash from 'lodash';
 
 	import seoMetaTags from '$utils/seo/metaTags';
 	import Layout from '$elements/layouts/ContentLayout.svelte';
@@ -9,6 +9,7 @@
 	import PartnerLevel from '../_components/_EventPartnerLevel.svelte';
 	import Hero from '../_components/_EventHero.svelte';
 
+	const { groupBy } = lodash;
 	const { state, year } = $page.params;
 	const eventSlug = `${state}/${year}`;
 

@@ -1,6 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
-	import { isEmpty } from 'lodash';
+	import lodash from 'lodash';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 	import Icon from 'svelte-awesome';
@@ -17,6 +17,7 @@
 	import sessionsApi from '$dataSources/api.that.tech/sessions.js';
 	import eventsApi from '$dataSources/api.that.tech/events/queries.js';
 
+	const { isEmpty } = lodash;
 	const { isAuthenticated, thatProfile, user } = getAuth();
 	const { activityId } = $page.params;
 	const { setAttendance, querySessionById } = sessionsApi();

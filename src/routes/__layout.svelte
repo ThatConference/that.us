@@ -9,7 +9,7 @@
 
 	import * as Sentry from '@sentry/browser';
 	import LogRocket from 'logrocket';
-	import { isEmpty } from 'lodash';
+	import lodash from 'lodash';
 
 	import { createAuth } from '$utils/security';
 	import config from '$utils/config';
@@ -20,6 +20,7 @@
 	// import { showReleaseNotes } from '$stores/siteVersion';
 	// import { messages } from '$stores/notificationCenter';
 
+	const { isEmpty } = lodash;
 	const { isAuthenticated, thatProfile } = createAuth();
 
 	setContext('cart', cart);

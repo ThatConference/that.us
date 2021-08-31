@@ -4,13 +4,14 @@
 
 	import { page } from '$app/stores';
 	import { createEventDispatcher } from 'svelte';
-	import { keyBy } from 'lodash';
+	import lodash from 'lodash';
 
 	import Notices from '../_Notices.svelte';
 	import { Check, Ban } from '$elements/svgs';
 	import { Highlight as HighlightLink } from '$elements/links';
 	import { Standard as StandardButton, Highlight as HighlightButton } from '$elements/buttons';
 
+	const { keyBy } = lodash;
 	const dispatch = createEventDispatcher();
 	const { id, name } = $page.params;
 	const eventSlug = `${id}/${name}`;

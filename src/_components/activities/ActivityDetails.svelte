@@ -6,10 +6,10 @@
 	// 3rd Party
 	import { onMount } from 'svelte';
 	import dayjs from 'dayjs';
-	import isBetween from 'dayjs/plugin/isBetween';
-	import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
-	import relativeTime from 'dayjs/plugin/relativeTime';
-	import advancedFormat from 'dayjs/plugin/advancedFormat';
+	import isBetween from 'dayjs/plugin/isBetween.js';
+	import isSameOrAfter from 'dayjs/plugin/isSameOrAfter.js';
+	import relativeTime from 'dayjs/plugin/relativeTime.js';
+	import advancedFormat from 'dayjs/plugin/advancedFormat.js';
 
 	import Icon from 'svelte-awesome';
 	import {
@@ -24,7 +24,7 @@
 		externalLink
 	} from 'svelte-awesome/icons';
 	import { page } from '$app/stores';
-	import { isEmpty, find } from 'lodash';
+	import lodash from 'lodash';
 
 	import seoMetaTags from '$utils/seo/metaTags';
 	import config from '$utils/config';
@@ -43,6 +43,7 @@
 	dayjs.extend(relativeTime);
 	dayjs.extend(advancedFormat);
 
+	const { isEmpty, find } = lodash;
 	const { isAuthenticated, login, thatProfile } = getAuth();
 	const {
 		title,

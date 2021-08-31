@@ -16,13 +16,13 @@
 	// 3rd party
 	import { onMount } from 'svelte';
 	import dayjs from 'dayjs';
-	import isBetween from 'dayjs/plugin/isBetween';
-	import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
-	import relativeTime from 'dayjs/plugin/relativeTime';
+	import isBetween from 'dayjs/plugin/isBetween.js';
+	import isSameOrAfter from 'dayjs/plugin/isSameOrAfter.js';
+	import relativeTime from 'dayjs/plugin/relativeTime.js';
 	import Icon from 'svelte-awesome';
 	import { info, heart, signIn, cog, mapMarker, caretDown, user } from 'svelte-awesome/icons';
 	import { page } from '$app/stores';
-	import { isEmpty, find } from 'lodash';
+	import lodash from 'lodash';
 
 	// utilties
 	import config from '$utils/config';
@@ -42,6 +42,7 @@
 	dayjs.extend(isSameOrAfter);
 	dayjs.extend(relativeTime);
 
+	const { isEmpty, find } = lodash;
 	const { login, isAuthenticated, thatProfile } = getAuth();
 	const { toggle, get: getFavorites, favoritesStore: favorites } = favoritesApi();
 	let host = speakers[0];

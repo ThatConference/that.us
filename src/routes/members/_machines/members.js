@@ -1,10 +1,11 @@
 import { createMachine, assign } from 'xstate';
-import { uniqBy } from 'lodash';
 
+import lodash from 'lodash';
 import { log } from '$utils/error';
 import createPagingConfig from '$machines/paging';
 import membersApi from '$dataSources/api.that.tech/members/queries';
 
+const { uniqBy } = lodash;
 function createServices() {
 	const { queryMembers, queryMembersNext } = membersApi();
 

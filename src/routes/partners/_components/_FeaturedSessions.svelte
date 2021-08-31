@@ -2,9 +2,11 @@
 	export let sessions = [];
 
 	import { fade } from 'svelte/transition';
-	import { sortBy } from 'lodash';
+	import lodash from 'lodash';
 
 	import Card from '$components/activities/Card.svelte';
+
+	const { sortBy } = lodash;
 </script>
 
 <section class="py-12 lg:py-16 bg-white">

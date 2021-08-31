@@ -2,12 +2,13 @@
 	export let event;
 
 	import { createEventDispatcher } from 'svelte';
-	import { keyBy } from 'lodash';
+	import lodash from 'lodash';
 
 	import { Shell as StandardShell } from '$elements/buttons';
 	import { Check, Ban } from '$elements/svgs';
 	import { Highlight as HighlightLink } from '$elements/links';
 
+	const { keyBy } = lodash;
 	const dispatch = createEventDispatcher();
 
 	const { products } = event;

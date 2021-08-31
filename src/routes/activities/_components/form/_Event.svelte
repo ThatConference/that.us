@@ -5,10 +5,10 @@
 
 	import { createEventDispatcher } from 'svelte';
 	import { fade } from 'svelte/transition';
-	import { sortBy } from 'lodash';
+	import lodash from 'lodash';
 	import dayjs from 'dayjs';
-	import isSameOrBefore from 'dayjs/plugin/isSameOrBefore';
-	import isBetween from 'dayjs/plugin/isBetween';
+	import isSameOrBefore from 'dayjs/plugin/isSameOrBefore.js';
+	import isBetween from 'dayjs/plugin/isBetween.js';
 	import { Input } from 'sveltejs-forms';
 
 	import { CheckFull } from '$elements/svgs';
@@ -20,6 +20,7 @@
 	dayjs.extend(isSameOrBefore);
 	dayjs.extend(isBetween);
 
+	const { sortBy } = lodash;
 	const { queryEvents: queryEventsApi, canAddSession } = eventsApi();
 
 	const dispatch = createEventDispatcher();

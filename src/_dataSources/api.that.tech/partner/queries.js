@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import { uniqBy } from 'lodash';
+import lodash from 'lodash';
 
 import gFetch from '$utils/gFetch';
 import config from '$utils/config';
@@ -7,6 +7,7 @@ import config from '$utils/config';
 import { log } from '../utilities/error';
 import { stripAuthorizationHeader } from '../utilities';
 
+const { uniqBy } = lodash;
 const coreFieldsFragment = `
   fragment coreFieldsFragment on Partner {
     id

@@ -5,9 +5,9 @@
 	import Icon from 'svelte-awesome';
 	import { commentsO, hashtag, clockO, desktop, users } from 'svelte-awesome/icons';
 	import { createEventDispatcher } from 'svelte';
-	import utc from 'dayjs/plugin/utc';
-	import timezone from 'dayjs/plugin/timezone';
-	import advancedFormat from 'dayjs/plugin/advancedFormat';
+	import utc from 'dayjs/plugin/utc.js';
+	import timezone from 'dayjs/plugin/timezone.js';
+	import advancedFormat from 'dayjs/plugin/advancedFormat.js';
 
 	import { Standard as StandardButton } from '$elements/buttons';
 	import { Check } from '$elements/svgs';

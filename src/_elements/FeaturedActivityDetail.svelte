@@ -7,9 +7,9 @@
 	import Icon from 'svelte-awesome';
 	import { caretDown } from 'svelte-awesome/icons';
 	import dayjs from 'dayjs';
-	import utc from 'dayjs/plugin/utc';
-	import timezone from 'dayjs/plugin/timezone';
-	import advancedFormat from 'dayjs/plugin/advancedFormat';
+	import utc from 'dayjs/plugin/utc.js';
+	import timezone from 'dayjs/plugin/timezone.js';
+	import advancedFormat from 'dayjs/plugin/advancedFormat.js';
 
 	import { truncate, isLongerThan } from '$utils/truncate';
 

@@ -1,7 +1,7 @@
 <script>
-	import { sortBy } from 'lodash';
+	import lodash from 'lodash';
 	import dayjs from 'dayjs';
-	import isSameOrBefore from 'dayjs/plugin/isSameOrBefore';
+	import isSameOrBefore from 'dayjs/plugin/isSameOrBefore.js';
 
 	import eventsApi from '$dataSources/api.that.tech/events/queries';
 	import { Standard as StandardLink } from '$elements/links';
@@ -9,6 +9,7 @@
 	import Event from './Event.svelte';
 
 	dayjs.extend(isSameOrBefore);
+	const { sortBy } = lodash;
 
 	async function queryEvents() {
 		const allEvents = await eventsApi()

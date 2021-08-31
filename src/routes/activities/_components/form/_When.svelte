@@ -63,16 +63,16 @@
 
 	import { tick } from 'svelte';
 	import dayjs from 'dayjs';
-	import utc from 'dayjs/plugin/utc';
-	import timezone from 'dayjs/plugin/timezone';
-	import duration from 'dayjs/plugin/duration';
-	import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
-	import isToday from 'dayjs/plugin/isToday';
-	import isBetween from 'dayjs/plugin/isBetween';
+	import utc from 'dayjs/plugin/utc.js';
+	import timezone from 'dayjs/plugin/timezone.js';
+	import duration from 'dayjs/plugin/duration.js';
+	import isSameOrAfter from 'dayjs/plugin/isSameOrAfter.js';
+	import isToday from 'dayjs/plugin/isToday.js';
+	import isBetween from 'dayjs/plugin/isBetween.js';
 	import { Input } from 'sveltejs-forms';
 	import Datepicker from 'svelte-calendar';
 	import Select from 'svelte-select';
-	import advancedFormat from 'dayjs/plugin/advancedFormat';
+	import advancedFormat from 'dayjs/plugin/advancedFormat.js';
 
 	import config from '$utils/config';
 

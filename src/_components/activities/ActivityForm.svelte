@@ -42,12 +42,12 @@
 	export let initialValues;
 
 	import dayjs from 'dayjs';
-	import utc from 'dayjs/plugin/utc';
-	import timezone from 'dayjs/plugin/timezone';
-	import duration from 'dayjs/plugin/duration';
-	import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
-	import isToday from 'dayjs/plugin/isToday';
-	import advancedFormat from 'dayjs/plugin/advancedFormat';
+	import utc from 'dayjs/plugin/utc.js';
+	import timezone from 'dayjs/plugin/timezone.js';
+	import duration from 'dayjs/plugin/duration.js';
+	import isSameOrAfter from 'dayjs/plugin/isSameOrAfter.js';
+	import isToday from 'dayjs/plugin/isToday.js';
+	import advancedFormat from 'dayjs/plugin/advancedFormat.js';
 
 	import Datepicker from 'svelte-calendar'; //https://github.com/6eDesign/svelte-calendar
 
@@ -55,7 +55,7 @@
 	import Select from 'svelte-select'; //https://github.com/rob-balfre/svelte-select
 	import Tags from 'svelte-tags-input';
 	import * as yup from 'yup';
-	import { isEmpty } from 'lodash';
+	import lodash from 'lodash';
 
 	import { getAuth } from '$utils/security';
 	import { Waiting, ModalError } from '$elements';
@@ -68,6 +68,7 @@
 	dayjs.extend(isToday);
 	dayjs.extend(advancedFormat);
 
+	const { isEmpty } = lodash;
 	const { thatProfile } = getAuth();
 	const selectedTimezoneDefault = dayjs.tz.guess();
 

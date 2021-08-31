@@ -1,7 +1,7 @@
 <script>
 	export let event;
 
-	import { keyBy } from 'lodash';
+	import lodash from 'lodash';
 	import { createEventDispatcher } from 'svelte';
 
 	import { Standard as StandardButton, HighlightShell } from '$elements/buttons';
@@ -9,6 +9,7 @@
 	import RowDetails from './_TBL-Row.svelte';
 	import pricingBreakdown, { ticketBreakdown } from './pricingData';
 
+	const { keyBy } = lodash;
 	const dispatch = createEventDispatcher();
 
 	const { products } = event;

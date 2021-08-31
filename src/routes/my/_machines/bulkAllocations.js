@@ -1,10 +1,11 @@
 import { createMachine, assign } from 'xstate';
-import { uniqBy } from 'lodash';
+import lodash from 'lodash';
 
 import { log } from '$utils/error';
 import pagingConfig from '$machines/paging';
 import ordersApi from '$dataSources/api.that.tech/orders/queries';
 
+const { uniqBy } = lodash;
 function createServices() {
 	const { queryMyBulkAllocations, queryMyBulkAllocationsNext } = ordersApi();
 

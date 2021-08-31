@@ -4,7 +4,7 @@
 	import { page } from '$app/stores';
 	import { useMachine } from 'xstate-svelte';
 	import SvelteInfiniteScroll from 'svelte-infinite-scroll';
-	import { isEmpty } from 'lodash';
+	import lodash from 'lodash';
 
 	import seoMetaTags from '$utils/seo/metaTags';
 	import { getAuth } from '$utils/security';
@@ -22,6 +22,7 @@
 
 	import createMachine from './_machines/event';
 
+	const { isEmpty } = lodash;
 	const { thatProfile } = getAuth();
 	const { id, name } = $page.params;
 	const eventSlug = `${id}/${name}`;

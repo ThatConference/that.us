@@ -2,9 +2,9 @@
 	export let event;
 
 	import dayjs from 'dayjs';
-	import utc from 'dayjs/plugin/utc';
-	import timezone from 'dayjs/plugin/timezone';
-	import advancedFormat from 'dayjs/plugin/advancedFormat';
+	import utc from 'dayjs/plugin/utc.js';
+	import timezone from 'dayjs/plugin/timezone.js';
+	import advancedFormat from 'dayjs/plugin/advancedFormat.js';
 
 	const { name, startDate, endDate, description, slug } = event;
 

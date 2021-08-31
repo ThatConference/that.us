@@ -1,10 +1,11 @@
 import { createMachine, assign } from 'xstate';
-import { uniqBy, sortBy } from 'lodash';
+import lodash from 'lodash';
 
 import { log } from '$utils/error';
 import partnersApi from '$dataSources/api.that.tech/partner/queries';
 import createPagingConfig from '$machines/paging';
 
+const { uniqBy, sortBy } = lodash;
 function createServices() {
 	const { getPastPartners, getPastPartnersNext } = partnersApi();
 

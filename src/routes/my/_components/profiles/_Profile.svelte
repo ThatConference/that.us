@@ -1,6 +1,6 @@
 <script>
 	import { goto } from '$app/navigation';
-	import { isNil, isEmpty } from 'lodash';
+	import lodash from 'lodash';
 
 	import ProfileForm from './ProfileForm.svelte';
 
@@ -8,6 +8,7 @@
 	import logEvent from '$utils/eventTrack';
 	import { getAuth } from '$utils/security';
 
+	const { isNil, isEmpty } = lodash;
 	const { user, thatProfile } = getAuth();
 	const { createProfile, updateProfile } = memberApi();
 

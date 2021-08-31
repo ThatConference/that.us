@@ -2,7 +2,7 @@
 	import SvelteInfiniteScroll from 'svelte-infinite-scroll';
 	import { useMachine } from 'xstate-svelte';
 	import dayjs from 'dayjs';
-	import isBetween from 'dayjs/plugin/isBetween';
+	import isBetween from 'dayjs/plugin/isBetween.js';
 
 	import { Waiting } from '$elements';
 	import { ChevronRight } from '$elements/svgs';

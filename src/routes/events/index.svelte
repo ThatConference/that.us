@@ -1,6 +1,6 @@
 <script>
 	import { fade } from 'svelte/transition';
-	import { sortBy, take, drop } from 'lodash';
+	import lodash from 'lodash';
 	import dayjs from 'dayjs';
 
 	import seoMetaTags from '$utils/seo/metaTags';
@@ -12,6 +12,7 @@
 	import Hero from './_components/events/_EventsHero.svelte';
 	import EventCard from './_components/_EventCard.svelte';
 
+	const { sortBy, take, drop } = lodash;
 	const metaTags = seoMetaTags({
 		title: 'Events - THAT',
 		description: 'Upcoming and Past Events at THAT',

@@ -1,11 +1,12 @@
 import { createMachine, assign } from 'xstate';
-import { uniqBy } from 'lodash';
+import lodash from 'lodash';
 import dayjs from 'dayjs';
 
 import { log } from '$utils/error';
 import createPagingConfig from '$machines/paging';
 import sessionsApi from '$dataSources/api.that.tech/sessions';
 
+const { uniqBy } = lodash;
 function createServices() {
 	const { querySessionsBySlug } = sessionsApi();
 

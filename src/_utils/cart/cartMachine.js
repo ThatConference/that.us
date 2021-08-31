@@ -1,10 +1,11 @@
 import { browser } from '$app/env';
 import { createMachine, assign } from 'xstate';
-import { isEmpty } from 'lodash';
+import lodash from 'lodash';
 
 import { log } from '../error';
 import createConfig from './cartConfig';
 
+const { isEmpty } = lodash;
 const cartKeyName = 'cart';
 const cartVersion = '1.0.0';
 

@@ -1,8 +1,8 @@
 <script>
 	import { useMachine } from 'xstate-svelte';
 	import dayjs from 'dayjs';
-	import isBetween from 'dayjs/plugin/isBetween';
-	import { sortBy } from 'lodash';
+	import isBetween from 'dayjs/plugin/isBetween.js';
+	import lodash from 'lodash';
 
 	import { Waiting } from '$elements';
 	import { debug } from '$utils/config';
@@ -10,6 +10,7 @@
 	import createMachine from '../_machines/allocations';
 
 	dayjs.extend(isBetween);
+	const { sortBy } = lodash;
 
 	// todo.. add seo
 	// metaTagsStore.set({

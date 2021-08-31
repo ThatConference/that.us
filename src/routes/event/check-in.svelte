@@ -1,6 +1,6 @@
 <script>
 	import { page } from '$app/stores';
-	import { sortBy } from 'lodash';
+	import lodash from 'lodash';
 	import { fade } from 'svelte/transition';
 
 	import seoMetaTags from '$utils/seo/metaTags';
@@ -10,6 +10,7 @@
 	import Loading from './_components/_Loading.svelte';
 	import RegistrationList from './_components/_RegistrationList.svelte';
 
+	const { sortBy } = lodash;
 	const { eventName, year } = $page.params;
 	const eventSlug = `${eventName}/${year}`;
 

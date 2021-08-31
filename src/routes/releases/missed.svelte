@@ -1,13 +1,15 @@
 <script>
 	import { onMount } from 'svelte';
 	import archieml from 'archieml';
-	import { last } from 'lodash';
+	import lodash from 'lodash';
 
 	import seoMetaTags from '$utils/seo/metaTags';
 	import Layout from '$elements/layouts/ContentLayout.svelte';
 	import ReleaseNote from '$components/releaseNotes/Release.svelte';
 
 	import { showReleaseNotes } from '$stores/siteVersion';
+
+	const { last } = lodash;
 
 	const metaTags = seoMetaTags({
 		title: 'Changelog - THAT',

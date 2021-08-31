@@ -19,7 +19,7 @@
 	import * as yup from 'yup';
 	import Checkbox from 'svelte-checkbox';
 	import fetch from 'cross-fetch';
-	import { isEmpty } from 'lodash';
+	import lodash from 'lodash';
 	import omitDeep from 'omit-deep';
 
 	import config from '$utils/config';
@@ -28,6 +28,7 @@
 	import { Waiting } from '$elements';
 	import ErrorNotificaiton from '$components/notifications/Error.svelte';
 
+	const { isEmpty } = lodash;
 	const { token } = getAuth();
 	const socialLinks = [
 		{

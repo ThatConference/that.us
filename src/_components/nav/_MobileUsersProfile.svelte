@@ -3,10 +3,11 @@
 
 	import { user as userIcon } from 'svelte-awesome/icons';
 	import Icon from 'svelte-awesome';
-	import { isEmpty } from 'lodash';
+	import lodash from 'lodash';
 
 	import { getAuth } from '$utils/security';
 
+	const { isEmpty } = lodash;
 	const { login, isAuthenticated, thatProfile } = getAuth();
 	const loggedInMenuItems = [
 		{
