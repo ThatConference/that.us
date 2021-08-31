@@ -1,86 +1,57 @@
-/*
-  <meta name="twitter:creator" content="@thatconference" />
-  <meta name="twitter:site" content="https://that.us" />
-  <meta name="twitter:title" content="THAT @ THAT.us" />
-  <meta name="twitter:description" content="TODO: default" />
+const create = (metaData) => {
+	const results = [];
 
-  <meta property="og:title" content="THAT" />
-  <meta property="og:description" content="TODO" />
-  <meta property="og:url" content="https://that.us/" />
+	const noindex = metaData ? metaData.noindex : false;
+	const nofollow = metaData ? metaData.nofollow : false;
 
-  <meta property="og:site_name" content="THAT" />
-  <meta property="og:type" content="website" />
-  <meta property="og:locale" content="en_US" />
+	const robotsContent = `${noindex ? 'noindex' : 'index'},${nofollow ? 'nofollow' : 'follow'}`;
 
-  <meta property="og:image" content="https://that.us/images/og-logo.png" />
-*/
+	// defaults
+	results.push({ name: 'robots', content: robotsContent });
+	results.push({ name: 'googlebot', content: robotsContent });
 
-const create = metaData => {
-  const results = [];
+	// twitter components
+	if (metaData.title) {
+		results.push({ name: 'twitter:title', content: metaData.title });
+		results.push({ name: 'og:title', content: metaData.title });
+	}
 
-  const noindex = metaData ? metaData.noindex : false;
-  const nofollow = metaData ? metaData.nofollow : false;
+	if (metaData.description) {
+		results.push({ name: 'description', content: metaData.description });
 
-  const robotsContent = `${noindex ? 'noindex' : 'index'},${
-    nofollow ? 'nofollow' : 'follow'
-  }`;
+		results.push({
+			name: 'twitter:description',
+			content: metaData.description
+		});
 
-  // defaults
-  results.push({ name: 'robots', content: robotsContent });
-  results.push({ name: 'googlebot', content: robotsContent });
+		results.push({
+			name: 'og:description',
+			content: metaData.description
+		});
+	}
 
-  // if we didn't get anything, return out after the defaults
-  if (!metaData) return results;
+	// twitter
+	results.push({
+		name: 'twitter:creator',
+		content: metaData.twitter?.creator || '@thatconference'
+	});
 
-  if (metaData.description)
-    results.push({ name: 'description', content: metaData.description });
+	results.push({ name: 'twitter:image', content: metaData.image || 'https://that.us/favicon.png' });
+	results.push({
+		name: 'twitter:image:alt',
+		content: metaData.image || 'https://that.us/favicon.png'
+	});
 
-  // twitter components
-  if (metaData.title)
-    results.push({ name: 'twitter:title', content: metaData.title });
+	results.push({ name: 'twitter:site', content: metaData.twitter?.site || 'https://that.us/' });
 
-  if (metaData.description)
-    results.push({
-      name: 'twitter:description',
-      content: metaData.description,
-    });
+	// open graph components
+	results.push({ name: 'og:url', content: metaData.openGraph?.url || 'https://that.us/' });
+	results.push({ name: 'og:site_name', content: 'THAT' });
+	results.push({ name: 'og:type', content: metaData.openGraph?.type?.toLowerCase() || 'website' });
+	results.push({ name: 'og:locale', content: 'en_US' });
+	results.push({ name: 'og:image', content: 'https://that.us/favicon.png' });
 
-  if (metaData.twitter) {
-    if (metaData.twitter.creator)
-      results.push({
-        name: 'twitter:creator',
-        content: metaData.twitter.userName,
-      });
-
-    if (metaData.image) {
-      results.push({ name: 'twitter:image', content: metaData.image });
-      results.push({ name: 'twitter:image:alt', content: metaData.image });
-    }
-  }
-
-  // open graph components
-  if (metaData.title)
-    results.push({ name: 'og:title', content: metaData.title });
-
-  if (metaData.description)
-    results.push({
-      name: 'og:description',
-      content: metaData.description,
-    });
-
-  if (metaData.openGraph.url || metaData.canonical)
-    results.push({
-      name: 'og:url',
-      content: metaData.openGraph.url || metaData.canonical,
-    });
-
-  if (metaData.openGraph.type)
-    results.push({
-      name: 'og:type',
-      content: metaData.openGraph.type.toLowerCase(),
-    });
-
-  return results;
+	return results;
 };
 
 export default create;
