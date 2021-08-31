@@ -242,126 +242,121 @@ export const QUERY_CAN_ADD_SESSION = `
   }
 `;
 
-export default client => {
-  function queryEventBySlug(slug) {
-    const variables = { slug };
+export default (client) => {
+	function queryEventBySlug(slug) {
+		const variables = { slug };
 
-    return client
-      .query(QUERY_EVENT_BY_SLUG, variables, {
-        fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
-        requestPolicy: 'cache-and-network',
-      })
-      .toPromise()
-      .then(({ data, error }) => {
-        if (error) log(error, 'QUERY_EVENT_BY_SLUG');
+		return client
+			.query(QUERY_EVENT_BY_SLUG, variables, {
+				fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
+				requestPolicy: 'cache-and-network'
+			})
+			.toPromise()
+			.then(({ data, error }) => {
+				if (error) log(error, 'QUERY_EVENT_BY_SLUG');
 
-        const { event } = data.events;
-        return event ? event.get : null;
-      });
-  }
+				const { event } = data.events;
+				return event ? event.get : null;
+			});
+	}
 
-  function queryEventById(eventId) {
-    const variables = { eventId };
+	function queryEventById(eventId) {
+		const variables = { eventId };
 
-    return client
-      .query(QUERY_EVENT_BY_ID, variables, {
-        fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
-        requestPolicy: 'cache-and-network',
-      })
-      .toPromise()
-      .then(({ data, error }) => {
-        if (error) log(error, 'QUERY_EVENT_BY_ID');
+		return client
+			.query(QUERY_EVENT_BY_ID, variables, {
+				fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
+				requestPolicy: 'cache-and-network'
+			})
+			.toPromise()
+			.then(({ data, error }) => {
+				if (error) log(error, 'QUERY_EVENT_BY_ID');
 
-        const { event } = data.events;
-        return event ? event.get : null;
-      });
-  }
+				const { event } = data.events;
+				return event ? event.get : null;
+			});
+	}
 
-  function queryEventForCfp(slug) {
-    const variables = { slug };
+	function queryEventForCfp(slug) {
+		const variables = { slug };
 
-    return client
-      .query(QUERY_EVENT_FOR_CFP, variables, {
-        fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
-      })
-      .toPromise()
-      .then(({ data, error }) => {
-        if (error) log(error, 'QUERY_EVENT_BY_SLUG');
+		return client.query({ query: QUERY_EVENT_FOR_CFP, variables }).then(({ data, error }) => {
+			if (error) log(error, 'QUERY_EVENT_BY_SLUG');
 
-        const { event } = data.events;
-        return event ? event.get : null;
-      });
-  }
+			const { event } = data.events;
+			return event ? event.get : null;
+		});
+	}
 
-  function queryEvents() {
-    const variables = {};
+	function queryEvents() {
+		const variables = {};
 
-    return client
-      .query(QUERY_EVENTS, variables, {
-        fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
-        requestPolicy: 'cache-and-network',
-      })
-      .toPromise()
-      .then(({ data, error }) => {
-        if (error) log(error, 'QUERY_EVENTS');
+		return client
+			.query(QUERY_EVENTS, variables, {
+				fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
+				requestPolicy: 'cache-and-network'
+			})
+			.toPromise()
+			.then(({ data, error }) => {
+				if (error) log(error, 'QUERY_EVENTS');
 
-        const { all } = data.events;
-        return all || [];
-      });
-  }
+				const { all } = data.events;
+				return all || [];
+			});
+	}
 
-  function queryEventsByCommunity(slug = 'that') {
-    const variables = { slug };
+	function queryEventsByCommunity(slug = 'that') {
+		const variables = { slug };
 
-    return client
-      .query(QUERY_EVENTS_BY_COMMUNITY, variables, {
-        fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
-        requestPolicy: 'cache-and-network',
-      })
-      .toPromise()
-      .then(({ data, error }) => {
-        if (error) log(error, 'QUERY_EVENTS');
+		return client
+			.query(QUERY_EVENTS_BY_COMMUNITY, variables, {
+				fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
+				requestPolicy: 'cache-and-network'
+			})
+			.toPromise()
+			.then(({ data, error }) => {
+				if (error) log(error, 'QUERY_EVENTS');
 
-        const { community } = data.communities;
-        return community ? community.get.events : [];
-      });
-  }
+				const { community } = data.communities;
+				return community ? community.get.events : [];
+			});
+	}
 
-  function canAddSession(eventId) {
-    const variables = { eventId };
+	function canAddSession(eventId) {
+		const variables = { eventId };
 
-    return client
-      .query(QUERY_CAN_ADD_SESSION, variables)
-      .toPromise()
-      .then(({ data, error }) => {
-        if (error) log(error, 'QUERY_CAN_ADD_SESSION');
+		return client
+			.query(QUERY_CAN_ADD_SESSION, variables)
+			.toPromise()
+			.then(({ data, error }) => {
+				if (error) log(error, 'QUERY_CAN_ADD_SESSION');
 
-        const { addSession } = data.events.me.access;
-        return addSession || false;
-      });
-  }
+				const { addSession } = data.events.me.access;
+				return addSession || false;
+			});
+	}
 
-  function canAccessEvent(eventId) {
-    const variables = { eventId };
+	function canAccessEvent(eventId) {
+		const variables = { eventId };
 
-    return client
-      .query(QUERY_CAN_ACCESS_EVENT, variables)
-      .toPromise()
-      .then(({ data, error }) => {
-        if (error) log(error, 'QUERY_CAN_ACCESS_EVENT');
+		return client
+			.query(QUERY_CAN_ACCESS_EVENT, variables)
+			.toPromise()
+			.then(({ data, error }) => {
+				if (error) log(error, 'QUERY_CAN_ACCESS_EVENT');
 
-        const { hasAccess } = data.events.me.access;
-        return hasAccess || false;
-      });
-  }
+				const { hasAccess } = data.events.me.access;
+				return hasAccess || false;
+			});
+	}
 
-  return {
-    queryEvents,
-    queryEventsByCommunity,
-    queryEventBySlug,
-    queryEventById,
-    queryEventForCfp,
-    canAddSession,
-    canAccessEvent,
-  };
+	return {
+		queryEvents,
+		queryEventsByCommunity,
+		queryEventBySlug,
+		queryEventById,
+		queryEventForCfp,
+		canAddSession,
+		canAccessEvent
+	};
 };

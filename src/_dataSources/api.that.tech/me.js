@@ -39,18 +39,15 @@ export const QUERY_ME = `
     }
 `;
 
-export default client => {
-  const queryMe = () =>
-    client
-      .query(QUERY_ME)
-      .toPromise()
-      .then(({ data, error }) => {
-        if (error) log(error, 'query_favorites');
+export default (client) => {
+	const queryMe = () =>
+		client.query({ query: QUERY_ME }).then(({ data, error }) => {
+			if (error) log(error, 'query_favorites');
 
-        return data.members.me;
-      });
+			return data.members.me;
+		});
 
-  return {
-    queryMe,
-  };
+	return {
+		queryMe
+	};
 };

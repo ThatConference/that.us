@@ -150,168 +150,162 @@ export const QUERY_NEXT_FOLLOWERS = `
   }
 `;
 
-export default client => {
-  const isSlugTaken = slug => {
-    const variables = { slug };
-    return client
-      .query(QUERY_IS_SLUG_TAKEN, variables)
-      .toPromise()
-      .then(({ data, error }) => {
-        if (error) log(error, 'query_members');
+export default (client) => {
+	const isSlugTaken = (slug) => {
+		const variables = { slug };
+		return client
+			.query(QUERY_IS_SLUG_TAKEN, variables)
+			.toPromise()
+			.then(({ data, error }) => {
+				if (error) log(error, 'query_members');
 
-        let isTaken = true;
-        if (data) isTaken = data.members.isProfileSlugTaken;
-        return isTaken;
-      });
-  };
+				let isTaken = true;
+				if (data) isTaken = data.members.isProfileSlugTaken;
+				return isTaken;
+			});
+	};
 
-  const queryMembers = (pageSize = 50) => {
-    const variables = { pageSize };
-    return client
-      .query(QUERY_MEMBERS_INITAL, variables, {
-        fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
-        requestPolicy: 'cache-and-network',
-      })
-      .toPromise()
-      .then(({ data, error }) => {
-        if (error) log(error, 'query_members');
+	const queryMembers = (pageSize = 50) => {
+		const variables = { pageSize };
+		return client.query({ query: QUERY_MEMBERS_INITAL, variables }).then(({ data, error }) => {
+			if (error) log(error, 'query_members');
 
-        let results = null;
-        if (data) {
-          const { members } = data.members;
-          results = members;
-        }
+			let results = null;
+			if (data) {
+				const { members } = data.members;
+				results = members;
+			}
 
-        return results;
-      });
-  };
+			return results;
+		});
+	};
 
-  const queryMembersNext = (after, pageSize = 50) => {
-    const variables = { pageSize, after };
-    return client
-      .query(QUERY_MEMBERS_NEXT, variables, {
-        fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
-      })
-      .toPromise()
-      .then(({ data, error }) => {
-        if (error) log(error, 'query_members');
+	const queryMembersNext = (after, pageSize = 50) => {
+		const variables = { pageSize, after };
+		return client
+			.query(QUERY_MEMBERS_NEXT, variables, {
+				fetchOptions: { headers: { ...stripAuthorizationHeader(client) } }
+			})
+			.toPromise()
+			.then(({ data, error }) => {
+				if (error) log(error, 'query_members');
 
-        let results = null;
-        if (data) {
-          const { members } = data.members;
-          results = members;
-        }
+				let results = null;
+				if (data) {
+					const { members } = data.members;
+					results = members;
+				}
 
-        return results;
-      });
-  };
+				return results;
+			});
+	};
 
-  const queryMemberBySlug = (
-    slug,
-    sessionStartDate = new Date(new Date().setHours(0, 0, 0, 0)),
-    filter = 'UPCOMING',
-  ) => {
-    const variables = {
-      slug,
-      sessionStartDate,
-      filter,
-    };
-    return client
-      .query(QUERY_MEMBER_BY_SLUG, variables, {
-        fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
-      })
-      .toPromise()
-      .then(({ data, error }) => {
-        if (error) log(error, 'query_members');
+	const queryMemberBySlug = (
+		slug,
+		sessionStartDate = new Date(new Date().setHours(0, 0, 0, 0)),
+		filter = 'UPCOMING'
+	) => {
+		const variables = {
+			slug,
+			sessionStartDate,
+			filter
+		};
+		return client
+			.query(QUERY_MEMBER_BY_SLUG, variables, {
+				fetchOptions: { headers: { ...stripAuthorizationHeader(client) } }
+			})
+			.toPromise()
+			.then(({ data, error }) => {
+				if (error) log(error, 'query_members');
 
-        return data.members.member;
-      });
-  };
+				return data.members.member;
+			});
+	};
 
-  const queryMemberActivities = (
-    slug,
-    sessionStartDate = new Date(new Date().setHours(0, 0, 0, 0)),
-    filter = 'UPCOMING',
-  ) => {
-    const variables = {
-      slug,
-      sessionStartDate,
-      filter,
-    };
-    return client
-      .query(QUERY_MEMBER_ACTIVITIES, variables, {
-        fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
-      })
-      .toPromise()
-      .then(({ data, error }) => {
-        if (error) log(error, 'query_members');
+	const queryMemberActivities = (
+		slug,
+		sessionStartDate = new Date(new Date().setHours(0, 0, 0, 0)),
+		filter = 'UPCOMING'
+	) => {
+		const variables = {
+			slug,
+			sessionStartDate,
+			filter
+		};
+		return client
+			.query(QUERY_MEMBER_ACTIVITIES, variables, {
+				fetchOptions: { headers: { ...stripAuthorizationHeader(client) } }
+			})
+			.toPromise()
+			.then(({ data, error }) => {
+				if (error) log(error, 'query_members');
 
-        return data.members.member.sessions;
-      });
-  };
+				return data.members.member.sessions;
+			});
+	};
 
-  const queryNextMemberActivities = (
-    slug,
-    sessionStartDate = new Date(new Date().setHours(0, 0, 0, 0)),
-    filter = 'UPCOMING',
-  ) => {
-    const variables = {
-      slug,
-      sessionStartDate,
-      filter,
-    };
-    return client
-      .query(QUERY_MEMBER_ACTIVITIES, variables, {
-        fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
-      })
-      .toPromise()
-      .then(({ data, error }) => {
-        if (error) log(error, 'query_members');
+	const queryNextMemberActivities = (
+		slug,
+		sessionStartDate = new Date(new Date().setHours(0, 0, 0, 0)),
+		filter = 'UPCOMING'
+	) => {
+		const variables = {
+			slug,
+			sessionStartDate,
+			filter
+		};
+		return client
+			.query(QUERY_MEMBER_ACTIVITIES, variables, {
+				fetchOptions: { headers: { ...stripAuthorizationHeader(client) } }
+			})
+			.toPromise()
+			.then(({ data, error }) => {
+				if (error) log(error, 'query_members');
 
-        return data.members.member.sessions;
-      });
-  };
+				return data.members.member.sessions;
+			});
+	};
 
-  const queryFollowers = slug => {
-    const variables = { slug };
+	const queryFollowers = (slug) => {
+		const variables = { slug };
 
-    return client
-      .query(QUERY_FOLLOWERS, variables, {
-        fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
-      })
-      .toPromise()
-      .then(({ data, error }) => {
-        if (error) log(error, 'query_members');
+		return client
+			.query(QUERY_FOLLOWERS, variables, {
+				fetchOptions: { headers: { ...stripAuthorizationHeader(client) } }
+			})
+			.toPromise()
+			.then(({ data, error }) => {
+				if (error) log(error, 'query_members');
 
-        const { member } = data.members;
+				const { member } = data.members;
 
-        return member || null; // followerCount and followers are in partner
-      });
-  };
+				return member || null; // followerCount and followers are in partner
+			});
+	};
 
-  const queryNextFollowers = (id, cursor) => {
-    const variables = { id, cursor };
-    return client
-      .query(QUERY_NEXT_FOLLOWERS, variables, {
-        fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
-      })
-      .toPromise()
-      .then(({ data, error }) => {
-        if (error) log(error, 'query_members');
+	const queryNextFollowers = (id, cursor) => {
+		const variables = { id, cursor };
+		return client
+			.query(QUERY_NEXT_FOLLOWERS, variables, {
+				fetchOptions: { headers: { ...stripAuthorizationHeader(client) } }
+			})
+			.toPromise()
+			.then(({ data, error }) => {
+				if (error) log(error, 'query_members');
 
-        const { member } = data.members;
-        return member || null;
-      });
-  };
+				const { member } = data.members;
+				return member || null;
+			});
+	};
 
-  return {
-    queryMembers,
-    queryMembersNext,
-    queryMemberBySlug,
-    queryMemberActivities,
-    queryNextMemberActivities,
-    queryFollowers,
-    queryNextFollowers,
-    isSlugTaken,
-  };
+	return {
+		queryMembers,
+		queryMembersNext,
+		queryMemberBySlug,
+		queryMemberActivities,
+		queryNextMemberActivities,
+		queryFollowers,
+		queryNextFollowers,
+		isSlugTaken
+	};
 };
