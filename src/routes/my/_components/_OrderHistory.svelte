@@ -1,5 +1,4 @@
 <script>
-	import { getClient } from '@urql/svelte';
 	import SvelteInfiniteScroll from 'svelte-infinite-scroll';
 	import { useMachine } from 'xstate-svelte';
 	import dayjs from 'dayjs';
@@ -18,7 +17,7 @@
 
 	dayjs.extend(isBetween);
 
-	const { queryOrderReceiptUrl } = orderQueryApi(getClient());
+	const { queryOrderReceiptUrl } = orderQueryApi();
 	let scrollThreshold = 1200;
 
 	metaTagsStore.set({

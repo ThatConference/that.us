@@ -2,13 +2,12 @@ import { createMachine, assign } from 'xstate';
 import { uniqBy } from 'lodash';
 import dayjs from 'dayjs';
 
-import gFetch from '$utils/gFetch';
 import { log } from '$utils/error';
 import createPagingConfig from '$machines/paging';
 import sessionsApi from '$dataSources/api.that.tech/sessions';
 
 function createServices() {
-	const { querySessionsBySlug } = sessionsApi(gFetch());
+	const { querySessionsBySlug } = sessionsApi();
 
 	return {
 		guards: {

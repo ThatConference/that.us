@@ -1,7 +1,6 @@
 import { goto } from '$app/navigation';
 import { createMachine, assign, spawn, send } from 'xstate';
 
-import gFetch from '$utilities/gFetch';
 import { isValidSlug } from '$machines/guards/slug';
 import { log } from '$utils/error';
 import partnerQueryApi from '$dataSources/api.that.tech/partner/queries';
@@ -12,11 +11,11 @@ import meQueryApi from '$dataSources/api.that.tech/me/queries';
 import createPartnerConfig from './partnerConfig';
 import createFollowMachine from './followers';
 
-function createServices(client) {
-	const { getPartner } = partnerQueryApi(client);
-	const { toggleFollow } = partnerMutationsApi(client);
-	const { queryMeFollowingPartners } = meQueryApi(client);
-	const { addLead } = partnerLeadsMutationsApi(client);
+function createServices() {
+	const { getPartner } = partnerQueryApi();
+	const { toggleFollow } = partnerMutationsApi();
+	const { queryMeFollowingPartners } = meQueryApi();
+	const { addLead } = partnerLeadsMutationsApi();
 
 	return {
 		guards: {
@@ -70,15 +69,15 @@ function createServices(client) {
 			}),
 
 			createFollowMachineServices: assign({
-				followMachineServices: (context) => spawn(createFollowMachine(context.profile, client))
+				followMachineServices: (context) => spawn(createFollowMachine(context.profile))
 			})
 		}
 	};
 }
 
-function create(slug, client = gFetch()) {
-	const services = createServices(client);
-	return createMachine({ ...createPartnerConfig(slug, client) }, { ...services });
+function create(slug) {
+	const services = createServices();
+	return createMachine({ ...createPartnerConfig(slug) }, { ...services });
 }
 
 export default create;

@@ -1,12 +1,11 @@
 import { assign, createMachine } from 'xstate';
 
-import gFetch from '$utils/gFetch';
 import { log } from '$utils/error';
 import createPagingConfig from '$machines/paging';
 import sessionsApi from '$dataSources/api.that.tech/sessions';
 
-function createServices(client) {
-	const { queryNextSessionsByDate, querySessionsByDate } = sessionsApi(client);
+function createServices() {
+	const { queryNextSessionsByDate, querySessionsByDate } = sessionsApi();
 
 	return {
 		guards: {
@@ -48,8 +47,8 @@ function createServices(client) {
 	};
 }
 
-function create(meta, client = gFetch()) {
-	const services = createServices(client);
+function create(meta) {
+	const services = createServices();
 	return createMachine({ ...createPagingConfig(meta) }, { ...services });
 }
 

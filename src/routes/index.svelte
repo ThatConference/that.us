@@ -38,14 +38,14 @@
 		NewMembers
 	} from '$components/home';
 
-	// import currentEvent from '$stores/currentEvent';
+	import currentEvent from '$stores/currentEvent';
 
-	// import WelcomeBack from './_root/components/_WelcomeBack.svelte';
-	// import createMachine from './_root/machines/home';
+	import WelcomeBack from './_root/components/_WelcomeBack.svelte';
+	import createMachine from './_root/machines/home';
 
-	// let { state } = useMachine(createMachine({ id: $currentEvent.eventId }, getClient()), {
-	// 	debug: true
-	// });
+	let { state } = useMachine(createMachine({ id: $currentEvent.eventId }), {
+		debug: true
+	});
 
 	const metaTags = ((title = 'Welcome to THAT!') => ({
 		title,
@@ -61,39 +61,42 @@
 
 <Layout>
 	{#if $thatProfile?.isMember}
-		<!-- <div in:fade={{ delay: 200 }}>
+		<div in:fade={{ delay: 200 }}>
 			<WelcomeBack />
 		</div>
+
 		<div in:fade={{ delay: 400 }}>
-			<UpNext stateMachineService={$state.context.upNextActor} />
+			<!-- <UpNext stateMachineService={$state.context.upNextActor} /> -->
 		</div>
+
 		<div in:fade={{ delay: 600 }}>
 			<Events />
 		</div>
+
 		<div in:fade={{ delay: 800 }}>
 			<Stats stateMachineService={$state.context.statsActor} />
-			<NewMembers />
+			<NewMembers {members} />
 			<Newsletter />
-		</div> -->
+		</div>
 	{:else}
 		<div in:fade={{ delay: 200 }}>
 			<Hero />
 		</div>
-		<!-- 
+
 		<div in:fade={{ delay: 400 }}>
 			<Stats stateMachineService={$state.context.statsActor} />
-		</div> -->
+		</div>
 
-		<!-- <div in:fade={{ delay: 600 }}>
+		<div in:fade={{ delay: 600 }}>
 			<Testimonials />
-		</div> -->
+		</div>
 
-		<!-- <div in:fade={{ delay: 800 }}>
+		<div in:fade={{ delay: 800 }}>
 			<div class="relative flex flex-col items-center">
 				<img class="h-72" src="/images/THAT-Logo-Words.svg" alt="THAT" loading="lazy" />
 			</div>
 
-			<UpNext stateMachineService={$state.context.upNextActor} />
+			<!-- <UpNext stateMachineService={$state.context.upNextActor} /> -->
 			<Events />
 
 			{#if !$isAuthenticated}
@@ -102,8 +105,8 @@
 				<CtaMembership />
 			{/if}
 
-			<NewMembers />
+			<NewMembers {members} />
 			<Newsletter />
-		</div> -->
+		</div>
 	{/if}
 </Layout>

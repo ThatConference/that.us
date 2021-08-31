@@ -1,7 +1,6 @@
 import { createMachine, assign, spawn, send } from 'xstate';
 import { goto } from '$app/navigation';
 
-import gFetch from '$utils/gFetch';
 import { isValidSlug } from '$machines/guards/slug';
 import { log } from '$utils/error';
 import createFollowMachine from './followers';
@@ -25,11 +24,9 @@ send('AUTHENTICATED', {status: true})
 */
 
 function create(slug) {
-	const client = gFetch();
-
-	const { toggleFollow } = communityMutationApi(client);
-	const { queryCommunityBySlug } = communityQueryApi(client);
-	const { queryMeFollowingCommunities } = meQueryApi(client);
+	const { toggleFollow } = communityMutationApi();
+	const { queryCommunityBySlug } = communityQueryApi();
+	const { queryMeFollowingCommunities } = meQueryApi();
 
 	return createMachine(
 		{
@@ -274,12 +271,12 @@ function create(slug) {
 				}),
 
 				createFollowMachineServices: assign({
-					followMachineServices: (context) => spawn(createFollowMachine(context.community, client))
+					followMachineServices: (context) => spawn(createFollowMachine(context.community))
 				}),
 
 				createActivityMachineServices: assign({
 					activitiesMachineServices: (context) =>
-						spawn(createActivitiesMachineServices(context.community, client))
+						spawn(createActivitiesMachineServices(context.community))
 				})
 			}
 		}

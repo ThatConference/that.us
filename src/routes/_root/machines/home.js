@@ -1,13 +1,12 @@
 import { assign, spawn, createMachine } from 'xstate';
 
-import gFetch from '$utils/gFetch';
 import { log } from '$utils/error';
 
 import createHomeConfig from './homeConfig';
 import upNextServices from './upNext';
 import statsServices from './stats';
 
-function createServices(client) {
+function createServices() {
 	return {
 		guards: {},
 		services: {},
@@ -21,15 +20,15 @@ function createServices(client) {
 				}),
 
 			createActors: assign({
-				upNextActor: (context) => spawn(upNextServices(context.meta, client)),
-				statsActor: (context) => spawn(statsServices(context.meta, client))
+				upNextActor: (context) => spawn(upNextServices(context.meta)),
+				statsActor: (context) => spawn(statsServices(context.meta))
 			})
 		}
 	};
 }
 
-function create(meta, client = gFetch()) {
-	const services = createServices(client);
+function create(meta) {
+	const services = createServices();
 	return createMachine({ ...createHomeConfig(meta) }, { ...services });
 }
 

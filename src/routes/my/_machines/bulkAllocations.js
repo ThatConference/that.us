@@ -1,13 +1,12 @@
 import { createMachine, assign } from 'xstate';
 import { uniqBy } from 'lodash';
 
-import gFetch from '$utilities/gFetch';
 import { log } from '$utils/error';
 import pagingConfig from '$machines/paging';
 import ordersApi from '$dataSources/api.that.tech/orders/queries';
 
 function createServices() {
-	const { queryMyBulkAllocations, queryMyBulkAllocationsNext } = ordersApi(gFetch());
+	const { queryMyBulkAllocations, queryMyBulkAllocationsNext } = ordersApi();
 
 	return {
 		guards: {

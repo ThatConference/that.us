@@ -1,18 +1,17 @@
 <script>
-	import { getClient } from '@urql/svelte';
 	import { sortBy } from 'lodash';
 	import dayjs from 'dayjs';
 	import isSameOrBefore from 'dayjs/plugin/isSameOrBefore';
 
-	import Event from './Event.svelte';
 	import eventsApi from '$dataSources/api.that.tech/events/queries';
-
 	import { Standard as StandardLink } from '$elements/links';
+
+	import Event from './Event.svelte';
 
 	dayjs.extend(isSameOrBefore);
 
 	async function queryEvents() {
-		const allEvents = await eventsApi(getClient())
+		const allEvents = await eventsApi()
 			.queryEvents()
 			.then((r) => r.filter((i) => i.community === 'that'));
 

@@ -1,13 +1,12 @@
 import { createMachine, assign } from 'xstate';
 import { uniqBy } from 'lodash';
 
-import gFetch from '$utils/gFetch';
 import { log } from '$utils/error';
 import createPagingConfig from '$machines/paging';
 import communitiesApi from '$dataSources/api.that.tech/community/queries';
 
 function createServices() {
-	const { queryNextAllCommunities, queryAllCommunities } = communitiesApi(gFetch());
+	const { queryNextAllCommunities, queryAllCommunities } = communitiesApi();
 
 	return {
 		guards: {

@@ -1,13 +1,12 @@
 import { createMachine, assign } from 'xstate';
 import { uniqBy } from 'lodash';
 
-import gFetch from '$utilities/gFetch';
 import { log } from '$utils/error';
 import createPagingConfig from '$machines/paging';
 import membersApi from '$dataSources/api.that.tech/members/queries';
 
 function createServices() {
-	const { queryMembers, queryMembersNext } = membersApi(gFetch());
+	const { queryMembers, queryMembersNext } = membersApi();
 
 	return {
 		guards: {

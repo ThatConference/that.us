@@ -1,13 +1,12 @@
 import { assign, createMachine } from 'xstate';
 
-import gFetch from '$utils/gFetch';
 import { log } from '$utils/error';
 
 import apiConfig from '$machines/api';
 import statsApi from '$dataSources/api.that.tech/stats/queries';
 
-function createServices(client) {
-	const { queryCommunityStats } = statsApi(client);
+function createServices() {
+	const { queryCommunityStats } = statsApi();
 
 	return {
 		guards: {},
@@ -31,8 +30,8 @@ function createServices(client) {
 	};
 }
 
-function create(meta, client = gFetch()) {
-	const services = createServices(client);
+function create(meta) {
+	const services = createServices();
 	return createMachine({ ...apiConfig(meta) }, { ...services });
 }
 

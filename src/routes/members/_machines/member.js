@@ -1,7 +1,6 @@
 import { goto } from '$app/navigation';
 import { createMachine, assign, spawn, send } from 'xstate';
 
-import gFetch from '$utilities/gFetch';
 import { isValidSlug } from '$machines/guards/slug';
 import profileConfig from '$machines/profile';
 import followMachine from './followers';
@@ -12,10 +11,10 @@ import memberQueryApi from '$dataSources/api.that.tech/members/queries';
 import memberMutationApi from '$dataSources/api.that.tech/members/mutations';
 import meQueryApi from '$dataSources/api.that.tech/me/queries';
 
-function createServices(client) {
-	const { queryMemberBySlug } = memberQueryApi(client);
-	const { toggleFollow } = memberMutationApi(client);
-	const { queryMeFollowingMembers } = meQueryApi(client);
+function createServices() {
+	const { queryMemberBySlug } = memberQueryApi();
+	const { toggleFollow } = memberMutationApi();
+	const { queryMeFollowingMembers } = meQueryApi();
 
 	return {
 		guards: {
@@ -63,19 +62,19 @@ function createServices(client) {
 			}),
 
 			createFollowMachineServices: assign({
-				followMachineServices: (context) => spawn(followMachine(context.profile, client))
+				followMachineServices: (context) => spawn(followMachine(context.profile))
 			}),
 
 			createActivitiesMachineServices: assign({
-				activitiesMachineServices: (context) => spawn(activitiesMachine(context.profile, client))
+				activitiesMachineServices: (context) => spawn(activitiesMachine(context.profile))
 			})
 		}
 	};
 }
 
-function create(slug, client = gFetch()) {
-	const services = createServices(client);
-	return createMachine({ ...profileConfig(slug, client) }, { ...services });
+function create(slug) {
+	const services = createServices();
+	return createMachine({ ...profileConfig(slug) }, { ...services });
 }
 
 export default create;

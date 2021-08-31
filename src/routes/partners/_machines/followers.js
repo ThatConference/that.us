@@ -1,12 +1,11 @@
 import { createMachine, assign } from 'xstate';
 
-import gFetch from '$utilities/gFetch';
 import { log } from '$utils/error';
 import createPagingConfig from '$machines/paging';
 import partnerQueryApi from '$dataSources/api.that.tech/partner/queries';
 
-function createServices(client) {
-	const { queryFollowers, queryNextFollowers } = partnerQueryApi(client);
+function createServices() {
+	const { queryFollowers, queryNextFollowers } = partnerQueryApi();
 
 	return {
 		guards: {
@@ -41,8 +40,8 @@ function createServices(client) {
 	};
 }
 
-function create(meta, client = gFetch()) {
-	const services = createServices(client);
+function create(meta) {
+	const services = createServices();
 	return createMachine({ ...createPagingConfig(meta) }, { ...services });
 }
 

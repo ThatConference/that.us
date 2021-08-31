@@ -1,13 +1,12 @@
 import { createMachine, assign } from 'xstate';
 import { uniqBy, sortBy } from 'lodash';
 
-import gFetch from '$utilities/gFetch';
 import { log } from '$utils/error';
 import partnersApi from '$dataSources/api.that.tech/partner/queries';
 import createPagingConfig from '$machines/paging';
 
 function createServices() {
-	const { getPastPartners, getPastPartnersNext } = partnersApi(gFetch());
+	const { getPastPartners, getPastPartnersNext } = partnersApi();
 
 	return {
 		guards: {

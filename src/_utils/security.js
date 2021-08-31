@@ -3,7 +3,6 @@ import { onMount, setContext, getContext } from 'svelte';
 import { writable } from 'svelte/store';
 import createAuth0Client from '@auth0/auth0-spa-js';
 
-import gFetch from '$utils/gfetch';
 import { goto } from '$app/navigation';
 import { securityConfig } from '$utils/config';
 import meApi from '$dataSources/api.that.tech/me';
@@ -20,7 +19,6 @@ const refreshRate = 10 * 60 * 60 * 1000;
 let AUTH_KEY = {};
 
 function createAuth() {
-	let apiClient = gFetch();
 	let auth0 = null;
 	let intervalId = undefined;
 
@@ -50,7 +48,7 @@ function createAuth() {
 			}, refreshRate);
 
 			// set the THAT membership profile
-			const { queryMe } = meApi(apiClient);
+			const { queryMe } = meApi();
 			thatProfile.set(await queryMe());
 
 			if (redirectResult)
@@ -76,8 +74,6 @@ function createAuth() {
 			appState
 		};
 
-		console.log(authParams);
-
 		if (signup) {
 			authParams = {
 				...authParams,
@@ -101,7 +97,7 @@ function createAuth() {
 	// I think this will fail on the else..
 	async function refresh() {
 		if (await auth0.isAuthenticated()) {
-			const { queryMe } = meApi(apiClient);
+			const { queryMe } = meApi();
 			thatProfile.set(await queryMe());
 		}
 	}

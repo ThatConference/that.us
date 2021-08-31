@@ -1,12 +1,11 @@
 import { createMachine, assign } from 'xstate';
 
-import gFetch from '$utils/gFetch';
 import { log } from '$utils/error';
 import createPagingConfig from '$machines/paging';
 import membersQueryApi from '$dataSources/api.that.tech/members/queries';
 
-function createServices(client) {
-	const { queryMemberActivities, queryNextMemberActivities } = membersQueryApi(client);
+function createServices() {
+	const { queryMemberActivities, queryNextMemberActivities } = membersQueryApi();
 
 	return {
 		guards: {
@@ -49,8 +48,8 @@ function createServices(client) {
 	};
 }
 
-function create(meta, client = gFetch()) {
-	const services = createServices(client);
+function create(meta) {
+	const services = createServices();
 	return createMachine({ ...createPagingConfig(meta) }, { ...services });
 }
 
