@@ -54,31 +54,26 @@ function createConfig(metaContext) {
 
 				states: {
 					init: {
-						on: {
-							always: {
-								actions: ['readLocalStorage'],
-								target: 'new'
-							}
+						always: {
+							actions: ['readLocalStorage'],
+							target: 'new'
 						}
 					},
 
 					new: {
-						on: {
-							always: {
-								cond: 'hasCartItems',
-								target: 'pending'
-							}
+						always: {
+							cond: 'hasCartItems',
+							target: 'pending'
 						}
 					},
 
 					pending: {
+						always: {
+							cond: 'isEmptyCart',
+							actions: ['clearCart', 'clearLocalStorage'],
+							target: 'new'
+						},
 						on: {
-							always: {
-								cond: 'isEmptyCart',
-								actions: ['clearCart', 'clearLocalStorage'],
-								target: 'new'
-							},
-
 							UPDATE_QUANTITY: {
 								actions: ['readLocalStorage', 'addItem', 'setLocalStorage'],
 								target: 'pending'
@@ -107,10 +102,8 @@ function createConfig(metaContext) {
 							error: {},
 							duplicateMembership: {
 								entry: ['clearCart', 'clearLocalStorage', 'addItem', 'setLocalStorage'],
-								on: {
-									always: {
-										target: '#Cart.cart.pending'
-									}
+								always: {
+									target: '#Cart.cart.pending'
 								}
 							},
 

@@ -1,13 +1,12 @@
-import { getClient } from '@urql/svelte';
-import { Machine, assign } from 'xstate';
-import { uniqBy } from 'lodash';
+import { createMachine, assign } from 'xstate';
 
+import gFetch from '$utilities/gFetch';
 import { log } from '$utils/error';
 import partnersApi from '$dataSources/api.that.tech/partner/queries';
 import createPagingConfig from '$machines/paging';
 
 function createServices() {
-	const { getUpcomingPartners, getUpcomingPartnersNext } = partnersApi(getClient());
+	const { getUpcomingPartners, getUpcomingPartnersNext } = partnersApi(gFetch());
 
 	return {
 		guards: {
@@ -45,7 +44,7 @@ function createServices() {
 function create(eventSlug) {
 	const services = createServices();
 
-	return Machine({ ...createPagingConfig({ eventSlug }) }, { ...services });
+	return createMachine({ ...createPagingConfig({ eventSlug }) }, { ...services });
 }
 
 export default create;

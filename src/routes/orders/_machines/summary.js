@@ -1,40 +1,40 @@
 import { getContext } from 'svelte';
-import { Machine, assign, spawn } from 'xstate';
+import { createMachine, assign, spawn } from 'xstate';
 
 import { log } from '$utils/error';
 import createConfig from './summaryConfig';
 
 function createServices(stepsMachine) {
-  const { send } = getContext('cart');
+	const { send } = getContext('cart');
 
-  return {
-    guards: {},
-    services: {},
+	return {
+		guards: {},
+		services: {},
 
-    actions: {
-      logError: (context, event) =>
-        log({
-          error: 'summary state machine has ended in the error state.',
-          extra: { context, event },
-          tags: { stateMachine: 'summary' },
-        }),
+		actions: {
+			logError: (context, event) =>
+				log({
+					error: 'summary state machine has ended in the error state.',
+					extra: { context, event },
+					tags: { stateMachine: 'summary' }
+				}),
 
-      notifyPrerequisitesMet: () => send('VERIFICATION_SUCCESS'),
+			notifyPrerequisitesMet: () => send('VERIFICATION_SUCCESS'),
 
-      setStepsMachine: assign({
-        stepsMachine: context => spawn(stepsMachine),
-      }),
+			setStepsMachine: assign({
+				stepsMachine: (context) => spawn(stepsMachine)
+			}),
 
-      setPrerequisitesMet: assign({
-        prerequisitesMet: () => true,
-      }),
-    },
-  };
+			setPrerequisitesMet: assign({
+				prerequisitesMet: () => true
+			})
+		}
+	};
 }
 
 function create(stepsMachine) {
-  const services = createServices(stepsMachine);
-  return Machine({ ...createConfig() }, { ...services });
+	const services = createServices(stepsMachine);
+	return createMachine({ ...createConfig() }, { ...services });
 }
 
 export default create;

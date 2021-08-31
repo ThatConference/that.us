@@ -1,6 +1,6 @@
-import { getClient } from '@urql/svelte';
-import { Machine, assign } from 'xstate';
+import { createMachine, assign } from 'xstate';
 
+import gFetch from '$utilities/gFetch';
 import { log } from '$utils/error';
 
 import apiConfig from '$machines/api';
@@ -31,9 +31,9 @@ function createServices(client) {
 	};
 }
 
-function create(meta, client = getClient()) {
+function create(meta, client = gFetch()) {
 	const services = createServices(client);
-	return Machine({ ...apiConfig(meta) }, { ...services });
+	return createMachine({ ...apiConfig(meta) }, { ...services });
 }
 
 export default create;

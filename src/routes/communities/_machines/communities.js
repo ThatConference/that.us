@@ -1,13 +1,13 @@
-import { getClient } from '@urql/svelte';
-import { Machine, assign } from 'xstate';
+import { createMachine, assign } from 'xstate';
 import { uniqBy } from 'lodash';
 
+import gFetch from '$utils/gFetch';
 import { log } from '$utils/error';
 import createPagingConfig from '$machines/paging';
 import communitiesApi from '$dataSources/api.that.tech/community/queries';
 
 function createServices() {
-	const { queryNextAllCommunities, queryAllCommunities } = communitiesApi(getClient());
+	const { queryNextAllCommunities, queryAllCommunities } = communitiesApi(gFetch());
 
 	return {
 		guards: {
@@ -44,7 +44,7 @@ function createServices() {
 
 function create() {
 	const services = createServices();
-	return Machine({ ...createPagingConfig() }, { ...services });
+	return createMachine({ ...createPagingConfig() }, { ...services });
 }
 
 export default create;

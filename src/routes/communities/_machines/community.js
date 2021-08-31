@@ -1,7 +1,7 @@
-import { getClient } from '@urql/svelte';
-import { Machine, assign, spawn, send } from 'xstate';
+import { createMachine, assign, spawn, send } from 'xstate';
 import { goto } from '$app/navigation';
 
+import gFetch from '$utils/gFetch';
 import { isValidSlug } from '$machines/guards/slug';
 import { log } from '$utils/error';
 import createFollowMachine from './followers';
@@ -24,14 +24,14 @@ send('AUTHENTICATED', {status: true})
 
 */
 
-function createMachine(slug) {
-	const client = getClient();
+function create(slug) {
+	const client = gFetch();
 
 	const { toggleFollow } = communityMutationApi(client);
 	const { queryCommunityBySlug } = communityQueryApi(client);
 	const { queryMeFollowingCommunities } = meQueryApi(client);
 
-	return Machine(
+	return createMachine(
 		{
 			id: 'community',
 			initial: 'validating',
@@ -286,4 +286,4 @@ function createMachine(slug) {
 	);
 }
 
-export default createMachine;
+export default create;

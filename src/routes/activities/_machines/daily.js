@@ -1,14 +1,14 @@
-import { getClient } from '@urql/svelte';
-import { Machine, assign } from 'xstate';
+import { createMachine, assign } from 'xstate';
 import { uniqBy } from 'lodash';
 
+import gFetch from '$utils/gFetch';
 import config from '$utils/config';
 import { log } from '$utils/error';
 import createPagingConfig from '$machines/paging';
 import sessionsApi from '$dataSources/api.that.tech/sessions';
 
 function createServices() {
-	const { querySessionsByDate, queryNextSessions } = sessionsApi(getClient());
+	const { querySessionsByDate, queryNextSessions } = sessionsApi(gFetch());
 
 	return {
 		guards: {
@@ -54,7 +54,7 @@ function createServices() {
 
 function create() {
 	const services = createServices();
-	return Machine(
+	return createMachine(
 		{ ...createPagingConfig({ eventId: config.eventId, events: [] }) },
 		{ ...services }
 	);

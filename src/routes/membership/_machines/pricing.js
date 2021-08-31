@@ -1,12 +1,13 @@
-import { Machine, assign } from 'xstate';
-import { getClient } from '@urql/svelte';
+import { createMachine, assign } from 'xstate';
 
-import createConfig from './pricingConfig';
+import gFetch from '$utilities/gFetch';
 import productsQueryApi from '$dataSources/api.that.tech/products/queries';
 import { log } from '$utils/error';
 
+import createConfig from './pricingConfig';
+
 function createServices() {
-	const { queryProductsByEvent } = productsQueryApi(getClient());
+	const { queryProductsByEvent } = productsQueryApi(gFetch());
 
 	return {
 		guards: {},
@@ -32,7 +33,7 @@ function createServices() {
 
 function create(eventId) {
 	const services = createServices();
-	return Machine({ ...createConfig(eventId) }, { ...services });
+	return createMachine({ ...createConfig(eventId) }, { ...services });
 }
 
 export default create;

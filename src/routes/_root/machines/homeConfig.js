@@ -11,22 +11,13 @@ function createConfig(metaContext) {
 
 		states: {
 			init: {
-				meta: {
-					message: 'loading community data'
-				},
-				on: {
-					always: {
-						actions: ['createActors'],
-						target: 'loaded'
-					}
+				always: {
+					actions: ['createActors'],
+					target: 'loaded'
 				}
 			},
 
-			loaded: {
-				meta: {
-					message: 'loading community data'
-				}
-			},
+			loaded: {},
 
 			error: {
 				entry: 'logError',

@@ -1,6 +1,6 @@
-import { getClient } from '@urql/svelte';
-import { Machine, assign } from 'xstate';
+import { createMachine, assign } from 'xstate';
 
+import gFetch from '$utilities/gFetch';
 import { log } from '$utils/error';
 import createPagingConfig from '$machines/paging';
 import memberQueryApi from '$dataSources/api.that.tech/members/queries';
@@ -41,9 +41,9 @@ function createServices(client) {
 	};
 }
 
-function create(meta, client = getClient()) {
+function create(meta, client = gFetch()) {
 	const services = createServices(client);
-	return Machine({ ...createPagingConfig(meta) }, { ...services });
+	return createMachine({ ...createPagingConfig(meta) }, { ...services });
 }
 
 export default create;
