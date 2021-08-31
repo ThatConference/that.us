@@ -126,6 +126,10 @@
 	// }
 </script>
 
+<svelte:head>
+	<script src="https://js.stripe.com/v3" async></script>
+</svelte:head>
+
 <div>
 	<slot />
 	<Tailwindcss />

@@ -33,9 +33,6 @@
 	{#each metaTags as tag}
 		<meta {...tag} />
 	{/each}
-
-	<script src="https://js.stripe.com/v3/">
-	</script>
 </svelte:head>
 
 {#if ['waiting', 'ready'].some($state.matches)}

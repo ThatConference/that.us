@@ -1,16 +1,15 @@
 <script>
-	import { getContext } from 'svelte';
+	import { onMount, getContext } from 'svelte';
 	import * as Sentry from '@sentry/browser';
+	import { loadStripe } from '@stripe/stripe-js';
 
 	import config from '$utils/config';
 	import { Cart as CartModal } from '$elements/modals';
 	import { Standard as StandardButton } from '$elements/buttons';
 	import { Standard as StandardLink } from '$elements/links';
 	import orderMutations from '$dataSources/api.that.tech/orders/mutations';
-
 	import CartItem from './_CartItem.svelte';
 
-	const stripe = Stripe(config.stripeKey);
 	const { state, send } = getContext('cart');
 
 	function handleCheckout() {
@@ -45,6 +44,7 @@
 			});
 	}
 
+	let stripe;
 	let orderTotal = 0.0;
 
 	$: if ($state.context.cart) {
@@ -56,6 +56,10 @@
 			return acc + lineTotal;
 		}, 0.0);
 	}
+
+	onMount(async () => {
+		stripe = await loadStripe(config.stripeKey);
+	});
 
 	function showBackground(i) {
 		const result = i % 2;
@@ -76,11 +80,10 @@
 	}
 </script>
 
-<!-- 
 <svelte:head>
-	<script src="https://js.stripe.com/v3/">
+	<script src="https://js.stripe.com/v3/" async>
 	</script>
-</svelte:head> -->
+</svelte:head>
 
 {#if $state.matches('cart.cartError.invalidEvent')}
 	<CartModal

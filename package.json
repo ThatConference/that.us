@@ -28,6 +28,7 @@
     "@okrad/svelte-progressbar": "^1.11.2",
     "@sentry/browser": "^6.11.0",
     "@sentry/tracing": "^6.11.0",
+    "@stripe/stripe-js": "^1.17.1",
     "@sveltejs/adapter-netlify": "next",
     "@sveltejs/adapter-node": "next",
     "@sveltejs/kit": "next",
