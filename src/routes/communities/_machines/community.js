@@ -54,17 +54,15 @@ function create(slug) {
 					meta: {
 						message: 'validating community slug'
 					},
-					on: {
-						'': [
-							{
-								cond: 'isValidSlug',
-								target: 'loading'
-							},
-							{
-								target: 'notFound'
-							}
-						]
-					}
+					always: [
+						{
+							cond: 'isValidSlug',
+							target: 'loading'
+						},
+						{
+							target: 'notFound'
+						}
+					]
 				},
 
 				loading: {
@@ -115,18 +113,16 @@ function create(slug) {
 							meta: {
 								message: 'user security status is unknown.'
 							},
-							on: {
-								'': [
-									{
-										cond: 'isAuthenticated',
-										target: 'authenticated'
-									},
-									{
-										cond: 'isUnAuthenticated',
-										target: 'unAuthenticated'
-									}
-								]
-							}
+							always: [
+								{
+									cond: 'isAuthenticated',
+									target: 'authenticated'
+								},
+								{
+									cond: 'isUnAuthenticated',
+									target: 'unAuthenticated'
+								}
+							]
 						},
 
 						authenticated: {

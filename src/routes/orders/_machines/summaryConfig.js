@@ -7,41 +7,39 @@
 */
 
 function createConfig() {
-  return {
-    id: 'Order_Summary',
-    initial: 'init',
-    context: {
-      prerequisitesMet: false,
-      stepsMachine: null,
-    },
+	return {
+		id: 'Order_Summary',
+		initial: 'init',
+		context: {
+			prerequisitesMet: false,
+			stepsMachine: null
+		},
 
-    on: {
-      PREREQUISITES_MET: {
-        actions: ['setPrerequisitesMet'],
-        target: 'ready',
-      },
-    },
+		on: {
+			PREREQUISITES_MET: {
+				actions: ['setPrerequisitesMet'],
+				target: 'ready'
+			}
+		},
 
-    states: {
-      init: {
-        on: {
-          '': {
-            actions: ['setStepsMachine'],
-            target: 'waiting',
-          },
-        },
-      },
-      waiting: {},
-      ready: {
-        entry: 'notifyPrerequisitesMet',
-      },
+		states: {
+			init: {
+				always: {
+					actions: ['setStepsMachine'],
+					target: 'waiting'
+				}
+			},
+			waiting: {},
+			ready: {
+				entry: 'notifyPrerequisitesMet'
+			},
 
-      error: {
-        entry: 'logError',
-        type: 'final',
-      },
-    },
-  };
+			error: {
+				entry: 'logError',
+				type: 'final'
+			}
+		}
+	};
 }
 
 export default createConfig;

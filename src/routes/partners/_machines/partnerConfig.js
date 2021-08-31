@@ -10,163 +10,159 @@
 */
 
 function createConfig(slug) {
-  return {
-    id: 'profile',
-    initial: 'validating',
+	return {
+		id: 'profile',
+		initial: 'validating',
 
-    context: {
-      slug: slug || undefined,
-      profile: undefined,
-      isAuthenticated: false,
-      followMachineServices: undefined,
-    },
+		context: {
+			slug: slug || undefined,
+			profile: undefined,
+			isAuthenticated: false,
+			followMachineServices: undefined
+		},
 
-    on: {
-      AUTHENTICATED: {
-        actions: ['setIsAuthenticated'],
-      },
-    },
+		on: {
+			AUTHENTICATED: {
+				actions: ['setIsAuthenticated']
+			}
+		},
 
-    states: {
-      validating: {
-        on: {
-          '': [
-            {
-              cond: 'isValidSlug',
-              target: 'loading',
-            },
-            {
-              target: 'notFound',
-            },
-          ],
-        },
-      },
-      loading: {
-        invoke: {
-          id: 'queryProfile',
-          src: 'queryProfile',
-          onDone: [
-            {
-              cond: 'profileFound',
-              actions: ['queryProfileSuccess', 'createFollowMachineServices'],
-              target: 'profileLoaded',
-            },
-            {
-              cond: 'profileNotFound',
-              target: 'notFound',
-            },
-          ],
-          onError: 'error',
-        },
-      },
+		states: {
+			validating: {
+				always: [
+					{
+						cond: 'isValidSlug',
+						target: 'loading'
+					},
+					{
+						target: 'notFound'
+					}
+				]
+			},
+			loading: {
+				invoke: {
+					id: 'queryProfile',
+					src: 'queryProfile',
+					onDone: [
+						{
+							cond: 'profileFound',
+							actions: ['queryProfileSuccess', 'createFollowMachineServices'],
+							target: 'profileLoaded'
+						},
+						{
+							cond: 'profileNotFound',
+							target: 'notFound'
+						}
+					],
+					onError: 'error'
+				}
+			},
 
-      profileLoaded: {
-        initial: 'unknown',
+			profileLoaded: {
+				initial: 'unknown',
 
-        on: {
-          AUTHENTICATED: {
-            actions: ['setIsAuthenticated'],
-            target: '.unknown',
-          },
-        },
+				on: {
+					AUTHENTICATED: {
+						actions: ['setIsAuthenticated'],
+						target: '.unknown'
+					}
+				},
 
-        states: {
-          unknown: {
-            on: {
-              '': [
-                {
-                  cond: 'isAuthenticated',
-                  target: 'authenticated',
-                },
-                {
-                  cond: 'isUnAuthenticated',
-                  target: 'unAuthenticated',
-                },
-              ],
-            },
-          },
+				states: {
+					unknown: {
+						always: [
+							{
+								cond: 'isAuthenticated',
+								target: 'authenticated'
+							},
+							{
+								cond: 'isUnAuthenticated',
+								target: 'unAuthenticated'
+							}
+						]
+					},
 
-          authenticated: {
-            initial: 'loadFollowing',
+					authenticated: {
+						initial: 'loadFollowing',
 
-            on: {
-              FOLLOW: '.toggleFollow',
-              XCHANGE_CONTACT: '.addContact',
-            },
+						on: {
+							FOLLOW: '.toggleFollow',
+							XCHANGE_CONTACT: '.addContact'
+						},
 
-            states: {
-              loadFollowing: {
-                invoke: {
-                  id: 'queryMyFollowing',
-                  src: 'queryMyFollowing',
-                  onDone: [
-                    {
-                      actions: ['queryMyFollowingSuccess'],
-                      target: 'loaded',
-                    },
-                  ],
+						states: {
+							loadFollowing: {
+								invoke: {
+									id: 'queryMyFollowing',
+									src: 'queryMyFollowing',
+									onDone: [
+										{
+											actions: ['queryMyFollowingSuccess'],
+											target: 'loaded'
+										}
+									],
 
-                  onError: {
-                    target: 'error',
-                  },
-                },
-              },
+									onError: {
+										target: 'error'
+									}
+								}
+							},
 
-              toggleFollow: {
-                invoke: {
-                  id: 'toggleFollow',
-                  src: 'toggleFollow',
-                  onDone: [
-                    {
-                      actions: ['refreshFollowers'],
-                      target: 'loadFollowing',
-                    },
-                  ],
-                  onError: {
-                    target: 'error',
-                  },
-                },
-              },
+							toggleFollow: {
+								invoke: {
+									id: 'toggleFollow',
+									src: 'toggleFollow',
+									onDone: [
+										{
+											actions: ['refreshFollowers'],
+											target: 'loadFollowing'
+										}
+									],
+									onError: {
+										target: 'error'
+									}
+								}
+							},
 
-              addContact: {
-                invoke: {
-                  id: 'addLeadMutate',
-                  src: 'addLeadMutate',
-                  onDone: [
-                    {
-                      actions: ['addLeadSuccess'],
-                      target: 'loaded',
-                    },
-                  ],
-                  onError: {
-                    target: 'error',
-                  },
-                },
-              },
+							addContact: {
+								invoke: {
+									id: 'addLeadMutate',
+									src: 'addLeadMutate',
+									onDone: [
+										{
+											actions: ['addLeadSuccess'],
+											target: 'loaded'
+										}
+									],
+									onError: {
+										target: 'error'
+									}
+								}
+							},
 
-              loaded: {},
+							loaded: {},
 
-              error: {
-                entry: 'logError',
-                type: 'final',
-              },
-            },
-          },
-          unAuthenticated: {},
-        },
-      },
+							error: {
+								entry: 'logError',
+								type: 'final'
+							}
+						}
+					},
+					unAuthenticated: {}
+				}
+			},
 
-      notFound: {
-        entry: 'notFound',
-        type: 'final',
-      },
+			notFound: {
+				entry: 'notFound',
+				type: 'final'
+			},
 
-      error: {
-        entry: 'logError',
-        type: 'final',
-      },
-    },
-  };
+			error: {
+				entry: 'logError',
+				type: 'final'
+			}
+		}
+	};
 }
 
 export default createConfig;
