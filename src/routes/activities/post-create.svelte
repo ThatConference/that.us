@@ -1,5 +1,5 @@
 <script>
-  import Create from './Create.svelte';
+	import Create from './create.svelte';
 </script>
 
-<Create isBackdoor="{true}" />
+<Create isBackdoor={true} />
