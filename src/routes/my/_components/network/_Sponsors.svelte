@@ -1,5 +1,4 @@
 <script>
-	import { getClient } from '@urql/svelte';
 	import dayjs from 'dayjs';
 	import { Circle3 } from 'svelte-loading-spinners';
 	import { sortBy } from 'lodash';
@@ -7,7 +6,7 @@
 	import meNetworkQueryApi from '$dataSources/api.that.tech/me/network/queries';
 	import metaTagsStore from '$stores/metaTags';
 
-	const { queryMySponsorNetwork } = meNetworkQueryApi(getClient());
+	const { queryMySponsorNetwork } = meNetworkQueryApi();
 
 	metaTagsStore.set({
 		title: 'Your Sponsor Network - THAT',

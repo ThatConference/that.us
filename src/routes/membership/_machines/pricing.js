@@ -1,13 +1,12 @@
 import { createMachine, assign } from 'xstate';
 
-import gFetch from '$utilities/gFetch';
 import productsQueryApi from '$dataSources/api.that.tech/products/queries';
 import { log } from '$utils/error';
 
 import createConfig from './pricingConfig';
 
 function createServices() {
-	const { queryProductsByEvent } = productsQueryApi(gFetch());
+	const { queryProductsByEvent } = productsQueryApi();
 
 	return {
 		guards: {},

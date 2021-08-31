@@ -1,5 +1,4 @@
 <script>
-	import { getClient } from '@urql/svelte';
 	import dayjs from 'dayjs';
 	import { page } from '$app/stores';
 
@@ -26,7 +25,7 @@
 	});
 
 	function queryEvent() {
-		return eventsApi(getClient()).queryEventForCfp(eventSlug);
+		return eventsApi().queryEventForCfp(eventSlug);
 	}
 </script>
 

@@ -1,6 +1,5 @@
 <script>
 	import { getContext } from 'svelte';
-	import { getClient } from '@urql/svelte';
 	import * as Sentry from '@sentry/browser';
 
 	import config from '$utils/config';
@@ -12,7 +11,6 @@
 	import CartItem from './_CartItem.svelte';
 
 	const stripe = Stripe(config.stripeKey);
-	const client = getClient();
 	const { state, send } = getContext('cart');
 
 	function handleCheckout() {
@@ -33,7 +31,7 @@
 
 		Sentry.setContext('lineItems', lineItems);
 
-		return orderMutations(client)
+		return orderMutations()
 			.createCheckoutSession(eventId, lineItems)
 			.then((session) => stripe.redirectToCheckout({ sessionId: session }))
 			.then(function (result) {

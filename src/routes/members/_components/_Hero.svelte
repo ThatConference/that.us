@@ -10,13 +10,14 @@
 	import dayjs from 'dayjs';
 
 	import config from '$utils/config';
-	import { isAuthenticated } from '$utils/security.js';
+	import { getAuth } from '$utils/security';
 
 	import { Tag } from '$elements';
 	import { Standard as StandardButton } from '$elements/buttons';
 	import Header from '$elements/layouts/profile/_Header.svelte';
 	import { SocialLink } from '$components/social';
 
+	const { isAuthenticated } = getAuth();
 	const dispatch = createEventDispatcher();
 
 	let imageCrop = '?mask=ellipse&w=500&h=500&fit=crop';

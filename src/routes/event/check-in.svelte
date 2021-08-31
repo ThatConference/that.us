@@ -1,5 +1,4 @@
 <script>
-	import { getClient } from '@urql/svelte';
 	import { page } from '$app/stores';
 	import { sortBy } from 'lodash';
 	import { fade } from 'svelte/transition';
@@ -23,7 +22,7 @@
 		}
 	});
 
-	const { queryEventRegistrations } = checkinQueryApi(getClient());
+	const { queryEventRegistrations } = checkinQueryApi();
 
 	function queryRegistrations() {
 		return queryEventRegistrations(eventSlug).then((r) => sortBy(r, 'member.lastName'));

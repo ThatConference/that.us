@@ -12,7 +12,6 @@
 	export let allocation;
 	export let orderId;
 
-	import { getClient } from '@urql/svelte';
 	import Icon from 'svelte-awesome';
 	import { share, refresh } from 'svelte-awesome/icons';
 	import { Form, Input } from 'sveltejs-forms';
@@ -27,7 +26,7 @@
 
 	let hasError, errorMessage;
 	let { event, product } = allocation;
-	let { allocateTicket } = orderMutationApi(getClient());
+	let { allocateTicket } = orderMutationApi();
 
 	let allocatedTo = '';
 	let isAllocated = allocation.isAllocated;

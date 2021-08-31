@@ -1,6 +1,4 @@
 <script>
-	import { getClient } from '@urql/svelte';
-
 	import seoMetaTags from '$utils/seo/metaTags';
 	import submissionsApi from '$dataSources/api.that.tech/submissions';
 
@@ -24,7 +22,7 @@
 		noindex: true
 	});
 
-	const { queryMySubmissions } = submissionsApi(getClient());
+	const { queryMySubmissions } = submissionsApi();
 	const query = queryMySubmissions();
 </script>
 

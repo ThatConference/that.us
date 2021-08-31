@@ -3,7 +3,6 @@
 	export let profile;
 	export let isNewProfile;
 
-	import { getClient } from '@urql/svelte';
 	import Icon from 'svelte-awesome';
 	import {
 		linkedin,
@@ -75,7 +74,7 @@
 		}
 	];
 
-	const { isSlugTaken } = memberApi(getClient());
+	const { isSlugTaken } = memberApi();
 
 	let initialValues;
 	let profileImageUploading;

@@ -12,7 +12,6 @@
 	import Fuse from 'fuse.js'; // https://fusejs.io/api/options.html
 	import Icon from 'svelte-awesome';
 	import { filter as filterIcon } from 'svelte-awesome/icons';
-	import { getClient } from '@urql/svelte';
 	import { Circle3 } from 'svelte-loading-spinners';
 	import advancedFormat from 'dayjs/plugin/advancedFormat';
 
@@ -24,7 +23,7 @@
 
 	dayjs.extend(advancedFormat);
 
-	const { querySessionDropDownValues } = sessionsQueryApi(getClient());
+	const { querySessionDropDownValues } = sessionsQueryApi();
 
 	function getSessionLookupValues() {
 		return querySessionDropDownValues();

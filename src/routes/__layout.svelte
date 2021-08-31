@@ -11,7 +11,7 @@
 	import LogRocket from 'logrocket';
 	import { isEmpty } from 'lodash';
 
-	import { createAuth } from '$utils/security.js';
+	import { createAuth } from '$utils/security';
 	import config from '$utils/config';
 	import cart from '$utils/cart';
 

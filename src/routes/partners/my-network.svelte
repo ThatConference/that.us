@@ -1,5 +1,4 @@
 <script>
-	import { getClient } from '@urql/svelte';
 	import { Circle3 } from 'svelte-loading-spinners';
 	import dayjs from 'dayjs';
 	import { sortBy } from 'lodash';
@@ -21,7 +20,7 @@
 		nofollow: true
 	});
 
-	const { queryMyNetwork } = partnerNetworkApi(getClient());
+	const { queryMyNetwork } = partnerNetworkApi();
 
 	function queryNetwork() {
 		return queryMyNetwork().then((r) => sortBy(r, 'createdAt').reverse());
