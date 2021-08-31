@@ -7,7 +7,6 @@
 	import memberApi from '$dataSources/api.that.tech/members/mutations';
 	import logEvent from '$utils/eventTrack';
 	import { getAuth } from '$utils/security';
-	import metaTagsStore from '$stores/metaTags';
 
 	const { user, thatProfile } = getAuth();
 	const { createProfile, updateProfile } = memberApi();
@@ -64,16 +63,17 @@
 		goto(`/activities`, { replace: true });
 	}
 
-	metaTagsStore.set({
-		title: 'Your Profile - THAT',
-		description: 'Create or update your THAT profile.',
-		nofollow: true,
-		noindex: true,
-		openGraph: {
-			type: 'website',
-			url: `https://that.us/my/profiles/primary`
-		}
-	});
+	// todo add seo
+	// metaTagsStore.set({
+	// 	title: 'Your Profile - THAT',
+	// 	description: 'Create or update your THAT profile.',
+	// 	nofollow: true,
+	// 	noindex: true,
+	// 	openGraph: {
+	// 		type: 'website',
+	// 		url: `https://that.us/my/profiles/primary`
+	// 	}
+	// });
 </script>
 
 <ProfileForm

@@ -13,7 +13,7 @@
 
 	import { CheckFull } from '$elements/svgs';
 	import eventsApi from '$dataSources/api.that.tech/events/queries';
-	import config from '../../../../config';
+	import config from '$utils/config';
 
 	import EventNoAccess from './components/_EventNoAccess.svelte';
 

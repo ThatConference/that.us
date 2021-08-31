@@ -4,20 +4,20 @@
 	import { sortBy } from 'lodash';
 
 	import meNetworkQueryApi from '$dataSources/api.that.tech/me/network/queries';
-	import metaTagsStore from '$stores/metaTags';
 
 	const { queryMySponsorNetwork } = meNetworkQueryApi();
 
-	metaTagsStore.set({
-		title: 'Your Sponsor Network - THAT',
-		description: '',
-		nofollow: true,
-		noindex: true,
-		openGraph: {
-			type: 'website',
-			url: `https://that.us/my/network/sponsors`
-		}
-	});
+	//todo add seo
+	// metaTagsStore.set({
+	// 	title: 'Your Sponsor Network - THAT',
+	// 	description: '',
+	// 	nofollow: true,
+	// 	noindex: true,
+	// 	openGraph: {
+	// 		type: 'website',
+	// 		url: `https://that.us/my/network/sponsors`
+	// 	}
+	// });
 
 	function queryMyNetwork() {
 		return queryMySponsorNetwork().then((r) => sortBy(r, 'createdAt').reverse());

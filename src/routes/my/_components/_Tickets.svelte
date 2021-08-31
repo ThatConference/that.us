@@ -5,23 +5,23 @@
 	import { sortBy } from 'lodash';
 
 	import { Waiting } from '$elements';
-
 	import { debug } from '$utils/config';
-	import metaTagsStore from '$stores/metaTags';
-	import createMachine from '../machines/allocations';
+
+	import createMachine from '../_machines/allocations';
 
 	dayjs.extend(isBetween);
 
-	metaTagsStore.set({
-		title: 'Event Tickets - THAT',
-		description: 'View your event tickets.',
-		nofollow: true,
-		noindex: true,
-		openGraph: {
-			type: 'website',
-			url: `https://that.us/my/settings/order-history`
-		}
-	});
+	// todo.. add seo
+	// metaTagsStore.set({
+	// 	title: 'Event Tickets - THAT',
+	// 	description: 'View your event tickets.',
+	// 	nofollow: true,
+	// 	noindex: true,
+	// 	openGraph: {
+	// 		type: 'website',
+	// 		url: `https://that.us/my/settings/order-history`
+	// 	}
+	// });
 
 	const { state } = useMachine(createMachine(), {
 		devTools: debug.xstate

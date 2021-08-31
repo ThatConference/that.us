@@ -1,5 +1,5 @@
 import gFetch from '$utils/gFetch';
-import { log } from '../utilities/error';
+import { log } from '../../utilities/error';
 
 export const MUTATION_ADD_PIN = `
   mutation MUTATION_ADD_PIN($leadInput: PartnerLeadCreateInput!) {

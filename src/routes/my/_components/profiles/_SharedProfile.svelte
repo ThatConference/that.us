@@ -7,7 +7,6 @@
 
 	import meQueryApi from '$dataSources/api.that.tech/me/queries';
 	import meMutationsApi from '$dataSources/api.that.tech/me/mutations';
-	import metaTagsStore from '../../../../store/metaTags';
 
 	const { thatProfile } = getAuth();
 	const { queryMeSharedProfile } = meQueryApi();
@@ -21,16 +20,17 @@
 		setSubmitting(false);
 	}
 
-	metaTagsStore.set({
-		title: 'Your Shared Profile - THAT',
-		description: 'Create or update your THAT profile.',
-		nofollow: true,
-		noindex: true,
-		openGraph: {
-			type: 'website',
-			url: `https://that.us/my/profiles/shared`
-		}
-	});
+	//todo - ADD SEO
+	// metaTagsStore.set({
+	// 	title: 'Your Shared Profile - THAT',
+	// 	description: 'Create or update your THAT profile.',
+	// 	nofollow: true,
+	// 	noindex: true,
+	// 	openGraph: {
+	// 		type: 'website',
+	// 		url: `https://that.us/my/profiles/shared`
+	// 	}
+	// });
 </script>
 
 {#if !isEmpty($thatProfile)}

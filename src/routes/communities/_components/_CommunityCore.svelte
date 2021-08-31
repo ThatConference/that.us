@@ -9,10 +9,11 @@
 	import { debug } from '$utils/config';
 	import { getAuth } from '$utils/security';
 
+	import createMachine from '../_machines/community';
+
 	import NewestFollowers from './_NewestFollowers.svelte';
 	import CTA from './_CTA.svelte';
 	import Hero from './_Hero.svelte';
-	import createMachine from './machines/community';
 
 	const { isAuthenticated, token } = getAuth();
 	let metaTags;

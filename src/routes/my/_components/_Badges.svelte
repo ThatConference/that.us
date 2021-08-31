@@ -1,6 +1,5 @@
 <script>
 	// utilities
-	import metaTagsStore from '$stores/metaTags';
 	import { getAuth } from '$utils/security';
 	import { Warning } from '$elements/svgs';
 
@@ -12,16 +11,17 @@
 		awardedBadges = [...$thatProfile.earnedMeritBadges];
 	}
 
-	metaTagsStore.set({
-		title: 'Merit Badges - THAT',
-		description: "You've worked hard to earn some awesome merit badges.",
-		nofollow: true,
-		noindex: true,
-		openGraph: {
-			type: 'website',
-			url: `https://that.us/my/badges`
-		}
-	});
+	// todo - add seo
+	// metaTagsStore.set({
+	// 	title: 'Merit Badges - THAT',
+	// 	description: "You've worked hard to earn some awesome merit badges.",
+	// 	nofollow: true,
+	// 	noindex: true,
+	// 	openGraph: {
+	// 		type: 'website',
+	// 		url: `https://that.us/my/badges`
+	// 	}
+	// });
 </script>
 
 <div>

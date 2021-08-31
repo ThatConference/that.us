@@ -3,7 +3,7 @@
 	import { useMachine } from 'xstate-svelte';
 
 	import seoMetaTags from '$utils/seo/metaTags';
-	import { debug } from '$utils/sconfig';
+	import { debug } from '$utils/config';
 	import { Waiting } from '$elements';
 	import Layout from '$elements/layouts/ContentLayout.svelte';
 	import CommunityCard from '$components/communities/CommunityCard.svelte';

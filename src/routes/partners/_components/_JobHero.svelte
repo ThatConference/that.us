@@ -1,8 +1,8 @@
 <script>
 	export let partner;
 
-	import { Standard as StandardLink } from '$/elements/links';
-	import { SocialLink } from '$/components/social';
+	import { Standard as StandardLink } from '$elements/links';
+	import { SocialLink } from '$components/social';
 </script>
 
 <section class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

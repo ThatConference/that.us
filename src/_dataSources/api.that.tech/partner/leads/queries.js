@@ -1,5 +1,5 @@
 import gFetch from '$utils/gFetch';
-import { log } from '../utilities/error';
+import { log } from '../../utilities/error';
 
 const sharedProfileFragment = `
   fragment sharedProfileFragment on SharedProfile {  

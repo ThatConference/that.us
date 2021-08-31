@@ -8,11 +8,10 @@
 	import { ChevronRight } from '$elements/svgs';
 	import ScrollThreshold from '$components/ScrollThreshold.svelte';
 
-	import metaTagsStore from '$stores/metaTags';
 	import { debug } from '$utils/config';
-	import createMachine from '../machines/bulkAllocations';
 	import orderQueryApi from '$dataSources/api.that.tech/orders/queries';
 
+	import createMachine from '../_machines/bulkAllocations';
 	import TicketAllocation from './_TicketAllocation.svelte';
 
 	dayjs.extend(isBetween);
@@ -20,16 +19,17 @@
 	const { queryOrderReceiptUrl } = orderQueryApi();
 	let scrollThreshold = 1200;
 
-	metaTagsStore.set({
-		title: 'Order History - THAT',
-		description: 'View your bulk event tickets.',
-		nofollow: true,
-		noindex: true,
-		openGraph: {
-			type: 'website',
-			url: `https://that.us/my/settings/bulk-tickets`
-		}
-	});
+	//todo - add seo
+	// metaTagsStore.set({
+	// 	title: 'Order History - THAT',
+	// 	description: 'View your bulk event tickets.',
+	// 	nofollow: true,
+	// 	noindex: true,
+	// 	openGraph: {
+	// 		type: 'website',
+	// 		url: `https://that.us/my/settings/bulk-tickets`
+	// 	}
+	// });
 
 	const { state, send } = useMachine(createMachine(), {
 		devTools: debug.xstate

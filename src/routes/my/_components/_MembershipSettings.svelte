@@ -9,7 +9,6 @@
 
 	import { getAuth } from '$utils/security';
 	import meQueryApi from '$dataSources/api.that.tech/me/queries';
-	import metaTagsStore from '../../../store/metaTags';
 
 	const { thatProfile } = getAuth();
 	const { queryMeDiscountCodes } = meQueryApi();
@@ -18,16 +17,17 @@
 		return queryMeDiscountCodes();
 	}
 
-	metaTagsStore.set({
-		title: 'Your Membership - THAT',
-		description: 'View your membership settings.',
-		nofollow: true,
-		noindex: true,
-		openGraph: {
-			type: 'website',
-			url: `https://that.us/my/settings/membership`
-		}
-	});
+	// todo add seo
+	// metaTagsStore.set({
+	// 	title: 'Your Membership - THAT',
+	// 	description: 'View your membership settings.',
+	// 	nofollow: true,
+	// 	noindex: true,
+	// 	openGraph: {
+	// 		type: 'website',
+	// 		url: `https://that.us/my/settings/membership`
+	// 	}
+	// });
 
 	let copiedText;
 	let clipboard;

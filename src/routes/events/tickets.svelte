@@ -1,7 +1,7 @@
 <script>
 	import { getContext } from 'svelte';
 	import { fade } from 'svelte/transition';
-	import { goto } from '$app/nativation';
+	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 
 	import seoMetaTags from '$utils/seo/metaTags';
