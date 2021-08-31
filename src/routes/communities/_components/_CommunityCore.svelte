@@ -7,13 +7,14 @@
 	import seoMetaTags from '$utils/seo/metaTags';
 	import UpNext from '$components/activities/UpNext.svelte';
 	import { debug } from '$utils/config';
-	import { isAuthenticated, token } from '$utils/security.js';
+	import { getAuth } from '$utils/security';
 
 	import NewestFollowers from './_NewestFollowers.svelte';
 	import CTA from './_CTA.svelte';
 	import Hero from './_Hero.svelte';
 	import createMachine from './machines/community';
 
+	const { isAuthenticated, token } = getAuth();
 	let metaTags;
 
 	$: if (['communityLoaded'].some($state.matches)) {

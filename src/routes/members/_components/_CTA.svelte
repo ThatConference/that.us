@@ -4,10 +4,11 @@
 
 	import { createEventDispatcher } from 'svelte';
 
-	import { isAuthenticated, login } from '$utils/security.js';
+	import { getAuth } from '$utils/security';
 	import { CTA } from '$elements';
 	import { Standard as StandardButton } from '$elements/buttons';
 
+	const { isAuthenticated, login } = getAuth();
 	const { profileSlug } = profile;
 	const handle = `@${profileSlug}`;
 	const dispatch = createEventDispatcher();

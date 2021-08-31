@@ -3,10 +3,12 @@
 
 	import { isEmpty } from 'lodash';
 
-	import { isAuthenticated, thatProfile } from '$utils/security.js';
+	import { getAuth } from '$utils/security';
 	import { Footer } from '$components';
 	import CreateProfileNotification from '$components/notifications/CreateProfile.svelte';
 	import NoProfile from '$components/notifications/NoProfile.svelte';
+
+	const { isAuthenticated, thatProfile } = getAuth();
 </script>
 
 {#if $isAuthenticated}

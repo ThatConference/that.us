@@ -1,10 +1,13 @@
 <script>
 	// utilities
-	import metaTagsStore from '../../../store/metaTags';
-	import { thatProfile } from '$utils/security.js';
+	import metaTagsStore from '$stores/metaTags';
+	import { getAuth } from '$utils/security';
 	import { Warning } from '$elements/svgs';
 
+	const { thatProfile } = getAuth();
+
 	let awardedBadges = [];
+
 	$: if ($thatProfile?.earnedMeritBadges) {
 		awardedBadges = [...$thatProfile.earnedMeritBadges];
 	}

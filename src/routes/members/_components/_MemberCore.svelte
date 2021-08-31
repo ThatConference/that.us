@@ -6,7 +6,7 @@
 
 	import { debug } from '$utils/config';
 	import seoMetaTags from '$utils/seo/metaTags';
-	import { isAuthenticated, token } from '$utils/security.js';
+	import { getAuth } from '$utils/security';
 	import UpNextMember from '$components/activities/UpNextMember.svelte';
 
 	import createMachine from '../_machines/member';
@@ -17,6 +17,7 @@
 	import MeritBadges from './_MeritBadges.svelte';
 	import Hero from './_Hero.svelte';
 
+	const { isAuthenticated, token } = getAuth();
 	const { state, send } = useMachine(createMachine(slug), {
 		devTools: debug.xstate
 	});

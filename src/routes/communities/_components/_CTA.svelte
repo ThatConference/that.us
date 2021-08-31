@@ -7,11 +7,11 @@
 
 	import { createEventDispatcher } from 'svelte';
 
+	import { getAuth } from '$utils/security';
 	import { Standard as StandardButton } from '$elements/buttons';
 	import { CTA } from '$elements';
 
-	import { isAuthenticated, login } from '$utils/security.js';
-
+	const { isAuthenticated, login } = getAuth();
 	const dispatch = createEventDispatcher();
 </script>
 

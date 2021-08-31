@@ -24,11 +24,12 @@
 	import omitDeep from 'omit-deep';
 
 	import config from '$utils/config';
-	import { token } from '$utils/security.js';
+	import { getAuth } from '$utils/security';
 	import memberApi from '$dataSources/api.that.tech/members/queries';
 	import { Waiting } from '$elements';
 	import ErrorNotificaiton from '$components/notifications/Error.svelte';
 
+	const { token } = getAuth();
 	const socialLinks = [
 		{
 			linkType: 'GITHUB',

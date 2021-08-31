@@ -14,10 +14,11 @@
 	import WarningNotification from '$components/notifications/Warning.svelte';
 
 	import config from '$utils/config';
-	import { isAuthenticated, thatProfile, user } from '$utils/security.js';
+	import { getAuth } from '$utils/security';
 	import sessionsApi from '$dataSources/api.that.tech/sessions.js';
 	import eventsApi from '$dataSources/api.that.tech/events/queries.js';
 
+	const { isAuthenticated, thatProfile, user } = getAuth();
 	const { activityId } = $page.params;
 	const { setAttendance, querySessionById } = sessionsApi(getClient());
 	const { canAccessEvent } = eventsApi(getClient());

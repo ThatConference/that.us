@@ -57,8 +57,8 @@
 	import * as yup from 'yup';
 	import { isEmpty } from 'lodash';
 
+	import { getAuth } from '$utils/security';
 	import { Waiting, ModalError } from '$elements';
-	import { thatProfile } from '$utils/security.js';
 	import ErrorNotificaiton from '../notifications/Error.svelte';
 
 	dayjs.extend(utc);
@@ -68,7 +68,9 @@
 	dayjs.extend(isToday);
 	dayjs.extend(advancedFormat);
 
+	const { thatProfile } = getAuth();
 	const selectedTimezoneDefault = dayjs.tz.guess();
+
 	let createDisabled = true;
 	let selectedDayDefault = new Date();
 	let selectedDateValue = selectedDayDefault;

@@ -12,9 +12,11 @@
 	import { Standard as StandardButton } from '$elements/buttons';
 	import { Tag } from '$elements';
 	import Header from '$elements/layouts/profile/_Header.svelte';
-	import { isAuthenticated } from '$utils/security.js';
+	import { getAuth } from '$utils/security';
 
+	const { isAuthenticated } = getAuth();
 	const dispatch = createEventDispatcher();
+
 	let clipboard;
 	let copiedText;
 

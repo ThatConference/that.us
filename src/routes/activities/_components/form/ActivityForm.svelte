@@ -12,14 +12,13 @@
 	import { isEmpty } from 'lodash';
 	import { getClient } from '@urql/svelte';
 
-	import { openSpaces, online, standard, workshop } from './schemas';
-
-	import { formatActivityInitialInput } from './initialValues';
+	import { getAuth } from '$utils/security';
 	import { Waiting, ModalError } from '$elements';
-	import { thatProfile } from '$utils/security.js';
 	import ErrorNotificaiton from '$components/notifications/Error.svelte';
-
 	import sessionsQueryApi from '$dataSources/api.that.tech/sessions/queries';
+
+	import { openSpaces, online, standard, workshop } from './schemas';
+	import { formatActivityInitialInput } from './initialValues';
 
 	import Steps from '../_Steps.svelte';
 	import SectionTitle from './_SectionTitle.svelte';
@@ -34,6 +33,7 @@
 	import PrerequisitesSection from './_Prerequisites.svelte';
 	import TagsSection from './_Tags.svelte';
 
+	const { thatProfile } = getAuth();
 	const { querySessionDropDownValues } = sessionsQueryApi(getClient());
 	const { eventId } = $page.params;
 	const formattedInitial = formatActivityInitialInput({
