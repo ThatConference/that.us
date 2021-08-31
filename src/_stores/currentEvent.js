@@ -1,4 +1,4 @@
 import { writable } from 'svelte/store';
-import config from '../_utils/config';
+import config from '$utils/config';
 
 export default writable({ eventId: config.eventId, title: 'THAT' });

@@ -5,8 +5,8 @@
 	import { getContext } from 'svelte';
 
 	import config from '$utils/config';
-	import { Check } from '$utils/elements/svgs';
-	import { Highlight as HighlightButton } from '$utils/elements/buttons';
+	import { Check } from '$elements/svgs';
+	import { Highlight as HighlightButton } from '$elements/buttons';
 
 	const { send } = getContext('cart');
 
