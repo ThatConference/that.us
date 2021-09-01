@@ -1,9 +1,8 @@
 <script context="module">
-	import gFetch from '$utils/gfetch';
 	import membersApi from '$dataSources/api.that.tech/members/queries';
 
 	export async function load({ page, fetch, session, context }) {
-		const { queryMembers } = membersApi(gFetch(fetch));
+		const { queryMembers } = membersApi(fetch);
 
 		return {
 			props: {

@@ -1,12 +1,14 @@
 <script>
-	export let stateMachineService;
+	export let profileSlug;
 
-	import { useService } from 'xstate-svelte';
+	import { useMachine } from 'xstate-svelte';
 
 	import { debug } from '$utils/config';
 	import { FeaturedActivityDetail } from '$elements';
 
-	const { state, send } = useService(stateMachineService, {
+	import activityMachine from '../_machines/activities';
+
+	const { state, send } = useMachine(activityMachine({ profileSlug }), {
 		devTools: debug.xstate
 	});
 </script>

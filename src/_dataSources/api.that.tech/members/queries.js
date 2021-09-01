@@ -152,8 +152,8 @@ export const QUERY_NEXT_FOLLOWERS = `
   }
 `;
 
-export default () => {
-	const client = gFetch();
+export default (fetch) => {
+	const client = fetch ? gFetch(fetch) : gFetch();
 
 	const isSlugTaken = (slug) => {
 		const variables = { slug };
@@ -214,16 +214,11 @@ export default () => {
 			sessionStartDate,
 			filter
 		};
-		return client
-			.query(QUERY_MEMBER_BY_SLUG, variables, {
-				fetchOptions: { headers: { ...stripAuthorizationHeader(client) } }
-			})
-			.toPromise()
-			.then(({ data, error }) => {
-				if (error) log(error, 'query_members');
+		return client.query({ query: QUERY_MEMBER_BY_SLUG, variables }).then(({ data, error }) => {
+			if (error) log(error, 'query_members');
 
-				return data.members.member;
-			});
+			return data.members.member;
+		});
 	};
 
 	const queryMemberActivities = (
@@ -237,12 +232,10 @@ export default () => {
 			filter
 		};
 		return client
-			.query(QUERY_MEMBER_ACTIVITIES, variables, {
-				fetchOptions: { headers: { ...stripAuthorizationHeader(client) } }
-			})
-			.toPromise()
+			.query({ query: QUERY_MEMBER_ACTIVITIES, variables })
+
 			.then(({ data, error }) => {
-				if (error) log(error, 'query_members');
+				if (error) log(error, 'QUERY_MEMBER_ACTIVITIES');
 
 				return data.members.member.sessions;
 			});
@@ -273,18 +266,13 @@ export default () => {
 	const queryFollowers = (slug) => {
 		const variables = { slug };
 
-		return client
-			.query(QUERY_FOLLOWERS, variables, {
-				fetchOptions: { headers: { ...stripAuthorizationHeader(client) } }
-			})
-			.toPromise()
-			.then(({ data, error }) => {
-				if (error) log(error, 'query_members');
+		return client.query({ query: QUERY_FOLLOWERS, variables }).then(({ data, error }) => {
+			if (error) log(error, 'query_members');
 
-				const { member } = data.members;
+			const { member } = data.members;
 
-				return member || null; // followerCount and followers are in partner
-			});
+			return member || []; // followerCount and followers are in partner
+		});
 	};
 
 	const queryNextFollowers = (id, cursor) => {

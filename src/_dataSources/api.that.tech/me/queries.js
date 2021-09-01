@@ -72,8 +72,8 @@ export const QUERY_ME_SHARED_PROFILE = `
   }
 `;
 
-export default () => {
-	const client = gFetch();
+export default (fetch) => {
+	const client = fetch ? gFetch(fetch) : gFetch();
 
 	const queryMeFollowingCommunities = () => {
 		const variables = {};
@@ -91,10 +91,9 @@ export default () => {
 	const queryMeFollowingMembers = () => {
 		const variables = {};
 		return client
-			.query(QUERY_ME_FOLLOWING_MEMBERS, variables)
-			.toPromise()
+			.query({ query: QUERY_ME_FOLLOWING_MEMBERS, variables })
 			.then(({ data, error }) => {
-				if (error) log(error, 'query_me');
+				if (error) log(error, 'QUERY_ME_FOLLOWING_MEMBERS');
 
 				const { me } = data.members;
 				return me ? me.following.ids : [];

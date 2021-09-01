@@ -8,10 +8,10 @@
 	import { CTA } from '$elements';
 	import { Standard as StandardButton } from '$elements/buttons';
 
-	const { isAuthenticated, login } = getAuth();
-	const { profileSlug } = profile;
-	const handle = `@${profileSlug}`;
 	const dispatch = createEventDispatcher();
+	const { isAuthenticated, login } = getAuth();
+
+	$: handle = `@${profile.profileSlug}`;
 </script>
 
 <CTA>

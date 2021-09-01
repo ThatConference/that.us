@@ -2,43 +2,24 @@
 	export let member;
 	export let isFollowing = false;
 
-	import { onMount, onDestroy, createEventDispatcher } from 'svelte';
+	import { createEventDispatcher } from 'svelte';
 	import { fade } from 'svelte/transition';
-	import Icon from 'svelte-awesome';
-	import { share } from 'svelte-awesome/icons';
-	import Clipboard from 'clipboard';
 	import dayjs from 'dayjs';
 
 	import config from '$utils/config';
 	import { getAuth } from '$utils/security';
-
 	import { Tag } from '$elements';
-	import { Standard as StandardButton } from '$elements/buttons';
 	import Header from '$elements/layouts/profile/_Header.svelte';
+	import { Standard as StandardButton } from '$elements/buttons';
 	import { SocialLink } from '$components/social';
 
-	const { isAuthenticated } = getAuth();
 	const dispatch = createEventDispatcher();
+	const { isAuthenticated } = getAuth();
+	const imageCrop = '?mask=ellipse&w=500&h=500&fit=crop';
 
-	let imageCrop = '?mask=ellipse&w=500&h=500&fit=crop';
-	let userProfileImage = member.profileImage
+	$: userProfileImage = member.profileImage
 		? `${member.profileImage}${imageCrop}`
 		: config.defaultProfileImage;
-
-	let clipboard;
-	let copiedText;
-
-	onMount(() => {
-		clipboard = new Clipboard('#shareUrl');
-
-		clipboard.on('success', function (e) {
-			copiedText = 'Copied!';
-		});
-	});
-
-	onDestroy(() => {
-		clipboard.destroy();
-	});
 </script>
 
 <section class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -49,7 +30,6 @@
 					class="mx-auto h-40 w-40 rounded-full xl:w-56 xl:h-56"
 					src={userProfileImage}
 					alt={`${member.firstName} ${member.lastName}`}
-					loading="lazy"
 				/>
 			</div>
 			<div>
@@ -77,22 +57,6 @@
 					</div>
 
 					<div class="flex justify-end space-x-4">
-						<button
-							id="shareUrl"
-							data-clipboard-text={`https://that.us/members/${member.profileSlug}`}
-							class="px-4 py-2 rounded-md shadow text-base leading-6 font-medium border-2
-              border-thatBlue-500 text-thatBlue-500 bg-white hover:bg-thatBlue-500
-              hover:text-white focus:bg-thatBlue-500 focus:text-white focus:outline-none
-              focus:ring-thatBlue-500 focus:border-thatBlue-800 transition
-              duration-150 ease-in-out md:text-lg md:px-10"
-						>
-							{#if copiedText}
-								<span>{copiedText}</span>
-							{:else}
-								<Icon data={share} class="" />
-							{/if}
-						</button>
-
 						{#if $isAuthenticated}
 							<StandardButton class="h-3/4" on:click={() => dispatch('TOGGLE_FOLLOW')}>
 								{#if !isFollowing}Follow{:else}Un-Follow{/if}
