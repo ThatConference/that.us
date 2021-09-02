@@ -5,7 +5,6 @@ import gFetch from '$utils/gfetch';
 import config from '$utils/config';
 
 import { log } from '../utilities/error';
-import { stripAuthorizationHeader } from '../utilities';
 
 const { uniqBy } = lodash;
 const coreFieldsFragment = `
@@ -271,85 +270,63 @@ function createSocialLinks(partner) {
 	return socialLinks;
 }
 
-export default () => {
-	const client = gFetch();
+export default (fetch) => {
+	const client = fetch ? gFetch(fetch) : gFetch();
 
 	const getPartner = (slug) => {
 		const variables = { slug };
-		return client
-			.query(QUERY_PARTNER, variables, {
-				fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
-				requestPolicy: 'cache-and-network'
-			})
-			.toPromise()
-			.then(({ data, error }) => {
-				if (error) log(error, 'query_partners');
+		return client.query({ query: QUERY_PARTNER, variables }).then(({ data, error }) => {
+			if (error) log(error, 'query_partners');
 
-				const { partner } = data.partners;
+			const { partner } = data.partners;
 
-				return partner ? { ...partner, socialLinks: createSocialLinks(partner) } : null;
-			});
+			return partner ? { ...partner, socialLinks: createSocialLinks(partner) } : null;
+		});
 	};
 
 	const queryFollowers = (id) => {
 		const variables = { id };
-		return client
-			.query(QUERY_FOLLOWERS, variables, {
-				fetchOptions: { headers: { ...stripAuthorizationHeader(client) } }
-			})
-			.toPromise()
-			.then(({ data, error }) => {
-				if (error) log(error, 'query_partners');
+		return client.query({ query: QUERY_FOLLOWERS, variables }).then(({ data, error }) => {
+			if (error) log(error, 'query_partners');
 
-				const { partner } = data.partners;
-				return partner || null; // followerCount and followers are in partner
-			});
+			const { partner } = data.partners;
+			return partner || null; // followerCount and followers are in partner
+		});
 	};
 
 	const queryNextFollowers = (id, cursor) => {
 		const variables = { id, cursor };
-		return client
-			.query(QUERY_NEXT_FOLLOWERS, variables, {
-				fetchOptions: { headers: { ...stripAuthorizationHeader(client) } }
-			})
-			.toPromise()
-			.then(({ data, error }) => {
-				if (error) log(error, 'query_partners');
+		return client.query({ query: QUERY_NEXT_FOLLOWERS, variables }).then(({ data, error }) => {
+			if (error) log(error, 'query_partners');
 
-				const { partner } = data.partners;
-				return partner ? partner.followers : [];
-			});
+			const { partner } = data.partners;
+			return partner ? partner.followers : [];
+		});
 	};
 
 	function getUpcomingPartners() {
-		return client
-			.query(QUERY_UPCOMING_PARTNERS, {
-				fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
-				requestPolicy: 'cache-and-network'
-			})
-			.toPromise()
-			.then(({ data, error }) => {
-				if (error) log(error, 'QUERY_UPCOMING_PARTNERS');
+		return client.query({ query: QUERY_UPCOMING_PARTNERS }).then(({ data, error }) => {
+			if (error) log(error, 'QUERY_UPCOMING_PARTNERS');
 
-				let results = [];
-				if (data) {
-					const { all } = data.events;
+			let results = [];
+			if (data) {
+				const { all } = data.events;
 
-					results = uniqBy(
-						all
-							.filter((e) => e.isActive)
-							.filter((e) => dayjs().isBefore(dayjs(e.endDate).add(30, 'day'), 'day'))
-							.reduce((acc, current) => [...acc, ...current.partners], [])
-							.map((p) => ({
-								...p,
-								socialLinks: createSocialLinks(p)
-							})),
-						'id'
-					);
-				}
+				results = uniqBy(
+					all
+						.filter((e) => e.isActive)
+						.filter((e) => dayjs().isBefore(dayjs(e.endDate).add(30, 'day'), 'day'))
+						.reduce((acc, current) => [...acc, ...current.partners], [])
+						.map((p) => ({
+							...p,
+							socialLinks: createSocialLinks(p)
+						})),
+					'id'
+				);
+			}
 
-				return results;
-			});
+			return results;
+		});
 	}
 
 	async function getUpcomingPartnersNext(cursor) {
@@ -357,29 +334,23 @@ export default () => {
 	}
 
 	function getPastPartners() {
-		return client
-			.query(QUERY_PAST_PARTNERS, {
-				fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
-				requestPolicy: 'cache-and-network'
-			})
-			.toPromise()
-			.then(({ data, error }) => {
-				if (error) log(error, 'QUERY_PAST_PARTNERS');
+		return client.query({ query: QUERY_PAST_PARTNERS }).then(({ data, error }) => {
+			if (error) log(error, 'QUERY_PAST_PARTNERS');
 
-				let results = [];
-				if (data) {
-					const { all } = data.partners;
-					results = uniqBy(
-						all.map((p) => ({
-							...p,
-							socialLinks: createSocialLinks(p)
-						})),
-						'id'
-					);
-				}
+			let results = [];
+			if (data) {
+				const { all } = data.partners;
+				results = uniqBy(
+					all.map((p) => ({
+						...p,
+						socialLinks: createSocialLinks(p)
+					})),
+					'id'
+				);
+			}
 
-				return results;
-			});
+			return results;
+		});
 	}
 
 	async function getPastPartnersNext(cursor) {
@@ -390,46 +361,36 @@ export default () => {
 	function getEventPartners(slug = config.eventSlug) {
 		const variables = { slug };
 
-		return client
-			.query(QUERY_EVENT_PARTNERS, variables, {
-				fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
-				requestPolicy: 'cache-and-network'
-			})
-			.toPromise()
-			.then(({ data, error }) => {
-				if (error) log(error, 'QUERY_EVENT_PARTNERS');
+		return client.query({ query: QUERY_EVENT_PARTNERS, variables }).then(({ data, error }) => {
+			if (error) log(error, 'QUERY_EVENT_PARTNERS');
 
-				let results = [];
-				if (data) {
-					const { get } = data.events.event;
-					const { partners } = get;
+			let results = [];
+			if (data) {
+				const { get } = data.events.event;
+				const { partners } = get;
 
-					const modifiedPartners = partners.map((p) => ({
-						...p,
-						socialLinks: createSocialLinks(p)
-					}));
+				const modifiedPartners = partners.map((p) => ({
+					...p,
+					socialLinks: createSocialLinks(p)
+				}));
 
-					results = modifiedPartners;
+				results = modifiedPartners;
 
-					results = {
-						...get,
-						partners: [...modifiedPartners]
-					};
-				}
+				results = {
+					...get,
+					partners: [...modifiedPartners]
+				};
+			}
 
-				return results;
-			});
+			return results;
+		});
 	}
 
 	function queryPartnerDropDownValues() {
 		const variables = {};
 
 		return client
-			.query(QUERY_PARTNER_DROPDOWN_VALUES, variables, {
-				fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
-				requestPolicy: 'cache-and-network'
-			})
-			.toPromise()
+			.query({ query: QUERY_PARTNER_DROPDOWN_VALUES, variables })
 			.then(({ data, error }) => {
 				if (error) log(error, 'QUERY_PARTNER_DROPDOWN_VALUES');
 
@@ -440,21 +401,15 @@ export default () => {
 	function queryPartnerJobListing(partnerSlug, jobSlug) {
 		const variables = { partner: partnerSlug, slug: jobSlug };
 
-		return client
-			.query(QUERY_PARTNER_JOB_LISTING, variables, {
-				fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
-				requestPolicy: 'cache-and-network'
-			})
-			.toPromise()
-			.then(({ data, error }) => {
-				if (error) log(error, 'QUERY_PARTNER_JOB_LISTING');
+		return client.query({ query: QUERY_PARTNER_JOB_LISTING, variables }).then(({ data, error }) => {
+			if (error) log(error, 'QUERY_PARTNER_JOB_LISTING');
 
-				const { partner } = data.partners;
-				return {
-					...partner,
-					socialLinks: createSocialLinks(partner)
-				};
-			});
+			const { partner } = data.partners;
+			return {
+				...partner,
+				socialLinks: createSocialLinks(partner)
+			};
+		});
 	}
 
 	return {

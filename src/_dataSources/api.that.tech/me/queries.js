@@ -71,15 +71,13 @@ export const QUERY_ME_SHARED_PROFILE = `
     }
   }
 `;
-
 export default (fetch) => {
 	const client = fetch ? gFetch(fetch) : gFetch();
 
 	const queryMeFollowingCommunities = () => {
 		const variables = {};
 		return client
-			.query(QUERY_ME_FOLLOWING_COMMUNITIES, variables)
-			.toPromise()
+			.secureQuery({ query: QUERY_ME_FOLLOWING_COMMUNITIES, variables })
 			.then(({ data, error }) => {
 				if (error) log(error, 'query_me');
 
@@ -91,22 +89,21 @@ export default (fetch) => {
 	const queryMeFollowingMembers = () => {
 		const variables = {};
 		return client
-			.query({ query: QUERY_ME_FOLLOWING_MEMBERS, variables })
+			.secureQuery({ query: QUERY_ME_FOLLOWING_MEMBERS, variables })
 			.then(({ data, error }) => {
 				if (error) log(error, 'QUERY_ME_FOLLOWING_MEMBERS');
 
 				const { me } = data.members;
-				return me ? me.following.ids : [];
+				return me ? me?.following?.ids : [];
 			});
 	};
 
 	const queryMeFollowingPartners = () => {
 		const variables = {};
 		return client
-			.query(QUERY_ME_FOLLOWING_PARTNERS, variables)
-			.toPromise()
+			.secureQuery({ query: QUERY_ME_FOLLOWING_PARTNERS, variables })
 			.then(({ data, error }) => {
-				if (error) log(error, 'query_me');
+				if (error) log(error, 'QUERY_ME_FOLLOWING_PARTNERS');
 
 				const { me } = data.partners;
 				return me ? me.favorites.ids : [];
@@ -116,8 +113,7 @@ export default (fetch) => {
 	const queryMeDiscountCodes = () => {
 		const variables = {};
 		return client
-			.query(QUERY_ME_DISCOUNT_CODES, variables)
-			.toPromise()
+			.secureQuery({ query: QUERY_ME_DISCOUNT_CODES, variables })
 			.then(({ data, error }) => {
 				if (error) log(error, 'QUERY_ME_DISCOUNT_CODES');
 
@@ -128,16 +124,13 @@ export default (fetch) => {
 
 	const queryMeSharedProfile = () => {
 		const variables = {};
-		return client
-			.query(QUERY_ME_SHARED_PROFILE, variables)
-			.toPromise()
-			.then(({ data, error }) => {
-				if (error) log(error, 'QUERY_ME_SHARED_PROFILE');
+		return client.query({ query: QUERY_ME_SHARED_PROFILE, variables }).then(({ data, error }) => {
+			if (error) log(error, 'QUERY_ME_SHARED_PROFILE');
 
-				const { shared } = data.members.profiles;
+			const { shared } = data.members.profiles;
 
-				return shared;
-			});
+			return shared;
+		});
 	};
 
 	return {

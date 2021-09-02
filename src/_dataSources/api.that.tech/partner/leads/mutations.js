@@ -31,8 +31,8 @@ export const MUTATION_ADD_LEAD = `
   }
 `;
 
-export default () => {
-	const client = gFetch();
+export default (fetch) => {
+	const client = fetch ? gFetch(fetch) : gFetch();
 
 	function addPin(eventId, partnerPin, partnersNotes) {
 		const variables = {
@@ -43,21 +43,18 @@ export default () => {
 			}
 		};
 
-		return client
-			.mutation(MUTATION_ADD_PIN, variables)
-			.toPromise()
-			.then(({ data, error }) => {
-				if (error) log(error, 'MUTATION_ADD_PIN');
+		return client.mutation({ mutation: MUTATION_ADD_PIN, variables }).then(({ data, error }) => {
+			if (error) log(error, 'MUTATION_ADD_PIN');
 
-				let results;
+			let results;
 
-				if (data) {
-					const { add } = data.partners.us.leads;
-					results = add;
-				}
+			if (data) {
+				const { add } = data.partners.us.leads;
+				results = add;
+			}
 
-				return results;
-			});
+			return results;
+		});
 	}
 
 	function addLead(partnerId, eventId = '7wiuRWI7EZjcdF4e9MDz', membersNotes) {
@@ -67,21 +64,18 @@ export default () => {
 			membersNotes
 		};
 
-		return client
-			.mutation(MUTATION_ADD_LEAD, variables)
-			.toPromise()
-			.then(({ data, error }) => {
-				if (error) log(error, 'MUTATION_ADD_LEAD');
+		return client.mutation({ mutation: MUTATION_ADD_LEAD, variables }).then(({ data, error }) => {
+			if (error) log(error, 'MUTATION_ADD_LEAD');
 
-				let results;
+			let results;
 
-				if (data) {
-					const { add } = data.partners.me.leads;
-					results = add;
-				}
+			if (data) {
+				const { add } = data.partners.me.leads;
+				results = add;
+			}
 
-				return results;
-			});
+			return results;
+		});
 	}
 
 	return { addPin, addLead };

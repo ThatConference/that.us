@@ -1,5 +1,8 @@
-import config from '$utils/config';
+import { get } from 'svelte/store';
 import crossFetch from 'cross-fetch';
+
+import config from '$utils/config';
+import { token } from '$utils/security';
 
 function init(fetch, url) {
 	let _url = url || config.api;
@@ -9,8 +12,10 @@ function init(fetch, url) {
 		'Content-Type': 'application/json',
 		'that-site': 'that.us'
 		// 'that-correlation-id': createCorrelationId()
-		// authorization: $token ? `Bearer ${$token}` : '',
 	};
+
+	const t = get(token);
+	const json = (r) => r.json();
 
 	function updateHeaders(values) {
 		headers = {
@@ -29,9 +34,27 @@ function init(fetch, url) {
           `,
 				variables
 			})
-		}).then((res) => res.json());
+		}).then(json);
+	}
 
-		//todo.. we should put a catch in here and redirect to the right places.. or at least log better.
+	function secureQuery({ query, variables = {} }) {
+		// if (!t) throw new Error('no token found for user');
+
+		console.log('t:', t);
+
+		return _fetch(_url, {
+			method: 'POST',
+			headers: {
+				...headers,
+				authorization: t ? `Bearer ${t}` : ''
+			},
+			body: JSON.stringify({
+				query: `
+            ${query}
+          `,
+				variables
+			})
+		}).then(json);
 	}
 
 	function mutate({ mutation, variables = {} }) {
@@ -44,14 +67,13 @@ function init(fetch, url) {
           `,
 				variables
 			})
-		}).then((res) => res.json());
-
-		//todo.. we should put a catch in here and redirect to the right places.. or at least log better.
+		}).then(json);
 	}
 
 	return {
 		updateHeaders,
 		query,
+		secureQuery,
 		mutate
 	};
 }

@@ -13,14 +13,13 @@ export const MUTATION_FOLLOW_PARTNER_TOGGLE = `
   }
 `;
 
-export default () => {
-	const client = gFetch();
+export default (fetch) => {
+	const client = fetch ? gFetch(fetch) : gFetch();
 
 	function toggleFollow(partnerId) {
 		const variables = { partnerId };
 		return client
-			.mutation(MUTATION_FOLLOW_PARTNER_TOGGLE, variables)
-			.toPromise()
+			.mutation({ mutation: MUTATION_FOLLOW_PARTNER_TOGGLE, variables })
 			.then(({ data, error }) => {
 				if (error) log(error, 'mutate_partners');
 

@@ -1,7 +1,6 @@
 import gFetch from '$utils/gfetch';
 
 import { log } from '../utilities/error';
-import { stripAuthorizationHeader } from '../utilities';
 
 const productBaseFieldsFragment = `
   fragment productBaseFields on ProductBase {
@@ -244,8 +243,8 @@ export const QUERY_CAN_ADD_SESSION = `
   }
 `;
 
-export default () => {
-	const client = gFetch();
+export default (fetch) => {
+	const client = fetch ? gFetch(fetch) : gFetch();
 
 	function queryEventBySlug(slug) {
 		const variables = { slug };
@@ -273,7 +272,7 @@ export default () => {
 		const variables = { slug };
 
 		return client.query({ query: QUERY_EVENT_FOR_CFP, variables }).then(({ data, error }) => {
-			if (error) log(error, 'QUERY_EVENT_BY_SLUG');
+			if (error) log(error, 'QUERY_EVENT_FOR_CFP');
 
 			const { event } = data.events;
 			return event ? event.get : null;
@@ -293,26 +292,19 @@ export default () => {
 	function queryEventsByCommunity(slug = 'that') {
 		const variables = { slug };
 
-		return client
-			.query(QUERY_EVENTS_BY_COMMUNITY, variables, {
-				fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
-				requestPolicy: 'cache-and-network'
-			})
-			.toPromise()
-			.then(({ data, error }) => {
-				if (error) log(error, 'QUERY_EVENTS');
+		return client.query({ query: QUERY_EVENTS_BY_COMMUNITY, variables }).then(({ data, error }) => {
+			if (error) log(error, 'QUERY_EVENTS_BY_COMMUNITY');
 
-				const { community } = data.communities;
-				return community ? community.get.events : [];
-			});
+			const { community } = data.communities;
+			return community ? community.get.events : [];
+		});
 	}
 
 	function canAddSession(eventId) {
 		const variables = { eventId };
 
 		return client
-			.query(QUERY_CAN_ADD_SESSION, variables)
-			.toPromise()
+			.secureQuery({ query: QUERY_CAN_ADD_SESSION, variables })
 			.then(({ data, error }) => {
 				if (error) log(error, 'QUERY_CAN_ADD_SESSION');
 
@@ -325,7 +317,7 @@ export default () => {
 		const variables = { eventId };
 
 		return client
-			.query(QUERY_CAN_ACCESS_EVENT, variables)
+			.secureQuery({ query: QUERY_CAN_ACCESS_EVENT, variables })
 			.toPromise()
 			.then(({ data, error }) => {
 				if (error) log(error, 'QUERY_CAN_ACCESS_EVENT');

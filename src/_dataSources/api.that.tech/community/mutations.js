@@ -14,14 +14,13 @@ export const MUTATION_FOLLOW_COMMUNITY_TOGGLE = `
   }
 `;
 
-export default () => {
-	const client = gFetch();
+export default (fetch) => {
+	const client = fetch ? gFetch(fetch) : gFetch();
 
 	function toggleFollow(communityId) {
 		const variables = { communityId };
 		return client
-			.mutation(MUTATION_FOLLOW_COMMUNITY_TOGGLE, variables)
-			.toPromise()
+			.mutation({ mutation: MUTATION_FOLLOW_COMMUNITY_TOGGLE, variables })
 			.then(({ data, error }) => {
 				if (error) log(error, 'mutate_community');
 

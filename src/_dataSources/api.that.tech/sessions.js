@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 
 import gFetch from '$utils/gfetch';
-import { stripAuthorizationHeader } from './utilities';
+
 import { log } from './utilities/error';
 
 const defaultPageSize = 50;
@@ -288,8 +288,8 @@ export const QUERY_SESSION_BY_ID_SHORT = `
   }
 `;
 
-export default () => {
-	const client = gFetch();
+export default (fetch) => {
+	const client = fetch ? gFetch(fetch) : gFetch();
 
 	const query = (graphQuery, variables) =>
 		client.query({ query: graphQuery, variables }).then(({ data, error }) => {
@@ -322,19 +322,17 @@ export default () => {
 			sessionId
 		};
 
-		return client
-			.query({ query: QUERY_SESSION_BY_ID_SHORT, variables })
-			.toPromise()
-			.then(({ data, error }) => {
-				if (error) log(error, 'QUERY_SESSION_BY_ID_SHORT');
+		return client.query({ query: QUERY_SESSION_BY_ID_SHORT, variables }).then(({ data, error }) => {
+			if (error) log(error, 'QUERY_SESSION_BY_ID_SHORT');
 
-				const { session } = data.sessions;
-				return session || null;
-			});
+			const { session } = data.sessions;
+			return session || null;
+		});
 	};
 
-	const queryNextSessions = ({ pageSize = defaultPageSize, cursor }) =>
-		query(QUERY_NEXT_SESSIONS, { pageSize, cursor });
+	function queryNextSessions({ pageSize = defaultPageSize, cursor }) {
+		return query(QUERY_NEXT_SESSIONS, { pageSize, cursor });
+	}
 
 	function querySessionsByDate({ pageSize = defaultPageSize, asOfDate }) {
 		asOfDate = asOfDate || dayjs().startOf('day');
@@ -369,15 +367,11 @@ export default () => {
 	const getById = (sessionId) => {
 		const variables = { sessionId };
 
-		return client
-			.query(QUERY_SESSION_BY_ID, variables, {
-				fetchOptions: { headers: { ...stripAuthorizationHeader(client) } }
-			})
-			.then(({ data, error }) => {
-				if (error) log(error, 'query_sessions');
+		return client.query({ query: QUERY_SESSION_BY_ID, variables }).then(({ data, error }) => {
+			if (error) log(error, 'QUERY_SESSION_BY_ID');
 
-				return data.sessions.session;
-			});
+			return data.sessions.session;
+		});
 	};
 
 	const create = (sessionDetails, eventId) => {
@@ -388,8 +382,8 @@ export default () => {
 			}
 		};
 
-		return client.mutation(CREATE_SESSION, variables).then(({ data, error }) => {
-			if (error) log(error, 'query_sessions');
+		return client.mutation({ mutation: CREATE_SESSION, variables }).then(({ data, error }) => {
+			if (error) log(error, 'CREATE_SESSION');
 
 			return data.sessions.create.openSpace;
 		});
@@ -405,7 +399,7 @@ export default () => {
 			.mutation({ mutation: UPDATE_SESSION_BY_ID, variables })
 
 			.then(({ data, error }) => {
-				if (error) log(error, 'query_sessions');
+				if (error) log(error, 'UPDATE_SESSION_BY_ID');
 
 				return data.sessions.session.update.openSpace;
 			});

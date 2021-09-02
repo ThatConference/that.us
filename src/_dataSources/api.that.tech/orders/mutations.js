@@ -52,8 +52,8 @@ export const MUTATION_ALLOCATE_TICKET = `
   }
 `;
 
-export default () => {
-	const client = gFetch();
+export default (fetch) => {
+	const client = fetch ? gFetch(fetch) : gFetch();
 
 	function createCheckoutSession(eventId, lineItems) {
 		const variables = {
@@ -64,10 +64,9 @@ export default () => {
 		};
 
 		return client
-			.mutation(MUTATION_CREATE_CHECKOUT_SESSION, variables)
-			.toPromise()
+			.mutation({ mutation: MUTATION_CREATE_CHECKOUT_SESSION, variables })
 			.then(({ data, error }) => {
-				if (error) log(error, 'mutate_orders');
+				if (error) log(error, 'MUTATION_CREATE_CHECKOUT_SESSION');
 
 				let results;
 
@@ -87,8 +86,7 @@ export default () => {
 		};
 
 		return client
-			.mutation(MUTATION_MARK_SURVEY_QUESTIONS_COMPLETED, variables)
-			.toPromise()
+			.mutation({ mutation: MUTATION_MARK_SURVEY_QUESTIONS_COMPLETED, variables })
 			.then(({ data, error }) => {
 				if (error) log(error, 'MUTATION_MARK_SURVEY_QUESTIONS_COMPLETED');
 
@@ -111,8 +109,7 @@ export default () => {
 		};
 
 		return client
-			.mutation(MUTATION_ALLOCATE_TICKET, variables)
-			.toPromise()
+			.mutation({ mutation: MUTATION_ALLOCATE_TICKET, variables })
 			.then(({ data, error }) => {
 				if (error) log(error, 'MUTATION_ALLOCATE_TICKET');
 

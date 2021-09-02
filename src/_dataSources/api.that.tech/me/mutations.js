@@ -22,15 +22,13 @@ export const MUTATION_UPDATE_SHARED_PROFILE = `
     }
   }
 `;
-
-export default () => {
-	const client = gFetch();
+export default (fetch) => {
+	const client = fetch ? gFetch(fetch) : gFetch();
 
 	function updateSharedProfile(sharedProfile) {
 		const variables = { sharedProfile };
 		return client
-			.mutation(MUTATION_UPDATE_SHARED_PROFILE, variables)
-			.toPromise()
+			.mutation({ mutation: MUTATION_UPDATE_SHARED_PROFILE, variables })
 			.then(({ data, error }) => {
 				if (error) log(error, 'MUTATION_CHECK_IN_USER');
 

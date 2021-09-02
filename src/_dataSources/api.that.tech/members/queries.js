@@ -1,7 +1,6 @@
 import gFetch from '$utils/gfetch';
 
 import { log } from '../utilities/error';
-import { stripAuthorizationHeader } from '../utilities';
 
 const userFragment = `
   fragment memberFields on PublicProfile {
@@ -157,22 +156,20 @@ export default (fetch) => {
 
 	const isSlugTaken = (slug) => {
 		const variables = { slug };
-		return client
-			.query(QUERY_IS_SLUG_TAKEN, variables)
-			.toPromise()
-			.then(({ data, error }) => {
-				if (error) log(error, 'query_members');
+		return client.secureQuery({ query: QUERY_IS_SLUG_TAKEN, variables }).then(({ data, error }) => {
+			if (error) log(error, 'QUERY_IS_SLUG_TAKEN');
 
-				let isTaken = true;
-				if (data) isTaken = data.members.isProfileSlugTaken;
-				return isTaken;
-			});
+			let isTaken = true;
+			if (data) isTaken = data.members.isProfileSlugTaken;
+			return isTaken;
+		});
 	};
 
 	const queryMembers = (pageSize = 50) => {
 		const variables = { pageSize };
+
 		return client.query({ query: QUERY_MEMBERS_INITAL, variables }).then(({ data, error }) => {
-			if (error) log(error, 'query_members');
+			if (error) log(error, 'QUERY_MEMBERS_INITAL');
 
 			let results = null;
 			if (data) {
@@ -186,22 +183,17 @@ export default (fetch) => {
 
 	const queryMembersNext = (after, pageSize = 50) => {
 		const variables = { pageSize, after };
-		return client
-			.query(QUERY_MEMBERS_NEXT, variables, {
-				fetchOptions: { headers: { ...stripAuthorizationHeader(client) } }
-			})
-			.toPromise()
-			.then(({ data, error }) => {
-				if (error) log(error, 'query_members');
+		return client.query({ query: QUERY_MEMBERS_NEXT, variables }).then(({ data, error }) => {
+			if (error) log(error, 'QUERY_MEMBERS_NEXT');
 
-				let results = null;
-				if (data) {
-					const { members } = data.members;
-					results = members;
-				}
+			let results = null;
+			if (data) {
+				const { members } = data.members;
+				results = members;
+			}
 
-				return results;
-			});
+			return results;
+		});
 	};
 
 	const queryMemberBySlug = (
@@ -215,7 +207,7 @@ export default (fetch) => {
 			filter
 		};
 		return client.query({ query: QUERY_MEMBER_BY_SLUG, variables }).then(({ data, error }) => {
-			if (error) log(error, 'query_members');
+			if (error) log(error, 'QUERY_MEMBER_BY_SLUG');
 
 			return data.members.member;
 		});
@@ -231,14 +223,11 @@ export default (fetch) => {
 			sessionStartDate,
 			filter
 		};
-		return client
-			.query({ query: QUERY_MEMBER_ACTIVITIES, variables })
+		return client.query({ query: QUERY_MEMBER_ACTIVITIES, variables }).then(({ data, error }) => {
+			if (error) log(error, 'QUERY_MEMBER_ACTIVITIES');
 
-			.then(({ data, error }) => {
-				if (error) log(error, 'QUERY_MEMBER_ACTIVITIES');
-
-				return data.members.member.sessions;
-			});
+			return data.members.member.sessions;
+		});
 	};
 
 	const queryNextMemberActivities = (
@@ -251,43 +240,32 @@ export default (fetch) => {
 			sessionStartDate,
 			filter
 		};
-		return client
-			.query(QUERY_MEMBER_ACTIVITIES, variables, {
-				fetchOptions: { headers: { ...stripAuthorizationHeader(client) } }
-			})
-			.toPromise()
-			.then(({ data, error }) => {
-				if (error) log(error, 'query_members');
+		return client.query({ query: QUERY_MEMBER_ACTIVITIES, variables }).then(({ data, error }) => {
+			if (error) log(error, 'QUERY_MEMBER_ACTIVITIES');
 
-				return data.members.member.sessions;
-			});
+			return data.members.member.sessions;
+		});
 	};
 
 	const queryFollowers = (slug) => {
 		const variables = { slug };
 
 		return client.query({ query: QUERY_FOLLOWERS, variables }).then(({ data, error }) => {
-			if (error) log(error, 'query_members');
+			if (error) log(error, 'QUERY_FOLLOWERS');
 
 			const { member } = data.members;
-
 			return member || []; // followerCount and followers are in partner
 		});
 	};
 
 	const queryNextFollowers = (id, cursor) => {
 		const variables = { id, cursor };
-		return client
-			.query(QUERY_NEXT_FOLLOWERS, variables, {
-				fetchOptions: { headers: { ...stripAuthorizationHeader(client) } }
-			})
-			.toPromise()
-			.then(({ data, error }) => {
-				if (error) log(error, 'query_members');
+		return client.query({ query: QUERY_NEXT_FOLLOWERS, variables }).then(({ data, error }) => {
+			if (error) log(error, 'QUERY_NEXT_FOLLOWERS');
 
-				const { member } = data.members;
-				return member || null;
-			});
+			const { member } = data.members;
+			return member || null;
+		});
 	};
 
 	return {

@@ -44,16 +44,13 @@ const QUERY_MY_NETWORK_SPONSORS = `
   }   
 `;
 
-export default () => {
-	const client = gFetch();
+export default (fetch) => {
+	const client = fetch ? gFetch(fetch) : gFetch();
 
 	function queryMySponsorNetwork() {
 		const variables = {};
 		return client
-			.query(QUERY_MY_NETWORK_SPONSORS, variables, {
-				requestPolicy: 'cache-and-network'
-			})
-			.toPromise()
+			.secureQuery({ query: QUERY_MY_NETWORK_SPONSORS, variables })
 			.then(({ data, error }) => {
 				if (error) log(error, 'QUERY_MY_NETWORK_SPONSORS');
 

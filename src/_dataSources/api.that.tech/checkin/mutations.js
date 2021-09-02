@@ -66,14 +66,13 @@ export const MUTATION_SET_RECEIVED_SWAG = `
   }
 `;
 
-export default () => {
-	const client = gFetch();
+export default (fetch) => {
+	const client = fetch ? gFetch(fetch) : gFetch();
 
 	function checkIn(eventId, orderAllocationId, pinNumber) {
 		const variables = { eventId, orderAllocationId, pinNumber };
 		return client
-			.mutation(MUTATION_CHECK_IN_USER, variables)
-			.toPromise()
+			.mutation({ mutation: MUTATION_CHECK_IN_USER, variables })
 			.then(({ data, error }) => {
 				if (error) log(error, 'MUTATION_CHECK_IN_USER');
 
@@ -91,8 +90,7 @@ export default () => {
 	function revertCheckIn(eventId, orderAllocationId) {
 		const variables = { eventId, orderAllocationId };
 		return client
-			.mutation(MUTATION_REVERT_CHECKIN, variables)
-			.toPromise()
+			.mutation({ mutation: MUTATION_REVERT_CHECKIN, variables })
 			.then(({ data, error }) => {
 				if (error) log(error, 'MUTATION_REVERT_CHECKIN');
 
@@ -109,28 +107,24 @@ export default () => {
 
 	function setPartnerPin(eventId, orderAllocationId, pinNumber) {
 		const variables = { eventId, orderAllocationId, pinNumber };
-		return client
-			.mutation(MUTATION_SET_PIN, variables)
-			.toPromise()
-			.then(({ data, error }) => {
-				if (error) log(error, 'MUTATION_SET_PIN');
+		return client.mutation({ mutation: MUTATION_SET_PIN, variables }).then(({ data, error }) => {
+			if (error) log(error, 'MUTATION_SET_PIN');
 
-				let results;
+			let results;
 
-				if (data) {
-					const { checkInResult } = data.events.event.registration;
-					results = checkInResult;
-				}
+			if (data) {
+				const { checkInResult } = data.events.event.registration;
+				results = checkInResult;
+			}
 
-				return results;
-			});
+			return results;
+		});
 	}
 
 	function setReceivedSwag(eventId, orderAllocationId, receivedSwag) {
 		const variables = { eventId, orderAllocationId, receivedSwag };
 		return client
-			.mutation(MUTATION_SET_RECEIVED_SWAG, variables)
-			.toPromise()
+			.mutation({ mutation: MUTATION_SET_RECEIVED_SWAG, variables })
 			.then(({ data, error }) => {
 				if (error) log(error, 'MUTATION_SET_RECEIVED_SWAG');
 

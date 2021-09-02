@@ -69,18 +69,15 @@ const QUERY_EVENT_REGISTRATIONS = `
   }   
 `;
 
-export default () => {
-	const client = gFetch();
+export default (fetch) => {
+	const client = fetch ? gFetch(fetch) : gFetch();
 
 	function queryEventRegistrations(eventSlug) {
 		const variables = {
 			eventSlug
 		};
 		return client
-			.query(QUERY_EVENT_REGISTRATIONS, variables, {
-				requestPolicy: 'cache-and-network'
-			})
-			.toPromise()
+			.secureQuery({ query: QUERY_EVENT_REGISTRATIONS, variables })
 			.then(({ data, error }) => {
 				if (error) log(error, 'QUERY_EVENT_REGISTRATIONS');
 

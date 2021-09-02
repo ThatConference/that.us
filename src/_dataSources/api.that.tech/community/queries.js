@@ -1,7 +1,6 @@
 import gFetch from '$utils/gfetch';
 
 import { log } from '../utilities/error';
-import { stripAuthorizationHeader } from '../utilities';
 
 const sessionDetailsFragment = `
   fragment sessionDetailFields on PagedAcceptedSession {
@@ -105,52 +104,36 @@ export const QUERY_NEXT_COMMUNITY_ACTIVITIES = `
   }
 `;
 
-export default () => {
-	const client = gFetch();
+export default (fetch) => {
+	const client = fetch ? gFetch(fetch) : gFetch();
 
 	const queryAllCommunities = () =>
-		client
-			.query(QUERY_ALL_COMMUNITIES, {
-				fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
-				requestPolicy: 'cache-and-network'
-			})
-			.toPromise()
-			.then(({ data, error }) => {
-				if (error) log(error, 'query_community');
+		client.query({ query: QUERY_ALL_COMMUNITIES }).then(({ data, error }) => {
+			if (error) log(error, 'QUERY_ALL_COMMUNITIES');
 
-				const { communities } = data;
-				return communities ? communities.all : [];
-			});
+			const { communities } = data;
+			return communities ? communities.all : [];
+		});
 
 	// TODO stub function until we have paged communities
 	const queryNextAllCommunities = () => null;
 
 	const queryCommunityBySlug = (slug) => {
 		const variables = { slug };
-		return client
-			.query(QUERY_COMMUNITY_BY_SLUG, variables, {
-				fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
-				requestPolicy: 'cache-and-network'
-			})
-			.toPromise()
-			.then(({ data, error }) => {
-				if (error) log(error, 'query_community');
+		return client.query({ query: QUERY_COMMUNITY_BY_SLUG, variables }).then(({ data, error }) => {
+			if (error) log(error, 'QUERY_COMMUNITY_BY_SLUG');
 
-				const { community } = data.communities;
-				return community ? community.get : null;
-			});
+			const { community } = data.communities;
+			return community ? community.get : null;
+		});
 	};
 
 	const queryCommunityActivities = ({ id, asOfDate = new Date(), pageSize = 6 }) => {
 		const variables = { id, asOfDate, pageSize };
 		return client
-			.query(QUERY_COMMUNITY_ACTIVITIES, variables, {
-				fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
-				requestPolicy: 'cache-and-network'
-			})
-			.toPromise()
+			.query({ query: QUERY_COMMUNITY_ACTIVITIES, variables })
 			.then(({ data, error }) => {
-				if (error) log(error, 'query_community');
+				if (error) log(error, 'QUERY_COMMUNITY_ACTIVITIES');
 
 				const { community } = data.communities;
 				return community ? community.get.sessions : [];
@@ -160,13 +143,9 @@ export default () => {
 	const queryNextCommunityActivities = ({ id, asOfDate = new Date(), pageSize = 6, cursor }) => {
 		const variables = { id, asOfDate, pageSize, cursor };
 		return client
-			.query(QUERY_NEXT_COMMUNITY_ACTIVITIES, variables, {
-				fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
-				requestPolicy: 'cache-and-network'
-			})
-			.toPromise()
+			.query({ query: QUERY_NEXT_COMMUNITY_ACTIVITIES, variables })
 			.then(({ data, error }) => {
-				if (error) log(error, 'query_community');
+				if (error) log(error, 'QUERY_NEXT_COMMUNITY_ACTIVITIES');
 
 				const { community } = data.communities;
 				return community ? community.get.sessions : [];
@@ -175,17 +154,12 @@ export default () => {
 
 	const queryCommunityFollowers = (id) => {
 		const variables = { id };
-		return client
-			.query(QUERY_COMMUNITY_FOLLOWERS, variables, {
-				fetchOptions: { headers: { ...stripAuthorizationHeader(client) } }
-			})
-			.toPromise()
-			.then(({ data, error }) => {
-				if (error) log(error, 'query_community');
+		return client.query({ query: QUERY_COMMUNITY_FOLLOWERS, variables }).then(({ data, error }) => {
+			if (error) log(error, 'QUERY_COMMUNITY_FOLLOWERS');
 
-				const { community } = data.communities;
-				return community ? community.get : []; // followerCount and followers are in get
-			});
+			const { community } = data.communities;
+			return community ? community.get : []; // followerCount and followers are in get
+		});
 	};
 
 	return {

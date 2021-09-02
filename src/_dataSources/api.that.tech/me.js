@@ -41,11 +41,11 @@ export const QUERY_ME = `
     }
 `;
 
-export default () => {
-	const client = gFetch();
+export default (fetch) => {
+	const client = fetch ? gFetch(fetch) : gFetch();
 
 	const queryMe = () =>
-		client.query({ query: QUERY_ME }).then(({ data, error }) => {
+		client.secureQuery({ query: QUERY_ME }).then(({ data, error }) => {
 			if (error) log(error, 'query_favorites');
 
 			return data.members.me;

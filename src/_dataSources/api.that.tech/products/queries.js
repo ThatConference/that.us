@@ -1,7 +1,6 @@
 import gFetch from '$utils/gfetch';
 
 import { log } from '../utilities/error';
-import { stripAuthorizationHeader } from '../utilities';
 
 const productBaseFieldsFragment = `
   fragment productBaseFields on ProductBase {
@@ -29,16 +28,14 @@ export const QUERY_EVENT_PRODUCTS = `
   }
 `;
 
-export default () => {
-	const client = gFetch();
+export default (fetch) => {
+	const client = fetch ? gFetch(fetch) : gFetch();
 
 	function queryProductsByEvent(eventId) {
 		const variables = { eventId };
 
 		return client
-			.query(QUERY_EVENT_PRODUCTS, variables, {
-				fetchOptions: { headers: { ...stripAuthorizationHeader(client) } }
-			})
+			.query({ query: QUERY_EVENT_PRODUCTS, variables })
 			.toPromise()
 			.then(({ data, error }) => {
 				if (error) log(error, 'QUERY_EVENT_PRODUCTS');

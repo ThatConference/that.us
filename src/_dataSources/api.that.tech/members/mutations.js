@@ -87,55 +87,45 @@ export const MUTATION_FOLLOW_MEMBER_TOGGLE = `
   }
 `;
 
-export default () => {
-	const client = gFetch();
+export default (fetch) => {
+	const client = fetch ? gFetch(fetch) : gFetch();
 
 	const createProfile = (profile) => {
 		const variables = { profile };
-		return client
-			.mutation(MUTATION_CREATE, variables)
-			.toPromise()
-			.then(({ data, error }) => {
-				if (error) log(error, 'mutate_members');
+		return client.mutation({ mutation: MUTATION_CREATE, variables }).then(({ data, error }) => {
+			if (error) log(error, 'MUTATION_CREATE');
 
-				return data.members.create;
-			});
+			return data.members.create;
+		});
 	};
 
 	const updateProfile = (profile) => {
 		const variables = { profile };
-		return client
-			.mutation(MUTATION_UPDATE, variables)
-			.toPromise()
-			.then(({ data, error }) => {
-				if (error) log(error, 'mutate_members');
+		return client.mutation({ mutation: MUTATION_UPDATE, variables }).then(({ data, error }) => {
+			if (error) log(error, 'MUTATION_UPDATE');
 
-				return data.members.member.update;
-			});
+			return data.members.member.update;
+		});
 	};
 
 	const claimTicket = (ticketReference) => {
 		const variables = { ticketReference };
-		return client
-			.mutation(CLAIM_TICKET, variables)
-			.toPromise()
-			.then(({ data, error }) => {
-				if (error) log(error, 'mutate_members');
+		return client.mutation({ mutation: CLAIM_TICKET, variables }).then(({ data, error }) => {
+			if (error) log(error, 'CLAIM_TICKET');
 
-				let claimed = null;
-				if (data.members.member.claimTicket) claimed = data.members.member.claimTicket;
+			let claimed = null;
+			if (data.members.member.claimTicket) claimed = data.members.member.claimTicket;
 
-				return claimed;
-			});
+			return claimed;
+		});
 	};
 
 	function toggleFollow(slug) {
 		const variables = { target: { slug } };
 		return client
-			.mutation(MUTATION_FOLLOW_MEMBER_TOGGLE, variables)
-			.toPromise()
+			.mutation({ mutation: MUTATION_FOLLOW_MEMBER_TOGGLE, variables })
 			.then(({ data, error }) => {
-				if (error) log(error, 'mutate_members');
+				if (error) log(error, 'MUTATION_FOLLOW_MEMBER_TOGGLE');
 
 				let results = false;
 				if (data) {

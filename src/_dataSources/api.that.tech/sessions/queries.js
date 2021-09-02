@@ -1,7 +1,6 @@
 import gFetch from '$utils/gfetch';
 
 import { log, logMessage } from '../utilities/error';
-import { stripAuthorizationHeader } from '../utilities';
 
 const enumValues = `
   options: enumValues {
@@ -153,18 +152,14 @@ export const QUERY_MY_SESSION_BY_ID = `
   }
 `;
 
-export default () => {
-	const client = gFetch();
+export default (fetch) => {
+	const client = fetch ? gFetch(fetch) : gFetch();
 
 	function querySessionDropDownValues() {
 		const variables = {};
 
 		return client
-			.query(QUERY_SESSION_DROPDOWN_VALUES, variables, {
-				fetchOptions: { headers: { ...stripAuthorizationHeader(client) } },
-				requestPolicy: 'cache-and-network'
-			})
-			.toPromise()
+			.query({ query: QUERY_SESSION_DROPDOWN_VALUES, variables })
 			.then(({ data, error }) => {
 				if (error) log(error, 'QUERY_SESSION_DROPDOWN_VALUES');
 
@@ -175,14 +170,11 @@ export default () => {
 	function queryMySessionById(sessionId) {
 		const variables = { sessionId };
 
-		return client
-			.query(QUERY_MY_SESSION_BY_ID, variables)
-			.toPromise()
-			.then(({ data, error }) => {
-				if (error) logMessage(error, 'QUERY_MY_SESSION_BY_ID');
+		return client.query({ query: QUERY_MY_SESSION_BY_ID, variables }).then(({ data, error }) => {
+			if (error) logMessage(error, 'QUERY_MY_SESSION_BY_ID');
 
-				return data.sessions.me.session;
-			});
+			return data.sessions.me.session;
+		});
 	}
 
 	return { querySessionDropDownValues, queryMySessionById };

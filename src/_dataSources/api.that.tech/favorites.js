@@ -54,8 +54,9 @@ export const QUERY_MY_FAVORITES = `
   }
 `;
 
-export default () => {
-	const client = gFetch();
+export default (fetch) => {
+	const client = fetch ? gFetch(fetch) : gFetch();
+
 	const favoritesStore = writable([]);
 
 	function query(eventId) {
@@ -63,28 +64,25 @@ export default () => {
 			eventId: 'ANY'
 		};
 
-		return client
-			.query(QUERY_MY_FAVORITES, variables)
-			.toPromise()
-			.then(({ data, error }) => {
-				if (error) log(error, 'query_favorites');
+		return client.query({ query: QUERY_MY_FAVORITES, variables }).then(({ data, error }) => {
+			if (error) log(error, 'QUERY_MY_FAVORITES');
 
-				let results = [];
+			let results = [];
 
-				// set the store
-				if (data && !error) {
-					const { favorites } = data.sessions.me;
+			// set the store
+			if (data && !error) {
+				const { favorites } = data.sessions.me;
 
-					results = favorites;
+				results = favorites;
 
-					results = results.filter((s) => s).filter((s) => s.status === 'ACCEPTED');
-					results.sort((a, b) => new Date(a.startTime) - new Date(b.startTime));
+				results = results.filter((s) => s).filter((s) => s.status === 'ACCEPTED');
+				results.sort((a, b) => new Date(a.startTime) - new Date(b.startTime));
 
-					favoritesStore.set(results); // set the store
-				}
+				favoritesStore.set(results); // set the store
+			}
 
-				return results;
-			});
+			return results;
+		});
 	}
 
 	async function toggle(sessionId, eventId) {
@@ -94,7 +92,7 @@ export default () => {
 		};
 		let results = false;
 
-		const { data, error } = await client.mutation(TOGGLE_FAVORITE, mutationVariables).toPromise();
+		const { data, error } = await client.mutation({ mutation: TOGGLE_FAVORITE, mutationVariables });
 
 		if (error) log(error, 'mutate_favorites');
 

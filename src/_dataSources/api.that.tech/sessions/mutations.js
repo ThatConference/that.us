@@ -213,34 +213,28 @@ function mapUpdateMutation(type) {
 	return mutation;
 }
 
-export default () => {
-	const client = gFetch();
+export default (fetch) => {
+	const client = fetch ? gFetch(fetch) : gFetch();
 
 	function createSession(eventId, sessionType, session) {
 		const variables = { eventId, session };
 		const mutation = mapCreateMutation(sessionType);
 
-		return client
-			.mutation(mutation, variables)
-			.toPromise()
-			.then(({ data, error }) => {
-				if (error) log(error, mutation);
+		return client.mutation({ mutation: mutation, variables }).then(({ data, error }) => {
+			if (error) log(error, mutation);
 
-				return data.sessions.create.session;
-			});
+			return data.sessions.create.session;
+		});
 	}
 
 	function updateSession(sessionId, sessionType, session) {
 		const variables = { sessionId, session };
 		const mutation = mapUpdateMutation(sessionType);
 
-		return client
-			.mutation(mutation, variables)
-			.toPromise()
-			.then(({ data, error }) => {
-				if (error) log(error, mutation);
-				return data.sessions.session.update.session;
-			});
+		return client.mutation({ mutation: mutation, variables }).then(({ data, error }) => {
+			if (error) log(error, mutation);
+			return data.sessions.session.update.session;
+		});
 	}
 
 	return { createSession, updateSession };
