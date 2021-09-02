@@ -5,8 +5,8 @@ export default {
 	version,
 	eventId: 'YWavA70szR8rxSwrLJaL',
 	eventSlug: 'thatus/daily',
-	api: 'https://gateway-bgydxslf5a-uc.a.run.app',
-	// api: 'https://that.graphcdn.app',
+	// api: 'https://gateway-bgydxslf5a-uc.a.run.app',
+	api: 'https://that.graphcdn.app',
 	profileImageApi: 'https://api.that.tech/profile',
 	defaultProfileImage:
 		'https://images.that.tech/members/person-placeholder.jpg?auto=format&fit=facearea&facepad=10&mask=ellipse&h=250&w=250&q=50&dpr=2',

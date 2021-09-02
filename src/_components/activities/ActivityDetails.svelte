@@ -10,6 +10,9 @@
 	import isSameOrAfter from 'dayjs/plugin/isSameOrAfter.js';
 	import relativeTime from 'dayjs/plugin/relativeTime.js';
 	import advancedFormat from 'dayjs/plugin/advancedFormat.js';
+	import timezone from 'dayjs/plugin/timezone.js';
+	import utc from 'dayjs/plugin/utc.js';
+	import duration from 'dayjs/plugin/duration.js';
 
 	import Icon from 'svelte-awesome';
 	import {
@@ -26,9 +29,7 @@
 	import { page } from '$app/stores';
 	import lodash from 'lodash';
 
-	import seoMetaTags from '$utils/seo/metaTags';
 	import config from '$utils/config';
-	import { truncate, isLongerThan } from '$utils/truncate';
 	import { getAuth } from '$utils/security';
 	import favoritesApi from '$dataSources/api.that.tech/favorites';
 	import currentEvent from '$stores/currentEvent';
@@ -41,6 +42,9 @@
 	dayjs.extend(isBetween);
 	dayjs.extend(isSameOrAfter);
 	dayjs.extend(relativeTime);
+	dayjs.extend(utc);
+	dayjs.extend(timezone);
+	dayjs.extend(duration);
 	dayjs.extend(advancedFormat);
 
 	const { isEmpty, find } = lodash;
@@ -166,26 +170,7 @@
 	function getProfileImage(imageUrl) {
 		return imageUrl ? `${imageUrl}${imageCrop}` : config.defaultProfileImage;
 	}
-
-	const metaTags = seoMetaTags({
-		title: `${title} - THAT`,
-		description: isLongerThan(shortDescription, 60)
-			? `${truncate(shortDescription, 60)} ...`
-			: shortDescription,
-		openGraph: {
-			type: 'website',
-			url: `https://that.us/activities/${id}`
-		}
-	});
 </script>
-
-<svelte:head>
-	<title>{metaTags.title}</title>
-
-	{#each metaTags as tag}
-		<meta {...tag} />
-	{/each}
-</svelte:head>
 
 {#if isNew}
 	<Success title="Created {title}!" text="Thank you for submitting an activity." />

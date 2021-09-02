@@ -6,6 +6,7 @@
 	import { v4 as uuidv4 } from 'uuid';
 
 	import { onMount, onDestroy, setContext } from 'svelte';
+	import { navigating } from '$app/stores';
 
 	import * as Sentry from '@sentry/browser';
 	import LogRocket from 'logrocket';
@@ -14,6 +15,7 @@
 	import { createAuth } from '$utils/security';
 	import config from '$utils/config';
 	import cart from '$utils/cart';
+	import Preloading from '$components/preloading.svelte';
 
 	import Tailwindcss from '$elements/Tailwindcss.svelte';
 
@@ -132,6 +134,10 @@
 </svelte:head>
 
 <div>
+	{#if $navigating}
+		<Preloading />
+	{/if}
+
 	<slot />
 	<Tailwindcss />
 </div>

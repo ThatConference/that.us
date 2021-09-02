@@ -110,5 +110,8 @@
     "verbose": true,
     "rootDir": "./src",
     "coverageDirectory": "../__testCoverage__"
+  },
+  "dependencies": {
+    "cookie": "^0.4.1"
   }
 }

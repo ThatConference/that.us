@@ -9,10 +9,10 @@ import meApi from '$dataSources/api.that.tech/me';
 
 import logEvent from './eventTrack';
 
+export const token = writable(undefined);
 const isLoading = writable(true);
 const user = writable({});
 const thatProfile = writable({});
-const token = writable('');
 const isAuthenticated = writable(false);
 const refreshRate = 10 * 60 * 60 * 1000;
 

@@ -4,21 +4,22 @@
 
 	export async function load({ page, fetch }) {
 		const { queryMemberBySlug, queryFollowers } = memberQueryApi(fetch);
-		// const { queryMeFollowingMembers } = meQueryApi(fetch);
+		const { queryMeFollowingMembers } = meQueryApi(fetch);
 
 		let member = page.params.member;
 
-		let [profile, followers] = await Promise.all([
+		let [profile, followers, myFollowers] = await Promise.all([
 			queryMemberBySlug(member),
-			queryFollowers(member)
+			queryFollowers(member),
+			queryMeFollowingMembers()
 		]);
 
 		return {
 			props: {
 				memberSlug: member,
 				profile,
-				followers
-				// isFollowing: await queryMeFollowingMembers().then((d) => d.includes(profile.id))
+				followers,
+				isFollowing: myFollowers.includes(profile.id)
 			}
 		};
 	}
