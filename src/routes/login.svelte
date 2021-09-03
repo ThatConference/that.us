@@ -1,3 +1,15 @@
+<script context="module">
+	export async function load({ session }) {
+		if (session.user.isAuthenticated) {
+			return {
+				status: 302,
+				redirect: '/'
+			};
+		}
+		return {};
+	}
+</script>
+
 <script>
 	export let documentReferrer = '/activities';
 
@@ -5,12 +17,11 @@
 	import { page } from '$app/stores';
 
 	import seoMetaTags from '$utils/seo/metaTags';
-	import { getAuth } from '$utils/security';
+	import { createAuth } from '$utils/security';
 	import { ModalNoAction } from '$elements';
 
 	import Seo from '$components/Seo.svelte';
 
-	const { login } = getAuth();
 	const signup = $page.query.get('signup') || false;
 
 	const metaTags = ((title = 'Login - THAT') => ({
@@ -24,8 +35,9 @@
 		})
 	}))();
 
-	onMount(async () => {
-		await login(documentReferrer, signup);
+	const { login } = createAuth();
+	onMount(() => {
+		return login(documentReferrer, signup);
 	});
 </script>
 

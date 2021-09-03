@@ -23,8 +23,8 @@ function createAuth() {
 	let intervalId = undefined;
 
 	onMount(async () => {
-		securityConfig.redirect_uri = `${window.location.origin}/login-success`;
 		auth0 = await createAuth0Client(securityConfig);
+		securityConfig.redirect_uri = `${window.location.origin}/login-success`;
 		let redirectResult;
 
 		const query = window.location.search;
@@ -64,6 +64,7 @@ function createAuth() {
 	});
 
 	async function login(documentReferrer, signup = false) {
+		const authClient = await createAuth0Client(securityConfig);
 		const appState = {
 			pathname: documentReferrer,
 			search: window.location.search
@@ -82,7 +83,7 @@ function createAuth() {
 		}
 
 		logEvent('login');
-		await auth0.loginWithRedirect(authParams);
+		return authClient.loginWithRedirect(authParams);
 	}
 
 	async function logout() {
