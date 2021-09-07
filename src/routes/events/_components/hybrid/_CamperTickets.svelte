@@ -1,20 +1,17 @@
 <script>
-	// export let eventTicket;
 	export let event;
 
-	import { page } from '$app/stores';
 	import { createEventDispatcher } from 'svelte';
 	import lodash from 'lodash';
 
-	import Notices from '../_Notices.svelte';
 	import { Check, Ban } from '$elements/svgs';
 	import { Highlight as HighlightLink } from '$elements/links';
 	import { Standard as StandardButton, Highlight as HighlightButton } from '$elements/buttons';
 
+	import Notices from '../_Notices.svelte';
+
 	const { keyBy } = lodash;
 	const dispatch = createEventDispatcher();
-	const { id, name } = $page.params;
-	const eventSlug = `${id}/${name}`;
 
 	const { products } = event;
 	const eventTickets = keyBy(
@@ -56,7 +53,7 @@
 			<div class="mt-8">
 				<div class="flex flex-col">
 					<div class="animate-pulse">
-						<HighlightLink href={`/events/${eventSlug}/tickets`}>
+						<HighlightLink href={`/events/${event.slug}/tickets`}>
 							<span class="text-xl uppercase font-bold tracking-wider">
 								View all ticket options
 							</span>

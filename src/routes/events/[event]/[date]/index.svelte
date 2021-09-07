@@ -6,9 +6,9 @@
 	import eventsApi from '$dataSources/api.that.tech/events/queries';
 	import Seo from '$components/Seo.svelte';
 
-	import Hybrid from '../_components/_Hybrid.svelte';
-	import MultiDay from '../_components/_MultiDay.svelte';
-	import Online from '../_components/_Online.svelte';
+	import Hybrid from '../../_components/_Hybrid.svelte';
+	import MultiDay from '../../_components/_MultiDay.svelte';
+	import Online from '../../_components/_Online.svelte';
 
 	const { event, date } = $page.params;
 	const eventSlug = `${event}/${date}`;
