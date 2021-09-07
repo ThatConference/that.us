@@ -6,6 +6,7 @@
 	import Layout from '$elements/layouts/ContentLayout.svelte';
 	import { StandardScroll, Standard as StandardLink } from '$elements/links';
 	import eventsApi from '$dataSources/api.that.tech/events/queries';
+	import Seo from '$components/Seo.svelte';
 
 	import FAQ from './_components/cfp/_FAQ.svelte';
 	import Perks from './_components/cfp/_Perks.svelte';
@@ -15,27 +16,24 @@
 	const { year, state } = $page.params;
 	const eventSlug = `${state}/${year}`;
 
-	const metaTags = seoMetaTags({
-		title: 'Call For Counselors - THAT',
-		description: 'Call For Counselors is now open',
-		openGraph: {
-			type: 'website',
-			url: `https://that.us/activities/call-for-counselors`
-		}
-	});
+	const metaTags = ((title = 'Call For Counselors - THAT') => ({
+		title,
+		tags: seoMetaTags({
+			title,
+			description: 'Call For Counselors is now open',
+			openGraph: {
+				type: 'website',
+				url: `https://that.us/activities/call-for-counselors`
+			}
+		})
+	}))();
 
 	function queryEvent() {
 		return eventsApi().queryEventForCfp(eventSlug);
 	}
 </script>
 
-<svelte:head>
-	<title>{metaTags.title}</title>
-
-	{#each metaTags as tag}
-		<meta {...tag} />
-	{/each}
-</svelte:head>
+<Seo title={metaTags.title} tags={metaTags.tags} />
 
 {#await queryEvent() then event}
 	<Layout>

@@ -7,6 +7,7 @@
 	import seoMetaTags from '$utils/seo/metaTags';
 	import Layout from '$elements/layouts/LandingLayout.svelte';
 	import Nav from '$components/nav/interiorNav/Top.svelte';
+	import Seo from '$components/Seo.svelte';
 
 	import Hero from './_components/tickets/_Hero.svelte';
 	import Professional from './_components/tickets/_Professional.svelte';
@@ -20,14 +21,17 @@
 	const { id, name } = $page.params;
 	const eventSlug = `${id}/${name}`;
 
-	const metaTags = seoMetaTags({
-		title: 'Tickets - THAT',
-		description: 'Ticket Breakdown',
-		openGraph: {
-			type: 'website',
-			url: `https://that.us/events/${eventSlug}/tickets`
-		}
-	});
+	const metaTags = ((title = 'Tickets - THAT') => ({
+		title,
+		tags: seoMetaTags({
+			title: 'Tickets - THAT',
+			description: 'Ticket Breakdown',
+			openGraph: {
+				type: 'website',
+				url: `https://that.us/events/${eventSlug}/tickets`
+			}
+		})
+	}))();
 
 	let event; //used later in the handler
 
@@ -50,13 +54,7 @@
 	}
 </script>
 
-<svelte:head>
-	<title>{metaTags.title}</title>
-
-	{#each metaTags as tag}
-		<meta {...tag} />
-	{/each}
-</svelte:head>
+<Seo title={metaTags.title} tags={metaTags.tags} />
 
 <Layout>
 	<section in:fade slot="nav">

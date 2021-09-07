@@ -5,21 +5,25 @@
 
 	import seoMetaTags from '$utils/seo/metaTags';
 	import { csvGenerator } from '$utils/csv';
+	import Seo from '$components/Seo.svelte';
 	import { Shell } from '$elements/buttons';
 	import ProfileLayout from '$elements/layouts/Profile.svelte';
 	import partnerNetworkApi from '$dataSources/api.that.tech/partner/leads/queries';
 
 	const { sortBy } = lodash;
-	const metaTags = seoMetaTags({
-		title: 'Partner Network - THAT',
-		description: '',
-		openGraph: {
-			type: 'website',
-			url: 'https://that.us/my/partners/my-network'
-		},
-		noindex: true,
-		nofollow: true
-	});
+	const metaTags = ((title = 'Partner Network - THAT') => ({
+		title,
+		tags: seoMetaTags({
+			title,
+			description: '',
+			openGraph: {
+				type: 'website',
+				url: 'https://that.us/my/partners/my-network'
+			},
+			noindex: true,
+			nofollow: true
+		})
+	}))();
 
 	const { queryMyNetwork } = partnerNetworkApi();
 
@@ -62,13 +66,7 @@
 	}
 </script>
 
-<svelte:head>
-	<title>{metaTags.title}</title>
-
-	{#each metaTags as tag}
-		<meta {...tag} />
-	{/each}
-</svelte:head>
+<Seo title={metaTags.title} tags={metaTags.tags} />
 
 <ProfileLayout>
 	<div class="relative mx-auto px-4 max-w-screen-xl sm:px-6 lg:px-8">

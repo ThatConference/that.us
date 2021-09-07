@@ -4,6 +4,7 @@
 	import seoMetaTags from '$utils/seo/metaTags';
 	import { debug } from '$utils/config';
 	import config from '$utils/config';
+	import Seo from '$components/Seo.svelte';
 	import { Logo } from '$elements';
 
 	import pricingMachine from './_machines/pricing';
@@ -15,27 +16,24 @@
 	import FAQs from './_components/pricing/_FAQs.svelte';
 	import NotReady from './_components/pricing/_NotReady.svelte';
 
-	const metaTags = seoMetaTags({
-		title: 'Membership Pricing - THAT',
-		description: 'Become a member and save today',
-		openGraph: {
-			type: 'website',
-			url: `https://that.us/membership/pricing`
-		}
-	});
+	const metaTags = ((title = 'Membership Pricing - THAT') => ({
+		title,
+		tags: seoMetaTags({
+			title: 'Membership Pricing - THAT',
+			description: 'Become a member and save today',
+			openGraph: {
+				type: 'website',
+				url: `https://that.us/membership/pricing`
+			}
+		})
+	}))();
 
 	const { state } = useMachine(pricingMachine(config.eventId), {
 		devTools: debug.xstate
 	});
 </script>
 
-<svelte:head>
-	<title>{metaTags.title}</title>
-
-	{#each metaTags as tag}
-		<meta {...tag} />
-	{/each}
-</svelte:head>
+<Seo title={metaTags.title} tags={metaTags.tags} />
 
 {#if $state.matches('ready')}
 	<Layout>

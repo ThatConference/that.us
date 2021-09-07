@@ -1,27 +1,26 @@
 <script>
 	import seoMetaTags from '$utils/seo/metaTags';
+	import Seo from '$components/Seo.svelte';
 	import { Highlight as HighlightLink, Standard as StandardLink } from '$elements/links';
 
 	import Layout from './_components/_Layout.svelte';
 	import Header from './_components/_Header.svelte';
 	import WelcomeQuote from './_components/_WelcomeQuote.svelte';
 
-	const metaTags = seoMetaTags({
-		title: 'Getting Started - THAT',
-		description: '',
-		openGraph: {
-			type: 'website',
-			url: `https://that.us/support/welcome`
-		}
-	});
+	const metaTags = ((title = 'Getting Started - THAT') => ({
+		title,
+		tags: seoMetaTags({
+			title,
+			description: '',
+			openGraph: {
+				type: 'website',
+				url: `https://that.us/support/welcome`
+			}
+		})
+	}))();
 </script>
 
-<svelte:head>
-	<title>{metaTags.title}</title>
-	{#each metaTags as tag}
-		<meta {...tag} />
-	{/each}
-</svelte:head>
+<Seo title={metaTags.title} tags={metaTags.tags} />
 
 <Layout>
 	<Header>Welcome to THAT!</Header>

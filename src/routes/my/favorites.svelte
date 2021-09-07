@@ -1,6 +1,7 @@
 <script>
 	import seoMetaTags from '$utils/seo/metaTags';
-	import { ModalError, ModalWarning, ActionHeader, LinkButton } from '$elements';
+	import Seo from '$components/Seo.svelte';
+	import { ModalError, ModalWarning, ActionHeader } from '$elements';
 	import StackedLayout from '$elements/layouts/StackedLayout.svelte';
 
 	import Nav from '$components/nav/interiorNav/Top.svelte';
@@ -11,27 +12,24 @@
 	import favoritesApi from '$dataSources/api.that.tech/favorites';
 	import currentEvent from '$stores/currentEvent';
 
-	const metaTags = seoMetaTags({
-		title: 'My Favorites - THAT',
-		description: "You're list of favorited activities.",
-		openGraph: {
-			type: 'website',
-			url: `https://that.us/my/favorites`
-		},
-		noindex: true,
-		nofollow: true
-	});
+	const metaTags = ((title = 'My Favorites - THAT') => ({
+		title,
+		tags: seoMetaTags({
+			title,
+			description: "You're list of favorited activities.",
+			openGraph: {
+				type: 'website',
+				url: `https://that.us/my/favorites`
+			},
+			noindex: true,
+			nofollow: true
+		})
+	}))();
 
 	const { get } = favoritesApi();
 </script>
 
-<svelte:head>
-	<title>{metaTags.title}</title>
-
-	{#each metaTags as tag}
-		<meta {...tag} />
-	{/each}
-</svelte:head>
+<Seo title={metaTags.title} tags={metaTags.tags} />
 
 <StackedLayout>
 	<div slot="header">

@@ -1,25 +1,24 @@
 <script>
 	import { ModalNoAction } from '$elements';
 	import seoMetaTags from '$utils/seo/metaTags';
+	import Seo from '$components/Seo.svelte';
 
-	const metaTags = seoMetaTags({
-		title: 'Login Success - THAT',
-		description: '',
-		openGraph: {
-			type: 'website',
-			url: `https://that.us/login-success`
-		},
-		noindex: true,
-		nofollow: true
-	});
+	const metaTags = ((title = 'Login Success - THAT') => ({
+		title,
+		tags: seoMetaTags({
+			title,
+			description: '',
+			openGraph: {
+				type: 'website',
+				url: `https://that.us/login-success`
+			},
+			noindex: true,
+			nofollow: true
+		})
+	}))();
 </script>
 
-<svelte:head>
-	<title>{metaTags.title}</title>
-	{#each metaTags as tag}
-		<meta {...tag} />
-	{/each}
-</svelte:head>
+<Seo title={metaTags.title} tags={metaTags.tags} />
 
 <div>
 	<ModalNoAction

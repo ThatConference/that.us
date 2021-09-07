@@ -10,6 +10,7 @@
 	import WelcomeQuote from './support/_components/_WelcomeQuote.svelte';
 
 	const { login } = getAuth();
+
 	const metaTags = ((title = 'Signup - THAT') => ({
 		title,
 		tags: seoMetaTags({
@@ -45,7 +46,7 @@
 								<div class="-ml-px absolute mt-0.5 top-4 left-13 w-1 h-full bg-thatOrange-500" />
 
 								<!-- Complete Step -->
-								<a
+								<button
 									class="relative p-3 flex items-center group"
 									on:click={() => login('/my/profiles/primary', true)}
 								>
@@ -56,7 +57,7 @@
 											<span class="font-extrabold text-5xl">1</span>
 										</span>
 									</span>
-									<span class="ml-4 min-w-0 flex flex-col">
+									<span class="ml-4 min-w-0 flex flex-col items-start">
 										<span class="text-xl font-semibold tracking-wide uppercase"
 											>Create Your Login</span
 										>
@@ -64,7 +65,7 @@
 											You will need an account to create or join any activities.
 										</span>
 									</span>
-								</a>
+								</button>
 							</li>
 							<li class="relative pb-10" in:fade={{ delay: 300, duration: 500 }}>
 								<div class="-ml-px absolute mt-0.5 top-4 left-13 w-1 h-full bg-thatOrange-500" />

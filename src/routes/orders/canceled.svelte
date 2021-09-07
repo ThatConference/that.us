@@ -1,26 +1,24 @@
 <script>
 	import seoMetaTags from '$utils/seo/metaTags';
+	import Seo from '$components/Seo.svelte';
 	import Layout from './_components/_Layout.svelte';
 
-	const metaTags = seoMetaTags({
-		title: 'Payment Canceled - THAT',
-		description: 'Your payment was cancelled.',
-		openGraph: {
-			type: 'website',
-			url: `https://that.us/orders/cancelled`
-		},
-		noindex: true,
-		nofollow: true
-	});
+	const metaTags = ((title = 'Payment Canceled - THAT') => ({
+		title,
+		tags: seoMetaTags({
+			title,
+			description: 'Your payment was cancelled.',
+			openGraph: {
+				type: 'website',
+				url: `https://that.us/orders/cancelled`
+			},
+			noindex: true,
+			nofollow: true
+		})
+	}))();
 </script>
 
-<svelte:head>
-	<title>{metaTags.title}</title>
-
-	{#each metaTags as tag}
-		<meta {...tag} />
-	{/each}
-</svelte:head>
+<Seo title={metaTags.title} tags={metaTags.tags} />
 
 <Layout>
 	<div class="space-y-12">

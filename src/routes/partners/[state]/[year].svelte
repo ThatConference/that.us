@@ -3,6 +3,7 @@
 	import lodash from 'lodash';
 
 	import seoMetaTags from '$utils/seo/metaTags';
+	import Seo from '$components/Seo.svelte';
 	import Layout from '$elements/layouts/ContentLayout.svelte';
 	import partnerQueryApi from '$dataSources/api.that.tech/partner/queries';
 
@@ -13,14 +14,17 @@
 	const { state, year } = $page.params;
 	const eventSlug = `${state}/${year}`;
 
-	const metaTags = seoMetaTags({
-		title: 'Partners - THAT',
-		description: 'Thank you to those who support our great community every day.',
-		openGraph: {
-			type: 'website',
-			url: `https://that.us/partners/${eventSlug}`
-		}
-	});
+	const metaTags = ((title = 'Partners - THAT') => ({
+		title,
+		tags: seoMetaTags({
+			title,
+			description: 'Thank you to those who support our great community every day.',
+			openGraph: {
+				type: 'website',
+				url: `https://that.us/partners/${eventSlug}`
+			}
+		})
+	}))();
 
 	const { getEventPartners } = partnerQueryApi();
 
@@ -32,13 +36,7 @@
 	}
 </script>
 
-<svelte:head>
-	<title>{metaTags.title}</title>
-
-	{#each metaTags as tag}
-		<meta {...tag} />
-	{/each}
-</svelte:head>
+<Seo title={metaTags.title} tags={metaTags.tags} />
 
 <Layout>
 	<main>

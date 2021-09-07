@@ -5,6 +5,8 @@
 
 	import seoMetaTags from '$utils/seo/metaTags';
 	import ProfileLayout from '$elements/layouts/Profile.svelte';
+	import Seo from '$components/Seo.svelte';
+
 	import checkinQueryApi from '$dataSources/api.that.tech/checkin/queries';
 
 	import Loading from './_components/_Loading.svelte';
@@ -14,14 +16,19 @@
 	const { eventName, year } = $page.params;
 	const eventSlug = `${eventName}/${year}`;
 
-	const metaTags = seoMetaTags({
-		title: 'Event Checkin - THAT',
-		description: 'Upcoming and Past Events at THAT',
-		openGraph: {
-			type: 'website',
-			url: 'https://that.us/'
-		}
-	});
+	const metaTags = ((title = 'Event Checkin - THAT') => ({
+		title,
+		tags: seoMetaTags({
+			title,
+			description: 'Upcoming and Past Events at THAT',
+			openGraph: {
+				type: 'website',
+				url: 'https://that.us/'
+			},
+			noindex: true,
+			nofollow: true
+		})
+	}))();
 
 	const { queryEventRegistrations } = checkinQueryApi();
 
@@ -30,13 +37,7 @@
 	}
 </script>
 
-<svelte:head>
-	<title>{metaTags.title}</title>
-
-	{#each metaTags as tag}
-		<meta {...tag} />
-	{/each}
-</svelte:head>
+<Seo title={metaTags.title} tags={metaTags.tags} />
 
 <ProfileLayout>
 	<div class="relative mx-auto px-4 max-w-screen-xl sm:px-6 lg:px-8">

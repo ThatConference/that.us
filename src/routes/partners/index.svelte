@@ -4,23 +4,26 @@
 
 	import { debug } from '$utils/config';
 	import seoMetaTags from '$utils/seo/metaTags';
-	import { Waiting } from '$elements';
-
-	import Layout from '$elements/layouts/ContentLayout.svelte';
+	import Seo from '$components/Seo.svelte';
 	import PartnerCard from '$components/partners/PartnerCard.svelte';
 	import ScrollThreshold from '$components/ScrollThreshold.svelte';
+	import { Waiting } from '$elements';
+	import Layout from '$elements/layouts/ContentLayout.svelte';
 
 	import Hero from './_components/_PartnersHero.svelte';
 	import partnerMachine from './_machines/partners';
 
-	const metaTags = seoMetaTags({
-		title: 'Partners - THAT',
-		description: 'Thank you to those who support our great community every day.',
-		openGraph: {
-			type: 'website',
-			url: `https://that.us/partners`
-		}
-	});
+	const metaTags = ((title = 'Partners - THAT') => ({
+		title,
+		tags: seoMetaTags({
+			title,
+			description: 'Thank you to those who support our great community every day.',
+			openGraph: {
+				type: 'website',
+				url: `https://that.us/partners`
+			}
+		})
+	}))();
 
 	const { state, send } = useMachine(partnerMachine(), {
 		devTools: debug.xstate
@@ -33,13 +36,7 @@
 	}
 </script>
 
-<svelte:head>
-	<title>{metaTags.title}</title>
-
-	{#each metaTags as tag}
-		<meta {...tag} />
-	{/each}
-</svelte:head>
+<Seo title={metaTags.title} tags={metaTags.tags} />
 
 <ScrollThreshold bind:scrollThreshold />
 <Layout>

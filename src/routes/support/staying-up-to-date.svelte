@@ -2,21 +2,24 @@
 	import { onMount, onDestroy } from 'svelte';
 	import Clipboard from 'clipboard';
 
+	import seoMetaTags from '$utils/seo/metaTags';
+	import Seo from '$components/Seo.svelte';
 	import { Highlight as HighlightLink, Standard as StandardLink } from '$elements/links';
 
 	import Layout from './_components/_Layout.svelte';
 	import Header from './_components/_Header.svelte';
 
-	import seoMetaTags from '$utils/seo/metaTags';
-
-	const metaTags = seoMetaTags({
-		title: 'Staying Up To Date - THAT',
-		description: '',
-		openGraph: {
-			type: 'website',
-			url: `https://that.us/support/join-activity`
-		}
-	});
+	const metaTags = ((title = 'Staying Up To Date - THAT') => ({
+		title,
+		tags: seoMetaTags({
+			title,
+			description: '',
+			openGraph: {
+				type: 'website',
+				url: `https://that.us/support/join-activity`
+			}
+		})
+	}))();
 
 	let clipboard;
 	let copiedText = 'https://bit.ly/2YRdVxy';
@@ -34,12 +37,7 @@
 	});
 </script>
 
-<svelte:head>
-	<title>{metaTags.title}</title>
-	{#each metaTags as tag}
-		<meta {...tag} />
-	{/each}
-</svelte:head>
+<Seo title={metaTags.title} tags={metaTags.tags} />
 
 <Layout>
 	<Header center={true}>Staying Up To Date</Header>

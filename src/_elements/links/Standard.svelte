@@ -1,13 +1,8 @@
 <script>
 	export let href;
-	export let reload = false;
-	export let open = false;
 </script>
 
 <a
-	button={true}
-	{reload}
-	{open}
 	{href}
 	class="px-8 py-2 rounded-md shadow text-base leading-6 font-medium border-2
     border-thatBlue-500 text-thatBlue-500 bg-white hover:bg-thatBlue-500

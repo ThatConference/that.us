@@ -1,3 +1,6 @@
+<script context="module">
+</script>
+
 <script>
 	// todo.. What do we do in the scenario where the event isn't found?
 
@@ -15,6 +18,7 @@
 	import ActivityList from '$components/activities/List.svelte';
 	import CardLoader from '$components/CardLoader.svelte';
 	import ScrollThreshold from '$components/ScrollThreshold.svelte';
+	import Seo from '$components/Seo.svelte';
 
 	import { Waiting, ActionHeader } from '$elements';
 	import { Chevron } from '$elements/svgs';
@@ -58,13 +62,7 @@
 	}
 </script>
 
-<svelte:head>
-	<title>{metaTags.title}</title>
-
-	{#each metaTags as tag}
-		<meta {...tag} />
-	{/each}
-</svelte:head>
+<Seo title={metaTags.title || ''} tags={metaTags?.tags || []} />
 
 <ScrollThreshold bind:scrollThreshold />
 <StackedLayout>

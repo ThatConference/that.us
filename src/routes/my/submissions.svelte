@@ -5,34 +5,32 @@
 	import { ActionHeader, ModalError, ModalWarning } from '$elements';
 	import StackedLayout from '$elements/layouts/StackedLayout.svelte';
 
+	import Seo from '$components/Seo.svelte';
 	import Nav from '$components/nav/interiorNav/Top.svelte';
 	import Sponsor from '$components/SponsorSimple.svelte';
 	import CardLoader from '$components/CardLoader.svelte';
 
 	import SubmissionList from './_components/_SubmissionList.svelte';
 
-	const metaTags = seoMetaTags({
-		title: 'My Submissions - THAT',
-		description: 'Your activities.',
-		openGraph: {
-			type: 'website',
-			url: `https://that.us/my/submissions`
-		},
-		nofollow: true,
-		noindex: true
-	});
+	const metaTags = ((title = 'My Submissions - THAT') => ({
+		title,
+		tags: seoMetaTags({
+			title,
+			description: 'Your activities.',
+			openGraph: {
+				type: 'website',
+				url: `https://that.us/my/submissions`
+			},
+			nofollow: true,
+			noindex: true
+		})
+	}))();
 
 	const { queryMySubmissions } = submissionsApi();
 	const query = queryMySubmissions();
 </script>
 
-<svelte:head>
-	<title>{metaTags.title}</title>
-
-	{#each metaTags as tag}
-		<meta {...tag} />
-	{/each}
-</svelte:head>
+<Seo title={metaTags.title} tags={metaTags.tags} />
 
 <StackedLayout>
 	<div slot="header">

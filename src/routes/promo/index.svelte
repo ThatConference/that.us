@@ -6,6 +6,7 @@
 
 	import { Waiting } from '$elements';
 	import seoMetaTags from '$utils/seo/metaTags';
+	import Seo from '$components/Seo.svelte';
 	import Nav from '$components/nav/interiorNav/Top.svelte';
 	import eventsApi from '$dataSources/api.that.tech/events/queries';
 
@@ -13,14 +14,17 @@
 	import Hero from './_components/_Hero.svelte';
 	import FAQ from './_components/_FAQ.svelte';
 
-	const metaTags = seoMetaTags({
-		title: 'Promotions - THAT',
-		description: 'Let us help.',
-		openGraph: {
-			type: 'website',
-			url: `https://that.us/promo`
-		}
-	});
+	const metaTags = ((title = 'Promotions - THAT') => ({
+		title,
+		tags: seoMetaTags({
+			title,
+			description: 'Let us help.',
+			openGraph: {
+				type: 'website',
+				url: `https://that.us/promo`
+			}
+		})
+	}))();
 
 	const eventId = $page.query.get('eventId');
 	const { send } = getContext('cart');
@@ -46,13 +50,7 @@
 	}
 </script>
 
-<svelte:head>
-	<title>{metaTags.title}</title>
-
-	{#each metaTags as tag}
-		<meta {...tag} />
-	{/each}
-</svelte:head>
+<Seo title={metaTags.title} tags={metaTags.tags} />
 
 <Layout>
 	<section slot="nav">

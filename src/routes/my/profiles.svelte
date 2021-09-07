@@ -6,26 +6,30 @@
 
 	import { getAuth } from '$utils/security';
 	import seoMetaTags from '$utils/seo/metaTags';
+	import Seo from '$components/Seo.svelte';
+	import Nav from '$components/nav/interiorNav/Top.svelte';
 	import { ActionHeader } from '$elements';
 	import { User, Badge } from '$elements/svgs';
 	import StackedLayout from '$elements/layouts/StackedLayout.svelte';
 
-	import Nav from '$components/nav/interiorNav/Top.svelte';
 	import Profile from './_components/profiles/_Profile.svelte';
 	import SharedProfile from './_components/profiles/_SharedProfile.svelte';
 
 	const { isEmpty } = lodash;
 	const { thatProfile } = getAuth();
-	const metaTags = seoMetaTags({
-		title: 'My Profiles - THAT',
-		description: 'Your Profiles.',
-		openGraph: {
-			type: 'website',
-			url: `https://that.us/my/profiles`
-		},
-		nofollow: true,
-		noindex: true
-	});
+	const metaTags = ((title = 'My Profiles - THAT') => ({
+		title,
+		tags: seoMetaTags({
+			title,
+			description: 'Your Profiles.',
+			openGraph: {
+				type: 'website',
+				url: `https://that.us/my/profiles`
+			},
+			nofollow: true,
+			noindex: true
+		})
+	}))();
 
 	const asideSelected = {
 		item: 'bg-thatBlue-100 bg-opacity-25 hover:bg-opacity-25 hover:bg-thatBlue-100 border-thatBlue-500 text-thatBlue-700 hover:text-thatBlue-700 group mt-1 border-l-4 px-3 py-2 flex items-center text-sm font-medium',
@@ -64,13 +68,7 @@
 	}
 </script>
 
-<svelte:head>
-	<title>{metaTags.title}</title>
-
-	{#each metaTags as tag}
-		<meta {...tag} />
-	{/each}
-</svelte:head>
+<Seo title={metaTags.title} tags={metaTags.tags} />
 
 <StackedLayout>
 	<div slot="header">

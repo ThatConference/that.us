@@ -4,6 +4,7 @@
 	import seoMetaTags from '$utils/seo/metaTags';
 	import currentEvent from '$stores/currentEvent';
 	import eventsApi from '$dataSources/api.that.tech/events/queries';
+	import Seo from '$components/Seo.svelte';
 
 	import Hybrid from '../_components/_Hybrid.svelte';
 	import MultiDay from '../_components/_MultiDay.svelte';
@@ -12,14 +13,17 @@
 	const { event, date } = $page.params;
 	const eventSlug = `${event}/${date}`;
 
-	const metaTags = seoMetaTags({
-		title: 'Event - THAT',
-		description: 'Upcoming and Past Events at THAT',
-		openGraph: {
-			type: 'website',
-			url: `https://that.us/events/${eventSlug}`
-		}
-	});
+	const metaTags = ((title = 'Event - THAT') => ({
+		title,
+		tags: seoMetaTags({
+			title,
+			description: 'Upcoming and Past Events at THAT',
+			openGraph: {
+				type: 'website',
+				url: `https://that.us/events/${eventSlug}`
+			}
+		})
+	}))();
 
 	let eventFormat;
 
@@ -48,13 +52,7 @@
 	}
 </script>
 
-<svelte:head>
-	<title>{metaTags.title}</title>
-
-	{#each metaTags as tag}
-		<meta {...tag} />
-	{/each}
-</svelte:head>
+<Seo title={metaTags.title} tags={metaTags.tags} />
 
 {#await queryEvent() then event}
 	<svelte:component this={eventFormat} {event} />

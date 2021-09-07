@@ -7,7 +7,7 @@
 
 	import seoMetaTags from '$utils/seo/metaTags';
 	import logEvent from '$utils/eventTrack';
-
+	import Seo from '$components/Seo.svelte';
 	import { ActionHeader, ModalError } from '$elements';
 	import StackedLayout from '$elements/layouts/StackedLayout.svelte';
 	import Nav from '$components/nav/interiorNav/Top.svelte';
@@ -23,14 +23,17 @@
 	const { updateSession } = sessionsMutationsApi();
 	const { queryMySessionById } = sessionsQueryApi();
 
-	const metaTags = seoMetaTags({
-		title: 'Edit Activity - THAT',
-		description: 'Edit your submission.',
-		openGraph: {
-			type: 'website',
-			url: `https://that.us/activity/edit`
-		}
-	});
+	const metaTags = ((title = 'Edit Activity - THAT') => ({
+		title,
+		tags: seoMetaTags({
+			title,
+			description: 'Edit your activity.',
+			openGraph: {
+				type: 'website',
+				url: `https://that.us/activity/edit`
+			}
+		})
+	}))();
 
 	let activityDetails;
 
@@ -71,13 +74,7 @@
 	}
 </script>
 
-<svelte:head>
-	<title>{metaTags.title}</title>
-
-	{#each metaTags as tag}
-		<meta {...tag} />
-	{/each}
-</svelte:head>
+<Seo title={metaTags.title} tags={metaTags.tags} />
 
 <StackedLayout bodyBackgroundColor="bg-gray-100">
 	<div slot="header">

@@ -2,17 +2,21 @@
 	import archieml from 'archieml';
 
 	import seoMetaTags from '$utils/seo/metaTags';
-	import Layout from '$elements/layouts/ContentLayout.svelte';
+	import Seo from '$components/Seo.svelte';
 	import ReleaseNote from '$components/releaseNotes/Release.svelte';
+	import Layout from '$elements/layouts/ContentLayout.svelte';
 
-	const metaTags = seoMetaTags({
-		title: 'Changelog - THAT',
-		description: 'Check out all of the releases.',
-		openGraph: {
-			type: 'website',
-			url: `https://that.us/changelog`
-		}
-	});
+	const metaTags = ((title = 'Changelog - THAT') => ({
+		title,
+		tags: seoMetaTags({
+			title,
+			description: 'Check out all of the releases.',
+			openGraph: {
+				type: 'website',
+				url: `https://that.us/changelog`
+			}
+		})
+	}))();
 
 	let getReleases = fetch('_releaseNotes/manifest.aml')
 		.then((response) => response.text())
@@ -23,14 +27,7 @@
 		});
 </script>
 
-<svelte:head>
-	<title>{metaTags.title}</title>
-
-	{#each metaTags as tag}
-		<meta {...tag} />
-	{/each}
-</svelte:head>
-
+<Seo title={metaTags.title} tags={metaTags.tags} />
 <Layout>
 	<div class="py-16 bg-white">
 		<div class="relative">

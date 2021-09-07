@@ -11,6 +11,7 @@
 	import StackedLayout from '$elements/layouts/StackedLayout.svelte';
 	import Nav from '$components/nav/interiorNav/Top.svelte';
 	import WarningNotification from '$components/notifications/Warning.svelte';
+	import Seo from '$components/Seo.svelte';
 
 	import config from '$utils/config';
 	import { getAuth } from '$utils/security';
@@ -216,30 +217,29 @@
 		}
 	}
 
-	const metaTags = seoMetaTags({
-		title: 'Join In - THAT',
-		description: 'Join in the conversation today.',
-		openGraph: {
-			type: 'website',
-			url: `https://that.us/join`
-		},
-		noindex: true,
-		nofollow: true
-	});
+	const metaTags = ((title = 'Join In - THAT') => ({
+		title,
+		tags: seoMetaTags({
+			title,
+			description: 'Join in the conversation today.',
+			openGraph: {
+				type: 'website',
+				url: `https://that.us/join`
+			},
+			noindex: true,
+			nofollow: true
+		})
+	}))();
 </script>
 
 <svelte:window on:resize={handleResize} />
 
 <svelte:head>
-	<title>{metaTags.title}</title>
-
-	{#each metaTags as tag}
-		<meta {...tag} />
-	{/each}
-
 	<script src="https://meet.jit.si/external_api.js" on:load={initJitsi}>
 	</script>
 </svelte:head>
+
+<Seo title={metaTags.title} tags={metaTags.tags} />
 
 {#if incompleteProfile}
 	<ModalError

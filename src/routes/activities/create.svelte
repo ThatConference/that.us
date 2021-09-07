@@ -9,7 +9,7 @@
 	import seoMetaTags from '$utils/seo/metaTags';
 	import logEvent from '$utils/eventTrack';
 	import sessionsApi from '$dataSources/api.that.tech/sessions/mutations';
-
+	import Seo from '$components/Seo.svelte';
 	import { ActionHeader } from '$elements';
 	import { Standard as StandardLink } from '$elements/links';
 	import StackedLayout from '$elements/layouts/StackedLayout.svelte';
@@ -18,14 +18,17 @@
 	import ActivityForm from './_components/form/ActivityForm.svelte';
 	import { formatCreate } from './_lib/formatRequest';
 
-	const metaTags = seoMetaTags({
-		title: 'New Activity - THAT',
-		description: 'Create a New [Activity, Code Review, Open Space, Chat], you get the idea.',
-		openGraph: {
-			type: 'website',
-			url: `https://that.us/activities/create`
-		}
-	});
+	const metaTags = ((title = 'New Activity - THAT') => ({
+		title,
+		tags: seoMetaTags({
+			title: 'New Activity - THAT',
+			description: 'Create a New [Activity, Code Review, Open Space, Chat], you get the idea.',
+			openGraph: {
+				type: 'website',
+				url: `https://that.us/activities/create`
+			}
+		})
+	}))();
 
 	const { createSession } = sessionsApi();
 
@@ -45,13 +48,7 @@
 	}
 </script>
 
-<svelte:head>
-	<title>{metaTags.title}</title>
-
-	{#each metaTags as tag}
-		<meta {...tag} />
-	{/each}
-</svelte:head>
+<Seo title={metaTags.title} tags={metaTags.tags} />
 
 <StackedLayout bodyBackgroundColor="bg-gray-100">
 	<div slot="header">

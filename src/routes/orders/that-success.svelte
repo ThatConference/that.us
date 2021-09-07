@@ -4,23 +4,27 @@
 
 	import seoMetaTags from '$utils/seo/metaTags';
 	import { getAuth } from '$utils/security';
-	import ordersApi from '$dataSources/api.that.tech/orders/mutations';
+	import Seo from '$components/Seo.svelte';
 	import { Highlight as HighlightLink, Standard as StandardLink } from '$elements/links';
+	import ordersApi from '$dataSources/api.that.tech/orders/mutations';
 
 	import Layout from './_components/_Layout.svelte';
 	import QuestionModal from './_components/_QuestionModal.svelte';
 
 	const { thatProfile } = getAuth();
-	const metaTags = seoMetaTags({
-		title: 'Payment Received - THAT',
-		description: 'Your payment was successfully received.',
-		openGraph: {
-			type: 'website',
-			url: `https://that.us/orders/success`
-		},
-		noindex: true,
-		nofollow: true
-	});
+	const metaTags = ((title = 'Payment Received - THAT') => ({
+		title,
+		tags: seoMetaTags({
+			title,
+			description: 'Your payment was successfully received.',
+			openGraph: {
+				type: 'website',
+				url: `https://that.us/orders/success`
+			},
+			noindex: true,
+			nofollow: true
+		})
+	}))();
 
 	const { send } = getContext('cart');
 
@@ -51,15 +55,11 @@
 </script>
 
 <svelte:head>
-	<title>{metaTags.title}</title>
-
-	{#each metaTags as tag}
-		<meta {...tag} />
-	{/each}
-
 	<script src="https://paperform.co/__embed.min.js" on:load={handleOnLoad}>
 	</script>
 </svelte:head>
+
+<Seo title={metaTags.title} tags={metaTags.tags} />
 
 {#if !questionsCompleted}
 	<div class="overscroll-none">

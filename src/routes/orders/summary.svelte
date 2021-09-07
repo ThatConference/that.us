@@ -3,6 +3,7 @@
 
 	import seoMetaTags from '$utils/seo/metaTags';
 	import { debug } from '$utils/config';
+	import Seo from '$components/Seo.svelte';
 
 	import Layout from './_components/_Layout.svelte';
 	import Steps from './_components/_Steps.svelte';
@@ -11,29 +12,26 @@
 	import summaryMachine from './_machines/summary';
 	import createStepsMachine from './_machines/steps';
 
-	const metaTags = seoMetaTags({
-		title: 'Order Summary - THAT',
-		description: 'View the items in your cart.',
-		openGraph: {
-			type: 'website',
-			url: `https://that.us/orders/summary`
-		},
-		noindex: true,
-		nofollow: true
-	});
+	const metaTags = ((title = 'Order Summary - THAT') => ({
+		title,
+		tags: seoMetaTags({
+			title,
+			description: 'View the items in your cart.',
+			openGraph: {
+				type: 'website',
+				url: `https://that.us/orders/summary`
+			},
+			noindex: true,
+			nofollow: true
+		})
+	}))();
 
 	const { state } = useMachine(summaryMachine(createStepsMachine()), {
 		devTools: debug.xstate
 	});
 </script>
 
-<svelte:head>
-	<title>{metaTags.title}</title>
-
-	{#each metaTags as tag}
-		<meta {...tag} />
-	{/each}
-</svelte:head>
+<Seo title={metaTags.title} tags={metaTags.tags} />
 
 {#if ['waiting', 'ready'].some($state.matches)}
 	<Layout>

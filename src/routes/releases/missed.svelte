@@ -4,21 +4,25 @@
 	import lodash from 'lodash';
 
 	import seoMetaTags from '$utils/seo/metaTags';
-	import Layout from '$elements/layouts/ContentLayout.svelte';
+	import Seo from '$components/Seo.svelte';
 	import ReleaseNote from '$components/releaseNotes/Release.svelte';
+	import Layout from '$elements/layouts/ContentLayout.svelte';
 
 	import { showReleaseNotes } from '$stores/siteVersion';
 
 	const { last } = lodash;
 
-	const metaTags = seoMetaTags({
-		title: 'Changelog - THAT',
-		description: "This is what you've missed since your last visit.",
-		openGraph: {
-			type: 'website',
-			url: `https://that.us/changelog-missed`
-		}
-	});
+	const metaTags = ((title = 'Changelog - THAT') => ({
+		title,
+		tags: seoMetaTags({
+			title,
+			description: "This is what you've missed since your last visit.",
+			openGraph: {
+				type: 'website',
+				url: `https://that.us/changelog-missed`
+			}
+		})
+	}))();
 
 	let versionLastSeen;
 
@@ -48,13 +52,7 @@
 	});
 </script>
 
-<svelte:head>
-	<title>{metaTags.title}</title>
-
-	{#each metaTags as tag}
-		<meta {...tag} />
-	{/each}
-</svelte:head>
+<Seo title={metaTags.title} tags={metaTags.tags} />
 
 <Layout>
 	<div class="py-16 bg-white">

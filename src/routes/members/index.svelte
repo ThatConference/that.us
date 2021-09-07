@@ -6,21 +6,25 @@
 	import { debug } from '$utils/config';
 	import { Waiting } from '$elements';
 	import Layout from '$elements/layouts/ContentLayout.svelte';
+	import Seo from '$components/Seo.svelte';
 	import Hero from '$components/members/Hero.svelte';
 	import MemberCard from '$components/members/MemberCard.svelte';
 	import ScrollThreshold from '$components/ScrollThreshold.svelte';
 
 	import memberMachine from './_machines/members';
 
-	const metaTags = seoMetaTags({
-		title: 'Members - THAT',
-		description:
-			'Our community is made of up geeks and geeklings across the world. Here are just a few.',
-		openGraph: {
-			type: 'website',
-			url: `https://that.us/members`
-		}
-	});
+	const metaTags = ((title = 'Members - THAT') => ({
+		title,
+		tags: seoMetaTags({
+			title,
+			description:
+				'Our community is made of up geeks and geeklings across the world. Here are just a few.',
+			openGraph: {
+				type: 'website',
+				url: `https://that.us/members`
+			}
+		})
+	}))();
 
 	const { state, send } = useMachine(memberMachine(), {
 		devTools: debug.xstate
@@ -33,13 +37,7 @@
 	}
 </script>
 
-<svelte:head>
-	<title>{metaTags.title}</title>
-
-	{#each metaTags as tag}
-		<meta {...tag} />
-	{/each}
-</svelte:head>
+<Seo title={metaTags.title} tags={metaTags.tags} />
 
 <ScrollThreshold bind:scrollThreshold />
 <Layout>

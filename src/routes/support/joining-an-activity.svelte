@@ -1,27 +1,25 @@
 <script>
 	import seoMetaTags from '$utils/seo/metaTags';
+	import Seo from '$components/Seo.svelte';
 	import { Highlight as HighlightLink, Standard as StandardLink } from '$elements/links';
 
 	import Layout from './_components/_Layout.svelte';
 	import Header from './_components/_Header.svelte';
 
-	const metaTags = seoMetaTags({
-		title: 'Joining an Activity - THAT',
-		description: '',
-		openGraph: {
-			type: 'website',
-			url: `https://that.us/support/join-activity`
-		}
-	});
+	const metaTags = ((title = 'Joining an Activity - THAT') => ({
+		title,
+		tags: seoMetaTags({
+			title,
+			description: '',
+			openGraph: {
+				type: 'website',
+				url: `https://that.us/support/join-activity`
+			}
+		})
+	}))();
 </script>
 
-<svelte:head>
-	<title>{metaTags.title}</title>
-
-	{#each metaTags as tag}
-		<meta {...tag} />
-	{/each}
-</svelte:head>
+<Seo title={metaTags.title} tags={metaTags.tags} />
 
 <Layout>
 	<Header center={true}>Joining an Activity</Header>

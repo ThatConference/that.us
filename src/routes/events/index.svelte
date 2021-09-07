@@ -4,6 +4,7 @@
 	import dayjs from 'dayjs';
 
 	import seoMetaTags from '$utils/seo/metaTags';
+	import Seo from '$components/Seo.svelte';
 	import eventsApi from '$dataSources/api.that.tech/events/queries';
 
 	import Layout from '$elements/layouts/ContentLayout.svelte';
@@ -13,14 +14,18 @@
 	import EventCard from './_components/_EventCard.svelte';
 
 	const { sortBy, take, drop } = lodash;
-	const metaTags = seoMetaTags({
-		title: 'Events - THAT',
-		description: 'Upcoming and Past Events at THAT',
-		openGraph: {
-			type: 'website',
-			url: 'https://that.us/events'
-		}
-	});
+
+	const metaTags = ((title = 'Events - THAT') => ({
+		title,
+		tags: seoMetaTags({
+			title: 'Events - THAT',
+			description: 'Upcoming and Past Events at THAT',
+			openGraph: {
+				type: 'website',
+				url: 'https://that.us/events'
+			}
+		})
+	}))();
 
 	function queryEvents() {
 		return eventsApi()
@@ -39,13 +44,7 @@
 	}
 </script>
 
-<svelte:head>
-	<title>{metaTags.title}</title>
-
-	{#each metaTags as tag}
-		<meta {...tag} />
-	{/each}
-</svelte:head>
+<Seo title={metaTags.title} tags={metaTags.tags} />
 
 <Layout>
 	<main class="overflow-hidden">

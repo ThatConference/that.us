@@ -2,19 +2,23 @@
 	import Fuse from 'fuse.js';
 
 	import seoMetaTags from '$utils/seo/metaTags';
-	import Layout from '$elements/layouts/ContentLayout.svelte';
+	import Seo from '$components/Seo.svelte';
 	import FaqItems from '$components/faq/FaqItem.svelte';
+	import Layout from '$elements/layouts/ContentLayout.svelte';
 
 	import items from './_faqItems.json';
 
-	const metaTags = seoMetaTags({
-		title: 'FAQ - THAT',
-		description: 'A common list of frequently asked questions, answered.',
-		openGraph: {
-			type: 'website',
-			url: `https://that.us/support/faq`
-		}
-	});
+	const metaTags = ((title: 'FAQ - THAT') => ({
+		title,
+		tags: seoMetaTags({
+			title,
+			description: 'A common list of frequently asked questions, answered.',
+			openGraph: {
+				type: 'website',
+				url: `https://that.us/support/faq`
+			}
+		})
+	}))();
 
 	// https://fusejs.io/api/options.html
 	const options = {
@@ -53,13 +57,7 @@
 	filter(searchterm);
 </script>
 
-<svelte:head>
-	<title>{metaTags.title}</title>
-
-	{#each metaTags as tag}
-		<meta {...tag} />
-	{/each}
-</svelte:head>
+<Seo title={metaTags.title} tags={metaTags.tags} />
 
 <Layout>
 	<div class="py-16 overflow-hidden">

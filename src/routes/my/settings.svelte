@@ -3,8 +3,10 @@
 	import { page } from '$app/stores'; // todo.. totally broke
 
 	import seoMetaTags from '$utils/seo/metaTags';
-	import { Badge, CreditCard, Ticket, Membership } from '$elements/svgs';
+	import Seo from '$components/Seo.svelte';
 	import Nav from '$components/nav/interiorNav/Top.svelte';
+
+	import { Badge, CreditCard, Ticket, Membership } from '$elements/svgs';
 	import StackedLayout from '$elements/layouts/StackedLayout.svelte';
 	import { ActionHeader } from '$elements';
 
@@ -13,16 +15,19 @@
 	import Tickets from './_components/_Tickets.svelte';
 	import MembershipSettings from './_components/_MembershipSettings.svelte';
 
-	const metaTags = seoMetaTags({
-		title: 'My Settings - THAT',
-		description: 'Your Application Setting.',
-		openGraph: {
-			type: 'website',
-			url: `https://that.us/my/settings`
-		},
-		nofollow: true,
-		noindex: true
-	});
+	const metaTags = ((title = 'My Settings - THAT') => ({
+		title,
+		tags: seoMetaTags({
+			title,
+			description: 'Your Application Setting.',
+			openGraph: {
+				type: 'website',
+				url: `https://that.us/my/settings`
+			},
+			nofollow: true,
+			noindex: true
+		})
+	}))();
 
 	const asideSelected = {
 		item: 'bg-thatBlue-100 bg-opacity-25 hover:bg-opacity-25 hover:bg-thatBlue-100 border-thatBlue-500 text-thatBlue-700 hover:text-thatBlue-700 group mt-1 border-l-4 px-3 py-2 flex items-center text-sm font-medium',
@@ -70,13 +75,7 @@
 	}
 </script>
 
-<svelte:head>
-	<title>{metaTags.title}</title>
-
-	{#each metaTags as tag}
-		<meta {...tag} />
-	{/each}
-</svelte:head>
+<Seo title={metaTags.title} tags={metaTags.tags} />
 
 <StackedLayout>
 	<div slot="header">

@@ -6,6 +6,7 @@
 	import { getAuth } from '$utils/security';
 	import { debug } from '$utils/config';
 	import seoMetaTags from '$utils/seo/metaTags';
+	import Seo from '$components/Seo.svelte';
 	import ProfileLayout from '$elements/layouts/Profile.svelte';
 
 	import Hero from '../_components/_Hero.svelte';
@@ -32,14 +33,17 @@
 	$: if (['profileLoaded'].some($state.matches)) {
 		const { profile } = $state.context;
 
-		metaTags = seoMetaTags({
-			title: `${profile.companyName} - THAT`,
-			description: `${profile.aboutUs}`,
-			openGraph: {
-				type: 'website',
-				url: `https://that.us/partners/${partner}`
-			}
-		});
+		metaTags = ((title = `${profile.companyName} - THAT`) => ({
+			title,
+			tags: seoMetaTags({
+				title,
+				description: `${profile.aboutUs}`,
+				openGraph: {
+					type: 'website',
+					url: `https://that.us/partners/${partner}`
+				}
+			})
+		}))();
 	}
 
 	$: if ($isAuthenticated && $token) {
@@ -59,13 +63,7 @@
 	}
 </script>
 
-<svelte:head>
-	<title>{metaTags.title}</title>
-
-	{#each metaTags as tag}
-		<meta {...tag} />
-	{/each}
-</svelte:head>
+<Seo title={metaTags?.title || ''} tags={metaTags?.tags || []} />
 
 <ProfileLayout>
 	{#if ['profileLoaded'].some($state.matches)}

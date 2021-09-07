@@ -3,6 +3,7 @@
 	import { page } from '$app/stores'; // todo.. totally broke
 
 	import seoMetaTags from '$utils/seo/metaTags';
+	import Seo from '$components/Seo.svelte';
 	import { ActionHeader } from '$elements';
 	import { User } from '$elements/svgs';
 	import Nav from '$components/nav/interiorNav/Top.svelte';
@@ -10,16 +11,19 @@
 
 	import Sponsors from './_components/network/_Sponsors.svelte';
 
-	const metaTags = seoMetaTags({
-		title: 'My Network - THAT',
-		description: 'Your Network.',
-		openGraph: {
-			type: 'website',
-			url: `https://that.us/my/network`
-		},
-		nofollow: true,
-		noindex: true
-	});
+	const metaTags = ((title = 'My Network - THAT') => ({
+		title,
+		tags: seoMetaTags({
+			title,
+			description: 'Your Network.',
+			openGraph: {
+				type: 'website',
+				url: `https://that.us/my/network`
+			},
+			nofollow: true,
+			noindex: true
+		})
+	}))();
 
 	const asideSelected = {
 		item: 'bg-thatBlue-100 bg-opacity-25 hover:bg-opacity-25 hover:bg-thatBlue-100 border-thatBlue-500 text-thatBlue-700 hover:text-thatBlue-700 group mt-1 border-l-4 px-3 py-2 flex items-center text-sm font-medium',
@@ -54,13 +58,7 @@
 	}
 </script>
 
-<svelte:head>
-	<title>{metaTags.title}</title>
-
-	{#each metaTags as tag}
-		<meta {...tag} />
-	{/each}
-</svelte:head>
+<Seo title={metaTags.title} tags={metaTags.tags} />
 
 <StackedLayout>
 	<div slot="header">

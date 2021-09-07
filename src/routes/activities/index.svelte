@@ -8,6 +8,7 @@
 	import ActivityList from '$components/activities/List.svelte';
 	import CardLoader from '$components/CardLoader.svelte';
 	import ScrollThreshold from '$components/ScrollThreshold.svelte';
+	import Seo from '$components/Seo.svelte';
 
 	import { Waiting, ActionHeader } from '$elements';
 	import { Chevron } from '$elements/svgs';
@@ -20,14 +21,18 @@
 
 	const { isEmpty } = lodash;
 	const { thatProfile } = getAuth();
-	const metaTags = seoMetaTags({
-		title: 'Daily Activities - THAT',
-		description: `THAT Daily Activities || 'Activities'}.`,
-		openGraph: {
-			type: 'website',
-			url: `https://that.us/activities`
-		}
-	});
+
+	const metaTags = ((title = 'Daily Activities - THAT') => ({
+		title,
+		tags: seoMetaTags({
+			title,
+			description: `THAT Daily Activities || 'Activities'}.`,
+			openGraph: {
+				type: 'website',
+				url: `https://that.us/activities`
+			}
+		})
+	}))();
 
 	let createDisabled = true;
 	let scrollThreshold = 1200;
@@ -45,13 +50,7 @@
 	}
 </script>
 
-<svelte:head>
-	<title>{metaTags.title}</title>
-
-	{#each metaTags as tag}
-		<meta {...tag} />
-	{/each}
-</svelte:head>
+<Seo title={metaTags.title} tags={metaTags.tags} />
 
 <ScrollThreshold bind:scrollThreshold />
 <StackedLayout>

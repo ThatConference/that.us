@@ -2,35 +2,33 @@
 	import { onMount, getContext } from 'svelte';
 
 	import seoMetaTags from '$utils/seo/metaTags';
+	import Seo from '$components/Seo.svelte';
 	import { Highlight as HighlightLink, Standard as StandardLink } from '$elements/links';
 
 	import Layout from './_components/_Layout.svelte';
 
 	const { send } = getContext('cart');
 
-	const metaTags = seoMetaTags({
-		title: 'Payment Received - THAT',
-		description: 'Your payment was successfully received.',
-		openGraph: {
-			type: 'website',
-			url: `https://that.us/orders/success`
-		},
-		noindex: true,
-		nofollow: true
-	});
+	const metaTags = ((title = 'Payment Received - THAT') => ({
+		title,
+		tags: seoMetaTags({
+			title,
+			description: 'Your payment was successfully received.',
+			openGraph: {
+				type: 'website',
+				url: `https://that.us/orders/success`
+			},
+			noindex: true,
+			nofollow: true
+		})
+	}))();
 
 	onMount(() => {
 		send('CLEAR_CART');
 	});
 </script>
 
-<svelte:head>
-	<title>{metaTags.title}</title>
-
-	{#each metaTags as tag}
-		<meta {...tag} />
-	{/each}
-</svelte:head>
+<Seo title={metaTags.title} tags={metaTags.tags} />
 
 <Layout>
 	<div class="space-y-12">

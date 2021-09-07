@@ -4,20 +4,24 @@
 	import { Circle3 } from 'svelte-loading-spinners';
 
 	import seoMetaTags from '$utils/seo/metaTags';
-	import { Shell } from '$elements/buttons';
+	import Seo from '$components/Seo.svelte';
 	import NumPad from '$components/numberPad/Panel.svelte';
+	import { Shell } from '$elements/buttons';
 	import leadsMutationApi from '$dataSources/api.that.tech/partner/leads/mutations';
 
-	const metaTags = seoMetaTags({
-		title: 'Lead Capture - THAT',
-		description: '',
-		openGraph: {
-			type: 'website',
-			url: `https://that.us/partners/leads`
-		},
-		noindex: true,
-		nofollow: true
-	});
+	const metaTags = ((title = 'Lead Capture - THAT') => ({
+		title,
+		tags: seoMetaTags({
+			title,
+			description: '',
+			openGraph: {
+				type: 'website',
+				url: `https://that.us/partners/leads`
+			},
+			noindex: true,
+			nofollow: true
+		})
+	}))();
 
 	const { addPin } = leadsMutationApi();
 	const eventId = page.slug;
@@ -52,13 +56,7 @@
 	}
 </script>
 
-<svelte:head>
-	<title>{metaTags.title}</title>
-
-	{#each metaTags as tag}
-		<meta {...tag} />
-	{/each}
-</svelte:head>
+<Seo title={metaTags.title} tags={metaTags.tags} />
 
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 	<h1 class="mt-6 text-xl leading-6 font-bold text-thatBlue-800">THAT Contact Exchange</h1>

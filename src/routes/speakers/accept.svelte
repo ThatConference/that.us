@@ -3,22 +3,26 @@
 
 	import seoMetaTags from '$utils/seo/metaTags';
 	import { getAuth } from '$utils/security';
+	import Seo from '$components/Seo.svelte';
 	import { Highlight as HighlightLink, Standard as StandardLink } from '$elements/links';
 
 	import Layout from './_components/_Layout.svelte';
 	import QuestionModal from './_components/_QuestionModal.svelte';
 
 	const { thatProfile } = getAuth();
-	const metaTags = seoMetaTags({
-		title: 'Speaker Acceptance - THAT',
-		description: '',
-		openGraph: {
-			type: 'website',
-			url: `https://that.us/speakers/accept`
-		},
-		noindex: true,
-		nofollow: true
-	});
+	const metaTags = ((title = 'Speaker Acceptance - THAT') => ({
+		title,
+		tags: seoMetaTags({
+			title,
+			description: '',
+			openGraph: {
+				type: 'website',
+				url: `https://that.us/speakers/accept`
+			},
+			noindex: true,
+			nofollow: true
+		})
+	}))();
 
 	$: questionsCompleted = false;
 	let formDataPrefill;
@@ -38,15 +42,11 @@
 </script>
 
 <svelte:head>
-	<title>{metaTags.title}</title>
-
-	{#each metaTags as tag}
-		<meta {...tag} />
-	{/each}
-
 	<script src="https://paperform.co/__embed.min.js" on:load={handleOnLoad}>
 	</script>
 </svelte:head>
+
+<Seo title={metaTags.title} tags={metaTags.tags} />
 
 {#if !questionsCompleted}
 	<div class="overscroll-none">

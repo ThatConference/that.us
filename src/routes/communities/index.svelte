@@ -4,6 +4,7 @@
 
 	import seoMetaTags from '$utils/seo/metaTags';
 	import { debug } from '$utils/config';
+	import Seo from '$components/Seo.svelte';
 	import { Waiting } from '$elements';
 	import Layout from '$elements/layouts/ContentLayout.svelte';
 	import CommunityCard from '$components/communities/CommunityCard.svelte';
@@ -12,14 +13,17 @@
 	import Hero from './_components/_CommunitiesHero.svelte';
 	import createMachine from './_machines/communities';
 
-	const metaTags = seoMetaTags({
-		title: 'Communities - THAT',
-		description: 'tbd',
-		openGraph: {
-			type: 'website',
-			url: `https://that.us/communities`
-		}
-	});
+	const metaTags = ((title = 'Communities - THAT') => ({
+		title,
+		tags: seoMetaTags({
+			title: 'Communities - THAT',
+			description: 'tbd',
+			openGraph: {
+				type: 'website',
+				url: `https://that.us/communities`
+			}
+		})
+	}))();
 
 	const { state, send } = useMachine(createMachine(), {
 		devTools: debug.xstate
@@ -32,13 +36,7 @@
 	}
 </script>
 
-<svelte:head>
-	<title>{metaTags.title}</title>
-
-	{#each metaTags as tag}
-		<meta {...tag} />
-	{/each}
-</svelte:head>
+<Seo title={metaTags.title} tags={metaTags.tags} />
 
 <ScrollThreshold bind:scrollThreshold />
 <Layout>
