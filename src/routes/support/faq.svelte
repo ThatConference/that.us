@@ -8,7 +8,7 @@
 
 	import items from './_faqItems.json';
 
-	const metaTags = ((title: 'FAQ - THAT') => ({
+	const metaTags = ((title = 'FAQ - THAT') => ({
 		title,
 		tags: seoMetaTags({
 			title,
