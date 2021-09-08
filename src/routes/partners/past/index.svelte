@@ -3,14 +3,16 @@
 	import { useMachine } from 'xstate-svelte';
 
 	import { debug } from '$utils/config';
+	import seoMetaTags from '$utils/seo/metaTags';
+
 	import Seo from '$components/Seo.svelte';
 	import PartnerCard from '$components/partners/PartnerCard.svelte';
 	import ScrollThreshold from '$components/ScrollThreshold.svelte';
 	import { Waiting } from '$elements';
 	import Layout from '$elements/layouts/ContentLayout.svelte';
 
-	import Hero from './_components/_PastPartnersHero.svelte';
-	import partnerMachine from './_machines/pastPartners';
+	import Hero from '../_components/_PastPartnersHero.svelte';
+	import partnerMachine from '../_machines/pastPartners';
 
 	const metaTags = ((title = 'Past Partners - THAT') => ({
 		title,

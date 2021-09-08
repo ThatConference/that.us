@@ -256,7 +256,7 @@
 
 		{#if activityDetails}
 			<ActionHeader title={activityDetails.title}>
-				<aButton href="/activities/{activityId}" text="Activity Details" />
+				<a href="/activities/{activityId}">Activity Details</a>
 			</ActionHeader>
 		{/if}
 	</div>

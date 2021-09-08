@@ -6,7 +6,9 @@
 
 		return {
 			props: {
-				members: await queryMembers(15).then((r) => r.members)
+				members: await queryMembers(15).then((r) => r.members),
+				events,
+				activities
 			}
 		};
 	}
@@ -14,6 +16,9 @@
 
 <script>
 	export let members;
+	export let events;
+	export let activities;
+	export let stats;
 
 	import { fade } from 'svelte/transition';
 	import { useMachine } from 'xstate-svelte';
@@ -32,12 +37,12 @@
 		Newsletter,
 		Stats,
 		Events,
-		NewMembers
+		NewMembers,
+		WelcomeBack
 	} from './_root/components';
 
 	import currentEvent from '$stores/currentEvent';
 
-	import WelcomeBack from './_root/components/_WelcomeBack.svelte';
 	import createMachine from './_root/machines/home';
 
 	const { thatProfile, isAuthenticated } = getAuth();
