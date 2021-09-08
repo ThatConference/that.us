@@ -79,7 +79,7 @@ export default (fetch) => {
 		return client
 			.secureQuery({ query: QUERY_ME_FOLLOWING_COMMUNITIES, variables })
 			.then(({ data, error }) => {
-				if (error) log(error, 'query_me');
+				if (error) log(error, 'QUERY_ME_FOLLOWING_COMMUNITIES');
 
 				const { me } = data.communities;
 				return me ? me.favorites.ids : [];

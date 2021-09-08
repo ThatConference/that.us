@@ -78,7 +78,11 @@
 <ProfileLayout>
 	<div class="flex flex-col">
 		<div in:fade={{ delay: getDelay() }}>
-			<Hero isFollowing={false} member={profile} on:TOGGLE_FOLLOW={followProfile} />
+			<Hero
+				isFollowing={false}
+				member={profile}
+				on:TOGGLE_FOLLOW={() => followProfile(profile.slug)}
+			/>
 		</div>
 
 		{#if profile.lifeHack}
@@ -98,7 +102,7 @@
 				<MeritBadges meritBadges={profile.earnedMeritBadges} />
 			{/if}
 
-			<CTA isFollowing={false} {profile} on:TOGGLE_FOLLOW={followProfile} />
+			<CTA isFollowing={false} {profile} on:TOGGLE_FOLLOW={() => followProfile(profile.slug)} />
 		</div>
 	</div>
 </ProfileLayout>

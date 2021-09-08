@@ -3,7 +3,7 @@ import gFetch from '$utils/gfetch';
 import { log } from '../utilities/error';
 
 export const MUTATION_FOLLOW_COMMUNITY_TOGGLE = `
-  mutation followCommunity($communityId: ID) {
+  mutation MUTATION_FOLLOW_COMMUNITY_TOGGLE($communityId: ID) {
     communities {
       favoriting(findBy: {id: $communityId}) {
         toggle {

@@ -1,36 +1,18 @@
 <script>
 	export let community;
-	export let isFollowing = false;
+	export let isFollowing;
 
-	import { onMount, onDestroy, createEventDispatcher } from 'svelte';
+	import { createEventDispatcher } from 'svelte';
 	import { fade } from 'svelte/transition';
-	import Icon from 'svelte-awesome';
-	import { share } from 'svelte-awesome/icons';
-	import Clipboard from 'clipboard';
 	import dayjs from 'dayjs';
 
+	import { getAuth } from '$utils/security';
 	import { Standard as StandardButton } from '$elements/buttons';
 	import { Tag } from '$elements';
 	import Header from '$elements/layouts/profile/_Header.svelte';
-	import { getAuth } from '$utils/security';
 
-	const { isAuthenticated } = getAuth();
+	const { isAuthenticated, login } = getAuth();
 	const dispatch = createEventDispatcher();
-
-	let clipboard;
-	let copiedText;
-
-	onMount(() => {
-		clipboard = new Clipboard('#shareUrl');
-
-		clipboard.on('success', function (e) {
-			copiedText = 'Copied!';
-		});
-	});
-
-	onDestroy(() => {
-		clipboard.destroy();
-	});
 </script>
 
 <section class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -50,25 +32,16 @@
 					</div>
 
 					<div class="flex justify-end space-x-4">
-						<button
-							id="shareUrl"
-							data-clipboard-text={`https://that.us/communities/${community.slug}`}
-							class="px-4 py-2 rounded-md shadow text-base leading-6 font-medium border-2
-                border-thatBlue-500 text-thatBlue-500 bg-white hover:bg-thatBlue-500
-                hover:text-white focus:bg-thatBlue-500 focus:text-white focus:outline-none
-                focus:ring-thatBlue-500 focus:border-thatBlue-800 transition
-                duration-150 ease-in-out md:text-lg md:px-10"
-						>
-							{#if copiedText}
-								<span>{copiedText}</span>
-							{:else}
-								<Icon data={share} class="" />
-							{/if}
-						</button>
-
 						{#if $isAuthenticated}
 							<StandardButton class="h-3/4" on:click={() => dispatch('community-follow')}>
 								{#if !isFollowing}Follow{:else}Un-Follow{/if}
+							</StandardButton>
+						{:else}
+							<StandardButton
+								class="h-3/4"
+								on:click={() => login(`/communities/${community.slug}`)}
+							>
+								Login and Follow Today
 							</StandardButton>
 						{/if}
 					</div>

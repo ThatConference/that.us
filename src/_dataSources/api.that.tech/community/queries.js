@@ -20,7 +20,7 @@ const sessionDetailsFragment = `
 `;
 
 export const QUERY_ALL_COMMUNITIES = `
-  query queryAllCommunities {
+  query QUERY_ALL_COMMUNITIES {
     communities {
       all {
         id
@@ -35,7 +35,7 @@ export const QUERY_ALL_COMMUNITIES = `
 `;
 
 export const QUERY_COMMUNITY_BY_SLUG = `
-  query queryCommunityBySlug($slug: Slug) {
+  query QUERY_COMMUNITY_BY_SLUG($slug: Slug) {
     communities {
       community(findBy: {slug: $slug}) {
         get {
@@ -53,9 +53,9 @@ export const QUERY_COMMUNITY_BY_SLUG = `
 `;
 
 export const QUERY_COMMUNITY_FOLLOWERS = `
-  query queryCommunityFollowersById($id: ID) {
+  query QUERY_COMMUNITY_FOLLOWERS($slug: Slug) {
     communities {
-      community(findBy: {id: $id}) {
+      community(findBy: {slug: $slug}) {
         get {
           followCount
           followers {
@@ -76,9 +76,9 @@ export const QUERY_COMMUNITY_FOLLOWERS = `
 
 export const QUERY_COMMUNITY_ACTIVITIES = `
   ${sessionDetailsFragment}
-  query queryCommunityActivitiesById($id: ID, $asOfDate: Date, $pageSize: Int) {
+  query QUERY_COMMUNITY_ACTIVITIES($slug: Slug, $asOfDate: Date, $pageSize: Int) {
     communities {
-      community(findBy: {id: $id}) {
+      community(findBy: {slug: $slug}) {
         get {
           sessions(asOfDate: $asOfDate, pageSize: $pageSize) {
             ...sessionDetailFields
@@ -91,7 +91,7 @@ export const QUERY_COMMUNITY_ACTIVITIES = `
 
 export const QUERY_NEXT_COMMUNITY_ACTIVITIES = `
   ${sessionDetailsFragment}
-  query queryCommunityActivitiesById($id: ID, $asOfDate: Date, $pageSize: Int, $cursor: String) {
+  query QUERY_NEXT_COMMUNITY_ACTIVITIES($id: ID, $asOfDate: Date, $pageSize: Int, $cursor: String) {
     communities {
       community(findBy: {id: $id}) {
         get {
@@ -128,8 +128,9 @@ export default (fetch) => {
 		});
 	};
 
-	const queryCommunityActivities = ({ id, asOfDate = new Date(), pageSize = 6 }) => {
-		const variables = { id, asOfDate, pageSize };
+	const queryCommunityActivities = ({ slug, asOfDate = new Date(), pageSize = 6 }) => {
+		const variables = { slug, asOfDate, pageSize };
+
 		return client
 			.query({ query: QUERY_COMMUNITY_ACTIVITIES, variables })
 			.then(({ data, error }) => {
@@ -152,8 +153,8 @@ export default (fetch) => {
 			});
 	};
 
-	const queryCommunityFollowers = (id) => {
-		const variables = { id };
+	const queryCommunityFollowers = (slug) => {
+		const variables = { slug };
 		return client.query({ query: QUERY_COMMUNITY_FOLLOWERS, variables }).then(({ data, error }) => {
 			if (error) log(error, 'QUERY_COMMUNITY_FOLLOWERS');
 

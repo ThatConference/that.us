@@ -104,6 +104,7 @@ function createAuth() {
 	}
 
 	const auth = {
+		isLoading,
 		isAuthenticated,
 		user,
 		thatProfile,
