@@ -1,23 +1,22 @@
 import { assign, createMachine } from 'xstate';
 
 import { log } from '$utils/error';
-import createPagingConfig from '$machines/paging';
+import createConfig from '$machines/page';
 import sessionsApi from '$dataSources/api.that.tech/sessions';
 
 function createServices() {
-	const { queryNextSessionsByDate, querySessionsByDate } = sessionsApi();
+	const { queryNextSessionsByDate } = sessionsApi();
 
 	return {
 		guards: {
-			hasMore: (_, { data }) => data !== null && data.sessions.length > 0
+			hasMore: (_, { data }) => data.cursor !== null
 		},
 
 		services: {
-			load: () => querySessionsByDate({ pageSize: 6 }),
 			loadNext: (context) =>
 				queryNextSessionsByDate({
-					pageSize: 6,
-					cursor: context.cursor
+					cursor: context.cursor,
+					pageSize: 6
 				})
 		},
 
@@ -28,11 +27,6 @@ function createServices() {
 					extra: { context, event },
 					tags: { stateMachine: 'upnext' }
 				}),
-
-			loadSuccess: assign({
-				items: (_, { data }) => data.sessions.filter((s) => s),
-				cursor: (_, { data }) => data.cursor
-			}),
 
 			loadNextSuccess: assign({
 				items: (context, { data }) => data.sessions.filter((s) => s),
@@ -47,9 +41,9 @@ function createServices() {
 	};
 }
 
-function create(meta) {
+function create({ items = [], cursor = undefined }) {
 	const services = createServices();
-	return createMachine({ ...createPagingConfig(meta) }, { ...services });
+	return createMachine({ ...createConfig({ items, cursor }) }, { ...services });
 }
 
 export default create;

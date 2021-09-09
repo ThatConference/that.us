@@ -6,31 +6,25 @@
   send('REFRESH)
 */
 
-function createConfig(metaContext) {
+function create({ items = [], cursor = undefined }) {
 	return {
 		id: 'pagingMachine',
-		initial: 'init',
+		initial: 'loaded',
 		context: {
-			...metaContext,
-			meta: metaContext || undefined,
-			items: [],
-			cursor: null,
-			count: 0
+			items,
+			cursor
 		},
 
 		states: {
-			init: {
-				meta: {
-					message: 'in initial state'
-				},
-				invoke: {
-					id: 'initialLoad',
-					src: 'load',
-					onDone: {
-						actions: ['loadSuccess'],
-						target: 'loaded'
-					},
-					onError: 'loadingFailed'
+			loaded: {
+				on: {
+					NEXT: {
+						target: 'loadingNext'
+					}
+
+					// REFRESH: {
+					// 	target: 'init'
+					// }
 				}
 			},
 
@@ -54,23 +48,11 @@ function createConfig(metaContext) {
 				}
 			},
 
-			loaded: {
-				on: {
-					NEXT: {
-						target: 'loadingNext'
-					},
-
-					REFRESH: {
-						target: 'init'
-					}
-				}
-			},
-
 			loadedAll: {
 				on: {
-					REFRESH: {
-						target: 'init'
-					}
+					// REFRESH: {
+					// 	target: 'init'
+					// }
 				}
 			},
 
@@ -82,4 +64,4 @@ function createConfig(metaContext) {
 	};
 }
 
-export default createConfig;
+export default create;

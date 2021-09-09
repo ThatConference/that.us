@@ -2,11 +2,15 @@
 	import { getContext } from 'svelte';
 	import Icon from 'svelte-awesome';
 	import { plus } from 'svelte-awesome/icons';
+	import { Circle3 } from 'svelte-loading-spinners';
+
+	import { getAuth } from '$utils/security';
 
 	import { Cart } from '$elements/svgs';
 	import UserProfile from '../_UserProfile.svelte';
 	import links from './links';
 
+	const { isLoading } = getAuth();
 	const { state } = getContext('cart');
 
 	$: cartItems = Object.keys($state.context.cart).length;
@@ -57,7 +61,18 @@
 		</div>
 
 		<div class="ml-4 p-1 rounded-full md:flex text-that-orange hover:text-thatOrange-500">
-			<UserProfile />
+			{#if !$isLoading}
+				<UserProfile />
+			{:else}
+				<Circle3
+					size={'30'}
+					unit={'px'}
+					ballTopLeft="#f74646"
+					ballTopRight="#ff834d"
+					ballBottomLeft="#26529A"
+					ballBottomRight="#555555"
+				/>
+			{/if}
 		</div>
 	</div>
 </div>

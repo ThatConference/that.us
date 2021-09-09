@@ -1,7 +1,4 @@
 <script>
-	import CfpCta from '$components/cta/_HomePageCFP.svelte';
-	import TicketsOnSale from '$components/cta/_TicketsOnSale.svelte';
-
 	import { getAuth } from '$utils/security';
 	const { isAuthenticated } = getAuth();
 </script>
@@ -113,8 +110,7 @@
 					<div
 						class="flex flex-col items-center justify-center md:max-w-2xl md:mx-auto lg:col-span-5"
 					>
-						<CfpCta />
-						<!-- <TicketsOnSale /> -->
+						<slot />
 					</div>
 
 					<div

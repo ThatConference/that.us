@@ -52,7 +52,7 @@
 				{#if event.isCallForSpeakersOpen === true}
 					<div class="flex-1 rounded-md shadow">
 						<Shell>
-							<a href={`/activities/call-for-counselors/${event.slug}`}>
+							<a href={`/call-for-counselors/${event.slug}/`}>
 								<div class="px-4 py-2 font-extrabold uppercase">Call For Counselors</div>
 							</a>
 						</Shell>

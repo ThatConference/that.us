@@ -358,10 +358,19 @@ export default (fetch) => {
 	}) {
 		const variables = { asOfDate, pageSize, cursor };
 
-		return query({
-			query: QUERY_NEXT_SESSIONS_BY_DATE,
-			variables
-		});
+		return client
+			.query({
+				query: QUERY_NEXT_SESSIONS_BY_DATE,
+				variables
+			})
+			.then(({ data, error }) => {
+				if (error) log(error, 'QUERY_NEXT_SESSIONS_BY_DATE');
+
+				console.log(data.sessions.all);
+
+				const { all } = data.sessions;
+				return all || [];
+			});
 	}
 
 	const getById = (sessionId) => {

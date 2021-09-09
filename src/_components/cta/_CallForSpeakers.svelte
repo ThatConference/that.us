@@ -34,9 +34,7 @@
 				</p>
 
 				<div class="pt-12">
-					<HighlightLink href={`/activities/call-for-counselors/${event.slug}`}>
-						Learn More
-					</HighlightLink>
+					<HighlightLink href={`/call-for-counselors/${event.slug}/`}>Learn More</HighlightLink>
 				</div>
 			</div>
 

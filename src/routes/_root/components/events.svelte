@@ -1,43 +1,34 @@
 <script>
+	export let events = [];
+
 	import lodash from 'lodash';
 	import dayjs from 'dayjs';
 	import isSameOrBefore from 'dayjs/plugin/isSameOrBefore.js';
 
-	import eventsApi from '$dataSources/api.that.tech/events/queries';
 	import { Standard as StandardLink } from '$elements/links';
 
-	import Event from './Event.svelte';
+	import { Event } from './';
 
 	dayjs.extend(isSameOrBefore);
 	const { sortBy } = lodash;
 
-	async function queryEvents() {
-		const allEvents = await eventsApi()
-			.queryEvents()
-			.then((r) => r.filter((i) => i.community === 'that'));
+	let online = sortBy(
+		events
+			.filter((i) => i.type === 'ONLINE')
+			.filter((i) => i.isActive)
+			// .filter(i => i.isFeatured)
+			.filter((i) => dayjs().isSameOrBefore(i.endDate, 'day')),
+		'endDate'
+	);
 
-		const results = {};
-
-		results.online = sortBy(
-			allEvents
-				.filter((i) => i.type === 'ONLINE')
-				.filter((i) => i.isActive)
-				// .filter(i => i.isFeatured)
-				.filter((i) => dayjs().isSameOrBefore(i.endDate, 'day')),
-			'endDate'
-		);
-
-		results.hybrid = sortBy(
-			allEvents
-				.filter((i) => i.type === 'MULTI_DAY' || i.type === 'HYBRID_MULTI_DAY')
-				.filter((i) => i.isActive)
-				// .filter(i => i.isFeatured)
-				.filter((i) => dayjs().isSameOrBefore(i.endDate, 'day')),
-			'endDate'
-		);
-
-		return results;
-	}
+	let hybrid = sortBy(
+		events
+			.filter((i) => i.type === 'MULTI_DAY' || i.type === 'HYBRID_MULTI_DAY')
+			.filter((i) => i.isActive)
+			// .filter(i => i.isFeatured)
+			.filter((i) => dayjs().isSameOrBefore(i.endDate, 'day')),
+		'endDate'
+	);
 </script>
 
 <section class="py-12 lg:py-16 bg-white">
@@ -56,34 +47,32 @@
 				</h2>
 			</div>
 
-			{#await queryEvents() then { hybrid, online }}
-				<ul
-					class="space-y-12 lg:grid lg:grid-cols-2 lg:items-start lg:gap-y-8
+			<ul
+				class="space-y-12 lg:grid lg:grid-cols-2 lg:items-start lg:gap-y-8
           lg:gap-x-12 lg:space-y-0"
-				>
-					{#each online as event}
-						<li>
-							<Event {event} />
-						</li>
-					{/each}
-				</ul>
+			>
+				{#each online as event}
+					<li>
+						<Event {event} />
+					</li>
+				{/each}
+			</ul>
 
-				<div class="w-full flex flex-col">
-					<h2 class="text-3xl leading-9 font-extrabold tracking-tight sm:text-4xl">
-						<span class="pl-2 text-that-orange">Upcoming Hybrid Events</span>
-					</h2>
-				</div>
-				<ul
-					class="space-y-12 lg:grid lg:grid-cols-2 lg:items-start lg:gap-y-8
+			<div class="w-full flex flex-col">
+				<h2 class="text-3xl leading-9 font-extrabold tracking-tight sm:text-4xl">
+					<span class="pl-2 text-that-orange">Upcoming Hybrid Events</span>
+				</h2>
+			</div>
+			<ul
+				class="space-y-12 lg:grid lg:grid-cols-2 lg:items-start lg:gap-y-8
           lg:gap-x-12 lg:space-y-0"
-				>
-					{#each hybrid as event}
-						<li>
-							<Event {event} />
-						</li>
-					{/each}
-				</ul>
-			{/await}
+			>
+				{#each hybrid as event}
+					<li>
+						<Event {event} />
+					</li>
+				{/each}
+			</ul>
 		</div>
 
 		<div class="relative pt-16 flex justify-end">
