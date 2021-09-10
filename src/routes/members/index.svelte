@@ -1,7 +1,7 @@
 <script context="module">
 	import membersApi from '$dataSources/api.that.tech/members/queries';
 
-	export async function load({ page, fetch }) {
+	export async function load({ fetch }) {
 		const { queryMembers } = membersApi(fetch);
 
 		return {

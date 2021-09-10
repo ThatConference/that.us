@@ -1,4 +1,20 @@
+<script context="module">
+	import communitiesApi from '$dataSources/api.that.tech/community/queries';
+
+	export async function load({ fetch }) {
+		const { queryAllCommunities } = communitiesApi(fetch);
+
+		return {
+			props: {
+				communities: await queryAllCommunities()
+			}
+		};
+	}
+</script>
+
 <script>
+	export let communities;
+
 	import SvelteInfiniteScroll from 'svelte-infinite-scroll';
 	import { useMachine } from 'xstate-svelte';
 
@@ -17,7 +33,7 @@
 		title,
 		tags: seoMetaTags({
 			title: 'Communities - THAT',
-			description: 'tbd',
+			description: '',
 			openGraph: {
 				type: 'website',
 				url: `https://that.us/communities`
@@ -25,7 +41,7 @@
 		})
 	}))();
 
-	const { state, send } = useMachine(createMachine(), {
+	const { state, send } = useMachine(createMachine({ items: communities }), {
 		devTools: debug.xstate
 	});
 
@@ -47,12 +63,6 @@
 					<Hero />
 					<div class="py-20">
 						<div class="px-8">
-							{#if ['init'].some($state.matches)}
-								<div class="w-full flex flex-col items-center justify-center">
-									<Waiting />
-								</div>
-							{/if}
-
 							<ul class="grid grid-cols-1 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
 								{#each $state.context.items as c (c.id)}
 									<li

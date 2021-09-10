@@ -2,20 +2,19 @@ import { createMachine, assign } from 'xstate';
 import lodash from 'lodash';
 
 import { log } from '$utils/error';
-import createPagingConfig from '$machines/paging';
+import createPagingConfig from '$machines/page';
 import communitiesApi from '$dataSources/api.that.tech/community/queries';
 
 const { uniqBy } = lodash;
 function createServices() {
-	const { queryNextAllCommunities, queryAllCommunities } = communitiesApi();
+	const { queryNextAllCommunities } = communitiesApi();
 
 	return {
 		guards: {
-			hasMore: (_, event) => event.data !== null
+			hasMore: (_, { data }) => data.cursor !== null
 		},
 
 		services: {
-			load: () => queryAllCommunities(),
 			loadNext: (context) => queryNextAllCommunities(context.cursor)
 		},
 
@@ -27,12 +26,6 @@ function createServices() {
 					tags: { stateMachine: 'communities' }
 				}),
 
-			// todo: will need to add the correct data structure once we have paged communities
-			loadSuccess: assign({
-				items: (_, { data }) => data,
-				cursor: (_, { data }) => undefined
-			}),
-
 			loadNextSuccess: assign({
 				items: (context, event) =>
 					uniqBy([...context.items, ...event.data.communities], (i) => i.id),
@@ -42,9 +35,9 @@ function createServices() {
 	};
 }
 
-function create() {
+function create({ items = [], cursor = undefined }) {
 	const services = createServices();
-	return createMachine({ ...createPagingConfig() }, { ...services });
+	return createMachine({ ...createPagingConfig({ items, cursor }) }, { ...services });
 }
 
 export default create;
