@@ -1,21 +1,22 @@
 import { createMachine, assign } from 'xstate';
 
 import lodash from 'lodash';
+
 import { log } from '$utils/error';
-import createPagingConfig from '$machines/paging';
+import createPagingConfig from '$machines/page';
 import membersApi from '$dataSources/api.that.tech/members/queries';
 
 const { uniqBy } = lodash;
+
 function createServices() {
-	const { queryMembers, queryMembersNext } = membersApi();
+	const { queryMembersNext } = membersApi();
 
 	return {
 		guards: {
-			hasMore: (_, event) => event.data !== null
+			hasMore: (_, { data }) => data.cursor !== null
 		},
 
 		services: {
-			load: () => queryMembers(),
 			loadNext: (context) => queryMembersNext(context.cursor)
 		},
 
@@ -27,12 +28,6 @@ function createServices() {
 					tags: { stateMachine: 'members' }
 				}),
 
-			loadSuccess: assign({
-				items: (_, { data }) => data.members,
-				cursor: (_, { data }) => data.cursor
-			}),
-
-			// todo... we add to the object
 			loadNextSuccess: assign({
 				items: (context, event) => uniqBy([...context.items, ...event.data.members], (i) => i.id),
 				cursor: (_, { data }) => data.cursor
@@ -43,9 +38,9 @@ function createServices() {
 	};
 }
 
-function create() {
+function create({ items = [], cursor = undefined }) {
 	const services = createServices();
-	return createMachine({ ...createPagingConfig() }, { ...services });
+	return createMachine({ ...createPagingConfig({ items, cursor }) }, { ...services });
 }
 
 export default create;

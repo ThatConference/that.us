@@ -1,4 +1,20 @@
+<script context="module">
+	import membersApi from '$dataSources/api.that.tech/members/queries';
+
+	export async function load({ page, fetch }) {
+		const { queryMembers } = membersApi(fetch);
+
+		return {
+			props: {
+				members: await queryMembers()
+			}
+		};
+	}
+</script>
+
 <script>
+	export let members;
+
 	import SvelteInfiniteScroll from 'svelte-infinite-scroll';
 	import { useMachine } from 'xstate-svelte';
 
@@ -26,13 +42,16 @@
 		})
 	}))();
 
-	const { state, send } = useMachine(memberMachine(), {
-		devTools: debug.xstate
-	});
+	const { state, send } = useMachine(
+		memberMachine({ items: members.members, cursor: members.cursor }),
+		{
+			devTools: debug.xstate
+		}
+	);
 
 	let scrollThreshold = 1200;
 
-	function handleNext() {
+	function handleLoadMore() {
 		send('NEXT');
 	}
 </script>
@@ -48,11 +67,6 @@
 					<Hero />
 					<div class="py-20">
 						<div class="px-8">
-							{#if ['init'].some($state.matches)}
-								<div class="mb-24 w-full flex flex-col items-center justify-center">
-									<Waiting />
-								</div>
-							{/if}
 							<ul
 								class="grid grid-cols-1 gap-6 sm:grid-cols-3 md:grid-cols-4
                   lg:grid-cols-5"
@@ -62,7 +76,11 @@
 										<MemberCard {...m} />
 									</li>
 								{/each}
-								<SvelteInfiniteScroll window threshold={scrollThreshold} on:loadMore={handleNext} />
+								<SvelteInfiniteScroll
+									window
+									threshold={scrollThreshold}
+									on:loadMore={handleLoadMore}
+								/>
 							</ul>
 							{#if ['loadingNext', 'loadedAll'].some($state.matches)}
 								<div class="flex flex-grow justify-center py-12">
