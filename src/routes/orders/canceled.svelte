@@ -1,6 +1,8 @@
 <script>
 	import seoMetaTags from '$utils/seo/metaTags';
 	import Seo from '$components/Seo.svelte';
+	import { Highlight as HighlightLink } from '$elements/links';
+
 	import Layout from './_components/_Layout.svelte';
 
 	const metaTags = ((title = 'Payment Canceled - THAT') => ({
@@ -46,7 +48,7 @@
 				</p>
 			</div>
 			<div class="mt-12 flex justify-end space-x-5">
-				<aButton href="/orders/summary" text="Return to Cart" />
+				<HighlightLink href="/orders/summary/">Return to Cart</HighlightLink>
 			</div>
 		</div>
 	</div>

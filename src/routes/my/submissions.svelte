@@ -9,6 +9,7 @@
 	import Nav from '$components/nav/interiorNav/Top.svelte';
 	import Sponsor from '$components/SponsorSimple.svelte';
 	import CardLoader from '$components/CardLoader.svelte';
+	import { Highlight as HighlightLink } from '$elements/links';
 
 	import SubmissionList from './_components/_SubmissionList.svelte';
 
@@ -36,7 +37,7 @@
 	<div slot="header">
 		<Nav />
 		<ActionHeader title="My Submissions">
-			<aButton href="/activities/create" text="Create a New ..." />
+			<HighlightLink href="/activities/create">Create Activity</HighlightLink>
 		</ActionHeader>
 	</div>
 

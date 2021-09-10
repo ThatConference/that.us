@@ -3,6 +3,7 @@
 	import Seo from '$components/Seo.svelte';
 	import { ModalError, ModalWarning, ActionHeader } from '$elements';
 	import StackedLayout from '$elements/layouts/StackedLayout.svelte';
+	import { Highlight as HighlightLink } from '$elements/links';
 
 	import Nav from '$components/nav/interiorNav/Top.svelte';
 	import Sponsor from '$components/SponsorSimple.svelte';
@@ -35,7 +36,7 @@
 	<div slot="header">
 		<Nav />
 		<ActionHeader title="My Favorites">
-			<aButton href="/activities" text="Return to Activities" />
+			<HighlightLink href="/activities/">Return to Activities</HighlightLink>
 		</ActionHeader>
 	</div>
 

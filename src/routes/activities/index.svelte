@@ -28,6 +28,7 @@
 	import { Waiting, ActionHeader } from '$elements';
 	import { Chevron } from '$elements/svgs';
 	import StackedLayout from '$elements/layouts/StackedLayout.svelte';
+	import { Highlight as HighlightLink } from '$elements/links';
 
 	import seoMetaTags from '$utils/seo/metaTags';
 	import { debug } from '$utils/config';
@@ -80,7 +81,7 @@
 		<Nav />
 		<ActionHeader title="Daily Activities">
 			{#if !createDisabled}
-				<aButton href="/activities/create" text="Create Activity" />
+				<HighlightLink href="/activities/create">Create Activity</HighlightLink>
 			{/if}
 		</ActionHeader>
 	</div>

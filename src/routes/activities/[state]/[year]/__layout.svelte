@@ -30,6 +30,7 @@
 	import Sponsor from '$components/SponsorSimple.svelte';
 	import StackedLayout from '$elements/layouts/StackedLayout.svelte';
 	import { ActionHeader } from '$elements';
+	import { Highlight as HighlightLink } from '$elements/links';
 
 	let hasEnded = dayjs(event.endDate).isBefore(dayjs(), 'day');
 </script>
@@ -40,7 +41,9 @@
 
 		<ActionHeader title={event.name}>
 			{#if !hasEnded}
-				<a href={`/activities/create#/event/${event.id}`}> Create Activity </a>
+				<HighlightLink href={`/activities/create#/event/${event.id}`}>
+					Create Activity
+				</HighlightLink>
 			{/if}
 		</ActionHeader>
 	</div>
