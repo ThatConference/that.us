@@ -329,10 +329,6 @@ export default (fetch) => {
 		});
 	}
 
-	async function getUpcomingPartnersNext(cursor) {
-		return [];
-	}
-
 	function getPastPartners() {
 		return client.query({ query: QUERY_PAST_PARTNERS }).then(({ data, error }) => {
 			if (error) log(error, 'QUERY_PAST_PARTNERS');
@@ -351,11 +347,6 @@ export default (fetch) => {
 
 			return results;
 		});
-	}
-
-	async function getPastPartnersNext(cursor) {
-		// not implemented yet
-		return [];
 	}
 
 	function getEventPartners(slug = config.eventSlug) {
@@ -414,9 +405,7 @@ export default (fetch) => {
 
 	return {
 		getPastPartners,
-		getPastPartnersNext,
 		getUpcomingPartners,
-		getUpcomingPartnersNext,
 		getEventPartners,
 		getPartner,
 		queryFollowers,
