@@ -11,10 +11,9 @@
 	export let eventId;
 	export let targetLocation;
 	export let location;
-	export let sessionEnumLookups;
 
 	// 3rd party
-	import { onMount } from 'svelte';
+	import { onMount, getContext } from 'svelte';
 	import dayjs from 'dayjs';
 	import isBetween from 'dayjs/plugin/isBetween.js';
 	import isSameOrAfter from 'dayjs/plugin/isSameOrAfter.js';
@@ -45,6 +44,8 @@
 	const { isEmpty, find } = lodash;
 	const { login, isAuthenticated, thatProfile } = getAuth();
 	const { toggle, get: getFavorites, favoritesStore: favorites } = favoritesApi();
+	const sessionEnumLookups = getContext('SESSION_ENUMS');
+
 	let host = speakers[0];
 
 	let imageCrop = '?mask=ellipse&w=500&h=500&fit=crop';

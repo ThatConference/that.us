@@ -154,6 +154,7 @@ export const QUERY_SESSIONS_BY_SLUG = `
           name
           startDate
           endDate
+          slug
           sessions(pageSize: $pageSize, status: ACCEPTED, cursor: $cursor) {
             cursor
             count
@@ -226,6 +227,11 @@ export const QUERY_NEXT_SESSIONS_BY_DATE = `
         cursor
         sessions {
           ...coreFields
+          event {
+            id
+            name
+            slug
+          }
           speakers {
             ...coreSpeakerFields
           } 
@@ -365,8 +371,6 @@ export default (fetch) => {
 			})
 			.then(({ data, error }) => {
 				if (error) log(error, 'QUERY_NEXT_SESSIONS_BY_DATE');
-
-				console.log(data.sessions.all);
 
 				const { all } = data.sessions;
 				return all || [];

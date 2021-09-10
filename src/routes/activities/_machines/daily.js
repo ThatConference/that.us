@@ -1,23 +1,21 @@
 import { createMachine, assign } from 'xstate';
 import lodash from 'lodash';
 
-import config from '$utils/config';
 import { log } from '$utils/error';
-import createPagingConfig from '$machines/paging';
+import createPagingConfig from '$machines/page';
 import sessionsApi from '$dataSources/api.that.tech/sessions';
 
 const { uniqBy } = lodash;
 function createServices() {
-	const { querySessionsByDate, queryNextSessions } = sessionsApi();
+	const { queryNextSessionsByDate } = sessionsApi();
 
 	return {
 		guards: {
-			hasMore: (_, { data }) => data.count !== 0
+			hasMore: (_, { data }) => data.cursor !== null
 		},
 
 		services: {
-			load: () => querySessionsByDate({ pageSize: 100 }),
-			loadNext: (context) => queryNextSessions({ cursor: context.cursor })
+			loadNext: (context) => queryNextSessionsByDate({ cursor: context.cursor, pageSize: 100 })
 		},
 
 		actions: {
@@ -28,15 +26,6 @@ function createServices() {
 					tags: { stateMachine: 'Daily Activities' }
 				}),
 
-			// todo: will need to add the correct data structure once we have paged communities
-			loadSuccess: assign({
-				items: (_, { data }) => data.sessions.filter((s) => s),
-				cursor: (_, { data }) => data.cursor,
-				count: (_, { data }) => data.count,
-				events: (context, { data: { sessions } }) =>
-					uniqBy([...context.events, ...sessions.filter((s) => s).map((e) => e.event)], (i) => i.id)
-			}),
-
 			loadNextSuccess: assign({
 				items: (context, { data }) =>
 					uniqBy([...context.items, ...data.sessions.filter((s) => s)], (i) => i.id),
@@ -45,19 +34,15 @@ function createServices() {
 						[...context.events, ...sessions.filter((s) => s).map((e) => e.event)],
 						(i) => i.id
 					),
-				cursor: (_, { data }) => data.cursor,
-				count: (_, { data }) => data.count
+				cursor: (_, { data }) => data.cursor
 			})
 		}
 	};
 }
 
-function create() {
+function create({ items = [], cursor = undefined, events = [] }) {
 	const services = createServices();
-	return createMachine(
-		{ ...createPagingConfig({ eventId: config.eventId, events: [] }) },
-		{ ...services }
-	);
+	return createMachine({ ...createPagingConfig({ items, cursor, events }) }, { ...services });
 }
 
 export default create;

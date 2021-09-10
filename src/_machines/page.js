@@ -6,13 +6,14 @@
   send('REFRESH)
 */
 
-function create({ items = [], cursor = undefined }) {
+function create({ items = [], cursor = undefined, ...rest }) {
 	return {
 		id: 'pagingMachine',
 		initial: 'loaded',
 		context: {
 			items,
-			cursor
+			cursor,
+			...rest
 		},
 
 		states: {

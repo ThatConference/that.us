@@ -1,4 +1,20 @@
+<script context="module">
+	import sessionsApi from '$dataSources/api.that.tech/sessions';
+
+	export async function load({ fetch }) {
+		const { querySessionsByDate } = sessionsApi(fetch);
+
+		return {
+			props: {
+				activities: await querySessionsByDate({ pageSize: 100 })
+			}
+		};
+	}
+</script>
+
 <script>
+	export let activities;
+
 	import { useMachine } from 'xstate-svelte';
 	import SvelteInfiniteScroll from 'svelte-infinite-scroll';
 	import lodash from 'lodash';
@@ -6,7 +22,6 @@
 	import Nav from '$components/nav/interiorNav/Top.svelte';
 	import Sponsor from '$components/SponsorSimple.svelte';
 	import ActivityList from '$components/activities/List.svelte';
-	import CardLoader from '$components/CardLoader.svelte';
 	import ScrollThreshold from '$components/ScrollThreshold.svelte';
 	import Seo from '$components/Seo.svelte';
 
@@ -19,7 +34,7 @@
 	import { getAuth } from '$utils/security';
 	import createMachine from './_machines/daily';
 
-	const { isEmpty } = lodash;
+	const { isEmpty, uniqBy } = lodash;
 	const { thatProfile } = getAuth();
 
 	const metaTags = ((title = 'Daily Activities - THAT') => ({
@@ -37,9 +52,16 @@
 	let createDisabled = true;
 	let scrollThreshold = 1200;
 
-	const { state, send } = useMachine(createMachine(), {
-		devTools: debug.xstate
-	});
+	const { state, send } = useMachine(
+		createMachine({
+			items: activities.sessions.filter((s) => s),
+			cursor: activities.cursor,
+			events: uniqBy([...activities.sessions.filter((s) => s).map((e) => e.event)], (i) => i.id)
+		}),
+		{
+			devTools: debug.xstate
+		}
+	);
 
 	$: if (!isEmpty($thatProfile)) {
 		createDisabled = false;
@@ -64,13 +86,9 @@
 	</div>
 
 	<div slot="body">
-		{#if ['init'].some($state.matches)}
-			<CardLoader />
-		{:else}
-			<ActivityList activities={$state.context.items} events={$state.context.events} />
+		<ActivityList activities={$state.context.items} events={$state.context.events} />
 
-			<SvelteInfiniteScroll window threshold={scrollThreshold} on:loadMore={handleNext} />
-		{/if}
+		<SvelteInfiniteScroll window threshold={scrollThreshold} on:loadMore={handleNext} />
 
 		{#if ['loaded'].some($state.matches)}
 			<div class="mt-12 text-gray-400 flex flex-col items-center">
