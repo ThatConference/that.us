@@ -31,7 +31,7 @@
   },
   {
     "question": "How do I join an activity?",
-    "answer": "The most direct way to join an activity is to click the join button of the activity on <a class='underline hover:no-underline hover:font-semibold' href='https://that.us/activities'>THAT Board</a>. For more details on joining activities visit this <a class='underline hover:no-underline hover:font-semibold' href='https://that.us/support/welcome'>help page</a>.",
+    "answer": "The most direct way to join an activity is to click the join button of the activity on <a class='underline hover:no-underline hover:font-semibold' href='https://that.us/activities'>THAT Board</a>. For more details on joining activities visit this <a class='underline hover:no-underline hover:font-semibold' href='https://that.ussupport/'>help page</a>.",
     "category": "activities"
   },
   {
@@ -51,7 +51,7 @@
   },
   {
     "question": "How do I create an activity?",
-    "answer": "Creating an activity is easy and straight forward. Head on over to this <a class='underline hover:no-underline hover:font-semibold' href='https://that.us/support/welcome'>help page</a> which will provide you with all of the details.",
+    "answer": "Creating an activity is easy and straight forward. Head on over to this <a class='underline hover:no-underline hover:font-semibold' href='https://that.ussupport/'>help page</a> which will provide you with all of the details.",
     "category": "activities"
   },
   {

@@ -96,7 +96,7 @@
 
 				<ul>
 					<li>
-						Join in! Better yet, go create an activity. <a href="/support/welcome"
+						Join in! Better yet, go create an activity. <a href="support/"
 							>Learn how to get started.</a
 						>
 					</li>

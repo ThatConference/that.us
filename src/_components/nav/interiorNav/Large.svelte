@@ -92,10 +92,7 @@
 				{#if helpVisible}
 					<div class="absolute mt-2 ml-4 w-64 rounded-md shadow-lg z-50" in:fade>
 						<div class="py-1 rounded-md bg-white ring-1 ring-black ring-opacity-5">
-							<a
-								href="/support/welcome"
-								class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-							>
+							<a href="support/" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
 								Getting Started
 							</a>
 							<a

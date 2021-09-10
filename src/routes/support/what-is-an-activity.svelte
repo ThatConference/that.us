@@ -92,7 +92,7 @@
         justify-center"
 		>
 			<div class="flex space-x-4 text-base">
-				<StandardLink href="/support/welcome">Getting Started</StandardLink>
+				<StandardLink href="support/">Getting Started</StandardLink>
 				<HighlightLink href="/support/joining-an-activity">Joining an Activity</HighlightLink>
 			</div>
 		</div>
