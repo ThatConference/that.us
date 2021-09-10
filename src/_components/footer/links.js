@@ -1,38 +1,38 @@
 export const thatLinks = [
 	{
 		text: 'Events',
-		href: '/events'
+		href: '/events/'
 	},
 	{
 		text: 'Activities',
-		href: '/activities'
+		href: '/activities/'
 	},
 	{
 		text: 'Members',
-		href: '/members'
+		href: '/members/'
 	},
 	{
 		text: 'Partners',
-		href: '/partners'
+		href: '/partners/'
 	},
 	{
 		text: 'Pricing',
-		href: '/membership/pricing'
+		href: '/membership/'
 	}
 ];
 
 export const supportLinks = [
 	{
 		text: 'Getting Started',
-		href: 'support/'
+		href: '/support/'
 	},
 	{
 		text: 'FAQ',
-		href: '/support/faq'
+		href: '/support/faq/'
 	},
 	{
 		text: 'Changelog',
-		href: '/changelog'
+		href: '/changelog/'
 	},
 	{
 		text: 'System Status',
@@ -47,29 +47,29 @@ export const companyLinks = [
 	},
 	{
 		text: 'Code of Conduct',
-		href: '/support/code-of-conduct'
+		href: '/support/code-of-conduct/'
 	},
 	{
 		text: 'Commitment to Diversity',
-		href: '/support/commitment-to-diversity'
+		href: '/support/commitment-to-diversity/'
 	},
 	{
 		text: 'Anti-Harassment Policy',
-		href: '/support/anti-harassment'
+		href: '/support/anti-harassment/'
 	}
 ];
 
 export const legalLinks = [
 	{
 		text: 'Privacy',
-		href: '/support/privacy-policy'
+		href: '/support/privacy-policy/'
 	},
 	{
 		text: 'Terms of Use',
-		href: '/support/terms-of-use'
+		href: '/support/terms-of-use/'
 	},
 	{
 		text: 'Copyright Policy',
-		href: '/support/copyright'
+		href: '/support/copyright/'
 	}
 ];

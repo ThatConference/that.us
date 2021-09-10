@@ -50,7 +50,7 @@
 						<div class="flex space-x-4">
 							{#if !$isAuthenticated}
 								<a
-									href="support/"
+									href="/support/"
 									class="px-8 py-3 rounded-md shadow text-base leading-6
                   font-medium border-2 border-thatBlue-500 text-thatBlue-500
                   bg-white hover:bg-thatBlue-500 hover:text-white
