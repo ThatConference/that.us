@@ -170,11 +170,13 @@ export default (fetch) => {
 	function queryMySessionById(sessionId) {
 		const variables = { sessionId };
 
-		return client.query({ query: QUERY_MY_SESSION_BY_ID, variables }).then(({ data, error }) => {
-			if (error) logMessage(error, 'QUERY_MY_SESSION_BY_ID');
+		return client
+			.secureQuery({ query: QUERY_MY_SESSION_BY_ID, variables })
+			.then(({ data, error }) => {
+				if (error) logMessage(error, 'QUERY_MY_SESSION_BY_ID');
 
-			return data.sessions.me.session;
-		});
+				return data.sessions.me.session;
+			});
 	}
 
 	return { querySessionDropDownValues, queryMySessionById };

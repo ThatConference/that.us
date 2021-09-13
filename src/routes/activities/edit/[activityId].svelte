@@ -16,8 +16,8 @@
 	import sessionsMutationsApi from '$dataSources/api.that.tech/sessions/mutations';
 	import sessionsQueryApi from '$dataSources/api.that.tech/sessions/queries';
 
-	import { formatUpdate } from './_lib/formatRequest';
-	import ActivityForm from './_components/form/ActivityForm.svelte';
+	import { formatUpdate } from '../_lib/formatRequest';
+	import ActivityForm from '../_components/form/ActivityForm.svelte';
 
 	const { activityId } = $page.params;
 	const { updateSession } = sessionsMutationsApi();
