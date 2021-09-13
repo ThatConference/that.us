@@ -22,6 +22,6 @@ export default [
 	},
 	{
 		text: 'Help',
-		href: 'support/'
+		href: '/support/'
 	}
 ];
