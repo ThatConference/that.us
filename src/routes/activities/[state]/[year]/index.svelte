@@ -10,7 +10,6 @@
 
 <script>
 	export let event;
-	console.log({ event });
 
 	import { useMachine } from 'xstate-svelte';
 	import SvelteInfiniteScroll from 'svelte-infinite-scroll';

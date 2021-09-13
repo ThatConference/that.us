@@ -4,7 +4,9 @@
 	import isBetween from 'dayjs/plugin/isBetween.js';
 	import lodash from 'lodash';
 
-	import { Waiting } from '$elements';
+	import seoMetaTags from '$utils/seo/metaTags';
+
+	import Seo from '$components/Seo.svelte';
 	import { debug } from '$utils/config';
 
 	import createMachine from '../_machines/allocations';
@@ -12,17 +14,19 @@
 	dayjs.extend(isBetween);
 	const { sortBy } = lodash;
 
-	// todo.. add seo
-	// metaTagsStore.set({
-	// 	title: 'Event Tickets - THAT',
-	// 	description: 'View your event tickets.',
-	// 	nofollow: true,
-	// 	noindex: true,
-	// 	openGraph: {
-	// 		type: 'website',
-	// 		url: `https://that.us/my/settings/order-history`
-	// 	}
-	// });
+	const metaTags = ((title = 'My Event Tickets - THAT') => ({
+		title,
+		tags: seoMetaTags({
+			title,
+			description: 'View your event tickets.',
+			openGraph: {
+				type: 'website',
+				url: `https://that.us/my/settings/tickets/`
+			},
+			nofollow: true,
+			noindex: true
+		})
+	}))();
 
 	const { state } = useMachine(createMachine(), {
 		devTools: debug.xstate
@@ -35,16 +39,12 @@
 	}
 </script>
 
+<Seo title={metaTags.title} tags={metaTags.tags} />
+
 <div>
 	<header>
 		<h2 class="text-xl leading-6 font-bold text-gray-900">Event Tickets</h2>
 	</header>
-
-	{#if ['init'].some($state.matches)}
-		<div class="mt-8 w-full flex flex-col items-center justify-center">
-			<Waiting />
-		</div>
-	{/if}
 
 	{#if ['loaded'].some($state.matches)}
 		<div class="mt-12">

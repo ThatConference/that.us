@@ -124,13 +124,15 @@ export default (fetch) => {
 
 	const queryMeSharedProfile = () => {
 		const variables = {};
-		return client.query({ query: QUERY_ME_SHARED_PROFILE, variables }).then(({ data, error }) => {
-			if (error) log(error, 'QUERY_ME_SHARED_PROFILE');
+		return client
+			.secureQuery({ query: QUERY_ME_SHARED_PROFILE, variables })
+			.then(({ data, error }) => {
+				if (error) log(error, 'QUERY_ME_SHARED_PROFILE');
 
-			const { shared } = data.members.profiles;
+				const { shared } = data.members.profiles;
 
-			return shared;
-		});
+				return shared;
+			});
 	};
 
 	return {

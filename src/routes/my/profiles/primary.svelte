@@ -2,11 +2,13 @@
 	import { goto } from '$app/navigation';
 	import lodash from 'lodash';
 
-	import ProfileForm from './ProfileForm.svelte';
-
-	import memberApi from '$dataSources/api.that.tech/members/mutations';
 	import logEvent from '$utils/eventTrack';
 	import { getAuth } from '$utils/security';
+	import seoMetaTags from '$utils/seo/metaTags';
+	import Seo from '$components/Seo.svelte';
+	import memberApi from '$dataSources/api.that.tech/members/mutations';
+
+	import ProfileForm from './_components/profileForm.svelte';
 
 	const { isNil, isEmpty } = lodash;
 	const { user, thatProfile } = getAuth();
@@ -64,18 +66,22 @@
 		goto(`/activities`, { replace: true });
 	}
 
-	// todo add seo
-	// metaTagsStore.set({
-	// 	title: 'Your Profile - THAT',
-	// 	description: 'Create or update your THAT profile.',
-	// 	nofollow: true,
-	// 	noindex: true,
-	// 	openGraph: {
-	// 		type: 'website',
-	// 		url: `https://that.us/my/profiles/primary`
-	// 	}
-	// });
+	const metaTags = ((title = 'My Profile - THAT') => ({
+		title,
+		tags: seoMetaTags({
+			title,
+			description: 'Create or update your THAT profile.',
+			openGraph: {
+				type: 'website',
+				url: `https://that.us/my/profiles/primary/`
+			},
+			nofollow: true,
+			noindex: true
+		})
+	}))();
 </script>
+
+<Seo title={metaTags.title} tags={metaTags.tags} />
 
 <ProfileForm
 	handleSubmit={isNewProfile ? handleNew : handleUpdate}

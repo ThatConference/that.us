@@ -14,7 +14,6 @@
 
 <script>
 	export let partners;
-	console.log(partners);
 
 	import seoMetaTags from '$utils/seo/metaTags';
 	import Seo from '$components/Seo.svelte';

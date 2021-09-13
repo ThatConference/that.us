@@ -64,7 +64,7 @@ export default (fetch) => {
 			eventId: 'ANY'
 		};
 
-		return client.query({ query: QUERY_MY_FAVORITES, variables }).then(({ data, error }) => {
+		return client.secureQuery({ query: QUERY_MY_FAVORITES, variables }).then(({ data, error }) => {
 			if (error) log(error, 'QUERY_MY_FAVORITES');
 
 			let results = [];

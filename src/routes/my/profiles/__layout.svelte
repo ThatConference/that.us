@@ -1,35 +1,16 @@
 <script>
-	import { goto } from '$app/navigation';
 	import { page } from '$app/stores'; // todo.. totally broke
 
 	import lodash from 'lodash';
 
 	import { getAuth } from '$utils/security';
-	import seoMetaTags from '$utils/seo/metaTags';
-	import Seo from '$components/Seo.svelte';
 	import Nav from '$components/nav/interiorNav/Top.svelte';
 	import { ActionHeader } from '$elements';
 	import { User, Badge } from '$elements/svgs';
 	import StackedLayout from '$elements/layouts/StackedLayout.svelte';
 
-	import Profile from './_components/profiles/_Profile.svelte';
-	import SharedProfile from './_components/profiles/_SharedProfile.svelte';
-
 	const { isEmpty } = lodash;
 	const { thatProfile } = getAuth();
-	const metaTags = ((title = 'My Profiles - THAT') => ({
-		title,
-		tags: seoMetaTags({
-			title,
-			description: 'Your Profiles.',
-			openGraph: {
-				type: 'website',
-				url: `https://that.us/my/profiles`
-			},
-			nofollow: true,
-			noindex: true
-		})
-	}))();
 
 	const asideSelected = {
 		item: 'bg-thatBlue-100 bg-opacity-25 hover:bg-opacity-25 hover:bg-thatBlue-100 border-thatBlue-500 text-thatBlue-700 hover:text-thatBlue-700 group mt-1 border-l-4 px-3 py-2 flex items-center text-sm font-medium',
@@ -40,35 +21,7 @@
 		item: 'border-transparent text-gray-900 hover:bg-gray-50 hover:text-gray-900 group mt-1 border-l-4 px-3 py-2 flex items-center text-sm font-medium',
 		image: 'text-gray-400 group-hover:text-gray-500 flex-shrink-0 -ml-1 mr-3 h-6 w-6'
 	};
-
-	$: profileComponent = Profile;
-
-	const isSelected = (component) => {
-		let results = asideDefault;
-
-		if (profileComponent === component) {
-			results = asideSelected;
-		}
-
-		return results;
-	};
-
-	$: switch ($page.params.aside) {
-		case 'primary':
-			profileComponent = Profile;
-			break;
-
-		case 'shared':
-			profileComponent = SharedProfile;
-			break;
-
-		default:
-			profileComponent = Profile;
-			break;
-	}
 </script>
-
-<Seo title={metaTags.title} tags={metaTags.tags} />
 
 <StackedLayout>
 	<div slot="header">
@@ -83,32 +36,28 @@
 					<div class="sticky top-4">
 						<nav>
 							<a
-								href="/my/profiles/primary"
-								on:click|preventDefault={() => {
-									goto('/my/profiles/primary');
-									profileComponent = Profile;
-								}}
-								class={profileComponent === Profile ? asideSelected.item : asideDefault.item}
+								href="/my/profiles/primary/"
+								class={$page.path.startsWith('/my/profiles/primary')
+									? asideSelected.item
+									: asideDefault.item}
 							>
 								<User
-									classes={profileComponent === Profile ? asideSelected.image : asideDefault.image}
+									classes={$page.path.startsWith('/my/profiles/primary')
+										? asideSelected.image
+										: asideDefault.image}
 								/>
 								<span class="truncate"> Your Profile </span>
 							</a>
 
 							{#if !isEmpty($thatProfile)}
 								<a
-									href="/my/profiles/shared"
-									on:click|preventDefault={() => {
-										goto('/my/profiles/shared');
-										profileComponent = SharedProfile;
-									}}
-									class={profileComponent === SharedProfile
+									href="/my/profiles/shared/"
+									class={$page.path.startsWith('/my/profiles/shared')
 										? asideSelected.item
 										: asideDefault.item}
 								>
 									<Badge
-										classes={profileComponent === SharedProfile
+										classes={$page.path.startsWith('/my/profiles/shared')
 											? asideSelected.image
 											: asideDefault.image}
 									/>
@@ -120,7 +69,7 @@
 				</aside>
 
 				<div class="divide-y divide-gray-200 lg:col-span-9 py-4 px-4">
-					<svelte:component this={profileComponent} />
+					<slot />
 				</div>
 			</div>
 		</main>

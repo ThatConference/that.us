@@ -1,4 +1,5 @@
 <script>
+	import loading from '$stores/loading';
 	import seoMetaTags from '$utils/seo/metaTags';
 	import Seo from '$components/Seo.svelte';
 	import { ModalError, ModalWarning, ActionHeader } from '$elements';
@@ -28,6 +29,10 @@
 	}))();
 
 	const { get } = favoritesApi();
+
+	function queryFavorites() {
+		return get($currentEvent.eventId);
+	}
 </script>
 
 <Seo title={metaTags.title} tags={metaTags.tags} />
@@ -41,9 +46,7 @@
 	</div>
 
 	<div slot="body">
-		{#await get($currentEvent.eventId)}
-			<CardLoader />
-		{:then activities}
+		{#await queryFavorites() then activities}
 			{#if activities.length > 0}
 				<ActivityList reverse={true} {activities} />
 			{:else}

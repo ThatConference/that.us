@@ -35,11 +35,10 @@ function createAuth() {
 
 		// todo.. all of these could be in a promise.all.. to speed up those calls.
 		if (await auth0.isAuthenticated()) {
-			isAuthenticated.set(true);
-
 			// set the base profile from auth0
 			user.set(await auth0.getUser());
 			token.set(await auth0.getTokenSilently());
+			isAuthenticated.set(true);
 
 			// refresh token after specific period or things will stop
 			// working. Useful for long-lived apps like dashboards.

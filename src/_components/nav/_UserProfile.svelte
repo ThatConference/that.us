@@ -65,7 +65,7 @@
 				</div>
 			{:else}
 				<div
-					class="origin-top-right absolute right-0 mt-2 min-w-48 rounded-md shadow-lg z-50"
+					class="on-top origin-top-right absolute right-0 mt-2 min-w-48 rounded-md shadow-lg"
 					transition:fade
 				>
 					<div class="py-1 rounded-md bg-white ring-1 ring-black ring-opacity-5">
@@ -140,3 +140,9 @@
 		{/if}
 	{/if}
 </div>
+
+<style>
+	.on-top {
+		z-index: 999;
+	}
+</style>

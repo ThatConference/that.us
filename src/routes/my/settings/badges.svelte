@@ -1,6 +1,8 @@
 <script>
 	// utilities
 	import { getAuth } from '$utils/security';
+	import seoMetaTags from '$utils/seo/metaTags';
+	import Seo from '$components/Seo.svelte';
 	import { Warning } from '$elements/svgs';
 
 	const { thatProfile } = getAuth();
@@ -11,18 +13,22 @@
 		awardedBadges = [...$thatProfile.earnedMeritBadges];
 	}
 
-	// todo - add seo
-	// metaTagsStore.set({
-	// 	title: 'Merit Badges - THAT',
-	// 	description: "You've worked hard to earn some awesome merit badges.",
-	// 	nofollow: true,
-	// 	noindex: true,
-	// 	openGraph: {
-	// 		type: 'website',
-	// 		url: `https://that.us/my/badges`
-	// 	}
-	// });
+	const metaTags = ((title = 'My Merit Badges - THAT') => ({
+		title,
+		tags: seoMetaTags({
+			title,
+			description: "You've worked hard to earn some awesome merit badges.",
+			openGraph: {
+				type: 'website',
+				url: `https://that.us/my/settings/badges/`
+			},
+			nofollow: true,
+			noindex: true
+		})
+	}))();
 </script>
+
+<Seo title={metaTags.title} tags={metaTags.tags} />
 
 <div>
 	<header>

@@ -1,6 +1,7 @@
 import { get } from 'svelte/store';
 import crossFetch from 'cross-fetch';
 
+import loading from '$stores/loading';
 import config from '$utils/config';
 import { token } from '$utils/security';
 
@@ -24,6 +25,7 @@ function init(fetch, url) {
 	}
 
 	function query({ query, variables = {} }) {
+		loading.set(true);
 		return _fetch(_url, {
 			method: 'POST',
 			headers,
@@ -33,12 +35,18 @@ function init(fetch, url) {
           `,
 				variables
 			})
-		}).then(json);
+		})
+			.then(json)
+			.then((r) => {
+				loading.set(false);
+				return r;
+			});
 	}
 
 	function secureQuery({ query, variables = {} }) {
 		// if (!t) throw new Error('no token found for user');
 
+		loading.set(true);
 		const t = get(token);
 
 		return _fetch(_url, {
@@ -53,10 +61,16 @@ function init(fetch, url) {
           `,
 				variables
 			})
-		}).then(json);
+		})
+			.then(json)
+			.then((r) => {
+				loading.set(false);
+				return r;
+			});
 	}
 
 	function mutation({ mutation, variables = {} }) {
+		loading.set(true);
 		const t = get(token);
 
 		return _fetch(_url, {
@@ -71,7 +85,12 @@ function init(fetch, url) {
           `,
 				variables
 			})
-		}).then(json);
+		})
+			.then(json)
+			.then((r) => {
+				loading.set(false);
+				return r;
+			});
 	}
 
 	return {

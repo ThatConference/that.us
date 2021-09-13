@@ -3,7 +3,10 @@
 	import dayjs from 'dayjs';
 	import Clipboard from 'clipboard';
 
-	import { Waiting } from '$elements';
+	import loading from '$stores/loading';
+	import seoMetaTags from '$utils/seo/metaTags';
+	import Seo from '$components/Seo.svelte';
+
 	import { Standard as StandardLink } from '$elements/links';
 	import { Warning, Store, Ticket } from '$elements/svgs';
 
@@ -14,20 +17,26 @@
 	const { queryMeDiscountCodes } = meQueryApi();
 
 	function queryDiscountCodes() {
-		return queryMeDiscountCodes();
+		loading.set(true);
+		return queryMeDiscountCodes().then((r) => {
+			loading.set(false);
+			return r;
+		});
 	}
 
-	// todo add seo
-	// metaTagsStore.set({
-	// 	title: 'Your Membership - THAT',
-	// 	description: 'View your membership settings.',
-	// 	nofollow: true,
-	// 	noindex: true,
-	// 	openGraph: {
-	// 		type: 'website',
-	// 		url: `https://that.us/my/settings/membership`
-	// 	}
-	// });
+	const metaTags = ((title = 'Your Membership - THAT') => ({
+		title,
+		tags: seoMetaTags({
+			title,
+			description: 'View your membership settings.',
+			openGraph: {
+				type: 'website',
+				url: `https://that.us/my/settings/membership/`
+			},
+			nofollow: true,
+			noindex: true
+		})
+	}))();
 
 	let copiedText;
 	let clipboard;
@@ -44,6 +53,8 @@
 		clipboard.destroy();
 	});
 </script>
+
+<Seo title={metaTags.title} tags={metaTags.tags} />
 
 <div>
 	<header>
@@ -69,11 +80,7 @@
 		</div>
 	{:else}
 		<div class="mt-8">
-			{#await queryDiscountCodes()}
-				<div class="mt-8 w-full flex flex-col items-center justify-center">
-					<Waiting />
-				</div>
-			{:then codes}
+			{#await queryDiscountCodes() then codes}
 				<div class="bg-white shadow overflow-hidden sm:rounded-md">
 					<ul class="divide-y divide-gray-200">
 						{#each codes as code}

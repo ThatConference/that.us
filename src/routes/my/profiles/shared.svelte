@@ -1,9 +1,12 @@
 <script>
 	import lodash from 'lodash';
 
-	import { Warning } from '$elements/svgs';
 	import { getAuth } from '$utils/security';
-	import SharedProfileForm from './_SharedProfileForm.svelte';
+	import seoMetaTags from '$utils/seo/metaTags';
+	import Seo from '$components/Seo.svelte';
+	import { Warning } from '$elements/svgs';
+
+	import SharedProfileForm from './_components/sharedProfileForm.svelte';
 
 	import meQueryApi from '$dataSources/api.that.tech/me/queries';
 	import meMutationsApi from '$dataSources/api.that.tech/me/mutations';
@@ -21,18 +24,22 @@
 		setSubmitting(false);
 	}
 
-	//todo - ADD SEO
-	// metaTagsStore.set({
-	// 	title: 'Your Shared Profile - THAT',
-	// 	description: 'Create or update your THAT profile.',
-	// 	nofollow: true,
-	// 	noindex: true,
-	// 	openGraph: {
-	// 		type: 'website',
-	// 		url: `https://that.us/my/profiles/shared`
-	// 	}
-	// });
+	const metaTags = ((title = 'My Shared Profile - THAT') => ({
+		title,
+		tags: seoMetaTags({
+			title,
+			description: 'Create or update your shared THAT profile.',
+			openGraph: {
+				type: 'website',
+				url: `https://that.us/my/profiles/shared/`
+			},
+			nofollow: true,
+			noindex: true
+		})
+	}))();
 </script>
+
+<Seo title={metaTags.title} tags={metaTags.tags} />
 
 {#if !isEmpty($thatProfile)}
 	{#await queryMeSharedProfile() then sharedProfile}

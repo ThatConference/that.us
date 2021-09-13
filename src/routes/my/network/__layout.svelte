@@ -1,6 +1,5 @@
 <script>
-	import { goto } from '$app/navigation';
-	import { page } from '$app/stores'; // todo.. totally broke
+	import { page } from '$app/stores';
 
 	import seoMetaTags from '$utils/seo/metaTags';
 	import Seo from '$components/Seo.svelte';
@@ -8,8 +7,6 @@
 	import { User } from '$elements/svgs';
 	import Nav from '$components/nav/interiorNav/Top.svelte';
 	import StackedLayout from '$elements/layouts/StackedLayout.svelte';
-
-	import Sponsors from './_components/network/_Sponsors.svelte';
 
 	const metaTags = ((title = 'My Network - THAT') => ({
 		title,
@@ -34,28 +31,6 @@
 		item: 'border-transparent text-gray-900 hover:bg-gray-50 hover:text-gray-900 group mt-1 border-l-4 px-3 py-2 flex items-center text-sm font-medium',
 		image: 'text-gray-400 group-hover:text-gray-500 flex-shrink-0 -ml-1 mr-3 h-6 w-6'
 	};
-
-	$: networkComponent = Sponsors;
-
-	const isSelected = (component) => {
-		let results = asideDefault;
-
-		if (networkComponent === component) {
-			results = asideSelected;
-		}
-
-		return results;
-	};
-
-	$: switch ($page.params.aside) {
-		case 'sponsors':
-			networkComponent = Sponsors;
-			break;
-
-		default:
-			networkComponent = Sponsors;
-			break;
-	}
 </script>
 
 <Seo title={metaTags.title} tags={metaTags.tags} />
@@ -73,15 +48,15 @@
 					<div class="sticky top-4">
 						<nav>
 							<a
-								href="/my/network/sponsors"
-								on:click|preventDefault={() => {
-									goto('/my/network/sponsors');
-									networkComponent = Sponsors;
-								}}
-								class={networkComponent === Sponsors ? asideSelected.item : asideDefault.item}
+								href="/my/network/sponsors/"
+								class={$page.path.startsWith('/my/network/sponsors')
+									? asideSelected.item
+									: asideDefault.item}
 							>
 								<User
-									classes={networkComponent === Sponsors ? asideSelected.image : asideDefault.image}
+									classes={$page.path.startsWith('/my/network/sponsors')
+										? asideSelected.image
+										: asideDefault.image}
 								/>
 								<span class="truncate"> Sponsor Network </span>
 							</a>
@@ -90,7 +65,7 @@
 				</aside>
 
 				<div class="divide-y divide-gray-200 lg:col-span-9 py-4 px-4">
-					<svelte:component this={networkComponent} />
+					<slot />
 				</div>
 			</div>
 		</main>

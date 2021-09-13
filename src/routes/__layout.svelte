@@ -12,6 +12,7 @@
 	import LogRocket from 'logrocket';
 	import lodash from 'lodash';
 
+	import loading from '$stores/loading';
 	import { createAuth } from '$utils/security';
 	import config from '$utils/config';
 	import cart from '$utils/cart';
@@ -134,11 +135,12 @@
 </svelte:head>
 
 <div>
-	{#if $navigating}
+	{#if $navigating || $loading}
 		<Preloading />
 	{/if}
 
 	<slot />
+
 	<Tailwindcss />
 </div>
 

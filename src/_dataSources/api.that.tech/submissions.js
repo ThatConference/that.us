@@ -31,7 +31,7 @@ export default (fetch) => {
 
 	const queryMySubmissions = () =>
 		client
-			.query({ query: QUERY_MY_SUBMISSIONS })
+			.secureQuery({ query: QUERY_MY_SUBMISSIONS })
 
 			.then(({ data, error }) => {
 				if (error) logMessage(error, 'QUERY_MY_SUBMISSIONS'); // todo.. not sure about this one.
