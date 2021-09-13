@@ -1,0 +1,26 @@
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+  <url>
+    <loc>https://that.us</loc>
+    <lastmod>2020-11-20</lastmod>
+  </url>
+  <url>
+    <loc>https://that.us/activities</loc>
+    <lastmod>2020-11-20</lastmod>
+  </url>
+  <url>
+    <loc>https://that.us/members</loc>
+    <lastmod>2020-11-20</lastmod>
+  </url>
+  <url>
+    <loc>https://that.us/partners</loc>
+    <lastmod>2020-11-20</lastmod>
+  </url>
+  <url>
+    <loc>https://that.us/communities</loc>
+    <lastmod>2020-11-20</lastmod>
+  </url>
+  <url>
+    <loc>https://that.ussupport/</loc>
+    <lastmod>2020-11-20</lastmod>
+  </url>
+</urlset>
