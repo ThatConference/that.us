@@ -32,7 +32,7 @@ export const supportLinks = [
 	},
 	{
 		text: 'Changelog',
-		href: '/changelog/'
+		href: '/releases/changelog/'
 	},
 	{
 		text: 'System Status',
