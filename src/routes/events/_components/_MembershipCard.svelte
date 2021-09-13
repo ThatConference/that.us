@@ -113,9 +113,7 @@
 						</div>
 
 						<p class="mt-4 text-sm">
-							<a href="/membership/pricing" class="font-medium text-gray-500 underline">
-								Learn More
-							</a>
+							<a href="/membership/" class="font-medium text-gray-500 underline"> Learn More </a>
 						</p>
 						<div class="mt-8">
 							<div class="flex flex-col">

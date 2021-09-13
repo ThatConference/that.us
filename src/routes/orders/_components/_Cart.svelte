@@ -124,7 +124,7 @@
 				<StandardLink href="/events">View Upcoming Events</StandardLink>
 			</div>
 			<div>
-				<StandardLink href="/membership/pricing">View Membership Options</StandardLink>
+				<StandardLink href="/membership/">View Membership Options</StandardLink>
 			</div>
 		</div>
 	</section>

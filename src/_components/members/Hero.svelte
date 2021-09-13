@@ -27,7 +27,7 @@
 		<div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
 			<div class="rounded-md shadow">
 				<a
-					href="/membership/pricing"
+					href="/membership/"
 					class="w-full flex items-center justify-center px-8 py-3 border
             border-transparent text-base leading-6 font-medium rounded-md
             text-white bg-thatOrange-400 hover:bg-thatOrange-500
@@ -43,7 +43,7 @@
 		<div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
 			<div class="rounded-md shadow">
 				<a
-					href="/membership/pricing"
+					href="/membership/"
 					class="w-full flex items-center justify-center px-8 py-3 border
             border-transparent text-base leading-6 font-medium rounded-md
             text-white bg-thatOrange-400 hover:bg-thatOrange-500

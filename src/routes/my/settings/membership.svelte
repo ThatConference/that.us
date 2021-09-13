@@ -75,7 +75,7 @@
 			</div>
 
 			<div class="mt-8 flex">
-				<StandardLink href="/membership/pricing">View Membership Options</StandardLink>
+				<StandardLink href="/membership/">View Membership Options</StandardLink>
 			</div>
 		</div>
 	{:else}

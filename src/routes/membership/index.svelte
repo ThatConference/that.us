@@ -23,7 +23,7 @@
 			description: 'Become a member and save today',
 			openGraph: {
 				type: 'website',
-				url: `https://that.us/membership/pricing`
+				url: `https://that.us/membership/`
 			}
 		})
 	}))();

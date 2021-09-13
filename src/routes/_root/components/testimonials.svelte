@@ -83,7 +83,7 @@
 								activities. Monthly events cost $15 per person. For access to all online events and
 								other benefits, we've created THAT Membership. THAT Membership is $150 per year,
 								gives you full access and even a discount on a THAT Conference ticket.
-								<a class="text-thatOrange-400 hover:text-thatOrange-500" href="/membership/pricing">
+								<a class="text-thatOrange-400 hover:text-thatOrange-500" href="/membership/">
 									Upgrade today.
 								</a>
 							</p>
