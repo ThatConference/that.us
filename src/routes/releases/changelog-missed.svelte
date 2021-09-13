@@ -19,7 +19,7 @@
 			description: "This is what you've missed since your last visit.",
 			openGraph: {
 				type: 'website',
-				url: `https://that.us/releases/changelog-missed`
+				url: `https://that.us/releases/changelog-missed/`
 			}
 		})
 	}))();
@@ -65,7 +65,7 @@
 					Since your last visit...
 				</h3>
 				<div>
-					<a href="/releases/changelog" class="pointer text-thatBlue-500 hover:text-thatBlue-900">
+					<a href="/releases/changelog/" class="pointer text-thatBlue-500 hover:text-thatBlue-900">
 						Checkout our past releases.
 					</a>
 				</div>

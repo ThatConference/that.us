@@ -13,7 +13,7 @@
 			description: 'Check out all of the releases.',
 			openGraph: {
 				type: 'website',
-				url: `https://that.us/releases/changelog`
+				url: `https://that.us/releases/changelog/`
 			}
 		})
 	}))();
