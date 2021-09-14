@@ -318,7 +318,6 @@ export default (fetch) => {
 
 		return client
 			.secureQuery({ query: QUERY_CAN_ACCESS_EVENT, variables })
-			.toPromise()
 			.then(({ data, error }) => {
 				if (error) log(error, 'QUERY_CAN_ACCESS_EVENT');
 
