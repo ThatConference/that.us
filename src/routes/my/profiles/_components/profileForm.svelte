@@ -114,7 +114,7 @@
 	function getInitialSocialLinkValue(link) {
 		let result = '';
 
-		if (!isNewProfile && profile.profileLinks) {
+		if (!isNewProfile && profile.profileLinks?.length > 0) {
 			const [socialLink] = profile.profileLinks.filter((i) => i.linkType === link.linkType);
 
 			if (socialLink) {
@@ -140,7 +140,7 @@
 		// initial state should be the first element in slug array
 		let result = link.slug[0];
 
-		if (!isNewProfile && profile.profileLinks) {
+		if (!isNewProfile && profile.profileLinks?.length > 0) {
 			const [socialLink] = profile.profileLinks.filter((i) => i.linkType === link.linkType);
 			link.slug.forEach((el) => {
 				const [, value] = socialLink.url.split(el);
