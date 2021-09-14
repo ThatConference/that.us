@@ -142,13 +142,15 @@
 
 		if (!isNewProfile && profile.profileLinks?.length > 0) {
 			const [socialLink] = profile.profileLinks.filter((i) => i.linkType === link.linkType);
-			link.slug.forEach((el) => {
-				const [, value] = socialLink.url.split(el);
-				if (value) {
-					result = el;
-					slugValues[link.linkType] = el;
-				}
-			});
+			if (socialLink) {
+				link.slug.forEach((el) => {
+					const [, value] = socialLink.url.split(el);
+					if (value) {
+						result = el;
+						slugValues[link.linkType] = el;
+					}
+				});
+			}
 		}
 
 		return result;
