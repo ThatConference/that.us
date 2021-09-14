@@ -1,8 +1,28 @@
+<script context="module">
+	import sessionsApi from '$dataSources/api.that.tech/sessions.js';
+
+	export async function load({ page }) {
+		const { querySessionById } = sessionsApi(fetch);
+		const { activityId } = page.params;
+
+		const queryActivityDetails = () => querySessionById(activityId);
+
+		return {
+			props: {
+				activityId,
+				activityDetails: await queryActivityDetails()
+			}
+		};
+	}
+</script>
+
 <script>
+	export let activityId;
+	export let activityDetails;
+
 	import { onMount } from 'svelte';
 	import lodash from 'lodash';
 	import { goto } from '$app/navigation';
-	import { page } from '$app/stores';
 	import Icon from 'svelte-awesome';
 	import { expand as expandIcon, compress as compressIcon } from 'svelte-awesome/icons';
 
@@ -15,13 +35,13 @@
 
 	import config from '$utils/config';
 	import { getAuth } from '$utils/security';
-	import sessionsApi from '$dataSources/api.that.tech/sessions.js';
+
 	import eventsApi from '$dataSources/api.that.tech/events/queries.js';
 
 	const { isEmpty } = lodash;
+
 	const { isAuthenticated, thatProfile, user } = getAuth();
-	const { activityId } = $page.params;
-	const { setAttendance, querySessionById } = sessionsApi();
+	const { setAttendance } = sessionsApi();
 	const { canAccessEvent } = eventsApi();
 
 	const imageCrop = '?mask=ellipse&w=500&h=500&fit=crop';
@@ -37,15 +57,10 @@
 	let displayName = 'Johnny 5'; // generate a fake name...
 	let avatarUrl = config.defaultProfileImage;
 
-	let activityDetails;
 	onMount(async () => {
-		const activityQueryResults = await querySessionById(activityId);
-		let hasAccess = false;
-
-		activityDetails = activityQueryResults;
-
-		if (activityQueryResults) {
-			hasAccess = await canAccessEvent(activityQueryResults.eventId);
+		// todo.. it would be great if the server could do this.. but token
+		if (activityDetails) {
+			hasAccess = await canAccessEvent(activityDetails.eventId);
 			if (!hasAccess) goto(`/join/access-denied/${activityId}`);
 		}
 	});
