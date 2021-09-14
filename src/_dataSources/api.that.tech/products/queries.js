@@ -34,15 +34,12 @@ export default (fetch) => {
 	function queryProductsByEvent(eventId) {
 		const variables = { eventId };
 
-		return client
-			.query({ query: QUERY_EVENT_PRODUCTS, variables })
-			.toPromise()
-			.then(({ data, error }) => {
-				if (error) log(error, 'QUERY_EVENT_PRODUCTS');
+		return client.query({ query: QUERY_EVENT_PRODUCTS, variables }).then(({ data, error }) => {
+			if (error) log(error, 'QUERY_EVENT_PRODUCTS');
 
-				const { event } = data.events;
-				return event ? event.get.products : [];
-			});
+			const { event } = data.events;
+			return event ? event.get.products : [];
+		});
 	}
 
 	return { queryProductsByEvent };
