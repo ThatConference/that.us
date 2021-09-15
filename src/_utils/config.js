@@ -1,17 +1,23 @@
 import { version } from '../../package.json';
 
+const configMissing = (configKey) => {
+	throw new Error(`Missing required environment varable: ${configKey}`);
+};
+
 export default {
 	nodeEnv: process.env.NODE_ENV,
 	version,
 	eventId: 'YWavA70szR8rxSwrLJaL',
 	eventSlug: 'thatus/daily',
-	api: 'https://gateway-bgydxslf5a-uc.a.run.app',
+	api: import.meta.env.VITE_THAT_API || configMissing('VITE_THAT_API'),
+	// api: 'https://gateway-bgydxslf5a-uc.a.run.app',
 	// api: 'https://that.graphcdn.app',
 	profileImageApi: 'https://api.that.tech/profile',
 	defaultProfileImage:
 		'https://images.that.tech/members/person-placeholder.jpg?auto=format&fit=facearea&facepad=10&mask=ellipse&h=250&w=250&q=50&dpr=2',
 	gtag: 'UA-21705613-11',
-	stripeKey: 'STRIPE_KEY'
+	stripeKey: import.meta.env.VITE_STRIPE_PK_KEY || configMissing('VITE_STRIPE_PK_KEY'),
+	process: import.meta.env
 };
 
 export const securityConfig = {
