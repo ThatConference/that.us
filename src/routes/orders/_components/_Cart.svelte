@@ -59,7 +59,6 @@
 
 	onMount(async () => {
 		stripe = await loadStripe(config.stripeKey);
-		console.log('##### -> config', config);
 	});
 
 	function showBackground(i) {
