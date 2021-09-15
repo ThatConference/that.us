@@ -1,5 +1,18 @@
+<script context="module">
+	export async function load({ context }) {
+		return {
+			props: {
+				...context
+			}
+		};
+	}
+</script>
+
 <script>
-	export let isBackdoor = false;
+	export let events;
+	export let activeEvents;
+	export let isBackdoor;
+	export let eventId;
 
 	import { goto } from '$app/navigation';
 	import Typewriter from 'svelte-typewriter';
@@ -15,8 +28,8 @@
 	import StackedLayout from '$elements/layouts/StackedLayout.svelte';
 	import Nav from '$components/nav/interiorNav/Top.svelte';
 
-	import ActivityForm from './_components/form/ActivityForm.svelte';
-	import { formatCreate } from './_lib/formatRequest';
+	import ActivityForm from '../_components/form/ActivityForm.svelte';
+	import { formatCreate } from '../_lib/formatRequest';
 
 	const metaTags = ((title = 'New Activity - THAT') => ({
 		title,
@@ -99,7 +112,7 @@
 		</div>
 
 		<div class="mt-8 sm:px-6 max-w-3xl lg:max-w-7xl mx-auto">
-			<ActivityForm {handleSubmit} {isBackdoor} isEdit={false} />
+			<ActivityForm {handleSubmit} {activeEvents} {events} {isBackdoor} {eventId} isEdit={false} />
 		</div>
 	</div>
 </StackedLayout>
