@@ -4,163 +4,163 @@ import { log } from '../utilities/error';
 const defaultPageSize = 10;
 
 const myOrdersFragment = `
-  fragment orderFields on MeOrder {  
-    id
-    total
-    orderDate
-  }
+	fragment orderFields on MeOrder {  
+		id
+		total
+		orderDate
+	}
 `;
 
 const productBaseFragment = `
-  fragment productFields on ProductBase {  
-    id
-    name
-    type
-  }
+	fragment productFields on ProductBase {  
+		id
+		name
+		type
+	}
 `;
 
 export const QUERY_MY_ORDERS = `
-  ${myOrdersFragment}
-  query QUERY_MY_ORDERS($pageSize: Int) {
-    orders {
-      me {
-        all(pageSize: $pageSize) {
-          cursor
-          count
-          orders {
-            ...orderFields
-          }
-        }
-      }
-    }
-  }
+	${myOrdersFragment}
+	query QUERY_MY_ORDERS($pageSize: Int) {
+		orders {
+			me {
+				all(pageSize: $pageSize) {
+					cursor
+					count
+					orders {
+						...orderFields
+					}
+				}
+			}
+		}
+	}
 `;
 
 export const QUERY_NEXT_MY_ORDERS = `
-  ${myOrdersFragment}
-  query QUERY_NEXT_MY_ORDERS($cursor: String, $pageSize: Int) {
-    orders {
-      me {
-        all(cursor: $cursor, pageSize: $pageSize) {
-          cursor
-          count
-          orders {
-            ...orderFields
-          }
-        }
-      }
-    }
-  }
+	${myOrdersFragment}
+	query QUERY_NEXT_MY_ORDERS($cursor: String, $pageSize: Int) {
+		orders {
+			me {
+				all(cursor: $cursor, pageSize: $pageSize) {
+					cursor
+					count
+					orders {
+						...orderFields
+					}
+				}
+			}
+		}
+	}
 `;
 
 export const QUERY_ORDER_RECEIPT = `
-  query QUERY_ORDER_RECEIPT($orderId: ID!) {
-    orders {
-      me {
-        order(orderId: $orderId) {
-          receipt
-        }
-      }
-    }
-  }
+	query QUERY_ORDER_RECEIPT($orderId: ID!) {
+		orders {
+			me {
+				order(orderId: $orderId) {
+					receipt
+				}
+			}
+		}
+	}
 `;
 
 export const QUERY_MY_ALLOCATIONS = `
-  ${productBaseFragment}
-  query QUERY_MY_ALLOCATIONS {
-    orders {
-      me {
-        allocations {
-          id
-          event {
-            id
-            name
-            slug
-            startDate
-            endDate
-          }
-          product {
-            ...productFields
-          }
-        }
-      }
-    }
-  }
+	${productBaseFragment}
+	query QUERY_MY_ALLOCATIONS {
+		orders {
+			me {
+				allocations {
+					id
+					event {
+						id
+						name
+						slug
+						startDate
+						endDate
+					}
+					product {
+						...productFields
+					}
+				}
+			}
+		}
+	}
 `;
 
 const allocationsFragment = `
-  fragment allocationsFragment on PagedMeOrders {
-    cursor
-    count
-    
-    orders {
-      id
-      orderDate
-      total
-      
-      orderAllocations {
-        id
-        isAllocated
+	fragment allocationsFragment on PagedMeOrders {
+		cursor
+		count
+		
+		orders {
+			id
+			orderDate
+			total
+			
+			orderAllocations {
+				id
+				isAllocated
 
-        allocatedTo {
-          ... on PrivateProfile {
-            firstName
-            lastInitial
-          }
-          ... on PublicProfile {
-            firstName
-            lastName
-          }
-        }
-        
-        event {
-          name
-          logo
-          slug
-        }
+				allocatedTo {
+					... on PrivateProfile {
+						firstName
+						lastInitial
+					}
+					... on PublicProfile {
+						firstName
+						lastName
+					}
+				}
+				
+				event {
+					name
+					logo
+					slug
+				}
 
-        product {
-          ... on ProductBase {
-            name            
-            ticketType: type
-          }
-        }
-        
-        allocatedTo {
-          ... on PrivateProfile {
-            firstName
-            lastInitial              
-          }
-        }
-      }
-    }
-  }
+				product {
+					... on ProductBase {
+						name            
+						ticketType: type
+					}
+				}
+				
+				allocatedTo {
+					... on PrivateProfile {
+						firstName
+						lastInitial              
+					}
+				}
+			}
+		}
+	}
 `;
 
 export const QUERY_MY_BULK_ALLOCATIONS = `
-  ${allocationsFragment}
-  query QUERY_MY_BULK_ALLOCATIONS($pageSize: Int) {
-    orders {
-      me {
-        all(pageSize: $pageSize) {
-          ...allocationsFragment
-        }
-      }
-    }
-  }
+	${allocationsFragment}
+	query QUERY_MY_BULK_ALLOCATIONS($pageSize: Int) {
+		orders {
+			me {
+				all(pageSize: $pageSize) {
+					...allocationsFragment
+				}
+			}
+		}
+	}
 `;
 
 export const QUERY_MY_BULK_ALLOCATIONS_NEXT = `
-  ${allocationsFragment}
-  query QUERY_MY_BULK_ALLOCATIONS_NEXT($pageSize: Int, $cursor: String) {
-    orders {
-      me {
-        all(pageSize: $pageSize, cursor: $cursor) {
-          ...allocationsFragment
-        }
-      }
-    }
-  }
+	${allocationsFragment}
+	query QUERY_MY_BULK_ALLOCATIONS_NEXT($pageSize: Int, $cursor: String) {
+		orders {
+			me {
+				all(pageSize: $pageSize, cursor: $cursor) {
+					...allocationsFragment
+				}
+			}
+		}
+	}
 `;
 
 export default (fetch) => {

@@ -3,244 +3,244 @@ import gFetch from '$utils/gfetch';
 import { log } from '../utilities/error';
 
 const productBaseFieldsFragment = `
-  fragment productBaseFields on ProductBase {
-    id
-    name
-    description
-    productType: type
-    price
-    isEnabled
-    uiReference
-    shortDescription
-  }
+	fragment productBaseFields on ProductBase {
+		id
+		name
+		description
+		productType: type
+		price
+		isEnabled
+		uiReference
+		shortDescription
+	}
 `;
 
 const coreSessionFields = `
-  fragment coreSessionFields on AcceptedSession {
-    id
-    eventId
-    title
-    shortDescription
-    tags
-    type
-    status
-    startTime
-    durationInMinutes
-    slug
-    communities
-  }
+	fragment coreSessionFields on AcceptedSession {
+		id
+		eventId
+		title
+		shortDescription
+		tags
+		type
+		status
+		startTime
+		durationInMinutes
+		slug
+		communities
+	}
 `;
 
 const userFragment = `
-  fragment memberFields on PublicProfile {
-    id
-    firstName
-    lastName
-    company
-    jobTitle
-    profileImage
-    profileSlug
-    lifeHack
-    interests
-    profileLinks {
-      isPublic
-      linkType
-      url
-    }
-    earnedMeritBadges {
-      id
-      name
-      image
-      description
-    }    
-  }
+	fragment memberFields on PublicProfile {
+		id
+		firstName
+		lastName
+		company
+		jobTitle
+		profileImage
+		profileSlug
+		lifeHack
+		interests
+		profileLinks {
+			isPublic
+			linkType
+			url
+		}
+		earnedMeritBadges {
+			id
+			name
+			image
+			description
+		}    
+	}
 `;
 
 const coreSpeakerFields = `
-  fragment coreSpeakerFields on PublicProfile {
-    id
-    firstName
-    lastName
-    bio
-    jobTitle
-    company
-    profileImage
-    profileSlug
-    earnedMeritBadges {
-      id
-      name
-      image
-      description
-    }
-  }
+	fragment coreSpeakerFields on PublicProfile {
+		id
+		firstName
+		lastName
+		bio
+		jobTitle
+		company
+		profileImage
+		profileSlug
+		earnedMeritBadges {
+			id
+			name
+			image
+			description
+		}
+	}
 `;
 
 const eventFieldsFragment = `
-  ${productBaseFieldsFragment}
-  ${coreSessionFields}
-  ${coreSpeakerFields}
-  ${userFragment}
-  fragment eventFields on Event {
-    id
-    name
-    description
-    slogan
-    type  
-    startDate
-    endDate
-    year
-    slug
-    community
-    isFeatured
-    isActive
-    logo
-    callForSpeakersOpenDate
-    callForSpeakersCloseDate
-    isCallForSpeakersOpen
-    
-    theme { 
-      heroSlug
-    }
+	${productBaseFieldsFragment}
+	${coreSessionFields}
+	${coreSpeakerFields}
+	${userFragment}
+	fragment eventFields on Event {
+		id
+		name
+		description
+		slogan
+		type  
+		startDate
+		endDate
+		year
+		slug
+		community
+		isFeatured
+		isActive
+		logo
+		callForSpeakersOpenDate
+		callForSpeakersCloseDate
+		isCallForSpeakersOpen
+		
+		theme { 
+			heroSlug
+		}
 
-    venues {
-      name
-      address
-      city
-      state
-      zip
-    }
+		venues {
+			name
+			address
+			city
+			state
+			zip
+		}
 
-    products {
-      ...productBaseFields
-    }
+		products {
+			...productBaseFields
+		}
 
-    sessions {
-      sessions {
-        ...coreSessionFields
-        speakers {
-          ...coreSpeakerFields
-        }
-      }
-    }
+		sessions {
+			sessions {
+				...coreSessionFields
+				speakers {
+					...coreSpeakerFields
+				}
+			}
+		}
 
-    followers {
-      members {
-        ...memberFields
-      }
-    }
-  }
+		followers {
+			members {
+				...memberFields
+			}
+		}
+	}
 `;
 
 export const QUERY_EVENTS = `
-  ${eventFieldsFragment}
-  query QUERY_EVENTS {
-    events {
-      all {
-        ...eventFields
-      }
-    }
-  }
+	${eventFieldsFragment}
+	query QUERY_EVENTS {
+		events {
+			all {
+				...eventFields
+			}
+		}
+	}
 `;
 
 export const QUERY_EVENT_BY_SLUG = `
-  ${eventFieldsFragment}
-  query QUERY_EVENT_BY_SLUG ($slug: String) {
-    events {
-      event (findBy: {slug: $slug}) {
-        get {
-          ...eventFields
-        }
-      }
-    }
-  }
+	${eventFieldsFragment}
+	query QUERY_EVENT_BY_SLUG ($slug: String) {
+		events {
+			event (findBy: {slug: $slug}) {
+				get {
+					...eventFields
+				}
+			}
+		}
+	}
 `;
 
 export const QUERY_EVENT_BY_ID = `
-  ${eventFieldsFragment}
-  query QUERY_EVENT_BY_ID ($eventId: ID) {
-    events {
-      event (findBy: {id: $eventId}) {
-        get {
-          ...eventFields
-        }
-      }
-    }
-  }
+	${eventFieldsFragment}
+	query QUERY_EVENT_BY_ID ($eventId: ID) {
+		events {
+			event (findBy: {id: $eventId}) {
+				get {
+					...eventFields
+				}
+			}
+		}
+	}
 `;
 
 export const QUERY_EVENT_FOR_CFP = `
-  query QUERY_EVENT_FOR_CFP ($slug: String) {
-    events {
-      event (findBy: {slug: $slug}) {
-        get {
-          id
-          name
-          description
-          slogan
-          type  
-          startDate
-          endDate
-          year
-          slug
-          logo
-          callForSpeakersOpenDate
-          callForSpeakersCloseDate
-          isCallForSpeakersOpen
-          milestones{
-            title
-            description
-            dueDate
-          }
-          venues {
-            name
-            address
-            city
-            state
-            zip
-          }
-        }
-      }
-    }
-  }
+	query QUERY_EVENT_FOR_CFP ($slug: String) {
+		events {
+			event (findBy: {slug: $slug}) {
+				get {
+					id
+					name
+					description
+					slogan
+					type  
+					startDate
+					endDate
+					year
+					slug
+					logo
+					callForSpeakersOpenDate
+					callForSpeakersCloseDate
+					isCallForSpeakersOpen
+					milestones{
+						title
+						description
+						dueDate
+					}
+					venues {
+						name
+						address
+						city
+						state
+						zip
+					}
+				}
+			}
+		}
+	}
 `;
 
 export const QUERY_EVENTS_BY_COMMUNITY = `
-  ${eventFieldsFragment}
-  query QUERY_EVENTS_BY_COMMUNITY ($slug: Slug) {
-    communities {
-      community (findBy: {slug: $slug}) {
-        get {
-          events {
-            ...eventFields
-          }  
-        }
-      }
-    }
-  }
+	${eventFieldsFragment}
+	query QUERY_EVENTS_BY_COMMUNITY ($slug: Slug) {
+		communities {
+			community (findBy: {slug: $slug}) {
+				get {
+					events {
+						...eventFields
+					}  
+				}
+			}
+		}
+	}
 `;
 
 export const QUERY_CAN_ACCESS_EVENT = `
-  query QUERY_CAN_ACCESS_EVENT ($eventId: ID!) {
-    events {
-      me {
-        access (eventId: $eventId) {
-          hasAccess
-        }
-      }
-    }
-  }
+	query QUERY_CAN_ACCESS_EVENT ($eventId: ID!) {
+		events {
+			me {
+				access (eventId: $eventId) {
+					hasAccess
+				}
+			}
+		}
+	}
 `;
 
 export const QUERY_CAN_ADD_SESSION = `
-  query QUERY_CAN_ADD_SESSION ($eventId: ID!) {
-    events {
-      me {
-        access (eventId: $eventId) {
-          addSession
-        }
-      }
-    }
-  }
+	query QUERY_CAN_ADD_SESSION ($eventId: ID!) {
+		events {
+			me {
+				access (eventId: $eventId) {
+					addSession
+				}
+			}
+		}
+	}
 `;
 
 export default (fetch) => {

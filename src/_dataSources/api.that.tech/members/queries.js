@@ -3,152 +3,152 @@ import gFetch from '$utils/gfetch';
 import { log } from '../utilities/error';
 
 const userFragment = `
-  fragment memberFields on PublicProfile {
-    id
-    firstName
-    lastName
-    company
-    jobTitle
-    profileImage
-    profileSlug
-    lifeHack
-    interests
-    profileLinks {
-      isPublic
-      linkType
-      url
-    }
-    earnedMeritBadges {
-      id
-      name
-      image
-      description
-    }    
-  }
+	fragment memberFields on PublicProfile {
+		id
+		firstName
+		lastName
+		company
+		jobTitle
+		profileImage
+		profileSlug
+		lifeHack
+		interests
+		profileLinks {
+			isPublic
+			linkType
+			url
+		}
+		earnedMeritBadges {
+			id
+			name
+			image
+			description
+		}    
+	}
 `;
 
 export const QUERY_MEMBERS_INITAL = `
-    ${userFragment}
-    query getAllMembersPaged($pageSize: Int) {
-      members {
-        members (pageSize: $pageSize, orderBy:CREATEDAT) {
-          cursor
-          members {
-            ...memberFields
-          }
-        }
-      }
-    }
+		${userFragment}
+		query getAllMembersPaged($pageSize: Int) {
+			members {
+				members (pageSize: $pageSize, orderBy:CREATEDAT) {
+					cursor
+					members {
+						...memberFields
+					}
+				}
+			}
+		}
 `;
 
 export const QUERY_MEMBERS_NEXT = `
-    ${userFragment}
-    query getAllMembersPaged($pageSize: Int, $after: String) {
-      members {
-        members (pageSize: $pageSize, after: $after, orderBy:CREATEDAT) {
-          cursor
-          members {
-            ...memberFields
-          }
-        }
-      }
-    }
+		${userFragment}
+		query getAllMembersPaged($pageSize: Int, $after: String) {
+			members {
+				members (pageSize: $pageSize, after: $after, orderBy:CREATEDAT) {
+					cursor
+					members {
+						...memberFields
+					}
+				}
+			}
+		}
 `;
 
 export const QUERY_IS_SLUG_TAKEN = `
-  query slugCheck($slug: Slug!) {
-    members {
-     isProfileSlugTaken(slug: $slug)
-    }
-  }
+	query slugCheck($slug: Slug!) {
+		members {
+		 isProfileSlugTaken(slug: $slug)
+		}
+	}
 `;
 
 export const QUERY_MEMBER_BY_SLUG = `
-  query getMemberBySlug ($slug: Slug!, $sessionStartDate: Date, $filter: AcceptedSessionFilter) {
-    members {
-      member(slug: $slug) {
-        id
-        firstName
-        lastName
-        bio
-        company
-        jobTitle
-        profileSlug
-        profileImage
-        interests
-        lifeHack
-        createdAt
-        profileLinks {
-          linkType
-          url
-        }
-        earnedMeritBadges {
-          name
-          image
-        }
-        sessions(filter: $filter, asOfDate: $sessionStartDate) {
-          id
-          title
-          startTime
-          shortDescription
-        }
-      }
-    }
-  }
+	query getMemberBySlug ($slug: Slug!, $sessionStartDate: Date, $filter: AcceptedSessionFilter) {
+		members {
+			member(slug: $slug) {
+				id
+				firstName
+				lastName
+				bio
+				company
+				jobTitle
+				profileSlug
+				profileImage
+				interests
+				lifeHack
+				createdAt
+				profileLinks {
+					linkType
+					url
+				}
+				earnedMeritBadges {
+					name
+					image
+				}
+				sessions(filter: $filter, asOfDate: $sessionStartDate) {
+					id
+					title
+					startTime
+					shortDescription
+				}
+			}
+		}
+	}
 `;
 
 export const QUERY_MEMBER_ACTIVITIES = `
-  query getMemberActivities ($slug: Slug!, $sessionStartDate: Date, $filter: AcceptedSessionFilter) {
-    members {
-      member(slug: $slug) {
-        sessions(filter: $filter, asOfDate: $sessionStartDate) {
-          id
-          title
-          startTime
-          shortDescription
-        }
-      }
-    }
-  }
+	query getMemberActivities ($slug: Slug!, $sessionStartDate: Date, $filter: AcceptedSessionFilter) {
+		members {
+			member(slug: $slug) {
+				sessions(filter: $filter, asOfDate: $sessionStartDate) {
+					id
+					title
+					startTime
+					shortDescription
+				}
+			}
+		}
+	}
 `;
 
 export const QUERY_FOLLOWERS = `
-  query queryMemberFollowers($slug: Slug!) {
-    members {
-      member(slug: $slug) {
-        followCount
-        followers {
-          cursor
-          profiles {
-            id
-            profileSlug
-            profileImage
-            firstName
-            lastName
-          }
-        }
-      }
-    }
-  }
+	query queryMemberFollowers($slug: Slug!) {
+		members {
+			member(slug: $slug) {
+				followCount
+				followers {
+					cursor
+					profiles {
+						id
+						profileSlug
+						profileImage
+						firstName
+						lastName
+					}
+				}
+			}
+		}
+	}
 `;
 
 export const QUERY_NEXT_FOLLOWERS = `
-  query queryNextMemberFollowers($slug: Slug!, $cursor: String) {
-    members {
-      member(slug: $slug) {
-        followers(cursor: $cursor) {
-          cursor
-          profiles {
-            id
-            profileSlug
-            profileImage
-            firstName
-            lastName
-          }
-        }
-      }
-    }
-  }
+	query queryNextMemberFollowers($slug: Slug!, $cursor: String) {
+		members {
+			member(slug: $slug) {
+				followers(cursor: $cursor) {
+					cursor
+					profiles {
+						id
+						profileSlug
+						profileImage
+						firstName
+						lastName
+					}
+				}
+			}
+		}
+	}
 `;
 
 export default (fetch) => {

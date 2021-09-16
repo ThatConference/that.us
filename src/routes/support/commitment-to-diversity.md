@@ -5,7 +5,7 @@ layout: support
 ---
 
 <div class="max-w-prose mx-auto">
-  <div class="prose prose-lg text-gray-500">
+	<div class="prose prose-lg text-gray-500">
 
 THAT Conference believes in spreading the knowledge of innovators, tech enthusiasts, hobbyists and anyone else passionate about technology for that matter. We believe that this passion is enhanced by a variety of perspectives, and our goal is to create an inclusive, respectful conference environment that invites participation from people of all races, ethnicities, genders, ages, abilities, religions, sexual orientation, and educational and socioeconomic backgrounds.
 
@@ -22,5 +22,6 @@ Share your ideas and best practices for how we can realize our vision (send an e
 
 We value diversity in the communities we bring together, and we welcome your contributions to bringing balanced representation of the richness of our collective human experience.
 
-  </div>
+    </div>
+
 </div>

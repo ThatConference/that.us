@@ -3,27 +3,27 @@ import gFetch from '$utils/gfetch';
 import { logMessage } from './utilities/error';
 
 export const QUERY_MY_SUBMISSIONS = `
-  query QUERY_MY_SUBMISSIONS {
-    sessions {
-      me {
-        submitted {
-          ... on Base {
-            id
-            eventId
-            type
-            title
-            shortDescription
-            startTime
-            durationInMinutes
-            status
-            tags         
-            createdAt
-            lastUpdatedAt   
-          }
-        }
-      }
-    }
-  }
+	query QUERY_MY_SUBMISSIONS {
+		sessions {
+			me {
+				submitted {
+					... on Base {
+						id
+						eventId
+						type
+						title
+						shortDescription
+						startTime
+						durationInMinutes
+						status
+						tags         
+						createdAt
+						lastUpdatedAt   
+					}
+				}
+			}
+		}
+	}
 `;
 
 export default (fetch) => {

@@ -1,8 +1,8 @@
 export function stripAuthorizationHeader(client) {
-  const newHeaders = {
-    ...client.fetchOptions().headers,
-  };
+	const newHeaders = {
+		...client.fetchOptions().headers
+	};
 
-  delete newHeaders.authorization;
-  return newHeaders;
+	delete newHeaders.authorization;
+	return newHeaders;
 }
