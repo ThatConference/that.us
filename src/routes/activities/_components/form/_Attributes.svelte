@@ -200,13 +200,11 @@
 					<Select
 						inputAttributes={{ name: 'primaryCategory' }}
 						items={sessionCategory.options}
-						bind:selectedValue={selectedPriamaryCategoryValue}
+						bind:value={selectedPriamaryCategoryValue}
 						on:select={({ detail }) => setField('primaryCategory', detail.value)}
 						on:clear={() => setField('primaryCategory', undefined)}
 						hasError={touched['primaryCategory'] && errors['primaryCategory']}
-						inputStyles="form-select relative block w-full
-								bg-transparent focus:z-10 transition ease-in-out duration-150
-								sm:text-sm sm:leading-5 rounded-md shadow-sm hover:border-gray-700"
+						inputStyles="form-select relative block w-full bg-transparent focus:z-10 transition ease-in-out duration-150 sm:text-sm sm:leading-5 rounded-md shadow-sm hover:border-gray-700"
 					/>
 					{#if touched['primaryCategory'] && errors['primaryCategory']}
 						<p class="text-red-600 italic">{errors['primaryCategory']}</p>
@@ -230,14 +228,12 @@
 						isMulti={true}
 						inputAttributes={{ name: 'secondaryCategory' }}
 						items={sessionCategory.options}
-						bind:selectedValue={selectedSecondaryCategoriesValue}
+						bind:value={selectedSecondaryCategoriesValue}
 						on:select={({ detail }) =>
 							setField('secondaryCategory', detail ? detail.map((i) => i.value) : [])}
 						on:clear={() => setField('secondaryCategory', [])}
 						hasError={touched['secondaryCategory'] && errors['secondaryCategory']}
-						inputStyles="form-select relative block w-full
-								bg-transparent focus:z-10 transition ease-in-out duration-150
-								sm:text-sm sm:leading-5 rounded-md shadow-sm hover:border-gray-700"
+						inputStyles="form-select relative block w-full bg-transparent focus:z-10 transition ease-in-out duration-150 sm:text-sm sm:leading-5 rounded-md shadow-sm hover:border-gray-700"
 					/>
 					{#if touched['secondaryCategory'] && errors['secondaryCategory']}
 						<p class="text-red-600 italic">{errors['secondaryCategory']}</p>
