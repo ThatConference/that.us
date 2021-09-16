@@ -6,6 +6,7 @@ import { log } from './utilities/error';
 const favoriteFragment = `
   fragment sessionFields on AcceptedSession {
     id
+		eventId
     title
     shortDescription
     status
