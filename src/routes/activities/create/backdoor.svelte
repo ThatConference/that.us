@@ -14,7 +14,6 @@
 	export let isBackdoor;
 	export let eventId;
 
-	console.log('isBackdoor', isBackdoor);
 	import Create from './index.svelte';
 </script>
 

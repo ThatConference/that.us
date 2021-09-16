@@ -7,7 +7,6 @@
 	export let setField;
 
 	import { createEventDispatcher, onMount } from 'svelte';
-	import { page } from '$app/stores';
 	import { fade } from 'svelte/transition';
 	import { Input } from 'sveltejs-forms';
 	import dayjs from 'dayjs';
