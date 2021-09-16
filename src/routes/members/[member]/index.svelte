@@ -26,14 +26,14 @@
 </script>
 
 <script>
+	export let memberSlug;
 	export let profile;
 	export let followers;
+	export let isFollowing;
 
-	import { page } from '$app/stores';
 	import { fade } from 'svelte/transition';
 
 	import seoMetaTags from '$utils/seo/metaTags';
-
 	import ProfileLayout from '$elements/layouts/Profile.svelte';
 	import Seo from '$components/Seo.svelte';
 	import memberMutationApi from '$dataSources/api.that.tech/members/mutations';
@@ -46,7 +46,6 @@
 	import Hero from '../_components/hero.svelte';
 
 	const { toggleFollow } = memberMutationApi();
-	const { member } = $page.params;
 
 	let delayCounter = 200;
 
@@ -56,7 +55,7 @@
 			title,
 			description: `${profile.bio}`,
 			openGraph: {
-				url: `https://that.us/members/${member}`
+				url: `https://that.us/members/${memberSlug}`
 			}
 		})
 	}))();
@@ -68,8 +67,9 @@
 		return current;
 	}
 
-	function followProfile(slug) {
-		return toggleFollow(slug);
+	async function followProfile(slug) {
+		const r = await toggleFollow(slug);
+		isFollowing = r;
 	}
 </script>
 
@@ -78,11 +78,7 @@
 <ProfileLayout>
 	<div class="flex flex-col">
 		<div in:fade={{ delay: getDelay() }}>
-			<Hero
-				isFollowing={false}
-				member={profile}
-				on:TOGGLE_FOLLOW={() => followProfile(profile.slug)}
-			/>
+			<Hero {isFollowing} member={profile} on:TOGGLE_FOLLOW={() => followProfile(memberSlug)} />
 		</div>
 
 		{#if profile.lifeHack}
@@ -92,7 +88,7 @@
 		{/if}
 
 		<div in:fade={{ delay: getDelay() }}>
-			<UpNext profileSlug={profile.profileSlug} />
+			<UpNext profileSlug={memberSlug} />
 		</div>
 
 		<div in:fade={{ delay: getDelay() }}>
@@ -102,7 +98,7 @@
 				<MeritBadges meritBadges={profile.earnedMeritBadges} />
 			{/if}
 
-			<CTA isFollowing={false} {profile} on:TOGGLE_FOLLOW={() => followProfile(profile.slug)} />
+			<CTA {isFollowing} {profile} on:TOGGLE_FOLLOW={() => followProfile(memberSlug)} />
 		</div>
 	</div>
 </ProfileLayout>
