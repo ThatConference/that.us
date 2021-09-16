@@ -85,32 +85,33 @@ export default (fetch) => {
 		});
 	}
 
-	async function toggle(sessionId, eventId) {
-		const mutationVariables = {
-			eventId,
-			sessionId
+	function toggle(sessionId, eventId) {
+		const variables = {
+			sessionId,
+			eventId
 		};
-		let results = false;
 
-		const { data, error } = await client.mutation({ mutation: TOGGLE_FAVORITE, mutationVariables });
+		return client.mutation({ mutation: TOGGLE_FAVORITE, variables }).then(({ data, error }) => {
+			if (error) log(error, 'TOGGLE_FAVORITE');
 
-		if (error) log(error, 'mutate_favorites');
+			let results = false;
+			// update store
+			if (data) {
+				const { toggle: fav } = data.sessions.favoriting;
 
-		// update store
-		if (data) {
-			const { toggle: fav } = data.sessions.favoriting;
-			if (fav) {
-				// is toggled
-				favoritesStore.update((i) => [...i, fav]);
-				results = true;
-			} else {
-				// not toggled
-				favoritesStore.update((favs) => favs.filter((i) => i.id !== sessionId));
-				results = false;
+				if (fav) {
+					// is toggled
+					favoritesStore.update((i) => [...i, fav]);
+					results = true;
+				} else {
+					// not toggled
+					favoritesStore.update((favs) => favs.filter((i) => i.id !== sessionId));
+					results = false;
+				}
 			}
-		}
 
-		return results;
+			return results;
+		});
 	}
 
 	const get = (eventId) => query(eventId);
