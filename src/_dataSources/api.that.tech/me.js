@@ -3,42 +3,42 @@ import gFetch from '$utils/gfetch';
 import { log } from './utilities/error';
 
 export const QUERY_ME = `
-    query getMe {
-      members {
-        me {
-          id
-          firstName
-          lastName
-          email
-          jobTitle
-          company
-          profileImage
-          profileSlug
-          profileLinks {
-            isPublic
-            linkType
-            url
-          }
-          earnedMeritBadges {
-            id
-            name
-            image
-            description
-          }
-          bio
-          canFeature
-          isOver13
-          acceptedCodeOfConduct
-          acceptedTermsOfService
-          acceptedAntiHarassmentPolicy
-          acceptedCommitmentToDiversity
-          isDeactivated
-          lifeHack
-          interests
-          isMember
-        }
-      }
-    }
+		query getMe {
+			members {
+				me {
+					id
+					firstName
+					lastName
+					email
+					jobTitle
+					company
+					profileImage
+					profileSlug
+					profileLinks {
+						isPublic
+						linkType
+						url
+					}
+					earnedMeritBadges {
+						id
+						name
+						image
+						description
+					}
+					bio
+					canFeature
+					isOver13
+					acceptedCodeOfConduct
+					acceptedTermsOfService
+					acceptedAntiHarassmentPolicy
+					acceptedCommitmentToDiversity
+					isDeactivated
+					lifeHack
+					interests
+					isMember
+				}
+			}
+		}
 `;
 
 export default (fetch) => {

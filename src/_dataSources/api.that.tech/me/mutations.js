@@ -2,25 +2,25 @@ import gFetch from '$utils/gfetch';
 import { log } from '../utilities/error';
 
 export const MUTATION_UPDATE_SHARED_PROFILE = `
-  mutation MUTATION_UPDATE_SHARED_PROFILE ($sharedProfile: SharedProfileUpdateInput!) {
-    members {
-      member {
-        profiles {
-          shared {
-            update (profile: $sharedProfile) {
-              id
-              firstName
-              lastName
-              email
-              phone
-              city
-              state
-            }
-          }
-        }
-      }
-    }
-  }
+	mutation MUTATION_UPDATE_SHARED_PROFILE ($sharedProfile: SharedProfileUpdateInput!) {
+		members {
+			member {
+				profiles {
+					shared {
+						update (profile: $sharedProfile) {
+							id
+							firstName
+							lastName
+							email
+							phone
+							city
+							state
+						}
+					}
+				}
+			}
+		}
+	}
 `;
 export default (fetch) => {
 	const client = fetch ? gFetch(fetch) : gFetch();

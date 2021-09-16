@@ -3,105 +3,105 @@ import gFetch from '$utils/gfetch';
 import { log } from '../utilities/error';
 
 const sessionDetailsFragment = `
-  fragment sessionDetailFields on PagedAcceptedSession {
-    cursor
-    count
-    sessions {
-      id
-      title
-      startTime
-      speakers {
-        profileImage
-        firstName
-        lastName
-      }
-    }    
-  }
+	fragment sessionDetailFields on PagedAcceptedSession {
+		cursor
+		count
+		sessions {
+			id
+			title
+			startTime
+			speakers {
+				profileImage
+				firstName
+				lastName
+			}
+		}    
+	}
 `;
 
 export const QUERY_ALL_COMMUNITIES = `
-  query QUERY_ALL_COMMUNITIES {
-    communities {
-      all {
-        id
-        name
-        slug
-        logo
-        sessionCount
-        followCount
-      }
-    }
-  }
+	query QUERY_ALL_COMMUNITIES {
+		communities {
+			all {
+				id
+				name
+				slug
+				logo
+				sessionCount
+				followCount
+			}
+		}
+	}
 `;
 
 export const QUERY_COMMUNITY_BY_SLUG = `
-  query QUERY_COMMUNITY_BY_SLUG($slug: Slug) {
-    communities {
-      community(findBy: {slug: $slug}) {
-        get {
-          id
-          name
-          slug
-          description
-          logo
-          tags
-          createdAt
-        }
-      }
-    }
-  }
+	query QUERY_COMMUNITY_BY_SLUG($slug: Slug) {
+		communities {
+			community(findBy: {slug: $slug}) {
+				get {
+					id
+					name
+					slug
+					description
+					logo
+					tags
+					createdAt
+				}
+			}
+		}
+	}
 `;
 
 export const QUERY_COMMUNITY_FOLLOWERS = `
-  query QUERY_COMMUNITY_FOLLOWERS($slug: Slug) {
-    communities {
-      community(findBy: {slug: $slug}) {
-        get {
-          followCount
-          followers {
-            cursor
-            members {
-              id
-              profileSlug
-              profileImage
-              firstName
-              lastName
-            }
-          }
-        }
-      }
-    }
-  }
+	query QUERY_COMMUNITY_FOLLOWERS($slug: Slug) {
+		communities {
+			community(findBy: {slug: $slug}) {
+				get {
+					followCount
+					followers {
+						cursor
+						members {
+							id
+							profileSlug
+							profileImage
+							firstName
+							lastName
+						}
+					}
+				}
+			}
+		}
+	}
 `;
 
 export const QUERY_COMMUNITY_ACTIVITIES = `
-  ${sessionDetailsFragment}
-  query QUERY_COMMUNITY_ACTIVITIES($slug: Slug, $asOfDate: Date, $pageSize: Int) {
-    communities {
-      community(findBy: {slug: $slug}) {
-        get {
-          sessions(asOfDate: $asOfDate, pageSize: $pageSize) {
-            ...sessionDetailFields
-          }
-        }
-      }
-    }
-  }
+	${sessionDetailsFragment}
+	query QUERY_COMMUNITY_ACTIVITIES($slug: Slug, $asOfDate: Date, $pageSize: Int) {
+		communities {
+			community(findBy: {slug: $slug}) {
+				get {
+					sessions(asOfDate: $asOfDate, pageSize: $pageSize) {
+						...sessionDetailFields
+					}
+				}
+			}
+		}
+	}
 `;
 
 export const QUERY_NEXT_COMMUNITY_ACTIVITIES = `
-  ${sessionDetailsFragment}
-  query QUERY_NEXT_COMMUNITY_ACTIVITIES($id: ID, $asOfDate: Date, $pageSize: Int, $cursor: String) {
-    communities {
-      community(findBy: {id: $id}) {
-        get {
-          sessions(asOfDate: $asOfDate, pageSize: $pageSize, cursor: $cursor) {
-            ...sessionDetailFields
-          }
-        }
-      }
-    }
-  }
+	${sessionDetailsFragment}
+	query QUERY_NEXT_COMMUNITY_ACTIVITIES($id: ID, $asOfDate: Date, $pageSize: Int, $cursor: String) {
+		communities {
+			community(findBy: {id: $id}) {
+				get {
+					sessions(asOfDate: $asOfDate, pageSize: $pageSize, cursor: $cursor) {
+						...sessionDetailFields
+					}
+				}
+			}
+		}
+	}
 `;
 
 export default (fetch) => {

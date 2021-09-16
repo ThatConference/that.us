@@ -8,252 +8,252 @@ import { log } from '../utilities/error';
 
 const { uniqBy } = lodash;
 const coreFieldsFragment = `
-  fragment coreFieldsFragment on Partner {
-    id
-    slug
-    companyName
-    companyLogo
-  }
+	fragment coreFieldsFragment on Partner {
+		id
+		slug
+		companyName
+		companyLogo
+	}
 `;
 
 const jobListingsFragment = `
-  fragment jobListingsFragment on Partner {
-    jobListings {
-      id
-      slug
-      title
-      description
-      jobType
-      experienceLevel
-      applyNowLink
-      role
-    }
-  }
+	fragment jobListingsFragment on Partner {
+		jobListings {
+			id
+			slug
+			title
+			description
+			jobType
+			experienceLevel
+			applyNowLink
+			role
+		}
+	}
 `;
 
 const featuredSessionsFragment = `
-  fragment featuredSessionsFragment on Partner {
-    sessions {
-      id
-      title
-      shortDescription
-      startTime
-      event {
-        logo
-      }
-      speakers {
-        profileImage
-        profileSlug
-        firstName
-        lastName
-        earnedMeritBadges {
-          id
-          name
-          image
-          description
-        }
-      }
+	fragment featuredSessionsFragment on Partner {
+		sessions {
+			id
+			title
+			shortDescription
+			startTime
+			event {
+				logo
+			}
+			speakers {
+				profileImage
+				profileSlug
+				firstName
+				lastName
+				earnedMeritBadges {
+					id
+					name
+					image
+					description
+				}
+			}
 
-      tags
-      
-    }
-  }
+			tags
+			
+		}
+	}
 `;
 
 const socialLinksFieldsFragment = `
-  fragment socialLinksFieldsFragment on Partner {
-    linkedIn
-    github
-    youtube
-    instagram
-    twitter
-    facebook
-    twitch
-  }
+	fragment socialLinksFieldsFragment on Partner {
+		linkedIn
+		github
+		youtube
+		instagram
+		twitter
+		facebook
+		twitch
+	}
 `;
 
 const enumValues = `
-  options: enumValues {
-    label: description
-    value: name
-  }
+	options: enumValues {
+		label: description
+		value: name
+	}
 `;
 
 export const QUERY_PARTNER_DROPDOWN_VALUES = `
-  query QUERY_PARTNER_DROPDOWN_VALUES {
-    jobType: __type(name: "JobType") {
-      ${enumValues}
-    }
-    
-    experienceLevel: __type(name: "ExperienceLevel") {
-      ${enumValues}
-    }
-  }
+	query QUERY_PARTNER_DROPDOWN_VALUES {
+		jobType: __type(name: "JobType") {
+			${enumValues}
+		}
+		
+		experienceLevel: __type(name: "ExperienceLevel") {
+			${enumValues}
+		}
+	}
 `;
 
 export const QUERY_PARTNERS = `
-  ${socialLinksFieldsFragment}
-  ${coreFieldsFragment}
-  query getEventPartners($slug: String!) {
-    events {
-      event(findBy: { slug: $slug }) {
-        get{
-          partners {
-            ...coreFieldsFragment
-            level
-            ...socialLinksFieldsFragment
-          }
-        }
-      }
-    }
-  }
+	${socialLinksFieldsFragment}
+	${coreFieldsFragment}
+	query getEventPartners($slug: String!) {
+		events {
+			event(findBy: { slug: $slug }) {
+				get{
+					partners {
+						...coreFieldsFragment
+						level
+						...socialLinksFieldsFragment
+					}
+				}
+			}
+		}
+	}
 `;
 
 export const QUERY_PARTNER = `
-  ${socialLinksFieldsFragment}
-  ${coreFieldsFragment}
-  ${jobListingsFragment}
-  ${featuredSessionsFragment}
-  query queryPartner($slug: Slug!) {
-    partners {
-      partner(findBy: { slug: $slug }) {
-        ...coreFieldsFragment
-        ...jobListingsFragment
-        ...socialLinksFieldsFragment
-        ...featuredSessionsFragment
-        website
-        aboutUs
-        city
-        state
-        goals
-        callToAction
-        callToActionSpotlight
-        callToActionUrl
-        members {
-          id
-          firstName
-          lastName
-          jobTitle
-          profileImage
-          profileSlug
-        }
-      }
-    }
-  }
+	${socialLinksFieldsFragment}
+	${coreFieldsFragment}
+	${jobListingsFragment}
+	${featuredSessionsFragment}
+	query queryPartner($slug: Slug!) {
+		partners {
+			partner(findBy: { slug: $slug }) {
+				...coreFieldsFragment
+				...jobListingsFragment
+				...socialLinksFieldsFragment
+				...featuredSessionsFragment
+				website
+				aboutUs
+				city
+				state
+				goals
+				callToAction
+				callToActionSpotlight
+				callToActionUrl
+				members {
+					id
+					firstName
+					lastName
+					jobTitle
+					profileImage
+					profileSlug
+				}
+			}
+		}
+	}
 `;
 
 export const QUERY_FOLLOWERS = `
-  query queryPartnerFollowersById($id: ID) {
-    partners {
-      partner(findBy: {id: $id}) {
-        followCount
-        followers {
-          cursor
-          members {
-            id
-            profileSlug
-            profileImage
-            firstName
-            lastName
-          }
-        }
-      }
-    }
-  }
+	query queryPartnerFollowersById($id: ID) {
+		partners {
+			partner(findBy: {id: $id}) {
+				followCount
+				followers {
+					cursor
+					members {
+						id
+						profileSlug
+						profileImage
+						firstName
+						lastName
+					}
+				}
+			}
+		}
+	}
 `;
 
 export const QUERY_NEXT_FOLLOWERS = `
-  query queryPartnerFollowersById($id: ID, $cursor: String) {
-    partners {
-      partner(findBy: {id: $id}) {
-        followers(cursor: $cursor) {
-          cursor
-          members {
-            id
-            profileSlug
-            profileImage
-            firstName
-            lastName
-          }
-        }
-      }
-    }
-  }
+	query queryPartnerFollowersById($id: ID, $cursor: String) {
+		partners {
+			partner(findBy: {id: $id}) {
+				followers(cursor: $cursor) {
+					cursor
+					members {
+						id
+						profileSlug
+						profileImage
+						firstName
+						lastName
+					}
+				}
+			}
+		}
+	}
 `;
 
 export const QUERY_UPCOMING_PARTNERS = `
-  ${socialLinksFieldsFragment}
-  ${coreFieldsFragment}
-  query QUERY_UPCOMING_PARTNERS {
-    events {
-      all {
-        endDate
-        isActive
-        partners {
-          ...coreFieldsFragment
-          level
-          ...socialLinksFieldsFragment
-        }
-      }
-    }
-  }
+	${socialLinksFieldsFragment}
+	${coreFieldsFragment}
+	query QUERY_UPCOMING_PARTNERS {
+		events {
+			all {
+				endDate
+				isActive
+				partners {
+					...coreFieldsFragment
+					level
+					...socialLinksFieldsFragment
+				}
+			}
+		}
+	}
 `;
 
 export const QUERY_PAST_PARTNERS = `
-  ${socialLinksFieldsFragment}
-  ${coreFieldsFragment}
-  query QUERY_PAST_PARTNERS {
-    partners {
-      all {
-        ...coreFieldsFragment
-        ...socialLinksFieldsFragment
-      }
-    }
-  }
+	${socialLinksFieldsFragment}
+	${coreFieldsFragment}
+	query QUERY_PAST_PARTNERS {
+		partners {
+			all {
+				...coreFieldsFragment
+				...socialLinksFieldsFragment
+			}
+		}
+	}
 `;
 
 export const QUERY_EVENT_PARTNERS = `
-  ${socialLinksFieldsFragment}
-  ${coreFieldsFragment}
-  query QUERY_EVENT_PARTNERS ($slug: String!) {
-    events {
-      event (findBy: { slug: $slug }) {
-        get {
-          logo
-          name
-          partners {
-            ...coreFieldsFragment
-            level
-            placement
-            ...socialLinksFieldsFragment
-          }
-        }
-      }
-    }
-  }
+	${socialLinksFieldsFragment}
+	${coreFieldsFragment}
+	query QUERY_EVENT_PARTNERS ($slug: String!) {
+		events {
+			event (findBy: { slug: $slug }) {
+				get {
+					logo
+					name
+					partners {
+						...coreFieldsFragment
+						level
+						placement
+						...socialLinksFieldsFragment
+					}
+				}
+			}
+		}
+	}
 `;
 
 export const QUERY_PARTNER_JOB_LISTING = `
-  ${socialLinksFieldsFragment}
-  query QUERY_PARTNER_JOB_LISTING ($partner: Slug, $slug: String!) {
-    partners {
-      partner (findBy: { slug: $partner }) {
-        companyName
-        companyLogo
-        website
-        ...socialLinksFieldsFragment
-        jobListing(slug: $slug) {
-          title
-          description
-          jobType
-          experienceLevel
-          applyNowLink
-          remote
-          role
-        }
-      }
-    }
-  }
+	${socialLinksFieldsFragment}
+	query QUERY_PARTNER_JOB_LISTING ($partner: Slug, $slug: String!) {
+		partners {
+			partner (findBy: { slug: $partner }) {
+				companyName
+				companyLogo
+				website
+				...socialLinksFieldsFragment
+				jobListing(slug: $slug) {
+					title
+					description
+					jobType
+					experienceLevel
+					applyNowLink
+					remote
+					role
+				}
+			}
+		}
+	}
 `;
 
 function createSocialLinks(partner) {

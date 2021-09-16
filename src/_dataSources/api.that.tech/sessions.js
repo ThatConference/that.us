@@ -7,291 +7,291 @@ import { log } from './utilities/error';
 const defaultPageSize = 50;
 
 const coreSessionFields = `
-  fragment coreFields on AcceptedSession {
-    id
-    eventId
-    title
-    shortDescription
-    tags
-    type
-    status
-    startTime
-    durationInMinutes
-    slug
-    communities
-    targetLocation
-    location {
-      destination
-      isOnline
-      url
-    }
-    agenda
-    longDescription
-    prerequisites
-    takeaways
-    supportingArtifacts {
-      name
-      url
-      description
-    }
-  }
+	fragment coreFields on AcceptedSession {
+		id
+		eventId
+		title
+		shortDescription
+		tags
+		type
+		status
+		startTime
+		durationInMinutes
+		slug
+		communities
+		targetLocation
+		location {
+			destination
+			isOnline
+			url
+		}
+		agenda
+		longDescription
+		prerequisites
+		takeaways
+		supportingArtifacts {
+			name
+			url
+			description
+		}
+	}
 `;
 
 const coreOpenSpaceFields = `
-  fragment coreFields on OpenSpace {
-    id
-    eventId
-    title
-    shortDescription
-    longDescription
-    prerequisites
-    takeaways
-    supportingArtifacts {
-      name
-      url
-      description
-    }
-    tags
-    type
-    status
-    startTime
-    durationInMinutes
-    slug
-  }
+	fragment coreFields on OpenSpace {
+		id
+		eventId
+		title
+		shortDescription
+		longDescription
+		prerequisites
+		takeaways
+		supportingArtifacts {
+			name
+			url
+			description
+		}
+		tags
+		type
+		status
+		startTime
+		durationInMinutes
+		slug
+	}
 `;
 
 const coreSpeakerFields = `
-  fragment coreSpeakerFields on PublicProfile {
-    id
-    firstName
-    lastName
-    bio
-    jobTitle
-    company
-    profileImage
-    profileSlug
-    earnedMeritBadges {
-      id
-      name
-      image
-      description
-    }
-  }
+	fragment coreSpeakerFields on PublicProfile {
+		id
+		firstName
+		lastName
+		bio
+		jobTitle
+		company
+		profileImage
+		profileSlug
+		earnedMeritBadges {
+			id
+			name
+			image
+			description
+		}
+	}
 `;
 
 export const QUERY_SESSION_BY_ID = `
-  ${coreSessionFields}
-  query QUERY_SESSION_BY_ID($sessionId: ID!) {
-    sessions {
-      session(sessionId: $sessionId) {
-        ...coreFields
-        event {
-          id
-          startDate
-          endDate
-          logo
-          slug
-        }
-        speakers {
-          firstName
-          lastName
-          bio
-          jobTitle
-          company
-          profileImage
-          profileSlug
-          profileLinks {
-            linkType
-            url
-            isPublic                  
-          }
-          earnedMeritBadges {
-            id
-            name
-            image
-            description
-          }
-        }
-        favoritedBy {
-          id
-          firstName
-          lastName
-          profileImage
-          profileSlug
-        }
-      }
-    }
-  }
+	${coreSessionFields}
+	query QUERY_SESSION_BY_ID($sessionId: ID!) {
+		sessions {
+			session(sessionId: $sessionId) {
+				...coreFields
+				event {
+					id
+					startDate
+					endDate
+					logo
+					slug
+				}
+				speakers {
+					firstName
+					lastName
+					bio
+					jobTitle
+					company
+					profileImage
+					profileSlug
+					profileLinks {
+						linkType
+						url
+						isPublic                  
+					}
+					earnedMeritBadges {
+						id
+						name
+						image
+						description
+					}
+				}
+				favoritedBy {
+					id
+					firstName
+					lastName
+					profileImage
+					profileSlug
+				}
+			}
+		}
+	}
 `;
 
 export const QUERY_SESSIONS = `
-  ${coreSessionFields}
-  ${coreSpeakerFields}
-  query QUERY_SESSIONS ($pageSize: Int, $cursor: String) {
-    sessions {
-      all(pageSize: $pageSize, cursor: $cursor) {
-        cursor
-        count
-        sessions{
-          ...coreFields
-          speakers {
-            ...coreSpeakerFields
-          }
-        }
-      }
-    }
-  }
+	${coreSessionFields}
+	${coreSpeakerFields}
+	query QUERY_SESSIONS ($pageSize: Int, $cursor: String) {
+		sessions {
+			all(pageSize: $pageSize, cursor: $cursor) {
+				cursor
+				count
+				sessions{
+					...coreFields
+					speakers {
+						...coreSpeakerFields
+					}
+				}
+			}
+		}
+	}
 `;
 
 export const QUERY_SESSIONS_BY_SLUG = `
-  ${coreSessionFields}
-  ${coreSpeakerFields}
-  query QUERY_SESSIONS_BY_SLUG ($slug: String!, $pageSize: Int, $cursor: String) {
-    events {
-      event (findBy: { slug: $slug }) {
-        get {
-          id
-          name
-          startDate
-          endDate
-          slug
-          sessions(pageSize: $pageSize, status: ACCEPTED, cursor: $cursor) {
-            cursor
-            count
-            sessions {
-              ...coreFields
-              speakers {
-                ...coreSpeakerFields
-              }
-            }
-          }
-        }
-      }
-    }
-  }
+	${coreSessionFields}
+	${coreSpeakerFields}
+	query QUERY_SESSIONS_BY_SLUG ($slug: String!, $pageSize: Int, $cursor: String) {
+		events {
+			event (findBy: { slug: $slug }) {
+				get {
+					id
+					name
+					startDate
+					endDate
+					slug
+					sessions(pageSize: $pageSize, status: ACCEPTED, cursor: $cursor) {
+						cursor
+						count
+						sessions {
+							...coreFields
+							speakers {
+								...coreSpeakerFields
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 `;
 
 export const QUERY_NEXT_SESSIONS = `
-  ${coreSessionFields}
-  ${coreSpeakerFields}
-  query QUERY_NEXT_SESSIONS ($pageSize: Int, $cursor: String) {
-    sessions {
-      all (pageSize: $pageSize, status: ACCEPTED, cursor: $cursor) {
-        cursor
-        count
-        sessions {
-          ...coreFields
-          event {
-            id
-            name
-            slug
-          }
-          speakers {
-            ...coreSpeakerFields
-          }
-        }
-      }
-    }
-  }
+	${coreSessionFields}
+	${coreSpeakerFields}
+	query QUERY_NEXT_SESSIONS ($pageSize: Int, $cursor: String) {
+		sessions {
+			all (pageSize: $pageSize, status: ACCEPTED, cursor: $cursor) {
+				cursor
+				count
+				sessions {
+					...coreFields
+					event {
+						id
+						name
+						slug
+					}
+					speakers {
+						...coreSpeakerFields
+					}
+				}
+			}
+		}
+	}
 `;
 
 export const QUERY_SESSIONS_BY_DATE = `
-  ${coreSessionFields}
-  ${coreSpeakerFields}
-  query QUERY_SESSIONS_BY_DATE ($asOfDate: Date, $pageSize: Int) {
-    sessions {
-      all (asOfDate: $asOfDate, status: ACCEPTED, pageSize: $pageSize) {
-        cursor
-        sessions {
-          ...coreFields
-          event {
-            id
-            name
-            slug
-          }
-          speakers {
-            ...coreSpeakerFields
-          }
-        }
-      }
-    }
-  }
+	${coreSessionFields}
+	${coreSpeakerFields}
+	query QUERY_SESSIONS_BY_DATE ($asOfDate: Date, $pageSize: Int) {
+		sessions {
+			all (asOfDate: $asOfDate, status: ACCEPTED, pageSize: $pageSize) {
+				cursor
+				sessions {
+					...coreFields
+					event {
+						id
+						name
+						slug
+					}
+					speakers {
+						...coreSpeakerFields
+					}
+				}
+			}
+		}
+	}
 `;
 
 export const QUERY_NEXT_SESSIONS_BY_DATE = `
-  ${coreSessionFields}
-  ${coreSpeakerFields}
-  query QUERY_NEXT_SESSIONS_BY_DATE ($asOfDate: Date, $pageSize: Int, $cursor: String) {
-    sessions {
-      all(asOfDate: $asOfDate, status: ACCEPTED, pageSize: $pageSize, cursor: $cursor) {
-        cursor
-        sessions {
-          ...coreFields
-          event {
-            id
-            name
-            slug
-          }
-          speakers {
-            ...coreSpeakerFields
-          } 
-        }
-      }
-    }
-  }
+	${coreSessionFields}
+	${coreSpeakerFields}
+	query QUERY_NEXT_SESSIONS_BY_DATE ($asOfDate: Date, $pageSize: Int, $cursor: String) {
+		sessions {
+			all(asOfDate: $asOfDate, status: ACCEPTED, pageSize: $pageSize, cursor: $cursor) {
+				cursor
+				sessions {
+					...coreFields
+					event {
+						id
+						name
+						slug
+					}
+					speakers {
+						...coreSpeakerFields
+					} 
+				}
+			}
+		}
+	}
 `;
 
 export const CREATE_SESSION = `
-  ${coreOpenSpaceFields}
-  mutation CREATE_SESSION($eventId: ID!, $newSession: OpenSpaceCreateInput!) {
-    sessions {
-      create(eventId: $eventId) {
-        openSpace (session: $newSession) {
-          ...coreFields
-        }
-      }
-    }
-  }
+	${coreOpenSpaceFields}
+	mutation CREATE_SESSION($eventId: ID!, $newSession: OpenSpaceCreateInput!) {
+		sessions {
+			create(eventId: $eventId) {
+				openSpace (session: $newSession) {
+					...coreFields
+				}
+			}
+		}
+	}
 `;
 
 export const UPDATE_SESSION_BY_ID = `
-  ${coreOpenSpaceFields}
-  mutation UPDATE_SESSION_BY_ID($sessionId: ID!, $session: OpenSpaceUpdateInput!) {
-    sessions {
-      session(id: $sessionId) {
-        update {
-          openSpace (session: $session) {
-            ...coreFields
-          }
-        }
-      }
-    }
-  }
+	${coreOpenSpaceFields}
+	mutation UPDATE_SESSION_BY_ID($sessionId: ID!, $session: OpenSpaceUpdateInput!) {
+		sessions {
+			session(id: $sessionId) {
+				update {
+					openSpace (session: $session) {
+						...coreFields
+					}
+				}
+			}
+		}
+	}
 `;
 
 export const SET_ATTENDANCE = `
-  mutation SET_ATTENDANCE($sessionId: ID!) {
-    sessions {
-      session(id: $sessionId) {
-        setAttended
-      }
-    }
-  }
+	mutation SET_ATTENDANCE($sessionId: ID!) {
+		sessions {
+			session(id: $sessionId) {
+				setAttended
+			}
+		}
+	}
 `;
 
 export const QUERY_SESSION_BY_ID_SHORT = `
-  query querySessionById($sessionId: ID!) {
-    sessions {
-      session (sessionId: $sessionId) {  
-        title
-        shortDescription
-        eventId
-        event {
-          slug
-        }
-      }
-    }
-  }
+	query querySessionById($sessionId: ID!) {
+		sessions {
+			session (sessionId: $sessionId) {  
+				title
+				shortDescription
+				eventId
+				event {
+					slug
+				}
+			}
+		}
+	}
 `;
 
 export default (fetch) => {

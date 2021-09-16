@@ -6,7 +6,7 @@ layout: support
 ---
 
 <div class="max-w-prose mx-auto">
-  <div class="prose prose-lg text-gray-500">
+	<div class="prose prose-lg text-gray-500">
 
 **This policy was last modified: August 25, 2021**
 
@@ -59,5 +59,6 @@ In the event that THAT Conference receives a counter-notice in compliance with t
 
 PLEASE NOTE THAT THAT CONFERENCE INTENDS TO COMPLY WITH ALL PROVISIONS OF THE DIGITAL MILLENNIUM COPYRIGHT ACT, BUT WILL NOT UNILATERALLY TAKE RESPONSIBILITY FOR POLICING AND REMOVING MATERIAL THOUGHT TO BE INFRINGING.
 
-  </div>
+    </div>
+
 </div>

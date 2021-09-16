@@ -3,29 +3,29 @@ import gFetch from '$utils/gfetch';
 import { log } from '../utilities/error';
 
 const productBaseFieldsFragment = `
-  fragment productBaseFields on ProductBase {
-    id
-    name
-    description
-    productType: type
-    price
-    isEnabled
-  }
+	fragment productBaseFields on ProductBase {
+		id
+		name
+		description
+		productType: type
+		price
+		isEnabled
+	}
 `;
 
 export const QUERY_EVENT_PRODUCTS = `
-  ${productBaseFieldsFragment}
-  query QueryEventProducts($eventId: ID!) {
-    events {
-      event(findBy: {id: $eventId}) {
-        get {
-          products {
-            ...productBaseFields
-          }
-        }
-      }
-    }
-  }
+	${productBaseFieldsFragment}
+	query QueryEventProducts($eventId: ID!) {
+		events {
+			event(findBy: {id: $eventId}) {
+				get {
+					products {
+						...productBaseFields
+					}
+				}
+			}
+		}
+	}
 `;
 
 export default (fetch) => {
