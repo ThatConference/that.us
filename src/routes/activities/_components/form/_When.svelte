@@ -58,7 +58,8 @@
 </script>
 
 <script>
-	export let touched, errors, values, setField; // parent form values
+	export let touched, errors, values;
+	export let setField; // parent form values
 	export let event;
 
 	import { tick } from 'svelte';
@@ -197,13 +198,11 @@
 						<Select
 							inputAttributes={{ name: 'selectedTime' }}
 							items={timeSlotOptionsFiltered}
-							bind:selectedValue={selectedTimeValue}
+							bind:value={selectedTimeValue}
 							on:select={({ detail }) => setField('selectedTime', detail.value)}
 							on:clear={() => setField('selectedTime', undefined)}
 							hasError={touched['selectedTime'] && errors['selectedTime']}
-							inputStyles="form-select relative block w-full
-              bg-transparent focus:z-10 transition ease-in-out duration-150
-              sm:text-sm sm:leading-5 rounded-md shadow-sm hover:border-gray-700"
+							inputStyles="form-select relative block w-full bg-transparent focus:z-10 transition ease-in-out duration-150 sm:text-sm sm:leading-5 rounded-md shadow-sm hover:border-gray-700"
 						/>
 					</div>
 				</div>
@@ -218,10 +217,8 @@
 							hasError={touched['selectedTimezone'] && errors['selectedTimezone']}
 							items={timeZoneOptions}
 							on:clear={() => setField('selectedTimezone', undefined)}
-							selectedValue={findSelectedTimezone(values)}
-							inputStyles="form-select relative block w-full rounded-md
-                bg-transparent focus:z-10 transition ease-in-out duration-150
-                sm:text-sm sm:leading-5 hover:border-gray-700"
+							value={findSelectedTimezone(values)}
+							inputStyles="form-select relative block w-full rounded-md bg-transparent focus:z-10 transition ease-in-out duration-150 sm:text-sm sm:leading-5 hover:border-gray-700"
 						/>
 					</div>
 				</div>
@@ -261,10 +258,8 @@
 					hasError={touched['selectedDuration'] && errors['selectedDuration']}
 					items={estimatedDurationOptions}
 					on:clear={() => setField('selectedDuration', undefined)}
-					selectedValue={findSelectedDuration(values)}
-					inputStyles="form-select relative block w-full rounded-md
-          bg-transparent focus:z-10 transition ease-in-out duration-150
-          sm:text-sm sm:leading-5 hover:border-gray-700"
+					value={findSelectedDuration(values)}
+					inputStyles="form-select relative block w-full rounded-md bg-transparent focus:z-10 transition ease-in-out duration-150 sm:text-sm sm:leading-5 hover:border-gray-700"
 				/>
 			</div>
 			<div class="mt-6">

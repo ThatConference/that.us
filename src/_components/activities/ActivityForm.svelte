@@ -327,10 +327,8 @@
 								hasError={touched['selectedTime'] && errors['selectedTime']}
 								items={timeSlotOptionsFiltered}
 								on:clear={() => setValue('selectedTime', undefined)}
-								selectedValue={findSelectedTimeSlot(values)}
-								inputStyles="form-select relative block w-full
-                bg-transparent focus:z-10 transition ease-in-out duration-150
-                sm:text-sm sm:leading-5 rounded-md shadow-sm"
+								value={findSelectedTimeSlot(values)}
+								inputStyles="form-select relative block w-full bg-transparent focus:z-10 transition ease-in-out duration-150 sm:text-sm sm:leading-5 rounded-md shadow-sm"
 							/>
 
 							{#if touched['selectedTime'] && errors['selectedTime']}
@@ -349,10 +347,8 @@
 								hasError={touched['selectedTimezone'] && errors['selectedTimezone']}
 								items={timeZoneOptions}
 								on:clear={() => setValue('selectedTimezone', undefined)}
-								selectedValue={findSelectedTimezone(values)}
-								inputStyles="form-select relative block w-full rounded-md
-                bg-transparent focus:z-10 transition ease-in-out duration-150
-                sm:text-sm sm:leading-5"
+								value={findSelectedTimezone(values)}
+								inputStyles="form-select relative block w-full rounded-md bg-transparent focus:z-10 transition ease-in-out duration-150 sm:text-sm sm:leading-5"
 							/>
 
 							{#if touched['selectedTimezone'] && errors['selectedTimezone']}
@@ -385,10 +381,8 @@
 						hasError={touched['selectedDuration'] && errors['selectedDuration']}
 						items={estimatedDurationOptions}
 						on:clear={() => setValue('selectedDuration', undefined)}
-						selectedValue={findSelectedDuration(values)}
-						inputStyles="form-select relative block w-full rounded-md
-            bg-transparent focus:z-10 transition ease-in-out duration-150
-            sm:text-sm sm:leading-5"
+						value={findSelectedDuration(values)}
+						inputStyles="form-select relative block w-full rounded-md bg-transparent focus:z-10 transition ease-in-out duration-150 sm:text-sm sm:leading-5"
 					/>
 
 					{#if touched['selectedDuration'] && errors['selectedDuration']}

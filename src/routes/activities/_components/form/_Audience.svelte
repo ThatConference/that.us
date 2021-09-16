@@ -35,14 +35,12 @@
 						isMulti={true}
 						inputAttributes={{ name: 'targetAudience' }}
 						items={targetAudience.options}
-						bind:selectedValue={selectedtargetAudienceValue}
+						bind:value={selectedtargetAudienceValue}
 						on:select={({ detail }) =>
 							setField('targetAudience', detail ? detail.map((i) => i.value) : [])}
 						on:clear={() => setField('targetAudience', [])}
 						hasError={touched['targetAudience'] && errors['targetAudience']}
-						inputStyles="form-select relative block w-full
-								bg-transparent focus:z-10 transition ease-in-out duration-150
-								sm:text-sm sm:leading-5 rounded-md shadow-sm hover:border-gray-700"
+						inputStyles="form-select relative block w-full bg-transparent focus:z-10 transition ease-in-out duration-150 sm:text-sm sm:leading-5 rounded-md shadow-sm hover:border-gray-700"
 					/>
 					{#if touched['targetAudience'] && errors['targetAudience']}
 						<p class="text-red-600 italic">{errors['targetAudience']}</p>

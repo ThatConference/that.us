@@ -175,7 +175,7 @@ export default (fetch) => {
 			.then(({ data, error }) => {
 				if (error) logMessage(error, 'QUERY_MY_SESSION_BY_ID');
 
-				return data.sessions.me.session;
+				return data.sessions?.me?.session;
 			});
 	}
 
