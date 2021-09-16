@@ -31,7 +31,6 @@
 	// data
 	import favoritesApi from '$dataSources/api.that.tech/favorites';
 	import { show } from '$stores/profileNotification';
-	import currentEvent from '$stores/currentEvent';
 
 	// UI Elements
 	import { Tag } from '$elements';
@@ -68,7 +67,7 @@
 	const handleToggle = async () => {
 		if (isAllowed()) {
 			favoriteDisabled = true;
-			await toggle(id, $currentEvent.eventId);
+			await toggle(id, eventId);
 			favoriteDisabled = false;
 		}
 	};
@@ -88,7 +87,7 @@
 	$: canJoin = isInWindow;
 
 	onMount(async () => {
-		if ($isAuthenticated) await getFavorites($currentEvent.eventId);
+		if ($isAuthenticated) await getFavorites(eventId);
 
 		let endTime = (durationInMinutes ? durationInMinutes : 60) + 10;
 		let currentStartTime = dayjs(startTime).subtract(5, 'minute');
