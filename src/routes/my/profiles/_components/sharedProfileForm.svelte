@@ -6,9 +6,9 @@
 		lastName: yup.string().trim().required('Please add your last name.'),
 		email: yup.string().trim().required('Please add your email address.'),
 
-		phone: yup.string().trim(),
-		city: yup.string().trim(),
-		state: yup.string().trim()
+		phone: yup.string().trim().nullable(),
+		city: yup.string().trim().nullable(),
+		state: yup.string().trim().nullable()
 	});
 </script>
 
