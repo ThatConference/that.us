@@ -1,38 +1,15 @@
-<script>
-	import { page } from '$app/stores';
-
-	import seoMetaTags from '$utils/seo/metaTags';
-	import currentEvent from '$stores/currentEvent';
+<script context="module">
 	import eventsApi from '$dataSources/api.that.tech/events/queries';
-	import Seo from '$components/Seo.svelte';
-
-	import Hybrid from '../../_components/_Hybrid.svelte';
-	import MultiDay from '../../_components/_MultiDay.svelte';
-	import Online from '../../_components/_Online.svelte';
-
-	const { event, date } = $page.params;
-	const eventSlug = `${event}/${date}`;
-
-	const metaTags = ((title = 'Event - THAT') => ({
-		title,
-		tags: seoMetaTags({
-			title,
-			description: 'Upcoming and Past Events at THAT',
-			openGraph: {
-				type: 'website',
-				url: `https://that.us/events/${eventSlug}`
-			}
-		})
-	}))();
-
 	let eventFormat;
 
-	function queryEvent() {
-		return eventsApi()
-			.queryEventBySlug(eventSlug)
-			.then((event) => {
-				currentEvent.set({ eventId: event.id, title: event.name });
+	export async function load({ page, fetch }) {
+		const { event, date } = page.params;
+		const eventSlug = `${event}/${date}`;
 
+		const { queryEventBySlug } = eventsApi(fetch);
+
+		function query(slug) {
+			return queryEventBySlug(slug).then((event) => {
 				switch (event.type) {
 					case 'HYBRID_MULTI_DAY':
 						eventFormat = Hybrid;
@@ -49,11 +26,42 @@
 
 				return event;
 			});
+		}
+
+		return {
+			props: {
+				eventSlug,
+				event: await query(eventSlug)
+			}
+		};
 	}
+</script>
+
+<script>
+	export let event;
+	export let eventSlug;
+
+	import seoMetaTags from '$utils/seo/metaTags';
+
+	import Seo from '$components/Seo.svelte';
+
+	import Hybrid from '../../_components/_Hybrid.svelte';
+	import MultiDay from '../../_components/_MultiDay.svelte';
+	import Online from '../../_components/_Online.svelte';
+
+	const metaTags = ((title = `${event.name} - THAT`) => ({
+		title,
+		tags: seoMetaTags({
+			title,
+			description: `${event.description} at THAT`,
+			openGraph: {
+				type: 'website',
+				url: `https://that.us/events/${eventSlug}`
+			}
+		})
+	}))();
 </script>
 
 <Seo title={metaTags.title} tags={metaTags.tags} />
 
-{#await queryEvent() then event}
-	<svelte:component this={eventFormat} {event} />
-{/await}
+<svelte:component this={eventFormat} {event} />
