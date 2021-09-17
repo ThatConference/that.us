@@ -345,7 +345,7 @@
 								<span class="inline-flex rounded-md shadow-sm">
 									<button
 										disabled={isValid}
-										on:click|preventDefault={handleWithdraw}
+										on:click|preventDefault={() => handleWithdraw(initialData)}
 										tabindex="-1"
 										class="w-full py-2 px-4 order 
                           border-2 border-transparent rounded-md

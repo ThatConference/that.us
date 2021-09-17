@@ -53,19 +53,20 @@
 		return queryMySessionById(activityId);
 	}
 
-	async function handleWithdraw() {
-		const status = activityDetails.type === 'OPEN_SPACE' ? 'CANCELLED' : 'WITHDREW';
+	async function handleWithdraw(activity) {
+		const status = activity.type === 'OPEN_SPACE' ? 'CANCELLED' : 'WITHDREW';
 
-		await updateSession(activityId, activityDetails.type, {
+		await updateSession(activity.id, activity.type, {
 			status
 		});
 
 		logEvent('activity_withdraw');
 
-		goto(`/my/submissions`, { replace: true });
+		goto(`/my/submissions`);
 	}
 
 	async function handleSubmit({ detail: { values, setSubmitting, resetForm } }) {
+		setSubmitting(true);
 		const { activity, type } = formatUpdate(values);
 
 		await updateSession(activityId, type, activity);
