@@ -54,7 +54,7 @@
 
 <script>
 	import { onMount, onDestroy, setContext } from 'svelte';
-	import { browser } from '$app/env';
+	import { goto } from '$app/navigation';
 	import { navigating } from '$app/stores';
 
 	import loading from '$stores/loading';
@@ -73,7 +73,7 @@
 	setContext('correlationId', correlationId);
 
 	const { isEmpty } = lodash;
-	const { isAuthenticated, thatProfile } = createAuth();
+	const { isAuthenticated, thatProfile, user } = createAuth();
 	let unsub;
 
 	function onTidioChatApiReady() {
@@ -102,6 +102,15 @@
 	}
 
 	onMount(() => {
+		if ($isAuthenticated) {
+			const [provider] = $user?.sub.split('|');
+			if (provider !== 'twitter') {
+				if (!$user.email_verified) {
+					goto('/verify-account');
+				}
+			}
+		}
+
 		if ($showReleaseNotes) {
 			messages.update((m) => [
 				...m,
