@@ -9,8 +9,8 @@
 
 	import checkinQueryApi from '$dataSources/api.that.tech/checkin/queries';
 
-	import Loading from './_components/_Loading.svelte';
-	import RegistrationList from './_components/_RegistrationList.svelte';
+	import Loading from '../../_components/_Loading.svelte';
+	import RegistrationList from '../../_components/_RegistrationList.svelte';
 
 	const { sortBy } = lodash;
 	const { eventName, year } = $page.params;
