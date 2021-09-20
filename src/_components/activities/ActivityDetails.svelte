@@ -30,7 +30,7 @@
 	import lodash from 'lodash';
 
 	import config from '$utils/config';
-	import { getAuth } from '$utils/security';
+	import { getAuth } from '$utils/security/store';
 	import favoritesApi from '$dataSources/api.that.tech/favorites';
 	import currentEvent from '$stores/currentEvent';
 	import { Avatars, Tag } from '$elements';

@@ -3,7 +3,7 @@
 	import { user as userIcon } from 'svelte-awesome/icons';
 	import Icon from 'svelte-awesome';
 	import lodash from 'lodash';
-	import { getAuth } from '$utils/security';
+	import { getAuth } from '$utils/security/store';
 
 	const { isEmpty } = lodash;
 	const { login, isAuthenticated, thatProfile } = getAuth();
@@ -58,7 +58,10 @@
 							Create Profile
 						</a>
 
-						<a href="/logout" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+						<a
+							href="/api/auth/logout"
+							class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+						>
 							Logout
 						</a>
 					</div>
@@ -111,7 +114,10 @@
 							My Submissions
 						</a>
 
-						<a href="/logout" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+						<a
+							href="/api/auth/logout"
+							class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+						>
 							Logout
 						</a>
 					</div>
@@ -123,12 +129,12 @@
 				class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg z-50"
 			>
 				<div class="py-1 rounded-md bg-white ring-1 ring-black ring-opacity-5">
-					<div
-						on:click|stopPropagation={() => login(document.location.pathname, false)}
+					<a
+						href="/login/"
 						class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer"
 					>
 						Login
-					</div>
+					</a>
 					<div
 						on:click|stopPropagation={() => login(document.location.pathname, true)}
 						class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer"

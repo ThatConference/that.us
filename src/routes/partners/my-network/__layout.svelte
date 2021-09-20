@@ -1,21 +1,7 @@
-<script>
-	import SecureLoading from '$components/secureLoading.svelte';
+<script context="module">
+	import auth0 from '$utils/security';
 
-	import { getAuth } from '$utils/security';
-	import { fade } from 'svelte/transition';
-
-	const { token } = getAuth();
-
-	let loaded = $token;
-	function handleLoaded(e) {
-		loaded = true;
-	}
+	export const load = auth0.withPageAuthRequired();
 </script>
 
-{#if !loaded}
-	<div transition:fade>
-		<SecureLoading on:LOADED={handleLoaded} />
-	</div>
-{:else}
-	<slot />
-{/if}
+<slot />

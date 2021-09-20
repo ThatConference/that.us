@@ -29,8 +29,8 @@ export const QUERY_MY_SUBMISSIONS = `
 export default (fetch) => {
 	const client = fetch ? gFetch(fetch) : gFetch();
 
-	const queryMySubmissions = () =>
-		client
+	function queryMySubmissions() {
+		return client
 			.secureQuery({ query: QUERY_MY_SUBMISSIONS })
 
 			.then(({ data, error }) => {
@@ -46,6 +46,7 @@ export default (fetch) => {
 
 				return results.reverse();
 			});
+	}
 
 	return { queryMySubmissions };
 };

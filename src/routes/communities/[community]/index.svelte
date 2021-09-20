@@ -30,7 +30,7 @@
 	import { fade } from 'svelte/transition';
 
 	import seoMetaTags from '$utils/seo/metaTags';
-	import { getAuth } from '$utils/security';
+	import { getAuth } from '$utils/security/store';
 	import Seo from '$components/Seo.svelte';
 
 	import communityMutationApi from '$dataSources/api.that.tech/community/mutations';

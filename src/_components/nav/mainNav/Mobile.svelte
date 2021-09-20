@@ -1,5 +1,5 @@
 <script>
-	import { getAuth } from '$utils/security';
+	import { getAuth } from '$utils/security/store';
 	import { Standard as StandardButton } from '$elements/buttons';
 
 	import links from './links';

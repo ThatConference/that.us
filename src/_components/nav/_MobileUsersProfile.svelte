@@ -5,7 +5,7 @@
 	import Icon from 'svelte-awesome';
 	import lodash from 'lodash';
 
-	import { getAuth } from '$utils/security';
+	import { getAuth } from '$utils/security/store';
 
 	const { isEmpty } = lodash;
 	const { login, isAuthenticated, thatProfile } = getAuth();
@@ -32,7 +32,7 @@
 		},
 
 		{
-			link: '/logout',
+			link: '/api/auth/logout',
 			text: 'Logout'
 		}
 	];
@@ -83,7 +83,7 @@
 					</span>
 				</a>
 				<a
-					href="/logout"
+					href="/api/auth/logout"
 					class="mt-1 block px-3 py-2 rounded-md text-base font-medium hover:bg-that-blue
             focus:outline-none focus:text-white focus:bg-that-blue"
 				>

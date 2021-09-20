@@ -4,7 +4,7 @@
 	import Icon from 'svelte-awesome';
 	import { plusCircle } from 'svelte-awesome/icons';
 
-	import { getAuth } from '$utils/security';
+	import { getAuth } from '$utils/security/store';
 	import { imageCrops } from '$utils/config';
 
 	const { isAuthenticated, thatProfile } = getAuth();

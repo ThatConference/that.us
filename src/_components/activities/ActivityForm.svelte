@@ -57,7 +57,7 @@
 	import * as yup from 'yup';
 	import lodash from 'lodash';
 
-	import { getAuth } from '$utils/security';
+	import { getAuth } from '$utils/security/store';
 	import { Waiting, ModalError } from '$elements';
 	import ErrorNotificaiton from '../notifications/Error.svelte';
 

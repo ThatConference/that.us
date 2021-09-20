@@ -1,5 +1,5 @@
 <script>
-	import { getAuth } from '$utils/security';
+	import { getAuth } from '$utils/security/store';
 	const { isAuthenticated } = getAuth();
 </script>
 

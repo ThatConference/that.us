@@ -3,7 +3,7 @@
 	import { onMount, getContext } from 'svelte';
 
 	import seoMetaTags from '$utils/seo/metaTags';
-	import { getAuth } from '$utils/security';
+	import { getAuth } from '$utils/security/store';
 	import Seo from '$components/Seo.svelte';
 	import { Highlight as HighlightLink, Standard as StandardLink } from '$elements/links';
 	import ordersApi from '$dataSources/api.that.tech/orders/mutations';

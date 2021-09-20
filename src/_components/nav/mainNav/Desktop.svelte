@@ -4,7 +4,7 @@
 	import { plus } from 'svelte-awesome/icons';
 	import { Circle3 } from 'svelte-loading-spinners';
 
-	import { getAuth } from '$utils/security';
+	import { getAuth } from '$utils/security/store';
 
 	import { Cart } from '$elements/svgs';
 	import UserProfile from '../_UserProfile.svelte';

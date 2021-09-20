@@ -7,7 +7,7 @@
 	import dayjs from 'dayjs';
 
 	import config from '$utils/config';
-	import { getAuth } from '$utils/security';
+	import { getAuth } from '$utils/security/store';
 	import { Tag } from '$elements';
 	import Header from '$elements/layouts/profile/_Header.svelte';
 	import { Standard as StandardButton } from '$elements/buttons';

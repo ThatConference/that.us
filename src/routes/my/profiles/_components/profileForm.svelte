@@ -23,7 +23,7 @@
 	import omitDeep from 'omit-deep';
 
 	import config from '$utils/config';
-	import { getAuth } from '$utils/security';
+	import { getAuth } from '$utils/security/store';
 	import memberApi from '$dataSources/api.that.tech/members/queries';
 	import { Waiting } from '$elements';
 	import ErrorNotificaiton from '$components/notifications/Error.svelte';

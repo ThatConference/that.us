@@ -13,7 +13,7 @@
 	},
 	"license": "GPL-3.0",
 	"scripts": {
-		"dev": "svelte-kit dev --port 5000",
+		"dev": "env-cmd svelte-kit dev --port 5000",
 		"build": "svelte-kit build",
 		"start": "svelte-kit start",
 		"lint": "eslint src/**/*.js",
@@ -22,7 +22,7 @@
 		"prepare": "husky install"
 	},
 	"devDependencies": {
-		"@auth0/auth0-spa-js": "^1.17.1",
+		"@auth0/nextjs-auth0": "^1.5.0",
 		"@fortawesome/free-regular-svg-icons": "^5.15.4",
 		"@fullhuman/postcss-purgecss": "^4.0.3",
 		"@okrad/svelte-progressbar": "^1.11.2",
@@ -48,6 +48,8 @@
 		"cssnano": "^5.0.8",
 		"dayjs": "^1.10.7",
 		"debug": "^4.3.2",
+		"dotenv": "^10.0.0",
+		"env-cmd": "^10.1.0",
 		"eslint": "^7.32.0",
 		"eslint-config-airbnb-base": "^14.2.1",
 		"eslint-config-prettier": "^8.3.0",
@@ -94,6 +96,7 @@
 		"tailwindcss": "^2.2.15",
 		"uuid": "^8.3.2",
 		"vite": "^2.5.7",
+		"wretch": "^1.7.6",
 		"xstate": "^4.23.4",
 		"xstate-svelte": "^1.0.1",
 		"yup": "^0.32.9"
@@ -103,8 +106,5 @@
 		"verbose": true,
 		"rootDir": "./src",
 		"coverageDirectory": "../__testCoverage__"
-	},
-	"dependencies": {
-		"cookie": "^0.4.1"
 	}
 }

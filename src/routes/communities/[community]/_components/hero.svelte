@@ -6,7 +6,7 @@
 	import { fade } from 'svelte/transition';
 	import dayjs from 'dayjs';
 
-	import { getAuth } from '$utils/security';
+	import { getAuth } from '$utils/security/store';
 	import { Standard as StandardButton } from '$elements/buttons';
 	import { Tag } from '$elements';
 	import Header from '$elements/layouts/profile/_Header.svelte';

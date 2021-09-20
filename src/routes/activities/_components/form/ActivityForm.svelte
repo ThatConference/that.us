@@ -15,7 +15,7 @@
 	import { Form, Input } from 'sveltejs-forms';
 	import lodash from 'lodash';
 
-	import { getAuth } from '$utils/security';
+	import { getAuth } from '$utils/security/store';
 	import { Waiting, ModalError } from '$elements';
 	import ErrorNotificaiton from '$components/notifications/Error.svelte';
 

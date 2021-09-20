@@ -3,7 +3,7 @@
 
 	import lodash from 'lodash';
 
-	import { getAuth } from '$utils/security';
+	import { getAuth } from '$utils/security/store';
 	import { Footer } from '$components';
 	import CreateProfileNotification from '$components/notifications/CreateProfile.svelte';
 	import NoProfile from '$components/notifications/NoProfile.svelte';

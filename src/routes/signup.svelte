@@ -1,7 +1,7 @@
 <script>
 	import { fade } from 'svelte/transition';
 
-	import { getAuth } from '$utils/security';
+	import { getAuth } from '$utils/security/store';
 	import seoMetaTags from '$utils/seo/metaTags';
 
 	import Seo from '$components/Seo.svelte';

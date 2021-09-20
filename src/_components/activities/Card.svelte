@@ -25,7 +25,7 @@
 
 	// utilties
 	import config from '$utils/config';
-	import { getAuth } from '$utils/security';
+	import { getAuth } from '$utils/security/store';
 	import { truncate, isLongerThan } from '$utils/truncate';
 
 	// data

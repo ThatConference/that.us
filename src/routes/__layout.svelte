@@ -61,7 +61,7 @@
 	import { showReleaseNotes } from '$stores/siteVersion';
 	import { messages } from '$stores/notificationCenter';
 
-	import { createAuth } from '$utils/security';
+	import { createAuth } from '$utils/security/store';
 	import cart from '$utils/cart';
 	import config, { debug, logging } from '$utils/config';
 

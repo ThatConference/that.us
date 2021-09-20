@@ -32,7 +32,7 @@
 
 	import seoMetaTags from '$utils/seo/metaTags';
 	import { debug } from '$utils/config';
-	import { getAuth } from '$utils/security';
+	import { getAuth } from '$utils/security/store';
 	import createMachine from './_machines/daily';
 
 	const { isEmpty, uniqBy } = lodash;

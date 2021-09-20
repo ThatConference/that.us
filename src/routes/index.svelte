@@ -46,7 +46,7 @@
 
 	import { debug } from '$utils/config';
 	import seoMetaTags from '$utils/seo/metaTags';
-	import { getAuth } from '$utils/security';
+	import { getAuth } from '$utils/security/store';
 	import Layout from '$elements/layouts/ContentLayout.svelte';
 	import Seo from '$components/Seo.svelte';
 

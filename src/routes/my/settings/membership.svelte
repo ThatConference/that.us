@@ -10,7 +10,7 @@
 	import { Standard as StandardLink } from '$elements/links';
 	import { Warning, Store, Ticket } from '$elements/svgs';
 
-	import { getAuth } from '$utils/security';
+	import { getAuth } from '$utils/security/store';
 	import meQueryApi from '$dataSources/api.that.tech/me/queries';
 
 	const { thatProfile } = getAuth();

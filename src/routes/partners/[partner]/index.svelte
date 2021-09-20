@@ -3,7 +3,7 @@
 	import { fade } from 'svelte/transition';
 	import { useMachine } from 'xstate-svelte';
 
-	import { getAuth } from '$utils/security';
+	import { getAuth } from '$utils/security/store';
 	import { debug } from '$utils/config';
 	import seoMetaTags from '$utils/seo/metaTags';
 	import Seo from '$components/Seo.svelte';

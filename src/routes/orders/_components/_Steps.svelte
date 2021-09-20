@@ -7,7 +7,7 @@
 	import { goto } from '$app/navigation';
 
 	import { debug } from '$utils/config';
-	import { getAuth } from '$utils/security';
+	import { getAuth } from '$utils/security/store';
 	import StepComplete from '$elements/svgs/StepComplete.svelte';
 	import Step from '$elements/svgs/Step.svelte';
 

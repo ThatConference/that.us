@@ -3,7 +3,7 @@
 
 	import lodash from 'lodash';
 
-	import { getAuth } from '$utils/security';
+	import { getAuth } from '$utils/security/store';
 	import Nav from '$components/nav/interiorNav/Top.svelte';
 	import { ActionHeader } from '$elements';
 	import { User, Badge } from '$elements/svgs';

@@ -5,6 +5,7 @@
 	import isBetween from 'dayjs/plugin/isBetween.js';
 	import lodash from 'lodash';
 
+	import auth0 from '$utils/security';
 	import config from '$utils/config';
 
 	dayjs.extend(isSameOrBefore);
@@ -51,44 +52,24 @@
 		return activeEvents;
 	}
 
-	export async function load({ page, fetch }) {
-		const { queryEvents } = eventsApi(fetch);
+	export const load = auth0.withPageAuthRequired({
+		load: async function load({ page, fetch }) {
+			const { queryEvents } = eventsApi(fetch);
 
-		const isBackdoor =
-			page.path === '/activities/create/backdoor/' || page.path === '/activities/create/backdoor';
+			const isBackdoor =
+				page.path === '/activities/create/backdoor/' || page.path === '/activities/create/backdoor';
 
-		const eventId = page.query.has('event') ? page.query.get('event') : config.eventId;
-		const events = await queryEvents().then((r) => r.filter((i) => i.community === 'that'));
+			const eventId = page.query.has('event') ? page.query.get('event') : config.eventId;
+			const events = await queryEvents().then((r) => r.filter((i) => i.community === 'that'));
 
-		return {
-			context: {
-				events,
-				activeEvents: transformEvents(events, eventId, isBackdoor),
-				isBackdoor,
-				eventId
-			}
-		};
-	}
+			return {
+				context: {
+					events,
+					activeEvents: transformEvents(events, eventId, isBackdoor),
+					isBackdoor,
+					eventId
+				}
+			};
+		}
+	});
 </script>
-
-<script>
-	import SecureLoading from '$components/secureLoading.svelte';
-
-	import { getAuth } from '$utils/security';
-	import { fade } from 'svelte/transition';
-
-	const { token } = getAuth();
-
-	let loaded = $token;
-	function handleLoaded(e) {
-		loaded = true;
-	}
-</script>
-
-{#if !loaded}
-	<div transition:fade>
-		<SecureLoading on:LOADED={handleLoaded} />
-	</div>
-{:else}
-	<slot />
-{/if}

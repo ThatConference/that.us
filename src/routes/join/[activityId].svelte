@@ -34,7 +34,7 @@
 	import Seo from '$components/Seo.svelte';
 
 	import config from '$utils/config';
-	import { getAuth } from '$utils/security';
+	import { getAuth } from '$utils/security/store';
 
 	import eventsApi from '$dataSources/api.that.tech/events/queries.js';
 
