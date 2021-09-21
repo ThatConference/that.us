@@ -4,6 +4,7 @@
 	export let sessionLookups;
 
 	// 3rd Party
+	import { session } from '$app/stores';
 	import { onMount } from 'svelte';
 	import dayjs from 'dayjs';
 	import isBetween from 'dayjs/plugin/isBetween.js';
@@ -30,7 +31,6 @@
 	import lodash from 'lodash';
 
 	import config from '$utils/config';
-	import { getAuth } from '$utils/security/store';
 	import favoritesApi from '$dataSources/api.that.tech/favorites';
 	import currentEvent from '$stores/currentEvent';
 	import { Avatars, Tag } from '$elements';
@@ -48,7 +48,6 @@
 	dayjs.extend(advancedFormat);
 
 	const { isEmpty, find } = lodash;
-	const { isAuthenticated, login, thatProfile } = getAuth();
 	const {
 		title,
 		shortDescription,
@@ -95,7 +94,7 @@
 	let favoriteDisabled = false;
 
 	let incompleteProfile = true;
-	$: if (!isEmpty($thatProfile)) {
+	$: if (!isEmpty($session.thatProfile)) {
 		incompleteProfile = false;
 	}
 
@@ -133,7 +132,7 @@
 	onMount(async () => {
 		window.history.replaceState({}, null, `/activities/${id}`);
 
-		if ($isAuthenticated) await getFavorites($currentEvent.eventId);
+		if ($session.isAuthenticated) await getFavorites($currentEvent.eventId);
 
 		let endTime = (durationInMinutes ? durationInMinutes : 60) + 10;
 
@@ -238,7 +237,7 @@
 
 			<div class="flex flex-wrap justify-center items-center mt-2 md:mt-0">
 				{#if !hasExpired}
-					{#if $isAuthenticated && !incompleteProfile}
+					{#if $session.isAuthenticated && !incompleteProfile}
 						<div class="mt-2 mx-2 rounded-md shadow-sm">
 							<button
 								type="button"
@@ -259,9 +258,8 @@
 						</div>
 					{:else}
 						<div class="mt-2 mx-2 rounded-md shadow-sm">
-							<button
-								type="button"
-								on:click|preventDefault={() => login(document.location.pathname, false)}
+							<a
+								href="/login"
 								class="relative inline-flex items-center px-4 py-2 border-2
                   border-thatBlue-500 text-sm leading-5 font-medium rounded-md
                   text-gray-700 bg-white hover:text-gray-500 focus:outline-none
@@ -271,12 +269,12 @@
 							>
 								<Icon data={heart} class="-ml-1 mr-2 h-4 w-4" />
 								<span>Favorite</span>
-							</button>
+							</a>
 						</div>
 					{/if}
 				{/if}
 
-				{#if $isAuthenticated && !incompleteProfile}
+				{#if $session.isAuthenticated && !incompleteProfile}
 					{#if canEdit()}
 						<div class="mt-2 mx-2 rounded-md shadow-sm">
 							<a

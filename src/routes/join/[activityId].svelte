@@ -20,6 +20,7 @@
 	export let activityId;
 	export let activityDetails;
 
+	import { session } from '$app/stores';
 	import { onMount } from 'svelte';
 	import lodash from 'lodash';
 	import { goto } from '$app/navigation';
@@ -34,13 +35,11 @@
 	import Seo from '$components/Seo.svelte';
 
 	import config from '$utils/config';
-	import { getAuth } from '$utils/security/store';
 
 	import eventsApi from '$dataSources/api.that.tech/events/queries.js';
 
 	const { isEmpty } = lodash;
 
-	const { isAuthenticated, thatProfile, user } = getAuth();
 	const { setAttendance } = sessionsApi();
 	const { canAccessEvent } = eventsApi();
 
@@ -96,7 +95,7 @@
 			'mute-everyone'
 		];
 
-		if ($user['http://auth.that.tech/roles'].includes('Admin')) {
+		if ($session.user['http://auth.that.tech/roles'].includes('Admin')) {
 			toolButtonConfig.push(
 				'recording',
 				'livestreaming',
@@ -126,7 +125,7 @@
 				DEFAULT_REMOTE_DISPLAY_NAME: 'THAT Camper'
 			},
 			userInfo: {
-				displayName: `${$thatProfile?.firstName} ${$thatProfile?.lastName}`
+				displayName: `${$session.thatProfile?.firstName} ${$session.thatProfile?.lastName}`
 			},
 			onload: () => {
 				// update here just to cover loading scenarios
@@ -216,15 +215,15 @@
 		}
 	}
 
-	$: if (!isEmpty($thatProfile)) {
+	$: if (!isEmpty($session.thatProfile)) {
 		incompleteProfile = false;
 	}
 
-	$: if ($isAuthenticated && !incompleteProfile) {
+	$: if ($session.isAuthenticated && !incompleteProfile) {
 		Promise.resolve(setAttendance(activityId));
 
-		avatarUrl = `${$thatProfile.profileImage}${imageCrop}`;
-		displayName = `${$thatProfile.firstName} ${$thatProfile.lastName}`;
+		avatarUrl = `${$session.thatProfile.profileImage}${imageCrop}`;
+		displayName = `${$session.thatProfile.firstName} ${$session.thatProfile.lastName}`;
 
 		if (api) {
 			api.executeCommand('avatarUrl', avatarUrl);

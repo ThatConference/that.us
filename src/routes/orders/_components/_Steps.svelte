@@ -1,18 +1,17 @@
 <script>
 	export let stateMachine;
 
+	import { session } from '$app/stores';
 	import { useService } from 'xstate-svelte';
 	import lodash from 'lodash';
 
 	import { goto } from '$app/navigation';
 
 	import { debug } from '$utils/config';
-	import { getAuth } from '$utils/security/store';
 	import StepComplete from '$elements/svgs/StepComplete.svelte';
 	import Step from '$elements/svgs/Step.svelte';
 
 	const { isEmpty } = lodash;
-	const { isAuthenticated, token, thatProfile, login } = getAuth();
 	const { state, send, service } = useService(stateMachine, {
 		devTools: debug.xstate
 	});
@@ -32,13 +31,13 @@
 		}
 	});
 
-	$: if (!isEmpty($thatProfile)) {
+	$: if (!isEmpty($session.thatProfile)) {
 		send('PROFILE_COMPLETED', { status: true });
 	} else {
 		send('PROFILE_COMPLETED', { status: false });
 	}
 
-	$: if ($isAuthenticated && $token) {
+	$: if ($session.isAuthenticated) {
 		send('AUTHENTICATED', { status: true });
 	} else {
 		send('AUTHENTICATED', { status: false });
@@ -55,7 +54,7 @@
 					step="1"
 					isActive={$state.matches('pendingLogin')}
 					stepName="Login"
-					on:click={() => login('/orders/summary')}
+					on:click={() => goto('/login?r=/orders/summary')}
 				/>
 			{/if}
 
@@ -84,7 +83,7 @@
 					step="2"
 					isActive={$state.matches('authenticated.pendingProfile')}
 					stepName="Profile Completed"
-					on:click={() => goto('/my/profiles/primary', { replace: true })}
+					on:click={() => goto('/my/profiles/primary')}
 				/>
 			{/if}
 
@@ -151,7 +150,7 @@
 		</div>
 		<div class="mt-3 text-sm">
 			<a
-				on:click={() => login('/orders/summary')}
+				href="/login/?r=/orders/summary"
 				class="font-medium text-thatOrange-400 hover:text-thatOrange-500"
 			>
 				Login

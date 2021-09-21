@@ -1,16 +1,14 @@
 <script>
-	import { page } from '$app/stores'; // todo.. totally broke
+	import { page, session } from '$app/stores'; // todo.. totally broke
 
 	import lodash from 'lodash';
 
-	import { getAuth } from '$utils/security/store';
 	import Nav from '$components/nav/interiorNav/Top.svelte';
 	import { ActionHeader } from '$elements';
 	import { User, Badge } from '$elements/svgs';
 	import StackedLayout from '$elements/layouts/StackedLayout.svelte';
 
 	const { isEmpty } = lodash;
-	const { thatProfile } = getAuth();
 
 	const asideSelected = {
 		item: 'bg-thatBlue-100 bg-opacity-25 hover:bg-opacity-25 hover:bg-thatBlue-100 border-thatBlue-500 text-thatBlue-700 hover:text-thatBlue-700 group mt-1 border-l-4 px-3 py-2 flex items-center text-sm font-medium',
@@ -49,7 +47,7 @@
 								<span class="truncate"> Your Profile </span>
 							</a>
 
-							{#if !isEmpty($thatProfile)}
+							{#if !isEmpty($session.thatProfile)}
 								<a
 									href="/my/profiles/shared/"
 									class={$page.path.startsWith('/my/profiles/shared')

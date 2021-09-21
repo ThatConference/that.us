@@ -1,9 +1,8 @@
 <script>
-	import { page } from '$app/stores';
+	import { page, session } from '$app/stores';
 	import { fade } from 'svelte/transition';
 	import { useMachine } from 'xstate-svelte';
 
-	import { getAuth } from '$utils/security/store';
 	import { debug } from '$utils/config';
 	import seoMetaTags from '$utils/seo/metaTags';
 	import Seo from '$components/Seo.svelte';
@@ -20,7 +19,6 @@
 
 	import createMachine from '../_machines/partner';
 
-	const { isAuthenticated, token } = getAuth();
 	const { partner } = $page.params;
 
 	const { state, send } = useMachine(createMachine(partner), {
@@ -46,7 +44,7 @@
 		}))();
 	}
 
-	$: if ($isAuthenticated && $token) {
+	$: if ($session.isAuthenticated) {
 		send('AUTHENTICATED', { status: true });
 	} else {
 		send('AUTHENTICATED', { status: false });

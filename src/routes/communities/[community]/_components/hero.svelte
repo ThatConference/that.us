@@ -2,16 +2,16 @@
 	export let community;
 	export let isFollowing;
 
+	import { session } from '$app/stores';
 	import { createEventDispatcher } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import dayjs from 'dayjs';
 
-	import { getAuth } from '$utils/security/store';
 	import { Standard as StandardButton } from '$elements/buttons';
+	import { Standard as StandardLink } from '$elements/links';
 	import { Tag } from '$elements';
 	import Header from '$elements/layouts/profile/_Header.svelte';
 
-	const { isAuthenticated, login } = getAuth();
 	const dispatch = createEventDispatcher();
 </script>
 
@@ -32,17 +32,12 @@
 					</div>
 
 					<div class="flex justify-end space-x-4">
-						{#if $isAuthenticated}
+						{#if $session.isAuthenticated}
 							<StandardButton class="h-3/4" on:click={() => dispatch('community-follow')}>
 								{#if !isFollowing}Follow{:else}Un-Follow{/if}
 							</StandardButton>
 						{:else}
-							<StandardButton
-								class="h-3/4"
-								on:click={() => login(`/communities/${community.slug}`)}
-							>
-								Login and Follow Today
-							</StandardButton>
+							<StandardLink href="/login" class="h-3/4">Login and Follow Today</StandardLink>
 						{/if}
 					</div>
 				</div>

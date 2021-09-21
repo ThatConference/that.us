@@ -1,9 +1,8 @@
 <script>
-	import { page } from '$app/stores';
+	import { page, session } from '$app/stores';
 	import { onMount, getContext } from 'svelte';
 
 	import seoMetaTags from '$utils/seo/metaTags';
-	import { getAuth } from '$utils/security/store';
 	import Seo from '$components/Seo.svelte';
 	import { Highlight as HighlightLink, Standard as StandardLink } from '$elements/links';
 	import ordersApi from '$dataSources/api.that.tech/orders/mutations';
@@ -11,7 +10,6 @@
 	import Layout from './_components/_Layout.svelte';
 	import QuestionModal from './_components/_QuestionModal.svelte';
 
-	const { thatProfile } = getAuth();
 	const metaTags = ((title = 'Payment Received - THAT') => ({
 		title,
 		tags: seoMetaTags({
@@ -38,7 +36,7 @@
 		send('CLEAR_CART');
 		const [_, queryString] = window.location.search.split('?');
 
-		formDataPrefill = `memberId=${$thatProfile.id}&memberEmail=${$thatProfile.email}&firstName=${$thatProfile.firstName}&lastName=${$thatProfile.lastName}&${queryString}`;
+		formDataPrefill = `memberId=${$session.thatProfile.id}&memberEmail=${$session.thatProfile.email}&firstName=${$session.thatProfile.firstName}&lastName=${$session.thatProfile.lastName}&${queryString}`;
 	});
 
 	function handleOnSubmit(e) {

@@ -23,13 +23,13 @@
 	import omitDeep from 'omit-deep';
 
 	import config from '$utils/config';
-	import { getAuth } from '$utils/security/store';
+
 	import memberApi from '$dataSources/api.that.tech/members/queries';
 	import { Waiting } from '$elements';
 	import ErrorNotificaiton from '$components/notifications/Error.svelte';
 
 	const { isEmpty } = lodash;
-	const { token } = getAuth();
+
 	const socialLinks = [
 		{
 			linkType: 'GITHUB',
@@ -261,10 +261,11 @@
 		const formData = new FormData();
 		formData.append('file', profilePhoto.currentTarget.files[0]);
 
+		// todo.. WTF do we do here?!?!?
 		const res = await fetch(config.profileImageApi, {
 			method: 'POST',
 			headers: {
-				Authorization: `bearer ${$token}`
+				Authorization: `Bearer ${'BROKEN'}`
 			},
 			body: formData
 		});

@@ -27,10 +27,10 @@
 	export let communityFollowers;
 	export let communityActivities;
 
+	import { session } from '$app/stores';
 	import { fade } from 'svelte/transition';
 
 	import seoMetaTags from '$utils/seo/metaTags';
-	import { getAuth } from '$utils/security/store';
 	import Seo from '$components/Seo.svelte';
 
 	import communityMutationApi from '$dataSources/api.that.tech/community/mutations';
@@ -41,7 +41,6 @@
 	import CTA from './_components/cta.svelte';
 	import Hero from './_components/hero.svelte';
 
-	const { isAuthenticated, isLoading, token } = getAuth();
 	const { toggleFollow } = communityMutationApi();
 	const { queryMeFollowingCommunities } = meQueryApi();
 
@@ -59,12 +58,10 @@
 
 	let delayCounter = 200;
 	$: userIsFollowing = false;
-	$: if (!$isLoading) {
-		if ($isAuthenticated) {
-			queryMeFollowingCommunities().then((r) => {
-				userIsFollowing = r.includes(communityDetails.id);
-			});
-		}
+	$: if ($session.isAuthenticated) {
+		queryMeFollowingCommunities().then((r) => {
+			userIsFollowing = r.includes(communityDetails.id);
+		});
 	}
 
 	function getDelay(reset = false) {

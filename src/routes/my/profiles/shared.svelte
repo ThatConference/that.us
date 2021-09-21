@@ -1,7 +1,7 @@
 <script>
+	import { session } from '$app/stores';
 	import lodash from 'lodash';
 
-	import { getAuth } from '$utils/security/store';
 	import seoMetaTags from '$utils/seo/metaTags';
 	import Seo from '$components/Seo.svelte';
 	import { Warning } from '$elements/svgs';
@@ -12,7 +12,6 @@
 	import meMutationsApi from '$dataSources/api.that.tech/me/mutations';
 
 	const { isEmpty } = lodash;
-	const { thatProfile } = getAuth();
 	const { queryMeSharedProfile } = meQueryApi();
 	const { updateSharedProfile } = meMutationsApi();
 
@@ -41,7 +40,7 @@
 
 <Seo title={metaTags.title} tags={metaTags.tags} />
 
-{#if !isEmpty($thatProfile)}
+{#if !isEmpty($session.thatProfile)}
 	{#await queryMeSharedProfile() then sharedProfile}
 		<SharedProfileForm handleSubmit={handleUpdate} {sharedProfile} />
 	{/await}

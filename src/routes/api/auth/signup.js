@@ -4,8 +4,8 @@ export function get(req, res) {
 	return auth0
 		.handleLogin(req, res, {
 			authorizationParams: {
-				prompt: 'login',
-				screen_hint: 'signup'
+				screen_hint: 'signup',
+				prompt: 'login'
 			}
 		})
 		.catch((error) => {

@@ -1,5 +1,6 @@
 <script>
 	import { onMount, onDestroy } from 'svelte';
+	import { session } from '$app/stores';
 	import dayjs from 'dayjs';
 	import Clipboard from 'clipboard';
 
@@ -10,10 +11,8 @@
 	import { Standard as StandardLink } from '$elements/links';
 	import { Warning, Store, Ticket } from '$elements/svgs';
 
-	import { getAuth } from '$utils/security/store';
 	import meQueryApi from '$dataSources/api.that.tech/me/queries';
 
-	const { thatProfile } = getAuth();
 	const { queryMeDiscountCodes } = meQueryApi();
 
 	function queryDiscountCodes() {
@@ -61,7 +60,7 @@
 		<h2 class="text-xl leading-6 font-bold text-gray-900">Membership Settings</h2>
 	</header>
 
-	{#if !$thatProfile?.isMember}
+	{#if !$session.thatProfile?.isMember}
 		<div class="mt-8">
 			<div class="flex items-center">
 				<div class="mr-4">

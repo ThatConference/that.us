@@ -1,19 +1,18 @@
 <script>
 	export let bodyBackgroundColor = 'bg-gray-100';
 
+	import { session } from '$app/stores';
 	import lodash from 'lodash';
 
-	import { getAuth } from '$utils/security/store';
 	import { Footer } from '$components';
 	import CreateProfileNotification from '$components/notifications/CreateProfile.svelte';
 	import NoProfile from '$components/notifications/NoProfile.svelte';
 
 	const { isEmpty } = lodash;
-	const { isAuthenticated, thatProfile } = getAuth();
 </script>
 
-{#if $isAuthenticated}
-	{#if isEmpty($thatProfile)}
+{#if $session.isAuthenticated}
+	{#if isEmpty($session.thatProfile)}
 		<CreateProfileNotification />
 	{/if}
 {/if}

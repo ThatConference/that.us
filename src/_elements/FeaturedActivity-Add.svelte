@@ -1,13 +1,12 @@
 <script>
 	export let eventId;
 
+	import { session } from '$app/stores';
 	import Icon from 'svelte-awesome';
 	import { plusCircle } from 'svelte-awesome/icons';
 
-	import { getAuth } from '$utils/security/store';
 	import { imageCrops } from '$utils/config';
 
-	const { isAuthenticated, thatProfile } = getAuth();
 	const baseSlug = '/activities/create';
 
 	let isHover = false;
@@ -23,14 +22,14 @@
 	>
 		<div class="space-y-6 xl:space-y-10">
 			<div class="flex justify-center">
-				{#if $isAuthenticated && $thatProfile}
+				{#if $session.isAuthenticated && $session.thatProfile}
 					{#if isHover}
 						<Icon data={plusCircle} class="text-thatBlue-100 h-40 w-40 xl:w-56 xl:h-56" />
 					{:else}
 						<img
 							class="mx-auto h-40 w-40 rounded-full xl:w-56 xl:h-56"
-							src={`${$thatProfile.profileImage}${imageCrops.profile}`}
-							alt={`${$thatProfile.firstName} ${$thatProfile.lastName}`}
+							src={`${$session.thatProfile.profileImage}${imageCrops.profile}`}
+							alt={`${$session.thatProfile.firstName} ${$session.thatProfile.lastName}`}
 						/>
 					{/if}
 				{:else}
@@ -43,8 +42,8 @@
 				<p class="text-thatBlue-200 text-sm italic">Any Day, Any Time</p>
 
 				<span class="text-thatBlue-200 text-right">
-					{#if $isAuthenticated && $thatProfile}
-						<p>{`${$thatProfile.firstName} ${$thatProfile.lastName}`}</p>
+					{#if $session.isAuthenticated && $session.thatProfile}
+						<p>{`${$session.thatProfile.firstName} ${$session.thatProfile.lastName}`}</p>
 					{:else}
 						<p>Your Name Here :)</p>
 					{/if}

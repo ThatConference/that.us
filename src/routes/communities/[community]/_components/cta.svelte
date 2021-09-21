@@ -5,13 +5,13 @@
 	const { slug, name } = community;
 	const handle = `@${slug}`;
 
+	import { session } from '$app/stores';
 	import { createEventDispatcher } from 'svelte';
 
-	import { getAuth } from '$utils/security/store';
 	import { Standard as StandardButton } from '$elements/buttons';
+	import { Standard as StandardLink } from '$elements/links';
 	import { CTA } from '$elements';
 
-	const { isAuthenticated, login } = getAuth();
 	const dispatch = createEventDispatcher();
 </script>
 
@@ -28,15 +28,13 @@
 	</h2>
 
 	<span slot="actionPrimary">
-		{#if $isAuthenticated}
+		{#if $session.isAuthenticated}
 			<StandardButton class="h-3/4" on:click={() => dispatch('community-follow')}>
 				{#if isFollowing}Un-Follow{:else}Follow{/if}
 				{handle}
 			</StandardButton>
 		{:else}
-			<StandardButton class="h-3/4" on:click={() => login(`/communities/${slug}`)}>
-				Login and Follow Today
-			</StandardButton>
+			<StandardLink class="h-3/4" href="/login">Login and Follow Today</StandardLink>
 		{/if}
 	</span>
 </CTA>

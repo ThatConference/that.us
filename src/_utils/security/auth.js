@@ -11,15 +11,19 @@ export function initAuth0(config) {
 		getAccessToken: auth0WrapperJson((req, res, auth0FnOptions) =>
 			auth0.getAccessToken(req, res, auth0FnOptions)
 		),
+
 		handleLogin: auth0Wrapper((req, res, auth0FnOptions) =>
 			auth0.handleLogin(req, res, auth0FnOptions)
 		),
+
 		handleLogout: auth0Wrapper((req, res, auth0FnOptions) =>
 			auth0.handleLogout(req, res, auth0FnOptions)
 		),
+
 		handleCallback: auth0Wrapper((req, res, auth0FnOptions) =>
 			auth0.handleCallback(req, res, auth0FnOptions)
 		),
+
 		handleProfile: auth0Wrapper((req, res, auth0FnOptions) =>
 			auth0.handleProfile(req, res, auth0FnOptions)
 		),

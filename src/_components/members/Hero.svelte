@@ -1,6 +1,5 @@
 <script>
-	import { getAuth } from '$utils/security/store';
-	const { isAuthenticated, thatProfile } = getAuth();
+	import { session } from '$app/stores';
 </script>
 
 <div class="sm:text-center lg:text-left">
@@ -23,7 +22,7 @@
 		conversations and relationships. If you haven’t already signed up why wait any longer?
 	</p>
 
-	{#if !$isAuthenticated}
+	{#if !$session.isAuthenticated}
 		<div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
 			<div class="rounded-md shadow">
 				<a
@@ -39,7 +38,7 @@
 				</a>
 			</div>
 		</div>
-	{:else if !$thatProfile?.isMember}
+	{:else if !$session.thatProfile?.isMember}
 		<div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
 			<div class="rounded-md shadow">
 				<a

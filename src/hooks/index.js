@@ -1,6 +1,8 @@
 // import * as Sentry from '@sentry/browser';
 import { sequence } from '@sveltejs/kit/hooks';
 import auth0 from '$utils/security';
+import { QUERY_ME } from '$dataSources/api.that.tech/me';
+import wretch from 'wretch';
 
 export async function customHeaders({ request, resolve }) {
 	const response = await resolve(request);
@@ -14,33 +16,45 @@ export async function customHeaders({ request, resolve }) {
 	};
 }
 
+export async function thatProfile({ request, resolve }) {
+	if (request.locals.isAuthenticated) {
+		const endpoint = `https://api.that.tech/graphql/`;
+
+		let body = {
+			query: `
+					${QUERY_ME}
+					`,
+			variables: {}
+		};
+
+		const results = await wretch(endpoint)
+			.auth(`Bearer ${request.locals.auth0Session.accessToken}`)
+			.post(body)
+			.json();
+
+		request.locals.thatProfile = results.data.members?.me;
+	}
+
+	const response = await resolve(request);
+	return response;
+}
+
 export async function user({ request, resolve }) {
 	const auth0Session = auth0.getSession(request);
 	request.locals.auth0Session = auth0Session;
+
 	request.locals.isAuthenticated = !!auth0Session?.user;
 	request.locals.user = auth0Session?.user || {};
 
-	// console.log('in user hook', request.locals);
-	// console.log('auth0Session in hooks', auth0Session);
-
 	const response = await resolve(request);
-	// You could modify the response here, e.g. by adding custom headers
-	// return response;
-
-	return {
-		...response,
-		headers: {
-			// authorization: `Bearer ${auth0Session?.accessToken}`,
-			...response.headers
-		}
-	};
+	return response;
 }
 
-export const handle = sequence(customHeaders, user);
+export const handle = sequence(customHeaders, user, thatProfile);
 
 export function getSession(request) {
-	const { isAuthenticated, user } = request.locals;
-	return { isAuthenticated, user };
+	const { isAuthenticated, user, thatProfile } = request.locals;
+	return { isAuthenticated, user, thatProfile };
 }
 
 // export async function handleError({ error, request }) {

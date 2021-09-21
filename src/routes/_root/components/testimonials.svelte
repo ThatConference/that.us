@@ -1,6 +1,5 @@
 <script>
-	import { getAuth } from '$utils/security/store';
-	const { isAuthenticated, thatProfile } = getAuth();
+	import { session } from '$app/stores';
 </script>
 
 <section class="bg-white py-12 lg:py-16 mt-12">
@@ -60,7 +59,7 @@
 				</svg>
 				<blockquote class="relative">
 					<div class="prose sm:text-lg md:text-xl text-gray-500">
-						{#if !$isAuthenticated}
+						{#if !$session.isAuthenticated}
 							<p>
 								Our mission is simple, foster a community of geeks who want to help one another be
 								awesome. THAT.us is a safe place for all of the geeks and geeklings from anywhere,
@@ -71,7 +70,7 @@
 									Join us today!
 								</a>
 							</p>
-						{:else if !$thatProfile?.isMember}
+						{:else if !$session.thatProfile?.isMember}
 							<p>
 								Our mission is simple, foster a community of geeks who want to help one another be
 								awesome. We could create a free platform, but then you become the product. To that,

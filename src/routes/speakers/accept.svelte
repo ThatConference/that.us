@@ -1,15 +1,15 @@
 <script>
 	import { onMount } from 'svelte';
 
+	import { session } from '$app/stores';
 	import seoMetaTags from '$utils/seo/metaTags';
-	import { getAuth } from '$utils/security/store';
+
 	import Seo from '$components/Seo.svelte';
 	import { Highlight as HighlightLink, Standard as StandardLink } from '$elements/links';
 
 	import Layout from './_components/_Layout.svelte';
 	import QuestionModal from './_components/_QuestionModal.svelte';
 
-	const { thatProfile } = getAuth();
 	const metaTags = ((title = 'Speaker Acceptance - THAT') => ({
 		title,
 		tags: seoMetaTags({
@@ -29,7 +29,7 @@
 
 	onMount(() => {
 		const [_, queryString] = window.location.search.split('?');
-		formDataPrefill = `memberId=${$thatProfile.id}&memberEmail=${$thatProfile.email}&firstName=${$thatProfile.firstName}&lastName=${$thatProfile.lastName}&${queryString}`;
+		formDataPrefill = `memberId=${$session.thatProfile.id}&memberEmail=${$session.thatProfile.email}&firstName=${$session.thatProfile.firstName}&lastName=${$session.thatProfile.lastName}&${queryString}`;
 	});
 
 	function handleOnSubmit(e) {

@@ -1,15 +1,12 @@
 <script>
 	import { fade } from 'svelte/transition';
 
-	import { getAuth } from '$utils/security/store';
 	import seoMetaTags from '$utils/seo/metaTags';
 
 	import Seo from '$components/Seo.svelte';
 	import Layout from '$elements/layouts/ContentLayout.svelte';
 
 	import WelcomeQuote from './support/_components/_WelcomeQuote.svelte';
-
-	const { login } = getAuth();
 
 	const metaTags = ((title = 'Signup - THAT') => ({
 		title,
@@ -46,10 +43,8 @@
 								<div class="-ml-px absolute mt-0.5 top-4 left-13 w-1 h-full bg-thatOrange-500" />
 
 								<!-- Complete Step -->
-								<button
-									class="relative p-3 flex items-center group"
-									on:click={() => login('/my/profiles/primary', true)}
-								>
+								<!-- todo how do we redirect after login? -->
+								<a href="/login" class="relative p-3 flex items-center group">
 									<span class="h-20 flex items-center">
 										<span
 											class="relative z-10 p-3 w-20 h-20 flex items-center justify-center rounded-full bg-white ring-4 ring-thatOrange-500 group-hover:bg-thatOrange-500 group-hover:text-white"
@@ -65,7 +60,7 @@
 											You will need an account to create or join any activities.
 										</span>
 									</span>
-								</button>
+								</a>
 							</li>
 							<li class="relative pb-10" in:fade={{ delay: 300, duration: 500 }}>
 								<div class="-ml-px absolute mt-0.5 top-4 left-13 w-1 h-full bg-thatOrange-500" />
