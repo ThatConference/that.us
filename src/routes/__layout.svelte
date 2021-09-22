@@ -6,32 +6,33 @@
 	import { Integrations } from '@sentry/tracing';
 	import LogRocket from 'logrocket';
 	import lodash from 'lodash';
+	import config, { debug, logging } from '$utils/config';
 
 	const correlationId = uuidv4();
 
-	if (!dev) {
-		LogRocket.init(logging.logRocket);
-		LogRocket.info('correlationId', correlationId);
+	// if (!dev) {
+	LogRocket.init(logging.logRocket);
+	LogRocket.info('correlationId', correlationId);
 
-		Sentry.init({
-			dsn: logging.dsn,
-			release: config.version,
-			environment: logging.environment,
-			debug: false,
-			attachStacktrace: true,
-			integrations: [new Integrations.BrowserTracing()]
-		});
+	Sentry.init({
+		dsn: logging.dsn,
+		release: config.version,
+		environment: logging.environment,
+		debug: false,
+		attachStacktrace: true,
+		integrations: [new Integrations.BrowserTracing()]
+	});
 
-		LogRocket.getSessionURL((sessionURL) => {
-			Sentry.configureScope((scope) => {
-				scope.setExtra('LogRocketSession', sessionURL);
-			});
-		});
-
+	LogRocket.getSessionURL((sessionURL) => {
 		Sentry.configureScope((scope) => {
-			scope.setTag('correlationId', correlationId);
+			scope.setExtra('LogRocketSession', sessionURL);
 		});
-	}
+	});
+
+	Sentry.configureScope((scope) => {
+		scope.setTag('correlationId', correlationId);
+	});
+	// }
 
 	if (debug.xstate) {
 		inspect({
@@ -54,7 +55,6 @@
 
 <script>
 	import { onMount, onDestroy, setContext } from 'svelte';
-	import { goto } from '$app/navigation';
 	import { navigating, session } from '$app/stores';
 
 	import loading from '$stores/loading';
@@ -62,7 +62,6 @@
 	import { messages } from '$stores/notificationCenter';
 
 	import cart from '$utils/cart';
-	import config, { debug, logging } from '$utils/config';
 
 	import Preloading from '$components/preloading.svelte';
 	import Tailwindcss from '$elements/Tailwindcss.svelte';

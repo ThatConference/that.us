@@ -1,6 +1,17 @@
-// import * as Sentry from '@sentry/browser';
+import * as Sentry from '@sentry/browser';
 import { sequence } from '@sveltejs/kit/hooks';
 import auth0 from '$utils/security';
+import { Integrations } from '@sentry/tracing';
+import config, { logging } from '$utils/config';
+
+Sentry.init({
+	dsn: logging.dsn,
+	release: config.version,
+	environment: logging.environment,
+	debug: false,
+	attachStacktrace: true,
+	integrations: [new Integrations.BrowserTracing()]
+});
 
 export async function customHeaders({ request, resolve }) {
 	const response = await resolve(request);
@@ -53,7 +64,6 @@ export function getSession(request) {
 	return { isAuthenticated, user, thatProfile };
 }
 
-// export async function handleError({ error, request }) {
-// 	console.log('in handle error in hooks');
-// 	Sentry.captureException(error, { request });
-// }
+export async function handleError({ error, request }) {
+	Sentry.captureException(error, { request });
+}
