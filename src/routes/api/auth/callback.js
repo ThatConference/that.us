@@ -2,6 +2,7 @@ import { goto } from '$app/navigation';
 import auth0 from '$utils/security';
 
 const afterCallback = (req, res, session, state) => {
+	console.log('after callback being run');
 	if (session.user.email_verified) {
 		res.redirect('/verify-account');
 	}
