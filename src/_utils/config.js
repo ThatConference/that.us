@@ -31,22 +31,6 @@ export const securityConfig = () => {
 			scope: import.meta.env.VITE_AUTH0_SCOPE || 'openid profile email offline_access',
 			audience: import.meta.env.VITE_AUTH0_AUDIENCE || 'https://api.that.tech/graphql'
 		},
-		// session: {
-		// cookie: {
-		// 	// domain: process.env['SESSION_COOKIE_DOMAIN'] || configMissing('SESSION_COOKIE_DOMAIN'),
-		// 	domain: import.meta.env.VITE_AUTH0_BASE_URL || `https://that.us`,
-		// 	path: '/',
-		// 	transient: true,
-		// 	httpOnly: true,
-		// 	// secure: true,
-		// 	sameSite: 'strict'
-		// }
-		// 	// cookieSecret: process.env['SESSION_COOKIE_SECRET'] || configMissing('SESSION_COOKIE_SECRET'),
-		// 	// cookieLifetime: process.env.SESSION_COOKIE_LIFETIME || 72000 ???,
-		// 	// storeIdToken: true,
-		// 	// storeAccessToken: true,
-		// 	storeRefreshToken: true
-		// },
 		routes: {
 			login: '/login',
 			callback: '/api/auth/callback',
