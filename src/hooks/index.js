@@ -22,8 +22,8 @@ export async function thatProfile({ request, resolve }) {
 
 		let body = {
 			query: `
-					${QUERY_ME}
-					`,
+			${QUERY_ME}
+			`,
 			variables: {}
 		};
 
@@ -32,7 +32,7 @@ export async function thatProfile({ request, resolve }) {
 			.post(body)
 			.json();
 
-		request.locals.thatProfile = results.data.members?.me;
+		request.locals.thatProfile = { ...results.data.members?.me };
 	}
 
 	const response = await resolve(request);

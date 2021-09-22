@@ -1,47 +1,62 @@
-<script>
-	import { session } from '$app/stores';
-	import { goto } from '$app/navigation';
+<script context="module">
 	import lodash from 'lodash';
-
-	import logEvent from '$utils/eventTrack';
-
-	import seoMetaTags from '$utils/seo/metaTags';
-	import Seo from '$components/Seo.svelte';
-	import memberApi from '$dataSources/api.that.tech/members/mutations';
-
-	import ProfileForm from './_components/profileForm.svelte';
+	import meApi from '$dataSources/api.that.tech/me';
 
 	const { isNil, isEmpty } = lodash;
-	const { createProfile, updateProfile } = memberApi();
 
-	let isNewProfile;
-	let currentProfile;
+	export async function load({ fetch, session }) {
+		const { queryMe } = meApi(fetch);
+		const me = await queryMe();
 
-	$: if ($session.user || $session.thatProfile) {
-		if (!isNil($session.thatProfile) && !isEmpty($session.thatProfile)) {
-			currentProfile = $session.thatProfile;
-			isNewProfile = false;
-		} else {
-			currentProfile = {
-				firstName: $session.user.given_name ? $session.user.given_name : '',
-				lastName: $session.user.family_name ? $session.user.family_name : '',
-				profileSlug: $session.user.nickname ? $session.user.nickname : '',
-				email: $session.user.email ? $session.user.email : ''
-			};
-			isNewProfile = true;
+		let isNewProfile, currentProfile;
+
+		if (session.user || me) {
+			if (!isNil(me) && !isEmpty(me)) {
+				currentProfile = me;
+				isNewProfile = false;
+			} else {
+				currentProfile = {
+					firstName: session.user.given_name ? session.user.given_name : '',
+					lastName: session.user.family_name ? session.user.family_name : '',
+					profileSlug: session.user.nickname ? session.user.nickname : '',
+					email: session.user.email ? session.user.email : ''
+				};
+				isNewProfile = true;
+			}
 		}
+
+		return {
+			props: {
+				currentProfile,
+				isNewProfile
+			}
+		};
 	}
+</script>
+
+<script>
+	export let isNewProfile;
+	export let currentProfile;
+
+	import { goto } from '$app/navigation';
+
+	import logEvent from '$utils/eventTrack';
+	import seoMetaTags from '$utils/seo/metaTags';
+	import Seo from '$components/Seo.svelte';
+
+	import memberApi from '$dataSources/api.that.tech/members/mutations';
+	import ProfileForm from './_components/profileForm.svelte';
+
+	const { createProfile, updateProfile } = memberApi();
 
 	async function handleNew({ detail: { values, setSubmitting, resetForm } }) {
 		const updateResults = await createProfile({ profileLinks: [], ...values });
 
-		// todo how do we refresh the profile
-		// thatProfile.set(updateResults);
 		logEvent('profile_created');
 
 		setSubmitting(false);
 		resetForm();
-		goto(`/activities`, { replace: true });
+		goto(`/activities`);
 	}
 
 	async function handleUpdate({ detail: { values, setSubmitting, resetForm } }) {
@@ -60,12 +75,9 @@
 
 		logEvent('profile_update');
 
-		// todo how do we refresh the profile
-		// thatProfile.set(updateResults);
-
 		setSubmitting(false);
 		resetForm();
-		goto(`/activities`, { replace: true });
+		goto(`/activities`);
 	}
 
 	const metaTags = ((title = 'My Profile - THAT') => ({
