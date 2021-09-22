@@ -101,15 +101,6 @@
 	}
 
 	onMount(() => {
-		if ($session.isAuthenticated) {
-			const [provider] = $session.user?.sub.split('|');
-			if (provider !== 'twitter') {
-				if (!$session.user.email_verified) {
-					goto('/verify-account');
-				}
-			}
-		}
-
 		if ($showReleaseNotes) {
 			messages.update((m) => [
 				...m,

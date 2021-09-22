@@ -1,46 +1,6 @@
 // import * as Sentry from '@sentry/browser';
 import { sequence } from '@sveltejs/kit/hooks';
 import auth0 from '$utils/security';
-import wretch from 'wretch';
-
-const QUERY_ME = `
-		query getMe {
-			members {
-				me {
-					id
-					firstName
-					lastName
-					email
-					jobTitle
-					company
-					profileImage
-					profileSlug
-					profileLinks {
-						isPublic
-						linkType
-						url
-					}
-					earnedMeritBadges {
-						id
-						name
-						image
-						description
-					}
-					bio
-					canFeature
-					isOver13
-					acceptedCodeOfConduct
-					acceptedTermsOfService
-					acceptedAntiHarassmentPolicy
-					acceptedCommitmentToDiversity
-					isDeactivated
-					lifeHack
-					interests
-					isMember
-				}
-			}
-		}
-`;
 
 export async function customHeaders({ request, resolve }) {
 	const response = await resolve(request);
@@ -54,28 +14,27 @@ export async function customHeaders({ request, resolve }) {
 	};
 }
 
-export async function thatProfile({ request, resolve }) {
-	if (request.locals.isAuthenticated) {
-		const endpoint = `https://api.that.tech/graphql/`;
-
-		let body = {
-			query: `
-			${QUERY_ME}
-			`,
-			variables: {}
-		};
-
-		const results = await wretch(endpoint)
-			.auth(`Bearer ${request.locals.auth0Session.accessToken}`)
-			.post(body)
-			.json();
-
-		request.locals.thatProfile = { ...results.data.members?.me };
+export async function verifyAccount({ request, resolve }) {
+	if (request.path !== '/verify-account/') {
+		if (request.locals.user) {
+			const [provider] = request.locals.user?.sub.split('|');
+			if (provider !== 'twitter') {
+				if (request.locals.user.email_verified) {
+					//redirect
+					// goto('/verify-account');
+					// return resolve({
+					// 	status: 301,
+					// 	redirect: `/verify-account/`
+					// });
+				}
+			}
+		}
 	}
-
 	const response = await resolve(request);
 	return response;
 }
+
+export const handle = sequence(user, customHeaders);
 
 export async function user({ request, resolve }) {
 	const auth0Session = auth0.getSession(request);
@@ -83,12 +42,11 @@ export async function user({ request, resolve }) {
 
 	request.locals.isAuthenticated = !!auth0Session?.user;
 	request.locals.user = auth0Session?.user || {};
+	request.locals.thatProfile = auth0Session?.thatProfile || {};
 
 	const response = await resolve(request);
 	return response;
 }
-
-export const handle = sequence(customHeaders, user, thatProfile);
 
 export function getSession(request) {
 	const { isAuthenticated, user, thatProfile } = request.locals;

@@ -1,16 +1,24 @@
-import { goto } from '$app/navigation';
+import wretch from 'wretch';
 import auth0 from '$utils/security';
 
-const afterCallback = (req, res, session, state) => {
-	console.log('after callback being run');
-	if (session.user.email_verified) {
-		res.redirect('/verify-account');
-	}
+import { QUERY_ME } from '$dataSources/api.that.tech/me';
+
+const endpoint = `https://api.that.tech/graphql/`;
+
+async function afterCallback(req, res, session, state) {
+	let body = {
+		query: `
+		${QUERY_ME}
+		`,
+		variables: {}
+	};
+
+	const results = await wretch(endpoint).auth(`Bearer ${session.accessToken}`).post(body).json();
+	session.thatProfile = results.data.members?.me;
 
 	return session;
-};
+}
 
-export async function get(req, res) {
-	const results = await auth0.handleCallback(req, res, { afterCallback });
-	return results;
+export function get(req) {
+	return auth0.handleCallback(req, { afterCallback });
 }
