@@ -1,9 +1,11 @@
 <script context="module">
 	import dayjs from 'dayjs';
-	import eventsApi from '$dataSources/api.that.tech/events/queries';
 	import isSameOrBefore from 'dayjs/plugin/isSameOrBefore.js';
 	import isBetween from 'dayjs/plugin/isBetween.js';
 	import lodash from 'lodash';
+
+	import eventsApi from '$dataSources/api.that.tech/events/queries';
+	import sessionsQueryApi from '$dataSources/api.that.tech/sessions/queries';
 
 	import auth0 from '$utils/security';
 	import config from '$utils/config';
@@ -27,26 +29,10 @@
 				allEvents.filter((i) => i.type === 'DAILY').filter((i) => i.isActive)
 			)[0];
 
-			activeEvents.online = sortBy(
-				allEvents
-					.filter((i) => i.type === 'ONLINE')
-					.filter((i) => i.isActive)
-					.filter((i) => dayjs().isSameOrBefore(i.endDate, 'day')),
-				'endDate'
-			);
+			activeEvents.online = sortBy(allEvents.filter((i) => i.type === 'ONLINE'));
 
 			activeEvents.hybrid = sortBy(
-				allEvents
-					.filter((i) => i.type === 'MULTI_DAY' || i.type === 'HYBRID_MULTI_DAY')
-					.filter((i) => i.isActive)
-					.filter(
-						(i) =>
-							dayjs().isBetween(
-								dayjs(i.callForSpeakersOpenDate),
-								dayjs(i.callForSpeakersCloseDate)
-							) || dayjs().isBetween(dayjs(i.startDate).subtract(2, 'week'), dayjs(i.endDate)),
-						'endDate'
-					)
+				allEvents.filter((i) => i.type === 'MULTI_DAY' || i.type === 'HYBRID_MULTI_DAY')
 			);
 		}
 		return activeEvents;
@@ -54,20 +40,23 @@
 
 	export const load = auth0.withPageAuthRequired({
 		load: async function load({ page, fetch }) {
+			const { activityId } = page.params;
+
 			const { queryEvents } = eventsApi(fetch);
+			const { queryMySessionById } = sessionsQueryApi(fetch);
 
-			const isBackdoor =
-				page.path === '/activities/create/backdoor/' || page.path === '/activities/create/backdoor';
-
-			const eventId = page.query.has('event') ? page.query.get('event') : config.eventId;
-			const events = await queryEvents().then((r) => r.filter((i) => i.community === 'that'));
+			const [activityDetails, events] = await Promise.all([
+				queryMySessionById(activityId),
+				queryEvents().then((r) => r.filter((i) => i.community === 'that'))
+			]);
 
 			return {
 				context: {
+					activityDetails,
 					events,
-					activeEvents: transformEvents(events, eventId, isBackdoor),
-					isBackdoor,
-					eventId
+					activeEvents: transformEvents(events, activityDetails.eventId, true),
+					isBackdoor: true,
+					eventId: activityDetails.eventId
 				}
 			};
 		}
