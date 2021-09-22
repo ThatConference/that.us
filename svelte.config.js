@@ -13,6 +13,11 @@ const config = {
 		target: '#svelte',
 		trailingSlash: 'always',
 		vite: {
+			server: {
+				fs: {
+					allow: []
+				}
+			},
 			resolve: {
 				alias: {
 					$components: resolve('src/_components'),
