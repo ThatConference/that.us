@@ -13,11 +13,6 @@ const config = {
 		target: '#svelte',
 		trailingSlash: 'always',
 		vite: {
-			server: {
-				fs: {
-					allow: []
-				}
-			},
 			resolve: {
 				alias: {
 					$components: resolve('src/_components'),
@@ -31,7 +26,6 @@ const config = {
 		},
 		adapter: vercelAdapter()
 	},
-
 	preprocess: [
 		preprocess({
 			postcss: true

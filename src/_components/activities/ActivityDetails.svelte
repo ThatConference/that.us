@@ -35,7 +35,7 @@
 	import currentEvent from '$stores/currentEvent';
 	import { Avatars, Tag } from '$elements';
 
-	import CalendarButton from './elements/CalendarButton.svelte';
+	// import CalendarButton from './elements/CalendarButton.svelte';
 	import { SocialLink } from '../social';
 	import Success from '../notifications/Success.svelte';
 
@@ -296,7 +296,7 @@
 				{/if}
 
 				{#if !hasExpired}
-					<div class="mt-2 mx-2 rounded-md shadow-sm">
+					<!-- <div class="mt-2 mx-2 rounded-md shadow-sm">
 						<div
 							class="border-2 border-thatBlue-500 text-sm leading-5
               font-medium rounded-md text-thatBlue-500 bg-white
@@ -314,7 +314,7 @@
 								{slug}
 							/>
 						</div>
-					</div>
+					</div> -->
 
 					{#if activity.type === 'KEYNOTE'}
 						<div class="mt-2 mx-2 rounded-md shadow-sm">
