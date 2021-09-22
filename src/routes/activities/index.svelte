@@ -81,7 +81,7 @@
 		<Nav />
 		<ActionHeader title="Daily Activities">
 			{#if !createDisabled}
-				<HighlightLink href="/activities/create">Create Activity</HighlightLink>
+				<HighlightLink href="/activities/create/">Create Activity</HighlightLink>
 			{/if}
 		</ActionHeader>
 	</div>

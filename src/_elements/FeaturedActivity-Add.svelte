@@ -7,7 +7,7 @@
 
 	import { imageCrops } from '$utils/config';
 
-	const baseSlug = '/activities/create';
+	const baseSlug = '/activities/create/';
 
 	let isHover = false;
 	let createLink = eventId ? `${baseSlug}#/event/${eventId}` : baseSlug;

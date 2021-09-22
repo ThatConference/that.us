@@ -38,7 +38,7 @@
 			description: 'Create a New [Activity, Code Review, Open Space, Chat], you get the idea.',
 			openGraph: {
 				type: 'website',
-				url: `https://that.us/activities/create`
+				url: `https://that.us/activities/create/`
 			}
 		})
 	}))();

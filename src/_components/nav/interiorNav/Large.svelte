@@ -179,7 +179,7 @@
 		{/if}
 
 		<div class="ml-4 p-1 rounded-full text-white hover:bg-thatBlue-500">
-			<a href="/activities/create">
+			<a href="/activities/create/">
 				<Icon data={plus} class="h-8 w-8" />
 			</a>
 		</div>

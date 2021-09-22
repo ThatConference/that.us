@@ -31,7 +31,7 @@
 		<div class="mt-8 flex lg:flex-shrink-0 lg:mt-0">
 			<div class="inline-flex rounded-md shadow">
 				<a
-					href={`/activities/create#/event/${event.id}`}
+					href={`/activities/create/?event=${event.id}`}
 					class="px-8 py-3 border-2 border-transparent text-base leading-6
             font-medium rounded-md shadow text-white bg-thatOrange-400
             hover:bg-thatOrange-500 focus:outline-none

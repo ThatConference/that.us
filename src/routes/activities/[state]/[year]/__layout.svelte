@@ -41,7 +41,7 @@
 
 		<ActionHeader title={event.name}>
 			{#if !hasEnded}
-				<HighlightLink href={`/activities/create#/event/${event.id}`}>
+				<HighlightLink href={`/activities/create/?event=${event.id}`}>
 					Create Activity
 				</HighlightLink>
 			{/if}
