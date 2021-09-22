@@ -9,13 +9,13 @@
 	export let handleWithdraw;
 	export let handleSubmit;
 
+	import { session } from '$app/stores';
 	import { getContext } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import dayjs from 'dayjs';
 	import { Form, Input } from 'sveltejs-forms';
 	import lodash from 'lodash';
 
-	import { getAuth } from '$utils/security';
 	import { Waiting, ModalError } from '$elements';
 	import ErrorNotificaiton from '$components/notifications/Error.svelte';
 
@@ -36,7 +36,6 @@
 	import TagsSection from './_Tags.svelte';
 
 	const { isEmpty } = lodash;
-	const { thatProfile } = getAuth();
 
 	const formattedInitial = formatActivityInitialInput({
 		event: {
@@ -56,7 +55,7 @@
 	$: validationSchema = openSpaces;
 	$: showLongForm = false;
 
-	$: if (!isEmpty($thatProfile)) {
+	$: if (!isEmpty($session.thatProfile)) {
 		createDisabled = false;
 	}
 
@@ -154,7 +153,7 @@
 		action={{ title: 'Create Profile', href: '/my/profiles/primary' }}
 		returnTo={{ title: 'Return to Activities', href: '/activities' }}
 	/>
-{:else if !$thatProfile?.canFeature}
+{:else if !$session.thatProfile?.canFeature}
 	<ModalError
 		title="Your Profile Isn't Public."
 		text="It appears we cannot feature your profile. You need to have a public

@@ -1,16 +1,15 @@
 <script>
 	// utilities
-	import { getAuth } from '$utils/security';
+	import { session } from '$app/stores';
+
 	import seoMetaTags from '$utils/seo/metaTags';
 	import Seo from '$components/Seo.svelte';
 	import { Warning } from '$elements/svgs';
 
-	const { thatProfile } = getAuth();
-
 	let awardedBadges = [];
 
-	$: if ($thatProfile?.earnedMeritBadges) {
-		awardedBadges = [...$thatProfile.earnedMeritBadges];
+	$: if ($session.thatProfile?.earnedMeritBadges) {
+		awardedBadges = [...$session.thatProfile.earnedMeritBadges];
 	}
 
 	const metaTags = ((title = 'My Merit Badges - THAT') => ({

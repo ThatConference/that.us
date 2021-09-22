@@ -31,7 +31,7 @@
 			</p>
 
 			<div class="transform scale-75 text-center">
-				<StandardLink href="/activities/create">Create an Activity</StandardLink>
+				<StandardLink href="/activities/create/">Create an Activity</StandardLink>
 			</div>
 
 			<p>

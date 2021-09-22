@@ -6,7 +6,8 @@
 	import Toggle from '$elements/Toggle.svelte';
 
 	import Ticket from './_Ticket.svelte';
-	import SemiCircle from './_SemiCircle.svelte';
+	// todo.. need a better top level reporting.. this isn't a valid ssr component? not sure what that means
+	// import SemiCircle from './_SemiCircle.svelte';
 
 	const searchOptions = {
 		// isCaseSensitive: false,
@@ -127,7 +128,7 @@
 	</div>
 
 	<div class="mt-12 flex flex-col justify-center">
-		<div class="flex justify-evenly">
+		<!-- <div class="flex justify-evenly">
 			<SemiCircle
 				title="Counselors"
 				series={((statsCounselorCheckedIn / statsCounselorTotal) * 100).toFixed()}
@@ -148,7 +149,7 @@
 				title="Pig Roast"
 				series={((statsPigRoastCheckedIn / statsPigRoastTotal) * 100).toFixed()}
 			/>
-		</div>
+		</div> -->
 	</div>
 
 	<div class="mt-12">

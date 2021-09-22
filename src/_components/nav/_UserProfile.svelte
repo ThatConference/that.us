@@ -1,12 +1,11 @@
 <script>
+	import { session } from '$app/stores';
 	import { fade } from 'svelte/transition';
 	import { user as userIcon } from 'svelte-awesome/icons';
 	import Icon from 'svelte-awesome';
 	import lodash from 'lodash';
-	import { getAuth } from '$utils/security';
 
 	const { isEmpty } = lodash;
-	const { login, isAuthenticated, thatProfile } = getAuth();
 	let visible;
 </script>
 
@@ -20,16 +19,16 @@
 			aria-haspopup="true"
 			on:click|preventDefault={() => (visible = !visible)}
 		>
-			{#if $isAuthenticated}
-				{#if isEmpty($thatProfile)}
+			{#if $session.isAuthenticated}
+				{#if isEmpty($session.thatProfile)}
 					<div>
 						<Icon data={userIcon} class="h-8 w-8 rounded-full" />
 						<span class="absolute bottom-0 right-0 block h-3.5 w-3.5 rounded-full bg-red-400" />
 					</div>
-				{:else if $thatProfile?.profileImage}
+				{:else if $session.thatProfile?.profileImage}
 					<img
 						class="h-10 w-10 rounded-full"
-						src="{$thatProfile.profileImage}?w=256&h=256&fit=crop"
+						src="{$session.thatProfile.profileImage}?w=256&h=256&fit=crop"
 						alt=""
 					/>
 				{:else}
@@ -44,8 +43,8 @@
 	</div>
 
 	{#if visible}
-		{#if $isAuthenticated}
-			{#if isEmpty($thatProfile)}
+		{#if $session.isAuthenticated}
+			{#if isEmpty($session.thatProfile)}
 				<div
 					class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg z-50"
 					transition:fade
@@ -71,8 +70,8 @@
 					<div class="py-1 rounded-md bg-white ring-1 ring-black ring-opacity-5">
 						<div class="block px-4 py-2 text-sm hover:bg-gray-100 text-gray-700 border-b">
 							<a href="/my/profiles/primary" on:click={() => (visible = false)}>
-								<p>{$thatProfile.firstName} {$thatProfile.lastName}</p>
-								<p class="truncate pt-2">{$thatProfile.email}</p>
+								<p>{$session.thatProfile.firstName} {$session.thatProfile.lastName}</p>
+								<p class="truncate pt-2">{$session.thatProfile.email}</p>
 							</a>
 						</div>
 
@@ -123,18 +122,18 @@
 				class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg z-50"
 			>
 				<div class="py-1 rounded-md bg-white ring-1 ring-black ring-opacity-5">
-					<div
-						on:click|stopPropagation={() => login(document.location.pathname, false)}
+					<a
+						href="/login/"
 						class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer"
 					>
 						Login
-					</div>
-					<div
-						on:click|stopPropagation={() => login(document.location.pathname, true)}
+					</a>
+					<a
+						href="/api/auth/signup"
 						class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer"
 					>
 						Sign Up
-					</div>
+					</a>
 				</div>
 			</div>
 		{/if}

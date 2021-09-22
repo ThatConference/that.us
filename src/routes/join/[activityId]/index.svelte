@@ -1,16 +1,29 @@
 <script context="module">
 	import sessionsApi from '$dataSources/api.that.tech/sessions.js';
+	import eventsApi from '$dataSources/api.that.tech/events/queries.js';
 
 	export async function load({ page }) {
-		const { querySessionById } = sessionsApi(fetch);
 		const { activityId } = page.params;
 
-		const queryActivityDetails = () => querySessionById(activityId);
+		const { querySessionById } = sessionsApi(fetch);
+		const { canAccessEvent } = eventsApi(fetch);
+
+		const activityDetails = await querySessionById(activityId);
+
+		if (activityDetails) {
+			hasAccess = await canAccessEvent(activityDetails.eventId);
+			if (!hasAccess) {
+				return {
+					status: 401,
+					redirect: `/join/access-denied/?id=${activityId}`
+				};
+			}
+		}
 
 		return {
 			props: {
 				activityId,
-				activityDetails: await queryActivityDetails()
+				activityDetails
 			}
 		};
 	}
@@ -20,7 +33,7 @@
 	export let activityId;
 	export let activityDetails;
 
-	import { onMount } from 'svelte';
+	import { session } from '$app/stores';
 	import lodash from 'lodash';
 	import { goto } from '$app/navigation';
 	import Icon from 'svelte-awesome';
@@ -34,15 +47,10 @@
 	import Seo from '$components/Seo.svelte';
 
 	import config from '$utils/config';
-	import { getAuth } from '$utils/security';
-
-	import eventsApi from '$dataSources/api.that.tech/events/queries.js';
 
 	const { isEmpty } = lodash;
 
-	const { isAuthenticated, thatProfile, user } = getAuth();
 	const { setAttendance } = sessionsApi();
-	const { canAccessEvent } = eventsApi();
 
 	const imageCrop = '?mask=ellipse&w=500&h=500&fit=crop';
 	const jitsiFrameTopBuffer = 340;
@@ -56,14 +64,6 @@
 
 	let displayName = 'Johnny 5'; // generate a fake name...
 	let avatarUrl = config.defaultProfileImage;
-
-	onMount(async () => {
-		// todo.. it would be great if the server could do this.. but token
-		if (activityDetails) {
-			hasAccess = await canAccessEvent(activityDetails.eventId);
-			if (!hasAccess) goto(`/join/access-denied/${activityId}`);
-		}
-	});
 
 	function handleMuted({ muted }) {
 		userMuted = muted;
@@ -96,7 +96,7 @@
 			'mute-everyone'
 		];
 
-		if ($user['http://auth.that.tech/roles'].includes('Admin')) {
+		if ($session.user['http://auth.that.tech/roles'].includes('Admin')) {
 			toolButtonConfig.push(
 				'recording',
 				'livestreaming',
@@ -126,7 +126,7 @@
 				DEFAULT_REMOTE_DISPLAY_NAME: 'THAT Camper'
 			},
 			userInfo: {
-				displayName: `${$thatProfile?.firstName} ${$thatProfile?.lastName}`
+				displayName: `${$session.thatProfile?.firstName} ${$session.thatProfile?.lastName}`
 			},
 			onload: () => {
 				// update here just to cover loading scenarios
@@ -216,15 +216,15 @@
 		}
 	}
 
-	$: if (!isEmpty($thatProfile)) {
+	$: if (!isEmpty($session.thatProfile)) {
 		incompleteProfile = false;
 	}
 
-	$: if ($isAuthenticated && !incompleteProfile) {
+	$: if ($session.isAuthenticated && !incompleteProfile) {
 		Promise.resolve(setAttendance(activityId));
 
-		avatarUrl = `${$thatProfile.profileImage}${imageCrop}`;
-		displayName = `${$thatProfile.firstName} ${$thatProfile.lastName}`;
+		avatarUrl = `${$session.thatProfile.profileImage}${imageCrop}`;
+		displayName = `${$session.thatProfile.firstName} ${$session.thatProfile.lastName}`;
 
 		if (api) {
 			api.executeCommand('avatarUrl', avatarUrl);

@@ -2,14 +2,14 @@
 	export let profile;
 	export let isFollowing = false;
 
+	import { session } from '$app/stores';
 	import { createEventDispatcher } from 'svelte';
 
-	import { getAuth } from '$utils/security';
 	import { CTA } from '$elements';
 	import { Standard as StandardButton } from '$elements/buttons';
+	import { Standard as StandardLink } from '$elements/links';
 
 	const dispatch = createEventDispatcher();
-	const { isAuthenticated, login } = getAuth();
 
 	$: handle = `@${profile.profileSlug}`;
 </script>
@@ -26,15 +26,13 @@
 	</h2>
 
 	<span slot="actionPrimary">
-		{#if $isAuthenticated}
+		{#if $session.isAuthenticated}
 			<StandardButton class="h-3/4" on:click={() => dispatch('TOGGLE_FOLLOW')}>
 				{#if isFollowing}Un-Follow{:else}Follow{/if}
 				{handle}
 			</StandardButton>
 		{:else}
-			<StandardButton class="h-3/4" on:click={() => login(`/members/${profile.profileSlug}`)}>
-				Login and Follow Today
-			</StandardButton>
+			<StandardLink class="h-3/4" href="/login">Login and Follow Today</StandardLink>
 		{/if}
 	</span>
 </CTA>

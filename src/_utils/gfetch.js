@@ -1,9 +1,7 @@
-import { get } from 'svelte/store';
 import crossFetch from 'cross-fetch';
 
 import loading from '$stores/loading';
 import config from '$utils/config';
-import { token } from '$utils/security';
 
 function init(fetch, url) {
 	let _url = url || config.api;
@@ -44,16 +42,13 @@ function init(fetch, url) {
 	}
 
 	function secureQuery({ query, variables = {} }) {
-		// if (!t) throw new Error('no token found for user');
-
 		loading.set(true);
-		const t = get(token);
 
-		return _fetch(_url, {
+		return _fetch('/api/auth/proxy/', {
 			method: 'POST',
+			credentials: 'include',
 			headers: {
-				...headers,
-				authorization: t ? `Bearer ${t}` : ''
+				'Content-Type': 'application/json'
 			},
 			body: JSON.stringify({
 				query: `
@@ -71,13 +66,10 @@ function init(fetch, url) {
 
 	function mutation({ mutation, variables = {} }) {
 		loading.set(true);
-		const t = get(token);
-
-		return _fetch(_url, {
+		return _fetch('/api/auth/proxy/', {
 			method: 'POST',
 			headers: {
-				...headers,
-				authorization: t ? `Bearer ${t}` : ''
+				'Content-Type': 'application/json'
 			},
 			body: JSON.stringify({
 				query: `

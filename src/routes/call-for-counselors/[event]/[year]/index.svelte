@@ -76,7 +76,7 @@
 
 				<div class="flex space-x-4 justify-center">
 					<div class="flex-none">
-						<StandardLink href={`/activities/create#/event/${event.id}`}>
+						<StandardLink href={`/activities/create/cfp/?event=${event.id}`}>
 							Become a Counselor
 						</StandardLink>
 					</div>

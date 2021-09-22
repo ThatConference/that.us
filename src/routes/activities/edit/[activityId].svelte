@@ -1,5 +1,5 @@
 <script context="module">
-	export async function load({ context }) {
+	export async function load({ page, fetch, context }) {
 		return {
 			props: {
 				...context
@@ -9,12 +9,11 @@
 </script>
 
 <script>
+	export let activityDetails;
 	export let events;
 	export let activeEvents;
-	export let isBackdoor;
 	export let eventId;
 
-	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
 	import Typewriter from 'svelte-typewriter';
 	import Icon from 'svelte-awesome';
@@ -27,15 +26,12 @@
 	import StackedLayout from '$elements/layouts/StackedLayout.svelte';
 	import Nav from '$components/nav/interiorNav/Top.svelte';
 
-	import sessionsQueryApi from '$dataSources/api.that.tech/sessions/queries';
 	import sessionsMutationsApi from '$dataSources/api.that.tech/sessions/mutations';
 
 	import { formatUpdate } from '../_lib/formatRequest';
 	import ActivityForm from '../_components/form/ActivityForm.svelte';
 
-	const { queryMySessionById } = sessionsQueryApi();
 	const { updateSession } = sessionsMutationsApi();
-	const { activityId } = $page.params;
 
 	const metaTags = ((title = 'Edit Activity - THAT') => ({
 		title,
@@ -48,10 +44,6 @@
 			}
 		})
 	}))();
-
-	function queryActivityDetails() {
-		return queryMySessionById(activityId);
-	}
 
 	async function handleWithdraw(activity) {
 		const status = activity.type === 'OPEN_SPACE' ? 'CANCELLED' : 'WITHDREW';
@@ -140,26 +132,25 @@
 			</div>
 		</div>
 
-		{#await queryActivityDetails() then activityDetails}
-			{#if activityDetails}
-				<div class="mt-8 sm:px-6 max-w-3xl lg:max-w-7xl mx-auto">
-					<ActivityForm
-						{handleSubmit}
-						{handleWithdraw}
-						initialData={activityDetails}
-						{activeEvents}
-						{events}
-						isBackdoor={false}
-						isEdit={true}
-					/>
-				</div>
-			{:else}
-				<ModalError
-					title="No Activity Found"
-					text="I'm sorry we weren't unable to find the activity trying to edit."
-					action={{ title: 'Return to my submissions', href: '/my/submissions' }}
+		{#if activityDetails}
+			<div class="mt-8 sm:px-6 max-w-3xl lg:max-w-7xl mx-auto">
+				<ActivityForm
+					{handleSubmit}
+					{handleWithdraw}
+					initialData={activityDetails}
+					{activeEvents}
+					{events}
+					{eventId}
+					isBackdoor={true}
+					isEdit={true}
 				/>
-			{/if}
-		{/await}
+			</div>
+		{:else}
+			<ModalError
+				title="No Activity Found"
+				text="I'm sorry we weren't unable to find the activity trying to edit."
+				action={{ title: 'Return to my submissions', href: '/my/submissions' }}
+			/>
+		{/if}
 	</div>
 </StackedLayout>

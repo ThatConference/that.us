@@ -1,8 +1,9 @@
 import { version } from '../../package.json';
+import { browser } from '$app/env';
 
-const configMissing = (configKey) => {
+function configMissing(configKey) {
 	throw new Error(`Missing required environment varable: ${configKey}`);
-};
+}
 
 export default {
 	nodeEnv: process.env.NODE_ENV,
@@ -20,12 +21,35 @@ export default {
 	process: import.meta.env
 };
 
-export const securityConfig = {
-	domain: 'auth.that.tech',
-	client_id: '1ERg68Y2ie7QuO6wnr7EAadWT4Pvbfnm',
-	audience: 'https://api.that.tech/graphql',
-	scope: 'openid profile email offline_access',
-	useRefreshTokens: true
+export const securityConfig = () => {
+	const config = {
+		clientID: import.meta.env.VITE_AUTH0_CLIENT_ID || configMissing('VITE_AUTH0_CLIENT_ID'),
+		baseURL: import.meta.env.VITE_AUTH0_BASE_URL || `https://that.us`,
+		issuerBaseURL: import.meta.env.VITE_AUTH0_ISSUER_BASE_URL || `https://auth.that.tech`,
+
+		authorizationParams: {
+			scope: import.meta.env.VITE_AUTH0_SCOPE || 'openid profile email offline_access',
+			audience: import.meta.env.VITE_AUTH0_AUDIENCE || 'https://api.that.tech/graphql'
+		},
+		routes: {
+			login: '/login',
+			callback: '/api/auth/callback',
+			redirectUri: import.meta.env.VITE_REDIRECT_URI || configMissing('VITE_REDIRECT_URI'),
+			postLogoutRedirectUri:
+				import.meta.env.VITE_POST_LOGOUT_REDIRECT_URI ||
+				configMissing('VITE_POST_LOGOUT_REDIRECT_URI')
+		}
+	};
+
+	// private to server
+	if (!browser) {
+		config.clientSecret =
+			process.env['AUTH0_CLIENT_SECRET'] || configMissing('AUTH0_CLIENT_SECRET');
+
+		config.secret = process.env['AUTH0_SECRET'] || configMissing('AUTH0_CLIENT_SECRET');
+	}
+
+	return config;
 };
 
 export const logging = {

@@ -15,6 +15,7 @@
 <script>
 	export let activities;
 
+	import { session } from '$app/stores';
 	import { useMachine } from 'xstate-svelte';
 	import SvelteInfiniteScroll from 'svelte-infinite-scroll';
 	import lodash from 'lodash';
@@ -32,11 +33,10 @@
 
 	import seoMetaTags from '$utils/seo/metaTags';
 	import { debug } from '$utils/config';
-	import { getAuth } from '$utils/security';
+
 	import createMachine from './_machines/daily';
 
 	const { isEmpty, uniqBy } = lodash;
-	const { thatProfile } = getAuth();
 
 	const metaTags = ((title = 'Daily Activities - THAT') => ({
 		title,
@@ -64,7 +64,7 @@
 		}
 	);
 
-	$: if (!isEmpty($thatProfile)) {
+	$: if (!isEmpty($session.thatProfile)) {
 		createDisabled = false;
 	}
 
@@ -81,7 +81,7 @@
 		<Nav />
 		<ActionHeader title="Daily Activities">
 			{#if !createDisabled}
-				<HighlightLink href="/activities/create">Create Activity</HighlightLink>
+				<HighlightLink href="/activities/create/">Create Activity</HighlightLink>
 			{/if}
 		</ActionHeader>
 	</div>

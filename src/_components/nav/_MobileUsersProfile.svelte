@@ -1,14 +1,12 @@
 <script>
 	export let darkMode = false;
 
+	import { session } from '$app/stores';
 	import { user as userIcon } from 'svelte-awesome/icons';
 	import Icon from 'svelte-awesome';
 	import lodash from 'lodash';
 
-	import { getAuth } from '$utils/security';
-
 	const { isEmpty } = lodash;
-	const { login, isAuthenticated, thatProfile } = getAuth();
 	const loggedInMenuItems = [
 		{
 			link: '/my/profiles',
@@ -39,30 +37,30 @@
 </script>
 
 <div class="pb-3 border-t border-thatBlue-400">
-	{#if $isAuthenticated}
+	{#if $session.isAuthenticated}
 		<div class="relative grid gap-6 px-5 py-6 sm:gap-8 sm:p-8 lg:grid-cols-2">
 			<div class="-m-3 p-3 flex items-start">
 				<div
 					class="flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-that-orange"
 				>
-					{#if isEmpty($thatProfile) || !$thatProfile.profileImage}
+					{#if isEmpty($session.thatProfile) || !$session.thatProfile.profileImage}
 						<Icon data={userIcon} class="h-8 w-8 rounded-full text-white bg-that-orange" />
 					{:else}
 						<img
 							class="h-12 w-12 rounded-full"
-							src="{$thatProfile.profileImage}?w=256&h=256&fit=crop"
+							src="{$session.thatProfile.profileImage}?w=256&h=256&fit=crop"
 							alt=""
 						/>
 					{/if}
 				</div>
 				<div class="ml-4">
-					{#if !isEmpty($thatProfile)}
+					{#if !isEmpty($session.thatProfile)}
 						<p class="text-base font-medium text-white" class:text-gray-800={darkMode}>
-							{$thatProfile.firstName}
-							{$thatProfile.lastName}
+							{$session.thatProfile.firstName}
+							{$session.thatProfile.lastName}
 						</p>
 						<p class="text-sm text-gray-300">
-							{$thatProfile.email}
+							{$session.thatProfile.email}
 						</p>
 					{/if}
 				</div>
@@ -71,8 +69,8 @@
 	{/if}
 
 	<div class="px-2">
-		{#if $isAuthenticated}
-			{#if isEmpty($thatProfile)}
+		{#if $session.isAuthenticated}
+			{#if isEmpty($session.thatProfile)}
 				<a
 					href="/my/profiles/primary"
 					class="block px-3 pb-2 rounded-md text-base font-medium
@@ -106,15 +104,13 @@
 		{:else}
 			<div class="flex flex-row">
 				<a
-					href
-					on:click|stopPropagation={() => login(document.location.pathname, false)}
+					href="/login"
 					class="mt-4 mb-1 mr-1 block w-full bg-white rounded-md py-2 text-sm font-semibold text-that-blue text-center flex-grow"
 				>
 					Login
 				</a>
 				<a
-					href
-					on:click|stopPropagation={() => login(document.location.pathname, true)}
+					href="/login"
 					class="mt-4 mb-1 ml-1 block w-full bg-that-orange rounded-md py-2 text-sm font-semibold text-white text-center flex-grow"
 				>
 					Sign Up

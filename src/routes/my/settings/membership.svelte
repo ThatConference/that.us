@@ -1,29 +1,31 @@
+<script context="module">
+	import meQueryApi from '$dataSources/api.that.tech/me/queries';
+
+	export async function load({ fetch }) {
+		const { queryMeDiscountCodes } = meQueryApi(fetch);
+		let codes = await queryMeDiscountCodes();
+
+		return {
+			props: {
+				codes
+			}
+		};
+	}
+</script>
+
 <script>
+	export let codes;
+
 	import { onMount, onDestroy } from 'svelte';
+	import { session } from '$app/stores';
 	import dayjs from 'dayjs';
 	import Clipboard from 'clipboard';
 
-	import loading from '$stores/loading';
 	import seoMetaTags from '$utils/seo/metaTags';
 	import Seo from '$components/Seo.svelte';
 
 	import { Standard as StandardLink } from '$elements/links';
 	import { Warning, Store, Ticket } from '$elements/svgs';
-
-	import { getAuth } from '$utils/security';
-	import meQueryApi from '$dataSources/api.that.tech/me/queries';
-
-	const { thatProfile } = getAuth();
-	const { queryMeDiscountCodes } = meQueryApi();
-
-	function queryDiscountCodes() {
-		loading.set(true);
-		return queryMeDiscountCodes().then((r) => {
-			loading.set(false);
-			return r;
-		});
-	}
-
 	const metaTags = ((title = 'Your Membership - THAT') => ({
 		title,
 		tags: seoMetaTags({
@@ -61,7 +63,7 @@
 		<h2 class="text-xl leading-6 font-bold text-gray-900">Membership Settings</h2>
 	</header>
 
-	{#if !$thatProfile?.isMember}
+	{#if !$session.thatProfile?.isMember}
 		<div class="mt-8">
 			<div class="flex items-center">
 				<div class="mr-4">
@@ -80,51 +82,49 @@
 		</div>
 	{:else}
 		<div class="mt-8">
-			{#await queryDiscountCodes() then codes}
-				<div class="bg-white shadow overflow-hidden sm:rounded-md">
-					<ul class="divide-y divide-gray-200">
-						{#each codes as code}
-							<li class="hover:bg-gray-50 cursor-pointer">
-								<!-- svelte-ignore a11y-missing-attribute -->
-								<a data-clipboard-text={code.code} class="discountCode">
-									<div class="flex items-center px-4 py-4 sm:px-6">
-										<div class="min-w-0 flex-1 flex items-center">
-											<div class="flex-shrink-0">
-												{#if code.type === 'TICKET'}
-													<Ticket classes="h-8 w-8 mr-3 text-green-500" />
-												{:else}
-													<Store classes="h-8 w-8 mr-3 text-green-500" />
-												{/if}
+			<div class="bg-white shadow overflow-hidden sm:rounded-md">
+				<ul class="divide-y divide-gray-200">
+					{#each codes as code}
+						<li class="hover:bg-gray-50 cursor-pointer">
+							<!-- svelte-ignore a11y-missing-attribute -->
+							<a data-clipboard-text={code.code} class="discountCode">
+								<div class="flex items-center px-4 py-4 sm:px-6">
+									<div class="min-w-0 flex-1 flex items-center">
+										<div class="flex-shrink-0">
+											{#if code.type === 'TICKET'}
+												<Ticket classes="h-8 w-8 mr-3 text-green-500" />
+											{:else}
+												<Store classes="h-8 w-8 mr-3 text-green-500" />
+											{/if}
+										</div>
+										<div class="min-w-0 flex-1 items-center px-4 md:grid md:grid-cols-2 md:gap-4">
+											<div>
+												<p class="text-md font-bold text-thatBlue-800 truncate">
+													{code.title}
+												</p>
 											</div>
-											<div class="min-w-0 flex-1 items-center px-4 md:grid md:grid-cols-2 md:gap-4">
-												<div>
-													<p class="text-md font-bold text-thatBlue-800 truncate">
-														{code.title}
-													</p>
-												</div>
 
-												<div class="hidden md:block">
-													<div>
-														<p class="text-sm text-gray-500">
-															Created On:
-															<time datetime={code.createdAt}>
-																{dayjs(code.createdAt).format('MMMM D, YYYY')}
-															</time>
-														</p>
-														<p class="mt-2 flex items-center text-sm font-bold text-thatOrange-400">
-															{code.code}
-														</p>
-													</div>
+											<div class="hidden md:block">
+												<div>
+													<p class="text-sm text-gray-500">
+														Created On:
+														<time datetime={code.createdAt}>
+															{dayjs(code.createdAt).format('MMMM D, YYYY')}
+														</time>
+													</p>
+													<p class="mt-2 flex items-center text-sm font-bold text-thatOrange-400">
+														{code.code}
+													</p>
 												</div>
 											</div>
 										</div>
 									</div>
-								</a>
-							</li>
-						{/each}
-					</ul>
-				</div>
-			{/await}
+								</div>
+							</a>
+						</li>
+					{/each}
+				</ul>
+			</div>
 		</div>
 	{/if}
 </div>

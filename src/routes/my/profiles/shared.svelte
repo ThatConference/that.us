@@ -1,26 +1,38 @@
+<script context="module">
+	import meQueryApi from '$dataSources/api.that.tech/me/queries';
+
+	export async function load({ fetch }) {
+		const { queryMeSharedProfile } = meQueryApi(fetch);
+
+		let sharedProfile = await queryMeSharedProfile();
+		return {
+			props: {
+				sharedProfile
+			}
+		};
+	}
+</script>
+
 <script>
+	export let sharedProfile;
+
+	import { session } from '$app/stores';
 	import lodash from 'lodash';
 
-	import { getAuth } from '$utils/security';
 	import seoMetaTags from '$utils/seo/metaTags';
 	import Seo from '$components/Seo.svelte';
 	import { Warning } from '$elements/svgs';
 
 	import SharedProfileForm from './_components/sharedProfileForm.svelte';
 
-	import meQueryApi from '$dataSources/api.that.tech/me/queries';
 	import meMutationsApi from '$dataSources/api.that.tech/me/mutations';
 
 	const { isEmpty } = lodash;
-	const { thatProfile } = getAuth();
-	const { queryMeSharedProfile } = meQueryApi();
 	const { updateSharedProfile } = meMutationsApi();
 
 	async function handleUpdate({ detail: { values, setSubmitting, resetForm } }) {
 		setSubmitting(true);
-
 		await updateSharedProfile(values);
-
 		setSubmitting(false);
 	}
 
@@ -41,10 +53,8 @@
 
 <Seo title={metaTags.title} tags={metaTags.tags} />
 
-{#if !isEmpty($thatProfile)}
-	{#await queryMeSharedProfile() then sharedProfile}
-		<SharedProfileForm handleSubmit={handleUpdate} {sharedProfile} />
-	{/await}
+{#if !isEmpty($session.thatProfile)}
+	<SharedProfileForm handleSubmit={handleUpdate} {sharedProfile} />
 {:else}
 	<div class="mt-8">
 		<div class="flex items-center">

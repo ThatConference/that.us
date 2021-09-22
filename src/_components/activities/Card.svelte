@@ -13,6 +13,7 @@
 	export let location;
 
 	// 3rd party
+	import { session } from '$app/stores';
 	import { onMount, getContext } from 'svelte';
 	import dayjs from 'dayjs';
 	import isBetween from 'dayjs/plugin/isBetween.js';
@@ -25,7 +26,7 @@
 
 	// utilties
 	import config from '$utils/config';
-	import { getAuth } from '$utils/security';
+
 	import { truncate, isLongerThan } from '$utils/truncate';
 
 	// data
@@ -41,7 +42,6 @@
 	dayjs.extend(relativeTime);
 
 	const { isEmpty, find } = lodash;
-	const { login, isAuthenticated, thatProfile } = getAuth();
 	const { toggle, get: getFavorites, favoritesStore: favorites } = favoritesApi();
 	const sessionEnumLookups = getContext('SESSION_ENUMS');
 
@@ -54,7 +54,7 @@
 	const isAllowed = () => {
 		let permitted = false;
 
-		if (isEmpty($thatProfile)) {
+		if (isEmpty($session.thatProfile)) {
 			show.set(new Boolean(true));
 			permitted = false;
 		} else {
@@ -87,7 +87,7 @@
 	$: canJoin = isInWindow;
 
 	onMount(async () => {
-		if ($isAuthenticated) await getFavorites(eventId);
+		if ($session.isAuthenticated) await getFavorites(eventId);
 
 		let endTime = (durationInMinutes ? durationInMinutes : 60) + 10;
 		let currentStartTime = dayjs(startTime).subtract(5, 'minute');
@@ -212,7 +212,7 @@
 			</div>
 
 			{#if !hasExpired}
-				{#if $isAuthenticated}
+				{#if $session.isAuthenticated}
 					<div class="-ml-px w-0 flex-1 flex border-l border-gray-200">
 						<button
 							on:click|preventDefault={!favoriteDisabled && handleToggle}
@@ -230,8 +230,8 @@
 					</div>
 				{:else}
 					<div class="-ml-px w-0 flex-1 flex border-l border-gray-200">
-						<button
-							on:click|preventDefault={() => login(document.location.pathname, false)}
+						<a
+							href="/login"
 							class="relative w-0 flex-1 inline-flex items-center justify-center
                 py-2 text-xs leading-4 text-gray-700 font-medium border
                 border-transparent rounded-br-lg hover:text-gray-300
@@ -241,12 +241,12 @@
 						>
 							<Icon data={heart} class="w-4 h-4" />
 							<span class="ml-3">Favorite</span>
-						</button>
+						</a>
 					</div>
 				{/if}
 			{/if}
 
-			{#if $isAuthenticated}
+			{#if $session.isAuthenticated}
 				{#if canEdit()}
 					<div class="-ml-px w-0 flex-1 flex border-l border-gray-200">
 						<a

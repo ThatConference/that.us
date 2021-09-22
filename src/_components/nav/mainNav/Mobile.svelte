@@ -1,11 +1,9 @@
 <script>
-	import { getAuth } from '$utils/security';
-	import { Standard as StandardButton } from '$elements/buttons';
+	import { session } from '$app/stores';
+	import { Standard as StandardLink } from '$elements/links';
 
 	import links from './links';
 	import MobileUsersProfile from '../_MobileUsersProfile.svelte';
-
-	const { login, isAuthenticated } = getAuth();
 </script>
 
 {#each links as l}
@@ -21,11 +19,9 @@
 {/each}
 
 <div class="my-4 sm:my-4 px-4 sm:px-6 flex flex-col space-y-5">
-	{#if $isAuthenticated}
+	{#if $session.isAuthenticated}
 		<MobileUsersProfile darkMode={true} />
 	{:else}
-		<StandardButton on:click={() => login(document.location.pathname, false)}>
-			Log in
-		</StandardButton>
+		<StandardLink href="/login">Log in</StandardLink>
 	{/if}
 </div>

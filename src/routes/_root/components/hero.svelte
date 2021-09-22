@@ -1,6 +1,5 @@
 <script>
-	import { getAuth } from '$utils/security';
-	const { isAuthenticated } = getAuth();
+	import { session } from '$app/stores';
 </script>
 
 <section class="relative overflow-x-hidden">
@@ -48,7 +47,7 @@
 						</p>
 
 						<div class="flex space-x-4">
-							{#if !$isAuthenticated}
+							{#if !$session.isAuthenticated}
 								<a
 									href="/support/"
 									class="px-8 py-3 rounded-md shadow text-base leading-6

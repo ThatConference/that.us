@@ -41,12 +41,12 @@
 	export let nextHybridEvent;
 	export let activitiesUpNext;
 
+	import { session } from '$app/stores';
 	import { fade } from 'svelte/transition';
 	import { useMachine } from 'xstate-svelte';
 
 	import { debug } from '$utils/config';
 	import seoMetaTags from '$utils/seo/metaTags';
-	import { getAuth } from '$utils/security';
 	import Layout from '$elements/layouts/ContentLayout.svelte';
 	import Seo from '$components/Seo.svelte';
 
@@ -68,7 +68,6 @@
 
 	import createMachine from './_root/machines/upNext';
 
-	const { thatProfile, isAuthenticated } = getAuth();
 	const metaTags = ((title = 'Welcome to THAT!') => ({
 		title,
 		tags: seoMetaTags({
@@ -92,7 +91,7 @@
 <Seo title={metaTags.title} tags={metaTags.tags} />
 
 <Layout>
-	{#if $thatProfile?.isMember}
+	{#if $session.thatProfile?.isMember}
 		<div in:fade={{ delay: 200 }}>
 			<WelcomeBack />
 		</div>
@@ -150,9 +149,9 @@
 
 			<Events {events} />
 
-			{#if !$isAuthenticated}
+			{#if !$session.isAuthenticated}
 				<CTA />
-			{:else if !$thatProfile?.isMember}
+			{:else if !$session.thatProfile?.isMember}
 				<CtaMembership />
 			{/if}
 

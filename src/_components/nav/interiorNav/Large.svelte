@@ -3,9 +3,7 @@
 	import { fade } from 'svelte/transition';
 	import Icon from 'svelte-awesome';
 	import { plus } from 'svelte-awesome/icons';
-	import { Circle3 } from 'svelte-loading-spinners';
 
-	import { getAuth } from '$utils/security';
 	import { Activity, Cart } from '$elements/svgs';
 	import { hasNotifications } from '$stores/notificationCenter';
 
@@ -20,7 +18,6 @@
 		activityVisible = !activityVisible;
 	}
 
-	const { isLoading } = getAuth();
 	const { state } = getContext('cart');
 
 	$: cartItems = Object.keys($state.context.cart).length;
@@ -182,24 +179,13 @@
 		{/if}
 
 		<div class="ml-4 p-1 rounded-full text-white hover:bg-thatBlue-500">
-			<a href="/activities/create">
+			<a href="/activities/create/">
 				<Icon data={plus} class="h-8 w-8" />
 			</a>
 		</div>
 
 		<div class="ml-4 rounded-full text-white hover:bg-thatBlue-500">
-			{#if !$isLoading}
-				<UserProfile />
-			{:else}
-				<Circle3
-					size={'30'}
-					unit={'px'}
-					ballTopLeft="#f74646"
-					ballTopRight="#ff834d"
-					ballBottomLeft="#26529A"
-					ballBottomRight="#555555"
-				/>
-			{/if}
+			<UserProfile />
 		</div>
 	</div>
 </div>

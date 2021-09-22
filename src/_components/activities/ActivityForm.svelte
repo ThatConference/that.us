@@ -41,6 +41,7 @@
 	export let handleWithdraw;
 	export let initialValues;
 
+	import { session } from '$app/stores';
 	import dayjs from 'dayjs';
 	import utc from 'dayjs/plugin/utc.js';
 	import timezone from 'dayjs/plugin/timezone.js';
@@ -57,7 +58,6 @@
 	import * as yup from 'yup';
 	import lodash from 'lodash';
 
-	import { getAuth } from '$utils/security';
 	import { Waiting, ModalError } from '$elements';
 	import ErrorNotificaiton from '../notifications/Error.svelte';
 
@@ -69,7 +69,6 @@
 	dayjs.extend(advancedFormat);
 
 	const { isEmpty } = lodash;
-	const { thatProfile } = getAuth();
 	const selectedTimezoneDefault = dayjs.tz.guess();
 
 	let createDisabled = true;
@@ -90,7 +89,7 @@
 		selectedDateValue = originalStartTime.toDate();
 	}
 
-	$: if (!isEmpty($thatProfile)) {
+	$: if (!isEmpty($session.thatProfile)) {
 		createDisabled = false;
 	}
 
@@ -174,7 +173,7 @@
 		action={{ title: 'Create Profile', href: '/my/profiles/primary' }}
 		returnTo={{ title: 'Return to Activities', href: '/activities' }}
 	/>
-{:else if !$thatProfile?.canFeature}
+{:else if !$session.thatProfile?.canFeature}
 	<ModalError
 		title="Your Profile Isn't Public."
 		text="It appears we cannot feature your profile. You need to have a public

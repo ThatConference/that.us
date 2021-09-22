@@ -1,20 +1,35 @@
-<script>
-	import { page } from '$app/stores';
+<script context="module">
 	import lodash from 'lodash';
-	import { fade } from 'svelte/transition';
+	import checkinQueryApi from '$dataSources/api.that.tech/checkin/queries';
+
+	const { sortBy } = lodash;
+
+	export async function load({ page, fetch }) {
+		const { eventName, year } = page.params;
+		const eventSlug = `${eventName}/${year}`;
+
+		const { queryEventRegistrations } = checkinQueryApi(fetch);
+
+		const registrations = await queryEventRegistrations(eventSlug).then((r) =>
+			sortBy(r, 'member.lastName')
+		);
+
+		return {
+			props: {
+				registrations
+			}
+		};
+	}
+</script>
+
+<script>
+	export let registrations;
 
 	import seoMetaTags from '$utils/seo/metaTags';
 	import ProfileLayout from '$elements/layouts/Profile.svelte';
 	import Seo from '$components/Seo.svelte';
 
-	import checkinQueryApi from '$dataSources/api.that.tech/checkin/queries';
-
-	import Loading from '../../_components/_Loading.svelte';
 	import RegistrationList from '../../_components/_RegistrationList.svelte';
-
-	const { sortBy } = lodash;
-	const { eventName, year } = $page.params;
-	const eventSlug = `${eventName}/${year}`;
 
 	const metaTags = ((title = 'Event Checkin - THAT') => ({
 		title,
@@ -29,12 +44,6 @@
 			nofollow: true
 		})
 	}))();
-
-	const { queryEventRegistrations } = checkinQueryApi();
-
-	function queryRegistrations() {
-		return queryEventRegistrations(eventSlug).then((r) => sortBy(r, 'member.lastName'));
-	}
 </script>
 
 <Seo title={metaTags.title} tags={metaTags.tags} />
@@ -48,22 +57,7 @@
 				</h2>
 			</div>
 
-			{#await queryRegistrations()}
-				<div class="mt-12">
-					<ul class="space-y-4">
-						{#each [300, 600, 900, 1200] as i}
-							<li
-								in:fade={{ delay: i, duration: 2000 }}
-								class="animate-pulse bg-gray-50 bg-opacity-75 shadow overflow-hidden px-4 py-4 sm:px-6 sm:rounded-md"
-							>
-								<Loading />
-							</li>
-						{/each}
-					</ul>
-				</div>
-			{:then registrations}
-				<RegistrationList {registrations} />
-			{/await}
+			<RegistrationList {registrations} />
 		</div>
 	</div>
 </ProfileLayout>

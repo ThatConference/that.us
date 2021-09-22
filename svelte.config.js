@@ -26,7 +26,6 @@ const config = {
 		},
 		adapter: vercelAdapter()
 	},
-
 	preprocess: [
 		preprocess({
 			postcss: true

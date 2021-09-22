@@ -11,7 +11,7 @@
 	<div slot="header">
 		<Nav />
 		<ActionHeader title="My Submissions">
-			<HighlightLink href="/activities/create">Create Activity</HighlightLink>
+			<HighlightLink href="/activities/create/">Create Activity</HighlightLink>
 		</ActionHeader>
 	</div>
 

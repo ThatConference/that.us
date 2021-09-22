@@ -55,13 +55,12 @@
 <script>
 	import { onMount, onDestroy, setContext } from 'svelte';
 	import { goto } from '$app/navigation';
-	import { navigating } from '$app/stores';
+	import { navigating, session } from '$app/stores';
 
 	import loading from '$stores/loading';
 	import { showReleaseNotes } from '$stores/siteVersion';
 	import { messages } from '$stores/notificationCenter';
 
-	import { createAuth } from '$utils/security';
 	import cart from '$utils/cart';
 	import config, { debug, logging } from '$utils/config';
 
@@ -73,7 +72,6 @@
 	setContext('correlationId', correlationId);
 
 	const { isEmpty } = lodash;
-	const { isAuthenticated, thatProfile, user } = createAuth();
 	let unsub;
 
 	function onTidioChatApiReady() {
@@ -82,35 +80,27 @@
       ... we might have to set it better based on some other layering going on in places.
     */
 		document.getElementById('tidio-chat-iframe').style.zIndex = '40';
-		unsub = thatProfile.subscribe((currentUser) => {
-			if (!isEmpty(currentUser)) {
-				window.tidioChatApi.setVisitorData({
-					distinct_id: currentUser.id,
-					email: currentUser.email,
-					name: `${currentUser.firstName} ${currentUser.lastName}`
-				});
-				window.tidioChatApi.setContactProperties({
-					company: currentUser.company,
-					canfeature: currentUser.canFeature ? 'true' : 'false'
-				});
-				window.tidioChatApi.addVisitorTags([
-					currentUser.id,
-					`https://that.us/member/${currentUser.profileSlug}`
-				]);
-			}
-		});
+		//todo.. how do we watch profile changes?
+		// unsub = $session.thatProfile((currentUser) => {
+		// 	if (!isEmpty(currentUser)) {
+		// 		window.tidioChatApi.setVisitorData({
+		// 			distinct_id: currentUser.id,
+		// 			email: currentUser.email,
+		// 			name: `${currentUser.firstName} ${currentUser.lastName}`
+		// 		});
+		// 		window.tidioChatApi.setContactProperties({
+		// 			company: currentUser.company,
+		// 			canfeature: currentUser.canFeature ? 'true' : 'false'
+		// 		});
+		// 		window.tidioChatApi.addVisitorTags([
+		// 			currentUser.id,
+		// 			`https://that.us/member/${currentUser.profileSlug}`
+		// 		]);
+		// 	}
+		// });
 	}
 
 	onMount(() => {
-		if ($isAuthenticated) {
-			const [provider] = $user?.sub.split('|');
-			if (provider !== 'twitter') {
-				if (!$user.email_verified) {
-					goto('/verify-account');
-				}
-			}
-		}
-
 		if ($showReleaseNotes) {
 			messages.update((m) => [
 				...m,
@@ -128,9 +118,9 @@
 		}
 	});
 
-	$: if (!isEmpty($thatProfile)) {
+	$: if (!isEmpty($session.thatProfile)) {
 		if (!dev) {
-			let { id, email, firstName, lastName } = $thatProfile;
+			let { id, email, firstName, lastName } = $session.thatProfile;
 
 			Sentry.configureScope((scope) => {
 				scope.setUser({

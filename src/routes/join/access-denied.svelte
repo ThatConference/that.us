@@ -9,7 +9,17 @@
 	import { ActionHeader } from '$elements';
 	import StackedLayout from '$elements/layouts/StackedLayout.svelte';
 
-	const { activityId } = $page.params;
+	let returnTo = {
+		title: 'Home',
+		href: '/'
+	};
+
+	if (page.query.has('id')) {
+		returnTo = {
+			title: 'Try again',
+			href: `/join/${page.query.get('id')}`
+		};
+	}
 
 	const metaTags = ((title = 'Access Denied - THAT') => ({
 		title,
@@ -43,10 +53,7 @@
 					title: 'View Activities',
 					href: '/activities'
 				}}
-				returnTo={{
-					title: 'Retry Joining',
-					href: `/join/${activityId}`
-				}}
+				{returnTo}
 			/>
 		</div>
 	</div>
