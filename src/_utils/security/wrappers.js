@@ -134,9 +134,7 @@ function auth0Wrapper(auth0fn) {
 		const res = new ResMimic();
 
 		return auth0fn(req, res, auth0FnOptions)
-			.then(() => {
-				return res.getSvelteResponse();
-			})
+			.then(() => res.getSvelteResponse())
 			.catch((error) => ({ status: 500, body: error }));
 	};
 }

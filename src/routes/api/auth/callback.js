@@ -11,6 +11,5 @@ const afterCallback = (req, res, session, state) => {
 
 export async function get(req, res) {
 	const results = await auth0.handleCallback(req, res, { afterCallback });
-
 	return results;
 }

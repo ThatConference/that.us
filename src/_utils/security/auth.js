@@ -88,9 +88,10 @@ export function initAuth0(config) {
 					const queryStr = loadParams.page.query.toString();
 					const returnUrl =
 						opts?.returnTo || `${loadParams.page.path}${queryStr ? '?' + queryStr : ''}`;
+
 					return {
 						status: 307,
-						redirect: `${loginUrl}?returnTo=${encodeURIComponent(returnUrl)}`
+						redirect: `${loginUrl}?returnTo=${returnUrl}`
 					};
 				}
 			};
