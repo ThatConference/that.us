@@ -1,8 +1,46 @@
 // import * as Sentry from '@sentry/browser';
 import { sequence } from '@sveltejs/kit/hooks';
 import auth0 from '$utils/security';
-import { QUERY_ME } from '$dataSources/api.that.tech/me';
 import wretch from 'wretch';
+
+const QUERY_ME = `
+		query getMe {
+			members {
+				me {
+					id
+					firstName
+					lastName
+					email
+					jobTitle
+					company
+					profileImage
+					profileSlug
+					profileLinks {
+						isPublic
+						linkType
+						url
+					}
+					earnedMeritBadges {
+						id
+						name
+						image
+						description
+					}
+					bio
+					canFeature
+					isOver13
+					acceptedCodeOfConduct
+					acceptedTermsOfService
+					acceptedAntiHarassmentPolicy
+					acceptedCommitmentToDiversity
+					isDeactivated
+					lifeHack
+					interests
+					isMember
+				}
+			}
+		}
+`;
 
 export async function customHeaders({ request, resolve }) {
 	const response = await resolve(request);
