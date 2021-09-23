@@ -8,6 +8,7 @@ function init(fetch, url) {
 	let _fetch = fetch || isoFetch;
 
 	let headers = {
+		credentials: 'include',
 		'Content-Type': 'application/json',
 		'that-site': 'that.us'
 		// 'that-correlation-id': createCorrelationId()
@@ -48,6 +49,7 @@ function init(fetch, url) {
 			method: 'POST',
 			credentials: 'include',
 			headers: {
+				credentials: 'include',
 				'Content-Type': 'application/json'
 			},
 			body: JSON.stringify({
@@ -69,6 +71,7 @@ function init(fetch, url) {
 		return _fetch(`${config.hostURL}/api/auth/proxy/`, {
 			method: 'POST',
 			headers: {
+				credentials: 'include',
 				'Content-Type': 'application/json'
 			},
 			body: JSON.stringify({
