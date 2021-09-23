@@ -29,8 +29,10 @@ async function afterCallback(req, res, session, state) {
 			Sentry.captureException(error);
 		});
 
+	console.log('wretch results', results);
 	session.thatProfile = results.data.members?.me;
 
+	console.log('session deets', session);
 	return session;
 }
 
