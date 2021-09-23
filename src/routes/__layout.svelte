@@ -132,11 +132,11 @@
 				email
 			});
 
-			woopra.identify({
-				id,
-				email,
-				name: `${firstName} ${lastName}`
-			});
+			// woopra.identify({
+			// 	id,
+			// 	email,
+			// 	name: `${firstName} ${lastName}`
+			// });
 		}
 	}
 
