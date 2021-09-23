@@ -1,7 +1,4 @@
-import fetch from 'node-fetch';
-import wretch from 'wretch';
-
-global.fetch = fetch;
+import fetch from 'isomorphic-fetch';
 
 const endpoint = `https://api.that.tech/graphql/`;
 
@@ -12,10 +9,13 @@ export async function post({ body, locals }) {
 		};
 	}
 
-	const results = await wretch(endpoint)
-		.auth(`Bearer ${locals.auth0Session.accessToken}`)
-		.post(body)
-		.json();
+	const results = await fetch(endpoint, {
+		headers: {
+			'Content-Type': 'application/json',
+			Authorization: `Bearer ${locals.auth0Session.accessToken}`
+		},
+		body: JSON.stringify(body)
+	}).then((r) => r.json());
 
 	return {
 		status: 200,
