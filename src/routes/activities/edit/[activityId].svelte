@@ -61,7 +61,7 @@
 		setSubmitting(true);
 		const { activity, type } = formatUpdate(values);
 
-		await updateSession(activityId, type, activity);
+		await updateSession(activity.id, type, activity);
 
 		logEvent('activity_updated');
 
@@ -69,7 +69,7 @@
 		resetForm();
 
 		if (activity.status === 'ACCEPTED') {
-			goto(`/activities/${activityId}?edit=true&isUpdated=true`);
+			goto(`/activities/${activity.id}?edit=true&isUpdated=true`);
 		} else {
 			goto(`/my/submissions`);
 		}
