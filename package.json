@@ -95,7 +95,6 @@
 		"tailwindcss": "^2.2.15",
 		"uuid": "^8.3.2",
 		"vite": "^2.5.10",
-		"wretch": "^1.7.6",
 		"xstate": "^4.25.0",
 		"xstate-svelte": "^1.0.1",
 		"yup": "^0.32.9"
@@ -105,5 +104,8 @@
 		"verbose": true,
 		"rootDir": "./src",
 		"coverageDirectory": "../__testCoverage__"
+	},
+	"dependencies": {
+		"wretch": "^1.7.6"
 	}
 }
