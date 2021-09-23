@@ -48,14 +48,15 @@ export async function user({ request, resolve }) {
 	request.locals.isAuthenticated = !!auth0Session?.user;
 	request.locals.user = auth0Session?.user || {};
 	request.locals.thatProfile = auth0Session?.thatProfile || {};
+	request.locals.accessToken = auth0Session?.accessToken || {};
 
 	const response = await resolve(request);
 	return response;
 }
 
 export function getSession(request) {
-	const { isAuthenticated, user, thatProfile } = request.locals;
-	return { isAuthenticated, user, thatProfile };
+	const { isAuthenticated, user, thatProfile, accessToken } = request.locals;
+	return { isAuthenticated, user, thatProfile, accessToken };
 }
 
 export async function handleError({ error, request }) {

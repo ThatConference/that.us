@@ -72,7 +72,6 @@
 
 	// https://jitsi.github.io/handbook/docs/dev-guide/dev-guide-iframe
 	function initJitsi() {
-		console.log('is this loading');
 		let toolButtonConfig = [
 			'microphone',
 			'camera',
