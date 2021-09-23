@@ -1,4 +1,4 @@
-import * as Sentry from '@sentry/node';
+import * as Sentry from '@sentry/browser';
 import { logging } from '$utils/config';
 
 Sentry.init({
