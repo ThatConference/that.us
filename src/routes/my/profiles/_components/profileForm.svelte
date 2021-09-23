@@ -18,7 +18,7 @@
 	import Tags from 'svelte-tags-input';
 	import * as yup from 'yup';
 	import Checkbox from 'svelte-checkbox';
-	import fetch from 'cross-fetch';
+	import fetch from 'isomorphic-fetch';
 	import lodash from 'lodash';
 	import omitDeep from 'omit-deep';
 

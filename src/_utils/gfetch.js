@@ -1,11 +1,11 @@
-import crossFetch from 'cross-fetch';
+import isoFetch from 'isomorphic-fetch';
 
 import loading from '$stores/loading';
 import config from '$utils/config';
 
 function init(fetch, url) {
 	let _url = url || config.api;
-	let _fetch = fetch || crossFetch;
+	let _fetch = fetch || isoFetch;
 
 	let headers = {
 		'Content-Type': 'application/json',
@@ -44,7 +44,7 @@ function init(fetch, url) {
 	function secureQuery({ query, variables = {} }) {
 		loading.set(true);
 
-		return _fetch('/api/auth/proxy/', {
+		return _fetch(`${config.hostURL}/api/auth/proxy/`, {
 			method: 'POST',
 			credentials: 'include',
 			headers: {
@@ -66,7 +66,7 @@ function init(fetch, url) {
 
 	function mutation({ mutation, variables = {} }) {
 		loading.set(true);
-		return _fetch('/api/auth/proxy/', {
+		return _fetch(`${config.hostURL}/api/auth/proxy/`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'

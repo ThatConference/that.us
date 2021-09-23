@@ -33,6 +33,7 @@
 	export let activityId;
 	export let activityDetails;
 
+	import { onMount } from 'svelte';
 	import { session } from '$app/stores';
 	import lodash from 'lodash';
 	import { goto } from '$app/navigation';
@@ -71,6 +72,7 @@
 
 	// https://jitsi.github.io/handbook/docs/dev-guide/dev-guide-iframe
 	function initJitsi() {
+		console.log('is this loading');
 		let toolButtonConfig = [
 			'microphone',
 			'camera',
@@ -245,14 +247,18 @@
 			nofollow: true
 		})
 	}))();
+
+	onMount(() => {
+		initJitsi();
+	});
 </script>
 
 <svelte:window on:resize={handleResize} />
 
-<svelte:head>
-	<script src="https://meet.jit.si/external_api.js" on:load={initJitsi}>
+<!-- <svelte:head>
+	<script defer async src="https://meet.jit.si/external_api.js" on:load={initJitsi}>
 	</script>
-</svelte:head>
+</svelte:head> -->
 
 <Seo title={metaTags.title} tags={metaTags.tags} />
 
