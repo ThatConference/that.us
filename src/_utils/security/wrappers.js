@@ -1,3 +1,10 @@
+import * as Sentry from '@sentry/node';
+import { logging } from '$utils/config';
+
+Sentry.init({
+	dsn: logging.dsn
+});
+
 function ensureLeadingSlash(path) {
 	return path.startsWith('/') ? path : `/${path}`;
 }
@@ -135,7 +142,12 @@ function auth0Wrapper(auth0fn) {
 
 		return auth0fn(req, res, auth0FnOptions)
 			.then(() => res.getSvelteResponse())
-			.catch((error) => ({ status: 500, body: error }));
+			.catch((error) => {
+				console.error('auth error', error);
+				Sentry.captureException(error, { req });
+
+				return { status: 500, body: error };
+			});
 	};
 }
 
