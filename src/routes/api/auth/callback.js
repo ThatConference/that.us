@@ -12,6 +12,7 @@ Sentry.init({
 const endpoint = `https://api.that.tech/graphql/`;
 
 async function afterCallback(req, res, session, state) {
+	console.log('in aftercallback');
 	let body = {
 		query: `
 		${QUERY_ME}
@@ -24,6 +25,7 @@ async function afterCallback(req, res, session, state) {
 		.post(body)
 		.json()
 		.catch((error) => {
+			console.error('wretch error', error);
 			Sentry.captureException(error);
 		});
 
@@ -33,9 +35,11 @@ async function afterCallback(req, res, session, state) {
 }
 
 export function get(req, res) {
+	console.log('in callback get');
 	try {
 		return auth0.handleCallback(req, { afterCallback });
 	} catch (error) {
+		console.error('callback error:', error);
 		Sentry.captureException(error, { req });
 		res.status(error.status || 400).end(error.message);
 	}
