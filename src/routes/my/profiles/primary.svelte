@@ -39,6 +39,7 @@
 	export let currentProfile;
 
 	import { goto } from '$app/navigation';
+	import { session } from '$app/stores';
 
 	import logEvent from '$utils/eventTrack';
 	import seoMetaTags from '$utils/seo/metaTags';
@@ -49,8 +50,19 @@
 
 	const { createProfile, updateProfile } = memberApi();
 
+	function updateSession(profile) {
+		session.update((s) => {
+			return {
+				...s,
+				thatProfile: updatedThatProfile
+			};
+		});
+	}
+
 	async function handleNew({ detail: { values, setSubmitting, resetForm } }) {
-		const updateResults = await createProfile({ profileLinks: [], ...values });
+		const updatedThatProfile = await createProfile({ profileLinks: [], ...values });
+
+		updateSession(updatedThatProfile);
 
 		logEvent('profile_created');
 
@@ -71,7 +83,9 @@
 		delete updatedProfile.acceptedCodeOfConduct;
 		delete updatedProfile.acceptedTermsOfService;
 
-		const updateResults = await updateProfile(updatedProfile);
+		const updatedThatProfile = await updateProfile(updatedProfile);
+
+		updateSession(updatedThatProfile);
 
 		logEvent('profile_update');
 
