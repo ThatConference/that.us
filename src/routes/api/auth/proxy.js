@@ -1,5 +1,7 @@
-import * as Sentry from '@sentry/browser';
+import nodeFetch from 'node-fetch;';
 import wretch from 'wretch';
+
+global.fetch = nodeFetch;
 
 const endpoint = `https://api.that.tech/graphql/`;
 

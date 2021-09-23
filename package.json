@@ -66,6 +66,7 @@
 		"marked": "^3.0.4",
 		"mdsvex": "^0.9.8",
 		"moment-timezone": "^0.5.33",
+		"node-fetch": "^3.0.0",
 		"omit-deep": "^0.3.0",
 		"postcss": "^8.3.7",
 		"postcss-cli": "^8.3.1",
@@ -95,6 +96,7 @@
 		"tailwindcss": "^2.2.15",
 		"uuid": "^8.3.2",
 		"vite": "^2.5.10",
+		"wretch": "^1.7.6",
 		"xstate": "^4.25.0",
 		"xstate-svelte": "^1.0.1",
 		"yup": "^0.32.9"
@@ -104,8 +106,5 @@
 		"verbose": true,
 		"rootDir": "./src",
 		"coverageDirectory": "../__testCoverage__"
-	},
-	"dependencies": {
-		"wretch": "^1.7.6"
 	}
 }

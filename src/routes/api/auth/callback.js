@@ -1,9 +1,12 @@
+import nodeFetch from 'node-fetch;';
 import wretch from 'wretch';
 import auth0 from '$utils/security';
 import * as Sentry from '@sentry/node';
 import { logging } from '$utils/config';
 
 import { QUERY_ME } from '$dataSources/api.that.tech/me';
+
+global.fetch = nodeFetch;
 
 Sentry.init({
 	dsn: logging.dsn
