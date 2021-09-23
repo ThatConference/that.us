@@ -249,7 +249,7 @@
 									</ul>
 									<div class="mt-8">
 										<div class="flex flex-col">
-											<StandardButton on:click={() => navigateTo('/signup')}>
+											<StandardButton on:click={() => goto('/signup')}>
 												Create an Account
 											</StandardButton>
 										</div>
