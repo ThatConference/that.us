@@ -1,12 +1,9 @@
-import fetch from 'node-fetch';
-import wretch from 'wretch';
 import auth0 from '$utils/security';
 import * as Sentry from '@sentry/node';
 import { logging } from '$utils/config';
+import fetch from 'isomorphic-fetch';
 
 import { QUERY_ME } from '$dataSources/api.that.tech/me';
-
-global.fetch = fetch;
 
 Sentry.init({
 	dsn: logging.dsn
@@ -24,9 +21,15 @@ async function afterCallback(req, res, session, state) {
 	};
 
 	try {
-		const results = await wretch(endpoint).auth(`Bearer ${session.accessToken}`).post(body).json();
+		const results = await fetch(endpoint, {
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: `Bearer ${session.accessToken}`
+			},
+			body: JSON.stringify(body)
+		}).then((r) => r.json());
 
-		console.log('wretch results', results);
+		console.log('fetch results', results);
 		session.thatProfile = results.data.members?.me;
 
 		console.log('session deets', session);
