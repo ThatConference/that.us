@@ -1,16 +1,10 @@
-import * as Sentry from '@sentry/browser';
+import * as Sentry from '@sentry/node';
 import { sequence } from '@sveltejs/kit/hooks';
 import auth0 from '$utils/security';
-import { Integrations } from '@sentry/tracing';
-import config, { logging } from '$utils/config';
+import { logging } from '$utils/config';
 
 Sentry.init({
-	dsn: logging.dsn,
-	release: config.version,
-	environment: logging.environment,
-	debug: false,
-	attachStacktrace: true,
-	integrations: [new Integrations.BrowserTracing()]
+	dsn: logging.dsn
 });
 
 export async function customHeaders({ request, resolve }) {

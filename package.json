@@ -27,6 +27,7 @@
 		"@fullhuman/postcss-purgecss": "^4.0.3",
 		"@okrad/svelte-progressbar": "^1.11.2",
 		"@sentry/browser": "^6.13.2",
+		"@sentry/node": "^6.13.2",
 		"@sentry/tracing": "^6.13.2",
 		"@stripe/stripe-js": "^1.18.0",
 		"@sveltejs/adapter-node": "next",
