@@ -3,6 +3,7 @@
 	export let profile;
 	export let isNewProfile;
 
+	import { session } from '$app/stores';
 	import Icon from 'svelte-awesome';
 	import {
 		linkedin,
@@ -261,11 +262,10 @@
 		const formData = new FormData();
 		formData.append('file', profilePhoto.currentTarget.files[0]);
 
-		// todo.. WTF do we do here?!?!?
 		const res = await fetch(config.profileImageApi, {
 			method: 'POST',
 			headers: {
-				Authorization: `Bearer ${'BROKEN'}`
+				Authorization: `Bearer ${$session.accessToken}`
 			},
 			body: formData
 		});
