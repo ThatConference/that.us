@@ -23,6 +23,7 @@ async function afterCallback(req, res, session, state) {
 		const results = await fetch(endpoint, {
 			method: 'POST',
 			headers: {
+				credentials: 'include',
 				'Content-Type': 'application/json',
 				Authorization: `Bearer ${session.accessToken}`
 			},

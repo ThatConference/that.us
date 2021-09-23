@@ -12,6 +12,7 @@ export async function post({ body, locals }) {
 	const results = await fetch(endpoint, {
 		method: 'POST',
 		headers: {
+			credentials: 'include',
 			'Content-Type': 'application/json',
 			Authorization: `Bearer ${locals.auth0Session.accessToken}`
 		},
