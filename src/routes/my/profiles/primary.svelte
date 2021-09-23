@@ -54,7 +54,7 @@
 		session.update((s) => {
 			return {
 				...s,
-				thatProfile: updatedThatProfile
+				thatProfile: profile
 			};
 		});
 	}
