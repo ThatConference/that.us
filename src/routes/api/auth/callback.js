@@ -20,20 +20,20 @@ async function afterCallback(req, res, session, state) {
 		variables: {}
 	};
 
-	const results = await wretch(endpoint)
-		.auth(`Bearer ${session.accessToken}`)
-		.post(body)
-		.json()
-		.catch((error) => {
-			console.error('wretch error', error);
-			Sentry.captureException(error);
-		});
+	try {
+		const results = await wretch(endpoint).auth(`Bearer ${session.accessToken}`).post(body).json();
 
-	console.log('wretch results', results);
-	session.thatProfile = results.data.members?.me;
+		console.log('wretch results', results);
+		session.thatProfile = results.data.members?.me;
 
-	console.log('session deets', session);
-	return session;
+		console.log('session deets', session);
+		return session;
+	} catch (error) {
+		console.error('Fetch Call Error', error);
+		Sentry.captureException(error, { req });
+
+		return session;
+	}
 }
 
 export function get(req, res) {
