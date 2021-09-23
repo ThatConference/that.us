@@ -6,6 +6,7 @@ function configMissing(configKey) {
 }
 
 export default {
+	hostURL: import.meta.env.VITE_HOST_URL || 'https://that.us',
 	nodeEnv: process.env.NODE_ENV,
 	version,
 	eventId: 'YWavA70szR8rxSwrLJaL',
