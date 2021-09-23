@@ -1,7 +1,7 @@
-import nodeFetch from 'node-fetch;';
+import fetch from 'node-fetch';
 import wretch from 'wretch';
 
-global.fetch = nodeFetch;
+global.fetch = fetch;
 
 const endpoint = `https://api.that.tech/graphql/`;
 
