@@ -88,6 +88,7 @@
 		"svelte-infinite-scroll": "^2.0.0",
 		"svelte-loading-spinners": "^0.1.7",
 		"svelte-preprocess": "^4.9.5",
+		"svelte-scrollto": "^0.2.0",
 		"svelte-select": "^4.4.3",
 		"svelte-tags-input": "^2.8.0",
 		"svelte-typewriter": "^2.4.5",

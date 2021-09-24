@@ -2,6 +2,7 @@
 	export let event;
 
 	import dayjs from 'dayjs';
+	import { scrollto } from 'svelte-scrollto';
 
 	import { StandardScroll } from '$elements/links';
 	import { Shell } from '$elements/buttons';
@@ -30,32 +31,36 @@
 
 			<div class="relative p-8 flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
 				<div class="flex-1 rounded-md shadow">
-					<StandardScroll href="#tickets">
-						<span class="font-extrabold uppercase">Tickets</span>
-					</StandardScroll>
+					<a use:scrollto={'#tickets'}>
+						<Shell>
+							<span class="font-extrabold uppercase">Tickets</span>
+						</Shell>
+					</a>
 				</div>
 
 				<div class="flex-1 rounded-md shadow">
-					<StandardScroll href="#sponsors">
-						<span class="font-extrabold uppercase">Sponsorships</span>
-					</StandardScroll>
+					<a use:scrollto={'#sponsors'}>
+						<Shell>
+							<span class="font-extrabold uppercase">Sponsorships</span>
+						</Shell>
+					</a>
 				</div>
 
 				<div class="flex-1 rounded-md shadow">
-					<Shell>
-						<a href="/support/travel">
+					<a href="/support/travel">
+						<Shell>
 							<div class="px-4 py-2 font-extrabold uppercase">Travel</div>
-						</a>
-					</Shell>
+						</Shell>
+					</a>
 				</div>
 
 				{#if event.isCallForSpeakersOpen === true}
 					<div class="flex-1 rounded-md shadow">
-						<Shell>
-							<a href={`/call-for-counselors/${event.slug}/`}>
+						<a href={`/call-for-counselors/${event.slug}/`}>
+							<Shell>
 								<div class="px-4 py-2 font-extrabold uppercase">Call For Counselors</div>
-							</a>
-						</Shell>
+							</Shell>
+						</a>
 					</div>
 				{:else}
 					<div class="flex-1 rounded-md shadow">

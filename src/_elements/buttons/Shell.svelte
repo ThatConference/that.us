@@ -4,7 +4,7 @@
 		text-base leading-6 md:text-lg font-medium text-thatBlue-500 
 		hover:bg-thatBlue-500 hover:text-white 
 		focus:bg-thatBlue-500 focus:text-white focus:outline-none focus:ring-thatBlue-500 focus:border-thatBlue-800 
-		transition duration-150 ease-in-out"
+		transition duration-150 ease-in-out cursor-pointer"
 >
 	<div class="h-full flex items-center justify-center">
 		<slot />

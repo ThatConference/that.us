@@ -1,22 +1,21 @@
 <script>
 	export let href;
+
+	import { scrollto } from 'svelte-scrollto';
 </script>
 
 <!-- svelte-ignore a11y-missing-attribute -->
 <!-- svelte-ignore missing-declaration -->
-<div class="h-full w-full flex">
-	<a
-		{href}
-		class="flex-grow px-4 py-2 
-      rounded-md shadow text-base leading-6 font-medium md:text-lg border-2 
-      bg-white  
-      border-thatBlue-500 text-thatBlue-500 
-      hover:bg-thatBlue-500 hover:text-white 
-      focus:bg-thatBlue-500 focus:text-white focus:outline-none focus:ring-thatBlue-500 focus:border-thatBlue-800 
-      transition duration-150 ease-in-out"
-	>
-		<div class="h-full flex items-center justify-center">
-			<slot />
-		</div>
-	</a>
-</div>
+
+<a
+	use:scrollto={href}
+	class="px-8 py-2 rounded-md shadow text-base leading-6 font-medium border-2
+    border-thatBlue-500 text-thatBlue-500 bg-white hover:bg-thatBlue-500
+    hover:text-white focus:bg-thatBlue-500 focus:text-white focus:outline-none
+    focus:ring-thatBlue-500 focus:border-thatBlue-800 transition
+    duration-150 ease-in-out md:text-lg md:px-10"
+>
+	<span>
+		<slot />
+	</span>
+</a>
