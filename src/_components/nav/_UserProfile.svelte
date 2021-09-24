@@ -129,13 +129,6 @@
 					>
 						Login
 					</a>
-					<button
-						on:click={() => goto('/login/')}
-						class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer"
-					>
-						Login GoTo
-					</button>
-
 					<a
 						href="/api/auth/signup"
 						class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer"
