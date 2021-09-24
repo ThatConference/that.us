@@ -11,7 +11,7 @@
 		const activityDetails = await querySessionById(activityId);
 
 		if (activityDetails) {
-			hasAccess = await canAccessEvent(activityDetails.eventId);
+			let hasAccess = await canAccessEvent(activityDetails.eventId);
 			if (!hasAccess) {
 				return {
 					status: 401,
