@@ -96,7 +96,7 @@ export function initAuth0(config) {
 					} else {
 						// No load function passed, so just populate user prop
 						return {
-							context: { user, isAuthenticated },
+							stuff: { user, isAuthenticated },
 							props: { user, isAuthenticated }
 						};
 					}

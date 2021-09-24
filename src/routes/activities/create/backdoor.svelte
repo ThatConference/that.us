@@ -1,8 +1,8 @@
 <script context="module">
-	export async function load({ context }) {
+	export async function load({ stuff }) {
 		return {
 			props: {
-				...context
+				...stuff
 			}
 		};
 	}

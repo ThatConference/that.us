@@ -14,7 +14,7 @@
 			props: {
 				event
 			},
-			context: {
+			stuff: {
 				event
 			}
 		};
