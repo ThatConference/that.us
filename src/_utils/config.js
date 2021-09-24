@@ -32,6 +32,7 @@ export const securityConfig = () => {
 			scope: import.meta.env.VITE_AUTH0_SCOPE || 'openid profile email offline_access',
 			audience: import.meta.env.VITE_AUTH0_AUDIENCE || 'https://api.that.tech/graphql'
 		},
+
 		routes: {
 			login: '/login',
 			callback: '/api/auth/callback',
