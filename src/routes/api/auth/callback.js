@@ -34,7 +34,7 @@ async function afterCallback(req, res, session, state) {
 
 export function get(req, res) {
 	try {
-		return auth0.handleCallback(req);
+		return auth0.handleCallback(req, { afterCallback });
 	} catch (error) {
 		console.error('error in handle callback', error);
 		res.status(error.status || 400).end(error.message);

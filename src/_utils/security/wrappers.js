@@ -124,9 +124,6 @@ class ResMimic {
 		}
 
 		const body = this.bodyObj ? this.bodyObj : this.bodyStr;
-
-		console.log('GET RESPONSE', status, headers, body);
-
 		return { status, headers, body };
 	}
 }
