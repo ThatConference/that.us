@@ -41,9 +41,11 @@ async function afterCallback(req, res, session, state) {
 }
 
 export function get(req, res) {
+	console.log('handle callback req', req);
 	try {
 		return auth0.handleCallback(req, { afterCallback });
 	} catch (error) {
+		console.error('error in handle callback', error);
 		Sentry.captureException(error, { req });
 		res.status(error.status || 400).end(error.message);
 	}
