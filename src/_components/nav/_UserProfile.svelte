@@ -129,6 +129,18 @@
 						Login
 					</a>
 					<a
+						href="/login"
+						class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer"
+					>
+						Login /
+					</a>
+					<a
+						href="https://feature.that.us/login"
+						class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer"
+					>
+						Login full
+					</a>
+					<a
 						href="/api/auth/signup"
 						class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer"
 					>
