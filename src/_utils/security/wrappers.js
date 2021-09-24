@@ -141,7 +141,10 @@ function auth0Wrapper(auth0fn) {
 		const res = new ResMimic();
 
 		return auth0fn(req, res, auth0FnOptions)
-			.then(() => res.getSvelteResponse())
+			.then(() => {
+				console.log('auth0fn ran');
+				return res.getSvelteResponse();
+			})
 			.catch((error) => {
 				console.error('auth error', error);
 				Sentry.captureException(error, { req });
