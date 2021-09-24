@@ -26,7 +26,7 @@ export const securityConfig = () => {
 	const config = {
 		clientID: import.meta.env.VITE_AUTH0_CLIENT_ID || configMissing('VITE_AUTH0_CLIENT_ID'),
 		baseURL: import.meta.env.VITE_AUTH0_BASE_URL || `https://that.us`,
-		issuerBaseURL: import.meta.env.VITE_AUTH0_ISSUER_BASE_URL || `https://auth.that.tech`,
+		issuerBaseURL: `https://auth.that.tech`,
 
 		authorizationParams: {
 			scope: import.meta.env.VITE_AUTH0_SCOPE || 'openid profile email offline_access',
@@ -40,6 +40,11 @@ export const securityConfig = () => {
 			postLogoutRedirectUri:
 				import.meta.env.VITE_POST_LOGOUT_REDIRECT_URI ||
 				configMissing('VITE_POST_LOGOUT_REDIRECT_URI')
+		},
+		session: {
+			cookie: {
+				sameSite: 'none'
+			}
 		}
 	};
 
