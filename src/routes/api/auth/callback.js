@@ -20,15 +20,19 @@ async function afterCallback(req, res, session, state) {
 	};
 
 	try {
+		console.log('in afterCallback');
 		const results = await fetch(endpoint, {
 			method: 'POST',
 			headers: {
-				credentials: 'include',
 				'Content-Type': 'application/json',
 				Authorization: `Bearer ${session.accessToken}`
 			},
 			body: JSON.stringify(body)
-		}).then((r) => r.json());
+		})
+			.then((r) => r.json())
+			.catch((error) => {
+				console.error('ERROR After Callback Fetching THAT Profile', error);
+			});
 
 		session.thatProfile = results.data.members?.me;
 		return session;
