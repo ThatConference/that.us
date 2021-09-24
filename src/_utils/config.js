@@ -34,8 +34,8 @@ export const securityConfig = () => {
 		},
 
 		routes: {
-			login: '/login',
-			callback: '/api/auth/callback',
+			login: 'https://feature.that.us/login',
+			callback: 'https://feature.that.us/api/auth/callback',
 			redirectUri: import.meta.env.VITE_REDIRECT_URI || configMissing('VITE_REDIRECT_URI'),
 			postLogoutRedirectUri:
 				import.meta.env.VITE_POST_LOGOUT_REDIRECT_URI ||
