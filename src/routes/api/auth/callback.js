@@ -32,11 +32,6 @@ async function afterCallback(req, res, session, state) {
 	}
 }
 
-export function get(req, res) {
-	try {
-		return auth0.handleCallback(req, { afterCallback });
-	} catch (error) {
-		console.error('error in handle callback', error);
-		return res.redirect(302, 'https://feature.that.us/');
-	}
+export function get(req) {
+	return auth0.handleCallback(req, { afterCallback });
 }
