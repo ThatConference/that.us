@@ -137,10 +137,12 @@ function auth0Wrapper(auth0fn) {
 			.then(() => res.getSvelteResponse())
 			.catch((error) => {
 				console.error('auth error', error);
+				console.log('req', req);
+
 				return {
 					status: 302,
 					headers: {
-						location: '/'
+						location: req.url
 					}
 				};
 			});
