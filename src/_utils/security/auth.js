@@ -64,7 +64,6 @@ export function initAuth0(config) {
 						const [provider] = user?.sub.split('|');
 						if (provider !== 'twitter') {
 							if (!user.email_verified) {
-								console.log('go home willis');
 								return {
 									status: 307,
 									redirect: `/verify-account`

@@ -111,6 +111,7 @@ class ResMimic {
 	json(bodyObj) {
 		this.bodyObj = bodyObj;
 		this.setHeader('content-type', 'application/json');
+		this.setHeader('credentials', 'include');
 
 		return this;
 	}
@@ -137,13 +138,8 @@ function auth0Wrapper(auth0fn) {
 			.then(() => res.getSvelteResponse())
 			.catch((error) => {
 				console.error('auth error', error);
-				console.log('req', req);
-
 				return {
-					status: 302,
-					headers: {
-						location: req.url
-					}
+					status: 500
 				};
 			});
 	};
