@@ -43,7 +43,7 @@
 
 	export async function load({}) {
 		return {
-			context: {
+			stuff: {
 				correlationId
 			},
 			props: {

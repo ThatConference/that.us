@@ -63,7 +63,7 @@
 			const events = await queryEventsByCommunity();
 
 			return {
-				context: {
+				stuff: {
 					events,
 					activeEvents: transformEvents(events, eventId, isBackdoor),
 					isBackdoor,

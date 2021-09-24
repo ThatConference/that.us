@@ -51,7 +51,7 @@
 			]);
 
 			return {
-				context: {
+				stuff: {
 					activityDetails,
 					events,
 					activeEvents: transformEvents(events, activityDetails.eventId, true),

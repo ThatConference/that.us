@@ -1,8 +1,8 @@
 <script context="module">
-	export async function load({ page, fetch, context }) {
+	export async function load({ page, fetch, stuff }) {
 		return {
 			props: {
-				...context
+				...stuff
 			}
 		};
 	}

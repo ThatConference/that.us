@@ -1,10 +1,10 @@
 <script context="module">
-	export async function load({ page, context }) {
+	export async function load({ page, stuff }) {
 		//todo: we need to get this from some config somewhere or better yet an api
 		const upNextHybridEvent = `OlyDhUyrp2DI9babqZO9`;
 
 		const eventId = page.query.has('event') ? page.query.get('event') : upNextHybridEvent;
-		const selectedEvent = context.events.find((i) => i.id === eventId);
+		const selectedEvent = stuff.events.find((i) => i.id === eventId);
 
 		const activeEvents = {
 			daily: [],
@@ -15,7 +15,7 @@
 
 		return {
 			props: {
-				...context,
+				...stuff,
 				activeEvents,
 				eventId,
 				isCallForSpeakersOpen: selectedEvent.isCallForSpeakersOpen
