@@ -1,5 +1,8 @@
 import { initAuth0 as origInitAuth0 } from '@auth0/nextjs-auth0';
 import { auth0Wrapper, auth0WrapperJson } from './wrappers';
+import lodash from 'lodash';
+
+const { isNil, isEmpty } = lodash;
 
 export function initAuth0(config) {
 	const auth0 = origInitAuth0(config);
@@ -53,9 +56,22 @@ export function initAuth0(config) {
 		withPageAuthRequired(opts) {
 			return (loadParams) => {
 				const isAuthenticated = loadParams.session?.isAuthenticated;
-
 				if (isAuthenticated) {
 					const user = loadParams.session?.user;
+
+					// validate account is verified
+					if (!isNil(user) && !isEmpty(user)) {
+						const [provider] = user?.sub.split('|');
+						if (provider !== 'twitter') {
+							if (!user.email_verified) {
+								console.log('go home willis');
+								return {
+									status: 307,
+									redirect: `/verify-account`
+								};
+							}
+						}
+					}
 
 					if (opts?.load && typeof opts?.load === 'function') {
 						const loadResult = opts?.load(loadParams);
