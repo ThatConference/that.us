@@ -7,7 +7,7 @@ const { isNil, isEmpty } = lodash;
 export function initAuth0(config) {
 	const auth0 = origInitAuth0(config);
 	const getSession = auth0WrapperJson((req, res) => auth0.getSession(req, res));
-	const loginUrl = config?.routes?.login || '/api/auth/login';
+	const loginUrl = config?.routes?.login || '/login/';
 
 	return {
 		getSession: getSession,
