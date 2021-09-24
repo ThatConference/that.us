@@ -37,6 +37,6 @@ export function get(req, res) {
 		return auth0.handleCallback(req, { afterCallback });
 	} catch (error) {
 		console.error('error in handle callback', error);
-		return res.redirect('/').end();
+		return res.redirect(302, 'https://feature.that.us/');
 	}
 }
