@@ -45,9 +45,9 @@ export const securityConfig = () => {
 
 	// private to server
 	if (!browser) {
-		config.clientSecret =
-			process.env['AUTH0_CLIENT_SECRET'] || configMissing('AUTH0_CLIENT_SECRET');
-
+		(config.baseURL = process.env['AUTH0_BASE_URL'] || `https://that.us`),
+			(config.clientSecret =
+				process.env['AUTH0_CLIENT_SECRET'] || configMissing('AUTH0_CLIENT_SECRET'));
 		config.secret = process.env['AUTH0_SECRET'] || configMissing('AUTH0_CLIENT_SECRET');
 	}
 
