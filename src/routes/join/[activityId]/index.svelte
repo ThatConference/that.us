@@ -233,14 +233,14 @@
 		}
 	}
 
-	const metaTags = ((title = 'Join In - THAT') => ({
+	const metaTags = ((title = activityDetails?.title || 'Join In - THAT') => ({
 		title,
 		tags: seoMetaTags({
 			title,
 			description: 'Join in the conversation today.',
 			openGraph: {
 				type: 'website',
-				url: `https://that.us/join`
+				url: `https://that.us/join/${activityId}`
 			},
 			noindex: true,
 			nofollow: true
