@@ -54,13 +54,13 @@
 
 	export const load = auth0.withPageAuthRequired({
 		load: async function load({ page, fetch }) {
-			const { queryEvents } = eventsApi(fetch);
+			const { queryEventsByCommunity } = eventsApi(fetch);
 
 			const isBackdoor =
 				page.path === '/activities/create/backdoor/' || page.path === '/activities/create/backdoor';
 
 			const eventId = page.query.has('event') ? page.query.get('event') : config.eventId;
-			const events = await queryEvents().then((r) => r.filter((i) => i.community === 'that'));
+			const events = await queryEventsByCommunity();
 
 			return {
 				context: {
