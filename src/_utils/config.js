@@ -40,6 +40,11 @@ export const securityConfig = () => {
 			postLogoutRedirectUri:
 				import.meta.env.VITE_POST_LOGOUT_REDIRECT_URI ||
 				configMissing('VITE_POST_LOGOUT_REDIRECT_URI')
+		},
+		session: {
+			cookie: {
+				secure: false
+			}
 		}
 	};
 
