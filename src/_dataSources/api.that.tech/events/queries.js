@@ -205,13 +205,39 @@ export const QUERY_EVENT_FOR_CFP = `
 `;
 
 export const QUERY_EVENTS_BY_COMMUNITY = `
-	${eventFieldsFragment}
 	query QUERY_EVENTS_BY_COMMUNITY ($slug: Slug) {
 		communities {
 			community (findBy: {slug: $slug}) {
 				get {
 					events {
-						...eventFields
+						id
+						name
+						description
+						slogan
+						type  
+						startDate
+						endDate
+						year
+						slug
+						community
+						isFeatured
+						isActive
+						logo
+						callForSpeakersOpenDate
+						callForSpeakersCloseDate
+						isCallForSpeakersOpen
+						
+						theme { 
+							heroSlug
+						}
+
+						venues {
+							name
+							address
+							city
+							state
+							zip
+						}
 					}  
 				}
 			}

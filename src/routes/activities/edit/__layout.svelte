@@ -42,12 +42,12 @@
 		load: async function load({ page, fetch }) {
 			const { activityId } = page.params;
 
-			const { queryEvents } = eventsApi(fetch);
+			const { queryEventsByCommunity } = eventsApi(fetch);
 			const { queryMySessionById } = sessionsQueryApi(fetch);
 
 			const [activityDetails, events] = await Promise.all([
 				queryMySessionById(activityId),
-				queryEvents().then((r) => r.filter((i) => i.community === 'that'))
+				queryEventsByCommunity()
 			]);
 
 			return {

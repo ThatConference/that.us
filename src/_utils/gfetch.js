@@ -1,3 +1,4 @@
+import * as Sentry from '@sentry/browser';
 import isoFetch from 'isomorphic-fetch';
 
 import loading from '$stores/loading';
@@ -39,6 +40,9 @@ function init(fetch, url) {
 			.then((r) => {
 				loading.set(false);
 				return r;
+			})
+			.catch((error) => {
+				Sentry.captureException(error);
 			});
 	}
 
@@ -63,6 +67,9 @@ function init(fetch, url) {
 			.then((r) => {
 				loading.set(false);
 				return r;
+			})
+			.catch((error) => {
+				Sentry.captureException(error);
 			});
 	}
 
@@ -85,6 +92,9 @@ function init(fetch, url) {
 			.then((r) => {
 				loading.set(false);
 				return r;
+			})
+			.catch((error) => {
+				Sentry.captureException(error);
 			});
 	}
 

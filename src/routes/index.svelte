@@ -6,7 +6,7 @@
 
 	export async function load({ page, fetch, session, context }) {
 		const { queryMembers } = membersApi(fetch);
-		const { queryEvents, queryEventForCfp } = eventsApi(fetch);
+		const { queryEventsByCommunity, queryEventForCfp } = eventsApi(fetch);
 		const { queryCommunityStats } = statsApi(fetch);
 		const { querySessionsByDate } = sessionsApi(fetch);
 
@@ -16,7 +16,7 @@
 
 		const [members, events, stats, nextHybridEvent, activitiesUpNext] = await Promise.all([
 			queryMembers(15),
-			queryEvents().then((r) => r.filter((i) => i.community === 'that')),
+			queryEventsByCommunity(),
 			queryCommunityStats(),
 			queryEventForCfp('tx/2022'),
 			querySessionsByDate({ pageSize: 6 })
