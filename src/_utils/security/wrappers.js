@@ -133,12 +133,11 @@ function auth0Wrapper(auth0fn) {
 		const req = mkReq(param);
 		const res = new ResMimic();
 
-		return auth0fn(req, res, auth0FnOptions)
-			.then(() => res.getSvelteResponse())
-			.catch((error) => {
-				console.error('auth error', error);
-				return { status: 500, body: error };
-			});
+		return auth0fn(req, res, auth0FnOptions).then(() => res.getSvelteResponse());
+		// .catch((error) => {
+		// 	console.error('auth error', error);
+		// 	return { status: 500, body: error };
+		// });
 	};
 }
 
