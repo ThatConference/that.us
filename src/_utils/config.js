@@ -36,7 +36,7 @@ export const securityConfig = () => {
 		routes: {
 			login: '/login/',
 			callback: '/api/auth/callback/',
-			redirectUri: `${import.meta.env.VITE_REDIRECT_URI}/` || configMissing('VITE_REDIRECT_URI'),
+			redirectUri: import.meta.env.VITE_REDIRECT_URI || configMissing('VITE_REDIRECT_URI'),
 			postLogoutRedirectUri:
 				import.meta.env.VITE_POST_LOGOUT_REDIRECT_URI ||
 				configMissing('VITE_POST_LOGOUT_REDIRECT_URI')
@@ -45,7 +45,7 @@ export const securityConfig = () => {
 
 	// private to server
 	if (!browser) {
-		(config.baseURL = process.env['AUTH0_BASE_URL'] || `https://that.us`),
+		(config.baseURL = process.env['AUTH0_BASE_URL'] || 'https://that.us'),
 			(config.clientSecret =
 				process.env['AUTH0_CLIENT_SECRET'] || configMissing('AUTH0_CLIENT_SECRET'));
 		config.secret = process.env['AUTH0_SECRET'] || configMissing('AUTH0_CLIENT_SECRET');
