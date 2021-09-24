@@ -37,6 +37,6 @@ export function get(req, res) {
 		return auth0.handleCallback(req, { afterCallback });
 	} catch (error) {
 		console.error('error in handle callback', error);
-		res.redirect(301, '/');
+		return res.redirect('/').end();
 	}
 }
