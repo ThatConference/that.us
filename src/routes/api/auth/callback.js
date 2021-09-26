@@ -33,6 +33,5 @@ async function afterCallback(req, res, session, state) {
 }
 
 export function get(req) {
-	console.log('handle callback api was called');
 	return auth0.handleCallback(req, { afterCallback });
 }
