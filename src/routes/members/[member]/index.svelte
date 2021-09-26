@@ -2,17 +2,23 @@
 	import memberQueryApi from '$dataSources/api.that.tech/members/queries';
 	import meQueryApi from '$dataSources/api.that.tech/me/queries';
 
-	export async function load({ page, fetch }) {
+	export async function load({ page, fetch, session }) {
 		const { queryMemberBySlug, queryFollowers } = memberQueryApi(fetch);
 		const { queryMeFollowingMembers } = meQueryApi(fetch);
 
 		let member = page.params.member;
 
-		let [profile, followers, myFollowers] = await Promise.all([
-			queryMemberBySlug(member),
-			queryFollowers(member),
-			queryMeFollowingMembers()
-		]);
+		let [profile, followers, myFollowers = []] = await (async () => {
+			if (session.isAuthenticated) {
+				return await Promise.all([
+					queryMemberBySlug(member),
+					queryFollowers(member),
+					queryMeFollowingMembers()
+				]);
+			} else {
+				return await Promise.all([queryMemberBySlug(member), queryFollowers(member)]);
+			}
+		})();
 
 		return {
 			props: {
