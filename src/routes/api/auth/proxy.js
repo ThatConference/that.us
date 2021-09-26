@@ -17,7 +17,15 @@ export async function post({ body, locals }) {
 			Authorization: `Bearer ${locals.auth0Session.accessToken}`
 		},
 		body: JSON.stringify(body)
-	}).then((r) => r.json());
+	})
+		.then((r) => r.json())
+		.catch((error) => {
+			console.error('PROXY POST ERROR', error);
+			return {
+				status: 500,
+				body: error.message
+			};
+		});
 
 	return {
 		status: 200,
