@@ -1,0 +1,112 @@
+[
+	{
+		"question": "I have a cool idea for THAT.us, where can I submit it?",
+		"answer": "THAT.us is a fully open source project located on <a class='underline hover:no-underline hover:font-semibold' target='_blank' href='https://github.com/ThatConference/that.us'>GitHub</a>. Feel free to add a feature request or send your idea directly to <a class='underline hover:no-underline hover:font-semibold' href='mailto:hello@thatconference.com'>hello@thatconference.com</a>. We are accepting pull requests too!",
+		"category": "general"
+	},
+	{
+		"question": "You have the best swag, where can I get some?",
+		"answer": "THAT Conference official merch. is available at <a class='underline hover:no-underline hover:font-semibold' href='https://store.thatconference.com'>https://store.thatconference.com</a> 🧢 👕",
+		"category": "general"
+	},
+	{
+		"question": "How do I get invited to THAT Slack?",
+		"answer": "Go to <a class='underline hover:no-underline hover:font-semibold' target='_blank' href='https://thatslack.thatconference.com'>https://thatslack.thatconference.com</a> to get signed up",
+		"category": "general"
+	},
+	{
+		"question": "I don't see my question here, how do I get my question answered?",
+		"answer": "Click the chat bubble at the bottom of the page to speak with us, join one of Clark's Open Office Hour Activities, or send an email to hello@thatconference.com. We look forward to hearing from you!",
+		"category": "general"
+	},
+	{
+		"question": "What is an activity?",
+		"answer": " Activities are scheduled gatherings you and others create for a multitude of reasons. The format of an activity is simple, a video call in the browser with no tools required. Every Activity has a chat window, you're able to share your desktop; your webcam and microphone are enabled.",
+		"category": "activities"
+	},
+	{
+		"question": "How do I know what activities are happening?",
+		"answer": "<a class='underline hover:no-underline hover:font-semibold' href='https://that.us/activities'>THAT Board</a> is the central place for ALL activities happening. Their is also an <a class='underline hover:no-underline hover:font-semibold' href='https://bit.ly/2YRdVxy'>iCal feed</a> available for you to add to your personal calendar too.",
+		"category": "activities"
+	},
+	{
+		"question": "How do I join an activity?",
+		"answer": "The most direct way to join an activity is to click the join button of the activity on <a class='underline hover:no-underline hover:font-semibold' href='https://that.us/activities'>THAT Board</a>. For more details on joining activities visit this <a class='underline hover:no-underline hover:font-semibold' href='https://that.ussupport/'>help page</a>.",
+		"category": "activities"
+	},
+	{
+		"question": "What is the online etiquette for a successful Activity?",
+		"answer": "<div>This etiquette list was formed from a community Activity to get feedback for the best online etiquette. These are the top items from that gathering.</div><ul class='faq-list'><li>Always be nice</li><li>Raise hand to speak 🙋‍♀️</li><li>Mute yourself when not speaking</li><li>Speak up so others can hear you</li><li>Turn your camera on so everyone else knows you're not a cyborg 📹</li><li>Be careful not to speak over or interrupt others while they are speaking</li><li>Use care with humor. If you feel the need to use humor during meetings, make sure that it's appropriate for your audience. THAT serves a global audience and sometimes while many speak English not everything translates well.</li><li>Don't eat while speaking. Eating while listening, muted is fine.</li><li>Keep your cool 😎.</li><li>Dress appropriately 👕</li></ul>",
+		"category": "activities"
+	},
+	{
+		"question": "What makes a good activity?",
+		"answer": "Almost anything makes a good Activity. A few examples are: Presentations, code reviews, Q & A sessions, panel discussion, AMA's, get a group together to figure out an issue, office hours, open space, or just to chat. You decide on the subject. Remember it must conform to our <a class='underline hover:no-underline hover:font-semibold' target='_blank' href='https://www.thatconference.com/terms-of-use'>Terms of Use</a> and <a class='underline hover:no-underline hover:font-semibold' target='_blank' href='https://www.thatconference.com/anti-harassment-policy'>Anti-Harassment</a> policies.",
+		"category": "activities"
+	},
+	{
+		"question": "Who can add new activities?",
+		"answer": "Anybody! Anybody with a public THAT account that is. As long as you have a THAT account and make it public, so others can see who you are, you can add an Activity to THAT.us. And ensure you follow our <a class='underline hover:no-underline hover:font-semibold' target='_blank' href='https://www.thatconference.com/code-of-conduct'>Code of Conduct</a>",
+		"category": "activities"
+	},
+	{
+		"question": "How do I create an activity?",
+		"answer": "Creating an activity is easy and straight forward. Head on over to this <a class='underline hover:no-underline hover:font-semibold' href='https://that.ussupport/'>help page</a> which will provide you with all of the details.",
+		"category": "activities"
+	},
+	{
+		"question": "How long is an activity?",
+		"answer": "The length of an Activity is up to you. An Activity may be a short 30 minutes or last all day. We have seen 30 minute, help me figure out this issue, activities and whole weekend hackathon-type activities. It's entirely up to you and what you are trying to achieve.",
+		"category": "activities"
+	},
+	{
+		"question": "How should I prepare for an Activity?",
+		"answer": "<ul class='faq-list'><li>Ensure your background doesn't contain any non-family friendly items. It's important to keep a safe environment for all!</li><li>Check that your audio and camera are working. Test at the <a class='underline hover:no-underline hover:font-semibold' href='https://that.us/join/that-test' target='_blank'>Tech Check Activity</a></li><li>Have water nearby, it's important to keep hydrated 🚰</li><li>If you're not in Central Time Zone, verify how your local time corresponds with website time. The goal is to have the site in your local time, but, you know, times are hard ⏰.</li><li>Your microphone/speakers/headset/camera are all in good working condition and of good quality 🎙️</li><li>If you have a lot of background noise or echo, an app like <a class='underline hover:no-underline hover:font-semibold' href='https://krisp.ai' target='_blank'>Krisp</a> can help</li></ul>",
+		"category": "activities"
+	},
+	{
+		"question": "How many people can join an Activity?",
+		"answer": "The platform can support a maximum of 100 people per Activity.",
+		"category": "activities"
+	},
+	{
+		"question": "Can family members, including kids, create and/or attend Activities?",
+		"answer": "Yes! Everyone is welcome to create and participate in activities. However, for those under 13 years of age, must use their parent or guardian's account with appropriate supervision.",
+		"category": "activities"
+	},
+	{
+		"question": "Do I need an account to participate in Activities?",
+		"answer": "Yes, a THAT account is required to participate in any Activity. You may create a new account and profile here (<a class='underline hover:no-underline hover:font-semibold' href='https://that.us/login?signup=true'>Sign up</a>).",
+		"category": "account"
+	},
+	{
+		"question": "Do I have to fill out a profile?",
+		"answer": "Once you setup your account using your preferred provider or email address, complete your account by filling in your profile details. Profiles are only public if you choose them to be. A public profile is required to create new Activities.",
+		"category": "account"
+	},
+	{
+		"question": "What is the differences between a public and private THAT Profile?",
+		"answer": "A private THAT Profile is not discoverable on the internet and not shown on any THAT Conference websites. A <strong>public</strong> profile lists your profile on THAT Conference Member sections and pages and makes your profile discoverable by search engines. <strong>A public THAT Profile is required to create activities</strong>. You may join activities with a private profile.",
+		"category": "account"
+	},
+	{
+		"question": "Are the THATConference.com and THAT.us member accounts the same?",
+		"answer": "Yes, for accounts created after January 2020. With the major website update of January 2020, new member accounts work across ALL, THAT Conference sites and applications. If you created your account after January 2020 you're all good to go! Make sure you fill out your profile so the community knows something about you!",
+		"category": "account"
+	},
+	{
+		"question": "Internet Explorer 11 doesn't seem to work with THAT.us",
+		"answer": "Sorry, IE 11 is not supported on THAT.us.",
+		"category": "troubleshooting"
+	},
+	{
+		"question": "Why am I unable to share my screen on macOS?",
+		"answer": "This usually due to permissions. You can permit screen sharing by going to System Preferences > Security & Privacy > Screen Recording, then, select the browser you're using for THAT.us",
+		"category": "troubleshooting"
+	},
+	{
+		"question": "Oh no, `x` doesn't work on THAT.us! How do I let you know?",
+		"answer": "THAT.us is a fullly open source project located at <a class='underline hover:no-underline hover:font-semibold' target='_blank' href='https://github.com/ThatConference/that.us'>GitHub</a>. Please fill out an bug report in GitHub and we'll have a look at it. If it is urgent (security issue, etc.) please reach out directly to hello@thatconference.com or the chat bubble at the bottom of the page.",
+		"category": "troubleshooting"
+	}
+]

@@ -1,21 +1,22 @@
 {
-  "editor.rulers": [
-    80
-  ],
-  "editor.formatOnSave": true,
-  "prettier.tabWidth": 2,
-  "editor.tabSize": 2,
-  "editor.snippetSuggestions": "top",
-  "workbench.colorCustomizations": {
-    "titleBar.activeForeground": "#000",
-    "titleBar.inactiveForeground": "#000000CC",
-    "titleBar.activeBackground": "#4D51F7",
-    "titleBar.inactiveBackground": "#4D51F7"
-  },
-  "editor.codeActionsOnSave": {
-    "source.fixAll": true,
-  },
-  "[svelte]": {
-    "editor.defaultFormatter": "svelte.svelte-vscode"
-  }
+	"editor.rulers": [80],
+	"editor.formatOnSave": true,
+	"prettier.tabWidth": 2,
+	"editor.insertSpaces": false,
+	"editor.tabSize": 2,
+	"editor.snippetSuggestions": "top",
+	"editor.codeActionsOnSave": {
+		"source.fixAll": true
+	},
+	"workbench.colorCustomizations": {
+		"titleBar.activeForeground": "#000",
+		"titleBar.inactiveForeground": "#000000CC",
+		"titleBar.activeBackground": "#4D51F7",
+		"titleBar.inactiveBackground": "#4D51F7"
+	},
+	"[svelte]": {
+		"editor.defaultFormatter": "svelte.svelte-vscode"
+	},
+	"svelte.plugin.svelte.format.config.svelteBracketNewLine": false,
+	"svelte.plugin.svelte.rename.enable": false
 }
