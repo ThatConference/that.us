@@ -1,10 +1,13 @@
 import * as Sentry from '@sentry/node';
 import { sequence } from '@sveltejs/kit/hooks';
 import auth0 from '$utils/security';
-import { logging } from '$utils/config';
+import config, { logging } from '$utils/config';
 
 Sentry.init({
-	dsn: logging.dsn
+	dsn: logging.dsn,
+	release: config.version,
+	debug: false,
+	attachStacktrace: true
 });
 
 export async function customHeaders({ request, resolve }) {
