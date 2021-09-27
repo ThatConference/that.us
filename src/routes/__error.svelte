@@ -1,5 +1,7 @@
 <script context="module">
 	export function load({ error, status }) {
+		console.error('__error', status, error);
+
 		return {
 			props: { error, status }
 		};
@@ -9,7 +11,9 @@
 <script>
 	export let error, status;
 
+	import { onMount } from 'svelte';
 	import { dev } from '$app/env';
+	import * as Sentry from '@sentry/browser';
 
 	import { Standard as StandardLink } from '$elements/links';
 	import seoMetaTags from '$utils/seo/metaTags';
@@ -28,6 +32,10 @@
 			nofollow: true
 		})
 	}))();
+
+	onMount(() => {
+		Sentry.captureException(error);
+	});
 </script>
 
 <Seo title={metaTags.title} tags={metaTags.tags} />
