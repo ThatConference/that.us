@@ -1,9 +1,8 @@
 import auth0 from '$utils/security';
 import fetch from 'isomorphic-fetch';
+import config from '$utils/config';
 
 import { QUERY_ME } from '$dataSources/api.that.tech/me';
-
-const endpoint = `https://api.that.tech/graphql/`;
 
 async function afterCallback(req, res, session, state) {
 	let body = {
@@ -14,7 +13,7 @@ async function afterCallback(req, res, session, state) {
 	};
 
 	try {
-		const results = await fetch(endpoint, {
+		const results = await fetch(config.api, {
 			method: 'POST',
 			headers: {
 				credentials: 'include',
