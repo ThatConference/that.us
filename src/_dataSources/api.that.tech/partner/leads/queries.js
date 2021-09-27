@@ -56,13 +56,12 @@ export default (fetch) => {
 		const variables = {};
 		return client
 			.secureQuery({ query: QUERY_MY_NETWORK_SPONSORS, variables })
-			.then((apiResults) => {
-				console.log('results from api', apiResults);
-				// if (error) log(error, 'QUERY_MY_NETWORK_SPONSORS');
+			.then(({ data, error }) => {
+				if (error) log(error, 'QUERY_MY_NETWORK_SPONSORS');
 
 				let results = [];
-				if (apiResults.data) {
-					const { all } = apiResults?.data?.partners?.us?.leads;
+				if (data) {
+					const { all } = data?.partners?.us?.leads;
 					results = all;
 				}
 

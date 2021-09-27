@@ -8,8 +8,6 @@ export async function post({ body, locals }) {
 		};
 	}
 
-	if (locals.auth0Session.accessToken) console.log('has token');
-
 	const results = await fetch(config.api, {
 		method: 'POST',
 		headers: {
