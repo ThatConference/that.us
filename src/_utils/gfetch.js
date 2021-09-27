@@ -51,7 +51,6 @@ function init(fetch, url) {
 
 		return _fetch(`${config.hostURL}/api/auth/proxy/`, {
 			method: 'POST',
-			credentials: 'include',
 			headers: {
 				credentials: 'include',
 				'Content-Type': 'application/json'

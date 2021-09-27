@@ -1,6 +1,5 @@
 import fetch from 'isomorphic-fetch';
-
-const endpoint = `https://api.that.tech/graphql/`;
+import config from '$utils/config';
 
 export async function post({ body, locals }) {
 	if (!locals.isAuthenticated) {
@@ -9,7 +8,7 @@ export async function post({ body, locals }) {
 		};
 	}
 
-	const results = await fetch(endpoint, {
+	const results = await fetch(config.api, {
 		method: 'POST',
 		headers: {
 			credentials: 'include',
