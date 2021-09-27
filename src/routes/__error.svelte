@@ -1,6 +1,6 @@
 <script context="module">
 	export function load({ error, status }) {
-		console.error('__error', status, error);
+		console.error(error);
 
 		return {
 			props: { error, status }
