@@ -8,10 +8,11 @@ export async function post({ body, locals }) {
 		};
 	}
 
+	if (locals.auth0Session.accessToken) console.log('has token');
+
 	const results = await fetch(config.api, {
 		method: 'POST',
 		headers: {
-			credentials: 'include',
 			'Content-Type': 'application/json',
 			Authorization: `Bearer ${locals.auth0Session.accessToken}`
 		},
@@ -19,7 +20,7 @@ export async function post({ body, locals }) {
 	})
 		.then((r) => r.json())
 		.catch((error) => {
-			console.error('PROXY POST ERROR', error);
+			console.log('PROXY POST ERROR', error);
 			return {
 				status: 500,
 				body: error.message
