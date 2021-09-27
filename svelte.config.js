@@ -14,7 +14,7 @@ const config = {
 		trailingSlash: 'always',
 		vite: {
 			build: {
-				sourcemap: true
+				sourcemap: 'inline'
 			},
 			resolve: {
 				alias: {
