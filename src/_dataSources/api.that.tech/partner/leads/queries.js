@@ -61,11 +61,11 @@ export default (fetch) => {
 
 				let results = [];
 				if (data) {
-					const { all } = data.partners.us.leads;
+					const { all } = data.partners?.us?.leads;
 					results = all;
 				}
 
-				return results;
+				return results || [];
 			});
 	}
 

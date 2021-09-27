@@ -1,16 +1,8 @@
 <script context="module">
-	import lodash from 'lodash';
-	import partnerNetworkApi from '$dataSources/api.that.tech/partner/leads/queries';
-
-	const { sortBy } = lodash;
-	export async function load({ fetch }) {
-		const { queryMyNetwork } = partnerNetworkApi(fetch);
-
-		const contacts = await queryMyNetwork().then((r) => sortBy(r, 'createdAt').reverse());
-
+	export async function load({ stuff }) {
 		return {
 			props: {
-				contacts
+				...stuff
 			}
 		};
 	}
