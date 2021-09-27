@@ -4,4 +4,10 @@
 	export const load = auth0.withPageAuthRequired();
 </script>
 
-<slot />
+<script>
+	import ProfileLayout from '$elements/layouts/Profile.svelte';
+</script>
+
+<ProfileLayout>
+	<slot />
+</ProfileLayout>
