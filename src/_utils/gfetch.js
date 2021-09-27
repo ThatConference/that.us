@@ -1,3 +1,4 @@
+import { browser } from '$app/env';
 import * as Sentry from '@sentry/browser';
 import isoFetch from 'isomorphic-fetch';
 
@@ -15,7 +16,10 @@ function init(fetch, url) {
 		// 'that-correlation-id': createCorrelationId()
 	};
 
-	const json = (r) => r.json();
+	const json = (r) => {
+		console.log('response', r);
+		return r.json();
+	};
 
 	function updateHeaders(values) {
 		headers = {
@@ -25,7 +29,7 @@ function init(fetch, url) {
 	}
 
 	function query({ query, variables = {} }) {
-		loading.set(true);
+		if (browser) loading.set(true);
 		return _fetch(_url, {
 			method: 'POST',
 			headers,
@@ -38,7 +42,7 @@ function init(fetch, url) {
 		})
 			.then(json)
 			.then((r) => {
-				loading.set(false);
+				if (browser) loading.set(false);
 				return r;
 			})
 			.catch((error) => {
@@ -47,12 +51,10 @@ function init(fetch, url) {
 	}
 
 	function secureQuery({ query, variables = {} }) {
-		loading.set(true);
-
+		if (browser) loading.set(true);
 		return _fetch(`${config.hostURL}/api/auth/proxy/`, {
 			method: 'POST',
 			headers: {
-				credentials: 'include',
 				'Content-Type': 'application/json'
 			},
 			body: JSON.stringify({
@@ -64,16 +66,18 @@ function init(fetch, url) {
 		})
 			.then(json)
 			.then((r) => {
-				loading.set(false);
+				if (browser) loading.set(false);
+				console.log('reuslts in gfetch', r);
 				return r;
 			})
 			.catch((error) => {
+				console.log('gfetch error', error);
 				Sentry.captureException(error);
 			});
 	}
 
 	function mutation({ mutation, variables = {} }) {
-		loading.set(true);
+		if (browser) loading.set(true);
 		return _fetch(`${config.hostURL}/api/auth/proxy/`, {
 			method: 'POST',
 			headers: {
@@ -89,7 +93,7 @@ function init(fetch, url) {
 		})
 			.then(json)
 			.then((r) => {
-				loading.set(false);
+				if (browser) loading.set(false);
 				return r;
 			})
 			.catch((error) => {

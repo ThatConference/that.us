@@ -13,6 +13,9 @@ const config = {
 		target: '#svelte',
 		trailingSlash: 'always',
 		vite: {
+			build: {
+				sourcemap: true
+			},
 			resolve: {
 				alias: {
 					$components: resolve('src/_components'),
