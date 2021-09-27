@@ -52,7 +52,7 @@ function init(fetch, url) {
 
 	function secureQuery({ query, variables = {} }) {
 		if (browser) loading.set(true);
-		return _fetch(`${config.hostURL}/api/auth/proxy/`, {
+		return _fetch('/api/auth/proxy/', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
