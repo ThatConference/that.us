@@ -48,8 +48,14 @@ function init(fetch, url) {
 	}
 
 	function secureQuery({ query, variables = {} }) {
-		if (browser) loading.set(true);
-		return _fetch('/api/auth/proxy/', {
+		let dynamicEndpoint = `/api/auth/proxy/`;
+
+		if (browser) {
+			loading.set(true);
+			dynamicEndpoint = `${config.hostURL}/api/auth/proxy/`;
+		}
+
+		return _fetch(dynamicEndpoint, {
 			method: 'POST',
 			headers: {
 				credentials: 'include',
@@ -73,8 +79,14 @@ function init(fetch, url) {
 	}
 
 	function mutation({ mutation, variables = {} }) {
-		if (browser) loading.set(true);
-		return _fetch('/api/auth/proxy/', {
+		let dynamicEndpoint = `/api/auth/proxy/`;
+
+		if (browser) {
+			loading.set(true);
+			dynamicEndpoint = `${config.hostURL}/api/auth/proxy/`;
+		}
+
+		return _fetch(dynamicEndpoint, {
 			method: 'POST',
 			headers: {
 				credentials: 'include',
