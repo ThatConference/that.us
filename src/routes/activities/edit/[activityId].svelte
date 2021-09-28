@@ -48,7 +48,7 @@
 	async function handleWithdraw(activity) {
 		const status = activity.type === 'OPEN_SPACE' ? 'CANCELLED' : 'WITHDREW';
 
-		await updateSession(activity.id, activity.type, {
+		await updateSession(activityDetails.id, activity.type, {
 			status
 		});
 
@@ -61,7 +61,7 @@
 		setSubmitting(true);
 		const { activity, type } = formatUpdate(values);
 
-		await updateSession(activity.id, type, activity);
+		await updateSession(activityDetails.id, type, activity);
 
 		logEvent('activity_updated');
 
@@ -69,7 +69,7 @@
 		resetForm();
 
 		if (activity.status === 'ACCEPTED') {
-			goto(`/activities/${activity.id}?edit=true&isUpdated=true`);
+			goto(`/activities/${activityDetails.id}?edit=true&isUpdated=true`);
 		} else {
 			goto(`/my/submissions`);
 		}
