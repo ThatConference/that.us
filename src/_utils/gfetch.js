@@ -1,13 +1,14 @@
 import { browser } from '$app/env';
 import * as Sentry from '@sentry/browser';
 import isoFetch from 'isomorphic-fetch';
-import * as fetchRetry from 'fetch-retry';
+import fetchRetry from 'fetch-retry';
 
 import loading from '$stores/loading';
 import config from '$utils/config';
 
 function init(fetch, url) {
 	let _url = url || config.api;
+
 	let _fetch = fetchRetry(fetch || isoFetch);
 
 	let headers = {
