@@ -56,6 +56,8 @@
 <script>
 	import { onMount, onDestroy, setContext } from 'svelte';
 	import { navigating, session } from '$app/stores';
+	import { browser } from '$app/env';
+	import { page } from '$app/stores';
 
 	import loading from '$stores/loading';
 	import { showReleaseNotes } from '$stores/siteVersion';
@@ -141,6 +143,12 @@
 	}
 
 	// onDestroy(unsub);
+
+	$: $page.path,
+		browser &&
+			window.gtag('config', 'UA-21705613-11', {
+				page_path: $page.path
+			});
 </script>
 
 <div>

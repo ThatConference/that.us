@@ -72,17 +72,15 @@
 		<script defer async src="https://meet.jit.si/external_api.js">
 		</script>
 
-		<!-- GA -->
-		<script>
-			window.dataLayer = window.dataLayer || [];
-			function gtag() {
-				dataLayer.push(arguments);
-			}
-			gtag('js', new Date());
-			gtag('config', 'UA-21705613-11');
-			// set true to disable Google Analytics
-			window['ga-disable-UA-21705613-11'] = window.origin.includes('localhost');
-		</script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-21705613-11"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-21705613-11');
+    </script>
 
 	</head>
 	<body>
