@@ -56,6 +56,7 @@
 		"eslint-plugin-jest": "^24.4.2",
 		"eslint-plugin-prettier": "^4.0.0",
 		"eslint-plugin-svelte3": "^3.2.1",
+		"fetch-retry": "^5.0.1",
 		"fuse.js": "^6.4.6",
 		"husky": "^7.0.2",
 		"ical-generator": "^3.0.0",
