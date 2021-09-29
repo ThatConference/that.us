@@ -15,7 +15,7 @@
 	let userProfileImage = profileImage ? `${profileImage}${imageCrop}` : config.defaultProfileImage;
 </script>
 
-<a href="/members/{profileSlug}">
+<a href="/members/{profileSlug}/">
 	<div
 		class="h-full text-center bg-white rounded-lg shadow transition duration-500 ease-in-out transform hover:scale-105 hover:bg-gray-100 "
 	>

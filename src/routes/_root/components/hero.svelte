@@ -62,7 +62,7 @@
 								</a>
 
 								<a
-									href="/signup"
+									href="/signup/"
 									class="px-8 py-3 border-2 border-transparent text-base
                     leading-6 font-medium rounded-md shadow text-white
                     bg-thatOrange-400 hover:bg-thatOrange-500 focus:outline-none
@@ -74,7 +74,7 @@
 								</a>
 							{:else}
 								<a
-									href="/events"
+									href="/events/"
 									class="px-8 py-3 rounded-md shadow text-base leading-6
                     font-medium border-2 border-thatBlue-500 text-thatBlue-500
                     bg-white hover:bg-thatBlue-500 hover:text-white
@@ -87,7 +87,7 @@
 								</a>
 
 								<a
-									href="/activities"
+									href="/activities/"
 									class="px-8 py-3 rounded-md shadow text-base leading-6
                     font-medium border-2 border-thatBlue-500 text-thatBlue-500
                     bg-white hover:bg-thatBlue-500 hover:text-white

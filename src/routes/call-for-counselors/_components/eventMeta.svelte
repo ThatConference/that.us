@@ -9,7 +9,7 @@
 <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
 	<div class="grid grid-cols-1 sm:grid-cols-5 gap-8">
 		<div class="col-span-2 sm:-mt-24 flex flex-col justify-center">
-			<a href="/events/{event.slug}">
+			<a href="/events/{event.slug}/">
 				<img class="w-full h-72" src={event.logo} alt="" />
 			</a>
 		</div>

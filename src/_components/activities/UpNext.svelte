@@ -26,7 +26,7 @@
 				<p class="text-xl leading-7 text-gray-300">
 					Check out these activities currently on the schedule.
 					<span class="pl:2 text-that-orange hover:text-thatOrange-500">
-						<a href="/activities">
+						<a href="/activities/">
 							View all of the upcoming
 							{#if $state.context.meta.name}
 								{$state.context.meta.name}

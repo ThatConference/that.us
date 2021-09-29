@@ -72,7 +72,7 @@
 		{#if $session.isAuthenticated}
 			{#if isEmpty($session.thatProfile)}
 				<a
-					href="/my/profiles/primary"
+					href="/my/profiles/primary/"
 					class="block px-3 pb-2 rounded-md text-base font-medium
            hover:bg-that-blue focus:outline-none focus:text-white focus:bg-that-blue"
 				>
@@ -81,7 +81,7 @@
 					</span>
 				</a>
 				<a
-					href="/logout"
+					href="/logout/"
 					class="mt-1 block px-3 py-2 rounded-md text-base font-medium hover:bg-that-blue
             focus:outline-none focus:text-white focus:bg-that-blue"
 				>
@@ -104,13 +104,13 @@
 		{:else}
 			<div class="flex flex-row">
 				<a
-					href="/login"
+					href="/login/"
 					class="mt-4 mb-1 mr-1 block w-full bg-white rounded-md py-2 text-sm font-semibold text-that-blue text-center flex-grow"
 				>
 					Login
 				</a>
 				<a
-					href="/login"
+					href="/login/"
 					class="mt-4 mb-1 ml-1 block w-full bg-that-orange rounded-md py-2 text-sm font-semibold text-white text-center flex-grow"
 				>
 					Sign Up

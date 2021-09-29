@@ -68,7 +68,7 @@
 		</div>
 
 		<div class="relative py-12 flex justify-end">
-			<StandardLink href="/members">View Everyone</StandardLink>
+			<StandardLink href="/members/">View Everyone</StandardLink>
 		</div>
 	</div>
 </section>

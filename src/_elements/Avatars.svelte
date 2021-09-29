@@ -18,7 +18,7 @@
 
 	{#each attendees as attendee, i}
 		<span class="" class:-ml-2={host || i > 0}>
-			<a href="/members/{attendee.profileSlug}">
+			<a href="/members/{attendee.profileSlug}/">
 				<img
 					class="inline-block h-16 w-16 rounded-full ring-2 ring-white"
 					src={`${attendee.profileImage || config.defaultProfileImage}${imageCrop}`}

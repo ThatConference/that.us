@@ -14,7 +14,7 @@
 </script>
 
 <div class="bg-white">
-	<a href="/events/{slug}">
+	<a href="/events/{slug}/">
 		<div
 			class="relative rounded-lg shadow-xl transition duration-500 ease-in-out transform hover:scale-105 hover:bg-gray-100"
 		>

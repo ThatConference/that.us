@@ -31,7 +31,7 @@
 			...eventTicket
 		});
 
-		goto('/orders/summary');
+		goto('/orders/summary/');
 	}
 
 	function handleOnPurchaseMembership(e) {
@@ -45,7 +45,7 @@
 			quantity: 1
 		});
 
-		goto('/orders/summary');
+		goto('/orders/summary/');
 	}
 </script>
 

@@ -147,7 +147,7 @@
 		</div>
 	{/if}
 	<div class="flex flex-col items-center p-3 w-full">
-		<a open href="/members/{host.profileSlug}" class="flex-shrink-0">
+		<a open href="/members/{host.profileSlug}/" class="flex-shrink-0">
 			<span class="inline-block relative">
 				<img
 					class="w-24 h-24 rounded-full"
@@ -169,7 +169,7 @@
 		</a>
 
 		<div class="flex flex-col text-center justify-center w-full">
-			<a href="/activities/{id}">
+			<a href="/activities/{id}/">
 				<h3 class="text-gray-900 text-base leading-5 font-medium break-words pt-1">
 					{title}
 				</h3>
@@ -208,7 +208,7 @@
 	<div class="flex-none border-t border-gray-200">
 		<div class="-mt-px flex">
 			<div class="w-0 flex-1 flex">
-				<CardLink href="/activities/{id}" icon={info} text={'More Details'} />
+				<CardLink href="/activities/{id}/" icon={info} text={'More Details'} />
 			</div>
 
 			{#if !hasExpired}
@@ -231,7 +231,7 @@
 				{:else}
 					<div class="-ml-px w-0 flex-1 flex border-l border-gray-200">
 						<a
-							href="/login"
+							href="/login/"
 							class="relative w-0 flex-1 inline-flex items-center justify-center
                 py-2 text-xs leading-4 text-gray-700 font-medium border
                 border-transparent rounded-br-lg hover:text-gray-300
@@ -250,7 +250,7 @@
 				{#if canEdit()}
 					<div class="-ml-px w-0 flex-1 flex border-l border-gray-200">
 						<a
-							href="/activities/edit/{id}"
+							href="/activities/edit/{id}/"
 							class="relative w-0 flex-1 inline-flex items-center justify-center
                 py-2 text-xs leading-4 text-gray-700 font-medium border
                 border-transparent rounded-br-lg hover:text-gray-300
@@ -288,7 +288,7 @@
 					</div>
 				{:else if canJoin}
 					<div class="-ml-px w-0 flex-1 flex">
-						<CardLink href="/join/{id}" icon={signIn} text={'Join In'} />
+						<CardLink href="/join/{id}/" icon={signIn} text={'Join In'} />
 					</div>
 				{:else}
 					<div class="-ml-px w-0 flex-1 flex">

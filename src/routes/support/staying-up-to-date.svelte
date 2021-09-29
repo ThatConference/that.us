@@ -57,16 +57,16 @@
 
 			<h2>Activity Board and My Favorites</h2>
 			<p>
-				<a href="/activities">The Activity Board</a>
+				<a href="/activities/">The Activity Board</a>
 				as we call it, is your main place to find out what's up next. It will always show all Activities
 				from today looking forward. You can also find
 				<strong class="italic">all</strong>
 				Activities
-				<a href="/events/thatUs">here</a>.
+				<a href="/events/thatUs/">here</a>.
 			</p>
 
 			<p>
-				<a href="/my/favorites">My Favorites</a>
+				<a href="/my/favorites/">My Favorites</a>
 				is just like the Activity Board but filtered to the Activities you've already favorited. This
 				is great during times of high usage or for historical reasons.
 			</p>
@@ -118,8 +118,8 @@
         justify-center"
 		>
 			<div class="flex space-x-4 text-base">
-				<StandardLink href="/support/creating-an-activity">Create an Activity</StandardLink>
-				<HighlightLink href="/activities">Check out the upcoming Activities</HighlightLink>
+				<StandardLink href="/support/creating-an-activity/">Create an Activity</StandardLink>
+				<HighlightLink href="/activities/">Check out the upcoming Activities</HighlightLink>
 			</div>
 		</div>
 	</section>

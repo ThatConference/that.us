@@ -23,7 +23,7 @@
 						<li
 							class="transition duration-500 ease-in-out transform hover:scale-105 cursor-pointer"
 						>
-							<a href="/members/{member.profileSlug}">
+							<a href="/members/{member.profileSlug}/">
 								<div class="flex items-center space-x-4 lg:space-x-6">
 									<img
 										class="w-16 h-16 rounded-full lg:w-24 lg:h-24"

@@ -42,7 +42,7 @@ function createServices() {
 					tags: { stateMachine: 'partners' }
 				}),
 
-			notFound: () => goto('/not-found'),
+			notFound: () => goto('/not-found/'),
 
 			setIsAuthenticated: assign({
 				isAuthenticated: (_, event) => event.status

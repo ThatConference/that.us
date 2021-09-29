@@ -52,7 +52,7 @@
 						</div>
 						<footer class="mt-8">
 							<p class="text-2xl font-bold text-white">Welcome to THAT!</p>
-							<a class="text-2xl font-bold text-thatOrange-400" href="/members/clark">
+							<a class="text-2xl font-bold text-thatOrange-400" href="/members/clark/">
 								Clark Sell
 							</a>
 						</footer>

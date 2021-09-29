@@ -145,12 +145,12 @@
 		api.addEventListener('audioMuteStatusChanged', handleMuted);
 
 		api.addEventListener('readyToClose', () => {
-			goto('/activities');
+			goto('/activities/');
 		});
 
 		api.addEventListener('videoConferenceLeft', () => {
 			// todo.. go back to event if it's part of an event.
-			goto('/activities');
+			goto('/activities/');
 		});
 
 		api.addEventListener('screenSharingStatusChanged', ({ on }) => {
@@ -276,7 +276,7 @@
 
 		{#if activityDetails}
 			<ActionHeader title={activityDetails.title}>
-				<a href="/activities/{activityId}">Activity Details</a>
+				<a href="/activities/{activityId}/">Activity Details</a>
 			</ActionHeader>
 		{/if}
 	</div>

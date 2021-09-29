@@ -44,7 +44,7 @@
 
 								<!-- Complete Step -->
 								<!-- todo how do we redirect after login? -->
-								<a href="/login" class="relative p-3 flex items-center group">
+								<a href="/login/" class="relative p-3 flex items-center group">
 									<span class="h-20 flex items-center">
 										<span
 											class="relative z-10 p-3 w-20 h-20 flex items-center justify-center rounded-full bg-white ring-4 ring-thatOrange-500 group-hover:bg-thatOrange-500 group-hover:text-white"
@@ -65,7 +65,7 @@
 							<li class="relative pb-10" in:fade={{ delay: 300, duration: 500 }}>
 								<div class="-ml-px absolute mt-0.5 top-4 left-13 w-1 h-full bg-thatOrange-500" />
 
-								<a href="/my/profiles/primary" class="relative p-3 flex items-center group">
+								<a href="/my/profiles/primary/" class="relative p-3 flex items-center group">
 									<span class="h-20 flex items-center">
 										<span
 											class="relative z-10 p-3 w-20 h-20 flex items-center justify-center rounded-full bg-white ring-4 ring-thatOrange-500 group-hover:bg-thatOrange-500 group-hover:text-white"

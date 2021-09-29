@@ -13,9 +13,9 @@
 		// const isBulkPurchase = quantity > 1 ? true : false;
 
 		// send('ADD_ITEM', { ...eventTicket, isBulkPurchase, quantity });
-		// goto('/orders/summary');
+		// goto('/orders/summary/');
 
-		goto('/events');
+		goto('/events/');
 	}
 </script>
 
@@ -76,7 +76,7 @@
 									<p class="ml-3 text-base text-gray-700">Access to Monthly Event</p>
 								</li>
 							</ul>
-							<StandardButton on:click={() => goto('/signup')}>Create Your Account</StandardButton>
+							<StandardButton on:click={() => goto('/signup/')}>Create Your Account</StandardButton>
 						</div>
 					</div>
 

@@ -36,11 +36,12 @@
 
 			<p>
 				To create an Activity you first need to
-				<a href="/login">log in</a>
+				<a href="/login/">log in</a>
 				if you're not already. If you still need an account simply
-				<a href="/login?signup=true">create one here</a>, and then update your
-				<a href="/my/profiles/primary">profile accordingly</a>. Once completed you can then create a
-				<a href="/activity/create">New Activity</a>. It's here where you will detail out the
+				<a href="/signup/">create one here</a>, and then update your
+				<a href="/my/profiles/primary/">profile accordingly</a>. Once completed you can then create
+				a
+				<a href="/activity/create/">New Activity</a>. It's here where you will detail out the
 				conversation, inviting others to join in. The submission process isn't complex but it's
 				important as you want to make sure the right people join in your Activity.
 			</p>
@@ -85,7 +86,7 @@
 
 			<p>
 				If you'd like to browse through some of our past Activities you will find them
-				<a href="/events/thatUs">here</a>. Once you've submitted your Activity you'll receive an
+				<a href="/events/thatUs/">here</a>. Once you've submitted your Activity you'll receive an
 				email confirmation which will also include a calendar attachment.
 			</p>
 
@@ -93,7 +94,7 @@
 			<p>
 				No problem we all make mistakes or maybe you just want to tweak things a bit further. No
 				problem. You can find all of your submitted Activities
-				<a href="/my/submissions">here</a>, we call it
+				<a href="/my/submissions/">here</a>, we call it
 				<span class="italic">My Submissions</span> and you will always find it under your profile picture.
 				Just pick the correct Activity and then select edit.
 			</p>
@@ -103,8 +104,8 @@
         justify-center"
 		>
 			<div class="flex space-x-4 text-base">
-				<StandardLink href="/support/joining-an-activity">Joining an Activity</StandardLink>
-				<HighlightLink href="/support/staying-up-to-date">Staying Up To Date</HighlightLink>
+				<StandardLink href="/support/joining-an-activity/">Joining an Activity</StandardLink>
+				<HighlightLink href="/support/staying-up-to-date/">Staying Up To Date</HighlightLink>
 			</div>
 		</div>
 	</section>

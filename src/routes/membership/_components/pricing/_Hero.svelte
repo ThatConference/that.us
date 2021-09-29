@@ -20,14 +20,14 @@
 			isBulkPurchase,
 			quantity
 		});
-		goto('/orders/summary');
+		goto('/orders/summary/');
 	}
 
 	function handleAddEventTicketClick(quantity = 1) {
 		// const isBulkPurchase = quantity > 1 ? true : false;
 		// send('ADD_ITEM', { ...eventTicket, isBulkPurchase, quantity });
-		// goto('/orders/summary');
-		goto('/events');
+		// goto('/orders/summary/');
+		goto('/events/');
 	}
 </script>
 
@@ -249,7 +249,7 @@
 									</ul>
 									<div class="mt-8">
 										<div class="flex flex-col">
-											<StandardButton on:click={() => goto('/signup')}>
+											<StandardButton on:click={() => goto('/signup/')}>
 												Create an Account
 											</StandardButton>
 										</div>

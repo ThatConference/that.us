@@ -57,7 +57,7 @@
 			...eventTicket
 		});
 
-		goto('/orders/summary');
+		goto('/orders/summary/');
 	}
 </script>
 

@@ -71,25 +71,25 @@
 					<p>Things we you should know:</p>
 					<ul>
 						<li>
-							<a href="/support/what-is-an-activity"> What is an Activity? </a>
+							<a href="/support/what-is-an-activity/"> What is an Activity? </a>
 						</li>
 						<li>
-							<a href="/support/joining-an-activity"> How to join an Activity. </a>
+							<a href="/support/joining-an-activity/"> How to join an Activity. </a>
 						</li>
 						<li>
-							<a href="/support/creating-an-activity"> How to create an Activity. </a>
+							<a href="/support/creating-an-activity/"> How to create an Activity. </a>
 						</li>
 						<li>
-							<a href="/support/staying-up-to-date"> How to stay up to date. </a>
+							<a href="/support/staying-up-to-date/"> How to stay up to date. </a>
 						</li>
 						<li>
-							<a href="/my/profiles/primary">Keep your profile up to date.</a>
+							<a href="/my/profiles/primary/">Keep your profile up to date.</a>
 						</li>
 					</ul>
 				</div>
 				<div class="flex space-x-4 text-base max-w-prose mx-auto lg:max-w-none">
-					<StandardLink href="/activities">Upcoming Activities</StandardLink>
-					<HighlightLink href="/support/what-is-an-activity">What is an Activity?</HighlightLink>
+					<StandardLink href="/activities/">Upcoming Activities</StandardLink>
+					<HighlightLink href="/support/what-is-an-activity/">What is an Activity?</HighlightLink>
 				</div>
 			</div>
 			<div class="relative text-base max-w-prose mx-auto lg:max-w-none">

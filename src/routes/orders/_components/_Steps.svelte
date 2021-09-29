@@ -54,7 +54,7 @@
 					step="1"
 					isActive={$state.matches('pendingLogin')}
 					stepName="Login"
-					on:click={() => goto('/login?r=/orders/summary')}
+					on:click={() => goto('/login/?r=/orders/summary')}
 				/>
 			{/if}
 
@@ -83,7 +83,7 @@
 					step="2"
 					isActive={$state.matches('authenticated.pendingProfile')}
 					stepName="Profile Completed"
-					on:click={() => goto('/my/profiles/primary')}
+					on:click={() => goto('/my/profiles/primary/')}
 				/>
 			{/if}
 
@@ -112,7 +112,7 @@
 					step="3"
 					isActive={$state.matches('authenticated.profileCompleted.pendingVerification')}
 					stepName="Verify Order"
-					on:click={() => goto('/orders/summary', { replace: true })}
+					on:click={() => goto('/orders/summary/', { replace: true })}
 				/>
 			{/if}
 
@@ -167,7 +167,7 @@
 		</div>
 		<div class="mt-3 text-sm">
 			<a
-				href="/my/profiles/primary"
+				href="/my/profiles/primary/"
 				class="font-medium text-thatOrange-400 hover:text-thatOrange-500"
 			>
 				Complete Your Profile

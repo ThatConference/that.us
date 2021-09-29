@@ -102,10 +102,10 @@
 						<a href="https://thatslack.thatconference.com">Join us in Slack.</a>
 					</li>
 					<li>
-						Keep up to date. <a href="/support/staying-up-to-date">Subscribe to the calendar.</a>
+						Keep up to date. <a href="/support/staying-up-to-date/">Subscribe to the calendar.</a>
 					</li>
 					<li>
-						Get ready for what's coming. <a href="/events"
+						Get ready for what's coming. <a href="/events/"
 							>Check out our past and upcoming events.</a
 						>
 					</li>
@@ -121,9 +121,9 @@
 					>
 				</p>
 				<div class="mt-12 flex justify-end space-x-5">
-					<StandardLink href="/my/settings/order-history">View Your Order History</StandardLink>
+					<StandardLink href="/my/settings/order-history/">View Your Order History</StandardLink>
 
-					<HighlightLink href="/activities">Check out the upcoming Activities</HighlightLink>
+					<HighlightLink href="/activities/">Check out the upcoming Activities</HighlightLink>
 				</div>
 			</div>
 		</div>

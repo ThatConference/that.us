@@ -20,7 +20,7 @@
 	let expandDescription = false;
 </script>
 
-<a href="/activities/{id}">
+<a href="/activities/{id}/">
 	<div
 		class="transition duration-500 ease-in-out transform hover:scale-105 w-full h-full py-10 px-6 hover:bg-thatBlue-400 bg-that-blue
       shadow rounded-lg xl:px-10 text-left"

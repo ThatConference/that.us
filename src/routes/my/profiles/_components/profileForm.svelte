@@ -686,7 +686,7 @@
 											<a
 												open
 												tabindex="-1"
-												href="/support/code-of-conduct"
+												href="/support/code-of-conduct/"
 												class="font-medium text-indigo-600 hover:text-indigo-500
                         transition duration-150 ease-in-out"
 											>
@@ -719,7 +719,7 @@
 												<a
 													open
 													tabindex="-1"
-													href="/suppoprt/anti-harassment"
+													href="/suppoprt/anti-harassment/"
 													class="font-medium text-indigo-600 hover:text-indigo-500
                           transition duration-150 ease-in-out"
 												>
@@ -751,7 +751,7 @@
 													<a
 														open
 														tabindex="-1"
-														href="/support/commitment-to-diversity"
+														href="/support/commitment-to-diversity/"
 														class="font-medium text-indigo-600
                             hover:text-indigo-500 transition duration-150
                             ease-in-out"
@@ -787,7 +787,7 @@
 														<a
 															open
 															tabindex="-1"
-															href="/support/terms-of-use"
+															href="/support/terms-of-use/"
 															class="font-medium text-indigo-600
                               hover:text-indigo-500 transition duration-150
                               ease-in-out"
@@ -863,7 +863,7 @@
 											<a
 												tabindex="-1"
 												open
-												href="/support/code-of-conduct"
+												href="/support/code-of-conduct/"
 												class="font-medium text-indigo-600 hover:text-indigo-500
                         transition duration-150 ease-in-out"
 											>
