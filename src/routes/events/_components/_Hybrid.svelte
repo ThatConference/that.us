@@ -18,6 +18,7 @@
 	import FAQ from './hybrid/_FAQ.svelte';
 	import CamperTickets from './hybrid/_CamperTickets.svelte';
 	import Membership from './_MembershipCard.svelte';
+	import Dates from '../_components/hybrid/dates.svelte';
 
 	const { send } = getContext('cart');
 	const { products } = event;
@@ -103,13 +104,18 @@
 		{/if}
 	</section>
 
+	<!--dates-->
+	<section>
+		<Dates milestones={event.milestones} />
+	</section>
+
 	<section id="sponsors">
 		<Partners {event} />
 	</section>
 
-	<section>
-		<div class="h-96 bg-fixed thatBackground" />
-	</section>
+	<div class="bg-fixed thatBackground">
+		<div class="h-96" />
+	</div>
 
 	<section id="faq">
 		<FAQ />

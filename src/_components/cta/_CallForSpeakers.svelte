@@ -13,7 +13,7 @@
 	dayjs.extend(advancedFormat);
 </script>
 
-<div class="mt-24 bg-that-navy">
+<div class="bg-that-navy">
 	<div class="relative max-w-7xl mx-auto py-24 px-4 sm:px-6 lg:px-8 ">
 		<div class="lg:grid lg:grid-cols-5 lg:gap-8 lg:items-start">
 			<div class="col-span-5">
