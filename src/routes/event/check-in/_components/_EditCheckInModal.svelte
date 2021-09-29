@@ -6,6 +6,7 @@
 	export let isOwedShirt = false;
 
 	import { createEventDispatcher } from 'svelte';
+	import { browser } from '$app/env';
 	import { Circle3 } from 'svelte-loading-spinners';
 	import Checkbox from 'svelte-checkbox';
 
@@ -24,7 +25,7 @@
 
 	async function handleResetPin() {
 		waiting = true;
-		woopra.track('event_inperson_edit_checkin');
+		browser && woopra.track('event_inperson_edit_checkin');
 
 		const { result, message } = await setPartnerPin(eventId, ticketId, pinNumber);
 
@@ -40,7 +41,7 @@
 
 	async function handleRevertCheckIn() {
 		waiting = true;
-		woopra.track('event_inperson_edit_checkin');
+		browser && woopra.track('event_inperson_edit_checkin');
 
 		const { result, message } = await revertCheckIn(eventId, ticketId);
 
@@ -61,7 +62,7 @@
 
 	async function handleOweSwag() {
 		waiting = true;
-		woopra.track('event_inperson_edit_checkin');
+		browser && woopra.track('event_inperson_edit_checkin');
 
 		const { result, message } = await setReceivedSwag(eventId, ticketId, !isOwedShirt);
 

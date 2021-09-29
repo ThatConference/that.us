@@ -35,7 +35,7 @@
 
 	async function handleContactExchange() {
 		waiting = true;
-		woopra.track('event_contact_exchanged');
+		browser && woopra.track('event_contact_exchanged');
 
 		const { result, message } = await addPin(eventId, pinNumber, partnerNotes);
 
