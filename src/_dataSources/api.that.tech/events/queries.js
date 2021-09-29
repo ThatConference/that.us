@@ -149,6 +149,11 @@ export const QUERY_EVENT_BY_SLUG = `
 			event (findBy: {slug: $slug}) {
 				get {
 					...eventFields
+					milestones {
+						title
+						description
+						dueDate
+					}
 				}
 			}
 		}
