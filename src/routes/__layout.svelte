@@ -84,23 +84,21 @@
 
 		if (!isEmpty($session.thatProfile)) {
 			if (!dev && browser) {
-				if (!isEmpty($session.thatProfile)) {
-					window.tidioChatApi.setVisitorData({
-						distinct_id: $session.thatProfile.id,
-						email: $session.thatProfile.email,
-						name: `${$session.thatProfile.firstName} ${$session.thatProfile.lastName}`
-					});
+				window.tidioChatApi.setVisitorData({
+					distinct_id: $session.thatProfile.id,
+					email: $session.thatProfile.email,
+					name: `${$session.thatProfile.firstName} ${$session.thatProfile.lastName}`
+				});
 
-					window.tidioChatApi.setContactProperties({
-						company: $session.thatProfile.company,
-						canfeature: $session.thatProfile.canFeature ? 'true' : 'false'
-					});
+				window.tidioChatApi.setContactProperties({
+					company: $session.thatProfile.company,
+					canfeature: $session.thatProfile.canFeature ? 'true' : 'false'
+				});
 
-					window.tidioChatApi.addVisitorTags([
-						$session.thatProfile.id,
-						`https://that.us/member/${$session.thatProfile.profileSlug}`
-					]);
-				}
+				window.tidioChatApi.addVisitorTags([
+					$session.thatProfile.id,
+					`https://that.us/member/${$session.thatProfile.profileSlug}`
+				]);
 			}
 		}
 	}
@@ -124,7 +122,7 @@
 	});
 
 	$: if (!isEmpty($session.thatProfile)) {
-		if (!dev) {
+		if (!dev && browser) {
 			let { id, email, firstName, lastName } = $session.thatProfile;
 
 			Sentry.configureScope((scope) => {
