@@ -14,7 +14,7 @@
 						profile.
 					</span>
 					<span class="block sm:ml-2 sm:inline-block">
-						<a href="/my/profiles/primary" class="text-white font-bold underline">
+						<a href="/my/profiles/primary/" class="text-white font-bold underline">
 							Create Your Profile &rarr;
 						</a>
 					</span>

@@ -37,7 +37,7 @@
 								{#if !isFollowing}Follow{:else}Un-Follow{/if}
 							</StandardButton>
 						{:else}
-							<StandardLink href="/login" class="h-3/4">Login and Follow Today</StandardLink>
+							<StandardLink href="/login/" class="h-3/4">Login and Follow Today</StandardLink>
 						{/if}
 					</div>
 				</div>

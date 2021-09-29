@@ -19,7 +19,7 @@
 			</div>
 
 			<div class="mt-8 w-full">
-				<HighlightButton on:click={() => goto('/signup')}>Create An Account</HighlightButton>
+				<HighlightButton on:click={() => goto('/signup/')}>Create An Account</HighlightButton>
 			</div>
 		</div>
 	</div>

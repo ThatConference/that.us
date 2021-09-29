@@ -71,7 +71,7 @@
 									<div
 										class="p-4 w-1/3 transition duration-500 ease-in-out transform hover:scale-105"
 									>
-										<a href="/partners/{p.slug}">
+										<a href="/partners/{p.slug}/">
 											<img
 												class="w-full h-24"
 												src={p.companyLogo}
@@ -106,7 +106,7 @@
 									<a href="mailto:hello@that.us?subject=Let's Partner"> Partner with us! </a>
 								</div>
 
-								<StandardLink href="/events/{slug}/partners">View all Partners</StandardLink>
+								<StandardLink href="/events/{slug}/partners/">View all Partners</StandardLink>
 							</div>
 						</div>
 					</div>

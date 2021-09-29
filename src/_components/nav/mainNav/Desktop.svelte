@@ -35,7 +35,7 @@
 	<div class="flex items-center">
 		<div class="relative inline-block">
 			<div class="ml-4 p-1 rounded-full  hover:text-white hover:bg-thatBlue-500 focus:text-white">
-				<a href="/orders/summary">
+				<a href="/orders/summary/">
 					<Cart />
 					{#if cartItems > 0}
 						<span class="animate-pulse absolute bottom-0 right-0 block">

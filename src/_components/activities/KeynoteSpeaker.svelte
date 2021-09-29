@@ -21,7 +21,7 @@
 				>
 					<div class="bg-white rounded-t-lg px-6 pt-12 pb-10">
 						<div class="text-center text-3xl leading-9 font-semibold text-gray-900 sm:-mx-6">
-							<a href="/members/{host.profileSlug}" class="flex-shrink-0">
+							<a href="/members/{host.profileSlug}/" class="flex-shrink-0">
 								<span class="inline-block relative">
 									<img
 										class="w-48 h-48 rounded-full"

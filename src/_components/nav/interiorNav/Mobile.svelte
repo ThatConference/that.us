@@ -12,7 +12,7 @@
 >
 	<div class="px-2 py-3 sm:px-3">
 		<a
-			href="/events"
+			href="/events/"
 			class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300
         hover:text-white hover:bg-that-blue focus:outline-none focus:text-white
         focus:bg-that-blue"
@@ -20,7 +20,7 @@
 			Events
 		</a>
 		<a
-			href="/activities"
+			href="/activities/"
 			class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300
         hover:text-white hover:bg-that-blue focus:outline-none focus:text-white
         focus:bg-that-blue"
@@ -28,7 +28,7 @@
 			Activities
 		</a>
 		<a
-			href="/members"
+			href="/members/"
 			class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300
         hover:text-white hover:bg-that-blue focus:outline-none focus:text-white
         focus:bg-that-blue"
@@ -36,7 +36,7 @@
 			Members
 		</a>
 		<a
-			href="/partners"
+			href="/partners/"
 			class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300
         hover:text-white hover:bg-that-blue focus:outline-none focus:text-white
         focus:bg-that-blue"
@@ -44,7 +44,7 @@
 			Partners
 		</a>
 		<a
-			href="/communities"
+			href="/communities/"
 			class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300
         hover:text-white hover:bg-that-blue focus:outline-none focus:text-white
         focus:bg-that-blue"

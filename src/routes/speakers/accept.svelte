@@ -83,7 +83,7 @@
 				<ul>
 					<li>If you're speaking in-person, reserve your room ASAP.</li>
 					<li>
-						<a href="/my/profiles/primary">Review and update your profile.</a>
+						<a href="/my/profiles/primary/">Review and update your profile.</a>
 					</li>
 
 					<li>
@@ -105,20 +105,20 @@
 						<a href="https://thatslack.thatconference.com">Join us in Slack.</a>
 					</li>
 					<li>
-						Keep up to date. <a href="/support/staying-up-to-date">Subscribe to the calendar.</a>
+						Keep up to date. <a href="/support/staying-up-to-date/">Subscribe to the calendar.</a>
 						>
 					</li>
 					<li>
-						Get ready for what's coming. <a href="/events"
+						Get ready for what's coming. <a href="/events/"
 							>Check out our past and upcoming events.</a
 						>
 					</li>
 				</ul>
 
 				<div class="mt-12 flex justify-end space-x-5">
-					<StandardLink href="/my/submissions">View Your Sessions</StandardLink>
+					<StandardLink href="/my/submissions/">View Your Sessions</StandardLink>
 
-					<HighlightLink href="/activities">Check out the upcoming Activities</HighlightLink>
+					<HighlightLink href="/activities/">Check out the upcoming Activities</HighlightLink>
 				</div>
 			</div>
 		</div>

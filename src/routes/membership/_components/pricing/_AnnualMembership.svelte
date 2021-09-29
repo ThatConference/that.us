@@ -18,7 +18,7 @@
 			isBulkPurchase,
 			quantity
 		});
-		goto('/orders/summary');
+		goto('/orders/summary/');
 	}
 </script>
 

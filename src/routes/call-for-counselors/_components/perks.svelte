@@ -10,7 +10,7 @@
 	</div>
 
 	<div class="mt-24 grid grid-cols-1 gap-8 gap-y-24 sm:grid-cols-3">
-		<a href="/events/{event.slug}">
+		<a href="/events/{event.slug}/">
 			<div
 				class="h-full p-8 bg-gray-50 rounded-md shadow-md transition duration-500 ease-in-out transform hover:scale-105"
 			>
@@ -29,7 +29,7 @@
 			</div>
 		</a>
 
-		<a href="/support/travel">
+		<a href="/support/travel/">
 			<div
 				class="h-full p-8 bg-gray-50 rounded-md shadow-md transition duration-500 ease-in-out transform hover:scale-105"
 			>

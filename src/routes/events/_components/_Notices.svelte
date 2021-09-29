@@ -54,7 +54,7 @@
 
 			<div class="flex-shrink-0 w-48 flex justify-center rounded-md shadow hover:bg-gray-50">
 				<a
-					href="/support/covid-policies"
+					href="/support/covid-policies/"
 					class="px-5 py-3 border border-transparent text-base font-medium rounded-md text-gray-900 bg-white hover:bg-gray-50"
 				>
 					Learn More

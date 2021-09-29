@@ -33,7 +33,7 @@
 	<div class="hidden lg:block">
 		<div class="ml-8 flex items-baseline">
 			<a
-				href="/events"
+				href="/events/"
 				open
 				class="ml-1 px-3 py-2 rounded-md text-sm font-medium text-gray-300
           hover:text-white hover:bg-that-blue focus:outline-none
@@ -43,7 +43,7 @@
 			</a>
 
 			<a
-				href="/activities"
+				href="/activities/"
 				open
 				class="ml-1 px-3 py-2 rounded-md text-sm font-medium text-gray-300
           hover:text-white hover:bg-that-blue focus:outline-none
@@ -53,7 +53,7 @@
 			</a>
 
 			<a
-				href="/members"
+				href="/members/"
 				class="ml-1 px-3 py-2 rounded-md text-sm font-medium text-gray-300
           hover:text-white hover:bg-that-blue focus:outline-none
           focus:text-white focus:bg-that-blue"
@@ -62,7 +62,7 @@
 			</a>
 
 			<a
-				href="/communities"
+				href="/communities/"
 				class="ml-1 px-3 py-2 rounded-md text-sm font-medium text-gray-300
           hover:text-white hover:bg-that-blue focus:outline-none
           focus:text-white focus:bg-that-blue"
@@ -71,7 +71,7 @@
 			</a>
 
 			<a
-				href="/partners"
+				href="/partners/"
 				class="ml-1 px-3 py-2 rounded-md text-sm font-medium text-gray-300
           hover:text-white hover:bg-that-blue focus:outline-none
           focus:text-white focus:bg-that-blue"
@@ -81,7 +81,7 @@
 
 			<div>
 				<button
-					href="/help"
+					href="/help/"
 					class="ml-1 px-3 py-2 rounded-md text-sm font-medium text-gray-300
             hover:text-white hover:bg-that-blue focus:outline-none
             focus:text-white focus:bg-that-blue"
@@ -96,31 +96,31 @@
 								Getting Started
 							</a>
 							<a
-								href="/support/what-is-an-activity"
+								href="/support/what-is-an-activity/"
 								class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
 							>
 								What Is An Activity
 							</a>
 							<a
-								href="/support/joining-an-activity"
+								href="/support/joining-an-activity/"
 								class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
 							>
 								How To Join An Activity
 							</a>
 							<a
-								href="/support/creating-an-activity"
+								href="/support/creating-an-activity/"
 								class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
 							>
 								How To Create An Activity
 							</a>
 							<a
-								href="/support/staying-up-to-date"
+								href="/support/staying-up-to-date/"
 								class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
 							>
 								Staying Up To Date
 							</a>
 							<a
-								href="/support/faq"
+								href="/support/faq/"
 								class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
 							>
 								FAQ
@@ -161,7 +161,7 @@
 		{#if true}
 			<div class="relative inline-block">
 				<div class="ml-4 p-1 rounded-full text-white hover:bg-thatBlue-500">
-					<a href="/orders/summary">
+					<a href="/orders/summary/">
 						<Cart />
 
 						{#if cartItems > 0}

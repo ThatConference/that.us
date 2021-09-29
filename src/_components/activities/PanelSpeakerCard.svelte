@@ -12,7 +12,7 @@
 
 <div class="w-full h-full flex flex-col">
 	<div class="flex items-center justify-center p-3 space-x-3">
-		<a open href="/members/{speaker.profileSlug}" class="flex-shrink-0">
+		<a open href="/members/{speaker.profileSlug}/" class="flex-shrink-0">
 			<span class="inline-block relative">
 				<img
 					class="w-40 h-40 rounded-full"

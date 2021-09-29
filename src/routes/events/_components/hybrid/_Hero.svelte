@@ -47,7 +47,7 @@
 				</div>
 
 				<div class="flex-1 rounded-md shadow">
-					<a href="/support/travel">
+					<a href="/support/travel/">
 						<Shell>
 							<div class="px-4 py-2 font-extrabold uppercase">Travel</div>
 						</Shell>

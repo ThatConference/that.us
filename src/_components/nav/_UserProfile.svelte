@@ -52,13 +52,13 @@
 				>
 					<div class="py-1 rounded-md bg-white ring-1 ring-black ring-opacity-5">
 						<a
-							href="/my/profiles/primary"
+							href="/my/profiles/primary/"
 							class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
 						>
 							Create Profile
 						</a>
 
-						<a href="/logout" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+						<a href="/logout/" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
 							Logout
 						</a>
 					</div>
@@ -70,14 +70,14 @@
 				>
 					<div class="py-1 rounded-md bg-white ring-1 ring-black ring-opacity-5">
 						<div class="block px-4 py-2 text-sm hover:bg-gray-100 text-gray-700 border-b">
-							<a href="/my/profiles/primary" on:click={() => (visible = false)}>
+							<a href="/my/profiles/primary/" on:click={() => (visible = false)}>
 								<p>{$session.thatProfile.firstName} {$session.thatProfile.lastName}</p>
 								<p class="truncate pt-2">{$session.thatProfile.email}</p>
 							</a>
 						</div>
 
 						<a
-							href="/my/profiles/primary"
+							href="/my/profiles/primary/"
 							on:click={() => (visible = false)}
 							class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
 						>
@@ -85,7 +85,7 @@
 						</a>
 
 						<a
-							href="/my/settings/badges"
+							href="/my/settings/badges/"
 							on:click={() => (visible = false)}
 							class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
 						>
@@ -93,25 +93,28 @@
 						</a>
 
 						<a
-							href="/my/network"
+							href="/my/network/"
 							on:click={() => (visible = false)}
 							class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
 						>
 							My Network
 						</a>
 
-						<a href="/my/favorites" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+						<a
+							href="/my/favorites/"
+							class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+						>
 							My Favorites
 						</a>
 
 						<a
-							href="/my/submissions"
+							href="/my/submissions/"
 							class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
 						>
 							My Submissions
 						</a>
 
-						<a href="/logout" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+						<a href="/logout/" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
 							Logout
 						</a>
 					</div>
@@ -130,7 +133,7 @@
 						Login
 					</a>
 					<a
-						href="/api/auth/signup"
+						href="/api/auth/signup/"
 						class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer"
 					>
 						Sign Up

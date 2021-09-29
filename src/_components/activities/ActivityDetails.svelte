@@ -188,7 +188,7 @@
 					{#each speakers as s}
 						<div class="flex md:flex-row flex-col items-center">
 							<div class="flex-shrink-0">
-								<a href="/members/{s.profileSlug}" open>
+								<a href="/members/{s.profileSlug}/" open>
 									<span class="inline-block relative">
 										<img
 											class="h-24 w-24 rounded-full"
@@ -259,7 +259,7 @@
 					{:else}
 						<div class="mt-2 mx-2 rounded-md shadow-sm">
 							<a
-								href="/login"
+								href="/login/"
 								class="relative inline-flex items-center px-4 py-2 border-2
                   border-thatBlue-500 text-sm leading-5 font-medium rounded-md
                   text-gray-700 bg-white hover:text-gray-500 focus:outline-none

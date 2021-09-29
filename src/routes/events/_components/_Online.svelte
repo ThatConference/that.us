@@ -33,7 +33,7 @@
 			isBulkPurchase,
 			quantity
 		});
-		goto('/orders/summary');
+		goto('/orders/summary/');
 	}
 
 	function handleAddMembershipClick(eventId, eventProducts, quantity = 1) {
@@ -48,7 +48,7 @@
 			isBulkPurchase,
 			quantity
 		});
-		goto('/orders/summary');
+		goto('/orders/summary/');
 	}
 </script>
 

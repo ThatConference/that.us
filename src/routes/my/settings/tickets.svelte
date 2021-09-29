@@ -58,7 +58,7 @@
 				<li
 					class="col-span-1 bg-white rounded-lg shadow divide-y divide-gray-200 transform hover:scale-105 hover:bg-gray-50"
 				>
-					<a href="/activities/{t.event.slug}">
+					<a href="/activities/{t.event.slug}/">
 						<div class="relative rounded-lg shadow-xl">
 							{#if !dayjs().isAfter(dayjs(t.event.startDate), 'day')}
 								<div

@@ -76,7 +76,7 @@
 	},
 	{
 		"question": "Do I need an account to participate in Activities?",
-		"answer": "Yes, a THAT account is required to participate in any Activity. You may create a new account and profile here (<a class='underline hover:no-underline hover:font-semibold' href='https://that.us/login?signup=true'>Sign up</a>).",
+		"answer": "Yes, a THAT account is required to participate in any Activity. You may create a new account and profile here (<a class='underline hover:no-underline hover:font-semibold' href='https://that.us/signup/'>Sign up</a>).",
 		"category": "account"
 	},
 	{

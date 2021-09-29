@@ -66,7 +66,7 @@
 								to easily connect and support one another in achieving their best self, each and
 								every day. Together we can accomplish amazing things and we all have a role in
 								making our community the best it can be.
-								<a class="text-thatOrange-400 hover:text-thatOrange-500" href="/signup">
+								<a class="text-thatOrange-400 hover:text-thatOrange-500" href="/signup/">
 									Join us today!
 								</a>
 							</p>
