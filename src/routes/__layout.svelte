@@ -136,13 +136,13 @@
 				email
 			});
 
-			woopra.identify({
+			window.woopra.identify({
 				id,
 				email,
 				name: `${firstName} ${lastName}`
 			});
 
-			woopra.track();
+			window.woopra.track();
 		}
 	}
 
