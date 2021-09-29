@@ -56,6 +56,8 @@
 <script>
 	import { onMount, onDestroy, setContext } from 'svelte';
 	import { navigating, session } from '$app/stores';
+	import { browser } from '$app/env';
+	import { page } from '$app/stores';
 
 	import loading from '$stores/loading';
 	import { showReleaseNotes } from '$stores/siteVersion';
@@ -79,24 +81,28 @@
       ... we might have to set it better based on some other layering going on in places.
     */
 		document.getElementById('tidio-chat-iframe').style.zIndex = '40';
-		//todo.. how do we watch profile changes?
-		// unsub = $session.thatProfile((currentUser) => {
-		// 	if (!isEmpty(currentUser)) {
-		// 		window.tidioChatApi.setVisitorData({
-		// 			distinct_id: currentUser.id,
-		// 			email: currentUser.email,
-		// 			name: `${currentUser.firstName} ${currentUser.lastName}`
-		// 		});
-		// 		window.tidioChatApi.setContactProperties({
-		// 			company: currentUser.company,
-		// 			canfeature: currentUser.canFeature ? 'true' : 'false'
-		// 		});
-		// 		window.tidioChatApi.addVisitorTags([
-		// 			currentUser.id,
-		// 			`https://that.us/member/${currentUser.profileSlug}`
-		// 		]);
-		// 	}
-		// });
+
+		if (!isEmpty($session.thatProfile)) {
+			if (!dev && browser) {
+				if (!isEmpty($session.thatProfile)) {
+					window.tidioChatApi.setVisitorData({
+						distinct_id: $session.thatProfile.id,
+						email: $session.thatProfile.email,
+						name: `${$session.thatProfile.firstName} ${$session.thatProfile.lastName}`
+					});
+
+					window.tidioChatApi.setContactProperties({
+						company: $session.thatProfile.company,
+						canfeature: $session.thatProfile.canFeature ? 'true' : 'false'
+					});
+
+					window.tidioChatApi.addVisitorTags([
+						$session.thatProfile.id,
+						`https://that.us/member/${$session.thatProfile.profileSlug}`
+					]);
+				}
+			}
+		}
 	}
 
 	onMount(() => {
@@ -132,15 +138,23 @@
 				email
 			});
 
-			// woopra.identify({
-			// 	id,
-			// 	email,
-			// 	name: `${firstName} ${lastName}`
-			// });
+			woopra.identify({
+				id,
+				email,
+				name: `${firstName} ${lastName}`
+			});
+
+			woopra.track();
 		}
 	}
 
 	// onDestroy(unsub);
+
+	$: $page.path,
+		browser &&
+			window.gtag('config', 'UA-21705613-11', {
+				page_path: $page.path
+			});
 </script>
 
 <div>
