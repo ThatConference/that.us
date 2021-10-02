@@ -394,14 +394,16 @@
 				<div>
 					<!-- Start Time -->
 					<p class="text-base text-gray-700  sm:text-lg sm:mx-auto md:text-xl lg:mx-0">
-						{#if durationInMinutes <= 60}
-							{dayjs(startTime).format('dddd, MMMM D, YYYY - h:mm A z')}, for
-							{dayjs.duration(durationInMinutes, 'minutes').as('hours')}
-							hour.
-						{:else}
-							{dayjs(startTime).format('dddd, MMMM D, YYYY - h:mm A z')}, for
-							{dayjs.duration(durationInMinutes, 'minutes').as('hours')}
-							hours.
+						{#if durationInMinutes > 0}
+							{#if durationInMinutes <= 60}
+								{dayjs(startTime).format('dddd, MMMM D, YYYY - h:mm A z')}, for
+								{dayjs.duration(durationInMinutes, 'minutes').as('hours')}
+								hour.
+							{:else}
+								{dayjs(startTime).format('dddd, MMMM D, YYYY - h:mm A z')}, for
+								{dayjs.duration(durationInMinutes, 'minutes').as('hours')}
+								hours.
+							{/if}
 						{/if}
 					</p>
 
