@@ -8,7 +8,6 @@
 		const { queryBlogAuthorBySlug } = membersQueryApi(fetch);
 
 		const post = getPosts().find((post) => slug === post.metadata.slug);
-
 		const author = await queryBlogAuthorBySlug(post.metadata.authorSlug);
 
 		if (!post) {
@@ -62,10 +61,10 @@
 
 	const url = `${website}/${slug}`;
 
-	const metaTags = ((title = `${title} - THAT`) => ({
-		title,
+	const metaTags = ((bTitle = `${title} - THAT`) => ({
+		title: bTitle,
 		tags: seoMetaTags({
-			title,
+			title: bTitle,
 			description: `${description}`,
 			openGraph: {
 				type: 'website',
