@@ -15,7 +15,7 @@ In just over 6 months THAT Campsite will be set, tents lining the halls and THAT
 Regardless of age, experience, tech stack... you have awesome to share and a community of people who want to hear it. So let's get to it... THAT 2020 Call for Counselors is NOW OPEN!
 
 <div style="text-align: center; padding: 3rem 0;">
-  <a href="/wi/call-for-counselors" class="linkButton" target="_blank">
+  <a href="/call-for-counselors" class="linkButton" target="_blank">
     Become a THAT 2020 Camp Counselor
   </a>
 </div>
@@ -66,7 +66,7 @@ Simply put, we're here to help. Not just the folks at THAT Conference but the en
 In the meantime check out [Your Abstract Sucks](https://medium.com/that-conference/your-abstract-sucks-21f39d61b617) by [Clark Sell](https://medium.com/@clarksell).
 
 <div style="text-align: center; padding: 3rem 0;">
-  <a href="/wi/call-for-counselors" class="linkButton" target="_blank">
+  <a href="/call-for-counselors" class="linkButton" target="_blank">
     Become a THAT 2020 Camp Counselor
   </a>
 </div>

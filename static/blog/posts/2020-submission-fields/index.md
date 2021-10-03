@@ -11,7 +11,7 @@ We know you all have been thinking through all the awesome you want to submit to
 
 
 <div style="text-align: center; padding: 3rem 0;">
-  <a href="/wi/call-for-counselors" class="linkButton" target="_blank">
+  <a href="/call-for-counselors" class="linkButton" target="_blank">
     Become a THAT 2020 Camp Counselor
   </a>
 </div>
@@ -45,7 +45,7 @@ We know you all have been thinking through all the awesome you want to submit to
   
 
   <div style="text-align: center; padding: 3rem 0;">
-    <a href="/wi/call-for-counselors" class="linkButton" target="_blank">
+    <a href="/call-for-counselors" class="linkButton" target="_blank">
       Become a THAT 2020 Camp Counselor
     </a>
   </div>
