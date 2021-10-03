@@ -2,7 +2,7 @@
 	export let event;
 
 	import dayjs from 'dayjs';
-	import { scrollto } from 'svelte-scrollto';
+	import { scrollTo } from 'svelte-scrolling';
 
 	import { StandardScroll } from '$elements/links';
 	import { Shell } from '$elements/buttons';
@@ -31,7 +31,7 @@
 
 			<div class="relative p-8 flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
 				<div class="flex-1 rounded-md shadow">
-					<a use:scrollto={'#tickets'}>
+					<a use:scrollTo={'#tickets'}>
 						<Shell>
 							<span class="font-extrabold uppercase">Tickets</span>
 						</Shell>
@@ -39,7 +39,7 @@
 				</div>
 
 				<div class="flex-1 rounded-md shadow">
-					<a use:scrollto={'#sponsors'}>
+					<a use:scrollTo={'#sponsors'}>
 						<Shell>
 							<span class="font-extrabold uppercase">Sponsorships</span>
 						</Shell>

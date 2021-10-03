@@ -1,14 +1,14 @@
 <script>
 	export let href;
 
-	import { scrollto } from 'svelte-scrollto';
+	import { scrollTo } from 'svelte-scrolling';
 </script>
 
 <!-- svelte-ignore a11y-missing-attribute -->
 <!-- svelte-ignore missing-declaration -->
 
 <a
-	use:scrollto={href}
+	use:scrollTo={href}
 	class="px-8 py-2 rounded-md shadow text-base leading-6 font-medium border-2
     border-thatBlue-500 text-thatBlue-500 bg-white hover:bg-thatBlue-500
     hover:text-white focus:bg-thatBlue-500 focus:text-white focus:outline-none

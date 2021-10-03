@@ -4,6 +4,7 @@
 	import { getContext } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import { goto } from '$app/navigation';
+	import { scrollRef } from 'svelte-scrolling';
 
 	import { Highlight as HighlightLink } from '$elements/links';
 
@@ -62,7 +63,7 @@
 		<What {event} />
 	</section>
 
-	<section id="tickets">
+	<section use:scrollRef={'#tickets'}>
 		<CamperTickets
 			{event}
 			on:purchase-hybrid-ticket={({ detail }) => handleOnTicketPurchase(detail)}
@@ -109,7 +110,7 @@
 		<Dates milestones={event.milestones} />
 	</section>
 
-	<section id="sponsors">
+	<section use:scrollRef={'#sponsors'}>
 		<Partners {event} />
 	</section>
 
