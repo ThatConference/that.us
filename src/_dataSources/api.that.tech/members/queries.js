@@ -97,6 +97,20 @@ export const QUERY_MEMBER_BY_SLUG = `
 	}
 `;
 
+export const QUERY_BLOG_AUTHOR_BY_SLUG = `
+	query getMemberBySlug ($slug: Slug!) {
+		members {
+			member(slug: $slug) {
+				id
+				firstName
+				lastName
+				profileSlug
+				profileImage
+			}
+		}
+	}
+`;
+
 export const QUERY_MEMBER_ACTIVITIES = `
 	query getMemberActivities ($slug: Slug!, $sessionStartDate: Date, $filter: AcceptedSessionFilter) {
 		members {
@@ -213,6 +227,17 @@ export default (fetch) => {
 		});
 	};
 
+	const queryBlogAuthorBySlug = (slug) => {
+		const variables = {
+			slug
+		};
+		return client.query({ query: QUERY_BLOG_AUTHOR_BY_SLUG, variables }).then(({ data, error }) => {
+			if (error) log(error, 'QUERY_BLOG_AUTHOR_BY_SLUG');
+
+			return data.members.member;
+		});
+	};
+
 	const queryMemberActivities = (
 		slug,
 		sessionStartDate = new Date(new Date().setHours(0, 0, 0, 0)),
@@ -276,6 +301,7 @@ export default (fetch) => {
 		queryNextMemberActivities,
 		queryFollowers,
 		queryNextFollowers,
-		isSlugTaken
+		isSlugTaken,
+		queryBlogAuthorBySlug
 	};
 };
