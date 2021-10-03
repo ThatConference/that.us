@@ -1,5 +1,6 @@
 ---
 date: 2019-12-07
+articleType: article
 title: THAT 2019 Holiday Buying Guide
 description: Top picks from THAT Crew to get you inspired for gift giving this holiday season.
 heroImage: hero.png

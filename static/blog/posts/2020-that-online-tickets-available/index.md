@@ -1,10 +1,10 @@
 ---
 date: 2020-06-19
+articleType: announcement
 title: THAT Online Tickets Are Now On Sale
 description: THAT Online, a new kind of camp to inspire and connect on Aug. 3rd
 heroImage: THAT-Registration-2019.jpg
 authorSlug: clark
-excerpt: This August we're setting up a new kind of camp. This year's THAT Conference puts you in the driver's seat. You set the topics. You set the schedule. You pick the price. You're in control all from the comfort of your own camp chair. We're calling it THAT Online.
 ---
 
 <div style="text-align: center; padding: 4rem 0;">

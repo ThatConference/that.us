@@ -1,10 +1,10 @@
 ---
 date: 2020-12-08
+articleType: article
 title: THAT Year, a retrospective
 description: It's important to look back, celebrate, refactor and create an awesome future.
 heroImage: that-2020-logo.png
 authorSlug: clark
-excerpt: I'll start with a heartfelt Thank You. Thank You for supporting one another each and every day. We started THAT to help foster a community of folks, who would support one another in their ambitions.
 ---
 
 As 2020 draws to a close I wanted to take a hot minute or two reflecting on a few of the moments this past year.

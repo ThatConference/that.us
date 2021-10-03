@@ -1,5 +1,6 @@
 ---
 date: 2019-12-13
+articleType: article
 title: THAT Computer Science Education Week Celebration
 description: Getting inspired to celebrate Computer Science Education Week with THAT!
 heroImage: hero.png

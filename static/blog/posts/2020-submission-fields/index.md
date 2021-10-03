@@ -1,5 +1,6 @@
 ---
 date: 2020-02-21
+articleType: article
 title: THAT Submissions Closing Soon!
 description: All you need to know to complete and submit your THAT Conference 2020 submissions!
 heroImage: that-workstation.jpg

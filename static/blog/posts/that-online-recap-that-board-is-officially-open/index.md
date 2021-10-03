@@ -1,10 +1,10 @@
 ---
 date: 2020-08-14
+articleType: announcement
 title: THAT Online Recap & THAT Board is officially open!
 description: Why stop when we don't have to? THAT.us is just getting started.
 heroImage: that-2020-logo.png
 authorSlug: clark
-excerpt: 'Thank you. These days time seems to slip by too fast. Last week marked our first ever online event, dubbed THAT Online. Over 900 people, in 24 countries, across 5 continents joined together and added 97 sessions to THAT board.'
 ---
 
 Hey Camper, it's Clark here.

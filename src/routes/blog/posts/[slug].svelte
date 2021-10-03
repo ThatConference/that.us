@@ -86,6 +86,15 @@
 		<div class="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
 			<article>
 				<div class="text-base max-w-prose mx-auto lg:max-w-none" class:text-center={center}>
+					<div class="pb-8 flex flex-col items-center">
+						<a href={`/members/${author.profileSlug}`}>
+							<img
+								class="h-24 w-24 rounded-full"
+								src={`${author.profileImage}?auto=format&fit=facearea&facepad=2&w=256&h=256&q=80`}
+								alt={`${author.firstName} ${author.lastName}`}
+							/>
+						</a>
+					</div>
 					<div
 						class="text-base leading-6 text-thatOrange-400 font-semibold tracking-wide uppercase"
 					>
@@ -115,16 +124,15 @@
 				</div>
 			</article>
 
-			<div class="pt-12 flex justify-between">
+			<!-- <div class="pt-12 flex flex-col space-y-4">
 				{#if previous}
 					<ButtonLink isBack href={`/blog/posts/${previous.slug}`}>{previous.title}</ButtonLink>
-				{:else}
-					<div />
 				{/if}
+
 				{#if next}
 					<ButtonLink href={`/blog/posts/${next.slug}`}>{next.title}</ButtonLink>
 				{/if}
-			</div>
+			</div> -->
 		</div>
 	</div>
 </Layout>

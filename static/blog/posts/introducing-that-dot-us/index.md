@@ -1,12 +1,10 @@
 ---
-title: It's THAT Time. Introducing THAT.us
-description: You have 1 week left to snatch up your ticket to THAT Online.
 date: 2020-08-27
-
+title: It's THAT Time. Introducing THAT.us
+articleType: announcement
+description: You have 1 week left to snatch up your ticket to THAT Online.
 heroImage: heroImage.png
 authorSlug: clark
-
-excerpt: It’s so hard to believe that in only one week August is upon us. Next Monday, August 3rd marks the very first THAT Online. Honestly it marks something much bigger than a day of sessions, it’s the beginning of THAT Online, https://that.us.
 ---
 
 

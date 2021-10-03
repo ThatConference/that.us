@@ -1,10 +1,10 @@
 ---
 date: 2020-05-19
+articleType: announcement
 title: Refactoring THAT Conference 2020
 description: Refactoring THAT 2020, Announcing THAT WI 2021, and THAT TX 2021! Yes, you heard that all right.
 heroImage: refactoring-THAT-conference-2020.jpg
 authorSlug: clark
-excerpt: The vast majority of us have been sheltered at home now for months. At first what seemed like a few screwed up timelines, has quickly become a global historic event. Uniformly, our road ahead has many unanswered questions, but one thing still remains true, our community is more important than ever and so is our collective safety.
 ---
 
 

@@ -1,6 +1,8 @@
 <script>
 	export let metadata;
 
+	console.log(metadata);
+
 	import dayjs from 'dayjs';
 </script>
 
@@ -16,8 +18,10 @@
 	</div>
 	<div class="flex-1 bg-white p-6 flex flex-col justify-between">
 		<div class="flex-1">
-			<p class="text-sm font-medium text-cyan-600">
-				<a href={`/blog/posts/${metadata.slug}`} class="hover:underline"> Article </a>
+			<p class="text-sm font-medium text-gray-400">
+				<a href={`/blog/posts/${metadata.slug}`} class="hover:underline uppercase"
+					>{metadata.articleType}</a
+				>
 			</p>
 			<a href={`/blog/posts/${metadata.slug}`} class="block mt-2">
 				<p class="text-xl font-semibold text-gray-900">{metadata.title}</p>

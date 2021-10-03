@@ -1,5 +1,6 @@
 ---
 date: 2020-02-21
+articleType: article
 title: Celebrating Black History Month
 description: February is a month to celebrate African Americans who have changed the world. We'd like to take a moment to shine a light on a few who paved the road with technologies we use and work with everyday.
 heroImage: anjuan-THAT-keynote-2019.jpg

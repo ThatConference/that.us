@@ -1,10 +1,10 @@
 ---
 date: 2021-03-19
+articleType: announcement
 title: It's time we chat
 description: Join us live on March 31st at noon central to talk about 2021.
 heroImage: hero.png
 authorSlug: clark
-excerpt: Now it's time we talk about 2021 and the future of THAT. Join us on March 31st at noon live on YouTube. We will recap the past 370 days of March and discuss our exciting plans for the future.
 ---
 
 

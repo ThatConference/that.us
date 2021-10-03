@@ -1,5 +1,6 @@
 ---
 date: 2020-07-31
+articleType: announcement
 title: Load the Board! Keynotes Announced!
 description: Get ready Campers, it's time to setup camp.
 heroImage: load-the-board-keynotes-announced.jpg

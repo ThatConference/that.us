@@ -1,5 +1,6 @@
 ---
 date: 2020-02-08
+articleType: announcement
 title: Turning Your Awesome Into Submissions
 description: THAT Submission Worksheet to turn your unique awesomeness into session submissions
 heroImage: counselor-badges.jpg

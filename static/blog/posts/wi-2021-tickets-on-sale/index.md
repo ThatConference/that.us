@@ -1,10 +1,10 @@
 ---
 date: 2021-04-30
+articleType: announcement
 title: Tickets Are On Sale and a backpack full of updates
 description: THAT Conference 2021 will be held at the Kalahari Resorts in Wisconsin Dells from July 26th through July 29th. Tickets are on sale now.
 heroImage: that-logo-states-wi-2021.svg
 authorSlug: clark
-excerpt: Tickets for THAT Conference 2021 are now on sale! Head over to https://that.us/events/wi/2021 and purchase your tickets today. On July 26th - 29th, not August, we're back at the Kalahari Resort in the beautiful Wisconsin Dells, WI.
 ---
 
 Hi!

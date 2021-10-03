@@ -1,5 +1,6 @@
 ---
 date: 2019-12-23
+articleType: article
 title: Happy Holidays ❤️ THAT
 description: Wishing everyone in THAT Family a very happy holiday and New Year!
 heroImage: hero.png
