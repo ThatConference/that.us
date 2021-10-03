@@ -19,11 +19,11 @@
 	<div class="flex-1 bg-white p-6 flex flex-col justify-between">
 		<div class="flex-1">
 			<p class="text-sm font-medium text-gray-400">
-				<a href={`/blog/posts/${metadata.slug}`} class="hover:underline uppercase"
+				<a href={`/blog/posts/${metadata.slug}/`} class="hover:underline uppercase"
 					>{metadata.articleType}</a
 				>
 			</p>
-			<a href={`/blog/posts/${metadata.slug}`} class="block mt-2">
+			<a href={`/blog/posts/${metadata.slug}/`} class="block mt-2">
 				<p class="text-xl font-semibold text-gray-900">{metadata.title}</p>
 				<p class="mt-3 text-base text-gray-500">
 					{metadata.description}
@@ -32,7 +32,7 @@
 		</div>
 		<div class="mt-6 flex items-center">
 			<div class="flex-shrink-0">
-				<a href={`/members/${metadata.author.profileSlug}`}>
+				<a href={`/members/${metadata.author.profileSlug}/`}>
 					<img
 						class="h-10 w-10 rounded-full"
 						src={`${metadata.author.profileImage}?auto=format&fit=facearea&facepad=2&w=256&h=256&q=80`}
@@ -42,7 +42,7 @@
 			</div>
 			<div class="ml-3">
 				<p class="text-sm font-medium text-gray-900">
-					<a href={`/members/${metadata.author.profileSlug}`} class="hover:underline"
+					<a href={`/members/${metadata.author.profileSlug}/`} class="hover:underline"
 						>{`${metadata.author.firstName} ${metadata.author.lastName}`}</a
 					>
 				</p>

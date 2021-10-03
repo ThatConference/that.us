@@ -34,7 +34,24 @@
 
 	import Card from './_components/blogCard.svelte';
 	import Layout from '$elements/layouts/ContentLayout.svelte';
+
+	import seoMetaTags from '$utils/seo/metaTags';
+	import Seo from '$components/Seo.svelte';
+
+	const metaTags = ((title = `THAT BLOG - THAT`) => ({
+		title,
+		tags: seoMetaTags({
+			title,
+			description: '',
+			openGraph: {
+				type: 'website',
+				url: `https://that.us/blog/}`
+			}
+		})
+	}))();
 </script>
+
+<Seo title={metaTags.title} tags={metaTags.tags} />
 
 <Layout>
 	<!-- Blog section -->
