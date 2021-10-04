@@ -2,12 +2,13 @@
 import preprocess from 'svelte-preprocess';
 import { resolve } from 'path';
 import { mdsvex } from 'mdsvex';
+import mdsvexConfig from './mdsvex.config.js';
 
 // import localAdapter from '@sveltejs/adapter-node';
 import vercelAdapter from '@sveltejs/adapter-vercel';
 
 const config = {
-	extensions: ['.svelte', '.svx', '.md'],
+	extensions: ['.svelte', ...mdsvexConfig.extensions],
 	kit: {
 		// hydrate the <div id="svelte"> element in src/app.html
 		target: '#svelte',
@@ -23,21 +24,17 @@ const config = {
 					$utils: resolve('src/_utils'),
 					$dataSources: resolve('src/_dataSources'),
 					$stores: resolve('src/_stores'),
-					$machines: resolve('src/_machines')
+					$machines: resolve('src/_machines'),
+					$blog: resolve('src/_blog')
 				}
 			}
 		},
 		adapter: vercelAdapter()
 	},
 	preprocess: [
+		mdsvex(mdsvexConfig),
 		preprocess({
 			postcss: true
-		}),
-		mdsvex({
-			extensions: ['.svx', '.md'],
-			layout: {
-				support: './src/_elements/layouts/markdown/Support.svelte'
-			}
 		})
 	]
 };
