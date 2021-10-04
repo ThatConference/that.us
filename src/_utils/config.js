@@ -51,7 +51,6 @@ export const securityConfig = () => {
 		config.secret = process.env['AUTH0_SECRET'] || configMissing('AUTH0_CLIENT_SECRET');
 	}
 
-	console.log('security config', config);
 	return config;
 };
 
