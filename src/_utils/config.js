@@ -23,6 +23,8 @@ export default {
 };
 
 export const securityConfig = () => {
+	console.log('redirect from meta', import.meta.env.VITE_REDIRECT_URI);
+
 	const config = {
 		clientID: import.meta.env.VITE_AUTH0_CLIENT_ID || configMissing('VITE_AUTH0_CLIENT_ID'),
 		baseURL: import.meta.env.VITE_AUTH0_BASE_URL || `https://that.us`,
