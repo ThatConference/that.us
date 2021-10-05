@@ -64,9 +64,11 @@
 					</div>
 				{:else}
 					<div class="flex-1 rounded-md shadow">
-						<StandardScroll href="#upnext">
-							<span class="font-extrabold uppercase">Schedule</span>
-						</StandardScroll>
+						<a use:scrollto={'#upnext'}>
+							<Shell>
+								<div class="px-4 py-2 font-extrabold uppercase">Schedule</div>
+							</Shell>
+						</a>
 					</div>
 				{/if}
 			</div>
