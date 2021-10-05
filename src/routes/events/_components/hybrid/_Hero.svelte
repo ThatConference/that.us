@@ -66,7 +66,7 @@
 					<div class="flex-1 rounded-md shadow">
 						<a use:scrollto={'#upnext'}>
 							<Shell>
-								<span class="font-extrabold uppercase">Schedule</span>
+								<div class="px-4 py-2 font-extrabold uppercase">Schedule</div>
 							</Shell>
 						</a>
 					</div>
