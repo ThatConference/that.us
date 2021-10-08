@@ -53,6 +53,7 @@
 	import seoMetaTags from '$utils/seo/metaTags';
 	import Seo from '$components/Seo.svelte';
 	import ButtonLink from '../_components/buttonLink.svelte';
+	import NewsletterSignup from '$components/newsletter.svelte';
 
 	// generated open-graph image for sharing on social media. Visit https://og-image.vercel.app/ to see more options.
 	const ogImage = `https://og-image.vercel.app/**${encodeURIComponent(
@@ -149,4 +150,5 @@
 			</div> -->
 		</div>
 	</div>
+	<NewsletterSignup />
 </Layout>

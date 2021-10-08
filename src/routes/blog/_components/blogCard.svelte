@@ -1,8 +1,6 @@
 <script>
 	export let metadata;
 
-	console.log(metadata);
-
 	import dayjs from 'dayjs';
 </script>
 

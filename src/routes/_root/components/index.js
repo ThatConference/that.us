@@ -4,7 +4,7 @@ export { default as Event } from './event.svelte';
 export { default as Events } from './events.svelte';
 export { default as Hero } from './hero.svelte';
 export { default as NewMembers } from './newMembers.svelte';
-export { default as Newsletter } from './newsletter.svelte';
+export { default as Newsletter } from '$components/newsletter.svelte';
 export { default as Sponsors } from './sponsors.svelte';
 export { default as Stats } from './stats.svelte';
 export { default as WelcomeBack } from './welcomeBack.svelte';
