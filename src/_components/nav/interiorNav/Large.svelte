@@ -79,6 +79,15 @@
 				<DesktopLink>Partners</DesktopLink>
 			</a>
 
+			<a
+				href="/blog/"
+				class="ml-1 px-3 py-2 rounded-md text-sm font-medium text-gray-300
+          hover:text-white hover:bg-that-blue focus:outline-none
+          focus:text-white focus:bg-that-blue"
+			>
+				<DesktopLink>Blog</DesktopLink>
+			</a>
+
 			<div>
 				<button
 					href="/help/"

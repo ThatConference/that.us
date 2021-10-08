@@ -1,5 +1,9 @@
 export const thatLinks = [
 	{
+		text: 'Blog',
+		href: '/blog/'
+	},
+	{
 		text: 'Events',
 		href: '/events/'
 	},

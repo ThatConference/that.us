@@ -1,24 +1,28 @@
 export default [
 	{
 		text: 'Events',
-		href: '/events'
+		href: '/events/'
 	},
 	{
 		text: 'Activities',
-		href: '/activities',
+		href: '/activities/',
 		first: true
 	},
 	{
 		text: 'Members',
-		href: '/members'
+		href: '/members/'
 	},
 	{
 		text: 'Communities',
-		href: '/communities'
+		href: '/communities/'
 	},
 	{
 		text: 'Partners',
-		href: '/partners'
+		href: '/partners/'
+	},
+	{
+		text: 'Blog',
+		href: '/blog/'
 	},
 	{
 		text: 'Help',
