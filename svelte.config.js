@@ -4,8 +4,11 @@ import { resolve } from 'path';
 import { mdsvex } from 'mdsvex';
 import mdsvexConfig from './mdsvex.config.js';
 
-// import localAdapter from '@sveltejs/adapter-node';
 import vercelAdapter from '@sveltejs/adapter-vercel';
+
+//todo this needs to get checked on the build rigs
+const dev = process.env.NODE_ENV === 'development' ? true : false;
+console.log('process.env.NODE_ENV', dev);
 
 const config = {
 	extensions: ['.svelte', ...mdsvexConfig.extensions],
@@ -31,12 +34,14 @@ const config = {
 		},
 		adapter: vercelAdapter()
 	},
-	preprocess: [
-		mdsvex(mdsvexConfig),
-		preprocess({
-			postcss: true
-		})
-	]
+	preprocess: !dev
+		? [
+				mdsvex(mdsvexConfig),
+				preprocess({
+					postcss: true
+				})
+		  ]
+		: [mdsvex(mdsvexConfig)]
 };
 
 export default config;
