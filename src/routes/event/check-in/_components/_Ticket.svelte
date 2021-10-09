@@ -61,7 +61,7 @@
 						<span class="truncate">{ticketHolder.email || ''}</span>
 					</p>
 				</div>
-				<div class="hidden md:block">
+				<div class="block mt-2 sm:mt-0">
 					<div>
 						<p class="flex text-sm font-extrabold text-gray-900">
 							{ticket.product.name}
