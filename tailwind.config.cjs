@@ -65,6 +65,17 @@ module.exports = {
 		}
 	},
 
+	// Necessary z-index for the date headers in Activities
+	zIndex: {
+		1: '1'
+	},
+
+	variants: {
+		extend: {
+			fontWeight: ['hover', 'focus']
+		}
+	},
+
 	plugins: [
 		require('@tailwindcss/line-clamp'),
 		require('@tailwindcss/forms'),

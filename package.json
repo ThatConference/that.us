@@ -13,7 +13,7 @@
 	},
 	"license": "GPL-3.0",
 	"scripts": {
-		"dev": "env-cmd svelte-kit dev --port 5000",
+		"dev": "env-cmd svelte-kit dev --port 5000 --host",
 		"local:build": "env-cmd svelte-kit build",
 		"build": "svelte-kit build",
 		"start": "svelte-kit start",
