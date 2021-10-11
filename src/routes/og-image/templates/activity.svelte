@@ -1,5 +1,5 @@
 <script context="module">
-	import gFetch from '$utils/gFetch';
+	import gFetch from '$utils/gfetch';
 
 	const QUERY_SESSION_BY_ID = `
 		query QUERY_SESSION_BY_ID($id: ID!) {

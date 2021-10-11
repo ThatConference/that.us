@@ -1,5 +1,5 @@
 <script context="module">
-	import gFetch from '$utils/gFetch';
+	import gFetch from '$utils/gfetch';
 
 	export async function load({ page, fetch: sfetch, session, context }) {
 		const fetch = gFetch(sfetch);
