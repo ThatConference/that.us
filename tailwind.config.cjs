@@ -4,14 +4,14 @@ module.exports = {
 	purge: ['./src/**/*.{html,js,svelte,ts}'],
 
 	theme: {
-		fontFamily: {
-			head: ['Coda']
-		},
+		// fontFamily: {
+		// 	head: ['Coda']
+		// },
 
-		interFontFeatures: {
-			default: ['calt', 'liga', 'kern'],
-			numeric: ['tnum', 'salt', 'ss02']
-		},
+		// interFontFeatures: {
+		// 	default: ['calt', 'liga', 'kern'],
+		// 	numeric: ['tnum', 'salt', 'ss02']
+		// },
 
 		extend: {
 			colors: {
