@@ -62,7 +62,7 @@
 	dayjs.extend(advancedFormat);
 </script>
 
-<div class="min-h-screen grid place-items-center p-4">
+<div class="font-og min-h-screen grid place-items-center p-4">
 	<div id="og-image" class="relative w-[640px] h-[360px] bg-gray-50 overflow-hidden">
 		<Trees
 			classes="opacity-80 text-thatBlue-500 absolute w-[500px] -right-2 -top-10 -mt-8 -mr-10"

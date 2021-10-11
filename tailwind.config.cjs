@@ -4,9 +4,9 @@ module.exports = {
 	purge: ['./src/**/*.{html,js,svelte,ts}'],
 
 	theme: {
-		// fontFamily: {
-		// 	head: ['Coda']
-		// },
+		fontFamily: {
+			og: ['Open Sans']
+		},
 
 		// interFontFeatures: {
 		// 	default: ['calt', 'liga', 'kern'],
