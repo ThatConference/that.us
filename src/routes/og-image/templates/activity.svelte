@@ -112,6 +112,7 @@
 </div>
 
 <style>
+	@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap');
 	.flip {
 		transform: scaleX(-1);
 	}
