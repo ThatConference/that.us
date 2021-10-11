@@ -5,7 +5,7 @@ module.exports = {
 
 	theme: {
 		fontFamily: {
-			og: ['Open Sans']
+			og: ['Roboto']
 		},
 
 		// interFontFeatures: {
