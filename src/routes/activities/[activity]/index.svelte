@@ -43,9 +43,9 @@
 		title = `${activity.title} - THAT`
 	) => ({
 		title,
-		image,
 		tags: seoMetaTags({
 			title,
+			image,
 			description: `${activity.shortDescription}`,
 			openGraph: {
 				url: `https://that.us/activity/${activity.id}`
