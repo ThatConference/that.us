@@ -18,44 +18,49 @@ const create = (metaData) => {
 
 	// twitter components
 	if (metaData.title) {
-		results.push({ name: 'twitter:title', content: metaData.title });
-		results.push({ name: 'og:title', content: metaData.title });
+		results.push({ name: 'title', content: metaData.title });
+		results.push({ property: 'twitter:title', content: metaData.title });
+		results.push({ property: 'og:title', content: metaData.title });
 	}
 
 	if (metaData.description) {
 		results.push({ name: 'description', content: metaData.description });
 
 		results.push({
-			name: 'twitter:description',
+			property: 'twitter:description',
 			content: metaData.description
 		});
 
 		results.push({
-			name: 'og:description',
+			property: 'og:description',
 			content: metaData.description
 		});
 	}
 
 	// twitter
 	results.push({
-		name: 'twitter:creator',
+		property: 'twitter:creator',
 		content: metaData.twitter?.creator || '@thatconference'
 	});
 
-	results.push({ name: 'twitter:image', content: formattedImage });
+	results.push({ property: 'twitter:image', content: formattedImage });
+	results.push({ property: 'twitter:card', content: formattedImage });
 	results.push({
-		name: 'twitter:image:alt',
+		property: 'twitter:image:alt',
 		content: formattedImage
 	});
 
-	results.push({ name: 'twitter:site', content: metaData.twitter?.site || 'https://that.us/' });
+	results.push({ property: 'twitter:site', content: metaData.twitter?.site || 'https://that.us/' });
 
 	// open graph components
-	results.push({ name: 'og:url', content: metaData.openGraph?.url || 'https://that.us/' });
-	results.push({ name: 'og:site_name', content: 'THAT' });
-	results.push({ name: 'og:type', content: metaData.openGraph?.type?.toLowerCase() || 'website' });
-	results.push({ name: 'og:locale', content: 'en_US' });
-	results.push({ name: 'og:image', content: formattedImage });
+	results.push({ property: 'og:url', content: metaData.openGraph?.url || 'https://that.us/' });
+	results.push({ property: 'og:site_property', content: 'THAT' });
+	results.push({
+		property: 'og:type',
+		content: metaData.openGraph?.type?.toLowerCase() || 'website'
+	});
+	results.push({ property: 'og:locale', content: 'en_US' });
+	results.push({ property: 'og:image', content: formattedImage });
 
 	return results;
 };
