@@ -1,5 +1,11 @@
+import config from '$utils/config';
+
 const create = (metaData) => {
 	const results = [];
+
+	const formattedImage = metaData.image
+		? `${config.ogImageApi}/api/template${metaData.image}`
+		: 'https://that.us/favicon.png';
 
 	const noindex = metaData ? metaData.noindex : false;
 	const nofollow = metaData ? metaData.nofollow : false;
@@ -36,10 +42,10 @@ const create = (metaData) => {
 		content: metaData.twitter?.creator || '@thatconference'
 	});
 
-	results.push({ name: 'twitter:image', content: metaData.image || 'https://that.us/favicon.png' });
+	results.push({ name: 'twitter:image', content: formattedImage });
 	results.push({
 		name: 'twitter:image:alt',
-		content: metaData.image || 'https://that.us/favicon.png'
+		content: formattedImage
 	});
 
 	results.push({ name: 'twitter:site', content: metaData.twitter?.site || 'https://that.us/' });
@@ -49,7 +55,7 @@ const create = (metaData) => {
 	results.push({ name: 'og:site_name', content: 'THAT' });
 	results.push({ name: 'og:type', content: metaData.openGraph?.type?.toLowerCase() || 'website' });
 	results.push({ name: 'og:locale', content: 'en_US' });
-	results.push({ name: 'og:image', content: 'https://that.us/favicon.png' });
+	results.push({ name: 'og:image', content: formattedImage });
 
 	return results;
 };
