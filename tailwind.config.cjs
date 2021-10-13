@@ -8,11 +8,6 @@ module.exports = {
 			og: ['Roboto']
 		},
 
-		// interFontFeatures: {
-		// 	default: ['calt', 'liga', 'kern'],
-		// 	numeric: ['tnum', 'salt', 'ss02']
-		// },
-
 		extend: {
 			colors: {
 				'that-offWhite': '#F7F7F7',

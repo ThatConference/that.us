@@ -71,7 +71,7 @@
 	import isToday from 'dayjs/plugin/isToday.js';
 	import isBetween from 'dayjs/plugin/isBetween.js';
 	import { Input } from 'sveltejs-forms';
-	import Datepicker from 'svelte-calendar';
+	import { Datepicker } from 'svelte-calendar';
 	import Select from 'svelte-select';
 	import advancedFormat from 'dayjs/plugin/advancedFormat.js';
 
