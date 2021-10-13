@@ -292,7 +292,7 @@
 						end={dayjs().add(6, 'month').toDate()}
 						bind:selected={selectedDateValue}
 						style="rounded-md shadow-sm"
-						format={dayjs(selectedDateValue).format('dddd, MMM D, YYYY z')}
+						format="dddd, MMM D, YYYY z"
 						on:dateSelected={({ detail: { date } }) =>
 							setValue('selectedDay', dayjs(date).format('YYYY-MM-DD'))}
 					/>

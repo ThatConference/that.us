@@ -166,7 +166,7 @@
 					start={startDate}
 					end={endDate}
 					bind:selected={selectedDateValue}
-					format={dayjs(selectedDateValue).format('dddd, MMM D, YYYY z')}
+					format="dddd, MMM D, YYYY z"
 					style="form-input  sm:text-sm sm:leading-5 rounded-md shadow-sm hover:border-gray-700"
 					on:dateSelected={({ detail: { date } }) =>
 						setField('selectedDay', dayjs(date).format('YYYY-MM-DD'))}
