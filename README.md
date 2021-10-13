@@ -2,35 +2,56 @@
 
 [![GitHub issues open](https://img.shields.io/github/issues/thatconference/that.us.svg)](https://github.com/thatconference/that.us/issues) [![release](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/thatconference/that.us/issues) <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-41-orange.svg?style=flat-square)](#contributors-)
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 ## Get started
 
-Install the dependencies...
+THAT.us is a SvelteKit application. It uses Tailwind for styling, and makes GraphQL calls against our Api, https://api.that.tech/view.
+
+### local dependencies
+
+- nodejs v14.17.5
+- npm v8.0.0
+
+### project dependencies
+
+We use nodenv to manage our node versions, it's configed in this repo.
+
+Install the project dependencies...
 
 ```bash
-npm install
+  npm i
 ```
 
-...then start [Rollup](https://rollupjs.org):
+## Building and running in development
+
+### env configuration
+
+You will find the env settings in .env.sample. If you're interested in working on the project you will need a few additional values. Email us at hello@that.us.
+
+### running
 
 ```bash
-npm run dev
+  npm run dev
 ```
 
-Navigate to [localhost:5000](http://localhost:5000). You should see your app running. Edit a component file in `src`, save it, and reload the page to see your changes.
-
-By default, the server will only respond to requests from localhost. To allow connections from other computers, edit the `sirv` commands in package.json to include the option `--host 0.0.0.0`.
+Navigate to [localhost:5000](http://localhost:5000). You should see your app running. Edit a component file in `src`, save it. It's setup with HMR and Tailwind's JIT. You should see your changes as soon as you make them.
 
 ## Building and running in production mode
 
-To create an optimised version of the app:
-
 ```bash
-npm run build
+  npm run local:build
+  npm run preview
 ```
 
-You can run the newly built app with `npm run start`. This uses [sirv](https://github.com/lukeed/sirv), which is included in your package.json's `dependencies` so that the app will work when you deploy to platforms.
+Mind you the build servers will run the following:
+
+```bash
+  npm run build
+```
+
+The only difference is how we're managing env settings.
 
 ## Contributors ✨
 
