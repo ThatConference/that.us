@@ -50,7 +50,7 @@
 	import isToday from 'dayjs/plugin/isToday.js';
 	import advancedFormat from 'dayjs/plugin/advancedFormat.js';
 
-	import Datepicker from 'svelte-calendar'; //https://github.com/6eDesign/svelte-calendar
+	import { Datepicker } from 'svelte-calendar'; //https://github.com/6eDesign/svelte-calendar
 
 	import { Form, Input } from 'sveltejs-forms'; //https://github.com/mdauner/sveltejs-forms
 	import Select from 'svelte-select'; //https://github.com/rob-balfre/svelte-select
