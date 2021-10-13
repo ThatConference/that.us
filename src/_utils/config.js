@@ -14,9 +14,7 @@ export default {
 	api: import.meta.env.VITE_THAT_API || configMissing('VITE_THAT_API'),
 	// api: 'https://gateway-bgydxslf5a-uc.a.run.app',
 	// api: 'https://that.graphcdn.app',
-	ogImageApi:
-		import.meta.env.VITE_THAT_OG_IMAGE_API ||
-		'https://us-central1-all-that.cloudfunctions.net/og-image',
+	ogImageApi: import.meta.env.VITE_THAT_OG_IMAGE_API || 'https://og-image.that.tech/og-image',
 	profileImageApi: 'https://api.that.tech/profile',
 	defaultProfileImage:
 		'https://images.that.tech/members/person-placeholder.jpg?auto=format&fit=facearea&facepad=10&mask=ellipse&h=250&w=250&q=50&dpr=2',
