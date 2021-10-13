@@ -73,7 +73,7 @@
 		tags: seoMetaTags({
 			title,
 			description:
-				'THAT is your new go-to peer-to-peer learning platform where real practitioners come together daily, monthly, and yearly.  Join on the 15th of every month for THAT Online and this July at THAT Conference.'
+				'THAT is your go-to peer-to-peer learning platform where real practitioners. Join us daily, monthly, and yearly. THAT Online is the 15th of every month and make sure to join us in-person at THAT Conference either in Texas in January or Wisconsin in July.'
 		})
 	}))();
 
