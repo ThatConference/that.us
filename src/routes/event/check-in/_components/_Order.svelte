@@ -76,7 +76,7 @@
 		{#if userClicked}
 			<div>
 				<div class="border-t-2 my-4" />
-				<div class="flex flex-col mx-12">
+				<div class="flex flex-col sm:mx-12">
 					<ul class="space-y-4">
 						{#each registration.orderAllocations as ticket}
 							<li>

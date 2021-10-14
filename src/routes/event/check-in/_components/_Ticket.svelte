@@ -30,8 +30,8 @@
 	class:bg-yellow-100={!ticket.isAllocated}
 	class:hover:bg-yellow-200={!ticket.isAllocated}
 >
-	<div class="flex items-center">
-		<div class="min-w-0 flex-1 flex items-center">
+	<div class="flex md:items-center">
+		<div class="min-w-0 flex-1 flex md:items-center">
 			<div class="flex-shrink-0">
 				<img
 					loading="lazy"
