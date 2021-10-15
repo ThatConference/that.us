@@ -32,7 +32,7 @@
 <script>
 	export let posts;
 
-	import Card from './_components/blogCard.svelte';
+	import Card from '$components/blog/components/blogCard.svelte';
 	import Layout from '$elements/layouts/ContentLayout.svelte';
 
 	import seoMetaTags from '$utils/seo/metaTags';

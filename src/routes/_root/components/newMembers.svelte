@@ -40,8 +40,7 @@
 	<div class="max-w-screen-xl mx-auto px-8">
 		<div class="relative py-20 text-left">
 			<h3
-				class="text-3xl leading-8 font-extrabold tracking-tight text-gray-900
-        sm:text-4xl sm:leading-10"
+				class="text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:leading-10"
 			>
 				Welcome to THAT family!
 			</h3>
@@ -55,10 +54,7 @@
 		</div>
 
 		<div class="relative">
-			<ul
-				class="grid grid-cols-1 gap-6 sm:grid-cols-3 md:grid-cols-4
-          lg:grid-cols-5"
-			>
+			<ul class="grid grid-cols-1 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
 				{#each members as m (m.id)}
 					<li class="col-span-1">
 						<MemberCard {...m} />
