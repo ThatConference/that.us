@@ -40,7 +40,7 @@ export default {
 		[
 			autolinkHeadings,
 			{
-				behavior: 'wrap'
+				behavior: 'prepend'
 			}
 		]
 	]
