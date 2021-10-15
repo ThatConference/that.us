@@ -2,6 +2,9 @@
 	export let metadata;
 
 	import dayjs from 'dayjs';
+	import buildImageSrc from '$utils/image';
+
+	const srcset = buildImageSrc(metadata.author.profileImage, ['40']);
 </script>
 
 <div
@@ -9,7 +12,7 @@
 >
 	<div class="flex-shrink-0">
 		<img
-			class="bg-white h-48 w-full object-cover"
+			class="bg-white h-[600] w-[335] top-rounded-lg object-cover"
 			src={`/blog/posts/${metadata.slug}/${metadata.heroImage}`}
 			alt=""
 		/>
@@ -32,8 +35,10 @@
 			<div class="flex-shrink-0">
 				<a href={`/members/${metadata.author.profileSlug}/`}>
 					<img
-						class="h-10 w-10 rounded-full"
-						src={`${metadata.author.profileImage}?auto=format&fit=facearea&facepad=2&w=256&h=256&q=80`}
+						class="h-10 w-10 rounded-full lazyload"
+						data-sizes="auto"
+						data-src={srcset.src}
+						data-srcset={srcset.srcset}
 						alt={`${metadata.author.firstName} ${metadata.author.lastName}`}
 					/>
 				</a>

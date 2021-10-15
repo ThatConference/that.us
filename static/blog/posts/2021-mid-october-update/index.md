@@ -3,7 +3,7 @@ date: 2021-10-15
 articleType: update
 title: Buckle up Geeks, there is a lot going on.
 description: In this edition we cover; our road to the lone star state, October's THAT Online, What we're up to at THAT, and you better mark your calendars.
-heroImage: kalahari-hallway.jpeg
+heroImage: kalahari-hallway.jpg
 authorSlug: clark
 layout: blog
 ---
@@ -22,7 +22,7 @@ In this morning edition of words that are not code:
 ## The road to the lone star state
 
 <div class="w-full grid place-content-center">
-	<img class="w-[300px]" src="that-tx.png">
+	<img class="w-[300px] lazyload" src="that-tx.png">
 </div>
 
 ### CALL FOR SPEAKERS ENDS SOON!!!
@@ -54,7 +54,7 @@ This is our first time down in Texas and we couldn't be more excited to become p
 ## 15th of every month === THAT Online
 
 <div class="w-full grid place-content-center">
-	<img class="w-[300px]" src="that-online.png">
+	<img class="w-[300px] lazyload" src="that-online.png">
 </div>
 
 
@@ -71,7 +71,7 @@ Remember, this isn't our THAT, it's yours. If there is something you'd like to c
 ## What's up at THAT?
 
 <div class="w-full grid place-content-center">
-	<img class="w-[300px]" src="kalahari-hallway.jpeg">
+	<img class="w-[335px] lazyload" src="kalahari-hallway.jpg">
 </div>
 
 Over the past two years, we've all experienced a lot of change, and THAT has been no different. The pandemic created an opportunity for us to really work towards our goals of supporting geeks every day of the year, and thus we've been crazy hard at work ever since.

@@ -22,7 +22,7 @@ Computer Science Education Week is held in recognition of the birthday of comput
 
 Checkout [this quick video](https://www.youtube.com/watch?v=Fg82iV-L8ZY&feature=youtu.be) to learn more about how Grace Hopper influenced our industry and the tech stack most of us work on every day.
 
-<img src="./grace-hopper.png" alt="Grace Hopper"/>
+<img class="lazyload" src="./grace-hopper.jpg" alt="Grace Hopper"/>
 
 #### Current State of Computer Science Education
 
