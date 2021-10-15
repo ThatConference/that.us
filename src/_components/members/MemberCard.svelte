@@ -8,11 +8,12 @@
 	export let earnedMeritBadges = [];
 	export let profileLinks = [];
 
+	import buildImageSrc from '$utils/image';
 	import config from '$utils/config';
 	import SocialLinks from '$components/social/SocialLink.svelte';
-	let imageCrop = '?mask=ellipse&w=500&h=500&fit=crop';
 
-	let userProfileImage = profileImage ? `${profileImage}${imageCrop}` : config.defaultProfileImage;
+	const userProfileImage = profileImage || config.defaultProfileImage;
+	const srcset = buildImageSrc(userProfileImage, ['128', '500']);
 </script>
 
 <a href="/members/{profileSlug}/">
@@ -23,18 +24,19 @@
 			<div>
 				<span class="inline-block relative">
 					<img
-						class="w-32 h-32 flex-shrink-0 mx-auto rounded-full"
-						src={userProfileImage}
+						class="lazyload w-32 h-32 flex-shrink-0 mx-auto rounded-full"
+						data-sizes="auto"
+						data-src={srcset.src}
+						data-srcset={srcset.srcset}
 						alt=""
-						loading="lazy"
 					/>
 
 					{#if earnedMeritBadges.length > 0}
 						<span class="absolute bottom-0 left-0 block h-12 w-12">
 							<img
+								class="lazyload"
 								src={earnedMeritBadges[0].image}
 								alt={earnedMeritBadges[0].name}
-								loading="lazy"
 							/>
 						</span>
 					{/if}
