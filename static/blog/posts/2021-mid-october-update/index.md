@@ -5,6 +5,7 @@ title: Buckle up Geeks, there is a lot going on.
 description: In this edition we cover; our road to the lone star state, October's THAT Online, What we're up to at THAT, and you better mark your calendars.
 heroImage: kalahari-hallway.jpeg
 authorSlug: clark
+layout: blog
 ---
 
 <script>

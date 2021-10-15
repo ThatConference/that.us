@@ -6,6 +6,7 @@ description: February is a month to celebrate African Americans who have changed
 heroImage: anjuan-THAT-keynote-2019.jpg
 heroImageCaption: THAT Conference 2019 Keynoter Anjuan Simmons, 'Lending Privilege'
 authorSlug: clark
+layout: blog
 ---
 
 

@@ -5,6 +5,7 @@ title: We Want To Hear YOUR Awesome!
 description: THAT Conference 2020 Call For Counselors NOW OPEN
 heroImage: clark-2019-stage-pointing.jpg
 authorSlug: clark
+layout: blog
 ---
 
 ### THAT Conference 2020

@@ -5,6 +5,7 @@ title: Load the Board! Keynotes Announced!
 description: Get ready Campers, it's time to setup camp.
 heroImage: load-the-board-keynotes-announced.jpg
 authorSlug: clark
+layout: blog
 ---
 
 Get ready Campers, it's time to setup camp. In fact, the fun starts today at 4pm CDT [https://that.us/sessions/DGHIy8ud1wXgCp5ZZe0k](https://that.us/sessions/DGHIy8ud1wXgCp5ZZe0k). Join us for a pre-THAT social call.

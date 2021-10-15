@@ -9,7 +9,8 @@ import preview, { textFormatter, htmlFormatter } from 'remark-preview';
 export default {
 	extensions: ['.svx', '.md'],
 	layout: {
-		support: './src/_elements/layouts/markdown/Support.svelte'
+		support: './src/_elements/layouts/markdown/Support.svelte',
+		blog: './src/_elements/layouts/markdown/Blog.svelte'
 	},
 	smartypants: {
 		dashes: 'oldschool'
