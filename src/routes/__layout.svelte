@@ -1,4 +1,5 @@
 <script context="module">
+	import 'lazysizes';
 	import { v4 as uuidv4 } from 'uuid';
 	import { dev } from '$app/env';
 	import { inspect } from '@xstate/inspect';
