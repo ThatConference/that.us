@@ -5,6 +5,7 @@ title: Turning Your Awesome Into Submissions
 description: THAT Submission Worksheet to turn your unique awesomeness into session submissions
 heroImage: counselor-badges.jpg
 authorSlug: clark
+layout: blog
 ---
 
 ## THAT Conference 2020

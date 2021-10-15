@@ -5,6 +5,7 @@ articleType: announcement
 description: You have 1 week left to snatch up your ticket to THAT Online.
 heroImage: heroImage.png
 authorSlug: clark
+layout: blog
 ---
 
 

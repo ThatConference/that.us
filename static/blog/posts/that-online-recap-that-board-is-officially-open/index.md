@@ -5,6 +5,7 @@ title: THAT Online Recap & THAT Board is officially open!
 description: Why stop when we don't have to? THAT.us is just getting started.
 heroImage: that-2020-logo.png
 authorSlug: clark
+layout: blog
 ---
 
 Hey Camper, it's Clark here.

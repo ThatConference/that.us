@@ -5,6 +5,7 @@ title: Happy Holidays ❤️ THAT
 description: Wishing everyone in THAT Family a very happy holiday and New Year!
 heroImage: hero.png
 authorSlug: clark
+layout: blog
 ---
 
 It’s the end of December and for many of us in the THAT Community, it is a time of holiday celebration. To those that celebrate Hanukkah, we say _Hanukkah Sameach!_ To those who celebrate Christmas, we say _Merry Christmas_! To those who celebrate Kwanzaa, we wish you a _joyous Kwanzaa!_ To those who celebrate having time off of work and normal schedules, _soak up all of it!_
