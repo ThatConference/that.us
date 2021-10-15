@@ -48,19 +48,12 @@
 
 	import dayjs from 'dayjs';
 
+	import buildImageSrc from '$utils/image';
 	import Layout from '$elements/layouts/ContentLayout.svelte';
-	import { name, website } from '$blog/info';
 	import seoMetaTags from '$utils/seo/metaTags';
 	import Seo from '$components/Seo.svelte';
-	import ButtonLink from '$components/blog/components/buttonLink.svelte';
+
 	import NewsletterSignup from '$components/newsletter.svelte';
-
-	// generated open-graph image for sharing on social media. Visit https://og-image.vercel.app/ to see more options.
-	const ogImage = `https://og-image.vercel.app/**${encodeURIComponent(
-		title
-	)}**?theme=light&md=1&fontSize=100px&images=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fhyper-color-logo.svg`;
-
-	const url = `${website}/${slug}`;
 
 	const metaTags = ((bTitle = `${title} - THAT`) => ({
 		title: bTitle,
@@ -68,31 +61,15 @@
 			title: bTitle,
 			description: `${description}`,
 			openGraph: {
+				image: heroImage,
 				type: 'website',
 				url: `https://that.us/blog/posts/${slug}/`
 			}
 		})
 	}))();
+
+	const srcset = buildImageSrc(author.profileImage, ['96']);
 </script>
-
-<!-- <svelte:head>
-	<title>{title}</title>
-	<meta name="description" content={preview} />
-	<meta name="author" content={name} />
-
-	<meta property="og:url" content={url} />
-	<meta property="og:type" content="website" />
-	<meta property="og:title" content={title} />
-	<meta property="og:description" content={preview} />
-	<meta property="og:image" content={ogImage} />
-
-	<meta name="twitter:card" content="summary_large_image" />
-	<meta property="twitter:domain" content={website} />
-	<meta property="twitter:url" content={url} />
-	<meta name="twitter:title" content={title} />
-	<meta name="twitter:description" content={preview} />
-	<meta name="twitter:image" content={ogImage} />
-</svelte:head> -->
 
 <Seo title={metaTags.title} tags={metaTags.tags} />
 
@@ -104,8 +81,10 @@
 					<div class="pb-8 flex flex-col items-center">
 						<a href={`/members/${author.profileSlug}/`}>
 							<img
-								class="h-24 w-24 rounded-full"
-								src={`${author.profileImage}?auto=format&fit=facearea&facepad=2&w=256&h=256&q=80`}
+								class="h-24 w-24 rounded-full lazyload"
+								data-sizes="auto"
+								data-src={srcset.src}
+								data-srcset={srcset.srcset}
 								alt={`${author.firstName} ${author.lastName}`}
 							/>
 						</a>
@@ -125,7 +104,7 @@
 					</h1>
 
 					<div class="my-12">
-						<img src={`${heroImage}`} class="bg-white rounded-md shadow-md" alt="" />
+						<img src={`${heroImage}`} class="h-[600] w-[335] top-rounded-lg shadow-md" alt="" />
 						{#if heroImageCaption}
 							<p class="pt-4 caption text-gray-400">{heroImageCaption}</p>
 						{/if}
