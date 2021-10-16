@@ -2,7 +2,7 @@
 	import sessionsApi from '$dataSources/api.that.tech/sessions.js';
 	import eventsApi from '$dataSources/api.that.tech/events/queries.js';
 
-	export async function load({ page }) {
+	export async function load({ page, fetch }) {
 		const { activityId } = page.params;
 
 		const { querySessionById } = sessionsApi(fetch);
