@@ -30,6 +30,7 @@
 	import { page } from '$app/stores';
 	import lodash from 'lodash';
 
+	import buildImageSrc from '$utils/image';
 	import config from '$utils/config';
 	import favoritesApi from '$dataSources/api.that.tech/favorites';
 	import currentEvent from '$stores/currentEvent';
@@ -85,7 +86,6 @@
 	)?.label;
 
 	let host = speakers[0];
-	let imageCrop = '?mask=ellipse&w=500&h=500&fit=crop';
 
 	let edit = $page.query.get('edit');
 	let isNew = $page.query.get('isNew');
@@ -167,7 +167,8 @@
 	}
 
 	function getProfileImage(imageUrl) {
-		return imageUrl ? `${imageUrl}${imageCrop}` : config.defaultProfileImage;
+		const userProfileImage = imageUrl || config.defaultProfileImage;
+		return buildImageSrc(userProfileImage, ['96']);
 	}
 </script>
 
@@ -192,7 +193,9 @@
 									<span class="inline-block relative">
 										<img
 											class="lazyload h-24 w-24 rounded-full"
-											src={getProfileImage(s.profileImage)}
+											data-sizes="auto"
+											data-src={getProfileImage(s.profileImage).src}
+											data-srcset={getProfileImage(s.profileImage).srcset}
 											alt=""
 										/>
 
