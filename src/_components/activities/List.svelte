@@ -243,10 +243,9 @@
 	{:else}
 		<div class="flex flex-col justify-center items-center">
 			<img
-				class="h-52 sm:h-64 lg:h-72 m-0 mt-24 lg:m-10"
+				class="lazyload h-52 sm:h-64 lg:h-72 m-0 mt-24 lg:m-10"
 				src="/images/characters/sasquatch.png"
 				alt="Empty-handed Sasquatch"
-				loading="lazy"
 			/>
 			{#if activities.length > 0}
 				<h1

@@ -150,18 +150,17 @@
 		<a open href="/members/{host.profileSlug}/" class="flex-shrink-0">
 			<span class="inline-block relative">
 				<img
-					class="w-24 h-24 rounded-full"
+					class="lazyload w-24 h-24 rounded-full"
 					src={userProfileImage}
 					alt={`${host.firstName} ${host.lastName}`}
-					loading="lazy"
 				/>
 
 				{#if host.earnedMeritBadges.length > 0}
 					<span class="absolute bottom-0 left-0 block h-8 w-8">
 						<img
+							class="lazyload"
 							src={host.earnedMeritBadges[0].image}
 							alt={host.earnedMeritBadges[0].name}
-							loading="lazy"
 						/>
 					</span>
 				{/if}

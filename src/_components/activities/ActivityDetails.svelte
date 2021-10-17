@@ -191,18 +191,17 @@
 								<a href="/members/{s.profileSlug}/" open>
 									<span class="inline-block relative">
 										<img
-											class="h-24 w-24 rounded-full"
+											class="lazyload h-24 w-24 rounded-full"
 											src={getProfileImage(s.profileImage)}
 											alt=""
-											loading="lazy"
 										/>
 
 										{#if s.earnedMeritBadges.length > 0}
 											<span class="absolute bottom-0 left-0 block h-8 w-8">
 												<img
+													class="lazyload"
 													src={s.earnedMeritBadges[0].image}
 													alt={s.earnedMeritBadges[0].name}
-													loading="lazy"
 												/>
 											</span>
 										{/if}
@@ -386,7 +385,7 @@
 				{#if !isDailyActivity}
 					<div class="h-24 w-24">
 						<a href={`/events/${event.slug}`} class="w-full h-full">
-							<img src={event.logo} alt="Event Logo" loading="lazy" />
+							<img class="lazyload" src={event.logo} alt="Event Logo" />
 						</a>
 					</div>
 				{/if}

@@ -75,10 +75,9 @@
 			<div class="text-center my-12">
 				<figure>
 					<img
-						class="w-full rounded-lg shadow"
+						class="lazyload w-full rounded-lg shadow"
 						src="/images/ActivityCreateExample.jpg"
 						alt="New Activity Form"
-						loading="lazy"
 					/>
 					<figcaption>Example: New Activity Form</figcaption>
 				</figure>

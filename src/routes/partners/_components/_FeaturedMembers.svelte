@@ -26,10 +26,9 @@
 							<a href="/members/{member.profileSlug}/">
 								<div class="flex items-center space-x-4 lg:space-x-6">
 									<img
-										class="w-16 h-16 rounded-full lg:w-24 lg:h-24"
+										class="lazyload w-16 h-16 rounded-full lg:w-24 lg:h-24"
 										src={`${member.profileImage || config.defaultProfileImage}${imageCrop}`}
 										alt={`${member.firstName} ${member.lastName}`}
-										loading="lazy"
 									/>
 									<div class="font-medium text-lg leading-6 space-y-1">
 										<h4>{`${member.firstName} ${member.lastName}`}</h4>

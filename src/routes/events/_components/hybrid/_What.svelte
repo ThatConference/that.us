@@ -65,10 +65,9 @@
 				</div>
 				<div class="col-span-2 flex flex-col justify-center">
 					<img
-						class="p-8 h-full w-full"
+						class="lazyload p-8 h-full w-full"
 						src="/images/characters/moose_with_lantern.png"
 						alt="THAT Moose"
-						loading="lazy"
 					/>
 				</div>
 			</div>
@@ -86,7 +85,7 @@
 			{#each expectations as e}
 				<div class="p-4 bg-white rounded-lg shadow-lg">
 					<div class="flex flex-col items-center space-y-4">
-						<img class="h-24 object-contain" src={e.imageUrl} alt="logo" loading="lazy" />
+						<img class="lazyload h-24 object-contain" src={e.imageUrl} alt="logo" />
 						<p class="font-bold text-gray-500 text-xl text-center">
 							{e.title}
 						</p>

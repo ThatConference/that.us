@@ -21,8 +21,7 @@
 			<div class="min-w-0 flex-1 flex items-center">
 				<div class="flex-shrink-0">
 					<img
-						loading="lazy"
-						class="h-12 w-12 rounded-full"
+						class="lazyload h-12 w-12 rounded-full"
 						src={`${member.profileImage || config.defaultProfileImage}${imageCrop}`}
 						alt=""
 					/>
