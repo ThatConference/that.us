@@ -1,7 +1,5 @@
 <script context="module">
 	export function load({ error, status }) {
-		console.error(error);
-
 		return {
 			props: { error, status }
 		};
@@ -11,7 +9,6 @@
 <script>
 	export let error, status;
 
-	import { onMount } from 'svelte';
 	import { dev } from '$app/env';
 	import * as Sentry from '@sentry/browser';
 
@@ -33,9 +30,7 @@
 		})
 	}))();
 
-	onMount(() => {
-		Sentry.captureException(error);
-	});
+	if (!dev) Sentry.captureException(new Error(error));
 </script>
 
 <Seo title={metaTags.title} tags={metaTags.tags} />
