@@ -7,7 +7,7 @@
 	//blog
 	import { getPosts } from '$blog/getPosts';
 
-	export async function load({ page, fetch, session, context }) {
+	export async function load({ fetch }) {
 		const { queryMembers, queryBlogAuthorBySlug } = membersApi(fetch);
 		const { queryEventsByCommunity, queryEventForCfp } = eventsApi(fetch);
 		const { queryCommunityStats } = statsApi(fetch);
