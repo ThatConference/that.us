@@ -27,9 +27,8 @@
 					<div class="hidden sm:block">
 						<img
 							src="/images/characters/what_to_expect_4_days.png"
-							class="h-24"
+							class="lazyload h-24"
 							alt="a calendar"
-							loading="lazy"
 						/>
 					</div>
 				</div>

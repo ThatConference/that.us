@@ -36,12 +36,7 @@
 
 			<div class="transform scale-75 text-center">
 				<figure>
-					<img
-						class="rounded-lg shadow"
-						src="/images/ActivityJoinExample.jpg"
-						alt=""
-						loading="lazy"
-					/>
+					<img class="lazyload rounded-lg shadow" src="/images/ActivityJoinExample.jpg" alt="" />
 					<figcaption>Example Activity: join on the bottom.</figcaption>
 				</figure>
 			</div>

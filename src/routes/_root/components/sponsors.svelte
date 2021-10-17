@@ -8,15 +8,10 @@
 		</p>
 		<div class="mt-6 grid grid-cols-2 gap-0.5 md:grid-cols-3 lg:mt-8">
 			<div class="col-span-1 flex justify-center py-8 px-8 bg-gray-50">
-				<img
-					class="max-h-12"
-					src="/img/logos/transistor-logo.svg"
-					alt="Workcation"
-					loading="lazy"
-				/>
+				<img class="lazyload max-h-12" src="/img/logos/transistor-logo.svg" alt="Workcation" />
 			</div>
 			<div class="col-span-1 flex justify-center py-8 px-8 bg-gray-50">
-				<img class="max-h-12" src="/img/logos/mirage-logo.svg" alt="Mirage" loading="lazy" />
+				<img class="lazyload max-h-12" src="/img/logos/mirage-logo.svg" alt="Mirage" />
 			</div>
 			<div class="col-span-1 flex justify-center py-8 px-8 bg-gray-50">
 				<img class="max-h-12" src="/img/logos/tuple-logo.svg" alt="Tuple" />

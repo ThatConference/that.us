@@ -3,15 +3,24 @@
 	export let attendees;
 
 	import config from '$utils/config';
+	import buildImageSrc from '$utils/image';
 
-	let imageCrop = '?auto=format&mask=ellipse&fit=crop&w=256&h=256&q=80';
+	const speakerProfileImage = host?.profileImage || config.defaultProfileImage;
+	const speakerSrcset = buildImageSrc(speakerProfileImage, ['64']);
+
+	function getSrcSet(attendee) {
+		const userProfileImage = attendee.profileImage || config.defaultProfileImage;
+		return buildImageSrc(userProfileImage, ['64']);
+	}
 </script>
 
 <div class="flex flex-wrap -space-x-4 overflow-hidden">
 	{#if host}
 		<img
 			class="inline-block h-16 w-16 rounded-full ring-2 ring-white"
-			src={`${host.profileImage || config.defaultProfileImage}${imageCrop}`}
+			data-sizes="auto"
+			data-src={speakerSrcset.src}
+			data-srcset={speakerSrcset.srcset}
 			alt="{host.firstName} {host.lastName}"
 		/>
 	{/if}
@@ -20,8 +29,10 @@
 		<span class="" class:-ml-2={host || i > 0}>
 			<a href="/members/{attendee.profileSlug}/">
 				<img
-					class="inline-block h-16 w-16 rounded-full ring-2 ring-white"
-					src={`${attendee.profileImage || config.defaultProfileImage}${imageCrop}`}
+					class="lazyload inline-block h-16 w-16 rounded-full ring-2 ring-white"
+					data-sizes="auto"
+					data-src={getSrcSet(attendee).src}
+					data-srcset={getSrcSet(attendee).srcset}
 					alt={`${attendee.firstName} ${attendee.lastName}`}
 					title={`${attendee.firstName} ${attendee.lastName}`}
 				/>
