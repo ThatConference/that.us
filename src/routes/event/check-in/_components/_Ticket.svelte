@@ -30,8 +30,8 @@
 	class:bg-yellow-100={!ticket.isAllocated}
 	class:hover:bg-yellow-200={!ticket.isAllocated}
 >
-	<div class="flex items-center">
-		<div class="min-w-0 flex-1 flex items-center">
+	<div class="flex flex-col space-y-6 sm:flex-row sm:space-y-0 md:items-center">
+		<div class="min-w-0 flex-1 flex md:items-center">
 			<div class="flex-shrink-0">
 				<img
 					class="lazyload h-12 w-12 rounded-full"
@@ -39,7 +39,7 @@
 					alt=""
 				/>
 			</div>
-			<div class="min-w-0 flex-1 px-4 md:grid md:grid-cols-2 md:gap-4">
+			<div class="min-w-0 flex-1 space-y-4 px-4 md:grid md:grid-cols-2 md:gap-4">
 				<div>
 					<p class="flex text-sm font-extrabold text-thatBlue-800 uppercase">
 						{ticketHolder.firstName || ''}
@@ -60,7 +60,7 @@
 						<span class="truncate">{ticketHolder.email || ''}</span>
 					</p>
 				</div>
-				<div class="hidden md:block">
+				<div class="block mt-2 sm:mt-0">
 					<div>
 						<p class="flex text-sm font-extrabold text-gray-900">
 							{ticket.product.name}
@@ -75,7 +75,7 @@
 			</div>
 		</div>
 		<div>
-			<div class="flex sm:justify-end">
+			<div class="flex flex-col sm:flex-row sm:justify-end">
 				{#if !ticket.hasCheckedIn}
 					<div class="flex">
 						<Shell>
