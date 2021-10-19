@@ -33,7 +33,7 @@
 	});
 
 	onDestroy(() => {
-		clipboard.destroy();
+		if (clipboard) clipboard.destroy();
 	});
 </script>
 
