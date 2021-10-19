@@ -27,6 +27,15 @@ function init(fetch, url) {
 		};
 	}
 
+	function retryOn(attempt, error, response) {
+		if (error !== null || response.status >= 400) {
+			Sentry.captureMessage(
+				`retrying fetch, attempt number ${attempt + 1}, response.status ${response.status}`
+			);
+			return true;
+		}
+	}
+
 	function query({ query, variables = {} }) {
 		if (browser) loading.set(true);
 		return _fetch(_url, {
@@ -37,7 +46,8 @@ function init(fetch, url) {
             ${query}
           `,
 				variables
-			})
+			}),
+			retryOn
 		})
 			.then(json)
 			.then((r) => {
@@ -68,7 +78,8 @@ function init(fetch, url) {
             ${query}
           `,
 				variables
-			})
+			}),
+			retryOn
 		})
 			.then(json)
 			.then((r) => {
@@ -99,7 +110,8 @@ function init(fetch, url) {
             ${mutation}
           `,
 				variables
-			})
+			}),
+			retryOn
 		})
 			.then(json)
 			.then((r) => {
