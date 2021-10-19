@@ -1,8 +1,7 @@
 # THAT.US
 
 [![GitHub issues open](https://img.shields.io/github/issues/thatconference/that.us.svg)](https://github.com/thatconference/that.us/issues) [![release](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/thatconference/that.us/issues) <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-41-orange.svg?style=flat-square)](#contributors-)
-
+[![All Contributors](https://img.shields.io/badge/all_contributors-42-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 ## Get started
@@ -113,6 +112,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/SQrL143"><img src="https://avatars.githubusercontent.com/u/26024995?v=4?s=100" width="100px;" alt=""/><br /><sub><b>SQrL143</b></sub></a><br /><a href="https://github.com/ThatConference/that.us/commits?author=SQrL143" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/jknaak"><img src="https://avatars.githubusercontent.com/u/25443142?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Jessica Knaak</b></sub></a><br /><a href="https://github.com/ThatConference/that.us/issues?q=author%3Ajknaak" title="Bug reports">🐛</a></td>
     <td align="center"><a href="https://github.com/zachesposito"><img src="https://avatars.githubusercontent.com/u/1486613?v=4?s=100" width="100px;" alt=""/><br /><sub><b>zachesposito</b></sub></a><br /><a href="https://github.com/ThatConference/that.us/commits?author=zachesposito" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/zaudtke"><img src="https://avatars.githubusercontent.com/u/1631560?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Al</b></sub></a><br /><a href="https://github.com/ThatConference/that.us/commits?author=zaudtke" title="Code">💻</a></td>
   </tr>
 </table>
 
