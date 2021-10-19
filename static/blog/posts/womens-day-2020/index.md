@@ -5,6 +5,7 @@ title: Let's Celebrate Together!
 description: Today, THAT celebrates International Women's Day. A day to highlight women in our lives, community, jobs, and industries who continue to push for change, equality and a better world for us all.
 heroImage: womens-day-2020.png
 authorSlug: clark
+layout: blog
 ---
 
 

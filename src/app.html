@@ -3,14 +3,13 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		
-		<link rel="preconnect" href="https://images.that.tech" />
+
+		<meta name="theme-color" content="#26529a" media="(prefers-color-scheme: light)">
+		<meta name="theme-color" content="#16215A"media="(prefers-color-scheme: dark)">
+
 		<link rel="preconnect" href="https://that.imgix.net" />
-		<link rel="preconnect" href="https://code.tidio.co" />
-		<link rel="preconnect" href="https://js.stripe.com" />
-						
-		<link rel="canonical" href="https://www.that.us/" />
-						
+		
+		<link rel="canonical" href="https://www.that.us/" />				
 		<link rel="shortcut icon" type="image/png" href="/favicon.png" />
 		
 		<!-- todo: we need to create this image -->
@@ -29,7 +28,7 @@
 			rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
 		/>
-
+		
 		%svelte.head%
 	
 		<script type="application/ld+json">
@@ -61,19 +60,19 @@
 				]
 			}
 		</script>
-		
 		<!-- stripe -->
-		<script src="https://js.stripe.com/v3/"></script>
+		<script defer src="https://js.stripe.com/v3/"></script>
 		
 		<!-- tidio chat bot -->
-		<script defer async src="//code.tidio.co/qcwuuigfzw3cjegsc2fyo0sniyh3c3ue.js">
+		<script defer src="//code.tidio.co/qcwuuigfzw3cjegsc2fyo0sniyh3c3ue.js">
 		</script>
 
-		<script defer async src="https://meet.jit.si/external_api.js">
-		</script>
+</head>
+<body>
+		<div id="svelte">%svelte.body%</div>
 
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-21705613-11"></script>
+		<!-- Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-21705613-11"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -91,9 +90,5 @@
 			});
 			woopra.track();
 		</script>
-
-	</head>
-	<body>
-		<div id="svelte">%svelte.body%</div>
 	</body>
 </html>

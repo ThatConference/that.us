@@ -3,8 +3,9 @@ date: 2021-05-20
 articleType: announcement
 title: Hit spell check because THAT Conference Call for Counselors is now open
 description: Calling all Geeks and Geeklings this year's Call for Counselors is now open. Don't delay as you only have 25 days to get your awesome submitted.
-heroImage: that-logo-states-wi-2021.svg
+heroImage: hero.jpg
 authorSlug: clark
+layout: blog
 ---
 
 

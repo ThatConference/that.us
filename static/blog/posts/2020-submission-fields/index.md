@@ -5,6 +5,7 @@ title: THAT Submissions Closing Soon!
 description: All you need to know to complete and submit your THAT Conference 2020 submissions!
 heroImage: that-workstation.jpg
 authorSlug: clark
+layout: blog
 ---
 
 

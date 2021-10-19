@@ -23,12 +23,7 @@
 				<div>
 					<div class="transition duration-500 ease-in-out transform hover:scale-105 cursor-pointer">
 						<a href="{partner.website}?utm_source=THAT">
-							<img
-								class="w-96"
-								src={partner.companyLogo}
-								alt={partner.companyName}
-								loading="lazy"
-							/>
+							<img class="lazyload w-96" src={partner.companyLogo} alt={partner.companyName} />
 						</a>
 					</div>
 

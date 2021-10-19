@@ -12,7 +12,7 @@
 	<div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
 		<div class="xl:grid xl:grid-cols-3 xl:gap-8">
 			<div class="space-y-8 xl:col-span-1">
-				<img class="h-12 w-auto" src="/images/THAT-Full-Wide.svg" alt="THAT Logo" loading="lazy" />
+				<img class="lazyload h-12 w-auto" src="/images/THAT-Full-Wide.svg" alt="THAT Logo" />
 
 				<p class="text-gray-500 text-base">Geeks helping Geeks become more awesome every day.</p>
 

@@ -15,18 +15,17 @@
 		<a open href="/members/{speaker.profileSlug}/" class="flex-shrink-0">
 			<span class="inline-block relative">
 				<img
-					class="w-40 h-40 rounded-full"
+					class="lazyload w-40 h-40 rounded-full"
 					src={userProfileImage}
 					alt={`${speaker.firstName} ${speaker.lastName}`}
-					loading="lazy"
 				/>
 
 				{#if speaker.earnedMeritBadges.length > 0}
 					<span class="absolute bottom-0 left-0 block h-15 w-15">
 						<img
+							class="lazyload"
 							src={speaker.earnedMeritBadges[0].image}
 							alt={speaker.earnedMeritBadges[0].name}
-							loading="lazy"
 						/>
 					</span>
 				{/if}

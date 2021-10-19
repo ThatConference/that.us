@@ -24,16 +24,12 @@
 	import { page } from '$app/stores';
 	import lodash from 'lodash';
 
-	// utilties
 	import config from '$utils/config';
-
+	import buildImageSrc from '$utils/image';
 	import { truncate, isLongerThan } from '$utils/truncate';
-
-	// data
-	import favoritesApi from '$dataSources/api.that.tech/favorites';
 	import { show } from '$stores/profileNotification';
+	import favoritesApi from '$dataSources/api.that.tech/favorites';
 
-	// UI Elements
 	import { Tag } from '$elements';
 	import CardLink from './CardLink.svelte';
 
@@ -46,8 +42,6 @@
 	const sessionEnumLookups = getContext('SESSION_ENUMS');
 
 	let host = speakers[0];
-
-	let imageCrop = '?mask=ellipse&w=500&h=500&fit=crop';
 	let favoriteDisabled = false;
 
 	const requiresAccessToJoin = eventId !== config.eventId;
@@ -111,10 +105,6 @@
 		};
 	});
 
-	let userProfileImage = host.profileImage
-		? `${host.profileImage}${imageCrop}`
-		: config.defaultProfileImage;
-
 	const canEdit = () => {
 		let canEditMe = false;
 
@@ -129,6 +119,9 @@
 		return sessionEnumLookups.sessionLocationDestinations?.options.find((x) => x.value === location)
 			?.label;
 	}
+
+	const userProfileImage = host.profileImage || config.defaultProfileImage;
+	const srcset = buildImageSrc(userProfileImage, ['96']);
 </script>
 
 <div
@@ -150,18 +143,19 @@
 		<a open href="/members/{host.profileSlug}/" class="flex-shrink-0">
 			<span class="inline-block relative">
 				<img
-					class="w-24 h-24 rounded-full"
-					src={userProfileImage}
+					class="lazyload w-24 h-24 rounded-full"
 					alt={`${host.firstName} ${host.lastName}`}
-					loading="lazy"
+					data-sizes="auto"
+					data-src={srcset.src}
+					data-srcset={srcset.srcset}
 				/>
 
 				{#if host.earnedMeritBadges.length > 0}
 					<span class="absolute bottom-0 left-0 block h-8 w-8">
 						<img
+							class="lazyload"
 							src={host.earnedMeritBadges[0].image}
 							alt={host.earnedMeritBadges[0].name}
-							loading="lazy"
 						/>
 					</span>
 				{/if}

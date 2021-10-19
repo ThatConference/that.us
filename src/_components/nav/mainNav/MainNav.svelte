@@ -1,9 +1,16 @@
 <script>
-	import DesktopNav from './Desktop.svelte';
-	import MobileNav from './Mobile.svelte';
+	import lodash from 'lodash';
 	import Headroom from 'svelte-headroom';
 
+	import { session } from '$app/stores';
+	import CreateProfileNotification from '$components/notifications/CreateProfile.svelte';
+
+	import DesktopNav from './Desktop.svelte';
+	import MobileNav from './Mobile.svelte';
+
 	let hidden = true;
+
+	const { isEmpty } = lodash;
 </script>
 
 <Headroom
@@ -13,6 +20,11 @@
 	}}
 >
 	<div class="bg-white">
+		{#if $session.isAuthenticated}
+			{#if isEmpty($session.thatProfile)}
+				<CreateProfileNotification />
+			{/if}
+		{/if}
 		<div class="max-w-screen-xl mx-auto relative bg-white py-6 px-4 sm:px-6 lg:px-8">
 			<div
 				class="absolute top-0 inset-x-0 p-2 transition transform origin-top-right lg:hidden z-10"

@@ -35,7 +35,7 @@
 	<div class="relative mx-auto px-4 max-w-screen-xl sm:px-6 lg:px-8">
 		<h1 class="text-4xl tracking-tight font-extrabold text-thatBlue-800 sm:text-5xl md:text-6xl">
 			<span class="block text-center sm:text-left ">Activities Every Day,</span>
-			<span class="block sm:pl-24 text-center sm:text-left sm:-mt-4 md:-mt-8 text-that-orange"
+			<span class="block sm:pl-24 text-center sm:text-left md:-mt-2 text-that-orange"
 				>Events Every Month!</span
 			>
 		</h1>

@@ -5,6 +5,7 @@ title: THAT Online Tickets Are Now On Sale
 description: THAT Online, a new kind of camp to inspire and connect on Aug. 3rd
 heroImage: THAT-Registration-2019.jpg
 authorSlug: clark
+layout: blog
 ---
 
 <div style="text-align: center; padding: 4rem 0;">

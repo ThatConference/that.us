@@ -145,9 +145,8 @@
 					<div class="flex flex-col justify-center">
 						<img
 							src="/images/characters/what_to_expect_tech_stack.png"
-							class="h-24 w-full object-scale-down"
+							class="lazyload h-24 w-full object-scale-down"
 							alt="a computer"
-							loading="lazy"
 						/>
 					</div>
 					<p class="flex-grow text-left pt-4 prose-lg text-gray-500">
@@ -167,9 +166,8 @@
 					<div class="flex flex-col justify-center">
 						<img
 							src="/images/characters/what_to_expect_professional_networking.png"
-							class="h-24 w-full object-scale-down"
+							class="lazyload h-24 w-full object-scale-down"
 							alt="two geeks high fiving"
-							loading="lazy"
 						/>
 					</div>
 				</div>
@@ -268,9 +266,8 @@
 					<div class="inline-block relative">
 						<img
 							src="/images/characters/what_to_expect_4_days.png"
-							class="h-48 flex-shrink-0 mx-auto"
+							class="lazyload h-48 flex-shrink-0 mx-auto"
 							alt="a calendar"
-							loading="lazy"
 						/>
 					</div>
 				</div>

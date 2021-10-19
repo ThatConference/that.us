@@ -2,7 +2,7 @@
 	import sessionsApi from '$dataSources/api.that.tech/sessions.js';
 	import eventsApi from '$dataSources/api.that.tech/events/queries.js';
 
-	export async function load({ page }) {
+	export async function load({ page, fetch }) {
 		const { activityId } = page.params;
 
 		const { querySessionById } = sessionsApi(fetch);
@@ -254,10 +254,10 @@
 
 <svelte:window on:resize={handleResize} />
 
-<!-- <svelte:head>
-	<script defer async src="https://meet.jit.si/external_api.js" on:load={initJitsi}>
+<svelte:head>
+	<script src="https://meet.jit.si/external_api.js">
 	</script>
-</svelte:head> -->
+</svelte:head>
 
 <Seo title={metaTags.title} tags={metaTags.tags} />
 

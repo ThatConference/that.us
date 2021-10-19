@@ -64,10 +64,9 @@
 			<div class="transform scale-90 text-center">
 				<figure>
 					<img
-						class="w-full rounded-lg shadow"
+						class="lazyload w-full rounded-lg shadow"
 						src="/images/ActivityDetailExample.jpg"
 						alt=""
-						loading="lazy"
 					/>
 					<figcaption>Example: product review and sprint planning Activity.</figcaption>
 				</figure>

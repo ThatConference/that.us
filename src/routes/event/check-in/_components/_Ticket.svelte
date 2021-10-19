@@ -34,8 +34,7 @@
 		<div class="min-w-0 flex-1 flex md:items-center">
 			<div class="flex-shrink-0">
 				<img
-					loading="lazy"
-					class="h-12 w-12 rounded-full"
+					class="lazyload h-12 w-12 rounded-full"
 					src={`${ticketHolder.profileImage || config.defaultProfileImage}${imageCrop}`}
 					alt=""
 				/>

@@ -3,8 +3,9 @@ date: 2020-04-13
 articleType: update
 title: Uncertain times, and many unanswered questions. April update.
 description: Given today's current events were delaying both ticket sales and speaker announcements.
-heroImage: that-blog-april-update-2020.jpg
+heroImage: hero.jpg
 authorSlug: clark
+layout: blog
 ---
 
 ### Learn how COVID-19 is impacting our schedule.

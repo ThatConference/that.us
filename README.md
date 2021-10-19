@@ -28,7 +28,7 @@ Install the project dependencies...
 
 ### env configuration
 
-You will find the env settings in .env.sample. If you're interested in working on the project you will need a few additional values. Email us at hello@that.us.
+You will find the env settings in .env.sample. The current settings in the .env.sample will allow you to do development on pages which do not require authentication. If you're interested in working on those pages in the project you will need some additional values. Email us at hello@that.us.
 
 ### running
 

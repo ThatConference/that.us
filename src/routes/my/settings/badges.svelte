@@ -39,7 +39,7 @@
 			<div class="flex space-x-3 justify-around">
 				{#each awardedBadges as badge (badge.id)}
 					<div class="flex flex-col items-center">
-						<img class="h-24 w-24" src={badge.image} alt={badge.name} loading="lazy" />
+						<img class="lazyload h-24 w-24" src={badge.image} alt={badge.name} />
 						<h2 class="text-xl leading-6 font-bold tracking-tight text-gray-500">
 							{badge.name}
 						</h2>

@@ -51,10 +51,9 @@
 				<div class="flex flex-col sm:grid grid-cols-6 gap-8">
 					<div class="col-span-2 flex flex-col items-center p-8">
 						<img
-							class="w-1/2 sm:w-full"
+							class="lazyload w-1/2 sm:w-full"
 							src="/images/characters/octopus_with_flag.png"
 							alt="OctoPartner"
-							loading="lazy"
 						/>
 					</div>
 
@@ -72,12 +71,7 @@
 										class="p-4 w-1/3 transition duration-500 ease-in-out transform hover:scale-105"
 									>
 										<a href="/partners/{p.slug}/">
-											<img
-												class="w-full h-24"
-												src={p.companyLogo}
-												alt={p.companyName}
-												loading="lazy"
-											/>
+											<img class="lazyload w-full h-24" src={p.companyLogo} alt={p.companyName} />
 										</a>
 									</div>
 								{/each}

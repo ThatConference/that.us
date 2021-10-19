@@ -19,11 +19,10 @@
 					{#each meritBadges as badge}
 						<div class="flex flex-col items-center">
 							<img
-								class="h-24 w-24"
+								class="lazyload h-24 w-24"
 								src={badge.image}
 								alt={badge.name}
 								title={badge.name}
-								loading="lazy"
 							/>
 						</div>
 					{/each}

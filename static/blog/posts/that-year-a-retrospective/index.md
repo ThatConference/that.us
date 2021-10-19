@@ -5,6 +5,7 @@ title: THAT Year, a retrospective
 description: It's important to look back, celebrate, refactor and create an awesome future.
 heroImage: that-2020-logo.png
 authorSlug: clark
+layout: blog
 ---
 
 As 2020 draws to a close I wanted to take a hot minute or two reflecting on a few of the moments this past year.

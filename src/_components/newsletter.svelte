@@ -106,7 +106,7 @@
 				<p class="mt-3 text-sm leading-5 text-gray-300">
 					We care about the protection of your data. Read our
 					<a
-						href="https://www.thatconference.com/privacy-policy"
+						href="/support/privacy-policy"
 						class="text-white
               font-medium underline"
 					>

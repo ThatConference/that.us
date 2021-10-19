@@ -5,6 +5,7 @@ title: Last week we chatted, this is THAT recap, and no, no, you're not in troub
 description: Fill up those canteens, charge your devices and get ready for summer camp. Monthly events start April 15th, THAT Conference update, and THAT Membership.
 heroImage: thattrees_red.png
 authorSlug: clark
+layout: blog
 ---
 
 Last week, March 31st, we turned on [YouTube](https://youtube.com/c/thatconference) and discussed our 2021 and beyond plans [https://www.youtube.com/watch?v=s8ZqrwzSDEU](https://www.youtube.com/watch?v=s8ZqrwzSDEU). I wanted to take a few minutes to explain our plans further and summarize for those who couldn't attend.

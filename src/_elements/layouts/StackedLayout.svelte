@@ -1,12 +1,14 @@
 <script>
 	export let bodyBackgroundColor = 'bg-gray-100';
 
+	import { fade } from 'svelte/transition';
 	import { session } from '$app/stores';
 	import lodash from 'lodash';
 
 	import { Footer } from '$components';
 	import CreateProfileNotification from '$components/notifications/CreateProfile.svelte';
 	import NoProfile from '$components/notifications/NoProfile.svelte';
+	import { Trees } from '../svgs';
 
 	const { isEmpty } = lodash;
 </script>
@@ -26,6 +28,13 @@
 		>
 			<div class="flex-grow bg-gradient-to-r from-thatBlue-800 bg-opacity-75 " />
 			<div class="flex-grow bg-gradient-to-l from-thatBlue-700 bg-opacity-75" />
+		</div>
+		<div class="hidden lg:block inset-y-0 h-full w-full">
+			<div class="invisible lg:visible" in:fade={{ delay: 200, duration: 2000 }}>
+				<Trees
+					classes="opacity-25 fixed w-4/6 h-5/6 -right-48 -top-52 bottom-4/12 left-5/12 text-thatBlue-100"
+				/>
+			</div>
 		</div>
 		<header class="relative pb-32">
 			<slot name="header" />

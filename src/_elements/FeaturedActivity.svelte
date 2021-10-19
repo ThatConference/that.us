@@ -9,16 +9,17 @@
 	import utc from 'dayjs/plugin/utc.js';
 	import timezone from 'dayjs/plugin/timezone.js';
 
-	import config, { imageCrops } from '$utils/config';
-
-	let host = speakers[0];
-	let userProfileImage = host.profileImage
-		? `${host.profileImage}${imageCrops.profile}`
-		: config.defaultProfileImage;
+	import buildImageSrc from '$utils/image';
 
 	dayjs.extend(utc);
 	dayjs.extend(timezone);
 	dayjs.extend(advancedFormat);
+
+	const host = speakers[0];
+	const profileImage = host.profileImage ? host.profileImage : config.defaultProfileImage;
+
+	const userProfileImage = profileImage || config.defaultProfileImage;
+	const srcset = buildImageSrc(userProfileImage, ['128', '500']);
 </script>
 
 <a href="/activities/{id}/">
@@ -28,8 +29,10 @@
 		<div class="space-y-6 xl:space-y-10">
 			<div>
 				<img
-					class="mx-auto h-40 w-40 rounded-full xl:w-56 xl:h-56"
-					src={userProfileImage}
+					class="lazyload mx-auto h-40 w-40 rounded-full xl:w-56 xl:h-56"
+					data-sizes="auto"
+					data-src={srcset.src}
+					data-srcset={srcset.srcset}
 					alt={`${host.firstName} ${host.lastName}`}
 				/>
 			</div>

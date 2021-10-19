@@ -4,23 +4,42 @@
 	import statsApi from '$dataSources/api.that.tech/stats/queries';
 	import sessionsApi from '$dataSources/api.that.tech/sessions';
 
-	export async function load({ page, fetch, session, context }) {
-		const { queryMembers } = membersApi(fetch);
+	//blog
+	import { getPosts } from '$blog/getPosts';
+
+	export async function load({ fetch }) {
+		const { queryMembers, queryBlogAuthorBySlug } = membersApi(fetch);
 		const { queryEventsByCommunity, queryEventForCfp } = eventsApi(fetch);
 		const { queryCommunityStats } = statsApi(fetch);
 		const { querySessionsByDate } = sessionsApi(fetch);
+
+		const rawPosts = getPosts({ page: 1, limit: 3 });
 
 		// todo - some of these graph calls could be combined.
 		// todo - we could pick off the cfp from the event already queried.
 		// todo - "up next event" should come from somewhere.
 
-		const [members, events, stats, nextHybridEvent, activitiesUpNext] = await Promise.all([
-			queryMembers(15),
-			queryEventsByCommunity(),
-			queryCommunityStats(),
-			queryEventForCfp('tx/2022'),
-			querySessionsByDate({ pageSize: 6 })
-		]);
+		const [members, events, stats, nextHybridEvent, activitiesUpNext, blogPosts] =
+			await Promise.all([
+				queryMembers(15),
+				queryEventsByCommunity(),
+				queryCommunityStats(),
+				queryEventForCfp('tx/2022'),
+				querySessionsByDate({ pageSize: 6 }),
+				Promise.all(
+					rawPosts.map(async (p) => {
+						const author = await queryBlogAuthorBySlug(p.metadata.authorSlug);
+
+						return {
+							...p,
+							metadata: {
+								...p.metadata,
+								author
+							}
+						};
+					})
+				)
+			]);
 
 		return {
 			props: {
@@ -28,7 +47,8 @@
 				events,
 				stats,
 				nextHybridEvent,
-				activitiesUpNext
+				activitiesUpNext,
+				blogPosts
 			}
 		};
 	}
@@ -40,6 +60,7 @@
 	export let stats;
 	export let nextHybridEvent;
 	export let activitiesUpNext;
+	export let blogPosts;
 
 	import { session } from '$app/stores';
 	import { fade } from 'svelte/transition';
@@ -63,7 +84,8 @@
 		Events,
 		NewMembers,
 		WelcomeBack,
-		UpNext
+		UpNext,
+		BlogLatest
 	} from './_root/components';
 
 	import createMachine from './_root/machines/upNext';
@@ -112,6 +134,7 @@
 
 		<div in:fade={{ delay: 800 }}>
 			<Stats {stats} />
+			<BlogLatest posts={blogPosts} />
 			<NewMembers {members} />
 			<Newsletter />
 		</div>
@@ -136,7 +159,7 @@
 
 		<div in:fade={{ delay: 800 }}>
 			<div class="relative flex flex-col items-center">
-				<img class="h-72" src="/images/THAT-Logo-Words.svg" alt="THAT" loading="lazy" />
+				<img class="lazyload h-72" src="/images/THAT-Logo-Words.svg" alt="THAT" />
 			</div>
 
 			<UpNext
@@ -155,6 +178,7 @@
 				<CtaMembership />
 			{/if}
 
+			<BlogLatest posts={blogPosts} />
 			<NewMembers {members} />
 			<Newsletter />
 		</div>
