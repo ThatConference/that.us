@@ -87,6 +87,16 @@ export const MUTATION_FOLLOW_MEMBER_TOGGLE = `
 	}
 `;
 
+export const MUTATION_REQUEST_SLACK_INVITE = `
+	mutation MUTATION_REQUEST_SLACK_INVITE  {
+		members {
+			member {
+				requestSlackInvite
+			}
+		}
+	}
+`;
+
 export default (fetch) => {
 	const client = fetch ? gFetch(fetch) : gFetch();
 
@@ -138,10 +148,23 @@ export default (fetch) => {
 			});
 	}
 
+	function requestSlackInvite() {
+		const variables = {};
+
+		return client
+			.mutation({ mutation: MUTATION_REQUEST_SLACK_INVITE, variables })
+			.then(({ data, error }) => {
+				if (error) log(error, 'MUTATION_REQUEST_SLACK_INVITE');
+
+				return data?.members?.member?.requestSlackInvite;
+			});
+	}
+
 	return {
 		createProfile,
 		updateProfile,
 		claimTicket,
-		toggleFollow
+		toggleFollow,
+		requestSlackInvite
 	};
 };

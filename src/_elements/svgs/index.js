@@ -17,3 +17,4 @@ export { default as CheckFull } from './CheckFull.svelte';
 export { default as Membership } from './Membership.svelte';
 export { default as Warning } from './Warning.svelte';
 export { default as Store } from './Store.svelte';
+export { default as Slack } from './Slack.svelte';

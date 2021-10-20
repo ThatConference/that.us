@@ -2,9 +2,9 @@
 	import { fade } from 'svelte/transition';
 
 	import seoMetaTags from '$utils/seo/metaTags';
-
 	import Seo from '$components/Seo.svelte';
 	import Layout from '$elements/layouts/ContentLayout.svelte';
+	import { Standard as StandardLink } from '$elements/links';
 
 	import WelcomeQuote from './support/_components/_WelcomeQuote.svelte';
 
@@ -36,11 +36,11 @@
 			</header>
 
 			<main>
-				<div class="lg:grid lg:grid-cols-2 lg:gap-8 lg:items-start">
+				<div class="lg:grid lg:grid-cols-2 space-y-12 lg:space-y-0 lg:gap-32 lg:items-start">
 					<section>
 						<ol class="overflow-hidden">
 							<li class="relative pb-10" in:fade={{ delay: 100, duration: 500 }}>
-								<div class="-ml-px absolute mt-0.5 top-4 left-13 w-1 h-full bg-thatOrange-500" />
+								<div class="ml-0.5 absolute mt-0.5 top-4 left-12 w-1 h-full bg-thatOrange-500" />
 
 								<!-- Complete Step -->
 								<!-- todo how do we redirect after login? -->
@@ -63,7 +63,7 @@
 								</a>
 							</li>
 							<li class="relative pb-10" in:fade={{ delay: 300, duration: 500 }}>
-								<div class="-ml-px absolute mt-0.5 top-4 left-13 w-1 h-full bg-thatOrange-500" />
+								<div class="ml-0.5 absolute mt-0.5 top-4 left-12 w-1 h-full bg-thatOrange-500" />
 
 								<a href="/my/profiles/primary/" class="relative p-3 flex items-center group">
 									<span class="h-20 flex items-center">
@@ -104,6 +104,28 @@
 					</section>
 					<div class="relative text-base max-w-prose mx-auto lg:max-w-none">
 						<WelcomeQuote />
+					</div>
+
+					<div class="col-span-2">
+						<h2
+							class="sm:text-center lg:text-left pb-16 text-4xl tracking-tight leading-10 font-extrabold text-thatBlue-800 sm:text-5xl
+						sm:leading-none md:text-6xl"
+						>
+							But wait, there's more!
+						</h2>
+						<div class="space-y-8 lg:grid lg:grid-cols-6 lg:gap-8 lg:items-center">
+							<div class="col-span-2">
+								<img class="w-72" src="/images/SlackLogo.svg" alt="slack logo" />
+							</div>
+							<div class="col-span-4 text-lg text-gray-500 flex flex-col items-start space-y-6">
+								<p class="prose prose-lg">
+									Yes we have a Slack channel too. It's also a very active one and we'd love to
+									invite you to it as well. Requesting access is easy, just head over to your
+									profile and hit a button.
+								</p>
+								<StandardLink href="/my/profiles/slack/">Request Access Today</StandardLink>
+							</div>
+						</div>
 					</div>
 				</div>
 			</main>
