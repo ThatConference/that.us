@@ -15,3 +15,4 @@ export { default as FeaturedActivityAdd } from './FeaturedActivity-Add.svelte';
 export { default as FeaturedActivityDetail } from './FeaturedActivityDetail.svelte';
 export { default as StandardLink } from './StandardLink.svelte';
 export { default as CTA } from './CTA.svelte';
+export { default as Busy } from './Busy.svelte';

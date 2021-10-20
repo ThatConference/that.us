@@ -5,7 +5,7 @@
 
 	import Nav from '$components/nav/interiorNav/Top.svelte';
 	import { ActionHeader } from '$elements';
-	import { User, Badge } from '$elements/svgs';
+	import { User, Badge, Slack } from '$elements/svgs';
 	import StackedLayout from '$elements/layouts/StackedLayout.svelte';
 
 	const { isEmpty } = lodash;
@@ -60,6 +60,20 @@
 											: asideDefault.image}
 									/>
 									<span class="truncate">Shared Profile </span>
+								</a>
+
+								<a
+									href="/my/profiles/slack/"
+									class={$page.path.startsWith('/my/profiles/slack')
+										? asideSelected.item
+										: asideDefault.item}
+								>
+									<Slack
+										classes={$page.path.startsWith('/my/profiles/slack')
+											? asideSelected.image
+											: asideDefault.image}
+									/>
+									<span class="truncate">Join Slack</span>
 								</a>
 							{/if}
 						</nav>
