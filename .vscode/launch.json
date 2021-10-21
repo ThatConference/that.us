@@ -1,0 +1,20 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "Launch Chrome",
+			"request": "launch",
+			"type": "pwa-chrome",
+			"url": "http://localhost:5000",
+			"webRoot": "${workspaceFolder}"
+		},
+		{
+			"name": "Launch Brave macos",
+			"request": "launch",
+			"type": "pwa-chrome",
+			"url": "http://localhost:5000",
+			"webRoot": "${workspaceFolder}",
+			"runtimeExecutable": "/Applications/Brave Browser.app/Contents/MacOS/Brave Browser"
+		}
+	]
+}
