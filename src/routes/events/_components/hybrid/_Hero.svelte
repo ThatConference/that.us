@@ -4,7 +4,6 @@
 	import dayjs from 'dayjs';
 	import { scrollto } from 'svelte-scrollto';
 
-	import { StandardScroll } from '$elements/links';
 	import { Shell } from '$elements/buttons';
 </script>
 

@@ -2,9 +2,9 @@
 	export let event;
 
 	import dayjs from 'dayjs';
-	import { fade } from 'svelte/transition';
+	import { scrollto } from 'svelte-scrollto';
 
-	import { StandardScroll } from '$elements/links';
+	import { Shell } from '$elements/buttons';
 
 	const venue = event.venues[0];
 </script>
@@ -49,21 +49,27 @@
 			</div>
 		</div>
 
-		<div class="mt-24 py-12 grid gap-8 lg:gap-2 grid-cols-3 text-center">
-			<div class="rounded-md shadow">
-				<StandardScroll href="#professionals">
-					<span class="font-extrabold uppercase">Professionals</span>
-				</StandardScroll>
+		<div class="relative mt-24 p-8 flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+			<div class="flex-1 rounded-md shadow">
+				<a use:scrollto={'#professionals'}>
+					<Shell>
+						<div class="px-4 py-2 font-extrabold uppercase">Professionals</div>
+					</Shell>
+				</a>
 			</div>
-			<div class="rounded-md shadow">
-				<StandardScroll href="#workshops">
-					<span class="font-extrabold uppercase">Workshops</span>
-				</StandardScroll>
+			<div class="flex-1 rounded-md shadow">
+				<a use:scrollto={'#workshops'}>
+					<Shell>
+						<div class="px-4 py-2 font-extrabold uppercase">Workshops</div>
+					</Shell>
+				</a>
 			</div>
-			<div class="rounded-md shadow">
-				<StandardScroll href="#families">
-					<span class="font-extrabold uppercase">Families</span>
-				</StandardScroll>
+			<div class="flex-1 rounded-md shadow">
+				<a use:scrollto={'#families'}>
+					<Shell>
+						<div class="px-4 py-2 font-extrabold uppercase">Families</div>
+					</Shell>
+				</a>
 			</div>
 		</div>
 
