@@ -50,7 +50,7 @@ Now without question, you found us because of THAT Conference. Looking back over
 
 You will now find THAT Conference as an event on [THAT.us](https://THAT.us), and if you browse to [THATConference.com](https://THATConference.com), it will take you to our next upcoming hybrid event.
 
-This past year you may have noticed we've expanded our format, this "hybrid" format. With THAT.us now in place, it allowed us to give access to anyone across the globe. From here on out THAT Conference will run as a hybrid format with two main tracks, **ON THAT** or **AT THAT**. Hopefully, it's obvious but AT THAT refers to the in-person portion of THAT Conference while ON-THAT refers to the portion which is strictly online, aka on [THAT.us](https://THAT.us).
+This past year you may have noticed we've expanded our format, this "hybrid" format. With THAT.us now in place, it allowed us to give access to anyone across the globe. From here on out THAT Conference will run as a hybrid format with two main tracks, **ON THAT** and **AT THAT**. Hopefully, it's obvious but AT THAT refers to the in-person portion of THAT Conference while ON-THAT refers to the portion which is strictly online, aka on [THAT.us](https://THAT.us).
 
 Unlike other hybrid events, ours intentionally do not intermingle. We want to respect the medium each is executing in but also lean into the different opportunities each affords to those attending. Our goal is to create the most engaging and valuable experience for all who participate.
 
