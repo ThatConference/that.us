@@ -5,7 +5,7 @@
  * page & limit params to help with that.
  */
 export function getPosts({ page = 1, limit } = {}) {
-	const posts = Object.entries(import.meta.globEager('../../static/blog/posts/**/*.md'))
+	const posts = Object.entries(import.meta.globEager('../../static/blog/posts/**/*.svx'))
 		.map(([, post]) => ({ metadata: post.metadata, component: post.default }))
 		// sort by date
 		.sort((a, b) => {
