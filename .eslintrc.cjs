@@ -7,6 +7,9 @@ module.exports = {
 		sourceType: 'module',
 		ecmaVersion: 2020
 	},
+	rules: {
+		"no-unused-vars": [2, {"args": "all", "argsIgnorePattern": "^_"}]
+	},
 	env: {
 		browser: true,
 		es2017: true,

@@ -60,7 +60,7 @@ export default (fetch) => {
 
 	const favoritesStore = writable([]);
 
-	function query(eventId) {
+	function query() {
 		const variables = {
 			eventId: 'ANY'
 		};
