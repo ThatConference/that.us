@@ -10,6 +10,7 @@
 	import ActivitySlideOver from '../../activityCenter/ActivitySlideOver.svelte';
 	import DesktopLink from './_DesktopLink.svelte';
 	import UserProfile from '../_UserProfile.svelte';
+	import { clickOutside } from '$elements/actions';
 
 	let activityVisible;
 	let helpVisible;
@@ -23,7 +24,7 @@
 	$: cartItems = Object.keys($state.context.cart).length;
 </script>
 
-<div class="flex items-center">
+<div class="relative flex items-center">
 	<div class="flex-shrink-0">
 		<a href="/">
 			<img class="h-10" src="/images/THAT-Full-Wide-White.svg" alt="THAT Logo" />
@@ -99,41 +100,43 @@
 					<DesktopLink>Help</DesktopLink>
 				</button>
 				{#if helpVisible}
-					<div class="absolute mt-2 ml-4 w-64 rounded-md shadow-lg z-50" in:fade>
-						<div class="py-1 rounded-md bg-white ring-1 ring-black ring-opacity-5">
-							<a href="/support/" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-								Getting Started
-							</a>
-							<a
-								href="/support/what-is-an-activity/"
-								class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-							>
-								What Is An Activity
-							</a>
-							<a
-								href="/support/joining-an-activity/"
-								class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-							>
-								How To Join An Activity
-							</a>
-							<a
-								href="/support/creating-an-activity/"
-								class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-							>
-								How To Create An Activity
-							</a>
-							<a
-								href="/support/staying-up-to-date/"
-								class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-							>
-								Staying Up To Date
-							</a>
-							<a
-								href="/support/faq/"
-								class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-							>
-								FAQ
-							</a>
+					<div use:clickOutside on:click_outside={() => (helpVisible = false)}>
+						<div class="absolute mt-2 ml-4 w-64 rounded-md shadow-lg z-50" in:fade>
+							<div class="py-1 rounded-md bg-white ring-1 ring-black ring-opacity-5">
+								<a href="/support/" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+									Getting Started
+								</a>
+								<a
+									href="/support/what-is-an-activity/"
+									class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+								>
+									What Is An Activity
+								</a>
+								<a
+									href="/support/joining-an-activity/"
+									class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+								>
+									How To Join An Activity
+								</a>
+								<a
+									href="/support/creating-an-activity/"
+									class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+								>
+									How To Create An Activity
+								</a>
+								<a
+									href="/support/staying-up-to-date/"
+									class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+								>
+									Staying Up To Date
+								</a>
+								<a
+									href="/support/faq/"
+									class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+								>
+									FAQ
+								</a>
+							</div>
 						</div>
 					</div>
 				{/if}
