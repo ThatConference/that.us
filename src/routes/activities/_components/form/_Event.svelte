@@ -150,10 +150,22 @@
 			<!-- end divider -->
 
 			{#each activeEvents.online as event, i (i)}
-				<li in:fade={{ delay: i * 200 }} class="col-span-1 shadow-sm rounded-md">
-					{#await canAddSession(event.id) then accessResults}
+				<li class="col-span-1 shadow-sm rounded-md">
+					{#await canAddSession(event.id)}
+						<div in:fade class="col-span-1 shadow-sm rounded-md">
+							<div class="shadow-sm rounded-md bg-white p-4 w-full mx-auto">
+								<div class="animate-pulse">
+									<div class="flex-1 space-y-2">
+										<div class="h-3 bg-gray-400 rounded w-1/2" />
+										<div class="h-3 bg-gray-300 rounded w-3/4" />
+									</div>
+								</div>
+							</div>
+						</div>
+					{:then accessResults}
 						{#if accessResults}
 							<div
+								in:fade
 								class={`transition duration-500 ease-in-out transform ${
 									event.id !== eventSelected ? 'hover:scale-105' : ''
 								}`}

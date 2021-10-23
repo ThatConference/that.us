@@ -11,7 +11,6 @@
 	import Fuse from 'fuse.js'; // https://fusejs.io/api/options.html
 	import Icon from 'svelte-awesome';
 	import { filter as filterIcon } from 'svelte-awesome/icons';
-	import { Circle3 } from 'svelte-loading-spinners';
 	import utc from 'dayjs/plugin/utc.js';
 	import timezone from 'dayjs/plugin/timezone.js';
 	import advancedFormat from 'dayjs/plugin/advancedFormat.js';
@@ -19,6 +18,7 @@
 	import Card from './Card.svelte';
 	import KeynoteCard from './KeynoteCard.svelte';
 	import FilterSlideOver from './FilterSlideOver.svelte';
+	import { autoFocus } from '$elements/actions';
 
 	dayjs.extend(utc);
 	dayjs.extend(timezone);
@@ -174,7 +174,8 @@
 				<Icon data={filterIcon} label="Filter" />
 			</button>
 			<input
-				class="form-input border rounded-md hidden sm:inline"
+				use:autoFocus
+				class="hidden sm:inline form-input h-10 p-2 rounded-md sm:text-sm sm:leading-5 "
 				bind:value={searchterm}
 				placeholder="type to search..."
 			/>
@@ -207,7 +208,7 @@
 				{#each day.timeSlots as ts, t}
 					<div class="relative">
 						<h2
-							class="sticky top-11 sm:top-13 z-10 bg-gray-100 text-xl md:text-4xl 
+							class="sticky top-11 sm:top-13 pt-2 z-10 bg-gray-100 text-xl md:text-4xl 
                      leading-9 font-extrabold tracking-tight text-thatOrange-400 
                      sm:leading-10 whitespace-nowrap -ml-5 sm:-ml-6 pl-5 sm:pl-6 -mr-5 sm:-mr-6"
 						>

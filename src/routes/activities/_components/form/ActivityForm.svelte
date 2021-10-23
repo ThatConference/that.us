@@ -46,11 +46,8 @@
 
 	const dropDownValues = getContext('SESSION_ENUMS');
 	let createDisabled = true;
+	let eventSelected = events.find((i) => i.id === eventId);
 
-	$: eventSelected = {
-		startDate: initialData?.startDate,
-		endDate: initialData?.endDate
-	};
 	$: activityTypeSelected = initialData?.type || undefined;
 	$: validationSchema = openSpaces;
 	$: showLongForm = false;
@@ -372,7 +369,7 @@
                     active:bg-thatBlue-800 
                     transition duration-150 ease-in-out"
 								>
-									{initialData ? 'Update Activity' : 'Submit Activity'}
+									{initialData?.id ? 'Update Activity' : 'Submit Activity'}
 								</button>
 							</span>
 						</div>

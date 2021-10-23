@@ -9,9 +9,10 @@
 </script>
 
 <script>
-	export let activityDetails;
+	export let activity;
 	export let events;
 	export let activeEvents;
+	export let isBackdoor;
 	export let eventId;
 
 	import { goto } from '$app/navigation';
@@ -21,58 +22,52 @@
 
 	import seoMetaTags from '$utils/seo/metaTags';
 	import logEvent from '$utils/eventTrack';
+	import sessionsApi from '$dataSources/api.that.tech/sessions/mutations';
 	import Seo from '$components/Seo.svelte';
-	import { ActionHeader, ModalError } from '$elements';
+	import { ActionHeader } from '$elements';
+	import { Standard as StandardLink } from '$elements/links';
 	import StackedLayout from '$elements/layouts/StackedLayout.svelte';
 	import Nav from '$components/nav/interiorNav/Top.svelte';
 
-	import sessionsMutationsApi from '$dataSources/api.that.tech/sessions/mutations';
-
-	import { formatUpdate } from '../_lib/formatRequest';
 	import ActivityForm from '../_components/form/ActivityForm.svelte';
+	import { formatCreate } from '../_lib/formatRequest';
 
-	const { updateSession } = sessionsMutationsApi();
+	// stripping out things that are set when submitted
+	delete activity.createdAt;
+	delete activity.lastUpdatedAt;
+	delete activity.startTime;
+	delete activity.status;
+	delete activity.id;
+	delete activity.eventId;
+	delete activity.event;
 
-	const metaTags = ((title = 'Edit Activity - THAT') => ({
+	const metaTags = ((title = 'Clone Activity - THAT') => ({
 		title,
 		tags: seoMetaTags({
-			title,
-			description: 'Edit your activity.',
+			title: 'Clone Activity - THAT',
+			description: 'Clone an existing Activity.',
 			openGraph: {
 				type: 'website',
-				url: `https://that.us/activity/edit`
+				url: `https://that.us/activities/clone/`
 			}
 		})
 	}))();
 
-	async function handleWithdraw(activity) {
-		const status = activity.type === 'OPEN_SPACE' ? 'CANCELLED' : 'WITHDREW';
-
-		await updateSession(activityDetails.id, activity.type, {
-			status
-		});
-
-		logEvent('activity_withdraw');
-
-		goto(`/my/submissions`);
-	}
+	const { createSession } = sessionsApi();
 
 	async function handleSubmit({ detail: { values, setSubmitting, resetForm } }) {
 		setSubmitting(true);
-		const { activity, type } = formatUpdate(values);
 
-		await updateSession(activityDetails.id, type, activity);
+		const { eventId } = values;
+		const { activity, type } = formatCreate(values);
 
-		logEvent('activity_updated');
+		await createSession(eventId, type, activity);
 
-		setSubmitting(false);
+		logEvent('activity_created');
+
 		resetForm();
-
-		if (activity.status === 'ACCEPTED') {
-			goto(`/activities/${activityDetails.id}?edit=true&isUpdated=true`);
-		} else {
-			goto(`/my/submissions`);
-		}
+		setSubmitting(false);
+		goto('/my/submissions/');
 	}
 </script>
 
@@ -113,7 +108,7 @@
 					</div>
 				</div>
 				<div>
-					<h1 class="text-2xl font-bold text-gray-900">Edit Activity</h1>
+					<h1 class="text-2xl font-bold text-gray-900">Create Activity</h1>
 					<p class="text-sm font-medium text-gray-500">
 						Below is a short set of questions to best schedule a new activity.
 					</p>
@@ -122,35 +117,20 @@
 			<div
 				class="mt-6 flex flex-col-reverse justify-stretch space-y-4 space-y-reverse sm:flex-row-reverse sm:justify-end sm:space-x-reverse sm:space-y-0 sm:space-x-3 md:mt-0 md:flex-row md:space-x-3"
 			>
-				<a
-					href="/my/submissions/"
-					type="button"
-					class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-blue-500"
-				>
-					View Your Past Submissions
-				</a>
+				<StandardLink href="/my/submissions/">View Your Past Submissions</StandardLink>
 			</div>
 		</div>
 
-		{#if activityDetails}
-			<div class="mt-8 sm:px-6 max-w-3xl lg:max-w-7xl mx-auto">
-				<ActivityForm
-					{handleSubmit}
-					{handleWithdraw}
-					initialData={activityDetails}
-					{activeEvents}
-					{events}
-					{eventId}
-					isBackdoor={true}
-					isEdit={true}
-				/>
-			</div>
-		{:else}
-			<ModalError
-				title="No Activity Found"
-				text="I'm sorry we weren't unable to find the activity trying to edit."
-				action={{ title: 'Return to my submissions', href: '/my/submissions' }}
+		<div class="mt-8 sm:px-6 max-w-3xl lg:max-w-7xl mx-auto">
+			<ActivityForm
+				initialData={activity}
+				{handleSubmit}
+				{activeEvents}
+				{events}
+				{isBackdoor}
+				{eventId}
+				isEdit={false}
 			/>
-		{/if}
+		</div>
 	</div>
 </StackedLayout>
