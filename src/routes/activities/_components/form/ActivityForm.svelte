@@ -47,10 +47,14 @@
 	const dropDownValues = getContext('SESSION_ENUMS');
 	let createDisabled = true;
 
-	$: eventSelected = {
-		startDate: initialData?.startDate,
-		endDate: initialData?.endDate
-	};
+	// let eventSelected = initialData
+	// 	? {
+	// 			startDate: initialData?.startDate,
+	// 			endDate: initialData?.endDate
+	// 	  }
+	// 	: events.find((i) => i.id === eventId);
+	let eventSelected = events.find((i) => i.id === eventId);
+
 	$: activityTypeSelected = initialData?.type || undefined;
 	$: validationSchema = openSpaces;
 	$: showLongForm = false;

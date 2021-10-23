@@ -71,7 +71,7 @@
 	import isToday from 'dayjs/plugin/isToday.js';
 	import isBetween from 'dayjs/plugin/isBetween.js';
 	import { Input } from 'sveltejs-forms';
-	import { Datepicker } from 'svelte-calendar';
+	import Datepicker from 'svelte-calendar';
 	import Select from 'svelte-select';
 	import advancedFormat from 'dayjs/plugin/advancedFormat.js';
 
@@ -95,7 +95,7 @@
 		? dayjs(values.selectedDay).toDate()
 		: dayjs().toDate();
 
-	$: startDate = dayjs().toDate();
+	$: startDate = event.id === config.eventId ? dayjs().toDate() : dayjs(event.startDate).toDate();
 	$: endDate = dayjs(event.endDate).toDate();
 
 	async function handleReset() {
@@ -166,8 +166,8 @@
 					start={startDate}
 					end={endDate}
 					bind:selected={selectedDateValue}
-					format="dddd, MMM D, YYYY z"
-					style="form-input  sm:text-sm sm:leading-5 rounded-md shadow-sm hover:border-gray-700"
+					format={dayjs(selectedDateValue).format('dddd, MMM D, YYYY z')}
+					style="form-select sm:text-sm sm:leading-5 shadow-sm hover:border-gray-700"
 					on:dateSelected={({ detail: { date } }) =>
 						setField('selectedDay', dayjs(date).format('YYYY-MM-DD'))}
 				/>
