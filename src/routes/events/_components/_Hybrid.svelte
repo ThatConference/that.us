@@ -124,7 +124,7 @@
 
 <style>
 	.thatBackground {
-		background-image: url(/images/memories/hallway.jpg);
+		background-image: url(/images/memories/hallway-background.jpg);
 		background-repeat: no-repeat;
 		background-position: center;
 		background-size: cover;
