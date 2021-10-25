@@ -15,13 +15,13 @@
 			<div class="flex justify-center">
 				{#if i}
 					{#if i === true}
-						<Check />
+						<span class="text-green-500"><Check /></span>
 						<span class="sr-only">Included in this option.</span>
 					{:else}
 						<span class="text-gray-700">{i}</span>
 					{/if}
 				{:else}
-					<span class="text-gray-400">
+					<span class="text-gray-300">
 						<Minus />
 						<span class="sr-only">Not included in this option.</span>
 					</span>

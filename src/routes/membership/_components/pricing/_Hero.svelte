@@ -78,21 +78,21 @@
 									<ul class="space-y-4">
 										<li class="flex items-start">
 											<div class="flex-shrink-0">
-												<Check />
+												<span class="text-green-500"><Check /></span>
 											</div>
 											<p class="ml-3 text-base font-medium text-gray-500">Full Access to Event</p>
 										</li>
 
 										<li class="flex items-start">
 											<div class="flex-shrink-0">
-												<Check />
+												<span class="text-green-500"><Check /></span>
 											</div>
 											<p class="ml-3 text-base font-medium text-gray-500">Join any Session</p>
 										</li>
 
 										<li class="flex items-start">
 											<div class="flex-shrink-0">
-												<Check />
+												<span class="text-green-500"><Check /></span>
 											</div>
 											<p class="ml-3 text-base font-medium text-gray-500">Create any Session</p>
 										</li>
@@ -152,7 +152,7 @@
 								<ul class="space-y-4">
 									<li class="flex items-start">
 										<div class="flex-shrink-0">
-											<Check />
+											<span class="text-green-500"><Check /></span>
 										</div>
 										<p class="ml-3 text-base font-medium text-gray-500">
 											Access to all online monthly events
@@ -161,7 +161,7 @@
 
 									<li class="flex items-start">
 										<div class="flex-shrink-0">
-											<Check />
+											<span class="text-green-500"><Check /></span>
 										</div>
 										<p class="ml-3 text-base font-medium text-gray-500">
 											$50 off 1 THAT Conference Camper Ticket
@@ -170,13 +170,13 @@
 
 									<li class="flex items-start">
 										<div class="flex-shrink-0">
-											<Check />
+											<span class="text-green-500"><Check /></span>
 										</div>
 										<p class="ml-3 text-base font-medium text-gray-500">10% off at THAT Store</p>
 									</li>
 									<li class="flex items-start">
 										<div class="flex-shrink-0">
-											<Check />
+											<span class="text-green-500"><Check /></span>
 										</div>
 										<p class="ml-3 text-base font-medium text-gray-500">
 											Yearly Commitment, Automatic Renewal
@@ -184,7 +184,7 @@
 									</li>
 									<li class="flex items-start">
 										<div class="flex-shrink-0">
-											<Check />
+											<span class="text-green-500"><Check /></span>
 										</div>
 										<p class="ml-3 text-base font-medium text-gray-500">
 											First access to new platform features
@@ -226,14 +226,14 @@
 									<ul class="space-y-4">
 										<li class="flex items-start">
 											<div class="flex-shrink-0">
-												<Check />
+												<span class="text-green-500"><Check /></span>
 											</div>
 											<p class="ml-3 text-base font-medium text-gray-500">Join Activities</p>
 										</li>
 
 										<li class="flex items-start">
 											<div class="flex-shrink-0">
-												<Check />
+												<span class="text-green-500"><Check /></span>
 											</div>
 											<p class="ml-3 text-base font-medium text-gray-500">Create Activities</p>
 										</li>

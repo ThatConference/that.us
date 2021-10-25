@@ -143,28 +143,28 @@
 							<ul class="space-y-4">
 								<li class="flex items-start">
 									<div class="flex-shrink-0">
-										<Check />
+										<span class="text-green-500"><Check /></span>
 									</div>
 									<p class="ml-3 text-base text-gray-700">Full Access All Day</p>
 								</li>
 
 								<li class="flex items-start">
 									<div class="flex-shrink-0">
-										<Check />
+										<span class="text-green-500"><Check /></span>
 									</div>
 									<p class="ml-3 text-base text-gray-700">Create and Facilitate Activities</p>
 								</li>
 
 								<li class="flex items-start">
 									<div class="flex-shrink-0">
-										<Check />
+										<span class="text-green-500"><Check /></span>
 									</div>
 									<p class="ml-3 text-base text-gray-700">Join Any Activity</p>
 								</li>
 
 								<li class="flex items-start">
 									<div class="flex-shrink-0">
-										<Check />
+										<span class="text-green-500"><Check /></span>
 									</div>
 									<p class="ml-3 text-base text-gray-700">Helps Support Future Platform Growth</p>
 								</li>
