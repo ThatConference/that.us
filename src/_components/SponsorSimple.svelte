@@ -1,9 +1,8 @@
 <script>
-	export let eventId = $currentEvent.eventId;
+	export let eventId;
 
 	import gFetch from '$utils/gfetch';
-
-	import currentEvent from '$stores/currentEvent';
+	import envConfig from '$utils/config';
 	import { Standard as StandardLink } from '$elements/links';
 
 	const GET_PARTNERS = `
@@ -28,11 +27,12 @@
 	const PARTNER_LEVELS_TO_DISPLAY = ['CORPORATE_PARTNER', 'PARTNER', 'PIONEER'];
 
 	function queryPartners() {
-		return gFetch()
-			.query({ query: GET_PARTNERS, variables: { id: eventId } })
+		const eId = eventId ? eventId : envConfig.eventId;
 
-			.then((p) => {
-				const results = p.data.events.event.get;
+		return gFetch()
+			.query({ query: GET_PARTNERS, variables: { id: eId } })
+			.then(({ data }) => {
+				const results = data.events.event.get;
 
 				return {
 					slug: results.slug,
@@ -100,7 +100,7 @@
 									<a href="mailto:hello@that.us?subject=Let's Partner"> Partner with us! </a>
 								</div>
 
-								<StandardLink href="/events/{slug}/partners/">View all Partners</StandardLink>
+								<StandardLink href="/partners/{slug}/">View all Partners</StandardLink>
 							</div>
 						</div>
 					</div>

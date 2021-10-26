@@ -5,5 +5,5 @@
 </script>
 
 <div class="mx-auto max-w-7xl pb-12">
-	<SponsorSimple eventId={event.eventId} />
+	<SponsorSimple eventId={event.id} />
 </div>
