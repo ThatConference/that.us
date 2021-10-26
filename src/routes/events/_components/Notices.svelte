@@ -19,11 +19,26 @@
 				</h3>
 
 				<div class="mt-4 prose text-lg text-gray-500">
-					Are you paying for your own ticket? Let us help. Use promo code <span
-						class="font-extrabold">XXX</span
-					>
-					at checkout for $150 off an Everything Camper ticket or
-					<span class="font-extrabold">XXX</span> for $100 the 3 day tickts.
+					<p>
+						Company won't send you and you're paying for your own ticket? Let us help. Below is a
+						set of discounts codes for campers who are paying for their own way.
+					</p>
+
+					<ul>
+						<li>
+							Use code <span class="font-extrabold">TX150</span> during checkout to recieve
+							<span class="font-extrabold">$150</span> off the Everything Camper Ticket.
+						</li>
+						<li>
+							Use code <span class="font-extrabold">TX100</span> during checkout to recieve
+							<span class="font-extrabold">$100</span> off either the 3 Camper Ticket or 3 day Camper
+							No Food Ticket.
+						</li>
+						<li>
+							Use code <span class="font-extrabold">TX75</span> during checkout to recieve
+							<span class="font-extrabold">$75</span> off the ON THAT Virtual Camper Ticket.
+						</li>
+					</ul>
 				</div>
 			</div>
 		</div>
