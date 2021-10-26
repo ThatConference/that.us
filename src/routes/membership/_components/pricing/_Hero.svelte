@@ -61,9 +61,9 @@
 								<div class="bg-white px-6 py-10">
 									<div>
 										<h3 class="text-center text-2xl font-medium text-gray-900" id="tier-hobby">
-											Online Event Ticket
+											THAT Online Event Ticket
 										</h3>
-										<div class="mt-4 flex items-center justify-center">
+										<div class="strike mt-4 flex items-center justify-center">
 											<span class="px-3 flex items-start text-6xl tracking-tight text-gray-900">
 												<span class="mt-2 mr-2 text-4xl font-medium"> $ </span>
 												<span class="font-extrabold"> 15 </span>
@@ -75,7 +75,13 @@
 								<div
 									class="flex-1 flex flex-col justify-between border-t-2 border-gray-100 p-6 bg-gray-50 sm:p-10 lg:p-6 xl:p-10"
 								>
-									<ul class="space-y-4">
+									<p class="text-center text-lg text-red-500">
+										For a limited time all monthly THAT Online events are <span
+											class="font-extrabold">free</span
+										> and do not require a ticket to participate.
+									</p>
+
+									<!-- <ul class="space-y-4">
 										<li class="flex items-start">
 											<div class="flex-shrink-0">
 												<span class="text-green-500"><Check /></span>
@@ -96,7 +102,7 @@
 											</div>
 											<p class="ml-3 text-base font-medium text-gray-500">Create any Session</p>
 										</li>
-									</ul>
+									</ul> -->
 									<div class="mt-8">
 										<div class="flex flex-col">
 											<StandardButton on:click={() => handleAddEventTicketClick()}>

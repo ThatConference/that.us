@@ -126,7 +126,7 @@
 									</span>
 								</div>
 							</div>
-							<div class="mt-4 flex items-baseline text-6xl font-extrabold">
+							<div class="strike mt-4 flex items-baseline text-6xl font-extrabold">
 								${ticket.price}
 								<span class="ml-1 text-2xl font-medium text-gray-500"> USD </span>
 							</div>
@@ -135,6 +135,12 @@
 							</p>
 							<p class="text-lg text-gray-500">
 								{dayjs(event.startDate).format('dddd, MMMM D, YYYY - h:mm A z')}
+							</p>
+
+							<p class="mt-6 text-center text-lg text-red-500">
+								For a limited time all monthly THAT Online events are <span class="font-extrabold"
+									>free</span
+								> and do not require a ticket to participate.
 							</p>
 						</div>
 						<div

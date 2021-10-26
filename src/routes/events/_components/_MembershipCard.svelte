@@ -56,7 +56,7 @@
 										</span>
 									</div>
 									<p class="ml-3 text-sm text-gray-700">
-										Full Access to every monthly online event
+										Free Tickets to THAT Online and ON THAT Conference
 									</p>
 								</li>
 
@@ -68,7 +68,7 @@
 											<CheckFull height="h-4" width="h-4" />
 										</span>
 									</div>
-									<p class="ml-3 text-sm text-gray-700">$50 off 1 THAT Conference Camper Ticket</p>
+									<p class="ml-3 text-sm text-gray-700">$50 off AT THAT Conference Camper ticket</p>
 								</li>
 
 								<li class="flex items-center lg:col-span-1">
@@ -79,7 +79,7 @@
 											<CheckFull height="h-4" width="h-4" />
 										</span>
 									</div>
-									<p class="ml-3 text-sm text-gray-700">10% off at THAT Store</p>
+									<p class="ml-3 text-sm text-gray-700">10% off THAT Store merchandise</p>
 								</li>
 
 								<li class="flex items-center lg:col-span-1">
@@ -90,9 +90,7 @@
 											<CheckFull height="h-4" width="h-4" />
 										</span>
 									</div>
-									<p class="ml-3 text-sm text-gray-700">
-										First access to all new platform features
-									</p>
+									<p class="ml-3 text-sm text-gray-700">Access to the private Members Discord</p>
 								</li>
 							</ul>
 						</div>

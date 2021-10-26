@@ -53,33 +53,28 @@
 			<ul class="divide-y divide-gray-200">
 				<li class="py-4 flex md:py-0 md:pb-4">
 					<span class="text-green-500"><Check /></span>
-					<span class="ml-3 text-base">Access to all online events</span>
+					<span class="ml-3 text-base">Free THAT Conference ON-THAT Tickets</span>
 				</li>
 
 				<li class="py-4 flex">
 					<span class="text-green-500"><Check /></span>
-					<span class="ml-3 text-base">$50 off 1 THAT Conference Camper ticket</span>
+					<span class="ml-3 text-base">Free Access to THAT Online</span>
+				</li>
+
+				<li class="py-4 flex">
+					<span class="text-green-500"><Check /></span>
+					<span class="ml-3 text-base">$50 off AT THAT Conference Camper ticket</span>
 				</li>
 
 				<li class="py-4 flex">
 					<span class="text-green-500"><Check /></span>
 					<span class="ml-3 text-base">10% off THAT Store merchandise</span>
 				</li>
-
-				<li class="py-4 flex">
-					<span class="text-green-500"><Check /></span>
-					<span class="ml-3 text-base"> Yearly commitment, automatic renewal </span>
-				</li>
 			</ul>
 			<ul class="border-t border-gray-200 divide-y divide-gray-200 md:border-t-0">
 				<li class="py-4 flex md:border-t-0 md:py-0 md:pb-4">
 					<span class="text-green-500"><Check /></span>
-					<span class="ml-3 text-base"> First access to new platform features </span>
-				</li>
-
-				<li class="py-4 flex">
-					<span class="text-green-500"><Check /></span>
-					<span class="ml-3 text-base"> Help shape future releases </span>
+					<span class="ml-3 text-base"> Access to the private Members Discord </span>
 				</li>
 
 				<li class="py-4 flex">
@@ -90,6 +85,11 @@
 				<li class="py-4 flex">
 					<span class="text-green-500"><Check /></span>
 					<span class="ml-3 text-base"> Supporting future platform growth </span>
+				</li>
+
+				<li class="py-4 flex">
+					<span class="text-green-500"><Check /></span>
+					<span class="ml-3 text-base"> Yearly commitment, automatic renewal </span>
 				</li>
 			</ul>
 		</div>

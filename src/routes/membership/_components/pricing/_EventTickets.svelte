@@ -90,7 +90,7 @@
 									THAT Online Event Ticket
 								</h3>
 							</div>
-							<div class="mt-4 flex items-baseline text-6xl font-extrabold">
+							<div class="strike mt-4 flex items-baseline text-6xl font-extrabold">
 								$15
 								<span class="ml-1 text-2xl font-medium text-gray-500"> / each event </span>
 							</div>
