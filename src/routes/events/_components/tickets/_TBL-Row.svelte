@@ -6,12 +6,12 @@
 </script>
 
 <tr>
-	<th class="py-5 pl-6 pr-6 text-sm font-normal text-gray-500 text-left" scope="row">
+	<th class="py-2 pl-6 pr-6 text-sm font-normal text-gray-500 text-left" scope="row">
 		{title}
 	</th>
 
 	{#each included as i}
-		<td class="py-5 px-6">
+		<td class="px-6">
 			<div class="flex justify-center">
 				{#if i}
 					{#if i === true}

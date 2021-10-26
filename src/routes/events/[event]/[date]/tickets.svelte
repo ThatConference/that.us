@@ -31,7 +31,7 @@
 	import Professional from '../../_components/tickets/_Professional.svelte';
 	import Workshops from '../../_components/tickets/_Workshops.svelte';
 	import Families from '../../_components/tickets/_Families.svelte';
-	import Notices from '../../_components/_Notices.svelte';
+	import Notices from '../../_components/Notices.svelte';
 
 	const { send } = getContext('cart');
 

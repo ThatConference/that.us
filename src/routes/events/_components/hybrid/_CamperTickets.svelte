@@ -8,7 +8,7 @@
 	import { Highlight as HighlightLink } from '$elements/links';
 	import { Standard as StandardButton, Highlight as HighlightButton } from '$elements/buttons';
 
-	import Notices from '../_Notices.svelte';
+	import Notices from '../Notices.svelte';
 
 	const { keyBy } = lodash;
 	const dispatch = createEventDispatcher();
