@@ -120,28 +120,28 @@
 									<ul class="space-y-4">
 										<li class="flex items-start">
 											<div class="flex-shrink-0">
-												<Check />
+												<span class="text-green-500"><Check /></span>
 											</div>
 											<p class="ml-3 text-base text-gray-700">Promotional Pricing</p>
 										</li>
 
 										<li class="flex items-start">
 											<div class="flex-shrink-0">
-												<Check />
+												<span class="text-green-500"><Check /></span>
 											</div>
 											<p class="ml-3 text-base text-gray-700">Keynotes</p>
 										</li>
 
 										<li class="flex items-start">
 											<div class="flex-shrink-0">
-												<Check />
+												<span class="text-green-500"><Check /></span>
 											</div>
 											<p class="ml-3 text-base text-gray-700">Join and create virtual sessions</p>
 										</li>
 
 										<li class="flex items-start">
 											<div class="flex-shrink-0">
-												<Check />
+												<span class="text-green-500"><Check /></span>
 											</div>
 											<p class="ml-3 text-base text-gray-700">THAT t-shirt (US Only)</p>
 										</li>
@@ -227,28 +227,28 @@
 									<ul class="space-y-4">
 										<li class="flex items-start">
 											<div class="flex-shrink-0">
-												<Check />
+												<span class="text-green-500"><Check /></span>
 											</div>
 											<p class="ml-3 text-base text-gray-700">Promotional Pricing</p>
 										</li>
 
 										<li class="flex items-start">
 											<div class="flex-shrink-0">
-												<Check />
+												<span class="text-green-500"><Check /></span>
 											</div>
 											<p class="ml-3 text-base text-gray-700">Full Access to main event</p>
 										</li>
 
 										<li class="flex items-start">
 											<div class="flex-shrink-0">
-												<Check />
+												<span class="text-green-500"><Check /></span>
 											</div>
 											<p class="ml-3 text-base text-gray-700">THAT t-shirt, badge, and swag</p>
 										</li>
 
 										<li class="flex items-start">
 											<div class="flex-shrink-0">
-												<Check />
+												<span class="text-green-500"><Check /></span>
 											</div>
 											<p class="ml-3 text-base text-gray-700">
 												Welcome Reception, Game Night, Waterpark Party

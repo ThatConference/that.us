@@ -1,20 +1,21 @@
 <script>
 	import { Standard as StandardLink } from '$elements/links';
+	import { kalahari } from '$utils/config';
 	import seoMetaTags from '$utils/seo/metaTags';
 	import Seo from '$components/Seo.svelte';
 
-	import Layout from './_components/_Layout.svelte';
-	import Header from './_components/_Header.svelte';
-	import MemoryHighlight from './_components/_MemoryHighlight.svelte';
+	import Layout from '../_components/_Layout.svelte';
+	import Header from '../_components/_Header.svelte';
+	import MemoryHighlight from '../_components/_MemoryHighlight.svelte';
 
-	const metaTags = ((title = 'Travel Information - THAT') => ({
+	const metaTags = ((title = 'Wisconsin Travel Information - THAT') => ({
 		title,
 		tags: seoMetaTags({
 			title,
 			description: '',
 			openGraph: {
 				type: 'website',
-				url: `https://that.us/support/travel`
+				url: `https://that.us/support/travel/wi/`
 			}
 		})
 	}))();
@@ -23,7 +24,7 @@
 <Seo title={metaTags.title} tags={metaTags.tags} />
 
 <Layout>
-	<Header pretext="THAT Campsite">Travel and Lodging Information</Header>
+	<Header pretext="THAT Campsite - Wisconsin">Travel and Lodging Information</Header>
 
 	<section class="text-gray-500">
 		<div
@@ -69,9 +70,7 @@
 						<p>A dedicated website is now available for you to book your hotel room online.</p>
 
 						<div class="flex flex-col">
-							<StandardLink open={true} href="https://book.passkey.com/e/50185885"
-								>Book Today</StandardLink
-							>
+							<StandardLink open={true} href={kalahari.passkey.wi}>Book Today</StandardLink>
 						</div>
 					</div>
 				</div>

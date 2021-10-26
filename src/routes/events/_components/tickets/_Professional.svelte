@@ -207,25 +207,25 @@
 					<tr class="border-t border-gray-200">
 						<th class="sr-only" scope="row">Choose your plan</th>
 
-						<td class="pt-5 px-6">
+						<td class="pt-12 px-6">
 							<StandardButton on:click={() => handlePurchase('WORKSHOPS')}>Purchase</StandardButton>
 						</td>
 
-						<td class="pt-5 px-6">
+						<td class="pt-12 px-6">
 							<StandardButton on:click={() => handlePurchase('VIRTUAL_CAMPER')}
 								>Purchase</StandardButton
 							>
 						</td>
 
-						<td class="pt-5 px-6">
+						<td class="pt-12 px-6">
 							<StandardButton on:click={() => handlePurchase('CAMPER_NO_FOOD')}
 								>Purchase</StandardButton
 							>
 						</td>
-						<td class="pt-5 px-6">
+						<td class="pt-12 px-6">
 							<StandardButton on:click={() => handlePurchase('CAMPER')}>Purchase</StandardButton>
 						</td>
-						<td class="pt-5 px-6">
+						<td class="pt-12 px-6">
 							<StandardButton on:click={() => handlePurchase('EVERYTHING_CAMPER')}>
 								Purchase
 							</StandardButton>

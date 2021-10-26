@@ -47,8 +47,10 @@
 			</div>
 			<div>
 				<p class="mt-1 text-sm text-gray-400">
-					You can select to speak online, in-person, or either. Online sessions are meant to be more
-					interactive than a typical eyes-forward presentation.
+					You can choose to speak online (ON THAT), in-person (AT THAT), or either-or (we will
+					select based on the selection process). Note: ON THAT sessions are meant to be more of an
+					interactive session where you're the guide rather than just than a typical
+					presentation-forward session. You're also not bound by any time.
 				</p>
 			</div>
 			<div class="mt-4">

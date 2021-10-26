@@ -31,7 +31,8 @@
 										>Tickets on Sale</span
 									>
 								</div>
-								<span class="ml-4 text-sm font-semibold">Only ${ticket.price}. Purchase today!</span
+								<span class="strike ml-4 text-sm font-semibold"
+									>Only ${ticket.price}. Purchase today!</span
 								>
 								<ChevronRight />
 							</button>
