@@ -42,7 +42,6 @@
 	export let eventSlug;
 
 	import seoMetaTags from '$utils/seo/metaTags';
-
 	import Seo from '$components/Seo.svelte';
 
 	import Hybrid from '../../_components/_Hybrid.svelte';
