@@ -1,5 +1,6 @@
 <script>
 	import { Standard as StandardLink } from '$elements/links';
+	import { kalahari } from '$utils/config';
 	import seoMetaTags from '$utils/seo/metaTags';
 	import Seo from '$components/Seo.svelte';
 
@@ -69,9 +70,7 @@
 						<p>A dedicated website is now available for you to book your hotel room online.</p>
 
 						<div class="flex flex-col">
-							<StandardLink open={true} href="https://book.passkey.com/e/50185885"
-								>Book Today</StandardLink
-							>
+							<StandardLink open={true} href={kalahari.passkey.wi}>Book Today</StandardLink>
 						</div>
 					</div>
 				</div>
