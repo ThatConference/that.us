@@ -71,7 +71,11 @@ export const imageCrops = {
 
 export const kalahari = {
 	passkey: {
-		wi: 'https://book.passkey.com/e/50185885',
-		tx: 'https://book.passkey.com/e/50185885'
+		wi: 'https://book.passkey.com/e/xxx',
+		tx: 'https://book.passkey.com/e/50241186'
+	},
+	speakerPasskey: {
+		wi: 'https://book.passkey.com/e/xxx',
+		tx: 'https://book.passkey.com/e/xxx'
 	}
 };
