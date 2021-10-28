@@ -58,6 +58,7 @@
 	import NewsletterSignup from '$components/newsletter.svelte';
 
 	const { cdnUrl } = image(slug);
+
 	const createUrl = (imageName) =>
 		`https://images.that.tech/blog/posts/${slug}/${imageName}?auto=format&dpr=2`;
 
