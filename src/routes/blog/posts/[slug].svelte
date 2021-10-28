@@ -2,6 +2,7 @@
 	import { getPosts } from '$blog/getPosts';
 	import membersQueryApi from '$dataSources/api.that.tech/members/queries';
 
+	export const ssr = false;
 	export async function load({ fetch, page: { params } }) {
 		const { slug } = params;
 		const { queryBlogAuthorBySlug } = membersQueryApi(fetch);

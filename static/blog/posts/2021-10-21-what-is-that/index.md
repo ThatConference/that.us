@@ -21,7 +21,7 @@ This question came through our webchat during last Friday's THAT Online, and it'
 ## What is THAT?
 
 <div class="w-full grid place-content-center">
-	<img class="w-[300px] lazyload" src="that-wide.png">
+	<img class="w-[300px] lazyload" src="THAT-Wide.png">
 </div>
 
 Let's start by defining what exactly **THAT** is.  The most straightforward answer, well, everything. By now, you've heard me say a community goes far beyond one's time together at THAT Conference; it exists every day. No doubt something special happens when geeks get together, it's essential, but it also shouldn't ever stop there. Our mission is to help you grow, support you, and grow the communities that surround every one of us. We also want to do all this every day of the year.
