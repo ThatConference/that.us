@@ -5,6 +5,8 @@ const create = (metaData) => {
 
 	const formattedImage = metaData.image
 		? `${config.ogImageApi}/api/template${metaData.image}`
+		: metaData.ogImage
+		? metaData.ogImage
 		: 'https://that.us/favicon.png';
 
 	const noindex = metaData ? metaData.noindex : false;

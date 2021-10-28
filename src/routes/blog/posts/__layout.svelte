@@ -58,6 +58,7 @@
 	import NewsletterSignup from '$components/newsletter.svelte';
 
 	const { cdnUrl } = image(slug);
+
 	const createUrl = (imageName) =>
 		`https://images.that.tech/blog/posts/${slug}/${imageName}?auto=format&dpr=2`;
 
@@ -67,7 +68,7 @@
 			title: bTitle,
 			description: `${description}`,
 			openGraph: {
-				image: cdnUrl(heroImage),
+				ogImage: cdnUrl(heroImage),
 				type: 'website',
 				url: `https://that.us/blog/posts/${slug}/`
 			}
