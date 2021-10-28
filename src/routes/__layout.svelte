@@ -171,6 +171,11 @@
 		text-decoration: line-through;
 	}
 
+	:global(.prose a) {
+		text-decoration: none;
+		color: #26529a;
+	}
+
 	.tag-form-input :global(.svelte-tags-input-tag) {
 		background: #252f3f;
 	}
