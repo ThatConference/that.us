@@ -1,11 +1,5 @@
-/**
- * Gets all posts from the /posts folder. Use this in your page load function.
- *
- * If you decide to add pagination to your posts page, this can take
- * page & limit params to help with that.
- */
 export function getPosts({ page = 1, limit } = {}) {
-	const posts = Object.entries(import.meta.globEager('../blog/posts/**/*.md'))
+	const posts = Object.entries(import.meta.globEager('./posts/**/*.md'))
 		.map(([, post]) => ({ metadata: post.metadata, component: post.default }))
 		// sort by date
 		.sort((a, b) => {
