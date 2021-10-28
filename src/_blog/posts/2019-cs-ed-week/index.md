@@ -8,6 +8,14 @@ authorSlug: clark
 layout: blog
 ---
 
+<script>
+	export let slug;
+	
+	import image from '$blog/image';
+	
+	const { cdnUrl } = image(slug);
+</script>
+
 ### THAT Computer Science Education Week Celebration
 
 This week (December 9-15) we here at THAT Conference are celebrating <b>Computer Science Education Week</b>! An annual program dedicated to promoting computer science education and to inspire K-12 students to get interested in computer science. It's an amazing opportunity to take an hour to learn something new, teach someone, volunteer, or just be inspired with all the amazing tutorials put out this time of year.
@@ -22,7 +30,7 @@ Computer Science Education Week is held in recognition of the birthday of comput
 
 Checkout [this quick video](https://www.youtube.com/watch?v=Fg82iV-L8ZY&feature=youtu.be) to learn more about how Grace Hopper influenced our industry and the tech stack most of us work on every day.
 
-<img class="lazyload" src="./grace-hopper.jpg" alt="Grace Hopper"/>
+<img class="lazyload" src={cdnUrl("./grace-hopper.jpg")} alt="Grace Hopper"/>
 
 #### Current State of Computer Science Education
 

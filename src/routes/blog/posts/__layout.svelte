@@ -25,6 +25,8 @@
 				component: post.component
 			},
 			stuff: {
+				heroImage: post.metadata.heroImage,
+				slug,
 				component: post.component
 			}
 		};
@@ -47,6 +49,7 @@
 
 	import dayjs from 'dayjs';
 
+	import image from '$blog/image';
 	import buildImageSrc from '$utils/image';
 	import Layout from '$elements/layouts/ContentLayout.svelte';
 	import seoMetaTags from '$utils/seo/metaTags';
@@ -54,13 +57,17 @@
 
 	import NewsletterSignup from '$components/newsletter.svelte';
 
+	const { cdnUrl } = image(slug);
+	const createUrl = (imageName) =>
+		`https://images.that.tech/blog/posts/${slug}/${imageName}?auto=format&dpr=2`;
+
 	const metaTags = ((bTitle = `${title} - THAT`) => ({
 		title: bTitle,
 		tags: seoMetaTags({
 			title: bTitle,
 			description: `${description}`,
 			openGraph: {
-				image: heroImage,
+				image: cdnUrl(heroImage),
 				type: 'website',
 				url: `https://that.us/blog/posts/${slug}/`
 			}
@@ -103,7 +110,7 @@
 					</h1>
 
 					<div class="my-12">
-						<img src={`${heroImage}`} class="h-[600] w-[335] top-rounded-lg shadow-md" alt="" />
+						<img src={cdnUrl(heroImage)} class="h-[600] w-[335] top-rounded-lg shadow-md" alt="" />
 						{#if heroImageCaption}
 							<p class="pt-4 caption text-gray-400">{heroImageCaption}</p>
 						{/if}

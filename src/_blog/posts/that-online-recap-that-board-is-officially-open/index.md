@@ -8,6 +8,15 @@ authorSlug: clark
 layout: blog
 ---
 
+<script>
+	export let slug;
+	
+	import image from '$blog/image';
+	import { Standard as StandardLink } from '$elements/links';
+
+	const { cdnUrl } = image(slug);
+</script>
+
 Hey Camper, it's Clark here.
 
 ### Thank you.
@@ -17,7 +26,7 @@ These days time seems to slip by too fast. Last week marked our first ever onlin
 One year ago I stood on stage and muttered this vision of mine, THAT.us. Last week we took an unconventional approach to the "virtual conference". Rather than just hosting yet another online event, we started to create a platform focused on connecting geeks and geeklings worldwide, every day, but in a different way. We want to create a safe place where we can all authentically engage with one another in a deeper more impactful way at anytime. August 3rd marked the day we launched THAT ( [that.us](http://that.us/) ). If you'd like to watch my opening keynote where I talk more about where we've come from and where we're headed, just head over to our YouTube Channel: [https://www.youtube.com/watch?v=gwFbwzKHtiw](https://www.youtube.com/watch?v=gwFbwzKHtiw)
 
 <p>
-<img src="./that-2020-logo.png"
+<img src={cdnUrl("that-2020-logo.png")}
      alt="THAT 2020"
      style="width: 50%; margin:0 auto; display:block" />
 </p>

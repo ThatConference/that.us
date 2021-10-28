@@ -2,7 +2,8 @@
 	export async function load({ stuff }) {
 		return {
 			props: {
-				component: stuff.component
+				component: stuff.component,
+				slug: stuff.slug
 			}
 		};
 	}
@@ -10,6 +11,7 @@
 
 <script>
 	export let component;
+	export let slug;
 </script>
 
-<svelte:component this={component} />
+<svelte:component this={component} {slug} />
