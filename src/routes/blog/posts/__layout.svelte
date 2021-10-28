@@ -68,7 +68,7 @@
 			title: bTitle,
 			description: `${description}`,
 			openGraph: {
-				ogImage: cdnUrl(heroImage),
+				image: cdnUrl(heroImage),
 				type: 'website',
 				url: `https://that.us/blog/posts/${slug}/`
 			}
