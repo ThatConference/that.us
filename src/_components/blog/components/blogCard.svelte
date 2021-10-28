@@ -17,7 +17,7 @@
 		<div class="flex-shrink-0">
 			<img
 				class="bg-white h-[600] w-[335] top-rounded-lg object-cover"
-				src={`${cdnUrl(metadata.heroImage)}&h=600&w=335`}
+				src={cdnUrl(metadata.heroImage)}
 				alt=""
 			/>
 		</div>
