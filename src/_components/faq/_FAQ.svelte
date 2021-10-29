@@ -7,7 +7,7 @@
 	let userClicked = false;
 </script>
 
-<dt class="text-lg">
+<dt class="text-lg mt-4">
 	<button
 		class="text-left w-full flex justify-between items-start text-gray-400"
 		on:click|preventDefault={() => (userClicked = !userClicked)}
