@@ -1,0 +1,11 @@
+.strike {
+	text-decoration: line-through;
+}
+
+.prose a {
+	text-decoration: none;
+	color: #26529a;
+}
+.prose a:hover {
+	color: #ffffff;
+}
