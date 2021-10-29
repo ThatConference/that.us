@@ -15,6 +15,13 @@
 			querySessionDropDownValues()
 		]);
 
+		if (!activity) {
+			return {
+				status: 404,
+				error: 'Activity not found'
+			};
+		}
+
 		return {
 			props: {
 				activity,
