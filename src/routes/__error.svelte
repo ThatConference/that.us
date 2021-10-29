@@ -30,7 +30,12 @@
 		})
 	}))();
 
-	if (!dev) Sentry.captureException(new Error(error));
+	if (!dev)
+		Sentry.captureException(error, {
+			tags: {
+				status
+			}
+		});
 </script>
 
 <Seo title={metaTags.title} tags={metaTags.tags} />
@@ -47,7 +52,11 @@
 						<div>
 							<h1 class="text-4xl font-extrabold text-thatBlue-800 tracking-tight sm:text-5xl">
 								{#if status === 404}
-									THAT Page not found
+									{#if error.message}
+										{error.message}
+									{:else}
+										THAT Page not found
+									{/if}
 								{:else}
 									Well THAT's No Good.
 								{/if}
