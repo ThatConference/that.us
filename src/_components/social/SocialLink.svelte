@@ -11,7 +11,8 @@
 		twitch,
 		dribbble,
 		medium,
-		stackOverflow
+		stackOverflow,
+		slack
 	} from 'svelte-awesome/icons';
 
 	export let network;
@@ -53,6 +54,9 @@
 			break;
 		case 'STACK_OVERFLOW':
 			socialIcon = stackOverflow;
+			break;
+		case 'SLACK':
+			socialIcon = slack;
 			break;
 	}
 </script>

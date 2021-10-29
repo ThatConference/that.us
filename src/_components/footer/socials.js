@@ -28,7 +28,7 @@ export default [
 		network: 'TWITCH'
 	},
 	{
-		href: 'https://thatconference.com?utm_source=THAT',
-		network: 'WEBSITE'
+		href: '/signup/',
+		network: 'SLACK'
 	}
 ];
