@@ -40,7 +40,7 @@
 					{#each ticketDetails.includes as item}
 						<li class="flex">
 							<div>
-								<Check />
+								<span class="text-green-500"><Check /></span>
 							</div>
 							<p class="ml-3 text-base text-gray-700">{item}</p>
 						</li>

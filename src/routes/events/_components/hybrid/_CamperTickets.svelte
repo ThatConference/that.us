@@ -8,7 +8,7 @@
 	import { Highlight as HighlightLink } from '$elements/links';
 	import { Standard as StandardButton, Highlight as HighlightButton } from '$elements/buttons';
 
-	import Notices from '../_Notices.svelte';
+	import Notices from '../Notices.svelte';
 
 	const { keyBy } = lodash;
 	const dispatch = createEventDispatcher();
@@ -97,7 +97,7 @@
 									<ul class="space-y-4">
 										<li class="flex items-start">
 											<div class="flex-shrink-0">
-												<Check />
+												<span class="text-green-500"><Check /></span>
 											</div>
 											<p class="ml-3 text-base font-medium text-gray-500">
 												Access to the Pre-Conference
@@ -106,7 +106,7 @@
 
 										<li class="flex items-start">
 											<div class="flex-shrink-0">
-												<Check />
+												<span class="text-green-500"><Check /></span>
 											</div>
 											<p class="ml-3 text-base font-medium text-gray-500">
 												Lunch and all day beverage
@@ -115,7 +115,7 @@
 
 										<li class="flex items-start">
 											<div class="flex-shrink-0">
-												<Check />
+												<span class="text-green-500"><Check /></span>
 											</div>
 											<p class="ml-3 text-base font-medium text-gray-500">Welcome Reception</p>
 										</li>
@@ -172,7 +172,7 @@
 								<ul class="space-y-4">
 									<li class="flex items-start">
 										<div class="flex-shrink-0">
-											<Check />
+											<span class="text-green-500"><Check /></span>
 										</div>
 										<p class="ml-3 text-base font-medium text-gray-500">
 											Full access to all 4 days
@@ -181,7 +181,7 @@
 
 									<li class="flex items-start">
 										<div class="flex-shrink-0">
-											<Check />
+											<span class="text-green-500"><Check /></span>
 										</div>
 										<p class="ml-3 text-base font-medium text-gray-500">
 											Daily Breakfast, Lunch and Beverages
@@ -190,7 +190,7 @@
 
 									<li class="flex items-start">
 										<div class="flex-shrink-0">
-											<Check />
+											<span class="text-green-500"><Check /></span>
 										</div>
 										<p class="ml-3 text-base font-medium text-gray-500">
 											THAT t-shirt, badge, and swag
@@ -198,7 +198,7 @@
 									</li>
 									<li class="flex items-start">
 										<div class="flex-shrink-0">
-											<Check />
+											<span class="text-green-500"><Check /></span>
 										</div>
 										<p class="ml-3 text-base font-medium text-gray-500">
 											Welcome Reception, Happy Hours, Pig Roast
@@ -206,7 +206,7 @@
 									</li>
 									<li class="flex items-start">
 										<div class="flex-shrink-0">
-											<Check />
+											<span class="text-green-500"><Check /></span>
 										</div>
 										<p class="ml-3 text-base font-medium text-gray-500">Waterpark Party</p>
 									</li>
@@ -252,14 +252,14 @@
 									<ul class="space-y-4">
 										<li class="flex items-start">
 											<div class="flex-shrink-0">
-												<Check />
+												<span class="text-green-500"><Check /></span>
 											</div>
 											<p class="ml-3 text-base font-medium text-gray-500">Keynotes</p>
 										</li>
 
 										<li class="flex items-start">
 											<div class="flex-shrink-0">
-												<Check />
+												<span class="text-green-500"><Check /></span>
 											</div>
 											<p class="ml-3 text-base font-medium text-gray-500">
 												Join and create virtual sessions
@@ -268,7 +268,7 @@
 
 										<li class="flex items-start">
 											<div class="flex-shrink-0">
-												<Check />
+												<span class="text-green-500"><Check /></span>
 											</div>
 											<p class="ml-3 text-base font-medium text-gray-500">THAT t-shirt (US Only)</p>
 										</li>

@@ -126,7 +126,7 @@
 									</span>
 								</div>
 							</div>
-							<div class="mt-4 flex items-baseline text-6xl font-extrabold">
+							<div class="strike mt-4 flex items-baseline text-6xl font-extrabold">
 								${ticket.price}
 								<span class="ml-1 text-2xl font-medium text-gray-500"> USD </span>
 							</div>
@@ -136,6 +136,12 @@
 							<p class="text-lg text-gray-500">
 								{dayjs(event.startDate).format('dddd, MMMM D, YYYY - h:mm A z')}
 							</p>
+
+							<p class="mt-6 text-center text-lg text-red-500">
+								For a limited time all monthly THAT Online events are <span class="font-extrabold"
+									>free</span
+								> and do not require a ticket to participate.
+							</p>
 						</div>
 						<div
 							class="flex-1 flex flex-col justify-between px-6 pt-6 pb-8 bg-gray-50 space-y-6 sm:p-10 sm:pt-6"
@@ -143,28 +149,28 @@
 							<ul class="space-y-4">
 								<li class="flex items-start">
 									<div class="flex-shrink-0">
-										<Check />
+										<span class="text-green-500"><Check /></span>
 									</div>
 									<p class="ml-3 text-base text-gray-700">Full Access All Day</p>
 								</li>
 
 								<li class="flex items-start">
 									<div class="flex-shrink-0">
-										<Check />
+										<span class="text-green-500"><Check /></span>
 									</div>
 									<p class="ml-3 text-base text-gray-700">Create and Facilitate Activities</p>
 								</li>
 
 								<li class="flex items-start">
 									<div class="flex-shrink-0">
-										<Check />
+										<span class="text-green-500"><Check /></span>
 									</div>
 									<p class="ml-3 text-base text-gray-700">Join Any Activity</p>
 								</li>
 
 								<li class="flex items-start">
 									<div class="flex-shrink-0">
-										<Check />
+										<span class="text-green-500"><Check /></span>
 									</div>
 									<p class="ml-3 text-base text-gray-700">Helps Support Future Platform Growth</p>
 								</li>

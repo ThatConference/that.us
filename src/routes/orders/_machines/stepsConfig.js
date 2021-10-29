@@ -59,9 +59,7 @@ function createConfig(metaContext) {
 								}
 							},
 
-							completePurchase: {
-								type: 'final'
-							}
+							completePurchase: {}
 						}
 					}
 				}

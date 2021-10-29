@@ -1,3 +1,29 @@
+#                           WXXW              WXXW                                       
+#           WWW            W0dd0N            W0dd0W            WWW                       
+#         WN0xkXW         NOolloON          NOolloON         WXkx0NW                     
+#       WN0dlld0W       WXxllllllxXW      WXxllllllkXW       W0dlld0NW                   
+#      N0dlldOXW        NOolllllloON      NOolllllloON        WXOdlld0NW                 
+#    N0dlldOXW          NOolllllloON      NOolllllloON          WXOdlld0N                
+#   WKxlllkXW         WXkollllllllokXW  WXkollllllllokXW         WXkllldKW               
+#    WNOdlldONW      WKxllllllllllllxKNWKxllllllllllllxKW      WNOdlldOXW                
+#      WXOdlldONW   WXkllllllllclllllx00xllllllllllllllkXW   WNOdlldOXW                  
+#        WXOdlo0W   WXklllllllllllcllx0OxllllllllllllllkXW   W0oldOXW                    
+#          WN0KW   WXklllllllllllllllloollllllllllllllllkXW   WK0NW                      
+#                 WKdlllllllllllllllllllllllllllllllllllldKW                             
+#                WKdlllllllllllllllllllllllllllllllllllllldKW                            
+#                WXKKKKKKKKkollokKKKKKKKKKKKKkollokKKKKKKKKXW                            
+#                         WKxooxKW          WKxooxKW                                     
+#                          WNNNNW            WNNNNW                                      
+
+
 User-agent: * 
-Disallow: /join/*
+
+Disallow: /join/
+Disallow: /my/
+Disallow: /_app/
+Disallow: /api/
+Disallow: /login
+Disallow: /logout
+
 Sitemap: https://that.us/sitemap.xml
+

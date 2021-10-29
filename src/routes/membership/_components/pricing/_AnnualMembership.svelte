@@ -52,44 +52,44 @@
 		<div class="mt-4 sm:mt-8 md:mt-10 md:grid md:grid-cols-2 md:gap-x-8 xl:mt-0 xl:col-span-2">
 			<ul class="divide-y divide-gray-200">
 				<li class="py-4 flex md:py-0 md:pb-4">
-					<Check />
-					<span class="ml-3 text-base">Access to all online events</span>
+					<span class="text-green-500"><Check /></span>
+					<span class="ml-3 text-base">Free THAT Conference ON-THAT Tickets</span>
 				</li>
 
 				<li class="py-4 flex">
-					<Check />
-					<span class="ml-3 text-base">$50 off 1 THAT Conference Camper ticket</span>
+					<span class="text-green-500"><Check /></span>
+					<span class="ml-3 text-base">Free Access to THAT Online</span>
 				</li>
 
 				<li class="py-4 flex">
-					<Check />
+					<span class="text-green-500"><Check /></span>
+					<span class="ml-3 text-base">$50 off AT THAT Conference Camper ticket</span>
+				</li>
+
+				<li class="py-4 flex">
+					<span class="text-green-500"><Check /></span>
 					<span class="ml-3 text-base">10% off THAT Store merchandise</span>
-				</li>
-
-				<li class="py-4 flex">
-					<Check />
-					<span class="ml-3 text-base"> Yearly commitment, automatic renewal </span>
 				</li>
 			</ul>
 			<ul class="border-t border-gray-200 divide-y divide-gray-200 md:border-t-0">
 				<li class="py-4 flex md:border-t-0 md:py-0 md:pb-4">
-					<Check />
-					<span class="ml-3 text-base"> First access to new platform features </span>
+					<span class="text-green-500"><Check /></span>
+					<span class="ml-3 text-base"> Access to the private Members Discord </span>
 				</li>
 
 				<li class="py-4 flex">
-					<Check />
-					<span class="ml-3 text-base"> Help shape future releases </span>
-				</li>
-
-				<li class="py-4 flex">
-					<Check />
+					<span class="text-green-500"><Check /></span>
 					<span class="ml-3 text-base">Special Merit Badge</span>
 				</li>
 
 				<li class="py-4 flex">
-					<Check />
+					<span class="text-green-500"><Check /></span>
 					<span class="ml-3 text-base"> Supporting future platform growth </span>
+				</li>
+
+				<li class="py-4 flex">
+					<span class="text-green-500"><Check /></span>
+					<span class="ml-3 text-base"> Yearly commitment, automatic renewal </span>
 				</li>
 			</ul>
 		</div>

@@ -1,5 +1,5 @@
 <script context="module">
-	export async function load({ page, fetch, stuff }) {
+	export async function load({ stuff }) {
 		return {
 			props: {
 				...stuff

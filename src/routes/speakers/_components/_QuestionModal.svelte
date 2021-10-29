@@ -19,7 +19,7 @@
 			>
 				<div>
 					<div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100">
-						<Check />
+						<span class="text-green-500"><Check /></span>
 					</div>
 
 					<div class="mt-4 text-center sm:mt-5">

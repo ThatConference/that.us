@@ -68,3 +68,14 @@ export const debug = {
 export const imageCrops = {
 	profile: '?mask=ellipse&w=500&h=500&fit=crop&q=75&fm=jpg'
 };
+
+export const kalahari = {
+	passkey: {
+		wi: 'https://book.passkey.com/e/xxx',
+		tx: 'https://book.passkey.com/e/50241186'
+	},
+	speakerPasskey: {
+		wi: 'https://book.passkey.com/e/xxx',
+		tx: 'https://book.passkey.com/e/xxx'
+	}
+};
