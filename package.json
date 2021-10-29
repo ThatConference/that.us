@@ -17,7 +17,7 @@
 		"local:build": "env-cmd svelte-kit build",
 		"build": "svelte-kit build",
 		"start": "svelte-kit start",
-		"lint": "eslint src/**/*.js",
+		"lint": "eslint src --ext .js",
 		"validate": "concurrently npm:lint",
 		"prepare": "husky install"
 	},

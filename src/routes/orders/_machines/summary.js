@@ -22,7 +22,7 @@ function createServices(stepsMachine) {
 			notifyPrerequisitesMet: () => send('VERIFICATION_SUCCESS'),
 
 			setStepsMachine: assign({
-				stepsMachine: (context) => spawn(stepsMachine)
+				stepsMachine: (_context) => spawn(stepsMachine)
 			}),
 
 			setPrerequisitesMet: assign({
