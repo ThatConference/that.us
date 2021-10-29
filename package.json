@@ -17,7 +17,7 @@
 		"local:build": "env-cmd svelte-kit build",
 		"build": "svelte-kit build",
 		"start": "svelte-kit start",
-		"lint": "eslint src/**/*.js",
+		"lint": "eslint src --ext .js",
 		"validate": "concurrently npm:lint",
 		"prepare": "husky install"
 	},
@@ -63,7 +63,6 @@
 		"logrocket": "^2.1.1",
 		"marked": "^3.0.7",
 		"mdsvex": "^0.9.8",
-		"mdsvex-relative-images": "^1.0.1",
 		"moment-timezone": "^0.5.33",
 		"omit-deep": "^0.3.0",
 		"postcss": "^8.3.11",

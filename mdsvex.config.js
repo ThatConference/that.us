@@ -2,7 +2,6 @@ import path from 'path';
 import { visit } from 'unist-util-visit';
 import autolinkHeadings from 'rehype-autolink-headings';
 import slugPlugin from 'rehype-slug';
-import relativeImages from 'mdsvex-relative-images';
 import readingTime from 'remark-reading-time';
 import preview, { textFormatter, htmlFormatter } from 'remark-preview';
 
@@ -33,8 +32,7 @@ export default {
 			}
 		),
 		posts,
-		videos,
-		relativeImages
+		videos
 	],
 	rehypePlugins: [
 		slugPlugin,

@@ -1,9 +1,11 @@
 <script>
 	export let metadata;
 
-	import { goto } from '$app/navigation';
+	import image from '$blog/image';
 	import dayjs from 'dayjs';
 	import buildImageSrc from '$utils/image';
+
+	const { cdnUrl } = image(metadata.slug);
 
 	const srcset = buildImageSrc(metadata.author.profileImage, ['40']);
 </script>
@@ -15,7 +17,7 @@
 		<div class="flex-shrink-0">
 			<img
 				class="bg-white h-[600] w-[335] top-rounded-lg object-cover"
-				src={`/blog/posts/${metadata.slug}/${metadata.heroImage}`}
+				src={cdnUrl(metadata.heroImage)}
 				alt=""
 			/>
 		</div>

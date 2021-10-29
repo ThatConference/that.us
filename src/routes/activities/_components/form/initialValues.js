@@ -9,7 +9,6 @@ dayjs.extend(duration);
 
 export function formatActivityInitialInput(currentData) {
 	const {
-		eventId,
 		event: { id, startDate, endDate },
 		durationInMinutes,
 		startTime,

@@ -4,7 +4,7 @@ import config from '$utils/config';
 
 import { QUERY_ME } from '$dataSources/api.that.tech/me';
 
-async function afterCallback(req, res, session, state) {
+async function afterCallback(_req, _res, session, _state) {
 	let body = {
 		query: `
 		${QUERY_ME}

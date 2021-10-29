@@ -32,12 +32,12 @@ function createServices() {
 
 			loadSuccess: assign({
 				items: (_, { data }) => data.filter((i) => i !== null),
-				cursor: (_, { data }) => undefined
+				cursor: (_, { _data }) => undefined
 			}),
 
 			loadNextSuccess: assign({
 				items: (_, { data }) => data.filter((i) => i !== null),
-				cursor: (_, { data }) => undefined
+				cursor: (_, { _data }) => undefined
 			}),
 
 			loadedAllSuccess: assign({

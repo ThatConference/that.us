@@ -2,11 +2,17 @@
 	@import 'tailwindcss/base';
 	@import 'tailwindcss/components';
 	@import 'tailwindcss/utilities';
-	.prose a {
+
+	:global(.strike) {
+		text-decoration: line-through;
+	}
+
+	:global(.prose a) {
+		text-decoration: none;
 		color: #26529a;
 	}
 
-	.prose a:hover {
-		color: #0f213e;
+	:global(.prose a:hover) {
+		color: #ffffff;
 	}
 </style>

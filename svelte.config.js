@@ -36,10 +36,10 @@ const config = {
 	},
 	preprocess: !dev
 		? [
-				mdsvex(mdsvexConfig),
 				preprocess({
 					postcss: true
-				})
+				}),
+				mdsvex(mdsvexConfig)
 		  ]
 		: [mdsvex(mdsvexConfig)]
 };
