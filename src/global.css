@@ -1,8 +1,0 @@
-:global(.strike) {
-	text-decoration: line-through;
-}
-
-:global(.prose a) {
-	text-decoration: none;
-	color: #26529a;
-}
