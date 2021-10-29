@@ -1,11 +1,12 @@
-.strike {
+:global(.strike) {
 	text-decoration: line-through;
 }
 
-.prose a {
+:global(.prose a) {
 	text-decoration: none;
 	color: #26529a;
 }
-.prose a:hover {
+
+:global(.prose a:hover) {
 	color: #ffffff;
 }
