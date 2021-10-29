@@ -19,17 +19,11 @@
 				</p>
 			</div>
 
-			<div class="mt-12 lg:mt-0 lg:col-span-3 lg:ml-16">
-				<dl class="space-y-12">
-					<div>
+				<dl class="mt-12 lg:mt-0 lg:col-span-3 lg:ml-16">
 						{#each faqs as faq}
-							<div class="mt-4">
 								<FAQ {...faq} />
-							</div>
 						{/each}
-					</div>
 				</dl>
-			</div>
 		</div>
 	</div>
 </div>
