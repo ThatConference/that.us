@@ -254,11 +254,6 @@
 
 <svelte:window on:resize={handleResize} />
 
-<svelte:head>
-	<script src="https://meet.jit.si/external_api.js">
-	</script>
-</svelte:head>
-
 <Seo title={metaTags.title} tags={metaTags.tags} />
 
 {#if incompleteProfile}
