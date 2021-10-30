@@ -5,14 +5,14 @@
 			"name": "Launch Chrome",
 			"request": "launch",
 			"type": "pwa-chrome",
-			"url": "http://localhost:5000",
+			"url": "http://localhost:3000",
 			"webRoot": "${workspaceFolder}"
 		},
 		{
 			"name": "Launch Brave macos",
 			"request": "launch",
 			"type": "pwa-chrome",
-			"url": "http://localhost:5000",
+			"url": "http://localhost:3000",
 			"webRoot": "${workspaceFolder}",
 			"runtimeExecutable": "/Applications/Brave Browser.app/Contents/MacOS/Brave Browser"
 		}
