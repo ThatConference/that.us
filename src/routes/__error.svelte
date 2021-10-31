@@ -30,12 +30,21 @@
 		})
 	}))();
 
-	if (!dev)
-		Sentry.captureException(error, {
+	if (!dev) {
+		let thisError;
+
+		if (error && error.stack && error.message) {
+			thisError = error;
+		} else {
+			thisError = new Error(error);
+		}
+
+		Sentry.captureException(thisError, {
 			tags: {
 				status
 			}
 		});
+	}
 </script>
 
 <Seo title={metaTags.title} tags={metaTags.tags} />
