@@ -158,15 +158,30 @@
 	}
 
 	function updateLinkSlugValue(link, userValue) {
-		const urlEnding = socialLinkValues[link.linkType];
+		// This is called from blur so we're looking for:
+		// 1. Link existed in DB and changing url
+		// 2. Already entered/changed slug
+		// 3. No value in User Slug - So either removed or never set
+
+		let userSlug = '';
 		slugValues[link.linkType] = userValue;
 
+		// get existing link if available
+		const existingLink = socialLinksState.filter((l) => l.linkType === link.linkType);
 		// clear out the value regardless.
 		socialLinksState = socialLinksState.filter((i) => i.linkType !== link.linkType);
 
-		// if we have a value.. add it back
-		if (!isEmpty(userValue)) {
-			socialLinksState.push(buildSocialLink(link.linkType, userValue, urlEnding));
+		if (existingLink[0]) {
+			link.slug.forEach((s) => {
+				const [, value] = existingLink[0].url.split(s);
+				if (value) {
+					userSlug = value;
+				}
+			});
+		}
+
+		if (!isEmpty(userSlug)) {
+			socialLinksState.push(buildSocialLink(link.linkType, userValue, userSlug));
 		}
 
 		return socialLinksState;
