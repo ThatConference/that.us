@@ -16,10 +16,10 @@
 				isNewProfile = false;
 			} else {
 				currentProfile = {
-					firstName: session.user.given_name ? session.user.given_name : '',
-					lastName: session.user.family_name ? session.user.family_name : '',
-					profileSlug: session.user.nickname ? session.user.nickname : '',
-					email: session.user.email ? session.user.email : ''
+					firstName: session.user?.given_name ? session.user.given_name : '',
+					lastName: session.user?.family_name ? session.user.family_name : '',
+					profileSlug: session.user?.nickname ? session.user.nickname : '',
+					email: session.user?.email ? session.user.email : ''
 				};
 				isNewProfile = true;
 			}
@@ -35,8 +35,8 @@
 </script>
 
 <script>
-	export let isNewProfile;
 	export let currentProfile;
+	export let isNewProfile;
 
 	import { goto } from '$app/navigation';
 	import { session } from '$app/stores';
