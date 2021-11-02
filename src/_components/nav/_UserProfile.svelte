@@ -15,7 +15,7 @@
 	<div>
 		<button
 			id="user-menu"
-			class="max-w-xs h-10 w-10 flex items-center justify-center text-sm rounded-full focus:outline-none duration-150 ease-in-out"
+			class="max-w-xs h-10 w-10 flex items-center justify-center text-sm rounded-full duration-150 ease-in-out"
 			class:shadow-solid={visible}
 			aria-label="User menu"
 			aria-haspopup="true"

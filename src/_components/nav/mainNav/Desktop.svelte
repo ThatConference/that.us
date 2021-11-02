@@ -56,7 +56,7 @@
 			</a>
 		</div>
 
-		<div class="ml-4 p-1 rounded-full md:flex text-that-orange hover:text-thatOrange-500">
+		<div class="ml-4 p-1 rounded-full md:flex text-that-orange hover:text-thatOrange-500 hover:bg-thatBlue-500 focus:text-white">
 			<UserProfile />
 		</div>
 	</div>
