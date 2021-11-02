@@ -1,5 +1,5 @@
 ---
-date: 2021-10-29
+date: 2021-11-01
 articleType: Announcement
 title: Tickets are now on Sale for THAT Conference Texas!
 description: Don't miss out on the first every Winter Retreat for Geeks. THAT Conference tickets are now on sale!
