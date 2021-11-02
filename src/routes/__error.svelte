@@ -31,13 +31,7 @@
 	}))();
 
 	if (!dev) {
-		let thisError;
-
-		if (error && error.stack && error.message) {
-			thisError = error;
-		} else {
-			thisError = new Error(error);
-		}
+		const thisError = error instanceof Error ? error : new Error(error);
 
 		Sentry.captureException(thisError, {
 			tags: {
