@@ -79,7 +79,7 @@
 											<CheckFull height="h-4" width="h-4" />
 										</span>
 									</div>
-									<p class="ml-3 text-sm text-gray-700">Event Access Monday 7/26</p>
+									<p class="ml-3 text-sm text-gray-700">Event Access Monday 1/17</p>
 								</li>
 
 								<li class="flex items-start lg:col-span-1">
