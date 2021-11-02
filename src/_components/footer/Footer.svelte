@@ -50,7 +50,7 @@
 								<li>
 									<a
 										href={supportLink.href}
-										class="text-base text-gray-500 hover:text-that-bluef ocus:border-thatOrange-700
+										class="text-base text-gray-500 hover:text-that-blue focus:border-thatOrange-700
     focus:ring-that-orange"
 									>
 										{supportLink.text}
