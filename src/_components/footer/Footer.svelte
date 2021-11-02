@@ -33,9 +33,9 @@
 							{#each thatLinks as thatLink}
 								<li>
 									<a
-										tabindex="-1"
 										href={thatLink.href}
-										class="text-base text-gray-500 hover:text-that-blue"
+										class="text-base text-gray-500 hover:text-that-blue focus:border-thatOrange-700
+    focus:ring-that-orange"
 									>
 										{thatLink.text}
 									</a>
@@ -49,9 +49,9 @@
 							{#each supportLinks as supportLink}
 								<li>
 									<a
-										tabindex="-1"
 										href={supportLink.href}
-										class="text-base text-gray-500 hover:text-that-blue"
+										class="text-base text-gray-500 hover:text-that-bluef ocus:border-thatOrange-700
+    focus:ring-that-orange"
 									>
 										{supportLink.text}
 									</a>
@@ -67,9 +67,9 @@
 							{#each companyLinks as companyLink}
 								<li>
 									<a
-										tabindex="-1"
 										href={companyLink.href}
-										class="text-base text-gray-500 hover:text-that-blue"
+										class="text-base text-gray-500 hover:text-that-blue focus:border-thatOrange-700
+    focus:ring-that-orange"
 									>
 										{companyLink.text}
 									</a>
@@ -85,9 +85,9 @@
 							{#each legalLinks as leaglLink}
 								<li>
 									<a
-										tabindex="-1"
 										href={leaglLink.href}
-										class="text-base text-gray-500 hover:text-that-blue"
+										class="text-base text-gray-500 hover:text-that-blue focus:border-thatOrange-700
+    focus:ring-that-orange"
 									>
 										{leaglLink.text}
 									</a>
