@@ -41,8 +41,6 @@ export async function getPosts() {
 
 		// sort by date
 		.sort((a, b) => (a.date < b.date ? 1 : -1));
-
-	console.log('posts', posts);
 	return posts;
 }
 

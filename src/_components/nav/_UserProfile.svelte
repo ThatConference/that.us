@@ -4,7 +4,6 @@
 	import { user as userIcon } from 'svelte-awesome/icons';
 	import Icon from 'svelte-awesome';
 	import lodash from 'lodash';
-	import { goto } from '$app/navigation';
 	import { clickOutside } from '$elements/actions';
 
 	const { isEmpty } = lodash;
@@ -50,7 +49,7 @@
 				{#if isEmpty($session.thatProfile)}
 					<div
 						class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg z-50"
-						transition:fade
+						in:fade
 					>
 						<div class="py-1 rounded-md bg-white ring-1 ring-black ring-opacity-5">
 							<a
@@ -68,7 +67,7 @@
 				{:else}
 					<div
 						class="on-top origin-top-right absolute right-0 mt-2 min-w-48 rounded-md shadow-lg"
-						transition:fade
+						in:fade
 					>
 						<div class="py-1 rounded-md bg-white ring-1 ring-black ring-opacity-5">
 							<div class="block px-4 py-2 text-sm hover:bg-gray-100 text-gray-700 border-b">
@@ -123,10 +122,7 @@
 					</div>
 				{/if}
 			{:else}
-				<div
-					transition:fade
-					class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg z-50"
-				>
+				<div in:fade class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg z-50">
 					<div class="py-1 rounded-md bg-white ring-1 ring-black ring-opacity-5">
 						<a
 							href="/login/"
