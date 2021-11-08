@@ -149,7 +149,7 @@
 	<div class="ml-4 flex items-center justify-center md:ml-6">
 		{#if $hasNotifications}
 			<button
-				class="max-w-xs h-10 w-10 rounded-full text-white focus:outline-none duration-150 ease-in-out hover:bg-thatBlue-500"
+        class="max-w-xs h-10 w-10 rounded-full text-white duration-150 ease-in-out hover:bg-thatBlue-500"
 				class:shadow-solid={activityVisible}
 				class:bg-thatBlue-500={activityVisible}
 				aria-label="Notifications"

@@ -61,7 +61,7 @@
 	}
 </script>
 
-<a {href} target="_blank" tabindex="-1" rel="noopener">
+<a {href} target="_blank" rel="noopener">
 	<Icon
 		data={socialIcon}
 		class={`transition duration-500 ease-in-out transform hover:scale-125 cursor-pointer ${
