@@ -43,7 +43,7 @@
 
 <div>
 	{#if activities.length > 0}
-		<div transition:fade>
+		<div in:fade>
 			<SubmissionList {activities} />
 		</div>
 	{:else}

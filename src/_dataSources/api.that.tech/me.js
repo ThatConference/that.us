@@ -47,7 +47,6 @@ export default (fetch) => {
 	const queryMe = () =>
 		client.secureQuery({ query: QUERY_ME }).then(({ data, error }) => {
 			if (error) log(error, 'query_favorites');
-
 			return data.members.me;
 		});
 

@@ -51,8 +51,7 @@
                     hover:bg-thatBlue-400
                     focus:bg-thatBlue-400 
                     focus:text-white 
-                    focus:outline-none
-                    focus:ring-thatBlue-500 
+                    focus:ring-white
                     focus:border-thatBlue-800 
                     transition duration-150 ease-in-out md:text-lg md:px-10"
 					>
@@ -69,8 +68,7 @@
                       hover:bg-thatBlue-400
                       focus:bg-thatBlue-400 
                       focus:text-white 
-                      focus:outline-none
-                      focus:ring-thatBlue-500 
+                      focus:ring-white
                       focus:border-thatBlue-800 
                       transition duration-150 ease-in-out md:text-lg md:px-10"
 					>

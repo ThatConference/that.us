@@ -27,18 +27,18 @@
 					<ul>
 						<li>
 							Use code <span class="font-extrabold uppercase">{`${event}150`}</span> during checkout
-							to recieve
+							to receive
 							<span class="font-extrabold">$150</span> off the Everything Camper Ticket.
 						</li>
 						<li>
 							Use code <span class="font-extrabold uppercase">{`${event}100`}</span> during checkout
-							to recieve
+							to receive
 							<span class="font-extrabold">$100</span> off either the 3 Camper Ticket or 3 day Camper
 							No Food Ticket.
 						</li>
 						<li>
 							Use code <span class="font-extrabold uppercase">{`${event}75`}</span> during checkout
-							to recieve
+							to receive
 							<span class="font-extrabold">$75</span> off the ON THAT Virtual Camper Ticket.
 						</li>
 					</ul>
