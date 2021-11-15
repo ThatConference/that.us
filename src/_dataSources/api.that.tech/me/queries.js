@@ -71,6 +71,23 @@ export const QUERY_ME_SHARED_PROFILE = `
     }
   }
 `;
+
+export const QUERY_ME_EMERGENCY_CONTACT = `
+  query QUERY_ME_EMERGENCY_CONTACT {
+    members {
+      me {
+        emergencyContact {
+					fullName
+					phoneNumber
+					email
+					relationship
+					travelingWithYou
+        }
+      }
+    }
+  }
+`;
+
 export default (fetch) => {
 	const client = fetch ? gFetch(fetch) : gFetch();
 
@@ -135,11 +152,22 @@ export default (fetch) => {
 			});
 	};
 
+	const queryMeEmergencyContact = () => {
+		const variables = {};
+		return client
+			.secureQuery({ query: QUERY_ME_EMERGENCY_CONTACT, variables })
+			.then(({ data, errors }) => {
+				if (errors) log({ errors, tag: 'QUERY_ME_EMERGENCY_CONTACT' });
+				return data.members?.me?.emergencyContact;
+			});
+	};
+
 	return {
 		queryMeFollowingCommunities,
 		queryMeFollowingMembers,
 		queryMeFollowingPartners,
 		queryMeDiscountCodes,
-		queryMeSharedProfile
+		queryMeSharedProfile,
+		queryMeEmergencyContact
 	};
 };

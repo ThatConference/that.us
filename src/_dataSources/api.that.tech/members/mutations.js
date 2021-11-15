@@ -60,10 +60,10 @@ export const MUTATION_UPDATE = `
 `;
 
 export const MUTATION_UPDATE_EMERGENCY_CONTACT = `
-	mutation MUTATION_UPDATE_EMERGENCY_CONTACT ($emergencyContact: ProfileUpdateInput!) {
+	mutation MUTATION_UPDATE_EMERGENCY_CONTACT ($emergencyContact: EmergencyContactUpdateInput!) {
 		members { 
 			member {
-				update(profile: $emergencyContact) {
+				update(profile: { emergencyContact: $emergencyContact }) {
 					emergencyContact {
 						fullName
 						phoneNumber

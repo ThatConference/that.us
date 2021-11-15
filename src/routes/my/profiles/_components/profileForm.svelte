@@ -23,6 +23,7 @@
 	import lodash from 'lodash';
 	import omitDeep from 'omit-deep';
 
+	import { Shell } from '$elements/buttons';
 	import config from '$utils/config';
 
 	import memberApi from '$dataSources/api.that.tech/members/queries';
@@ -903,17 +904,10 @@
 			<div class="mt-8 border-t border-gray-200 pt-5">
 				<div class="flex justify-end space-x-4">
 					<span class="inline-flex rounded-md shadow-sm">
-						<button
-							type="submit"
-							disabled={isSubmitting}
-							class="inline-flex justify-center py-2 px-4 border-2
-              border-thatBlue-500 text-sm leading-5 font-medium rounded-md
-              text-thatBlue-500 bg-white hover:bg-thatBlue-500 hover:text-white
-              focus:outline-none focus:ring-thatBlue-500
-              focus:bg-thatBlue-500 focus:text-white focus:border-thatBlue-800
-              active:bg-thatBlue-800 transition duration-150 ease-in-out"
-						>
-							Save
+						<button type="submit" disabled={isSubmitting}>
+							<Shell>
+								<div class="px-8 py-2 text-sm leading-5 font-medium">Update Profile</div>
+							</Shell>
 						</button>
 					</span>
 					<span class="inline-flex rounded-md shadow-sm">

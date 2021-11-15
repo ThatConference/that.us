@@ -18,8 +18,6 @@ export const log = ({ errors, extra, tag }) => {
 			});
 		});
 	});
-
-	throw new Error(`api.that.tech errored`);
 };
 
 export const logMessage = (error, tag) => {
