@@ -26,8 +26,7 @@ function createServices() {
 			logError: (context, event) =>
 				log({
 					error: 'member activities state machine ended in the error state.',
-					extra: { context, event },
-					tags: { stateMachine: 'members' }
+					extra: { context, event }
 				}),
 
 			loadSuccess: assign({

@@ -22,8 +22,7 @@ function createServices() {
 			logError: (context, event) =>
 				log({
 					error: 'communities communities state machine ended in the error state.',
-					extra: { context, event },
-					tags: { stateMachine: 'communities' }
+					extra: { context, event }
 				}),
 
 			loadNextSuccess: assign({

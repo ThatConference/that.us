@@ -15,8 +15,7 @@ function createServices(stepsMachine) {
 			logError: (context, event) =>
 				log({
 					error: 'summary state machine has ended in the error state.',
-					extra: { context, event },
-					tags: { stateMachine: 'summary' }
+					extra: { context, event }
 				}),
 
 			notifyPrerequisitesMet: () => send('VERIFICATION_SUCCESS'),
