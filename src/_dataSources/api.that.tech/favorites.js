@@ -65,13 +65,13 @@ export default (fetch) => {
 			eventId: 'ANY'
 		};
 
-		return client.secureQuery({ query: QUERY_MY_FAVORITES, variables }).then(({ data, error }) => {
-			if (error) log(error, 'QUERY_MY_FAVORITES');
+		return client.secureQuery({ query: QUERY_MY_FAVORITES, variables }).then(({ data, errors }) => {
+			if (errors) log({ errors, tag: 'QUERY_MY_FAVORITES' });
 
 			let results = [];
 
 			// set the store
-			if (data && !error) {
+			if (data && !errors) {
 				const { favorites } = data.sessions.me;
 
 				results = favorites;
@@ -92,8 +92,8 @@ export default (fetch) => {
 			eventId
 		};
 
-		return client.mutation({ mutation: TOGGLE_FAVORITE, variables }).then(({ data, error }) => {
-			if (error) log(error, 'TOGGLE_FAVORITE');
+		return client.mutation({ mutation: TOGGLE_FAVORITE, variables }).then(({ data, errors }) => {
+			if (errors) log({ errors, tag: 'TOGGLE_FAVORITE' });
 
 			let results = false;
 			// update store

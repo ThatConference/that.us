@@ -20,8 +20,8 @@ export default (fetch) => {
 		const variables = { partnerId };
 		return client
 			.mutation({ mutation: MUTATION_FOLLOW_PARTNER_TOGGLE, variables })
-			.then(({ data, error }) => {
-				if (error) log(error, 'mutate_partners');
+			.then(({ data, errors }) => {
+				if (errors) log({ errors, tag: 'mutate_partners' });
 
 				let results = false;
 

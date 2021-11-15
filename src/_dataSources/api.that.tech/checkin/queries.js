@@ -63,7 +63,7 @@ const QUERY_EVENT_REGISTRATIONS = `
 							...registrationProfileFragment
 						}
 					}
-				}
+			}cp
 			}
 		}
 	}   
@@ -78,8 +78,8 @@ export default (fetch) => {
 		};
 		return client
 			.secureQuery({ query: QUERY_EVENT_REGISTRATIONS, variables })
-			.then(({ data, error }) => {
-				if (error) log(error, 'QUERY_EVENT_REGISTRATIONS');
+			.then(({ data, errors }) => {
+				if (errors) log({ errors, tag: 'QUERY_EVENT_REGISTRATIONS' });
 
 				let results = [];
 				if (data) {

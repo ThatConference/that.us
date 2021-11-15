@@ -65,8 +65,8 @@ export default (fetch) => {
 
 		return client
 			.mutation({ mutation: MUTATION_CREATE_CHECKOUT_SESSION, variables })
-			.then(({ data, error }) => {
-				if (error) log(error, 'MUTATION_CREATE_CHECKOUT_SESSION');
+			.then(({ data, errors }) => {
+				if (errors) log({ errors, tag: 'MUTATION_CREATE_CHECKOUT_SESSION' });
 
 				let results;
 
@@ -87,8 +87,8 @@ export default (fetch) => {
 
 		return client
 			.mutation({ mutation: MUTATION_MARK_SURVEY_QUESTIONS_COMPLETED, variables })
-			.then(({ data, error }) => {
-				if (error) log(error, 'MUTATION_MARK_SURVEY_QUESTIONS_COMPLETED');
+			.then(({ data, errors }) => {
+				if (errors) log({ errors, tag: 'MUTATION_MARK_SURVEY_QUESTIONS_COMPLETED' });
 
 				let results;
 
@@ -110,8 +110,8 @@ export default (fetch) => {
 
 		return client
 			.mutation({ mutation: MUTATION_ALLOCATE_TICKET, variables })
-			.then(({ data, error }) => {
-				if (error) log(error, 'MUTATION_ALLOCATE_TICKET');
+			.then(({ data, errors }) => {
+				if (errors) log({ errors, tag: 'MUTATION_ALLOCATE_TICKET' });
 
 				let results;
 

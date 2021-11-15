@@ -275,8 +275,8 @@ export default (fetch) => {
 
 	const getPartner = (slug) => {
 		const variables = { slug };
-		return client.query({ query: QUERY_PARTNER, variables }).then(({ data, error }) => {
-			if (error) log(error, 'query_partners');
+		return client.query({ query: QUERY_PARTNER, variables }).then(({ data, errors }) => {
+			if (errors) log({ errors, tag: 'query_partners' });
 
 			const { partner } = data.partners;
 
@@ -286,8 +286,8 @@ export default (fetch) => {
 
 	const queryFollowers = (id) => {
 		const variables = { id };
-		return client.query({ query: QUERY_FOLLOWERS, variables }).then(({ data, error }) => {
-			if (error) log(error, 'query_partners');
+		return client.query({ query: QUERY_FOLLOWERS, variables }).then(({ data, errors }) => {
+			if (errors) log({ errors, tag: 'query_partners' });
 
 			const { partner } = data.partners;
 			return partner || null; // followerCount and followers are in partner
@@ -296,8 +296,8 @@ export default (fetch) => {
 
 	const queryNextFollowers = (id, cursor) => {
 		const variables = { id, cursor };
-		return client.query({ query: QUERY_NEXT_FOLLOWERS, variables }).then(({ data, error }) => {
-			if (error) log(error, 'query_partners');
+		return client.query({ query: QUERY_NEXT_FOLLOWERS, variables }).then(({ data, errors }) => {
+			if (errors) log({ errors, tag: 'query_partners' });
 
 			const { partner } = data.partners;
 			return partner ? partner.followers : [];
@@ -305,8 +305,8 @@ export default (fetch) => {
 	};
 
 	function getUpcomingPartners() {
-		return client.query({ query: QUERY_UPCOMING_PARTNERS }).then(({ data, error }) => {
-			if (error) log(error, 'QUERY_UPCOMING_PARTNERS');
+		return client.query({ query: QUERY_UPCOMING_PARTNERS }).then(({ data, errors }) => {
+			if (errors) log({ errors, tag: 'QUERY_UPCOMING_PARTNERS' });
 
 			let results = [];
 			if (data) {
@@ -330,8 +330,8 @@ export default (fetch) => {
 	}
 
 	function getPastPartners() {
-		return client.query({ query: QUERY_PAST_PARTNERS }).then(({ data, error }) => {
-			if (error) log(error, 'QUERY_PAST_PARTNERS');
+		return client.query({ query: QUERY_PAST_PARTNERS }).then(({ data, errors }) => {
+			if (errors) log({ errors, tag: 'QUERY_PAST_PARTNERS' });
 
 			let results = [];
 			if (data) {
@@ -352,8 +352,8 @@ export default (fetch) => {
 	function getEventPartners(slug = config.eventSlug) {
 		const variables = { slug };
 
-		return client.query({ query: QUERY_EVENT_PARTNERS, variables }).then(({ data, error }) => {
-			if (error) log(error, 'QUERY_EVENT_PARTNERS');
+		return client.query({ query: QUERY_EVENT_PARTNERS, variables }).then(({ data, errors }) => {
+			if (errors) log({ errors, tag: 'QUERY_EVENT_PARTNERS' });
 
 			let results = [];
 			if (data) {
@@ -382,8 +382,8 @@ export default (fetch) => {
 
 		return client
 			.query({ query: QUERY_PARTNER_DROPDOWN_VALUES, variables })
-			.then(({ data, error }) => {
-				if (error) log(error, 'QUERY_PARTNER_DROPDOWN_VALUES');
+			.then(({ data, errors }) => {
+				if (errors) log({ errors, tag: 'QUERY_PARTNER_DROPDOWN_VALUES' });
 
 				return data;
 			});
@@ -392,15 +392,17 @@ export default (fetch) => {
 	function queryPartnerJobListing(partnerSlug, jobSlug) {
 		const variables = { partner: partnerSlug, slug: jobSlug };
 
-		return client.query({ query: QUERY_PARTNER_JOB_LISTING, variables }).then(({ data, error }) => {
-			if (error) log(error, 'QUERY_PARTNER_JOB_LISTING');
+		return client
+			.query({ query: QUERY_PARTNER_JOB_LISTING, variables })
+			.then(({ data, errors }) => {
+				if (errors) log({ errors, tag: 'QUERY_PARTNER_JOB_LISTING' });
 
-			const { partner } = data.partners;
-			return {
-				...partner,
-				socialLinks: createSocialLinks(partner)
-			};
-		});
+				const { partner } = data.partners;
+				return {
+					...partner,
+					socialLinks: createSocialLinks(partner)
+				};
+			});
 	}
 
 	return {

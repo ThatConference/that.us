@@ -34,8 +34,8 @@ export default (fetch) => {
 	function queryProductsByEvent(eventId) {
 		const variables = { eventId };
 
-		return client.query({ query: QUERY_EVENT_PRODUCTS, variables }).then(({ data, error }) => {
-			if (error) log(error, 'QUERY_EVENT_PRODUCTS');
+		return client.query({ query: QUERY_EVENT_PRODUCTS, variables }).then(({ data, errors }) => {
+			if (errors) log({ errors, tag: 'QUERY_EVENT_PRODUCTS' });
 
 			const { event } = data.events;
 			return event ? event.get.products : [];

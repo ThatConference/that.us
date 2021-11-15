@@ -1,6 +1,6 @@
 import gFetch from '$utils/gfetch';
 
-import { logMessage } from '../utilities/error';
+import { log } from '../utilities/error';
 
 export const QUERY_COMMUNITY_STATS = `
   query getCommunityStats($community: CommunityQueryInput!) {
@@ -21,8 +21,8 @@ export default (fetch) => {
 
 	const queryCommunityStats = (slug = 'that') => {
 		const variables = { community: { slug } };
-		return client.query({ query: QUERY_COMMUNITY_STATS, variables }).then(({ data, error }) => {
-			if (error) logMessage(error, 'QUERY_COMMUNITY_STATS');
+		return client.query({ query: QUERY_COMMUNITY_STATS, variables }).then(({ data, errors }) => {
+			if (errors) log({ errors, tag: 'QUERY_COMMUNITY_STATS' });
 
 			return data.communities.community.stats;
 		});
