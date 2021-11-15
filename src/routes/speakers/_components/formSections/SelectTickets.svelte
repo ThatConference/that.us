@@ -73,9 +73,18 @@
 <div class="space-y-4">
 	<slot name="header" />
 	<p class="prose prose-lg text-gray-500">
-		Ball tip ham capicola alcatra prosciutto. Biltong short ribs jowl, salami buffalo swine cow pork
-		belly chuck boudin chicken meatball hamburger kielbasa. Strip steak doner chislic short ribs
-		pork belly.
+		As part of agreeing to speak at THAT, you, of course, need a badge. If you were selected to
+		present AT THAT, you also get to bring your family.
+	</p>
+	<p class="mt-4 prose prose-lg text-gray-500">
+		You will also receive a free ON THAT (virtual ticket) camper to give away to anyone you wish. We
+		will send you further instructions on how to do so later.
+	</p>
+	<p class="mt-4 prose prose-lg text-gray-500">
+		But wait, that's not all! Feel free to pass along this discount code <span
+			class="font-extrabold text-gray-900">[DISCOUNT_CODE]</span
+		> to the geeks at your company. It's a small token of our appreciation for letting you be an active
+		part of THAT.
 	</p>
 </div>
 
@@ -106,7 +115,9 @@
 
 <div class="mt-12">
 	{#if platform === 'AT_THAT'}
-		<h2 class="text-xl text-gray-800 font-extrabold">Please select any additional tickets.</h2>
+		<h2 class="text-xl text-gray-800 font-extrabold">
+			Please select any additional family tickets.
+		</h2>
 		{#each Object.entries(atThatAdditionalTickets) as [key, ticket]}
 			<button
 				on:click={() => handleTicketSelection(key)}

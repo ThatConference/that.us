@@ -33,7 +33,9 @@
 				<span>{venue.city}, {venue.state} {venue.zip}</span>
 			</div>
 			<div>
-				<a class="hover" href="https://www.kalahariresorts.com/">https://www.kalahariresorts.com</a>
+				<a target="_blank" class="hover" href="https://www.kalahariresorts.com/"
+					>https://www.kalahariresorts.com</a
+				>
 			</div>
 		</div>
 	</div>

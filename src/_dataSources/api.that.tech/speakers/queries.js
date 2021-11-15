@@ -109,6 +109,8 @@ export default (fetch) => {
 						if (errors) log({ errors, tag: 'QUERY_MY_ORDERS' });
 
 						const orders = data.events?.me?.orders;
+						console.log({ orders });
+
 						resolve(orders);
 					});
 			}, 2500);

@@ -98,6 +98,9 @@ export default (fetch) => {
 			.mutation({ mutation: MUTATION_ORDER_SPEAKER_PRODUCTS, variables })
 			.then(({ data, errors }) => {
 				if (errors) log({ errors, tags: 'MUTATION_ORDER_SPEAKER_PRODUCTS' });
+
+				console.log({ data });
+
 				return data.orders?.me?.orderSpeakerProducts;
 			});
 	}

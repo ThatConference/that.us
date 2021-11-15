@@ -58,7 +58,7 @@
 >
 	<div class="mt-12">
 		<h2 class="text-xl text-gray-800 font-extrabold">
-			Please fill out the appropiate emergency contact information.
+			Please fill out the appropriate emergency contact information.
 		</h2>
 		<p class="pt-2 text-gray-500">Who would you like us to contact in the event of an emergency?</p>
 

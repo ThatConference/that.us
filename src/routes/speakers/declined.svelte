@@ -2,14 +2,14 @@
 	import seoMetaTags from '$utils/seo/metaTags';
 	import Seo from '$components/Seo.svelte';
 
-	const metaTags = ((title = 'Speaker Acceptance - THAT') => ({
+	const metaTags = ((title = 'Counselor Acceptance Declined - THAT') => ({
 		title,
 		tags: seoMetaTags({
 			title,
 			description: '',
 			openGraph: {
 				type: 'website',
-				url: `https://that.us/speakers/accept`
+				url: `https://that.us/speakers/declined/`
 			},
 			noindex: true,
 			nofollow: true
@@ -30,9 +30,10 @@
 	</p>
 	<div class="mt-12">
 		<p class="prose prose-lg">
-			Ball tip ham capicola alcatra prosciutto. Biltong short ribs jowl, salami buffalo swine cow
-			pork belly chuck boudin chicken meatball hamburger kielbasa. Strip steak doner chislic short
-			ribs pork belly.
+			Things happen, plans change, we understand. If you have any feedback for us, we're all ears
+			and would love to hear your thoughts. Don't forget THAT happens every day of the year. You can
+			always kick up your an activity anytime or join us for THAT Online on the 15th of every month.
+			We hope to see you around!
 		</p>
 	</div>
 </div>

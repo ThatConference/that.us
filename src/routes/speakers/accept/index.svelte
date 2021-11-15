@@ -84,7 +84,7 @@
 			completed: $state.context.completed.two
 		},
 		{
-			title: 'Select Gear, and Chow',
+			title: acceptedSpeaker.platform === 'AT_THAT' ? 'Select Gear and Chow' : 'Select Gear',
 			completed: $state.context.completed.three
 		},
 		{
@@ -278,9 +278,9 @@
 					better.
 				</p>
 				<p class="mt-6 prose prose-xl text-gray-500">
-					We're human, and that means there is a slight chance you might find come across a bug. If
-					you run into issues or have a question for some reason, just hit us up in the chat. We'd
-					also love your feedback so we can improve upon it.
+					We're human, and that means there is a slight chance you might come across a bug. If you
+					run into issues or have a question for some reason, just hit us up in the chat. We'd also
+					love your feedback so we can improve.
 				</p>
 			</div>
 		</NewFeatureWarning>

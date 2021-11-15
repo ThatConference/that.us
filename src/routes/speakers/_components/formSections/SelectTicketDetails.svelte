@@ -16,9 +16,9 @@
 <div class="space-y-4">
 	<slot name="header" />
 	<p class="prose prose-lg text-gray-500">
-		Ball tip ham capicola alcatra prosciutto. Biltong short ribs jowl, salami buffalo swine cow pork
-		belly chuck boudin chicken meatball hamburger kielbasa. Strip steak doner chislic short ribs
-		pork belly.
+		You don't want to go camping naked, do you? We want to make sure you're set up with the correct
+		gear, so make sure to fill out all of the items below. Please note that the tickets below might
+		be listed in a different order than the previous page.
 	</p>
 </div>
 
