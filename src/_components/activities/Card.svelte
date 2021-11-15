@@ -276,7 +276,7 @@
 							<span>In-Person</span>
 							<span class="ml-2">
 								<Icon data={mapMarker} class="h-4 w-4 pb-0.5 mr-2" />
-								Room: {lookupEnumLabel(location.destination)}
+								Room: {lookupEnumLabel(location?.destination)}
 							</span>
 						</div>
 					</div>
