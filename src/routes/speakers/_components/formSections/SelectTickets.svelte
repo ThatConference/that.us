@@ -81,6 +81,11 @@
 		You will also receive a free ON THAT (virtual ticket) camper to give away to anyone you wish. We
 		will send you further instructions on how to do so later.
 	</p>
+	{#if !isAt}
+		<p class="mt-4 prose prose-lg text-gray-500">
+			If you would like to attend in-person please contact us.
+		</p>
+	{/if}
 	<p class="mt-4 prose prose-lg text-gray-500">
 		But wait, that's not all! Feel free to pass along this discount code <span
 			class="font-extrabold text-gray-900"

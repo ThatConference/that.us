@@ -1,4 +1,5 @@
 <script>
+	export let platform;
 	export let orderId;
 	export let orderAllocations = [];
 
@@ -8,6 +9,7 @@
 	import { Shell } from '$elements/buttons';
 	import TicketDetail from './TicketDetail.svelte';
 
+	const isAt = platform === 'AT_THAT';
 	const dispatch = createEventDispatcher();
 
 	$: allocatedAllocations = orderAllocations.filter((oa) => oa.isAllocated);
@@ -40,7 +42,13 @@
 	<div class="flex justify-end">
 		<button on:click={() => dispatch('submit-step')}>
 			<Shell>
-				<div class="px-8 py-2 font-extrabold">Next, Emergency Contact</div>
+				<div class="px-8 py-2 font-extrabold">
+					{#if isAt}
+						Next, Emergency Contact
+					{:else}
+						Next, Next Steps
+					{/if}
+				</div>
 			</Shell>
 		</button>
 	</div>

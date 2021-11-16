@@ -245,6 +245,7 @@
 				{#if $state.matches(['step_three'])}
 					<div in:fade={{ delay: 100, duration: 400 }}>
 						<SelectTicketDetails
+							platform={$state.context.acceptedSpeaker.platform}
 							orderId={$state.context.orderId}
 							orderAllocations={$state.context.allocations}
 							on:submit-step={handleSubmit}
