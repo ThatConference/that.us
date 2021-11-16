@@ -33,7 +33,8 @@ function createServices() {
 			enrollmentInProgress: (context) => context.acceptedSpeaker.status === 'IN_PROGRESS',
 			enrollmentHasCompleted: (context) => context.acceptedSpeaker.status === 'COMPLETE',
 			hasOrderAllocations: (context) => context.allocations.length > 0,
-			hasAllocationsExectionsExceeded: (context) => context.allocationQueryExecuted > 15
+			hasAllocationsExectionsExceeded: (context) => context.allocationQueryExecuted > 15,
+			hasNoSessions: (context) => context.acceptedSpeaker.sessions.length === 0
 		},
 
 		services: {

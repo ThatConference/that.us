@@ -58,6 +58,7 @@
 	import ThankYou from '../_components/formSections/ThankYou.svelte';
 	import Loading from '../_components/formSections/Loading.svelte';
 	import Failed from '../_components/formSections/Failed.svelte';
+	import NoSessions from '../_components/formSections/NoSessions.svelte';
 
 	import speakerAcceptMachine from './_machine';
 
@@ -297,6 +298,13 @@
 						<Failed>
 							<SectionHeader slot="header" title="Remember when we said... Beta feature?" />
 						</Failed>
+					</div>
+				{/if}
+				{#if $state.matches(['no_sessions'])}
+					<div in:fade={{ delay: 100, duration: 400 }}>
+						<NoSessions>
+							<SectionHeader slot="header" title="No Sessions Found" />
+						</NoSessions>
 					</div>
 				{/if}
 			</section>
