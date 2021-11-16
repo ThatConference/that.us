@@ -8,6 +8,7 @@
 	import advancedFormat from 'dayjs/plugin/advancedFormat.js';
 	import utc from 'dayjs/plugin/utc.js';
 	import timezone from 'dayjs/plugin/timezone.js';
+	import config from '$utils/config';
 
 	import buildImageSrc from '$utils/image';
 
