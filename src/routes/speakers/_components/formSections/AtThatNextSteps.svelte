@@ -1,7 +1,10 @@
 <script>
+	export let eventDetails;
+
 	import { createEventDispatcher } from 'svelte';
 	import { Shell } from '$elements/buttons';
 
+	import { kalahari } from '$utils/config';
 	const dispatch = createEventDispatcher();
 
 	function handleSubmit() {
@@ -11,7 +14,11 @@
 
 <div class="space-y-4">
 	<slot name="header" />
-	<p class="prose prose-lg">stuff here////</p>
+	<p class="text-gray-500 prose prose-lg">
+		It might seem like plenty of time until we descend into camp, but experience says it will be
+		here before we all know it. In the meantime, we've tried to compile a list of items to get
+		things kicked off, and if you ever need help, don't hesitate to get in touch with us.
+	</p>
 </div>
 
 <div class="mt-12">
@@ -31,9 +38,15 @@
 			<li>
 				<span class="font-extrabold">Book your stay, like now.</span>
 			</li>
-			<li><span class="font-extrabold">Help spread the good word.</span></li>
-			<li><span class="font-extrabold">Make your profile shine.</span></li>
-			<li><span class="font-extrabold">Tweak your session.</span></li>
+			<li>Help spread the good word. Tell all your friends.</li>
+			<li>
+				Make your <a class="hover" target="_target" href="/my/profiles/primary/">profile</a> shine.
+			</li>
+			<li>Tweak your <a class="hover" target="_target" href="/my/submissions/">session</a>.</li>
+			<li>
+				Pass out the speaker discount code ({kalahari.speakerPasskey[eventDetails.slug]
+					.discountCode}) to your company's geeks.
+			</li>
 		</ul>
 	</div>
 </div>

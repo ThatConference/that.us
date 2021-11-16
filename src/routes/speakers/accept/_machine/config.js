@@ -1,7 +1,7 @@
 function create(meta) {
 	return {
 		id: 'speaker_accept_machine',
-		initial: 'init',
+		initial: 'step_six',
 		context: {
 			completed: {
 				one: false,

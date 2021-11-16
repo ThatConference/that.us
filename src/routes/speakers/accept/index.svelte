@@ -272,7 +272,7 @@
 				{#if $state.matches(['step_six'])}
 					<div in:fade={{ delay: 100, duration: 400 }}>
 						{#if acceptedSpeaker.platform === 'AT_THAT'}
-							<AtThatNextSteps on:submit-step={handleSubmit}>
+							<AtThatNextSteps {eventDetails} on:submit-step={handleSubmit}>
 								<SectionHeader slot="header" stepNumber="6" title={pluckTitle('next')} />
 							</AtThatNextSteps>
 						{:else}

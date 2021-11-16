@@ -6,6 +6,7 @@
 
 	import { CheckFull } from '$elements/svgs';
 	import { Shell } from '$elements/buttons';
+	import { kalahari } from '$utils/config';
 
 	const isAt = platform === 'AT_THAT';
 	const dispatch = createEventDispatcher();
@@ -82,7 +83,8 @@
 	</p>
 	<p class="mt-4 prose prose-lg text-gray-500">
 		But wait, that's not all! Feel free to pass along this discount code <span
-			class="font-extrabold text-gray-900">[DISCOUNT_CODE]</span
+			class="font-extrabold text-gray-900"
+			>{kalahari.speakerPasskey[eventDetails.slug].discountCode}</span
 		> to the geeks at your company. It's a small token of our appreciation for letting you be an active
 		part of THAT.
 	</p>

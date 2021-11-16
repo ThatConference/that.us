@@ -85,7 +85,8 @@ export const kalahari = {
 			bookingUrl: 'https://book.passkey.com/e/50254686',
 			start: '01-16-2022',
 			end: '01-20-2022',
-			blockCloseDate: '12-31-2021'
+			blockCloseDate: '12-31-2021',
+			discountCode: 'THATX'
 		}
 	}
 };
