@@ -43,8 +43,8 @@ export default (fetch) => {
 			}
 		};
 
-		return client.mutation({ mutation: MUTATION_ADD_PIN, variables }).then(({ data, error }) => {
-			if (error) log(error, 'MUTATION_ADD_PIN');
+		return client.mutation({ mutation: MUTATION_ADD_PIN, variables }).then(({ data, errors }) => {
+			if (errors) log({ errors, tag: 'MUTATION_ADD_PIN' });
 
 			let results;
 
@@ -64,8 +64,8 @@ export default (fetch) => {
 			membersNotes
 		};
 
-		return client.mutation({ mutation: MUTATION_ADD_LEAD, variables }).then(({ data, error }) => {
-			if (error) log(error, 'MUTATION_ADD_LEAD');
+		return client.mutation({ mutation: MUTATION_ADD_LEAD, variables }).then(({ data, errors }) => {
+			if (errors) log({ errors, tag: 'MUTATION_ADD_LEAD' });
 
 			let results;
 

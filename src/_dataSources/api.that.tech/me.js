@@ -45,8 +45,8 @@ export default (fetch) => {
 	const client = fetch ? gFetch(fetch) : gFetch();
 
 	const queryMe = () =>
-		client.secureQuery({ query: QUERY_ME }).then(({ data, error }) => {
-			if (error) log(error, 'query_favorites');
+		client.secureQuery({ query: QUERY_ME }).then(({ data, errors }) => {
+			if (errors) log({ errors, tag: 'query_favorites' });
 			return data.members.me;
 		});
 

@@ -22,8 +22,7 @@ function createServices() {
 			logError: (context, event) =>
 				log({
 					error: 'bulk allocations state machine ended in the error state.',
-					extra: { context, event },
-					tags: { stateMachine: 'bulkAllocations' }
+					extra: { context, event }
 				}),
 
 			loadNextSuccess: assign({

@@ -170,20 +170,22 @@ export default (fetch) => {
 
 	const isSlugTaken = (slug) => {
 		const variables = { slug };
-		return client.secureQuery({ query: QUERY_IS_SLUG_TAKEN, variables }).then(({ data, error }) => {
-			if (error) log(error, 'QUERY_IS_SLUG_TAKEN');
+		return client
+			.secureQuery({ query: QUERY_IS_SLUG_TAKEN, variables })
+			.then(({ data, errors }) => {
+				if (errors) log({ errors, tag: 'QUERY_IS_SLUG_TAKEN' });
 
-			let isTaken = true;
-			if (data) isTaken = data.members.isProfileSlugTaken;
-			return isTaken;
-		});
+				let isTaken = true;
+				if (data) isTaken = data.members.isProfileSlugTaken;
+				return isTaken;
+			});
 	};
 
 	const queryMembers = (pageSize = 50) => {
 		const variables = { pageSize };
 
-		return client.query({ query: QUERY_MEMBERS_INITAL, variables }).then(({ data, error }) => {
-			if (error) log(error, 'QUERY_MEMBERS_INITAL');
+		return client.query({ query: QUERY_MEMBERS_INITAL, variables }).then(({ data, errors }) => {
+			if (errors) log({ errors, tag: 'QUERY_MEMBERS_INITAL' });
 
 			let results = null;
 			if (data) {
@@ -197,8 +199,8 @@ export default (fetch) => {
 
 	const queryMembersNext = (after, pageSize = 50) => {
 		const variables = { pageSize, after };
-		return client.query({ query: QUERY_MEMBERS_NEXT, variables }).then(({ data, error }) => {
-			if (error) log(error, 'QUERY_MEMBERS_NEXT');
+		return client.query({ query: QUERY_MEMBERS_NEXT, variables }).then(({ data, errors }) => {
+			if (errors) log({ errors, tag: 'QUERY_MEMBERS_NEXT' });
 
 			let results = null;
 			if (data) {
@@ -220,8 +222,8 @@ export default (fetch) => {
 			sessionStartDate,
 			filter
 		};
-		return client.query({ query: QUERY_MEMBER_BY_SLUG, variables }).then(({ data, error }) => {
-			if (error) log(error, 'QUERY_MEMBER_BY_SLUG');
+		return client.query({ query: QUERY_MEMBER_BY_SLUG, variables }).then(({ data, errors }) => {
+			if (errors) log({ errors, tag: 'QUERY_MEMBER_BY_SLUG' });
 
 			return data.members.member;
 		});
@@ -231,11 +233,13 @@ export default (fetch) => {
 		const variables = {
 			slug
 		};
-		return client.query({ query: QUERY_BLOG_AUTHOR_BY_SLUG, variables }).then(({ data, error }) => {
-			if (error) log(error, 'QUERY_BLOG_AUTHOR_BY_SLUG');
+		return client
+			.query({ query: QUERY_BLOG_AUTHOR_BY_SLUG, variables })
+			.then(({ data, errors }) => {
+				if (errors) log({ errors, tag: 'QUERY_BLOG_AUTHOR_BY_SLUG' });
 
-			return data.members.member;
-		});
+				return data.members.member;
+			});
 	};
 
 	const queryMemberActivities = (
@@ -248,8 +252,8 @@ export default (fetch) => {
 			sessionStartDate,
 			filter
 		};
-		return client.query({ query: QUERY_MEMBER_ACTIVITIES, variables }).then(({ data, error }) => {
-			if (error) log(error, 'QUERY_MEMBER_ACTIVITIES');
+		return client.query({ query: QUERY_MEMBER_ACTIVITIES, variables }).then(({ data, errors }) => {
+			if (errors) log({ errors, tag: 'QUERY_MEMBER_ACTIVITIES' });
 
 			return data.members.member.sessions;
 		});
@@ -265,8 +269,8 @@ export default (fetch) => {
 			sessionStartDate,
 			filter
 		};
-		return client.query({ query: QUERY_MEMBER_ACTIVITIES, variables }).then(({ data, error }) => {
-			if (error) log(error, 'QUERY_MEMBER_ACTIVITIES');
+		return client.query({ query: QUERY_MEMBER_ACTIVITIES, variables }).then(({ data, errors }) => {
+			if (errors) log({ errors, tag: 'QUERY_MEMBER_ACTIVITIES' });
 
 			return data.members.member.sessions;
 		});
@@ -275,8 +279,8 @@ export default (fetch) => {
 	const queryFollowers = (slug) => {
 		const variables = { slug };
 
-		return client.query({ query: QUERY_FOLLOWERS, variables }).then(({ data, error }) => {
-			if (error) log(error, 'QUERY_FOLLOWERS');
+		return client.query({ query: QUERY_FOLLOWERS, variables }).then(({ data, errors }) => {
+			if (errors) log({ errors, tag: 'QUERY_FOLLOWERS' });
 
 			const { member } = data.members;
 			return member || []; // followerCount and followers are in partner
@@ -285,8 +289,8 @@ export default (fetch) => {
 
 	const queryNextFollowers = (id, cursor) => {
 		const variables = { id, cursor };
-		return client.query({ query: QUERY_NEXT_FOLLOWERS, variables }).then(({ data, error }) => {
-			if (error) log(error, 'QUERY_NEXT_FOLLOWERS');
+		return client.query({ query: QUERY_NEXT_FOLLOWERS, variables }).then(({ data, errors }) => {
+			if (errors) log({ errors, tag: 'QUERY_NEXT_FOLLOWERS' });
 
 			const { member } = data.members;
 			return member || null;

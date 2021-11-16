@@ -22,8 +22,7 @@ function createServices() {
 			logError: (context, event) =>
 				log({
 					error: 'daily activities state machine ended in the error state.',
-					extra: { context, event },
-					tags: { stateMachine: 'Daily Activities' }
+					extra: { context, event }
 				}),
 
 			loadNextSuccess: assign({

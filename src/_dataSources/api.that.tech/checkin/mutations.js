@@ -73,8 +73,8 @@ export default (fetch) => {
 		const variables = { eventId, orderAllocationId, pinNumber };
 		return client
 			.mutation({ mutation: MUTATION_CHECK_IN_USER, variables })
-			.then(({ data, error }) => {
-				if (error) log(error, 'MUTATION_CHECK_IN_USER');
+			.then(({ data, errors }) => {
+				if (errors) log({ errors, tag: 'MUTATION_CHECK_IN_USER' });
 
 				let results;
 
@@ -91,8 +91,8 @@ export default (fetch) => {
 		const variables = { eventId, orderAllocationId };
 		return client
 			.mutation({ mutation: MUTATION_REVERT_CHECKIN, variables })
-			.then(({ data, error }) => {
-				if (error) log(error, 'MUTATION_REVERT_CHECKIN');
+			.then(({ data, errors }) => {
+				if (errors) log({ errors, tag: 'MUTATION_REVERT_CHECKIN' });
 
 				let results;
 
@@ -107,8 +107,8 @@ export default (fetch) => {
 
 	function setPartnerPin(eventId, orderAllocationId, pinNumber) {
 		const variables = { eventId, orderAllocationId, pinNumber };
-		return client.mutation({ mutation: MUTATION_SET_PIN, variables }).then(({ data, error }) => {
-			if (error) log(error, 'MUTATION_SET_PIN');
+		return client.mutation({ mutation: MUTATION_SET_PIN, variables }).then(({ data, errors }) => {
+			if (errors) log({ errors, tag: 'MUTATION_SET_PIN' });
 
 			let results;
 
@@ -125,8 +125,8 @@ export default (fetch) => {
 		const variables = { eventId, orderAllocationId, receivedSwag };
 		return client
 			.mutation({ mutation: MUTATION_SET_RECEIVED_SWAG, variables })
-			.then(({ data, error }) => {
-				if (error) log(error, 'MUTATION_SET_RECEIVED_SWAG');
+			.then(({ data, errors }) => {
+				if (errors) log({ errors, tag: 'MUTATION_SET_RECEIVED_SWAG' });
 
 				let results;
 

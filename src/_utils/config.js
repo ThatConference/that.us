@@ -75,7 +75,18 @@ export const kalahari = {
 		tx: 'https://book.passkey.com/e/50241186'
 	},
 	speakerPasskey: {
-		wi: 'https://book.passkey.com/e/xxx',
-		tx: 'https://book.passkey.com/e/xxx'
+		'wi/2022': {
+			bookingUrl: 'https://book.passkey.com/e/xx',
+			start: '',
+			end: '',
+			blockCloseDate: '12-31-2021'
+		},
+		'tx/2022': {
+			bookingUrl: 'https://book.passkey.com/e/50254686',
+			start: '01-16-2022',
+			end: '01-20-2022',
+			blockCloseDate: '12-31-2021',
+			discountCode: 'THATX'
+		}
 	}
 };

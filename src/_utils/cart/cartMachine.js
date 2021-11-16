@@ -59,8 +59,7 @@ function createServices() {
 			logError: (context, event) =>
 				log({
 					error: 'cart state machine has ended in the error state.',
-					extra: { context, event },
-					tags: { stateMachine: 'cart' }
+					extra: { context, event }
 				}),
 
 			saveAddErrorEventData: assign({

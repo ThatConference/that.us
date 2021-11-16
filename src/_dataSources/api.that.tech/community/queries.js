@@ -108,8 +108,8 @@ export default (fetch) => {
 	const client = fetch ? gFetch(fetch) : gFetch();
 
 	const queryAllCommunities = () =>
-		client.query({ query: QUERY_ALL_COMMUNITIES }).then(({ data, error }) => {
-			if (error) log(error, 'QUERY_ALL_COMMUNITIES');
+		client.query({ query: QUERY_ALL_COMMUNITIES }).then(({ data, errors }) => {
+			if (errors) log({ errors, tag: 'QUERY_ALL_COMMUNITIES' });
 
 			const { communities } = data;
 			return communities ? communities.all : [];
@@ -120,8 +120,8 @@ export default (fetch) => {
 
 	const queryCommunityBySlug = (slug) => {
 		const variables = { slug };
-		return client.query({ query: QUERY_COMMUNITY_BY_SLUG, variables }).then(({ data, error }) => {
-			if (error) log(error, 'QUERY_COMMUNITY_BY_SLUG');
+		return client.query({ query: QUERY_COMMUNITY_BY_SLUG, variables }).then(({ data, errors }) => {
+			if (errors) log({ errors, tag: 'QUERY_COMMUNITY_BY_SLUG' });
 
 			const { community } = data.communities;
 			return community ? community.get : null;
@@ -133,8 +133,8 @@ export default (fetch) => {
 
 		return client
 			.query({ query: QUERY_COMMUNITY_ACTIVITIES, variables })
-			.then(({ data, error }) => {
-				if (error) log(error, 'QUERY_COMMUNITY_ACTIVITIES');
+			.then(({ data, errors }) => {
+				if (errors) log({ errors, tag: 'QUERY_COMMUNITY_ACTIVITIES' });
 
 				const { community } = data.communities;
 				return community ? community.get.sessions : [];
@@ -145,8 +145,8 @@ export default (fetch) => {
 		const variables = { id, asOfDate, pageSize, cursor };
 		return client
 			.query({ query: QUERY_NEXT_COMMUNITY_ACTIVITIES, variables })
-			.then(({ data, error }) => {
-				if (error) log(error, 'QUERY_NEXT_COMMUNITY_ACTIVITIES');
+			.then(({ data, errors }) => {
+				if (errors) log({ errors, tag: 'QUERY_NEXT_COMMUNITY_ACTIVITIES' });
 
 				const { community } = data.communities;
 				return community ? community.get.sessions : [];
@@ -155,12 +155,14 @@ export default (fetch) => {
 
 	const queryCommunityFollowers = (slug) => {
 		const variables = { slug };
-		return client.query({ query: QUERY_COMMUNITY_FOLLOWERS, variables }).then(({ data, error }) => {
-			if (error) log(error, 'QUERY_COMMUNITY_FOLLOWERS');
+		return client
+			.query({ query: QUERY_COMMUNITY_FOLLOWERS, variables })
+			.then(({ data, errors }) => {
+				if (errors) log({ errors, tag: 'QUERY_COMMUNITY_FOLLOWERS' });
 
-			const { community } = data.communities;
-			return community ? community.get : []; // followerCount and followers are in get
-		});
+				const { community } = data.communities;
+				return community ? community.get : []; // followerCount and followers are in get
+			});
 	};
 
 	return {

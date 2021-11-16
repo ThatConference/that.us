@@ -24,8 +24,7 @@ function createServices() {
 			logError: (context, event) =>
 				log({
 					error: 'home upnext state machine ended in the error state.',
-					extra: { context, event },
-					tags: { stateMachine: 'upnext' }
+					extra: { context, event }
 				}),
 
 			loadNextSuccess: assign({

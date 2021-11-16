@@ -298,8 +298,8 @@ export default (fetch) => {
 	const client = fetch ? gFetch(fetch) : gFetch();
 
 	const query = (graphQuery, variables) =>
-		client.query({ query: graphQuery, variables }).then(({ data, error }) => {
-			if (error) log(error, 'query_sessions');
+		client.query({ query: graphQuery, variables }).then(({ data, errors }) => {
+			if (errors) log({ errors, tag: 'query_sessions' });
 
 			const { all } = data.sessions;
 			return all || [];
@@ -315,8 +315,8 @@ export default (fetch) => {
 			cursor
 		};
 
-		return client.query({ query: QUERY_SESSIONS_BY_SLUG, variables }).then(({ data, error }) => {
-			if (error) log(error, 'QUERY_SESSIONS_BY_SLUG');
+		return client.query({ query: QUERY_SESSIONS_BY_SLUG, variables }).then(({ data, errors }) => {
+			if (errors) log({ errors, tag: 'QUERY_SESSIONS_BY_SLUG' });
 
 			const { get } = data.events.event;
 			return get || null;
@@ -328,12 +328,14 @@ export default (fetch) => {
 			sessionId
 		};
 
-		return client.query({ query: QUERY_SESSION_BY_ID_SHORT, variables }).then(({ data, error }) => {
-			if (error) log(error, 'QUERY_SESSION_BY_ID_SHORT');
+		return client
+			.query({ query: QUERY_SESSION_BY_ID_SHORT, variables })
+			.then(({ data, errors }) => {
+				if (errors) log({ errors, tag: 'QUERY_SESSION_BY_ID_SHORT' });
 
-			const { session } = data.sessions;
-			return session || null;
-		});
+				const { session } = data.sessions;
+				return session || null;
+			});
 	};
 
 	function queryNextSessions({ pageSize = defaultPageSize, cursor }) {
@@ -349,8 +351,8 @@ export default (fetch) => {
 				query: QUERY_SESSIONS_BY_DATE,
 				variables
 			})
-			.then(({ data, error }) => {
-				if (error) log(error, 'QUERY_SESSIONS_BY_DATE');
+			.then(({ data, errors }) => {
+				if (errors) log({ errors, tag: 'QUERY_SESSIONS_BY_DATE' });
 
 				const { all } = data.sessions;
 				return all || [];
@@ -369,8 +371,8 @@ export default (fetch) => {
 				query: QUERY_NEXT_SESSIONS_BY_DATE,
 				variables
 			})
-			.then(({ data, error }) => {
-				if (error) log(error, 'QUERY_NEXT_SESSIONS_BY_DATE');
+			.then(({ data, errors }) => {
+				if (errors) log({ errors, tag: 'QUERY_NEXT_SESSIONS_BY_DATE' });
 
 				const { all } = data.sessions;
 				return all || [];
@@ -380,8 +382,8 @@ export default (fetch) => {
 	const getById = (sessionId) => {
 		const variables = { sessionId };
 
-		return client.query({ query: QUERY_SESSION_BY_ID, variables }).then(({ data, error }) => {
-			if (error) log(error, 'QUERY_SESSION_BY_ID');
+		return client.query({ query: QUERY_SESSION_BY_ID, variables }).then(({ data, errors }) => {
+			if (errors) log({ errors, tag: 'QUERY_SESSION_BY_ID' });
 
 			return data.sessions.session;
 		});
@@ -395,8 +397,8 @@ export default (fetch) => {
 			}
 		};
 
-		return client.mutation({ mutation: CREATE_SESSION, variables }).then(({ data, error }) => {
-			if (error) log(error, 'CREATE_SESSION');
+		return client.mutation({ mutation: CREATE_SESSION, variables }).then(({ data, errors }) => {
+			if (errors) log({ errors, tag: 'CREATE_SESSION' });
 
 			return data.sessions.create.openSpace;
 		});
@@ -411,8 +413,8 @@ export default (fetch) => {
 		return client
 			.mutation({ mutation: UPDATE_SESSION_BY_ID, variables })
 
-			.then(({ data, error }) => {
-				if (error) log(error, 'UPDATE_SESSION_BY_ID');
+			.then(({ data, errors }) => {
+				if (errors) log({ errors, tag: 'UPDATE_SESSION_BY_ID' });
 
 				return data.sessions.session.update.openSpace;
 			});

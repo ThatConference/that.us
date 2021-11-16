@@ -18,8 +18,7 @@ function createServices() {
 			logError: (context, event) =>
 				log({
 					error: 'pricing parent state machine has ended in the error state.',
-					extra: { context, event },
-					tags: { stateMachine: 'pricing' }
+					extra: { context, event }
 				}),
 
 			queryProductsSuccess: assign({

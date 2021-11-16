@@ -17,6 +17,7 @@
 	export let sharedProfile;
 
 	import { Form, Input } from 'sveltejs-forms';
+	import ErrorNotificaiton from '$components/notifications/Error.svelte';
 
 	import { Waiting } from '$elements';
 	import { Shell } from '$elements/buttons';
@@ -144,7 +145,7 @@
 					<div class="mt-1 border rounded-md shadow-sm">
 						<Input
 							name="state"
-							type="state"
+							type="text"
 							class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5"
 						/>
 					</div>
@@ -159,18 +160,18 @@
 						<button
 							type="submit"
 							disabled={isSubmitting}
-							class="w-full py-4 px-6 text-sm leading-5 font-medium"
+							class="w-full px-8 py-2 text-sm leading-5 font-medium"
 						>
-							<span class="text-lg">Update</span>
+							<span>Update Shared Profile</span>
 						</button>
 					</Shell>
 				</div>
 			</div>
 		</div>
-		<!-- 
-    {#if isValid === false}
-      <ErrorNotificaiton message="Please correct the errors listed above." />
-    {/if} -->
+
+		{#if isValid === false}
+			<ErrorNotificaiton message="Please correct the errors listed above." />
+		{/if}
 
 		{#if isSubmitting}
 			<div class="flex flex-grow justify-center py-12">
