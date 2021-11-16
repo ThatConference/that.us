@@ -92,6 +92,7 @@ function create(meta) {
 			},
 
 			step_two: {
+				entry: 'stepTwoOnEntry',
 				initial: 'pending',
 
 				states: {
@@ -119,6 +120,7 @@ function create(meta) {
 			},
 
 			step_three: {
+				entry: 'stepThreeOnEntry',
 				initial: 'queryMyOrders',
 
 				states: {
@@ -174,6 +176,7 @@ function create(meta) {
 				}
 			},
 			step_four: {
+				entry: 'stepFourOnEntry',
 				initial: 'init',
 				states: {
 					init: {
@@ -210,6 +213,7 @@ function create(meta) {
 				}
 			},
 			step_five: {
+				entry: 'stepFiveOnEntry',
 				initial: 'init',
 				states: {
 					init: {
@@ -247,6 +251,7 @@ function create(meta) {
 				}
 			},
 			step_six: {
+				entry: 'stepSixOnEntry',
 				initial: 'pending',
 
 				states: {
@@ -272,7 +277,9 @@ function create(meta) {
 					}
 				}
 			},
-			step_seven: {},
+			step_seven: {
+				entry: 'stepSevenOnEntry'
+			},
 
 			submit_failed: {
 				entry: 'logError',

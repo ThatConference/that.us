@@ -53,14 +53,17 @@
 	import SelectTicketDetails from '../_components/formSections/SelectTicketDetails.svelte';
 	import EmergencyContactInfo from '../_components/formSections/EmergencyContactInfo.svelte';
 	import CampsiteComps from '../_components/formSections/CampsiteComps.svelte';
-	import NextSteps from '../_components/formSections/NextSteps.svelte';
+	import OnThatNextSteps from '../_components/formSections/OnThatNextSteps.svelte';
+	import AtThatNextSteps from '../_components/formSections/AtThatNextSteps.svelte';
 	import ThankYou from '../_components/formSections/ThankYou.svelte';
 	import Loading from '../_components/formSections/Loading.svelte';
+	import Failed from '../_components/formSections/Failed.svelte';
 
 	import speakerAcceptMachine from './_machine';
 
 	const platformText =
 		acceptedSpeaker.platform === 'AT_THAT' ? 'in-person (AT THAT)' : 'online (ON THAT)';
+
 	const metaTags = ((title = 'Speaker Acceptance - THAT') => ({
 		title,
 		tags: seoMetaTags({
@@ -75,59 +78,6 @@
 		})
 	}))();
 
-	$: atThatSteps = [
-		{
-			title: 'Accept your Invitation',
-			completed: $state.context.completed.one
-		},
-		{
-			title: 'Select your Tickets',
-			completed: $state.context.completed.two
-		},
-		{
-			title: acceptedSpeaker.platform === 'AT_THAT' ? 'Select Gear and Chow' : 'Select Gear',
-			completed: $state.context.completed.three
-		},
-		{
-			title: 'Emergency Contact Information',
-			completed: $state.context.completed.four
-		},
-		{ title: 'Campsite Details', completed: $state.context.completed.five },
-		{
-			title: 'Your Next Steps',
-			completed: $state.context.completed.six
-		},
-		{
-			title: 'Completed',
-			completed: $state.matches(['step_seven'])
-		}
-	];
-
-	$: onThatSteps = [
-		{
-			title: 'Accept your Invitation',
-			completed: $state.context.completed.one
-		},
-		{
-			title: 'Select your Tickets',
-			completed: $state.context.completed.two
-		},
-		{
-			title: 'Select Gear',
-			completed: $state.context.completed.three
-		},
-		{
-			title: 'Your Next Steps',
-			completed: $state.context.completed.six
-		},
-		{
-			title: 'Completed',
-			completed: $state.matches(['step_seven'])
-		}
-	];
-
-	$: steps = acceptedSpeaker.platform === 'AT_THAT' ? atThatSteps : onThatSteps;
-
 	const { state, send } = useMachine(
 		speakerAcceptMachine({ eventSlug: eventDetails.slug, acceptedSpeaker }),
 		{
@@ -136,6 +86,74 @@
 	);
 
 	let popNewFeatureWarning = true;
+
+	$: atThatSteps = [
+		{
+			id: 'accept',
+			title: 'Accept your Invitation',
+			completed: $state.context.completed.one
+		},
+		{
+			id: 'select',
+			title: 'Select your Tickets',
+			completed: $state.context.completed.two
+		},
+		{
+			id: 'tickets',
+			title: 'Select Gear and Chow',
+			completed: $state.context.completed.three
+		},
+		{
+			id: 'emergency',
+			title: 'Emergency Contact Information',
+			completed: $state.context.completed.four
+		},
+		{ id: 'campsite', title: 'Campsite Details', completed: $state.context.completed.five },
+		{
+			id: 'next',
+			title: 'Your Next Steps',
+			completed: $state.context.completed.six
+		},
+		{
+			id: 'complete',
+			title: 'Completed',
+			completed: $state.matches(['step_seven'])
+		}
+	];
+
+	$: onThatSteps = [
+		{
+			id: 'accept',
+			title: 'Accept your Invitation',
+			completed: $state.context.completed.one
+		},
+		{
+			id: 'select',
+			title: 'Select your Tickets',
+			completed: $state.context.completed.two
+		},
+		{
+			id: 'tickets',
+			title: 'Select Gear',
+			completed: $state.context.completed.three
+		},
+		{
+			id: 'next',
+			title: 'Your Next Steps',
+			completed: $state.context.completed.six
+		},
+		{
+			id: 'complete',
+			title: 'Completed',
+			completed: $state.matches(['step_seven'])
+		}
+	];
+
+	$: steps = acceptedSpeaker.platform === 'AT_THAT' ? atThatSteps : onThatSteps;
+
+	function pluckTitle(id) {
+		return steps.find((i) => i.id === id).title;
+	}
 
 	function handleSubmit(event) {
 		send('SUBMIT', event.detail);
@@ -207,7 +225,7 @@
 							on:speaker-decline={handleSpeakerDecline}
 							on:submit-step={handleSubmit}
 						>
-							<SectionHeader slot="header" stepNumber="1" title={steps[0].title} />
+							<SectionHeader slot="header" stepNumber="1" title={pluckTitle('accept')} />
 						</AcceptInvitation>
 					</div>
 				{/if}
@@ -219,7 +237,7 @@
 							platform={$state.context.acceptedSpeaker.platform}
 							on:submit-step={handleSubmit}
 						>
-							<SectionHeader slot="header" stepNumber="2" title={steps[1].title} />
+							<SectionHeader slot="header" stepNumber="2" title={pluckTitle('select')} />
 						</SelectTickets>
 					</div>
 				{/if}
@@ -231,7 +249,7 @@
 							orderAllocations={$state.context.allocations}
 							on:submit-step={handleSubmit}
 						>
-							<SectionHeader slot="header" stepNumber="3" title={steps[2].title} />
+							<SectionHeader slot="header" stepNumber="3" title={pluckTitle('tickets')} />
 						</SelectTicketDetails>
 					</div>
 				{/if}
@@ -239,37 +257,45 @@
 				{#if $state.matches(['step_four'])}
 					<div in:fade={{ delay: 100, duration: 400 }}>
 						<EmergencyContactInfo on:submit-step={handleSubmit}>
-							<SectionHeader slot="header" stepNumber="4" title={steps[3].title} />
+							<SectionHeader slot="header" stepNumber="4" title={pluckTitle('emergency')} />
 						</EmergencyContactInfo>
 					</div>
 				{/if}
 				{#if $state.matches(['step_five'])}
 					<div in:fade={{ delay: 100, duration: 400 }}>
 						<CampsiteComps {eventDetails} on:submit-step={handleSubmit}>
-							<SectionHeader slot="header" stepNumber="5" title={steps[4].title} />
+							<SectionHeader slot="header" stepNumber="5" title={pluckTitle('campsite')} />
 						</CampsiteComps>
 					</div>
 				{/if}
 
 				{#if $state.matches(['step_six'])}
 					<div in:fade={{ delay: 100, duration: 400 }}>
-						<NextSteps on:submit-step={handleSubmit}>
-							<SectionHeader slot="header" stepNumber="6" title={steps[5].title} />
-						</NextSteps>
+						{#if acceptedSpeaker.platform === 'AT_THAT'}
+							<AtThatNextSteps on:submit-step={handleSubmit}>
+								<SectionHeader slot="header" stepNumber="6" title={pluckTitle('next')} />
+							</AtThatNextSteps>
+						{:else}
+							<OnThatNextSteps on:submit-step={handleSubmit}>
+								<SectionHeader slot="header" stepNumber="6" title={pluckTitle('next')} />
+							</OnThatNextSteps>
+						{/if}
 					</div>
 				{/if}
 
 				{#if $state.matches(['step_seven'])}
 					<div in:fade={{ delay: 100, duration: 400 }}>
 						<ThankYou>
-							<SectionHeader slot="header" title={steps[6].title} />
+							<SectionHeader slot="header" title={pluckTitle('complete')} />
 						</ThankYou>
 					</div>
 				{/if}
 
 				{#if $state.matches(['submit_failed'])}
 					<div in:fade={{ delay: 100, duration: 400 }}>
-						<p>ah crap...</p>
+						<Failed>
+							<SectionHeader slot="header" title="Remember when we said... Beta feature?" />
+						</Failed>
 					</div>
 				{/if}
 			</section>

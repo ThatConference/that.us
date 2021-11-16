@@ -1,6 +1,4 @@
 <script>
-	export let platform;
-
 	import { createEventDispatcher } from 'svelte';
 	import { Shell } from '$elements/buttons';
 
@@ -19,7 +17,7 @@
 <div class="mt-12">
 	<h2 class="text-xl text-gray-800 font-extrabold">Here are a few items to think about.</h2>
 
-	<div class="text-gray-500 prose prose-xl">
+	<div class="text-gray-500 prose prose-lg">
 		<ul>
 			<li>
 				<span class="font-extrabold">Speaker Decks.</span> We don't have a speaker deck as much as we
@@ -30,7 +28,9 @@
 				to reach out at anytime and if you checked the I need help box, you will see an email from us
 				soon.
 			</li>
-			<li><span class="font-extrabold">Book your stay, like now.</span></li>
+			<li>
+				<span class="font-extrabold">Book your stay, like now.</span>
+			</li>
 			<li><span class="font-extrabold">Help spread the good word.</span></li>
 			<li><span class="font-extrabold">Make your profile shine.</span></li>
 			<li><span class="font-extrabold">Tweak your session.</span></li>
@@ -85,3 +85,11 @@
 		</button>
 	</div>
 </div>
+
+<style>
+	.hover:hover {
+		@apply text-thatOrange-400;
+		@apply underline;
+		@apply text-thatOrange-500;
+	}
+</style>

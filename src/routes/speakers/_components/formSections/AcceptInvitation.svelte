@@ -132,7 +132,30 @@
 	{/each}
 </div>
 
-<div class="flex justify-center md:justify-end space-x-4 mt-8">
+<div class="mt-8">
+	<h2 class="text-xl text-gray-800 font-extrabold">
+		<span>Be Awesome Together</span>
+	</h2>
+
+	<div class="mt-4 text-gray-500 prose prose-xl">
+		<p>
+			THAT Conference is dedicated to providing a safe, diverse, harassment-free conference
+			experience for everyone, regardless of gender, sexual orientation, disability, physical
+			appearance, body size, race, religion or age. In non legal terms, let's all support one
+			another and be awesome together.
+		</p>
+
+		<div class="flex justify-start space-x-6">
+			<a class="hover" href="/support/code-of-conduct/" target="_blank">Code Of Conduct</a>
+			<a class="hover" href="/support/commitment-to-diversity/" target="_blank"
+				>Commitment to Diversity</a
+			>
+			<a class="hover" href="/support/anti-harassment/" target="_blank">Anti-Harassment Policy</a>
+		</div>
+	</div>
+</div>
+
+<div class="flex justify-center md:justify-end space-x-4 mt-12">
 	<button on:click={handleSpeakerAccept}>
 		<Shell>
 			<div class="px-8 py-2 font-extrabold">Accept Your Invitation</div>
@@ -152,3 +175,11 @@
 		on:click_outside={() => (isDeclining = false)}
 	/>
 {/if}
+
+<style>
+	.hover:hover {
+		@apply text-thatOrange-400;
+		@apply underline;
+		@apply text-thatOrange-500;
+	}
+</style>

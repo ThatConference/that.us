@@ -33,7 +33,7 @@ function createServices() {
 			enrollmentInProgress: (context) => context.acceptedSpeaker.status === 'IN_PROGRESS',
 			enrollmentHasCompleted: (context) => context.acceptedSpeaker.status === 'COMPLETE',
 			hasOrderAllocations: (context) => context.allocations.length > 0,
-			hasAllocationsExectionsExceeded: (context) => context.allocationQueryExecuted > 5
+			hasAllocationsExectionsExceeded: (context) => context.allocationQueryExecuted > 15
 		},
 
 		services: {
@@ -75,6 +75,13 @@ function createServices() {
 				completed: (context) => ({ ...context.completed, one: true })
 			}),
 
+			stepTwoOnEntry: assign({
+				completed: (context) => ({
+					...context.completed,
+					one: true
+				})
+			}),
+
 			stepTwoSubmitSuccess: assign({
 				completed: (context) => ({ ...context.completed, two: true })
 			}),
@@ -85,20 +92,79 @@ function createServices() {
 				allocationQueryExecuted: (context) => context.allocationQueryExecuted + 1
 			}),
 
+			stepThreeOnEntry: assign({
+				completed: (context) => ({
+					...context.completed,
+					one: true,
+					two: true
+				})
+			}),
+
 			stepThreeSubmitSuccess: assign({
 				completed: (context) => ({ ...context.completed, three: true })
 			}),
 
+			stepFourOnEntry: assign({
+				completed: (context) => ({
+					...context.completed,
+					one: true,
+					two: true,
+					three: true
+				})
+			}),
+
 			stepFourSubmitSuccess: assign({
-				completed: (context) => ({ ...context.completed, four: true })
+				completed: (context) => ({
+					...context.completed,
+					four: true
+				})
+			}),
+
+			stepFiveOnEntry: assign({
+				completed: (context) => ({
+					...context.completed,
+					one: true,
+					two: true,
+					three: true,
+					four: true
+				})
 			}),
 
 			stepFiveSubmitSuccess: assign({
-				completed: (context) => ({ ...context.completed, five: true })
+				completed: (context) => ({
+					...context.completed,
+					five: true
+				})
+			}),
+
+			stepSixOnEntry: assign({
+				completed: (context) => ({
+					...context.completed,
+					one: true,
+					two: true,
+					three: true,
+					four: true,
+					five: true
+				})
 			}),
 
 			stepSixSubmitSuccess: assign({
-				completed: (context) => ({ ...context.completed, six: true })
+				completed: (context) => ({
+					...context.completed,
+					six: true
+				})
+			}),
+
+			stepSevenOnEntry: assign({
+				completed: (context) => ({
+					...context.completed,
+					one: true,
+					two: true,
+					three: true,
+					four: true,
+					five: true,
+					six: true
+				})
 			}),
 
 			speakerDeclinedSuccess: () => {
