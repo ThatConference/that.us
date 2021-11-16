@@ -1,3 +1,4 @@
+import { browser } from '$app/env';
 import { goto } from '$app/navigation';
 import { createMachine, assign } from 'xstate';
 
@@ -9,8 +10,13 @@ import speakerQueryApi from '$dataSources/api.that.tech/speakers/queries';
 import config from './config';
 
 function createServices() {
-	const { acceptInvitation, orderProducts, acceptRoomCompensation, completeSpeakerEnrollment } =
-		speakerMutationsApi();
+	const {
+		acceptInvitation,
+		declineInvitation,
+		orderProducts,
+		acceptRoomCompensation,
+		completeSpeakerEnrollment
+	} = speakerMutationsApi();
 
 	const { queryMyOrders } = speakerQueryApi();
 	const { updateEmergencyContact } = membersMutationApi();
@@ -19,6 +25,8 @@ function createServices() {
 		guards: {
 			hasAgreedToSpeak: (context) => context.acceptedSpeaker.agreeToSpeak,
 			isAcceptedSpeaker: (context) => context.acceptedSpeaker.isAcceptedSpeaker,
+			hasDeclined: (context) =>
+				!context.acceptedSpeaker.agreeToSpeak && context.acceptedSpeaker.status === 'COMPLETE',
 			isAtThat: (context) => context.acceptedSpeaker.platform === 'AT_THAT',
 			isOnThat: (context) => context.acceptedSpeaker.platform === 'ON_THAT',
 			enrollmentNotStarted: (context) => context.acceptedSpeaker.status === 'NOT_STARTED',
@@ -33,7 +41,7 @@ function createServices() {
 				acceptInvitation({ eventSlug, agreeToSpeak, reason }),
 
 			speakerDeclined: (_, { eventSlug, agreeToSpeak, reason = undefined }) =>
-				acceptInvitation({ eventSlug, agreeToSpeak, reason }),
+				declineInvitation({ eventSlug, agreeToSpeak, reason }),
 
 			queryMyOrders: (context) =>
 				queryMyOrders({ eventSlug: context.eventSlug, orderType: 'SPEAKER' }),
@@ -93,7 +101,9 @@ function createServices() {
 				completed: (context) => ({ ...context.completed, six: true })
 			}),
 
-			speakerDeclinedSuccess: () => goto('/speakers/declined/')
+			speakerDeclinedSuccess: () => {
+				if (browser) goto('/speakers/declined/');
+			}
 		}
 	};
 }

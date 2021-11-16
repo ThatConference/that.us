@@ -55,6 +55,7 @@
 	import CampsiteComps from '../_components/formSections/CampsiteComps.svelte';
 	import NextSteps from '../_components/formSections/NextSteps.svelte';
 	import ThankYou from '../_components/formSections/ThankYou.svelte';
+	import Loading from '../_components/formSections/Loading.svelte';
 
 	import speakerAcceptMachine from './_machine';
 
@@ -189,6 +190,14 @@
 		</aside>
 		<div class="space-y-6 lg:col-start-1 lg:col-span-2 mt-8">
 			<section class="space-y-24">
+				{#if ['speaker_declined', 'init'].some($state.matches)}
+					<div in:fade={{ delay: 100, duration: 400 }}>
+						<Loading>
+							<SectionHeader slot="header" title="Loading ..." />
+						</Loading>
+					</div>
+				{/if}
+
 				{#if $state.matches(['step_one'])}
 					<div in:fade={{ delay: 100, duration: 400 }}>
 						<AcceptInvitation
@@ -268,21 +277,23 @@
 	</div>
 </div>
 
-{#if popNewFeatureWarning}
-	<div>
-		<NewFeatureWarning on:close={() => (popNewFeatureWarning = false)}>
-			<div>
-				<p class="mt-6 prose prose-xl text-gray-500">
-					If you're seeing this box, that means we've rolled out something new that we're pretty
-					excited about. Better yet, we hope you enjoy it and it makes your experience just a tick
-					better.
-				</p>
-				<p class="mt-6 prose prose-xl text-gray-500">
-					We're human, and that means there is a slight chance you might come across a bug. If you
-					run into issues or have a question for some reason, just hit us up in the chat. We'd also
-					love your feedback so we can improve.
-				</p>
-			</div>
-		</NewFeatureWarning>
-	</div>
+{#if $state.matches(['step_one'])}
+	{#if popNewFeatureWarning}
+		<div>
+			<NewFeatureWarning on:close={() => (popNewFeatureWarning = false)}>
+				<div>
+					<p class="mt-6 prose prose-xl text-gray-500">
+						If you're seeing this box, that means we've rolled out something new that we're pretty
+						excited about. Better yet, we hope you enjoy it and it makes your experience just a tick
+						better.
+					</p>
+					<p class="mt-6 prose prose-xl text-gray-500">
+						We're human, and that means there is a slight chance you might come across a bug. If you
+						run into issues or have a question for some reason, just hit us up in the chat. We'd
+						also love your feedback so we can improve.
+					</p>
+				</div>
+			</NewFeatureWarning>
+		</div>
+	{/if}
 {/if}

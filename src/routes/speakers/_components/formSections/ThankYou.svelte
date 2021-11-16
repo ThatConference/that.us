@@ -1,14 +1,21 @@
-<script>
-	import { Shell } from '$elements/buttons';
-</script>
-
 <div class="space-y-4">
 	<slot name="header" />
-	<p class="prose prose-lg">
-		Ball tip ham capicola alcatra prosciutto. Biltong short ribs jowl, salami buffalo swine cow pork
-		belly chuck boudin chicken meatball hamburger kielbasa. Strip steak doner chislic short ribs
-		pork belly.
-	</p>
 </div>
 
-<div>content if needed</div>
+<div>
+	<p class="mt-6 prose prose-lg">
+		We did it; we knocked these tasks off that to-do list. We hope you're as pumped as we are, and
+		before you know it, THAT Conference will be here. We're here to make you your most excellent, if
+		you need help, you know where to find us.
+	</p>
+
+	<p class="mt-12 prose prose-lg">
+		Let us be the first to welcome you to THAT Conference, and on behalf of every geek and geekling,
+		congratulations and thank you.
+	</p>
+
+	<p class="mt-12 prose prose-lg">
+		Sincerly, <br />
+		Clark, Carrie, and Brett
+	</p>
+</div>

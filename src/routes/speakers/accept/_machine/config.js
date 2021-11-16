@@ -20,6 +20,10 @@ function create(meta) {
 			init: {
 				always: [
 					{
+						cond: 'hasDeclined',
+						target: '#speaker_accept_machine.speaker_declined'
+					},
+					{
 						cond: 'enrollmentNotStarted',
 						target: '#speaker_accept_machine.step_one'
 					},
@@ -276,6 +280,7 @@ function create(meta) {
 			},
 
 			speaker_declined: {
+				entry: 'speakerDeclinedSuccess',
 				type: 'final'
 			}
 		}
