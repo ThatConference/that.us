@@ -24,6 +24,10 @@ function create(meta) {
 						target: '#speaker_accept_machine.speaker_declined'
 					},
 					{
+						cond: 'hasNoSessions',
+						target: '#speaker_accept_machine.no_sessions'
+					},
+					{
 						cond: 'enrollmentNotStarted',
 						target: '#speaker_accept_machine.step_one'
 					},
@@ -279,6 +283,10 @@ function create(meta) {
 			},
 			step_seven: {
 				entry: 'stepSevenOnEntry'
+			},
+
+			no_sessions: {
+				type: 'final'
 			},
 
 			submit_failed: {
