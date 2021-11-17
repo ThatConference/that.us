@@ -126,5 +126,6 @@
 			</article>
 		</div>
 	</div>
+
 	<NewsletterSignup />
 </Layout>

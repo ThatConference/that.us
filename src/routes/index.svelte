@@ -13,7 +13,7 @@
 		const { queryCommunityStats } = statsApi(fetch);
 		const { querySessionsByDate } = sessionsApi(fetch);
 
-		const rawPosts = getPosts({ page: 1, limit: 3 });
+		const rawPosts = getPosts({ limit: 6 });
 
 		// todo - some of these graph calls could be combined.
 		// todo - we could pick off the cfp from the event already queried.
