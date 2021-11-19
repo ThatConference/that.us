@@ -6,8 +6,6 @@
 
 	import { thatLinks, supportLinks, companyLinks, legalLinks } from './links';
 
-	const ariaLabel = $$props['aria-label']
-
 </script>
 
 <footer class="bg-white border-t border-gray-200" aria-labelledby="footerHeading">
