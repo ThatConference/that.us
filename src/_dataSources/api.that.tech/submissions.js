@@ -1,6 +1,6 @@
 import gFetch from '$utils/gfetch';
 
-import { logMessage } from './utilities/error';
+import { log } from './utilities/error';
 
 export const QUERY_MY_SUBMISSIONS = `
 	query QUERY_MY_SUBMISSIONS {
@@ -33,8 +33,8 @@ export default (fetch) => {
 		return client
 			.secureQuery({ query: QUERY_MY_SUBMISSIONS })
 
-			.then(({ data, error }) => {
-				if (error) logMessage(error, 'QUERY_MY_SUBMISSIONS'); // todo.. not sure about this one.
+			.then(({ data, errors }) => {
+				if (errors) log({ errors, tag: 'QUERY_MY_SUBMISSIONS' }); // todo.. not sure about this one.
 
 				let results = [];
 				const { submitted } = data.sessions.me;

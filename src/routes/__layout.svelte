@@ -1,5 +1,6 @@
 <script context="module">
 	import 'lazysizes';
+	import { browser } from '$app/env';
 	import { v4 as uuidv4 } from 'uuid';
 	import { dev } from '$app/env';
 	import { inspect } from '@xstate/inspect';
@@ -35,7 +36,7 @@
 	});
 	// }
 
-	if (debug.xstate) {
+	if (debug.xstate && browser) {
 		inspect({
 			url: 'https://statecharts.io/inspect',
 			iframe: false
@@ -57,7 +58,7 @@
 <script>
 	import { onMount, onDestroy, setContext } from 'svelte';
 	import { navigating, session } from '$app/stores';
-	import { browser } from '$app/env';
+
 	import { page } from '$app/stores';
 
 	import loading from '$stores/loading';
@@ -165,38 +166,3 @@
 
 	<Tailwindcss />
 </div>
-
-<style global>
-	.tag-form-input :global(.svelte-tags-input-tag) {
-		background: #252f3f;
-	}
-
-	.sveltejs-forms .field.error input,
-	.sveltejs-forms .field.error textarea {
-		--text-opacity: 1;
-		border: 1px solid rgba(224, 36, 36, var(--text-opacity));
-	}
-	.sveltejs-forms .field.error .message {
-		margin-top: 0.2rem;
-		font-style: italic;
-		--text-opacity: 1;
-		color: rgba(224, 36, 36, var(--text-opacity));
-	}
-
-	select {
-		/* for Firefox */
-		-moz-appearance: none;
-		/* for Safari, Chrome, Opera */
-		-webkit-appearance: none;
-	}
-
-	.lineBreaks {
-		white-space: pre-line;
-	}
-
-	/* for debuging purposes when we want to punch a wall.
-		* {
-    	outline: 1px solid red;
-		} 
-	*/
-</style>

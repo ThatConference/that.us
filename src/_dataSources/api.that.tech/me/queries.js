@@ -71,6 +71,23 @@ export const QUERY_ME_SHARED_PROFILE = `
     }
   }
 `;
+
+export const QUERY_ME_EMERGENCY_CONTACT = `
+  query QUERY_ME_EMERGENCY_CONTACT {
+    members {
+      me {
+        emergencyContact {
+					fullName
+					phoneNumber
+					email
+					relationship
+					travelingWithYou
+        }
+      }
+    }
+  }
+`;
+
 export default (fetch) => {
 	const client = fetch ? gFetch(fetch) : gFetch();
 
@@ -78,8 +95,8 @@ export default (fetch) => {
 		const variables = {};
 		return client
 			.secureQuery({ query: QUERY_ME_FOLLOWING_COMMUNITIES, variables })
-			.then(({ data, error }) => {
-				if (error) log(error, 'QUERY_ME_FOLLOWING_COMMUNITIES');
+			.then(({ data, errors }) => {
+				if (errors) log({ errors, tag: 'QUERY_ME_FOLLOWING_COMMUNITIES' });
 
 				const { me } = data.communities;
 				return me ? me.favorites.ids : [];
@@ -90,8 +107,8 @@ export default (fetch) => {
 		const variables = {};
 		return client
 			.secureQuery({ query: QUERY_ME_FOLLOWING_MEMBERS, variables })
-			.then(({ data, error }) => {
-				if (error) log(error, 'QUERY_ME_FOLLOWING_MEMBERS');
+			.then(({ data, errors }) => {
+				if (errors) log({ errors, tag: 'QUERY_ME_FOLLOWING_MEMBERS' });
 
 				const { me } = data.members;
 				return me ? me?.following?.ids : [];
@@ -102,8 +119,8 @@ export default (fetch) => {
 		const variables = {};
 		return client
 			.secureQuery({ query: QUERY_ME_FOLLOWING_PARTNERS, variables })
-			.then(({ data, error }) => {
-				if (error) log(error, 'QUERY_ME_FOLLOWING_PARTNERS');
+			.then(({ data, errors }) => {
+				if (errors) log({ errors, tag: 'QUERY_ME_FOLLOWING_PARTNERS' });
 
 				const { me } = data.partners;
 				return me ? me.favorites.ids : [];
@@ -114,8 +131,8 @@ export default (fetch) => {
 		const variables = {};
 		return client
 			.secureQuery({ query: QUERY_ME_DISCOUNT_CODES, variables })
-			.then(({ data, error }) => {
-				if (error) log(error, 'QUERY_ME_DISCOUNT_CODES');
+			.then(({ data, errors }) => {
+				if (errors) log({ errors, tag: 'QUERY_ME_DISCOUNT_CODES' });
 
 				const { discountCodes } = data.members.me;
 				return discountCodes || [];
@@ -126,12 +143,22 @@ export default (fetch) => {
 		const variables = {};
 		return client
 			.secureQuery({ query: QUERY_ME_SHARED_PROFILE, variables })
-			.then(({ data, error }) => {
-				if (error) log(error, 'QUERY_ME_SHARED_PROFILE');
+			.then(({ data, errors }) => {
+				if (errors) log({ errors, tag: 'QUERY_ME_SHARED_PROFILE' });
 
 				const { shared } = data.members.profiles;
 
 				return shared;
+			});
+	};
+
+	const queryMeEmergencyContact = () => {
+		const variables = {};
+		return client
+			.secureQuery({ query: QUERY_ME_EMERGENCY_CONTACT, variables })
+			.then(({ data, errors }) => {
+				if (errors) log({ errors, tag: 'QUERY_ME_EMERGENCY_CONTACT' });
+				return data.members?.me?.emergencyContact;
 			});
 	};
 
@@ -140,6 +167,7 @@ export default (fetch) => {
 		queryMeFollowingMembers,
 		queryMeFollowingPartners,
 		queryMeDiscountCodes,
-		queryMeSharedProfile
+		queryMeSharedProfile,
+		queryMeEmergencyContact
 	};
 };

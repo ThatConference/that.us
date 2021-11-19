@@ -250,6 +250,30 @@ export const QUERY_EVENTS_BY_COMMUNITY = `
 	}
 `;
 
+export const QUERY_EVENT_FOR_ACCEPTED_SPEAKER = `
+	query QUERY_EVENT_FOR_ACCEPTED_SPEAKER ($eventSlug: String!) {
+		events {
+			event(findBy: {slug: $eventSlug}) {
+				get {
+					id
+					name
+					startDate
+					endDate
+					slug
+					logo
+					venues {
+						name
+						address
+						city
+						state
+						zip
+					}
+				}
+			}
+		}
+	}
+`;
+
 export const QUERY_CAN_ACCESS_EVENT = `
 	query QUERY_CAN_ACCESS_EVENT ($eventId: ID!) {
 		events {
@@ -280,8 +304,8 @@ export default (fetch) => {
 	function queryEventBySlug(slug) {
 		const variables = { slug };
 
-		return client.query({ query: QUERY_EVENT_BY_SLUG, variables }).then(({ data, error }) => {
-			if (error) log(error, 'QUERY_EVENT_BY_SLUG');
+		return client.query({ query: QUERY_EVENT_BY_SLUG, variables }).then(({ data, errors }) => {
+			if (errors) log({ errors, tag: 'QUERY_EVENT_BY_SLUG' });
 
 			const { event } = data.events;
 			return event ? event.get : null;
@@ -291,8 +315,8 @@ export default (fetch) => {
 	function queryEventById(eventId) {
 		const variables = { eventId };
 
-		return client.query({ query: QUERY_EVENT_BY_ID, variables }).then(({ data, error }) => {
-			if (error) log(error, 'QUERY_EVENT_BY_ID');
+		return client.query({ query: QUERY_EVENT_BY_ID, variables }).then(({ data, errors }) => {
+			if (errors) log({ errors, tag: 'QUERY_EVENT_BY_ID' });
 
 			const { event } = data.events;
 			return event ? event.get : null;
@@ -302,8 +326,8 @@ export default (fetch) => {
 	function queryEventForCfp(slug) {
 		const variables = { slug };
 
-		return client.query({ query: QUERY_EVENT_FOR_CFP, variables }).then(({ data, error }) => {
-			if (error) log(error, 'QUERY_EVENT_FOR_CFP');
+		return client.query({ query: QUERY_EVENT_FOR_CFP, variables }).then(({ data, errors }) => {
+			if (errors) log({ errors, tag: 'QUERY_EVENT_FOR_CFP' });
 
 			const { event } = data.events;
 			return event ? event.get : null;
@@ -312,8 +336,8 @@ export default (fetch) => {
 
 	function queryEvents() {
 		const variables = {};
-		return client.query({ query: QUERY_EVENTS, variables }).then(({ data, error }) => {
-			if (error) log(error, 'QUERY_EVENTS');
+		return client.query({ query: QUERY_EVENTS, variables }).then(({ data, errors }) => {
+			if (errors) log({ errors, tag: 'QUERY_EVENTS' });
 
 			const { all } = data.events;
 			return all || [];
@@ -323,12 +347,27 @@ export default (fetch) => {
 	function queryEventsByCommunity(slug = 'that') {
 		const variables = { slug };
 
-		return client.query({ query: QUERY_EVENTS_BY_COMMUNITY, variables }).then(({ data, error }) => {
-			if (error) log(error, 'QUERY_EVENTS_BY_COMMUNITY');
+		return client
+			.query({ query: QUERY_EVENTS_BY_COMMUNITY, variables })
+			.then(({ data, errors }) => {
+				if (errors) log({ errors, tag: 'QUERY_EVENTS_BY_COMMUNITY' });
 
-			const { community } = data.communities;
-			return community ? community.get.events : [];
-		});
+				const { community } = data.communities;
+				return community ? community.get.events : [];
+			});
+	}
+
+	function queryEventForAcceptedSpeaker(eventSlug) {
+		const variables = { eventSlug };
+
+		return client
+			.query({ query: QUERY_EVENT_FOR_ACCEPTED_SPEAKER, variables })
+			.then(({ data, errors }) => {
+				if (errors) log({ errors, tag: 'QUERY_EVENT_FOR_ACCEPTED_SPEAKER' });
+
+				const { get } = data.events?.event;
+				return get || null;
+			});
 	}
 
 	function canAddSession(eventId) {
@@ -336,8 +375,8 @@ export default (fetch) => {
 
 		return client
 			.secureQuery({ query: QUERY_CAN_ADD_SESSION, variables })
-			.then(({ data, error }) => {
-				if (error) log(error, 'QUERY_CAN_ADD_SESSION');
+			.then(({ data, errors }) => {
+				if (errors) log({ errors, tag: 'QUERY_CAN_ADD_SESSION' });
 
 				const { addSession } = data.events.me.access;
 				return addSession || false;
@@ -349,8 +388,8 @@ export default (fetch) => {
 
 		return client
 			.secureQuery({ query: QUERY_CAN_ACCESS_EVENT, variables })
-			.then(({ data, error }) => {
-				if (error) log(error, 'QUERY_CAN_ACCESS_EVENT');
+			.then(({ data, errors }) => {
+				if (errors) log({ errors, tag: 'QUERY_CAN_ACCESS_EVENT' });
 
 				const { hasAccess } = data.events.me.access;
 				return hasAccess || false;
@@ -363,6 +402,7 @@ export default (fetch) => {
 		queryEventBySlug,
 		queryEventById,
 		queryEventForCfp,
+		queryEventForAcceptedSpeaker,
 		canAddSession,
 		canAccessEvent
 	};

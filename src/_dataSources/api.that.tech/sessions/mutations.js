@@ -220,8 +220,8 @@ export default (fetch) => {
 		const variables = { eventId, session };
 		const mutation = mapCreateMutation(sessionType);
 
-		return client.mutation({ mutation: mutation, variables }).then(({ data, error }) => {
-			if (error) log(error, mutation);
+		return client.mutation({ mutation: mutation, variables }).then(({ data, errors }) => {
+			if (errors) log({ errors, tag: mutation });
 
 			return data.sessions.create.session;
 		});
@@ -231,8 +231,8 @@ export default (fetch) => {
 		const variables = { sessionId, session };
 		const mutation = mapUpdateMutation(sessionType);
 
-		return client.mutation({ mutation: mutation, variables }).then(({ data, error }) => {
-			if (error) log(error, mutation);
+		return client.mutation({ mutation: mutation, variables }).then(({ data, errors }) => {
+			if (errors) log({ errors, tag: mutation });
 			return data.sessions.session.update.session;
 		});
 	}

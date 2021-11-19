@@ -171,8 +171,8 @@ export default (fetch) => {
 			pageSize
 		};
 
-		return client.secureQuery({ query: QUERY_MY_ORDERS, variables }).then(({ data, error }) => {
-			if (error) log(error, 'QUERY_MY_ORDERS');
+		return client.secureQuery({ query: QUERY_MY_ORDERS, variables }).then(({ data, errors }) => {
+			if (errors) log({ errors, tag: 'QUERY_MY_ORDERS' });
 
 			const { orders } = data;
 			return orders ? orders.me.all : null;
@@ -187,8 +187,8 @@ export default (fetch) => {
 
 		return client
 			.secureQuery({ query: QUERY_NEXT_MY_ORDERS, variables })
-			.then(({ data, error }) => {
-				if (error) log(error, 'QUERY_NEXT_MY_ORDERS');
+			.then(({ data, errors }) => {
+				if (errors) log({ errors, tag: 'QUERY_NEXT_MY_ORDERS' });
 
 				const { orders } = data;
 				return orders ? orders.me.all : null;
@@ -200,12 +200,14 @@ export default (fetch) => {
 			orderId
 		};
 
-		return client.secureQuery({ query: QUERY_ORDER_RECEIPT, variables }).then(({ data, error }) => {
-			if (error) log(error, 'QUERY_ORDER_RECEIPT');
+		return client
+			.secureQuery({ query: QUERY_ORDER_RECEIPT, variables })
+			.then(({ data, errors }) => {
+				if (errors) log({ errors, tag: 'QUERY_ORDER_RECEIPT' });
 
-			const { receipt } = data.orders.me.order;
-			return receipt || null;
-		});
+				const { receipt } = data.orders.me.order;
+				return receipt || null;
+			});
 	}
 
 	function queryMyAllocations() {
@@ -213,8 +215,8 @@ export default (fetch) => {
 
 		return client
 			.secureQuery({ query: QUERY_MY_ALLOCATIONS, variables })
-			.then(({ data, error }) => {
-				if (error) log(error, 'QUERY_MY_ALLOCATIONS');
+			.then(({ data, errors }) => {
+				if (errors) log({ errors, tag: 'QUERY_MY_ALLOCATIONS' });
 
 				const { allocations } = data.orders.me;
 				return allocations || [];
@@ -232,8 +234,8 @@ export default (fetch) => {
 
 		return client
 			.secureQuery({ query: QUERY_MY_BULK_ALLOCATIONS, variables })
-			.then(({ data, error }) => {
-				if (error) log(error, 'QUERY_MY_BULK_ALLOCATIONS');
+			.then(({ data, errors }) => {
+				if (errors) log({ errors, tag: 'QUERY_MY_BULK_ALLOCATIONS' });
 
 				const { orders } = data;
 				return orders ? orders.me.all : null;
@@ -248,8 +250,8 @@ export default (fetch) => {
 
 		return client
 			.secureQuery({ query: QUERY_MY_BULK_ALLOCATIONS_NEXT, variables })
-			.then(({ data, error }) => {
-				if (error) log(error, 'QUERY_MY_BULK_ALLOCATIONS_NEXT');
+			.then(({ data, errors }) => {
+				if (errors) log({ errors, tag: 'QUERY_MY_BULK_ALLOCATIONS_NEXT' });
 
 				const { orders } = data;
 				return orders ? orders.me.all : null;

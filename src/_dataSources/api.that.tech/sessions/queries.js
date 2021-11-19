@@ -1,6 +1,6 @@
 import gFetch from '$utils/gfetch';
 
-import { log, logMessage } from '../utilities/error';
+import { log } from '../utilities/error';
 
 const enumValues = `
 	options: enumValues {
@@ -160,8 +160,8 @@ export default (fetch) => {
 
 		return client
 			.query({ query: QUERY_SESSION_DROPDOWN_VALUES, variables })
-			.then(({ data, error }) => {
-				if (error) log(error, 'QUERY_SESSION_DROPDOWN_VALUES');
+			.then(({ data, errors }) => {
+				if (errors) log({ errors, tag: 'QUERY_SESSION_DROPDOWN_VALUES' });
 
 				return data;
 			});
@@ -172,8 +172,8 @@ export default (fetch) => {
 
 		return client
 			.secureQuery({ query: QUERY_MY_SESSION_BY_ID, variables })
-			.then(({ data, error }) => {
-				if (error) logMessage(error, 'QUERY_MY_SESSION_BY_ID');
+			.then(({ data, errors }) => {
+				if (errors) log({ errors, tag: 'QUERY_MY_SESSION_BY_ID' });
 
 				return data.sessions?.me?.session;
 			});

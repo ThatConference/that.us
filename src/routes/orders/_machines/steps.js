@@ -16,8 +16,7 @@ function createServices() {
 			logError: (context, event) =>
 				log({
 					error: 'summary state machine has ended in the error state.',
-					extra: { context, event },
-					tags: { stateMachine: 'cart' }
+					extra: { context, event }
 				}),
 
 			setIsAuthenticated: assign({

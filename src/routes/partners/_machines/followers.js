@@ -21,8 +21,7 @@ function createServices() {
 			logError: (context, event) =>
 				log({
 					error: 'partners followers state machine ended in the error state.',
-					extra: { context, event },
-					tags: { stateMachine: 'partners' }
+					extra: { context, event }
 				}),
 
 			loadSuccess: assign({

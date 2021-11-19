@@ -63,6 +63,20 @@
 								</a>
 
 								<a
+									href="/my/profiles/emergency-contact/"
+									class={$page.path.startsWith('/my/profiles/emergency-contact')
+										? asideSelected.item
+										: asideDefault.item}
+								>
+									<User
+										classes={$page.path.startsWith('/my/profiles/emergency-contact')
+											? asideSelected.image
+											: asideDefault.image}
+									/>
+									<span class="truncate">Emergency Contact</span>
+								</a>
+
+								<a
 									href="/my/profiles/slack/"
 									class={$page.path.startsWith('/my/profiles/slack')
 										? asideSelected.item

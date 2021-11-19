@@ -59,6 +59,24 @@ export const MUTATION_UPDATE = `
 	}
 `;
 
+export const MUTATION_UPDATE_EMERGENCY_CONTACT = `
+	mutation MUTATION_UPDATE_EMERGENCY_CONTACT ($emergencyContact: EmergencyContactUpdateInput!) {
+		members { 
+			member {
+				update(profile: { emergencyContact: $emergencyContact }) {
+					emergencyContact {
+						fullName
+						phoneNumber
+						email
+						relationship
+						travelingWithYou
+					}	
+				}
+			}
+		}
+	}
+`;
+
 export const CLAIM_TICKET = `
 	mutation claimMyTicket($ticketReference: String!) {
 		members {
@@ -100,43 +118,55 @@ export const MUTATION_REQUEST_SLACK_INVITE = `
 export default (fetch) => {
 	const client = fetch ? gFetch(fetch) : gFetch();
 
-	const createProfile = (profile) => {
+	function createProfile(profile) {
 		const variables = { profile };
-		return client.mutation({ mutation: MUTATION_CREATE, variables }).then(({ data, error }) => {
-			if (error) log(error, 'MUTATION_CREATE');
+		return client.mutation({ mutation: MUTATION_CREATE, variables }).then(({ data, errors }) => {
+			if (errors) log({ errors, tag: 'MUTATION_CREATE' });
 
 			return data.members.create;
 		});
-	};
+	}
 
-	const updateProfile = (profile) => {
+	function updateProfile(profile) {
 		const variables = { profile };
-		return client.mutation({ mutation: MUTATION_UPDATE, variables }).then(({ data, error }) => {
-			if (error) log(error, 'MUTATION_UPDATE');
+		return client.mutation({ mutation: MUTATION_UPDATE, variables }).then(({ data, errors }) => {
+			if (errors) log({ errors, tag: 'MUTATION_UPDATE' });
 
 			return data.members.member.update;
 		});
-	};
+	}
 
-	const claimTicket = (ticketReference) => {
+	function updateEmergencyContact(emergencyContact) {
+		const variables = { emergencyContact };
+
+		return client
+			.mutation({ mutation: MUTATION_UPDATE_EMERGENCY_CONTACT, variables })
+			.then(({ data, errors }) => {
+				if (errors) log({ errors, tag: 'MUTATION_UPDATE_EMERGENCY_CONTACT' });
+
+				return data.members?.member?.update?.emergencyContact;
+			});
+	}
+
+	function claimTicket(ticketReference) {
 		const variables = { ticketReference };
-		return client.mutation({ mutation: CLAIM_TICKET, variables }).then(({ data, error }) => {
-			if (error) log(error, 'CLAIM_TICKET');
+		return client.mutation({ mutation: CLAIM_TICKET, variables }).then(({ data, errors }) => {
+			if (errors) log({ errors, tag: 'CLAIM_TICKET' });
 
 			let claimed = null;
 			if (data.members.member.claimTicket) claimed = data.members.member.claimTicket;
 
 			return claimed;
 		});
-	};
+	}
 
 	function toggleFollow(slug) {
 		const variables = { target: { slug } };
 
 		return client
 			.mutation({ mutation: MUTATION_FOLLOW_MEMBER_TOGGLE, variables })
-			.then(({ data, error }) => {
-				if (error) log(error, 'MUTATION_FOLLOW_MEMBER_TOGGLE');
+			.then(({ data, errors }) => {
+				if (errors) log({ errors, tag: 'MUTATION_FOLLOW_MEMBER_TOGGLE' });
 
 				let results = false;
 				if (data) {
@@ -153,8 +183,8 @@ export default (fetch) => {
 
 		return client
 			.mutation({ mutation: MUTATION_REQUEST_SLACK_INVITE, variables })
-			.then(({ data, error }) => {
-				if (error) log(error, 'MUTATION_REQUEST_SLACK_INVITE');
+			.then(({ data, errors }) => {
+				if (errors) log({ errors, tag: 'MUTATION_REQUEST_SLACK_INVITE' });
 
 				return data?.members?.member?.requestSlackInvite;
 			});
@@ -165,6 +195,7 @@ export default (fetch) => {
 		updateProfile,
 		claimTicket,
 		toggleFollow,
-		requestSlackInvite
+		requestSlackInvite,
+		updateEmergencyContact
 	};
 };

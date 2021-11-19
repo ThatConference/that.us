@@ -21,8 +21,8 @@ export default (fetch) => {
 		const variables = { communityId };
 		return client
 			.mutation({ mutation: MUTATION_FOLLOW_COMMUNITY_TOGGLE, variables })
-			.then(({ data, error }) => {
-				if (error) log(error, 'mutate_community');
+			.then(({ data, errors }) => {
+				if (errors) log({ errors, tag: 'mutate_community' });
 
 				let results = false;
 				if (data) {

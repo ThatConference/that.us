@@ -30,7 +30,7 @@ export default (fetch) => {
 		return client
 			.mutation({ mutation: MUTATION_UPDATE_SHARED_PROFILE, variables })
 			.then(({ data, error }) => {
-				if (error) log(error, 'MUTATION_CHECK_IN_USER');
+				if (error) log({ error, tag: 'MUTATION_CHECK_IN_USER' });
 
 				let results;
 
