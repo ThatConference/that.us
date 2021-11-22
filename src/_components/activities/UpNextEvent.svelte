@@ -2,6 +2,7 @@
 	export let event;
 
 	import { fade } from 'svelte/transition';
+	import { pick } from 'lodash';
 
 	import { FeaturedActivity, FeaturedActivityAdd } from '$elements/activities';
 
@@ -28,7 +29,7 @@
 				{#if event.sessions.sessions}
 					{#each sessionsFiltered as s (s.id)}
 						<li in:fade>
-							<FeaturedActivity {...s} />
+							<FeaturedActivity {...pick(s, ['id', 'title', 'speakers', 'startTime'])} />
 						</li>
 					{/each}
 				{/if}

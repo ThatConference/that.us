@@ -3,6 +3,7 @@
 	export let hasMore = false;
 
 	import { createEventDispatcher } from 'svelte';
+	import { pick } from 'lodash';
 	import { fade } from 'svelte/transition';
 
 	import { FeaturedActivity, FeaturedActivityAdd } from '$elements/activities';
@@ -29,7 +30,7 @@
 				{#if items.length > 0}
 					{#each items as s (s.id)}
 						<li in:fade>
-							<FeaturedActivity {...s} />
+							<FeaturedActivity {...pick(s, ['id', 'title', 'speakers', 'startTime'])} />
 						</li>
 					{/each}
 				{/if}
