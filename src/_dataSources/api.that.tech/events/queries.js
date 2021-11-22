@@ -66,6 +66,11 @@ const coreSpeakerFields = `
 		company
 		profileImage
 		profileSlug
+		profileLinks {
+			isPublic
+			linkType
+			url
+		}		
 		earnedMeritBadges {
 			id
 			name
