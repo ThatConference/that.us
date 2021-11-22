@@ -11,6 +11,7 @@
 	import SponsorSimple from '$components/SponsorSimple.svelte';
 	import UpNextEvent from '$components/activities/UpNextEvent.svelte';
 
+	import Speakers from './speakers/_Speakers.svelte';
 	import Membership from './_MembershipCard.svelte';
 	import FAQ from './_FAQ.svelte';
 
@@ -92,6 +93,7 @@
 	</section>
 
 	<section>
+		<Speakers {event} />
 		<UpNextEvent {event}>
 			<div slot="action">
 				<HighlightLink href={`/activities/${event.slug}`}>View the entire schedule</HighlightLink>
