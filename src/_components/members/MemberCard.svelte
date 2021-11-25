@@ -61,7 +61,7 @@
 					<dt class="sr-only">Social Links</dt>
 					<dd class="mt-2">
 						{#each profileLinks as link}
-							<SocialLinks href={link.url} network={link.linkType} />
+							<SocialLinks href={link.url} ariaLabel={link.ariaLabel} network={link.linkType} />
 						{/each}
 					</dd>
 				</dl>
