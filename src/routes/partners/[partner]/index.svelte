@@ -1,4 +1,21 @@
+<script context="module">
+	import sessionsQueryApi from '$dataSources/api.that.tech/sessions/queries';
+
+	export async function load({ fetch }) {
+		const { querySessionDropDownValues } = sessionsQueryApi(fetch);
+
+		return {
+			props: {
+				sessionEnumLookups: await querySessionDropDownValues()
+			}
+		};
+	}
+</script>
+
 <script>
+	export let sessionEnumLookups;
+
+	import { setContext } from 'svelte';
 	import { page, session } from '$app/stores';
 	import { fade } from 'svelte/transition';
 	import { useMachine } from 'xstate-svelte';
@@ -19,6 +36,7 @@
 
 	import createMachine from '../_machines/partner';
 
+	setContext('SESSION_ENUMS', sessionEnumLookups);
 	const { partner } = $page.params;
 
 	const { state, send } = useMachine(createMachine(partner), {
