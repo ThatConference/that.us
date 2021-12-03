@@ -1,5 +1,6 @@
 <script>
-	import { flatten, uniqBy } from 'lodash';
+	import lodash from 'lodash';
+	const { flatten, uniqBy, pick } = lodash;
 	export let event;
 	export let max = 20;
 
@@ -15,8 +16,6 @@
 		: [];
 
 	import MemberCard from '$components/members/MemberCard.svelte';
-
-	import { pick } from 'lodash';
 
 	function filterMemberData(m) {
 		return pick(m, [
