@@ -5,6 +5,7 @@
 	import socials from './socials';
 
 	import { thatLinks, supportLinks, companyLinks, legalLinks } from './links';
+
 </script>
 
 <footer class="bg-white border-t border-gray-200" aria-labelledby="footerHeading">
@@ -19,7 +20,7 @@
 				<div class="flex space-x-2">
 					{#each socials as s}
 						<div class="h-6 w-6">
-							<SocialLink href={s.href} network={s.network} />
+							<SocialLink href={s.href} ariaLabel={s.ariaLabel} network={s.network} />
 						</div>
 					{/each}
 				</div>
