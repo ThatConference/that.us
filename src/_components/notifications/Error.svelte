@@ -3,7 +3,7 @@
 
 	import { fade } from 'svelte/transition';
 	import Icon from 'svelte-awesome';
-	import { warning } from 'svelte-awesome/icons';
+	import { warning } from '$components/svelte-awesome-icons';
 
 	let dismissed = false;
 </script>

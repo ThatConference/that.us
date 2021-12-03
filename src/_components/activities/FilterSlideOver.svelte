@@ -6,7 +6,7 @@
 	export let selectedFilterTerms = [];
 
 	import Icon from 'svelte-awesome';
-	import { filter as filterIcon, externalLink } from 'svelte-awesome/icons';
+	import { filter as filterIcon, externalLink } from '$components/svelte-awesome-icons';
 
 	import { StandardLink } from '$elements';
 	import SlideOver from '$elements/overlays/BasicSlideOver.svelte';

@@ -10,7 +10,7 @@
 	import _ from 'lodash';
 	import Fuse from 'fuse.js'; // https://fusejs.io/api/options.html
 	import Icon from 'svelte-awesome';
-	import { filter as filterIcon } from 'svelte-awesome/icons';
+	import { filter as filterIcon } from '$components/svelte-awesome-icons';
 	import utc from 'dayjs/plugin/utc.js';
 	import timezone from 'dayjs/plugin/timezone.js';
 	import advancedFormat from 'dayjs/plugin/advancedFormat.js';

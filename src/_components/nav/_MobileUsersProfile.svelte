@@ -2,7 +2,7 @@
 	export let darkMode = false;
 
 	import { session } from '$app/stores';
-	import { user as userIcon } from 'svelte-awesome/icons';
+	import { user as userIcon } from '$components/svelte-awesome-icons';
 	import Icon from 'svelte-awesome';
 	import lodash from 'lodash';
 

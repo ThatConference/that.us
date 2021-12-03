@@ -4,7 +4,7 @@
 	export let stepNumber;
 
 	import Icon from 'svelte-awesome';
-	import { stepForward } from 'svelte-awesome/icons';
+	import { stepForward } from '$components/svelte-awesome-icons';
 </script>
 
 <div class="pt-20 pb-2">

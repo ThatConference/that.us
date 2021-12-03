@@ -3,7 +3,7 @@
 
 	import dayjs from 'dayjs';
 	import Icon from 'svelte-awesome';
-	import { commentsO, hashtag, clockO, desktop, users } from 'svelte-awesome/icons';
+	import { commentsO, hashtag, clockO, desktop, users } from '$components/svelte-awesome-icons';
 	import { createEventDispatcher } from 'svelte';
 	import utc from 'dayjs/plugin/utc.js';
 	import timezone from 'dayjs/plugin/timezone.js';
