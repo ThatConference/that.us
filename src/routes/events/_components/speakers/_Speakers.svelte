@@ -1,19 +1,13 @@
 <script>
 	import lodash from 'lodash';
-	const { flatten, uniqBy, pick } = lodash;
+	const { uniqBy, pick } = lodash;
 	export let event;
 	export let max = 20;
 
-	$: sessions = event && event.sessions && event.sessions.sessions;
-
-	$: speakers = sessions
-		? uniqBy(
-				flatten(sessions.filter((s) => s && s.status === 'ACCEPTED').map((s) => s.speakers)).filter(
-					(x) => x.profileSlug != 'thatconference'
-				),
-				(i) => i.id
-		  ).slice(0, max)
-		: [];
+	$: speakers = uniqBy(
+		event.speakers.filter((x) => x.profileSlug != 'thatconference'),
+		(i) => i.id
+	).slice(0, max);
 
 	import MemberCard from '$components/members/MemberCard.svelte';
 
