@@ -1,4 +1,3 @@
-import fetch from 'isomorphic-fetch';
 import config from '$utils/config';
 
 const baseHostImage = 'https://that.imgix.net/og-image';
