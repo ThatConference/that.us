@@ -5,7 +5,7 @@ function buildSrcSet(baseUrl, imgSizes) {
 	const r = attributes.join('&');
 
 	const srcset = [];
-	const src = `${baseUrl}/${r}&h=${imgSizes[0]}&w=${imgSizes[0]}`;
+	const src = `${baseUrl}?${r}&h=${imgSizes[0]}&w=${imgSizes[0]}`;
 
 	imgSizes.forEach((size) => {
 		const base = `${baseUrl}?${r}&h=${size}&w=${size}`;
