@@ -9,12 +9,12 @@ export async function get({ params }) {
 	let body;
 
 	if (response.status === 200) {
-		const buffer = await response.arrayBuffer();
-		body = new Uint8Array(buffer);
+		const r = await response.arrayBuffer();
+		body = Buffer.from(r);
 	} else {
 		const r = await fetch(`${config.hostURL}/images/ActivityDefault.jpg`);
 		const imageBuffer = await r.arrayBuffer();
-		body = new Uint8Array(imageBuffer);
+		body = Buffer.from(imageBuffer);
 	}
 
 	return {
