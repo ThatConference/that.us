@@ -1,13 +1,7 @@
 import * as Sentry from '@sentry/browser';
-import LogRocket from 'logrocket';
 
 export const log = ({ error, extra = {}, tags }) => {
 	const err = new Error(error);
-
-	LogRocket.captureException(err, {
-		tags,
-		extra
-	});
 
 	Sentry.withScope((scope) => {
 		scope.setLevel('error');

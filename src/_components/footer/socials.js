@@ -1,34 +1,43 @@
 export default [
 	{
 		href: 'https://github.com/thatconference',
-		network: 'GITHUB'
+		network: 'GITHUB',
+		ariaLabel: 'Github Repo'
 	},
 	{
 		href: 'https://twitter.com/thatconference',
-		network: 'TWITTER'
+		network: 'TWITTER',
+		ariaLabel: 'Twitter'
+
 	},
 	{
 		href: 'https://facebook.com/thatconference',
-		network: 'FACEBOOK'
+		network: 'FACEBOOK',
+		ariaLabel: 'Facebook'
 	},
 	{
 		href: 'https://instagram.com/thatconference',
-		network: 'INSTAGRAM'
+		network: 'INSTAGRAM',
+		ariaLabel: 'Instagram'
 	},
 	{
 		href: 'https://linkedin.com/company/that-conference',
-		network: 'LINKEDIN'
+		network: 'LINKEDIN',
+		ariaLabel: 'LinkedIn'
 	},
 	{
 		href: 'https://youtube.com/c/thatconference',
-		network: 'YOUTUBE'
+		network: 'YOUTUBE',
+		ariaLabel: 'YouTube'
 	},
 	{
 		href: 'https://that.live',
-		network: 'TWITCH'
+		network: 'TWITCH',
+		ariaLabel: 'Twitch'
 	},
 	{
 		href: '/signup/',
-		network: 'SLACK'
+		network: 'SLACK',
+		ariaLabel: 'Join Us on Slack'
 	}
 ];

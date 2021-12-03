@@ -43,14 +43,11 @@
 	import ActivityDetails from '$components/activities/ActivityDetails.svelte';
 	import StackedLayout from '$elements/layouts/StackedLayout.svelte';
 
-	const metaTags = ((
-		image = `/activity/?id=${activity.id}`,
-		title = `${activity.title} - THAT`
-	) => ({
+	const metaTags = ((imageId = activity.id, title = `${activity.title} - THAT`) => ({
 		title,
 		tags: seoMetaTags({
 			title,
-			image,
+			imageId,
 			description: `${activity.shortDescription}`,
 			openGraph: {
 				url: `https://that.us/activity/${activity.id}`

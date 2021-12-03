@@ -3,10 +3,10 @@ import config from '$utils/config';
 const create = (metaData) => {
 	const results = [];
 
-	const formattedImage = metaData.image
-		? `${config.ogImageApi}/api/template${metaData.image}`
-		: metaData.openGraph?.image
-		? metaData.openGraph?.image
+	const formattedImage = metaData.imageId
+		? `${config.hostURL}/api/og-image/${metaData.imageId}`
+		: metaData.openGraph?.imageId
+		? metaData.openGraph?.imageId
 		: 'https://that.us/favicon.png';
 
 	const noindex = metaData ? metaData.noindex : false;

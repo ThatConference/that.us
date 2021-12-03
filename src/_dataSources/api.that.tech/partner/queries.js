@@ -35,12 +35,28 @@ const featuredSessionsFragment = `
 	fragment featuredSessionsFragment on Partner {
 		sessions {
 			id
+			eventId
 			title
 			shortDescription
+			tags
+			type
+			status
 			startTime
+			durationInMinutes
+			slug
+			communities
+			targetLocation
+			
+			location {
+				destination
+				isOnline
+				url
+			}
+
 			event {
 				logo
 			}
+
 			speakers {
 				profileImage
 				profileSlug
