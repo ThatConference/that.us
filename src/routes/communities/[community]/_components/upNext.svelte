@@ -2,7 +2,7 @@
 	export let activities = [];
 
 	import { fade } from 'svelte/transition';
-	import { pick } from 'lodash';
+	import lodash from 'lodash';
 
 	import { FeaturedActivity, FeaturedActivityAdd } from '$elements/activities';
 </script>
@@ -26,7 +26,7 @@
 				{#if activities.length > 0}
 					{#each activities as s (s.id)}
 						<li in:fade>
-							<FeaturedActivity {...pick(s, ['id', 'title', 'speakers', 'startTime'])} />
+							<FeaturedActivity {...lodash.pick(s, ['id', 'title', 'speakers', 'startTime'])} />
 						</li>
 					{/each}
 				{/if}

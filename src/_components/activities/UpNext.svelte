@@ -5,7 +5,7 @@
 	import { useService } from 'xstate-svelte';
 
 	import { debug } from '$utils/config';
-	import { pick } from 'lodash';
+	import lodash from 'lodash';
 	import { FeaturedActivity, FeaturedActivityAdd } from '$elements/activities';
 
 	const { state, send } = useService(stateMachineService, {
@@ -43,7 +43,7 @@
 					{#if $state.context.items.length > 0}
 						{#each $state.context.items as s (s.id)}
 							<li in:fade>
-								<FeaturedActivity {...pick(s, ['id', 'title', 'speakers', 'startTime'])} />
+								<FeaturedActivity {...lodash.pick(s, ['id', 'title', 'speakers', 'startTime'])} />
 							</li>
 						{/each}
 					{/if}
