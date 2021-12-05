@@ -77,7 +77,7 @@ Before you know it, January will be here. We kick off the new year by opening th
 
     <div class="hidden sm:block">
     	<div class="w-full grid place-content-center">
-    		<img class="w-[300px] lazyload" src="{cdnUrl('harry.png')}">
+    		<img class="w-[300px] lazyload" src="{cdnUrl('harry.png')}" alt="cartoon" />
     	</div>
     </div>
 

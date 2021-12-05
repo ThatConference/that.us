@@ -1,4 +1,5 @@
 <script context="module">
+	import './global.css';
 	import 'lazysizes';
 	import { browser } from '$app/env';
 	import { v4 as uuidv4 } from 'uuid';
@@ -68,7 +69,6 @@
 	import cart from '$utils/cart';
 
 	import Preloading from '$components/preloading.svelte';
-	import Tailwindcss from '$elements/Tailwindcss.svelte';
 
 	// setup the context on the cart for later usage
 	setContext('cart', cart);
@@ -163,6 +163,4 @@
 	{/if}
 
 	<slot />
-
-	<Tailwindcss />
 </div>

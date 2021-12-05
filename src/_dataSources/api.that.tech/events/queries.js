@@ -414,8 +414,7 @@ export default (fetch) => {
 			.then(({ data, errors }) => {
 				if (errors) log({ errors, tag: 'QUERY_EVENT_FOR_ACCEPTED_SPEAKER' });
 
-				const { get } = data.events?.event;
-				return get || null;
+				return data?.events?.event?.get || null;
 			});
 	}
 

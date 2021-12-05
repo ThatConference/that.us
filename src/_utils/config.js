@@ -1,4 +1,3 @@
-import { version } from '../../package.json';
 import { browser } from '$app/env';
 
 function configMissing(configKey) {
@@ -8,7 +7,7 @@ function configMissing(configKey) {
 export default {
 	hostURL: import.meta.env.VITE_HOST_URL || 'https://that.us',
 	nodeEnv: process.env.NODE_ENV,
-	version,
+	version: '2.1.0',
 	eventId: 'YWavA70szR8rxSwrLJaL',
 	eventSlug: 'thatus/daily',
 	api: import.meta.env.VITE_THAT_API || configMissing('VITE_THAT_API'),

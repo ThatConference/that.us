@@ -28,7 +28,7 @@ This question came through our webchat during last Friday's THAT Online, and it'
 ## What is THAT?
 
 <div class="w-full grid place-content-center">
-	<img class="w-[300px] lazyload" src="{cdnUrl('THAT-Wide.png')}">
+	<img class="w-[300px] lazyload" src="{cdnUrl('THAT-Wide.png')}" alt="THAT Logo"/>
 </div>
 
 Let's start by defining what exactly **THAT** is. The most straightforward answer, well, everything. By now, you've heard me say a community goes far beyond one's time together at THAT Conference; it exists every day. No doubt something special happens when geeks get together, it's essential, but it also shouldn't ever stop there. Our mission is to help you grow, support you, and grow the communities that surround every one of us. We also want to do all this every day of the year.
@@ -50,7 +50,7 @@ We set out to build a platform that would help us all. It should let us see one 
 ## What is THAT Conference?
 
 <div class="w-full grid place-content-center">
-	<img class="w-[300px] lazyload" src={cdnUrl("THAT-Conference.png")}>
+	<img class="w-[300px] lazyload" src={cdnUrl("THAT-Conference.png")} alt="THAT Logo" />
 </div>
 
 Now without question, you found us because of THAT Conference. Looking back over the past ten years, it's crazy amazing to reflect on just how much tech has changed, and like tech, THAT Conference has grown in every aspect. THAT Conference is still and will always be at the core of our mission. Getting geeks together to support, teach, expand their networks, and grow their businesses is our passion.
@@ -92,7 +92,7 @@ In summary - when you think of THAT Conference you know it's one of our keystone
 ## What is THAT Online?
 
 <div class="w-full grid place-content-center">
-	<img class="w-[300px] lazyload" src={cdnUrl("that-online.png")}>
+	<img class="w-[300px] lazyload" src={cdnUrl("that-online.png")} alt="THAT Logo" />
 </div>
 
 That leads us to THAT Online. Much like THAT Conference's ON THAT, THAT Online is a monthly manifestation of that same spirit. A monthly unconference on the 15th of every month for 24 hours. There is no call for speakers and we all drive the schedule based on what we submit and when we schedule it.

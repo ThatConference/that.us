@@ -34,6 +34,6 @@ I promise you that we will get together again. Ironically, 10 years ago I was to
 
 Clark and Carrie recently went live talking through a number of the factors we've all been presented with along with some of the plans going forward.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/jiPGh2gYyOc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe title="youtube video" width="560" height="315" src="https://www.youtube.com/embed/jiPGh2gYyOc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 **Stay healthy and stay positive.**

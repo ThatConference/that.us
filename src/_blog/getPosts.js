@@ -7,7 +7,6 @@ export function getPosts({ limit } = {}) {
 		});
 
 	if (limit) {
-		console.log(limit);
 		return posts.slice(0, limit);
 	}
 
