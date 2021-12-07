@@ -63,7 +63,7 @@ const QUERY_EVENT_REGISTRATIONS = `
 							...registrationProfileFragment
 						}
 					}
-			}cp
+				}
 			}
 		}
 	}   
