@@ -4,7 +4,7 @@
 	import { onDestroy } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import Icon from 'svelte-awesome';
-	import { warning } from 'svelte-awesome/icons';
+	import { warning } from '$components/svelte-awesome-icons';
 	import { show } from '$stores/profileNotification';
 
 	let popNotification = false;

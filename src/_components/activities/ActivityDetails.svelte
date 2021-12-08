@@ -26,7 +26,7 @@
 		signIn,
 		user,
 		externalLink
-	} from 'svelte-awesome/icons';
+	} from '$components/svelte-awesome-icons';
 	import { page } from '$app/stores';
 	import lodash from 'lodash';
 

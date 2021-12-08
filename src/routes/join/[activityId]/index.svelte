@@ -38,7 +38,7 @@
 	import lodash from 'lodash';
 	import { goto } from '$app/navigation';
 	import Icon from 'svelte-awesome';
-	import { expand as expandIcon, compress as compressIcon } from 'svelte-awesome/icons';
+	import { expand as expandIcon, compress as compressIcon } from '$components/svelte-awesome-icons';
 
 	import seoMetaTags from '$utils/seo/metaTags';
 	import { ModalError, ActionHeader } from '$elements';

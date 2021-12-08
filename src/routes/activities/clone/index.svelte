@@ -18,7 +18,7 @@
 	import { goto } from '$app/navigation';
 	import Typewriter from 'svelte-typewriter';
 	import Icon from 'svelte-awesome';
-	import { plus } from 'svelte-awesome/icons';
+	import { plus } from '$components/svelte-awesome-icons';
 
 	import seoMetaTags from '$utils/seo/metaTags';
 	import logEvent from '$utils/eventTrack';

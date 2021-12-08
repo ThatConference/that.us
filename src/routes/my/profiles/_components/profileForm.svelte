@@ -13,7 +13,7 @@
 		github,
 		youtubePlay,
 		twitch
-	} from 'svelte-awesome/icons';
+	} from '$components/svelte-awesome-icons';
 	import { Form, Input } from 'sveltejs-forms'; //https://github.com/mdauner/sveltejs-forms
 	import { ScaleOut } from 'svelte-loading-spinners';
 	import Tags from 'svelte-tags-input';

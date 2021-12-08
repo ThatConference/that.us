@@ -20,7 +20,15 @@
 	import isSameOrAfter from 'dayjs/plugin/isSameOrAfter.js';
 	import relativeTime from 'dayjs/plugin/relativeTime.js';
 	import Icon from 'svelte-awesome';
-	import { info, heart, signIn, cog, mapMarker, caretDown, user } from 'svelte-awesome/icons';
+	import {
+		info,
+		heart,
+		signIn,
+		cog,
+		mapMarker,
+		caretDown,
+		user
+	} from '$components/svelte-awesome-icons';
 	import { page } from '$app/stores';
 	import lodash from 'lodash';
 

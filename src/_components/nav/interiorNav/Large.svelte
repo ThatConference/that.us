@@ -2,7 +2,7 @@
 	import { getContext } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import Icon from 'svelte-awesome';
-	import { plus } from 'svelte-awesome/icons';
+	import { plus } from '$components/svelte-awesome-icons';
 
 	import { Activity, Cart } from '$elements/svgs';
 	import { hasNotifications } from '$stores/notificationCenter';

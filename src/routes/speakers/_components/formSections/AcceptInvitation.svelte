@@ -5,7 +5,7 @@
 
 	import { createEventDispatcher } from 'svelte';
 	import Icon from 'svelte-awesome';
-	import { caretDown } from 'svelte-awesome/icons';
+	import { caretDown } from '$components/svelte-awesome-icons';
 	import dayjs from 'dayjs';
 	import advancedFormat from 'dayjs/plugin/advancedFormat.js';
 	import timezone from 'dayjs/plugin/timezone.js';

@@ -5,7 +5,7 @@
 	export let startTime;
 
 	import Icon from 'svelte-awesome';
-	import { caretDown } from 'svelte-awesome/icons';
+	import { caretDown } from '$components/svelte-awesome-icons';
 	import dayjs from 'dayjs';
 	import utc from 'dayjs/plugin/utc.js';
 	import timezone from 'dayjs/plugin/timezone.js';
