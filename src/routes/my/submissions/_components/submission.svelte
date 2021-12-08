@@ -4,7 +4,7 @@
 	import { goto } from '$app/navigation';
 	import dayjs from 'dayjs';
 	import Icon from 'svelte-awesome';
-	import { pencilSquareO, clone } from 'svelte-awesome/icons';
+	import { pencilSquareO, clone } from '$components/svelte-awesome-icons';
 
 	import { CheckFull, Ban, Warning } from '$elements/svgs';
 	import { Shell as ShellButton } from '$elements/buttons';

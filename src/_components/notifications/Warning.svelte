@@ -1,7 +1,7 @@
 <script>
 	export let message;
 	import Icon from 'svelte-awesome';
-	import { warning } from 'svelte-awesome/icons';
+	import { warning } from '$components/svelte-awesome-icons';
 </script>
 
 <button on:click>

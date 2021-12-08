@@ -3,7 +3,7 @@
 
 	import { session } from '$app/stores';
 	import Icon from 'svelte-awesome';
-	import { plusCircle } from 'svelte-awesome/icons';
+	import { plusCircle } from '$components/svelte-awesome-icons';
 
 	import { imageCrops } from '$utils/config';
 

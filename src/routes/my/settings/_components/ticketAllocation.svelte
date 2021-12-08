@@ -13,7 +13,7 @@
 	export let orderId;
 
 	import Icon from 'svelte-awesome';
-	import { share, refresh } from 'svelte-awesome/icons';
+	import { share, refresh } from '$components/svelte-awesome-icons';
 	import { Form, Input } from 'sveltejs-forms';
 
 	import { Shell as ShellButton } from '$elements/buttons';

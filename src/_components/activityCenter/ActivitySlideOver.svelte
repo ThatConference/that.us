@@ -2,7 +2,7 @@
 	import { fade } from 'svelte/transition';
 	import { flip } from 'svelte/animate'; // todo we will need this when we really start to clear and add stuff to the list better.
 	import Icon from 'svelte-awesome';
-	import { externalLink } from 'svelte-awesome/icons';
+	import { externalLink } from '$components/svelte-awesome-icons';
 
 	import { Activity } from '$elements/svgs';
 	import SlideOver from '$elements/overlays/BasicSlideOver.svelte';

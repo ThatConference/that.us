@@ -7,7 +7,7 @@
 	export let slug;
 
 	import Icon from 'svelte-awesome';
-	import { calendarCheckO } from 'svelte-awesome/icons';
+	import { calendarCheckO } from '$components/svelte-awesome-icons';
 
 	import ical from '$utils/ical.js';
 

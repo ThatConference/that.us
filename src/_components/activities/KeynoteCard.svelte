@@ -7,7 +7,7 @@
 	export let location;
 
 	import Icon from 'svelte-awesome';
-	import { youtubePlay, signIn } from 'svelte-awesome/icons';
+	import { youtubePlay, signIn } from '$components/svelte-awesome-icons';
 
 	import KeynoteSpeaker from './KeynoteSpeaker.svelte';
 	import PanelSpeakers from './PanelSpeakers.svelte';

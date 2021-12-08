@@ -5,7 +5,7 @@
 	export let stepNumber;
 
 	import Icon from 'svelte-awesome';
-	import { flagCheckered } from 'svelte-awesome/icons';
+	import { flagCheckered } from '$components/svelte-awesome-icons';
 
 	import { CheckFull } from '$elements/svgs';
 </script>

@@ -13,7 +13,7 @@
 		medium,
 		stackOverflow,
 		slack
-	} from 'svelte-awesome/icons';
+	} from '$components/svelte-awesome-icons';
 
 	export let network;
 	export let href;

@@ -1,7 +1,7 @@
 <script>
 	import { getContext } from 'svelte';
 	import Icon from 'svelte-awesome';
-	import { plus } from 'svelte-awesome/icons';
+	import { plus } from '$components/svelte-awesome-icons';
 
 	import { Cart } from '$elements/svgs';
 	import UserProfile from '../_UserProfile.svelte';

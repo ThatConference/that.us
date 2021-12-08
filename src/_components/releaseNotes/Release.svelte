@@ -3,7 +3,7 @@
 
 	import archieml from 'archieml';
 	import Icon from 'svelte-awesome';
-	import { externalLink } from 'svelte-awesome/icons';
+	import { externalLink } from '$components/svelte-awesome-icons';
 
 	import { StandardLink } from '$elements';
 
