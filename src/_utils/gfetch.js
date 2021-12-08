@@ -32,7 +32,8 @@ function init(fetch, url) {
 			Sentry.captureMessage(
 				`retrying fetch, attempt number ${attempt + 1}, response.status ${response.status}`
 			);
-			return true;
+
+			return attempt <= 5 ? true : false;
 		}
 	}
 
