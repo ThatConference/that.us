@@ -1,4 +1,5 @@
 <script>
+	import { browser, dev } from '$app/env';
 	import { onMount, getContext } from 'svelte';
 	import * as Sentry from '@sentry/browser';
 	import { loadStripe } from '@stripe/stripe-js';
@@ -29,6 +30,11 @@
 		}));
 
 		Sentry.setContext('lineItems', lineItems);
+
+		if (!dev && browser) {
+			//track LinkedIn event
+			window.lintrk('track', { conversion_id: 6688825 });
+		}
 
 		return orderMutations()
 			.createCheckoutSession(eventId, lineItems)
