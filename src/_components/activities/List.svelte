@@ -48,6 +48,11 @@
 	let communities = [];
 	let selectedFilterTerms = getSessionSelectedTags();
 	let activitiesTaggedFiltered = [];
+	let onThat = true;
+	let atThat = true;
+	let family = true;
+	let workshop = true;
+	let openSpace = true;
 
 	$: {
 		const tagsSet = new Set();
@@ -77,12 +82,21 @@
 		window.sessionStorage.setItem('selectedTags', JSON.stringify(selectedFilterTerms));
 	}
 
+	$: activitesLocationCategoryFiltered = activitiesFiltered.filter(
+		(activity) =>
+			(activity.type == 'WORKSHOP' ? workshop : true) &&
+			(activity.type == 'OPEN_SPACE' ? openSpace : true) &&
+			(activity.category == 'FAMILY' ? family : true) &&
+			(activity.targetLocation == 'IN_PERSON' ? atThat : true) &&
+			(activity.targetLocation == 'ONLINE' ? onThat : true)
+	);
+
 	$: activitiesTaggedFiltered =
 		selectedFilterTerms.length > 0
-			? activitiesFiltered.filter((activity) =>
+			? activitesLocationCategoryFiltered.filter((activity) =>
 					selectedFilterTerms.some((tag) => activity.tags.some((t) => t.toLowerCase() === tag))
 			  )
-			: activitiesFiltered;
+			: activitesLocationCategoryFiltered;
 
 	$: sorted = _(activitiesTaggedFiltered)
 		.groupBy(({ startTime }) => dayjs(startTime).format('MM/DD/YYYY'))
@@ -189,6 +203,11 @@
 			{events}
 			bind:selectedFilterTerms
 			bind:searchterm
+			bind:atThat
+			bind:onThat
+			bind:family
+			bind:workshop
+			bind:openSpace
 			on:click={handleCloseFilter}
 			on:clicked-outside={handleCloseFilter}
 		/>
