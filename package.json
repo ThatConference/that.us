@@ -22,7 +22,7 @@
 		"prepare": "husky install"
 	},
 	"devDependencies": {
-		"@auth0/nextjs-auth0": "1.5.0",
+		"@auth0/nextjs-auth0": "1.6.2",
 		"@fortawesome/free-regular-svg-icons": "^5.15.4",
 		"@fullhuman/postcss-purgecss": "^4.0.3",
 		"@okrad/svelte-progressbar": "^1.11.2",
