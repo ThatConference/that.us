@@ -12,6 +12,7 @@
 	import UpNextEvent from '$components/activities/UpNextEvent.svelte';
 	import CallForSpeakers from '$components/cta/_CallForSpeakers.svelte';
 
+	import Speakers from './speakers/_Speakers.svelte';
 	import What from './hybrid/_What.svelte';
 	import Hero from './hybrid/_Hero.svelte';
 	import Partners from './hybrid/_Partners.svelte';
@@ -96,6 +97,7 @@
 		{#if event.isCallForSpeakersOpen === true}
 			<CallForSpeakers {event} />
 		{:else}
+			<Speakers {event} />
 			<UpNextEvent {event}>
 				<div slot="action">
 					<HighlightLink href={`/activities/${event.slug}`}>View the entire schedule</HighlightLink>
