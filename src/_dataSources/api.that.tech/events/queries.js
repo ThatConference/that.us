@@ -160,6 +160,44 @@ export const QUERY_EVENT_BY_SLUG = `
 	}
 `;
 
+export const QUERY_EVENT_WITH_SPEAKERS_BY_SLUG = `
+	${eventFieldsFragment}
+	query QUERY_EVENT_WITH_SPEAKERS_BY_SLUG ($slug: String) {
+		events {
+			event (findBy: {slug: $slug}) {
+				get {
+					...eventFields
+					milestones {
+						title
+						description
+						dueDate
+					}
+					speakers {
+						id
+						firstName
+						lastName
+						jobTitle
+						company
+						profileImage
+						earnedMeritBadges {
+							id
+							name
+							image
+							description
+						}
+						profileSlug
+						profileLinks {
+							isPublic
+							linkType
+							url					
+						}						
+					}
+				}
+			}
+		}
+	}
+`;
+
 export const QUERY_EVENT_BY_ID = `
 	${eventFieldsFragment}
 	query QUERY_EVENT_BY_ID ($eventId: ID) {
@@ -312,6 +350,17 @@ export default (fetch) => {
 		});
 	}
 
+	function queryEventWithSpeakersBySlug(slug) {
+		const variables = { slug };
+
+		return client.query({ query: QUERY_EVENT_WITH_SPEAKERS_BY_SLUG, variables }).then(({ data, errors }) => {
+			if (errors) log({ errors, tag: 'QUERY_EVENT_WITH_SPEAKERS_BY_SLUG' });
+
+			const { event } = data.events;
+			return event ? event.get : null;
+		});
+	}
+
 	function queryEventById(eventId) {
 		const variables = { eventId };
 
@@ -400,6 +449,7 @@ export default (fetch) => {
 		queryEvents,
 		queryEventsByCommunity,
 		queryEventBySlug,
+		queryEventWithSpeakersBySlug,
 		queryEventById,
 		queryEventForCfp,
 		queryEventForAcceptedSpeaker,
