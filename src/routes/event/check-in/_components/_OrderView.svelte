@@ -31,8 +31,6 @@
 		]
 	};
 
-	let registrationsViewPrefs = registrations;
-
 	let registrationsFiltered = [];
 	let searchterm = '';
 

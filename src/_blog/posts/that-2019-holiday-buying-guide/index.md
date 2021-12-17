@@ -14,7 +14,6 @@ Regardless of age, fun and geeky gadgets and tools entertain us, make life easie
 
 We went through all the items on our wish lists, stuff we love, have heard about and put together **THAT 2019 Holiday Buying Guide**. To help you find the perfect gift we've broken down our list into categories, which member of THAT Crew loves it and why.
 
-
 #### All Ages
 
 **Raspberry Pi** [raspberrypi.org](https://www.raspberrypi.org/) (Mike)
@@ -34,7 +33,6 @@ Mix a little Vitamin D into your office while growing fresh herbs and veggies wi
 
 **Picture This Clothing** [picturethisclothing.com](https://picturethisclothing.com/) (THAT Crew)
 We were thrilled to have [Jaimee Newberry](https://twitter.com/jaimeejaimee) as one of our keynoters for 2019 and love all she is doing at Picture This Clothing! Kids clothing, adults, toys, beanies... amazing stuff!
-
 
 #### Geeklings
 
@@ -74,7 +72,6 @@ Great way to get kids excited about engineering while teaching them all about el
 - [Girls Who Code: Learn to Code and Change the World](https://www.amazon.com/Girls-Who-Code-Learn-Change/dp/042528753X/ref=pd_sbs_14_2/146-9774548-3192238)
 - [Creative Coding in Python](https://www.amazon.com/Creative-Coding-Python-Programming-Projects/dp/1631595814/ref=pd_sbs_14_27)
 
-
 #### Geeks
 
 **Aftershokz Aeropex Bone-Conduction Headphones** [aftershokz.com/products/aeropex](https://aftershokz.com/products/aeropex) (Aaron)
@@ -101,7 +98,6 @@ You have a Batman fan in your life, this is the gift.
 - [Great Leaders Have No Rules](https://www.amazon.com/Close-Your-Open-Door-Policy/dp/1635652162)
 - [The Happiness Advantage: How a Positive Brain Fuels Success in Work and Life](https://www.amazon.com/Happiness-Advantage-Positive-Brain-Success/dp/0307591557/ref=sr_1_2)
 
-
 #### Giving Back
 
 In the season of giving it’s not just gift giving to friends and family, but many organizations that work hard year round to bring change in our community, region, and industry that could use our time and attention. Sometimes the best gift is not an item you can purchase but to donate resources to these organizations. Here are a couple ideas to help you find the organizations:
@@ -110,7 +106,6 @@ In the season of giving it’s not just gift giving to friends and family, but m
 - Investigate your local community for organizations teaching others to code. Many need equipment, resources and even volunteer time that you could help with.
 
 THAT Crew member, Sara added, "One of my most favorite holiday times was spending an afternoon with my friends at a local surplus food distribution center. They need volunteers to sort through food to ship to local charities. We locked up our phones, put on our hair nets, and spent 3 hours sorting produce together. Having that time together to talk and laugh was the best present!"
-
 
 #### THAT Gift On Everyone's List
 

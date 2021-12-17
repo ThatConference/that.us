@@ -33,10 +33,6 @@
 			}
 		})
 	}))();
-
-	function handleNext() {
-		send('NEXT');
-	}
 </script>
 
 <Seo title={metaTags.title} tags={metaTags.tags} />

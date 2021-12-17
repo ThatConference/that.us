@@ -1,7 +1,7 @@
 <script context="module">
 	import partnerQueryApi from '$dataSources/api.that.tech/partner/queries';
 
-	export async function load({ page, fetch, session, context }) {
+	export async function load({ page }) {
 		const { partner, job } = page.params;
 		const { queryPartnerJobListing } = partnerQueryApi();
 

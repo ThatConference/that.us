@@ -44,7 +44,7 @@
 		});
 	}
 
-	export async function load({}) {
+	export async function load() {
 		return {
 			stuff: {
 				correlationId
@@ -57,7 +57,7 @@
 </script>
 
 <script>
-	import { onMount, onDestroy, setContext } from 'svelte';
+	import { onMount, setContext } from 'svelte';
 	import { navigating, session } from '$app/stores';
 
 	import { page } from '$app/stores';
@@ -75,7 +75,6 @@
 	setContext('correlationId', correlationId);
 
 	const { isEmpty } = lodash;
-	let unsub;
 
 	function onTidioChatApiReady() {
 		/*

@@ -74,7 +74,7 @@
 	}
 </script>
 
-<a {href} aria-label={ariaLabel} target="_blank" rel="noopener" >
+<a {href} aria-label={ariaLabel} target="_blank" rel="noopener">
 	<Icon
 		data={socialIcon}
 		class={`transition duration-500 ease-in-out transform hover:scale-125 cursor-pointer ${

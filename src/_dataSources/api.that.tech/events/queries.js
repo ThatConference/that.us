@@ -353,12 +353,14 @@ export default (fetch) => {
 	function queryEventWithSpeakersBySlug(slug) {
 		const variables = { slug };
 
-		return client.query({ query: QUERY_EVENT_WITH_SPEAKERS_BY_SLUG, variables }).then(({ data, errors }) => {
-			if (errors) log({ errors, tag: 'QUERY_EVENT_WITH_SPEAKERS_BY_SLUG' });
+		return client
+			.query({ query: QUERY_EVENT_WITH_SPEAKERS_BY_SLUG, variables })
+			.then(({ data, errors }) => {
+				if (errors) log({ errors, tag: 'QUERY_EVENT_WITH_SPEAKERS_BY_SLUG' });
 
-			const { event } = data.events;
-			return event ? event.get : null;
-		});
+				const { event } = data.events;
+				return event ? event.get : null;
+			});
 	}
 
 	function queryEventById(eventId) {

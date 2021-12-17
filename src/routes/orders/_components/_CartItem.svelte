@@ -3,7 +3,7 @@
 	export let lineItem;
 
 	import { createEventDispatcher } from 'svelte';
-	
+
 	const dispatch = createEventDispatcher();
 	$: subTotal = (lineItem.price * lineItem.qty).toFixed(2);
 

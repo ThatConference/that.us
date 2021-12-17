@@ -271,7 +271,12 @@
 
 		{#if activityDetails}
 			<ActionHeader title={activityDetails.title}>
-				<a href="/activities/{activityId}/" class="px-8 py-3 rounded-md shadow text-base leading-6 font-medium border-2 border-thatBlue-500 text-thatBlue-500 bg-white hover:bg-thatBlue-500 hover:text-white focus:bg-thatBlue-500 focus:text-white focus:outline-none focus:ring-thatBlue-500 focus:border-thatBlue-800 transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10" target="_blank" rel="noopener">Activity Details</a>
+				<a
+					href="/activities/{activityId}/"
+					class="px-8 py-3 rounded-md shadow text-base leading-6 font-medium border-2 border-thatBlue-500 text-thatBlue-500 bg-white hover:bg-thatBlue-500 hover:text-white focus:bg-thatBlue-500 focus:text-white focus:outline-none focus:ring-thatBlue-500 focus:border-thatBlue-800 transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10"
+					target="_blank"
+					rel="noopener">Activity Details</a
+				>
 			</ActionHeader>
 		{/if}
 	</div>

@@ -46,7 +46,7 @@
 	onMount(() => {
 		clipboard = new Clipboard('.discountCode');
 
-		clipboard.on('success', function (e) {
+		clipboard.on('success', function () {
 			copiedText = 'Copied!';
 		});
 	});

@@ -137,7 +137,7 @@
 		text="Please enter the user's pin."
 		eventId={ticket.event.id}
 		ticketId={ticket.id}
-		on:checkinCompleted={(e) => {
+		on:checkinCompleted={() => {
 			checkInClicked = false;
 		}}
 		on:close={() => (checkInClicked = false)}
@@ -151,7 +151,7 @@
 		eventId={ticket.event.id}
 		ticketId={ticket.id}
 		isOwedShirt={!ticket.receivedSwag}
-		on:checkinUpdated={(e) => {
+		on:checkinUpdated={() => {
 			editCheckInClicked = false;
 		}}
 		on:close={() => (editCheckInClicked = false)}

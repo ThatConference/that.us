@@ -6,9 +6,7 @@
 
 	import eventsApi from '$dataSources/api.that.tech/events/queries';
 	import sessionsQueryApi from '$dataSources/api.that.tech/sessions/queries';
-
 	import auth0 from '$utils/security';
-	import config from '$utils/config';
 
 	dayjs.extend(isSameOrBefore);
 	dayjs.extend(isBetween);

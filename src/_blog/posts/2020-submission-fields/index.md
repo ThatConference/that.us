@@ -8,9 +8,7 @@ authorSlug: clark
 layout: blog
 ---
 
-
 We know you all have been thinking through all the awesome you want to submit to THAT 2020 and now is the time to get those submissions in. You have only **6 days left** to get your abstracts in for THAT Conference 2020, so let's get to it!
-
 
 <div style="text-align: center; padding: 3rem 0;">
   <a href="/call-for-counselors" class="linkButton" target="_blank">
@@ -30,12 +28,10 @@ We know you all have been thinking through all the awesome you want to submit to
 - **Key Takeaways**: What are the thing(s) an attendee can plan to leave your session learning?
 - **Why are you the best person to give this talk?**: Give us a quick idea of your awesome and what would make you a great THAT 2020 Counselor on this topic.
 
-
 ### Submitting a workshop?<br/>We'll need a few more things...
 
 - **Prerequisites or Previous Experience**: What will an attendee need to have installed or know so that they can get the most out of your workshop?
 - **Agenda**: What does the outline of your workshop session look like?
-
 
 ### Optional fields to help us learn more about you and your submission
 
@@ -44,7 +40,6 @@ We know you all have been thinking through all the awesome you want to submit to
 - **Record your session?**: A portion of our sessions will be recorded again this year! Let us know for this session if you would like to be recorded.
 - **Mentorship**: If this session is selected, how much mentorship/collaboration with our team would you like?
 - **How can we help you be successful with this session?**: What else do you want to share with THAT Crew on you and your submission?
-  
 
   <div style="text-align: center; padding: 3rem 0;">
     <a href="/call-for-counselors" class="linkButton" target="_blank">

@@ -1,11 +1,9 @@
 <script>
-	import { Standard as StandardLink } from '$elements/links';
 	import seoMetaTags from '$utils/seo/metaTags';
 	import Seo from '$components/Seo.svelte';
 
 	import Layout from '../_components/_Layout.svelte';
 	import Header from '../_components/_Header.svelte';
-	import MemoryHighlight from '../_components/_MemoryHighlight.svelte';
 
 	const metaTags = ((title = 'Travel Information - THAT') => ({
 		title,

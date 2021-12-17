@@ -35,7 +35,7 @@
 		goto('/orders/summary/');
 	}
 
-	function handleOnPurchaseMembership(e) {
+	function handleOnPurchaseMembership() {
 		const eventTicket = products
 			.filter((f) => f.isEnabled)
 			.find((e) => e.productType === 'MEMBERSHIP');

@@ -8,8 +8,7 @@ authorSlug: clark
 layout: blog
 ---
 
-
-### Happy International Women's Day 
+### Happy International Women's Day
 
 **#EachforEqual**
 

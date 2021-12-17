@@ -58,7 +58,6 @@
 		startTime,
 		status,
 		durationInMinutes,
-		slug,
 		favoritedBy = [],
 		eventId,
 		event,
@@ -84,8 +83,6 @@
 	let sessionLocationDestination = sessionLookups.sessionLocationDestinations.options.find(
 		(x) => x.value === sessionLocation?.destination
 	)?.label;
-
-	let host = speakers[0];
 
 	let edit = $page.query.get('edit');
 	let isNew = $page.query.get('isNew');

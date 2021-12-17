@@ -19,11 +19,11 @@
 				</p>
 			</div>
 
-				<dl class="mt-12 lg:mt-0 lg:col-span-3 lg:ml-16">
-						{#each faqs as faq}
-								<FAQ {...faq} />
-						{/each}
-				</dl>
+			<dl class="mt-12 lg:mt-0 lg:col-span-3 lg:ml-16">
+				{#each faqs as faq}
+					<FAQ {...faq} />
+				{/each}
+			</dl>
 		</div>
 	</div>
 </div>

@@ -8,7 +8,6 @@ authorSlug: clark
 layout: blog
 ---
 
-
 Hi!
 
 In just 66 days, THAT Campsite will be set and ready to rock, but not without the most important part, YOU! That's right, from July 26th through July 29th, THAT Conference is back, and we want YOU to submit a session to share your unique perspective and awesome with an amazing community. Regardless of age, experience, or tech stack... you have something awesome to share and a community of people who want to hear it. Let's get right to it: THAT 2021 Call for Counselors (Speakers) is NOW OPEN, but fair warning not for long.
