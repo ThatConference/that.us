@@ -1,8 +1,6 @@
 /* eslint-disable global-require */
 module.exports = {
-	mode: 'jit',
-	purge: ['./src/**/*.{html,js,svelte,ts}'],
-
+	content: ['./src/**/*.{html,js,svelte,ts}'],
 	theme: {
 		fontFamily: {
 			og: ['Roboto']
