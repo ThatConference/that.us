@@ -1,5 +1,4 @@
 <script context="module">
-	import './global.css';
 	import 'lazysizes';
 	import { browser } from '$app/env';
 	import { v4 as uuidv4 } from 'uuid';
