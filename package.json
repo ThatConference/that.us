@@ -1,6 +1,6 @@
 {
 	"name": "that-us",
-	"version": "2.0.4",
+	"version": "0.0.0-semantic-release",
 	"description": "THAT.us website",
 	"main": "index.js",
 	"type": "module",
