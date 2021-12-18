@@ -1,3 +1,10 @@
+## [2.0.7](https://github.com/ThatConference/that.us/compare/v2.0.6...v2.0.7) (2021-12-18)
+
+
+### Bug Fixes
+
+* adding the correct version tag ([a817bd4](https://github.com/ThatConference/that.us/commit/a817bd49bf1b66d628cb80c50ca2911f0da639b7))
+
 ## [2.0.6](https://github.com/ThatConference/that.us/compare/v2.0.5...v2.0.6) (2021-12-18)
 
 
