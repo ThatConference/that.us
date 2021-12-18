@@ -11,7 +11,7 @@
 <div class="relative bg-thatBlue-200 bg-opacity-25">
 	<div class="mx-auto max-w-7xl w-full pt-10 pb-10 text-center">
 		<div class="flex flex-col">
-			<div class="z-10 transform translate-y-40">
+			<div class="z-[1] transform translate-y-40">
 				<h1
 					class="animate__animated animate__pulse shadowText relative font-extrabold uppercase text-thatBlue-500 text-4xl sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl"
 				>
