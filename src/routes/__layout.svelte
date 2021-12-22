@@ -111,7 +111,7 @@
 				...m,
 				{
 					message: '🙌 We shipped again! 🎉 Check out newest features on THAT.us!!!',
-					url: '/changelog-missed'
+					url: '/releases/changelog-missed'
 				}
 			]);
 		}
