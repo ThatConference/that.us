@@ -1,3 +1,10 @@
+## [2.0.8](https://github.com/ThatConference/that.us/compare/v2.0.7...v2.0.8) (2021-12-23)
+
+
+### Bug Fixes
+
+* update broken url ([4da317c](https://github.com/ThatConference/that.us/commit/4da317c424d40a4b5a3d4c293910cfc7a00c4e33))
+
 ## [2.0.7](https://github.com/ThatConference/that.us/compare/v2.0.6...v2.0.7) (2021-12-18)
 
 
