@@ -11,6 +11,7 @@
 	export let eventId;
 	export let targetLocation;
 	export let location;
+	export let dense = false;
 
 	// 3rd party
 	import { session } from '$app/stores';
@@ -132,94 +133,321 @@
 	const srcset = buildImageSrc(userProfileImage, ['96']);
 </script>
 
-<div
-	class={`w-full h-full flex flex-col ${
-		requiresAccessToJoin ? 'rounded-lg border-t-4 border-red-500' : ''
-	}`}
->
-	{#if type !== 'OPEN_SPACE' && host.profileSlug != 'thatconference'}
-		<div class="relative w-full text-center">
-			<div class="inline-block absolute top-8 right-0 bg-that-red rounded-l-xl p-2 pl-3 shadow-sm">
-				<div class="flex flex-col items-center">
-					<span class="text-white uppercase text-xs">Camp</span>
-					<span class="text-white uppercase text-xs">Counselor</span>
+{#if dense}
+	<div
+		class={`mb-2 w-full h-full flex flex-col ${
+			requiresAccessToJoin ? 'rounded-lg border-t-4 border-red-500' : ''
+		}`}
+	>
+		<!-- {#if type !== 'OPEN_SPACE' && host.profileSlug != 'thatconference'}
+			<div class="relative w-full text-center">
+				<div
+					class="inline-block absolute top-8 right-0 bg-that-red rounded-l-xl p-2 pl-3 shadow-sm"
+				>
+					<div class="flex flex-col items-center">
+						<span class="text-white uppercase text-xs">Camp</span>
+						<span class="text-white uppercase text-xs">Counselor</span>
+					</div>
 				</div>
 			</div>
-		</div>
-	{/if}
-	<div class="flex flex-col items-center p-3 w-full">
-		<a open href="/members/{host.profileSlug}/" class="flex-shrink-0">
-			<span class="inline-block relative">
-				<img
-					class="lazyload w-24 h-24 rounded-full"
-					alt={`${host.firstName} ${host.lastName}`}
-					data-sizes="auto"
-					data-src={srcset.src}
-					data-srcset={srcset.srcset}
-				/>
+		{/if} -->
+		<div class="flex">
+			<div
+				class="flex flex-col items-stretch text-center pt-3 basis-32 flex-shrink-0 flex-grow-0 justify-between"
+			>
+				<div class="flex flex-col flex-grow flex-shrink-0 justify-center">
+					<div class="flex flex-col flex-grow-0 flex-shrink-0 flex-start">
+						<a open href="/members/{host.profileSlug}/" class="flex-shrink-0">
+							<span class="inline-block relative">
+								<img
+									class="lazyload w-12 h-12 rounded-full"
+									alt={`${host.firstName} ${host.lastName}`}
+									data-sizes="auto"
+									data-src={srcset.src}
+									data-srcset={srcset.srcset}
+								/>
 
-				{#if host.earnedMeritBadges.length > 0}
-					<span class="absolute bottom-0 left-0 block h-8 w-8">
-						<img
-							class="lazyload"
-							src={host.earnedMeritBadges[0].image}
-							alt={host.earnedMeritBadges[0].name}
-						/>
-					</span>
-				{/if}
-			</span>
-		</a>
+								<!-- {#if host.earnedMeritBadges.length > 0}
+							<span class="absolute bottom-0 left-0 block h-8 w-8">
+								<img
+									class="lazyload"
+									src={host.earnedMeritBadges[0].image}
+									alt={host.earnedMeritBadges[0].name}
+								/>
+							</span>
+						{/if} -->
+							</span>
+						</a>
+						<h3 class="text-gray-400 text-sm leading-5 pt-1 text-center md:pb-2">
+							{`${host.firstName} ${host.lastName}`}
+						</h3>
+					</div>
+				</div>
 
-		<div class="flex flex-col text-center justify-center w-full">
-			<a href="/activities/{id}/">
-				<h3 class="text-gray-900 text-base leading-5 font-medium break-words pt-1">
-					{title}
-				</h3>
-				<h3 class="text-gray-400 text-sm leading-5 pt-1">
-					{`${host.firstName} ${host.lastName}`}
-				</h3>
-			</a>
-		</div>
-	</div>
+				<div class="flex flex-row justify-between visible md:hidden w-100 px-5">
+					<div class="text-center">
+						<CardLink href="/activities/{id}/" icon={info} text="" />
+					</div>
 
-	<div
-		class="flex-grow px-3 pb-3"
-		class:cursor-pointer={isLongerThan(shortDescription, 25)}
-		on:click|preventDefault={() => (expandDescription = !expandDescription)}
-	>
-		<p class="text-gray-500 text-sm leading-5 break-words">
-			{#if expandDescription}
-				<span class="lineBreaks">{shortDescription}</span>
-			{:else}
-				<div class:hover:text-gray-300={isLongerThan(shortDescription, 25)}>
-					<span>{truncate(shortDescription, 25)}</span>
-					{#if isLongerThan(shortDescription, 25)}
-						<Icon data={caretDown} class="ml-2" />
+					{#if !hasExpired}
+						{#if $session.isAuthenticated}
+							<button
+								on:click|preventDefault={!favoriteDisabled && handleToggle}
+								class:text-red-500={isFavorite}
+								class="relative inline-flex items-center justify-center
+					py-2 text-xs leading-4 text-gray-700 font-medium border
+					border-transparent rounded-br-lg hover:text-gray-300
+					focus:outline-none focus:ring-blue
+					focus:border-blue-300 focus:z-10 transition ease-in-out
+					duration-150"
+							>
+								<Icon data={heart} class="w-4 h-4" />
+							</button>
+						{:else}
+							<a
+								href="/login/"
+								class="relative inline-flex items-center justify-center
+						py-2 text-xs leading-4 text-gray-700 font-medium border
+						border-transparent rounded-br-lg hover:text-gray-300
+						focus:outline-none focus:ring-blue
+						focus:border-blue-300 focus:z-10 transition ease-in-out
+						duration-150"
+							>
+								<Icon data={heart} class="w-4 h-4" />
+							</a>
+						{/if}
 					{/if}
 				</div>
-			{/if}
-		</p>
-	</div>
+			</div>
 
-	<div class="flex flex-wrap items-center justify-center space-x-4 px-4 pb-3">
-		{#each tags as t}
-			<Tag>{t}</Tag>
-		{/each}
-	</div>
+			<div class="flex flex-col flex-grow justify-between">
+				<!-- COLUMN 2-->
+				<a href="/activities/{id}/">
+					<h3 class="text-gray-900 text-base leading-5 font-medium break-words pt-1">
+						{title}
+					</h3>
+				</a>
 
-	<div class="flex-none border-t border-gray-200">
-		<div class="-mt-px flex">
-			<div class="w-0 flex-1 flex">
-				<CardLink href="/activities/{id}/" icon={info} text={'More Details'} />
+				<div
+					class="flex-grow pb-1"
+					class:cursor-pointer={isLongerThan(shortDescription, 25)}
+					on:click|preventDefault={() => (expandDescription = !expandDescription)}
+				>
+					<p class="text-gray-500 text-sm leading-5 break-words">
+						{#if expandDescription}
+							<span class="lineBreaks">{shortDescription}</span>
+						{:else}
+							<div class:hover:text-gray-300={isLongerThan(shortDescription, 25)}>
+								<span>{truncate(shortDescription, 25)}</span>
+								{#if isLongerThan(shortDescription, 25)}
+									<Icon data={caretDown} class="ml-2" />
+								{/if}
+							</div>
+						{/if}
+					</p>
+				</div>
+
+				<!-- 
+				<div class="flex flex-wrap items-center justify-center space-x-4 px-4 pb-3">
+					{#each tags as t}
+						<Tag>{t}</Tag>
+					{/each}
+				</div> -->
+
+				<div class="border-t border-gray-200">
+					<div class="-mt-px grid grid-cols-2 md:grid-cols-4">
+						<div class="border-l pl-1 text-center hidden md:block">
+							<CardLink href="/activities/{id}/" icon={info} text={'More Details'} />
+						</div>
+
+						{#if !hasExpired}
+							<div class="border-l pl-1 text-center hidden md:block">
+								{#if $session.isAuthenticated}
+									<button
+										on:click|preventDefault={!favoriteDisabled && handleToggle}
+										class:text-red-500={isFavorite}
+										class="relative basis-0 flex-1 inline-flex items-center justify-center
+									py-2 text-xs leading-4 text-gray-700 font-medium border
+									border-transparent rounded-br-lg hover:text-gray-300
+									focus:outline-none focus:ring-blue
+									focus:border-blue-300 focus:z-10 transition ease-in-out
+									duration-150"
+									>
+										<Icon data={heart} class="w-4 h-4" />
+										<span class="ml-3">Favorite</span>
+									</button>
+								{:else}
+									<a
+										href="/login/"
+										class="relative basis-0 flex-1 inline-flex items-center justify-center
+										py-2 text-xs leading-4 text-gray-700 font-medium border
+										border-transparent rounded-br-lg hover:text-gray-300
+										focus:outline-none focus:ring-blue
+										focus:border-blue-300 focus:z-10 transition ease-in-out
+										duration-150"
+									>
+										<Icon data={heart} class="w-4 h-4" />
+										<span class="ml-3">Favorite</span>
+									</a>
+								{/if}
+							</div>
+						{/if}
+
+						{#if $session.isAuthenticated}
+							{#if canEdit()}
+								<div class="border-l pl-1 text-center">
+									<a
+										href="/activities/edit/{id}/"
+										class="relative basis-0 flex-1 inline-flex items-center justify-center
+									py-2 text-xs leading-4 text-gray-700 font-medium border
+									border-transparent rounded-br-lg hover:text-gray-300
+									focus:outline-none focus:ring-blue
+									focus:border-blue-300 focus:z-10 transition ease-in-out
+									duration-150"
+									>
+										<Icon data={cog} class="w-4 h-4" />
+										<span class="ml-3">Edit</span>
+									</a>
+								</div>
+							{/if}
+						{/if}
+
+						{#if !hasExpired}
+							<div class="col-span-2">
+								<div class="-mt-px flex">
+									{#if targetLocation === 'IN_PERSON'}
+										<div class="-ml-px basis-0 flex-1 flex">
+											<div
+												class="relative flex-1 inline-flex items-center justify-center
+										py-2 text-xs leading-4 text-white font-medium border
+										border-transparent rounded-br-lg transition ease-in-out
+										duration-150 bg-that-blue pointer-cursor"
+											>
+												<Icon data={user} class="-ml-1 mr-2 h-4 w-4" />
+												<span>In-Person</span>
+												<span class="ml-2">
+													<Icon data={mapMarker} class="h-4 w-4 pb-0.5 mr-2" />
+													Room: {lookupEnumLabel(location?.destination)}
+												</span>
+											</div>
+										</div>
+									{:else if canJoin}
+										<div class="-ml-px basis-0 flex-1 flex pl-1 border-l text-center">
+											<CardLink href="/join/{id}/" icon={signIn} text={'Join In'} />
+										</div>
+									{:else}
+										<div class="-ml-px flex-1 flex pl-1 border-l text-center">
+											<div
+												class="relative flex-1 inline-flex items-center justify-center
+											py-2 text-xs leading-4 text-gray-300 font-medium border
+											border-transparent rounded-br-lg rounded-bl-lg transition ease-in-out
+											duration-150"
+											>
+												<Icon data={signIn} class="-ml-1 mr-2 h-4 w-4" />
+												<span>Join {timeLeftToJoin}</span>
+											</div>
+										</div>
+									{/if}
+								</div>
+							</div>
+						{/if}
+					</div>
+				</div>
+			</div>
+			<!-- END COLUMN 2 -->
+		</div>
+		<!-- END GRID-->
+	</div>
+{:else}
+	<div
+		class={`w-full h-full flex flex-col ${
+			requiresAccessToJoin ? 'rounded-lg border-t-4 border-red-500' : ''
+		}`}
+	>
+		{#if type !== 'OPEN_SPACE' && host.profileSlug != 'thatconference'}
+			<div class="relative w-full text-center">
+				<div
+					class="inline-block absolute top-8 right-0 bg-that-red rounded-l-xl p-2 pl-3 shadow-sm"
+				>
+					<div class="flex flex-col items-center">
+						<span class="text-white uppercase text-xs">Camp</span>
+						<span class="text-white uppercase text-xs">Counselor</span>
+					</div>
+				</div>
+			</div>
+		{/if}
+		<div class="flex flex-col items-center p-3 w-full">
+			<a open href="/members/{host.profileSlug}/" class="flex-shrink-0">
+				<span class="inline-block relative">
+					<img
+						class="lazyload w-24 h-24 rounded-full"
+						alt={`${host.firstName} ${host.lastName}`}
+						data-sizes="auto"
+						data-src={srcset.src}
+						data-srcset={srcset.srcset}
+					/>
+
+					{#if host.earnedMeritBadges.length > 0}
+						<span class="absolute bottom-0 left-0 block h-8 w-`8">
+							<img
+								class="lazyload"
+								src={host.earnedMeritBadges[0].image}
+								alt={host.earnedMeritBadges[0].name}
+							/>
+						</span>
+					{/if}
+				</span>
+			</a>
+
+			<div class="flex flex-col text-center justify-center w-full">
+				<a href="/activities/{id}/">
+					<h3 class="text-gray-900 text-base leading-5 font-medium break-words pt-1">
+						{title}
+					</h3>
+					<h3 class="text-gray-400 text-sm leading-5 pt-1">
+						{`${host.firstName} ${host.lastName}`}
+					</h3>
+				</a>
+			</div>
+		</div>
+
+		<div
+			class="flex-grow px-3 pb-3"
+			class:cursor-pointer={isLongerThan(shortDescription, 25)}
+			on:click|preventDefault={() => (expandDescription = !expandDescription)}
+		>
+			<p class="text-gray-500 text-sm leading-5 break-words">
+				{#if expandDescription}
+					<span class="lineBreaks">{shortDescription}</span>
+				{:else}
+					<div class:hover:text-gray-300={isLongerThan(shortDescription, 25)}>
+						<span>{truncate(shortDescription, 25)}</span>
+						{#if isLongerThan(shortDescription, 25)}
+							<Icon data={caretDown} class="ml-2" />
+						{/if}
+					</div>
+				{/if}
+			</p>
+		</div>
+
+		<div class="flex flex-wrap items-center justify-center space-x-4 px-4 pb-3">
+			{#each tags as t}
+				<Tag>{t}</Tag>
+			{/each}
+		</div>
+
+		<div class="flex-none border-t border-gray-200">
+			<div class="flex-1 flex">
+				<CardLink href="/activities/{id}/" icon={info} text="More Details" />
 			</div>
 
 			{#if !hasExpired}
 				{#if $session.isAuthenticated}
-					<div class="-ml-px w-0 flex-1 flex border-l border-gray-200">
+					<div class="-ml-px basis-0 flex-1 flex border-t border-l border-gray-200">
 						<button
 							on:click|preventDefault={!favoriteDisabled && handleToggle}
 							class:text-red-500={isFavorite}
-							class="relative w-0 flex-1 inline-flex items-center justify-center
+							class="relative basis-0 flex-1 inline-flex items-center justify-center
                 py-2 text-xs leading-4 text-gray-700 font-medium border
                 border-transparent rounded-br-lg hover:text-gray-300
                 focus:outline-none focus:ring-blue
@@ -231,10 +459,10 @@
 						</button>
 					</div>
 				{:else}
-					<div class="-ml-px w-0 flex-1 flex border-l border-gray-200">
+					<div class="-ml-px flex-1 flex border-l border-t border-gray-200">
 						<a
 							href="/login/"
-							class="relative w-0 flex-1 inline-flex items-center justify-center
+							class="relative basis-0 flex-1 inline-flex items-center justify-center
                 py-2 text-xs leading-4 text-gray-700 font-medium border
                 border-transparent rounded-br-lg hover:text-gray-300
                 focus:outline-none focus:ring-blue
@@ -250,10 +478,10 @@
 
 			{#if $session.isAuthenticated}
 				{#if canEdit()}
-					<div class="-ml-px w-0 flex-1 flex border-l border-gray-200">
+					<div class="-ml-px basis-0 flex-1 flex border-l border-gray-200">
 						<a
 							href="/activities/edit/{id}/"
-							class="relative w-0 flex-1 inline-flex items-center justify-center
+							class="relative basis-0 flex-1 inline-flex items-center justify-center
                 py-2 text-xs leading-4 text-gray-700 font-medium border
                 border-transparent rounded-br-lg hover:text-gray-300
                 focus:outline-none focus:ring-blue
@@ -267,45 +495,45 @@
 				{/if}
 			{/if}
 		</div>
-	</div>
 
-	{#if !hasExpired}
-		<div class="flex-none border-t border-gray-200">
-			<div class="-mt-px flex">
-				{#if targetLocation === 'IN_PERSON'}
-					<div class="-ml-px w-0 flex-1 flex">
-						<div
-							class="relative w-0 flex-1 inline-flex items-center justify-center
+		{#if !hasExpired}
+			<div class="flex-none border-t border-gray-200">
+				<div class="-mt-px flex">
+					{#if targetLocation === 'IN_PERSON'}
+						<div class="-ml-px w-0 flex-1 flex">
+							<div
+								class="relative w-0 flex-1 inline-flex items-center justify-center
               py-2 text-xs leading-4 text-white font-medium border
               border-transparent rounded-br-lg rounded-bl-lg transition ease-in-out
               duration-150 bg-that-blue pointer-cursor"
-						>
-							<Icon data={user} class="-ml-1 mr-2 h-4 w-4" />
-							<span>In-Person</span>
-							<span class="ml-2">
-								<Icon data={mapMarker} class="h-4 w-4 pb-0.5 mr-2" />
-								Room: {lookupEnumLabel(location?.destination)}
-							</span>
+							>
+								<Icon data={user} class="-ml-1 mr-2 h-4 w-4" />
+								<span>In-Person</span>
+								<span class="ml-2">
+									<Icon data={mapMarker} class="h-4 w-4 pb-0.5 mr-2" />
+									Room: {lookupEnumLabel(location?.destination)}
+								</span>
+							</div>
 						</div>
-					</div>
-				{:else if canJoin}
-					<div class="-ml-px w-0 flex-1 flex">
-						<CardLink href="/join/{id}/" icon={signIn} text={'Join In'} />
-					</div>
-				{:else}
-					<div class="-ml-px w-0 flex-1 flex">
-						<div
-							class="relative w-0 flex-1 inline-flex items-center justify-center
+					{:else if canJoin}
+						<div class="-ml-px w-0 flex-1 flex">
+							<CardLink href="/join/{id}/" icon={signIn} text={'Join In'} />
+						</div>
+					{:else}
+						<div class="-ml-px w-0 flex-1 flex">
+							<div
+								class="relative w-0 flex-1 inline-flex items-center justify-center
                 py-2 text-xs leading-4 text-gray-300 font-medium border
                 border-transparent rounded-br-lg rounded-bl-lg transition ease-in-out
                 duration-150"
-						>
-							<Icon data={signIn} class="-ml-1 mr-2 h-4 w-4" />
-							<span>Join {timeLeftToJoin}</span>
+							>
+								<Icon data={signIn} class="-ml-1 mr-2 h-4 w-4" />
+								<span>Join {timeLeftToJoin}</span>
+							</div>
 						</div>
-					</div>
-				{/if}
+					{/if}
+				</div>
 			</div>
-		</div>
-	{/if}
-</div>
+		{/if}
+	</div>
+{/if}
