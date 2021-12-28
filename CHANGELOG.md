@@ -1,3 +1,10 @@
+# [2.1.0](https://github.com/ThatConference/that.us/compare/v2.0.9...v2.1.0) (2021-12-28)
+
+
+### Features
+
+* dense view ([fb6f633](https://github.com/ThatConference/that.us/commit/fb6f6332395d5dba32311fb3f4ce810e8cf65346))
+
 ## [2.0.9](https://github.com/ThatConference/that.us/compare/v2.0.8...v2.0.9) (2021-12-28)
 
 ### Bug Fixes
