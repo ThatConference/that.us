@@ -23,7 +23,7 @@
 	async function handleCheckIn() {
 		waiting = true;
 
-		browser && woopra.track('event_inperson_checkin');
+		browser && window.woopra.track('event_inperson_checkin');
 
 		const { result, message } = await checkIn(eventId, ticketId, pinNumber);
 
@@ -128,7 +128,7 @@
 								on:digit={(event) => {
 									pinNumber = pinNumber.concat(event.detail);
 								}}
-								on:backspace={(event) => {
+								on:backspace={() => {
 									pinNumber = pinNumber.slice(0, -1);
 								}}
 							/>

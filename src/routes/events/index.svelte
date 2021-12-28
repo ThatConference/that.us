@@ -5,7 +5,7 @@
 
 	const { sortBy, take, drop } = lodash;
 
-	export async function load({}) {
+	export async function load() {
 		const queryEvents = () =>
 			eventsApi()
 				.queryEventsByCommunity()

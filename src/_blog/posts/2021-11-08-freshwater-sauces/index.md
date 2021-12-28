@@ -30,7 +30,7 @@ We want to congratulate [Brad](https://that.us/members/bradmarsh/) and [Freshwat
 ~ Clark
 
 <div class="w-full grid place-content-center">
-	<img class="w-[300px] lazyload" src={cdnUrl("freshwater-logo-blue.png")}>
+	<img class="w-[300px] lazyload" src={cdnUrl("freshwater-logo-blue.png")} alt="hot sauce bottle" />
 </div>
 
 In late summer 2019, I headed east with my family, my laptop, and one bottle of homemade hot sauce to attend the Wisconsin Dells edition of THAT Conference. I had two goals in mind during that drive. Number one and most important was to enjoy THAT Conference, and all of the unique experiences it would present, and two was to validate or invalidate the feedback I'd been receiving on my hot sauce from my friends and family.

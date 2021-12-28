@@ -1,4 +1,5 @@
 <script>
+	import { browser } from '$app/env';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 	import { Circle3 } from 'svelte-loading-spinners';
@@ -35,7 +36,7 @@
 
 	async function handleContactExchange() {
 		waiting = true;
-		browser && woopra.track('event_contact_exchanged');
+		browser && window.woopra.track('event_contact_exchanged');
 
 		const { result, message } = await addPin(eventId, pinNumber, partnerNotes);
 
@@ -124,7 +125,7 @@
 						on:digit={(event) => {
 							pinNumber = pinNumber.concat(event.detail);
 						}}
-						on:backspace={(event) => {
+						on:backspace={() => {
 							pinNumber = pinNumber.slice(0, -1);
 						}}
 					/>

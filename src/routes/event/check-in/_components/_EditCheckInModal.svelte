@@ -25,7 +25,7 @@
 
 	async function handleResetPin() {
 		waiting = true;
-		browser && woopra.track('event_inperson_edit_checkin');
+		browser && window.woopra.track('event_inperson_edit_checkin');
 
 		const { result, message } = await setPartnerPin(eventId, ticketId, pinNumber);
 
@@ -41,7 +41,7 @@
 
 	async function handleRevertCheckIn() {
 		waiting = true;
-		browser && woopra.track('event_inperson_edit_checkin');
+		browser && window.woopra.track('event_inperson_edit_checkin');
 
 		const { result, message } = await revertCheckIn(eventId, ticketId);
 
@@ -62,7 +62,7 @@
 
 	async function handleOweSwag() {
 		waiting = true;
-		browser && woopra.track('event_inperson_edit_checkin');
+		browser && window.woopra.track('event_inperson_edit_checkin');
 
 		const { result, message } = await setReceivedSwag(eventId, ticketId, !isOwedShirt);
 
@@ -205,7 +205,7 @@
 								on:digit={(event) => {
 									pinNumber = pinNumber.concat(event.detail);
 								}}
-								on:backspace={(event) => {
+								on:backspace={() => {
 									pinNumber = pinNumber.slice(0, -1);
 								}}
 							/>

@@ -27,7 +27,7 @@ In this morning edition of words that are not code:
 ## The road to the lone star state
 
 <div class="w-full grid place-content-center">
-	<img class="w-[300px] lazyload" src={cdnUrl("that-tx.png")}>
+	<img class="w-[300px] lazyload" src={cdnUrl("that-tx.png")} alt="THAT Logo" />
 </div>
 
 ### CALL FOR SPEAKERS ENDS SOON!!!
@@ -59,7 +59,7 @@ This is our first time down in Texas and we couldn't be more excited to become p
 ## 15th of every month === THAT Online
 
 <div class="w-full grid place-content-center">
-	<img class="w-[300px] lazyload" src="that-online.png">
+	<img class="w-[300px] lazyload" src="that-online.png" alt="THAT Logo" />
 </div>
 
 **TODAY is THAT ONLINE!** Look we know you're tired of more Zoom calls. I promise you this THAT is different. The activities on THAT are meant to be an interactive conversation, not slide-slinging. It's where we share screens and solve problems. It's where real practitioners collaborate, it's an unconference, and we hope to see you there.
@@ -75,7 +75,7 @@ Remember, this isn't our THAT, it's yours. If there is something you'd like to c
 ## What's up at THAT?
 
 <div class="w-full grid place-content-center">
-	<img class="w-[335px] lazyload" src="kalahari-hallway.jpg">
+	<img class="w-[335px] lazyload" src="kalahari-hallway.jpg" alt="Kalahari" />
 </div>
 
 Over the past two years, we've all experienced a lot of change, and THAT has been no different. The pandemic created an opportunity for us to really work towards our goals of supporting geeks every day of the year, and thus we've been crazy hard at work ever since.

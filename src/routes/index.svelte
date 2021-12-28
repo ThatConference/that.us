@@ -122,7 +122,7 @@
 			<UpNext
 				items={$state.context.items}
 				hasMore={$state.context.cursor ? true : false}
-				on:next={(e) => {
+				on:next={() => {
 					send('NEXT');
 				}}
 			/>
@@ -165,7 +165,7 @@
 			<UpNext
 				items={$state.context.items}
 				hasMore={$state.context.cursor ? true : false}
-				on:next={(e) => {
+				on:next={() => {
 					send('NEXT');
 				}}
 			/>

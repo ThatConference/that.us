@@ -229,7 +229,7 @@
 						message: `Invalid format: use only letters, numbers, dash, and underscore`
 					});
 				}
-				return new Promise((res, reject) =>
+				return new Promise((res) =>
 					isSlugTaken(slug).then((r) => {
 						if (isNewProfile) res(!r);
 						res(true);

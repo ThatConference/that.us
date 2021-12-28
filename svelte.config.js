@@ -1,15 +1,14 @@
-/** @type {import('@sveltejs/kit').Config} */
+import adapter from '@sveltejs/adapter-auto';
 import preprocess from 'svelte-preprocess';
 import { resolve } from 'path';
 import { mdsvex } from 'mdsvex';
 import mdsvexConfig from './mdsvex.config.js';
 
-import vercelAdapter from '@sveltejs/adapter-vercel';
-
 //todo this needs to get checked on the build rigs
 const dev = process.env.NODE_ENV === 'development' ? true : false;
 console.log('process.env.NODE_ENV', dev);
 
+/** @type {import('@sveltejs/kit').Config} */
 const config = {
 	extensions: ['.svelte', ...mdsvexConfig.extensions],
 	kit: {
@@ -32,7 +31,7 @@ const config = {
 				}
 			}
 		},
-		adapter: vercelAdapter()
+		adapter: adapter()
 	},
 	preprocess: !dev
 		? [

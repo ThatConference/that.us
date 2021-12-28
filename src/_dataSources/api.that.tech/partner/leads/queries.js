@@ -61,8 +61,7 @@ export default (fetch) => {
 
 				let results = [];
 				if (data) {
-					const { all } = data?.partners?.us?.leads;
-					results = all;
+					results = data?.partners?.us?.leads?.all;
 				}
 
 				return results || [];

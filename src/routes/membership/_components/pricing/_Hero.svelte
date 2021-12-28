@@ -23,7 +23,8 @@
 		goto('/orders/summary/');
 	}
 
-	function handleAddEventTicketClick(quantity = 1) {
+	// function handleAddEventTicketClick(quantity = 1) {
+	function handleAddEventTicketClick() {
 		// const isBulkPurchase = quantity > 1 ? true : false;
 		// send('ADD_ITEM', { ...eventTicket, isBulkPurchase, quantity });
 		// goto('/orders/summary/');

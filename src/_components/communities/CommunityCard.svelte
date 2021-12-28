@@ -1,6 +1,5 @@
 <script>
 	export let community;
-	let imageCrop = '?mask=ellipse&w=500&h=500&fit=crop';
 </script>
 
 <span class="relative flex">

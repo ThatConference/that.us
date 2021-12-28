@@ -4,7 +4,6 @@ description: Code of Conduct for THAT Conference
 layout: support
 ---
 
-
 <div class="max-w-prose mx-auto">
   <div class="prose prose-lg text-gray-500">
 

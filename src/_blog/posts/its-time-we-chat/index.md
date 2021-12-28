@@ -8,7 +8,6 @@ authorSlug: clark
 layout: blog
 ---
 
-
 2020 was, without a doubt, an unprecedented year flipping the script on just about everything. This was especially true for us at THAT Conference.
 
 As we navigated through March and April of last year we quickly realized 2020 was going to be very different and our beloved in-person Wisconsin event was not going to happen nor would we be able to debut THAT in Texas.

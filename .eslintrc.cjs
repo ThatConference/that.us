@@ -8,7 +8,7 @@ module.exports = {
 		ecmaVersion: 2020
 	},
 	rules: {
-		"no-unused-vars": [2, {"args": "all", "argsIgnorePattern": "^_"}]
+		'no-unused-vars': [2, { args: 'all', argsIgnorePattern: '^_' }]
 	},
 	env: {
 		browser: true,

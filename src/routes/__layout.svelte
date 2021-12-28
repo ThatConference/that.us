@@ -1,4 +1,5 @@
 <script context="module">
+	import '../app.css';
 	import 'lazysizes';
 	import { browser } from '$app/env';
 	import { v4 as uuidv4 } from 'uuid';
@@ -43,7 +44,7 @@
 		});
 	}
 
-	export async function load({}) {
+	export async function load() {
 		return {
 			stuff: {
 				correlationId
@@ -56,7 +57,7 @@
 </script>
 
 <script>
-	import { onMount, onDestroy, setContext } from 'svelte';
+	import { onMount, setContext } from 'svelte';
 	import { navigating, session } from '$app/stores';
 
 	import { page } from '$app/stores';
@@ -68,14 +69,12 @@
 	import cart from '$utils/cart';
 
 	import Preloading from '$components/preloading.svelte';
-	import Tailwindcss from '$elements/Tailwindcss.svelte';
 
 	// setup the context on the cart for later usage
 	setContext('cart', cart);
 	setContext('correlationId', correlationId);
 
 	const { isEmpty } = lodash;
-	let unsub;
 
 	function onTidioChatApiReady() {
 		/*
@@ -163,6 +162,45 @@
 	{/if}
 
 	<slot />
-
-	<Tailwindcss />
 </div>
+
+<style>
+	:global(.strike) {
+		text-decoration: line-through;
+	}
+
+	:global(.prose a) {
+		text-decoration: none;
+		color: #26529a;
+	}
+
+	:global(.prose a:hover) {
+		color: #ffffff;
+	}
+
+	:global(.lineBreaks) {
+		white-space: pre-line;
+	}
+
+	:global(.tag-form-input .svelte-tags-input-tag) {
+		background: #252f3f;
+	}
+
+	:global(.sveltejs-forms .field.error input, .sveltejs-forms .field.error textarea) {
+		--text-opacity: 1;
+		border: 1px solid rgba(224, 36, 36, var(--text-opacity));
+	}
+	:global(.sveltejs-forms .field.error .message) {
+		margin-top: 0.2rem;
+		font-style: italic;
+		--text-opacity: 1;
+		color: rgba(224, 36, 36, var(--text-opacity));
+	}
+
+	:global(select) {
+		/* for Firefox */
+		-moz-appearance: none;
+		/* for Safari, Chrome, Opera */
+		-webkit-appearance: none;
+	}
+</style>

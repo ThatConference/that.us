@@ -4,14 +4,14 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-		<meta name="theme-color" content="#26529a" media="(prefers-color-scheme: light)">
-		<meta name="theme-color" content="#16215A"media="(prefers-color-scheme: dark)">
+		<meta name="theme-color" content="#26529a" media="(prefers-color-scheme: light)" />
+		<meta name="theme-color" content="#16215A" media="(prefers-color-scheme: dark)" />
 
 		<link rel="preconnect" href="https://that.imgix.net" />
-		
-		<link rel="canonical" href="https://www.that.us/" />				
+
+		<link rel="canonical" href="https://www.that.us/" />
 		<link rel="shortcut icon" type="image/png" href="/favicon.png" />
-		
+
 		<!-- todo: we need to create this image -->
 		<link rel="icon" href="/favicon.ico" />
 		<link rel="icon" type="image/png" href="/favicon.png" />
@@ -28,9 +28,9 @@
 			rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
 		/>
-		
+
 		%svelte.head%
-	
+
 		<script type="application/ld+json">
 			{
 				"@context": "http://schema.org",
@@ -62,53 +62,100 @@
 		</script>
 		<!-- stripe -->
 		<script defer src="https://js.stripe.com/v3/"></script>
-		
-		<!-- tidio chat bot -->
-		<script defer src="//code.tidio.co/qcwuuigfzw3cjegsc2fyo0sniyh3c3ue.js">
-		</script>
 
-</head>
-<body>
+		<!-- tidio chat bot -->
+		<script defer src="//code.tidio.co/qcwuuigfzw3cjegsc2fyo0sniyh3c3ue.js"></script>
+	</head>
+	<body>
 		<div id="svelte">%svelte.body%</div>
 
 		<!-- Google Analytics -->
 		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-21705613-11"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			gtag('js', new Date());
 
-      gtag('config', 'UA-21705613-11');
-    </script>
+			gtag('config', 'UA-21705613-11');
+		</script>
 
 		<!-- Start of Woopra Code -->
 		<script>
-			!function(){var t,o,c,e=window,n=document,r=arguments,a="script",i=["call","cancelAction","config","identify","push","track","trackClick","trackForm","update","visit"],s=function(){var t,o=this,c=function(t){o[t]=function(){return o._e.push([t].concat(Array.prototype.slice.call(arguments,0))),o}};for(o._e=[],t=0;t<i.length;t++)c(i[t])};for(e.__woo=e.__woo||{},t=0;t<r.length;t++)e.__woo[r[t]]=e[r[t]]=e[r[t]]||new s;(o=n.createElement(a)).async=1,o.src="https://static.woopra.com/js/w.js",(c=n.getElementsByTagName(a)[0]).parentNode.insertBefore(o,c)}("woopra");
+			!(function () {
+				var t,
+					o,
+					c,
+					e = window,
+					n = document,
+					r = arguments,
+					a = 'script',
+					i = [
+						'call',
+						'cancelAction',
+						'config',
+						'identify',
+						'push',
+						'track',
+						'trackClick',
+						'trackForm',
+						'update',
+						'visit'
+					],
+					s = function () {
+						var t,
+							o = this,
+							c = function (t) {
+								o[t] = function () {
+									return o._e.push([t].concat(Array.prototype.slice.call(arguments, 0))), o;
+								};
+							};
+						for (o._e = [], t = 0; t < i.length; t++) c(i[t]);
+					};
+				for (e.__woo = e.__woo || {}, t = 0; t < r.length; t++)
+					e.__woo[r[t]] = e[r[t]] = e[r[t]] || new s();
+				((o = n.createElement(a)).async = 1),
+					(o.src = 'https://static.woopra.com/js/w.js'),
+					(c = n.getElementsByTagName(a)[0]).parentNode.insertBefore(o, c);
+			})('woopra');
 
 			woopra.config({
-					domain: 'that.us'
+				domain: 'that.us'
 			});
 			woopra.track();
 		</script>
 
 		<script type="text/javascript">
-			_linkedin_partner_id = "4063089";
+			_linkedin_partner_id = '4063089';
 			window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
 			window._linkedin_data_partner_ids.push(_linkedin_partner_id);
-			</script><script type="text/javascript">
-			(function(l) {
-			if (!l){window.lintrk = function(a,b){window.lintrk.q.push([a,b])};
-			window.lintrk.q=[]}
-			var s = document.getElementsByTagName("script")[0];
-			var b = document.createElement("script");
-			b.type = "text/javascript";b.async = true;
-			b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
-			s.parentNode.insertBefore(b, s);})(window.lintrk);
+		</script>
+		<script type="text/javascript">
+			(function (l) {
+				if (!l) {
+					window.lintrk = function (a, b) {
+						window.lintrk.q.push([a, b]);
+					};
+					window.lintrk.q = [];
+				}
+				var s = document.getElementsByTagName('script')[0];
+				var b = document.createElement('script');
+				b.type = 'text/javascript';
+				b.async = true;
+				b.src = 'https://snap.licdn.com/li.lms-analytics/insight.min.js';
+				s.parentNode.insertBefore(b, s);
+			})(window.lintrk);
 		</script>
 
 		<noscript>
-			<img height="1" width="1" style="display:none;" alt="" src="https://px.ads.linkedin.com/collect/?pid=4063089&fmt=gif" />
+			<img
+				height="1"
+				width="1"
+				style="display: none"
+				alt=""
+				src="https://px.ads.linkedin.com/collect/?pid=4063089&fmt=gif"
+			/>
 		</noscript>
-	
 	</body>
 </html>

@@ -8,7 +8,6 @@ export default [
 		href: 'https://twitter.com/thatconference',
 		network: 'TWITTER',
 		ariaLabel: 'Twitter'
-
 	},
 	{
 		href: 'https://facebook.com/thatconference',

@@ -30,7 +30,7 @@
 	const { isEmpty } = lodash;
 	const { updateSharedProfile } = meMutationsApi();
 
-	async function handleUpdate({ detail: { values, setSubmitting, resetForm } }) {
+	async function handleUpdate({ detail: { values, setSubmitting } }) {
 		setSubmitting(true);
 		await updateSharedProfile(values);
 		setSubmitting(false);

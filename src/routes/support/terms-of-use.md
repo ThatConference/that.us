@@ -7,7 +7,6 @@ layout: support
 <div class="max-w-prose mx-auto">
   <div class="prose prose-lg text-gray-500">
 
-
 The website you have entered (thatconference.com, its sub-domains, affiliated websites, any mobile versions, and any services available therefrom) (the “Site”) is a copyrighted work owned and operated by THAT Conference a Corporation with its principal offices in Spring Grove, Illinois (“THAT Conference,” “we” or “us”).
 
 **LAST MODIFIED: March 30, 2018**

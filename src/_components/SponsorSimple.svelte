@@ -6,7 +6,6 @@
 	import gFetch from '$utils/gfetch';
 	import envConfig from '$utils/config';
 	import { Standard as StandardLink } from '$elements/links';
-	import { Shell } from '$elements/buttons';
 
 	const GET_PARTNERS = `
     query getCurrentEvent($id: ID, $eventSlug: String) {

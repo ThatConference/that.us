@@ -19,7 +19,6 @@
 	let stepOneComplete = false;
 	let stepTwoComplete = false;
 	let stepThreeComplete = false;
-	let stepFourComplete = false;
 
 	service.onTransition((eventState) => {
 		if (eventState.matches('authenticated')) {

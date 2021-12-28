@@ -1,15 +1,15 @@
 <script>
 	export let eventTicket;
 
-	import { getContext } from 'svelte';
 	import { goto } from '$app/navigation';
 
 	import { Standard as StandardButton } from '$elements/buttons';
 	import { Check, Ban } from '$elements/svgs';
 
-	const { send } = getContext('cart');
+	// const { send } = getContext('cart');
 
-	function handleAddEventTicketClick(quantity = 1) {
+	// function handleAddEventTicketClick(quantity = 1) {
+	function handleAddEventTicketClick() {
 		// const isBulkPurchase = quantity > 1 ? true : false;
 
 		// send('ADD_ITEM', { ...eventTicket, isBulkPurchase, quantity });

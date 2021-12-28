@@ -4,7 +4,7 @@
 
 	import AnnualMembership from './_AnnualMembership.svelte';
 	import EventTickets from './_EventTickets.svelte';
-	import Discounts from './_Discounts.svelte';
+	//import Discounts from './_Discounts.svelte';
 </script>
 
 <section class="bg-thatBlue-700 py-12 lg:py-16">

@@ -4,7 +4,7 @@
 
 	let submitted = false;
 
-	function handleSubmit({ detail: { values, setSubmitting, resetForm } }) {
+	function handleSubmit({ detail: { values, setSubmitting } }) {
 		setSubmitting(true);
 
 		const data = new FormData();
@@ -16,7 +16,7 @@
 			body: data,
 			mode: 'no-cors'
 		})
-			.then((r) => {
+			.then(() => {
 				setSubmitting(false);
 				submitted = true;
 			})

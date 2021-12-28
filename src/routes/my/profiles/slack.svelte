@@ -28,7 +28,7 @@
 	let results = undefined;
 	let loading = false;
 
-	function handleOnClick(e) {
+	function handleOnClick() {
 		loading = true;
 		results = undefined;
 		return requestSlackInvite().then((r) => {

@@ -4,7 +4,7 @@
 	import { createEventDispatcher } from 'svelte';
 	import lodash from 'lodash';
 
-	import { Check, Ban } from '$elements/svgs';
+	import { Check } from '$elements/svgs';
 	import { Highlight as HighlightLink } from '$elements/links';
 	import { Standard as StandardButton, Highlight as HighlightButton } from '$elements/buttons';
 
@@ -28,12 +28,12 @@
 		});
 	}
 
-	function handleMembershipPurchase(ref) {
-		dispatch('purchase-membership-ticket', {
-			eventId: event.id,
-			ref
-		});
-	}
+	// function handleMembershipPurchase(ref) {
+	// 	dispatch('purchase-membership-ticket', {
+	// 		eventId: event.id,
+	// 		ref
+	// 	});
+	// }
 </script>
 
 <div>

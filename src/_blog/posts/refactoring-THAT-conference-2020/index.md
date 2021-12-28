@@ -8,7 +8,6 @@ authorSlug: clark
 layout: blog
 ---
 
-
 ### Refactoring THAT Conference 2020
 
 Last week we were faced with the incredibly difficult task of announcing our new plans for THAT Conference 2020, or better said, this year we're refactoring THAT Conference 2020. Not cancelled, not postponed, and not in-person, just different and refactored in such a way we hope we can bring everyone the most value given our current climate.

@@ -28,10 +28,6 @@
 
 	$: addText = items.length > 0 ? 'Add Another' : 'Add';
 
-	function isPopulated(str) {
-		return str.length > 0;
-	}
-
 	function updateField() {
 		setField(
 			'supportingArtifacts',

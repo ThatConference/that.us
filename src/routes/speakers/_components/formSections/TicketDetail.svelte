@@ -22,7 +22,7 @@
 	// form values
 	let tshirtSizeSelection, hoodieSizeSelection, dietaryRequirementsSelection;
 
-	async function handleUpdateAllocation(e) {
+	async function handleUpdateAllocation() {
 		submitting = true;
 
 		const request = {

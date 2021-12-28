@@ -3,7 +3,7 @@
 
 	import seoMetaTags from '$utils/seo/metaTags';
 	import Seo from '$components/Seo.svelte';
-	import { Highlight as HighlightLink, Standard as StandardLink } from '$elements/links';
+	import { Standard as StandardLink } from '$elements/links';
 
 	const metaTags = ((title = 'Payment Received - THAT') => ({
 		title,

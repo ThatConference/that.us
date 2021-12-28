@@ -19,7 +19,6 @@
 
 	import { Shell as ShellButton } from '$elements/buttons';
 
-	let newItem;
 	let items = initialData?.takeaways?.map((i) => ({ title: i, id: uuidv4() })) || [];
 
 	$: addText = items.length > 0 ? 'Add Another' : 'Add';

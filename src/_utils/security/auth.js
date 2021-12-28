@@ -61,7 +61,8 @@ export function initAuth0(config) {
 
 					// validate account is verified
 					if (!isNil(user) && !isEmpty(user)) {
-						const [provider] = user?.sub.split('|');
+						// eslint-disable-next-line no-unsafe-optional-chaining
+						const [provider] = user.sub?.split('|');
 						if (provider !== 'twitter') {
 							if (!user.email_verified) {
 								return {

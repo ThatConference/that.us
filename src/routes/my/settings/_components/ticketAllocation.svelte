@@ -37,7 +37,7 @@
 		}`;
 	}
 
-	async function handleSubmit({ detail: { values, resetForm } }) {
+	async function handleSubmit({ detail: { values } }) {
 		const { emailAddress, orderId, allocationId } = values;
 		const r = await allocateTicket(orderId, allocationId, emailAddress);
 

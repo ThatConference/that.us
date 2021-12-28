@@ -27,7 +27,7 @@
 	onMount(() => {
 		clipboard = new Clipboard('#calendarUrl');
 
-		clipboard.on('success', function (e) {
+		clipboard.on('success', function () {
 			copiedText = 'Copied!';
 		});
 	});

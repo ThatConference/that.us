@@ -8,7 +8,7 @@
 
 	import activityMachine from '../_machines/activities';
 
-	const { state, send } = useMachine(activityMachine({ profileSlug }), {
+	const { state } = useMachine(activityMachine({ profileSlug }), {
 		devTools: debug.xstate
 	});
 </script>

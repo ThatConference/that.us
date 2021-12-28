@@ -1,7 +1,6 @@
 <script>
 	export let title;
 	export let preText = 'THAT Legal Stuff';
-	export let description;
 
 	import Layout from '../ContentLayout.svelte';
 	import Header from './_Header.svelte';

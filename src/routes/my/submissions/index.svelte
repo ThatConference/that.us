@@ -19,7 +19,7 @@
 	import { fade } from 'svelte/transition';
 
 	import seoMetaTags from '$utils/seo/metaTags';
-	import { ModalError, ModalWarning } from '$elements';
+	import { ModalWarning } from '$elements';
 	import Seo from '$components/Seo.svelte';
 
 	import SubmissionList from './_components/submissionList.svelte';

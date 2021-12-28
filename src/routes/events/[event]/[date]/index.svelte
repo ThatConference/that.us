@@ -1,5 +1,9 @@
 <script context="module">
 	import eventsApi from '$dataSources/api.that.tech/events/queries';
+	import Hybrid from '../../_components/_Hybrid.svelte';
+	import MultiDay from '../../_components/_MultiDay.svelte';
+	import Online from '../../_components/_Online.svelte';
+
 	let eventFormat;
 
 	export async function load({ page, fetch }) {
@@ -43,10 +47,6 @@
 
 	import seoMetaTags from '$utils/seo/metaTags';
 	import Seo from '$components/Seo.svelte';
-
-	import Hybrid from '../../_components/_Hybrid.svelte';
-	import MultiDay from '../../_components/_MultiDay.svelte';
-	import Online from '../../_components/_Online.svelte';
 
 	const metaTags = ((title = `${event.name} - THAT`) => ({
 		title,

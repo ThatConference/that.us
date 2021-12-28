@@ -59,9 +59,6 @@
 
 	const { cdnUrl } = image(slug);
 
-	const createUrl = (imageName) =>
-		`https://images.that.tech/blog/posts/${slug}/${imageName}?auto=format&dpr=2`;
-
 	const metaTags = ((bTitle = `${title} - THAT`) => ({
 		title: bTitle,
 		tags: seoMetaTags({
