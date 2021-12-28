@@ -258,6 +258,7 @@
 					{:else}
 						<div class="mt-2 mx-2 rounded-md shadow-sm">
 							<a
+								rel="external"
 								href="/login/"
 								class="relative inline-flex items-center px-4 py-2 border-2
                   border-thatBlue-500 text-sm leading-5 font-medium rounded-md

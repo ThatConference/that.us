@@ -32,7 +32,8 @@
 				{handle}
 			</StandardButton>
 		{:else}
-			<StandardLink class="h-3/4" href="/login/">Login and Follow Today</StandardLink>
+			<StandardLink class="h-3/4" rel="external" href="/login/">Login and Follow Today</StandardLink
+			>
 		{/if}
 	</span>
 </CTA>

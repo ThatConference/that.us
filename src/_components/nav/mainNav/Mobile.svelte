@@ -22,6 +22,6 @@
 	{#if $session.isAuthenticated}
 		<MobileUsersProfile darkMode={true} />
 	{:else}
-		<StandardLink href="/login/">Log in</StandardLink>
+		<StandardLink rel="external" href="/login/">Log in</StandardLink>
 	{/if}
 </div>

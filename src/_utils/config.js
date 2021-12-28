@@ -34,7 +34,7 @@ export const securityConfig = () => {
 		},
 
 		routes: {
-			login: '/login',
+			login: '/login/',
 			callback: '/api/auth/callback',
 			redirectUri: import.meta.env.VITE_REDIRECT_URI || configMissing('VITE_REDIRECT_URI'),
 			postLogoutRedirectUri:

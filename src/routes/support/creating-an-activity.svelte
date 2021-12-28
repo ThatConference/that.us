@@ -36,7 +36,7 @@
 
 			<p>
 				To create an Activity you first need to
-				<a href="/login/">log in</a>
+				<a rel="external" href="/login/">log in</a>
 				if you're not already. If you still need an account simply
 				<a href="/signup/">create one here</a>, and then update your
 				<a href="/my/profiles/primary/">profile accordingly</a>. Once completed you can then create

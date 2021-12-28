@@ -53,7 +53,8 @@
 					step="1"
 					isActive={$state.matches('pendingLogin')}
 					stepName="Login"
-					on:click={() => goto('/login/?r=/orders/summary')}
+					rel="external"
+					href="/login/?r=/orders/summary"
 				/>
 			{/if}
 
@@ -149,6 +150,7 @@
 		</div>
 		<div class="mt-3 text-sm">
 			<a
+				rel="external"
 				href="/login/?r=/orders/summary"
 				class="font-medium text-thatOrange-400 hover:text-thatOrange-500"
 			>
