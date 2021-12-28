@@ -53,6 +53,7 @@
 	let family = true;
 	let workshop = true;
 	let openSpace = true;
+	let dense = false;
 
 	$: {
 		const tagsSet = new Set();
@@ -170,10 +171,19 @@
 
 <div class="relative">
 	<div class="sticky z-30 top-0 ">
-		<div class="absolute top-0 right-0 border-gray-200 pt-4">
+		<div class="absolute top-0 right-0 border-gray-200 pt-4 content-center flex">
+			<div class="form-check mt-2 mr-2 flex content-center">
+				<input
+					id="dense"
+					type="checkbox"
+					bind:checked={dense}
+					class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+				/>
+				<label for="dense" class="form-check-label inline-block text-gray-800">Dense</label>
+			</div>
 			<button
 				type="button"
-				class="max-w-xs h-10 w-10 rounded-full text-gray-300 focus:outline-none
+				class="max-w-xs mr-2 h-10 w-10 rounded-full text-gray-300 focus:outline-none
           duration-150 ease-in-out bg-thatBlue-500 sm:bg-white lg:hover:bg-thatBlue-400"
 				class:bg-thatRed-500={selectedFilterTerms.length > 0}
 				aria-label={`Show filter and tags options${
@@ -224,7 +234,7 @@
 					{dayjs(day.dayOfYear).format("dddd, MMMM D, 'YY")}
 				</h2>
 
-				{#each day.timeSlots as ts, t}
+				{#each day.timeSlots as ts}
 					<div class="relative">
 						<h2
 							class="sticky top-11 sm:top-13 pt-2 z-10 bg-gray-100 text-xl md:text-4xl 
@@ -239,7 +249,11 @@
 						</h2>
 
 						<div class="mb-12">
-							<ul class="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+							<ul
+								class={`mt-8 gap-8 ${
+									dense ? '' : 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'
+								}`}
+							>
 								{#each ts.activities as activity (activity.id)}
 									{#if isKeynote(activity)}
 										<li
@@ -250,7 +264,7 @@
 										</li>
 									{:else}
 										<li in:fade class="col-span-1 bg-white rounded-lg shadow-lg">
-											<Card {...activity} {editMode} />
+											<Card {...activity} {editMode} {dense} />
 										</li>
 									{/if}
 								{/each}
