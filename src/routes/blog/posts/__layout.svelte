@@ -64,8 +64,8 @@
 		tags: seoMetaTags({
 			title: bTitle,
 			description: `${description}`,
+			imageUrl: cdnUrl(heroImage),
 			openGraph: {
-				image: cdnUrl(heroImage),
 				type: 'website',
 				url: `https://that.us/blog/posts/${slug}/`
 			}
