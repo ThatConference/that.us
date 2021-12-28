@@ -1,4 +1,5 @@
 <script context="module">
+	import '../app.css';
 	import 'lazysizes';
 	import { browser } from '$app/env';
 	import { v4 as uuidv4 } from 'uuid';
@@ -164,10 +165,6 @@
 </div>
 
 <style>
-	@import 'tailwindcss/base';
-	@import 'tailwindcss/components';
-	@import 'tailwindcss/utilities';
-
 	:global(.strike) {
 		text-decoration: line-through;
 	}

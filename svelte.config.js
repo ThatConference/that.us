@@ -33,20 +33,14 @@ const config = {
 		},
 		adapter: adapter()
 	},
-	// preprocess: !dev
-	// 	? [
-	// 			preprocess({
-	// 				postcss: true
-	// 			}),
-	// 			mdsvex(mdsvexConfig)
-	// 	  ]
-	// 	: [mdsvex(mdsvexConfig)]
-	preprocess: [
-		preprocess({
-			postcss: true
-		}),
-		mdsvex(mdsvexConfig)
-	]
+	preprocess: !dev
+		? [
+				preprocess({
+					postcss: true
+				}),
+				mdsvex(mdsvexConfig)
+		  ]
+		: [mdsvex(mdsvexConfig)]
 };
 
 export default config;
