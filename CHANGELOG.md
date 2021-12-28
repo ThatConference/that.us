@@ -1,3 +1,10 @@
+## [2.0.9](https://github.com/ThatConference/that.us/compare/v2.0.8...v2.0.9) (2021-12-28)
+
+
+### Bug Fixes
+
+* tailwind 3.0 updates ([53da0e6](https://github.com/ThatConference/that.us/commit/53da0e64d24359f97e838c9039cdb5e70bdefdac))
+
 ## [2.0.8](https://github.com/ThatConference/that.us/compare/v2.0.7...v2.0.8) (2021-12-23)
 
 ### Bug Fixes
