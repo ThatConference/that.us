@@ -1,3 +1,10 @@
+# [2.2.0](https://github.com/ThatConference/that.us/compare/v2.1.0...v2.2.0) (2021-12-28)
+
+
+### Features
+
+* updates default og-images ([ccd6a86](https://github.com/ThatConference/that.us/commit/ccd6a86f1f48bf2959629a074e576b20bfcf1877))
+
 # [2.1.0](https://github.com/ThatConference/that.us/compare/v2.0.9...v2.1.0) (2021-12-28)
 
 
