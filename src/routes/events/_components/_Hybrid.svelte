@@ -93,18 +93,22 @@
 		</Membership>
 	</section>
 
-	<section id="upnext">
-		{#if event.isCallForSpeakersOpen === true}
+	{#if event.isCallForSpeakersOpen === true}
+		<section id="upnext">
 			<CallForSpeakers {event} />
-		{:else}
+		</section>
+	{:else}
+		<section>
 			<Speakers {event} />
+		</section>
+		<section id="upnext">
 			<UpNextEvent {event}>
 				<div slot="action">
 					<HighlightLink href={`/activities/${event.slug}`}>View the entire schedule</HighlightLink>
 				</div>
 			</UpNextEvent>
-		{/if}
-	</section>
+		</section>
+	{/if}
 
 	<!--dates-->
 	<section>
