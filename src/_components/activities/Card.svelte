@@ -461,6 +461,7 @@
 				{:else}
 					<div class="-ml-px flex-1 flex border-l border-t border-gray-200">
 						<a
+							rel="external"
 							href="/login/"
 							class="relative basis-0 flex-1 inline-flex items-center justify-center
                 py-2 text-xs leading-4 text-gray-700 font-medium border

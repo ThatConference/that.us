@@ -24,6 +24,8 @@ Disallow: /_app/
 Disallow: /api/
 Disallow: /login
 Disallow: /logout
+Disallow: /login/
+Disallow: /logout/
 
 Sitemap: https://that.us/sitemap.xml
 

@@ -59,7 +59,11 @@
 								Create Profile
 							</a>
 
-							<a href="/logout/" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+							<a
+								ref="external"
+								href="/logout/"
+								class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+							>
 								Logout
 							</a>
 						</div>
@@ -115,7 +119,11 @@
 								My Submissions
 							</a>
 
-							<a href="/logout/" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+							<a
+								rel="external"
+								href="/logout/"
+								class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+							>
 								Logout
 							</a>
 						</div>
@@ -125,6 +133,7 @@
 				<div in:fade class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg z-50">
 					<div class="py-1 rounded-md bg-white ring-1 ring-black ring-opacity-5">
 						<a
+							rel="external"
 							href="/login/"
 							class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer"
 						>

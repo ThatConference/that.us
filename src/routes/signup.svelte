@@ -44,7 +44,7 @@
 
 								<!-- Complete Step -->
 								<!-- todo how do we redirect after login? -->
-								<a href="/login/" class="relative p-3 flex items-center group">
+								<a rel="external" href="/login/" class="relative p-3 flex items-center group">
 									<span class="h-20 flex items-center">
 										<span
 											class="relative z-10 p-3 w-20 h-20 flex items-center justify-center rounded-full bg-white ring-4 ring-thatOrange-500 group-hover:bg-thatOrange-500 group-hover:text-white"

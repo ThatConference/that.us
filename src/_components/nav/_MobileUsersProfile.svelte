@@ -9,29 +9,30 @@
 	const { isEmpty } = lodash;
 	const loggedInMenuItems = [
 		{
-			link: '/my/profiles',
+			href: '/my/profiles',
 			text: 'My Profiles'
 		},
 		{
-			link: '/my/settings',
+			href: '/my/settings',
 			text: 'My Settings'
 		},
 		{
-			link: '/my/network',
+			href: '/my/network',
 			text: 'My Network'
 		},
 		{
-			link: '/my/submissions',
+			href: '/my/submissions',
 			text: 'My Submissions'
 		},
 		{
-			link: '/my/favorites',
+			href: '/my/favorites',
 			text: 'My Favorites'
 		},
 
 		{
-			link: '/logout',
-			text: 'Logout'
+			href: '/logout',
+			text: 'Logout',
+			rel: 'external'
 		}
 	];
 </script>
@@ -81,6 +82,7 @@
 					</span>
 				</a>
 				<a
+					rel="external"
 					href="/logout/"
 					class="mt-1 block px-3 py-2 rounded-md text-base font-medium hover:bg-that-blue
             focus:outline-none focus:text-white focus:bg-that-blue"
@@ -91,12 +93,12 @@
 				</a>
 			{:else}
 				<div class="flex flex-col space-y-2">
-					{#each loggedInMenuItems as l}
+					{#each loggedInMenuItems as { rel, href, text }}
 						<div
 							class="flex px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-that-blue focus:outline-none focus:text-white focus:bg-that-blue"
 							class:text-gray-800={darkMode}
 						>
-							<a href={l.link}>{l.text}</a>
+							<a {rel} {href}>{text}</a>
 						</div>
 					{/each}
 				</div>
@@ -104,12 +106,14 @@
 		{:else}
 			<div class="flex flex-row">
 				<a
+					rel="external"
 					href="/login/"
 					class="mt-4 mb-1 mr-1 block w-full bg-white rounded-md py-2 text-sm font-semibold text-that-blue text-center flex-grow"
 				>
 					Login
 				</a>
 				<a
+					rel="external"
 					href="/login/"
 					class="mt-4 mb-1 ml-1 block w-full bg-that-orange rounded-md py-2 text-sm font-semibold text-white text-center flex-grow"
 				>
