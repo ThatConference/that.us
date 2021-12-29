@@ -1,3 +1,10 @@
+## [2.2.1](https://github.com/ThatConference/that.us/compare/v2.2.0...v2.2.1) (2021-12-29)
+
+
+### Bug Fixes
+
+* login / logout buttons as rel=external ([e3ceb9e](https://github.com/ThatConference/that.us/commit/e3ceb9e27152d8aa17e34c0b3657b0aff4fdd0e0))
+
 # [2.2.0](https://github.com/ThatConference/that.us/compare/v2.1.0...v2.2.0) (2021-12-28)
 
 
