@@ -43,6 +43,11 @@
 		tags: seoMetaTags({
 			title,
 			description: `THAT Daily Activities || 'Activities'}.`,
+			ogImages: {
+				twitter: 'activities-Twitter.jpg',
+				facebook: 'activities-Facebook.jpg',
+				linkedIn: 'activities-LinkedIn.jpg'
+			},
 			openGraph: {
 				type: 'website',
 				url: `https://that.us/activities`

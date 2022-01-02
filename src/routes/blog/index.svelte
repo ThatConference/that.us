@@ -42,6 +42,11 @@
 		tags: seoMetaTags({
 			title,
 			description: '',
+			ogImages: {
+				twitter: 'blog-Twitter.jpg',
+				facebook: 'blog-Facebook.jpg',
+				linkedIn: 'blog-LinkedIn.jpg'
+			},
 			openGraph: {
 				type: 'website',
 				url: `https://that.us/blog/}`

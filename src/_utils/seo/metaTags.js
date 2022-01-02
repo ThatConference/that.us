@@ -1,10 +1,12 @@
 import config from '$utils/config';
 
-function createOgImagePaths(imageId = undefined, imageUrl = undefined) {
-	let twitter = '/images/og-images/twitter.jpg';
-	let facebook = '/images/og-images/facebook.jpg';
-	let linkedIn = '/images/og-images/linkedIn.jpg';
-	let defaultImage = '/images/og-images/linkedIn.jpg';
+function createOgImagePaths({ imageId = undefined, imageUrl = undefined, ogImages = undefined }) {
+	const basePath = '/images/og-images';
+
+	let twitter = `${basePath}/twitter.jpg`;
+	let facebook = `${basePath}/facebook.jpg`;
+	let linkedIn = `${basePath}/linkedIn.jpg`;
+	let defaultImage = `${basePath}/linkedIn.jpg`;
 
 	if (imageId) {
 		twitter = `${config.hostURL}/api/og-image/${imageId}`;
@@ -20,6 +22,13 @@ function createOgImagePaths(imageId = undefined, imageUrl = undefined) {
 		defaultImage = imageUrl;
 	}
 
+	if (ogImages) {
+		twitter = `${basePath}/${ogImages.twitter}`;
+		facebook = `${basePath}/${ogImages.facebook}`;
+		linkedIn = `${basePath}/${ogImages.linkedIn}`;
+		defaultImage = `${basePath}/${ogImages.linkedIn}`;
+	}
+
 	return {
 		twitter,
 		facebook,
@@ -30,7 +39,11 @@ function createOgImagePaths(imageId = undefined, imageUrl = undefined) {
 
 const create = (metaData) => {
 	const results = [];
-	const ogimages = createOgImagePaths(metaData.imageId, metaData.imageUrl);
+	const ogimages = createOgImagePaths({
+		imageId: metaData.imageId,
+		imageUrl: metaData.imageUrl,
+		ogImages: metaData.ogImages
+	});
 
 	const noindex = metaData ? metaData.noindex : false;
 	const nofollow = metaData ? metaData.nofollow : false;

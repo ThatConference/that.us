@@ -34,6 +34,11 @@
 		tags: seoMetaTags({
 			title: 'Communities - THAT',
 			description: '',
+			ogImages: {
+				twitter: 'communities-Twitter.jpg',
+				facebook: 'communities-Facebook.jpg',
+				linkedIn: 'communities-LinkedIn.jpg'
+			},
 			openGraph: {
 				type: 'website',
 				url: `https://that.us/communities`

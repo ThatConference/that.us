@@ -27,6 +27,11 @@
 		tags: seoMetaTags({
 			title,
 			description: 'Thank you to those who support our great community every day.',
+			ogImages: {
+				twitter: 'sponsors-Twitter.jpg',
+				facebook: 'sponsors-Facebook.jpg',
+				linkedIn: 'sponsors-LinkedIn.jpg'
+			},
 			openGraph: {
 				type: 'website',
 				url: `https://that.us/partners`
