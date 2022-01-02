@@ -35,6 +35,11 @@
 			title,
 			description:
 				'Our community is made of up geeks and geeklings across the world. Here are just a few.',
+			ogImages: {
+				twitter: 'members-Twitter.jpg',
+				facebook: 'members-Facebook.jpg',
+				linkedIn: 'members-LinkedIn.jpg'
+			},
 			openGraph: {
 				type: 'website',
 				url: `https://that.us/members`

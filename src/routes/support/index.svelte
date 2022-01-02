@@ -14,7 +14,7 @@
 			description: '',
 			openGraph: {
 				type: 'website',
-				url: `https://that.ussupport/`
+				url: `https://that.us/support`
 			}
 		})
 	}))();

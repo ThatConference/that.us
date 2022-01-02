@@ -46,6 +46,11 @@
 		tags: seoMetaTags({
 			title: 'Events - THAT',
 			description: 'Upcoming and Past Events at THAT',
+			ogImages: {
+				twitter: 'events-Twitter.jpg',
+				facebook: 'events-Facebook.jpg',
+				linkedIn: 'events-LinkedIn.jpg'
+			},
 			openGraph: {
 				type: 'website',
 				url: 'https://that.us/events'
