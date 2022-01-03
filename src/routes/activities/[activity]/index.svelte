@@ -43,7 +43,7 @@
 	import ActivityDetails from '$components/activities/ActivityDetails.svelte';
 	import StackedLayout from '$elements/layouts/StackedLayout.svelte';
 
-	const metaTags = ((imageId = activity.id, title = `${activity.title} - THAT`) => ({
+	const metaTags = ((imageId = activity.id, title = `${activity.title}.`) => ({
 		title,
 		tags: seoMetaTags({
 			title,

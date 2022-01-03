@@ -41,10 +41,10 @@
 	import Hero from './_components/events/_EventsHero.svelte';
 	import EventCard from './_components/_EventCard.svelte';
 
-	const metaTags = ((title = 'Events - THAT') => ({
+	const metaTags = ((title = 'Upcomging and past events on THAT and THAT Conference.') => ({
 		title,
 		tags: seoMetaTags({
-			title: 'Events - THAT',
+			title,
 			description: 'Upcoming and Past Events at THAT',
 			ogImages: {
 				twitter: 'events-Twitter.jpg',

@@ -59,7 +59,7 @@
 
 	const { cdnUrl } = image(slug);
 
-	const metaTags = ((bTitle = `${title} - THAT`) => ({
+	const metaTags = ((bTitle = `${title}`) => ({
 		title: bTitle,
 		tags: seoMetaTags({
 			title: bTitle,

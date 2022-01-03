@@ -90,7 +90,9 @@
 
 	import createMachine from './_root/machines/upNext';
 
-	const metaTags = ((title = 'Welcome to THAT!') => ({
+	const metaTags = ((
+		title = 'THAT is your peer to peer learning system for software developers. Home of THAT Conference.'
+	) => ({
 		title,
 		tags: seoMetaTags({
 			title,

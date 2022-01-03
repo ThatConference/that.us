@@ -14,7 +14,7 @@
 	const { state, year } = $page.params;
 	const eventSlug = `${state}/${year}`;
 
-	const metaTags = ((title = 'Partners - THAT') => ({
+	const metaTags = ((title = 'THAT Conference sponsors and partners.') => ({
 		title,
 		tags: seoMetaTags({
 			title,

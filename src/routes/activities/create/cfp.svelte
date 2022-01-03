@@ -33,13 +33,30 @@
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
 
+	import seoMetaTags from '$utils/seo/metaTags';
+	import Seo from '$components/Seo.svelte';
+
 	import { ModalError } from '$elements';
 	import Create from './index.svelte';
 
 	onMount(() => {
 		if (!$page.query.has('event')) window.history.replaceState(null, null, `?event=${eventId}`);
 	});
+
+	const metaTags = ((title = `THAT Conference Texas and Wisconsin call for speakers.`) => ({
+		title,
+		tags: seoMetaTags({
+			title,
+			description: `Do you want to speak at THAT Conference either online or in person. Submit today.`,
+			openGraph: {
+				type: 'website',
+				url: `https://that.us/activities/create/`
+			}
+		})
+	}))();
 </script>
+
+<Seo title={metaTags.title} tags={metaTags.tags} />
 
 {#if isCallForSpeakersOpen}
 	<Create {events} {activeEvents} isBackdoor={true} {eventId} />

@@ -8,7 +8,7 @@
 
 	import WelcomeQuote from './support/_components/_WelcomeQuote.svelte';
 
-	const metaTags = ((title = 'Signup - THAT') => ({
+	const metaTags = ((title = 'Create your THAT account and profile today and get involved.') => ({
 		title,
 		tags: seoMetaTags({
 			title,

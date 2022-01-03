@@ -6,7 +6,7 @@
 	import Seo from '$components/Seo.svelte';
 	import { Highlight as HighlightLink, Standard as StandardLink } from '$elements/links';
 
-	const metaTags = ((title = 'What is an Activity? - THAT') => ({
+	const metaTags = ((title = 'What is an activity is it the same as a session or a room?') => ({
 		title,
 		tags: seoMetaTags({
 			title,

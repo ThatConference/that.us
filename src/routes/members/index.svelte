@@ -29,7 +29,7 @@
 
 	import memberMachine from './_machines/members';
 
-	const metaTags = ((title = 'Members - THAT') => ({
+	const metaTags = ((title = 'These are the geeks you will find at THAT and THAT Conference.') => ({
 		title,
 		tags: seoMetaTags({
 			title,

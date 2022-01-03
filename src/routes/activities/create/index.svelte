@@ -20,9 +20,9 @@
 	import { plus } from '$components/svelte-awesome-icons';
 
 	import seoMetaTags from '$utils/seo/metaTags';
+	import Seo from '$components/Seo.svelte';
 	import logEvent from '$utils/eventTrack';
 	import sessionsApi from '$dataSources/api.that.tech/sessions/mutations';
-	import Seo from '$components/Seo.svelte';
 	import { ActionHeader } from '$elements';
 	import { Standard as StandardLink } from '$elements/links';
 	import StackedLayout from '$elements/layouts/StackedLayout.svelte';
@@ -31,10 +31,10 @@
 	import ActivityForm from '../_components/form/ActivityForm.svelte';
 	import { formatCreate } from '../_lib/formatRequest';
 
-	const metaTags = ((title = 'New Activity - THAT') => ({
+	const metaTags = ((title = `Create a new activitiy for THAT or THAT Conference.`) => ({
 		title,
 		tags: seoMetaTags({
-			title: 'New Activity - THAT',
+			title,
 			description: 'Create a New [Activity, Code Review, Open Space, Chat], you get the idea.',
 			openGraph: {
 				type: 'website',

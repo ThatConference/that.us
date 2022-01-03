@@ -38,11 +38,13 @@
 
 	const { isEmpty, uniqBy } = lodash;
 
-	const metaTags = ((title = 'Daily Activities - THAT') => ({
+	const metaTags = ((
+		title = 'View all of the activities, sessions and more for THAT and THAT Conference.'
+	) => ({
 		title,
 		tags: seoMetaTags({
 			title,
-			description: `THAT Daily Activities || 'Activities'}.`,
+			description: `Every activity for all events are listed here. Sessions, workshops, keynots, we mean everything.`,
 			ogImages: {
 				twitter: 'activities-Twitter.jpg',
 				facebook: 'activities-Facebook.jpg',
