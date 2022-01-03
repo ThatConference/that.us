@@ -44,7 +44,7 @@
 	const { toggleFollow } = communityMutationApi();
 	const { queryMeFollowingCommunities } = meQueryApi();
 
-	const metaTags = ((title = `${communityDetails.name} Community Spotlight - THAT`) => ({
+	const metaTags = ((title = `${communityDetails.name} community spotlight on THAT.`) => ({
 		title,
 		tags: seoMetaTags({
 			title,

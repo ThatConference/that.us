@@ -22,7 +22,7 @@
 
 	import Hero from './_components/_PartnersHero.svelte';
 
-	const metaTags = ((title = 'Partners - THAT') => ({
+	const metaTags = ((title = `Visit these sponosors who've made THAT Conference possible.`) => ({
 		title,
 		tags: seoMetaTags({
 			title,
@@ -34,7 +34,7 @@
 			},
 			openGraph: {
 				type: 'website',
-				url: `https://that.us/partners`
+				url: `https://that.us/partners/`
 			}
 		})
 	}))();

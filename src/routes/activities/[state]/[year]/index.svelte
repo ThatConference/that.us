@@ -41,7 +41,7 @@
 		}
 	);
 
-	const metaTags = ((title = `${event.name} Activities - THAT`) => ({
+	const metaTags = ((title = `${event.name} activities.`) => ({
 		title,
 		tags: seoMetaTags({
 			title,

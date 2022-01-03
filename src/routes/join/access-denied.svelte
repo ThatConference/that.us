@@ -21,7 +21,7 @@
 		};
 	}
 
-	const metaTags = ((title = 'Access Denied - THAT') => ({
+	const metaTags = ((title = 'Your access to join this activity was denied') => ({
 		title,
 		tags: seoMetaTags({
 			title,

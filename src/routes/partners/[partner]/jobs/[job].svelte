@@ -26,7 +26,7 @@
 	import JobHero from '../../_components/_JobHero.svelte';
 	import JobDetails from '../../_components/_JobDetails.svelte';
 
-	const metaTags = ((title = `${partner.jobListing.title} at ${partner.companyName} - THAT`) => ({
+	const metaTags = ((title = `${partner.jobListing.title} at ${partner.companyName}.`) => ({
 		title,
 		tags: seoMetaTags({
 			title,

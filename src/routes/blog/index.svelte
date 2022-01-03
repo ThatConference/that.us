@@ -37,7 +37,7 @@
 	import seoMetaTags from '$utils/seo/metaTags';
 	import Seo from '$components/Seo.svelte';
 
-	const metaTags = ((title = `THAT BLOG - THAT`) => ({
+	const metaTags = ((title = `The official blog of THAT and THAT Conference.`) => ({
 		title,
 		tags: seoMetaTags({
 			title,

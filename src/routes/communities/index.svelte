@@ -29,10 +29,12 @@
 	import Hero from './_components/_CommunitiesHero.svelte';
 	import createMachine from './_machines/communities';
 
-	const metaTags = ((title = 'Communities - THAT') => ({
+	const metaTags = ((
+		title = 'Find your fellow geeks with THAT Communities. Follow one today.'
+	) => ({
 		title,
 		tags: seoMetaTags({
-			title: 'Communities - THAT',
+			title,
 			description: '',
 			ogImages: {
 				twitter: 'communities-Twitter.jpg',

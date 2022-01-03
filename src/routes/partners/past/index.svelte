@@ -23,7 +23,9 @@
 
 	import Hero from '../_components/_PastPartnersHero.svelte';
 
-	const metaTags = ((title = 'Past Partners - THAT') => ({
+	const metaTags = ((
+		title = `Visit all of our past sponsors who've helped make THAT Conference possible.`
+	) => ({
 		title,
 		tags: seoMetaTags({
 			title,

@@ -35,10 +35,10 @@
 
 	const { send } = getContext('cart');
 
-	const metaTags = ((title = 'Tickets - THAT') => ({
+	const metaTags = ((title = 'THAT Conference tickets and discounts explained.') => ({
 		title,
 		tags: seoMetaTags({
-			title: 'Tickets - THAT',
+			title,
 			description: 'Ticket Breakdown',
 			openGraph: {
 				type: 'website',

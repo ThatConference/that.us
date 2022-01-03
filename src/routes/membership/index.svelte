@@ -16,10 +16,12 @@
 	import FAQs from './_components/pricing/_FAQs.svelte';
 	import NotReady from './_components/pricing/_NotReady.svelte';
 
-	const metaTags = ((title = 'Membership Pricing - THAT') => ({
+	const metaTags = ((
+		title = 'Membership is a way to finacially support us while unlocking some extras.'
+	) => ({
 		title,
 		tags: seoMetaTags({
-			title: 'Membership Pricing - THAT',
+			title,
 			description: 'Become a member and save today',
 			openGraph: {
 				type: 'website',

@@ -49,7 +49,7 @@
 	$: if (['profileLoaded'].some($state.matches)) {
 		const { profile } = $state.context;
 
-		metaTags = ((title = `${profile.companyName} - THAT`) => ({
+		metaTags = ((title = `${profile.companyName} - sponsor spotlight.`) => ({
 			title,
 			tags: seoMetaTags({
 				title,

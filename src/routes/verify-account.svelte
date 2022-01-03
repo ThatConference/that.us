@@ -3,11 +3,11 @@
 	import seoMetaTags from '$utils/seo/metaTags';
 	import Seo from '$components/Seo.svelte';
 
-	const metaTags = ((title = 'Accout Verification- THAT') => ({
+	const metaTags = ((title = 'Your account is unverified.') => ({
 		title,
 		tags: seoMetaTags({
 			title,
-			description: 'Your account is unverified.',
+			description: 'Your account is currently unverified.',
 			openGraph: {
 				type: 'website',
 				url: `https://that.us/verify-account`
