@@ -7,7 +7,6 @@ const { isNil, isEmpty } = lodash;
 export function initAuth0(config) {
 	const auth0 = origInitAuth0(config);
 	const getSession = auth0WrapperJson((req, res) => auth0.getSession(req, res));
-	const loginUrl = `${config?.baseURL}/login/`;
 
 	return {
 		getSession: getSession,
@@ -107,7 +106,7 @@ export function initAuth0(config) {
 
 					return {
 						status: 307,
-						redirect: `${loginUrl}?returnTo=${returnUrl}`
+						redirect: `/login-redirect/?returnTo=${returnUrl}`
 					};
 				}
 			};
