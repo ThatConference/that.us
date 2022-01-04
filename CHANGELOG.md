@@ -1,3 +1,10 @@
+## [2.2.4](https://github.com/ThatConference/that.us/compare/v2.2.3...v2.2.4) (2022-01-04)
+
+
+### Bug Fixes
+
+* adds a login redirect for dynamic logins ([d847d46](https://github.com/ThatConference/that.us/commit/d847d4656d7c21f45ffaadc7f0c583c349985da6))
+
 ## [2.2.3](https://github.com/ThatConference/that.us/compare/v2.2.2...v2.2.3) (2022-01-04)
 
 
