@@ -1,3 +1,10 @@
+## [2.2.2](https://github.com/ThatConference/that.us/compare/v2.2.1...v2.2.2) (2022-01-04)
+
+
+### Bug Fixes
+
+* auth wrapper login redirect ([8ddd5a4](https://github.com/ThatConference/that.us/commit/8ddd5a48c9c6762f2b9c94b512fb58533c116d15))
+
 ## [2.2.1](https://github.com/ThatConference/that.us/compare/v2.2.0...v2.2.1) (2021-12-29)
 
 
