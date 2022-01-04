@@ -1,3 +1,10 @@
+## [2.2.3](https://github.com/ThatConference/that.us/compare/v2.2.2...v2.2.3) (2022-01-04)
+
+
+### Bug Fixes
+
+* security config paths wrong ([99de7a9](https://github.com/ThatConference/that.us/commit/99de7a926c438bd678a777923b41cc12403be929))
+
 ## [2.2.2](https://github.com/ThatConference/that.us/compare/v2.2.1...v2.2.2) (2022-01-04)
 
 
