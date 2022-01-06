@@ -1,3 +1,12 @@
+# [2.4.0](https://github.com/ThatConference/that.us/compare/v2.3.0...v2.4.0) (2022-01-06)
+
+
+### Features
+
+* adds googles structured data for blos posts ([227636f](https://github.com/ThatConference/that.us/commit/227636f4492fec8595f0c2434fb74a78b1cf3937))
+* adds googles structured data for job postings ([f56701f](https://github.com/ThatConference/that.us/commit/f56701f936e3f470cfc8f113a2ba6a82b4fdb293))
+* adds googles structured data for online events ([6a4a4e7](https://github.com/ThatConference/that.us/commit/6a4a4e7841031f48e082f352389748b412dd21ae))
+
 # [2.3.0](https://github.com/ThatConference/that.us/compare/v2.2.4...v2.3.0) (2022-01-06)
 
 
