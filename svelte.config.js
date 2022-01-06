@@ -36,11 +36,17 @@ const config = {
 	preprocess: !dev
 		? [
 				preprocess({
-					postcss: true
+					postcss: true,
+					preserve: ['ld+json']
 				}),
 				mdsvex(mdsvexConfig)
 		  ]
-		: [mdsvex(mdsvexConfig)]
+		: [
+				preprocess({
+					preserve: ['ld+json']
+				}),
+				mdsvex(mdsvexConfig)
+		  ]
 };
 
 export default config;

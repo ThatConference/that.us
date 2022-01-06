@@ -97,6 +97,10 @@ const eventFieldsFragment = `
 		callForSpeakersOpenDate
 		callForSpeakersCloseDate
 		isCallForSpeakersOpen
+		isCallForOnSpeakersOpen
+		callForOnSpeakersOpenDate
+		callForOnSpeakersCloseDate
+		ticketsOnSaleFrom
 		
 		theme { 
 			heroSlug
@@ -229,6 +233,11 @@ export const QUERY_EVENT_FOR_CFP = `
 					callForSpeakersOpenDate
 					callForSpeakersCloseDate
 					isCallForSpeakersOpen
+					isCallForOnSpeakersOpen
+					callForOnSpeakersOpenDate
+					callForOnSpeakersCloseDate
+					ticketsOnSaleFrom
+					
 					milestones{
 						title
 						description
@@ -269,6 +278,10 @@ export const QUERY_EVENTS_BY_COMMUNITY = `
 						callForSpeakersOpenDate
 						callForSpeakersCloseDate
 						isCallForSpeakersOpen
+						isCallForOnSpeakersOpen
+						callForOnSpeakersOpenDate
+						callForOnSpeakersCloseDate
+						ticketsOnSaleFrom
 						
 						theme { 
 							heroSlug

@@ -23,6 +23,8 @@
 
 	const { send } = getContext('cart');
 	const { products } = event;
+	const [venue] = event.venues;
+	const everythingCamperTicket = products.find((x) => x.uiReference === 'EVERYTHING_CAMPER');
 
 	function handleOnTicketPurchase(e) {
 		const eventTicket = products.filter((p) => p.isEnabled).find((p) => p.uiReference === e.ref);
@@ -48,6 +50,50 @@
 
 		goto('/orders/summary/');
 	}
+	const schema = {
+		'@context': 'https://schema.org',
+		'@type': 'Event',
+		name: event.name,
+		startDate: event.startDate,
+		endDate: event.endDate,
+		eventAttendanceMode: 'https://schema.org/MixedEventAttendanceMode',
+		eventStatus: 'https://schema.org/EventScheduled',
+		location: [
+			{
+				'@type': 'VirtualLocation',
+				url: `https://that.us/events/${event.slug}`
+			},
+			{
+				'@type': 'Place',
+				name: venue.name,
+				address: {
+					'@type': 'PostalAddress',
+					streetAddress: venue.address,
+					addressLocality: event.city,
+					postalCode: venue.zip,
+					addressRegion: venue.state,
+					addressCountry: 'US'
+				}
+			}
+		],
+		image: [event.logo],
+		description: event.description,
+		offers: {
+			'@type': 'Offer',
+			name: everythingCamperTicket.name,
+			description: everythingCamperTicket.description,
+			url: `https://that.us/events/${event.slug}/tickets/`,
+			price: everythingCamperTicket.price,
+			priceCurrency: 'USD',
+			availability: 'https://schema.org/InStock',
+			validFrom: event.ticketsOnSaleFrom
+		},
+		organizer: {
+			'@type': 'Organization',
+			name: 'THAT Conference',
+			url: 'https://that.us'
+		}
+	};
 </script>
 
 <Layout>
@@ -127,6 +173,8 @@
 		<FAQ />
 	</section>
 </Layout>
+
+{@html `<script type="application/ld+json">${JSON.stringify(schema) + '<'}/script>`}
 
 <style>
 	.thatBackground {
