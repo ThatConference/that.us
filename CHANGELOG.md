@@ -1,3 +1,10 @@
+# [2.3.0](https://github.com/ThatConference/that.us/compare/v2.2.4...v2.3.0) (2022-01-06)
+
+
+### Features
+
+* adding googles structured data ([1dc9ce7](https://github.com/ThatConference/that.us/commit/1dc9ce7c7a3f1ffa961ca56800eda8cd0b6b3d43))
+
 ## [2.2.4](https://github.com/ThatConference/that.us/compare/v2.2.3...v2.2.4) (2022-01-04)
 
 
