@@ -59,7 +59,7 @@
 
 	const { cdnUrl } = image(slug);
 
-	const metaTags = ((bTitle = `${title}`) => ({
+	const metaTags = ((bTitle = `${title} by ${author.firstName} ${author.lastName}`) => ({
 		title: bTitle,
 		tags: seoMetaTags({
 			title: bTitle,
@@ -73,6 +73,32 @@
 	}))();
 
 	const srcset = buildImageSrc(author.profileImage, ['96']);
+
+	const schema = {
+		'@context': 'https://schema.org',
+		'@type': 'NewsArticle',
+		mainEntityOfPage: {
+			'@type': 'WebPage',
+			'@id': `https://that.us/blog/posts/${slug}/`
+		},
+		headline: title,
+		image: [cdnUrl(heroImage)],
+		datePublished: date,
+		dateModified: date,
+		author: {
+			'@type': 'Person',
+			name: `${author.firstName} ${author.lastName}`,
+			url: `https://that.us/members/${author.slug}/`
+		},
+		publisher: {
+			'@type': 'Organization',
+			name: 'THAT',
+			logo: {
+				'@type': 'ImageObject',
+				url: 'https://that.us/that-logo.png'
+			}
+		}
+	};
 </script>
 
 <Seo title={metaTags.title} tags={metaTags.tags} />
@@ -126,3 +152,5 @@
 
 	<NewsletterSignup />
 </Layout>
+
+{@html `<script type="application/ld+json">${JSON.stringify(schema) + '<'}/script>`}

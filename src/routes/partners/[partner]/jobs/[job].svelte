@@ -37,6 +37,41 @@
 			}
 		})
 	}))();
+
+	const schema = {
+		'@context': 'https://schema.org/',
+		'@type': 'JobPosting',
+		title: partner.jobListing.title,
+		description: partner.jobListing.description,
+		directApply:
+			partner.jobListing.applyNowLink ||
+			`https://that.us/partners/${partner.companyName.toLowerCase()}/${job}`,
+
+		datePosted: partner.jobListing.datePosted || '',
+		jobLocationType: 'TELECOMMUTE',
+		jobLocation: {
+			'@type': 'Place',
+			address: {
+				'@type': 'PostalAddress',
+				addressLocality: partner.city,
+				addressRegion: partner.state,
+				addressCountry: 'US'
+			}
+		},
+
+		identifier: {
+			'@type': 'PropertyValue',
+			name: partner.companyName,
+			value: `${partner.jobListing.title} on THAT`
+		},
+
+		hiringOrganization: {
+			'@type': 'Organization',
+			name: partner.companyName,
+			sameAs: partner.website,
+			logo: partner.companyLogo
+		}
+	};
 </script>
 
 <Seo title={metaTags.title} tags={metaTags.tags} />
@@ -50,3 +85,5 @@
 		<JobDetails jobListing={partner.jobListing} />
 	</section>
 </ProfileLayout>
+
+{@html `<script type="application/ld+json">${JSON.stringify(schema) + '<'}/script>`}
