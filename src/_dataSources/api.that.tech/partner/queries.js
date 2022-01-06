@@ -257,6 +257,8 @@ export const QUERY_PARTNER_JOB_LISTING = `
 				companyName
 				companyLogo
 				website
+				city
+				state
 				...socialLinksFieldsFragment
 				jobListing(slug: $slug) {
 					title
@@ -266,6 +268,7 @@ export const QUERY_PARTNER_JOB_LISTING = `
 					applyNowLink
 					remote
 					role
+					datePosted
 				}
 			}
 		}

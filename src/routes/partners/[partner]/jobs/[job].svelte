@@ -47,6 +47,18 @@
 			partner.jobListing.applyNowLink ||
 			`https://that.us/partners/${partner.companyName.toLowerCase()}/${job}`,
 
+		datePosted: partner.jobListing.datePosted || '',
+		jobLocationType: 'TELECOMMUTE',
+		jobLocation: {
+			'@type': 'Place',
+			address: {
+				'@type': 'PostalAddress',
+				addressLocality: partner.city,
+				addressRegion: partner.state,
+				addressCountry: 'US'
+			}
+		},
+
 		identifier: {
 			'@type': 'PropertyValue',
 			name: partner.companyName,
