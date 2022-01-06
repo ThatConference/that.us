@@ -50,6 +50,7 @@
 
 		goto('/orders/summary/');
 	}
+
 	const schema = {
 		'@context': 'https://schema.org',
 		'@type': 'Event',
@@ -86,7 +87,7 @@
 			price: everythingCamperTicket.price,
 			priceCurrency: 'USD',
 			availability: 'https://schema.org/InStock',
-			validFrom: event.ticketsOnSaleFrom
+			validFrom: event.ticketsOnSaleFrom || event.startDate
 		},
 		organizer: {
 			'@type': 'Organization',

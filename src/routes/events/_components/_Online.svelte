@@ -21,6 +21,8 @@
 	import EventTicket from './online/_EventTicket.svelte';
 
 	const { send } = getContext('cart');
+	const { products } = event;
+	const virtualTicket = products.find((x) => x.productType === 'TICKET');
 
 	function handleAddEventTicketClick(eventId, eventProducts, quantity = 1) {
 		const eventTicket = eventProducts
@@ -51,6 +53,39 @@
 		});
 		goto('/orders/summary/');
 	}
+
+	const schema = {
+		'@context': 'https://schema.org',
+		'@type': 'Event',
+		name: event.name,
+		startDate: event.startDate,
+		endDate: event.endDate,
+		eventAttendanceMode: 'https://schema.org/OnlineEventAttendanceMode',
+		eventStatus: 'https://schema.org/EventScheduled',
+		location: [
+			{
+				'@type': 'VirtualLocation',
+				url: `https://that.us/events/${event.slug}`
+			}
+		],
+		image: [event.logo],
+		description: event.description,
+		offers: {
+			'@type': 'Offer',
+			name: virtualTicket.name,
+			description: virtualTicket.description,
+			url: `https://that.us/events/${event.slug}/tickets/`,
+			price: virtualTicket.price,
+			priceCurrency: 'USD',
+			availability: 'https://schema.org/InStock',
+			validFrom: event.ticketsOnSaleFrom || event.startDate
+		},
+		organizer: {
+			'@type': 'Organization',
+			name: 'THAT Conference',
+			url: 'https://that.us'
+		}
+	};
 </script>
 
 <Layout>
@@ -122,3 +157,5 @@
 		<FAQ />
 	</section>
 </Layout>
+
+{@html `<script type="application/ld+json">${JSON.stringify(schema) + '<'}/script>`}
