@@ -1,14 +1,11 @@
 name: 'Post Deployment Success'
 
-on:
-  deployment_status:
-    branches:
-      - master
+on: deployment_status
 
 jobs:
   sitemap:
     name: ping bing and google with updates
-    if: github.event.deployment_status.state == 'success'
+    if: github.event.deployment_status.state == 'success' && github.event.deployment_status.environment == 'production'
     runs-on: ubuntu-latest
 
     steps:
