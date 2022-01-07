@@ -71,20 +71,20 @@ export const imageCrops = {
 export const kalahari = {
 	passkey: {
 		wi: 'https://book.passkey.com/e/xxx',
-		tx: 'https://book.passkey.com/e/50241186'
+		tx: 'https://book.passkey.com/e/50279810'
 	},
 	speakerPasskey: {
 		'wi/2022': {
 			bookingUrl: 'https://book.passkey.com/e/xx',
-			start: '',
-			end: '',
-			blockCloseDate: '12-31-2021'
+			start: '07-24-2022',
+			end: '07-28-2022',
+			blockCloseDate: '07-01-2022'
 		},
 		'tx/2022': {
-			bookingUrl: 'https://book.passkey.com/e/50254686',
-			start: '01-16-2022',
-			end: '01-20-2022',
-			blockCloseDate: '12-31-2021',
+			bookingUrl: 'https://book.passkey.com/e/50279812',
+			start: '05-22-2022',
+			end: '05-26-2022',
+			blockCloseDate: '05-01-2022',
 			discountCode: 'THATX'
 		}
 	}
