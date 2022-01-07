@@ -1,0 +1,20 @@
+name: 'Post Deployment Success'
+
+on:
+  deployment_status:
+    branches:
+      - master
+
+jobs:
+  sitemap:
+    name: ping bing and google with updates
+    if: github.event.deployment_status.state == 'success'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Ping Google
+        run: |
+          curl https://www.google.com/ping?sitemap=https://that.us/sitemap.xml
+      - name: Ping Bing
+        run: |
+          curl https://www.bing.com/ping?sitemap=https://that.us/sitemap.xml
