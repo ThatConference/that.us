@@ -1,3 +1,10 @@
+## [2.4.2](https://github.com/ThatConference/that.us/compare/v2.4.1...v2.4.2) (2022-01-08)
+
+
+### Bug Fixes
+
+* updating account verification message ([5e8ef1f](https://github.com/ThatConference/that.us/commit/5e8ef1f94c8a8dd5487f1de0a6e75aae478e4238))
+
 ## [2.4.1](https://github.com/ThatConference/that.us/compare/v2.4.0...v2.4.1) (2022-01-08)
 
 
