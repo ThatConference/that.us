@@ -36,12 +36,14 @@
 							<h1 class="text-4xl font-extrabold text-thatBlue-800 tracking-tight sm:text-5xl">
 								THAT Account Unverified
 							</h1>
-							<p class="max-w-3xl mt-1 text-base text-gray-500">
+
+							<p class="prose prose-lg max-w-3xl mt-4 text-gray-500">
 								You account is current unverified. To continue please check your email and finish
-								verification or if you think you're seeing this in error, ask us in chat, or email
-								us at
+								the login verification. If you've done so and are still seeing this error <span
+									class="font-extrabold">please logout and login again</span
+								>. Still having issues, then please ask us in chat, or email us at
 								<a
-									href="mailto:hello@that.us?subject=Account Verification"
+									href="mailto:hello@that.us?subject=Account Verification Problem"
 									rel="noopener"
 									target="_blank"
 									class="text-thatOrange-400 hover:text-thatOrange-500 hover:underline"
@@ -51,8 +53,13 @@
 						</div>
 					</div>
 				</div>
-				<div class="mt-10 flex sm:border-l sm:border-transparent sm:pl-6">
-					<StandardLink class="h-3/4" href="/">Head back to camp</StandardLink>
+				<div class="mt-10 flex justify-end">
+					<div class="flex sm:border-l sm:border-transparent sm:pl-6">
+						<StandardLink class="h-3/4" href="/">Home</StandardLink>
+					</div>
+					<div class="flex sm:border-l sm:border-transparent sm:pl-6">
+						<StandardLink class="h-3/4" href="/logout/" rel="external">Logout</StandardLink>
+					</div>
 				</div>
 			</div>
 		</main>

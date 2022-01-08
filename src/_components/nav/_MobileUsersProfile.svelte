@@ -9,28 +9,28 @@
 	const { isEmpty } = lodash;
 	const loggedInMenuItems = [
 		{
-			href: '/my/profiles',
+			href: '/my/profiles/',
 			text: 'My Profiles'
 		},
 		{
-			href: '/my/settings',
+			href: '/my/settings/',
 			text: 'My Settings'
 		},
 		{
-			href: '/my/network',
+			href: '/my/network/',
 			text: 'My Network'
 		},
 		{
-			href: '/my/submissions',
+			href: '/my/submissions/',
 			text: 'My Submissions'
 		},
 		{
-			href: '/my/favorites',
+			href: '/my/favorites/',
 			text: 'My Favorites'
 		},
 
 		{
-			href: '/logout',
+			href: '/logout/',
 			text: 'Logout',
 			rel: 'external'
 		}
