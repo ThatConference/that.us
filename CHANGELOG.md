@@ -1,3 +1,10 @@
+## [2.4.1](https://github.com/ThatConference/that.us/compare/v2.4.0...v2.4.1) (2022-01-08)
+
+
+### Bug Fixes
+
+* robots to allow google to index page assets ([240c64c](https://github.com/ThatConference/that.us/commit/240c64cd7e368a91f613dc99219953597c4331bd))
+
 # [2.4.0](https://github.com/ThatConference/that.us/compare/v2.3.0...v2.4.0) (2022-01-06)
 
 
