@@ -1,4 +1,5 @@
 <script>
+	import dayjs from 'dayjs';
 	import { kalahari } from '$utils/config';
 	import { Standard as StandardLink } from '$elements/links';
 	import seoMetaTags from '$utils/seo/metaTags';
@@ -19,6 +20,9 @@
 			}
 		})
 	}))();
+
+	const open = dayjs(kalahari.passkey.tx.opens).format('dddd, MMMM D, YYYY');
+	const close = dayjs(kalahari.passkey.tx.closes).format('dddd, MMMM D, YYYY');
 </script>
 
 <Seo title={metaTags.title} tags={metaTags.tags} />
@@ -47,10 +51,9 @@
 						<h2>Kalahari Resorts and Convention Center</h2>
 						<div>
 							<p>
-								Our room block opens <span class="font-semibold text-gray-800"
-									>October 25th, 2021</span
-								>, and will close
-								<span class="font-semibold text-gray-800">December 31st, 2021</span>
+								Our room block opens <span class="font-semibold text-gray-800">{open}</span>, and
+								will close
+								<span class="font-semibold text-gray-800">{close}</span>
 								or until the block is filled so reserve your room early!
 							</p>
 						</div>
@@ -73,7 +76,7 @@
 						</p>
 
 						<div class="mt-8 flex flex-col items-center">
-							<StandardLink open={true} href={kalahari.passkey.tx}>Book Today</StandardLink>
+							<StandardLink open={true} href={kalahari.passkey.tx.url}>Book Today</StandardLink>
 						</div>
 					</div>
 				</div>

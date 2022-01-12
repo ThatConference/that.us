@@ -1,4 +1,5 @@
 <script>
+	import dayjs from 'dayjs';
 	import { Standard as StandardLink } from '$elements/links';
 	import { kalahari } from '$utils/config';
 	import seoMetaTags from '$utils/seo/metaTags';
@@ -19,6 +20,9 @@
 			}
 		})
 	}))();
+
+	const open = dayjs(kalahari.passkey.wi.opens).format('dddd, MMMM D, YYYY');
+	const close = dayjs(kalahari.passkey.wi.closes).format('dddd, MMMM D, YYYY');
 </script>
 
 <Seo title={metaTags.title} tags={metaTags.tags} />
@@ -46,18 +50,16 @@
 		<div class="flex flex-col sm:flex-row sm:space-x-8 space-y-8 sm:space-y-0">
 			<div class="px-12 bg-gray-50 bg-opacity-50 rounded-md shadow-md">
 				<div class="prose prose-md text-gray-500">
-					<div class="flex-col pb-12">
+					<div class="flex flex-col pb-12">
 						<h2>Kalahari Resorts and Convention Center</h2>
 
-						<div>
-							<p>
-								Our room block opens <span class="font-semibold text-gray-800"
-									>April 26th, 2021</span
-								>, and will close
-								<span class="font-semibold text-gray-800">June 23rd, 2021</span>
-								or until the block is filled so reserve your room early!
-							</p>
-						</div>
+						<p>
+							Our room block opens <span class="font-semibold text-gray-800">{open}</span>, and will
+							close
+							<span class="font-semibold text-gray-800">{close}</span>
+							or until the block is filled so reserve your room early!
+						</p>
+
 						<div>
 							<blockquote>
 								Kalahari Resorts and Convention Center<br />
@@ -69,8 +71,8 @@
 						<h3>Booking Your Reservation</h3>
 						<p>A dedicated website is now available for you to book your hotel room online.</p>
 
-						<div class="flex flex-col">
-							<StandardLink open={true} href={kalahari.passkey.wi}>Book Today</StandardLink>
+						<div class="flex justify-center">
+							<StandardLink open={true} href={kalahari.passkey.wi.url}>Book Today</StandardLink>
 						</div>
 					</div>
 				</div>
@@ -78,17 +80,14 @@
 
 			<div class="px-12 bg-gray-50 bg-opacity-50 rounded-md shadow-md">
 				<div class="prose prose-md text-gray-500">
-					<div class="flex-col pb-12">
+					<div class="flex flex-col pb-12">
 						<h2>Staybridge Suites</h2>
-						<div>
-							<p>
-								A room block with discounted rates is now open at Staybridge Suites in Wisconsin
-								Dells located directly across the street from the Kalahari AND within walking
-								distance to the conference. <span class="font-semibold text-gray-800"
-									>Rates expire July 10th 2021</span
-								>.
-							</p>
-						</div>
+
+						<p>
+							A room block with discounted rates is now open at Staybridge Suites in Wisconsin Dells
+							located directly across the street from the Kalahari AND within walking distance to
+							the conference. <span class="font-semibold text-gray-800">Rates expire {close}</span>.
+						</p>
 						<div>
 							<blockquote>
 								Staybridge Suites Wisconsin Dells<br />
@@ -98,14 +97,13 @@
 						</div>
 
 						<h3>Booking Your Reservation</h3>
-
 						<p>
 							Call toll free at 1-800-238-8000 and use block code <span
 								class="font-semibold text-gray-800">TCO</span
 							>. Or book online by using the dedicated website like below.
 						</p>
 
-						<div class="flex flex-col">
+						<div class="flex justify-center">
 							<StandardLink
 								open={true}
 								href="https://www.staybridge.com/redirect?path=hd&brandCode=SB&localeCode=en&regionCode=1&hotelCode=MSNLD&_PMID=99801505&GPC=TCO&cn=no&viewfullsite=true"
