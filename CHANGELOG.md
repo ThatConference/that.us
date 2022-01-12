@@ -1,3 +1,10 @@
+## [2.4.3](https://github.com/ThatConference/that.us/compare/v2.4.2...v2.4.3) (2022-01-12)
+
+
+### Bug Fixes
+
+* dates are hard ([dd8042d](https://github.com/ThatConference/that.us/commit/dd8042dd0f8f86388eb97cbd6c0a179217d442fe))
+
 ## [2.4.2](https://github.com/ThatConference/that.us/compare/v2.4.1...v2.4.2) (2022-01-08)
 
 
