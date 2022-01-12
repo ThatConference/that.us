@@ -68,10 +68,29 @@ export const imageCrops = {
 	profile: '?mask=ellipse&w=500&h=500&fit=crop&q=75&fm=jpg'
 };
 
+export const events = {
+	next: {
+		tx: {
+			slug: 'tx/2022'
+		},
+		wi: {
+			slug: 'wi/2022'
+		}
+	}
+};
+
 export const kalahari = {
 	passkey: {
-		wi: 'https://book.passkey.com/e/xxx',
-		tx: 'https://book.passkey.com/e/50279810'
+		wi: {
+			opens: '04-11-2022',
+			closes: '07-01-2022',
+			url: 'https://book.passkey.com/e/xxx'
+		},
+		tx: {
+			opens: '01-01-2022',
+			closes: '05-01-2022',
+			url: 'https://book.passkey.com/e/50279810'
+		}
 	},
 	speakerPasskey: {
 		'wi/2022': {
