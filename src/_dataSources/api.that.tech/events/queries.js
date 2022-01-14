@@ -164,6 +164,26 @@ export const QUERY_EVENT_BY_SLUG = `
 	}
 `;
 
+export const QUERY_THAT_CONFERENCE_EVENT = `
+	query QUERY_EVENT_BY_SLUG ($slug: String) {
+		events {
+			event (findBy: {slug: $slug}) {
+				get {
+					startDate
+					endDate
+					venues {
+						name
+						address
+						city
+						state
+						zip
+					}
+				}
+			}
+		}
+	}
+`;
+
 export const QUERY_EVENT_WITH_SPEAKERS_BY_SLUG = `
 	${eventFieldsFragment}
 	query QUERY_EVENT_WITH_SPEAKERS_BY_SLUG ($slug: String) {
@@ -352,6 +372,19 @@ export const QUERY_CAN_ADD_SESSION = `
 export default (fetch) => {
 	const client = fetch ? gFetch(fetch) : gFetch();
 
+	function queryThatConferenceEvent(slug) {
+		const variables = { slug };
+
+		return client
+			.query({ query: QUERY_THAT_CONFERENCE_EVENT, variables })
+			.then(({ data, errors }) => {
+				if (errors) log({ errors, tag: 'QUERY_THAT_CONFERENCE_EVENT' });
+
+				const { event } = data.events;
+				return event ? event.get : null;
+			});
+	}
+
 	function queryEventBySlug(slug) {
 		const variables = { slug };
 
@@ -468,6 +501,7 @@ export default (fetch) => {
 		queryEventForCfp,
 		queryEventForAcceptedSpeaker,
 		canAddSession,
-		canAccessEvent
+		canAccessEvent,
+		queryThatConferenceEvent
 	};
 };
