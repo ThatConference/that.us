@@ -1,3 +1,10 @@
+# [2.5.0](https://github.com/ThatConference/that.us/compare/v2.4.3...v2.5.0) (2022-01-14)
+
+
+### Features
+
+* adds thatconference.com landing page ([88e90f3](https://github.com/ThatConference/that.us/commit/88e90f3e48a2fff0b203b0a2a5804400b09d5a6d))
+
 ## [2.4.3](https://github.com/ThatConference/that.us/compare/v2.4.2...v2.4.3) (2022-01-12)
 
 
