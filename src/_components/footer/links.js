@@ -16,12 +16,27 @@ export const thatLinks = [
 		href: '/members/'
 	},
 	{
-		text: 'Partners',
+		text: 'Membership',
+		href: '/membership/'
+	}
+];
+
+export const thatConferenceLinks = [
+	{
+		text: 'THAT Conference',
+		href: '/that-conference/'
+	},
+	{
+		text: 'Call for Speakers',
+		href: '/call-for-counselors/'
+	},
+	{
+		text: 'Sponsors and Partners',
 		href: '/partners/'
 	},
 	{
-		text: 'Pricing',
-		href: '/membership/'
+		text: 'THAT Store',
+		href: 'https://store.that.us/'
 	}
 ];
 
@@ -45,10 +60,6 @@ export const supportLinks = [
 ];
 
 export const companyLinks = [
-	{
-		text: 'THAT Conference',
-		href: 'https://thatconference.com?utm_source=THAT'
-	},
 	{
 		text: 'Code of Conduct',
 		href: '/support/code-of-conduct/'
@@ -75,5 +86,29 @@ export const legalLinks = [
 	{
 		text: 'Copyright Policy',
 		href: '/support/copyright/'
+	}
+];
+
+export const myProfileLinks = [
+	{
+		text: 'My Profile',
+		href: '/my/profile/'
+	},
+	{
+		text: 'My Settings',
+		href: '/my/settings/'
+	},
+
+	{
+		text: 'My Network',
+		href: '/my/network/'
+	},
+	{
+		text: 'My Favorites',
+		href: '/my/favorites/'
+	},
+	{
+		text: 'My Submissions',
+		href: '/my/submissions/'
 	}
 ];
