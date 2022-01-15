@@ -1,3 +1,10 @@
+# [2.6.0](https://github.com/ThatConference/that.us/compare/v2.5.0...v2.6.0) (2022-01-15)
+
+
+### Features
+
+* updates layout and adds newsletter ([8a3f3f9](https://github.com/ThatConference/that.us/commit/8a3f3f94d3fd887eced9a8336c535a3067062a40))
+
 # [2.5.0](https://github.com/ThatConference/that.us/compare/v2.4.3...v2.5.0) (2022-01-14)
 
 
