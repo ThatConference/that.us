@@ -405,6 +405,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "binaryjanitor",
+      "name": "Jon Cwiak",
+      "avatar_url": "https://avatars.githubusercontent.com/u/13708049?v=4",
+      "profile": "https://github.com/binaryjanitor",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
