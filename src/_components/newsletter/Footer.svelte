@@ -2,22 +2,13 @@
 	import { Form, Input } from 'sveltejs-forms';
 	import { Circle3 } from 'svelte-loading-spinners';
 
+	import post from './_form';
+
 	let submitted = false;
 
-	function handleSubmit({ detail: { values, setSubmitting } }) {
-		setSubmitting(true);
-
-		const data = new FormData();
-		const info = Object.keys(values);
-		info.forEach((i) => data.append(i, values[i]));
-
-		fetch('https://thatconference.activehosted.com/proc.php', {
-			method: 'POST',
-			body: data,
-			mode: 'no-cors'
-		})
+	function handleSubmit(detail) {
+		return post(detail)
 			.then(() => {
-				setSubmitting(false);
 				submitted = true;
 			})
 			.catch((error) => console.error('Request failed', error));
@@ -63,7 +54,6 @@
 							aria-label="Email address"
 							type="email"
 							required
-							class-s="appearance-none w-full px-5 py-3 border border-transparent text-base leading-6 rounded-md text-gray-900 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 transition duration-150 ease-in-out sm:max-w-xs"
 							class="appearance-none min-w-0 w-full py-2 px-4 
 								bg-white border border-gray-300 
 								rounded-md shadow-sm text-base text-gray-900 placeholder-gray-500 

@@ -55,7 +55,7 @@
 	import seoMetaTags from '$utils/seo/metaTags';
 	import Seo from '$components/Seo.svelte';
 
-	import NewsletterSignup from '$components/newsletter.svelte';
+	import NewsletterSignup from '$components/newsletter/Wide.svelte';
 
 	const { cdnUrl } = image(slug);
 

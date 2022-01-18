@@ -3,7 +3,7 @@
 
 	import { SocialLink } from '../social';
 	import socials from './socials';
-	import Newsletter from './Newsletter.svelte';
+	import Newsletter from '../newsletter/Footer.svelte';
 
 	import {
 		thatLinks,

@@ -5,6 +5,7 @@
 	import Seo from '$components/Seo.svelte';
 	import Layout from '$elements/layouts/ContentLayout.svelte';
 	import { Standard as StandardLink } from '$elements/links';
+	import Newsletter from '$components/newsletter/Short.svelte';
 
 	import WelcomeQuote from './support/_components/_WelcomeQuote.svelte';
 
@@ -36,7 +37,9 @@
 			</header>
 
 			<main>
-				<div class="lg:grid lg:grid-cols-2 space-y-12 lg:space-y-0 lg:gap-32 lg:items-start">
+				<div
+					class="lg:grid lg:grid-cols-2 space-y-12 lg:space-y-0 lg:gap-32 lg:items-start divide-y-2"
+				>
 					<section>
 						<ol class="overflow-hidden">
 							<li class="relative pb-10" in:fade={{ delay: 100, duration: 500 }}>
@@ -106,12 +109,12 @@
 						<WelcomeQuote />
 					</div>
 
-					<div class="col-span-2">
+					<section class="col-span-2 pt-16">
 						<h2
 							class="sm:text-center lg:text-left pb-16 text-4xl tracking-tight leading-10 font-extrabold text-thatBlue-800 sm:text-5xl
 						sm:leading-none md:text-6xl"
 						>
-							But wait, there's more!
+							Join The Daily Conversation
 						</h2>
 						<div class="space-y-8 lg:grid lg:grid-cols-6 lg:gap-8 lg:items-center">
 							<div class="col-span-2">
@@ -126,7 +129,19 @@
 								<StandardLink href="/my/profiles/slack/">Request Access Today</StandardLink>
 							</div>
 						</div>
-					</div>
+					</section>
+
+					<section class="col-span-2 pt-16">
+						<h2
+							class="sm:text-center lg:text-left pb-16 text-4xl tracking-tight leading-10 font-extrabold text-thatBlue-800 sm:text-5xl
+						sm:leading-none md:text-6xl"
+						>
+							Newsletter and Announcements
+						</h2>
+						<div class="space-y-8">
+							<Newsletter />
+						</div>
+					</section>
 				</div>
 			</main>
 		</div>
