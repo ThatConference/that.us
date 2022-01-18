@@ -2,22 +2,12 @@
 	import { Form, Input } from 'sveltejs-forms';
 	import { Waiting } from '$elements';
 
+	import post from './_form';
 	let submitted = false;
 
-	function handleSubmit({ detail: { values, setSubmitting } }) {
-		setSubmitting(true);
-
-		const data = new FormData();
-		const info = Object.keys(values);
-		info.forEach((i) => data.append(i, values[i]));
-
-		fetch('https://thatconference.activehosted.com/proc.php', {
-			method: 'POST',
-			body: data,
-			mode: 'no-cors'
-		})
+	function handleSubmit(detail) {
+		return post(detail)
 			.then(() => {
-				setSubmitting(false);
 				submitted = true;
 			})
 			.catch((error) => console.error('Request failed', error));

@@ -91,6 +91,10 @@ export const legalLinks = [
 
 export const myProfileLinks = [
 	{
+		text: 'Signup',
+		href: '/signup/'
+	},
+	{
 		text: 'My Profile',
 		href: '/my/profile/'
 	},
