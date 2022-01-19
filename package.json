@@ -21,7 +21,7 @@
 		"lint": "prettier --ignore-path .gitignore --check --plugin-search-dir=. ./src && eslint --ignore-path .gitignore ./src",
 		"format": "prettier --ignore-path .gitignore --write --plugin-search-dir=. ./src",
 		"validate": "concurrently npm:lint",
-		"build:sitemap": "npx sitemap-generator-cli http://localhost:3000 --last-mod --change-freq weekly --filepath ./static/sitemap.xml --priority-map 1.0"
+		"build:sitemap": "npx sitemap-generator-cli https://that.us --last-mod --change-freq weekly --filepath ./static/sitemap.xml --priority-map 1.0"
 	},
 	"devDependencies": {
 		"@auth0/nextjs-auth0": "1.6.2",
