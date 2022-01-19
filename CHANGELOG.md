@@ -1,3 +1,10 @@
+# [2.7.0](https://github.com/ThatConference/that.us/compare/v2.6.0...v2.7.0) (2022-01-19)
+
+
+### Features
+
+* adds community curated news ([417927a](https://github.com/ThatConference/that.us/commit/417927ae6ded9b3e5b5ba84e363b6cddd70092bd))
+
 # [2.6.0](https://github.com/ThatConference/that.us/compare/v2.5.0...v2.6.0) (2022-01-15)
 
 
