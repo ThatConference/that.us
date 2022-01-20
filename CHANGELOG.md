@@ -1,3 +1,10 @@
+# [2.8.0](https://github.com/ThatConference/that.us/compare/v2.7.0...v2.8.0) (2022-01-20)
+
+
+### Features
+
+* adds microsoft clarity ([6f6b4ab](https://github.com/ThatConference/that.us/commit/6f6b4abe49ed2fd9017d168dbcce25fd2e452427))
+
 # [2.7.0](https://github.com/ThatConference/that.us/compare/v2.6.0...v2.7.0) (2022-01-19)
 
 
