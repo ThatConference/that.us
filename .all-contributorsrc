@@ -414,6 +414,16 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "GitMje",
+      "name": "Michael",
+      "avatar_url": "https://avatars.githubusercontent.com/u/8420128?v=4",
+      "profile": "https://code.erpenbeck.io",
+      "contributions": [
+        "code",
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
