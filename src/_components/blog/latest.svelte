@@ -14,7 +14,7 @@
 				THAT BLOG
 			</h2>
 			<p class="mt-2 text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">
-				The Latest Announcemnts, Updates and Words
+				The Latest Announcements, Updates and Words
 			</p>
 			<p class="my-24 mx-auto max-w-prose text-xl text-gray-500">
 				<StandardLink href="/blog/">View All Blog Posts</StandardLink>
