@@ -5,8 +5,7 @@
 </script>
 
 <svelte:head>
-	<script src="https://meet.jit.si/external_api.js">
-	</script>
+	<script src="https://meet.jit.si/external_api.js"></script>
 </svelte:head>
 
 <slot />
