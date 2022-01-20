@@ -37,6 +37,10 @@ export const thatConferenceLinks = [
 	{
 		text: 'THAT Store',
 		href: 'https://store.that.us/'
+	},
+	{
+		text: 'COVID Policies',
+		href: '/support/covid-policies/'
 	}
 ];
 
