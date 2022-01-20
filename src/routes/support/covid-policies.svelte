@@ -25,13 +25,12 @@
 	<section class="max-w-prose mx-auto text-gray-500 ">
 		<div class="mb-12 relative text-gray-500 prose-lg">
 			<p>
-				While THAT Conference 2021 will be held as a digital-first platform, we are committed to the
-				health and safety of all in-person participants of the conference. We are constantly
-				monitoring the CDC guidelines and working with the Kalahari Meeting and Convention team to
-				accommodate healthy practices in the convention center. While there are risks associated
-				with attending an event during a pandemic, the following procedures have been created to
-				minimize those risks. We continue to update this page as needed based on federal, state, and
-				local mandates and recommendations.
+				We are committed to the health and safety of all in-person participants of the conference.
+				We are constantly monitoring the CDC guidelines and working with the Kalahari Meeting and
+				Convention team to accommodate healthy practices in the convention center. While there are
+				risks associated with attending an event during a pandemic, the following procedures have
+				been created to minimize those risks. We continue to update this page as needed based on
+				federal, state, and local mandates and recommendations.
 			</p>
 		</div>
 
