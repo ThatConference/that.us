@@ -1,3 +1,10 @@
+## [2.8.1](https://github.com/ThatConference/that.us/compare/v2.8.0...v2.8.1) (2022-01-20)
+
+
+### Bug Fixes
+
+* announcemnts typo ([23ad849](https://github.com/ThatConference/that.us/commit/23ad849762d6c6f16330809e473c2714e3328d1e))
+
 # [2.8.0](https://github.com/ThatConference/that.us/compare/v2.7.0...v2.8.0) (2022-01-20)
 
 
