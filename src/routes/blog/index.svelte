@@ -66,7 +66,7 @@
 					THAT BLOG
 				</h2>
 				<p class="mt-2 text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">
-					Announcemnts, Updates and Words
+					Announcements, Updates and Words
 				</p>
 				<!-- <p class="mt-5 mx-auto max-w-prose text-xl text-gray-500">
 					NEED SOME COPY
