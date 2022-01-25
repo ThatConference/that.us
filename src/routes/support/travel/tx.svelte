@@ -1,5 +1,7 @@
 <script>
 	import dayjs from 'dayjs';
+	import isBetween from 'dayjs/plugin/isBetween.js';
+
 	import { kalahari } from '$utils/config';
 	import { Standard as StandardLink } from '$elements/links';
 	import seoMetaTags from '$utils/seo/metaTags';
@@ -8,6 +10,8 @@
 	import Layout from '../_components/_Layout.svelte';
 	import Header from '../_components/_Header.svelte';
 	import MemoryHighlight from '../_components/_MemoryHighlight.svelte';
+
+	dayjs.extend(isBetween);
 
 	const metaTags = ((title = 'Texas Travel Information - THAT') => ({
 		title,
@@ -21,8 +25,13 @@
 		})
 	}))();
 
-	const open = dayjs(kalahari.passkey.tx.opens).format('dddd, MMMM D, YYYY');
-	const close = dayjs(kalahari.passkey.tx.closes).format('dddd, MMMM D, YYYY');
+	const openTime = dayjs(kalahari.passkey.tx.opens);
+	const open = openTime.format('dddd, MMMM D, YYYY');
+
+	const closeTime = dayjs(kalahari.passkey.tx.closes);
+	const close = closeTime.format('dddd, MMMM D, YYYY');
+
+	const isRoomBlockOpen = dayjs().isBetween(openTime, closeTime);
 </script>
 
 <Seo title={metaTags.title} tags={metaTags.tags} />
@@ -69,15 +78,42 @@
 							</blockquote>
 						</div>
 
+						<h3>Room Types</h3>
+						<div class="flex space-x-4">
+							<div class="prose prose-lg p-4 w-full bg-white border rounded-md shadow-md">
+								<h4>Double Queen Sofa</h4>
+								<p class="text-center">$199 + tax and fees</p>
+							</div>
+
+							<div class="prose prose-lg p-4 w-full bg-white border rounded-md shadow-md ">
+								<h4>2 Bedroom Suite</h4>
+								<p class="text-center">$249 + tax and fees</p>
+							</div>
+						</div>
+
+						<div class="mt-4 prose prose-lg text-gray-500">
+							<p>Restrictions do apply:</p>
+							<ul>
+								<li>Speakers, this block isn't for you. Contact us.</li>
+								<li>Weekend rates may be different than listed above.</li>
+								<li>Our block discount does apply to all rooms, not just the two listed above.</li>
+								<li>Never wait to book; when they're gone, they're gone.</li>
+							</ul>
+						</div>
+
 						<h3>Booking Your Reservation</h3>
 						<p>
 							A dedicated website is available for you to book your hotel room online or call
 							1-877-525-2427.
 						</p>
 
-						<div class="mt-8 flex flex-col items-center">
-							<StandardLink open={true} href={kalahari.passkey.tx.url}>Book Today</StandardLink>
-						</div>
+						{#if isRoomBlockOpen}
+							<div class="mt-8 flex flex-col items-center">
+								<StandardLink open={true} href={kalahari.passkey.tx.url}>Book Today</StandardLink>
+							</div>
+						{:else}
+							<div class="mt-8 flex flex-col items-center">asdfasdf</div>
+						{/if}
 					</div>
 				</div>
 			</div>

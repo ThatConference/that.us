@@ -1,5 +1,7 @@
 <script>
 	import dayjs from 'dayjs';
+	import isBetween from 'dayjs/plugin/isBetween.js';
+
 	import { Standard as StandardLink } from '$elements/links';
 	import { kalahari } from '$utils/config';
 	import seoMetaTags from '$utils/seo/metaTags';
@@ -8,6 +10,8 @@
 	import Layout from '../_components/_Layout.svelte';
 	import Header from '../_components/_Header.svelte';
 	import MemoryHighlight from '../_components/_MemoryHighlight.svelte';
+
+	dayjs.extend(isBetween);
 
 	const metaTags = ((title = 'Wisconsin Travel Information - THAT') => ({
 		title,
@@ -21,8 +25,13 @@
 		})
 	}))();
 
-	const open = dayjs(kalahari.passkey.wi.opens).format('dddd, MMMM D, YYYY');
-	const close = dayjs(kalahari.passkey.wi.closes).format('dddd, MMMM D, YYYY');
+	const openTime = dayjs(kalahari.passkey.wi.opens);
+	const open = openTime.format('dddd, MMMM D, YYYY');
+
+	const closeTime = dayjs(kalahari.passkey.wi.closes);
+	const close = closeTime.format('dddd, MMMM D, YYYY');
+
+	const isRoomBlockOpen = dayjs().isBetween(openTime, closeTime);
 </script>
 
 <Seo title={metaTags.title} tags={metaTags.tags} />
@@ -47,7 +56,8 @@
 			</p>
 		</div>
 
-		<div class="flex flex-col sm:flex-row sm:space-x-8 space-y-8 sm:space-y-0">
+		<!-- for when the other comes back into play <div class="flex flex-col sm:flex-row sm:items-center sm:space-x-8 space-y-8 sm:space-y-0"> -->
+		<div class="flex flex-col items-center sm:space-x-8 space-y-8 sm:space-y-0">
 			<div class="px-12 bg-gray-50 bg-opacity-50 rounded-md shadow-md">
 				<div class="prose prose-md text-gray-500">
 					<div class="flex flex-col pb-12">
@@ -68,16 +78,51 @@
 							</blockquote>
 						</div>
 
+						<h3>Room Types</h3>
+						<div class="flex space-x-4">
+							<div class="prose prose-lg p-4 w-full bg-white border rounded-md shadow-md">
+								<h4>Double Queen Sofa</h4>
+								<p class="text-center">$200 + tax and fees</p>
+							</div>
+
+							<div class="prose prose-lg p-4 w-full bg-white border rounded-md shadow-md ">
+								<h4>2 Bedroom Suite</h4>
+								<p class="text-center">$324 + tax and fees</p>
+							</div>
+						</div>
+
+						<div class="mt-4 prose prose-lg text-gray-500">
+							<p>Restrictions do apply:</p>
+							<ul>
+								<li>Speakers, this block isn't for you. Contact us.</li>
+								<li>Weekend rates may be different than listed above.</li>
+								<li>Our block discount does apply to all rooms, not just the two listed above.</li>
+								<li>Never wait to book; when they're gone, they're gone.</li>
+							</ul>
+						</div>
+
 						<h3>Booking Your Reservation</h3>
 						<p>A dedicated website is now available for you to book your hotel room online.</p>
 
-						<div class="flex justify-center">
-							<StandardLink open={true} href={kalahari.passkey.wi.url}>Book Today</StandardLink>
-						</div>
+						{#if isRoomBlockOpen}
+							<div class="flex justify-center">
+								<StandardLink open={true} href={kalahari.passkey.wi.url}>Book Today</StandardLink>
+							</div>
+						{:else}
+							<div class="flex justify-center">
+								<div
+									class="px-8 py-3 rounded-md shadow text-base leading-6 font-medium border-2 border-thatBlue-500 text-thatBlue-500 bg-white"
+								>
+									Reservations open on {open}.
+								</div>
+							</div>
+						{/if}
 					</div>
 				</div>
 			</div>
 
+			<!-- Not avail yet.
+				
 			<div class="px-12 bg-gray-50 bg-opacity-50 rounded-md shadow-md">
 				<div class="prose prose-md text-gray-500">
 					<div class="flex flex-col pb-12">
@@ -112,7 +157,9 @@
 						</div>
 					</div>
 				</div>
-			</div>
+			</div> 
+		
+			-->
 		</div>
 
 		<div class="pt-24 lg:grid lg:grid-cols-2 lg:gap-8 lg:items-start text-lg leading-7">
