@@ -157,7 +157,7 @@
 			>
 				<div class="flex flex-col flex-grow flex-shrink-0 justify-center">
 					<div class="flex flex-col flex-grow-0 flex-shrink-0 flex-start">
-						<a open href="/members/{host.profileSlug}/" class="flex-shrink-0">
+						<a sveltekit:prefetch open href="/members/{host.profileSlug}/" class="flex-shrink-0">
 							<span class="inline-block relative">
 								<img
 									class="lazyload w-12 h-12 rounded-full"
@@ -222,7 +222,7 @@
 
 			<div class="flex flex-col flex-grow justify-between">
 				<!-- COLUMN 2-->
-				<a href="/activities/{id}/">
+				<a sveltekit:prefetch href="/activities/{id}/">
 					<h3 class="text-gray-900 text-base leading-5 font-medium break-words pt-1">
 						{title}
 					</h3>
@@ -377,7 +377,7 @@
 			</div>
 		{/if}
 		<div class="flex flex-col items-center p-3 w-full">
-			<a open href="/members/{host.profileSlug}/" class="flex-shrink-0">
+			<a sveltekit:prefetch open href="/members/{host.profileSlug}/" class="flex-shrink-0">
 				<span class="inline-block relative">
 					<img
 						class="lazyload w-24 h-24 rounded-full"
@@ -400,7 +400,7 @@
 			</a>
 
 			<div class="flex flex-col text-center justify-center w-full">
-				<a href="/activities/{id}/">
+				<a sveltekit:prefetch href="/activities/{id}/">
 					<h3 class="text-gray-900 text-base leading-5 font-medium break-words pt-1">
 						{title}
 					</h3>
