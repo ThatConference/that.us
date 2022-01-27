@@ -1,3 +1,10 @@
+## [2.8.2](https://github.com/ThatConference/that.us/compare/v2.8.1...v2.8.2) (2022-01-27)
+
+
+### Bug Fixes
+
+* incorrect logout path ([addf003](https://github.com/ThatConference/that.us/commit/addf003e001a51f3edf596d15e975ce286649698))
+
 ## [2.8.1](https://github.com/ThatConference/that.us/compare/v2.8.0...v2.8.1) (2022-01-20)
 
 
