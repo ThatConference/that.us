@@ -1,3 +1,10 @@
+# [2.9.0](https://github.com/ThatConference/that.us/compare/v2.8.2...v2.9.0) (2022-01-28)
+
+
+### Features
+
+* edge cache and preconnect ([595a187](https://github.com/ThatConference/that.us/commit/595a187cddb6dbd4e9159196289f59ccfe16b61b))
+
 ## [2.8.2](https://github.com/ThatConference/that.us/compare/v2.8.1...v2.8.2) (2022-01-27)
 
 
