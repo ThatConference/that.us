@@ -7,6 +7,7 @@
 </script>
 
 <a
+	sveltekit:prefetch
 	{href}
 	class="relative -mr-px basis-0 flex-1 inline-flex items-center justify-center py-2
   text-xs leading-4 text-gray-700 font-medium border border-transparent
