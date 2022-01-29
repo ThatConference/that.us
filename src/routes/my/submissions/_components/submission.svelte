@@ -13,6 +13,14 @@
 		if (activity.status === 'ACCEPTED') goto(`/activities/${activity.id}`);
 		else goto(`/activities/edit/${activity.id}`);
 	}
+	function formatEventDisplay(activity) {
+		let eventName = activity.event.name || '';
+		if (eventName === 'Daily THAT') {
+			return eventName;
+		} else {
+			return eventName + ' ' + activity.event.year || '';
+		}
+	}
 </script>
 
 <li>
@@ -54,7 +62,7 @@
 					</div>
 					<div class="col-span-2 hidden md:block">
 						<div>
-							<p class="text-sm text-gray-900">
+							<p class="text-sm text-gray-900 flex">
 								<time datetime="2020-01-07">
 									{#if activity.startTime}
 										{dayjs(activity.startTime).format(`dddd, MMMM D, 'YY - h:mm A`)}
@@ -62,7 +70,7 @@
 								</time>
 							</p>
 							<p class="mt-2 flex items-center text-sm text-gray-500">
-								<span>{activity.location || ''}</span>
+								<span>{formatEventDisplay(activity)}</span>
 							</p>
 						</div>
 					</div>
