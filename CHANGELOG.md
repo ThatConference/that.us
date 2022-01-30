@@ -1,3 +1,10 @@
+## [2.9.1](https://github.com/ThatConference/that.us/compare/v2.9.0...v2.9.1) (2022-01-30)
+
+
+### Bug Fixes
+
+* add event to my submissions ([8d27280](https://github.com/ThatConference/that.us/commit/8d272807bc6417bb6ce189fbe364ce34992ce19d))
+
 # [2.9.0](https://github.com/ThatConference/that.us/compare/v2.8.2...v2.9.0) (2022-01-28)
 
 
