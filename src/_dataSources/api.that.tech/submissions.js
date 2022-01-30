@@ -18,7 +18,11 @@ export const QUERY_MY_SUBMISSIONS = `
 						status
 						tags         
 						createdAt
-						lastUpdatedAt   
+						lastUpdatedAt
+						event{
+							name,
+							year
+						}
 					}
 				}
 			}
