@@ -10,9 +10,9 @@
 </script>
 
 <div class="relative bg-thatBlue-200 bg-opacity-25">
-	<div class="max-w-5xl mx-auto w-full pt-10 pb-10 px-6">
-		<div class="flex flex-col sm:flex-row sm:justify-around items-center">
-			<div class="flex flex-col space-y-4">
+	<div class="max-w-5xl mx-auto w-full pt-24 pb-10 px-6">
+		<div class="flex flex-col sm:flex-row sm:justify-between items-center">
+			<div class="flex flex-col space-y-12">
 				<h1
 					class="font-extrabold uppercase text-thatBlue-500 text-4xl sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl"
 				>
@@ -20,6 +20,9 @@
 				</h1>
 
 				<div class="font-extrabold">
+					<h2 class="text-3xl tracking-tight text-gray-500">
+						THAT Conference - {`${venue.city}, ${venue.state}`}
+					</h2>
 					<p class="text-3xl tracking-tight text-gray-500">
 						{dayjs(event.startDate).format('MMMM D, YYYY')} - {dayjs(event.endDate).format(
 							'MMMM D, YYYY'
@@ -44,7 +47,7 @@
 
 			<div class="mt-12 sm:mt-0">
 				<a href={`/events/${event.slug}`} class="w-full">
-					<img class="h-48 sm:h-96 " src={event.logo} alt="" />
+					<img class="h-48 sm:h-72 " src={event.logo} alt="" />
 				</a>
 			</div>
 		</div>

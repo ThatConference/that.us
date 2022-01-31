@@ -139,18 +139,6 @@
 			requiresAccessToJoin ? 'rounded-lg border-t-4 border-red-500' : ''
 		}`}
 	>
-		<!-- {#if type !== 'OPEN_SPACE' && host.profileSlug != 'thatconference'}
-			<div class="relative w-full text-center">
-				<div
-					class="inline-block absolute top-8 right-0 bg-that-red rounded-l-xl p-2 pl-3 shadow-sm"
-				>
-					<div class="flex flex-col items-center">
-						<span class="text-white uppercase text-xs">Camp</span>
-						<span class="text-white uppercase text-xs">Counselor</span>
-					</div>
-				</div>
-			</div>
-		{/if} -->
 		<div class="flex">
 			<div
 				class="flex flex-col items-stretch text-center pt-3 basis-32 flex-shrink-0 flex-grow-0 justify-between"
@@ -166,16 +154,6 @@
 									data-src={srcset.src}
 									data-srcset={srcset.srcset}
 								/>
-
-								<!-- {#if host.earnedMeritBadges.length > 0}
-							<span class="absolute bottom-0 left-0 block h-8 w-8">
-								<img
-									class="lazyload"
-									src={host.earnedMeritBadges[0].image}
-									alt={host.earnedMeritBadges[0].name}
-								/>
-							</span>
-						{/if} -->
 							</span>
 						</a>
 						<h3 class="text-gray-400 text-sm leading-5 pt-1 text-center md:pb-2">
@@ -195,11 +173,11 @@
 								on:click|preventDefault={!favoriteDisabled && handleToggle}
 								class:text-red-500={isFavorite}
 								class="relative inline-flex items-center justify-center
-					py-2 text-xs leading-4 text-gray-700 font-medium border
-					border-transparent rounded-br-lg hover:text-gray-300
-					focus:outline-none focus:ring-blue
-					focus:border-blue-300 focus:z-10 transition ease-in-out
-					duration-150"
+									py-2 text-xs leading-4 text-gray-700 font-medium border
+									border-transparent rounded-br-lg hover:text-gray-300
+									focus:outline-none focus:ring-blue
+									focus:border-blue-300 focus:z-10 transition ease-in-out
+									duration-150"
 							>
 								<Icon data={heart} class="w-4 h-4" />
 							</button>
@@ -246,13 +224,6 @@
 						{/if}
 					</p>
 				</div>
-
-				<!-- 
-				<div class="flex flex-wrap items-center justify-center space-x-4 px-4 pb-3">
-					{#each tags as t}
-						<Tag>{t}</Tag>
-					{/each}
-				</div> -->
 
 				<div class="border-t border-gray-200">
 					<div class="-mt-px grid grid-cols-2 md:grid-cols-4">
@@ -430,13 +401,15 @@
 			</p>
 		</div>
 
-		<div class="flex flex-wrap items-center justify-center space-x-4 px-4 pb-3">
+		<div class="flex flex-wrap justify-center space-x-2 px-4 pb-3">
 			{#each tags as t}
-				<Tag>{t}</Tag>
+				<div class="py-2">
+					<Tag>{t}</Tag>
+				</div>
 			{/each}
 		</div>
 
-		<div class="flex-none border-t border-gray-200">
+		<div class="flex border-t border-gray-200">
 			<div class="flex-1 flex">
 				<CardLink href="/activities/{id}/" icon={info} text="More Details" />
 			</div>
@@ -504,9 +477,9 @@
 						<div class="-ml-px w-0 flex-1 flex">
 							<div
 								class="relative w-0 flex-1 inline-flex items-center justify-center
-              py-2 text-xs leading-4 text-white font-medium border
-              border-transparent rounded-br-lg rounded-bl-lg transition ease-in-out
-              duration-150 bg-that-blue pointer-cursor"
+											py-2 text-xs leading-4 text-white font-medium border
+											border-transparent rounded-br-lg rounded-bl-lg transition ease-in-out
+											duration-150 bg-that-blue pointer-cursor"
 							>
 								<Icon data={user} class="-ml-1 mr-2 h-4 w-4" />
 								<span>In-Person</span>

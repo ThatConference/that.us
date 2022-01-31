@@ -6,6 +6,11 @@
 
 <div id="discounts" class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24">
 	<div class="bg-white px-12 py-6 flex flex-col justify-start rounded-lg shadow-lg space-y-12">
+		<div class="mt-6">
+			<h2 class="text-2xl font-extrabold text-thatBlue-800 sm:text-3xl">
+				Room Blocks, Discounts, and Notices
+			</h2>
+		</div>
 		<div
 			class="flex flex-col sm:flex-row justify-start sm:justify-between items-center space-x-12 space-y-6"
 		>

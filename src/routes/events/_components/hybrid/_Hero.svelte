@@ -6,19 +6,13 @@
 	import { scrollto } from 'svelte-scrollto';
 
 	import { Shell } from '$elements/buttons';
+
+	const venue = event.venues[0];
 </script>
 
 <div class="relative bg-thatBlue-200 bg-opacity-25">
 	<div class="mx-auto max-w-7xl w-full pt-10 pb-10 text-center">
 		<div class="flex flex-col">
-			<div class="z-[1] transform translate-y-40">
-				<h1
-					class="animate__animated animate__pulse shadowText relative font-extrabold uppercase text-thatBlue-500 text-4xl sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl"
-				>
-					{event.slogan}
-				</h1>
-			</div>
-
 			<img class="relative h-96 " src={event.logo} alt="" />
 
 			<div class="p-8 font-extrabold">
@@ -26,6 +20,9 @@
 					{dayjs(event.startDate).format('MMMM D, YYYY')} - {dayjs(event.endDate).format(
 						'MMMM D, YYYY'
 					)}
+				</p>
+				<p class="text-3xl tracking-tight text-gray-500">
+					{`${venue.city}, ${venue.state}`}
 				</p>
 			</div>
 
