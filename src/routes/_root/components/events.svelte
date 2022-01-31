@@ -43,7 +43,7 @@
 		<div class="mt-12 space-y-12">
 			<div class="w-full flex flex-col">
 				<h2 class="text-3xl leading-9 font-extrabold tracking-tight sm:text-4xl">
-					<span class="pl-2 text-that-orange">Upcoming Online Events</span>
+					<span class="pl-2 text-that-orange">Upcoming Virtual Events</span>
 				</h2>
 			</div>
 
@@ -60,7 +60,7 @@
 
 			<div class="w-full flex flex-col">
 				<h2 class="text-3xl leading-9 font-extrabold tracking-tight sm:text-4xl">
-					<span class="pl-2 text-that-orange">Upcoming Hybrid Events</span>
+					<span class="pl-2 text-that-orange">Upcoming THAT Conferences</span>
 				</h2>
 			</div>
 			<ul

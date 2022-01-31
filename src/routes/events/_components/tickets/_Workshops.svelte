@@ -20,7 +20,7 @@
 	}
 </script>
 
-<div class="relative pt-12 sm:pt-16 lg:pt-24">
+<div id="workshops" class="relative pt-12 sm:pt-16 lg:pt-24">
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 		<div class="flex items-center">
 			<div class="lg:w-3/4 lg:pr-12">

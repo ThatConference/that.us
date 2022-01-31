@@ -12,6 +12,7 @@
 >
 	<div class="px-2 py-3 sm:px-3">
 		<a
+			sveltekit:prefetch
 			href="/events/"
 			class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300
         hover:text-white hover:bg-that-blue focus:outline-none focus:text-white
@@ -20,6 +21,7 @@
 			Events
 		</a>
 		<a
+			sveltekit:prefetch
 			href="/activities/"
 			class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300
         hover:text-white hover:bg-that-blue focus:outline-none focus:text-white
@@ -28,6 +30,7 @@
 			Activities
 		</a>
 		<a
+			sveltekit:prefetch
 			href="/members/"
 			class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300
         hover:text-white hover:bg-that-blue focus:outline-none focus:text-white
@@ -36,6 +39,7 @@
 			Members
 		</a>
 		<a
+			sveltekit:prefetch
 			href="/communities/"
 			class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300
 				hover:text-white hover:bg-that-blue focus:outline-none focus:text-white
@@ -44,6 +48,7 @@
 			Communities
 		</a>
 		<a
+			sveltekit:prefetch
 			href="/partners/"
 			class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300
         hover:text-white hover:bg-that-blue focus:outline-none focus:text-white
@@ -52,6 +57,7 @@
 			Partners
 		</a>
 		<a
+			sveltekit:prefetch
 			href="/blog/"
 			class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300
         hover:text-white hover:bg-that-blue focus:outline-none focus:text-white
@@ -60,6 +66,7 @@
 			Blog
 		</a>
 		<a
+			sveltekit:prefetch
 			href="/support/"
 			class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300
         hover:text-white hover:bg-that-blue focus:outline-none focus:text-white

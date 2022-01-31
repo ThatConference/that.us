@@ -4,9 +4,10 @@
 	import { createEventDispatcher } from 'svelte';
 	import lodash from 'lodash';
 
-	import { Check } from '$elements/svgs';
+	import { Check, Ban } from '$elements/svgs';
 	import { Highlight as HighlightLink } from '$elements/links';
 	import { Standard as StandardButton, Highlight as HighlightButton } from '$elements/buttons';
+	import { Shell as ShellButton } from '$elements/buttons';
 
 	import Notices from '../Notices.svelte';
 
@@ -19,21 +20,12 @@
 		(i) => i.uiReference
 	);
 
-	// todo.. get memberships type
-
 	function handleTicketPurchase(ref) {
 		dispatch('purchase-hybrid-ticket', {
 			eventId: event.id,
 			ref
 		});
 	}
-
-	// function handleMembershipPurchase(ref) {
-	// 	dispatch('purchase-membership-ticket', {
-	// 		eventId: event.id,
-	// 		ref
-	// 	});
-	// }
 </script>
 
 <div>
@@ -49,18 +41,6 @@
 				your road to level up your skills, career and take charge of
 				<span class="font-bold">you</span>.
 			</p>
-
-			<div class="mt-8">
-				<div class="flex flex-col">
-					<div class="animate-pulse">
-						<HighlightLink href={`/events/${event.slug}/tickets`}>
-							<span class="text-xl uppercase font-bold tracking-wider">
-								View all ticket options
-							</span>
-						</HighlightLink>
-					</div>
-				</div>
-			</div>
 		</div>
 	</div>
 
@@ -78,12 +58,12 @@
 								<div class="bg-white px-6 py-10">
 									<div>
 										<h3 class="text-center text-2xl font-bold uppercase text-gray-500">
-											{eventTickets['WORKSHOPS'].name}
+											{eventTickets['CAMPER_NO_FOOD'].name}
 										</h3>
 										<div class="mt-4 flex items-center justify-center">
 											<span class="px-3 flex items-start text-6xl tracking-tight text-gray-900">
 												<span class="mt-2 mr-2 text-4xl font-medium">$</span>
-												<span class="font-extrabold">{eventTickets['WORKSHOPS'].price}</span>
+												<span class="font-extrabold">{eventTickets['CAMPER_NO_FOOD'].price}</span>
 												<span class="mt-2 ml-2 text-xl font-medium tracking-wide text-gray-400">
 													USD
 												</span>
@@ -100,8 +80,15 @@
 												<span class="text-green-500"><Check /></span>
 											</div>
 											<p class="ml-3 text-base font-medium text-gray-500">
-												Access to the Pre-Conference
+												Full Access to All Sessions
 											</p>
+										</li>
+
+										<li class="flex items-start">
+											<div class="flex-shrink-0">
+												<span class="text-green-500"><Check /></span>
+											</div>
+											<p class="ml-3 text-base font-medium text-gray-500">Waterpark Party</p>
 										</li>
 
 										<li class="flex items-start">
@@ -109,20 +96,19 @@
 												<span class="text-green-500"><Check /></span>
 											</div>
 											<p class="ml-3 text-base font-medium text-gray-500">
-												Lunch and all day beverage
+												THAT t-shirt, badge, and swag
 											</p>
 										</li>
-
 										<li class="flex items-start">
 											<div class="flex-shrink-0">
-												<span class="text-green-500"><Check /></span>
+												<span class="text-red-500"><Ban /></span>
 											</div>
-											<p class="ml-3 text-base font-medium text-gray-500">Welcome Reception</p>
+											<p class="ml-3 text-base font-medium text-gray-500">Meals and Food Items</p>
 										</li>
 									</ul>
 									<div class="mt-8">
 										<div class="flex flex-col">
-											<StandardButton on:click={() => handleTicketPurchase('WORKSHOPS')}>
+											<StandardButton on:click={() => handleTicketPurchase('CAMPER_NO_FOOD')}>
 												Purchase
 											</StandardButton>
 										</div>
@@ -231,14 +217,12 @@
 								<div class="bg-white px-6 py-10">
 									<div>
 										<h3 class="text-center text-2xl font-bold uppercase text-gray-500">
-											{eventTickets['VIRTUAL_CAMPER'].name}
+											Family Campers (starting at)
 										</h3>
 										<div class="mt-4 flex items-center justify-center">
 											<span class="px-3 flex items-start text-6xl tracking-tight text-gray-900">
 												<span class="mt-2 mr-2 text-4xl font-medium">$</span>
-												<span class="font-extrabold">
-													{eventTickets['VIRTUAL_CAMPER'].price}
-												</span>
+												<span class="font-extrabold"> 79 </span>
 												<span class="mt-2 ml-2 text-xl font-medium tracking-wide text-gray-400">
 													USD
 												</span>
@@ -254,7 +238,7 @@
 											<div class="flex-shrink-0">
 												<span class="text-green-500"><Check /></span>
 											</div>
-											<p class="ml-3 text-base font-medium text-gray-500">Keynotes</p>
+											<p class="ml-3 text-base font-medium text-gray-500">Family Sessions</p>
 										</li>
 
 										<li class="flex items-start">
@@ -262,7 +246,7 @@
 												<span class="text-green-500"><Check /></span>
 											</div>
 											<p class="ml-3 text-base font-medium text-gray-500">
-												Join and create virtual sessions
+												Pig Roast and Waterpark Party
 											</p>
 										</li>
 
@@ -270,14 +254,16 @@
 											<div class="flex-shrink-0">
 												<span class="text-green-500"><Check /></span>
 											</div>
-											<p class="ml-3 text-base font-medium text-gray-500">THAT t-shirt (US Only)</p>
+											<p class="ml-3 text-base font-medium text-gray-500">THAT t-shirt</p>
 										</li>
 									</ul>
 									<div class="mt-8">
 										<div class="flex flex-col">
-											<StandardButton on:click={() => handleTicketPurchase('VIRTUAL_CAMPER')}>
-												Purchase
-											</StandardButton>
+											<ShellButton>
+												<a sveltekit:prefetch class="py-2" href="tickets#families">
+													More Information
+												</a>
+											</ShellButton>
 										</div>
 									</div>
 								</div>
@@ -287,6 +273,15 @@
 				</div>
 			</div>
 		</div>
+
+		<div class="mt-24 flex flex-col items-center">
+			<div class="animate-pulse">
+				<HighlightLink href={`/events/${event.slug}/tickets`}>
+					<span class="text-xl uppercase font-bold tracking-wider"> View all ticket options </span>
+				</HighlightLink>
+			</div>
+		</div>
+
 		<Notices />
 	</div>
 </div>

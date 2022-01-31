@@ -22,9 +22,6 @@
 <script>
 	export let wi, tx;
 
-	console.log({ tx });
-	console.log({ wi });
-
 	import dayjs from 'dayjs';
 	import seoMetaTags from '$utils/seo/metaTags';
 	import Seo from '$components/Seo.svelte';

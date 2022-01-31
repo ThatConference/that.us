@@ -4,10 +4,15 @@
 	import { fade } from 'svelte/transition';
 	import lodash from 'lodash';
 
-	import { FeaturedActivity, FeaturedActivityAdd } from '$elements/activities';
+	import { FeaturedActivity } from '$elements/activities';
 
 	let sessions = event.sessions.sessions;
-	$: sessionsFiltered = sessions.filter((s) => s).filter((s) => s.status === 'ACCEPTED');
+
+	$: sessionsFiltered = sessions
+		.filter((s) => s)
+		.filter((s) => s.status === 'ACCEPTED')
+		.filter((s) => s.speakers[0].profileSlug !== 'thatconference')
+		.slice(0, 9);
 </script>
 
 <section class="py-12 lg:py-16 bg-thatBlue-700">
@@ -15,12 +20,12 @@
 		<div class="space-y-12">
 			<div class="space-y-5 sm:space-y-4 md:max-w-xl lg:max-w-3xl xl:max-w-none">
 				<h2 class="text-3xl leading-9 font-extrabold text-white tracking-tight sm:text-4xl">
-					Newly Added Activities
+					Featured Activities
 				</h2>
 				<p class="text-xl leading-7 text-gray-300">
-					Do you have a ticket? Add your activity today! View the
+					Do you have a ticket?
 					<span class="pl:2 text-that-orange hover:text-thatOrange-500">
-						<a href={`/activities/${event.slug}`}>entire event schedule.</a>
+						<a href={`/activities/${event.slug}`}>View the full schedule.</a>
 					</span>
 				</p>
 			</div>
@@ -34,9 +39,9 @@
 					{/each}
 				{/if}
 
-				<li class="h-full w-full" in:fade>
+				<!-- <li class="h-full w-full" in:fade>
 					<FeaturedActivityAdd eventId={event.id} />
-				</li>
+				</li> -->
 			</ul>
 
 			<div class="flex justify-end">

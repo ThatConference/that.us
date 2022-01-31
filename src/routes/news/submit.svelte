@@ -25,7 +25,6 @@
 				resetForm();
 			})
 			.catch(() => {
-				console.log('did I end up here');
 				setSubmitting(false);
 				resetForm();
 			});
