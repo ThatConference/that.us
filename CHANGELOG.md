@@ -1,3 +1,10 @@
+## [2.9.4](https://github.com/ThatConference/that.us/compare/v2.9.3...v2.9.4) (2022-01-31)
+
+
+### Bug Fixes
+
+* removing csp ([43996b3](https://github.com/ThatConference/that.us/commit/43996b32c6d474e26409e57f71a8bb2c89024601))
+
 ## [2.9.3](https://github.com/ThatConference/that.us/compare/v2.9.2...v2.9.3) (2022-01-31)
 
 
