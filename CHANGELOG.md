@@ -1,3 +1,10 @@
+## [2.9.2](https://github.com/ThatConference/that.us/compare/v2.9.1...v2.9.2) (2022-01-31)
+
+
+### Bug Fixes
+
+* missing rel attribute ([4e2cf61](https://github.com/ThatConference/that.us/commit/4e2cf6182391b1ad08a00d16db611009b126f623))
+
 ## [2.9.1](https://github.com/ThatConference/that.us/compare/v2.9.0...v2.9.1) (2022-01-30)
 
 
