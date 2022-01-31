@@ -1,3 +1,10 @@
+## [2.9.3](https://github.com/ThatConference/that.us/compare/v2.9.2...v2.9.3) (2022-01-31)
+
+
+### Bug Fixes
+
+* adding csp ([11d5e8c](https://github.com/ThatConference/that.us/commit/11d5e8c15b61490a41c18fe5750d06f47af08f98))
+
 ## [2.9.2](https://github.com/ThatConference/that.us/compare/v2.9.1...v2.9.2) (2022-01-31)
 
 
