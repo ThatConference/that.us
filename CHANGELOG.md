@@ -1,3 +1,10 @@
+## [2.9.6](https://github.com/ThatConference/that.us/compare/v2.9.5...v2.9.6) (2022-02-01)
+
+
+### Bug Fixes
+
+* going directly to api ([6592191](https://github.com/ThatConference/that.us/commit/6592191ed441541a586f5c1c1931793aa0784b1a))
+
 ## [2.9.5](https://github.com/ThatConference/that.us/compare/v2.9.4...v2.9.5) (2022-02-01)
 
 
