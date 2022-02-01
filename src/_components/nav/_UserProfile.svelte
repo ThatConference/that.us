@@ -82,7 +82,6 @@
 							</div>
 
 							<a
-								sveltekit:prefetch
 								href="/my/profiles/primary/"
 								on:click={() => (visible = false)}
 								class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
@@ -91,7 +90,6 @@
 							</a>
 
 							<a
-								sveltekit:prefetch
 								href="/my/settings/badges/"
 								on:click={() => (visible = false)}
 								class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
