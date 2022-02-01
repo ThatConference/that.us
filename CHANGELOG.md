@@ -1,3 +1,10 @@
+## [2.9.5](https://github.com/ThatConference/that.us/compare/v2.9.4...v2.9.5) (2022-02-01)
+
+
+### Bug Fixes
+
+* removing prefetch from user menu ([7e32b05](https://github.com/ThatConference/that.us/commit/7e32b05cd7f319c1e7450fb4bdfb55757f99ce83))
+
 ## [2.9.4](https://github.com/ThatConference/that.us/compare/v2.9.3...v2.9.4) (2022-01-31)
 
 
