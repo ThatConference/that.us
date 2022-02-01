@@ -33,7 +33,7 @@
 	import { Waiting } from '$elements';
 	import { Shell } from '$elements/buttons';
 
-	let relationshipSelect = emergencyContactInformation.relationship;
+	let relationshipSelect = emergencyContactInformation?.relationship;
 	let travelingWithYouSelect =
 		yesNoDropDown.find((i) => i.value === emergencyContactInformation?.travelingWithYou) ||
 		undefined;
