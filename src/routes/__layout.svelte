@@ -60,8 +60,6 @@
 	import { onMount, setContext } from 'svelte';
 	import { navigating, session } from '$app/stores';
 
-	import { page } from '$app/stores';
-
 	import loading from '$stores/loading';
 	import { showReleaseNotes } from '$stores/siteVersion';
 	import { messages } from '$stores/notificationCenter';
@@ -124,7 +122,7 @@
 
 	$: if (!isEmpty($session.thatProfile)) {
 		if (!dev && browser) {
-			let { id, email, firstName, lastName } = $session.thatProfile;
+			let { id, email } = $session.thatProfile;
 
 			Sentry.configureScope((scope) => {
 				scope.setUser({
@@ -136,24 +134,8 @@
 			LogRocket.identify(id, {
 				email
 			});
-
-			window.woopra.identify({
-				id,
-				email,
-				name: `${firstName} ${lastName}`
-			});
-
-			window.woopra.track();
 		}
 	}
-
-	// onDestroy(unsub);
-
-	$: $page.path,
-		browser &&
-			window.gtag('config', 'UA-21705613-11', {
-				page_path: $page.path
-			});
 </script>
 
 <div>

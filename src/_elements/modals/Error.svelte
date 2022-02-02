@@ -51,7 +51,6 @@
 			<span class="flex w-full rounded-md shadow-sm sm:ml-3 sm:w-auto">
 				<a
 					href={action.href}
-					type="button"
 					class="inline-flex justify-center w-full rounded-md border
           border-transparent px-4 py-2 bg-red-600 text-base leading-6
           font-medium text-white shadow-sm hover:bg-red-500 focus:outline-none
@@ -65,7 +64,6 @@
 				<span class="flex w-full rounded-md shadow-sm sm:ml-3 sm:w-auto">
 					<a
 						href={returnTo.href}
-						type="button"
 						class="inline-flex justify-center w-full rounded-md border
             border-gray-300 px-4 py-2 bg-white text-base leading-6 font-medium
             text-gray-700 shadow-sm hover:text-gray-500 focus:outline-none

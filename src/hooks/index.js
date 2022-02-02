@@ -49,7 +49,7 @@ export async function getSession(request) {
 	let { isAuthenticated, user, thatProfile, accessToken } = request.locals;
 
 	if (isAuthenticated && accessToken) {
-		const results = await fetch(config.api, {
+		const results = await fetch(config.api.direct, {
 			method: 'POST',
 			headers: {
 				credentials: 'include',
