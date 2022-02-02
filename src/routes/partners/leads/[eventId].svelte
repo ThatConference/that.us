@@ -1,5 +1,4 @@
 <script>
-	import { browser } from '$app/env';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 	import { Circle3 } from 'svelte-loading-spinners';
@@ -36,8 +35,6 @@
 
 	async function handleContactExchange() {
 		waiting = true;
-		browser && window.woopra.track('event_contact_exchanged');
-
 		const { result, message } = await addPin(eventId, pinNumber, partnerNotes);
 
 		waiting = false;

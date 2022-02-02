@@ -4,7 +4,6 @@
 	export let title;
 	export let text;
 
-	import { browser } from '$app/env';
 	import { createEventDispatcher } from 'svelte';
 	import { Circle3 } from 'svelte-loading-spinners';
 
@@ -22,8 +21,6 @@
 
 	async function handleCheckIn() {
 		waiting = true;
-
-		browser && window.woopra.track('event_inperson_checkin');
 
 		const { result, message } = await checkIn(eventId, ticketId, pinNumber);
 
