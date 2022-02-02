@@ -10,9 +10,10 @@ export default {
 	version: '2.1.0',
 	eventId: 'YWavA70szR8rxSwrLJaL',
 	eventSlug: 'thatus/daily',
-	// api: import.meta.env.VITE_THAT_API || configMissing('VITE_THAT_API'),
-	// api: 'https://gateway-bgydxslf5a-uc.a.run.app',
-	api: 'https://that.graphcdn.app',
+	api: {
+		cache: 'https://that.graphcdn.app',
+		direct: import.meta.env.VITE_THAT_API || configMissing('VITE_THAT_API')
+	},
 	ogImageApi: import.meta.env.VITE_THAT_OG_IMAGE_API || 'https://og-image.that.tech/og-image',
 	profileImageApi: 'https://api.that.tech/profile',
 	defaultProfileImage:

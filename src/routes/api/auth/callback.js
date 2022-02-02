@@ -13,7 +13,7 @@ async function afterCallback(_req, _res, session, _state) {
 	};
 
 	try {
-		const results = await fetch(config.api, {
+		const results = await fetch(config.api.direct, {
 			method: 'POST',
 			headers: {
 				credentials: 'include',

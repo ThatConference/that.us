@@ -8,7 +8,7 @@ export async function post({ body, locals }) {
 		};
 	}
 
-	const results = await fetch(config.api, {
+	const results = await fetch(config.api.direct, {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
@@ -18,7 +18,7 @@ export async function post({ body, locals }) {
 	})
 		.then((r) => r.json())
 		.catch((error) => {
-			console.log('PROXY POST ERROR', error);
+			console.error('PROXY POST ERROR', error);
 			return {
 				status: 500,
 				body: error.message

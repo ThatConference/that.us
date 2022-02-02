@@ -6,8 +6,8 @@ import fetchRetry from 'fetch-retry';
 import loading from '$stores/loading';
 import config from '$utils/config';
 
-function init(fetch, url) {
-	let _url = url || config.api;
+function init(fetch) {
+	let _cacheApiUrl = config.api.cache;
 
 	let _fetch = fetchRetry(fetch || isoFetch);
 
@@ -39,7 +39,7 @@ function init(fetch, url) {
 
 	function query({ query, variables = {} }) {
 		if (browser) loading.set(true);
-		return _fetch(_url, {
+		return _fetch(_cacheApiUrl, {
 			method: 'POST',
 			headers,
 			body: JSON.stringify({
