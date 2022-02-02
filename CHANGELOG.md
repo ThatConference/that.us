@@ -1,3 +1,14 @@
+## [2.9.7](https://github.com/ThatConference/that.us/compare/v2.9.6...v2.9.7) (2022-02-02)
+
+
+### Bug Fixes
+
+* adding cdn back ([2763c0d](https://github.com/ThatConference/that.us/commit/2763c0daf43617e247f033a0dd49433ef1e85d20))
+* fixes emergency contact relationship undefined ([ec38915](https://github.com/ThatConference/that.us/commit/ec38915c1ce8c86e3d751a54b25e2d49f0ba46a2))
+* fixes modal button colors ([eacaca5](https://github.com/ThatConference/that.us/commit/eacaca5821eef1937596500adda741e7278c02d8))
+* removes unused event tracking ([2598e35](https://github.com/ThatConference/that.us/commit/2598e35f537960c8d263ad300ae78410dfca53d9))
+* splits api calls to cache and direct ([57fa834](https://github.com/ThatConference/that.us/commit/57fa8342f3f39f6d9afcefd682e805864bd4e52f))
+
 ## [2.9.6](https://github.com/ThatConference/that.us/compare/v2.9.5...v2.9.6) (2022-02-01)
 
 
