@@ -3,7 +3,9 @@
 		//todo: we need to get this from some config somewhere or better yet an api
 		const upNextHybridEvent = `OlyDhUyrp2DI9babqZO9`;
 
-		const eventId = url.searchParams.get('event') || upNextHybridEvent;
+		const eventId = url.searchParams.has('event')
+			? url.searchParams.get('event')
+			: upNextHybridEvent;
 		const selectedEvent = stuff.events.find((i) => i.id === eventId);
 
 		const activeEvents = {

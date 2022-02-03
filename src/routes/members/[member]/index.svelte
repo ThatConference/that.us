@@ -6,7 +6,7 @@
 		const { queryMemberBySlug, queryFollowers } = memberQueryApi(fetch);
 		const { queryMeFollowingMembers } = meQueryApi(fetch);
 
-		let member = params.member;
+		let { member } = params;
 
 		let [profile, followers, myFollowers = []] = await (async () => {
 			if (session.isAuthenticated) {

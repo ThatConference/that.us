@@ -3,7 +3,7 @@
 	import eventQueriesApi from '$dataSources/api.that.tech/events/queries';
 
 	export async function load({ url, fetch }) {
-		const eventSlug = url.searchParams.get('eventSlug') || null;
+		const eventSlug = url.searchParams.has('eventSlug') ? url.searchParams.get('eventSlug') : null;
 
 		if (eventSlug == null)
 			return {
