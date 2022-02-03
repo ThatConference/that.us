@@ -78,9 +78,9 @@ export function initAuth0(config) {
 						};
 					}
 				} else {
-					const queryStr = loadParams.page.query.toString();
+					const queryString = loadParams.url.searchParams.toString();
 					const returnUrl =
-						opts?.returnTo || `${loadParams.page.path}${queryStr ? '?' + queryStr : ''}`;
+						opts?.returnTo || `${loadParams.url.path}${queryString ? '?' + queryString : ''}`;
 
 					return {
 						status: 307,
