@@ -2,11 +2,11 @@
 	import memberQueryApi from '$dataSources/api.that.tech/members/queries';
 	import meQueryApi from '$dataSources/api.that.tech/me/queries';
 
-	export async function load({ page, fetch, session }) {
+	export async function load({ params, fetch, session }) {
 		const { queryMemberBySlug, queryFollowers } = memberQueryApi(fetch);
 		const { queryMeFollowingMembers } = meQueryApi(fetch);
 
-		let member = page.params.member;
+		let { member } = params;
 
 		let [profile, followers, myFollowers = []] = await (async () => {
 			if (session.isAuthenticated) {

@@ -18,35 +18,23 @@ Sentry.init({
 	attachStacktrace: true
 });
 
-export async function customHeaders({ request, resolve }) {
-	const response = await resolve(request);
+function user({ event, resolve }) {
+	const auth0Session = auth0.getSession(event);
+	event.locals.auth0Session = auth0Session;
 
-	return {
-		...response,
-		headers: {
-			...response.headers,
-			'that-site': 'that.us'
-		}
-	};
+	event.locals.isAuthenticated = !!auth0Session?.user;
+	event.locals.user = auth0Session?.user || {};
+	event.locals.thatProfile = auth0Session?.thatProfile || {};
+	event.locals.accessToken = auth0Session?.accessToken || {};
+
+	return resolve(event);
 }
 
-export const handle = sequence(user, customHeaders);
+export const handle = sequence(user);
 
-export async function user({ request, resolve }) {
-	const auth0Session = auth0.getSession(request);
-	request.locals.auth0Session = auth0Session;
-
-	request.locals.isAuthenticated = !!auth0Session?.user;
-	request.locals.user = auth0Session?.user || {};
-	request.locals.thatProfile = auth0Session?.thatProfile || {};
-	request.locals.accessToken = auth0Session?.accessToken || {};
-
-	const response = await resolve(request);
-	return response;
-}
-
-export async function getSession(request) {
-	let { isAuthenticated, user, thatProfile, accessToken } = request.locals;
+export async function getSession(event) {
+	// todo - might be better to set the default to null or undefined.
+	let { isAuthenticated, user, thatProfile, accessToken } = event.locals;
 
 	if (isAuthenticated && accessToken) {
 		const results = await fetch(config.api.direct, {
@@ -54,7 +42,8 @@ export async function getSession(request) {
 			headers: {
 				credentials: 'include',
 				'Content-Type': 'application/json',
-				Authorization: `Bearer ${accessToken}`
+				Authorization: `Bearer ${accessToken}`,
+				'that-site': 'that.us'
 			},
 			body: JSON.stringify(body)
 		}).then((r) => r.json());
@@ -65,7 +54,7 @@ export async function getSession(request) {
 	return { isAuthenticated, user, thatProfile, accessToken };
 }
 
-export async function handleError({ error, request }) {
+export async function handleError({ error, event }) {
 	const thisError = error instanceof Error ? error : new Error(error);
-	Sentry.captureException(new Error(thisError), { request });
+	Sentry.captureException(new Error(thisError), { event });
 }

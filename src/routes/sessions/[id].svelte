@@ -1,6 +1,6 @@
 <script context="module">
-	export async function load({ page }) {
-		const { id } = page.params;
+	export async function load({ params }) {
+		const { id } = params;
 
 		return {
 			status: 301,

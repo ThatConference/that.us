@@ -1,8 +1,8 @@
 <script context="module">
 	import eventsApi from '$dataSources/api.that.tech/events/queries';
 
-	export async function load({ page, fetch }) {
-		const { event, year } = page.params;
+	export async function load({ params, fetch }) {
+		const { event, year } = params;
 		const slug = `${event}/${year}`;
 
 		const { queryEventForCfp } = eventsApi(fetch);

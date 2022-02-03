@@ -30,28 +30,6 @@ export function initAuth0(config) {
 			auth0.handleProfile(req, res, auth0FnOptions)
 		),
 
-		handleAuth(svelteReq) {
-			const param = svelteReq.params.auth0;
-			const route = Array.isArray(param) ? param[0] : param;
-
-			switch (route) {
-				case 'login':
-					return this.handleLogin(svelteReq);
-
-				case 'logout':
-					return this.handleLogout(svelteReq);
-
-				case 'callback':
-					return this.handleCallback(svelteReq);
-
-				case 'me':
-					return this.handleProfile(svelteReq);
-
-				default:
-					return; // Fall through to other handlers
-			}
-		},
-
 		withPageAuthRequired(opts) {
 			return (loadParams) => {
 				const isAuthenticated = loadParams.session?.isAuthenticated;
@@ -100,9 +78,13 @@ export function initAuth0(config) {
 						};
 					}
 				} else {
-					const queryStr = loadParams.page.query.toString();
+					const { url } = loadParams;
+
+					const queryString = url.searchParams.toString();
 					const returnUrl =
-						opts?.returnTo || `${loadParams.page.path}${queryStr ? '?' + queryStr : ''}`;
+						opts?.returnTo || `${url.pathname}${queryString ? '?' + queryString : '/'}`;
+
+					console.log({ returnUrl });
 
 					return {
 						status: 307,

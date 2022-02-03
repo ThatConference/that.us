@@ -84,9 +84,9 @@
 		(x) => x.value === sessionLocation?.destination
 	)?.label;
 
-	let edit = $page.query.get('edit');
-	let isNew = $page.query.get('isNew');
-	let isUpdated = $page.query.get('isUpdated');
+	let edit = $page.url.searchParams.get('edit');
+	let isNew = $page.url.searchParams.get('isNew');
+	let isUpdated = $page.url.searchParams.get('isUpdated');
 
 	let favoriteDisabled = false;
 
@@ -147,7 +147,7 @@
 				isInWindow = inSession;
 
 				if (!inSession) {
-					const join = $page.query.get('join');
+					const join = $page.url.searchParams.get('join');
 					if (join) isInWindow = true;
 				}
 			}, 1000);

@@ -8,7 +8,6 @@ import config from '$utils/config';
 
 function init(fetch) {
 	let _cacheApiUrl = config.api.cache;
-
 	let _fetch = fetchRetry(fetch || isoFetch);
 
 	let headers = {
@@ -28,6 +27,11 @@ function init(fetch) {
 	}
 
 	function retryOn(attempt, error, response) {
+		if (error) {
+			console.error('fetch error:', error);
+			Sentry.captureException(error);
+		}
+
 		if (error !== null || response.status >= 400) {
 			Sentry.captureMessage(
 				`retrying fetch, attempt number ${attempt + 1}, response.status ${response.status}`
@@ -39,6 +43,7 @@ function init(fetch) {
 
 	function query({ query, variables = {} }) {
 		if (browser) loading.set(true);
+
 		return _fetch(_cacheApiUrl, {
 			method: 'POST',
 			headers,
@@ -56,6 +61,7 @@ function init(fetch) {
 				return r;
 			})
 			.catch((error) => {
+				console.error('api query error:', error);
 				Sentry.captureException(error);
 			});
 	}
@@ -76,7 +82,7 @@ function init(fetch) {
 			},
 			body: JSON.stringify({
 				query: `
-            ${query}
+					${query}
           `,
 				variables
 			}),
@@ -88,6 +94,7 @@ function init(fetch) {
 				return r;
 			})
 			.catch((error) => {
+				console.error('api query error:', error);
 				Sentry.captureException(error);
 			});
 	}
@@ -108,7 +115,7 @@ function init(fetch) {
 			},
 			body: JSON.stringify({
 				query: `
-            ${mutation}
+					${mutation}
           `,
 				variables
 			}),
@@ -120,6 +127,7 @@ function init(fetch) {
 				return r;
 			})
 			.catch((error) => {
+				console.error('api query error:', error);
 				Sentry.captureException(error);
 			});
 	}

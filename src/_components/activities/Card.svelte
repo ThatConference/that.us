@@ -104,7 +104,7 @@
 			hasExpired = dayjs().isAfter(currentEndTime);
 
 			if (!inSession) {
-				const join = $page.query.get('join');
+				const join = $page.url.searchParams.get('join');
 				if (join) isInWindow = true;
 			}
 		}, 1000);

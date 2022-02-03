@@ -2,8 +2,8 @@
 	import speakerQueriesApi from '$dataSources/api.that.tech/speakers/queries';
 	import eventQueriesApi from '$dataSources/api.that.tech/events/queries';
 
-	export async function load({ page, fetch }) {
-		const eventSlug = page.query.has('eventSlug') ? page.query.get('eventSlug') : null;
+	export async function load({ url, fetch }) {
+		const eventSlug = url.searchParams.has('eventSlug') ? url.searchParams.get('eventSlug') : null;
 
 		if (eventSlug == null)
 			return {

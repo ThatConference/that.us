@@ -26,7 +26,7 @@
 		})
 	}))();
 
-	const eventId = $page.query.get('eventId');
+	const eventId = $page.url.searchParams.get('eventId');
 	const { send } = getContext('cart');
 
 	let event;

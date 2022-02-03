@@ -49,12 +49,12 @@
 						<nav>
 							<a
 								href="/my/network/sponsors/"
-								class={$page.path.startsWith('/my/network/sponsors')
+								class={$page.url.pathname.startsWith('/my/network/sponsors')
 									? asideSelected.item
 									: asideDefault.item}
 							>
 								<User
-									classes={$page.path.startsWith('/my/network/sponsors')
+									classes={$page.url.pathname.startsWith('/my/network/sponsors')
 										? asideSelected.image
 										: asideDefault.image}
 								/>

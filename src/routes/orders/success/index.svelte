@@ -26,10 +26,18 @@
 		target location - [TL=on&TL=at]
 	*/
 
-	const isBulkPurchase = $page.query.has('B') ? Boolean(parseInt($page.query.get('B'))) : false;
-	const isMembership = $page.query.has('M') ? Boolean(parseInt($page.query.get('M'))) : false;
-	const eventLocation = $page.query.has('EL') ? $page.query.get('EL') : undefined;
-	const targetLocations = $page.query.has('TL') ? $page.query.getAll('TL') : [];
+	const isBulkPurchase = $page.url.searchParams.has('B')
+		? Boolean(parseInt($page.url.searchParams.get('B')))
+		: false;
+	const isMembership = $page.url.searchParams.has('M')
+		? Boolean(parseInt($page.url.searchParams.get('M')))
+		: false;
+	const eventLocation = $page.url.searchParams.has('EL')
+		? $page.url.searchParams.get('EL')
+		: undefined;
+	const targetLocations = $page.url.searchParams.has('TL')
+		? $page.url.searchParams.getAll('TL')
+		: [];
 </script>
 
 <Seo title={metaTags.title} tags={metaTags.tags} />

@@ -4,8 +4,8 @@
 
 	const { sortBy } = lodash;
 
-	export async function load({ page, fetch }) {
-		const { eventName, year } = page.params;
+	export async function load({ params, fetch }) {
+		const { eventName, year } = params;
 		const eventSlug = `${eventName}/${year}`;
 
 		const { queryEventRegistrations } = checkinQueryApi(fetch);

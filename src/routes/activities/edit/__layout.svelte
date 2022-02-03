@@ -37,8 +37,8 @@
 	}
 
 	export const load = auth0.withPageAuthRequired({
-		load: async function load({ page, fetch }) {
-			const { activityId } = page.params;
+		load: async function load({ params, fetch }) {
+			const { activityId } = params;
 
 			const { queryEventsByCommunity } = eventsApi(fetch);
 			const { queryMySessionById } = sessionsQueryApi(fetch);

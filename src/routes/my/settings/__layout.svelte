@@ -32,12 +32,12 @@
 						<nav>
 							<a
 								href="/my/settings/badges/"
-								class={$page.path.startsWith('/my/settings/badges')
+								class={$page.url.pathname.startsWith('/my/settings/badges')
 									? asideSelected.item
 									: asideDefault.item}
 							>
 								<Badge
-									classes={$page.path.startsWith('/my/settings/badges')
+									classes={$page.url.pathname.startsWith('/my/settings/badges')
 										? asideSelected.image
 										: asideDefault.image}
 								/>
@@ -46,12 +46,12 @@
 
 							<a
 								href="/my/settings/membership/"
-								class={$page.path.startsWith('/my/settings/membership')
+								class={$page.url.pathname.startsWith('/my/settings/membership')
 									? asideSelected.item
 									: asideDefault.item}
 							>
 								<Membership
-									classes={$page.path.startsWith('/my/settings/membership')
+									classes={$page.url.pathname.startsWith('/my/settings/membership')
 										? asideSelected.image
 										: asideDefault.image}
 								/>
@@ -60,12 +60,12 @@
 
 							<a
 								href="/my/settings/order-history/"
-								class={$page.path.startsWith('/my/settings/order-history')
+								class={$page.url.pathname.startsWith('/my/settings/order-history')
 									? asideSelected.item
 									: asideDefault.item}
 							>
 								<CreditCard
-									classes={$page.path.startsWith('/my/settings/order-history')
+									classes={$page.url.pathname.startsWith('/my/settings/order-history')
 										? asideSelected.image
 										: asideDefault.image}
 								/>
@@ -74,12 +74,12 @@
 
 							<a
 								href="/my/settings/tickets/"
-								class={$page.path.startsWith('/my/settings/tickets')
+								class={$page.url.pathname.startsWith('/my/settings/tickets')
 									? asideSelected.item
 									: asideDefault.item}
 							>
 								<Ticket
-									classes={$page.path.startsWith('/my/settings/tickets')
+									classes={$page.url.pathname.startsWith('/my/settings/tickets')
 										? asideSelected.image
 										: asideDefault.image}
 								/>
