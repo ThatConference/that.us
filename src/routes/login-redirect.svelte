@@ -1,7 +1,9 @@
 <script>
 	import { page } from '$app/stores';
 
-	const returnTo = $page.query.has('returnTo') ? $page.query.get('returnTo') : '/';
+	const returnTo = $page.url.searchParams.has('returnTo')
+		? $page.url.searchParams.get('returnTo')
+		: '/';
 </script>
 
 <div

@@ -40,7 +40,8 @@
 	import Create from './index.svelte';
 
 	onMount(() => {
-		if (!$page.query.has('event')) window.history.replaceState(null, null, `?event=${eventId}`);
+		if (!$page.url.searchParams.has('event'))
+			window.history.replaceState(null, null, `?event=${eventId}`);
 	});
 
 	const metaTags = ((title = `THAT Conference Texas and Wisconsin call for speakers.`) => ({
