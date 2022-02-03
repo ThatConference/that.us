@@ -1,3 +1,15 @@
+## [2.9.8](https://github.com/ThatConference/that.us/compare/v2.9.7...v2.9.8) (2022-02-03)
+
+
+### Bug Fixes
+
+* adds a direct dep on esbuild ([a3ba6f1](https://github.com/ThatConference/that.us/commit/a3ba6f15b02f9d85a4de659bf48f131baf3e4070))
+* cleaned up load params and url ([bc25ca1](https://github.com/ThatConference/that.us/commit/bc25ca177b0a65575c3fbfe43c2117a98509f1de))
+* closes [#1178](https://github.com/ThatConference/that.us/issues/1178) ([bad3a20](https://github.com/ThatConference/that.us/commit/bad3a208bf11c504e2f028f8b1f7c2ecf61cbf67))
+* closes [#1179](https://github.com/ThatConference/that.us/issues/1179) ([f59cddc](https://github.com/ThatConference/that.us/commit/f59cddc75cda9954345d4a9ea1f895213be8917f))
+* pacakge bumps ([4851068](https://github.com/ThatConference/that.us/commit/485106888a39429900e80eef575c198f8de0eaa9))
+* ref wrong object ([fafff8b](https://github.com/ThatConference/that.us/commit/fafff8b6ed33a8531c118d071fd997abefe67f63))
+
 ## [2.9.7](https://github.com/ThatConference/that.us/compare/v2.9.6...v2.9.7) (2022-02-02)
 
 
