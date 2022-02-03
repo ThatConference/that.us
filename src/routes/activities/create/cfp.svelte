@@ -1,9 +1,9 @@
 <script context="module">
-	export async function load({ page, stuff }) {
+	export async function load({ url, stuff }) {
 		//todo: we need to get this from some config somewhere or better yet an api
 		const upNextHybridEvent = `OlyDhUyrp2DI9babqZO9`;
 
-		const eventId = page.query.has('event') ? page.query.get('event') : upNextHybridEvent;
+		const eventId = url.searchParams.get('event') || upNextHybridEvent;
 		const selectedEvent = stuff.events.find((i) => i.id === eventId);
 
 		const activeEvents = {

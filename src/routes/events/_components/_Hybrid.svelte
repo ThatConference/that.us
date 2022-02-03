@@ -22,6 +22,7 @@
 	import Dates from '../_components/hybrid/dates.svelte';
 
 	const { send } = getContext('cart');
+
 	const { products } = event;
 	const [venue] = event.venues;
 	const everythingCamperTicket = products.find((x) => x.uiReference === 'EVERYTHING_CAMPER');

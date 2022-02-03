@@ -1,44 +1,27 @@
-function ensureLeadingSlash(path) {
-	return path.startsWith('/') ? path : `/${path}`;
-}
-
-function buildUrl(host, path, query) {
-	const slashPath = ensureLeadingSlash(path || '/');
-	const urlObj = new URL(`https://${host}${slashPath}`);
-
-	if (typeof query === 'string') {
-		urlObj.search = query;
-	} else if (query && typeof query.toString === 'function') {
-		urlObj.search = query.toString();
-	}
-
-	return urlObj.toString();
-}
-
 // TODO: Implement caching with WeakMap so that auth0's session cache can be used to best effect, as otherwise we'll be calling this too often
 // Cache should, given the same Svelte request object, always return the same NextApiRequest mimic
-function mkReq(param) {
+function mkReq(requestEvent) {
+	const { request } = requestEvent;
+
 	const result = {
 		method: 'GET',
-		headers: param.headers,
-		query: Object.fromEntries(param.query), // TODO: Check whether just plain `param.query` will work here
-		url: buildUrl(param.host || 'localhost', param.path || '/', param.query)
-		// TODO: Build "cookies" object since Auth0 will want it
+		headers: Object.fromEntries(request.headers),
+		query: Object.fromEntries(requestEvent.url.searchParams),
+		url: requestEvent.url.href
 	};
 
-	if (param.body && typeof param.body.getAll === 'function') {
+	//todo.. this needs to get validated, since this is a get, body should always be {}
+	if (request.body && typeof request.body.getAll === 'function') {
 		// Body is a ReadOnlyFormData object from Svelte, but auth0-nextjs will expect a plain object
-		result.body = Object.fromEntries(param.body);
-	} else if (typeof param.body === 'string') {
-		result.body = param.body;
+		result.body = Object.fromEntries(request.body);
+	} else if (typeof request.body === 'string') {
+		result.body = request.body;
 	} else {
-		result.body = param.body || {};
+		result.body = request.body || {};
 	}
 
 	return result;
 }
-
-// TODO: Implement caching with WeakMap based on original Svelte request object (which we'll preserve a reference to in the ResMimic instance so that they're deferenced together)
 class ResMimic {
 	constructor() {
 		this.headers = new Map();
@@ -130,8 +113,8 @@ class ResMimic {
 }
 
 function auth0Wrapper(auth0fn) {
-	return (param, auth0FnOptions) => {
-		const req = mkReq(param);
+	return (requestEvent, auth0FnOptions) => {
+		const req = mkReq(requestEvent);
 		const res = new ResMimic();
 
 		return auth0fn(req, res, auth0FnOptions)
@@ -144,11 +127,12 @@ function auth0Wrapper(auth0fn) {
 }
 
 function auth0WrapperJson(auth0fn) {
-	return (svelteReq, auth0FnOptions) => {
-		const req = mkReq(svelteReq);
+	return (requestEvent, auth0FnOptions) => {
+		const req = mkReq(requestEvent);
 		const res = new ResMimic();
+
 		return auth0fn(req, res, auth0FnOptions);
 	};
 }
 
-export { mkReq, ResMimic, auth0Wrapper, auth0WrapperJson };
+export { auth0Wrapper, auth0WrapperJson };

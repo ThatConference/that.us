@@ -1,7 +1,10 @@
 import fetch from 'isomorphic-fetch';
 import config from '$utils/config';
 
-export async function post({ body, locals }) {
+export async function post(requestEvent) {
+	const { locals, request } = requestEvent;
+	const body = await request.json();
+
 	if (!locals.isAuthenticated) {
 		return {
 			status: 401

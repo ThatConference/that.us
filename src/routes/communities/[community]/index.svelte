@@ -1,8 +1,8 @@
 <script context="module">
 	import communityQueryApi from '$dataSources/api.that.tech/community/queries';
 
-	export async function load({ page, fetch }) {
-		const { community } = page.params;
+	export async function load({ params, fetch }) {
+		const { community } = params;
 		const { queryCommunityBySlug, queryCommunityFollowers, queryCommunityActivities } =
 			communityQueryApi(fetch);
 

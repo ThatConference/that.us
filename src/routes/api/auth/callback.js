@@ -26,11 +26,11 @@ async function afterCallback(_req, _res, session, _state) {
 		session.thatProfile = results.data.members?.me;
 		return session;
 	} catch (error) {
-		console.error('Fetch Call Error', error);
+		console.error('Callback Fetch Error', error);
 		return session;
 	}
 }
 
-export function get(req) {
-	return auth0.handleCallback(req, { afterCallback });
+export function get(requestEvent) {
+	return auth0.handleCallback(requestEvent, { afterCallback });
 }

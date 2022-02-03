@@ -54,11 +54,11 @@
 	}
 
 	export const load = auth0.withPageAuthRequired({
-		load: async function load({ page, fetch }) {
+		load: async function load({ url, fetch }) {
 			const { queryEventsByCommunity } = eventsApi(fetch);
 			const { queryMySessionById } = sessionsQueryApi(fetch);
 
-			const activityId = page.query.has('id') ? page.query.get('id') : null;
+			const activityId = url.searchParams.get('id') || null;
 			if (!activityId) {
 				return {
 					status: 404,

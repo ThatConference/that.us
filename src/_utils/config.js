@@ -11,7 +11,7 @@ export default {
 	eventId: 'YWavA70szR8rxSwrLJaL',
 	eventSlug: 'thatus/daily',
 	api: {
-		cache: 'https://that.graphcdn.app',
+		cache: 'https://that.graphcdn.app/',
 		direct: import.meta.env.VITE_THAT_API || configMissing('VITE_THAT_API')
 	},
 	ogImageApi: import.meta.env.VITE_THAT_OG_IMAGE_API || 'https://og-image.that.tech/og-image',

@@ -2,11 +2,11 @@
 	import sessionsApi from '$dataSources/api.that.tech/sessions';
 	import sessionsQueryApi from '$dataSources/api.that.tech/sessions/queries';
 
-	export async function load({ page, fetch }) {
+	export async function load({ url, fetch }) {
 		const { getById } = sessionsApi(fetch);
 		const { querySessionDropDownValues } = sessionsQueryApi(fetch);
 
-		let activityId = page.params.activity;
+		let activityId = url.searchParams.activity;
 
 		//todo need to figure out how to handle no sessions.. do we return an error, or just pop a message box
 

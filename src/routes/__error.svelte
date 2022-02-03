@@ -71,7 +71,7 @@
 								{#if status === 404}
 									Please check the URL in the address bar and try again.
 								{:else}
-									Well that's no good. Would you like to log an error? [button here]
+									Well that's no good. We've notified the geeks and logged the error.
 								{/if}
 							</p>
 
@@ -87,7 +87,7 @@
 					</div>
 				</div>
 				<div class="mt-10 flex sm:border-l sm:border-transparent sm:pl-6">
-					<StandardLink class="h-3/4" href="/">Head back to camp</StandardLink>
+					<StandardLink rel="external" class="h-3/4" href="/">Head back to camp</StandardLink>
 				</div>
 			</div>
 		</main>

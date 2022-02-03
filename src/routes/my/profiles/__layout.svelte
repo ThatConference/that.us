@@ -35,12 +35,12 @@
 						<nav>
 							<a
 								href="/my/profiles/primary/"
-								class={$page.path.startsWith('/my/profiles/primary')
+								class={$page.url.pathname.startsWith('/my/profiles/primary')
 									? asideSelected.item
 									: asideDefault.item}
 							>
 								<User
-									classes={$page.path.startsWith('/my/profiles/primary')
+									classes={$page.url.pathname.startsWith('/my/profiles/primary')
 										? asideSelected.image
 										: asideDefault.image}
 								/>
@@ -50,12 +50,12 @@
 							{#if !isEmpty($session.thatProfile)}
 								<a
 									href="/my/profiles/shared/"
-									class={$page.path.startsWith('/my/profiles/shared')
+									class={$page.url.pathname.startsWith('/my/profiles/shared')
 										? asideSelected.item
 										: asideDefault.item}
 								>
 									<Badge
-										classes={$page.path.startsWith('/my/profiles/shared')
+										classes={$page.url.pathname.startsWith('/my/profiles/shared')
 											? asideSelected.image
 											: asideDefault.image}
 									/>
@@ -64,12 +64,12 @@
 
 								<a
 									href="/my/profiles/emergency-contact/"
-									class={$page.path.startsWith('/my/profiles/emergency-contact')
+									class={$page.url.pathname.startsWith('/my/profiles/emergency-contact')
 										? asideSelected.item
 										: asideDefault.item}
 								>
 									<User
-										classes={$page.path.startsWith('/my/profiles/emergency-contact')
+										classes={$page.url.pathname.startsWith('/my/profiles/emergency-contact')
 											? asideSelected.image
 											: asideDefault.image}
 									/>
@@ -78,12 +78,12 @@
 
 								<a
 									href="/my/profiles/slack/"
-									class={$page.path.startsWith('/my/profiles/slack')
+									class={$page.url.pathname.startsWith('/my/profiles/slack')
 										? asideSelected.item
 										: asideDefault.item}
 								>
 									<Slack
-										classes={$page.path.startsWith('/my/profiles/slack')
+										classes={$page.url.pathname.startsWith('/my/profiles/slack')
 											? asideSelected.image
 											: asideDefault.image}
 									/>
