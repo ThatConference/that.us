@@ -18,6 +18,7 @@
 
 	import { onMount, onDestroy } from 'svelte';
 	import { session } from '$app/stores';
+	import { browser } from '$app/env';
 	import dayjs from 'dayjs';
 	import Clipboard from 'clipboard';
 
@@ -44,15 +45,19 @@
 	let clipboard;
 
 	onMount(() => {
-		clipboard = new Clipboard('.discountCode');
+		if (browser) {
+			clipboard = new Clipboard('.discountCode');
 
-		clipboard.on('success', function () {
-			copiedText = 'Copied!';
-		});
+			clipboard.on('success', function () {
+				copiedText = 'Copied!';
+			});
+		}
 	});
 
 	onDestroy(() => {
-		clipboard.destroy();
+		if (browser) {
+			if (clipboard) clipboard.destroy();
+		}
 	});
 </script>
 
