@@ -1,3 +1,10 @@
+## [2.9.9](https://github.com/ThatConference/that.us/compare/v2.9.8...v2.9.9) (2022-02-05)
+
+
+### Bug Fixes
+
+* resolves [#1186](https://github.com/ThatConference/that.us/issues/1186) ([1f29443](https://github.com/ThatConference/that.us/commit/1f294435ea3139dbb538eaf39b98f5936fabbb1b))
+
 ## [2.9.8](https://github.com/ThatConference/that.us/compare/v2.9.7...v2.9.8) (2022-02-03)
 
 
