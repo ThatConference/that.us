@@ -1,5 +1,6 @@
 <script>
 	import { onMount, onDestroy } from 'svelte';
+	import { browser } from '$app/env';
 	import Clipboard from 'clipboard';
 
 	import seoMetaTags from '$utils/seo/metaTags';
@@ -25,15 +26,19 @@
 	let copiedText = 'https://bit.ly/2YRdVxy';
 
 	onMount(() => {
-		clipboard = new Clipboard('#calendarUrl');
+		if (browser) {
+			clipboard = new Clipboard('#calendarUrl');
 
-		clipboard.on('success', function () {
-			copiedText = 'Copied!';
-		});
+			clipboard.on('success', function () {
+				copiedText = 'Copied!';
+			});
+		}
 	});
 
 	onDestroy(() => {
-		if (clipboard) clipboard.destroy();
+		if (browser) {
+			if (clipboard) clipboard.destroy();
+		}
 	});
 </script>
 
