@@ -34,16 +34,13 @@
 <section class="py-12 lg:py-16 bg-white">
 	<div class="relative mx-auto px-4 max-w-screen-xl sm:px-6 lg:px-8">
 		<h1 class="text-4xl tracking-tight font-extrabold text-thatBlue-800 sm:text-5xl md:text-6xl">
-			<span class="block text-center sm:text-left ">Activities Every Day,</span>
-			<span class="block sm:pl-24 text-center sm:text-left md:-mt-2 text-that-orange"
-				>Events Every Month!</span
-			>
+			<span class="block text-center sm:text-left ">Upcoming Events</span>
 		</h1>
 
 		<div class="mt-12 space-y-12">
 			<div class="w-full flex flex-col">
 				<h2 class="text-3xl leading-9 font-extrabold tracking-tight sm:text-4xl">
-					<span class="pl-2 text-that-orange">Upcoming Virtual Events</span>
+					<span class="pl-2 text-that-orange">Virtual Events</span>
 				</h2>
 			</div>
 
@@ -60,7 +57,7 @@
 
 			<div class="w-full flex flex-col">
 				<h2 class="text-3xl leading-9 font-extrabold tracking-tight sm:text-4xl">
-					<span class="pl-2 text-that-orange">Upcoming THAT Conferences</span>
+					<span class="pl-2 text-that-orange">THAT Conferences</span>
 				</h2>
 			</div>
 			<ul
@@ -76,7 +73,7 @@
 		</div>
 
 		<div class="relative pt-16 flex justify-end">
-			<StandardLink href="/events/">View All Our Past Events</StandardLink>
+			<StandardLink href="/events/">View our Past Events</StandardLink>
 		</div>
 	</div>
 </section>

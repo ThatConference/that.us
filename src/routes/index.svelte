@@ -91,13 +91,13 @@
 	import createMachine from './_root/machines/upNext';
 
 	const metaTags = ((
-		title = 'THAT is your peer to peer learning system for software developers. Home of THAT Conference.'
+		title = 'Howdy. We’re a full-stack, tech-obsessed community of fun, code-loving humans who share and learn together. Home of THAT Conference.'
 	) => ({
 		title,
 		tags: seoMetaTags({
 			title,
 			description:
-				'THAT is your go-to peer-to-peer learning platform where real practitioners. Join us daily, monthly, and yearly. THAT Online is the 15th of every month and make sure to join us in-person at THAT Conference either in Texas in January or Wisconsin in July.'
+				'Howdy. We’re a full-stack, tech-obsessed community of fun, code-loving humans who share and learn together. We geek-out in Texas and Wisconsin once a year but we host digital events all the time. Home of THAT Conference.'
 		})
 	}))();
 
