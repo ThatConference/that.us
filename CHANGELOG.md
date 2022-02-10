@@ -1,3 +1,10 @@
+## [2.9.10](https://github.com/ThatConference/that.us/compare/v2.9.9...v2.9.10) (2022-02-10)
+
+
+### Bug Fixes
+
+* fixing path ([556d20b](https://github.com/ThatConference/that.us/commit/556d20bb64f8f4937775748348f8abfe89744830))
+
 ## [2.9.9](https://github.com/ThatConference/that.us/compare/v2.9.8...v2.9.9) (2022-02-05)
 
 
