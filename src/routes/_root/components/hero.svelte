@@ -33,7 +33,7 @@
 				>
 					<img
 						class="lazyload h-96 w-auto"
-						src="/images/characters/robot-play.svg"
+						src="/images/characters/Robot-Play.svg"
 						alt="THAT Robot Play Button"
 					/>
 				</a>
