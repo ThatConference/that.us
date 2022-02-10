@@ -10,7 +10,7 @@
     border-thatBlue-500 text-thatBlue-500 bg-white hover:bg-thatBlue-500
     hover:text-white focus:bg-thatBlue-500 focus:text-white focus:outline-none
     focus:ring-thatBlue-500 focus:border-thatBlue-800 transition
-    duration-150 ease-in-out md:py-4 md:text-lg md:px-10"
+    duration-150 ease-in-out md:py-4 md:text-lg md:px-10 cursor-pointer"
 >
 	<span>
 		<slot />
