@@ -131,6 +131,18 @@
 
 	const userProfileImage = host.profileImage || config.defaultProfileImage;
 	const srcset = buildImageSrc(userProfileImage, ['96']);
+
+	function getSessionUrl() {
+		let sessionUrl = `/join/${id}`;
+
+		if (targetLocation === 'OTHER') {
+			if (location?.url) sessionUrl = location?.url;
+		}
+
+		return sessionUrl;
+	}
+
+	const joinUrl = getSessionUrl();
 </script>
 
 {#if dense}
@@ -304,7 +316,7 @@
 										</div>
 									{:else if canJoin}
 										<div class="-ml-px basis-0 flex-1 flex pl-1 border-l text-center">
-											<CardLink href="/join/{id}/" icon={signIn} text={'Join In'} />
+											<CardLink href={joinUrl} icon={signIn} text={'Join In'} />
 										</div>
 									{:else}
 										<div class="-ml-px flex-1 flex pl-1 border-l text-center">
@@ -491,7 +503,7 @@
 						</div>
 					{:else if canJoin}
 						<div class="-ml-px w-0 flex-1 flex">
-							<CardLink href="/join/{id}/" icon={signIn} text={'Join In'} />
+							<CardLink href={joinUrl} icon={signIn} text={'Join In'} />
 						</div>
 					{:else}
 						<div class="-ml-px w-0 flex-1 flex">
