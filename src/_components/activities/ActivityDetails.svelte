@@ -326,10 +326,9 @@
 							</a>
 						</div>
 					{:else if targetLocation != 'IN_PERSON'}
-						{#if true}
+						{#if canJoin}
 							<div class="mt-2 mx-2 rounded-md shadow-sm">
 								<a
-									type="button"
 									href={joinUrl}
 									class="relative inline-flex justify-center py-2 px-4 border-2
                   border-thatBlue-500 text-sm leading-5 font-medium rounded-md
