@@ -45,6 +45,7 @@
 			<div class="flex justify-end">
 				{#if hasMore}
 					<button
+						type="button"
 						on:click={() => dispatch('next')}
 						class="px-8 py-2 rounded-md shadow text-base leading-6
                     bg-that-blue  
@@ -62,6 +63,7 @@
 
 				{#if !hasMore && items.length > 6}
 					<button
+						type="button"
 						on:click={() => dispatch('refresh')}
 						class="px-8 py-2 rounded-md shadow text-base leading-6
                       bg-that-blue  

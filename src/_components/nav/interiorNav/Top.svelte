@@ -18,6 +18,7 @@
 				<div class="-mr-2 flex lg:hidden">
 					<!-- Mobile menu button -->
 					<button
+						type="button"
 						class="inline-flex items-center justify-center p-2 rounded-md
 							text-gray-300 hover:text-white hover:bg-that-blue
 							focus:outline-none focus:text-white focus:bg-that-blue"

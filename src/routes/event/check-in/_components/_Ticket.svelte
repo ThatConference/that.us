@@ -80,6 +80,7 @@
 					<div class="flex">
 						<Shell>
 							<button
+								type="button"
 								class="w-full py-4 px-6 text-sm leading-5 font-medium"
 								on:click|stopPropagation|preventDefault={() => (checkInClicked = !checkInClicked)}
 							>
@@ -91,6 +92,7 @@
 					<div class="flex">
 						<Shell>
 							<button
+								type="button"
 								class="w-full py-4 px-6 text-sm leading-5 font-medium"
 								on:click|stopPropagation|preventDefault={() =>
 									(editCheckInClicked = !editCheckInClicked)}

@@ -1,4 +1,5 @@
 <button
+	type="button"
 	on:click
 	class="px-8 py-2 md:px-10
 	bg-white rounded-md shadow 

@@ -91,7 +91,7 @@
 
 <div class="mt-12">
 	<div class="flex justify-end">
-		<button on:click={handleSubmit}>
+		<button type="button" on:click={handleSubmit}>
 			<Shell>
 				<div class="px-8 py-2 font-extrabold">Complete Enrollment</div>
 			</Shell>

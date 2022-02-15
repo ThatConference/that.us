@@ -157,6 +157,7 @@
 									<div class="relative mt-2 p-4">
 										<StandardShell>
 											<button
+												type="button"
 												on:click={() => handlePurchase('PROMO_VIRTUAL_CAMPER')}
 												class="w-full px-8 md:px-10 py-2"
 											>
@@ -273,6 +274,7 @@
 									<div class="relative mt-2 p-4">
 										<StandardShell>
 											<button
+												type="button"
 												on:click={() => handlePurchase('PROMO_CAMPER_NO_FOOD')}
 												class="w-full px-8 md:px-10 py-2"
 											>

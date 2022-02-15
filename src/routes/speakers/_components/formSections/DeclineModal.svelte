@@ -56,6 +56,7 @@
 		<div class="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
 			<span class="flex rounded-md shadow-sm sm:ml-3 sm:w-auto">
 				<button
+					type="button"
 					on:click={() => dispatch('speaker-decline', { reasonGiven })}
 					class="inline-flex justify-center w-full rounded-md border
           border-transparent px-4 py-2 bg-red-600 text-base leading-6

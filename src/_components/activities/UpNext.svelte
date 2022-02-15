@@ -59,6 +59,7 @@
 			<div class="flex justify-end">
 				{#if ['loaded'].some($state.matches)}
 					<button
+						type="button"
 						on:click={() => send('NEXT')}
 						class="px-8 py-2 rounded-md shadow text-base leading-6
                     bg-that-blue  
@@ -76,6 +77,7 @@
 
 				{#if ['loadedAll'].some($state.matches)}
 					<button
+						type="button"
 						on:click={() => send('REFRESH')}
 						class="px-8 py-2 rounded-md shadow text-base leading-6
                       bg-that-blue  

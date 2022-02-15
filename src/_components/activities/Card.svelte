@@ -182,6 +182,7 @@
 					{#if !hasExpired}
 						{#if $session.isAuthenticated}
 							<button
+								type="button"
 								on:click|preventDefault={!favoriteDisabled && handleToggle}
 								class:text-red-500={isFavorite}
 								class="relative inline-flex items-center justify-center
@@ -247,6 +248,7 @@
 							<div class="border-l pl-1 text-center hidden md:block">
 								{#if $session.isAuthenticated}
 									<button
+										type="button"
 										on:click|preventDefault={!favoriteDisabled && handleToggle}
 										class:text-red-500={isFavorite}
 										class="relative basis-0 flex-1 inline-flex items-center justify-center
@@ -430,6 +432,7 @@
 				{#if $session.isAuthenticated}
 					<div class="-ml-px basis-0 flex-1 flex border-t border-l border-gray-200">
 						<button
+							type="button"
 							on:click|preventDefault={!favoriteDisabled && handleToggle}
 							class:text-red-500={isFavorite}
 							class="relative basis-0 flex-1 inline-flex items-center justify-center

@@ -127,6 +127,7 @@
 		</h2>
 		{#each Object.entries(atThatAdditionalTickets) as [key, ticket]}
 			<button
+				type="button"
 				on:click={() => handleTicketSelection(key)}
 				disabled={ticket.isSpeakerTicket}
 				class="w-full text-left transition duration-500 ease-in-out transform "

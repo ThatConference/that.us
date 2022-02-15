@@ -134,6 +134,7 @@
 						<div class="flex-none">
 							<ShellButton>
 								<button
+									type="button"
 									on:click={() => removeItem(item.id)}
 									class="w-full px-8 md:px-10 py-1 text-sm leading-5 font-medium "
 								>

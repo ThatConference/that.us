@@ -92,6 +92,7 @@
 					<div class="divide-y divide-gray-200">
 						<div>
 							<button
+								type="button"
 								on:click={() => handleReceiptRedirect(o.id)}
 								class="min-w-full block hover:bg-gray-200"
 							>

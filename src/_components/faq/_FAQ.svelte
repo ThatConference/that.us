@@ -9,6 +9,7 @@
 
 <dt class="text-lg mt-4">
 	<button
+		type="button"
 		class="text-left w-full flex justify-between items-start text-gray-400"
 		on:click|preventDefault={() => (userClicked = !userClicked)}
 	>
