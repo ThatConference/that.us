@@ -291,7 +291,6 @@
 						<div class="mt-2 mx-2 rounded-md shadow-sm">
 							<a
 								href={`/activities/edit/${id}`}
-								type="button"
 								class="inline-flex justify-center py-2 px-4 border-2
                   border-thatBlue-500 text-sm leading-5 font-medium rounded-md
                   text-thatBlue-500 bg-white hover:bg-thatBlue-500
@@ -311,7 +310,6 @@
 					{#if activity.type === 'KEYNOTE'}
 						<div class="mt-2 mx-2 rounded-md shadow-sm">
 							<a
-								type="button"
 								href="https://youtube.com/c/thatconference"
 								class="relative inline-flex justify-center py-2 px-4 border-2
               border-thatBlue-500 text-sm leading-5 font-medium rounded-md

@@ -156,13 +156,13 @@
 </div>
 
 <div class="flex justify-center md:justify-end space-x-4 mt-12">
-	<button on:click={handleSpeakerAccept}>
+	<button type="button" on:click={handleSpeakerAccept}>
 		<Shell>
 			<div class="px-8 py-2 font-extrabold">Accept Your Invitation</div>
 		</Shell>
 	</button>
 
-	<button on:click={() => (isDeclining = !isDeclining)}>
+	<button type="button" on:click={() => (isDeclining = !isDeclining)}>
 		<Shell class="border-gray-500">
 			<div class="px-8 py-2 text-gray-400  font-extrabold">Decline Invitation</div>
 		</Shell>

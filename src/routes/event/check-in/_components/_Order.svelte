@@ -13,6 +13,7 @@
 </script>
 
 <button
+	type="button"
 	class="w-full hover:bg-gray-50"
 	on:click|preventDefault={() => (userClicked = !userClicked)}
 >

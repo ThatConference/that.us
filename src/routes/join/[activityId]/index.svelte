@@ -287,6 +287,7 @@
 
 	<div slot="body" class="relative">
 		<button
+			type="button"
 			class="absolute top-12 left-0 cursor-pointer ml-48 mt-1"
 			on:click={expanded ? shrinkJitsiFrame : expandJitsiFrame}
 		>

@@ -63,6 +63,7 @@
 
 		<div class="flex space-x-8 items-center">
 			<button
+				type="button"
 				class="transition duration-500 ease-in-out transform hover:scale-105"
 				on:click={handleOnClick}
 			>

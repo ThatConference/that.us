@@ -86,6 +86,7 @@
 
 			<div class="text-center">
 				<button
+					type="button"
 					id="calendarUrl"
 					data-clipboard-text="https://bit.ly/2YRdVxy"
 					class="px-4 py-2 rounded-md shadow text-base leading-6 font-medium border-2

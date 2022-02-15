@@ -22,6 +22,7 @@
 					<div class="lg:py-24">
 						<div class="transition duration-500 ease-in-out transform hover:scale-105">
 							<button
+								type="button"
 								on:click={() => dispatch('purchase-event-ticket')}
 								class="inline-flex items-center text-thatBlue-400 bg-white rounded-lg p-1 pr-2 text-base lg:text-sm"
 							>

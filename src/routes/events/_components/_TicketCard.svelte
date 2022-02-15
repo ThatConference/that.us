@@ -50,7 +50,7 @@
 
 			<div class="relative mt-2 p-4">
 				<StandardShell>
-					<button on:click class="w-full px-8 md:px-10 py-2"> Purchase </button>
+					<button type="button" on:click class="w-full px-8 md:px-10 py-2"> Purchase </button>
 				</StandardShell>
 			</div>
 		</div>

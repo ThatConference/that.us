@@ -76,7 +76,6 @@
 										<a
 											open
 											href={`/join/${id}`}
-											type="button"
 											class="relative inline-flex items-center justify-center
                       px-4 py-2 border border-gray-300 text-sm leading-5
                       font-medium rounded-md text-gray-700 bg-white
@@ -93,7 +92,6 @@
 										<a
 											open
 											href="https://youtube.com/c/thatconference"
-											type="button"
 											class="relative inline-flex items-center justify-center
                       px-4 py-2 border border-gray-300 text-sm leading-5
                       font-medium rounded-md text-gray-700 bg-white

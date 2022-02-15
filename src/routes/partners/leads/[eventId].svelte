@@ -109,7 +109,11 @@
 
 				<div class="flex">
 					<Shell>
-						<button class="w-full py-4 text-sm leading-5 font-medium" on:click={() => tryAgain()}>
+						<button
+							type="button"
+							class="w-full py-4 text-sm leading-5 font-medium"
+							on:click={() => tryAgain()}
+						>
 							<span class="text-lg">Retry</span>
 						</button>
 					</Shell>
@@ -144,6 +148,7 @@
 				<div class="flex">
 					<Shell>
 						<button
+							type="button"
 							class="w-full py-4 text-sm leading-5 font-medium"
 							on:click={() => handleContactExchange()}
 						>

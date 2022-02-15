@@ -110,6 +110,7 @@
 						<div class="flex">
 							<Shell>
 								<button
+									type="button"
 									class="w-full py-4 text-sm leading-5 font-medium"
 									on:click={() => tryAgain()}
 								>

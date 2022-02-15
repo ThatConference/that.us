@@ -28,6 +28,7 @@
 								<slot name="header" />
 								<div class="h-7 flex items-center">
 									<button
+										type="button"
 										on:click|stopPropagation
 										aria-label="Close panel"
 										class="text-gray-400 hover:text-gray-500 transition

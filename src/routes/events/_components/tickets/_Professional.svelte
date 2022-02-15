@@ -124,6 +124,7 @@
 						<div class="border-t border-gray-200 px-4 pt-5">
 							<HighlightShell>
 								<button
+									type="button"
 									on:click={() => handlePurchase(ticket.uiReference)}
 									class="w-full px-8 md:px-10 py-2">Purchase</button
 								>

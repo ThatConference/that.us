@@ -49,7 +49,7 @@
 		class:border-green-500={submitSuccess}
 	>
 		<div class="flex-1 px-4 py-2 text-sm">
-			<button class="w-full text-left" on:click={() => (open = !open)}>
+			<button type="button" class="w-full text-left" on:click={() => (open = !open)}>
 				<div class="flex justify-between items-center space-x-4">
 					<div>
 						<p class="text-gray-900 font-semibold">{orderAllocation.product.name}</p>

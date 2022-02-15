@@ -141,6 +141,7 @@
 						<div class="flex">
 							<Shell>
 								<button
+									type="button"
 									class="w-full py-4 text-sm leading-5 font-medium"
 									on:click={() => tryAgain()}
 								>
@@ -154,6 +155,7 @@
 						<div class="flex">
 							<Shell>
 								<button
+									type="button"
 									class="w-full py-4 text-sm leading-5 font-medium"
 									on:click={() => handleRevertCheckIn()}
 								>
@@ -165,6 +167,7 @@
 						<div class="flex">
 							<Shell>
 								<button
+									type="button"
 									class="w-full py-4 text-sm leading-5 font-medium"
 									on:click={() => (setPin = true)}
 								>
@@ -184,6 +187,7 @@
 							</div>
 							<Shell>
 								<button
+									type="button"
 									class="w-full py-4 text-sm leading-5 font-medium"
 									on:click={() => handleOweSwag()}
 								>
@@ -220,6 +224,7 @@
 						<div class="flex">
 							<Shell>
 								<button
+									type="button"
 									class="w-full py-4 text-sm leading-5 font-medium"
 									on:click={() => handleResetPin()}
 								>
