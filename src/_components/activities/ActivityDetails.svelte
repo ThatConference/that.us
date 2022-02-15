@@ -167,6 +167,18 @@
 		const userProfileImage = imageUrl || config.defaultProfileImage;
 		return buildImageSrc(userProfileImage, ['96']);
 	}
+
+	function getSessionUrl() {
+		let sessionUrl = `/join/${id}`;
+
+		if (activity.targetLocation === 'OTHER') {
+			if (activity.location?.url) sessionUrl = activity.location?.url;
+		}
+
+		return sessionUrl;
+	}
+
+	const joinUrl = getSessionUrl();
 </script>
 
 {#if isNew}
@@ -296,26 +308,6 @@
 				{/if}
 
 				{#if !hasExpired}
-					<!-- <div class="mt-2 mx-2 rounded-md shadow-sm">
-						<div
-							class="border-2 border-thatBlue-500 text-sm leading-5
-              font-medium rounded-md text-thatBlue-500 bg-white
-              hover:bg-thatBlue-500 hover:text-white focus:outline-none
-              focus:ring-thatBlue-500 focus:bg-thatBlue-500
-              focus:text-white focus:border-thatBlue-800
-              active:bg-thatBlue-800 transition duration-150 ease-in-out"
-						>
-							<CalendarButton
-								{title}
-								{shortDescription}
-								{id}
-								{startTime}
-								{durationInMinutes}
-								{slug}
-							/>
-						</div>
-					</div> -->
-
 					{#if activity.type === 'KEYNOTE'}
 						<div class="mt-2 mx-2 rounded-md shadow-sm">
 							<a
@@ -334,11 +326,11 @@
 							</a>
 						</div>
 					{:else if targetLocation != 'IN_PERSON'}
-						{#if canJoin}
+						{#if true}
 							<div class="mt-2 mx-2 rounded-md shadow-sm">
 								<a
 									type="button"
-									href="/join/{id}"
+									href={joinUrl}
 									class="relative inline-flex justify-center py-2 px-4 border-2
                   border-thatBlue-500 text-sm leading-5 font-medium rounded-md
                   text-thatBlue-500 bg-white hover:bg-thatBlue-500
@@ -429,11 +421,11 @@
 			</div>
 
 			<!-- Tags -->
-			<div
-				class="mt-4 text-base text-gray-700 sm:text-lg sm:mx-auto  md:text-xl lg:mx-0 flex flex-wrap content-start space-x-4"
-			>
+			<div class="flex flex-wrap justify-center lg:justify-start space-x-2 pb-3">
 				{#each tags as t}
-					<Tag>{t}</Tag>
+					<div class="py-2">
+						<Tag>{t}</Tag>
+					</div>
 				{/each}
 			</div>
 
