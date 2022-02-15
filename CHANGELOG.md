@@ -1,3 +1,11 @@
+## [2.9.11](https://github.com/ThatConference/that.us/compare/v2.9.10...v2.9.11) (2022-02-15)
+
+
+### Bug Fixes
+
+* removes dynamic url ([abb7a17](https://github.com/ThatConference/that.us/commit/abb7a1711104d7848d41f494cd87aaca1bf1473f))
+* removes testing bit ([757c37c](https://github.com/ThatConference/that.us/commit/757c37c23884462a6dc99c4dc5186a2b41059bf6))
+
 ## [2.9.10](https://github.com/ThatConference/that.us/compare/v2.9.9...v2.9.10) (2022-02-10)
 
 
