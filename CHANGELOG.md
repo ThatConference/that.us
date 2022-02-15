@@ -1,3 +1,10 @@
+## [2.9.12](https://github.com/ThatConference/that.us/compare/v2.9.11...v2.9.12) (2022-02-15)
+
+
+### Bug Fixes
+
+* fixing button and anchor attributes ([937d4b8](https://github.com/ThatConference/that.us/commit/937d4b84655d81530aab324180b54e07e6719a6c))
+
 ## [2.9.11](https://github.com/ThatConference/that.us/compare/v2.9.10...v2.9.11) (2022-02-15)
 
 
