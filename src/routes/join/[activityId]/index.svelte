@@ -39,6 +39,7 @@
 	import { goto } from '$app/navigation';
 	import Icon from 'svelte-awesome';
 	import { expand as expandIcon, compress as compressIcon } from '$components/svelte-awesome-icons';
+	import { Circle3 } from 'svelte-loading-spinners';
 
 	import seoMetaTags from '$utils/seo/metaTags';
 	import { ModalError, ActionHeader } from '$elements';
@@ -62,6 +63,7 @@
 	let isCurrentlySharing = false;
 	let userMuted = true;
 	let incompleteProfile = true;
+	let jitsiLoaded = false;
 
 	let displayName = 'Johnny 5'; // generate a fake name...
 	let avatarUrl = config.defaultProfileImage;
@@ -129,6 +131,7 @@
 			userInfo: {
 				displayName: `${$session.thatProfile?.firstName} ${$session.thatProfile?.lastName}`
 			},
+
 			onload: () => {
 				// update here just to cover loading scenarios
 				api.executeCommand('avatarUrl', avatarUrl);
@@ -136,6 +139,7 @@
 
 				api.getIFrame().focus();
 				handleResize();
+				jitsiLoaded = true;
 			},
 
 			parentNode: document.getElementById('meet')
@@ -288,6 +292,28 @@
 		>
 			<Icon data={expanded ? compressIcon : expandIcon} class="h-6 w-6 text-white" />
 		</button>
+
+		{#if !jitsiLoaded}
+			<div class="flex flex-col justify-center items-center">
+				<p class="text-xl font-semibold">Loading room....</p>
+				<p class="text-gray-500">
+					If for some reason this message doesn't go away, please refresh.
+				</p>
+				<div class="flex flex-grow justify-center py-12">
+					<div class="relative my-6 flex flex-col items-center space-y-6">
+						<Circle3
+							size={'60'}
+							unit={'px'}
+							ballTopLeft="#f74646"
+							ballTopRight="#ff834d"
+							ballBottomLeft="#26529A"
+							ballBottomRight="#555555"
+						/>
+					</div>
+				</div>
+			</div>
+		{/if}
+
 		<div id="meet" class="object-center" />
 	</div>
 
