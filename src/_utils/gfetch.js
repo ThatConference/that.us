@@ -67,11 +67,10 @@ function init(fetch) {
 	}
 
 	function secureQuery({ query, variables = {} }) {
-		let dynamicEndpoint = `/api/auth/proxy/`;
+		const dynamicEndpoint = `${config.hostURL}/api/auth/proxy/`;
 
 		if (browser) {
 			loading.set(true);
-			dynamicEndpoint = `${config.hostURL}/api/auth/proxy/`;
 		}
 
 		return _fetch(dynamicEndpoint, {
@@ -100,11 +99,10 @@ function init(fetch) {
 	}
 
 	function mutation({ mutation, variables = {} }) {
-		let dynamicEndpoint = `/api/auth/proxy/`;
+		let dynamicEndpoint = `${config.hostURL}/api/auth/proxy/`;
 
 		if (browser) {
 			loading.set(true);
-			dynamicEndpoint = `${config.hostURL}/api/auth/proxy/`;
 		}
 
 		return _fetch(dynamicEndpoint, {
