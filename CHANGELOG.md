@@ -1,3 +1,10 @@
+## [2.9.13](https://github.com/ThatConference/that.us/compare/v2.9.12...v2.9.13) (2022-02-17)
+
+
+### Bug Fixes
+
+* removes trailing / on login redirect ([0a8b3c6](https://github.com/ThatConference/that.us/commit/0a8b3c63fe5aba279660fcaa0f6d2541a235c210))
+
 ## [2.9.12](https://github.com/ThatConference/that.us/compare/v2.9.11...v2.9.12) (2022-02-15)
 
 
