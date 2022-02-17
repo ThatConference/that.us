@@ -48,7 +48,7 @@
 	import WarningNotification from '$components/notifications/Warning.svelte';
 	import Seo from '$components/Seo.svelte';
 
-	import config from '$utils/config';
+	import config, { analytics } from '$utils/config';
 
 	const { isEmpty } = lodash;
 
@@ -81,7 +81,6 @@
 			'desktop',
 			'fullscreen',
 			'fodeviceselection',
-			'hangup',
 			'profile',
 			'chat',
 			'etherpad',
@@ -96,7 +95,8 @@
 			'videobackgroundblur',
 			'download',
 			'help',
-			'mute-everyone'
+			'mute-everyone',
+			'participants-pane'
 		];
 
 		if ($session.user['http://auth.that.tech/roles'].includes('Admin')) {
@@ -117,15 +117,19 @@
 			// https://github.com/jitsi/jitsi-meet/blob/master/config.js
 			configOverwrite: {
 				startAudioMuted: 5,
-				// startWithAudioMuted: true,
-				prejoinPageEnabled: false, // todo.. We could prolly drop our own image.
-				// enableWelcomePage: true, // not sure what it does
+				prejoinPageEnabled: false,
+				enableWelcomePage: false,
+				enableClosePage: true,
 				brandingRoomAlias: `https://that.us/join/THAT-${activityId}`,
-				transcribingEnabled: true // doesn't seem to work, but it's listed as valid
+				transcribingEnabled: true, // doesn't seem to work, but it's listed as valid
+				toolbarButtons: toolButtonConfig,
+				chromeExtensionBanner: undefined,
+				analytics: {
+					googleAnalyticsTrackingId: analytics.google
+				}
 			},
 			// https://github.com/jitsi/jitsi-meet/blob/master/interface_config.js
 			interfaceConfigOverwrite: {
-				TOOLBAR_BUTTONS: toolButtonConfig,
 				DEFAULT_REMOTE_DISPLAY_NAME: 'THAT Camper'
 			},
 			userInfo: {
@@ -146,14 +150,12 @@
 		};
 
 		api = new window.JitsiMeetExternalAPI(domain, options);
+
+		api.executeCommand('toggleTileView');
+
 		api.addEventListener('audioMuteStatusChanged', handleMuted);
 
 		api.addEventListener('readyToClose', () => {
-			goto('/activities/');
-		});
-
-		api.addEventListener('videoConferenceLeft', () => {
-			// todo.. go back to event if it's part of an event.
 			goto('/activities/');
 		});
 

@@ -64,6 +64,10 @@ export const debug = {
 	xstate: false
 };
 
+export const analytics = {
+	google: 'UA-21705613-11'
+};
+
 export const imageCrops = {
 	profile: '?mask=ellipse&w=500&h=500&fit=crop&q=75&fm=jpg'
 };
