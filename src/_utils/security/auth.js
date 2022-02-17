@@ -79,12 +79,10 @@ export function initAuth0(config) {
 					}
 				} else {
 					const { url } = loadParams;
-
 					const queryString = url.searchParams.toString();
-					const returnUrl =
-						opts?.returnTo || `${url.pathname}${queryString ? '?' + queryString : '/'}`;
 
-					console.log({ returnUrl });
+					const returnUrl =
+						opts?.returnTo || queryString ? `${url.pathname}?${queryString}` : url.pathname;
 
 					return {
 						status: 307,
