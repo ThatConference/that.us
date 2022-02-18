@@ -22,10 +22,10 @@
 
 <a href="/activities/{id}/">
 	<div
-		class="transition duration-500 ease-in-out transform hover:scale-105 w-full h-full py-10 px-6 hover:bg-thatBlue-400 bg-that-blue
-      shadow rounded-lg xl:px-10 text-left"
+		class="h-full w-full transform rounded-lg bg-that-blue py-10 px-6 text-left shadow transition duration-500
+      ease-in-out hover:scale-105 hover:bg-thatBlue-400 xl:px-10"
 	>
-		<div class="h-full w-full text-white flex flex-col space-y-4">
+		<div class="flex h-full w-full flex-col space-y-4 text-white">
 			<h1 class="text-lg font-semibold tracking-tight">{title}</h1>
 
 			<div
@@ -33,7 +33,7 @@
 				class:cursor-pointer={isLongerThan(shortDescription, 25)}
 				on:click|preventDefault|stopPropagation={() => (expandDescription = !expandDescription)}
 			>
-				<p class="text-sm leading-5 break-words">
+				<p class="break-words text-sm leading-5">
 					{#if expandDescription}
 						<span class="lineBreaks">{shortDescription}</span>
 					{:else}
@@ -47,7 +47,7 @@
 				</p>
 			</div>
 
-			<p class="text-thatBlue-200 text-sm italic">
+			<p class="text-sm italic text-thatBlue-200">
 				{dayjs(startTime).format('dddd, MMMM D, YYYY - h:mm A z')}
 			</p>
 		</div>

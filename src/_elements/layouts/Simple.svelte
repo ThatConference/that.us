@@ -4,11 +4,11 @@
 </script>
 
 <main>
-	<div class="max-w-screen-xl mx-auto">
+	<div class="mx-auto max-w-screen-xl">
 		<nav>
 			<MainNav />
 		</nav>
-		<section class="pt-6 px-4 sm:px-6 lg:px-8">
+		<section class="px-4 pt-6 sm:px-6 lg:px-8">
 			<slot />
 		</section>
 	</div>

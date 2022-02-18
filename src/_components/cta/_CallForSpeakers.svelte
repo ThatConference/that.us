@@ -14,11 +14,11 @@
 </script>
 
 <div class="bg-that-navy">
-	<div class="relative max-w-7xl mx-auto py-24 px-4 sm:px-6 lg:px-8 ">
-		<div class="lg:grid lg:grid-cols-5 lg:gap-8 lg:items-start">
+	<div class="relative mx-auto max-w-7xl py-24 px-4 sm:px-6 lg:px-8 ">
+		<div class="lg:grid lg:grid-cols-5 lg:items-start lg:gap-8">
 			<div class="col-span-5">
 				<h3
-					class="text-center sm:text-left uppercase tracking-wide text-white font-extrabold text-4xl"
+					class="text-center text-4xl font-extrabold uppercase tracking-wide text-white sm:text-left"
 				>
 					Call For Counselors is Open
 				</h3>
@@ -28,7 +28,7 @@
 				<p class="text-xl leading-7 text-gray-300">
 					Don't delay, call for counselors closes on
 
-					<span class="pl:2 text-that-orange font-extrabold hover:text-thatOrange-500">
+					<span class="pl:2 font-extrabold text-that-orange hover:text-thatOrange-500">
 						{dayjs(event.callForSpeakersCloseDate).format('dddd, MMMM D, YYYY z')}
 					</span>
 				</p>
@@ -38,9 +38,9 @@
 				</div>
 			</div>
 
-			<div class="hidden lg:visible col-span-2 lg:flex flex-col items-center">
+			<div class="col-span-2 hidden flex-col items-center lg:visible lg:flex">
 				<img
-					class="flip sm:absolute sm:transform sm:translate-y-24 h-1/8 sm:h-2/3"
+					class="flip h-1/8 sm:absolute sm:h-2/3 sm:translate-y-24 sm:transform"
 					src="/images/characters/bear-pig.png"
 					alt
 				/>

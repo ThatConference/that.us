@@ -18,7 +18,7 @@
 			</svg>
 		</div>
 		<div class="ml-3">
-			<h3 class="text-sm leading-5 font-medium text-yellow-800">{title}</h3>
+			<h3 class="text-sm font-medium leading-5 text-yellow-800">{title}</h3>
 			<div class="mt-2 text-sm leading-5 text-yellow-700">
 				<p>{text}</p>
 			</div>

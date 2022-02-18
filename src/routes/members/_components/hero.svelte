@@ -23,12 +23,12 @@
 		: config.defaultProfileImage;
 </script>
 
-<section class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-	<div class="lg:grid lg:grid-cols-12 lg:gap-8 mb-24">
-		<div class="max-w-2xl mx-auto flex flex-col items-center space-y-8 lg:col-span-3">
+<section class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+	<div class="mb-24 lg:grid lg:grid-cols-12 lg:gap-8">
+		<div class="mx-auto flex max-w-2xl flex-col items-center space-y-8 lg:col-span-3">
 			<div>
 				<img
-					class="mx-auto h-40 w-40 rounded-full xl:w-56 xl:h-56"
+					class="mx-auto h-40 w-40 rounded-full xl:h-56 xl:w-56"
 					src={userProfileImage}
 					alt={`${member.firstName} ${member.lastName}`}
 				/>
@@ -41,7 +41,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="mt-12 lg:mt-0 lg:col-start-4 lg:col-span-9">
+		<div class="mt-12 lg:col-span-9 lg:col-start-4 lg:mt-0">
 			<div class="flex flex-col space-y-8">
 				<div class="flex items-center justify-between">
 					<div>
@@ -66,11 +66,11 @@
 					</div>
 				</div>
 
-				<div class="leading-8 text-lg font-medium text-gray-900">
-					<p class="prose prose-xl lineBreaks">{member.bio}</p>
+				<div class="text-lg font-medium leading-8 text-gray-900">
+					<p class="lineBreaks prose prose-xl">{member.bio}</p>
 				</div>
 
-				<div class="flex flex-wrap justify-center items-center space-x-4">
+				<div class="flex flex-wrap items-center justify-center space-x-4">
 					{#if member.interests}
 						{#each member.interests as interest, i (i)}
 							<div in:fade={{ delay: i * 100 }}>

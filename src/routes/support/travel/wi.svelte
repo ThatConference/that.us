@@ -41,10 +41,10 @@
 
 	<section class="text-gray-500">
 		<div
-			class="relative 
-              text-lg text-gray-500 leading-7 prose-lg
-              max-w-prose lg:max-w-7xl  
-              mx-auto lg:mx-0 mb-8 lg:pr-72"
+			class="prose-lg 
+              relative mx-auto mb-8 max-w-prose
+              text-lg leading-7  
+              text-gray-500 lg:mx-0 lg:max-w-7xl lg:pr-72"
 		>
 			<p>
 				We have partnered with the Kalahari Resort and Staybridge Suites to offer the best group
@@ -57,9 +57,9 @@
 		</div>
 
 		<!-- for when the other comes back into play <div class="flex flex-col sm:flex-row sm:items-center sm:space-x-8 space-y-8 sm:space-y-0"> -->
-		<div class="flex flex-col items-center sm:space-x-8 space-y-8 sm:space-y-0">
-			<div class="px-12 bg-gray-50 bg-opacity-50 rounded-md shadow-md">
-				<div class="prose prose-md text-gray-500">
+		<div class="flex flex-col items-center space-y-8 sm:space-x-8 sm:space-y-0">
+			<div class="rounded-md bg-gray-50 bg-opacity-50 px-12 shadow-md">
+				<div class="prose-md prose text-gray-500">
 					<div class="flex flex-col pb-12">
 						<h2>Kalahari Resorts and Convention Center</h2>
 
@@ -80,18 +80,18 @@
 
 						<h3>Room Types</h3>
 						<div class="flex space-x-4">
-							<div class="prose prose-lg p-4 w-full bg-white border rounded-md shadow-md">
+							<div class="prose prose-lg w-full rounded-md border bg-white p-4 shadow-md">
 								<h4>Double Queen Sofa</h4>
 								<p class="text-center">$200 + tax and fees</p>
 							</div>
 
-							<div class="prose prose-lg p-4 w-full bg-white border rounded-md shadow-md ">
+							<div class="prose prose-lg w-full rounded-md border bg-white p-4 shadow-md ">
 								<h4>2 Bedroom Suite</h4>
 								<p class="text-center">$324 + tax and fees</p>
 							</div>
 						</div>
 
-						<div class="mt-4 prose prose-lg text-gray-500">
+						<div class="prose prose-lg mt-4 text-gray-500">
 							<p>Restrictions do apply:</p>
 							<ul>
 								<li>Speakers, this block isn't for you. Contact us.</li>
@@ -162,10 +162,10 @@
 			-->
 		</div>
 
-		<div class="pt-24 lg:grid lg:grid-cols-2 lg:gap-8 lg:items-start text-lg leading-7">
+		<div class="pt-24 text-lg leading-7 lg:grid lg:grid-cols-2 lg:items-start lg:gap-8">
 			<div class="relative mb-12 lg:mb-0">
 				<div class="mb-10 flex flex-col justify-start">
-					<div class="mb-10 prose prose-lg text-gray-500">
+					<div class="prose prose-lg mb-10 text-gray-500">
 						<h2>THAT Campsite</h2>
 
 						<p>The Kalahari Resort and Convention Center can be located at:</p>
@@ -209,7 +209,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="relative text-base max-w-prose mx-auto lg:max-w-none">
+			<div class="relative mx-auto max-w-prose text-base lg:max-w-none">
 				<MemoryHighlight imageSrc="/images/memories/hallway2_small.jpg" />
 			</div>
 		</div>

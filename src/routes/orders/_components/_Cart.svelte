@@ -119,7 +119,7 @@
 	<section class="flex flex-col space-y-8">
 		<div class="relative">
 			<div class="relative flex justify-start">
-				<span class="pr-3 bg-white text-lg font-medium text-gray-900">
+				<span class="bg-white pr-3 text-lg font-medium text-gray-900">
 					Your cart is currently empty.
 				</span>
 			</div>

@@ -24,13 +24,13 @@
 <Layout>
 	<Header center={true}>Creating an Activity</Header>
 	<section>
-		<div class="prose prose-lg text-gray-500 mx-auto">
+		<div class="prose prose-lg mx-auto text-gray-500">
 			<p>
 				It's THAT time! You're now ready to create your first Activity. We couldn't be more excited
 				and want to make sure you get started off right.
 			</p>
 
-			<div class="transform scale-75 text-center">
+			<div class="scale-75 transform text-center">
 				<StandardLink href="/activities/create/">Create an Activity</StandardLink>
 			</div>
 
@@ -72,7 +72,7 @@
 				</li>
 			</ul>
 
-			<div class="text-center my-12">
+			<div class="my-12 text-center">
 				<figure>
 					<img
 						class="lazyload w-full rounded-lg shadow"
@@ -99,8 +99,8 @@
 			</p>
 		</div>
 		<div
-			class="my-12 max-w-prose mx-auto lg:max-w-none flex flex-col items-center
-        justify-center"
+			class="my-12 mx-auto flex max-w-prose flex-col items-center justify-center
+        lg:max-w-none"
 		>
 			<div class="flex space-x-4 text-base">
 				<StandardLink href="/support/joining-an-activity/">Joining an Activity</StandardLink>

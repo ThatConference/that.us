@@ -2,11 +2,11 @@
 	import { session } from '$app/stores';
 </script>
 
-<section class="bg-white py-12 lg:py-16 mt-12">
-	<div class="relative max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+<section class="mt-12 bg-white py-12 lg:py-16">
+	<div class="relative mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
 		<svg
-			class="hidden lg:block absolute right-full -top-3/4 transform
-      translate-x-1/2 -translate-y-3/6"
+			class="-translate-y-3/6 absolute right-full -top-3/4 hidden translate-x-1/2
+      transform lg:block"
 			width="404"
 			height="784"
 			fill="none"
@@ -38,8 +38,8 @@
 
 			<div class="relative lg:ml-10">
 				<svg
-					class="absolute top-0 left-0 transform -translate-x-8 -translate-y-24
-          h-36 w-36 text-thatBlue-200 opacity-50"
+					class="absolute top-0 left-0 h-36 w-36 -translate-x-8
+          -translate-y-24 transform text-thatBlue-200 opacity-50"
 					stroke="currentColor"
 					fill="none"
 					viewBox="0 0 144 144"
@@ -57,7 +57,7 @@
 					/>
 				</svg>
 				<blockquote class="relative">
-					<div class="prose sm:text-lg md:text-xl text-gray-500">
+					<div class="prose text-gray-500 sm:text-lg md:text-xl">
 						{#if !$session.isAuthenticated}
 							<p>
 								Our mission is simple, foster a community of geeks who want to help one another be
@@ -97,8 +97,8 @@
 								/>
 							</div>
 							<div class="ml-4 lg:ml-0">
-								<div class="text-base leading-6 font-medium text-that-blue">Clark Sell</div>
-								<div class="text-base leading-6 font-medium text-gray-900">Founder, THAT</div>
+								<div class="text-base font-medium leading-6 text-that-blue">Clark Sell</div>
+								<div class="text-base font-medium leading-6 text-gray-900">Founder, THAT</div>
 							</div>
 						</div>
 					</footer>

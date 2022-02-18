@@ -74,7 +74,7 @@
 <div>
 	<Form {schema} validateOnBlur={false} validateOnChange={false} on:submit={handleSubmit}>
 		<div class="w-full space-y-4">
-			<div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+			<div class="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
 				<div class="flex-grow">
 					<Input
 						name="name"
@@ -82,7 +82,7 @@
 						id="additionalResourcesNameInput"
 						spellcheck="true"
 						placeholder="E.g. Title of this resource"
-						class="form-input w-full sm:text-sm sm:leading-5 hover:border-gray-700"
+						class="form-input w-full hover:border-gray-700 sm:text-sm sm:leading-5"
 					/>
 				</div>
 				<div class="flex-grow">
@@ -90,7 +90,7 @@
 						name="url"
 						type="url"
 						placeholder="E.g. URL to resource"
-						class="form-input w-full sm:text-sm sm:leading-5 hover:border-gray-700"
+						class="form-input w-full hover:border-gray-700 sm:text-sm sm:leading-5"
 					/>
 				</div>
 			</div>
@@ -104,13 +104,13 @@
 						rows="3"
 						spellcheck="true"
 						placeholder="E.g. Brief description"
-						class="form-input w-full sm:text-sm sm:leading-5 hover:border-gray-700"
+						class="form-input w-full hover:border-gray-700 sm:text-sm sm:leading-5"
 					/>
 				</div>
 
 				<div class="flex justify-end">
 					<ShellButton>
-						<button class="w-full px-8 md:px-10 py-1 text-sm leading-5 font-medium" type="submit">
+						<button class="w-full px-8 py-1 text-sm font-medium leading-5 md:px-10" type="submit">
 							{addText}
 						</button>
 					</ShellButton>
@@ -123,8 +123,8 @@
 		<ul class="flex flex-col">
 			{#each items as item, i (item.id)}
 				<li class="pt-4">
-					<div class="flex space-x-4 items-center">
-						<div class="flex-grow p-2 rounded-md" class:bg-gray-50={showBackground(i)}>
+					<div class="flex items-center space-x-4">
+						<div class="flex-grow rounded-md p-2" class:bg-gray-50={showBackground(i)}>
 							<a open href={item.url}>
 								<p>{item.name}</p>
 								<p class="mt-1 text-sm text-gray-400">{item.description}</p>
@@ -136,7 +136,7 @@
 								<button
 									type="button"
 									on:click={() => removeItem(item.id)}
-									class="w-full px-8 md:px-10 py-1 text-sm leading-5 font-medium "
+									class="w-full px-8 py-1 text-sm font-medium leading-5 md:px-10 "
 								>
 									Remove
 								</button>

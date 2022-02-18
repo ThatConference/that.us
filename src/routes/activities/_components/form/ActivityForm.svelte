@@ -179,7 +179,7 @@
 	</div>
 
 	<div class="grid grid-cols-1 gap-12 lg:grid-flow-col-dense lg:grid-cols-3">
-		<div class="space-y-6 lg:col-start-1 lg:col-span-2">
+		<div class="space-y-6 lg:col-span-2 lg:col-start-1">
 			<!-- event selector -->
 			<section in:fade>
 				<SectionTitle
@@ -326,13 +326,13 @@
 			{/if}
 
 			{#if isSubmitting}
-				<div class="py-24 flex flex-grow justify-center">
+				<div class="flex flex-grow justify-center py-24">
 					<Waiting />
 				</div>
 			{/if}
 		</div>
 
-		<section class="lg:col-start-3 lg:col-span-1 relative">
+		<section class="relative lg:col-span-1 lg:col-start-3">
 			<div class="sticky top-8">
 				<Steps isShortForm={!showLongForm}>
 					<div slot="actions">
@@ -343,14 +343,14 @@
 										disabled={isValid}
 										on:click|preventDefault={() => handleWithdraw(initialData)}
 										tabindex="-1"
-										class="w-full py-2 px-4 order 
-                          border-2 border-transparent rounded-md
-                          text-sm leading-5 font-medium text-white 
-                          bg-red-400
-                          active:bg-red-700 
-                          hover:bg-red-600 
-                          focus:outline-none focus:border-red-700 focus:ring-red 
-                          transition duration-150 ease-in-out"
+										class="order focus:ring-red w-full rounded-md 
+                          border-2 border-transparent bg-red-400
+                          py-2 px-4 text-sm font-medium 
+                          leading-5
+                          text-white 
+                          transition 
+                          duration-150 ease-in-out hover:bg-red-600 
+                          focus:border-red-700 focus:outline-none active:bg-red-700"
 									>
 										Cancel / Withdraw
 									</button>
@@ -360,14 +360,14 @@
 							<span class="inline-flex rounded-md shadow-sm">
 								<button
 									type="submit"
-									class="w-full py-2 px-4
-                      border-2 border-thatBlue-500 rounded-md
-                      text-sm leading-5 font-medium 
-                    text-thatBlue-500 bg-white 
-                    hover:bg-thatBlue-500 hover:text-white
-                      focus:outline-none focus:ring-thatBlue-500 focus:bg-thatBlue-500 focus:text-white focus:border-thatBlue-800
-                    active:bg-thatBlue-800 
-                    transition duration-150 ease-in-out"
+									class="w-full rounded-md border-2
+                      border-thatBlue-500 bg-white py-2
+                      px-4 text-sm font-medium 
+                    leading-5 text-thatBlue-500 
+                    transition duration-150
+                      ease-in-out hover:bg-thatBlue-500 hover:text-white focus:border-thatBlue-800 focus:bg-thatBlue-500
+                    focus:text-white 
+                    focus:outline-none focus:ring-thatBlue-500 active:bg-thatBlue-800"
 								>
 									{initialData?.id ? 'Update Activity' : 'Submit Activity'}
 								</button>

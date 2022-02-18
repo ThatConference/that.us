@@ -64,16 +64,16 @@
 <Layout>
 	<main class="overflow-hidden">
 		<div class="relative pb-16 md:pb-20 lg:pb-24 xl:pb-32">
-			<div class="mt-32 mx-auto max-w-screen-xl px-4 sm:px-6 xl:mt-40">
+			<div class="mx-auto mt-32 max-w-screen-xl px-4 sm:px-6 xl:mt-40">
 				<main>
 					<Hero />
 					<div class="py-20 px-8">
 						<div class="relative mx-auto">
-							<div class="mt-12 max-w-lg mx-auto grid gap-10 lg:grid-cols-3 lg:max-w-none">
+							<div class="mx-auto mt-12 grid max-w-lg gap-10 lg:max-w-none lg:grid-cols-3">
 								{#each events[0] as e (e.id)}
 									<div
 										in:fade
-										class="transition duration-500 ease-in-out transform hover:scale-105"
+										class="transform transition duration-500 ease-in-out hover:scale-105"
 									>
 										<a href={`/events/${e.slug}`}>
 											<EventCard event={e} />
@@ -88,18 +88,18 @@
 								</div>
 								<div class="relative flex justify-center">
 									<span
-										class="uppercase tracking-wider px-2 bg-white rounded-md text-sm text-gray-500"
+										class="rounded-md bg-white px-2 text-sm uppercase tracking-wider text-gray-500"
 									>
 										Past Events
 									</span>
 								</div>
 							</div>
 
-							<div class="mt-12 max-w-lg mx-auto grid gap-10 lg:grid-cols-3 lg:max-w-none">
+							<div class="mx-auto mt-12 grid max-w-lg gap-10 lg:max-w-none lg:grid-cols-3">
 								{#each events[1] as e (e.id)}
 									<div
 										in:fade
-										class="transition duration-500 ease-in-out transform hover:scale-105"
+										class="transform transition duration-500 ease-in-out hover:scale-105"
 									>
 										<a href={`/events/${e.slug}`}>
 											<EventCard event={e} />

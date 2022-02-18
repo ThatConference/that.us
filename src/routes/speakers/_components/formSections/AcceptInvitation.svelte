@@ -52,10 +52,10 @@
 </div>
 
 <div class="mt-8">
-	<h2 class="text-xl text-gray-800 font-extrabold">Event Details</h2>
+	<h2 class="text-xl font-extrabold text-gray-800">Event Details</h2>
 
 	<div
-		class="bg-gray-50 border rounded-md py-4 sm:py-0 px-4 mt-4 flex flex-col justify-center sm:flex-row items-center space-y-6 sm:space-y-0 sm:space-x-8"
+		class="mt-4 flex flex-col items-center justify-center space-y-6 rounded-md border bg-gray-50 py-4 px-4 sm:flex-row sm:space-y-0 sm:space-x-8 sm:py-0"
 	>
 		<div class="flex flex-col items-center sm:items-start">
 			<div class="font-extrabold">{eventDetails.name}</div>
@@ -72,9 +72,9 @@
 			</div>
 		</div>
 
-		<div class="flex-grow grid">
+		<div class="grid flex-grow">
 			<img
-				class="justify-self-center sm:justify-self-end h-24 w-24"
+				class="h-24 w-24 justify-self-center sm:justify-self-end"
 				src={eventDetails.logo}
 				alt="event logo"
 			/>
@@ -83,7 +83,7 @@
 </div>
 
 <div class="mt-8">
-	<h2 class="text-xl text-gray-800 font-extrabold">
+	<h2 class="text-xl font-extrabold text-gray-800">
 		{#if sessions.length > 1}
 			Accepted Sessions <span class="italic">{platformText}</span>
 		{:else}
@@ -92,7 +92,7 @@
 	</h2>
 
 	{#each sessions as session}
-		<div class="bg-gray-50 border rounded-md mt-4 p-4 sm:grid gap-6 grid-cols-3">
+		<div class="mt-4 grid-cols-3 gap-6 rounded-md border bg-gray-50 p-4 sm:grid">
 			<div class="col-span-2">
 				<p class="font-extrabold">{session.title}</p>
 
@@ -101,7 +101,7 @@
 					class:cursor-pointer={isLongerThan(session.shortDescription, 25)}
 					on:click|preventDefault={() => (expandDescription = !expandDescription)}
 				>
-					<p class="text-gray-500 text-sm leading-5 break-words">
+					<p class="break-words text-sm leading-5 text-gray-500">
 						{#if expandDescription}
 							<span class="lineBreaks">{session.shortDescription}</span>
 						{:else}
@@ -133,11 +133,11 @@
 </div>
 
 <div class="mt-8">
-	<h2 class="text-xl text-gray-800 font-extrabold">
+	<h2 class="text-xl font-extrabold text-gray-800">
 		<span>Be Awesome Together</span>
 	</h2>
 
-	<div class="mt-4 text-gray-500 prose prose-xl">
+	<div class="prose prose-xl mt-4 text-gray-500">
 		<p>
 			THAT Conference is dedicated to providing a safe, diverse, harassment-free conference
 			experience for everyone, regardless of gender, sexual orientation, disability, physical
@@ -155,7 +155,7 @@
 	</div>
 </div>
 
-<div class="flex justify-center md:justify-end space-x-4 mt-12">
+<div class="mt-12 flex justify-center space-x-4 md:justify-end">
 	<button type="button" on:click={handleSpeakerAccept}>
 		<Shell>
 			<div class="px-8 py-2 font-extrabold">Accept Your Invitation</div>
@@ -164,7 +164,7 @@
 
 	<button type="button" on:click={() => (isDeclining = !isDeclining)}>
 		<Shell class="border-gray-500">
-			<div class="px-8 py-2 text-gray-400  font-extrabold">Decline Invitation</div>
+			<div class="px-8 py-2 font-extrabold  text-gray-400">Decline Invitation</div>
 		</Shell>
 	</button>
 </div>

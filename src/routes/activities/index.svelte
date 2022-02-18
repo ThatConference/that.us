@@ -99,7 +99,7 @@
 		<SvelteInfiniteScroll window threshold={scrollThreshold} on:loadMore={handleNext} />
 
 		{#if ['loaded'].some($state.matches)}
-			<div class="mt-12 text-gray-400 flex flex-col items-center">
+			<div class="mt-12 flex flex-col items-center text-gray-400">
 				scroll for more <Chevron />
 			</div>
 		{/if}

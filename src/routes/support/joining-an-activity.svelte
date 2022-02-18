@@ -24,7 +24,7 @@
 <Layout>
 	<Header center={true}>Joining an Activity</Header>
 	<section>
-		<div class="prose prose-lg text-gray-500 mx-auto">
+		<div class="prose prose-lg mx-auto text-gray-500">
 			<p>
 				<strong>Click the join button.</strong> Yes, it's just THAT simple. The join button enables itself
 				5 minutes before the scheduled start time (in your timezone0) and will remain active for the
@@ -34,7 +34,7 @@
 				concurrent attendees.
 			</p>
 
-			<div class="transform scale-75 text-center">
+			<div class="scale-75 transform text-center">
 				<figure>
 					<img class="lazyload rounded-lg shadow" src="/images/ActivityJoinExample.jpg" alt="" />
 					<figcaption>Example Activity: join on the bottom.</figcaption>
@@ -65,8 +65,8 @@
 		</div>
 
 		<div
-			class="my-12 max-w-prose mx-auto lg:max-w-none flex flex-col items-center
-        justify-center"
+			class="my-12 mx-auto flex max-w-prose flex-col items-center justify-center
+        lg:max-w-none"
 		>
 			<div class="flex space-x-4 text-base">
 				<StandardLink href="/support/what-is-an-activity/">What Is An Activity</StandardLink>

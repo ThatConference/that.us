@@ -11,25 +11,25 @@
 </script>
 
 <tr class="bg-white" class:bg-gray-50={showBackground}>
-	<td class="px-6 py-4 align-top whitespace-nowrap text-sm font-medium text-gray-900">
+	<td class="whitespace-nowrap px-6 py-4 align-top text-sm font-medium text-gray-900">
 		{lineItem.name}
 	</td>
 	<td class="px-6 py-4 align-top text-sm text-gray-500">
 		{lineItem.description}
 	</td>
-	<td class="px-6 py-4 align-top whitespace-nowrap text-sm text-gray-500">
+	<td class="whitespace-nowrap px-6 py-4 align-top text-sm text-gray-500">
 		${lineItem.price}
 	</td>
-	<td class="px-6 py-4 align-top whitespace-nowrap text-sm text-gray-500">
+	<td class="whitespace-nowrap px-6 py-4 align-top text-sm text-gray-500">
 		<input
 			type="number"
 			name="quantity"
 			id="quantity"
 			bind:value={currentQty}
-			class="p-2 text-center block shadow-sm focus:ring-thatOrange-500 focus:border-thatOrange-500 border border-gray-200 rounded-md"
+			class="block rounded-md border border-gray-200 p-2 text-center shadow-sm focus:border-thatOrange-500 focus:ring-thatOrange-500"
 		/>
 	</td>
-	<td class="px-6 py-4 align-top whitespace-nowrap text-right text-sm font-medium">
+	<td class="whitespace-nowrap px-6 py-4 text-right align-top text-sm font-medium">
 		<a
 			on:click={() =>
 				dispatch('cart_update', {
@@ -49,5 +49,5 @@
 			Remove
 		</a>
 	</td>
-	<td class="px-6 py-4 align-top whitespace-nowrap text-sm text-gray-500">{subTotal}</td>
+	<td class="whitespace-nowrap px-6 py-4 align-top text-sm text-gray-500">{subTotal}</td>
 </tr>

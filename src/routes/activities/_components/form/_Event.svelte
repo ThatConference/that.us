@@ -42,21 +42,21 @@
 
 <Input hidden name="eventId" value={eventSelected} />
 
-<div in:fade class="px-4 sm:px-6 py-5 ">
+<div in:fade class="px-4 py-5 sm:px-6 ">
 	{#if isBackdoor}
-		<ul class="grid grid-cols-1 gap-5 sm:gap-6 sm:grid-cols-2">
-			<li class="col-span-1 shadow-sm rounded-md">
-				<div class="transition duration-500 ease-in-out transform">
-					<label for={activeEvents.backdoor.name} class="h-full flex">
+		<ul class="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6">
+			<li class="col-span-1 rounded-md shadow-sm">
+				<div class="transform transition duration-500 ease-in-out">
+					<label for={activeEvents.backdoor.name} class="flex h-full">
 						<div
-							class="flex-1 flex items-center justify-between border border-green-500 bg-green-100 rounded-md truncate"
+							class="flex flex-1 items-center justify-between truncate rounded-md border border-green-500 bg-green-100"
 						>
 							<div class="flex-shrink-0">
-								<img class="p-2 h-14 object-fit" alt="" src={activeEvents.backdoor.logo} />
+								<img class="object-fit h-14 p-2" alt="" src={activeEvents.backdoor.logo} />
 							</div>
 
-							<div class="flex-1 px-2 py-2 text-sm truncate">
-								<p class="text-gray-900 font-bold">
+							<div class="flex-1 truncate px-2 py-2 text-sm">
+								<p class="font-bold text-gray-900">
 									{activeEvents.backdoor.name}
 								</p>
 
@@ -67,7 +67,7 @@
 
 							<div class="flex-shrink-0 pr-4">
 								<span
-									class="h-6 w-6 rounded-full bg-green-500 bg-opacity-60 flex items-center justify-center"
+									class="flex h-6 w-6 items-center justify-center rounded-full bg-green-500 bg-opacity-60"
 								>
 									<CheckFull height="h-4" width="w-4" />
 								</span>

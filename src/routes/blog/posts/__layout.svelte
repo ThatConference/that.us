@@ -104,14 +104,14 @@
 <Seo title={metaTags.title} tags={metaTags.tags} />
 
 <Layout>
-	<div class="py-20 overflow-hidden">
-		<div class="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+	<div class="overflow-hidden py-20">
+		<div class="relative mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
 			<article>
-				<div class="text-base max-w-prose mx-auto lg:max-w-none" class:text-center={center}>
-					<div class="pb-8 flex flex-col items-center">
+				<div class="mx-auto max-w-prose text-base lg:max-w-none" class:text-center={center}>
+					<div class="flex flex-col items-center pb-8">
 						<a href={`/members/${author.profileSlug}/`}>
 							<img
-								class="h-24 w-24 rounded-full lazyload"
+								class="lazyload h-24 w-24 rounded-full"
 								data-sizes="auto"
 								data-src={srcset.src}
 								data-srcset={srcset.srcset}
@@ -120,28 +120,28 @@
 						</a>
 					</div>
 					<div
-						class="text-base leading-6 text-thatOrange-400 font-semibold tracking-wide uppercase"
+						class="text-base font-semibold uppercase leading-6 tracking-wide text-thatOrange-400"
 					>
 						<time datetime={dayjs(date).toISOString()}>{dayjs(date).format('MMMM DD, YYYY')}</time>
 						•
 						<span>{readingTime.text}</span>
 					</div>
 					<h1
-						class="mt-2 mb-8 text-3xl leading-8 font-extrabold tracking-wide
+						class="mt-2 mb-8 text-3xl font-extrabold leading-8 tracking-wide
         text-gray-900 sm:text-4xl sm:leading-10"
 					>
 						{title}
 					</h1>
 
 					<div class="my-12">
-						<img src={cdnUrl(heroImage)} class="h-[600] w-[335] top-rounded-lg shadow-md" alt="" />
+						<img src={cdnUrl(heroImage)} class="top-rounded-lg h-[600] w-[335] shadow-md" alt="" />
 						{#if heroImageCaption}
-							<p class="pt-4 caption text-gray-400">{heroImageCaption}</p>
+							<p class="caption pt-4 text-gray-400">{heroImageCaption}</p>
 						{/if}
 					</div>
 				</div>
 
-				<div class="max-w-prose mx-auto">
+				<div class="mx-auto max-w-prose">
 					<div class="prose prose-lg text-gray-500">
 						<slot />
 					</div>

@@ -13,11 +13,11 @@
 	});
 </script>
 
-<section class="py-12 lg:py-16 bg-thatBlue-700">
-	<div class="relative mx-auto px-4 max-w-screen-xl sm:px-6 lg:px-8">
+<section class="bg-thatBlue-700 py-12 lg:py-16">
+	<div class="relative mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
 		<div class="space-y-12">
 			<div class="space-y-5 sm:space-y-4 md:max-w-xl lg:max-w-3xl xl:max-w-none">
-				<h2 class="text-3xl leading-9 font-extrabold text-white tracking-tight sm:text-4xl">
+				<h2 class="text-3xl font-extrabold leading-9 tracking-tight text-white sm:text-4xl">
 					Upcoming
 					{#if $state.context.meta.name}
 						<span class="text-that-orange">{$state.context.meta.name}</span>
@@ -61,15 +61,15 @@
 					<button
 						type="button"
 						on:click={() => send('NEXT')}
-						class="px-8 py-2 rounded-md shadow text-base leading-6
-                    bg-that-blue  
-                    text-white
+						class="rounded-md bg-that-blue px-8 py-2 text-base leading-6
+                    text-white  
+                    shadow
+                    transition
+                    duration-150 
+                    ease-in-out 
                     hover:bg-thatBlue-400
-                    focus:bg-thatBlue-400 
-                    focus:text-white 
-                    focus:ring-white
                     focus:border-thatBlue-800 
-                    transition duration-150 ease-in-out md:text-lg md:px-10"
+                    focus:bg-thatBlue-400 focus:text-white focus:ring-white md:px-10 md:text-lg"
 					>
 						<span>View Next</span>
 					</button>
@@ -79,15 +79,15 @@
 					<button
 						type="button"
 						on:click={() => send('REFRESH')}
-						class="px-8 py-2 rounded-md shadow text-base leading-6
-                      bg-that-blue  
-                      text-white
+						class="rounded-md bg-that-blue px-8 py-2 text-base leading-6
+                      text-white  
+                      shadow
+                      transition
+                      duration-150 
+                      ease-in-out 
                       hover:bg-thatBlue-400
-                      focus:bg-thatBlue-400 
-                      focus:text-white 
-                      focus:ring-white
                       focus:border-thatBlue-800 
-                      transition duration-150 ease-in-out md:text-lg md:px-10"
+                      focus:bg-thatBlue-400 focus:text-white focus:ring-white md:px-10 md:text-lg"
 					>
 						<span>Refresh</span>
 					</button>

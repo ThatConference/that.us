@@ -5,15 +5,15 @@
 </script>
 
 <button type="button" on:click>
-	<div class="fixed bottom-0 inset-x-0 pb-2 sm:pb-5 z-10">
-		<div class="max-w-screen-xl mx-auto px-2 sm:px-6 lg:px-8">
-			<div class="p-2 rounded-lg bg-yellow-100 shadow-lg sm:p-3">
-				<div class="flex items-center justify-between flex-wrap">
-					<div class="w-0 flex-1 flex items-center">
-						<span class="flex p-2 rounded-lg">
-							<Icon data={warning} class="w-6 h-6 text-black" />
+	<div class="fixed inset-x-0 bottom-0 z-10 pb-2 sm:pb-5">
+		<div class="mx-auto max-w-screen-xl px-2 sm:px-6 lg:px-8">
+			<div class="rounded-lg bg-yellow-100 p-2 shadow-lg sm:p-3">
+				<div class="flex flex-wrap items-center justify-between">
+					<div class="flex w-0 flex-1 items-center">
+						<span class="flex rounded-lg p-2">
+							<Icon data={warning} class="h-6 w-6 text-black" />
 						</span>
-						<p class="ml-3 font-medium text-black truncate">
+						<p class="ml-3 truncate font-medium text-black">
 							<span class="hidden md:inline">{message}</span>
 						</p>
 					</div>

@@ -32,8 +32,8 @@
 </div>
 
 <div class="mt-8">
-	<div class="flex justify-start items-center space-x-6">
+	<div class="flex items-center justify-start space-x-6">
 		<Busy size="60" />
-		<div class="flex-grow text-gray-500 text-xl">{message}</div>
+		<div class="flex-grow text-xl text-gray-500">{message}</div>
 	</div>
 </div>

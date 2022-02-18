@@ -4,11 +4,11 @@
 	import PanelButton from './PanelButton.svelte';
 </script>
 
-<div id="panel" class="row-start-2 row-span-4 col-start-5 col-span-1 grid grid-cols-3 grid-rows-7">
+<div id="panel" class="grid-rows-7 col-span-1 col-start-5 row-span-4 row-start-2 grid grid-cols-3">
 	<PanelButton
 		bold
 		on:press={() => dispatch('digit', 1)}
-		class="row-start-1 row-span-1 col-start-1 col-span-1"
+		class="col-span-1 col-start-1 row-span-1 row-start-1"
 	>
 		1
 	</PanelButton>
@@ -16,7 +16,7 @@
 	<PanelButton
 		bold
 		on:press={() => dispatch('digit', 2)}
-		class="row-start-1 row-span-1 col-start-2 col-span-1"
+		class="col-span-1 col-start-2 row-span-1 row-start-1"
 	>
 		2
 	</PanelButton>
@@ -24,7 +24,7 @@
 	<PanelButton
 		bold
 		on:press={() => dispatch('digit', 3)}
-		class="row-start-1 row-span-1 col-start-3 col-span-1"
+		class="col-span-1 col-start-3 row-span-1 row-start-1"
 	>
 		3
 	</PanelButton>
@@ -32,7 +32,7 @@
 	<PanelButton
 		bold
 		on:press={() => dispatch('digit', 4)}
-		class="row-start-2 row-span-1 col-start-1 col-span-1"
+		class="col-span-1 col-start-1 row-span-1 row-start-2"
 	>
 		4
 	</PanelButton>
@@ -40,7 +40,7 @@
 	<PanelButton
 		bold
 		on:press={() => dispatch('digit', 5)}
-		class="row-start-2 row-span-1 col-start-2 col-span-1"
+		class="col-span-1 col-start-2 row-span-1 row-start-2"
 	>
 		5
 	</PanelButton>
@@ -48,7 +48,7 @@
 	<PanelButton
 		bold
 		on:press={() => dispatch('digit', 6)}
-		class="row-start-2 row-span-1 col-start-3 col-span-1"
+		class="col-span-1 col-start-3 row-span-1 row-start-2"
 	>
 		6
 	</PanelButton>
@@ -56,7 +56,7 @@
 	<PanelButton
 		bold
 		on:press={() => dispatch('digit', 7)}
-		class="row-start-3 row-span-1 col-start-1 col-span-1"
+		class="col-span-1 col-start-1 row-span-1 row-start-3"
 	>
 		7
 	</PanelButton>
@@ -64,7 +64,7 @@
 	<PanelButton
 		bold
 		on:press={() => dispatch('digit', 8)}
-		class="row-start-3 row-span-1 col-start-2 col-span-1"
+		class="col-span-1 col-start-2 row-span-1 row-start-3"
 	>
 		8
 	</PanelButton>
@@ -72,7 +72,7 @@
 	<PanelButton
 		bold
 		on:press={() => dispatch('digit', 9)}
-		class="row-start-3 row-span-1 col-start-3 col-span-1"
+		class="col-span-1 col-start-3 row-span-1 row-start-3"
 	>
 		9
 	</PanelButton>
@@ -80,7 +80,7 @@
 	<PanelButton
 		bold
 		on:press={() => dispatch('digit', 0)}
-		class="row-start-4 row-span-1 col-start-2 col-span-1"
+		class="col-span-1 col-start-2 row-span-1 row-start-4"
 	>
 		0
 	</PanelButton>
@@ -88,7 +88,7 @@
 	<PanelButton
 		bold
 		on:press={() => dispatch('backspace')}
-		class="row-start-4 row-span-1 col-start-3 col-span-1"
+		class="col-span-1 col-start-3 row-span-1 row-start-4"
 	>
 		<svg
 			xmlns="http://www.w3.org/2000/svg"

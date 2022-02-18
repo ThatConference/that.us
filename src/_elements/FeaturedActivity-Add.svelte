@@ -15,8 +15,8 @@
 
 <a href={createLink}>
 	<div
-		class="transition duration-500 ease-in-out transform hover:scale-105 w-full h-full py-10 px-6 hover:bg-thatBlue-400 bg-that-blue
-      text-center shadow rounded-lg xl:px-10 xl:text-left"
+		class="h-full w-full transform rounded-lg bg-that-blue py-10 px-6 text-center shadow transition duration-500
+      ease-in-out hover:scale-105 hover:bg-thatBlue-400 xl:px-10 xl:text-left"
 		on:mouseenter={() => (isHover = true)}
 		on:mouseleave={() => (isHover = false)}
 	>
@@ -24,7 +24,7 @@
 			<div class="flex justify-center">
 				{#if $session.isAuthenticated && $session.thatProfile}
 					{#if isHover}
-						<Icon data={plusCircle} class="text-thatBlue-100 h-40 w-40 xl:w-56 xl:h-56" />
+						<Icon data={plusCircle} class="h-40 w-40 text-thatBlue-100 xl:h-56 xl:w-56" />
 					{:else}
 						<img
 							class="mx-auto h-40 w-40 rounded-full xl:w-56 xl:h-56"
@@ -37,11 +37,11 @@
 				{/if}
 			</div>
 
-			<div class="font-medium text-lg leading-6 space-y-2 w-full h-full flex flex-col">
-				<h4 class="space-y-1 flex-grow text-white">What Activity will you create?</h4>
-				<p class="text-thatBlue-200 text-sm italic">Any Day, Any Time</p>
+			<div class="flex h-full w-full flex-col space-y-2 text-lg font-medium leading-6">
+				<h4 class="flex-grow space-y-1 text-white">What Activity will you create?</h4>
+				<p class="text-sm italic text-thatBlue-200">Any Day, Any Time</p>
 
-				<span class="text-thatBlue-200 text-right">
+				<span class="text-right text-thatBlue-200">
 					{#if $session.isAuthenticated && $session.thatProfile}
 						<p>{`${$session.thatProfile.firstName} ${$session.thatProfile.lastName}`}</p>
 					{:else}

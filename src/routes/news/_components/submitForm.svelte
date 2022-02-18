@@ -28,9 +28,9 @@
 </script>
 
 <div>
-	<h2 class="text-xl leading-6 font-bold text-gray-900">Submit New Article</h2>
+	<h2 class="text-xl font-bold leading-6 text-gray-900">Submit New Article</h2>
 
-	<div class="text-gray-500 text-sm leading-5">
+	<div class="text-sm leading-5 text-gray-500">
 		<p class="my-4">
 			As it turns out, the internet is a big place, and things move relatively fast. This is where
 			you come in. If you find something that has helped you grow or would be of value to others,
@@ -51,9 +51,9 @@
 	let:errors
 >
 	<div class="my-4 antialiased">
-		<div class="flex-1 flex items-center justify-between">
+		<div class="flex flex-1 items-center justify-between">
 			<div class="flex-1 px-4 py-2 text-sm">
-				<p class="text-gray-900 font-semibold">Article Details</p>
+				<p class="font-semibold text-gray-900">Article Details</p>
 
 				<div>
 					<div class="px-4 pb-4">
@@ -63,7 +63,7 @@
 							</label>
 							<div class="relative">
 								<span
-									class="absolute top-0 left-0 transform -translate-x-4 -translate-y-4 block h-2 w-2 rounded-full bg-red-400"
+									class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400"
 								/>
 							</div>
 							<Input
@@ -71,7 +71,7 @@
 								name="url"
 								type="url"
 								placeholder="E.g. https://that.us/blog/article"
-								class="form-input block w-full mt-1 rounded-sm text-sm"
+								class="form-input mt-1 block w-full rounded-sm text-sm"
 							/>
 						</div>
 
@@ -83,7 +83,7 @@
 							</label>
 							<div class="relative">
 								<span
-									class="absolute top-0 left-0 transform -translate-x-4 -translate-y-4 block h-2 w-2 rounded-full bg-red-400"
+									class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400"
 								/>
 							</div>
 							<Input
@@ -91,7 +91,7 @@
 								multiline
 								rows="5"
 								spellcheck="true"
-								class="form-input block w-full mt-1 rounded-sm text-sm "
+								class="form-input mt-1 block w-full rounded-sm text-sm "
 							/>
 						</div>
 
@@ -100,7 +100,7 @@
 								<span class="text-gray-700">Add some tags.</span>
 								<div class="relative">
 									<span
-										class="absolute top-0 left-0 transform -translate-x-4 -translate-y-4 block h-2 w-2 rounded-full bg-red-400"
+										class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400"
 									/>
 								</div>
 								<div>
@@ -112,7 +112,7 @@
 							</label>
 
 							<div class="mt-4">
-								<div class="w-full tag-form-input">
+								<div class="tag-form-input w-full">
 									<Tags
 										tags={values.tags}
 										name="tags"
@@ -120,11 +120,11 @@
 										allowBlur={true}
 										maxTags={5}
 										onlyUnique={true}
-										class="form-input w-full sm:text-sm sm:leading-5 hover:border-gray-700"
+										class="form-input w-full hover:border-gray-700 sm:text-sm sm:leading-5"
 									/>
 								</div>
 								{#if errors['tags']}
-									<p class="text-red-600 italic">
+									<p class="italic text-red-600">
 										{errors['tags']}
 									</p>
 								{/if}
@@ -140,7 +140,7 @@
 		<div class="flex justify-end">
 			<button disabled={isSubmitting} type="submit">
 				<Shell>
-					<div class="px-8 py-2 text-sm leading-5 font-medium">Submit</div>
+					<div class="px-8 py-2 text-sm font-medium leading-5">Submit</div>
 				</Shell>
 			</button>
 		</div>

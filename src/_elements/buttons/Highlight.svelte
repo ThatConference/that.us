@@ -1,11 +1,11 @@
 <button
 	type="button"
 	on:click
-	class="px-8 py-2 border-2 border-transparent leading-6 font-medium rounded-md
-		shadow md:py-4 md:text-lg md:px-10 transition duration-150 ease-in-out
-		text-base text-white bg-thatOrange-400 hover:bg-thatOrange-500
-		focus:outline-none focus:border-thatOrange-700
-		focus:ring-that-orange"
+	class="rounded-md border-2 border-transparent bg-thatOrange-400 px-8 py-2 text-base
+		font-medium leading-6 text-white shadow transition duration-150 ease-in-out
+		hover:bg-thatOrange-500 focus:border-thatOrange-700 focus:outline-none focus:ring-that-orange
+		md:py-4 md:px-10
+		md:text-lg"
 >
 	<span>
 		<slot />

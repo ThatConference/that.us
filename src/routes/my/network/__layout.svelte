@@ -42,7 +42,7 @@
 	</div>
 
 	<div slot="body">
-		<main class="-mx-6 relative">
+		<main class="relative -mx-6">
 			<div class="divide-y divide-gray-200 lg:grid lg:grid-cols-12 lg:divide-y-0 lg:divide-x">
 				<aside class="py-6 lg:col-span-3">
 					<div class="sticky top-4">
@@ -64,7 +64,7 @@
 					</div>
 				</aside>
 
-				<div class="divide-y divide-gray-200 lg:col-span-9 py-4 px-4">
+				<div class="divide-y divide-gray-200 py-4 px-4 lg:col-span-9">
 					<slot />
 				</div>
 			</div>

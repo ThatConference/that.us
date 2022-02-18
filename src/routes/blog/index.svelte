@@ -61,11 +61,11 @@
 	<!-- Blog section -->
 	<div class="relative py-16 sm:py-24 lg:py-32">
 		<div class="relative">
-			<div class="text-center mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-8 lg:max-w-7xl">
-				<h2 class="text-base font-semibold tracking-wider text-thatOrange-400 uppercase">
+			<div class="mx-auto max-w-md px-4 text-center sm:max-w-3xl sm:px-6 lg:max-w-7xl lg:px-8">
+				<h2 class="text-base font-semibold uppercase tracking-wider text-thatOrange-400">
 					THAT BLOG
 				</h2>
-				<p class="mt-2 text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">
+				<p class="mt-2 text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
 					Announcements, Updates and Words
 				</p>
 				<!-- <p class="mt-5 mx-auto max-w-prose text-xl text-gray-500">
@@ -73,7 +73,7 @@
 				</p> -->
 			</div>
 			<div
-				class="mt-12 mx-auto max-w-md px-4 grid gap-8 sm:max-w-lg sm:px-6 lg:px-8 lg:grid-cols-3 lg:max-w-7xl"
+				class="mx-auto mt-12 grid max-w-md gap-8 px-4 sm:max-w-lg sm:px-6 lg:max-w-7xl lg:grid-cols-3 lg:px-8"
 			>
 				{#each posts as post}
 					<Card metadata={post.metadata} />

@@ -64,7 +64,7 @@
 <div>
 	<Form {schema} validateOnBlur={false} validateOnChange={false} on:submit={handleSubmit}>
 		<div
-			class="w-full flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-8 sm:items-center"
+			class="flex w-full flex-col space-y-4 sm:flex-row sm:items-center sm:space-y-0 sm:space-x-8"
 		>
 			<div class="flex-grow">
 				<Input
@@ -73,12 +73,12 @@
 					type="text"
 					spellcheck="true"
 					placeholder="E.g. Learn how to become more awesome."
-					class="form-input w-full sm:text-sm sm:leading-5 hover:border-gray-700"
+					class="form-input w-full hover:border-gray-700 sm:text-sm sm:leading-5"
 				/>
 			</div>
 			<div class="flex-none">
 				<ShellButton>
-					<button class="w-full px-8 md:px-10 py-1 text-sm leading-5 font-medium" type="submit">
+					<button class="w-full px-8 py-1 text-sm font-medium leading-5 md:px-10" type="submit">
 						{addText}
 					</button>
 				</ShellButton>
@@ -90,8 +90,8 @@
 		<ul>
 			{#each items as item, i (item.id)}
 				<li class="pt-4">
-					<div class="flex space-x-4 items-center">
-						<div class="flex-grow p-2 rounded-md" class:bg-gray-50={showBackground(i)}>
+					<div class="flex items-center space-x-4">
+						<div class="flex-grow rounded-md p-2" class:bg-gray-50={showBackground(i)}>
 							<span>{item.title}</span>
 						</div>
 
@@ -100,7 +100,7 @@
 								<button
 									type="button"
 									on:click={() => removeItem(item.id)}
-									class="w-full px-8 md:px-10 py-1 text-sm leading-5 font-medium "
+									class="w-full px-8 py-1 text-sm font-medium leading-5 md:px-10 "
 								>
 									Remove
 								</button>

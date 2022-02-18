@@ -7,10 +7,10 @@
 </script>
 
 <div class="bg-that-offWhite bg-opacity-50">
-	<div class="mx-auto py-12 px-4 max-w-screen-xl sm:px-6 lg:px-8 lg:py-24">
+	<div class="mx-auto max-w-screen-xl py-12 px-4 sm:px-6 lg:px-8 lg:py-24">
 		<div class="grid grid-cols-1 gap-12 lg:grid-cols-3 lg:gap-8">
 			<div class="space-y-5 sm:space-y-4">
-				<h2 class="text-3xl leading-9 font-extrabold tracking-tight sm:text-4xl text-thatBlue-800">
+				<h2 class="text-3xl font-extrabold leading-9 tracking-tight text-thatBlue-800 sm:text-4xl">
 					Meet our team
 				</h2>
 				<p class="text-xl leading-7 text-gray-500">
@@ -21,16 +21,16 @@
 				<ul class="space-y-12 sm:grid sm:grid-cols-2 sm:gap-12 sm:space-y-0 lg:gap-x-8">
 					{#each members as member}
 						<li
-							class="transition duration-500 ease-in-out transform hover:scale-105 cursor-pointer"
+							class="transform cursor-pointer transition duration-500 ease-in-out hover:scale-105"
 						>
 							<a href="/members/{member.profileSlug}/">
 								<div class="flex items-center space-x-4 lg:space-x-6">
 									<img
-										class="lazyload w-16 h-16 rounded-full lg:w-24 lg:h-24"
+										class="lazyload h-16 w-16 rounded-full lg:h-24 lg:w-24"
 										src={`${member.profileImage || config.defaultProfileImage}${imageCrop}`}
 										alt={`${member.firstName} ${member.lastName}`}
 									/>
-									<div class="font-medium text-lg leading-6 space-y-1">
+									<div class="space-y-1 text-lg font-medium leading-6">
 										<h4>{`${member.firstName} ${member.lastName}`}</h4>
 										<p class="text-that-orange">{member.jobTitle}</p>
 									</div>

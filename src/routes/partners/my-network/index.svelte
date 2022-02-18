@@ -67,12 +67,12 @@
 
 <Seo title={metaTags.title} tags={metaTags.tags} />
 
-<div class="relative mx-auto px-4 max-w-screen-xl sm:px-6 lg:px-8">
+<div class="relative mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
 	<div class="space-y-12">
 		<div
-			class="space-y-5 sm:space-y-4 md:max-w-xl lg:max-w-3xl xl:max-w-none flex items-center justify-between"
+			class="flex items-center justify-between space-y-5 sm:space-y-4 md:max-w-xl lg:max-w-3xl xl:max-w-none"
 		>
-			<h2 class="text-3xl leading-9 font-extrabold text-thatBlue-800 tracking-tight sm:text-4xl">
+			<h2 class="text-3xl font-extrabold leading-9 tracking-tight text-thatBlue-800 sm:text-4xl">
 				My Network
 			</h2>
 
@@ -80,7 +80,7 @@
 				<Shell>
 					<button
 						type="button"
-						class="w-full py-4 px-8 text-sm leading-5 font-medium"
+						class="w-full py-4 px-8 text-sm font-medium leading-5"
 						on:click={downloadHandler}
 					>
 						<span class="text-lg">Download</span>
@@ -89,24 +89,24 @@
 			</div>
 		</div>
 
-		<div class="bg-white shadow overflow-hidden sm:rounded-md">
+		<div class="overflow-hidden bg-white shadow sm:rounded-md">
 			<ul class="divide-y divide-gray-200">
 				{#each contacts as c}
 					<li>
 						<div class="flex items-center px-4 py-4 sm:px-6">
-							<div class="min-w-0 flex-1 flex items-center">
+							<div class="flex min-w-0 flex-1 items-center">
 								<div class="flex-shrink-0">
 									<img class="h-12 w-12" src={c.event.logo} alt="" />
 								</div>
 								<div class="min-w-0 flex-1 px-4 md:grid md:grid-cols-2 md:gap-4">
 									<div>
-										<p class="text-sm font-medium text-thatBlue-800 truncate">
+										<p class="truncate text-sm font-medium text-thatBlue-800">
 											{c.member.firstName}
 											{c.member.lastName}
 										</p>
 										<p class="mt-2 flex items-center text-sm text-gray-500">
 											<svg
-												class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400"
+												class="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400"
 												xmlns="http://www.w3.org/2000/svg"
 												viewBox="0 0 20 20"
 												fill="currentColor"
@@ -129,7 +129,7 @@
 											</p>
 											<p class="mt-2 flex items-center text-sm text-gray-500">
 												<svg
-													class="flex-shrink-0 mr-1.5 h-5 w-5 text-green-400"
+													class="mr-1.5 h-5 w-5 flex-shrink-0 text-green-400"
 													xmlns="http://www.w3.org/2000/svg"
 													viewBox="0 0 20 20"
 													fill="currentColor"

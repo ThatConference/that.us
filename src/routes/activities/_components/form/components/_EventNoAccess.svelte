@@ -18,9 +18,9 @@
 <div on:mouseenter={() => (hasAccessHover = true)} on:mouseleave={() => (hasAccessHover = false)}>
 	{#if !hasAccessHover}
 		<div
-			class="flex-1 flex items-center justify-between border border-gray-200 bg-gray-50 rounded-md truncate"
+			class="flex flex-1 items-center justify-between truncate rounded-md border border-gray-200 bg-gray-50"
 		>
-			<div class="flex-1 px-4 py-2 text-gray-500 text-sm truncate">
+			<div class="flex-1 truncate px-4 py-2 text-sm text-gray-500">
 				<p class="font-medium">
 					{event.name}
 				</p>
@@ -30,7 +30,7 @@
 				</p>
 			</div>
 			<div class="flex-shrink-0 pr-4">
-				<span class="h-6 w-6 rounded-full flex items-center justify-center">
+				<span class="flex h-6 w-6 items-center justify-center rounded-full">
 					<Ban height="h-4" width="w-4" />
 				</span>
 			</div>

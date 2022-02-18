@@ -10,18 +10,18 @@
 </script>
 
 <nav>
-	<div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+	<div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
 		<div class="border-b border-thatBlue-400 border-opacity-25">
-			<div class="flex items-center justify-between pb-6 px-4 sm:px-0">
+			<div class="flex items-center justify-between px-4 pb-6 sm:px-0">
 				<LargeNav />
 
 				<div class="-mr-2 flex lg:hidden">
 					<!-- Mobile menu button -->
 					<button
 						type="button"
-						class="inline-flex items-center justify-center p-2 rounded-md
-							text-gray-300 hover:text-white hover:bg-that-blue
-							focus:outline-none focus:text-white focus:bg-that-blue"
+						class="inline-flex items-center justify-center rounded-md p-2
+							text-gray-300 hover:bg-that-blue hover:text-white
+							focus:bg-that-blue focus:text-white focus:outline-none"
 						on:click|preventDefault={() => mobileVisible.set(!$mobileVisible)}
 					>
 						<!-- Menu open: "hidden", Menu closed: "block" -->

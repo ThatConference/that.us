@@ -147,20 +147,20 @@
 
 {#if dense}
 	<div
-		class={`mb-2 w-full h-full flex flex-col ${
+		class={`mb-2 flex h-full w-full flex-col ${
 			requiresAccessToJoin ? 'rounded-lg border-t-4 border-red-500' : ''
 		}`}
 	>
 		<div class="flex">
 			<div
-				class="flex flex-col items-stretch text-center pt-3 basis-32 flex-shrink-0 flex-grow-0 justify-between"
+				class="flex flex-shrink-0 flex-grow-0 basis-32 flex-col items-stretch justify-between pt-3 text-center"
 			>
-				<div class="flex flex-col flex-grow flex-shrink-0 justify-center">
-					<div class="flex flex-col flex-grow-0 flex-shrink-0 flex-start">
+				<div class="flex flex-shrink-0 flex-grow flex-col justify-center">
+					<div class="flex-start flex flex-shrink-0 flex-grow-0 flex-col">
 						<a sveltekit:prefetch open href="/members/{host.profileSlug}/" class="flex-shrink-0">
-							<span class="inline-block relative">
+							<span class="relative inline-block">
 								<img
-									class="lazyload w-12 h-12 rounded-full"
+									class="lazyload h-12 w-12 rounded-full"
 									alt={`${host.firstName} ${host.lastName}`}
 									data-sizes="auto"
 									data-src={srcset.src}
@@ -168,13 +168,13 @@
 								/>
 							</span>
 						</a>
-						<h3 class="text-gray-400 text-sm leading-5 pt-1 text-center md:pb-2">
+						<h3 class="pt-1 text-center text-sm leading-5 text-gray-400 md:pb-2">
 							{`${host.firstName} ${host.lastName}`}
 						</h3>
 					</div>
 				</div>
 
-				<div class="flex flex-row justify-between visible md:hidden w-100 px-5">
+				<div class="w-100 visible flex flex-row justify-between px-5 md:hidden">
 					<div class="text-center">
 						<CardLink href="/activities/{id}/" icon={info} text="" />
 					</div>
@@ -185,14 +185,14 @@
 								type="button"
 								on:click|preventDefault={!favoriteDisabled && handleToggle}
 								class:text-red-500={isFavorite}
-								class="relative inline-flex items-center justify-center
-									py-2 text-xs leading-4 text-gray-700 font-medium border
-									border-transparent rounded-br-lg hover:text-gray-300
-									focus:outline-none focus:ring-blue
-									focus:border-blue-300 focus:z-10 transition ease-in-out
-									duration-150"
+								class="focus:ring-blue relative inline-flex items-center
+									justify-center rounded-br-lg border border-transparent py-2 text-xs
+									font-medium leading-4 text-gray-700
+									transition duration-150
+									ease-in-out hover:text-gray-300 focus:z-10 focus:border-blue-300
+									focus:outline-none"
 							>
-								<Icon data={heart} class="w-4 h-4" />
+								<Icon data={heart} class="h-4 w-4" />
 							</button>
 						{:else}
 							<a
@@ -211,10 +211,10 @@
 				</div>
 			</div>
 
-			<div class="flex flex-col flex-grow justify-between">
+			<div class="flex flex-grow flex-col justify-between">
 				<!-- COLUMN 2-->
 				<a sveltekit:prefetch href="/activities/{id}/">
-					<h3 class="text-gray-900 text-base leading-5 font-medium break-words pt-1">
+					<h3 class="break-words pt-1 text-base font-medium leading-5 text-gray-900">
 						{title}
 					</h3>
 				</a>
@@ -224,7 +224,7 @@
 					class:cursor-pointer={isLongerThan(shortDescription, 25)}
 					on:click|preventDefault={() => (expandDescription = !expandDescription)}
 				>
-					<p class="text-gray-500 text-sm leading-5 break-words">
+					<p class="break-words text-sm leading-5 text-gray-500">
 						{#if expandDescription}
 							<span class="lineBreaks">{shortDescription}</span>
 						{:else}
@@ -240,25 +240,25 @@
 
 				<div class="border-t border-gray-200">
 					<div class="-mt-px grid grid-cols-2 md:grid-cols-4">
-						<div class="border-l pl-1 text-center hidden md:block">
+						<div class="hidden border-l pl-1 text-center md:block">
 							<CardLink href="/activities/{id}/" icon={info} text={'More Details'} />
 						</div>
 
 						{#if !hasExpired}
-							<div class="border-l pl-1 text-center hidden md:block">
+							<div class="hidden border-l pl-1 text-center md:block">
 								{#if $session.isAuthenticated}
 									<button
 										type="button"
 										on:click|preventDefault={!favoriteDisabled && handleToggle}
 										class:text-red-500={isFavorite}
-										class="relative basis-0 flex-1 inline-flex items-center justify-center
-									py-2 text-xs leading-4 text-gray-700 font-medium border
-									border-transparent rounded-br-lg hover:text-gray-300
-									focus:outline-none focus:ring-blue
-									focus:border-blue-300 focus:z-10 transition ease-in-out
-									duration-150"
+										class="focus:ring-blue relative inline-flex flex-1 basis-0 items-center
+									justify-center rounded-br-lg border border-transparent py-2 text-xs
+									font-medium leading-4 text-gray-700
+									transition duration-150
+									ease-in-out hover:text-gray-300 focus:z-10 focus:border-blue-300
+									focus:outline-none"
 									>
-										<Icon data={heart} class="w-4 h-4" />
+										<Icon data={heart} class="h-4 w-4" />
 										<span class="ml-3">Favorite</span>
 									</button>
 								{:else}
@@ -283,14 +283,14 @@
 								<div class="border-l pl-1 text-center">
 									<a
 										href="/activities/edit/{id}/"
-										class="relative basis-0 flex-1 inline-flex items-center justify-center
-									py-2 text-xs leading-4 text-gray-700 font-medium border
-									border-transparent rounded-br-lg hover:text-gray-300
-									focus:outline-none focus:ring-blue
-									focus:border-blue-300 focus:z-10 transition ease-in-out
-									duration-150"
+										class="focus:ring-blue relative inline-flex flex-1 basis-0 items-center
+									justify-center rounded-br-lg border border-transparent py-2 text-xs
+									font-medium leading-4 text-gray-700
+									transition duration-150
+									ease-in-out hover:text-gray-300 focus:z-10 focus:border-blue-300
+									focus:outline-none"
 									>
-										<Icon data={cog} class="w-4 h-4" />
+										<Icon data={cog} class="h-4 w-4" />
 										<span class="ml-3">Edit</span>
 									</a>
 								</div>
@@ -301,17 +301,17 @@
 							<div class="col-span-2">
 								<div class="-mt-px flex">
 									{#if targetLocation === 'IN_PERSON'}
-										<div class="-ml-px basis-0 flex-1 flex">
+										<div class="-ml-px flex flex-1 basis-0">
 											<div
-												class="relative flex-1 inline-flex items-center justify-center
-										py-2 text-xs leading-4 text-white font-medium border
-										border-transparent rounded-br-lg transition ease-in-out
-										duration-150 bg-that-blue pointer-cursor"
+												class="pointer-cursor relative inline-flex flex-1 items-center
+										justify-center rounded-br-lg border border-transparent bg-that-blue py-2
+										text-xs font-medium leading-4 text-white
+										transition duration-150 ease-in-out"
 											>
 												<Icon data={user} class="-ml-1 mr-2 h-4 w-4" />
 												<span>In-Person</span>
 												<span class="ml-2">
-													<Icon data={mapMarker} class="h-4 w-4 pb-0.5 mr-2" />
+													<Icon data={mapMarker} class="mr-2 h-4 w-4 pb-0.5" />
 													Room: {lookupEnumLabel(location?.destination)}
 												</span>
 											</div>

@@ -6,7 +6,7 @@
 </script>
 
 <tr>
-	<th class="py-2 pl-6 pr-6 text-sm font-normal text-gray-500 text-left" scope="row">
+	<th class="py-2 pl-6 pr-6 text-left text-sm font-normal text-gray-500" scope="row">
 		{title}
 	</th>
 

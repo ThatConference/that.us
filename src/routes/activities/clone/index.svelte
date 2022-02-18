@@ -103,12 +103,12 @@
 
 	<div slot="body">
 		<div
-			class="max-w-3xl mx-auto px-4 sm:px-6 md:flex md:items-center md:justify-between md:space-x-5 lg:max-w-7xl lg:px-8"
+			class="mx-auto max-w-3xl px-4 sm:px-6 md:flex md:items-center md:justify-between md:space-x-5 lg:max-w-7xl lg:px-8"
 		>
 			<div class="flex items-center space-x-5">
 				<div class="flex-shrink-0">
 					<div class="relative text-that-blue">
-						<Icon data={plus} class="rounded-full w-16 h-16" />
+						<Icon data={plus} class="h-16 w-16 rounded-full" />
 					</div>
 				</div>
 				<div>
@@ -119,13 +119,13 @@
 				</div>
 			</div>
 			<div
-				class="mt-6 flex flex-col-reverse justify-stretch space-y-4 space-y-reverse sm:flex-row-reverse sm:justify-end sm:space-x-reverse sm:space-y-0 sm:space-x-3 md:mt-0 md:flex-row md:space-x-3"
+				class="justify-stretch mt-6 flex flex-col-reverse space-y-4 space-y-reverse sm:flex-row-reverse sm:justify-end sm:space-y-0 sm:space-x-3 sm:space-x-reverse md:mt-0 md:flex-row md:space-x-3"
 			>
 				<StandardLink href="/my/submissions/">View Your Past Submissions</StandardLink>
 			</div>
 		</div>
 
-		<div class="mt-8 sm:px-6 max-w-3xl lg:max-w-7xl mx-auto">
+		<div class="mx-auto mt-8 max-w-3xl sm:px-6 lg:max-w-7xl">
 			<ActivityForm
 				initialData={activity}
 				{handleSubmit}

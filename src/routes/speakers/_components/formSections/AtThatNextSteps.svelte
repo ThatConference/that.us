@@ -14,7 +14,7 @@
 
 <div class="space-y-4">
 	<slot name="header" />
-	<p class="text-gray-500 prose prose-lg">
+	<p class="prose prose-lg text-gray-500">
 		It might seem like plenty of time until we descend into camp, but experience says it will be
 		here before we all know it. In the meantime, we've tried to compile a list of items to get
 		things kicked off, and if you ever need help, don't hesitate to get in touch with us.
@@ -22,9 +22,9 @@
 </div>
 
 <div class="mt-12">
-	<h2 class="text-xl text-gray-800 font-extrabold">Here are a few items to think about.</h2>
+	<h2 class="text-xl font-extrabold text-gray-800">Here are a few items to think about.</h2>
 
-	<div class="text-gray-500 prose prose-lg">
+	<div class="prose prose-lg text-gray-500">
 		<ul>
 			<li>
 				<span class="font-extrabold">Speaker Decks.</span> We don't have a speaker deck as much as we
@@ -52,16 +52,16 @@
 </div>
 
 <div class="mt-12">
-	<h2 class="text-xl text-gray-800 font-extrabold">Counselor Setup</h2>
+	<h2 class="text-xl font-extrabold text-gray-800">Counselor Setup</h2>
 
-	<p class="mt-4 text-gray-500 prose prose-xl">
+	<p class="prose prose-xl mt-4 text-gray-500">
 		We recommend that you scout out your speaking room early, so when the time comes, you know
 		exactly where you're going. If you ever find yourself completely lost, find a member of THAT
 		Staff, and we will point you in the right direction. Every speaking room will have the
 		following:
 	</p>
 
-	<div class="mt-4 text-gray-500 prose prose-xl">
+	<div class="prose prose-xl mt-4 text-gray-500">
 		<ul>
 			<li>Podium, Lectern.</li>
 			<li>
@@ -79,9 +79,9 @@
 </div>
 
 <div class="mt-12">
-	<h2 class="text-xl text-gray-800 font-extrabold">On-Site Registration</h2>
+	<h2 class="text-xl font-extrabold text-gray-800">On-Site Registration</h2>
 
-	<div class="mt-4 text-gray-500 prose prose-xl">
+	<div class="prose prose-xl mt-4 text-gray-500">
 		<p>
 			When you get to camp, head on over to Counselor Registration in the main atrium of the
 			convention center, you can't miss it, we promise.

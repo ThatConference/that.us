@@ -114,10 +114,10 @@
 </script>
 
 <section>
-	<div class="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-8 sm:items-center">
+	<div class="flex flex-col space-y-4 sm:flex-row sm:items-center sm:space-y-0 sm:space-x-8">
 		<input
 			autofocus
-			class="form-input border rounded-md"
+			class="form-input rounded-md border"
 			bind:value={searchterm}
 			placeholder="type to search..."
 		/>

@@ -24,7 +24,7 @@
 <Layout>
 	<Header center={true}>What is an Activity?</Header>
 	<section>
-		<div class="prose prose-lg text-gray-500 mx-auto">
+		<div class="prose prose-lg mx-auto text-gray-500">
 			<p>
 				<strong>Activities</strong> are topic-based scheduled gatherings that anyone can create for any
 				multitude of reasons in which anyone can join. An activity is simple, a video call in the browser
@@ -61,7 +61,7 @@
 				<li>Just Get Together and Chat</li>
 			</ul>
 
-			<div class="transform scale-90 text-center">
+			<div class="scale-90 transform text-center">
 				<figure>
 					<img
 						class="lazyload w-full rounded-lg shadow"
@@ -87,8 +87,8 @@
 			</p>
 		</div>
 		<div
-			class="my-12 max-w-prose mx-auto lg:max-w-none flex flex-col items-center
-        justify-center"
+			class="my-12 mx-auto flex max-w-prose flex-col items-center justify-center
+        lg:max-w-none"
 		>
 			<div class="flex space-x-4 text-base">
 				<StandardLink href="/support/">Getting Started</StandardLink>

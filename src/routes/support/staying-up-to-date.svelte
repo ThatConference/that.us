@@ -47,7 +47,7 @@
 <Layout>
 	<Header center={true}>Staying Up To Date</Header>
 	<section>
-		<div class="prose prose-lg text-gray-500 mx-auto">
+		<div class="prose prose-lg mx-auto text-gray-500">
 			<p>
 				Life moves fast and you have enough to sift through already. Our goal is to make it very
 				easy to stay up to date with everything THAT, while not becoming refrigerator noise. To that
@@ -89,11 +89,11 @@
 					type="button"
 					id="calendarUrl"
 					data-clipboard-text="https://bit.ly/2YRdVxy"
-					class="px-4 py-2 rounded-md shadow text-base leading-6 font-medium border-2
-        border-thatBlue-500 text-thatBlue-500 bg-white hover:bg-thatBlue-500
-        hover:text-white focus:bg-thatBlue-500 focus:text-white focus:outline-none
-        focus:ring-thatBlue-500 focus:border-thatBlue-800 transition
-        duration-150 ease-in-out md:text-lg md:px-10"
+					class="rounded-md border-2 border-thatBlue-500 bg-white px-4 py-2 text-base font-medium
+        leading-6 text-thatBlue-500 shadow transition
+        duration-150 ease-in-out hover:bg-thatBlue-500 hover:text-white
+        focus:border-thatBlue-800 focus:bg-thatBlue-500 focus:text-white
+        focus:outline-none focus:ring-thatBlue-500 md:px-10 md:text-lg"
 				>
 					{copiedText}
 				</button>
@@ -107,7 +107,7 @@
 				you're not in our Slack, join us today!
 			</p>
 
-			<div class="text-center my-12">
+			<div class="my-12 text-center">
 				<StandardLink open={true} href="https://thatslack.thatconference.com">
 					Join us in THAT Slack
 				</StandardLink>
@@ -120,8 +120,8 @@
 			</p>
 		</div>
 		<div
-			class="my-12 max-w-prose mx-auto lg:max-w-none flex flex-col items-center
-        justify-center"
+			class="my-12 mx-auto flex max-w-prose flex-col items-center justify-center
+        lg:max-w-none"
 		>
 			<div class="flex space-x-4 text-base">
 				<StandardLink href="/support/creating-an-activity/">Create an Activity</StandardLink>

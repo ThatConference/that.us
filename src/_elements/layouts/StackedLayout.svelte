@@ -21,15 +21,15 @@
 
 <NoProfile />
 
-<div class="bg-white flex flex-col min-h-screen ">
+<div class="flex min-h-screen flex-col bg-white ">
 	<div class="relative bg-thatBlue-500 pt-10">
 		<div
-			class="absolute flex justify-center inset-x-0 left-1/2 transform -translate-x-1/2 w-full overflow-hidden lg:inset-y-0"
+			class="absolute inset-x-0 left-1/2 flex w-full -translate-x-1/2 transform justify-center overflow-hidden lg:inset-y-0"
 		>
-			<div class="flex-grow bg-gradient-to-r from-thatBlue-800 bg-opacity-75 " />
-			<div class="flex-grow bg-gradient-to-l from-thatBlue-700 bg-opacity-75" />
+			<div class="flex-grow bg-opacity-75 bg-gradient-to-r from-thatBlue-800 " />
+			<div class="flex-grow bg-opacity-75 bg-gradient-to-l from-thatBlue-700" />
 		</div>
-		<div class="hidden lg:block inset-y-0 h-full w-full">
+		<div class="inset-y-0 hidden h-full w-full lg:block">
 			<div class="invisible lg:visible" in:fade={{ delay: 200, duration: 2000 }}>
 				<Trees
 					classes="opacity-25 fixed w-4/6 h-5/6 -right-48 -top-52 bottom-4/12 left-5/12 text-thatBlue-100"
@@ -42,8 +42,8 @@
 	</div>
 
 	<div id="main" class="relative -mt-32 flex-grow">
-		<div class="max-w-7xl mx-auto pb-12 px-4 sm:px-6 lg:px-8">
-			<div id="content-block" class="{bodyBackgroundColor} rounded-lg shadow px-5 py-6 sm:px-6">
+		<div class="mx-auto max-w-7xl px-4 pb-12 sm:px-6 lg:px-8">
+			<div id="content-block" class="{bodyBackgroundColor} rounded-lg px-5 py-6 shadow sm:px-6">
 				<slot name="body" />
 				<!-- default slot as fallback-->
 				<slot />

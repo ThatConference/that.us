@@ -19,7 +19,7 @@
 		<span class="text-thatOrange-400">
 			<Activity delay={750} />
 		</span>
-		<h2 class="text-lg leading-7 font-medium text-gray-900">Activity Center</h2>
+		<h2 class="text-lg font-medium leading-7 text-gray-900">Activity Center</h2>
 	</div>
 
 	<div>
@@ -32,7 +32,7 @@
             hover:text-thatBlue-500"
 				>
 					<a href={m.url}>
-						<div class="grid grid-cols-5 gap-4 cursor-pointer">
+						<div class="grid cursor-pointer grid-cols-5 gap-4">
 							<div class="col-span-4 p-4">
 								<p>{m.message}</p>
 							</div>
@@ -49,10 +49,10 @@
 	<div slot="panelActions">
 		<button
 			type="button"
-			class="py-2 px-4 border border-gray-300 rounded-md text-sm leading-5
-        font-medium text-gray-700 hover:text-gray-500 focus:outline-none
-        focus:border-blue-300 focus:ring-blue active:bg-gray-50
-        active:text-gray-800 transition duration-150 ease-in-out"
+			class="focus:ring-blue rounded-md border border-gray-300 py-2 px-4 text-sm
+        font-medium leading-5 text-gray-700 transition
+        duration-150 ease-in-out hover:text-gray-500
+        focus:border-blue-300 focus:outline-none active:bg-gray-50 active:text-gray-800"
 			on:click={handleClear}
 		>
 			Clear

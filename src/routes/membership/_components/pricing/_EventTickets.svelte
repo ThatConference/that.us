@@ -34,15 +34,15 @@
 
 	<div class="pb-12 sm:mt-12 sm:pb-16 lg:mt-16 lg:pb-24">
 		<div class="relative">
-			<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 				<div
-					class="max-w-md mx-auto space-y-4 lg:max-w-5xl lg:grid lg:grid-cols-2 lg:gap-5 lg:space-y-0"
+					class="mx-auto max-w-md space-y-4 lg:grid lg:max-w-5xl lg:grid-cols-2 lg:gap-5 lg:space-y-0"
 				>
-					<div class="flex flex-col rounded-lg shadow-lg overflow-hidden">
-						<div class="px-6 py-8 bg-white sm:p-10 sm:pb-6">
+					<div class="flex flex-col overflow-hidden rounded-lg shadow-lg">
+						<div class="bg-white px-6 py-8 sm:p-10 sm:pb-6">
 							<div>
 								<h3
-									class="inline-flex px-4 py-1 rounded-full text-sm font-semibold tracking-wide uppercase bg-thatOrange-400 text-white"
+									class="inline-flex rounded-full bg-thatOrange-400 px-4 py-1 text-sm font-semibold uppercase tracking-wide text-white"
 									id="tier-standard"
 								>
 									Daily Usage
@@ -52,7 +52,7 @@
 							<p class="mt-5 text-lg text-gray-500">THAT usage each and every day.</p>
 						</div>
 						<div
-							class="flex-1 flex flex-col justify-between px-6 pt-6 pb-8 bg-gray-50 space-y-6 sm:p-10 sm:pt-6"
+							class="flex flex-1 flex-col justify-between space-y-6 bg-gray-50 px-6 pt-6 pb-8 sm:p-10 sm:pt-6"
 						>
 							<ul class="space-y-4">
 								<li class="flex items-start">
@@ -80,11 +80,11 @@
 						</div>
 					</div>
 
-					<div class="flex flex-col rounded-lg shadow-lg overflow-hidden">
-						<div class="px-6 py-8 bg-white sm:p-10 sm:pb-6">
+					<div class="flex flex-col overflow-hidden rounded-lg shadow-lg">
+						<div class="bg-white px-6 py-8 sm:p-10 sm:pb-6">
 							<div>
 								<h3
-									class="inline-flex px-4 py-1 rounded-full text-sm font-semibold tracking-wide uppercase bg-thatOrange-400 text-white"
+									class="inline-flex rounded-full bg-thatOrange-400 px-4 py-1 text-sm font-semibold uppercase tracking-wide text-white"
 									id="tier-standard"
 								>
 									THAT Online Event Ticket
@@ -97,7 +97,7 @@
 							<p class="mt-5 text-lg text-gray-500">Single Day Online Event Ticket</p>
 						</div>
 						<div
-							class="flex-1 flex flex-col justify-between px-6 pt-6 pb-8 bg-gray-50 space-y-6 sm:p-10 sm:pt-6"
+							class="flex flex-1 flex-col justify-between space-y-6 bg-gray-50 px-6 pt-6 pb-8 sm:p-10 sm:pt-6"
 						>
 							<ul class="space-y-4">
 								<li class="flex items-start">

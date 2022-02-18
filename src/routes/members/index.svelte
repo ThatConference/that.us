@@ -67,7 +67,7 @@
 <Layout>
 	<main class="overflow-hidden">
 		<div class="relative pb-16 md:pb-20 lg:pb-24 xl:pb-32">
-			<div class="mt-32 mx-auto max-w-screen-xl px-4 sm:px-6 xl:mt-40">
+			<div class="mx-auto mt-32 max-w-screen-xl px-4 sm:px-6 xl:mt-40">
 				<main>
 					<Hero />
 					<div class="py-20">

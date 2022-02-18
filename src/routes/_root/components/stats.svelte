@@ -4,10 +4,10 @@
 </script>
 
 <section class="bg-thatBlue-700 py-12 lg:py-16">
-	<div class="relative max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
-		<div class="max-w-4xl mx-auto text-center">
+	<div class="relative mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+		<div class="mx-auto max-w-4xl text-center">
 			<h2
-				class="text-3xl leading-9 font-extrabold text-white sm:text-4xl
+				class="text-3xl font-extrabold leading-9 text-white sm:text-4xl
             sm:leading-10"
 			>
 				Trusted by geeks from
@@ -19,28 +19,28 @@
 			</p>
 		</div>
 		<dl
-			class="mt-10 text-center sm:max-w-3xl sm:mx-auto sm:grid sm:grid-cols-3
+			class="mt-10 text-center sm:mx-auto sm:grid sm:max-w-3xl sm:grid-cols-3
           sm:gap-8"
 		>
 			<div class="flex flex-col">
-				<dt class="order-2 mt-2 text-lg leading-6 font-medium text-thatBlue-200">Members</dt>
-				<dd class="order-1 text-5xl leading-none font-extrabold text-white">
+				<dt class="order-2 mt-2 text-lg font-medium leading-6 text-thatBlue-200">Members</dt>
+				<dd class="order-1 text-5xl font-extrabold leading-none text-white">
 					{stats.totalMembers}
 				</dd>
 			</div>
 
-			<div class="flex flex-col mt-10 sm:mt-0">
-				<dt class="order-2 mt-2 text-lg leading-6 font-medium text-thatBlue-200">
+			<div class="mt-10 flex flex-col sm:mt-0">
+				<dt class="order-2 mt-2 text-lg font-medium leading-6 text-thatBlue-200">
 					Activities Completed
 				</dt>
-				<dd class="order-1 text-5xl leading-none font-extrabold text-white">
+				<dd class="order-1 text-5xl font-extrabold leading-none text-white">
 					{stats.pastActivities}
 				</dd>
 			</div>
 
-			<div class="flex flex-col mt-10 sm:mt-0">
-				<dt class="order-2 mt-2 text-lg leading-6 font-medium text-thatBlue-200">Hours Served</dt>
-				<dd class="order-1 text-5xl leading-none font-extrabold text-white">
+			<div class="mt-10 flex flex-col sm:mt-0">
+				<dt class="order-2 mt-2 text-lg font-medium leading-6 text-thatBlue-200">Hours Served</dt>
+				<dd class="order-1 text-5xl font-extrabold leading-none text-white">
 					{stats.hoursServed}
 				</dd>
 			</div>

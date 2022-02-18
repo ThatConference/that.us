@@ -21,9 +21,9 @@
 <Seo title={metaTags.title} tags={metaTags.tags} />
 
 <div
-	class="bg-white min-h-screen px-4 py-16 sm:px-6 sm:py-24 md:grid md:place-items-center lg:px-8"
+	class="min-h-screen bg-white px-4 py-16 sm:px-6 sm:py-24 md:grid md:place-items-center lg:px-8"
 >
-	<div class="max-w-max mx-auto">
+	<div class="mx-auto max-w-max">
 		<main class="sm:flex">
 			<div>
 				<img class="h-28" src="/images/characters/Preston@2x.png" alt="Confused Preston" />
@@ -33,11 +33,11 @@
 				<div class="sm:border-l sm:border-gray-200 sm:pl-6">
 					<div class="flex">
 						<div>
-							<h1 class="text-4xl font-extrabold text-thatBlue-800 tracking-tight sm:text-5xl">
+							<h1 class="text-4xl font-extrabold tracking-tight text-thatBlue-800 sm:text-5xl">
 								THAT Account Unverified
 							</h1>
 
-							<p class="prose prose-lg max-w-3xl mt-4 text-gray-500">
+							<p class="prose prose-lg mt-4 max-w-3xl text-gray-500">
 								You account is current unverified. To continue please check your email and finish
 								the login verification. If you've done so and are still seeing this error <span
 									class="font-extrabold">please logout and login again</span

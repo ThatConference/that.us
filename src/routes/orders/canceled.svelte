@@ -24,19 +24,19 @@
 
 <Layout>
 	<div class="space-y-12">
-		<div class="text-base max-w-prose mx-auto lg:max-w-none">
-			<h2 class="text-base text-thatOrange-400 font-semibold tracking-wide uppercase">
+		<div class="mx-auto max-w-prose text-base lg:max-w-none">
+			<h2 class="text-base font-semibold uppercase tracking-wide text-thatOrange-400">
 				Payment Canceled
 			</h2>
 			<p
-				class="mt-6 text-4xl sm:text-5xl sm:tracking-tight lg:text-6xl leading-8 font-extrabold tracking-tight text-gray-900"
+				class="mt-6 text-4xl font-extrabold leading-8 tracking-tight text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl"
 			>
 				Oh No!
 			</p>
 		</div>
 
 		<div class="relative">
-			<div class="prose text-lg text-gray-500 mx-auto lg:max-w-none">
+			<div class="prose mx-auto text-lg text-gray-500 lg:max-w-none">
 				<p>
 					Your payment has been canceled. We've left the items in your cart in case this was in
 					error.

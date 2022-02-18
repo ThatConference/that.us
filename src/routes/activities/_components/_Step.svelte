@@ -19,7 +19,7 @@
 		<div>
 			{#if completed}
 				<span
-					class="h-8 w-8 rounded-full bg-green-500 flex items-center justify-center ring-8 ring-white"
+					class="flex h-8 w-8 items-center justify-center rounded-full bg-green-500 ring-8 ring-white"
 				>
 					<CheckFull />
 				</span>
@@ -35,7 +35,7 @@
 				</span>
 			{/if}
 		</div>
-		<div class="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4">
+		<div class="flex min-w-0 flex-1 justify-between space-x-4 pt-1.5">
 			<div>
 				<p class="text-sm text-gray-500">{title}</p>
 			</div>

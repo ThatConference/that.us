@@ -31,16 +31,16 @@
 
 <div>
 	<header>
-		<h2 class="text-xl leading-6 font-bold text-gray-900">Your Merit Badges</h2>
+		<h2 class="text-xl font-bold leading-6 text-gray-900">Your Merit Badges</h2>
 	</header>
 
 	{#if awardedBadges.length > 0}
 		<div class="mt-12">
-			<div class="flex space-x-3 justify-around">
+			<div class="flex justify-around space-x-3">
 				{#each awardedBadges as badge (badge.id)}
 					<div class="flex flex-col items-center">
 						<img class="lazyload h-24 w-24" src={badge.image} alt={badge.name} />
-						<h2 class="text-xl leading-6 font-bold tracking-tight text-gray-500">
+						<h2 class="text-xl font-bold leading-6 tracking-tight text-gray-500">
 							{badge.name}
 						</h2>
 					</div>

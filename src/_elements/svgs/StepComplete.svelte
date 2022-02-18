@@ -2,13 +2,13 @@
 	export let stepName = '';
 </script>
 
-<div class="group flex items-center w-full">
-	<span class="px-6 py-4 flex items-center text-sm font-medium">
+<div class="group flex w-full items-center">
+	<span class="flex items-center px-6 py-4 text-sm font-medium">
 		<span
-			class="flex-shrink-0 w-10 h-10 flex items-center justify-center bg-thatOrange-400 rounded-full"
+			class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-thatOrange-400"
 		>
 			<svg
-				class="w-6 h-6 text-white"
+				class="h-6 w-6 text-white"
 				xmlns="http://www.w3.org/2000/svg"
 				viewBox="0 0 20 20"
 				fill="currentColor"

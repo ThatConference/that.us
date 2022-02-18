@@ -15,7 +15,7 @@
 		<button
 			type="button"
 			id="user-menu"
-			class="max-w-xs h-10 w-10 flex items-center justify-center text-sm rounded-full duration-150 ease-in-out"
+			class="flex h-10 w-10 max-w-xs items-center justify-center rounded-full text-sm duration-150 ease-in-out"
 			class:shadow-solid={visible}
 			aria-label="User menu"
 			aria-haspopup="true"
@@ -49,10 +49,10 @@
 			{#if $session.isAuthenticated}
 				{#if isEmpty($session.thatProfile)}
 					<div
-						class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg z-50"
+						class="absolute right-0 z-50 mt-2 w-48 origin-top-right rounded-md shadow-lg"
 						in:fade
 					>
-						<div class="py-1 rounded-md bg-white ring-1 ring-black ring-opacity-5">
+						<div class="rounded-md bg-white py-1 ring-1 ring-black ring-opacity-5">
 							<a
 								href="/my/profiles/primary/"
 								class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"

@@ -189,17 +189,17 @@
 
 <div>
 	<!--header-->
-	<div class="px-4 py-5 border-b border-gray-300 sm:px-6">
+	<div class="border-b border-gray-300 px-4 py-5 sm:px-6">
 		<div
-			class="flex justify-between md:items-end items-center flex-wrap sm:flex-nowrap flex-col md:flex-row"
+			class="flex flex-col flex-wrap items-center justify-between sm:flex-nowrap md:flex-row md:items-end"
 		>
 			<div class="block">
-				<div class="grid grid-cols-1 sm:grid-cols-2 gap-12">
+				<div class="grid grid-cols-1 gap-12 sm:grid-cols-2">
 					{#each speakers as s}
-						<div class="flex md:flex-row flex-col items-center">
+						<div class="flex flex-col items-center md:flex-row">
 							<div class="flex-shrink-0">
 								<a href="/members/{s.profileSlug}/" open>
-									<span class="inline-block relative">
+									<span class="relative inline-block">
 										<img
 											class="lazyload h-24 w-24 rounded-full"
 											data-sizes="auto"
@@ -221,17 +221,17 @@
 								</a>
 							</div>
 							<div class="flex-initial md:ml-4">
-								<div class="flex flex-col md:items-start items-center">
-									<h3 class="text-lg leading-6 font-medium text-gray-900 inline-block">
+								<div class="flex flex-col items-center md:items-start">
+									<h3 class="inline-block text-lg font-medium leading-6 text-gray-900">
 										{`${s.firstName} ${s.lastName}`}
 									</h3>
 									{#if type !== 'OPEN_SPACE' && s.profileSlug != 'thatconference'}
 										<span class="flex flex-row items-center overflow-clip">
-											<span class="text-that-red text-lg font-medium inline">Camp Counselor</span>
+											<span class="inline text-lg font-medium text-that-red">Camp Counselor</span>
 										</span>
 									{/if}
 								</div>
-								<div class="md:text-left text-center">
+								<div class="text-center md:text-left">
 									{#each s.profileLinks as link, i}
 										<SocialLink
 											href={link.url}
@@ -246,20 +246,20 @@
 				</div>
 			</div>
 
-			<div class="flex flex-wrap justify-center items-center mt-2 md:mt-0">
+			<div class="mt-2 flex flex-wrap items-center justify-center md:mt-0">
 				{#if !hasExpired}
 					{#if $session.isAuthenticated && !incompleteProfile}
-						<div class="mt-2 mx-2 rounded-md shadow-sm">
+						<div class="mx-2 mt-2 rounded-md shadow-sm">
 							<button
 								type="button"
 								on:click|preventDefault={!favoriteDisabled && handleToggle}
 								class:text-thatRed-500={isFavorite}
-								class="relative inline-flex items-center px-4 py-2 border-2
-                  border-thatBlue-500 text-sm leading-5 font-medium rounded-md
-                  text-gray-700 bg-white hover:text-gray-500 focus:outline-none
-                  focus:ring-blue focus:border-blue-300
-                  active:bg-gray-50 active:text-gray-800 transition duration-150
-                  ease-in-out"
+								class="focus:ring-blue relative inline-flex items-center rounded-md border-2
+                  border-thatBlue-500 bg-white px-4 py-2 text-sm
+                  font-medium leading-5 text-gray-700 transition
+                  duration-150 ease-in-out
+                  hover:text-gray-500 focus:border-blue-300 focus:outline-none active:bg-gray-50
+                  active:text-gray-800"
 							>
 								<Icon data={heart} class="-ml-1 mr-2 h-4 w-4" />
 								{#if isFavorite}
@@ -288,16 +288,16 @@
 
 				{#if $session.isAuthenticated && !incompleteProfile}
 					{#if canEdit()}
-						<div class="mt-2 mx-2 rounded-md shadow-sm">
+						<div class="mx-2 mt-2 rounded-md shadow-sm">
 							<a
 								href={`/activities/edit/${id}`}
-								class="inline-flex justify-center py-2 px-4 border-2
-                  border-thatBlue-500 text-sm leading-5 font-medium rounded-md
-                  text-thatBlue-500 bg-white hover:bg-thatBlue-500
-                  hover:text-white focus:outline-none
-                  focus:ring-thatBlue-500 focus:bg-thatBlue-500
-                  focus:text-white focus:border-thatBlue-800
-                  active:bg-thatBlue-800 transition duration-150 ease-in-out"
+								class="inline-flex justify-center rounded-md border-2 border-thatBlue-500
+                  bg-white py-2 px-4 text-sm font-medium
+                  leading-5 text-thatBlue-500 transition
+                  duration-150 ease-in-out
+                  hover:bg-thatBlue-500 hover:text-white
+                  focus:border-thatBlue-800 focus:bg-thatBlue-500
+                  focus:text-white focus:outline-none focus:ring-thatBlue-500 active:bg-thatBlue-800"
 							>
 								<Icon data={cog} class="-ml-1 mr-2 h-4 w-4" />
 								<span>Edit</span>
@@ -308,16 +308,16 @@
 
 				{#if !hasExpired}
 					{#if activity.type === 'KEYNOTE'}
-						<div class="mt-2 mx-2 rounded-md shadow-sm">
+						<div class="mx-2 mt-2 rounded-md shadow-sm">
 							<a
 								href="https://youtube.com/c/thatconference"
-								class="relative inline-flex justify-center py-2 px-4 border-2
-              border-thatBlue-500 text-sm leading-5 font-medium rounded-md
-              text-thatBlue-500 bg-white hover:bg-thatBlue-500
-              hover:text-white focus:outline-none
-              focus:ring-thatBlue-500 focus:bg-thatBlue-500
-              focus:text-white focus:border-thatBlue-800
-              active:bg-thatBlue-800 transition duration-150 ease-in-out"
+								class="relative inline-flex justify-center rounded-md border-2 border-thatBlue-500
+              bg-white py-2 px-4 text-sm font-medium
+              leading-5 text-thatBlue-500 transition
+              duration-150 ease-in-out
+              hover:bg-thatBlue-500 hover:text-white
+              focus:border-thatBlue-800 focus:bg-thatBlue-500
+              focus:text-white focus:outline-none focus:ring-thatBlue-500 active:bg-thatBlue-800"
 							>
 								<Icon data={signIn} class="-ml-1 mr-2 h-4 w-4 text-gray-400" />
 								<span>Watch on YouTube</span>
@@ -359,22 +359,22 @@
 	</div>
 
 	<!-- body -->
-	<div class="w-full flex flex-col sm:flex-row space-x-6">
-		<div class="flex-auto px-4 py-5 sm:px-6 text-center md:text-left">
+	<div class="flex w-full flex-col space-x-6 sm:flex-row">
+		<div class="flex-auto px-4 py-5 text-center sm:px-6 md:text-left">
 			<!-- Title -->
 			<h2
-				class="text-2xl sm:text-3xl md:text-4xl tracking-tight leading-10
-        font-extrabold text-thatBlue-800 sm:leading-none"
+				class="text-2xl font-extrabold leading-10 tracking-tight text-thatBlue-800
+        sm:text-3xl sm:leading-none md:text-4xl"
 			>
 				{title}
 			</h2>
 
 			<div
-				class="py-4 flex flex-col sm:flex-row justify-center sm:justify-start items-center space-x-0 sm:space-x-8 space-y-4 sm:spaace-y-0"
+				class="sm:spaace-y-0 flex flex-col items-center justify-center space-x-0 space-y-4 py-4 sm:flex-row sm:justify-start sm:space-x-8"
 			>
 				{#if !isDailyActivity}
 					<div class="h-24 w-24">
-						<a href={`/events/${event.slug}`} class="w-full h-full">
+						<a href={`/events/${event.slug}`} class="h-full w-full">
 							<img class="lazyload" src={event.logo} alt="Event Logo" />
 						</a>
 					</div>
@@ -382,7 +382,7 @@
 
 				<div>
 					<!-- Start Time -->
-					<p class="text-base text-gray-700  sm:text-lg sm:mx-auto md:text-xl lg:mx-0">
+					<p class="text-base text-gray-700  sm:mx-auto sm:text-lg md:text-xl lg:mx-0">
 						{#if durationInMinutes > 0}
 							{#if durationInMinutes <= 60}
 								{dayjs(startTime).format('dddd, MMMM D, YYYY - h:mm A z')}, for
@@ -398,27 +398,27 @@
 
 					<!-- Location -->
 					<p
-						class="mt-1 text-base text-gray-700 sm:mt-2 sm:text-lg sm:mx-auto md:mt-1 md:text-xl lg:mx-0"
+						class="mt-1 text-base text-gray-700 sm:mx-auto sm:mt-2 sm:text-lg md:mt-1 md:text-xl lg:mx-0"
 					>
 						<Icon
 							data={sessionTargetLocationIcon}
-							class="h-4 w-4 pb-0.5 mr-2"
+							class="mr-2 h-4 w-4 pb-0.5"
 						/>{sessionTargetLocation}
 						{sessionType}
 					</p>
 
 					{#if targetLocation === 'IN_PERSON' && sessionLocationDestination}
 						<p
-							class="mt-1 text-base text-gray-700 sm:mt-2 sm:text-lg sm:mx-auto md:mt-1 md:text-xl lg:mx-0"
+							class="mt-1 text-base text-gray-700 sm:mx-auto sm:mt-2 sm:text-lg md:mt-1 md:text-xl lg:mx-0"
 						>
-							<Icon data={mapMarker} class="h-4 w-4 pb-0.5 mr-2" />Room: {sessionLocationDestination}
+							<Icon data={mapMarker} class="mr-2 h-4 w-4 pb-0.5" />Room: {sessionLocationDestination}
 						</p>
 					{/if}
 				</div>
 			</div>
 
 			<!-- Tags -->
-			<div class="flex flex-wrap justify-center lg:justify-start space-x-2 pb-3">
+			<div class="flex flex-wrap justify-center space-x-2 pb-3 lg:justify-start">
 				{#each tags as t}
 					<div class="py-2">
 						<Tag>{t}</Tag>
@@ -428,7 +428,7 @@
 
 			<!-- Description -->
 			<p
-				class="mt-3 sm:mt-5 sm:mx-auto lg:mx-0 prose lineBreaks text-gray-500 sm:text-lg md:text-xl"
+				class="lineBreaks prose mt-3 text-gray-500 sm:mx-auto sm:mt-5 sm:text-lg md:text-xl lg:mx-0"
 			>
 				{#if longDescription}
 					{longDescription}
@@ -439,11 +439,11 @@
 
 			{#if type === 'WORKSHOP'}
 				<div class="mt-12">
-					<h3 class="text-xl sm:text-2xl leading-8 font-extrabold tracking-tight text-thatBlue-800">
+					<h3 class="text-xl font-extrabold leading-8 tracking-tight text-thatBlue-800 sm:text-2xl">
 						Agenda
 					</h3>
 					<p
-						class="mt-3 sm:mt-5 sm:mx-auto lg:mx-0 prose lineBreaks text-gray-500 sm:text-lg md:text-xl"
+						class="lineBreaks prose mt-3 text-gray-500 sm:mx-auto sm:mt-5 sm:text-lg md:text-xl lg:mx-0"
 					>
 						{#if agenda}
 							{agenda}
@@ -454,11 +454,11 @@
 
 			{#if prerequisites}
 				<div class="mt-12">
-					<h3 class="text-xl sm:text-2xl leading-8 font-extrabold tracking-tight text-thatBlue-800">
+					<h3 class="text-xl font-extrabold leading-8 tracking-tight text-thatBlue-800 sm:text-2xl">
 						Prerequisites
 					</h3>
 					<p
-						class="mt-3 sm:mt-5 sm:mx-auto lg:mx-0 prose lineBreaks text-gray-500 sm:text-lg md:text-xl"
+						class="lineBreaks prose mt-3 text-gray-500 sm:mx-auto sm:mt-5 sm:text-lg md:text-xl lg:mx-0"
 					>
 						{prerequisites}
 					</p>
@@ -467,7 +467,7 @@
 
 			{#if takeaways?.length > 0}
 				<div class="mt-12">
-					<h3 class="text-xl sm:text-2xl leading-8 font-extrabold tracking-tight text-thatBlue-800">
+					<h3 class="text-xl font-extrabold leading-8 tracking-tight text-thatBlue-800 sm:text-2xl">
 						Take Aways
 					</h3>
 					<div class="prose">
@@ -484,20 +484,20 @@
 
 			{#if supportingArtifacts?.length > 0}
 				<div class="mt-12">
-					<h3 class="text-xl sm:text-2xl leading-8 font-extrabold tracking-tight text-thatBlue-800">
+					<h3 class="text-xl font-extrabold leading-8 tracking-tight text-thatBlue-800 sm:text-2xl">
 						Supporting Resources
 					</h3>
 					<div class="mt-2">
 						<ul>
 							{#each supportingArtifacts as sa, i}
 								<li
-									class="px-4 flex space-x-3 items-center hover:text-that-blue cursor-pointer pb-2"
+									class="flex cursor-pointer items-center space-x-3 px-4 pb-2 hover:text-that-blue"
 									class:bg-gray-50={showBackground(i)}
 								>
 									<div>
 										<Icon data={externalLink} class="h-4 w-4" />
 									</div>
-									<div class="flex-grow p-2 rounded-md">
+									<div class="flex-grow rounded-md p-2">
 										<a open href={sa.url}>
 											<p>{sa.name}</p>
 											<p class="mt-1 text-sm text-gray-400">{sa.description}</p>
@@ -511,7 +511,7 @@
 			{/if}
 
 			<!-- Avatars -->
-			<div class="py-12 flex flex-wrap items-center text-red-400 space-x-1">
+			<div class="flex flex-wrap items-center space-x-1 py-12 text-red-400">
 				<Icon data={heartO} class="h-8 w-8" />
 				<span>favorited by:</span>
 				<div class="md:pl-2">

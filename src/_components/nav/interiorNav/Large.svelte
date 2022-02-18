@@ -37,9 +37,9 @@
 				sveltekit:prefetch
 				href="/events/"
 				open
-				class="ml-1 px-3 py-2 rounded-md text-sm font-medium text-gray-300
-          hover:text-white hover:bg-that-blue focus:outline-none
-          focus:text-white focus:bg-that-blue"
+				class="ml-1 rounded-md px-3 py-2 text-sm font-medium text-gray-300
+          hover:bg-that-blue hover:text-white focus:bg-that-blue
+          focus:text-white focus:outline-none"
 			>
 				<DesktopLink>Events</DesktopLink>
 			</a>
@@ -48,9 +48,9 @@
 				sveltekit:prefetch
 				open
 				href="/activities/"
-				class="ml-1 px-3 py-2 rounded-md text-sm font-medium text-gray-300
-          hover:text-white hover:bg-that-blue focus:outline-none
-          focus:text-white focus:bg-that-blue"
+				class="ml-1 rounded-md px-3 py-2 text-sm font-medium text-gray-300
+          hover:bg-that-blue hover:text-white focus:bg-that-blue
+          focus:text-white focus:outline-none"
 			>
 				<DesktopLink>Activities</DesktopLink>
 			</a>
@@ -58,9 +58,9 @@
 			<a
 				sveltekit:prefetch
 				href="/members/"
-				class="ml-1 px-3 py-2 rounded-md text-sm font-medium text-gray-300
-          hover:text-white hover:bg-that-blue focus:outline-none
-          focus:text-white focus:bg-that-blue"
+				class="ml-1 rounded-md px-3 py-2 text-sm font-medium text-gray-300
+          hover:bg-that-blue hover:text-white focus:bg-that-blue
+          focus:text-white focus:outline-none"
 			>
 				<DesktopLink>Members</DesktopLink>
 			</a>
@@ -68,9 +68,9 @@
 			<a
 				sveltekit:prefetch
 				href="/communities/"
-				class="ml-1 px-3 py-2 rounded-md text-sm font-medium text-gray-300
-          hover:text-white hover:bg-that-blue focus:outline-none
-          focus:text-white focus:bg-that-blue"
+				class="ml-1 rounded-md px-3 py-2 text-sm font-medium text-gray-300
+          hover:bg-that-blue hover:text-white focus:bg-that-blue
+          focus:text-white focus:outline-none"
 			>
 				<DesktopLink>Communities</DesktopLink>
 			</a>
@@ -78,9 +78,9 @@
 			<a
 				sveltekit:prefetch
 				href="/partners/"
-				class="ml-1 px-3 py-2 rounded-md text-sm font-medium text-gray-300
-          hover:text-white hover:bg-that-blue focus:outline-none
-          focus:text-white focus:bg-that-blue"
+				class="ml-1 rounded-md px-3 py-2 text-sm font-medium text-gray-300
+          hover:bg-that-blue hover:text-white focus:bg-that-blue
+          focus:text-white focus:outline-none"
 			>
 				<DesktopLink>Partners</DesktopLink>
 			</a>
@@ -88,9 +88,9 @@
 			<a
 				sveltekit:prefetch
 				href="/blog/"
-				class="ml-1 px-3 py-2 rounded-md text-sm font-medium text-gray-300
-          hover:text-white hover:bg-that-blue focus:outline-none
-          focus:text-white focus:bg-that-blue"
+				class="ml-1 rounded-md px-3 py-2 text-sm font-medium text-gray-300
+          hover:bg-that-blue hover:text-white focus:bg-that-blue
+          focus:text-white focus:outline-none"
 			>
 				<DesktopLink>Blog</DesktopLink>
 			</a>
@@ -98,17 +98,17 @@
 			<div>
 				<button
 					href="/help/"
-					class="ml-1 px-3 py-2 rounded-md text-sm font-medium text-gray-300
-            hover:text-white hover:bg-that-blue focus:outline-none
-            focus:text-white focus:bg-that-blue"
+					class="ml-1 rounded-md px-3 py-2 text-sm font-medium text-gray-300
+            hover:bg-that-blue hover:text-white focus:bg-that-blue
+            focus:text-white focus:outline-none"
 					on:click|preventDefault={() => (helpVisible = !helpVisible)}
 				>
 					<DesktopLink>Help</DesktopLink>
 				</button>
 				{#if helpVisible}
 					<div use:clickOutside on:click_outside={() => (helpVisible = false)}>
-						<div class="absolute mt-2 ml-4 w-64 rounded-md shadow-lg z-50" in:fade>
-							<div class="py-1 rounded-md bg-white ring-1 ring-black ring-opacity-5">
+						<div class="absolute z-50 mt-2 ml-4 w-64 rounded-md shadow-lg" in:fade>
+							<div class="rounded-md bg-white py-1 ring-1 ring-black ring-opacity-5">
 								<a href="/support/" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
 									Getting Started
 								</a>
@@ -156,14 +156,14 @@
 		{#if $hasNotifications}
 			<button
 				type="button"
-				class="max-w-xs h-10 w-10 rounded-full text-white duration-150 ease-in-out hover:bg-thatBlue-500"
+				class="h-10 w-10 max-w-xs rounded-full text-white duration-150 ease-in-out hover:bg-thatBlue-500"
 				class:shadow-solid={activityVisible}
 				class:bg-thatBlue-500={activityVisible}
 				aria-label="Notifications"
 				on:click|preventDefault={() => (activityVisible = !activityVisible)}
 			>
 				<div
-					class="transition duration-500 ease-in-out transform hover:scale-105 flex justify-center"
+					class="flex transform justify-center transition duration-500 ease-in-out hover:scale-105"
 				>
 					<Activity />
 				</div>
@@ -179,14 +179,14 @@
 
 		{#if true}
 			<div class="relative inline-block">
-				<div class="ml-4 p-1 rounded-full text-white hover:bg-thatBlue-500">
+				<div class="ml-4 rounded-full p-1 text-white hover:bg-thatBlue-500">
 					<a href="/orders/summary/">
 						<Cart />
 
 						{#if cartItems > 0}
-							<span class="animate-pulse absolute bottom-0 right-0 block">
+							<span class="absolute bottom-0 right-0 block animate-pulse">
 								<span
-									class="inline-flex items-center justify-center h-4 w-4 rounded-full bg-gray-500"
+									class="inline-flex h-4 w-4 items-center justify-center rounded-full bg-gray-500"
 								>
 									<span class="text-xs font-medium leading-none text-white">{cartItems}</span>
 								</span>
@@ -197,7 +197,7 @@
 			</div>
 		{/if}
 
-		<div class="ml-4 p-1 rounded-full text-white hover:bg-thatBlue-500">
+		<div class="ml-4 rounded-full p-1 text-white hover:bg-thatBlue-500">
 			<a href="/activities/create/">
 				<Icon data={plus} class="h-8 w-8" />
 			</a>

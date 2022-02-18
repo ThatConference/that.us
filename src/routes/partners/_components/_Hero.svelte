@@ -13,15 +13,15 @@
 	const dispatch = createEventDispatcher();
 </script>
 
-<section class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<section class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 	<div class="mb-24">
 		<div class="flex flex-col space-y-8">
-			<h1 class="text-base leading-6 text-thatOrange-400 font-semibold tracking-wide uppercase">
+			<h1 class="text-base font-semibold uppercase leading-6 tracking-wide text-thatOrange-400">
 				PARTNER SPOTLIGHT
 			</h1>
 			<div class="flex justify-between">
 				<div>
-					<div class="transition duration-500 ease-in-out transform hover:scale-105 cursor-pointer">
+					<div class="transform cursor-pointer transition duration-500 ease-in-out hover:scale-105">
 						<a href="{partner.website}?utm_source=THAT">
 							<img class="lazyload w-96" src={partner.companyLogo} alt={partner.companyName} />
 						</a>
@@ -67,7 +67,7 @@
 			</div>
 
 			<div class="leading-8 text-gray-800">
-				<p class="prose-xl lineBreaks">{partner.aboutUs || ''}</p>
+				<p class="lineBreaks prose-xl">{partner.aboutUs || ''}</p>
 			</div>
 		</div>
 	</div>

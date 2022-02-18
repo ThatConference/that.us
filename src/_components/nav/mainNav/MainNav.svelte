@@ -25,30 +25,30 @@
 				<CreateProfileNotification />
 			{/if}
 		{/if}
-		<div class="max-w-screen-xl mx-auto relative bg-white py-6 px-4 sm:px-6 lg:px-8">
+		<div class="relative mx-auto max-w-screen-xl bg-white py-6 px-4 sm:px-6 lg:px-8">
 			<div
-				class="absolute top-0 inset-x-0 p-2 transition transform origin-top-right lg:hidden z-10"
+				class="absolute inset-x-0 top-0 z-10 origin-top-right transform p-2 transition lg:hidden"
 				class:hidden
 				class:block={!hidden}
 			>
 				<div class="rounded-lg shadow-md">
 					<div
-						class="rounded-lg bg-white ring-1 ring-black ring-opacity-5 overflow-hidden"
+						class="overflow-hidden rounded-lg bg-white ring-1 ring-black ring-opacity-5"
 						role="menu"
 						aria-orientation="vertical"
 						aria-labelledby="main-menu"
 					>
-						<div class="px-5 pt-4 flex items-center justify-between">
+						<div class="flex items-center justify-between px-5 pt-4">
 							<div>
 								<img class="h-8 w-auto" src="/images/THAT-Full-Wide.svg" alt="THAT Logo" />
 							</div>
 							<div class="-mr-2">
 								<button
 									type="button"
-									class="inline-flex items-center justify-center p-2 rounded-md
-                    text-gray-400 hover:text-gray-500 hover:bg-gray-100
-                    focus:outline-none focus:bg-gray-100 focus:text-gray-500
-                    transition duration-150 ease-in-out"
+									class="inline-flex items-center justify-center rounded-md p-2
+                    text-gray-400 transition duration-150
+                    ease-in-out hover:bg-gray-100 hover:text-gray-500
+                    focus:bg-gray-100 focus:text-gray-500 focus:outline-none"
 									aria-label="Close menu"
 									on:click|preventDefault={() => (hidden = !hidden)}
 								>
@@ -70,18 +70,18 @@
 				</div>
 			</div>
 			<nav class="relative flex items-center justify-between sm:h-10 lg:justify-start">
-				<div class="flex items-center flex-grow flex-shrink-0 lg:flex-grow-0">
-					<div class="flex items-center justify-between w-full lg:w-auto">
+				<div class="flex flex-shrink-0 flex-grow items-center lg:flex-grow-0">
+					<div class="flex w-full items-center justify-between lg:w-auto">
 						<a sveltekit:prefetch href="/" aria-label="Home">
 							<img class="h-8 w-auto sm:h-10" src="/images/THAT-Full-Wide.svg" alt="THAT Logo" />
 						</a>
 						<div class="-mr-2 flex items-center lg:hidden">
 							<button
 								type="button"
-								class="inline-flex items-center justify-center p-2 rounded-md
-                  text-gray-400 hover:text-gray-500 hover:bg-gray-100
-                  focus:outline-none focus:bg-gray-100 focus:text-gray-500
-                  transition duration-150 ease-in-out"
+								class="inline-flex items-center justify-center rounded-md p-2
+                  text-gray-400 transition duration-150
+                  ease-in-out hover:bg-gray-100 hover:text-gray-500
+                  focus:bg-gray-100 focus:text-gray-500 focus:outline-none"
 								id="main-menu"
 								aria-label="Main menu"
 								aria-haspopup="true"

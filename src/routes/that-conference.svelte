@@ -43,27 +43,27 @@
 <Seo title={metaTags.title} tags={metaTags.tags} />
 
 <Layout>
-	<div class="py-20 overflow-hidden">
-		<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+	<div class="overflow-hidden py-20">
+		<div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 			<header>
 				<h1
-					class="sm:text-center lg:text-left pb-16 text-4xl tracking-tight
-          leading-10 font-extrabold text-thatBlue-800 sm:text-5xl
-          sm:leading-none md:text-6xl"
+					class="pb-16 text-4xl font-extrabold leading-10 tracking-tight
+          text-thatBlue-800 sm:text-center sm:text-5xl sm:leading-none
+          md:text-6xl lg:text-left"
 				>
 					Pick THAT Conference!
 				</h1>
 			</header>
 
-			<div class="flex flex-col md:grid md:grid-cols-2 gap-4 place-content-center">
-				<div class="transition duration-500 ease-in-out transform hover:scale-105 p-12">
+			<div class="flex flex-col place-content-center gap-4 md:grid md:grid-cols-2">
+				<div class="transform p-12 transition duration-500 ease-in-out hover:scale-105">
 					<a sveltekit:prefetch href={`/events/${events.next.wi.slug}`}>
 						<img
 							src="/images/THAT-Conference-Wisconsin-Logo.svg"
 							alt="THAT Conference Wisconsin Logo"
 						/>
 					</a>
-					<div class="flex flex-col items-center mt-12 text-xl font-extrabold text-thatBlue-500">
+					<div class="mt-12 flex flex-col items-center text-xl font-extrabold text-thatBlue-500">
 						<div class="text-center">
 							{dayjs(wi.startDate).format('dddd MMMM D, YYYY')} - {dayjs(wi.endDate).format(
 								'dddd MMMM D, YYYY'
@@ -75,12 +75,12 @@
 					</div>
 				</div>
 
-				<div class="transition duration-500 ease-in-out transform hover:scale-105 p-12">
+				<div class="transform p-12 transition duration-500 ease-in-out hover:scale-105">
 					<a sveltekit:prefetch href={`/events/${events.next.tx.slug}`}>
 						<img src="/images/THAT-Conference-Texas-Logo.svg" alt="THAT Conference Texas Logo" />
 					</a>
 
-					<div class="flex flex-col items-center mt-12 text-xl font-extrabold text-thatBlue-500">
+					<div class="mt-12 flex flex-col items-center text-xl font-extrabold text-thatBlue-500">
 						<div class="text-center">
 							{dayjs(tx.startDate).format('dddd MMMM D, YYYY')} - {dayjs(tx.endDate).format(
 								'dddd MMMM D, YYYY'

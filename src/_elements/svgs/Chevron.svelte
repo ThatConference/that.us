@@ -3,7 +3,7 @@
 </script>
 
 <svg
-	class="rotate-0 h-6 w-6 transform"
+	class="h-6 w-6 rotate-0 transform"
 	class:-rotate-180={open}
 	xmlns="http://www.w3.org/2000/svg"
 	fill="none"

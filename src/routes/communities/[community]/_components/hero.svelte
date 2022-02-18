@@ -15,12 +15,12 @@
 	const dispatch = createEventDispatcher();
 </script>
 
-<section class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<section class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 	<div class="lg:grid lg:grid-cols-12 lg:gap-8">
-		<div class="max-w-2xl mx-auto flex justify-center lg:col-span-3">
-			<img class="w-full max-h-60" src={community.logo} alt="javascript logo" />
+		<div class="mx-auto flex max-w-2xl justify-center lg:col-span-3">
+			<img class="max-h-60 w-full" src={community.logo} alt="javascript logo" />
 		</div>
-		<div class="mt-12 lg:mt-0 lg:col-start-4 lg:col-span-9">
+		<div class="mt-12 lg:col-span-9 lg:col-start-4 lg:mt-0">
 			<div class="flex flex-col space-y-8">
 				<div class="flex items-center justify-between">
 					<div>
@@ -44,11 +44,11 @@
 					</div>
 				</div>
 
-				<div class="leading-8 text-lg font-medium text-gray-900">
+				<div class="text-lg font-medium leading-8 text-gray-900">
 					<p class="lineBreaks">{community.description}</p>
 				</div>
 
-				<div class="flex flex-wrap justify-center items-center space-x-4">
+				<div class="flex flex-wrap items-center justify-center space-x-4">
 					{#each community.tags as tag, i (i)}
 						<div in:fade={{ delay: i * 100 }}>
 							<Tag>{tag}</Tag>

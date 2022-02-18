@@ -16,12 +16,12 @@
 
 <section class="bg-thatBlue-700 py-12 lg:py-16">
 	<div
-		class="relative max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 lg:flex
-      lg:items-center"
+		class="relative mx-auto max-w-screen-xl px-4 sm:px-6 lg:flex lg:items-center
+      lg:px-8"
 	>
 		<div class="lg:w-0 lg:flex-1">
 			<h2
-				class="text-3xl leading-9 font-extrabold tracking-tight text-white
+				class="text-3xl font-extrabold leading-9 tracking-tight text-white
           sm:text-4xl sm:leading-10"
 				id="newsletter-headline"
 			>
@@ -65,23 +65,23 @@
 								aria-label="Email address"
 								type="email"
 								required
-								class="appearance-none w-full px-5 py-3 border
-                  border-transparent text-base leading-6 rounded-md
-                  text-gray-900 bg-white placeholder-gray-500 focus:outline-none
-                  focus:placeholder-gray-400 transition duration-150 ease-in-out
+								class="w-full appearance-none rounded-md border border-transparent
+                  bg-white px-5 py-3 text-base
+                  leading-6 text-gray-900 placeholder-gray-500 transition
+                  duration-150 ease-in-out focus:placeholder-gray-400 focus:outline-none
                   sm:max-w-xs"
 								placeholder="Enter your email"
 							/>
 							<div class="mt-3 rounded-md shadow sm:mt-0 sm:ml-3 sm:flex-shrink-0">
 								<button
 									type="submit"
-									class="w-full flex items-center justify-center px-5 py-3
-                    text-base leading-6 font-medium rounded-md shadow
-                    bg-thatBlue-100 border border-transparent text-thatBlue-500
-                    hover:bg-thatBlue-500 hover:text-white focus:bg-thatBlue-500
-                    focus:text-white focus:outline-none
-                    focus:ring-thatBlue-500 focus:border-thatBlue-800
-                    transition duration-150 ease-in-out"
+									class="flex w-full items-center justify-center rounded-md border
+                    border-transparent bg-thatBlue-100 px-5 py-3 text-base
+                    font-medium leading-6 text-thatBlue-500 shadow
+                    transition duration-150 ease-in-out
+                    hover:bg-thatBlue-500 hover:text-white
+                    focus:border-thatBlue-800 focus:bg-thatBlue-500
+                    focus:text-white focus:outline-none focus:ring-thatBlue-500"
 								>
 									Add me
 								</button>
@@ -97,8 +97,8 @@
 					We care about the protection of your data. Read our
 					<a
 						href="/support/privacy-policy"
-						class="text-white
-              font-medium underline"
+						class="font-medium
+              text-white underline"
 					>
 						Privacy Policy.
 					</a>

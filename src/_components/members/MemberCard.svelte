@@ -18,13 +18,13 @@
 
 <a sveltekit:prefetch href="/members/{profileSlug}/">
 	<div
-		class="h-full text-center bg-white rounded-lg shadow transition duration-500 ease-in-out transform hover:scale-105 hover:bg-gray-100 "
+		class="h-full transform rounded-lg bg-white text-center shadow transition duration-500 ease-in-out hover:scale-105 hover:bg-gray-100 "
 	>
-		<div class="p-4 flex flex-col">
+		<div class="flex flex-col p-4">
 			<div>
-				<span class="inline-block relative">
+				<span class="relative inline-block">
 					<img
-						class="lazyload w-32 h-32 flex-shrink-0 mx-auto rounded-full"
+						class="lazyload mx-auto h-32 w-32 flex-shrink-0 rounded-full"
 						data-sizes="auto"
 						data-src={srcset.src}
 						data-srcset={srcset.srcset}
@@ -42,7 +42,7 @@
 					{/if}
 				</span>
 
-				<h3 class="mt-4 text-gray-500 text-md font-bold tracking-tight leading-5">
+				<h3 class="text-md mt-4 font-bold leading-5 tracking-tight text-gray-500">
 					{`${firstName} ${lastName}`}
 				</h3>
 			</div>
@@ -50,12 +50,12 @@
 				<dl class="mt-1 flex flex-col justify-between">
 					{#if jobTitle}
 						<dt class="sr-only">Title</dt>
-						<dd class="text-gray-500 text-sm leading-5">{jobTitle}</dd>
+						<dd class="text-sm leading-5 text-gray-500">{jobTitle}</dd>
 					{/if}
 
 					{#if company}
 						<dt class="sr-only">Company</dt>
-						<dd class="text-gray-500 text-sm leading-5">{company}</dd>
+						<dd class="text-sm leading-5 text-gray-500">{company}</dd>
 					{/if}
 
 					<dt class="sr-only">Social Links</dt>

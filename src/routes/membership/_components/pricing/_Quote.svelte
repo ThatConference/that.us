@@ -1,9 +1,9 @@
 <div class="pt-16 lg:pt-24">
-	<div class="pb-16 bg-that-grey lg:pb-0">
-		<div class="lg:mx-auto lg:max-w-7xl flex flex-col items-center">
-			<div class="transform -translate-y-32">
+	<div class="bg-that-grey pb-16 lg:pb-0">
+		<div class="flex flex-col items-center lg:mx-auto lg:max-w-7xl">
+			<div class="-translate-y-32 transform">
 				<img
-					class="lazyload z-10 h-48 w-48 border border-white rounded-full xl:h-64 xl:w-64"
+					class="lazyload z-10 h-48 w-48 rounded-full border border-white xl:h-64 xl:w-64"
 					src="https://that.imgix.net/members/1dcd59be-4677-474d-8087-e0b74e8ab810.jpeg?mask=ellipse&w=500&h=500&fit=crop"
 					alt="Clark Sell"
 				/>
@@ -16,7 +16,7 @@
 			</div>
 
 			<div class="mt-12 lg:m-0 lg:pl-8">
-				<div class="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 lg:px-0 lg:py-20 lg:max-w-none">
+				<div class="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 lg:max-w-none lg:px-0 lg:py-20">
 					<blockquote>
 						<div>
 							<svg

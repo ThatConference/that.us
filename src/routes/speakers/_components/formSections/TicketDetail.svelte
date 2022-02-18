@@ -42,17 +42,17 @@
 	}
 </script>
 
-<div class="antialiased mt-6">
+<div class="mt-6 antialiased">
 	<div
-		class="flex-1 flex items-center justify-between border rounded-md bg-gray-50"
+		class="flex flex-1 items-center justify-between rounded-md border bg-gray-50"
 		class:bg-green-50={submitSuccess}
 		class:border-green-500={submitSuccess}
 	>
 		<div class="flex-1 px-4 py-2 text-sm">
 			<button type="button" class="w-full text-left" on:click={() => (open = !open)}>
-				<div class="flex justify-between items-center space-x-4">
+				<div class="flex items-center justify-between space-x-4">
 					<div>
-						<p class="text-gray-900 font-semibold">{orderAllocation.product.name}</p>
+						<p class="font-semibold text-gray-900">{orderAllocation.product.name}</p>
 						<p class="text-gray-500">{orderAllocation.product.shortDescription}</p>
 					</div>
 
@@ -61,7 +61,7 @@
 							<svg
 								in:fade={{ delay: 200, duration: 300 }}
 								xmlns="http://www.w3.org/2000/svg"
-								class="animate-bounce h-6 w-6"
+								class="h-6 w-6 animate-bounce"
 								fill="none"
 								viewBox="0 0 24 24"
 								stroke="currentColor"
@@ -88,7 +88,7 @@
 									<select
 										name="tshirtSize"
 										bind:value={tshirtSizeSelection}
-										class="form-select block w-full mt-1 rounded-md text-sm"
+										class="form-select mt-1 block w-full rounded-md text-sm"
 									>
 										<option>Please Select</option>
 										{#each tShirtSizes.options as option}
@@ -104,7 +104,7 @@
 										<span class="text-gray-700">Please select your hoodie size (unisex only).</span>
 										<select
 											bind:value={hoodieSizeSelection}
-											class="form-select block w-full mt-1 rounded-md text-sm"
+											class="form-select mt-1 block w-full rounded-md text-sm"
 										>
 											<option>Please Select</option>
 											{#each hoodieSizes.options as option}
@@ -121,7 +121,7 @@
 										<span class="text-gray-700">Do you have any dietary restrictions?</span>
 										<select
 											bind:value={dietaryRequirementsSelection}
-											class="form-multiselect block w-full mt-1 text-sm"
+											class="form-multiselect mt-1 block w-full text-sm"
 										>
 											<option>Please Select</option>
 											{#each dietaryRequirements.options as option}
@@ -141,7 +141,7 @@
 									<Shell>
 										<div class="px-4 py-1">
 											{#if submitting}
-												<div class="w-28 flex justify-center">
+												<div class="flex w-28 justify-center">
 													<Busy size="30" />
 												</div>
 											{:else}

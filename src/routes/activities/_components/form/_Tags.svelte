@@ -17,7 +17,7 @@
 				</p>
 			</div>
 			<div class="mt-4">
-				<div class="w-full tag-form-input">
+				<div class="tag-form-input w-full">
 					<Tags
 						name="tags"
 						tags={initialData.tags}
@@ -25,7 +25,7 @@
 						allowBlur={true}
 						maxTags={5}
 						onlyUnique={true}
-						class="form-input w-full sm:text-sm sm:leading-5 hover:border-gray-700"
+						class="form-input w-full hover:border-gray-700 sm:text-sm sm:leading-5"
 					/>
 				</div>
 			</div>

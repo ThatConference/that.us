@@ -13,7 +13,7 @@
 			{#if isRequired}
 				<div class="relative">
 					<span
-						class="absolute top-0 left-0 transform -translate-x-4 -translate-y-4 block h-2 w-2 rounded-full bg-red-400"
+						class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400"
 					/>
 				</div>
 			{/if}
@@ -28,7 +28,7 @@
 					multiline
 					rows="5"
 					spellcheck="true"
-					class="form-input w-full sm:text-sm sm:leading-5 hover:border-gray-700"
+					class="form-input w-full hover:border-gray-700 sm:text-sm sm:leading-5"
 				/>
 			</div>
 		</div>

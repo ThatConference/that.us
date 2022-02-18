@@ -3,15 +3,15 @@
 	export let name;
 </script>
 
-<section class="py-16 lg:py-20 bg-that-offWhite">
+<section class="bg-that-offWhite py-16 lg:py-20">
 	<div
-		class="relative max-w-screen-md mx-auto px-4 sm:px-6 lg:px-8 lg:flex lg:flex-col
-			items-center lg:justify-between"
+		class="relative mx-auto max-w-screen-md items-center px-4 sm:px-6 lg:flex lg:flex-col
+			lg:justify-between lg:px-8"
 	>
 		<div class="mx-12 md:mr-0">
 			<svg
-				class="absolute top-0 transform -translate-x-12 -translate-y-8
-			h-16 w-16 text-thatBlue-200"
+				class="absolute top-0 h-16 w-16 -translate-x-12
+			-translate-y-8 transform text-thatBlue-200"
 				stroke="currentColor"
 				fill="none"
 				viewBox="0 0 144 144"
@@ -29,13 +29,13 @@
 				/>
 			</svg>
 			<h2
-				class="relative text-3xl leading-9 font-extrabold tracking-tight text-thatBlue-500
+				class="relative text-3xl font-extrabold leading-9 tracking-tight text-thatBlue-500
 				sm:text-4xl sm:leading-10"
 			>
 				{quote}
 			</h2>
-			<div class="mt-4 md:-mr-12 flex justify-end">
-				<h3 class="font-semibold tracking-tight uppercase text-thatBlue-500">
+			<div class="mt-4 flex justify-end md:-mr-12">
+				<h3 class="font-semibold uppercase tracking-tight text-thatBlue-500">
 					{name}
 				</h3>
 			</div>

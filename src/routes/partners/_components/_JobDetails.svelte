@@ -30,16 +30,16 @@
 </script>
 
 <section>
-	<div class="relative mx-auto px-4 max-w-screen-xl sm:px-6 lg:px-8">
+	<div class="relative mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
 		<div class="space-y-12">
 			<div class="space-y-5 sm:space-y-4 md:max-w-xl lg:max-w-3xl xl:max-w-none">
-				<h2 class="text-3xl leading-9 font-extrabold text-thatBlue-800 tracking-tight sm:text-4xl">
+				<h2 class="text-3xl font-extrabold leading-9 tracking-tight text-thatBlue-800 sm:text-4xl">
 					{jobListing.title}
 				</h2>
 			</div>
 
 			<div class="leading-8 text-gray-800">
-				<p class="prose-xl lineBreaks">{jobListing.description}</p>
+				<p class="lineBreaks prose-xl">{jobListing.description}</p>
 			</div>
 
 			{#await queryPartnerDropDownValues() then dropDownValues}

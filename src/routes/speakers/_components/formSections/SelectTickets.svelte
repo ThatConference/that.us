@@ -77,16 +77,16 @@
 		As part of agreeing to speak at THAT, you, of course, need a badge. If you were selected to
 		present AT THAT, you also get to bring your family.
 	</p>
-	<p class="mt-4 prose prose-lg text-gray-500">
+	<p class="prose prose-lg mt-4 text-gray-500">
 		You will also receive a free ON THAT (virtual ticket) camper to give away to anyone you wish. We
 		will send you further instructions on how to do so later.
 	</p>
 	{#if !isAt}
-		<p class="mt-4 prose prose-lg text-gray-500">
+		<p class="prose prose-lg mt-4 text-gray-500">
 			If you would like to attend in-person please contact us.
 		</p>
 	{/if}
-	<p class="mt-4 prose prose-lg text-gray-500">
+	<p class="prose prose-lg mt-4 text-gray-500">
 		But wait, that's not all! Feel free to pass along this discount code <span
 			class="font-extrabold text-gray-900"
 			>{kalahari.speakerPasskey[eventDetails.slug].discountCode}</span
@@ -96,21 +96,21 @@
 </div>
 
 <div class="mt-12">
-	<h2 class="text-xl text-gray-800 font-extrabold">Your Counselor Ticket</h2>
+	<h2 class="text-xl font-extrabold text-gray-800">Your Counselor Ticket</h2>
 
 	<div class="w-full text-left">
 		<div class="mt-4">
 			<div
-				class="flex-1 flex items-center justify-between border rounded-md border-green-500 bg-green-50"
+				class="flex flex-1 items-center justify-between rounded-md border border-green-500 bg-green-50"
 			>
 				<div class="flex-1 px-4 py-2 text-sm">
-					<p class="text-gray-900 font-bold">{speakerTicket.title}</p>
+					<p class="font-bold text-gray-900">{speakerTicket.title}</p>
 					<p class="text-gray-500">{speakerTicket.description}</p>
 				</div>
 
 				<div class="flex-shrink-0 pr-4">
 					<span
-						class="h-6 w-6 rounded-full bg-green-500 bg-opacity-60 flex items-center justify-center"
+						class="flex h-6 w-6 items-center justify-center rounded-full bg-green-500 bg-opacity-60"
 					>
 						<CheckFull height="h-4" width="w-4" />
 					</span>
@@ -122,7 +122,7 @@
 
 <div class="mt-12">
 	{#if platform === 'AT_THAT'}
-		<h2 class="text-xl text-gray-800 font-extrabold">
+		<h2 class="text-xl font-extrabold text-gray-800">
 			Please select any additional family tickets.
 		</h2>
 		{#each Object.entries(atThatAdditionalTickets) as [key, ticket]}
@@ -130,25 +130,25 @@
 				type="button"
 				on:click={() => handleTicketSelection(key)}
 				disabled={ticket.isSpeakerTicket}
-				class="w-full text-left transition duration-500 ease-in-out transform "
+				class="w-full transform text-left transition duration-500 ease-in-out "
 				class:hover:scale-105={!ticket.isSpeakerTicket}
 				class:cursor-default={ticket.isSpeakerTicket}
 			>
 				<div class="mt-4">
 					<div
-						class="flex-1 flex items-center justify-between border rounded-md bg-gray-50"
+						class="flex flex-1 items-center justify-between rounded-md border bg-gray-50"
 						class:border-green-500={ticket.selected}
 						class:bg-green-50={ticket.selected}
 					>
 						<div class="flex-1 px-4 py-2 text-sm">
-							<p class="text-gray-900 font-bold">{ticket.title}</p>
+							<p class="font-bold text-gray-900">{ticket.title}</p>
 							<p class="text-gray-500">{ticket.description}</p>
 						</div>
 
 						<div class="flex-shrink-0 pr-4">
 							{#if ticket.selected}
 								<span
-									class="h-6 w-6 rounded-full bg-green-500 bg-opacity-60 flex items-center justify-center"
+									class="flex h-6 w-6 items-center justify-center rounded-full bg-green-500 bg-opacity-60"
 								>
 									<CheckFull height="h-4" width="w-4" />
 								</span>

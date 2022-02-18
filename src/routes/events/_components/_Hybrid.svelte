@@ -122,17 +122,17 @@
 		<Membership {event} on:purchase-membership={handleOnPurchaseMembership}>
 			<div slot="header">
 				<div class="relative flex flex-col items-center justify-center">
-					<h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-thatBlue-800 ">
+					<h2 class="text-3xl font-extrabold text-thatBlue-800 sm:text-4xl lg:text-5xl ">
 						Go beyond camp.
 					</h2>
 
-					<p class="text-center max-w-6xl mx-auto text-xl sm:mt-5 sm:text-2xl text-gray-500">
+					<p class="mx-auto max-w-6xl text-center text-xl text-gray-500 sm:mt-5 sm:text-2xl">
 						We created THAT to fill a gap between the times when we cannot physically connect. We
 						believe peer-to-peer learning is one of the most powerful ways we can help one another
 						any day of the year.
 					</p>
 
-					<p class="text-center max-w-6xl mx-auto text-xl sm:mt-5 sm:text-2xl text-gray-500">
+					<p class="mx-auto max-w-6xl text-center text-xl text-gray-500 sm:mt-5 sm:text-2xl">
 						Every month we host THAT Online aimed at bringing us all together to recenter and
 						recharge.
 					</p>
@@ -167,7 +167,7 @@
 		<Partners {event} />
 	</section>
 
-	<div class="bg-fixed thatBackground">
+	<div class="thatBackground bg-fixed">
 		<div class="h-96" />
 	</div>
 

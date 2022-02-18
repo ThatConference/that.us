@@ -82,19 +82,19 @@
 
 <div>
 	<header>
-		<h2 class="text-xl leading-6 font-bold text-gray-900">Order History</h2>
+		<h2 class="text-xl font-bold leading-6 text-gray-900">Order History</h2>
 	</header>
 
 	<div class="mt-12">
 		<ul class="flex flex-col space-y-6">
 			{#each $state.context.items as o (o.id)}
-				<li class="bg-white shadow overflow-hidden sm:rounded-md">
+				<li class="overflow-hidden bg-white shadow sm:rounded-md">
 					<div class="divide-y divide-gray-200">
 						<div>
 							<button
 								type="button"
 								on:click={() => handleReceiptRedirect(o.id)}
-								class="min-w-full block hover:bg-gray-200"
+								class="block min-w-full hover:bg-gray-200"
 							>
 								<div class="flex items-center space-x-12 px-4 py-4 sm:px-6">
 									<div class="flex-grow">
@@ -115,7 +115,7 @@
 													</p>
 													<p class="mt-2 flex items-center text-sm text-gray-500">
 														<svg
-															class="flex-shrink-0 mr-1.5 h-5 w-5 text-green-400"
+															class="mr-1.5 h-5 w-5 flex-shrink-0 text-green-400"
 															xmlns="http://www.w3.org/2000/svg"
 															viewBox="0 0 20 20"
 															fill="currentColor"
