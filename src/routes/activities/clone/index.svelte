@@ -40,6 +40,10 @@
 	delete activity.id;
 	delete activity.eventId;
 	delete activity.event;
+	delete activity.type;
+	delete activity.location;
+	delete activity.slug;
+	delete activity.targetLocation;
 
 	const metaTags = ((title = 'Clone Activity - THAT') => ({
 		title,
