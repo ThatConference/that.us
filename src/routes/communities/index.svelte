@@ -65,7 +65,7 @@
 <Layout>
 	<main class="overflow-hidden">
 		<div class="relative pb-16 md:pb-20 lg:pb-24 xl:pb-32">
-			<div class="mt-32 mx-auto max-w-screen-xl px-4 sm:px-6 xl:mt-40">
+			<div class="mx-auto mt-32 max-w-screen-xl px-4 sm:px-6 xl:mt-40">
 				<main>
 					<Hero />
 					<div class="py-20">
@@ -73,11 +73,11 @@
 							<ul class="grid grid-cols-1 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
 								{#each $state.context.items as c (c.id)}
 									<li
-										class="col-span-1 bg-white rounded-lg shadow transition duration-500 ease-in-out transform hover:scale-105 hover:bg-that-offWhite"
+										class="col-span-1 transform rounded-lg bg-white shadow transition duration-500 ease-in-out hover:scale-105 hover:bg-that-offWhite"
 									>
 										<a
 											href={`/communities/${c.slug}`}
-											class="h-full flex flex-col justify-between p-4 text-center focus:outline-none"
+											class="flex h-full flex-col justify-between p-4 text-center focus:outline-none"
 										>
 											<CommunityCard community={c} />
 										</a>

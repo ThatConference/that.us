@@ -34,7 +34,7 @@
 >
 	<div>
 		<div>
-			<h2 class="text-xl leading-6 font-bold text-gray-900">Your Shared Profile</h2>
+			<h2 class="text-xl font-bold leading-6 text-gray-900">Your Shared Profile</h2>
 
 			<p class="mt-4 text-sm leading-5 text-gray-500">
 				Your shared profile is an opportunity for you to change your primary profile information
@@ -56,10 +56,10 @@
 					</label>
 					<div class="relative">
 						<span
-							class="absolute top-0 left-0 transform -translate-x-4 -translate-y-4 block h-2 w-2 rounded-full bg-red-400"
+							class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400"
 						/>
 					</div>
-					<div class="mt-1 border rounded-md shadow-sm">
+					<div class="mt-1 rounded-md border shadow-sm">
 						<Input
 							name="firstName"
 							type="text"
@@ -75,10 +75,10 @@
 					</label>
 					<div class="relative">
 						<span
-							class="absolute top-0 left-0 transform -translate-x-4 -translate-y-4 block h-2 w-2 rounded-full bg-red-400"
+							class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400"
 						/>
 					</div>
-					<div class="mt-1 border rounded-md shadow-sm">
+					<div class="mt-1 rounded-md border shadow-sm">
 						<Input
 							name="lastName"
 							class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5"
@@ -92,10 +92,10 @@
 					</label>
 					<div class="relative">
 						<span
-							class="absolute top-0 left-0 transform -translate-x-4 -translate-y-4 block h-2 w-2 rounded-full bg-red-400"
+							class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400"
 						/>
 					</div>
-					<div class="mt-1 border rounded-md shadow-sm">
+					<div class="mt-1 rounded-md border shadow-sm">
 						<Input
 							name="email"
 							type="email"
@@ -104,12 +104,12 @@
 					</div>
 				</div>
 
-				<div class="py-6 relative sm:col-span-6">
+				<div class="relative py-6 sm:col-span-6">
 					<div class="absolute inset-0 flex items-center" aria-hidden="true">
 						<div class="w-full border-t border-gray-300" />
 					</div>
 					<div class="relative flex justify-center">
-						<span class="px-2 bg-gray-100 text-sm text-gray-500"> Optional Fields </span>
+						<span class="bg-gray-100 px-2 text-sm text-gray-500"> Optional Fields </span>
 					</div>
 				</div>
 
@@ -129,7 +129,7 @@
 
 				<div class="sm:col-span-3">
 					<label for="city" class="block text-sm font-medium leading-5 text-gray-700"> City </label>
-					<div class="mt-1 border rounded-md shadow-sm">
+					<div class="mt-1 rounded-md border shadow-sm">
 						<Input
 							name="city"
 							type="text"
@@ -142,7 +142,7 @@
 					<label for="state" class="block text-sm font-medium leading-5 text-gray-700">
 						State
 					</label>
-					<div class="mt-1 border rounded-md shadow-sm">
+					<div class="mt-1 rounded-md border shadow-sm">
 						<Input
 							name="state"
 							type="text"
@@ -160,7 +160,7 @@
 						<button
 							type="submit"
 							disabled={isSubmitting}
-							class="w-full px-8 py-2 text-sm leading-5 font-medium"
+							class="w-full px-8 py-2 text-sm font-medium leading-5"
 						>
 							<span>Update Shared Profile</span>
 						</button>

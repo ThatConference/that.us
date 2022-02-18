@@ -1,10 +1,10 @@
 <div
-	class="bg-thatOrange-400 rounded-md shadow
-		border-2 border-transparent 
-		text-base leading-6 md:text-lg font-medium text-white 
-		hover:bg-thatOrange-500
-		focus:outline-none focus:border-thatOrange-700 focus:ring-that-orange
-		transition duration-150 ease-in-out"
+	class="rounded-md border-2 border-transparent
+		bg-thatOrange-400 text-base 
+		font-medium leading-6 text-white shadow transition 
+		duration-150
+		ease-in-out hover:bg-thatOrange-500 focus:border-thatOrange-700
+		focus:outline-none focus:ring-that-orange md:text-lg"
 >
 	<slot />
 </div>

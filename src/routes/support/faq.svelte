@@ -60,22 +60,22 @@
 <Seo title={metaTags.title} tags={metaTags.tags} />
 
 <Layout>
-	<div class="py-16 overflow-hidden">
-		<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-			<div class="text-base max-w-prose mx-auto lg:max-w-none">
+	<div class="overflow-hidden py-16">
+		<div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+			<div class="mx-auto max-w-prose text-base lg:max-w-none">
 				<div
-					class="flex justify-between items-center flex-wrap sm:flex-nowrap
-            flex-col md:flex-row"
+					class="flex flex-col flex-wrap items-center justify-between
+            sm:flex-nowrap md:flex-row"
 				>
 					<div>
 						<p
-							class="text-base leading-6 text-thatOrange-400 font-semibold
-                tracking-wide uppercase"
+							class="text-base font-semibold uppercase leading-6
+                tracking-wide text-thatOrange-400"
 						>
 							Help && Support
 						</p>
 						<h1
-							class="mt-2 mb-8 text-3xl leading-8 font-extrabold tracking-tight
+							class="mt-2 mb-8 text-3xl font-extrabold leading-8 tracking-tight
                 text-gray-900 sm:text-4xl sm:leading-10"
 						>
 							Frequently Asked Questions

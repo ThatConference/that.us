@@ -51,15 +51,15 @@
 	];
 </script>
 
-<div class="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
-	<div class="max-w-2xl lg:mx-auto text-center">
-		<h2 class="text-4xl font-extrabold tracking-tighter uppercase text-thatBlue-800">
+<div class="mx-auto max-w-7xl py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
+	<div class="max-w-2xl text-center lg:mx-auto">
+		<h2 class="text-4xl font-extrabold uppercase tracking-tighter text-thatBlue-800">
 			Frequently asked questions
 		</h2>
 	</div>
 
 	<div>
-		<p class="text-center pt-4 prose-lg text-gray-500">
+		<p class="prose-lg pt-4 text-center text-gray-500">
 			Have more questions? Just drop us an email or hit us up in the chat.
 			<a
 				href="mailto:hello@that.us?subject=Adding a new community to THAT.us"
@@ -71,13 +71,13 @@
 	</div>
 
 	<div class="mt-20">
-		<dl class="space-y-10 lg:space-y-0 lg:grid lg:grid-cols-2 lg:gap-x-12 lg:gap-y-10">
+		<dl class="space-y-10 lg:grid lg:grid-cols-2 lg:gap-x-12 lg:gap-y-10 lg:space-y-0">
 			{#each questions as q}
 				<div>
-					<dt class="font-semibold prose-lg text-gray-600">
+					<dt class="prose-lg font-semibold text-gray-600">
 						{q.q}
 					</dt>
-					<dd class="mt-3 prose-lg text-gray-500">
+					<dd class="prose-lg mt-3 text-gray-500">
 						{q.a}
 					</dd>
 				</div>

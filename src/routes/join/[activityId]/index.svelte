@@ -279,7 +279,7 @@
 			<ActionHeader title={activityDetails.title}>
 				<a
 					href="/activities/{activityId}/"
-					class="px-8 py-3 rounded-md shadow text-base leading-6 font-medium border-2 border-thatBlue-500 text-thatBlue-500 bg-white hover:bg-thatBlue-500 hover:text-white focus:bg-thatBlue-500 focus:text-white focus:outline-none focus:ring-thatBlue-500 focus:border-thatBlue-800 transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10"
+					class="rounded-md border-2 border-thatBlue-500 bg-white px-8 py-3 text-base font-medium leading-6 text-thatBlue-500 shadow transition duration-150 ease-in-out hover:bg-thatBlue-500 hover:text-white focus:border-thatBlue-800 focus:bg-thatBlue-500 focus:text-white focus:outline-none focus:ring-thatBlue-500 md:py-4 md:px-10 md:text-lg"
 					target="_blank"
 					rel="noopener">Activity Details</a
 				>
@@ -290,14 +290,14 @@
 	<div slot="body" class="relative">
 		<button
 			type="button"
-			class="absolute top-12 left-0 cursor-pointer ml-48 mt-1"
+			class="absolute top-12 left-0 ml-48 mt-1 cursor-pointer"
 			on:click={expanded ? shrinkJitsiFrame : expandJitsiFrame}
 		>
 			<Icon data={expanded ? compressIcon : expandIcon} class="h-6 w-6 text-white" />
 		</button>
 
 		{#if !jitsiLoaded}
-			<div class="flex flex-col justify-center items-center">
+			<div class="flex flex-col items-center justify-center">
 				<p class="text-xl font-semibold">Loading room....</p>
 				<p class="text-gray-500">
 					If for some reason this message doesn't go away, please refresh.

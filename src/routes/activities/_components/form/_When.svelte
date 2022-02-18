@@ -143,8 +143,8 @@
 	}
 </script>
 
-<div class="px-4 sm:px-6 py-5 ">
-	<div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start">
+<div class="px-4 py-5 sm:px-6 ">
+	<div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4">
 		<div>
 			<label
 				for="selectedDay"
@@ -154,12 +154,12 @@
 			</label>
 			<div class="relative">
 				<span
-					class="absolute top-0 left-0 transform -translate-x-4 -translate-y-4 block h-2 w-2 rounded-full bg-red-400"
+					class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400"
 				/>
 			</div>
 		</div>
 
-		<div class="mt-1 sm:mt-0 sm:col-span-2">
+		<div class="mt-1 sm:col-span-2 sm:mt-0">
 			<div class="max-w-lg sm:text-sm sm:leading-5">
 				<Input hidden name="selectedDay" bind:value={selectedDateValue} />
 				<Datepicker
@@ -175,7 +175,7 @@
 		</div>
 	</div>
 
-	<div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:pt-5">
+	<div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:pt-5">
 		<div>
 			<label
 				for="activity_startTime"
@@ -185,13 +185,13 @@
 			</label>
 			<div class="relative">
 				<span
-					class="absolute top-0 left-0 transform -translate-x-4 -translate-y-4 block h-2 w-2 rounded-full bg-red-400"
+					class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400"
 				/>
 			</div>
 		</div>
 
-		<div class="mt-1 sm:mt-0 sm:col-span-2">
-			<div class="flex space-x-8 max-w-lg">
+		<div class="mt-1 sm:col-span-2 sm:mt-0">
+			<div class="flex max-w-lg space-x-8">
 				<div>
 					<legend class="block text-sm font-medium leading-5 text-gray-400"> Starting Time </legend>
 					<div class="mt-1 w-32">
@@ -209,7 +209,7 @@
 
 				<div>
 					<legend class="block text-sm font-medium leading-5 text-gray-400"> Time Zone </legend>
-					<div class="mt-1 rounded-md shadow-sm w-64">
+					<div class="mt-1 w-64 rounded-md shadow-sm">
 						<Select
 							bind:this={timezoneSelect}
 							inputAttributes={{ name: 'selectedTimezone' }}
@@ -225,16 +225,16 @@
 			</div>
 			<div class="mt-6">
 				{#if touched['selectedTime'] && errors['selectedTime']}
-					<p class="text-red-600 italic">{errors['selectedTime']}</p>
+					<p class="italic text-red-600">{errors['selectedTime']}</p>
 				{/if}
 				{#if touched['selectedTimezone'] && errors['selectedTimezone']}
-					<p class="text-red-600 italic">{errors['selectedTimezone']}</p>
+					<p class="italic text-red-600">{errors['selectedTimezone']}</p>
 				{/if}
 			</div>
 		</div>
 	</div>
 
-	<div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:pt-5">
+	<div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:pt-5">
 		<div>
 			<label
 				for="activity_duration"
@@ -244,12 +244,12 @@
 			</label>
 			<div class="relative">
 				<span
-					class="absolute top-0 left-0 transform -translate-x-4 -translate-y-4 block h-2 w-2 rounded-full bg-red-400"
+					class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400"
 				/>
 			</div>
 		</div>
 
-		<div class="mt-1 sm:mt-0 sm:col-span-2">
+		<div class="mt-1 sm:col-span-2 sm:mt-0">
 			<div class="w-32">
 				<Select
 					bind:this={estimatedDurationSelect}
@@ -264,7 +264,7 @@
 			</div>
 			<div class="mt-6">
 				{#if touched['selectedDuration'] && errors['selectedDuration']}
-					<p class="text-red-600 italic">
+					<p class="italic text-red-600">
 						{errors['selectedDuration']}
 					</p>
 				{/if}

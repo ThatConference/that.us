@@ -11,6 +11,6 @@
 			Our records seem to indicate that you do not have any accepted sessions to enroll in at this
 			time. If you feel like this is an error on our part, please feel free to contact us.
 		</p>
-		<p class="mt-6 prose prose-lg">THAT Crew</p>
+		<p class="prose prose-lg mt-6">THAT Crew</p>
 	</div>
 </div>

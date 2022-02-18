@@ -65,7 +65,7 @@
 
 <div>
 	<header>
-		<h2 class="text-xl leading-6 font-bold text-gray-900">Membership Settings</h2>
+		<h2 class="text-xl font-bold leading-6 text-gray-900">Membership Settings</h2>
 	</header>
 
 	{#if !$session.thatProfile?.isMember}

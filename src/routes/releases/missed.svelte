@@ -55,11 +55,11 @@
 <Seo title={metaTags.title} tags={metaTags.tags} />
 
 <Layout>
-	<div class="py-16 bg-white">
-		<div class="relative max-w-7xl mx-auto">
+	<div class="bg-white py-16">
+		<div class="relative mx-auto max-w-7xl">
 			<div class="mb-12">
 				<h3
-					class="text-3xl leading-8 font-extrabold tracking-tight text-gray-900
+					class="text-3xl font-extrabold leading-8 tracking-tight text-gray-900
             sm:text-4xl sm:leading-10"
 				>
 					Since your last visit...

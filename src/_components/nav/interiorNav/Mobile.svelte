@@ -14,63 +14,63 @@
 		<a
 			sveltekit:prefetch
 			href="/events/"
-			class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300
-        hover:text-white hover:bg-that-blue focus:outline-none focus:text-white
-        focus:bg-that-blue"
+			class="mt-1 block rounded-md px-3 py-2 text-base font-medium text-gray-300
+        hover:bg-that-blue hover:text-white focus:bg-that-blue focus:text-white
+        focus:outline-none"
 		>
 			Events
 		</a>
 		<a
 			sveltekit:prefetch
 			href="/activities/"
-			class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300
-        hover:text-white hover:bg-that-blue focus:outline-none focus:text-white
-        focus:bg-that-blue"
+			class="mt-1 block rounded-md px-3 py-2 text-base font-medium text-gray-300
+        hover:bg-that-blue hover:text-white focus:bg-that-blue focus:text-white
+        focus:outline-none"
 		>
 			Activities
 		</a>
 		<a
 			sveltekit:prefetch
 			href="/members/"
-			class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300
-        hover:text-white hover:bg-that-blue focus:outline-none focus:text-white
-        focus:bg-that-blue"
+			class="mt-1 block rounded-md px-3 py-2 text-base font-medium text-gray-300
+        hover:bg-that-blue hover:text-white focus:bg-that-blue focus:text-white
+        focus:outline-none"
 		>
 			Members
 		</a>
 		<a
 			sveltekit:prefetch
 			href="/communities/"
-			class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300
-				hover:text-white hover:bg-that-blue focus:outline-none focus:text-white
-				focus:bg-that-blue"
+			class="mt-1 block rounded-md px-3 py-2 text-base font-medium text-gray-300
+				hover:bg-that-blue hover:text-white focus:bg-that-blue focus:text-white
+				focus:outline-none"
 		>
 			Communities
 		</a>
 		<a
 			sveltekit:prefetch
 			href="/partners/"
-			class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300
-        hover:text-white hover:bg-that-blue focus:outline-none focus:text-white
-        focus:bg-that-blue"
+			class="mt-1 block rounded-md px-3 py-2 text-base font-medium text-gray-300
+        hover:bg-that-blue hover:text-white focus:bg-that-blue focus:text-white
+        focus:outline-none"
 		>
 			Partners
 		</a>
 		<a
 			sveltekit:prefetch
 			href="/blog/"
-			class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300
-        hover:text-white hover:bg-that-blue focus:outline-none focus:text-white
-        focus:bg-that-blue"
+			class="mt-1 block rounded-md px-3 py-2 text-base font-medium text-gray-300
+        hover:bg-that-blue hover:text-white focus:bg-that-blue focus:text-white
+        focus:outline-none"
 		>
 			Blog
 		</a>
 		<a
 			sveltekit:prefetch
 			href="/support/"
-			class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300
-        hover:text-white hover:bg-that-blue focus:outline-none focus:text-white
-        focus:bg-that-blue"
+			class="mt-1 block rounded-md px-3 py-2 text-base font-medium text-gray-300
+        hover:bg-that-blue hover:text-white focus:bg-that-blue focus:text-white
+        focus:outline-none"
 		>
 			Help
 		</a>

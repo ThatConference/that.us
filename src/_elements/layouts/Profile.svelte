@@ -3,7 +3,7 @@
 </script>
 
 <BaseLayout>
-	<div class="py-20 overflow-hidden">
+	<div class="overflow-hidden py-20">
 		<slot />
 	</div>
 </BaseLayout>

@@ -37,30 +37,30 @@
 
 <div>
 	<div>
-		<h2 class="text-xl leading-6 font-bold text-gray-900">Sponsors You've Met</h2>
+		<h2 class="text-xl font-bold leading-6 text-gray-900">Sponsors You've Met</h2>
 
 		<!-- <p class="mt-4 text-sm leading-5 text-gray-500">add copy here</p> -->
 
 		<div class="px-4 py-8">
-			<div class="bg-white shadow overflow-hidden sm:rounded-md">
+			<div class="overflow-hidden bg-white shadow sm:rounded-md">
 				<ul class="divide-y divide-gray-200">
 					{#each contacts as c}
 						<li>
 							<a href="/partners/{c.partner.slug}/" class="block hover:bg-gray-50">
 								<div class="flex items-center px-4 py-4 sm:px-6">
-									<div class="min-w-0 flex-1 flex items-center">
+									<div class="flex min-w-0 flex-1 items-center">
 										<div class="flex-shrink-0">
 											<img class="h-12 w-12" src={c.partner.companyLogo} alt="" />
 										</div>
 										<div class="min-w-0 flex-1 px-4 md:grid md:grid-cols-2 md:gap-4">
 											<div>
-												<p class="text-sm font-medium text-thatBlue-800 truncate">
+												<p class="truncate text-sm font-medium text-thatBlue-800">
 													{c.partnerContact.firstName}
 													{c.partnerContact.lastName}
 												</p>
 												<p class="mt-2 flex items-center text-sm text-gray-500">
 													<svg
-														class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400"
+														class="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400"
 														xmlns="http://www.w3.org/2000/svg"
 														viewBox="0 0 20 20"
 														fill="currentColor"
@@ -83,7 +83,7 @@
 													</p>
 													<p class="mt-2 flex items-center text-sm text-gray-500">
 														<svg
-															class="flex-shrink-0 mr-1.5 h-5 w-5 text-green-400"
+															class="mr-1.5 h-5 w-5 flex-shrink-0 text-green-400"
 															xmlns="http://www.w3.org/2000/svg"
 															viewBox="0 0 20 20"
 															fill="currentColor"

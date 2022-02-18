@@ -44,8 +44,8 @@
 </script>
 
 <nav aria-label="Progress">
-	<ol class="border border-gray-300 rounded-md divide-y divide-gray-300 md:flex md:divide-y-0">
-		<li class="relative md:flex-1 md:flex">
+	<ol class="divide-y divide-gray-300 rounded-md border border-gray-300 md:flex md:divide-y-0">
+		<li class="relative md:flex md:flex-1">
 			{#if stepOneComplete}
 				<StepComplete stepName="Login" />
 			{:else}
@@ -58,7 +58,7 @@
 				/>
 			{/if}
 
-			<div class="hidden md:block absolute top-0 right-0 h-full w-5" aria-hidden="true">
+			<div class="absolute top-0 right-0 hidden h-full w-5 md:block" aria-hidden="true">
 				<svg
 					class="h-full w-full text-gray-300"
 					viewBox="0 0 22 80"
@@ -87,7 +87,7 @@
 				/>
 			{/if}
 
-			<div class="hidden md:block absolute top-0 right-0 h-full w-5" aria-hidden="true">
+			<div class="absolute top-0 right-0 hidden h-full w-5 md:block" aria-hidden="true">
 				<svg
 					class="h-full w-full text-gray-300"
 					viewBox="0 0 22 80"
@@ -116,7 +116,7 @@
 				/>
 			{/if}
 
-			<div class="hidden md:block absolute top-0 right-0 h-full w-5" aria-hidden="true">
+			<div class="absolute top-0 right-0 hidden h-full w-5 md:block" aria-hidden="true">
 				<svg
 					class="h-full w-full text-gray-300"
 					viewBox="0 0 22 80"
@@ -141,7 +141,7 @@
 
 <div class="px-4 py-5 sm:p-6">
 	{#if $state.matches('pendingLogin')}
-		<h3 class="text-lg leading-6 font-medium text-gray-900">Please Login</h3>
+		<h3 class="text-lg font-medium leading-6 text-gray-900">Please Login</h3>
 		<div class="mt-2 max-w-xl text-sm text-gray-500">
 			<p>
 				Your purchase is attached to the user profile who is logged in. To get started please login,

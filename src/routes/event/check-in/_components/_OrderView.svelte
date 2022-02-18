@@ -45,10 +45,10 @@
 
 <section>
 	<div>
-		<div class="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-8 sm:items-center">
+		<div class="flex flex-col space-y-4 sm:flex-row sm:items-center sm:space-y-0 sm:space-x-8">
 			<input
 				autofocus
-				class="form-input border rounded-md"
+				class="form-input rounded-md border"
 				bind:value={searchterm}
 				placeholder="type to search..."
 			/>
@@ -60,7 +60,7 @@
 			<ul class="space-y-4">
 				{#each registrationsFiltered as reg (reg.id)}
 					<li
-						class="bg-gray-50 bg-opacity-75 shadow overflow-hidden px-4 py-4 sm:px-6 sm:rounded-md"
+						class="overflow-hidden bg-gray-50 bg-opacity-75 px-4 py-4 shadow sm:rounded-md sm:px-6"
 					>
 						<Order registration={reg} />
 					</li>

@@ -17,13 +17,13 @@
 
 <div>
 	<a href={`/activities/${id}`}>
-		<div class="bg-thatBlue-800 rounded">
+		<div class="rounded bg-thatBlue-800">
 			<div class="relative z-10 rounded-lg shadow-xl">
-				<div class="absolute inset-x-0 top-0 transform translate-y-px">
-					<div class="flex justify-center transform -translate-y-1/2">
+				<div class="absolute inset-x-0 top-0 translate-y-px transform">
+					<div class="flex -translate-y-1/2 transform justify-center">
 						<span
 							class="inline-flex rounded-full bg-red-500 px-20 py-3 text-2xl
-            leading-5 font-semibold tracking-wider uppercase text-white"
+            font-semibold uppercase leading-5 tracking-wider text-white"
 						>
 							Keynote
 						</span>
@@ -31,10 +31,10 @@
 				</div>
 			</div>
 
-			<div class="pt-12 pb-12 px-4 sm:px-6 lg:px-8 lg:pt-20 lg:pb-20">
+			<div class="px-4 pt-12 pb-12 sm:px-6 lg:px-8 lg:pt-20 lg:pb-20">
 				<div class="text-center">
 					<p
-						class="mt- text-3xl leading-9 font-extrabold text-white sm:text-2xl
+						class="mt- text-3xl font-extrabold leading-9 text-white sm:text-2xl
           sm:leading-10 lg:text-5xl lg:leading-none"
 					>
 						{#each splitTitle as line}
@@ -42,7 +42,7 @@
 						{/each}
 					</p>
 					<p
-						class="lineBreaks mt-12 max-w-4xl mx-auto text-xl leading-7 text-gray-300
+						class="lineBreaks mx-auto mt-12 max-w-4xl text-xl leading-7 text-gray-300
           sm:mt-14 sm:text-2xl sm:leading-8"
 					>
 						{shortDescription}
@@ -56,10 +56,10 @@
 						<PanelSpeakers {speakers} />
 					{/if}
 
-					<div class="border-t-2 border-gray-100 rounded-b-lg pt-10 pb-8 bg-gray-50 px-10 py-10">
-						<div class="flex flex-col lg:flex-row items-center justify-center">
+					<div class="rounded-b-lg border-t-2 border-gray-100 bg-gray-50 px-10 py-10 pt-10 pb-8">
+						<div class="flex flex-col items-center justify-center lg:flex-row">
 							<span
-								class="flex-none text-3xl leading-none tracking-tight text-gray-900 sm:text-3xl lg:pr-4 pb-4 lg:pb-0"
+								class="flex-none pb-4 text-3xl leading-none tracking-tight text-gray-900 sm:text-3xl lg:pr-4 lg:pb-0"
 							>
 								<span class="font-extrabold">
 									{#if location === 'THAT'}
@@ -70,18 +70,18 @@
 								</span>
 							</span>
 
-							<div class="flex flex-col lg:flex-row items-center justify-center">
+							<div class="flex flex-col items-center justify-center lg:flex-row">
 								{#if location === 'THAT'}
-									<div class="inline-flex m-3 rounded-md shadow-md">
+									<div class="m-3 inline-flex rounded-md shadow-md">
 										<a
 											open
 											href={`/join/${id}`}
-											class="relative inline-flex items-center justify-center
-                      px-4 py-2 border border-gray-300 text-sm leading-5
-                      font-medium rounded-md text-gray-700 bg-white
-                      hover:text-red-700 focus:outline-none
-                      focus:ring-red focus:border-red-300
-                      active:bg-gray-50 active:text-gray-800 w-32"
+											class="focus:ring-red relative inline-flex w-32
+                      items-center justify-center rounded-md border border-gray-300 bg-white
+                      px-4 py-2 text-sm font-medium
+                      leading-5 text-gray-700
+                      hover:text-red-700 focus:border-red-300
+                      focus:outline-none active:bg-gray-50 active:text-gray-800"
 										>
 											<Icon data={signIn} class="-ml-1 mr-2 h-5 w-5" />
 											<span>THAT</span>

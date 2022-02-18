@@ -64,10 +64,10 @@
 	<Input name="allocationId" type="text" hidden />
 
 	<div
-		class="flex flex-col space-y-2 md:space-y-0 md:grid gap-4 grid-cols-7 place-content-center px-4 py-6 sm:px-6"
+		class="flex grid-cols-7 flex-col place-content-center gap-4 space-y-2 px-4 py-6 sm:px-6 md:grid md:space-y-0"
 	>
 		<div class="col-span-2">
-			<p class="text-sm font-medium text-thatBlue-700 truncate">
+			<p class="truncate text-sm font-medium text-thatBlue-700">
 				{product.name}
 			</p>
 
@@ -80,7 +80,7 @@
 
 		<div class="col-span-3">
 			{#if isAllocated}
-				<div class="h-12 flex flex-col justify-center">
+				<div class="flex h-12 flex-col justify-center">
 					<div>
 						<span class="italic text-gray-500"> allocated to: </span>
 						<span class="font-semibold">
@@ -105,7 +105,7 @@
 				<ShellButton>
 					<a
 						on:click={() => (isAllocated = false)}
-						class="text-center w-full px-8 md:px-10 py-1 text-sm leading-5 font-medium "
+						class="w-full px-8 py-1 text-center text-sm font-medium leading-5 md:px-10 "
 					>
 						<span>
 							<Icon data={refresh} class="-ml-1 mr-2 h-4 w-4" />
@@ -131,7 +131,7 @@
 			{/if}
 		</div>
 	</div>
-	<div class="p-4 flex flex-col items-center justify-center text-red-500" class:hidden={!hasError}>
+	<div class="flex flex-col items-center justify-center p-4 text-red-500" class:hidden={!hasError}>
 		{errorMessage}
 	</div>
 </Form>

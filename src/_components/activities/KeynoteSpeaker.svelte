@@ -14,17 +14,17 @@
 <div class="bg-white pb-12">
 	<div class="relative z-0">
 		<div class="absolute inset-0 h-5/6 bg-thatBlue-800 lg:h-2/3" />
-		<div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+		<div class="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
 			<div class="relative lg:grid lg:grid-cols-7">
 				<div
-					class="mt-10 max-w-lg mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-start-2 lg:col-end-7 lg:row-start-1 lg:row-end-4"
+					class="mx-auto mt-10 max-w-lg lg:col-start-2 lg:col-end-7 lg:row-start-1 lg:row-end-4 lg:mx-0 lg:mt-0 lg:max-w-none"
 				>
-					<div class="bg-white rounded-t-lg px-6 pt-12 pb-10">
-						<div class="text-center text-3xl leading-9 font-semibold text-gray-900 sm:-mx-6">
+					<div class="rounded-t-lg bg-white px-6 pt-12 pb-10">
+						<div class="text-center text-3xl font-semibold leading-9 text-gray-900 sm:-mx-6">
 							<a href="/members/{host.profileSlug}/" class="flex-shrink-0">
-								<span class="inline-block relative">
+								<span class="relative inline-block">
 									<img
-										class="lazyload w-48 h-48 rounded-full"
+										class="lazyload h-48 w-48 rounded-full"
 										src={userProfileImage}
 										alt={`${host.firstName} ${host.lastName}`}
 									/>
@@ -44,7 +44,7 @@
 
 						<div class="mt-4 flex flex-col items-center justify-center">
 							<span
-								class="text-3xl leading-9 font-extrabold text-gray-900 sm:text-2xl sm:leading-10 lg:text-5xl lg:leading-none"
+								class="text-3xl font-extrabold leading-9 text-gray-900 sm:text-2xl sm:leading-10 lg:text-5xl lg:leading-none"
 							>
 								<span>{`${host.firstName} ${host.lastName}`}</span>
 							</span>
@@ -55,8 +55,8 @@
 
 							<span class="py-3 text-xl leading-none tracking-tight text-gray-500 sm:text-xl">
 								<p
-									class="ml-3 text-base leading-6 font-medium
-                  text-gray-500 text-center"
+									class="ml-3 text-center text-base font-medium
+                  leading-6 text-gray-500"
 								>
 									{host.bio}
 								</p>

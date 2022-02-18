@@ -10,11 +10,11 @@
 </script>
 
 <div class="relative bg-thatBlue-200 bg-opacity-25">
-	<div class="max-w-5xl mx-auto w-full pt-24 pb-10 px-6">
-		<div class="flex flex-col sm:flex-row sm:justify-between items-center">
+	<div class="mx-auto w-full max-w-5xl px-6 pt-24 pb-10">
+		<div class="flex flex-col items-center sm:flex-row sm:justify-between">
 			<div class="flex flex-col space-y-12">
 				<h1
-					class="font-extrabold uppercase text-thatBlue-500 text-4xl sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl"
+					class="text-4xl font-extrabold uppercase text-thatBlue-500 sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl"
 				>
 					Event Tickets
 				</h1>
@@ -52,7 +52,7 @@
 			</div>
 		</div>
 
-		<div class="relative mt-24 p-8 flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+		<div class="relative mt-24 flex flex-col space-y-4 p-8 sm:flex-row sm:space-y-0 sm:space-x-4">
 			<div class="flex-1 rounded-md shadow">
 				<a use:scrollto={'#professionals'}>
 					<Shell>
@@ -76,10 +76,10 @@
 			</div>
 		</div>
 
-		<div class="p-10 text-gray-500 flex justify-center">
+		<div class="flex justify-center p-10 text-gray-500">
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
-				class="animate-bounce h-6 w-6"
+				class="h-6 w-6 animate-bounce"
 				fill="none"
 				viewBox="0 0 24 24"
 				stroke="currentColor"

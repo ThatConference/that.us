@@ -12,23 +12,23 @@
 
 <a sveltekit:prefetch href={`/blog/posts/${metadata.slug}/`}>
 	<div
-		class="h-full transition duration-500 ease-in-out transform hover:scale-105 flex flex-col rounded-lg shadow-lg overflow-hidden"
+		class="flex h-full transform flex-col overflow-hidden rounded-lg shadow-lg transition duration-500 ease-in-out hover:scale-105"
 	>
 		<div class="flex-shrink-0">
 			<img
-				class="bg-white h-[600] w-[335] top-rounded-lg object-cover"
+				class="top-rounded-lg h-[600] w-[335] bg-white object-cover"
 				src={cdnUrl(metadata.heroImage)}
 				alt=""
 			/>
 		</div>
-		<div class="flex-grow bg-white p-6 flex flex-col justify-between">
+		<div class="flex flex-grow flex-col justify-between bg-white p-6">
 			<div class="flex-grow">
 				<p class="text-sm font-medium text-gray-400">
-					<a href={`/blog/posts/${metadata.slug}/`} class="hover:underline uppercase"
+					<a href={`/blog/posts/${metadata.slug}/`} class="uppercase hover:underline"
 						>{metadata.articleType}</a
 					>
 				</p>
-				<div class="block mt-2">
+				<div class="mt-2 block">
 					<p class="text-xl font-semibold text-gray-900">{metadata.title}</p>
 					<p class="mt-3 text-base text-gray-500">
 						{metadata.description}
@@ -39,7 +39,7 @@
 				<div class="flex-shrink-0">
 					<a href={`/members/${metadata.author.profileSlug}/`}>
 						<img
-							class="h-10 w-10 rounded-full lazyload"
+							class="lazyload h-10 w-10 rounded-full"
 							data-sizes="auto"
 							data-src={srcset.src}
 							data-srcset={srcset.srcset}

@@ -7,7 +7,7 @@
 </script>
 
 <div
-	class="fixed bottom-0 inset-x-0 px-4 pb-4 sm:inset-0 sm:flex sm:items-center sm:justify-center z-50"
+	class="fixed inset-x-0 bottom-0 z-50 px-4 pb-4 sm:inset-0 sm:flex sm:items-center sm:justify-center"
 >
 	<div class="fixed inset-0 transition-opacity">
 		<div class="absolute inset-0 bg-gray-500 opacity-75" />
@@ -16,11 +16,11 @@
 	<div
 		use:clickOutside
 		on:click_outside
-		class="relative bg-white rounded-lg p-10 overflow-hidden shadow-xl sm:max-w-3xl sm:w-full"
+		class="relative overflow-hidden rounded-lg bg-white p-10 shadow-xl sm:w-full sm:max-w-3xl"
 	>
 		<div class="flex flex-col">
 			<div class="flex items-center space-x-4">
-				<div class="flex items-center justify-center h-12 w-12 rounded-full bg-yellow-100">
+				<div class="flex h-12 w-12 items-center justify-center rounded-full bg-yellow-100">
 					<svg class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
 						<path
 							fill-rule="evenodd"
@@ -33,12 +33,12 @@
 					</svg>
 				</div>
 
-				<h3 class="text-lg leading-6 font-medium text-gray-900">
+				<h3 class="text-lg font-medium leading-6 text-gray-900">
 					Warning! THAT New Feature Ahead.
 				</h3>
 			</div>
 
-			<div class="flex-grow mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+			<div class="mt-3 flex-grow text-center sm:mt-0 sm:ml-4 sm:text-left">
 				<slot />
 			</div>
 		</div>

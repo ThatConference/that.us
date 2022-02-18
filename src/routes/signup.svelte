@@ -24,13 +24,13 @@
 <Seo title={metaTags.title} tags={metaTags.tags} />
 
 <Layout>
-	<div class="py-20 overflow-hidden">
-		<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+	<div class="overflow-hidden py-20">
+		<div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 			<header>
 				<h1
-					class="sm:text-center lg:text-left pb-16 text-4xl tracking-tight
-          leading-10 font-extrabold text-thatBlue-800 sm:text-5xl
-          sm:leading-none md:text-6xl"
+					class="pb-16 text-4xl font-extrabold leading-10 tracking-tight
+          text-thatBlue-800 sm:text-center sm:text-5xl sm:leading-none
+          md:text-6xl lg:text-left"
 				>
 					Sign Up Today!
 				</h1>
@@ -38,25 +38,25 @@
 
 			<main>
 				<div
-					class="lg:grid lg:grid-cols-2 space-y-12 lg:space-y-0 lg:gap-32 lg:items-start divide-y-2"
+					class="space-y-12 divide-y-2 lg:grid lg:grid-cols-2 lg:items-start lg:gap-32 lg:space-y-0"
 				>
 					<section>
 						<ol class="overflow-hidden">
 							<li class="relative pb-10" in:fade={{ delay: 100, duration: 500 }}>
-								<div class="ml-0.5 absolute mt-0.5 top-4 left-12 w-1 h-full bg-thatOrange-500" />
+								<div class="absolute top-4 left-12 ml-0.5 mt-0.5 h-full w-1 bg-thatOrange-500" />
 
 								<!-- Complete Step -->
 								<!-- todo how do we redirect after login? -->
-								<a rel="external" href="/login/" class="relative p-3 flex items-center group">
-									<span class="h-20 flex items-center">
+								<a rel="external" href="/login/" class="group relative flex items-center p-3">
+									<span class="flex h-20 items-center">
 										<span
-											class="relative z-10 p-3 w-20 h-20 flex items-center justify-center rounded-full bg-white ring-4 ring-thatOrange-500 group-hover:bg-thatOrange-500 group-hover:text-white"
+											class="relative z-10 flex h-20 w-20 items-center justify-center rounded-full bg-white p-3 ring-4 ring-thatOrange-500 group-hover:bg-thatOrange-500 group-hover:text-white"
 										>
-											<span class="font-extrabold text-5xl">1</span>
+											<span class="text-5xl font-extrabold">1</span>
 										</span>
 									</span>
-									<span class="ml-4 min-w-0 flex flex-col items-start">
-										<span class="text-xl font-semibold tracking-wide uppercase"
+									<span class="ml-4 flex min-w-0 flex-col items-start">
+										<span class="text-xl font-semibold uppercase tracking-wide"
 											>Create Your Login</span
 										>
 										<span class="text-lg text-gray-500">
@@ -66,18 +66,18 @@
 								</a>
 							</li>
 							<li class="relative pb-10" in:fade={{ delay: 300, duration: 500 }}>
-								<div class="ml-0.5 absolute mt-0.5 top-4 left-12 w-1 h-full bg-thatOrange-500" />
+								<div class="absolute top-4 left-12 ml-0.5 mt-0.5 h-full w-1 bg-thatOrange-500" />
 
-								<a href="/my/profiles/primary/" class="relative p-3 flex items-center group">
-									<span class="h-20 flex items-center">
+								<a href="/my/profiles/primary/" class="group relative flex items-center p-3">
+									<span class="flex h-20 items-center">
 										<span
-											class="relative z-10 p-3 w-20 h-20 flex items-center justify-center rounded-full bg-white ring-4 ring-thatOrange-500 group-hover:bg-thatOrange-500 group-hover:text-white"
+											class="relative z-10 flex h-20 w-20 items-center justify-center rounded-full bg-white p-3 ring-4 ring-thatOrange-500 group-hover:bg-thatOrange-500 group-hover:text-white"
 										>
-											<span class="font-extrabold text-5xl">2</span>
+											<span class="text-5xl font-extrabold">2</span>
 										</span>
 									</span>
-									<span class="ml-4 min-w-0 flex flex-col">
-										<span class="text-xl font-semibold tracking-wide uppercase"
+									<span class="ml-4 flex min-w-0 flex-col">
+										<span class="text-xl font-semibold uppercase tracking-wide"
 											>Tell Us About Yourself</span
 										>
 										<span class="text-lg text-gray-500">
@@ -87,16 +87,16 @@
 								</a>
 							</li>
 							<li class="relative pb-10" in:fade={{ delay: 500, duration: 500 }}>
-								<a href="/support/" class="relative p-3 flex items-center group">
-									<span class="h-20 flex items-center">
+								<a href="/support/" class="group relative flex items-center p-3">
+									<span class="flex h-20 items-center">
 										<span
-											class="relative z-10 p-3 w-20 h-20 flex items-center justify-center rounded-full bg-white ring-4 ring-thatOrange-500 group-hover:bg-thatOrange-500 group-hover:text-white"
+											class="relative z-10 flex h-20 w-20 items-center justify-center rounded-full bg-white p-3 ring-4 ring-thatOrange-500 group-hover:bg-thatOrange-500 group-hover:text-white"
 										>
-											<span class="font-extrabold text-5xl">3</span>
+											<span class="text-5xl font-extrabold">3</span>
 										</span>
 									</span>
-									<span class="ml-4 min-w-0 flex flex-col">
-										<span class="text-xl font-semibold tracking-wide uppercase">Get Started!</span>
+									<span class="ml-4 flex min-w-0 flex-col">
+										<span class="text-xl font-semibold uppercase tracking-wide">Get Started!</span>
 										<span class="text-lg text-gray-500">
 											We've put together a few words on how to get started with THAT.
 										</span>
@@ -105,22 +105,22 @@
 							</li>
 						</ol>
 					</section>
-					<div class="relative text-base max-w-prose mx-auto lg:max-w-none">
+					<div class="relative mx-auto max-w-prose text-base lg:max-w-none">
 						<WelcomeQuote />
 					</div>
 
 					<section class="col-span-2 pt-16">
 						<h2
-							class="sm:text-center lg:text-left pb-16 text-4xl tracking-tight leading-10 font-extrabold text-thatBlue-800 sm:text-5xl
-						sm:leading-none md:text-6xl"
+							class="pb-16 text-4xl font-extrabold leading-10 tracking-tight text-thatBlue-800 sm:text-center sm:text-5xl sm:leading-none
+						md:text-6xl lg:text-left"
 						>
 							Join The Daily Conversation
 						</h2>
-						<div class="space-y-8 lg:grid lg:grid-cols-6 lg:gap-8 lg:items-center">
+						<div class="space-y-8 lg:grid lg:grid-cols-6 lg:items-center lg:gap-8">
 							<div class="col-span-2">
 								<img class="w-72" src="/images/SlackLogo.svg" alt="slack logo" />
 							</div>
-							<div class="col-span-4 text-lg text-gray-500 flex flex-col items-start space-y-6">
+							<div class="col-span-4 flex flex-col items-start space-y-6 text-lg text-gray-500">
 								<p class="prose prose-lg">
 									Yes we have a Slack channel too. It's also a very active one and we'd love to
 									invite you to it as well. Requesting access is easy, just head over to your
@@ -133,8 +133,8 @@
 
 					<section class="col-span-2 pt-16">
 						<h2
-							class="sm:text-center lg:text-left pb-16 text-4xl tracking-tight leading-10 font-extrabold text-thatBlue-800 sm:text-5xl
-						sm:leading-none md:text-6xl"
+							class="pb-16 text-4xl font-extrabold leading-10 tracking-tight text-thatBlue-800 sm:text-center sm:text-5xl sm:leading-none
+						md:text-6xl lg:text-left"
 						>
 							Newsletter and Announcements
 						</h2>

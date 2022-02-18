@@ -6,7 +6,7 @@
 </script>
 
 <div
-	class="z-50 fixed inset-0 overflow-hidden"
+	class="fixed inset-0 z-50 overflow-hidden"
 	on:click|stopPropagation={() => {
 		dispatch('clicked-outside', 'clicked');
 	}}
@@ -15,24 +15,24 @@
 		<section
 			in:fly={{ x: 400, duration: 500 }}
 			out:fly={{ x: 400, duration: 500 }}
-			class="absolute inset-y-0 right-0 max-w-full flex"
+			class="absolute inset-y-0 right-0 flex max-w-full"
 			on:click|stopPropagation={() => {}}
 		>
-			<div class="w-screen md:w-auto border-l-4 border-thatOrange-400">
-				<div class="h-full divide-y divide-gray-200 flex flex-col bg-white ">
+			<div class="w-screen border-l-4 border-thatOrange-400 md:w-auto">
+				<div class="flex h-full flex-col divide-y divide-gray-200 bg-white ">
 					<div
-						class="min-h-0 flex-1 flex flex-col py-6 space-y-6 overflow-y-scroll overscroll-none"
+						class="flex min-h-0 flex-1 flex-col space-y-6 overflow-y-scroll overscroll-none py-6"
 					>
 						<header class="px-4 sm:px-6">
 							<div class="flex items-start justify-between space-x-3">
 								<slot name="header" />
-								<div class="h-7 flex items-center">
+								<div class="flex h-7 items-center">
 									<button
 										type="button"
 										on:click|stopPropagation
 										aria-label="Close panel"
-										class="text-gray-400 hover:text-gray-500 transition
-										ease-in-out duration-150"
+										class="text-gray-400 transition duration-150
+										ease-in-out hover:text-gray-500"
 									>
 										<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 											<path
@@ -54,7 +54,7 @@
 						</div>
 					</div>
 
-					<div class="flex-shrink-0 px-4 py-4 space-x-4 flex justify-end">
+					<div class="flex flex-shrink-0 justify-end space-x-4 px-4 py-4">
 						<span class="inline-flex rounded-md shadow-sm">
 							<slot name="panelActions" />
 						</span>

@@ -168,13 +168,13 @@
 
 <Seo title={metaTags.title} tags={metaTags.tags} />
 
-<div class="text-base max-w-prose mx-auto lg:max-w-none">
-	<h2 class="text-base text-thatOrange-400 font-semibold tracking-wide uppercase">
+<div class="mx-auto max-w-prose text-base lg:max-w-none">
+	<h2 class="text-base font-semibold uppercase tracking-wide text-thatOrange-400">
 		Counselor Acceptance and Enrollment
 	</h2>
 	{#if $state.matches(['step_one'])}
 		<p
-			class="mt-6 text-4xl sm:text-5xl sm:tracking-tight lg:text-6xl leading-8 font-extrabold tracking-tight text-gray-900"
+			class="mt-6 text-4xl font-extrabold leading-8 tracking-tight text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl"
 		>
 			Congratulations are in order!
 		</p>
@@ -184,7 +184,7 @@
 				Congratulations are in order! We've selected you and your session as part of our {platformText}
 				event and you're officially a {eventDetails.name} Counselor.
 			</p>
-			<p class="mt-4 prose prose-lg text-gray-500">
+			<p class="prose prose-lg mt-4 text-gray-500">
 				To accept your speaking session, you must complete this Counselor Enrollment process. It's
 				here where we gather dietary requirements, shirt sizes and how we make sure you've made it
 				safely to camp.
@@ -202,12 +202,12 @@
 <!-- speaker acceptance -->
 <div class="relative pb-12">
 	<div class="grid grid-cols-1 gap-12 lg:grid-flow-col-dense lg:grid-cols-3">
-		<aside class="relative lg:col-start-3 lg:col-span-1 ">
+		<aside class="relative lg:col-span-1 lg:col-start-3 ">
 			<div class="sticky top-8">
 				<Steps {steps} />
 			</div>
 		</aside>
-		<div class="space-y-6 lg:col-start-1 lg:col-span-2 mt-8">
+		<div class="mt-8 space-y-6 lg:col-span-2 lg:col-start-1">
 			<section class="space-y-24">
 				{#if ['speaker_declined', 'init'].some($state.matches)}
 					<div in:fade={{ delay: 100, duration: 400 }}>
@@ -317,12 +317,12 @@
 		<div>
 			<NewFeatureWarning on:close={() => (popNewFeatureWarning = false)}>
 				<div>
-					<p class="mt-6 prose prose-xl text-gray-500">
+					<p class="prose prose-xl mt-6 text-gray-500">
 						If you're seeing this box, that means we've rolled out something new that we're pretty
 						excited about. Better yet, we hope you enjoy it and it makes your experience just a tick
 						better.
 					</p>
-					<p class="mt-6 prose prose-xl text-gray-500">
+					<p class="prose prose-xl mt-6 text-gray-500">
 						We're human, and that means there is a slight chance you might come across a bug. If you
 						run into issues or have a question for some reason, just hit us up in the chat. We'd
 						also love your feedback so we can improve.

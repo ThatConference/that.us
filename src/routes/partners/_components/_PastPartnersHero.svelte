@@ -1,16 +1,16 @@
 <section>
 	<h2
-		class="text-4xl sm:text-5xl md:text-6xl sm:leading-none leading-10 tracking-tight font-extrabold text-thatBlue-800"
+		class="text-4xl font-extrabold leading-10 tracking-tight text-thatBlue-800 sm:text-5xl sm:leading-none md:text-6xl"
 	>
 		All Partners and Sponsors
 	</h2>
 
-	<div class="mt-3 sm:mt-5 md:mt-5 sm:mx-auto lg:mx-0">
+	<div class="mt-3 sm:mx-auto sm:mt-5 md:mt-5 lg:mx-0">
 		<div>
 			<p
 				class="text-base text-gray-500  
-                  sm:text-lg md:text-xl
-                  sm:max-w-7xl"
+                  sm:max-w-7xl sm:text-lg
+                  md:text-xl"
 			>
 				Since the start of THAT, it has been the continuous support from companies and organizations
 				partnering with us to help create events that bring the community together. We thank every

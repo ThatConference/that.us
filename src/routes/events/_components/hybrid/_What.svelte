@@ -35,16 +35,16 @@
 	];
 </script>
 
-<div class="py-16 overflow-hidden lg:py-24">
-	<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:max-w-7xl">
+<div class="overflow-hidden py-16 lg:py-24">
+	<div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
 		<div class="relative flex flex-col space-y-8">
 			<h2
-				class="text-center text-4xl sm:text-5xl leading-8 font-extrabold tracking-tight text-thatBlue-800"
+				class="text-center text-4xl font-extrabold leading-8 tracking-tight text-thatBlue-800 sm:text-5xl"
 			>
 				What Conference? THAT Conference!
 			</h2>
 
-			<div class="flex flex-col lg:grid grid-cols-5 gap-8">
+			<div class="flex grid-cols-5 flex-col gap-8 lg:grid">
 				<div class="col-span-3">
 					<p class="prose mt-6 max-w-5xl text-center text-xl text-gray-500">
 						THAT Conference is unlike any other technical conference. This unique four-day summer
@@ -65,7 +65,7 @@
 				</div>
 				<div class="col-span-2 flex flex-col justify-center">
 					<img
-						class="lazyload p-8 h-full w-full"
+						class="lazyload h-full w-full p-8"
 						src="/images/characters/moose_with_lantern.png"
 						alt="THAT Moose"
 					/>
@@ -74,19 +74,19 @@
 		</div>
 	</div>
 
-	<div class="relative max-w-7xl mx-auto mt-12 flex flex-col space-y-8 px-4 sm:px-6 lg:px-8">
+	<div class="relative mx-auto mt-12 flex max-w-7xl flex-col space-y-8 px-4 sm:px-6 lg:px-8">
 		<h2
-			class="text-center text-3xl sm:text-4xl leading-8 font-extrabold tracking-tight uppercase text-gray-500 py-12"
+			class="py-12 text-center text-3xl font-extrabold uppercase leading-8 tracking-tight text-gray-500 sm:text-4xl"
 		>
 			Here's What You Can Expect At That!
 		</h2>
 
-		<div class="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-12">
+		<div class="grid grid-cols-2 gap-6 lg:grid-cols-4 lg:gap-12">
 			{#each expectations as e}
-				<div class="p-4 bg-white rounded-lg shadow-lg">
+				<div class="rounded-lg bg-white p-4 shadow-lg">
 					<div class="flex flex-col items-center space-y-4">
 						<img class="lazyload h-24 object-contain" src={e.imageUrl} alt="logo" />
-						<p class="font-bold text-gray-500 text-xl text-center">
+						<p class="text-center text-xl font-bold text-gray-500">
 							{e.title}
 						</p>
 					</div>

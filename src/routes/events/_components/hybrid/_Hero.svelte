@@ -11,7 +11,7 @@
 </script>
 
 <div class="relative bg-thatBlue-200 bg-opacity-25">
-	<div class="mx-auto max-w-7xl w-full pt-10 pb-10 text-center">
+	<div class="mx-auto w-full max-w-7xl pt-10 pb-10 text-center">
 		<div class="flex flex-col">
 			<img class="relative h-96 " src={event.logo} alt="" />
 
@@ -26,7 +26,7 @@
 				</p>
 			</div>
 
-			<div class="relative p-8 flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+			<div class="relative flex flex-col space-y-4 p-8 sm:flex-row sm:space-y-0 sm:space-x-4">
 				<div class="flex-1 rounded-md shadow">
 					<a use:scrollto={'#tickets'}>
 						<Shell>
@@ -70,10 +70,10 @@
 				{/if}
 			</div>
 
-			<div class="p-10 text-gray-500 flex justify-center">
+			<div class="flex justify-center p-10 text-gray-500">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
-					class="animate-bounce h-6 w-6"
+					class="h-6 w-6 animate-bounce"
 					fill="none"
 					viewBox="0 0 24 24"
 					stroke="currentColor"

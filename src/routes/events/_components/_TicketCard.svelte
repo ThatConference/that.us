@@ -5,13 +5,13 @@
 	import { Shell as StandardShell } from '$elements/buttons';
 </script>
 
-<div class="flex-grow min-h-full w-full relative rounded-lg shadow-lg">
+<div class="relative min-h-full w-full flex-grow rounded-lg shadow-lg">
 	<div>
 		<div class="absolute inset-0 rounded-lg border-t-2 border-thatOrange-500" />
-		<div class="absolute inset-x-0 top-0 transform translate-y-px">
-			<div class="flex justify-center transform -translate-y-1/2">
+		<div class="absolute inset-x-0 top-0 translate-y-px transform">
+			<div class="flex -translate-y-1/2 transform justify-center">
 				<span
-					class="inline-flex rounded-full bg-thatOrange-500 px-6 py-1 text-md font-bold tracking-wider uppercase text-white"
+					class="text-md inline-flex rounded-full bg-thatOrange-500 px-6 py-1 font-bold uppercase tracking-wider text-white"
 				>
 					{ticketDetails.name}
 				</span>
@@ -19,8 +19,8 @@
 		</div>
 	</div>
 
-	<div class="h-full bg-gray-100 rounded-lg grid grid-cols-1 grid-rows-2">
-		<div class="flex-grow px-6 py-8 bg-white rounded-lg sm:p-10 sm:pb-6">
+	<div class="grid h-full grid-cols-1 grid-rows-2 rounded-lg bg-gray-100">
+		<div class="flex-grow rounded-lg bg-white px-6 py-8 sm:p-10 sm:pb-6">
 			<div>
 				<p class="text-6xl font-extrabold">
 					${ticketDetails.price}
@@ -50,7 +50,7 @@
 
 			<div class="relative mt-2 p-4">
 				<StandardShell>
-					<button type="button" on:click class="w-full px-8 md:px-10 py-2"> Purchase </button>
+					<button type="button" on:click class="w-full px-8 py-2 md:px-10"> Purchase </button>
 				</StandardShell>
 			</div>
 		</div>

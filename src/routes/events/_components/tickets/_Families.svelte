@@ -47,7 +47,7 @@
 </script>
 
 <div class="relative">
-	<div class="max-w-7xl mx-auto">
+	<div class="mx-auto max-w-7xl">
 		<div class="grid grid-cols-3">
 			<img
 				class="col-start-2 object-center"
@@ -58,13 +58,13 @@
 	</div>
 
 	<div id="families">
-		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+		<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 			<div class="lg:pr-12">
 				<h2 class="text-3xl font-extrabold text-thatBlue-800 sm:text-4xl lg:text-5xl">
 					Families Welcome!
 				</h2>
 
-				<p class="mt-12 prose-xl text-gray-500">
+				<p class="prose-xl mt-12 text-gray-500">
 					At our core, THAT Conference is about family, community and the next generation of
 					technologists. We strive to provide opportunities for children to speak, learn and
 					experience many areas of the STEM field while interacting with industry professionals. At
@@ -76,10 +76,10 @@
 
 		<div class="mt-8 pb-16 sm:mt-12 sm:pb-20 lg:pb-28">
 			<div class="relative">
-				<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+				<div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 					<!-- <div
             class="flex flex-col md:flex-row justify-center md:space-x-4 space-y-16 md:space-y-0"> -->
-					<div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+					<div class="grid grid-cols-1 gap-8 sm:grid-cols-2">
 						{#each familyTickets as ticket}
 							<TicketCard
 								ticketDetails={ticket}
@@ -88,7 +88,7 @@
 						{/each}
 					</div>
 
-					<div class="py-4 flex justify-center lg:justify-end">
+					<div class="flex justify-center py-4 lg:justify-end">
 						<p class="italic text-red-500">
 							*** please note these tickets are only for in-person campers.
 						</p>

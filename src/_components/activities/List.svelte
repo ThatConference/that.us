@@ -170,21 +170,21 @@
 </script>
 
 <div class="relative">
-	<div class="sticky z-30 top-0 ">
-		<div class="absolute top-0 right-0 border-gray-200 pt-4 content-center flex">
+	<div class="sticky top-0 z-30 ">
+		<div class="absolute top-0 right-0 flex content-center border-gray-200 pt-4">
 			<div class="form-check mt-2 mr-2 flex content-center">
 				<input
 					id="dense"
 					type="checkbox"
 					bind:checked={dense}
-					class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+					class="form-check-input float-left mt-1 mr-2 h-4 w-4 cursor-pointer appearance-none rounded-sm border border-gray-300 bg-white bg-contain bg-center bg-no-repeat align-top transition duration-200 checked:border-blue-600 checked:bg-blue-600 focus:outline-none"
 				/>
 				<label for="dense" class="form-check-label inline-block text-gray-800">Dense</label>
 			</div>
 			<button
 				type="button"
-				class="max-w-xs mr-2 h-10 w-10 rounded-full text-gray-300 focus:outline-none
-          duration-150 ease-in-out bg-thatBlue-500 sm:bg-white lg:hover:bg-thatBlue-400"
+				class="mr-2 h-10 w-10 max-w-xs rounded-full bg-thatBlue-500 text-gray-300
+          duration-150 ease-in-out focus:outline-none sm:bg-white lg:hover:bg-thatBlue-400"
 				class:bg-thatRed-500={selectedFilterTerms.length > 0}
 				aria-label={`Show filter and tags options${
 					selectedFilterTerms.length > 0
@@ -199,7 +199,7 @@
 			</button>
 			<input
 				use:autoFocus
-				class="hidden sm:inline form-input h-10 p-2 rounded-md sm:text-sm sm:leading-5 "
+				class="form-input hidden h-10 rounded-md p-2 sm:inline sm:text-sm sm:leading-5 "
 				bind:value={searchterm}
 				placeholder="type to search..."
 			/>
@@ -227,9 +227,9 @@
 		{#each sorted as day, d}
 			<div>
 				<h2
-					class="sticky top-0 z-20 bg-gray-100 text-xl md:text-4xl leading-9 
-                 font-extrabold tracking-tight text-thatBlue-800 sm:leading-10 
-                 pt-4 mb-7 sm:mb-9 whitespace-nowrap -ml-5 sm:-ml-6 pl-5 sm:pl-6 -mr-5 sm:-mr-6"
+					class="sticky top-0 z-20 mb-7 -ml-5 -mr-5 whitespace-nowrap 
+                 bg-gray-100 pt-4 pl-5 text-xl 
+                 font-extrabold leading-9 tracking-tight text-thatBlue-800 sm:mb-9 sm:-ml-6 sm:-mr-6 sm:pl-6 sm:leading-10 md:text-4xl"
 				>
 					{dayjs(day.dayOfYear).format("dddd, MMMM D, 'YY")}
 				</h2>
@@ -237,9 +237,9 @@
 				{#each day.timeSlots as ts}
 					<div class="relative">
 						<h2
-							class="sticky top-11 sm:top-13 pt-2 z-10 bg-gray-100 text-xl md:text-4xl 
-                     leading-9 font-extrabold tracking-tight text-thatOrange-400 
-                     sm:leading-10 whitespace-nowrap -ml-5 sm:-ml-6 pl-5 sm:pl-6 -mr-5 sm:-mr-6"
+							class="sm:top-13 sticky top-11 z-10 -ml-5 -mr-5 whitespace-nowrap bg-gray-100 
+                     pt-2 pl-5 text-xl font-extrabold 
+                     leading-9 tracking-tight text-thatOrange-400 sm:-ml-6 sm:-mr-6 sm:pl-6 sm:leading-10 md:text-4xl"
 						>
 							{#if !dayjs(ts.timeSlot).isValid()}
 								Unscheduled
@@ -258,7 +258,7 @@
 									{#if isKeynote(activity)}
 										<li
 											in:fade
-											class="col-span-1 sm:col-span-2 lg:col-span-3 bg-gray-100 rounded-lg shadow-lg mt-10 mb-10"
+											class="col-span-1 mt-10 mb-10 rounded-lg bg-gray-100 shadow-lg sm:col-span-2 lg:col-span-3"
 										>
 											<KeynoteCard {...activity} />
 										</li>

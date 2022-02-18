@@ -23,15 +23,15 @@
 
 {#if popNotification}
 	{#if !dismissed}
-		<div class="fixed bottom-0 inset-x-0 pb-2 sm:pb-5" in:fade={{ duration: 1000 }}>
-			<div class="max-w-screen-xl mx-auto px-2 sm:px-6 lg:px-8">
-				<div class="p-2 rounded-lg bg-red-400 shadow-lg sm:p-3">
-					<div class="flex items-center justify-between flex-wrap">
-						<div class="w-0 flex-1 flex items-center">
-							<span class="flex p-2 rounded-lg">
-								<Icon data={warning} class="w-6 h-6 text-white" />
+		<div class="fixed inset-x-0 bottom-0 pb-2 sm:pb-5" in:fade={{ duration: 1000 }}>
+			<div class="mx-auto max-w-screen-xl px-2 sm:px-6 lg:px-8">
+				<div class="rounded-lg bg-red-400 p-2 shadow-lg sm:p-3">
+					<div class="flex flex-wrap items-center justify-between">
+						<div class="flex w-0 flex-1 items-center">
+							<span class="flex rounded-lg p-2">
+								<Icon data={warning} class="h-6 w-6 text-white" />
 							</span>
-							<p class="ml-3 font-medium text-white truncate">
+							<p class="ml-3 truncate font-medium text-white">
 								<span class="md:hidden">!</span>
 								<span class="hidden md:inline">
 									You cannot
@@ -41,17 +41,17 @@
 							</p>
 						</div>
 						<div
-							class="order-3 mt-2 flex-shrink-0 w-full sm:order-2 sm:mt-0
+							class="order-3 mt-2 w-full flex-shrink-0 sm:order-2 sm:mt-0
                 sm:w-auto"
 						>
 							<div class="rounded-md shadow-sm">
 								<a
 									href="/my/profiles/primary/"
-									class="flex items-center justify-center px-4 py-2 border
-                    border-transparent text-sm leading-5 font-medium rounded-md
-                    text-indigo-600 bg-white hover:text-indigo-500
-                    focus:outline-none focus:ring transition
-                    ease-in-out duration-150"
+									class="flex items-center justify-center rounded-md border border-transparent
+                    bg-white px-4 py-2 text-sm font-medium
+                    leading-5 text-indigo-600 transition
+                    duration-150 ease-in-out hover:text-indigo-500
+                    focus:outline-none focus:ring"
 								>
 									Create Profile
 								</a>
@@ -60,9 +60,9 @@
 						<div class="order-2 flex-shrink-0 sm:order-3 sm:ml-2">
 							<button
 								type="button"
-								class="-mr-1 flex p-2 rounded-md hover:bg-indigo-500
-                  focus:outline-none focus:bg-indigo-500 transition ease-in-out
-                  duration-150"
+								class="-mr-1 flex rounded-md p-2 transition
+                  duration-150 ease-in-out hover:bg-indigo-500 focus:bg-indigo-500
+                  focus:outline-none"
 								aria-label="Dismiss"
 								on:click={() => (dismissed = !dismissed)}
 							>

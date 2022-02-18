@@ -77,7 +77,7 @@
 <a {href} aria-label={ariaLabel} target="_blank" rel="noopener">
 	<Icon
 		data={socialIcon}
-		class={`transition duration-500 ease-in-out transform hover:scale-125 cursor-pointer ${
+		class={`transform cursor-pointer transition duration-500 ease-in-out hover:scale-125 ${
 			!isLast ? 'mr-2' : ''
 		} h-5 w-5 text-gray-400 hover:text-that-blue focus:underline`}
 	/>

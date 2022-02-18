@@ -13,16 +13,16 @@
 			<div class="w-full border-t border-gray-300" />
 		</div>
 		<div class="relative flex items-center">
-			<div class="block px-1 bg-gray-100">
+			<div class="block bg-gray-100 px-1">
 				<span
-					class="h-8 w-8 bg-white rounded-full flex items-center justify-center ring-4 ring-gray-300"
+					class="flex h-8 w-8 items-center justify-center rounded-full bg-white ring-4 ring-gray-300"
 				>
 					<!-- <span class="text-sm text-gray-500">{stepNumber}</span> -->
-					<Icon data={stepForward} class="text-gray-500 w-4 h-4" />
+					<Icon data={stepForward} class="h-4 w-4 text-gray-500" />
 				</span>
 			</div>
 
-			<span class="px-4 bg-gray-100 text-lg font-medium text-gray-900">
+			<span class="bg-gray-100 px-4 text-lg font-medium text-gray-900">
 				{title}
 			</span>
 		</div>

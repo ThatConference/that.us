@@ -14,12 +14,12 @@
 
 {#if !close}
 	<div
-		class="fixed inset-0 flex items-end justify-center px-4 py-6
-		pointer-events-none sm:p-6 sm:items-start sm:justify-end"
+		class="pointer-events-none fixed inset-0 flex items-end justify-center px-4
+		py-6 sm:items-start sm:justify-end sm:p-6"
 		in:fade={{ duration: 1000 }}
 	>
-		<div class="max-w-sm w-full bg-white shadow-lg rounded-lg pointer-events-auto">
-			<div class="rounded-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
+		<div class="pointer-events-auto w-full max-w-sm rounded-lg bg-white shadow-lg">
+			<div class="overflow-hidden rounded-lg ring-1 ring-black ring-opacity-5">
 				<div class="p-4">
 					<div class="flex items-start">
 						<div class="flex-shrink-0">
@@ -38,14 +38,14 @@
 							</svg>
 						</div>
 						<div class="ml-3 w-0 flex-1 pt-0.5">
-							<p class="text-sm leading-5 font-medium text-gray-900">{title}</p>
+							<p class="text-sm font-medium leading-5 text-gray-900">{title}</p>
 							<p class="mt-1 text-sm leading-5 text-gray-500">{text}</p>
 						</div>
-						<div class="ml-4 flex-shrink-0 flex">
+						<div class="ml-4 flex flex-shrink-0">
 							<button
 								type="button"
-								class="inline-flex text-gray-400 focus:outline-none
-								focus:text-gray-500 transition ease-in-out duration-150"
+								class="inline-flex text-gray-400 transition
+								duration-150 ease-in-out focus:text-gray-500 focus:outline-none"
 								on:click={() => (close = !close)}
 							>
 								<svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">

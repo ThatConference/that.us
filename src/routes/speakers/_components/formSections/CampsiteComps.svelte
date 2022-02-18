@@ -42,10 +42,10 @@
 </div>
 
 <div class="mt-12">
-	<h2 class="text-xl text-gray-800 font-extrabold">
+	<h2 class="text-xl font-extrabold text-gray-800">
 		Book Your Hotel Room at The Kalahari. Like Right Now!
 	</h2>
-	<p class="mt-4 prose prose-lg text-gray-500">
+	<p class="prose prose-lg mt-4 text-gray-500">
 		We have secured discounted room rates at The Kalahari from <span class="font-extrabold"
 			>{dayjs(startDate).format('dddd, MMMM D, YYYY')}</span
 		>
@@ -74,9 +74,9 @@
 </div>
 
 <div class="mt-12">
-	<h2 class="text-xl text-gray-800 font-extrabold">Room Compensation</h2>
+	<h2 class="text-xl font-extrabold text-gray-800">Room Compensation</h2>
 
-	<p class="mt-4 prose prose-lg text-gray-500">
+	<p class="prose prose-lg mt-4 text-gray-500">
 		As a thank you for being a Counselor, we will reimburse you for two nights stay in a standard
 		room for each day that you speak (up to a total of three nights per family of multiple
 		speakers). To reserve the room, the Kalahari requires a deposit of one night's stay plus tax.
@@ -85,10 +85,10 @@
 		checkout.
 	</p>
 
-	<div class="antialiased mt-6">
-		<div class="p-4 border rounded-md bg-gray-50 ">
+	<div class="mt-6 antialiased">
+		<div class="rounded-md border bg-gray-50 p-4 ">
 			<div class="text-sm">
-				<p class="text-gray-900 font-semibold">Room Compensation</p>
+				<p class="font-semibold text-gray-900">Room Compensation</p>
 
 				<div class="mt-4">
 					<div class="relative flex items-center">
@@ -100,7 +100,7 @@
 						/>
 
 						<div class="ml-6 text-lg">
-							<p class="leading-7 font-medium text-gray-500">
+							<p class="font-medium leading-7 text-gray-500">
 								I would like donate my room compensation back to THAT Conference and/or I do not
 								need to stay at the resort.
 							</p>

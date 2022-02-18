@@ -17,7 +17,7 @@
 
 <div class="mt-8 xl:mt-0">
 	{#if !submitted}
-		<h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">
+		<h3 class="text-sm font-semibold uppercase tracking-wider text-gray-400">
 			Subscribe to our newsletter
 		</h3>
 		<p class="mt-4 text-base text-gray-500">
@@ -54,20 +54,20 @@
 							aria-label="Email address"
 							type="email"
 							required
-							class="appearance-none min-w-0 w-full py-2 px-4 
-								bg-white border border-gray-300 
-								rounded-md shadow-sm text-base text-gray-900 placeholder-gray-500 
-								focus:outline-none focus:ring-thatBlue-500 focus:border-thatBlue-500 focus:placeholder-gray-400"
+							class="w-full min-w-0 appearance-none rounded-md border 
+								border-gray-300 bg-white py-2 
+								px-4 text-base text-gray-900 placeholder-gray-500 shadow-sm 
+								focus:border-thatBlue-500 focus:placeholder-gray-400 focus:outline-none focus:ring-thatBlue-500"
 							placeholder="Enter your email"
 						/>
 						<div class="mt-3 rounded-md shadow sm:mt-0 sm:ml-3 sm:flex-shrink-0">
 							<button
 								type="submit"
-								class="px-4 py-2 rounded-md shadow text-base leading-6 font-medium border-2
-									border-thatBlue-500 text-thatBlue-500 bg-white hover:bg-thatBlue-500
-									hover:text-white focus:bg-thatBlue-500 focus:text-white focus:outline-none
-									focus:ring-thatBlue-500 focus:border-thatBlue-800 transition
-									duration-150 ease-in-out"
+								class="rounded-md border-2 border-thatBlue-500 bg-white px-4 py-2 text-base font-medium
+									leading-6 text-thatBlue-500 shadow transition
+									duration-150 ease-in-out hover:bg-thatBlue-500 hover:text-white
+									focus:border-thatBlue-800 focus:bg-thatBlue-500 focus:text-white
+									focus:outline-none focus:ring-thatBlue-500"
 							>
 								Add me
 							</button>

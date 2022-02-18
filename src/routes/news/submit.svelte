@@ -44,13 +44,13 @@
 
 <Seo title={metaTags.title} tags={metaTags.tags} />
 
-<div class="py-20 overflow-hidden">
-	<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="overflow-hidden py-20">
+	<div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 		<header>
 			<h1
-				class="sm:text-center lg:text-left pb-16 text-4xl tracking-tight
-				leading-10 font-extrabold text-thatBlue-800 sm:text-5xl
-				sm:leading-none md:text-6xl"
+				class="pb-16 text-4xl font-extrabold leading-10 tracking-tight
+				text-thatBlue-800 sm:text-center sm:text-5xl sm:leading-none
+				md:text-6xl lg:text-left"
 			>
 				Community Curated News
 			</h1>

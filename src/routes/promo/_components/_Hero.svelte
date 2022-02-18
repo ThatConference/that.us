@@ -26,14 +26,14 @@
 </script>
 
 <div>
-	<div class="bg-thatBlue-800 pt-12 px-4 sm:px-6 lg:px-8 lg:pt-20">
+	<div class="bg-thatBlue-800 px-4 pt-12 sm:px-6 lg:px-8 lg:pt-20">
 		<div class="flex flex-col items-center justify-center space-y-12">
 			<div class="relative text-center text-3xl font-extrabold text-white sm:text-4xl lg:text-5xl">
 				<p>Are you on your own?</p>
 				<p class="text-thatOrange-400">Let us help!</p>
 			</div>
 
-			<p class="text-center max-w-6xl mx-auto text-xl text-gray-300 sm:mt-5 sm:text-2xl">
+			<p class="mx-auto max-w-6xl text-center text-xl text-gray-300 sm:mt-5 sm:text-2xl">
 				Are you paying for your own ticket? Did your company's educational budget disappear? Or
 				maybe you're someone who is a freelancer or a student trying to get into the community. For
 				a limited time, we're offering one post-pandemic fantastic promotion to join us either ON
@@ -43,7 +43,7 @@
 			<div class="flex flex-col">
 				<div class="animate-pulse">
 					<HighlightLink href={`/events/${event?.slug}/tickets`}>
-						<span class="text-xl uppercase font-bold tracking-wider">
+						<span class="text-xl font-bold uppercase tracking-wider">
 							View all ticket options
 						</span>
 					</HighlightLink>
@@ -56,24 +56,24 @@
 		<div class="bg-gradient-to-b from-thatBlue-800">
 			<div class="pb-12 sm:pt-12 sm:pb-16 lg:pt-16 lg:pb-24">
 				<div class="relative">
-					<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+					<div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 						<div
-							class="max-w-md mx-auto space-y-4 lg:max-w-6xl lg:grid lg:grid-cols-2 lg:gap-5 lg:space-y-0"
+							class="mx-auto max-w-md space-y-4 lg:grid lg:max-w-6xl lg:grid-cols-2 lg:gap-5 lg:space-y-0"
 						>
 							<div class="relative flex flex-col rounded-lg shadow-lg">
 								<div>
 									<div class="absolute inset-0 rounded-lg border-t-2 border-thatOrange-500" />
-									<div class="absolute inset-x-0 top-0 transform translate-y-px">
-										<div class="flex justify-center transform -translate-y-1/2">
+									<div class="absolute inset-x-0 top-0 translate-y-px transform">
+										<div class="flex -translate-y-1/2 transform justify-center">
 											<span
-												class="inline-flex rounded-full bg-thatOrange-500 px-6 py-1 text-md font-bold tracking-wider uppercase text-white"
+												class="text-md inline-flex rounded-full bg-thatOrange-500 px-6 py-1 font-bold uppercase tracking-wider text-white"
 											>
 												ON THAT
 											</span>
 										</div>
 									</div>
 								</div>
-								<div class="px-6 py-8 rounded-t-lg bg-white sm:p-10 sm:pb-6">
+								<div class="rounded-t-lg bg-white px-6 py-8 sm:p-10 sm:pb-6">
 									<div class="flex items-center justify-between">
 										<div class="pt-12">
 											<h3 class="text-2xl font-medium text-gray-900">
@@ -82,9 +82,9 @@
 
 											<div class="flex">
 												<div>
-													<span class="line-through text-red-500">
+													<span class="text-red-500 line-through">
 														<span
-															class="px-3 flex items-start text-5xl tracking-tight text-gray-900"
+															class="flex items-start px-3 text-5xl tracking-tight text-gray-900"
 														>
 															<span class="mt-2 mr-2 text-3xl font-medium"> $ </span>
 															<span class="font-extrabold">
@@ -95,7 +95,7 @@
 												</div>
 
 												<div>
-													<span class="px-3 flex items-start text-5xl tracking-tight text-gray-900">
+													<span class="flex items-start px-3 text-5xl tracking-tight text-gray-900">
 														<span class="mt-2 mr-2 text-3xl font-medium"> $ </span>
 														<span class="font-extrabold">
 															{eventTickets['PROMO_VIRTUAL_CAMPER'].price}
@@ -111,7 +111,7 @@
 									</div>
 								</div>
 								<div
-									class="relative flex-1 flex flex-col justify-between px-6 pt-6 pb-8 bg-gray-50 space-y-6 sm:p-10 sm:pt-6"
+									class="relative flex flex-1 flex-col justify-between space-y-6 bg-gray-50 px-6 pt-6 pb-8 sm:p-10 sm:pt-6"
 								>
 									<p class="mt-5 text-lg text-gray-500">
 										{eventTickets['PROMO_VIRTUAL_CAMPER'].shortDescription}
@@ -159,7 +159,7 @@
 											<button
 												type="button"
 												on:click={() => handlePurchase('PROMO_VIRTUAL_CAMPER')}
-												class="w-full px-8 md:px-10 py-2"
+												class="w-full px-8 py-2 md:px-10"
 											>
 												Purchase
 											</button>
@@ -171,10 +171,10 @@
 							<div class="relative flex flex-col rounded-lg shadow-lg">
 								<div>
 									<div class="absolute inset-0 rounded-lg border-t-2 border-thatOrange-500" />
-									<div class="absolute inset-x-0 top-0 transform translate-y-px">
-										<div class="flex justify-center transform -translate-y-1/2">
+									<div class="absolute inset-x-0 top-0 translate-y-px transform">
+										<div class="flex -translate-y-1/2 transform justify-center">
 											<span
-												class="inline-flex rounded-full bg-thatOrange-500 px-6 py-1 text-md font-bold tracking-wider uppercase text-white"
+												class="text-md inline-flex rounded-full bg-thatOrange-500 px-6 py-1 font-bold uppercase tracking-wider text-white"
 											>
 												AT THAT
 											</span>
@@ -182,7 +182,7 @@
 									</div>
 								</div>
 
-								<div class="px-6 py-8 rounded-t-lg bg-white sm:p-10 sm:pb-6">
+								<div class="rounded-t-lg bg-white px-6 py-8 sm:p-10 sm:pb-6">
 									<div class="flex items-center justify-between">
 										<div class="pt-12">
 											<h3 class="text-2xl font-medium text-gray-900">
@@ -191,9 +191,9 @@
 
 											<div class="flex">
 												<div>
-													<span class="line-through text-red-500">
+													<span class="text-red-500 line-through">
 														<span
-															class="px-3 flex items-start text-5xl tracking-tight text-gray-900"
+															class="flex items-start px-3 text-5xl tracking-tight text-gray-900"
 														>
 															<span class="mt-2 mr-2 text-3xl font-medium"> $ </span>
 															<span class="font-extrabold">
@@ -204,7 +204,7 @@
 												</div>
 
 												<div>
-													<span class="px-3 flex items-start text-5xl tracking-tight text-gray-900">
+													<span class="flex items-start px-3 text-5xl tracking-tight text-gray-900">
 														<span class="mt-2 mr-2 text-3xl font-medium"> $ </span>
 														<span class="font-extrabold">
 															{eventTickets['PROMO_CAMPER_NO_FOOD'].price}
@@ -220,7 +220,7 @@
 								</div>
 
 								<div
-									class="relative flex-1 flex flex-col justify-between px-6 pt-6 pb-8 bg-gray-50 space-y-6 sm:p-10 sm:pt-6"
+									class="relative flex flex-1 flex-col justify-between space-y-6 bg-gray-50 px-6 pt-6 pb-8 sm:p-10 sm:pt-6"
 								>
 									<p class="mt-5 text-lg text-gray-500">
 										{eventTickets['PROMO_CAMPER_NO_FOOD'].shortDescription}
@@ -276,7 +276,7 @@
 											<button
 												type="button"
 												on:click={() => handlePurchase('PROMO_CAMPER_NO_FOOD')}
-												class="w-full px-8 md:px-10 py-2"
+												class="w-full px-8 py-2 md:px-10"
 											>
 												Purchase
 											</button>
@@ -285,7 +285,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="relative py-4 flex justify-center lg:justify-end">
+						<div class="relative flex justify-center py-4 lg:justify-end">
 							<p class="italic text-red-500">
 								***This promotion is only valid for Campers paying their own way.
 							</p>

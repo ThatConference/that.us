@@ -6,9 +6,9 @@
 </script>
 
 <section class="relative py-12 lg:py-16">
-	<div class="hidden lg:block lg:absolute lg:inset-0 overflow-x-hidden">
+	<div class="hidden overflow-x-hidden lg:absolute lg:inset-0 lg:block">
 		<svg
-			class="absolute top-0 right-1/2 transform -translate-x-64 translate-y-64"
+			class="absolute top-0 right-1/2 -translate-x-64 translate-y-64 transform"
 			width="640"
 			height="784"
 			fill="none"
@@ -37,10 +37,10 @@
 		</svg>
 	</div>
 
-	<div class="max-w-screen-xl mx-auto px-8">
+	<div class="mx-auto max-w-screen-xl px-8">
 		<div class="relative py-20 text-left">
 			<h3
-				class="text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:leading-10"
+				class="text-3xl font-extrabold leading-8 tracking-tight text-gray-900 sm:text-4xl sm:leading-10"
 			>
 				Welcome to THAT family!
 			</h3>
@@ -63,7 +63,7 @@
 			</ul>
 		</div>
 
-		<div class="relative py-12 flex justify-end">
+		<div class="relative flex justify-end py-12">
 			<StandardLink href="/members/">View Everyone</StandardLink>
 		</div>
 	</div>

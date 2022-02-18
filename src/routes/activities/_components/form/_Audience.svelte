@@ -20,7 +20,7 @@
 			</label>
 			<div class="relative">
 				<span
-					class="absolute top-0 left-0 transform -translate-x-4 -translate-y-4 block h-2 w-2 rounded-full bg-red-400"
+					class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400"
 				/>
 			</div>
 			<div>
@@ -43,7 +43,7 @@
 						inputStyles="form-select relative block w-full bg-transparent focus:z-10 transition ease-in-out duration-150 sm:text-sm sm:leading-5 rounded-md shadow-sm hover:border-gray-700"
 					/>
 					{#if touched['targetAudience'] && errors['targetAudience']}
-						<p class="text-red-600 italic">{errors['targetAudience']}</p>
+						<p class="italic text-red-600">{errors['targetAudience']}</p>
 					{/if}
 				</div>
 			</div>

@@ -3,21 +3,21 @@
 </script>
 
 <section class="relative overflow-x-hidden">
-	<div class="my-36 md:my-12 mx-auto max-w-screen-xl px-4 sm:px-6">
+	<div class="my-36 mx-auto max-w-screen-xl px-4 sm:px-6 md:my-12">
 		<div class="flex flex-col space-y-24 lg:grid lg:grid-cols-7">
 			<div class="col-span-4">
-				<h2 class="text-thatRed-500 uppercase tracking-wider font-extrabold">CAMP FOR GEEKS</h2>
-				<h1 class="mt-6 text-thatBlue-700 text-5xl font-semibold">
+				<h2 class="font-extrabold uppercase tracking-wider text-thatRed-500">CAMP FOR GEEKS</h2>
+				<h1 class="mt-6 text-5xl font-semibold text-thatBlue-700">
 					Howdy. We’re a full-stack, tech-obsessed community of fun, code-loving humans who share
 					and learn together.
 				</h1>
 
-				<p class="mt-6 text-gray-500 text-2xl">
+				<p class="mt-6 text-2xl text-gray-500">
 					We geek-out in <a href="/tx/"
-						><span class="text-thatRed-500 font-extrabold">Texas</span></a
+						><span class="font-extrabold text-thatRed-500">Texas</span></a
 					>
 					and
-					<a href="/wi/"><span class="text-thatRed-500 font-extrabold">Wisconsin</span></a> once a year
+					<a href="/wi/"><span class="font-extrabold text-thatRed-500">Wisconsin</span></a> once a year
 					but we host digital events all the time.
 				</p>
 				<div class="mt-20 flex space-x-4">
@@ -27,7 +27,7 @@
 			</div>
 			<div class="col-span-3 flex flex-col items-center justify-center">
 				<a
-					class="transition duration-500 ease-in-out transform hover:scale-105"
+					class="transform transition duration-500 ease-in-out hover:scale-105"
 					href="https://www.youtube.com/watch?v=_aO4uBrJGFU"
 					target="_blank"
 				>

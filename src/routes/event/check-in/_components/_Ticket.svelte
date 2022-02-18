@@ -26,12 +26,12 @@
 </script>
 
 <div
-	class="bg-gray-50 bg-opacity-75 hover:bg-gray-100 shadow overflow-hidden px-4 py-4 sm:px-6 sm:rounded-md transition duration-500 ease-in-out transform hover:scale-105"
+	class="transform overflow-hidden bg-gray-50 bg-opacity-75 px-4 py-4 shadow transition duration-500 ease-in-out hover:scale-105 hover:bg-gray-100 sm:rounded-md sm:px-6"
 	class:bg-yellow-100={!ticket.isAllocated}
 	class:hover:bg-yellow-200={!ticket.isAllocated}
 >
 	<div class="flex flex-col space-y-6 sm:flex-row sm:space-y-0 md:items-center">
-		<div class="min-w-0 flex-1 flex md:items-center">
+		<div class="flex min-w-0 flex-1 md:items-center">
 			<div class="flex-shrink-0">
 				<img
 					class="lazyload h-12 w-12 rounded-full"
@@ -41,13 +41,13 @@
 			</div>
 			<div class="min-w-0 flex-1 space-y-4 px-4 md:grid md:grid-cols-2 md:gap-4">
 				<div>
-					<p class="flex text-sm font-extrabold text-thatBlue-800 uppercase">
+					<p class="flex text-sm font-extrabold uppercase text-thatBlue-800">
 						{ticketHolder.firstName || ''}
 						{ticketHolder.lastName || ''}
 					</p>
 					<p class="mt-2 flex items-center text-sm text-gray-500">
 						<svg
-							class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400"
+							class="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400"
 							xmlns="http://www.w3.org/2000/svg"
 							viewBox="0 0 20 20"
 							fill="currentColor"
@@ -60,13 +60,13 @@
 						<span class="truncate">{ticketHolder.email || ''}</span>
 					</p>
 				</div>
-				<div class="block mt-2 sm:mt-0">
+				<div class="mt-2 block sm:mt-0">
 					<div>
 						<p class="flex text-sm font-extrabold text-gray-900">
 							{ticket.product.name}
 						</p>
-						<div class="mt-2 flex items-center text-sm text-gray-500 space-x-2">
-							<span class="rounded-full py-1 px-8 bg-green-300  text-white font-extrabold">
+						<div class="mt-2 flex items-center space-x-2 text-sm text-gray-500">
+							<span class="rounded-full bg-green-300 py-1 px-8  font-extrabold text-white">
 								{ticket.partnerPin ? ticket.partnerPin : 'unassigned'}
 							</span>
 						</div>
@@ -81,7 +81,7 @@
 						<Shell>
 							<button
 								type="button"
-								class="w-full py-4 px-6 text-sm leading-5 font-medium"
+								class="w-full py-4 px-6 text-sm font-medium leading-5"
 								on:click|stopPropagation|preventDefault={() => (checkInClicked = !checkInClicked)}
 							>
 								<span class="text-lg">Check-In</span>
@@ -107,11 +107,11 @@
 	</div>
 
 	{#if ticket.hasCheckedIn}
-		<div class="pt-6 pb-2 flex">
+		<div class="flex pt-6 pb-2">
 			<div class="flex items-center">
 				<div class="flex-shrink-0 pr-4">
 					<span
-						class="h-6 w-6 rounded-full bg-green-500 bg-opacity-60 flex items-center justify-center"
+						class="flex h-6 w-6 items-center justify-center rounded-full bg-green-500 bg-opacity-60"
 					>
 						<CheckFull height="h-4" width="w-4" />
 					</span>

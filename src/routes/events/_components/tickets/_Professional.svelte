@@ -28,21 +28,21 @@
 </script>
 
 <div class="relative">
-	<div class="max-w-2xl lg:max-w-7xl mx-auto">
+	<div class="mx-auto max-w-2xl lg:max-w-7xl">
 		<div class="py-24 px-6">
 			<h2
-				class="pb-6 lg:pb-24 text-4xl sm:text-5xl leading-8 font-extrabold tracking-tight text-thatBlue-800"
+				class="pb-6 text-4xl font-extrabold leading-8 tracking-tight text-thatBlue-800 sm:text-5xl lg:pb-24"
 			>
 				Professional Campers
 			</h2>
 
 			<div class="flex items-center">
-				<div class="hidden w-1/4 lg:flex justify-center">
+				<div class="hidden w-1/4 justify-center lg:flex">
 					<img class="h-full w-full" src="/images/characters/sassy_with_badge.svg" alt />
 				</div>
 
 				<div class="lg:w-3/4 lg:pl-12">
-					<p class="mt-12 prose-xl text-gray-500">
+					<p class="prose-xl mt-12 text-gray-500">
 						As a Camper, you receive up to 4 days of 200 professional sessions across various
 						technologies, platforms, and disciplines of all levels. You can also access over 10,000
 						sq. ft. of open spaces to participate in more intimate discussions across all topics you
@@ -51,7 +51,7 @@
 						<span class="font-bold">you</span>.
 					</p>
 
-					<p class="mt-12 prose-xl text-gray-500">
+					<p class="prose-xl mt-12 text-gray-500">
 						Each day starts with an inspiring keynote, breakfast, and beverages. Then you’re off on
 						your camping adventure to join in the many professional sessions, share your ideas and
 						experiences in a welcoming open space, and/or learn how to solder in our Maker space.
@@ -67,21 +67,21 @@
 			<div>put a quick jump list here...</div>
 
 			{#each ticketBreakdown as ticket}
-				<section class="bg-white shadow-lg rounded-lg py-6 px-4">
-					<div class="px-4 mb-8 w-full">
+				<section class="rounded-lg bg-white py-6 px-4 shadow-lg">
+					<div class="mb-8 w-full px-4">
 						<div class="flex items-center">
 							<div class="w-3/4">
-								<h2 class="text-3xl leading-6 font-bold text-gray-900">
+								<h2 class="text-3xl font-bold leading-6 text-gray-900">
 									{eventTickets[ticket.uiReference].name}
 								</h2>
-								<p class="mt-4 prose-md text-gray-500">
+								<p class="prose-md mt-4 text-gray-500">
 									{eventTickets[ticket.uiReference].shortDescription}
 								</p>
 							</div>
 
-							<div class="w-1/3 flex justify-center">
+							<div class="flex w-1/3 justify-center">
 								<div class="mt-4 flex items-center">
-									<span class="px-3 flex items-start text-6xl tracking-tight text-gray-900">
+									<span class="flex items-start px-3 text-6xl tracking-tight text-gray-900">
 										<span class="mt-2 mr-2 text-4xl font-medium">$</span>
 										<span class="font-extrabold">
 											{eventTickets[ticket.uiReference].price}
@@ -95,7 +95,7 @@
 							<HighlightShell>
 								<button
 									on:click={() => handlePurchase(ticket.uiReference)}
-									class="w-full px-8 md:px-10 py-2">Purchase</button
+									class="w-full px-8 py-2 md:px-10">Purchase</button
 								>
 							</HighlightShell>
 						</div>
@@ -104,14 +104,14 @@
 					{#each ticket.includes as item}
 						<div class="flex flex-col">
 							<h2
-								class="bg-gray-50 border-t border-gray-200 py-3 px-4 text-sm font-medium text-gray-900 text-left"
+								class="border-t border-gray-200 bg-gray-50 py-3 px-4 text-left text-sm font-medium text-gray-900"
 							>
 								{item.title}
 							</h2>
 							{#each item.includes as i}
 								<div class="divide-y divide-gray-200">
 									<div class="border-t border-gray-200">
-										<p class="py-5 px-4 text-sm font-normal text-gray-500 text-left">
+										<p class="py-5 px-4 text-left text-sm font-normal text-gray-500">
 											{i.title}
 										</p>
 									</div>
@@ -126,7 +126,7 @@
 								<button
 									type="button"
 									on:click={() => handlePurchase(ticket.uiReference)}
-									class="w-full px-8 md:px-10 py-2">Purchase</button
+									class="w-full px-8 py-2 md:px-10">Purchase</button
 								>
 							</HighlightShell>
 						</div>
@@ -136,37 +136,37 @@
 		</div>
 
 		<!-- lg+ -->
-		<div class="hidden lg:block bg-white shadow-lg rounded-lg py-16 sm:py-20 sm:px-6 lg:px-8 ">
-			<table class="w-full h-px table-fixed">
+		<div class="hidden rounded-lg bg-white py-16 shadow-lg sm:py-20 sm:px-6 lg:block lg:px-8 ">
+			<table class="h-px w-full table-fixed">
 				<caption class="sr-only">Pricing plan comparison</caption>
 
 				<thead>
 					<tr>
-						<th class="pb-4 pl-6 pr-6 text-sm font-medium text-gray-900 text-left" scope="col">
+						<th class="pb-4 pl-6 pr-6 text-left text-sm font-medium text-gray-900" scope="col">
 							<span>Professional Tickets</span>
 						</th>
 
 						{#each ticketBreakdown as ticket}
 							<th
-								class="w-1/6 pb-4 px-6 text-lg align-top text-center leading-6 font-medium text-gray-900"
+								class="w-1/6 px-6 pb-4 text-center align-top text-lg font-medium leading-6 text-gray-900"
 								scope="col">{eventTickets[ticket.uiReference].name}</th
 							>
 						{/each}
 					</tr>
 				</thead>
 
-				<tbody class="border-t border-gray-200 divide-y divide-gray-200">
+				<tbody class="divide-y divide-gray-200 border-t border-gray-200">
 					<tr>
 						<th
-							class="py-8 pl-6 pr-6 align-top text-sm font-medium text-gray-900 text-left"
+							class="py-8 pl-6 pr-6 text-left align-top text-sm font-medium text-gray-900"
 							scope="row">Pricing</th
 						>
 
 						{#each ticketBreakdown as ticket}
 							<td class="h-full py-8 px-6 align-top">
-								<div class="h-full flex flex-col ">
+								<div class="flex h-full flex-col ">
 									<div class="mt-4 flex items-center">
-										<span class="px-3 flex items-start text-6xl tracking-tight text-gray-900">
+										<span class="flex items-start px-3 text-6xl tracking-tight text-gray-900">
 											<span class="mt-2 mr-2 text-4xl font-medium">$</span>
 											<span class="font-extrabold">
 												{eventTickets[ticket.uiReference].price}
@@ -174,7 +174,7 @@
 										</span>
 									</div>
 
-									<p class="flex-grow mt-4 text-sm text-gray-500">
+									<p class="mt-4 flex-grow text-sm text-gray-500">
 										{eventTickets[ticket.uiReference].shortDescription}
 									</p>
 
@@ -192,7 +192,7 @@
 					{#each pricingBreakdown as breakdown}
 						<tr>
 							<th
-								class="py-3 pl-6 bg-gray-50 text-sm font-medium text-gray-900 text-left"
+								class="bg-gray-50 py-3 pl-6 text-left text-sm font-medium text-gray-900"
 								colspan="6"
 								scope="colgroup">{breakdown.title}</th
 							>
@@ -208,25 +208,25 @@
 					<tr class="border-t border-gray-200">
 						<th class="sr-only" scope="row">Choose your plan</th>
 
-						<td class="pt-12 px-6">
+						<td class="px-6 pt-12">
 							<StandardButton on:click={() => handlePurchase('WORKSHOPS')}>Purchase</StandardButton>
 						</td>
 
-						<td class="pt-12 px-6">
+						<td class="px-6 pt-12">
 							<StandardButton on:click={() => handlePurchase('VIRTUAL_CAMPER')}
 								>Purchase</StandardButton
 							>
 						</td>
 
-						<td class="pt-12 px-6">
+						<td class="px-6 pt-12">
 							<StandardButton on:click={() => handlePurchase('CAMPER_NO_FOOD')}
 								>Purchase</StandardButton
 							>
 						</td>
-						<td class="pt-12 px-6">
+						<td class="px-6 pt-12">
 							<StandardButton on:click={() => handlePurchase('CAMPER')}>Purchase</StandardButton>
 						</td>
-						<td class="pt-12 px-6">
+						<td class="px-6 pt-12">
 							<StandardButton on:click={() => handlePurchase('EVERYTHING_CAMPER')}>
 								Purchase
 							</StandardButton>

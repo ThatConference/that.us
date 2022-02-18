@@ -4,28 +4,28 @@
 
 {#if !wasDismissed}
 	<div class="relative bg-red-400">
-		<div class="max-w-screen-xl mx-auto py-3 px-3 sm:px-6 lg:px-8">
-			<div class="pr-16 sm:text-center sm:px-16">
+		<div class="mx-auto max-w-screen-xl py-3 px-3 sm:px-6 lg:px-8">
+			<div class="pr-16 sm:px-16 sm:text-center">
 				<p class="font-medium text-white">
 					<span class="hidden md:inline">
 						To Favorite, Submit or Join any activity you will first need to complete your user
 						profile.
 					</span>
 					<span class="block sm:ml-2 sm:inline-block">
-						<a href="/my/profiles/primary/" class="text-white font-bold underline">
+						<a href="/my/profiles/primary/" class="font-bold text-white underline">
 							Create Your Profile &rarr;
 						</a>
 					</span>
 				</p>
 			</div>
 			<div
-				class="absolute inset-y-0 right-0 pt-1 pr-1 flex items-start sm:pt-1
-          sm:pr-2 sm:items-start"
+				class="absolute inset-y-0 right-0 flex items-start pt-1 pr-1 sm:items-start
+          sm:pt-1 sm:pr-2"
 			>
 				<button
 					type="button"
-					class="flex p-2 rounded-md hover:bg-indigo-500 focus:outline-none
-            focus:bg-indigo-500 transition ease-in-out duration-150"
+					class="flex rounded-md p-2 transition duration-150
+            ease-in-out hover:bg-indigo-500 focus:bg-indigo-500 focus:outline-none"
 					aria-label="Dismiss"
 					on:click={() => (wasDismissed = !wasDismissed)}
 				>

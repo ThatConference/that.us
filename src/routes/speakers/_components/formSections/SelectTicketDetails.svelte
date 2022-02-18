@@ -26,8 +26,8 @@
 
 <div class="mt-12">
 	{#if allocatedAllocations.length === 0}
-		<div class="p-4 flex-1 flex items-center justify-between border rounded-md bg-gray-50">
-			<h2 class="text-xl text-gray-800 font-extrabold">Fetching Your Tickets...</h2>
+		<div class="flex flex-1 items-center justify-between rounded-md border bg-gray-50 p-4">
+			<h2 class="text-xl font-extrabold text-gray-800">Fetching Your Tickets...</h2>
 			<Busy />
 		</div>
 	{:else}

@@ -7,14 +7,14 @@
 	let userClicked = false;
 </script>
 
-<dt class="text-lg mt-4">
+<dt class="mt-4 text-lg">
 	<button
 		type="button"
-		class="text-left w-full flex justify-between items-start text-gray-400"
+		class="flex w-full items-start justify-between text-left text-gray-400"
 		on:click|preventDefault={() => (userClicked = !userClicked)}
 	>
 		<span class="font-medium text-gray-900">{q}</span>
-		<span class="ml-6 h-7 flex items-center">
+		<span class="ml-6 flex h-7 items-center">
 			<Chevron open={userClicked} />
 		</span>
 	</button>

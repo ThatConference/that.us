@@ -8,19 +8,19 @@
 
 <div in:fade>
 	<div
-		class="pt-20 fixed z-50 inset-0 overscroll-none overflow-y-auto "
+		class="fixed inset-0 z-50 overflow-y-auto overscroll-none pt-20 "
 		aria-labelledby="modal-title"
 		role="dialog"
 		aria-modal="true"
 	>
-		<div class="flex items-center justify-center min-h-screen pt-4 sm:p-10 px-4 pb-20 text-center">
+		<div class="flex min-h-screen items-center justify-center px-4 pt-4 pb-20 text-center sm:p-10">
 			<div class="fixed inset-0">
 				<div class="absolute inset-0 bg-gray-500 opacity-75" />
 			</div>
 
 			<div
-				class="bg-white rounded-lg px-4 pt-5 pb-4 overflow-hidden shadow-xl
-		transform transition-all sm:max-w-sm sm:w-full sm:p-6"
+				class="transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4
+		shadow-xl transition-all sm:w-full sm:max-w-sm sm:p-6"
 				role="dialog"
 				aria-modal="true"
 				aria-labelledby="modal-headline"
@@ -30,7 +30,7 @@
 						<Waiting />
 					</div>
 					<div class="mt-3 text-center sm:mt-5">
-						<h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-headline">
+						<h3 class="text-lg font-medium leading-6 text-gray-900" id="modal-headline">
 							{title}
 						</h3>
 						<div class="mt-2">

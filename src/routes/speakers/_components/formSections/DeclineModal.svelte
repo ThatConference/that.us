@@ -7,7 +7,7 @@
 </script>
 
 <div
-	class="fixed bottom-0 inset-x-0 px-4 pb-4 sm:inset-0 sm:flex sm:items-center sm:justify-center z-50"
+	class="fixed inset-x-0 bottom-0 z-50 px-4 pb-4 sm:inset-0 sm:flex sm:items-center sm:justify-center"
 >
 	<div class="fixed inset-0 transition-opacity">
 		<div class="absolute inset-0 bg-gray-500 opacity-75" />
@@ -16,11 +16,11 @@
 	<div
 		use:clickOutside
 		on:click_outside
-		class="relative bg-white rounded-lg px-4 pt-5 pb-4 overflow-hidden shadow-xl sm:max-w-lg sm:w-full sm:p-6"
+		class="relative overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 shadow-xl sm:w-full sm:max-w-lg sm:p-6"
 	>
 		<div class="sm:flex sm:items-start">
 			<div
-				class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10"
+				class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10"
 			>
 				<svg class="h-6 w-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 					<path
@@ -33,8 +33,8 @@
 				</svg>
 			</div>
 
-			<div class="flex-grow mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-				<h3 class="text-lg leading-6 font-medium text-gray-900">Decline Your Invitation</h3>
+			<div class="mt-3 flex-grow text-center sm:mt-0 sm:ml-4 sm:text-left">
+				<h3 class="text-lg font-medium leading-6 text-gray-900">Decline Your Invitation</h3>
 
 				<div class="mt-2">
 					<p class="text-sm leading-5 text-gray-500">
@@ -47,7 +47,7 @@
 						bind:value={reasonGiven}
 						rows="5"
 						use:autoFocus
-						class="text-sm w-full rounded-md"
+						class="w-full rounded-md text-sm"
 					/>
 				</div>
 			</div>
@@ -58,11 +58,11 @@
 				<button
 					type="button"
 					on:click={() => dispatch('speaker-decline', { reasonGiven })}
-					class="inline-flex justify-center w-full rounded-md border
-          border-transparent px-4 py-2 bg-red-600 text-base leading-6
-          font-medium text-white shadow-sm hover:bg-red-500 focus:outline-none
-          focus:border-red-700 focus:ring-red transition ease-in-out
-          duration-150 sm:text-sm sm:leading-5"
+					class="focus:ring-red inline-flex w-full justify-center rounded-md
+          border border-transparent bg-red-600 px-4 py-2 text-base
+          font-medium leading-6 text-white shadow-sm transition
+          duration-150 ease-in-out hover:bg-red-500 focus:border-red-700
+          focus:outline-none sm:text-sm sm:leading-5"
 				>
 					I'm Declining
 				</button>

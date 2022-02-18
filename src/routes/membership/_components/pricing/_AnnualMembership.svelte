@@ -39,7 +39,7 @@
 
 	<div class="border-t border-gray-200 pt-16 xl:grid xl:grid-cols-3 xl:gap-x-8">
 		<div>
-			<h2 class="text-base font-semibold text-thatOrange-400 tracking-wide uppercase">
+			<h2 class="text-base font-semibold uppercase tracking-wide text-thatOrange-400">
 				A Peer to Peer Learning System
 			</h2>
 			<p class="mt-2 text-3xl font-extrabold">Supporting Our Future</p>
@@ -49,45 +49,45 @@
 				to use every day.
 			</p>
 		</div>
-		<div class="mt-4 sm:mt-8 md:mt-10 md:grid md:grid-cols-2 md:gap-x-8 xl:mt-0 xl:col-span-2">
+		<div class="mt-4 sm:mt-8 md:mt-10 md:grid md:grid-cols-2 md:gap-x-8 xl:col-span-2 xl:mt-0">
 			<ul class="divide-y divide-gray-200">
-				<li class="py-4 flex md:py-0 md:pb-4">
+				<li class="flex py-4 md:py-0 md:pb-4">
 					<span class="text-green-500"><Check /></span>
 					<span class="ml-3 text-base">Free THAT Conference ON-THAT Tickets</span>
 				</li>
 
-				<li class="py-4 flex">
+				<li class="flex py-4">
 					<span class="text-green-500"><Check /></span>
 					<span class="ml-3 text-base">Free Access to THAT Online</span>
 				</li>
 
-				<li class="py-4 flex">
+				<li class="flex py-4">
 					<span class="text-green-500"><Check /></span>
 					<span class="ml-3 text-base">$50 off AT THAT Conference Camper ticket</span>
 				</li>
 
-				<li class="py-4 flex">
+				<li class="flex py-4">
 					<span class="text-green-500"><Check /></span>
 					<span class="ml-3 text-base">10% off THAT Store merchandise</span>
 				</li>
 			</ul>
-			<ul class="border-t border-gray-200 divide-y divide-gray-200 md:border-t-0">
-				<li class="py-4 flex md:border-t-0 md:py-0 md:pb-4">
+			<ul class="divide-y divide-gray-200 border-t border-gray-200 md:border-t-0">
+				<li class="flex py-4 md:border-t-0 md:py-0 md:pb-4">
 					<span class="text-green-500"><Check /></span>
 					<span class="ml-3 text-base"> Access to the private Members Discord </span>
 				</li>
 
-				<li class="py-4 flex">
+				<li class="flex py-4">
 					<span class="text-green-500"><Check /></span>
 					<span class="ml-3 text-base">Special Merit Badge</span>
 				</li>
 
-				<li class="py-4 flex">
+				<li class="flex py-4">
 					<span class="text-green-500"><Check /></span>
 					<span class="ml-3 text-base"> Supporting future platform growth </span>
 				</li>
 
-				<li class="py-4 flex">
+				<li class="flex py-4">
 					<span class="text-green-500"><Check /></span>
 					<span class="ml-3 text-base"> Yearly commitment, automatic renewal </span>
 				</li>

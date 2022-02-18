@@ -316,7 +316,7 @@
 >
 	<div>
 		<div>
-			<h2 class="text-xl leading-6 font-bold text-gray-900">Your Profile</h2>
+			<h2 class="text-xl font-bold leading-6 text-gray-900">Your Profile</h2>
 
 			<p class="mt-4 text-sm leading-5 text-gray-500">
 				This information is what we feature about you if you choose to make your profile public.
@@ -334,10 +334,10 @@
 					</label>
 					<div class="relative">
 						<span
-							class="absolute top-0 left-0 transform -translate-x-4 -translate-y-4 block h-2 w-2 rounded-full bg-red-400"
+							class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400"
 						/>
 					</div>
-					<div class="mt-1 border rounded-md shadow-sm">
+					<div class="mt-1 rounded-md border shadow-sm">
 						<Input
 							name="firstName"
 							type="text"
@@ -354,10 +354,10 @@
 					</label>
 					<div class="relative">
 						<span
-							class="absolute top-0 left-0 transform -translate-x-4 -translate-y-4 block h-2 w-2 rounded-full bg-red-400"
+							class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400"
 						/>
 					</div>
-					<div class="mt-1 border rounded-md shadow-sm">
+					<div class="mt-1 rounded-md border shadow-sm">
 						<Input
 							name="lastName"
 							class="form-input block w-full transition duration-150 ease-in-out
@@ -372,14 +372,14 @@
 					</label>
 					<div class="relative">
 						<span
-							class="absolute top-0 left-0 transform -translate-x-4 -translate-y-4 block h-2 w-2 rounded-full bg-red-400"
+							class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400"
 						/>
 					</div>
 					<!-- todo .. shadow doesn't align correctly <div class="mt-1 flex rounded-md shadow-sm"> -->
 					<div class="mt-1 flex">
 						<span
-							class="inline-flex items-center px-3 rounded-l-md border
-                border-r-0 border-gray-300 bg-gray-50 text-gray-500 sm:text-sm"
+							class="inline-flex items-center rounded-l-md border border-r-0
+                border-gray-300 bg-gray-50 px-3 text-gray-500 sm:text-sm"
 						>
 							https://that.us/members/
 						</span>
@@ -389,9 +389,9 @@
 								type="text"
 								disabled
 								name="profileSlug"
-								class="flex-1 form-input block w-full min-w-0 border rounded-none
-                  rounded-r-md transition duration-150 ease-in-out sm:text-sm
-                  sm:leading-5 bg-gray-50 text-gray-500"
+								class="form-input block w-full min-w-0 flex-1 rounded-none rounded-r-md
+                  border bg-gray-50 text-gray-500 transition duration-150
+                  ease-in-out sm:text-sm sm:leading-5"
 							/>
 						{:else}
 							<Input
@@ -411,11 +411,11 @@
 					</label>
 					<div class="relative">
 						<span
-							class="absolute top-0 left-0 transform -translate-x-4 -translate-y-4 block h-2 w-2 rounded-full bg-red-400"
+							class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400"
 						/>
 					</div>
 					<p class="mt-2 text-sm text-gray-500">Write a few sentences about yourself.</p>
-					<div class="mt-1 border rounded-md shadow-sm">
+					<div class="mt-1 rounded-md border shadow-sm">
 						<Input
 							type="textarea"
 							rows="10"
@@ -430,7 +430,7 @@
 					<label for="company" class="block text-sm font-medium leading-5 text-gray-700">
 						Company
 					</label>
-					<div class="mt-1 border rounded-md shadow-sm">
+					<div class="mt-1 rounded-md border shadow-sm">
 						<Input
 							type="text"
 							name="company"
@@ -444,7 +444,7 @@
 					<label for="jobTitle" class="block text-sm font-medium leading-5 text-gray-700">
 						Job Tile
 					</label>
-					<div class="mt-1 border rounded-md shadow-sm">
+					<div class="mt-1 rounded-md border shadow-sm">
 						<Input
 							name="jobTitle"
 							class="form-input block w-full transition duration-150 ease-in-out
@@ -454,14 +454,14 @@
 				</div>
 
 				<div class="sm:col-span-6">
-					<label for="photo" class="block text-sm leading-5 font-medium text-gray-700">
+					<label for="photo" class="block text-sm font-medium leading-5 text-gray-700">
 						Profile Photo
 					</label>
 
 					<div class="mt-2 flex items-center">
-						<span class="h-12 w-12 border rounded-full overflow-hidden bg-gray-100">
+						<span class="h-12 w-12 overflow-hidden rounded-full border bg-gray-100">
 							{#if profileImageUploading}
-								<div class="h-full w-full flex flex-grow justify-center">
+								<div class="flex h-full w-full flex-grow justify-center">
 									<ScaleOut />
 								</div>
 							{:else if profileImageUrl}
@@ -486,11 +486,11 @@
 								type="file"
 								on:change={(e) => postProfilePicture(e).then((r) => setValue('profileImage', r))}
 								accept="image/x-png,image/png,.png,image/jpeg,.jpg,.jpeg,image/gif,.gif"
-								class="py-2 px-3 border border-gray-300 rounded-md text-sm
-                  leading-4 font-medium text-gray-700 hover:text-gray-500
-                  focus:outline-none focus:border-blue-300
-                  focus:ring-blue active:bg-gray-50
-                  active:text-gray-800 transition duration-150 ease-in-out"
+								class="focus:ring-blue rounded-md border border-gray-300 py-2 px-3
+                  text-sm font-medium leading-4 text-gray-700
+                  transition duration-150
+                  ease-in-out hover:text-gray-500
+                  focus:border-blue-300 focus:outline-none active:bg-gray-50 active:text-gray-800"
 							/>
 						</span>
 					</div>
@@ -505,7 +505,7 @@
 
 		<div class="mt-8 border-t border-gray-200 pt-8">
 			<div>
-				<h3 class="text-lg leading-6 font-medium text-gray-900">Social Links</h3>
+				<h3 class="text-lg font-medium leading-6 text-gray-900">Social Links</h3>
 				<p class="mt-1 text-sm leading-5 text-gray-500">
 					Where would you like people to follow you?
 				</p>
@@ -515,18 +515,18 @@
 				<div class="sm:col-span-4">
 					{#each socialLinks as link}
 						<!-- todo - shadow isn't aligned properly <div class="mt-4 flex rounded-md shadow-sm"> -->
-						<div class="mt-4 flex border rounded-md shadow-sm">
+						<div class="mt-4 flex rounded-md border shadow-sm">
 							<div
-								class="inline-flex items-center px-3 rounded-l-md border
-                  border-r-0 border-gray-300 bg-gray-50 text-gray-500 sm:text-sm
-                  w-1/3"
+								class="inline-flex w-1/3 items-center rounded-l-md border
+                  border-r-0 border-gray-300 bg-gray-50 px-3 text-gray-500
+                  sm:text-sm"
 							>
 								<span class="w-6">
 									<Icon data={link.icon} />
 								</span>
 								{#if Array.isArray(link.slug)}
 									<select
-										class="form-input w-full p-1 bg-transparent text-gray-500 sm:text-sm border-none outline-none cursor-pointer"
+										class="form-input w-full cursor-pointer border-none bg-transparent p-1 text-gray-500 outline-none sm:text-sm"
 										value={getInitialSelectValue(link)}
 										on:blur={(e) =>
 											setValue('profileLinks', updateLinkSlugValue(link, e.target.value))}
@@ -544,8 +544,8 @@
 								value={getInitialSocialLinkValue(link)}
 								on:change={(e) =>
 									setValue('profileLinks', updateLinksInputValues(link, e.target.value))}
-								class="flex-1 form-input block w-full min-w-0 border rounded-none
-                  rounded-r-md transition duration-150 ease-in-out sm:text-sm
+								class="form-input block w-full min-w-0 flex-1 rounded-none rounded-r-md
+                  border transition duration-150 ease-in-out sm:text-sm
                   sm:leading-5"
 							/>
 						</div>
@@ -555,7 +555,7 @@
 
 			<div class="mt-8 border-t border-gray-200 pt-8">
 				<div>
-					<h3 class="text-lg leading-6 font-medium text-gray-900">THAT Extras</h3>
+					<h3 class="text-lg font-medium leading-6 text-gray-900">THAT Extras</h3>
 					<p class="mt-1 text-sm leading-5 text-gray-500">
 						There is more to you than just some social links, tell us a few interesting facts.
 					</p>
@@ -564,11 +564,11 @@
 				<div class="mt-6">
 					<div class="sm:col-span-4">
 						<div class="mt-6 grid grid-cols-1 gap-y-4 sm:grid-cols-6">
-							<div class="sm:col-span-4 block text-sm font-medium leading-5 text-gray-700">
+							<div class="block text-sm font-medium leading-5 text-gray-700 sm:col-span-4">
 								<label for="interests"> What are somethings you're interested in? </label>
 								<p class="mt-2 text-gray-500">Please note return/enter is the delimiter.</p>
 
-								<div class="mt-1 rounded-md shadow-sm tag-form-input">
+								<div class="tag-form-input mt-1 rounded-md shadow-sm">
 									<Tags
 										name="interests"
 										bind:this={interestsInput}
@@ -577,7 +577,7 @@
 										maxTags={25}
 										onlyUnique={true}
 										on:tags={({ detail }) => setValue('tags', detail.interests)}
-										class="form-input block w-full transition duration-150 ease-in-out text-sm leading-5 rounded-md shadow-sm"
+										class="form-input block w-full rounded-md text-sm leading-5 shadow-sm transition duration-150 ease-in-out"
 									/>
 								</div>
 							</div>
@@ -588,7 +588,7 @@
 								<label for="lifeHack" class="block text-sm font-medium leading-5 text-gray-700">
 									What is a 1 sentence "life hack" that you'd share with someone?
 								</label>
-								<div class="mt-1 border rounded-md shadow-sm">
+								<div class="mt-1 rounded-md border shadow-sm">
 									<Input
 										type="text"
 										name="lifeHack"
@@ -603,7 +603,7 @@
 
 				<div class="mt-8 border-t border-gray-200 pt-8">
 					<div>
-						<h3 class="text-lg leading-6 font-medium text-gray-900">
+						<h3 class="text-lg font-medium leading-6 text-gray-900">
 							Make your profile public(ish).
 						</h3>
 						<p class="mt-1 text-sm leading-5 text-gray-500">
@@ -640,7 +640,7 @@
 				</div>
 
 				<div class="mt-8 border-t border-gray-200 pt-8">
-					<h3 class="text-lg leading-6 font-medium text-gray-900">Personal Information</h3>
+					<h3 class="text-lg font-medium leading-6 text-gray-900">Personal Information</h3>
 					<p class="mt-1 text-sm leading-5 text-gray-500">
 						This information is private to THAT and allows us to better connect with you.
 					</p>
@@ -654,10 +654,10 @@
 							</label>
 							<div class="relative">
 								<span
-									class="absolute top-0 left-0 transform -translate-x-4 -translate-y-4 block h-2 w-2 rounded-full bg-red-400"
+									class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400"
 								/>
 							</div>
-							<div class="mt-1 border rounded-md shadow-sm">
+							<div class="mt-1 rounded-md border shadow-sm">
 								<Input
 									type="email"
 									name="email"
@@ -672,18 +672,18 @@
 
 				<div class="mt-8 border-t border-gray-200 pt-8">
 					<div>
-						<h3 class="text-lg leading-6 font-medium text-gray-900">Terms of Service</h3>
+						<h3 class="text-lg font-medium leading-6 text-gray-900">Terms of Service</h3>
 						<p class="mt-1 text-sm leading-5 text-gray-500">
 							Everyone is awesome, and we want your help in keeping it that way. Also lawyers.
 						</p>
 					</div>
 
-					<div class="px-4 mt-6">
+					<div class="mt-6 px-4">
 						<fieldset>
 							<legend class="text-base font-medium text-gray-900"> Do you agree to our: </legend>
 							<div class="relative">
 								<span
-									class="absolute top-0 left-0 transform -translate-x-4 -translate-y-4 block h-2 w-2 rounded-full bg-red-400"
+									class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400"
 								/>
 							</div>
 
@@ -703,8 +703,8 @@
 												open
 												tabindex="-1"
 												href="/support/code-of-conduct/"
-												class="font-medium text-indigo-600 hover:text-indigo-500
-                        transition duration-150 ease-in-out"
+												class="font-medium text-indigo-600 transition
+                        duration-150 ease-in-out hover:text-indigo-500"
 											>
 												Code of Conduct
 											</a>
@@ -714,7 +714,7 @@
 										</p>
 
 										{#if touched['acceptedCodeOfConduct'] && errors['acceptedCodeOfConduct']}
-											<p class="text-red-600 italic">
+											<p class="italic text-red-600">
 												{errors['acceptedCodeOfConduct']}
 											</p>
 										{/if}
@@ -736,15 +736,15 @@
 													open
 													tabindex="-1"
 													href="/suppoprt/anti-harassment/"
-													class="font-medium text-indigo-600 hover:text-indigo-500
-                          transition duration-150 ease-in-out"
+													class="font-medium text-indigo-600 transition
+                          duration-150 ease-in-out hover:text-indigo-500"
 												>
 													Commitment Anti-Harassment
 												</a>
 											</label>
 											<p class="text-gray-500">We do not accept any sort of harassment.</p>
 											{#if touched['acceptedAntiHarassmentPolicy'] && errors['acceptedAntiHarassmentPolicy']}
-												<p class="text-red-600 italic">
+												<p class="italic text-red-600">
 													{errors['acceptedAntiHarassmentPolicy']}
 												</p>
 											{/if}
@@ -769,8 +769,8 @@
 														tabindex="-1"
 														href="/support/commitment-to-diversity/"
 														class="font-medium text-indigo-600
-                            hover:text-indigo-500 transition duration-150
-                            ease-in-out"
+                            transition duration-150 ease-in-out
+                            hover:text-indigo-500"
 													>
 														Commitment to Diversity
 													</a>
@@ -781,7 +781,7 @@
 													or even tech stack.
 												</p>
 												{#if touched['acceptedCommitmentToDiversity'] && errors['acceptedCommitmentToDiversity']}
-													<p class="text-red-600 italic">
+													<p class="italic text-red-600">
 														{errors['acceptedCommitmentToDiversity']}
 													</p>
 												{/if}
@@ -805,15 +805,15 @@
 															tabindex="-1"
 															href="/support/terms-of-use/"
 															class="font-medium text-indigo-600
-                              hover:text-indigo-500 transition duration-150
-                              ease-in-out"
+                              transition duration-150 ease-in-out
+                              hover:text-indigo-500"
 														>
 															Terms of Use
 														</a>
 													</label>
 													<p class="text-gray-500">Lawyer speak.</p>
 													{#if touched['acceptedTermsOfService'] && errors['acceptedTermsOfService']}
-														<p class="text-red-600 italic">
+														<p class="italic text-red-600">
 															{errors['acceptedTermsOfService']}
 														</p>
 													{/if}
@@ -840,7 +840,7 @@
 														must be at least 13 years old.
 													</p>
 													{#if touched['isOver13'] && errors['isOver13']}
-														<p class="text-red-600 italic">
+														<p class="italic text-red-600">
 															{errors['isOver13']}
 														</p>
 													{/if}
@@ -856,7 +856,7 @@
 
 				<div class="mt-8 border-t border-gray-200 pt-8">
 					<div>
-						<h3 class="text-lg leading-6 font-medium text-gray-900">User Account Maintenance</h3>
+						<h3 class="text-lg font-medium leading-6 text-gray-900">User Account Maintenance</h3>
 						<p class="mt-1 text-sm leading-5 text-gray-500">more to come...</p>
 					</div>
 
@@ -880,8 +880,8 @@
 												tabindex="-1"
 												open
 												href="/support/code-of-conduct/"
-												class="font-medium text-indigo-600 hover:text-indigo-500
-                        transition duration-150 ease-in-out"
+												class="font-medium text-indigo-600 transition
+                        duration-150 ease-in-out hover:text-indigo-500"
 											>
 												Deactivate my account.
 											</a>
@@ -889,7 +889,7 @@
 										<p class="text-gray-500">...</p>
 
 										{#if touched['isDeactivated'] && errors['isDeactivated']}
-											<p class="text-red-600 italic">
+											<p class="italic text-red-600">
 												{errors['isDeactivated']}
 											</p>
 										{/if}
@@ -906,7 +906,7 @@
 					<span class="inline-flex rounded-md shadow-sm">
 						<button type="submit" disabled={isSubmitting}>
 							<Shell>
-								<div class="px-8 py-2 text-sm leading-5 font-medium">Update Profile</div>
+								<div class="px-8 py-2 text-sm font-medium leading-5">Update Profile</div>
 							</Shell>
 						</button>
 					</span>
@@ -914,11 +914,11 @@
 						<button
 							type="reset"
 							tabindex="-1"
-							class="py-2 px-4 border-2 border-gray-300 rounded-md text-sm
-              leading-5 font-medium text-gray-700 hover:text-gray-500
-              focus:outline-none focus:border-blue-300 focus:ring-blue
-              active:bg-gray-50 active:text-gray-800 transition duration-150
-              ease-in-out"
+							class="focus:ring-blue rounded-md border-2 border-gray-300 py-2 px-4
+              text-sm font-medium leading-5 text-gray-700
+              transition duration-150 ease-in-out
+              hover:text-gray-500 focus:border-blue-300 focus:outline-none active:bg-gray-50
+              active:text-gray-800"
 						>
 							Clear
 						</button>

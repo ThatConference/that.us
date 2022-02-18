@@ -26,10 +26,10 @@
 </script>
 
 {#if speakers.length > 0}
-	<section class="py-12 lg-py-16 bg-thatBlue-700">
-		<div class="relative mx-auto px-4 max-w-screen-xl sm:px-6 lg:px-8">
+	<section class="lg-py-16 bg-thatBlue-700 py-12">
+		<div class="relative mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
 			<div class="space-y-5 sm:space-y-4 md:max-w-xl lg:max-w-3xl xl:max-w-none">
-				<h2 class="text-3xl leading-9 font-extrabold text-white tracking-tight sm:text-4xl">
+				<h2 class="text-3xl font-extrabold leading-9 tracking-tight text-white sm:text-4xl">
 					Featured Speakers
 				</h2>
 				<p class="text-xl leading-7 text-gray-300">

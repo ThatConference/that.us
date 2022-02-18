@@ -29,7 +29,7 @@
 
 <Seo title={metaTags.title} tags={metaTags.tags} />
 <Layout>
-	<div class="py-16 bg-white">
+	<div class="bg-white py-16">
 		<div class="relative">
 			{#await getReleases then results}
 				{#each results as release}

@@ -11,7 +11,7 @@
 			You guessed it... We broke bad if you're reading this, and your submission is now in a funky
 			state. Feel free to hit us up in the chat, and we will work with you to get things sorted out.
 		</p>
-		<p class="mt-6 prose prose-lg">
+		<p class="prose prose-lg mt-6">
 			Deepest apologies, <br />
 			THAT Crew
 		</p>

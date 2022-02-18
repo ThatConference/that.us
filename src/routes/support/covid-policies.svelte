@@ -22,8 +22,8 @@
 
 <Layout>
 	<Header center="true" pretext="THAT Campsite">COVID Policies</Header>
-	<section class="max-w-prose mx-auto text-gray-500 ">
-		<div class="mb-12 relative text-gray-500 prose-lg">
+	<section class="mx-auto max-w-prose text-gray-500 ">
+		<div class="prose-lg relative mb-12 text-gray-500">
 			<p>
 				We are committed to the health and safety of all in-person participants of the conference.
 				We are constantly monitoring the CDC guidelines and working with the Kalahari Meeting and
@@ -34,7 +34,7 @@
 			</p>
 		</div>
 
-		<div class="relative mb-12 lg:mb-0 max-w-prose mx-auto">
+		<div class="relative mx-auto mb-12 max-w-prose lg:mb-0">
 			<div class="mb-10 flex flex-col justify-start space-y-10">
 				<div class="prose prose-lg text-gray-500">
 					<h2>What we are doing.</h2>

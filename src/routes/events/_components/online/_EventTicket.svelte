@@ -23,28 +23,28 @@
 	const dispatch = createEventDispatcher();
 </script>
 
-<div class="py-16 bg-gray-50 overflow-hidden lg:py-24">
-	<div class="relative max-w-xl mx-auto px-4 sm:px-6 lg:px-8 lg:max-w-7xl">
+<div class="overflow-hidden bg-gray-50 py-16 lg:py-24">
+	<div class="relative mx-auto max-w-xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
 		<div class="relative">
 			<h2
-				class="text-center text-3xl leading-8 font-extrabold tracking-tight text-thatBlue-800 sm:text-4xl"
+				class="text-center text-3xl font-extrabold leading-8 tracking-tight text-thatBlue-800 sm:text-4xl"
 			>
 				An online event designed for interaction
 			</h2>
-			<p class="mt-6 max-w-5xl mx-auto text-center text-xl text-gray-500">
+			<p class="mx-auto mt-6 max-w-5xl text-center text-xl text-gray-500">
 				We created THAT to fill a gap between the times when we cannot physically connect. We
 				believe peer-to-peer learning is one of the most powerful ways we can help one another any
 				day of the year.
 			</p>
 
-			<p class="mt-8 max-w-3xl mx-auto text-center text-xl text-gray-500">
+			<p class="mx-auto mt-8 max-w-3xl text-center text-xl text-gray-500">
 				Every month we host THAT Online aimed at bringing us all together to recenter and recharge.
 			</p>
 		</div>
 
-		<div class="relative mt-12 lg:mt-24 lg:grid lg:grid-cols-2 lg:gap-12 lg:items-center">
+		<div class="relative mt-12 lg:mt-24 lg:grid lg:grid-cols-2 lg:items-center lg:gap-12">
 			<div class="relative">
-				<h3 class="text-2xl font-extrabold text-thatBlue-800 tracking-tight sm:text-3xl">
+				<h3 class="text-2xl font-extrabold tracking-tight text-thatBlue-800 sm:text-3xl">
 					Built to support the practitioners
 				</h3>
 
@@ -58,13 +58,13 @@
 					<div class="flex">
 						<div class="flex-shrink-0">
 							<div
-								class="flex items-center justify-center h-12 w-12 rounded-md bg-thatOrange-400 text-white"
+								class="flex h-12 w-12 items-center justify-center rounded-md bg-thatOrange-400 text-white"
 							>
 								<Icon data={clockO} class="h-8 w-8" />
 							</div>
 						</div>
 						<div class="ml-4">
-							<dt class="text-lg leading-6 font-medium text-gray-900">
+							<dt class="text-lg font-medium leading-6 text-gray-900">
 								24 hours long, each and every time zone.
 							</dt>
 							<dd class="mt-2 text-base text-gray-500">
@@ -77,13 +77,13 @@
 					<div class="flex">
 						<div class="flex-shrink-0">
 							<div
-								class="flex items-center justify-center h-12 w-12 rounded-md bg-thatOrange-400 text-white"
+								class="flex h-12 w-12 items-center justify-center rounded-md bg-thatOrange-400 text-white"
 							>
 								<Icon data={desktop} class="h-8 w-8" />
 							</div>
 						</div>
 						<div class="ml-4">
-							<dt class="text-lg leading-6 font-medium text-gray-900">
+							<dt class="text-lg font-medium leading-6 text-gray-900">
 								Audio or video and even your desktop.
 							</dt>
 							<dd class="mt-2 text-base text-gray-500">
@@ -97,13 +97,13 @@
 					<div class="flex">
 						<div class="flex-shrink-0">
 							<div
-								class="flex items-center justify-center h-12 w-12 rounded-md bg-thatOrange-400 text-white"
+								class="flex h-12 w-12 items-center justify-center rounded-md bg-thatOrange-400 text-white"
 							>
 								<Icon data={users} class="h-8 w-8" />
 							</div>
 						</div>
 						<div class="ml-4">
-							<dt class="text-lg leading-6 font-medium text-gray-900">Grow your network.</dt>
+							<dt class="text-lg font-medium leading-6 text-gray-900">Grow your network.</dt>
 							<dd class="mt-2 text-base text-gray-500">
 								THAT is a community, not just an event. Events are a reunion, the platform connects
 								us, and the conversation happens every day, 365 days a year.
@@ -113,14 +113,14 @@
 				</dl>
 			</div>
 
-			<div class="mt-10 relative" aria-hidden="true">
+			<div class="relative mt-10" aria-hidden="true">
 				<div class="p-12">
 					<div class="flex flex-col rounded-xl shadow-lg">
-						<div class="px-6 py-8 bg-white sm:p-10 sm:pb-6">
+						<div class="bg-white px-6 py-8 sm:p-10 sm:pb-6">
 							<div class="inline-flex items-center">
 								<div>
 									<span
-										class="px-4 py-1 leading-5 rounded-full text-sm font-semibold tracking-wide uppercase bg-thatOrange-400 text-white"
+										class="rounded-full bg-thatOrange-400 px-4 py-1 text-sm font-semibold uppercase leading-5 tracking-wide text-white"
 									>
 										THAT Online - Event Ticket
 									</span>
@@ -144,7 +144,7 @@
 							</p>
 						</div>
 						<div
-							class="flex-1 flex flex-col justify-between px-6 pt-6 pb-8 bg-gray-50 space-y-6 sm:p-10 sm:pt-6"
+							class="flex flex-1 flex-col justify-between space-y-6 bg-gray-50 px-6 pt-6 pb-8 sm:p-10 sm:pt-6"
 						>
 							<ul class="space-y-4">
 								<li class="flex items-start">
@@ -185,13 +185,13 @@
 		</div>
 
 		<div class="relative mt-12 sm:mt-16 lg:mt-24">
-			<div class="px-4 lg:grid lg:grid-flow-row-dense lg:grid-cols-2 lg:gap-12 lg:items-center">
-				<div class="mt-10 relative lg:mt-0 lg:col-start-1">
+			<div class="px-4 lg:grid lg:grid-flow-row-dense lg:grid-cols-2 lg:items-center lg:gap-12">
+				<div class="relative mt-10 lg:col-start-1 lg:mt-0">
 					<ActivityTypes />
 				</div>
 
-				<div class="mt-24 lg:mt-0 relative lg:ml-14 lg:col-start-2">
-					<h3 class="text-2xl font-extrabold text-thatBlue-800 tracking-tight sm:text-3xl">
+				<div class="relative mt-24 lg:col-start-2 lg:mt-0 lg:ml-14">
+					<h3 class="text-2xl font-extrabold tracking-tight text-thatBlue-800 sm:text-3xl">
 						A platform designed to support us
 					</h3>
 					<p class="mt-3 text-lg text-gray-500">
@@ -204,13 +204,13 @@
 						<div class="flex">
 							<div class="flex-shrink-0">
 								<div
-									class="flex items-center justify-center h-12 w-12 rounded-md bg-thatOrange-400 text-white"
+									class="flex h-12 w-12 items-center justify-center rounded-md bg-thatOrange-400 text-white"
 								>
 									<Icon data={commentsO} class="h-8 w-8" />
 								</div>
 							</div>
 							<div class="ml-4">
-								<dt class="text-lg leading-6 font-medium text-gray-900">
+								<dt class="text-lg font-medium leading-6 text-gray-900">
 									We're all speakers, practitioners.
 								</dt>
 								<dd class="mt-2 text-base text-gray-500">
@@ -224,13 +224,13 @@
 						<div class="flex">
 							<div class="flex-shrink-0">
 								<div
-									class="flex items-center justify-center h-12 w-12 rounded-md bg-thatOrange-400 text-white"
+									class="flex h-12 w-12 items-center justify-center rounded-md bg-thatOrange-400 text-white"
 								>
 									<Icon data={hashtag} class="h-8 w-8" />
 								</div>
 							</div>
 							<div class="ml-4">
-								<dt class="text-lg leading-6 font-medium text-gray-900">Any topic, any format.</dt>
+								<dt class="text-lg font-medium leading-6 text-gray-900">Any topic, any format.</dt>
 								<dd class="mt-2 text-base text-gray-500">
 									Why create artificial limitations when we don't have to? You create the topics,
 									not us. It's your participation that helps drive everyone's growth. It's our

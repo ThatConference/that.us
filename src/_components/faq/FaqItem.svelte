@@ -7,11 +7,11 @@
 		{#each faqs as faq, i}
 			{#if i === 0}
 				<div class="md:grid md:grid-cols-12 md:gap-8">
-					<dt class="text-base leading-6 font-medium text-gray-900 md:col-span-5">
+					<dt class="text-base font-medium leading-6 text-gray-900 md:col-span-5">
 						{faq.question}
 					</dt>
 
-					<dd class="mt-2 md:mt-0 md:col-span-7">
+					<dd class="mt-2 md:col-span-7 md:mt-0">
 						<p class="text-base leading-6 text-gray-500">
 							{@html faq.answer}
 						</p>

@@ -16,16 +16,16 @@
 <div class="bg-white">
 	<a href="/events/{slug}/">
 		<div
-			class="relative rounded-lg shadow-xl transition duration-500 ease-in-out transform hover:scale-105 hover:bg-gray-100"
+			class="relative transform rounded-lg shadow-xl transition duration-500 ease-in-out hover:scale-105 hover:bg-gray-100"
 		>
 			<div
 				class="pointer-events-none absolute inset-0 rounded-lg border-2 border-thatBlue-400"
 				aria-hidden="true"
 			/>
-			<div class="absolute inset-x-0 top-0 transform translate-y-px">
-				<div class="flex justify-center transform -translate-y-1/2">
+			<div class="absolute inset-x-0 top-0 translate-y-px transform">
+				<div class="flex -translate-y-1/2 transform justify-center">
 					<span
-						class="inline-flex rounded-full bg-thatBlue-400 px-4 py-1 text-sm font-semibold tracking-wider uppercase text-white"
+						class="inline-flex rounded-full bg-thatBlue-400 px-4 py-1 text-sm font-semibold uppercase tracking-wider text-white"
 					>
 						{dayjs(startDate).format('MMMM')}
 					</span>
@@ -34,15 +34,15 @@
 
 			<div class="px-4 py-8">
 				<div class="px-4">
-					<h3 class="text-gray-900 text-md font-bold truncate">
+					<h3 class="text-md truncate font-bold text-gray-900">
 						{name}
 					</h3>
-					<p class="pt-2 text-gray-500 text-sm truncate">
+					<p class="truncate pt-2 text-sm text-gray-500">
 						{dayjs(startDate).format('dddd, MMMM D, YYYY')} -
 						{dayjs(endDate).format('dddd, MMMM D, YYYY')}
 					</p>
 
-					<p class="pt-4 text-gray-500 text-sm">
+					<p class="pt-4 text-sm text-gray-500">
 						{description}
 					</p>
 				</div>

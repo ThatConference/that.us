@@ -43,9 +43,9 @@
 {#if !isEmpty($session.thatProfile)}
 	<div class="flex flex-col items-start space-y-8">
 		<div class="space-y-4">
-			<h2 class="text-xl leading-6 font-bold text-gray-900">Join THAT Slack</h2>
+			<h2 class="text-xl font-bold leading-6 text-gray-900">Join THAT Slack</h2>
 
-			<div class=" text-gray-500 prose prose-sm">
+			<div class=" prose prose-sm text-gray-500">
 				<p>Slack, everyone has one, and we have one too. Join thousands who chat daily.</p>
 
 				<p class="mt-4 leading-5">
@@ -61,10 +61,10 @@
 			</div>
 		</div>
 
-		<div class="flex space-x-8 items-center">
+		<div class="flex items-center space-x-8">
 			<button
 				type="button"
-				class="transition duration-500 ease-in-out transform hover:scale-105"
+				class="transform transition duration-500 ease-in-out hover:scale-105"
 				on:click={handleOnClick}
 			>
 				<img class="w-32" src="/images/add-to-slack.svg" alt="slack signup" />

@@ -36,13 +36,13 @@
 	}
 </script>
 
-<div class="h-full flex flex-col rounded-lg shadow-lg overflow-hidden">
+<div class="flex h-full flex-col overflow-hidden rounded-lg shadow-lg">
 	<div class="flex-shrink-0 bg-gray-50 py-4">
-		<img class="py-4 h-48 w-full object-fit" src={event.logo || '/images/Trees-Solid.svg'} alt="" />
+		<img class="object-fit h-48 w-full py-4" src={event.logo || '/images/Trees-Solid.svg'} alt="" />
 	</div>
-	<div class="flex-1 bg-white p-6 flex flex-col justify-between">
+	<div class="flex flex-1 flex-col justify-between bg-white p-6">
 		<div class="flex-1">
-			<p class="uppercase tracking-wider text-sm font-medium text-thatOrange-400">
+			<p class="text-sm font-medium uppercase tracking-wider text-thatOrange-400">
 				{getDisplayName(event.type)}
 			</p>
 

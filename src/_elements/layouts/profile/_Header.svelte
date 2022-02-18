@@ -3,15 +3,15 @@
 	export let center = false;
 </script>
 
-<div class="text-base max-w-prose mx-auto lg:max-w-none" class:text-center={center}>
+<div class="mx-auto max-w-prose text-base lg:max-w-none" class:text-center={center}>
 	<p
-		class="text-base leading-6 text-thatOrange-400 font-semibold tracking-wide
-			uppercase"
+		class="text-base font-semibold uppercase leading-6 tracking-wide
+			text-thatOrange-400"
 	>
 		{subtitle}
 	</p>
 	<h1
-		class="mt-2 mb-8 text-3xl leading-8 font-extrabold tracking-tight
+		class="mt-2 mb-8 text-3xl font-extrabold leading-8 tracking-tight
 			text-gray-900 sm:text-4xl sm:leading-10"
 	>
 		<slot />

@@ -26,8 +26,8 @@
 	<Header>Welcome to THAT!</Header>
 	<section>
 		<div
-			class="relative text-base max-w-prose mx-auto mb-8 lg:max-w-5xl lg:mx-0
-        lg:pr-72 text-lg text-gray-500 leading-7"
+			class="relative mx-auto mb-8 max-w-prose text-base text-lg leading-7
+        text-gray-500 lg:mx-0 lg:max-w-5xl lg:pr-72"
 		>
 			<p>
 				Here at THAT, it's our mission to help foster the best community of geeks on this planet.
@@ -42,13 +42,13 @@
 			</p>
 		</div>
 		<div
-			class="lg:grid lg:grid-cols-2 lg:gap-8 lg:items-start text-base text-lg
-        text-gray-500 leading-7"
+			class="text-base text-lg leading-7 text-gray-500 lg:grid lg:grid-cols-2
+        lg:items-start lg:gap-8"
 		>
 			<div class="relative mb-12 lg:mb-0">
 				<div
-					class="mb-10 prose mx-auto lg:max-w-none text-base text-lg
-            text-gray-500 leading-7"
+					class="prose mx-auto mb-10 text-base text-lg leading-7
+            text-gray-500 lg:max-w-none"
 				>
 					<h2>The What</h2>
 
@@ -87,12 +87,12 @@
 						</li>
 					</ul>
 				</div>
-				<div class="flex space-x-4 text-base max-w-prose mx-auto lg:max-w-none">
+				<div class="mx-auto flex max-w-prose space-x-4 text-base lg:max-w-none">
 					<StandardLink href="/activities/">Upcoming Activities</StandardLink>
 					<HighlightLink href="/support/what-is-an-activity/">What is an Activity?</HighlightLink>
 				</div>
 			</div>
-			<div class="relative text-base max-w-prose mx-auto lg:max-w-none">
+			<div class="relative mx-auto max-w-prose text-base lg:max-w-none">
 				<WelcomeQuote />
 			</div>
 		</div>

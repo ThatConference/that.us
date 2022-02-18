@@ -1,15 +1,15 @@
 <div class="sm:text-center lg:text-left">
 	<h2
-		class="text-4xl sm:text-5xl md:text-6xl sm:leading-none leading-10 tracking-tight font-extrabold text-thatBlue-800"
+		class="text-4xl font-extrabold leading-10 tracking-tight text-thatBlue-800 sm:text-5xl sm:leading-none md:text-6xl"
 	>
 		Communities at
 		<span class="text-thatOrange-400">THAT</span>
 	</h2>
 	<p
-		class="mt-3 sm:mt-5 md:mt-5 sm:mx-auto lg:mx-0
-			text-base text-gray-500  
-			sm:text-lg md:text-xl
-			sm:max-w-5xl"
+		class="mt-3 text-base text-gray-500 sm:mx-auto sm:mt-5
+			sm:max-w-5xl sm:text-lg  
+			md:mt-5 md:text-xl
+			lg:mx-0"
 	>
 		At THAT our mission is to help communities grow. Regardless of your interests or where you call
 		home we believe there is something special when a group of Geeks or Geeklings can get together

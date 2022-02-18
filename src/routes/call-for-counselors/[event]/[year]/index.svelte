@@ -44,11 +44,11 @@
 
 <Seo title={metaTags.title} tags={metaTags.tags} />
 
-<div class="py-20 overflow-hidden">
-	<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-		<div class="lg:grid lg:grid-cols-5 lg:gap-8 lg:items-start">
-			<div class="text-center sm:text-left col-span-5">
-				<h2 class="text-thatOrange-400 text-2xl">
+<div class="overflow-hidden py-20">
+	<div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+		<div class="lg:grid lg:grid-cols-5 lg:items-start lg:gap-8">
+			<div class="col-span-5 text-center sm:text-left">
+				<h2 class="text-2xl text-thatOrange-400">
 					Submissions Now Open Through
 					<span class="font-extrabold">
 						{dayjs(event.callForSpeakersCloseDate).format('dddd, MMMM D, YYYY')}
@@ -58,15 +58,15 @@
 
 			<div class="col-span-2">
 				<h1
-					class="text-center sm:text-left pb-16 text-4xl tracking-tight
-              leading-10 font-extrabold text-thatBlue-800 sm:text-5xl
+					class="pb-16 text-center text-4xl font-extrabold leading-10
+              tracking-tight text-thatBlue-800 sm:text-left sm:text-5xl
               sm:leading-none md:text-6xl"
 				>
 					Call for Camp Counselors
 				</h1>
 			</div>
 
-			<div class="space-y-8 col-span-3">
+			<div class="col-span-3 space-y-8">
 				<p class="prose-2xl text-gray-500">
 					Are you ready to speak at the biggest tech conference in the US Midwest? We are searching
 					for hour-long sessions, half and full-day workshops, and keynotes that bring value to our
@@ -74,7 +74,7 @@
 					business owners, site builders, community organizers, and everything in-between.
 				</p>
 
-				<div class="flex space-x-4 justify-center">
+				<div class="flex justify-center space-x-4">
 					<div class="flex-none">
 						<StandardLink href={`/activities/create/cfp/?event=${event.id}`}>
 							Become a Counselor
@@ -94,11 +94,11 @@
 	</div>
 
 	<div class="mt-24 bg-that-navy">
-		<div class="relative max-w-7xl mx-auto py-24 px-4 sm:px-6 lg:px-8 ">
-			<div class="lg:grid lg:grid-cols-5 lg:gap-8 lg:items-start">
+		<div class="relative mx-auto max-w-7xl py-24 px-4 sm:px-6 lg:px-8 ">
+			<div class="lg:grid lg:grid-cols-5 lg:items-start lg:gap-8">
 				<div class="col-span-5">
 					<h3
-						class="text-center sm:text-left uppercase tracking-wide text-white font-extrabold text-4xl"
+						class="text-center text-4xl font-extrabold uppercase tracking-wide text-white sm:text-left"
 					>
 						Summer Camp for Geeks
 					</h3>
@@ -113,9 +113,9 @@
 						share? We want to hear from you!
 					</p>
 				</div>
-				<div class="hidden lg:visible col-span-2 lg:flex flex-col items-center">
+				<div class="col-span-2 hidden flex-col items-center lg:visible lg:flex">
 					<img
-						class="flip sm:absolute sm:transform sm:translate-y-24 h-1/8 sm:h-2/3"
+						class="flip h-1/8 sm:absolute sm:h-2/3 sm:translate-y-24 sm:transform"
 						src="/images/characters/bear-pig.png"
 						alt
 					/>
@@ -127,21 +127,21 @@
 	<div id="formatAndDates" />
 
 	<div class="relative mt-24">
-		<div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 ">
+		<div class="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 ">
 			<div class="flex flex-col justify-center text-center">
-				<h2 class="text-4xl font-extrabold tracking-tighter uppercase text-thatBlue-800">
+				<h2 class="text-4xl font-extrabold uppercase tracking-tighter text-thatBlue-800">
 					Speak Online or In-Person, you decide.
 				</h2>
 			</div>
 
 			<div class="mt-12">
-				<p class="text-center pt-4 prose-lg text-gray-500">
+				<p class="prose-lg pt-4 text-center text-gray-500">
 					Dare we say we've gone "digital-first"? Sounds fancy, right? The truth is we're a believer
 					in continuous refactoring, and let's be honest, the resort isn't big enough for the camp
 					we want to set up. THAT Conference is now comprised of two primary delivery methods,
 					online or in-person.
 				</p>
-				<div class="pt-12 flex">
+				<div class="flex pt-12">
 					<div class="flex flex-col justify-center">
 						<img
 							src="/images/characters/what_to_expect_tech_stack.png"
@@ -149,7 +149,7 @@
 							alt="a computer"
 						/>
 					</div>
-					<p class="flex-grow text-left pt-4 prose-lg text-gray-500">
+					<p class="prose-lg flex-grow pt-4 text-left text-gray-500">
 						Online activities are solely delivered online, authentic to their audience. They are
 						meant to be very interactive, global, and happen at any time for any length of time.
 						They're limited to 100 people, but some of the best, most engaging activities happen
@@ -157,8 +157,8 @@
 						addition.
 					</p>
 				</div>
-				<div class="pt-12 flex">
-					<p class="flex-grow text-left pt-4 prose-lg text-gray-500">
+				<div class="flex pt-12">
+					<p class="prose-lg flex-grow pt-4 text-left text-gray-500">
 						In-person activities are just that; they're physically in-person and also authentic to
 						their audience. Typically they're orchestrated with a single speaker and limited by time
 						and physical space.
@@ -176,12 +176,12 @@
 	</div>
 
 	<div class="mt-24">
-		<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
-			<div class="lg:grid lg:grid-cols-2 lg:gap-32 lg:items-start">
+		<div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 ">
+			<div class="lg:grid lg:grid-cols-2 lg:items-start lg:gap-32">
 				<div class="mt-8 flex flex-col space-y-6">
 					<div>
 						<h2
-							class="text-center sm:text-left text-4xl font-extrabold tracking-tighter uppercase text-thatBlue-800"
+							class="text-center text-4xl font-extrabold uppercase tracking-tighter text-thatBlue-800 sm:text-left"
 						>
 							Audiences And Formats
 						</h2>
@@ -197,7 +197,7 @@
 							Professional & Family Formats
 						</h3>
 
-						<p class="pt-4 prose-lg text-gray-500">
+						<p class="prose-lg pt-4 text-gray-500">
 							THAT Conference is a professional polyglot technical conference with a rich experience
 							for children and other family members. Your session could be aimed at the professional
 							track or for family "geeklings".
@@ -207,7 +207,7 @@
 					<div>
 						<h3 class="text-lg font-extrabold tracking-wide text-gray-600">Standard Sessions</h3>
 
-						<p class="pt-4 prose-lg text-gray-500">
+						<p class="prose-lg pt-4 text-gray-500">
 							Standard sessions are 60 minutes each, including time for answering questions. There
 							is a 30-minute break in-between each session to nurture those all-important hallway
 							conversations.
@@ -219,7 +219,7 @@
 							Pre-Conference Workshops
 						</h3>
 
-						<p class="pt-4 prose-lg text-gray-500">
+						<p class="prose-lg pt-4 text-gray-500">
 							Half-day (four hours) or full-day (8 hours), the day leading into THAT Conference is
 							set aside for a full day of workshops. Be prepared to provide attendees a decent
 							agenda for what you'll cover.
@@ -229,7 +229,7 @@
 					<div>
 						<h3 class="text-lg font-extrabold tracking-wide text-gray-600">Keynotes</h3>
 
-						<p class="pt-4 prose-lg text-gray-500">
+						<p class="prose-lg pt-4 text-gray-500">
 							Do you have what it takes to give a 90-minute speech on something you're passionate
 							about? You'll have an audience of over 1,000 people in front of the stage listening to
 							your story. We want topics that'll motivate, energize, and help attendees see the
@@ -242,7 +242,7 @@
 				<div class="mt-8 flex flex-col space-y-6">
 					<div>
 						<h2
-							class="text-center sm:text-left text-4xl font-extrabold tracking-tighter uppercase text-thatBlue-800"
+							class="text-center text-4xl font-extrabold uppercase tracking-tighter text-thatBlue-800 sm:text-left"
 						>
 							Key Dates You Need To Know
 						</h2>
@@ -251,7 +251,7 @@
 					<div>
 						<div class="divide-y divide-gray-200">
 							{#each event.milestones as milestone}
-								<div class="py-4 grid grid-cols-2">
+								<div class="grid grid-cols-2 py-4">
 									<div class="text-lg font-extrabold tracking-wide text-gray-500">
 										{dayjs(milestone.dueDate).format('MMMM D, YYYY')}
 									</div>
@@ -263,10 +263,10 @@
 						</div>
 					</div>
 
-					<div class="inline-block relative">
+					<div class="relative inline-block">
 						<img
 							src="/images/characters/what_to_expect_4_days.png"
-							class="lazyload h-48 flex-shrink-0 mx-auto"
+							class="lazyload mx-auto h-48 flex-shrink-0"
 							alt="a calendar"
 						/>
 					</div>
