@@ -57,7 +57,8 @@
 			const { queryEventsByCommunity } = eventsApi(fetch);
 
 			const isBackdoor =
-				url.path === '/activities/create/backdoor/' || url.path === '/activities/create/backdoor';
+				url.pathname === '/activities/create/backdoor/' ||
+				url.pathname === '/activities/create/backdoor';
 
 			const eventId = url.searchParams.get('event') || config.eventId;
 			const events = await queryEventsByCommunity();
