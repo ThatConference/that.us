@@ -1,3 +1,10 @@
+## [2.9.15](https://github.com/ThatConference/that.us/compare/v2.9.14...v2.9.15) (2022-02-21)
+
+
+### Bug Fixes
+
+* backdoor check ([f4ae33b](https://github.com/ThatConference/that.us/commit/f4ae33bb3812fb2c3e92e817bd6ea5e7c6616ab0))
+
 ## [2.9.14](https://github.com/ThatConference/that.us/compare/v2.9.13...v2.9.14) (2022-02-18)
 
 
