@@ -1,6 +1,6 @@
 ---
 date: 2021-11-01
-articleType: Announcement
+articleType: Article
 title: We're Hooked on Bluegill Bait!
 description: Read about how a few geeks in THAT turned a passion of hot sauce into reality.
 heroImage: freshwater-hero.jpg
