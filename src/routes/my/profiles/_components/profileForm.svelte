@@ -442,7 +442,7 @@
 
 				<div class="sm:col-span-3">
 					<label for="jobTitle" class="block text-sm font-medium leading-5 text-gray-700">
-						Job Tile
+						Job Title
 					</label>
 					<div class="mt-1 rounded-md border shadow-sm">
 						<Input
@@ -565,7 +565,7 @@
 					<div class="sm:col-span-4">
 						<div class="mt-6 grid grid-cols-1 gap-y-4 sm:grid-cols-6">
 							<div class="block text-sm font-medium leading-5 text-gray-700 sm:col-span-4">
-								<label for="interests"> What are somethings you're interested in? </label>
+								<label for="interests"> What are some things you're interested in? </label>
 								<p class="mt-2 text-gray-500">Please note return/enter is the delimiter.</p>
 
 								<div class="tag-form-input mt-1 rounded-md shadow-sm">
