@@ -229,10 +229,10 @@
 		avatarUrl = `${$session.thatProfile.profileImage}${imageCrop}`;
 		displayName = `${$session.thatProfile.firstName} ${$session.thatProfile.lastName}`;
 
-		if (api) {
-			api.executeCommand('avatarUrl', avatarUrl);
-			api.executeCommand('displayName', displayName);
-		}
+		// if (api) {
+		// 	api.executeCommand('avatarUrl', avatarUrl);
+		// 	api.executeCommand('displayName', displayName);
+		// }
 	}
 
 	const metaTags = ((title = activityDetails?.title || 'Join In - THAT') => ({
