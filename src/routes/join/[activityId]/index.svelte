@@ -137,21 +137,18 @@
 			},
 
 			onload: () => {
-				// update here just to cover loading scenarios
-				api.executeCommand('avatarUrl', avatarUrl);
-				api.executeCommand('displayName', displayName);
+				console.log('jitsi onload');
 
 				api.getIFrame().focus();
 				handleResize();
 				jitsiLoaded = true;
+				api.executeCommand('toggleTileView');
 			},
 
 			parentNode: document.getElementById('meet')
 		};
 
 		api = new window.JitsiMeetExternalAPI(domain, options);
-
-		api.executeCommand('toggleTileView');
 
 		api.addEventListener('audioMuteStatusChanged', handleMuted);
 
@@ -228,12 +225,13 @@
 	}
 
 	$: if ($session.isAuthenticated && !incompleteProfile) {
+		console.log('session loaded');
 		Promise.resolve(setAttendance(activityId));
 
 		avatarUrl = `${$session.thatProfile.profileImage}${imageCrop}`;
 		displayName = `${$session.thatProfile.firstName} ${$session.thatProfile.lastName}`;
 
-		if (api) {
+		if (jitsiLoaded) {
 			api.executeCommand('avatarUrl', avatarUrl);
 			api.executeCommand('displayName', displayName);
 		}
