@@ -137,10 +137,6 @@
 			},
 
 			onload: () => {
-				// update here just to cover loading scenarios
-				api.executeCommand('avatarUrl', avatarUrl);
-				api.executeCommand('displayName', displayName);
-
 				api.getIFrame().focus();
 				handleResize();
 				jitsiLoaded = true;
