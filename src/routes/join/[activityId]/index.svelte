@@ -137,17 +137,18 @@
 			},
 
 			onload: () => {
+				console.log('jitsi onload');
+
 				api.getIFrame().focus();
 				handleResize();
 				jitsiLoaded = true;
+				api.executeCommand('toggleTileView');
 			},
 
 			parentNode: document.getElementById('meet')
 		};
 
 		api = new window.JitsiMeetExternalAPI(domain, options);
-
-		api.executeCommand('toggleTileView');
 
 		api.addEventListener('audioMuteStatusChanged', handleMuted);
 
@@ -224,15 +225,16 @@
 	}
 
 	$: if ($session.isAuthenticated && !incompleteProfile) {
+		console.log('session loaded');
 		Promise.resolve(setAttendance(activityId));
 
 		avatarUrl = `${$session.thatProfile.profileImage}${imageCrop}`;
 		displayName = `${$session.thatProfile.firstName} ${$session.thatProfile.lastName}`;
 
-		// if (api) {
-		// 	api.executeCommand('avatarUrl', avatarUrl);
-		// 	api.executeCommand('displayName', displayName);
-		// }
+		if (jitsiLoaded) {
+			api.executeCommand('avatarUrl', avatarUrl);
+			api.executeCommand('displayName', displayName);
+		}
 	}
 
 	const metaTags = ((title = activityDetails?.title || 'Join In - THAT') => ({
