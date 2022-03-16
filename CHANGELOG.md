@@ -1,3 +1,10 @@
+## [2.10.1](https://github.com/ThatConference/that.us/compare/v2.10.0...v2.10.1) (2022-03-16)
+
+
+### Reverts
+
+* Revert "fix: attempt to get the changelog entries to match the prettyrc format" ([ea95c7b](https://github.com/ThatConference/that.us/commit/ea95c7b9527ea294b7843636d494cf01aecb83f2))
+
 # [2.10.0](https://github.com/ThatConference/that.us/compare/v2.9.15...v2.10.0) (2022-03-16)
 
 
