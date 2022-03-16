@@ -1,3 +1,10 @@
+# [2.10.0](https://github.com/ThatConference/that.us/compare/v2.9.15...v2.10.0) (2022-03-16)
+
+
+### Features
+
+* new hero layout ([55ad5e6](https://github.com/ThatConference/that.us/commit/55ad5e69d0b92b1499f91fc27b9856a8067d01d8))
+
 ## [2.9.15](https://github.com/ThatConference/that.us/compare/v2.9.14...v2.9.15) (2022-02-21)
 
 
