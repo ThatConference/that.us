@@ -40,7 +40,7 @@
 	<div class="mx-auto max-w-screen-xl px-8">
 		<div class="relative py-20 text-left">
 			<h3
-				class="text-3xl font-extrabold leading-8 tracking-tight text-gray-900 sm:text-4xl sm:leading-10"
+				class="text-4xl font-semibold leading-10 tracking-tight text-thatBlue-700 sm:text-5xl sm:leading-none"
 			>
 				Welcome to THAT family!
 			</h3>
