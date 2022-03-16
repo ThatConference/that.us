@@ -65,19 +65,16 @@
 			<div class="mx-auto max-w-prose text-base lg:max-w-none">
 				<div
 					class="flex flex-col flex-wrap items-center justify-between
-            sm:flex-nowrap md:flex-row"
-				>
+            sm:flex-nowrap md:flex-row">
 					<div>
 						<p
 							class="text-base font-semibold uppercase leading-6
-                tracking-wide text-thatOrange-400"
-						>
+                tracking-wide text-thatOrange-400">
 							Help && Support
 						</p>
 						<h1
 							class="mt-2 mb-8 text-3xl font-extrabold leading-8 tracking-tight
-                text-gray-900 sm:text-4xl sm:leading-10"
-						>
+                text-gray-900 sm:text-4xl sm:leading-10">
 							Frequently Asked Questions
 						</h1>
 					</div>
@@ -87,8 +84,7 @@
 							class="form-input"
 							bind:value={searchterm}
 							on:input={filter(searchterm)}
-							placeholder="type to search..."
-						/>
+							placeholder="type to search..." />
 					</div>
 				</div>
 			</div>

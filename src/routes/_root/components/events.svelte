@@ -34,8 +34,7 @@
 <section class="bg-white py-12 lg:py-16">
 	<div class="relative mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
 		<h1
-			class="text-4xl font-semibold leading-10 tracking-tight text-thatBlue-700 sm:text-5xl sm:leading-none"
-		>
+			class="text-4xl font-semibold leading-10 tracking-tight text-thatBlue-700 sm:text-5xl sm:leading-none">
 			Upcoming Events
 		</h1>
 
@@ -47,8 +46,7 @@
 			</div>
 			<ul
 				class="space-y-12 lg:grid lg:grid-cols-2 lg:items-start lg:gap-y-8
-					lg:gap-x-12 lg:space-y-0"
-			>
+					lg:gap-x-12 lg:space-y-0">
 				{#each hybrid as event}
 					<li>
 						<Event {event} />
@@ -63,8 +61,7 @@
 
 			<ul
 				class="space-y-12 lg:grid lg:grid-cols-2 lg:items-start lg:gap-y-8
-          lg:gap-x-12 lg:space-y-0"
-			>
+          lg:gap-x-12 lg:space-y-0">
 				{#each online as event}
 					<li>
 						<Event {event} />

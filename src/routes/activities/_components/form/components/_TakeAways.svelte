@@ -64,8 +64,7 @@
 <div>
 	<Form {schema} validateOnBlur={false} validateOnChange={false} on:submit={handleSubmit}>
 		<div
-			class="flex w-full flex-col space-y-4 sm:flex-row sm:items-center sm:space-y-0 sm:space-x-8"
-		>
+			class="flex w-full flex-col space-y-4 sm:flex-row sm:items-center sm:space-y-0 sm:space-x-8">
 			<div class="flex-grow">
 				<Input
 					id="takeAwayInput"
@@ -73,8 +72,7 @@
 					type="text"
 					spellcheck="true"
 					placeholder="E.g. Learn how to become more awesome."
-					class="form-input w-full hover:border-gray-700 sm:text-sm sm:leading-5"
-				/>
+					class="form-input w-full hover:border-gray-700 sm:text-sm sm:leading-5" />
 			</div>
 			<div class="flex-none">
 				<ShellButton>
@@ -100,8 +98,7 @@
 								<button
 									type="button"
 									on:click={() => removeItem(item.id)}
-									class="w-full px-8 py-1 text-sm font-medium leading-5 md:px-10 "
-								>
+									class="w-full px-8 py-1 text-sm font-medium leading-5 md:px-10 ">
 									Remove
 								</button>
 							</ShellButton>

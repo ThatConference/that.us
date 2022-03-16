@@ -7,8 +7,7 @@
 </script>
 
 <div
-	class="fixed inset-x-0 bottom-0 z-50 px-4 pb-4 sm:inset-0 sm:flex sm:items-center sm:justify-center"
->
+	class="fixed inset-x-0 bottom-0 z-50 px-4 pb-4 sm:inset-0 sm:flex sm:items-center sm:justify-center">
 	<div class="fixed inset-0 transition-opacity">
 		<div class="absolute inset-0 bg-gray-500 opacity-75" />
 	</div>
@@ -16,8 +15,7 @@
 	<div
 		use:clickOutside
 		on:click_outside
-		class="relative overflow-hidden rounded-lg bg-white p-10 shadow-xl sm:w-full sm:max-w-3xl"
-	>
+		class="relative overflow-hidden rounded-lg bg-white p-10 shadow-xl sm:w-full sm:max-w-3xl">
 		<div class="flex flex-col">
 			<div class="flex items-center space-x-4">
 				<div class="flex h-12 w-12 items-center justify-center rounded-full bg-yellow-100">
@@ -28,8 +26,7 @@
 										2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1
 										1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0
 										00-1-1z"
-							clip-rule="evenodd"
-						/>
+							clip-rule="evenodd" />
 					</svg>
 				</div>
 

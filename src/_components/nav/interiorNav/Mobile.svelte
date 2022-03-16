@@ -8,16 +8,14 @@
 <div
 	class="border-b border-gray-700 lg:hidden"
 	class:hidden={!$mobileVisible}
-	class:block={$mobileVisible}
->
+	class:block={$mobileVisible}>
 	<div class="px-2 py-3 sm:px-3">
 		<a
 			sveltekit:prefetch
 			href="/events/"
 			class="mt-1 block rounded-md px-3 py-2 text-base font-medium text-gray-300
         hover:bg-that-blue hover:text-white focus:bg-that-blue focus:text-white
-        focus:outline-none"
-		>
+        focus:outline-none">
 			Events
 		</a>
 		<a
@@ -25,8 +23,7 @@
 			href="/activities/"
 			class="mt-1 block rounded-md px-3 py-2 text-base font-medium text-gray-300
         hover:bg-that-blue hover:text-white focus:bg-that-blue focus:text-white
-        focus:outline-none"
-		>
+        focus:outline-none">
 			Activities
 		</a>
 		<a
@@ -34,8 +31,7 @@
 			href="/members/"
 			class="mt-1 block rounded-md px-3 py-2 text-base font-medium text-gray-300
         hover:bg-that-blue hover:text-white focus:bg-that-blue focus:text-white
-        focus:outline-none"
-		>
+        focus:outline-none">
 			Members
 		</a>
 		<a
@@ -43,8 +39,7 @@
 			href="/communities/"
 			class="mt-1 block rounded-md px-3 py-2 text-base font-medium text-gray-300
 				hover:bg-that-blue hover:text-white focus:bg-that-blue focus:text-white
-				focus:outline-none"
-		>
+				focus:outline-none">
 			Communities
 		</a>
 		<a
@@ -52,8 +47,7 @@
 			href="/partners/"
 			class="mt-1 block rounded-md px-3 py-2 text-base font-medium text-gray-300
         hover:bg-that-blue hover:text-white focus:bg-that-blue focus:text-white
-        focus:outline-none"
-		>
+        focus:outline-none">
 			Partners
 		</a>
 		<a
@@ -61,8 +55,7 @@
 			href="/blog/"
 			class="mt-1 block rounded-md px-3 py-2 text-base font-medium text-gray-300
         hover:bg-that-blue hover:text-white focus:bg-that-blue focus:text-white
-        focus:outline-none"
-		>
+        focus:outline-none">
 			Blog
 		</a>
 		<a
@@ -70,8 +63,7 @@
 			href="/support/"
 			class="mt-1 block rounded-md px-3 py-2 text-base font-medium text-gray-300
         hover:bg-that-blue hover:text-white focus:bg-that-blue focus:text-white
-        focus:outline-none"
-		>
+        focus:outline-none">
 			Help
 		</a>
 	</div>

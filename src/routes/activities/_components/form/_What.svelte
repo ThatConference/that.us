@@ -10,8 +10,7 @@
 			<label for="activity_title" class="block text-sm font-medium text-gray-700"> Title </label>
 			<div class="relative">
 				<span
-					class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400"
-				/>
+					class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400" />
 			</div>
 
 			<div>
@@ -23,8 +22,7 @@
 				<Input
 					name="title"
 					autofocus
-					class="form-input block w-full hover:border-gray-700 sm:text-sm sm:leading-5"
-				/>
+					class="form-input block w-full hover:border-gray-700 sm:text-sm sm:leading-5" />
 			</div>
 		</div>
 
@@ -34,8 +32,7 @@
 			</label>
 			<div class="relative">
 				<span
-					class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400"
-				/>
+					class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400" />
 			</div>
 			<div>
 				<p class="mt-1 text-sm text-gray-400">
@@ -48,8 +45,7 @@
 					multiline
 					rows="5"
 					spellcheck="true"
-					class="form-input block w-full hover:border-gray-700 sm:text-sm sm:leading-5"
-				/>
+					class="form-input block w-full hover:border-gray-700 sm:text-sm sm:leading-5" />
 			</div>
 		</div>
 
@@ -59,8 +55,7 @@
 			</label>
 			<div class="relative">
 				<span
-					class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400"
-				/>
+					class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400" />
 			</div>
 			<div>
 				<p class="mt-1 text-sm text-gray-400">
@@ -73,8 +68,7 @@
 					multiline
 					rows="10"
 					spellcheck="true"
-					class="form-input block w-full hover:border-gray-700 sm:text-sm sm:leading-5"
-				/>
+					class="form-input block w-full hover:border-gray-700 sm:text-sm sm:leading-5" />
 			</div>
 		</div>
 	</div>

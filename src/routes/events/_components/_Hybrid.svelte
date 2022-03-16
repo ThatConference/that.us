@@ -114,8 +114,7 @@
 	<section id="tickets">
 		<CamperTickets
 			{event}
-			on:purchase-hybrid-ticket={({ detail }) => handleOnTicketPurchase(detail)}
-		/>
+			on:purchase-hybrid-ticket={({ detail }) => handleOnTicketPurchase(detail)} />
 	</section>
 
 	<section>

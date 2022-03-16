@@ -177,8 +177,7 @@
 					id="dense"
 					type="checkbox"
 					bind:checked={dense}
-					class="form-check-input float-left mt-1 mr-2 h-4 w-4 cursor-pointer appearance-none rounded-sm border border-gray-300 bg-white bg-contain bg-center bg-no-repeat align-top transition duration-200 checked:border-blue-600 checked:bg-blue-600 focus:outline-none"
-				/>
+					class="form-check-input float-left mt-1 mr-2 h-4 w-4 cursor-pointer appearance-none rounded-sm border border-gray-300 bg-white bg-contain bg-center bg-no-repeat align-top transition duration-200 checked:border-blue-600 checked:bg-blue-600 focus:outline-none" />
 				<label for="dense" class="form-check-label inline-block text-gray-800">Dense</label>
 			</div>
 			<button
@@ -193,16 +192,14 @@
 				}`}
 				on:click={() => {
 					filterVisible = true;
-				}}
-			>
+				}}>
 				<Icon data={filterIcon} label="Filter" />
 			</button>
 			<input
 				use:autoFocus
 				class="form-input hidden h-10 rounded-md p-2 sm:inline sm:text-sm sm:leading-5 "
 				bind:value={searchterm}
-				placeholder="type to search..."
-			/>
+				placeholder="type to search..." />
 		</div>
 	</div>
 
@@ -219,8 +216,7 @@
 			bind:workshop
 			bind:openSpace
 			on:click={handleCloseFilter}
-			on:clicked-outside={handleCloseFilter}
-		/>
+			on:clicked-outside={handleCloseFilter} />
 	{/if}
 
 	{#if sorted.length}
@@ -229,8 +225,7 @@
 				<h2
 					class="sticky top-0 z-20 mb-7 -ml-5 -mr-5 whitespace-nowrap 
                  bg-gray-100 pt-4 pl-5 text-xl 
-                 font-extrabold leading-9 tracking-tight text-thatBlue-800 sm:mb-9 sm:-ml-6 sm:-mr-6 sm:pl-6 sm:leading-10 md:text-4xl"
-				>
+                 font-extrabold leading-9 tracking-tight text-thatBlue-800 sm:mb-9 sm:-ml-6 sm:-mr-6 sm:pl-6 sm:leading-10 md:text-4xl">
 					{dayjs(day.dayOfYear).format("dddd, MMMM D, 'YY")}
 				</h2>
 
@@ -239,8 +234,7 @@
 						<h2
 							class="sm:top-13 sticky top-11 z-10 -ml-5 -mr-5 whitespace-nowrap bg-gray-100 
                      pt-2 pl-5 text-xl font-extrabold 
-                     leading-9 tracking-tight text-thatOrange-400 sm:-ml-6 sm:-mr-6 sm:pl-6 sm:leading-10 md:text-4xl"
-						>
+                     leading-9 tracking-tight text-thatOrange-400 sm:-ml-6 sm:-mr-6 sm:pl-6 sm:leading-10 md:text-4xl">
 							{#if !dayjs(ts.timeSlot).isValid()}
 								Unscheduled
 							{:else}
@@ -252,14 +246,12 @@
 							<ul
 								class={`mt-8 gap-8 ${
 									dense ? '' : 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'
-								}`}
-							>
+								}`}>
 								{#each ts.activities as activity (activity.id)}
 									{#if isKeynote(activity)}
 										<li
 											in:fade
-											class="col-span-1 mt-10 mb-10 rounded-lg bg-gray-100 shadow-lg sm:col-span-2 lg:col-span-3"
-										>
+											class="col-span-1 mt-10 mb-10 rounded-lg bg-gray-100 shadow-lg sm:col-span-2 lg:col-span-3">
 											<KeynoteCard {...activity} />
 										</li>
 									{:else}
@@ -279,12 +271,10 @@
 			<img
 				class="lazyload h-52 sm:h-64 lg:h-72 m-0 mt-24 lg:m-10"
 				src="/images/characters/sasquatch.png"
-				alt="Empty-handed Sasquatch"
-			/>
+				alt="Empty-handed Sasquatch" />
 			{#if activities.length > 0}
 				<h1
-					class="pt-10 pb-4 sm:pb-10 px-2 tracking-tight leading-10 font-bold text-thatBlue-600 text-3xl sm:text-4xl lg:text-5xl text-center"
-				>
+					class="pt-10 pb-4 sm:pb-10 px-2 tracking-tight leading-10 font-bold text-thatBlue-600 text-3xl sm:text-4xl lg:text-5xl text-center">
 					{`Honestly, I tried, but there's nothing for "${searchterm}".`}
 				</h1>
 			{/if}

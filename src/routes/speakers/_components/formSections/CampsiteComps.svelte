@@ -34,8 +34,7 @@
 			</div>
 			<div>
 				<a target="_blank" class="hover" href="https://www.kalahariresorts.com/"
-					>https://www.kalahariresorts.com</a
-				>
+					>https://www.kalahariresorts.com</a>
 			</div>
 		</div>
 	</div>
@@ -47,8 +46,7 @@
 	</h2>
 	<p class="prose prose-lg mt-4 text-gray-500">
 		We have secured discounted room rates at The Kalahari from <span class="font-extrabold"
-			>{dayjs(startDate).format('dddd, MMMM D, YYYY')}</span
-		>
+			>{dayjs(startDate).format('dddd, MMMM D, YYYY')}</span>
 		through <span class="font-extrabold">{dayjs(endDate).format('dddd, MMMM D, YYYY')}</span>.
 		Reserve your room starting
 		<span class="font-extrabold uppercase">now</span>
@@ -67,9 +65,9 @@
 		<span class="font-extrabold">Did we mention don't delay? DON'T DELAY!</span> The hotel block
 		will only remain open until
 		<span class="font-extrabold"
-			>{dayjs(blockCloseDate).format('dddd, MMMM D, YYYY')}. So please take care of it now!</span
-		> Daily Water Park passes are included with your booking of a Kalahari hotel room. Really, go book
-		right now!
+			>{dayjs(blockCloseDate).format('dddd, MMMM D, YYYY')}. So please take care of it now!</span> Daily
+		Water Park passes are included with your booking of a Kalahari hotel room. Really, go book right
+		now!
 	</p>
 </div>
 
@@ -96,8 +94,7 @@
 							checked={declinedRoomComp}
 							on:change={({ detail }) => (declinedRoomComp = detail)}
 							size="2.5rem"
-							class="flex-none"
-						/>
+							class="flex-none" />
 
 						<div class="ml-6 text-lg">
 							<p class="font-medium leading-7 text-gray-500">

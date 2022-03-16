@@ -39,8 +39,7 @@
 				open
 				class="ml-1 rounded-md px-3 py-2 text-sm font-medium text-gray-300
           hover:bg-that-blue hover:text-white focus:bg-that-blue
-          focus:text-white focus:outline-none"
-			>
+          focus:text-white focus:outline-none">
 				<DesktopLink>Events</DesktopLink>
 			</a>
 
@@ -50,8 +49,7 @@
 				href="/activities/"
 				class="ml-1 rounded-md px-3 py-2 text-sm font-medium text-gray-300
           hover:bg-that-blue hover:text-white focus:bg-that-blue
-          focus:text-white focus:outline-none"
-			>
+          focus:text-white focus:outline-none">
 				<DesktopLink>Activities</DesktopLink>
 			</a>
 
@@ -60,8 +58,7 @@
 				href="/members/"
 				class="ml-1 rounded-md px-3 py-2 text-sm font-medium text-gray-300
           hover:bg-that-blue hover:text-white focus:bg-that-blue
-          focus:text-white focus:outline-none"
-			>
+          focus:text-white focus:outline-none">
 				<DesktopLink>Members</DesktopLink>
 			</a>
 
@@ -70,8 +67,7 @@
 				href="/communities/"
 				class="ml-1 rounded-md px-3 py-2 text-sm font-medium text-gray-300
           hover:bg-that-blue hover:text-white focus:bg-that-blue
-          focus:text-white focus:outline-none"
-			>
+          focus:text-white focus:outline-none">
 				<DesktopLink>Communities</DesktopLink>
 			</a>
 
@@ -80,8 +76,7 @@
 				href="/partners/"
 				class="ml-1 rounded-md px-3 py-2 text-sm font-medium text-gray-300
           hover:bg-that-blue hover:text-white focus:bg-that-blue
-          focus:text-white focus:outline-none"
-			>
+          focus:text-white focus:outline-none">
 				<DesktopLink>Partners</DesktopLink>
 			</a>
 
@@ -90,8 +85,7 @@
 				href="/blog/"
 				class="ml-1 rounded-md px-3 py-2 text-sm font-medium text-gray-300
           hover:bg-that-blue hover:text-white focus:bg-that-blue
-          focus:text-white focus:outline-none"
-			>
+          focus:text-white focus:outline-none">
 				<DesktopLink>Blog</DesktopLink>
 			</a>
 
@@ -101,8 +95,7 @@
 					class="ml-1 rounded-md px-3 py-2 text-sm font-medium text-gray-300
             hover:bg-that-blue hover:text-white focus:bg-that-blue
             focus:text-white focus:outline-none"
-					on:click|preventDefault={() => (helpVisible = !helpVisible)}
-				>
+					on:click|preventDefault={() => (helpVisible = !helpVisible)}>
 					<DesktopLink>Help</DesktopLink>
 				</button>
 				{#if helpVisible}
@@ -114,32 +107,27 @@
 								</a>
 								<a
 									href="/support/what-is-an-activity/"
-									class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-								>
+									class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
 									What Is An Activity
 								</a>
 								<a
 									href="/support/joining-an-activity/"
-									class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-								>
+									class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
 									How To Join An Activity
 								</a>
 								<a
 									href="/support/creating-an-activity/"
-									class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-								>
+									class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
 									How To Create An Activity
 								</a>
 								<a
 									href="/support/staying-up-to-date/"
-									class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-								>
+									class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
 									Staying Up To Date
 								</a>
 								<a
 									href="/support/faq/"
-									class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-								>
+									class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
 									FAQ
 								</a>
 							</div>
@@ -160,11 +148,9 @@
 				class:shadow-solid={activityVisible}
 				class:bg-thatBlue-500={activityVisible}
 				aria-label="Notifications"
-				on:click|preventDefault={() => (activityVisible = !activityVisible)}
-			>
+				on:click|preventDefault={() => (activityVisible = !activityVisible)}>
 				<div
-					class="flex transform justify-center transition duration-500 ease-in-out hover:scale-105"
-				>
+					class="flex transform justify-center transition duration-500 ease-in-out hover:scale-105">
 					<Activity />
 				</div>
 			</button>
@@ -172,8 +158,7 @@
 			{#if activityVisible}
 				<ActivitySlideOver
 					on:click={handleCloseActivityCenter}
-					on:clicked-outside={handleCloseActivityCenter}
-				/>
+					on:clicked-outside={handleCloseActivityCenter} />
 			{/if}
 		{/if}
 
@@ -186,8 +171,7 @@
 						{#if cartItems > 0}
 							<span class="absolute bottom-0 right-0 block animate-pulse">
 								<span
-									class="inline-flex h-4 w-4 items-center justify-center rounded-full bg-gray-500"
-								>
+									class="inline-flex h-4 w-4 items-center justify-center rounded-full bg-gray-500">
 									<span class="text-xs font-medium leading-none text-white">{cartItems}</span>
 								</span>
 							</span>

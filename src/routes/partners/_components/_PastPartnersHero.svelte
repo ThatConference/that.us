@@ -1,7 +1,6 @@
 <section>
 	<h2
-		class="text-4xl font-extrabold leading-10 tracking-tight text-thatBlue-800 sm:text-5xl sm:leading-none md:text-6xl"
-	>
+		class="text-4xl font-extrabold leading-10 tracking-tight text-thatBlue-800 sm:text-5xl sm:leading-none md:text-6xl">
 		All Partners and Sponsors
 	</h2>
 
@@ -10,8 +9,7 @@
 			<p
 				class="text-base text-gray-500  
                   sm:max-w-7xl sm:text-lg
-                  md:text-xl"
-			>
+                  md:text-xl">
 				Since the start of THAT, it has been the continuous support from companies and organizations
 				partnering with us to help create events that bring the community together. We thank every
 				one of our partners and sponsors, across all levels, for their amazing and continued

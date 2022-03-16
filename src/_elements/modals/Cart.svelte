@@ -7,8 +7,7 @@
 
 <div
 	class="fixed inset-x-0 bottom-0 z-10 px-4 pb-6 sm:inset-0 sm:flex sm:items-center
-	sm:justify-center sm:p-0"
->
+	sm:justify-center sm:p-0">
 	<div class="fixed inset-0 transition-opacity">
 		<div class="absolute inset-0 bg-gray-100 opacity-75" />
 	</div>
@@ -18,8 +17,7 @@
 		role="dialog"
 		aria-modal="true"
 		aria-labelledby="modal-headline"
-		transition:fade={{ duration: 1000 }}
-	>
+		transition:fade={{ duration: 1000 }}>
 		<div>
 			<div class="mx-auto flex items-center justify-center p-12">
 				<img src="/images/THATCart.svg" alt="" />

@@ -82,16 +82,14 @@
 						id="additionalResourcesNameInput"
 						spellcheck="true"
 						placeholder="E.g. Title of this resource"
-						class="form-input w-full hover:border-gray-700 sm:text-sm sm:leading-5"
-					/>
+						class="form-input w-full hover:border-gray-700 sm:text-sm sm:leading-5" />
 				</div>
 				<div class="flex-grow">
 					<Input
 						name="url"
 						type="url"
 						placeholder="E.g. URL to resource"
-						class="form-input w-full hover:border-gray-700 sm:text-sm sm:leading-5"
-					/>
+						class="form-input w-full hover:border-gray-700 sm:text-sm sm:leading-5" />
 				</div>
 			</div>
 
@@ -104,8 +102,7 @@
 						rows="3"
 						spellcheck="true"
 						placeholder="E.g. Brief description"
-						class="form-input w-full hover:border-gray-700 sm:text-sm sm:leading-5"
-					/>
+						class="form-input w-full hover:border-gray-700 sm:text-sm sm:leading-5" />
 				</div>
 
 				<div class="flex justify-end">
@@ -136,8 +133,7 @@
 								<button
 									type="button"
 									on:click={() => removeItem(item.id)}
-									class="w-full px-8 py-1 text-sm font-medium leading-5 md:px-10 "
-								>
+									class="w-full px-8 py-1 text-sm font-medium leading-5 md:px-10 ">
 									Remove
 								</button>
 							</ShellButton>

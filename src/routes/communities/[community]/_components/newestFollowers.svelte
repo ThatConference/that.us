@@ -9,8 +9,7 @@
 		<div class="text-center md:mx-auto md:max-w-2xl lg:col-span-3">
 			<h2
 				class="my-2 text-3xl font-extrabold leading-8 tracking-tight
-                text-gray-900 sm:text-4xl sm:leading-10"
-			>
+                text-gray-900 sm:text-4xl sm:leading-10">
 				Newest Followers
 			</h2>
 		</div>

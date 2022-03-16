@@ -54,8 +54,7 @@
 					isActive={$state.matches('pendingLogin')}
 					stepName="Login"
 					rel="external"
-					href="/login/?r=/orders/summary"
-				/>
+					href="/login/?r=/orders/summary" />
 			{/if}
 
 			<div class="absolute top-0 right-0 hidden h-full w-5 md:block" aria-hidden="true">
@@ -63,14 +62,12 @@
 					class="h-full w-full text-gray-300"
 					viewBox="0 0 22 80"
 					fill="none"
-					preserveAspectRatio="none"
-				>
+					preserveAspectRatio="none">
 					<path
 						d="M0 -2L20 40L0 82"
 						vector-effect="non-scaling-stroke"
 						stroke="currentcolor"
-						stroke-linejoin="round"
-					/>
+						stroke-linejoin="round" />
 				</svg>
 			</div>
 		</li>
@@ -83,8 +80,7 @@
 					step="2"
 					isActive={$state.matches('authenticated.pendingProfile')}
 					stepName="Profile Completed"
-					on:click={() => goto('/my/profiles/primary/')}
-				/>
+					on:click={() => goto('/my/profiles/primary/')} />
 			{/if}
 
 			<div class="absolute top-0 right-0 hidden h-full w-5 md:block" aria-hidden="true">
@@ -92,14 +88,12 @@
 					class="h-full w-full text-gray-300"
 					viewBox="0 0 22 80"
 					fill="none"
-					preserveAspectRatio="none"
-				>
+					preserveAspectRatio="none">
 					<path
 						d="M0 -2L20 40L0 82"
 						vector-effect="non-scaling-stroke"
 						stroke="currentcolor"
-						stroke-linejoin="round"
-					/>
+						stroke-linejoin="round" />
 				</svg>
 			</div>
 		</li>
@@ -112,8 +106,7 @@
 					step="3"
 					isActive={$state.matches('authenticated.profileCompleted.pendingVerification')}
 					stepName="Verify Order"
-					on:click={() => goto('/orders/summary/', { replace: true })}
-				/>
+					on:click={() => goto('/orders/summary/', { replace: true })} />
 			{/if}
 
 			<div class="absolute top-0 right-0 hidden h-full w-5 md:block" aria-hidden="true">
@@ -121,14 +114,12 @@
 					class="h-full w-full text-gray-300"
 					viewBox="0 0 22 80"
 					fill="none"
-					preserveAspectRatio="none"
-				>
+					preserveAspectRatio="none">
 					<path
 						d="M0 -2L20 40L0 82"
 						vector-effect="non-scaling-stroke"
 						stroke="currentcolor"
-						stroke-linejoin="round"
-					/>
+						stroke-linejoin="round" />
 				</svg>
 			</div>
 		</li>
@@ -152,8 +143,7 @@
 			<a
 				rel="external"
 				href="/login/?r=/orders/summary"
-				class="font-medium text-thatOrange-400 hover:text-thatOrange-500"
-			>
+				class="font-medium text-thatOrange-400 hover:text-thatOrange-500">
 				Login
 				<span aria-hidden="true">&rarr;</span>
 			</a>
@@ -169,8 +159,7 @@
 		<div class="mt-3 text-sm">
 			<a
 				href="/my/profiles/primary/"
-				class="font-medium text-thatOrange-400 hover:text-thatOrange-500"
-			>
+				class="font-medium text-thatOrange-400 hover:text-thatOrange-500">
 				Complete Your Profile
 				<span aria-hidden="true">&rarr;</span>
 			</a>

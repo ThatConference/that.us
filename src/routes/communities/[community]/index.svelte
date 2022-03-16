@@ -84,8 +84,7 @@
 		<Hero
 			community={communityDetails}
 			isFollowing={userIsFollowing}
-			on:community-follow={() => follow(communityDetails.id)}
-		/>
+			on:community-follow={() => follow(communityDetails.id)} />
 	</div>
 
 	<div in:fade={{ delay: getDelay() }}>
@@ -100,7 +99,6 @@
 		<CTA
 			community={communityDetails}
 			isFollowing={userIsFollowing}
-			on:community-follow={() => follow(communityDetails.id)}
-		/>
+			on:community-follow={() => follow(communityDetails.id)} />
 	</div>
 </div>

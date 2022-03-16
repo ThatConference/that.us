@@ -39,8 +39,7 @@
 				<img
 					class="h-full w-full"
 					src="/images/characters/what_to_expect_hands_on_learning.png"
-					alt
-				/>
+					alt />
 			</div>
 		</div>
 	</div>
@@ -63,8 +62,7 @@
 						<div class="mt-8">
 							<div class="flex items-center">
 								<h4
-									class="flex-shrink-0 bg-white pr-4 text-sm font-semibold uppercase tracking-wider text-thatOrange-400"
-								>
+									class="flex-shrink-0 bg-white pr-4 text-sm font-semibold uppercase tracking-wider text-thatOrange-400">
 									What's included
 								</h4>
 								<div class="flex-1 border-t-2 border-gray-200" />
@@ -74,8 +72,7 @@
 								<li class="flex items-start lg:col-span-1">
 									<div>
 										<span
-											class="flex h-5 w-5 items-center justify-center rounded-full bg-green-500 ring-8 ring-white"
-										>
+											class="flex h-5 w-5 items-center justify-center rounded-full bg-green-500 ring-8 ring-white">
 											<CheckFull height="h-4" width="h-4" />
 										</span>
 									</div>
@@ -85,8 +82,7 @@
 								<li class="flex items-start lg:col-span-1">
 									<div>
 										<span
-											class="flex h-5 w-5 items-center justify-center rounded-full bg-green-500 ring-8 ring-white"
-										>
+											class="flex h-5 w-5 items-center justify-center rounded-full bg-green-500 ring-8 ring-white">
 											<CheckFull height="h-4" width="h-4" />
 										</span>
 									</div>
@@ -96,8 +92,7 @@
 								<li class="flex items-start lg:col-span-1">
 									<div>
 										<span
-											class="flex h-5 w-5 items-center justify-center rounded-full bg-green-500 ring-8 ring-white"
-										>
+											class="flex h-5 w-5 items-center justify-center rounded-full bg-green-500 ring-8 ring-white">
 											<CheckFull height="h-4" width="h-4" />
 										</span>
 									</div>
@@ -107,8 +102,7 @@
 								<li class="flex items-start lg:col-span-1">
 									<div>
 										<span
-											class="flex h-5 w-5 items-center justify-center rounded-full bg-green-500 ring-8 ring-white"
-										>
+											class="flex h-5 w-5 items-center justify-center rounded-full bg-green-500 ring-8 ring-white">
 											<CheckFull height="h-4" width="h-4" />
 										</span>
 									</div>
@@ -119,11 +113,9 @@
 					</div>
 
 					<div
-						class="bg-gray-100 py-8 px-6 text-center lg:flex lg:flex-shrink-0 lg:flex-col lg:justify-center lg:p-12"
-					>
+						class="bg-gray-100 py-8 px-6 text-center lg:flex lg:flex-shrink-0 lg:flex-col lg:justify-center lg:p-12">
 						<div
-							class="mt-4 flex items-center justify-center text-5xl font-extrabold text-gray-900"
-						>
+							class="mt-4 flex items-center justify-center text-5xl font-extrabold text-gray-900">
 							<span>${worshopTicket.price}</span>
 						</div>
 						<!-- <p class="mt-4 text-sm">
@@ -134,8 +126,7 @@
 
 						<div class="mt-6">
 							<StandardButton on:click={() => handlePurchase(worshopTicket.uiReference)}
-								>Purchase</StandardButton
-							>
+								>Purchase</StandardButton>
 						</div>
 					</div>
 				</div>

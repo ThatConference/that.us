@@ -16,8 +16,7 @@
 	<span
 		class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full border-2"
 		class:border-thatOrange-400={isActive}
-		aria-current="step"
-	>
+		aria-current="step">
 		<span class:text-thatOrange-400={isActive}>{step}</span>
 	</span>
 	<span class="ml-4 text-sm font-medium" class:text-thatOrange-400={isActive}>

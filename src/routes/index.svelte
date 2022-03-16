@@ -128,8 +128,7 @@
 				hasMore={$state.context.cursor ? true : false}
 				on:next={() => {
 					send('NEXT');
-				}}
-			/>
+				}} />
 		</div>
 
 		<div>
@@ -159,8 +158,7 @@
 				hasMore={$state.context.cursor ? true : false}
 				on:next={() => {
 					send('NEXT');
-				}}
-			/>
+				}} />
 
 			<Events {events} />
 

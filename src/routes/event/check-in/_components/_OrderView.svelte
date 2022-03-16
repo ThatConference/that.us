@@ -50,8 +50,7 @@
 				autofocus
 				class="form-input rounded-md border"
 				bind:value={searchterm}
-				placeholder="type to search..."
-			/>
+				placeholder="type to search..." />
 
 			<slot name="toggle" />
 		</div>
@@ -60,8 +59,7 @@
 			<ul class="space-y-4">
 				{#each registrationsFiltered as reg (reg.id)}
 					<li
-						class="overflow-hidden bg-gray-50 bg-opacity-75 px-4 py-4 shadow sm:rounded-md sm:px-6"
-					>
+						class="overflow-hidden bg-gray-50 bg-opacity-75 px-4 py-4 shadow sm:rounded-md sm:px-6">
 						<Order registration={reg} />
 					</li>
 				{/each}

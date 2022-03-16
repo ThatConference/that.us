@@ -61,8 +61,7 @@
 				<ModalWarning
 					title="No Favorites!"
 					text="Hold on a minute! You haven't favorited any activities yet. Get
-            on it!"
-				/>
+            on it!" />
 			</div>
 		{/if}
 	</div>

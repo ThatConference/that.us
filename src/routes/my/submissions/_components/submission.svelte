@@ -41,16 +41,14 @@
 							<p class="flex items-start text-sm text-gray-900">
 								Submitted:
 								<time class="ml-1.5" datetime="2020-01-07"
-									>{dayjs(activity.createdAt).format('MMMM D, YYYY')}</time
-								>
+									>{dayjs(activity.createdAt).format('MMMM D, YYYY')}</time>
 							</p>
 							<p class="mt-2 flex items-start text-sm text-gray-500">
 								{#if ['WITHDREW', 'CANCELLED'].includes(activity.status)}
 									<Ban classes="mr-1.5 h-5 w-5" />
 								{:else if activity.status === 'ACCEPTED'}
 									<span
-										class="h-5 w-5 mr-1.5 rounded-full bg-green-400 flex items-center justify-center ring-8 ring-white"
-									>
+										class="h-5 w-5 mr-1.5 rounded-full bg-green-400 flex items-center justify-center ring-8 ring-white">
 										<CheckFull />
 									</span>
 								{:else}
@@ -82,8 +80,7 @@
 					<ShellButton>
 						<a
 							href={`/activities/edit/${activity.id}`}
-							class="w-full px-8 py-1 text-sm font-medium leading-5 md:px-10 "
-						>
+							class="w-full px-8 py-1 text-sm font-medium leading-5 md:px-10 ">
 							<span>
 								<Icon data={pencilSquareO} class="-ml-1 mr-2 h-4 w-4" />
 							</span>
@@ -93,8 +90,7 @@
 					<ShellButton>
 						<a
 							href={`/activities/clone/?id=${activity.id}`}
-							class="w-full px-8 py-1 text-sm font-medium leading-5 md:px-10 "
-						>
+							class="w-full px-8 py-1 text-sm font-medium leading-5 md:px-10 ">
 							<span>
 								<Icon data={clone} class="-ml-1 mr-2 h-4 w-4" />
 							</span>

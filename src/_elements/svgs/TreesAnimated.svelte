@@ -18,31 +18,27 @@
 	clip-rule="evenodd"
 	stroke-linejoin="round"
 	stroke-miterlimit="2"
-	fill="#ffffff"
->
+	fill="#ffffff">
 	<g out:fade={{ duration: 500 }} in:fade={{ duration: 500 }}>
 		<path
 			in:draw={{ duration: 500, easing: circIn }}
 			out:draw={{ duration: 500, easing: circOut }}
 			style="stroke:#f74646; stroke-width: 10px"
-			d={leftBracket}
-		>
+			d={leftBracket}>
 			<animate attributeName="fill" begin="500ms" dur="500ms" to="#f74646" fill="freeze" />
 		</path>
 		<path
 			in:draw={{ duration: 500, easing: circIn }}
 			out:draw={{ duration: 500, easing: circOut }}
 			style="stroke:#f74646; stroke-width: 10px"
-			d={treesPath}
-		>
+			d={treesPath}>
 			<animate attributeName="fill" begin="500ms" dur="500ms" to="#f74646" fill="freeze" />
 		</path>
 		<path
 			in:draw={{ duration: 500, easing: circIn }}
 			out:draw={{ duration: 500, easing: circOut }}
 			style="stroke:#f74646; stroke-width: 10px"
-			d={rightBracket}
-		>
+			d={rightBracket}>
 			<animate attributeName="fill" begin="500ms" dur="500ms" to="#f74646" fill="freeze" />
 		</path>
 	</g>

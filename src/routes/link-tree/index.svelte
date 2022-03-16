@@ -55,21 +55,17 @@
 							class="text-4xl font-extrabold leading-10 tracking-tight  text-thatBlue-800 
 							sm:text-center sm:text-5xl sm:leading-none  
 							md:text-6xl 
-							lg:text-left"
-						>
+							lg:text-left">
 							Stay In Touch
 						</h2>
 					</div>
 					<div
-						class="my-12 grid grid-cols-3 place-content-center place-items-center gap-6 md:grid-cols-4"
-					>
+						class="my-12 grid grid-cols-3 place-content-center place-items-center gap-6 md:grid-cols-4">
 						{#each socials as s}
 							<div
-								class="transform cursor-pointer transition duration-500 ease-in-out hover:scale-110"
-							>
+								class="transform cursor-pointer transition duration-500 ease-in-out hover:scale-110">
 								<div
-									class="flex h-24 w-24 flex-col items-center justify-center rounded-full bg-thatBlue-700 p-4"
-								>
+									class="flex h-24 w-24 flex-col items-center justify-center rounded-full bg-thatBlue-700 p-4">
 									<a href={s.href} aria-label={s.ariaLabel} target="_blank" rel="noopener">
 										<Social {...s} />
 									</a>

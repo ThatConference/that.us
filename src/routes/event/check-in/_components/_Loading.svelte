@@ -13,8 +13,7 @@
 			<img
 				class="h-12 w-12 animate-pulse rounded-full"
 				src={`${config.defaultProfileImage}${imageCrop}`}
-				alt=""
-			/>
+				alt="" />
 		</div>
 		<div class="min-w-0 flex-1 px-4 md:grid md:grid-cols-2 md:gap-4">
 			<div in:fade={{ delay: 900, duration: 2000 }}>

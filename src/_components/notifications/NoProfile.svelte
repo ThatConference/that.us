@@ -42,8 +42,7 @@
 						</div>
 						<div
 							class="order-3 mt-2 w-full flex-shrink-0 sm:order-2 sm:mt-0
-                sm:w-auto"
-						>
+                sm:w-auto">
 							<div class="rounded-md shadow-sm">
 								<a
 									href="/my/profiles/primary/"
@@ -51,8 +50,7 @@
                     bg-white px-4 py-2 text-sm font-medium
                     leading-5 text-indigo-600 transition
                     duration-150 ease-in-out hover:text-indigo-500
-                    focus:outline-none focus:ring"
-								>
+                    focus:outline-none focus:ring">
 									Create Profile
 								</a>
 							</div>
@@ -64,20 +62,17 @@
                   duration-150 ease-in-out hover:bg-indigo-500 focus:bg-indigo-500
                   focus:outline-none"
 								aria-label="Dismiss"
-								on:click={() => (dismissed = !dismissed)}
-							>
+								on:click={() => (dismissed = !dismissed)}>
 								<svg
 									class="h-6 w-6 text-white"
 									fill="none"
 									viewBox="0 0 24 24"
-									stroke="currentColor"
-								>
+									stroke="currentColor">
 									<path
 										stroke-linecap="round"
 										stroke-linejoin="round"
 										stroke-width="2"
-										d="M6 18L18 6M6 6l12 12"
-									/>
+										d="M6 18L18 6M6 6l12 12" />
 								</svg>
 							</button>
 						</div>

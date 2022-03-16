@@ -18,8 +18,7 @@
 			</label>
 			<div class="relative">
 				<span
-					class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400"
-				/>
+					class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400" />
 			</div>
 			<!-- <div>
 				<p class="mt-1 text-sm text-gray-400">write me</p>
@@ -30,13 +29,11 @@
 					<fieldset>
 						<legend class="sr-only">Workshop Duration</legend>
 						<div
-							class="flex w-full flex-col space-y-4 rounded-md sm:flex-row sm:space-y-0 sm:space-x-4"
-						>
+							class="flex w-full flex-col space-y-4 rounded-md sm:flex-row sm:space-y-0 sm:space-x-4">
 							{#each duration.options as option}
 								<div class="flex-grow">
 									<label
-										class="relative flex cursor-pointer rounded-lg border border-gray-200 bg-white p-4"
-									>
+										class="relative flex cursor-pointer rounded-lg border border-gray-200 bg-white p-4">
 										<input
 											type="radio"
 											value={option.value}
@@ -44,13 +41,11 @@
 											on:change={({ target }) => setField('duration', target.value)}
 											class="mt-0.5 h-4 w-4 cursor-pointer border-gray-300 text-thatOrange-500 focus:ring-thatOrange-400"
 											aria-labelledby="privacy-setting-0-label"
-											aria-describedby="privacy-setting-0-description"
-										/>
+											aria-describedby="privacy-setting-0-description" />
 										<div class="ml-3">
 											<span
 												id="privacy-setting-0-label"
-												class="block text-sm font-medium text-gray-900"
-											>
+												class="block text-sm font-medium text-gray-900">
 												{option.label}
 											</span>
 										</div>
@@ -67,8 +62,7 @@
 			<label for="activity_agenda" class="block text-sm font-medium text-gray-700"> Agenda </label>
 			<div class="relative">
 				<span
-					class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400"
-				/>
+					class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400" />
 			</div>
 			<div>
 				<p class="mt-1 text-sm text-gray-400">
@@ -82,8 +76,7 @@
 					multiline
 					rows="10"
 					spellcheck="true"
-					class="form-input w-full hover:border-gray-700 sm:text-sm sm:leading-5"
-				/>
+					class="form-input w-full hover:border-gray-700 sm:text-sm sm:leading-5" />
 			</div>
 		</div>
 	</div>

@@ -29,8 +29,7 @@
 					animate:flip
 					in:fade={{ delay: i * 500, duration: 250 }}
 					class="rounded-lg shadow-lg hover:bg-thatBlue-100
-            hover:text-thatBlue-500"
-				>
+            hover:text-thatBlue-500">
 					<a href={m.url}>
 						<div class="grid cursor-pointer grid-cols-5 gap-4">
 							<div class="col-span-4 p-4">
@@ -53,8 +52,7 @@
         font-medium leading-5 text-gray-700 transition
         duration-150 ease-in-out hover:text-gray-500
         focus:border-blue-300 focus:outline-none active:bg-gray-50 active:text-gray-800"
-			on:click={handleClear}
-		>
+			on:click={handleClear}>
 			Clear
 		</button>
 	</div>

@@ -10,8 +10,7 @@
 			y="0"
 			width="20"
 			height="20"
-			patternUnits="userSpaceOnUse"
-		>
+			patternUnits="userSpaceOnUse">
 			<rect x="0" y="0" width="4" height="4" class="text-thatBlue-100" fill="currentColor" />
 		</pattern>
 	</defs>

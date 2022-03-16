@@ -28,8 +28,7 @@
 	validateOnChange={false}
 	on:submit={handleSubmit}
 	let:isSubmitting
-	let:isValid
->
+	let:isValid>
 	<div>
 		<div>
 			<div>
@@ -51,8 +50,7 @@
 							name="ticketReference"
 							placeholder="A1RC-1"
 							class="form-input block w-full rounded-md border transition duration-150 ease-in-out
-              sm:text-sm sm:leading-5"
-						/>
+              sm:text-sm sm:leading-5" />
 					</div>
 				</div>
 			</div>
@@ -69,8 +67,7 @@
               leading-5 text-thatBlue-500 transition duration-150
               ease-in-out hover:bg-thatBlue-500
               hover:text-white focus:border-thatBlue-800 focus:bg-thatBlue-500
-              focus:text-white focus:outline-none focus:ring-thatBlue-500 active:bg-thatBlue-800"
-					>
+              focus:text-white focus:outline-none focus:ring-thatBlue-500 active:bg-thatBlue-800">
 						Claim Ticket
 					</button>
 				</span>
@@ -82,8 +79,7 @@
               text-sm font-medium leading-5 text-gray-700
               transition duration-150 ease-in-out
               hover:text-gray-500 focus:border-blue-300 focus:outline-none active:bg-gray-50
-              active:text-gray-800"
-					>
+              active:text-gray-800">
 						Reset
 					</button>
 				</span>

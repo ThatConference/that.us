@@ -74,8 +74,7 @@
 						<div class="px-8">
 							<ul
 								class="grid grid-cols-1 gap-6 sm:grid-cols-3 md:grid-cols-4
-                  lg:grid-cols-5"
-							>
+                  lg:grid-cols-5">
 								{#each $state.context.items as m, i (m.id)}
 									<li class="col-span-1">
 										<MemberCard {...m} />
@@ -84,8 +83,7 @@
 								<SvelteInfiniteScroll
 									window
 									threshold={scrollThreshold}
-									on:loadMore={handleLoadMore}
-								/>
+									on:loadMore={handleLoadMore} />
 							</ul>
 							{#if ['loadingNext', 'loadedAll'].some($state.matches)}
 								<div class="flex flex-grow justify-center py-12">

@@ -2,8 +2,7 @@
 	<div class="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
 		<p
 			class="text-center text-base font-semibold uppercase leading-6
-			tracking-wider text-gray-600"
-		>
+			tracking-wider text-gray-600">
 			Trusted by over 5 very average small businesses
 		</p>
 		<div class="mt-6 grid grid-cols-2 gap-0.5 md:grid-cols-3 lg:mt-8">

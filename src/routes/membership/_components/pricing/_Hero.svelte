@@ -53,11 +53,9 @@
 			<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 				<div class="relative pt-20 lg:grid lg:grid-cols-7">
 					<div
-						class="mx-auto max-w-md lg:col-start-1 lg:col-end-3 lg:row-start-2 lg:row-end-3 lg:mx-0 lg:max-w-none"
-					>
+						class="mx-auto max-w-md lg:col-start-1 lg:col-end-3 lg:row-start-2 lg:row-end-3 lg:mx-0 lg:max-w-none">
 						<div
-							class="flex h-full flex-col overflow-hidden rounded-lg shadow-lg lg:rounded-none lg:rounded-l-lg"
-						>
+							class="flex h-full flex-col overflow-hidden rounded-lg shadow-lg lg:rounded-none lg:rounded-l-lg">
 							<div class="flex flex-1 flex-col">
 								<div class="bg-white px-6 py-10">
 									<div>
@@ -74,12 +72,10 @@
 									</div>
 								</div>
 								<div
-									class="flex flex-1 flex-col justify-between border-t-2 border-gray-100 bg-gray-50 p-6 sm:p-10 lg:p-6 xl:p-10"
-								>
+									class="flex flex-1 flex-col justify-between border-t-2 border-gray-100 bg-gray-50 p-6 sm:p-10 lg:p-6 xl:p-10">
 									<p class="text-center text-lg text-red-500">
 										For a limited time all monthly THAT Online events are <span
-											class="font-extrabold">free</span
-										> and do not require a ticket to participate.
+											class="font-extrabold">free</span> and do not require a ticket to participate.
 									</p>
 
 									<!-- <ul class="space-y-4">
@@ -116,18 +112,15 @@
 						</div>
 					</div>
 					<div
-						class="mx-auto mt-10 max-w-lg lg:col-start-3 lg:col-end-6 lg:row-start-1 lg:row-end-4 lg:mx-0 lg:mt-0 lg:max-w-none"
-					>
+						class="mx-auto mt-10 max-w-lg lg:col-start-3 lg:col-end-6 lg:row-start-1 lg:row-end-4 lg:mx-0 lg:mt-0 lg:max-w-none">
 						<div class="relative rounded-lg shadow-xl">
 							<div
 								class="pointer-events-none absolute inset-0 rounded-lg border-2 border-thatOrange-400"
-								aria-hidden="true"
-							/>
+								aria-hidden="true" />
 							<div class="absolute inset-x-0 top-0 translate-y-px transform">
 								<div class="flex -translate-y-1/2 transform justify-center">
 									<span
-										class="inline-flex rounded-full bg-thatOrange-400 px-4 py-1 text-sm font-bold uppercase tracking-wider text-white"
-									>
+										class="inline-flex rounded-full bg-thatOrange-400 px-4 py-1 text-sm font-bold uppercase tracking-wider text-white">
 										Best Value
 									</span>
 								</div>
@@ -136,14 +129,12 @@
 								<div>
 									<h3
 										class="text-center text-3xl font-semibold text-gray-900 sm:-mx-6"
-										id="tier-growth"
-									>
+										id="tier-growth">
 										THAT Membership
 									</h3>
 									<div class="mt-4 flex items-center justify-center">
 										<span
-											class="flex items-start px-3 text-6xl tracking-tight text-gray-900 sm:text-6xl"
-										>
+											class="flex items-start px-3 text-6xl tracking-tight text-gray-900 sm:text-6xl">
 											<span class="mt-2 mr-2 text-4xl font-medium"> $ </span>
 											<span class="font-extrabold">
 												{membership.price || ''}
@@ -154,8 +145,7 @@
 								</div>
 							</div>
 							<div
-								class="rounded-b-lg border-t-2 border-gray-100 bg-gray-50 px-6 pt-10 pb-8 sm:px-10 sm:py-10"
-							>
+								class="rounded-b-lg border-t-2 border-gray-100 bg-gray-50 px-6 pt-10 pb-8 sm:px-10 sm:py-10">
 								<ul class="space-y-4">
 									<li class="flex items-start">
 										<div class="flex-shrink-0">
@@ -209,11 +199,9 @@
 						</div>
 					</div>
 					<div
-						class="mx-auto mt-10 max-w-md lg:col-start-6 lg:col-end-8 lg:row-start-2 lg:row-end-3 lg:m-0 lg:max-w-none"
-					>
+						class="mx-auto mt-10 max-w-md lg:col-start-6 lg:col-end-8 lg:row-start-2 lg:row-end-3 lg:m-0 lg:max-w-none">
 						<div
-							class="flex h-full flex-col overflow-hidden rounded-lg shadow-lg lg:rounded-none lg:rounded-r-lg"
-						>
+							class="flex h-full flex-col overflow-hidden rounded-lg shadow-lg lg:rounded-none lg:rounded-r-lg">
 							<div class="flex flex-1 flex-col">
 								<div class="bg-white px-6 py-10">
 									<div>
@@ -228,8 +216,7 @@
 									</div>
 								</div>
 								<div
-									class="flex flex-1 flex-col justify-between border-t-2 border-gray-100 bg-gray-50 p-6 sm:p-10 lg:p-6 xl:p-10"
-								>
+									class="flex flex-1 flex-col justify-between border-t-2 border-gray-100 bg-gray-50 p-6 sm:p-10 lg:p-6 xl:p-10">
 									<ul class="space-y-4">
 										<li class="flex items-start">
 											<div class="flex-shrink-0">

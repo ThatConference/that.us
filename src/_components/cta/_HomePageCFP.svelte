@@ -7,14 +7,12 @@
 <div class="flex flex-col justify-center">
 	<div class="relative py-3 sm:mx-auto sm:max-w-xl">
 		<div
-			class="absolute inset-0 -skew-y-6 transform bg-gradient-to-r from-that-orange to-that-red shadow-lg sm:-rotate-6 sm:skew-y-0 sm:rounded-3xl"
-		/>
+			class="absolute inset-0 -skew-y-6 transform bg-gradient-to-r from-that-orange to-that-red shadow-lg sm:-rotate-6 sm:skew-y-0 sm:rounded-3xl" />
 		<div class="relative bg-white px-4 py-6 shadow-lg sm:rounded-3xl sm:p-14">
 			<div class="mx-auto max-w-md">
 				<a href={`/events/${event.slug}`}>
 					<div
-						class="flex transform flex-col justify-center transition duration-500 ease-in-out hover:scale-105"
-					>
+						class="flex transform flex-col justify-center transition duration-500 ease-in-out hover:scale-105">
 						<img src={event.logo} class="h-24" alt="THAT Confernece Logo" />
 					</div>
 				</a>
@@ -55,8 +53,7 @@
 						<p>
 							<a
 								href={`/call-for-counselors/${event.slug}/`}
-								class="text-that-orange hover:text-thatOrange-500"
-							>
+								class="text-that-orange hover:text-thatOrange-500">
 								Learn More &rarr;
 							</a>
 						</p>

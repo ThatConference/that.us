@@ -7,8 +7,7 @@
 <div class="mx-auto max-w-screen-xl px-8">
 	<div class="relative py-20 text-center">
 		<h1
-			class="text-3xl font-extrabold leading-8 tracking-tight text-thatBlue-800 sm:text-4xl sm:leading-10"
-		>
+			class="text-3xl font-extrabold leading-8 tracking-tight text-thatBlue-800 sm:text-4xl sm:leading-10">
 			These geeks just signed up!
 		</h1>
 	</div>
@@ -16,8 +15,7 @@
 	<div class="relative">
 		<ul
 			class="grid grid-cols-1 gap-6 sm:grid-cols-3 md:grid-cols-4
-        lg:grid-cols-5"
-		>
+        lg:grid-cols-5">
 			{#each followers as m (m.id)}
 				<li class="col-span-1">
 					<MemberCard {...m} />

@@ -11,8 +11,7 @@
 	<button
 		type="button"
 		class="flex w-full items-start justify-between text-left text-gray-400"
-		on:click|preventDefault={() => (userClicked = !userClicked)}
-	>
+		on:click|preventDefault={() => (userClicked = !userClicked)}>
 		<span class="font-medium text-gray-900">{q}</span>
 		<span class="ml-6 flex h-7 items-center">
 			<Chevron open={userClicked} />

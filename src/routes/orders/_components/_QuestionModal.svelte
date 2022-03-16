@@ -13,12 +13,10 @@
 		class="fixed inset-0 z-50 overflow-y-auto overscroll-none"
 		aria-labelledby="modal-title"
 		role="dialog"
-		aria-modal="true"
-	>
+		aria-modal="true">
 		<div class="block min-h-screen pt-20 text-center">
 			<div
-				class="inline-block overflow-auto rounded-lg bg-white px-4 pt-5 pb-4 shadow-xl sm:w-full sm:max-w-xl sm:p-6"
-			>
+				class="inline-block overflow-auto rounded-lg bg-white px-4 pt-5 pb-4 shadow-xl sm:w-full sm:max-w-xl sm:p-6">
 				<div>
 					<div class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-green-100">
 						<span class="text-green-500"><Check /></span>

@@ -22,16 +22,14 @@
 						class="inline-flex items-center justify-center rounded-md p-2
 							text-gray-300 hover:bg-that-blue hover:text-white
 							focus:bg-that-blue focus:text-white focus:outline-none"
-						on:click|preventDefault={() => mobileVisible.set(!$mobileVisible)}
-					>
+						on:click|preventDefault={() => mobileVisible.set(!$mobileVisible)}>
 						<!-- Menu open: "hidden", Menu closed: "block" -->
 						<svg class="block h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
 							<path
 								stroke-linecap="round"
 								stroke-linejoin="round"
 								stroke-width="2"
-								d="M4 6h16M4 12h16M4 18h16"
-							/>
+								d="M4 6h16M4 12h16M4 18h16" />
 						</svg>
 						<!-- Menu open: "block", Menu closed: "hidden" -->
 						<svg class="hidden h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
@@ -39,8 +37,7 @@
 								stroke-linecap="round"
 								stroke-linejoin="round"
 								stroke-width="2"
-								d="M6 18L18 6M6 6l12 12"
-							/>
+								d="M6 18L18 6M6 6l12 12" />
 						</svg>
 					</button>
 				</div>

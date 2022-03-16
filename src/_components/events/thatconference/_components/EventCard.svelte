@@ -8,8 +8,7 @@
 <div class="flex flex-col justify-center">
 	<div class="relative py-3 sm:mx-auto sm:max-w-xl">
 		<div
-			class="absolute inset-0 -skew-y-6 transform bg-gradient-to-r from-that-orange to-that-red shadow-lg sm:-rotate-6 sm:skew-y-0 sm:rounded-3xl"
-		/>
+			class="absolute inset-0 -skew-y-6 transform bg-gradient-to-r from-that-orange to-that-red shadow-lg sm:-rotate-6 sm:skew-y-0 sm:rounded-3xl" />
 		<div class="relative bg-white px-4 py-6 shadow-lg sm:rounded-3xl sm:p-14">
 			<div class="mx-auto max-w-md">
 				<div class="text-4xl font-bold uppercase text-thatBlue-700">

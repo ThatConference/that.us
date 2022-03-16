@@ -18,8 +18,7 @@
 		<div class="lg:grid lg:grid-cols-5 lg:items-start lg:gap-8">
 			<div class="col-span-5">
 				<h3
-					class="text-center text-4xl font-extrabold uppercase tracking-wide text-white sm:text-left"
-				>
+					class="text-center text-4xl font-extrabold uppercase tracking-wide text-white sm:text-left">
 					Call For Counselors is Open
 				</h3>
 			</div>
@@ -42,8 +41,7 @@
 				<img
 					class="flip h-1/8 sm:absolute sm:h-2/3 sm:translate-y-24 sm:transform"
 					src="/images/characters/bear-pig.png"
-					alt
-				/>
+					alt />
 			</div>
 		</div>
 	</div>

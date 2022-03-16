@@ -20,8 +20,7 @@
 			{:else}
 				<div
 					class="mt-8 border-t border-gray-200 pt-6 md:grid md:grid-cols-12
-						md:gap-8"
-				>
+						md:gap-8">
 					<dt class="text-base leading-6 font-medium text-gray-900 md:col-span-5">
 						{faq.question}
 					</dt>

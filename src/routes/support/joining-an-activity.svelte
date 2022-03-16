@@ -66,8 +66,7 @@
 
 		<div
 			class="my-12 mx-auto flex max-w-prose flex-col items-center justify-center
-        lg:max-w-none"
-		>
+        lg:max-w-none">
 			<div class="flex space-x-4 text-base">
 				<StandardLink href="/support/what-is-an-activity/">What Is An Activity</StandardLink>
 				<HighlightLink href="/support/creating-an-activity/">Creating an Activity</HighlightLink>

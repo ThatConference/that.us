@@ -60,8 +60,7 @@
 	let:setValue
 	let:errors
 	let:touched
-	let:isValid
->
+	let:isValid>
 	<div class="my-4 antialiased">
 		<div class="flex flex-1 items-center justify-between">
 			<div class="flex-1 px-4 py-2 text-sm">
@@ -75,8 +74,7 @@
 							</label>
 							<div class="relative">
 								<span
-									class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400"
-								/>
+									class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400" />
 							</div>
 							<Input
 								autofocus
@@ -84,28 +82,24 @@
 								type="text"
 								required
 								placeholder="E.g. Clark Sell"
-								class="form-input mt-1 block w-full rounded-sm text-sm"
-							/>
+								class="form-input mt-1 block w-full rounded-sm text-sm" />
 						</div>
 
 						<div class="mt-4">
 							<label for="phoneNumber" class="block">
 								<span class="text-gray-700"
-									>What is the best number to contact them at? (E.g. +13476748428)</span
-								>
+									>What is the best number to contact them at? (E.g. +13476748428)</span>
 							</label>
 							<div class="relative">
 								<span
-									class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400"
-								/>
+									class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400" />
 							</div>
 							<Input
 								name="phoneNumber"
 								type="tel"
 								class="form-input mt-1 block w-full rounded-sm text-sm "
 								required
-								placeholder="E.g. +13476748428"
-							/>
+								placeholder="E.g. +13476748428" />
 						</div>
 
 						<div class="mt-4">
@@ -117,8 +111,7 @@
 									placeholder="E.g. hello@that.us"
 									size="30"
 									required
-									class="form-input mt-1 block w-full rounded-sm text-sm"
-								/>
+									class="form-input mt-1 block w-full rounded-sm text-sm" />
 							</label>
 						</div>
 
@@ -129,8 +122,7 @@
 
 							<div class="relative">
 								<span
-									class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400"
-								/>
+									class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400" />
 							</div>
 
 							<Select
@@ -144,8 +136,7 @@
 								bind:value={relationshipSelect}
 								on:select={({ detail }) => setValue('relationship', detail.value)}
 								hasError={touched['relationship'] && errors['relationship']}
-								inputStyles="form-multiselect transition ease-in-out duration-150 sm:text-sm sm:leading-5 hover:border-gray-700"
-							/>
+								inputStyles="form-multiselect transition ease-in-out duration-150 sm:text-sm sm:leading-5 hover:border-gray-700" />
 
 							{#if touched['relationship'] && errors['relationship']}
 								<p class="italic text-red-600">{errors['relationship']}</p>
@@ -158,8 +149,7 @@
 							</label>
 							<div class="relative">
 								<span
-									class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400"
-								/>
+									class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400" />
 							</div>
 							<Select
 								inputAttributes={{ name: 'travelingWithYou' }}
@@ -167,8 +157,7 @@
 								on:select={({ detail }) => setValue('travelingWithYou', detail.value)}
 								bind:value={travelingWithYouSelect}
 								hasError={touched['travelingWithYou'] && errors['travelingWithYou']}
-								inputStyles="form-multiselect transition ease-in-out duration-150 sm:text-sm sm:leading-5 hover:border-gray-700"
-							/>
+								inputStyles="form-multiselect transition ease-in-out duration-150 sm:text-sm sm:leading-5 hover:border-gray-700" />
 							{#if touched['travelingWithYou'] && errors['travelingWithYou']}
 								<p class="italic text-red-600">{errors['travelingWithYou']}</p>
 							{/if}
