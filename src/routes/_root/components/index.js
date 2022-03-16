@@ -1,5 +1,6 @@
 export { default as Newsletter } from '$components/newsletter/Wide.svelte';
 export { default as BlogLatest } from '$components/blog/latest.svelte';
+export { default as ThatActiveEvents } from '$components/events/thatconference/Upcoming.svelte';
 
 export { default as CTA } from './cta.svelte';
 export { default as CtaMembership } from './ctaMembership.svelte';

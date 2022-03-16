@@ -15,7 +15,9 @@
 	<div class="relative mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
 		<div class="space-y-12">
 			<div class="space-y-5 sm:space-y-4 md:max-w-xl lg:max-w-3xl xl:max-w-none">
-				<h2 class="text-3xl font-extrabold leading-9 tracking-tight text-white sm:text-4xl">
+				<h2
+					class="text-4xl font-semibold leading-10 tracking-tight text-white sm:text-5xl sm:leading-none"
+				>
 					Upcoming Activities
 				</h2>
 				<p class="text-xl leading-7 text-gray-300">

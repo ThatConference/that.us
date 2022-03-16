@@ -31,7 +31,7 @@
 			<div class="hidden lg:block lg:flex-shrink-0">
 				<img
 					class="lazyload h-64 w-64 rounded-full xl:h-80 xl:w-80"
-					src="https://that.imgix.net/members/1dcd59be-4677-474d-8087-e0b74e8ab810.jpeg?mask=ellipse&w=500&h=500&fit=crop"
+					src="https://that.imgix.net/members/ac027232-c21a-4ead-8ec4-b7103e5265b9.jpeg?mask=ellipse&w=500&h=500&fit=crop"
 					alt="Clark Sell"
 				/>
 			</div>
@@ -57,7 +57,7 @@
 					/>
 				</svg>
 				<blockquote class="relative">
-					<div class="prose text-gray-500 sm:text-lg md:text-xl">
+					<div class="prose-xl text-gray-500 sm:text-lg md:text-xl">
 						{#if !$session.isAuthenticated}
 							<p>
 								Our mission is simple, foster a community of geeks who want to help one another be

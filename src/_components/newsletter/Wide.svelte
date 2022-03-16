@@ -21,8 +21,7 @@
 	>
 		<div class="lg:w-0 lg:flex-1">
 			<h2
-				class="text-3xl font-extrabold leading-9 tracking-tight text-white
-          sm:text-4xl sm:leading-10"
+				class="text-4xl font-semibold leading-10 tracking-tight text-white sm:text-5xl sm:leading-none"
 				id="newsletter-headline"
 			>
 				Stay in the know

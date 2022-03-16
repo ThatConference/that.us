@@ -104,6 +104,47 @@ export const QUERY_NEXT_COMMUNITY_ACTIVITIES = `
 	}
 `;
 
+export const QUERY_ACTIVE_THAT_EVENTS = `
+	query QUERY_ACTIVE_THAT_EVENTS {
+		communities {
+			community(findBy: {slug: "THAT"}) {
+				get {
+					events (filter: ACTIVE) {
+						id
+						name
+						description
+						type
+						isActive
+						slug
+						logo
+						startDate
+						endDate
+						year
+						isVotingOpen
+						voteOpenDate
+						voteCloseDate
+						isCallForSpeakersOpen
+						isCallForOnSpeakersOpen
+						callForSpeakersOpenDate
+						callForSpeakersCloseDate
+						callForOnSpeakersOpenDate
+						callForOnSpeakersCloseDate
+						ticketsOnSaleFrom
+						ticketsOnSaleUntil
+						venues {
+							name
+							address
+							city
+							state
+							zip
+						}
+					}
+				}
+			}
+		}
+	}
+`;
+
 export default (fetch) => {
 	const client = fetch ? gFetch(fetch) : gFetch();
 
@@ -165,12 +206,22 @@ export default (fetch) => {
 			});
 	};
 
+	const queryActiveThatEvents = () => {
+		const variables = {};
+		return client.query({ query: QUERY_ACTIVE_THAT_EVENTS, variables }).then(({ data, errors }) => {
+			if (errors) log({ errors, tag: 'QUERY_ACTIVE_THAT_EVENTS' });
+
+			return data.communities?.community?.get?.events;
+		});
+	};
+
 	return {
 		queryAllCommunities,
 		queryNextAllCommunities,
 		queryCommunityBySlug,
 		queryCommunityActivities,
 		queryNextCommunityActivities,
-		queryCommunityFollowers
+		queryCommunityFollowers,
+		queryActiveThatEvents
 	};
 };
