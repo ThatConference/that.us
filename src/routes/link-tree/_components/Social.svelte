@@ -1,4 +1,6 @@
 <script>
+	export let network;
+
 	import Icon from 'svelte-awesome';
 	import {
 		link,
@@ -12,12 +14,7 @@
 		slack
 	} from '$components/svelte-awesome-icons';
 
-	export let network;
-	export let href;
-	export let ariaLabel;
-	export let isLast = false;
-
-	let socialIcon;
+	let socialIcon, ariaLabel;
 
 	switch (network) {
 		case 'FACEBOOK':
@@ -59,11 +56,4 @@
 	}
 </script>
 
-<a {href} aria-label={ariaLabel} target="_blank" rel="noopener">
-	<Icon
-		data={socialIcon}
-		class={`transform cursor-pointer transition duration-500 ease-in-out hover:scale-125 ${
-			!isLast ? 'mr-2' : ''
-		} h-5 w-5 text-gray-400 hover:text-that-blue focus:underline`}
-	/>
-</a>
+<Icon data={socialIcon} {ariaLabel} class="h-12 w-12 text-white" />

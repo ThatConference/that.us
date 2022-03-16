@@ -3,13 +3,15 @@
 	import eventsApi from '$dataSources/api.that.tech/events/queries';
 	import statsApi from '$dataSources/api.that.tech/stats/queries';
 	import sessionsApi from '$dataSources/api.that.tech/sessions';
+	import communityQueryApi from '$dataSources/api.that.tech/community/queries';
 
 	//blog
 	import { getPosts } from '$blog/getPosts';
 
 	export async function load({ fetch }) {
+		const { queryActiveThatEvents } = communityQueryApi(fetch);
 		const { queryMembers, queryBlogAuthorBySlug } = membersApi(fetch);
-		const { queryEventsByCommunity, queryEventForCfp } = eventsApi(fetch);
+		const { queryEventsByCommunity } = eventsApi(fetch);
 		const { queryCommunityStats } = statsApi(fetch);
 		const { querySessionsByDate } = sessionsApi(fetch);
 
@@ -19,12 +21,12 @@
 		// todo - we could pick off the cfp from the event already queried.
 		// todo - "up next event" should come from somewhere.
 
-		const [members, events, stats, nextHybridEvent, activitiesUpNext, blogPosts] =
+		const [members, events, stats, thatActiveEvents, activitiesUpNext, blogPosts] =
 			await Promise.all([
 				queryMembers(15),
 				queryEventsByCommunity(),
 				queryCommunityStats(),
-				queryEventForCfp('tx/2022'),
+				queryActiveThatEvents(),
 				querySessionsByDate({ pageSize: 6 }),
 				Promise.all(
 					rawPosts.map(async (p) => {
@@ -41,12 +43,14 @@
 				)
 			]);
 
+		const filteredEvents = thatActiveEvents.filter((x) => x.type === 'HYBRID_MULTI_DAY');
+
 		return {
 			props: {
 				members: members.members,
 				events,
 				stats,
-				nextHybridEvent,
+				thatActiveEvents: filteredEvents,
 				activitiesUpNext,
 				blogPosts
 			}
@@ -57,22 +61,19 @@
 <script>
 	export let members;
 	export let events;
+	export let thatActiveEvents;
 	export let stats;
-	export let nextHybridEvent;
+
 	export let activitiesUpNext;
 	export let blogPosts;
 
 	import { session } from '$app/stores';
-	import { fade } from 'svelte/transition';
 	import { useMachine } from 'xstate-svelte';
 
 	import { debug } from '$utils/config';
 	import seoMetaTags from '$utils/seo/metaTags';
 	import Layout from '$elements/layouts/ContentLayout.svelte';
 	import Seo from '$components/Seo.svelte';
-
-	import CfpCta from '$components/cta/_HomePageCFP.svelte';
-	import TicketsOnSale from '$components/cta/_TicketsOnSale.svelte';
 
 	import {
 		Hero,
@@ -85,7 +86,8 @@
 		NewMembers,
 		WelcomeBack,
 		UpNext,
-		BlogLatest
+		BlogLatest,
+		ThatActiveEvents
 	} from './_root/components';
 
 	import createMachine from './_root/machines/upNext';
@@ -116,11 +118,11 @@
 
 <Layout>
 	{#if $session.thatProfile?.isMember}
-		<div in:fade={{ delay: 200 }}>
+		<div>
 			<WelcomeBack />
 		</div>
 
-		<div in:fade={{ delay: 400 }}>
+		<div>
 			<UpNext
 				items={$state.context.items}
 				hasMore={$state.context.cursor ? true : false}
@@ -130,40 +132,28 @@
 			/>
 		</div>
 
-		<div in:fade={{ delay: 600 }}>
+		<div>
 			<Events {events} />
 		</div>
 
-		<div in:fade={{ delay: 800 }}>
+		<div>
 			<Stats {stats} />
 			<BlogLatest posts={blogPosts} />
 			<NewMembers {members} />
 			<Newsletter />
 		</div>
 	{:else}
-		<div in:fade={{ delay: 200 }}>
-			<Hero>
-				{#if nextHybridEvent.isCallForSpeakersOpen}
-					<CfpCta event={nextHybridEvent} />
-				{:else}
-					<TicketsOnSale event={nextHybridEvent} />
-				{/if}
-			</Hero>
+		<div>
+			<Hero />
+			<ThatActiveEvents events={thatActiveEvents} />
 		</div>
 
-		<div in:fade={{ delay: 400 }}>
+		<div>
+			<Testimonials />
 			<Stats {stats} />
 		</div>
 
-		<div in:fade={{ delay: 600 }}>
-			<Testimonials />
-		</div>
-
-		<div in:fade={{ delay: 800 }}>
-			<div class="relative flex flex-col items-center">
-				<img class="lazyload h-72" src="/images/THAT-Logo-Words.svg" alt="THAT" />
-			</div>
-
+		<div>
 			<UpNext
 				items={$state.context.items}
 				hasMore={$state.context.cursor ? true : false}

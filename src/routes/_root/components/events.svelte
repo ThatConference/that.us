@@ -33,13 +33,30 @@
 
 <section class="bg-white py-12 lg:py-16">
 	<div class="relative mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
-		<h1 class="text-4xl font-extrabold tracking-tight text-thatBlue-800 sm:text-5xl md:text-6xl">
-			<span class="block text-center sm:text-left ">Upcoming Events</span>
+		<h1
+			class="text-4xl font-semibold leading-10 tracking-tight text-thatBlue-700 sm:text-5xl sm:leading-none"
+		>
+			Upcoming Events
 		</h1>
 
 		<div class="mt-12 space-y-12">
 			<div class="flex w-full flex-col">
-				<h2 class="text-3xl font-extrabold leading-9 tracking-tight sm:text-4xl">
+				<h2 class="text-3xl font-semibold leading-9 tracking-tight sm:text-4xl">
+					<span class="pl-2 text-that-orange">THAT Conferences</span>
+				</h2>
+			</div>
+			<ul
+				class="space-y-12 lg:grid lg:grid-cols-2 lg:items-start lg:gap-y-8
+					lg:gap-x-12 lg:space-y-0"
+			>
+				{#each hybrid as event}
+					<li>
+						<Event {event} />
+					</li>
+				{/each}
+			</ul>
+			<div class="flex w-full flex-col">
+				<h2 class="text-3xl font-semibold leading-9 tracking-tight sm:text-4xl">
 					<span class="pl-2 text-that-orange">Virtual Events</span>
 				</h2>
 			</div>
@@ -49,22 +66,6 @@
           lg:gap-x-12 lg:space-y-0"
 			>
 				{#each online as event}
-					<li>
-						<Event {event} />
-					</li>
-				{/each}
-			</ul>
-
-			<div class="flex w-full flex-col">
-				<h2 class="text-3xl font-extrabold leading-9 tracking-tight sm:text-4xl">
-					<span class="pl-2 text-that-orange">THAT Conferences</span>
-				</h2>
-			</div>
-			<ul
-				class="space-y-12 lg:grid lg:grid-cols-2 lg:items-start lg:gap-y-8
-          lg:gap-x-12 lg:space-y-0"
-			>
-				{#each hybrid as event}
 					<li>
 						<Event {event} />
 					</li>

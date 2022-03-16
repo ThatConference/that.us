@@ -10,10 +10,10 @@
 <div class="relative py-16 sm:py-24">
 	<div class="relative">
 		<div class="mx-auto max-w-md px-4 text-center sm:max-w-3xl sm:px-6 lg:max-w-7xl lg:px-8">
-			<h2 class="text-base font-semibold uppercase tracking-wider text-thatOrange-400">
-				THAT BLOG
-			</h2>
-			<p class="mt-2 text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+			<h2 class="font-extrabold uppercase tracking-wider text-thatRed-500">THAT BLOG</h2>
+			<p
+				class="mt-2 text-4xl font-semibold leading-10 tracking-tight text-thatBlue-700 sm:text-5xl sm:leading-none"
+			>
 				The Latest Announcements, Updates and Words
 			</p>
 			<p class="my-24 mx-auto max-w-prose text-xl text-gray-500">

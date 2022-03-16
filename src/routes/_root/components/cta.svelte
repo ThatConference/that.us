@@ -4,11 +4,11 @@
       lg:justify-between lg:px-8"
 	>
 		<h2
-			class="text-3xl font-extrabold leading-9 tracking-tight text-white sm:text-4xl sm:leading-10"
+			class="text-3xl font-semibold leading-10 tracking-tight text-white sm:text-4xl sm:leading-none"
 		>
 			Are you ready to expand your network?
 			<br />
-			<span class="text-that-orange">Get started today, it's free.</span>
+			<span class="text-that-orange">Signup today, it's free.</span>
 		</h2>
 		<div class="mt-8 flex lg:mt-0 lg:flex-shrink-0">
 			<div class="inline-flex rounded-md shadow">
