@@ -69,8 +69,7 @@
                     ease-in-out 
                     hover:bg-thatBlue-400
                     focus:border-thatBlue-800 
-                    focus:bg-thatBlue-400 focus:text-white focus:ring-white md:px-10 md:text-lg"
-					>
+                    focus:bg-thatBlue-400 focus:text-white focus:ring-white md:px-10 md:text-lg">
 						<span>View Next</span>
 					</button>
 				{/if}
@@ -87,8 +86,7 @@
                       ease-in-out 
                       hover:bg-thatBlue-400
                       focus:border-thatBlue-800 
-                      focus:bg-thatBlue-400 focus:text-white focus:ring-white md:px-10 md:text-lg"
-					>
+                      focus:bg-thatBlue-400 focus:text-white focus:ring-white md:px-10 md:text-lg">
 						<span>Refresh</span>
 					</button>
 				{/if}

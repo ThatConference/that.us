@@ -27,8 +27,7 @@
 	<section>
 		<div
 			class="relative mx-auto mb-8 max-w-prose text-base text-lg leading-7
-        text-gray-500 lg:mx-0 lg:max-w-5xl lg:pr-72"
-		>
+        text-gray-500 lg:mx-0 lg:max-w-5xl lg:pr-72">
 			<p>
 				Here at THAT, it's our mission to help foster the best community of geeks on this planet.
 				Our vision, create an interactive platform connecting Geeks and Geeklings across the globe
@@ -43,13 +42,11 @@
 		</div>
 		<div
 			class="text-base text-lg leading-7 text-gray-500 lg:grid lg:grid-cols-2
-        lg:items-start lg:gap-8"
-		>
+        lg:items-start lg:gap-8">
 			<div class="relative mb-12 lg:mb-0">
 				<div
 					class="prose mx-auto mb-10 text-base text-lg leading-7
-            text-gray-500 lg:max-w-none"
-				>
+            text-gray-500 lg:max-w-none">
 					<h2>The What</h2>
 
 					<p>

@@ -38,8 +38,7 @@
 				aria-labelledby="newsletter-headline"
 				validateOnBlur={false}
 				validateOnChange={false}
-				let:isSubmitting
-			>
+				let:isSubmitting>
 				{#if !isSubmitting}
 					<div class="sm:flex">
 						<Input type="hidden" name="u" value="16" />
@@ -58,8 +57,7 @@
 								border-gray-300 bg-white py-2 
 								px-4 text-base text-gray-900 placeholder-gray-500 shadow-sm 
 								focus:border-thatBlue-500 focus:placeholder-gray-400 focus:outline-none focus:ring-thatBlue-500"
-							placeholder="Enter your email"
-						/>
+							placeholder="Enter your email" />
 						<div class="mt-3 rounded-md shadow sm:mt-0 sm:ml-3 sm:flex-shrink-0">
 							<button
 								type="submit"
@@ -67,8 +65,7 @@
 									leading-6 text-thatBlue-500 shadow transition
 									duration-150 ease-in-out hover:bg-thatBlue-500 hover:text-white
 									focus:border-thatBlue-800 focus:bg-thatBlue-500 focus:text-white
-									focus:outline-none focus:ring-thatBlue-500"
-							>
+									focus:outline-none focus:ring-thatBlue-500">
 								Add me
 							</button>
 						</div>
@@ -81,8 +78,7 @@
 							ballTopLeft="#f74646"
 							ballTopRight="#ff834d"
 							ballBottomLeft="#26529A"
-							ballBottomRight="#555555"
-						/>
+							ballBottomRight="#555555" />
 					</div>
 				{/if}
 			</Form>

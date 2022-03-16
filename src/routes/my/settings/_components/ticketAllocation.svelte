@@ -58,14 +58,12 @@
 	validateOnBlur={false}
 	validateOnChange={false}
 	on:submit={handleSubmit}
-	let:isValid
->
+	let:isValid>
 	<Input name="orderId" type="text" hidden />
 	<Input name="allocationId" type="text" hidden />
 
 	<div
-		class="flex grid-cols-7 flex-col place-content-center gap-4 space-y-2 px-4 py-6 sm:px-6 md:grid md:space-y-0"
-	>
+		class="flex grid-cols-7 flex-col place-content-center gap-4 space-y-2 px-4 py-6 sm:px-6 md:grid md:space-y-0">
 		<div class="col-span-2">
 			<p class="truncate text-sm font-medium text-thatBlue-700">
 				{product.name}
@@ -94,8 +92,7 @@
 						type="email"
 						name="emailAddress"
 						placeholder="E.g. hello@that.us"
-						class="form-input block h-12 w-full sm:text-sm sm:leading-5 hover:border-gray-700"
-					/>
+						class="form-input block h-12 w-full sm:text-sm sm:leading-5 hover:border-gray-700" />
 				</div>
 			{/if}
 		</div>
@@ -105,8 +102,7 @@
 				<ShellButton>
 					<a
 						on:click={() => (isAllocated = false)}
-						class="w-full px-8 py-1 text-center text-sm font-medium leading-5 md:px-10 "
-					>
+						class="w-full px-8 py-1 text-center text-sm font-medium leading-5 md:px-10 ">
 						<span>
 							<Icon data={refresh} class="-ml-1 mr-2 h-4 w-4" />
 						</span>
@@ -121,8 +117,7 @@
           text-base leading-6 md:text-lg font-medium text-thatBlue-500 
           hover:bg-thatBlue-500 hover:text-white 
           focus:bg-thatBlue-500 focus:text-white focus:outline-none focus:ring-thatBlue-500 focus:border-thatBlue-800 
-          transition duration-150 ease-in-out"
-				>
+          transition duration-150 ease-in-out">
 					<span>
 						<Icon data={share} class="-ml-1 mr-2 h-4 w-4" />
 					</span>

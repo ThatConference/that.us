@@ -48,8 +48,7 @@
 	let:values
 	let:setValue
 	let:isValid
-	let:errors
->
+	let:errors>
 	<div class="my-4 antialiased">
 		<div class="flex flex-1 items-center justify-between">
 			<div class="flex-1 px-4 py-2 text-sm">
@@ -63,36 +62,31 @@
 							</label>
 							<div class="relative">
 								<span
-									class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400"
-								/>
+									class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400" />
 							</div>
 							<Input
 								autofocus
 								name="url"
 								type="url"
 								placeholder="E.g. https://that.us/blog/article"
-								class="form-input mt-1 block w-full rounded-sm text-sm"
-							/>
+								class="form-input mt-1 block w-full rounded-sm text-sm" />
 						</div>
 
 						<div class="mt-4">
 							<label for="description" class="block">
 								<span class="text-gray-700"
-									>Tell us what is of interesting and of value to someone else.</span
-								>
+									>Tell us what is of interesting and of value to someone else.</span>
 							</label>
 							<div class="relative">
 								<span
-									class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400"
-								/>
+									class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400" />
 							</div>
 							<Input
 								name="description"
 								multiline
 								rows="5"
 								spellcheck="true"
-								class="form-input mt-1 block w-full rounded-sm text-sm "
-							/>
+								class="form-input mt-1 block w-full rounded-sm text-sm " />
 						</div>
 
 						<div class="mt-4">
@@ -100,8 +94,7 @@
 								<span class="text-gray-700">Add some tags.</span>
 								<div class="relative">
 									<span
-										class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400"
-									/>
+										class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400" />
 								</div>
 								<div>
 									<p class="mt-1 text-sm text-gray-400">
@@ -120,8 +113,7 @@
 										allowBlur={true}
 										maxTags={5}
 										onlyUnique={true}
-										class="form-input w-full hover:border-gray-700 sm:text-sm sm:leading-5"
-									/>
+										class="form-input w-full hover:border-gray-700 sm:text-sm sm:leading-5" />
 								</div>
 								{#if errors['tags']}
 									<p class="italic text-red-600">
@@ -159,8 +151,7 @@
 					ballTopLeft="#f74646"
 					ballTopRight="#ff834d"
 					ballBottomLeft="#26529A"
-					ballBottomRight="#555555"
-				/>
+					ballBottomRight="#555555" />
 			</div>
 		</div>
 	{/if}

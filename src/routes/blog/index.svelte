@@ -73,8 +73,7 @@
 				</p> -->
 			</div>
 			<div
-				class="mx-auto mt-12 grid max-w-md gap-8 px-4 sm:max-w-lg sm:px-6 lg:max-w-7xl lg:grid-cols-3 lg:px-8"
-			>
+				class="mx-auto mt-12 grid max-w-md gap-8 px-4 sm:max-w-lg sm:px-6 lg:max-w-7xl lg:grid-cols-3 lg:px-8">
 				{#each posts as post}
 					<Card metadata={post.metadata} />
 				{/each}

@@ -34,13 +34,11 @@
 								href="/my/settings/badges/"
 								class={$page.url.pathname.startsWith('/my/settings/badges')
 									? asideSelected.item
-									: asideDefault.item}
-							>
+									: asideDefault.item}>
 								<Badge
 									classes={$page.url.pathname.startsWith('/my/settings/badges')
 										? asideSelected.image
-										: asideDefault.image}
-								/>
+										: asideDefault.image} />
 								<span class="truncate"> Merit Badges </span>
 							</a>
 
@@ -48,13 +46,11 @@
 								href="/my/settings/membership/"
 								class={$page.url.pathname.startsWith('/my/settings/membership')
 									? asideSelected.item
-									: asideDefault.item}
-							>
+									: asideDefault.item}>
 								<Membership
 									classes={$page.url.pathname.startsWith('/my/settings/membership')
 										? asideSelected.image
-										: asideDefault.image}
-								/>
+										: asideDefault.image} />
 								<span class="truncate"> Membership Settings </span>
 							</a>
 
@@ -62,13 +58,11 @@
 								href="/my/settings/order-history/"
 								class={$page.url.pathname.startsWith('/my/settings/order-history')
 									? asideSelected.item
-									: asideDefault.item}
-							>
+									: asideDefault.item}>
 								<CreditCard
 									classes={$page.url.pathname.startsWith('/my/settings/order-history')
 										? asideSelected.image
-										: asideDefault.image}
-								/>
+										: asideDefault.image} />
 								<span class="truncate"> Order History </span>
 							</a>
 
@@ -76,13 +70,11 @@
 								href="/my/settings/tickets/"
 								class={$page.url.pathname.startsWith('/my/settings/tickets')
 									? asideSelected.item
-									: asideDefault.item}
-							>
+									: asideDefault.item}>
 								<Ticket
 									classes={$page.url.pathname.startsWith('/my/settings/tickets')
 										? asideSelected.image
-										: asideDefault.image}
-								/>
+										: asideDefault.image} />
 								<span class="truncate"> Event Tickets </span>
 							</a>
 						</nav>

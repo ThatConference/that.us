@@ -19,8 +19,7 @@
 			class:shadow-solid={visible}
 			aria-label="User menu"
 			aria-haspopup="true"
-			on:click|preventDefault={() => (visible = !visible)}
-		>
+			on:click|preventDefault={() => (visible = !visible)}>
 			{#if $session.isAuthenticated}
 				{#if isEmpty($session.thatProfile)}
 					<div>
@@ -31,8 +30,7 @@
 					<img
 						class="h-10 w-10 rounded-full"
 						src="{$session.thatProfile.profileImage}?w=256&h=256&fit=crop"
-						alt=""
-					/>
+						alt="" />
 				{:else}
 					<Icon data={userIcon} class="h-8 w-8 rounded-full" />
 				{/if}
@@ -50,21 +48,18 @@
 				{#if isEmpty($session.thatProfile)}
 					<div
 						class="absolute right-0 z-50 mt-2 w-48 origin-top-right rounded-md shadow-lg"
-						in:fade
-					>
+						in:fade>
 						<div class="rounded-md bg-white py-1 ring-1 ring-black ring-opacity-5">
 							<a
 								href="/my/profiles/primary/"
-								class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-							>
+								class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
 								Create Profile
 							</a>
 
 							<a
 								rel="external"
 								href="/logout/"
-								class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-							>
+								class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
 								Logout
 							</a>
 						</div>
@@ -72,8 +67,7 @@
 				{:else}
 					<div
 						class="on-top origin-top-right absolute right-0 mt-2 min-w-48 rounded-md shadow-lg"
-						in:fade
-					>
+						in:fade>
 						<div class="py-1 rounded-md bg-white ring-1 ring-black ring-opacity-5">
 							<div class="block px-4 py-2 text-sm hover:bg-gray-100 text-gray-700 border-b">
 								<a href="/my/profiles/primary/" on:click={() => (visible = false)}>
@@ -85,16 +79,14 @@
 							<a
 								href="/my/profiles/primary/"
 								on:click={() => (visible = false)}
-								class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-							>
+								class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
 								My Profiles
 							</a>
 
 							<a
 								href="/my/settings/badges/"
 								on:click={() => (visible = false)}
-								class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-							>
+								class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
 								My Settings
 							</a>
 
@@ -102,32 +94,28 @@
 								sveltekit:prefetch
 								href="/my/network/"
 								on:click={() => (visible = false)}
-								class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-							>
+								class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
 								My Network
 							</a>
 
 							<a
 								sveltekit:prefetch
 								href="/my/favorites/"
-								class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-							>
+								class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
 								My Favorites
 							</a>
 
 							<a
 								sveltekit:prefetch
 								href="/my/submissions/"
-								class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-							>
+								class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
 								My Submissions
 							</a>
 
 							<a
 								rel="external"
 								href="/logout/"
-								class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-							>
+								class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
 								Logout
 							</a>
 						</div>
@@ -139,15 +127,13 @@
 						<a
 							rel="external"
 							href="/login/"
-							class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer"
-						>
+							class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer">
 							Login
 						</a>
 						<a
 							rel="external"
 							href="/api/auth/signup/"
-							class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer"
-						>
+							class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer">
 							Sign Up
 						</a>
 					</div>

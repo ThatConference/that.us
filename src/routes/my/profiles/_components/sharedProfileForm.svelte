@@ -30,8 +30,7 @@
 	validateOnChange={false}
 	on:submit={handleSubmit}
 	let:isSubmitting
-	let:isValid
->
+	let:isValid>
 	<div>
 		<div>
 			<h2 class="text-xl font-bold leading-6 text-gray-900">Your Shared Profile</h2>
@@ -56,16 +55,14 @@
 					</label>
 					<div class="relative">
 						<span
-							class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400"
-						/>
+							class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400" />
 					</div>
 					<div class="mt-1 rounded-md border shadow-sm">
 						<Input
 							name="firstName"
 							type="text"
 							autofocus
-							class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5"
-						/>
+							class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
 					</div>
 				</div>
 
@@ -75,14 +72,12 @@
 					</label>
 					<div class="relative">
 						<span
-							class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400"
-						/>
+							class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400" />
 					</div>
 					<div class="mt-1 rounded-md border shadow-sm">
 						<Input
 							name="lastName"
-							class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5"
-						/>
+							class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
 					</div>
 				</div>
 
@@ -92,15 +87,13 @@
 					</label>
 					<div class="relative">
 						<span
-							class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400"
-						/>
+							class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400" />
 					</div>
 					<div class="mt-1 rounded-md border shadow-sm">
 						<Input
 							name="email"
 							type="email"
-							class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5"
-						/>
+							class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
 					</div>
 				</div>
 
@@ -133,8 +126,7 @@
 						<Input
 							name="city"
 							type="text"
-							class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5"
-						/>
+							class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
 					</div>
 				</div>
 
@@ -146,8 +138,7 @@
 						<Input
 							name="state"
 							type="text"
-							class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5"
-						/>
+							class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
 					</div>
 				</div>
 			</div>
@@ -160,8 +151,7 @@
 						<button
 							type="submit"
 							disabled={isSubmitting}
-							class="w-full px-8 py-2 text-sm font-medium leading-5"
-						>
+							class="w-full px-8 py-2 text-sm font-medium leading-5">
 							<span>Update Shared Profile</span>
 						</button>
 					</Shell>

@@ -29,8 +29,7 @@
 </script>
 
 <div
-	class="divide-y divide-gray-200 overflow-hidden rounded-lg bg-gray-200 shadow sm:grid sm:grid-cols-2 sm:gap-px sm:divide-y-0"
->
+	class="divide-y divide-gray-200 overflow-hidden rounded-lg bg-gray-200 shadow sm:grid sm:grid-cols-2 sm:gap-px sm:divide-y-0">
 	{#each examples as e}
 		<div class="group relative bg-white p-6">
 			<ActivityType {...e} />

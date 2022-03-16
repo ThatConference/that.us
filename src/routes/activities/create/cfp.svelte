@@ -67,6 +67,5 @@
 	<ModalError
 		title="Call for speakers has ended"
 		text={`I'm sorry ${activeEvents.backdoor.name} call for speakers has ended.`}
-		action={{ title: 'All Events', href: '/events' }}
-	/>
+		action={{ title: 'All Events', href: '/events' }} />
 {/if}

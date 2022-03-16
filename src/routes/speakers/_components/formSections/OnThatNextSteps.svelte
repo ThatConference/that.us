@@ -91,8 +91,8 @@
 			>https://that.us/my/settings/tickets/</a
 		>. This gives you full access to all of the online sessions and the ability to create more. Yes,
 		that's right if you want to talk about more, head over to
-		<a class="hover" target="_blank" href="/activities/create">https://that.us/activities/create/</a
-		> and create more sessions.
+		<a class="hover" target="_blank" href="/activities/create"
+			>https://that.us/activities/create/</a> and create more sessions.
 	</p>
 </div>
 
@@ -104,8 +104,7 @@
 	<p class="prose prose-xl mt-4 text-gray-500">
 		You can update your session with any pointers to resources, etc. Just log in to
 		<a class="hover" target="_blank" href="https://that.us/my/submissions/"
-			>https://that.us/my/submissions/</a
-		> and feel free to update.
+			>https://that.us/my/submissions/</a> and feel free to update.
 	</p>
 </div>
 

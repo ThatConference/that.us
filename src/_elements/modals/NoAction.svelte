@@ -11,8 +11,7 @@
 		class="fixed inset-0 z-50 overflow-y-auto overscroll-none pt-20 "
 		aria-labelledby="modal-title"
 		role="dialog"
-		aria-modal="true"
-	>
+		aria-modal="true">
 		<div class="flex min-h-screen items-center justify-center px-4 pt-4 pb-20 text-center sm:p-10">
 			<div class="fixed inset-0">
 				<div class="absolute inset-0 bg-gray-500 opacity-75" />
@@ -23,8 +22,7 @@
 		shadow-xl transition-all sm:w-full sm:max-w-sm sm:p-6"
 				role="dialog"
 				aria-modal="true"
-				aria-labelledby="modal-headline"
-			>
+				aria-labelledby="modal-headline">
 				<div>
 					<div class="mx-auto flex items-center justify-center">
 						<Waiting />

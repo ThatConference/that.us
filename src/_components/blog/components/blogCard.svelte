@@ -12,21 +12,18 @@
 
 <a sveltekit:prefetch href={`/blog/posts/${metadata.slug}/`}>
 	<div
-		class="flex h-full transform flex-col overflow-hidden rounded-lg shadow-lg transition duration-500 ease-in-out hover:scale-105"
-	>
+		class="flex h-full transform flex-col overflow-hidden rounded-lg shadow-lg transition duration-500 ease-in-out hover:scale-105">
 		<div class="flex-shrink-0">
 			<img
 				class="top-rounded-lg h-[600] w-[335] bg-white object-cover"
 				src={cdnUrl(metadata.heroImage)}
-				alt=""
-			/>
+				alt="" />
 		</div>
 		<div class="flex flex-grow flex-col justify-between bg-white p-6">
 			<div class="flex-grow">
 				<p class="text-sm font-medium text-gray-400">
 					<a href={`/blog/posts/${metadata.slug}/`} class="uppercase hover:underline"
-						>{metadata.articleType}</a
-					>
+						>{metadata.articleType}</a>
 				</p>
 				<div class="mt-2 block">
 					<p class="text-xl font-semibold text-gray-900">{metadata.title}</p>
@@ -43,8 +40,7 @@
 							data-sizes="auto"
 							data-src={srcset.src}
 							data-srcset={srcset.srcset}
-							alt={`${metadata.author.firstName} ${metadata.author.lastName}`}
-						/>
+							alt={`${metadata.author.firstName} ${metadata.author.lastName}`} />
 					</a>
 				</div>
 				<div class="ml-3">
@@ -57,8 +53,7 @@
 					</p>
 					<div class="flex space-x-1 text-sm text-gray-500">
 						<time datetime={dayjs(metadata.date).toISOString()}
-							>{dayjs(metadata.date).format('MMMM DD, YYYY')}</time
-						>
+							>{dayjs(metadata.date).format('MMMM DD, YYYY')}</time>
 						<span aria-hidden="true"> &middot; </span>
 						<span>{metadata.readingTime.text}</span>
 					</div>

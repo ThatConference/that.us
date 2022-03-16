@@ -4,8 +4,7 @@
 			<div class="flex-1">
 				<div>
 					<h3
-						class="inline-flex rounded-full bg-white px-4 py-1 text-sm font-semibold uppercase tracking-wide text-gray-800"
-					>
+						class="inline-flex rounded-full bg-white px-4 py-1 text-sm font-semibold uppercase tracking-wide text-gray-800">
 						Special Discounts
 					</h3>
 				</div>
@@ -19,8 +18,7 @@
 			<div class="mt-6 rounded-md shadow lg:mt-0 lg:ml-10 lg:flex-shrink-0">
 				<a
 					href="mailto:hello@that.us"
-					class="flex items-center justify-center rounded-md border border-transparent bg-white px-5 py-3 text-base font-medium text-gray-900 hover:bg-gray-50"
-				>
+					class="flex items-center justify-center rounded-md border border-transparent bg-white px-5 py-3 text-base font-medium text-gray-900 hover:bg-gray-50">
 					Contact Us to Apply
 				</a>
 			</div>

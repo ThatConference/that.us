@@ -31,15 +31,13 @@
               duration-150 ease-in-out 
               hover:bg-thatBlue-500 focus:bg-thatBlue-500 focus:outline-none"
 							aria-label="Dismiss"
-							on:click={() => (dismissed = !dismissed)}
-						>
+							on:click={() => (dismissed = !dismissed)}>
 							<svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 								<path
 									stroke-linecap="round"
 									stroke-linejoin="round"
 									stroke-width="2"
-									d="M6 18L18 6M6 6l12 12"
-								/>
+									d="M6 18L18 6M6 6l12 12" />
 							</svg>
 						</button>
 					</div>

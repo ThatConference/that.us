@@ -18,8 +18,7 @@
 		class="h-full w-full transform rounded-lg bg-that-blue py-10 px-6 text-center shadow transition duration-500
       ease-in-out hover:scale-105 hover:bg-thatBlue-400 xl:px-10 xl:text-left"
 		on:mouseenter={() => (isHover = true)}
-		on:mouseleave={() => (isHover = false)}
-	>
+		on:mouseleave={() => (isHover = false)}>
 		<div class="space-y-6 xl:space-y-10">
 			<div class="flex justify-center">
 				{#if $session.isAuthenticated && $session.thatProfile}
@@ -29,8 +28,7 @@
 						<img
 							class="mx-auto h-40 w-40 rounded-full xl:w-56 xl:h-56"
 							src={`${$session.thatProfile.profileImage}${imageCrops.profile}`}
-							alt={`${$session.thatProfile.firstName} ${$session.thatProfile.lastName}`}
-						/>
+							alt={`${$session.thatProfile.firstName} ${$session.thatProfile.lastName}`} />
 					{/if}
 				{:else}
 					<Icon data={plusCircle} class="text-thatBlue-100 h-40 w-40 xl:w-56 xl:h-56" />

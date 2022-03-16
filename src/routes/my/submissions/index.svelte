@@ -50,8 +50,7 @@
 		<div class="p-12">
 			<ModalWarning
 				title="You have no activities submitted?"
-				text="Why not? Submit something today!"
-			/>
+				text="Why not? Submit something today!" />
 		</div>
 	{/if}
 	<!-- {:catch error}

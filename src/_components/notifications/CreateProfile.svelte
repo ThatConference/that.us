@@ -20,22 +20,19 @@
 			</div>
 			<div
 				class="absolute inset-y-0 right-0 flex items-start pt-1 pr-1 sm:items-start
-          sm:pt-1 sm:pr-2"
-			>
+          sm:pt-1 sm:pr-2">
 				<button
 					type="button"
 					class="flex rounded-md p-2 transition duration-150
             ease-in-out hover:bg-indigo-500 focus:bg-indigo-500 focus:outline-none"
 					aria-label="Dismiss"
-					on:click={() => (wasDismissed = !wasDismissed)}
-				>
+					on:click={() => (wasDismissed = !wasDismissed)}>
 					<svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 						<path
 							stroke-linecap="round"
 							stroke-linejoin="round"
 							stroke-width="2"
-							d="M6 18L18 6M6 6l12 12"
-						/>
+							d="M6 18L18 6M6 6l12 12" />
 					</svg>
 				</button>
 			</div>

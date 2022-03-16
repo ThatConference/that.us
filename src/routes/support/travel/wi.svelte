@@ -44,8 +44,7 @@
 			class="prose-lg 
               relative mx-auto mb-8 max-w-prose
               text-lg leading-7  
-              text-gray-500 lg:mx-0 lg:max-w-7xl lg:pr-72"
-		>
+              text-gray-500 lg:mx-0 lg:max-w-7xl lg:pr-72">
 			<p>
 				We have partnered with the Kalahari Resort and Staybridge Suites to offer the best group
 				rates around the height of the summer vacation season.
@@ -111,8 +110,7 @@
 						{:else}
 							<div class="flex justify-center">
 								<div
-									class="px-8 py-3 rounded-md shadow text-base leading-6 font-medium border-2 border-thatBlue-500 text-thatBlue-500 bg-white"
-								>
+									class="px-8 py-3 rounded-md shadow text-base leading-6 font-medium border-2 border-thatBlue-500 text-thatBlue-500 bg-white">
 									Reservations open on {open}.
 								</div>
 							</div>

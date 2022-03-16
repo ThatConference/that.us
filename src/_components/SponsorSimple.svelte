@@ -59,23 +59,20 @@
 							<img
 								class="lazyload w-1/2 sm:w-full"
 								src="/images/characters/octopus_with_flag.png"
-								alt="OctoPartner"
-							/>
+								alt="OctoPartner" />
 						</div>
 
 						<div class="col-span-4">
 							<div class="flex flex-col space-y-8">
 								<h1
-									class="text-center sm:text-left font-extrabold uppercase text-gray-500 text-2xl sm:text-3xl lg:text-4xl"
-								>
+									class="text-center sm:text-left font-extrabold uppercase text-gray-500 text-2xl sm:text-3xl lg:text-4xl">
 									Our Featured Camp Partners
 								</h1>
 
 								<div class="flex flex-wrap items-center justify-center">
 									{#each partners as p}
 										<div
-											class="p-4 w-1/3 transition duration-500 ease-in-out transform hover:scale-105"
-										>
+											class="p-4 w-1/3 transition duration-500 ease-in-out transform hover:scale-105">
 											<a href="/partners/{p.slug}/">
 												<img class="lazyload w-full h-24" src={p.companyLogo} alt={p.companyName} />
 											</a>
@@ -101,8 +98,7 @@
                     shadow md:py-4 md:text-lg md:px-10 transition duration-150 ease-in-out
                     text-base text-white bg-thatOrange-400 hover:bg-thatOrange-500
                     focus:outline-none focus:border-thatOrange-700
-                    focus:ring-that-orange"
-									>
+                    focus:ring-that-orange">
 										<a href="mailto:hello@that.us?subject=Let's Partner"> Partner with us! </a>
 									</div>
 

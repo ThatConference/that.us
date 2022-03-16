@@ -18,8 +18,7 @@
 <div on:mouseenter={() => (hasAccessHover = true)} on:mouseleave={() => (hasAccessHover = false)}>
 	{#if !hasAccessHover}
 		<div
-			class="flex flex-1 items-center justify-between truncate rounded-md border border-gray-200 bg-gray-50"
-		>
+			class="flex flex-1 items-center justify-between truncate rounded-md border border-gray-200 bg-gray-50">
 			<div class="flex-1 truncate px-4 py-2 text-sm text-gray-500">
 				<p class="font-medium">
 					{event.name}
@@ -38,8 +37,7 @@
 	{:else}
 		<a href={`/events/${event.slug}`}>
 			<div
-				class="flex-1 flex items-center justify-between border border-gray-200 bg-gray-50 rounded-md truncate"
-			>
+				class="flex-1 flex items-center justify-between border border-gray-200 bg-gray-50 rounded-md truncate">
 				<div class="flex-1 px-4 py-2 text-sm truncate text-gray-500">
 					<p class="font-medium">A Ticket or Membership is Required</p>
 					<p class="">View Event Details</p>

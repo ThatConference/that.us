@@ -115,21 +115,18 @@
 								data-sizes="auto"
 								data-src={srcset.src}
 								data-srcset={srcset.srcset}
-								alt={`${author.firstName} ${author.lastName}`}
-							/>
+								alt={`${author.firstName} ${author.lastName}`} />
 						</a>
 					</div>
 					<div
-						class="text-base font-semibold uppercase leading-6 tracking-wide text-thatOrange-400"
-					>
+						class="text-base font-semibold uppercase leading-6 tracking-wide text-thatOrange-400">
 						<time datetime={dayjs(date).toISOString()}>{dayjs(date).format('MMMM DD, YYYY')}</time>
 						•
 						<span>{readingTime.text}</span>
 					</div>
 					<h1
 						class="mt-2 mb-8 text-3xl font-extrabold leading-8 tracking-wide
-        text-gray-900 sm:text-4xl sm:leading-10"
-					>
+        text-gray-900 sm:text-4xl sm:leading-10">
 						{title}
 					</h1>
 

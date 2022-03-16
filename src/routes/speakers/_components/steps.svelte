@@ -16,8 +16,7 @@
 							{title}
 							{completed}
 							stepNumber={index + 1}
-							isLastItem={steps.length - 1 === index}
-						/>
+							isLastItem={steps.length - 1 === index} />
 					</li>
 				{/each}
 			{/key}

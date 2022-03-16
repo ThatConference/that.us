@@ -30,8 +30,7 @@
 				<img
 					class="mx-auto h-40 w-40 rounded-full xl:h-56 xl:w-56"
 					src={userProfileImage}
-					alt={`${member.firstName} ${member.lastName}`}
-				/>
+					alt={`${member.firstName} ${member.lastName}`} />
 			</div>
 			<div>
 				<div class="flex justify-center space-x-2">

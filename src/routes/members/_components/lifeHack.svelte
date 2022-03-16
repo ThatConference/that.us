@@ -6,16 +6,14 @@
 <section class="bg-that-offWhite py-16 lg:py-20">
 	<div
 		class="relative mx-auto max-w-screen-md items-center px-4 sm:px-6 lg:flex lg:flex-col
-			lg:justify-between lg:px-8"
-	>
+			lg:justify-between lg:px-8">
 		<div class="mx-12 md:mr-0">
 			<svg
 				class="absolute top-0 h-16 w-16 -translate-x-12
 			-translate-y-8 transform text-thatBlue-200"
 				stroke="currentColor"
 				fill="none"
-				viewBox="0 0 144 144"
-			>
+				viewBox="0 0 144 144">
 				<path
 					stroke-width="2"
 					d="M41.485 15C17.753 31.753 1 59.208 1 89.455c0 24.664 14.891 39.09
@@ -25,13 +23,11 @@
 			16.753-40.02 44.208-40.02 74.455 0 24.664 14.891 39.09 32.109 39.09
 			15.822 0 28.386-13.03 28.386-28.387
 			0-15.356-11.168-26.524-25.129-26.524-2.792 0-6.049.465-6.98.93
-			2.327-15.821 16.753-34.435 31.644-43.742L121.525 15z"
-				/>
+			2.327-15.821 16.753-34.435 31.644-43.742L121.525 15z" />
 			</svg>
 			<h2
 				class="relative text-3xl font-extrabold leading-9 tracking-tight text-thatBlue-500
-				sm:text-4xl sm:leading-10"
-			>
+				sm:text-4xl sm:leading-10">
 				{quote}
 			</h2>
 			<div class="mt-4 flex justify-end md:-mr-12">

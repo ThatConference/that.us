@@ -17,13 +17,11 @@
 <section class="bg-thatBlue-700 py-12 lg:py-16">
 	<div
 		class="relative mx-auto max-w-screen-xl px-4 sm:px-6 lg:flex lg:items-center
-      lg:px-8"
-	>
+      lg:px-8">
 		<div class="lg:w-0 lg:flex-1">
 			<h2
 				class="text-4xl font-semibold leading-10 tracking-tight text-white sm:text-5xl sm:leading-none"
-				id="newsletter-headline"
-			>
+				id="newsletter-headline">
 				Stay in the know
 			</h2>
 			{#if !submitted}
@@ -48,8 +46,7 @@
 					aria-labelledby="newsletter-headline"
 					validateOnBlur={false}
 					validateOnChange={false}
-					let:isSubmitting
-				>
+					let:isSubmitting>
 					{#if !isSubmitting}
 						<div class="sm:flex">
 							<Input type="hidden" name="u" value="16" />
@@ -69,8 +66,7 @@
                   leading-6 text-gray-900 placeholder-gray-500 transition
                   duration-150 ease-in-out focus:placeholder-gray-400 focus:outline-none
                   sm:max-w-xs"
-								placeholder="Enter your email"
-							/>
+								placeholder="Enter your email" />
 							<div class="mt-3 rounded-md shadow sm:mt-0 sm:ml-3 sm:flex-shrink-0">
 								<button
 									type="submit"
@@ -80,8 +76,7 @@
                     transition duration-150 ease-in-out
                     hover:bg-thatBlue-500 hover:text-white
                     focus:border-thatBlue-800 focus:bg-thatBlue-500
-                    focus:text-white focus:outline-none focus:ring-thatBlue-500"
-								>
+                    focus:text-white focus:outline-none focus:ring-thatBlue-500">
 									Add me
 								</button>
 							</div>
@@ -97,8 +92,7 @@
 					<a
 						href="/support/privacy-policy"
 						class="font-medium
-              text-white underline"
-					>
+              text-white underline">
 						Privacy Policy.
 					</a>
 				</p>

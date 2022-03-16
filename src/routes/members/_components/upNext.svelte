@@ -19,8 +19,7 @@
 			<div class="space-y-5 sm:space-y-4 md:max-w-xl lg:max-w-3xl xl:max-w-none">
 				<h2
 					class="text-3xl font-extrabold leading-9 tracking-tight text-white
-            sm:text-4xl"
-				>
+            sm:text-4xl">
 					My Upcoming
 					<span class="text-that-orange">Activities</span>
 				</h2>
@@ -34,8 +33,7 @@
 
 			<ul
 				class="space-y-4 sm:grid sm:grid-cols-2 sm:gap-6 sm:space-y-0
-      lg:grid-cols-3 lg:gap-8"
-			>
+      lg:grid-cols-3 lg:gap-8">
 				{#if $state.matches('loaded')}
 					{#if $state.context.items.length > 0}
 						<!-- slicing off and taking the first 6 as we don't have paging on the API -->

@@ -31,8 +31,7 @@
 	<div class="mx-auto max-w-2xl lg:max-w-7xl">
 		<div class="py-24 px-6">
 			<h2
-				class="pb-6 text-4xl font-extrabold leading-8 tracking-tight text-thatBlue-800 sm:text-5xl lg:pb-24"
-			>
+				class="pb-6 text-4xl font-extrabold leading-8 tracking-tight text-thatBlue-800 sm:text-5xl lg:pb-24">
 				Professional Campers
 			</h2>
 
@@ -95,8 +94,7 @@
 							<HighlightShell>
 								<button
 									on:click={() => handlePurchase(ticket.uiReference)}
-									class="w-full px-8 py-2 md:px-10">Purchase</button
-								>
+									class="w-full px-8 py-2 md:px-10">Purchase</button>
 							</HighlightShell>
 						</div>
 					</div>
@@ -104,8 +102,7 @@
 					{#each ticket.includes as item}
 						<div class="flex flex-col">
 							<h2
-								class="border-t border-gray-200 bg-gray-50 py-3 px-4 text-left text-sm font-medium text-gray-900"
-							>
+								class="border-t border-gray-200 bg-gray-50 py-3 px-4 text-left text-sm font-medium text-gray-900">
 								{item.title}
 							</h2>
 							{#each item.includes as i}
@@ -126,8 +123,7 @@
 								<button
 									type="button"
 									on:click={() => handlePurchase(ticket.uiReference)}
-									class="w-full px-8 py-2 md:px-10">Purchase</button
-								>
+									class="w-full px-8 py-2 md:px-10">Purchase</button>
 							</HighlightShell>
 						</div>
 					</div>
@@ -149,8 +145,7 @@
 						{#each ticketBreakdown as ticket}
 							<th
 								class="w-1/6 px-6 pb-4 text-center align-top text-lg font-medium leading-6 text-gray-900"
-								scope="col">{eventTickets[ticket.uiReference].name}</th
-							>
+								scope="col">{eventTickets[ticket.uiReference].name}</th>
 						{/each}
 					</tr>
 				</thead>
@@ -159,8 +154,7 @@
 					<tr>
 						<th
 							class="py-8 pl-6 pr-6 text-left align-top text-sm font-medium text-gray-900"
-							scope="row">Pricing</th
-						>
+							scope="row">Pricing</th>
 
 						{#each ticketBreakdown as ticket}
 							<td class="h-full py-8 px-6 align-top">
@@ -194,8 +188,7 @@
 							<th
 								class="bg-gray-50 py-3 pl-6 text-left text-sm font-medium text-gray-900"
 								colspan="6"
-								scope="colgroup">{breakdown.title}</th
-							>
+								scope="colgroup">{breakdown.title}</th>
 						</tr>
 
 						{#each breakdown.includes as item}
@@ -214,14 +207,12 @@
 
 						<td class="px-6 pt-12">
 							<StandardButton on:click={() => handlePurchase('VIRTUAL_CAMPER')}
-								>Purchase</StandardButton
-							>
+								>Purchase</StandardButton>
 						</td>
 
 						<td class="px-6 pt-12">
 							<StandardButton on:click={() => handlePurchase('CAMPER_NO_FOOD')}
-								>Purchase</StandardButton
-							>
+								>Purchase</StandardButton>
 						</td>
 						<td class="px-6 pt-12">
 							<StandardButton on:click={() => handlePurchase('CAMPER')}>Purchase</StandardButton>

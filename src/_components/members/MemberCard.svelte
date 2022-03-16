@@ -18,8 +18,7 @@
 
 <a sveltekit:prefetch href="/members/{profileSlug}/">
 	<div
-		class="h-full transform rounded-lg bg-white text-center shadow transition duration-500 ease-in-out hover:scale-105 hover:bg-gray-100 "
-	>
+		class="h-full transform rounded-lg bg-white text-center shadow transition duration-500 ease-in-out hover:scale-105 hover:bg-gray-100 ">
 		<div class="flex flex-col p-4">
 			<div>
 				<span class="relative inline-block">
@@ -28,16 +27,14 @@
 						data-sizes="auto"
 						data-src={srcset.src}
 						data-srcset={srcset.srcset}
-						alt=""
-					/>
+						alt="" />
 
 					{#if earnedMeritBadges.length > 0}
 						<span class="absolute bottom-0 left-0 block h-12 w-12">
 							<img
 								class="lazyload"
 								src={earnedMeritBadges[0].image}
-								alt={earnedMeritBadges[0].name}
-							/>
+								alt={earnedMeritBadges[0].name} />
 						</span>
 					{/if}
 				</span>

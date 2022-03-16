@@ -37,13 +37,11 @@
 								href="/my/profiles/primary/"
 								class={$page.url.pathname.startsWith('/my/profiles/primary')
 									? asideSelected.item
-									: asideDefault.item}
-							>
+									: asideDefault.item}>
 								<User
 									classes={$page.url.pathname.startsWith('/my/profiles/primary')
 										? asideSelected.image
-										: asideDefault.image}
-								/>
+										: asideDefault.image} />
 								<span class="truncate"> Your Profile </span>
 							</a>
 
@@ -52,13 +50,11 @@
 									href="/my/profiles/shared/"
 									class={$page.url.pathname.startsWith('/my/profiles/shared')
 										? asideSelected.item
-										: asideDefault.item}
-								>
+										: asideDefault.item}>
 									<Badge
 										classes={$page.url.pathname.startsWith('/my/profiles/shared')
 											? asideSelected.image
-											: asideDefault.image}
-									/>
+											: asideDefault.image} />
 									<span class="truncate">Shared Profile </span>
 								</a>
 
@@ -66,13 +62,11 @@
 									href="/my/profiles/emergency-contact/"
 									class={$page.url.pathname.startsWith('/my/profiles/emergency-contact')
 										? asideSelected.item
-										: asideDefault.item}
-								>
+										: asideDefault.item}>
 									<User
 										classes={$page.url.pathname.startsWith('/my/profiles/emergency-contact')
 											? asideSelected.image
-											: asideDefault.image}
-									/>
+											: asideDefault.image} />
 									<span class="truncate">Emergency Contact</span>
 								</a>
 
@@ -80,13 +74,11 @@
 									href="/my/profiles/slack/"
 									class={$page.url.pathname.startsWith('/my/profiles/slack')
 										? asideSelected.item
-										: asideDefault.item}
-								>
+										: asideDefault.item}>
 									<Slack
 										classes={$page.url.pathname.startsWith('/my/profiles/slack')
 											? asideSelected.image
-											: asideDefault.image}
-									/>
+											: asideDefault.image} />
 									<span class="truncate">Join Slack</span>
 								</a>
 							{/if}

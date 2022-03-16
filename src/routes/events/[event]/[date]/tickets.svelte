@@ -75,8 +75,7 @@
 	<section id="professionals">
 		<Professional
 			{event}
-			on:purchase-hybrid-ticket={({ detail }) => handleOnTicketPurchase(detail)}
-		/>
+			on:purchase-hybrid-ticket={({ detail }) => handleOnTicketPurchase(detail)} />
 		<Notices />
 	</section>
 

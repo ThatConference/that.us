@@ -23,16 +23,14 @@
 <a href="/activities/{id}/">
 	<div
 		class="h-full w-full transform rounded-lg bg-that-blue py-10 px-6 text-left shadow transition duration-500
-      ease-in-out hover:scale-105 hover:bg-thatBlue-400 xl:px-10"
-	>
+      ease-in-out hover:scale-105 hover:bg-thatBlue-400 xl:px-10">
 		<div class="flex h-full w-full flex-col space-y-4 text-white">
 			<h1 class="text-lg font-semibold tracking-tight">{title}</h1>
 
 			<div
 				class="flex-grow"
 				class:cursor-pointer={isLongerThan(shortDescription, 25)}
-				on:click|preventDefault|stopPropagation={() => (expandDescription = !expandDescription)}
-			>
+				on:click|preventDefault|stopPropagation={() => (expandDescription = !expandDescription)}>
 				<p class="break-words text-sm leading-5">
 					{#if expandDescription}
 						<span class="lineBreaks">{shortDescription}</span>

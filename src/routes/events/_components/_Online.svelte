@@ -96,22 +96,19 @@
 	<section in:fade slot="header">
 		<OnlineHero
 			{event}
-			on:purchase-event-ticket={() => handleAddEventTicketClick(event.id, event.products)}
-		/>
+			on:purchase-event-ticket={() => handleAddEventTicketClick(event.id, event.products)} />
 	</section>
 
 	<section in:fade={{ delay: 200 }}>
 		<EventTicket
 			{event}
-			on:purchase-event-ticket={() => handleAddEventTicketClick(event.id, event.products)}
-		/>
+			on:purchase-event-ticket={() => handleAddEventTicketClick(event.id, event.products)} />
 	</section>
 
 	<section in:fade={{ delay: 250 }}>
 		<Membership
 			{event}
-			on:purchase-membership={() => handleAddMembershipClick(event.id, event.products)}
-		>
+			on:purchase-membership={() => handleAddMembershipClick(event.id, event.products)}>
 			<div slot="header">
 				<div class="text-center">
 					<h2 class="text-3xl font-extrabold text-thatBlue-800 sm:text-4xl lg:text-5xl">
@@ -145,8 +142,7 @@
 	<section>
 		<CTA
 			on:purchase-membership={() => handleAddMembershipClick(event.id, event.products)}
-			on:purchase-event-ticket={() => handleAddEventTicketClick(event.id, event.products)}
-		/>
+			on:purchase-event-ticket={() => handleAddEventTicketClick(event.id, event.products)} />
 	</section>
 
 	<section class="mx-auto max-w-7xl pb-12">

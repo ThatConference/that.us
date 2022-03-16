@@ -12,8 +12,7 @@
 	<div class="mt-24 grid grid-cols-1 gap-8 gap-y-24 sm:grid-cols-3">
 		<a href="/events/{event.slug}/">
 			<div
-				class="h-full transform rounded-md bg-gray-50 p-8 shadow-md transition duration-500 ease-in-out hover:scale-105"
-			>
+				class="h-full transform rounded-md bg-gray-50 p-8 shadow-md transition duration-500 ease-in-out hover:scale-105">
 				<div class="-mt-16 flex flex-col justify-center">
 					<img src="/images/characters/conference_ticket.svg" class="h-48" alt="" />
 				</div>
@@ -31,8 +30,7 @@
 
 		<a href="/support/travel/">
 			<div
-				class="h-full transform rounded-md bg-gray-50 p-8 shadow-md transition duration-500 ease-in-out hover:scale-105"
-			>
+				class="h-full transform rounded-md bg-gray-50 p-8 shadow-md transition duration-500 ease-in-out hover:scale-105">
 				<div class="-mt-16 flex flex-col justify-center">
 					<img src="/images/characters/hotel_accomodations.svg" class="h-48" alt="" />
 				</div>
@@ -50,14 +48,12 @@
 
 		<a href="https://store.thatconference.com" open>
 			<div
-				class="h-full transform rounded-md bg-gray-50 p-8 shadow-md transition duration-500 ease-in-out hover:scale-105"
-			>
+				class="h-full transform rounded-md bg-gray-50 p-8 shadow-md transition duration-500 ease-in-out hover:scale-105">
 				<div class="-mt-16 flex flex-col justify-center">
 					<img
 						src="/images/characters/bear-eyelashes.png"
 						class="flip h-48 w-full object-scale-down"
-						alt=""
-					/>
+						alt="" />
 				</div>
 
 				<p class="py-4 text-center text-lg font-extrabold tracking-wide text-gray-600">Camp Swag</p>

@@ -52,8 +52,7 @@
 			<img
 				class="col-start-2 object-center"
 				src="/images/characters/what_to_expect_families_welcome.png"
-				alt
-			/>
+				alt />
 		</div>
 	</div>
 
@@ -83,8 +82,7 @@
 						{#each familyTickets as ticket}
 							<TicketCard
 								ticketDetails={ticket}
-								on:click={() => handlePurchase(ticket.uiReference)}
-							/>
+								on:click={() => handlePurchase(ticket.uiReference)} />
 						{/each}
 					</div>
 

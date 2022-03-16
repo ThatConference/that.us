@@ -191,8 +191,7 @@
 	<!--header-->
 	<div class="border-b border-gray-300 px-4 py-5 sm:px-6">
 		<div
-			class="flex flex-col flex-wrap items-center justify-between sm:flex-nowrap md:flex-row md:items-end"
-		>
+			class="flex flex-col flex-wrap items-center justify-between sm:flex-nowrap md:flex-row md:items-end">
 			<div class="block">
 				<div class="grid grid-cols-1 gap-12 sm:grid-cols-2">
 					{#each speakers as s}
@@ -205,16 +204,14 @@
 											data-sizes="auto"
 											data-src={getProfileImage(s.profileImage).src}
 											data-srcset={getProfileImage(s.profileImage).srcset}
-											alt=""
-										/>
+											alt="" />
 
 										{#if s.earnedMeritBadges.length > 0}
 											<span class="absolute bottom-0 left-0 block h-8 w-8">
 												<img
 													class="lazyload"
 													src={s.earnedMeritBadges[0].image}
-													alt={s.earnedMeritBadges[0].name}
-												/>
+													alt={s.earnedMeritBadges[0].name} />
 											</span>
 										{/if}
 									</span>
@@ -236,8 +233,7 @@
 										<SocialLink
 											href={link.url}
 											network={link.linkType}
-											isLast={i === s.profileLinks?.length - 1}
-										/>
+											isLast={i === s.profileLinks?.length - 1} />
 									{/each}
 								</div>
 							</div>
@@ -259,8 +255,7 @@
                   font-medium leading-5 text-gray-700 transition
                   duration-150 ease-in-out
                   hover:text-gray-500 focus:border-blue-300 focus:outline-none active:bg-gray-50
-                  active:text-gray-800"
-							>
+                  active:text-gray-800">
 								<Icon data={heart} class="-ml-1 mr-2 h-4 w-4" />
 								{#if isFavorite}
 									<span>Unfavorite</span>
@@ -277,8 +272,7 @@
                   text-gray-700 bg-white hover:text-gray-500 focus:outline-none
                   focus:ring-blue focus:border-blue-300
                   active:bg-gray-50 active:text-gray-800 transition duration-150
-                  ease-in-out"
-							>
+                  ease-in-out">
 								<Icon data={heart} class="-ml-1 mr-2 h-4 w-4" />
 								<span>Favorite</span>
 							</a>
@@ -297,8 +291,7 @@
                   duration-150 ease-in-out
                   hover:bg-thatBlue-500 hover:text-white
                   focus:border-thatBlue-800 focus:bg-thatBlue-500
-                  focus:text-white focus:outline-none focus:ring-thatBlue-500 active:bg-thatBlue-800"
-							>
+                  focus:text-white focus:outline-none focus:ring-thatBlue-500 active:bg-thatBlue-800">
 								<Icon data={cog} class="-ml-1 mr-2 h-4 w-4" />
 								<span>Edit</span>
 							</a>
@@ -317,8 +310,7 @@
               duration-150 ease-in-out
               hover:bg-thatBlue-500 hover:text-white
               focus:border-thatBlue-800 focus:bg-thatBlue-500
-              focus:text-white focus:outline-none focus:ring-thatBlue-500 active:bg-thatBlue-800"
-							>
+              focus:text-white focus:outline-none focus:ring-thatBlue-500 active:bg-thatBlue-800">
 								<Icon data={signIn} class="-ml-1 mr-2 h-4 w-4 text-gray-400" />
 								<span>Watch on YouTube</span>
 							</a>
@@ -334,8 +326,7 @@
                   hover:text-white focus:outline-none
                   focus:ring-thatBlue-500 focus:bg-thatBlue-500
                   focus:text-white focus:border-thatBlue-800
-                  active:bg-thatBlue-800 transition duration-150 ease-in-out"
-								>
+                  active:bg-thatBlue-800 transition duration-150 ease-in-out">
 									<Icon data={signIn} class="-ml-1 mr-2 h-4 w-4 text-gray-400" />
 									<span>Join In</span>
 								</a>
@@ -345,8 +336,7 @@
 								<div
 									class="relative inline-flex items-center px-4 py-2 border-2
                   border-gray-300 text-sm leading-5 font-medium rounded-md
-                  text-gray-400 bg-white"
-								>
+                  text-gray-400 bg-white">
 									<Icon data={signIn} class="-ml-1 mr-2 h-4 w-4" />
 									<span>Join {timeLeftToJoin}</span>
 								</div>
@@ -364,14 +354,12 @@
 			<!-- Title -->
 			<h2
 				class="text-2xl font-extrabold leading-10 tracking-tight text-thatBlue-800
-        sm:text-3xl sm:leading-none md:text-4xl"
-			>
+        sm:text-3xl sm:leading-none md:text-4xl">
 				{title}
 			</h2>
 
 			<div
-				class="sm:spaace-y-0 flex flex-col items-center justify-center space-x-0 space-y-4 py-4 sm:flex-row sm:justify-start sm:space-x-8"
-			>
+				class="sm:spaace-y-0 flex flex-col items-center justify-center space-x-0 space-y-4 py-4 sm:flex-row sm:justify-start sm:space-x-8">
 				{#if !isDailyActivity}
 					<div class="h-24 w-24">
 						<a href={`/events/${event.slug}`} class="h-full w-full">
@@ -398,19 +386,16 @@
 
 					<!-- Location -->
 					<p
-						class="mt-1 text-base text-gray-700 sm:mx-auto sm:mt-2 sm:text-lg md:mt-1 md:text-xl lg:mx-0"
-					>
+						class="mt-1 text-base text-gray-700 sm:mx-auto sm:mt-2 sm:text-lg md:mt-1 md:text-xl lg:mx-0">
 						<Icon
 							data={sessionTargetLocationIcon}
-							class="mr-2 h-4 w-4 pb-0.5"
-						/>{sessionTargetLocation}
+							class="mr-2 h-4 w-4 pb-0.5" />{sessionTargetLocation}
 						{sessionType}
 					</p>
 
 					{#if targetLocation === 'IN_PERSON' && sessionLocationDestination}
 						<p
-							class="mt-1 text-base text-gray-700 sm:mx-auto sm:mt-2 sm:text-lg md:mt-1 md:text-xl lg:mx-0"
-						>
+							class="mt-1 text-base text-gray-700 sm:mx-auto sm:mt-2 sm:text-lg md:mt-1 md:text-xl lg:mx-0">
 							<Icon data={mapMarker} class="mr-2 h-4 w-4 pb-0.5" />Room: {sessionLocationDestination}
 						</p>
 					{/if}
@@ -428,8 +413,7 @@
 
 			<!-- Description -->
 			<p
-				class="lineBreaks prose mt-3 text-gray-500 sm:mx-auto sm:mt-5 sm:text-lg md:text-xl lg:mx-0"
-			>
+				class="lineBreaks prose mt-3 text-gray-500 sm:mx-auto sm:mt-5 sm:text-lg md:text-xl lg:mx-0">
 				{#if longDescription}
 					{longDescription}
 				{:else}
@@ -443,8 +427,7 @@
 						Agenda
 					</h3>
 					<p
-						class="lineBreaks prose mt-3 text-gray-500 sm:mx-auto sm:mt-5 sm:text-lg md:text-xl lg:mx-0"
-					>
+						class="lineBreaks prose mt-3 text-gray-500 sm:mx-auto sm:mt-5 sm:text-lg md:text-xl lg:mx-0">
 						{#if agenda}
 							{agenda}
 						{/if}
@@ -458,8 +441,7 @@
 						Prerequisites
 					</h3>
 					<p
-						class="lineBreaks prose mt-3 text-gray-500 sm:mx-auto sm:mt-5 sm:text-lg md:text-xl lg:mx-0"
-					>
+						class="lineBreaks prose mt-3 text-gray-500 sm:mx-auto sm:mt-5 sm:text-lg md:text-xl lg:mx-0">
 						{prerequisites}
 					</p>
 				</div>
@@ -492,8 +474,7 @@
 							{#each supportingArtifacts as sa, i}
 								<li
 									class="flex cursor-pointer items-center space-x-3 px-4 pb-2 hover:text-that-blue"
-									class:bg-gray-50={showBackground(i)}
-								>
+									class:bg-gray-50={showBackground(i)}>
 									<div>
 										<Icon data={externalLink} class="h-4 w-4" />
 									</div>

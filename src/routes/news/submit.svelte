@@ -50,8 +50,7 @@
 			<h1
 				class="pb-16 text-4xl font-extrabold leading-10 tracking-tight
 				text-thatBlue-800 sm:text-center sm:text-5xl sm:leading-none
-				md:text-6xl lg:text-left"
-			>
+				md:text-6xl lg:text-left">
 				Community Curated News
 			</h1>
 		</header>

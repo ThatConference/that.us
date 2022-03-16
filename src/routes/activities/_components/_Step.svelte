@@ -19,14 +19,12 @@
 		<div>
 			{#if completed}
 				<span
-					class="flex h-8 w-8 items-center justify-center rounded-full bg-green-500 ring-8 ring-white"
-				>
+					class="flex h-8 w-8 items-center justify-center rounded-full bg-green-500 ring-8 ring-white">
 					<CheckFull />
 				</span>
 			{:else}
 				<span
-					class="h-8 w-8 bg-white rounded-full flex items-center justify-center ring-4 ring-gray-300"
-				>
+					class="h-8 w-8 bg-white rounded-full flex items-center justify-center ring-4 ring-gray-300">
 					{#if isLastItem}
 						<Icon data={flagCheckered} class="text-gray-500 w-4 h-4" />
 					{:else}

@@ -20,8 +20,7 @@
 			</label>
 			<div class="relative">
 				<span
-					class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400"
-				/>
+					class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400" />
 			</div>
 			<div>
 				<p class="mt-1 text-sm text-gray-400">
@@ -40,8 +39,7 @@
 							setField('targetAudience', detail ? detail.map((i) => i.value) : [])}
 						on:clear={() => setField('targetAudience', [])}
 						hasError={touched['targetAudience'] && errors['targetAudience']}
-						inputStyles="form-select relative block w-full bg-transparent focus:z-10 transition ease-in-out duration-150 sm:text-sm sm:leading-5 rounded-md shadow-sm hover:border-gray-700"
-					/>
+						inputStyles="form-select relative block w-full bg-transparent focus:z-10 transition ease-in-out duration-150 sm:text-sm sm:leading-5 rounded-md shadow-sm hover:border-gray-700" />
 					{#if touched['targetAudience'] && errors['targetAudience']}
 						<p class="italic text-red-600">{errors['targetAudience']}</p>
 					{/if}

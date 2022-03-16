@@ -24,8 +24,7 @@
 		Counselor Acceptance Declined
 	</h2>
 	<p
-		class="mt-6 text-4xl font-extrabold leading-8 tracking-tight text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl"
-	>
+		class="mt-6 text-4xl font-extrabold leading-8 tracking-tight text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl">
 		We're sorry to see you go.
 	</p>
 	<div class="mt-12">

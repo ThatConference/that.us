@@ -27,8 +27,7 @@
 	<div class="relative mx-auto max-w-xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
 		<div class="relative">
 			<h2
-				class="text-center text-3xl font-extrabold leading-8 tracking-tight text-thatBlue-800 sm:text-4xl"
-			>
+				class="text-center text-3xl font-extrabold leading-8 tracking-tight text-thatBlue-800 sm:text-4xl">
 				An online event designed for interaction
 			</h2>
 			<p class="mx-auto mt-6 max-w-5xl text-center text-xl text-gray-500">
@@ -58,8 +57,7 @@
 					<div class="flex">
 						<div class="flex-shrink-0">
 							<div
-								class="flex h-12 w-12 items-center justify-center rounded-md bg-thatOrange-400 text-white"
-							>
+								class="flex h-12 w-12 items-center justify-center rounded-md bg-thatOrange-400 text-white">
 								<Icon data={clockO} class="h-8 w-8" />
 							</div>
 						</div>
@@ -77,8 +75,7 @@
 					<div class="flex">
 						<div class="flex-shrink-0">
 							<div
-								class="flex h-12 w-12 items-center justify-center rounded-md bg-thatOrange-400 text-white"
-							>
+								class="flex h-12 w-12 items-center justify-center rounded-md bg-thatOrange-400 text-white">
 								<Icon data={desktop} class="h-8 w-8" />
 							</div>
 						</div>
@@ -97,8 +94,7 @@
 					<div class="flex">
 						<div class="flex-shrink-0">
 							<div
-								class="flex h-12 w-12 items-center justify-center rounded-md bg-thatOrange-400 text-white"
-							>
+								class="flex h-12 w-12 items-center justify-center rounded-md bg-thatOrange-400 text-white">
 								<Icon data={users} class="h-8 w-8" />
 							</div>
 						</div>
@@ -120,8 +116,7 @@
 							<div class="inline-flex items-center">
 								<div>
 									<span
-										class="rounded-full bg-thatOrange-400 px-4 py-1 text-sm font-semibold uppercase leading-5 tracking-wide text-white"
-									>
+										class="rounded-full bg-thatOrange-400 px-4 py-1 text-sm font-semibold uppercase leading-5 tracking-wide text-white">
 										THAT Online - Event Ticket
 									</span>
 								</div>
@@ -139,13 +134,11 @@
 
 							<p class="mt-6 text-center text-lg text-red-500">
 								For a limited time all monthly THAT Online events are <span class="font-extrabold"
-									>free</span
-								> and do not require a ticket to participate.
+									>free</span> and do not require a ticket to participate.
 							</p>
 						</div>
 						<div
-							class="flex flex-1 flex-col justify-between space-y-6 bg-gray-50 px-6 pt-6 pb-8 sm:p-10 sm:pt-6"
-						>
+							class="flex flex-1 flex-col justify-between space-y-6 bg-gray-50 px-6 pt-6 pb-8 sm:p-10 sm:pt-6">
 							<ul class="space-y-4">
 								<li class="flex items-start">
 									<div class="flex-shrink-0">
@@ -204,8 +197,7 @@
 						<div class="flex">
 							<div class="flex-shrink-0">
 								<div
-									class="flex h-12 w-12 items-center justify-center rounded-md bg-thatOrange-400 text-white"
-								>
+									class="flex h-12 w-12 items-center justify-center rounded-md bg-thatOrange-400 text-white">
 									<Icon data={commentsO} class="h-8 w-8" />
 								</div>
 							</div>
@@ -224,8 +216,7 @@
 						<div class="flex">
 							<div class="flex-shrink-0">
 								<div
-									class="flex h-12 w-12 items-center justify-center rounded-md bg-thatOrange-400 text-white"
-								>
+									class="flex h-12 w-12 items-center justify-center rounded-md bg-thatOrange-400 text-white">
 									<Icon data={hashtag} class="h-8 w-8" />
 								</div>
 							</div>

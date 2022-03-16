@@ -36,15 +36,13 @@
 		<div class="relative">
 			<div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 				<div
-					class="mx-auto max-w-md space-y-4 lg:grid lg:max-w-5xl lg:grid-cols-2 lg:gap-5 lg:space-y-0"
-				>
+					class="mx-auto max-w-md space-y-4 lg:grid lg:max-w-5xl lg:grid-cols-2 lg:gap-5 lg:space-y-0">
 					<div class="flex flex-col overflow-hidden rounded-lg shadow-lg">
 						<div class="bg-white px-6 py-8 sm:p-10 sm:pb-6">
 							<div>
 								<h3
 									class="inline-flex rounded-full bg-thatOrange-400 px-4 py-1 text-sm font-semibold uppercase tracking-wide text-white"
-									id="tier-standard"
-								>
+									id="tier-standard">
 									Daily Usage
 								</h3>
 							</div>
@@ -52,8 +50,7 @@
 							<p class="mt-5 text-lg text-gray-500">THAT usage each and every day.</p>
 						</div>
 						<div
-							class="flex flex-1 flex-col justify-between space-y-6 bg-gray-50 px-6 pt-6 pb-8 sm:p-10 sm:pt-6"
-						>
+							class="flex flex-1 flex-col justify-between space-y-6 bg-gray-50 px-6 pt-6 pb-8 sm:p-10 sm:pt-6">
 							<ul class="space-y-4">
 								<li class="flex items-start">
 									<div class="flex-shrink-0">
@@ -85,8 +82,7 @@
 							<div>
 								<h3
 									class="inline-flex rounded-full bg-thatOrange-400 px-4 py-1 text-sm font-semibold uppercase tracking-wide text-white"
-									id="tier-standard"
-								>
+									id="tier-standard">
 									THAT Online Event Ticket
 								</h3>
 							</div>
@@ -97,8 +93,7 @@
 							<p class="mt-5 text-lg text-gray-500">Single Day Online Event Ticket</p>
 						</div>
 						<div
-							class="flex flex-1 flex-col justify-between space-y-6 bg-gray-50 px-6 pt-6 pb-8 sm:p-10 sm:pt-6"
-						>
+							class="flex flex-1 flex-col justify-between space-y-6 bg-gray-50 px-6 pt-6 pb-8 sm:p-10 sm:pt-6">
 							<ul class="space-y-4">
 								<li class="flex items-start">
 									<div class="flex-shrink-0">

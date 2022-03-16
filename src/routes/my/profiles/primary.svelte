@@ -114,5 +114,4 @@
 <ProfileForm
 	handleSubmit={isNewProfile ? handleNew : handleUpdate}
 	profile={currentProfile}
-	{isNewProfile}
-/>
+	{isNewProfile} />

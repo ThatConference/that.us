@@ -14,8 +14,7 @@
 
 				<p class="mt-6 text-2xl text-gray-500">
 					We geek-out in <a href="/tx/"
-						><span class="font-extrabold text-thatRed-500">Texas</span></a
-					>
+						><span class="font-extrabold text-thatRed-500">Texas</span></a>
 					and
 					<a href="/wi/"><span class="font-extrabold text-thatRed-500">Wisconsin</span></a> once a year
 					but we host digital events all the time.
@@ -29,13 +28,11 @@
 				<a
 					class="transform transition duration-500 ease-in-out hover:scale-105"
 					href="https://www.youtube.com/watch?v=_aO4uBrJGFU"
-					target="_blank"
-				>
+					target="_blank">
 					<img
 						class="lazyload h-96 w-auto"
 						src="/images/characters/Robot-Play.svg"
-						alt="THAT Robot Play Button"
-					/>
+						alt="THAT Robot Play Button" />
 				</a>
 			</div>
 		</div>

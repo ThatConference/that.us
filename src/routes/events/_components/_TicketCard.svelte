@@ -11,8 +11,7 @@
 		<div class="absolute inset-x-0 top-0 translate-y-px transform">
 			<div class="flex -translate-y-1/2 transform justify-center">
 				<span
-					class="text-md inline-flex rounded-full bg-thatOrange-500 px-6 py-1 font-bold uppercase tracking-wider text-white"
-				>
+					class="text-md inline-flex rounded-full bg-thatOrange-500 px-6 py-1 font-bold uppercase tracking-wider text-white">
 					{ticketDetails.name}
 				</span>
 			</div>

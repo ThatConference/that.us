@@ -312,8 +312,7 @@
 	let:setValue
 	let:values
 	let:errors
-	let:touched
->
+	let:touched>
 	<div>
 		<div>
 			<h2 class="text-xl font-bold leading-6 text-gray-900">Your Profile</h2>
@@ -334,8 +333,7 @@
 					</label>
 					<div class="relative">
 						<span
-							class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400"
-						/>
+							class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400" />
 					</div>
 					<div class="mt-1 rounded-md border shadow-sm">
 						<Input
@@ -343,8 +341,7 @@
 							type="text"
 							autofocus
 							class="form-input block w-full transition duration-150 ease-in-out
-                sm:text-sm sm:leading-5"
-						/>
+                sm:text-sm sm:leading-5" />
 					</div>
 				</div>
 
@@ -354,15 +351,13 @@
 					</label>
 					<div class="relative">
 						<span
-							class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400"
-						/>
+							class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400" />
 					</div>
 					<div class="mt-1 rounded-md border shadow-sm">
 						<Input
 							name="lastName"
 							class="form-input block w-full transition duration-150 ease-in-out
-                sm:text-sm sm:leading-5"
-						/>
+                sm:text-sm sm:leading-5" />
 					</div>
 				</div>
 
@@ -372,15 +367,13 @@
 					</label>
 					<div class="relative">
 						<span
-							class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400"
-						/>
+							class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400" />
 					</div>
 					<!-- todo .. shadow doesn't align correctly <div class="mt-1 flex rounded-md shadow-sm"> -->
 					<div class="mt-1 flex">
 						<span
 							class="inline-flex items-center rounded-l-md border border-r-0
-                border-gray-300 bg-gray-50 px-3 text-gray-500 sm:text-sm"
-						>
+                border-gray-300 bg-gray-50 px-3 text-gray-500 sm:text-sm">
 							https://that.us/members/
 						</span>
 
@@ -391,16 +384,14 @@
 								name="profileSlug"
 								class="form-input block w-full min-w-0 flex-1 rounded-none rounded-r-md
                   border bg-gray-50 text-gray-500 transition duration-150
-                  ease-in-out sm:text-sm sm:leading-5"
-							/>
+                  ease-in-out sm:text-sm sm:leading-5" />
 						{:else}
 							<Input
 								type="text"
 								name="profileSlug"
 								class="flex-1 form-input block w-full min-w-0 rounded-none
                   rounded-r-md transition duration-150 ease-in-out sm:text-sm
-                  sm:leading-5"
-							/>
+                  sm:leading-5" />
 						{/if}
 					</div>
 				</div>
@@ -411,8 +402,7 @@
 					</label>
 					<div class="relative">
 						<span
-							class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400"
-						/>
+							class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400" />
 					</div>
 					<p class="mt-2 text-sm text-gray-500">Write a few sentences about yourself.</p>
 					<div class="mt-1 rounded-md border shadow-sm">
@@ -422,8 +412,7 @@
 							name="bio"
 							multiline={true}
 							class="form-textarea block w-full transition duration-150
-                ease-in-out sm:text-sm sm:leading-5"
-						/>
+                ease-in-out sm:text-sm sm:leading-5" />
 					</div>
 				</div>
 				<div class="sm:col-span-3">
@@ -435,8 +424,7 @@
 							type="text"
 							name="company"
 							class="form-input block w-full transition duration-150 ease-in-out
-                sm:text-sm sm:leading-5"
-						/>
+                sm:text-sm sm:leading-5" />
 					</div>
 				</div>
 
@@ -448,8 +436,7 @@
 						<Input
 							name="jobTitle"
 							class="form-input block w-full transition duration-150 ease-in-out
-                sm:text-sm sm:leading-5"
-						/>
+                sm:text-sm sm:leading-5" />
 					</div>
 				</div>
 
@@ -468,15 +455,13 @@
 								<img
 									class="h-full w-full"
 									src={`${profileImageUrl}?auto=format&fit=facearea&facepad=10&mask=ellipse&h=100&w=100&q=50`}
-									alt=""
-								/>
+									alt="" />
 							{:else}
 								<svg class="h-full w-full text-gray-300" fill="currentColor" viewBox="0 0 24 24">
 									<path
 										d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904
                     0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0
-                    018 0z"
-									/>
+                    018 0z" />
 								</svg>
 							{/if}
 						</span>
@@ -490,8 +475,7 @@
                   text-sm font-medium leading-4 text-gray-700
                   transition duration-150
                   ease-in-out hover:text-gray-500
-                  focus:border-blue-300 focus:outline-none active:bg-gray-50 active:text-gray-800"
-							/>
+                  focus:border-blue-300 focus:outline-none active:bg-gray-50 active:text-gray-800" />
 						</span>
 					</div>
 					<p class="mt-2 text-sm text-gray-500">
@@ -519,8 +503,7 @@
 							<div
 								class="inline-flex w-1/3 items-center rounded-l-md border
                   border-r-0 border-gray-300 bg-gray-50 px-3 text-gray-500
-                  sm:text-sm"
-							>
+                  sm:text-sm">
 								<span class="w-6">
 									<Icon data={link.icon} />
 								</span>
@@ -529,8 +512,7 @@
 										class="form-input w-full cursor-pointer border-none bg-transparent p-1 text-gray-500 outline-none sm:text-sm"
 										value={getInitialSelectValue(link)}
 										on:blur={(e) =>
-											setValue('profileLinks', updateLinkSlugValue(link, e.target.value))}
-									>
+											setValue('profileLinks', updateLinkSlugValue(link, e.target.value))}>
 										{#each link.slug as slug}
 											<option value={slug}>{slug}</option>
 										{/each}
@@ -546,8 +528,7 @@
 									setValue('profileLinks', updateLinksInputValues(link, e.target.value))}
 								class="form-input block w-full min-w-0 flex-1 rounded-none rounded-r-md
                   border transition duration-150 ease-in-out sm:text-sm
-                  sm:leading-5"
-							/>
+                  sm:leading-5" />
 						</div>
 					{/each}
 				</div>
@@ -577,8 +558,7 @@
 										maxTags={25}
 										onlyUnique={true}
 										on:tags={({ detail }) => setValue('tags', detail.interests)}
-										class="form-input block w-full rounded-md text-sm leading-5 shadow-sm transition duration-150 ease-in-out"
-									/>
+										class="form-input block w-full rounded-md text-sm leading-5 shadow-sm transition duration-150 ease-in-out" />
 								</div>
 							</div>
 						</div>
@@ -593,8 +573,7 @@
 										type="text"
 										name="lifeHack"
 										placeholder="Embrace failure, lean into the journey and if you don't like the road, take the fork."
-										class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5"
-									/>
+										class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
 								</div>
 							</div>
 						</div>
@@ -622,8 +601,7 @@
 								checked={profile.canFeature}
 								on:change={({ detail }) => setValue('canFeature', detail)}
 								size="2.5rem"
-								class="flex-none"
-							/>
+								class="flex-none" />
 
 							<div class="ml-3 text-sm leading-5">
 								<p class="text-gray-500">
@@ -654,8 +632,7 @@
 							</label>
 							<div class="relative">
 								<span
-									class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400"
-								/>
+									class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400" />
 							</div>
 							<div class="mt-1 rounded-md border shadow-sm">
 								<Input
@@ -663,8 +640,7 @@
 									name="email"
 									placeholder="e.g. user@example.com"
 									class="form-input block w-full transition duration-150
-                  ease-in-out sm:text-sm sm:leading-5"
-								/>
+                  ease-in-out sm:text-sm sm:leading-5" />
 							</div>
 						</div>
 					</div>
@@ -683,8 +659,7 @@
 							<legend class="text-base font-medium text-gray-900"> Do you agree to our: </legend>
 							<div class="relative">
 								<span
-									class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400"
-								/>
+									class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400" />
 							</div>
 
 							<div class="mt-4">
@@ -694,8 +669,7 @@
 										checked={profile.acceptedCodeOfConduct}
 										on:change={({ detail }) => setValue('acceptedCodeOfConduct', detail)}
 										size="2.5rem"
-										class="flex-none"
-									/>
+										class="flex-none" />
 
 									<div class="ml-3 text-sm leading-5">
 										<label for="comments" class="font-medium text-gray-700">
@@ -704,8 +678,7 @@
 												tabindex="-1"
 												href="/support/code-of-conduct/"
 												class="font-medium text-indigo-600 transition
-                        duration-150 ease-in-out hover:text-indigo-500"
-											>
+                        duration-150 ease-in-out hover:text-indigo-500">
 												Code of Conduct
 											</a>
 										</label>
@@ -727,8 +700,7 @@
 											checked={profile.acceptedAntiHarassmentPolicy}
 											on:change={({ detail }) => setValue('acceptedAntiHarassmentPolicy', detail)}
 											size="2.5rem"
-											class="flex-none"
-										/>
+											class="flex-none" />
 
 										<div class="ml-3 text-sm leading-5">
 											<label for="comments" class="font-medium text-gray-700">
@@ -737,8 +709,7 @@
 													tabindex="-1"
 													href="/suppoprt/anti-harassment/"
 													class="font-medium text-indigo-600 transition
-                          duration-150 ease-in-out hover:text-indigo-500"
-												>
+                          duration-150 ease-in-out hover:text-indigo-500">
 													Commitment Anti-Harassment
 												</a>
 											</label>
@@ -759,8 +730,7 @@
 												on:change={({ detail }) =>
 													setValue('acceptedCommitmentToDiversity', detail)}
 												size="2.5rem"
-												class="flex-none"
-											/>
+												class="flex-none" />
 
 											<div class="ml-3 text-sm leading-5">
 												<label for="comments" class="font-medium text-gray-700">
@@ -770,8 +740,7 @@
 														href="/support/commitment-to-diversity/"
 														class="font-medium text-indigo-600
                             transition duration-150 ease-in-out
-                            hover:text-indigo-500"
-													>
+                            hover:text-indigo-500">
 														Commitment to Diversity
 													</a>
 												</label>
@@ -795,8 +764,7 @@
 													checked={profile.acceptedTermsOfService}
 													on:change={({ detail }) => setValue('acceptedTermsOfService', detail)}
 													size="2.5rem"
-													class="flex-none"
-												/>
+													class="flex-none" />
 
 												<div class="ml-3 text-sm leading-5">
 													<label for="candidates" class="font-medium text-gray-700">
@@ -806,8 +774,7 @@
 															href="/support/terms-of-use/"
 															class="font-medium text-indigo-600
                               transition duration-150 ease-in-out
-                              hover:text-indigo-500"
-														>
+                              hover:text-indigo-500">
 															Terms of Use
 														</a>
 													</label>
@@ -828,8 +795,7 @@
 													checked={profile.isOver13}
 													on:change={({ detail }) => setValue('isOver13', detail)}
 													size="2.5rem"
-													class="flex-none"
-												/>
+													class="flex-none" />
 
 												<div class="ml-3 text-sm leading-5">
 													<label for="offers" class="font-medium text-gray-700">
@@ -871,8 +837,7 @@
 										checked={profile.isDeactivated}
 										on:change={({ detail }) => setValue('isDeactivated', detail)}
 										size="2.5rem"
-										class="flex-none"
-									/>
+										class="flex-none" />
 
 									<div class="ml-3 text-sm leading-5">
 										<label for="comments" class="font-medium text-gray-700">
@@ -881,8 +846,7 @@
 												open
 												href="/support/code-of-conduct/"
 												class="font-medium text-indigo-600 transition
-                        duration-150 ease-in-out hover:text-indigo-500"
-											>
+                        duration-150 ease-in-out hover:text-indigo-500">
 												Deactivate my account.
 											</a>
 										</label>
@@ -918,8 +882,7 @@
               text-sm font-medium leading-5 text-gray-700
               transition duration-150 ease-in-out
               hover:text-gray-500 focus:border-blue-300 focus:outline-none active:bg-gray-50
-              active:text-gray-800"
-						>
+              active:text-gray-800">
 							Clear
 						</button>
 					</span>

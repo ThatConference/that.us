@@ -38,8 +38,7 @@
 							</StandardButton>
 						{:else}
 							<StandardLink rel="external" href="/login/" class="h-3/4"
-								>Login and Follow Today</StandardLink
-							>
+								>Login and Follow Today</StandardLink>
 						{/if}
 					</div>
 				</div>

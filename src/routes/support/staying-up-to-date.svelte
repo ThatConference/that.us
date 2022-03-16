@@ -93,8 +93,7 @@
         leading-6 text-thatBlue-500 shadow transition
         duration-150 ease-in-out hover:bg-thatBlue-500 hover:text-white
         focus:border-thatBlue-800 focus:bg-thatBlue-500 focus:text-white
-        focus:outline-none focus:ring-thatBlue-500 md:px-10 md:text-lg"
-				>
+        focus:outline-none focus:ring-thatBlue-500 md:px-10 md:text-lg">
 					{copiedText}
 				</button>
 			</div>
@@ -121,8 +120,7 @@
 		</div>
 		<div
 			class="my-12 mx-auto flex max-w-prose flex-col items-center justify-center
-        lg:max-w-none"
-		>
+        lg:max-w-none">
 			<div class="flex space-x-4 text-base">
 				<StandardLink href="/support/creating-an-activity/">Create an Activity</StandardLink>
 				<HighlightLink href="/activities/">Check out the upcoming Activities</HighlightLink>

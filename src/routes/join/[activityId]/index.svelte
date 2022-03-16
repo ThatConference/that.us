@@ -265,8 +265,7 @@
 		title="Oh NO! You have an incomplete profile!"
 		text="It appears you haven't created your profile yet. You can't join an activity until that's complete."
 		action={{ title: 'Create Profile', href: '/my/profiles/primary' }}
-		returnTo={{ title: 'Return to Activities', href: '/activities' }}
-	/>
+		returnTo={{ title: 'Return to Activities', href: '/activities' }} />
 {/if}
 
 <StackedLayout bodyBackgroundColor={bgColor}>
@@ -279,8 +278,7 @@
 					href="/activities/{activityId}/"
 					class="rounded-md border-2 border-thatBlue-500 bg-white px-8 py-3 text-base font-medium leading-6 text-thatBlue-500 shadow transition duration-150 ease-in-out hover:bg-thatBlue-500 hover:text-white focus:border-thatBlue-800 focus:bg-thatBlue-500 focus:text-white focus:outline-none focus:ring-thatBlue-500 md:py-4 md:px-10 md:text-lg"
 					target="_blank"
-					rel="noopener">Activity Details</a
-				>
+					rel="noopener">Activity Details</a>
 			</ActionHeader>
 		{/if}
 	</div>
@@ -289,8 +287,7 @@
 		<button
 			type="button"
 			class="absolute top-12 left-0 ml-48 mt-1 cursor-pointer"
-			on:click={expanded ? shrinkJitsiFrame : expandJitsiFrame}
-		>
+			on:click={expanded ? shrinkJitsiFrame : expandJitsiFrame}>
 			<Icon data={expanded ? compressIcon : expandIcon} class="h-6 w-6 text-white" />
 		</button>
 
@@ -308,8 +305,7 @@
 							ballTopLeft="#f74646"
 							ballTopRight="#ff834d"
 							ballBottomLeft="#26529A"
-							ballBottomRight="#555555"
-						/>
+							ballBottomRight="#555555" />
 					</div>
 				</div>
 			</div>
@@ -322,8 +318,7 @@
 		{#if userMuted}
 			<WarningNotification
 				message="You're currently muted. Click to unmute"
-				on:click={() => api.executeCommand('toggleAudio')}
-			/>
+				on:click={() => api.executeCommand('toggleAudio')} />
 		{/if}
 	</div>
 </StackedLayout>

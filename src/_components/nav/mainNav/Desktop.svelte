@@ -21,8 +21,7 @@
 				class="ml-1 rounded-md px-3 py-2 text-sm font-medium  text-gray-500
         transition duration-150 ease-in-out hover:bg-that-blue
           hover:bg-opacity-50 hover:text-white
-          focus:bg-that-blue focus:text-white focus:outline-none"
-			>
+          focus:bg-that-blue focus:text-white focus:outline-none">
 				<div class="flex items-center">
 					<svg class="h-5" fill="currentColor" viewBox="0 0 20 20">
 						<path d="M11 0h3L9 20H6l5-20z" />
@@ -41,8 +40,7 @@
 					{#if cartItems > 0}
 						<span class="absolute bottom-0 right-0 block animate-pulse">
 							<span
-								class="inline-flex h-4 w-4 items-center justify-center rounded-full bg-gray-500"
-							>
+								class="inline-flex h-4 w-4 items-center justify-center rounded-full bg-gray-500">
 								<span class="text-xs font-medium leading-none text-white">{cartItems}</span>
 							</span>
 						</span>
@@ -58,8 +56,7 @@
 		</div>
 
 		<div
-			class="ml-4 rounded-full p-1 text-that-orange hover:bg-thatBlue-500 hover:text-thatOrange-500 focus:text-white md:flex"
-		>
+			class="ml-4 rounded-full p-1 text-that-orange hover:bg-thatBlue-500 hover:text-thatOrange-500 focus:text-white md:flex">
 			<UserProfile />
 		</div>
 	</div>

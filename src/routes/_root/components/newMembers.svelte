@@ -12,8 +12,7 @@
 			width="640"
 			height="784"
 			fill="none"
-			viewBox="0 0 640 784"
-		>
+			viewBox="0 0 640 784">
 			<defs>
 				<pattern
 					id="9ebea6f4-a1f5-4d96-8c4e-4c2abf658047"
@@ -21,8 +20,7 @@
 					y="0"
 					width="20"
 					height="20"
-					patternUnits="userSpaceOnUse"
-				>
+					patternUnits="userSpaceOnUse">
 					<rect x="0" y="0" width="4" height="4" class="text-thatBlue-100" fill="currentColor" />
 				</pattern>
 			</defs>
@@ -31,8 +29,7 @@
 				width="640"
 				height="640"
 				class="text-thatBlue-100 opacity-25"
-				fill="currentColor"
-			/>
+				fill="currentColor" />
 			<rect x="118" width="404" height="784" fill="url(#9ebea6f4-a1f5-4d96-8c4e-4c2abf658047)" />
 		</svg>
 	</div>
@@ -40,8 +37,7 @@
 	<div class="mx-auto max-w-screen-xl px-8">
 		<div class="relative py-20 text-left">
 			<h3
-				class="text-4xl font-semibold leading-10 tracking-tight text-thatBlue-700 sm:text-5xl sm:leading-none"
-			>
+				class="text-4xl font-semibold leading-10 tracking-tight text-thatBlue-700 sm:text-5xl sm:leading-none">
 				Welcome to THAT family!
 			</h3>
 			<p class="mt-4 text-xl leading-7 text-gray-500">

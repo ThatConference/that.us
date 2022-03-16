@@ -62,8 +62,7 @@
 		<button
 			type="button"
 			class="rounded-full border-2 border-gray-200 p-2 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-thatBlue-500 focus:ring-offset-2"
-			on:click={() => goto('/')}
-		>
+			on:click={() => goto('/')}>
 			<span class="sr-only">Close</span>
 			<svg
 				class="h-6 w-6"
@@ -71,14 +70,12 @@
 				fill="none"
 				viewBox="0 0 24 24"
 				stroke="currentColor"
-				aria-hidden="true"
-			>
+				aria-hidden="true">
 				<path
 					stroke-linecap="round"
 					stroke-linejoin="round"
 					stroke-width="2"
-					d="M6 18L18 6M6 6l12 12"
-				/>
+					d="M6 18L18 6M6 6l12 12" />
 			</svg>
 		</button>
 	</div>
@@ -92,8 +89,7 @@
 					ballTopLeft="#f74646"
 					ballTopRight="#ff834d"
 					ballBottomLeft="#26529A"
-					ballBottomRight="#555555"
-				/>
+					ballBottomRight="#555555" />
 
 				<div class="mt-2">
 					<p class="text-md leading-5 text-gray-500">Invoking api and adding contact.</p>
@@ -112,8 +108,7 @@
 						<button
 							type="button"
 							class="w-full py-4 text-sm leading-5 font-medium"
-							on:click={() => tryAgain()}
-						>
+							on:click={() => tryAgain()}>
 							<span class="text-lg">Retry</span>
 						</button>
 					</Shell>
@@ -128,21 +123,18 @@
 						}}
 						on:backspace={() => {
 							pinNumber = pinNumber.slice(0, -1);
-						}}
-					/>
+						}} />
 				</div>
 
 				<div
-					class="relative border border-gray-300 rounded-md px-3 py-2 shadow-sm focus-within:ring-1 focus-within:ring-thatBlue-800 focus-within:border-thatBlue-800"
-				>
+					class="relative border border-gray-300 rounded-md px-3 py-2 shadow-sm focus-within:ring-1 focus-within:ring-thatBlue-800 focus-within:border-thatBlue-800">
 					<input
 						autofocus
 						type="text"
 						name="pinNumber"
 						bind:value={pinNumber}
 						class="block w-full border-0 p-0 text-gray-900 placeholder-gray-400 focus:ring-0 sm:text-sm"
-						placeholder="E.g. 1234"
-					/>
+						placeholder="E.g. 1234" />
 				</div>
 
 				<div class="flex">
@@ -150,8 +142,7 @@
 						<button
 							type="button"
 							class="w-full py-4 text-sm leading-5 font-medium"
-							on:click={() => handleContactExchange()}
-						>
+							on:click={() => handleContactExchange()}>
 							<span class="text-lg">Connect</span>
 						</button>
 					</Shell>
@@ -165,8 +156,7 @@
 						multiline={true}
 						bind:value={partnerNotes}
 						class="border border-gray-300 rounded-md  form-input w-full sm:text-sm sm:leading-5 hover:border-gray-700"
-						placeholder="E.g. Jane would be a great fit for our company."
-					/>
+						placeholder="E.g. Jane would be a great fit for our company." />
 				</div>
 			</div>
 		{/if}

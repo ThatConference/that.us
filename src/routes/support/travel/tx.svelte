@@ -44,8 +44,7 @@
 			class="prose-lg 
               relative mx-auto mb-8 max-w-prose
               text-lg leading-7  
-              text-gray-500 lg:mx-0 lg:max-w-7xl lg:pr-72"
-		>
+              text-gray-500 lg:mx-0 lg:max-w-7xl lg:pr-72">
 			<p>We have partnered with the Kalahari Resort to offer the best group rates around.</p>
 			<p class="mt-8">
 				Discounted rates are available not only during our conference dates, but also a few days
@@ -73,8 +72,7 @@
 								Round Rock, TX 78665<br />
 
 								<a href="https://www.kalahariresorts.com/texas/"
-									>https://www.kalahariresorts.com/texas/</a
-								>
+									>https://www.kalahariresorts.com/texas/</a>
 							</blockquote>
 						</div>
 
