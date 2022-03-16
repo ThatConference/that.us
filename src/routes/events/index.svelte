@@ -73,8 +73,7 @@
 								{#each events[0] as e (e.id)}
 									<div
 										in:fade
-										class="transform transition duration-500 ease-in-out hover:scale-105"
-									>
+										class="transform transition duration-500 ease-in-out hover:scale-105">
 										<a href={`/events/${e.slug}`}>
 											<EventCard event={e} />
 										</a>
@@ -88,8 +87,7 @@
 								</div>
 								<div class="relative flex justify-center">
 									<span
-										class="rounded-md bg-white px-2 text-sm uppercase tracking-wider text-gray-500"
-									>
+										class="rounded-md bg-white px-2 text-sm uppercase tracking-wider text-gray-500">
 										Past Events
 									</span>
 								</div>
@@ -99,8 +97,7 @@
 								{#each events[1] as e (e.id)}
 									<div
 										in:fade
-										class="transform transition duration-500 ease-in-out hover:scale-105"
-									>
+										class="transform transition duration-500 ease-in-out hover:scale-105">
 										<a href={`/events/${e.slug}`}>
 											<EventCard event={e} />
 										</a>

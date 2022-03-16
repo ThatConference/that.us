@@ -21,8 +21,7 @@
 			data-sizes="auto"
 			data-src={speakerSrcset.src}
 			data-srcset={speakerSrcset.srcset}
-			alt="{host.firstName} {host.lastName}"
-		/>
+			alt="{host.firstName} {host.lastName}" />
 	{/if}
 
 	{#each attendees as attendee, i}
@@ -34,8 +33,7 @@
 					data-src={getSrcSet(attendee).src}
 					data-srcset={getSrcSet(attendee).srcset}
 					alt={`${attendee.firstName} ${attendee.lastName}`}
-					title={`${attendee.firstName} ${attendee.lastName}`}
-				/>
+					title={`${attendee.firstName} ${attendee.lastName}`} />
 			</a>
 		</span>
 	{/each}

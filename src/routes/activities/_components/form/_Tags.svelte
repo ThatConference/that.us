@@ -25,8 +25,7 @@
 						allowBlur={true}
 						maxTags={5}
 						onlyUnique={true}
-						class="form-input w-full hover:border-gray-700 sm:text-sm sm:leading-5"
-					/>
+						class="form-input w-full hover:border-gray-700 sm:text-sm sm:leading-5" />
 				</div>
 			</div>
 		</div>

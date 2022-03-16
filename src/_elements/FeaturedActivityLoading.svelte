@@ -4,8 +4,7 @@
 </script>
 
 <div
-	class="h-full w-full rounded-lg bg-that-blue py-10 px-6 text-center shadow xl:px-10 xl:text-left"
->
+	class="h-full w-full rounded-lg bg-that-blue py-10 px-6 text-center shadow xl:px-10 xl:text-left">
 	<div class="space-y-6 xl:space-y-10">
 		<div class="flex justify-center">
 			<Icon data={plusCircle} class="h-40 w-40 text-thatBlue-100 xl:h-56 xl:w-56" />

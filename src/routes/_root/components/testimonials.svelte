@@ -10,8 +10,7 @@
 			width="404"
 			height="784"
 			fill="none"
-			viewBox="0 0 404 575"
-		>
+			viewBox="0 0 404 575">
 			<defs>
 				<pattern
 					id="56409614-3d62-4985-9a10-7ca758a8f4f0"
@@ -19,8 +18,7 @@
 					y="0"
 					width="20"
 					height="20"
-					patternUnits="userSpaceOnUse"
-				>
+					patternUnits="userSpaceOnUse">
 					<rect x="0" y="0" width="4" height="4" class="text-thatBlue-100" fill="currentColor" />
 				</pattern>
 			</defs>
@@ -32,8 +30,7 @@
 				<img
 					class="lazyload h-64 w-64 rounded-full xl:h-80 xl:w-80"
 					src="https://that.imgix.net/members/ac027232-c21a-4ead-8ec4-b7103e5265b9.jpeg?mask=ellipse&w=500&h=500&fit=crop"
-					alt="Clark Sell"
-				/>
+					alt="Clark Sell" />
 			</div>
 
 			<div class="relative lg:ml-10">
@@ -42,8 +39,7 @@
           -translate-y-24 transform text-thatBlue-200 opacity-50"
 					stroke="currentColor"
 					fill="none"
-					viewBox="0 0 144 144"
-				>
+					viewBox="0 0 144 144">
 					<path
 						stroke-width="2"
 						d="M41.485 15C17.753 31.753 1 59.208 1 89.455c0 24.664 14.891 39.09
@@ -53,8 +49,7 @@
             16.753-40.02 44.208-40.02 74.455 0 24.664 14.891 39.09 32.109 39.09
             15.822 0 28.386-13.03 28.386-28.387
             0-15.356-11.168-26.524-25.129-26.524-2.792 0-6.049.465-6.98.93
-            2.327-15.821 16.753-34.435 31.644-43.742L121.525 15z"
-					/>
+            2.327-15.821 16.753-34.435 31.644-43.742L121.525 15z" />
 				</svg>
 				<blockquote class="relative">
 					<div class="prose-xl text-gray-500 sm:text-lg md:text-xl">
@@ -93,8 +88,7 @@
 								<img
 									class="h-12 w-12 rounded-full"
 									src="https://that.imgix.net/members/5ec3a772-104d-4f6c-a577-9ea30baea982.jpeg?mask=ellipse&w=500&h=500&fit=crop"
-									alt="Clark Sell"
-								/>
+									alt="Clark Sell" />
 							</div>
 							<div class="ml-4 lg:ml-0">
 								<div class="text-base font-medium leading-6 text-that-blue">Clark Sell</div>

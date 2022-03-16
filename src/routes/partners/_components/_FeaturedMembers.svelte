@@ -21,15 +21,13 @@
 				<ul class="space-y-12 sm:grid sm:grid-cols-2 sm:gap-12 sm:space-y-0 lg:gap-x-8">
 					{#each members as member}
 						<li
-							class="transform cursor-pointer transition duration-500 ease-in-out hover:scale-105"
-						>
+							class="transform cursor-pointer transition duration-500 ease-in-out hover:scale-105">
 							<a href="/members/{member.profileSlug}/">
 								<div class="flex items-center space-x-4 lg:space-x-6">
 									<img
 										class="lazyload h-16 w-16 rounded-full lg:h-24 lg:w-24"
 										src={`${member.profileImage || config.defaultProfileImage}${imageCrop}`}
-										alt={`${member.firstName} ${member.lastName}`}
-									/>
+										alt={`${member.firstName} ${member.lastName}`} />
 									<div class="space-y-1 text-lg font-medium leading-6">
 										<h4>{`${member.firstName} ${member.lastName}`}</h4>
 										<p class="text-that-orange">{member.jobTitle}</p>

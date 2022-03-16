@@ -55,8 +55,7 @@
 	<h2 class="text-xl font-extrabold text-gray-800">Event Details</h2>
 
 	<div
-		class="mt-4 flex flex-col items-center justify-center space-y-6 rounded-md border bg-gray-50 py-4 px-4 sm:flex-row sm:space-y-0 sm:space-x-8 sm:py-0"
-	>
+		class="mt-4 flex flex-col items-center justify-center space-y-6 rounded-md border bg-gray-50 py-4 px-4 sm:flex-row sm:space-y-0 sm:space-x-8 sm:py-0">
 		<div class="flex flex-col items-center sm:items-start">
 			<div class="font-extrabold">{eventDetails.name}</div>
 			<div class="text-gray-500">
@@ -76,8 +75,7 @@
 			<img
 				class="h-24 w-24 justify-self-center sm:justify-self-end"
 				src={eventDetails.logo}
-				alt="event logo"
-			/>
+				alt="event logo" />
 		</div>
 	</div>
 </div>
@@ -99,8 +97,7 @@
 				<div
 					class="flex-grow px-3 pb-3"
 					class:cursor-pointer={isLongerThan(session.shortDescription, 25)}
-					on:click|preventDefault={() => (expandDescription = !expandDescription)}
-				>
+					on:click|preventDefault={() => (expandDescription = !expandDescription)}>
 					<p class="break-words text-sm leading-5 text-gray-500">
 						{#if expandDescription}
 							<span class="lineBreaks">{session.shortDescription}</span>
@@ -148,8 +145,7 @@
 		<div class="flex justify-start space-x-6">
 			<a class="hover" href="/support/code-of-conduct/" target="_blank">Code Of Conduct</a>
 			<a class="hover" href="/support/commitment-to-diversity/" target="_blank"
-				>Commitment to Diversity</a
-			>
+				>Commitment to Diversity</a>
 			<a class="hover" href="/support/anti-harassment/" target="_blank">Anti-Harassment Policy</a>
 		</div>
 	</div>
@@ -172,8 +168,7 @@
 {#if isDeclining}
 	<DeclineModal
 		on:speaker-decline={handleSpeakerDecline}
-		on:click_outside={() => (isDeclining = false)}
-	/>
+		on:click_outside={() => (isDeclining = false)} />
 {/if}
 
 <style>

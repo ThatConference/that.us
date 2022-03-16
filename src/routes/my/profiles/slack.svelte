@@ -55,8 +55,7 @@
 				</p>
 				<p class="mt-4 leading-5">
 					You will find our slack at <a href="https://thatslack.slack.com"
-						>https://thatslack.slack.com</a
-					>
+						>https://thatslack.slack.com</a>
 				</p>
 			</div>
 		</div>
@@ -65,8 +64,7 @@
 			<button
 				type="button"
 				class="transform transition duration-500 ease-in-out hover:scale-105"
-				on:click={handleOnClick}
-			>
+				on:click={handleOnClick}>
 				<img class="w-32" src="/images/add-to-slack.svg" alt="slack signup" />
 			</button>
 

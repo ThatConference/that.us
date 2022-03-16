@@ -13,8 +13,7 @@
 					Can’t find the answer you’re looking for? Feel free to
 					<a
 						href="mailto:hello@that.us"
-						class="font-medium text-thatOrange-400 hover:text-thatOrange-500">email us</a
-					>
+						class="font-medium text-thatOrange-400 hover:text-thatOrange-500">email us</a>
 					or reach out in the chat.
 				</p>
 			</div>

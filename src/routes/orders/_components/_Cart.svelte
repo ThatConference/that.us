@@ -94,8 +94,7 @@
 {#if $state.matches('cart.cartError.invalidEvent')}
 	<CartModal
 		title="Purchasing Limitation"
-		text="Currently, we only support purchasing items from one event per order."
-	>
+		text="Currently, we only support purchasing items from one event per order.">
 		<div class="flex justify-center space-x-6">
 			<StandardButton on:click={handleReplaceCart}>replace</StandardButton>
 			<StandardButton on:click={handleErrorContinue}>keep</StandardButton>
@@ -106,8 +105,7 @@
 {#if $state.matches('cart.cartError.invalidProductType')}
 	<CartModal
 		title="Purchasing Limitation"
-		text="You can purchase an event ticket or a membership but not both. If you have a membership, there is no need for an additional event ticket."
-	>
+		text="You can purchase an event ticket or a membership but not both. If you have a membership, there is no need for an additional event ticket.">
 		<div class="flex justify-center space-x-6">
 			<StandardButton on:click={handleReplaceCart}>replace</StandardButton>
 			<StandardButton on:click={handleErrorContinue}>keep</StandardButton>
@@ -154,26 +152,22 @@
 								<tr>
 									<th
 										scope="col"
-										class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-									>
+										class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
 										Item
 									</th>
 									<th
 										scope="col"
-										class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-									>
+										class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
 										Description
 									</th>
 									<th
 										scope="col"
-										class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-									>
+										class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
 										Price
 									</th>
 									<th
 										scope="col"
-										class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-									>
+										class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
 										Quantity
 									</th>
 									<th scope="col" class="relative px-6 py-3">
@@ -181,8 +175,7 @@
 									</th>
 									<th
 										scope="col"
-										class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-									>
+										class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
 										Total
 									</th>
 								</tr>
@@ -199,8 +192,7 @@
 										on:cart_update={({ detail }) =>
 											send('UPDATE_QUANTITY', {
 												...detail
-											})}
-									/>
+											})} />
 								{/each}
 							</tbody>
 						</table>
@@ -225,8 +217,7 @@
 				</div>
 			{:else}
 				<div
-					class="px-8 py-2 rounded-md shadow text-base leading-6 font-medium text-white bg-gray-200 md:text-lg md:px-10"
-				>
+					class="px-8 py-2 rounded-md shadow text-base leading-6 font-medium text-white bg-gray-200 md:text-lg md:px-10">
 					Purchase Now
 				</div>
 			{/if}

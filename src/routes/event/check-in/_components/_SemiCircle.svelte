@@ -28,7 +28,6 @@
 				till: 100,
 				color: '#008000'
 			}
-		]}
-	/>
+		]} />
 	<p class="py-2 font-extrabold">{title}</p>
 </div>

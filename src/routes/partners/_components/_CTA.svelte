@@ -18,8 +18,7 @@
 <CTA>
 	<h2
 		class="text-3xl font-extrabold leading-9 tracking-tight text-gray-900
-    sm:text-4xl sm:leading-10"
-	>
+    sm:text-4xl sm:leading-10">
 		Never miss another
 		<span class="text-that-orange">{companyName}</span>
 		Activity!
@@ -34,8 +33,8 @@
 				{handle}
 			</StandardButton>
 		{:else}
-			<StandardLink rel="external" class="h-3/4" href="/login/">Login and Follow Today</StandardLink
-			>
+			<StandardLink rel="external" class="h-3/4" href="/login/"
+				>Login and Follow Today</StandardLink>
 		{/if}
 	</span>
 </CTA>

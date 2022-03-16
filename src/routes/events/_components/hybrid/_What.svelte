@@ -39,8 +39,7 @@
 	<div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
 		<div class="relative flex flex-col space-y-8">
 			<h2
-				class="text-center text-4xl font-extrabold leading-8 tracking-tight text-thatBlue-800 sm:text-5xl"
-			>
+				class="text-center text-4xl font-extrabold leading-8 tracking-tight text-thatBlue-800 sm:text-5xl">
 				What Conference? THAT Conference!
 			</h2>
 
@@ -67,8 +66,7 @@
 					<img
 						class="lazyload h-full w-full p-8"
 						src="/images/characters/moose_with_lantern.png"
-						alt="THAT Moose"
-					/>
+						alt="THAT Moose" />
 				</div>
 			</div>
 		</div>
@@ -76,8 +74,7 @@
 
 	<div class="relative mx-auto mt-12 flex max-w-7xl flex-col space-y-8 px-4 sm:px-6 lg:px-8">
 		<h2
-			class="py-12 text-center text-3xl font-extrabold uppercase leading-8 tracking-tight text-gray-500 sm:text-4xl"
-		>
+			class="py-12 text-center text-3xl font-extrabold uppercase leading-8 tracking-tight text-gray-500 sm:text-4xl">
 			Here's What You Can Expect At That!
 		</h2>
 

@@ -43,8 +43,7 @@
 							<StandardLink
 								class="h-3/4"
 								href="{partner?.jobListing?.applyNowLink}?utm_source=THAT"
-								open={true}
-							>
+								open={true}>
 								Apply Now
 							</StandardLink>
 						{/if}

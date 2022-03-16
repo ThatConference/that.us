@@ -60,8 +60,7 @@
 			<div class="mb-12">
 				<h3
 					class="text-3xl font-extrabold leading-8 tracking-tight text-gray-900
-            sm:text-4xl sm:leading-10"
-				>
+            sm:text-4xl sm:leading-10">
 					Since your last visit...
 				</h3>
 				<div>

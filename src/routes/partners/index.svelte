@@ -51,8 +51,7 @@
 					<ul class="grid grid-cols-1 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
 						{#each partners as p, i (p.id)}
 							<li
-								class="col-span-1 flex transform flex-col rounded-lg bg-white text-center shadow transition duration-500 ease-in-out hover:scale-105 hover:bg-that-offWhite"
-							>
+								class="col-span-1 flex transform flex-col rounded-lg bg-white text-center shadow transition duration-500 ease-in-out hover:scale-105 hover:bg-that-offWhite">
 								<a open href={`/partners/${p.slug}`}>
 									<PartnerCard {...p} />
 								</a>

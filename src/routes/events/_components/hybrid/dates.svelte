@@ -18,8 +18,7 @@
 				<div class="flex items-center space-x-12">
 					<div class="w-full">
 						<h2
-							class="text-center text-2xl font-extrabold uppercase text-gray-500 sm:text-left sm:text-3xl lg:text-4xl"
-						>
+							class="text-center text-2xl font-extrabold uppercase text-gray-500 sm:text-left sm:text-3xl lg:text-4xl">
 							Key Dates You Need To Know
 						</h2>
 					</div>
@@ -28,8 +27,7 @@
 						<img
 							src="/images/characters/what_to_expect_4_days.png"
 							class="lazyload h-24"
-							alt="a calendar"
-						/>
+							alt="a calendar" />
 					</div>
 				</div>
 

@@ -64,6 +64,5 @@
 		data={socialIcon}
 		class={`transform cursor-pointer transition duration-500 ease-in-out hover:scale-125 ${
 			!isLast ? 'mr-2' : ''
-		} h-5 w-5 text-gray-400 hover:text-that-blue focus:underline`}
-	/>
+		} h-5 w-5 text-gray-400 hover:text-that-blue focus:underline`} />
 </a>

@@ -17,8 +17,7 @@
 	offset={30}
 	on:unpin={() => {
 		if (!hidden) hidden = !hidden;
-	}}
->
+	}}>
 	<div class="bg-white">
 		{#if $session.isAuthenticated}
 			{#if isEmpty($session.thatProfile)}
@@ -29,15 +28,13 @@
 			<div
 				class="absolute inset-x-0 top-0 z-10 origin-top-right transform p-2 transition lg:hidden"
 				class:hidden
-				class:block={!hidden}
-			>
+				class:block={!hidden}>
 				<div class="rounded-lg shadow-md">
 					<div
 						class="overflow-hidden rounded-lg bg-white ring-1 ring-black ring-opacity-5"
 						role="menu"
 						aria-orientation="vertical"
-						aria-labelledby="main-menu"
-					>
+						aria-labelledby="main-menu">
 						<div class="flex items-center justify-between px-5 pt-4">
 							<div>
 								<img class="h-8 w-auto" src="/images/THAT-Full-Wide.svg" alt="THAT Logo" />
@@ -50,15 +47,13 @@
                     ease-in-out hover:bg-gray-100 hover:text-gray-500
                     focus:bg-gray-100 focus:text-gray-500 focus:outline-none"
 									aria-label="Close menu"
-									on:click|preventDefault={() => (hidden = !hidden)}
-								>
+									on:click|preventDefault={() => (hidden = !hidden)}>
 									<svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
 										<path
 											stroke-linecap="round"
 											stroke-linejoin="round"
 											stroke-width="2"
-											d="M6 18L18 6M6 6l12 12"
-										/>
+											d="M6 18L18 6M6 6l12 12" />
 									</svg>
 								</button>
 							</div>
@@ -85,15 +80,13 @@
 								id="main-menu"
 								aria-label="Main menu"
 								aria-haspopup="true"
-								on:click|preventDefault={() => (hidden = !hidden)}
-							>
+								on:click|preventDefault={() => (hidden = !hidden)}>
 								<svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
 									<path
 										stroke-linecap="round"
 										stroke-linejoin="round"
 										stroke-width="2"
-										d="M4 6h16M4 12h16M4 18h16"
-									/>
+										d="M4 6h16M4 12h16M4 18h16" />
 								</svg>
 							</button>
 						</div>

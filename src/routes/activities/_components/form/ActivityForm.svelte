@@ -148,16 +148,14 @@
 		text="It appears you haven't created your profile yet. You can't create an
     activity until that's complete."
 		action={{ title: 'Create Profile', href: '/my/profiles/primary' }}
-		returnTo={{ title: 'Return to Activities', href: '/activities' }}
-	/>
+		returnTo={{ title: 'Return to Activities', href: '/activities' }} />
 {:else if !$session.thatProfile?.canFeature}
 	<ModalError
 		title="Your Profile Isn't Public."
 		text="It appears we cannot feature your profile. You need to have a public
     profile to create an activity."
 		action={{ title: 'Update Profile', href: '/my/profiles/primary' }}
-		returnTo={{ title: 'Return to Activities', href: '/activities' }}
-	/>
+		returnTo={{ title: 'Return to Activities', href: '/activities' }} />
 {/if}
 
 <Form
@@ -172,8 +170,7 @@
 	let:setValue
 	let:values
 	let:errors
-	let:touched
->
+	let:touched>
 	<div>
 		<Input hidden name="status" />
 	</div>
@@ -185,8 +182,7 @@
 				<SectionTitle
 					stepNumber="1"
 					title={isBackdoor ? 'Selected Location/Event' : `Select a Location/Event`}
-					description={isBackdoor ? '' : 'Where do you want to host this activity?'}
-				/>
+					description={isBackdoor ? '' : 'Where do you want to host this activity?'} />
 
 				<EventSection
 					{isBackdoor}
@@ -194,8 +190,7 @@
 					{activeEvents}
 					setField={setValue}
 					eventId={formattedInitial.event.id}
-					on:event-selected={handleEventSelected}
-				/>
+					on:event-selected={handleEventSelected} />
 			</section>
 
 			<!-- what section -->
@@ -203,8 +198,7 @@
 				<SectionTitle
 					stepNumber="2"
 					title="Describe this Activity"
-					description="Tell everyone about this activity/session."
-				/>
+					description="Tell everyone about this activity/session." />
 
 				<WhatSection {touched} setField={setValue} eventType={eventSelected.type} />
 			</section>
@@ -213,8 +207,7 @@
 				<SectionTitle
 					title="Activity Attributes"
 					stepNumber="3"
-					description="It's meta data time. Let's add some attributes about this activity to help us best sort and categorize it."
-				/>
+					description="It's meta data time. Let's add some attributes about this activity to help us best sort and categorize it." />
 
 				<div class:hidden={!showLongForm}>
 					<AttributesSection
@@ -223,8 +216,7 @@
 						setField={setValue}
 						{touched}
 						{errors}
-						on:activity-type-selected={handleActivityTypeSelected}
-					/>
+						on:activity-type-selected={handleActivityTypeSelected} />
 				</div>
 
 				<div>
@@ -236,16 +228,14 @@
 				<SectionTitle
 					title="Target Audience"
 					stepNumber="4"
-					description="Who will benefit the most from this activity? Who should attend?"
-				/>
+					description="Who will benefit the most from this activity? Who should attend?" />
 
 				<AudienceSection
 					{dropDownValues}
 					initialData={formattedInitial}
 					setField={setValue}
 					{touched}
-					{errors}
-				/>
+					{errors} />
 			</section>
 
 			<section in:fade class:hidden={!showLongForm} class="mt-8">
@@ -253,16 +243,14 @@
 					<SectionTitle
 						title="Workshop Details"
 						stepNumber="5"
-						description="Explain in more detail what this workshop is all about."
-					/>
+						description="Explain in more detail what this workshop is all about." />
 
 					<WorkshopSection
 						initialData={formattedInitial}
 						{dropDownValues}
 						setField={setValue}
 						{touched}
-						{errors}
-					/>
+						{errors} />
 				</div>
 			</section>
 
@@ -276,32 +264,28 @@
 				<SectionTitle
 					title="Activity Takeaways and Resources"
 					stepNumber="6"
-					description="Do you have some supporting resources for folks? Add them here for others to easily reference later."
-				/>
+					description="Do you have some supporting resources for folks? Add them here for others to easily reference later." />
 
 				<ResourcesSection
 					initialData={formattedInitial}
 					{dropDownValues}
 					setField={setValue}
 					{touched}
-					{errors}
-				/>
+					{errors} />
 			</section>
 
 			<section in:fade class:hidden={!showLongForm} class="mt-8">
 				<SectionTitle
 					title="Help us, Help You"
 					stepNumber="7"
-					description="We want you to be your best you. How can we help?"
-				/>
+					description="We want you to be your best you. How can we help?" />
 
 				<SupportSection
 					initialData={formattedInitial}
 					{dropDownValues}
 					setField={setValue}
 					{touched}
-					{errors}
-				/>
+					{errors} />
 			</section>
 
 			<!-- when section -->
@@ -309,16 +293,14 @@
 				<SectionTitle
 					title="Schedule the Time"
 					stepNumber="3"
-					description="Pick a day and time (in your time zone) you will be hosting this activity."
-				/>
+					description="Pick a day and time (in your time zone) you will be hosting this activity." />
 
 				<WhenSection
 					{touched}
 					{errors}
 					values={formattedInitial}
 					setField={setValue}
-					event={eventSelected}
-				/>
+					event={eventSelected} />
 			</section>
 
 			{#if isValid === false}
@@ -350,8 +332,7 @@
                           text-white 
                           transition 
                           duration-150 ease-in-out hover:bg-red-600 
-                          focus:border-red-700 focus:outline-none active:bg-red-700"
-									>
+                          focus:border-red-700 focus:outline-none active:bg-red-700">
 										Cancel / Withdraw
 									</button>
 								</span>
@@ -367,8 +348,7 @@
                     transition duration-150
                       ease-in-out hover:bg-thatBlue-500 hover:text-white focus:border-thatBlue-800 focus:bg-thatBlue-500
                     focus:text-white 
-                    focus:outline-none focus:ring-thatBlue-500 active:bg-thatBlue-800"
-								>
+                    focus:outline-none focus:ring-thatBlue-500 active:bg-thatBlue-800">
 									{initialData?.id ? 'Update Activity' : 'Submit Activity'}
 								</button>
 							</span>

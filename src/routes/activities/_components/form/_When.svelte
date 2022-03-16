@@ -148,14 +148,12 @@
 		<div>
 			<label
 				for="selectedDay"
-				class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2"
-			>
+				class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
 				Select a Day:
 			</label>
 			<div class="relative">
 				<span
-					class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400"
-				/>
+					class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400" />
 			</div>
 		</div>
 
@@ -169,8 +167,7 @@
 					format={dayjs(selectedDateValue).format('dddd, MMM D, YYYY z')}
 					style="form-select sm:text-sm sm:leading-5 shadow-sm hover:border-gray-700"
 					on:dateSelected={({ detail: { date } }) =>
-						setField('selectedDay', dayjs(date).format('YYYY-MM-DD'))}
-				/>
+						setField('selectedDay', dayjs(date).format('YYYY-MM-DD'))} />
 			</div>
 		</div>
 	</div>
@@ -179,14 +176,12 @@
 		<div>
 			<label
 				for="activity_startTime"
-				class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2"
-			>
+				class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
 				Select a Time:
 			</label>
 			<div class="relative">
 				<span
-					class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400"
-				/>
+					class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400" />
 			</div>
 		</div>
 
@@ -202,8 +197,7 @@
 							on:select={({ detail }) => setField('selectedTime', detail.value)}
 							on:clear={() => setField('selectedTime', undefined)}
 							hasError={touched['selectedTime'] && errors['selectedTime']}
-							inputStyles="form-select relative block w-full bg-transparent focus:z-10 transition ease-in-out duration-150 sm:text-sm sm:leading-5 rounded-md shadow-sm hover:border-gray-700"
-						/>
+							inputStyles="form-select relative block w-full bg-transparent focus:z-10 transition ease-in-out duration-150 sm:text-sm sm:leading-5 rounded-md shadow-sm hover:border-gray-700" />
 					</div>
 				</div>
 
@@ -218,8 +212,7 @@
 							items={timeZoneOptions}
 							on:clear={() => setField('selectedTimezone', undefined)}
 							value={findSelectedTimezone(values)}
-							inputStyles="form-select relative block w-full rounded-md bg-transparent focus:z-10 transition ease-in-out duration-150 sm:text-sm sm:leading-5 hover:border-gray-700"
-						/>
+							inputStyles="form-select relative block w-full rounded-md bg-transparent focus:z-10 transition ease-in-out duration-150 sm:text-sm sm:leading-5 hover:border-gray-700" />
 					</div>
 				</div>
 			</div>
@@ -238,14 +231,12 @@
 		<div>
 			<label
 				for="activity_duration"
-				class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2"
-			>
+				class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
 				Estimated Duration (hours):
 			</label>
 			<div class="relative">
 				<span
-					class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400"
-				/>
+					class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400" />
 			</div>
 		</div>
 
@@ -259,8 +250,7 @@
 					items={estimatedDurationOptions}
 					on:clear={() => setField('selectedDuration', undefined)}
 					value={findSelectedDuration(values)}
-					inputStyles="form-select relative block w-full rounded-md bg-transparent focus:z-10 transition ease-in-out duration-150 sm:text-sm sm:leading-5 hover:border-gray-700"
-				/>
+					inputStyles="form-select relative block w-full rounded-md bg-transparent focus:z-10 transition ease-in-out duration-150 sm:text-sm sm:leading-5 hover:border-gray-700" />
 			</div>
 			<div class="mt-6">
 				{#if touched['selectedDuration'] && errors['selectedDuration']}

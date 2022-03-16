@@ -42,8 +42,7 @@
 			</label>
 			<div class="relative">
 				<span
-					class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400"
-				/>
+					class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400" />
 			</div>
 			<div>
 				<p class="mt-1 text-sm text-gray-400">
@@ -59,20 +58,17 @@
 					<fieldset>
 						<legend class="sr-only">Target Location</legend>
 						<div
-							class="flex w-full flex-col space-y-4 rounded-md sm:flex-row sm:space-y-0 sm:space-x-4"
-						>
+							class="flex w-full flex-col space-y-4 rounded-md sm:flex-row sm:space-y-0 sm:space-x-4">
 							{#each targetLocation.options as option}
 								<div class="flex-grow">
 									<label
-										class="relative flex cursor-pointer rounded-lg border border-gray-200 bg-white p-4"
-									>
+										class="relative flex cursor-pointer rounded-lg border border-gray-200 bg-white p-4">
 										<input
 											type="radio"
 											value={option.value}
 											bind:group={activityTargetLocationSelected}
 											on:change={({ target }) => setField('targetLocation', target.value)}
-											class="mt-0.5 h-4 w-4 cursor-pointer border-gray-300 text-thatOrange-500 focus:ring-thatOrange-400"
-										/>
+											class="mt-0.5 h-4 w-4 cursor-pointer border-gray-300 text-thatOrange-500 focus:ring-thatOrange-400" />
 										<div class="ml-3">
 											<span class="block text-sm font-medium text-gray-900">
 												{option.label}
@@ -93,8 +89,7 @@
 			</label>
 			<div class="relative">
 				<span
-					class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400"
-				/>
+					class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400" />
 			</div>
 			<div>
 				<p class="mt-1 text-sm text-gray-400">Who is this intended for?</p>
@@ -105,25 +100,21 @@
 					<fieldset>
 						<legend class="sr-only">Target Track</legend>
 						<div
-							class="flex w-full flex-col space-y-4 rounded-md sm:flex-row sm:space-y-0 sm:space-x-4"
-						>
+							class="flex w-full flex-col space-y-4 rounded-md sm:flex-row sm:space-y-0 sm:space-x-4">
 							{#each category.options as option}
 								<div class="flex-grow">
 									<label
-										class="relative flex cursor-pointer rounded-lg border border-gray-200 bg-white p-4"
-									>
+										class="relative flex cursor-pointer rounded-lg border border-gray-200 bg-white p-4">
 										<input
 											type="radio"
 											value={option.value}
 											bind:group={activityCategorySelected}
 											on:change={({ target }) => setField('category', target.value)}
-											class="mt-0.5 h-4 w-4 cursor-pointer border-gray-300 text-thatOrange-500 focus:ring-thatOrange-400"
-										/>
+											class="mt-0.5 h-4 w-4 cursor-pointer border-gray-300 text-thatOrange-500 focus:ring-thatOrange-400" />
 										<div class="ml-3">
 											<span
 												id="privacy-setting-0-label"
-												class="block text-sm font-medium text-gray-900"
-											>
+												class="block text-sm font-medium text-gray-900">
 												{option.label}
 											</span>
 										</div>
@@ -142,8 +133,7 @@
 			</label>
 			<div class="relative">
 				<span
-					class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400"
-				/>
+					class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400" />
 			</div>
 			<div>
 				<p class="mt-1 text-sm text-gray-400">What is the overall format for this activity?</p>
@@ -157,21 +147,18 @@
 							{#each sessionTypeOptions as option, i}
 								<label
 									class="relative flex cursor-pointer border-gray-200 p-4"
-									class:border-t={i > 0}
-								>
+									class:border-t={i > 0}>
 									<input
 										type="radio"
 										id={option.label}
 										value={option.value}
 										bind:group={activityTypeSelected}
 										on:change={onActivityTypeChange}
-										class="mt-0.5 h-4 w-4 cursor-pointer border-gray-300 text-thatOrange-500 focus:ring-thatOrange-400"
-									/>
+										class="mt-0.5 h-4 w-4 cursor-pointer border-gray-300 text-thatOrange-500 focus:ring-thatOrange-400" />
 									<div class="ml-3">
 										<span
 											id="privacy-setting-0-label"
-											class="block text-sm font-medium text-gray-900"
-										>
+											class="block text-sm font-medium text-gray-900">
 											{option.label}
 										</span>
 									</div>
@@ -189,8 +176,7 @@
 			</label>
 			<div class="relative">
 				<span
-					class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400"
-				/>
+					class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400" />
 			</div>
 			<div>
 				<p class="mt-1 text-sm text-gray-400">
@@ -206,8 +192,7 @@
 						on:select={({ detail }) => setField('primaryCategory', detail.value)}
 						on:clear={() => setField('primaryCategory', undefined)}
 						hasError={touched['primaryCategory'] && errors['primaryCategory']}
-						inputStyles="form-select relative block w-full bg-transparent focus:z-10 transition ease-in-out duration-150 sm:text-sm sm:leading-5 rounded-md shadow-sm hover:border-gray-700"
-					/>
+						inputStyles="form-select relative block w-full bg-transparent focus:z-10 transition ease-in-out duration-150 sm:text-sm sm:leading-5 rounded-md shadow-sm hover:border-gray-700" />
 					{#if touched['primaryCategory'] && errors['primaryCategory']}
 						<p class="italic text-red-600">{errors['primaryCategory']}</p>
 					{/if}
@@ -235,8 +220,7 @@
 							setField('secondaryCategory', detail ? detail.map((i) => i.value) : [])}
 						on:clear={() => setField('secondaryCategory', [])}
 						hasError={touched['secondaryCategory'] && errors['secondaryCategory']}
-						inputStyles="form-select relative block w-full bg-transparent focus:z-10 transition ease-in-out duration-150 sm:text-sm sm:leading-5 rounded-md shadow-sm hover:border-gray-700"
-					/>
+						inputStyles="form-select relative block w-full bg-transparent focus:z-10 transition ease-in-out duration-150 sm:text-sm sm:leading-5 rounded-md shadow-sm hover:border-gray-700" />
 					{#if touched['secondaryCategory'] && errors['secondaryCategory']}
 						<p class="italic text-red-600">{errors['secondaryCategory']}</p>
 					{/if}

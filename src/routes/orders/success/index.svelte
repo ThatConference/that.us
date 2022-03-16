@@ -48,8 +48,7 @@
 			Payment Received
 		</h2>
 		<p
-			class="mt-6 text-4xl font-extrabold leading-8 tracking-tight text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl"
-		>
+			class="mt-6 text-4xl font-extrabold leading-8 tracking-tight text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl">
 			Thank You
 		</p>
 	</div>
@@ -59,8 +58,7 @@
 			<p>
 				Our passion is people, communities, and helping one another become a better geeks than they
 				were yesterday. We couldn't do this without you and your support. <span class="font-bold"
-					>Thank You!</span
-				>
+					>Thank You!</span>
 			</p>
 
 			<h3>Order confirmation and receipt</h3>
@@ -69,8 +67,7 @@
 				You should see two confirmation emails in your inbox, a receipt from the credit card
 				processor and a welcome message from THAT. <span class="font-bold"
 					>If you do not see those, please check your junk/spam folders, as sometimes we manage to
-					land there accidentally.</span
-				>
+					land there accidentally.</span>
 				At any time you can view your
 				<a class="hover" href="/my/settings/order-history/">order history</a> and reprint your receipt.
 			</p>
@@ -94,8 +91,8 @@
 
 						<div class="my-8 flex justify-center md:justify-end">
 							{#if eventLocation.toUpperCase() === 'WI'}
-								<StandardLink href="/support/travel/wi/">Book Your Travel To Wisconsin</StandardLink
-								>
+								<StandardLink href="/support/travel/wi/"
+									>Book Your Travel To Wisconsin</StandardLink>
 							{/if}
 							{#if eventLocation.toUpperCase() === 'TX'}
 								<StandardLink href="/support/travel/tx/">Book Your Travel To Texas</StandardLink>
@@ -168,8 +165,7 @@
 				</li>
 				<li>
 					Stay up to date. <a class="hover" href="/support/staying-up-to-date/"
-						>Subscribe to the calendar.</a
-					>
+						>Subscribe to the calendar.</a>
 				</li>
 				<li>
 					Get ready for what's coming. Did you know we have an event every month?
@@ -193,8 +189,7 @@
 					href="mailto:hello@that.us"
 					rel="noopener"
 					target="_blank"
-					class="hover">hello@that.us</a
-				>
+					class="hover">hello@that.us</a>
 			</p>
 		</div>
 	</div>

@@ -16,8 +16,7 @@
 		<div class="space-y-12">
 			<div class="space-y-5 sm:space-y-4 md:max-w-xl lg:max-w-3xl xl:max-w-none">
 				<h2
-					class="text-4xl font-semibold leading-10 tracking-tight text-white sm:text-5xl sm:leading-none"
-				>
+					class="text-4xl font-semibold leading-10 tracking-tight text-white sm:text-5xl sm:leading-none">
 					Upcoming Activities
 				</h2>
 				<p class="text-xl leading-7 text-gray-300">
@@ -57,8 +56,7 @@
                     ease-in-out 
                     hover:bg-thatBlue-400
                     focus:border-thatBlue-800 
-                    focus:bg-thatBlue-400 focus:text-white focus:ring-white md:px-10 md:text-lg"
-					>
+                    focus:bg-thatBlue-400 focus:text-white focus:ring-white md:px-10 md:text-lg">
 						<span>View Next</span>
 					</button>
 				{/if}
@@ -75,8 +73,7 @@
                       ease-in-out 
                       hover:bg-thatBlue-400
                       focus:border-thatBlue-800 
-                      focus:bg-thatBlue-400 focus:text-white focus:ring-white md:px-10 md:text-lg"
-					>
+                      focus:bg-thatBlue-400 focus:text-white focus:ring-white md:px-10 md:text-lg">
 						<span>Refresh</span>
 					</button>
 				{/if}

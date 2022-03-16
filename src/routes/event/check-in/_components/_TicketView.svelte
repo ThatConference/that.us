@@ -119,8 +119,7 @@
 			autofocus
 			class="form-input rounded-md border"
 			bind:value={searchterm}
-			placeholder="type to search..."
-		/>
+			placeholder="type to search..." />
 
 		<slot name="toggle" />
 

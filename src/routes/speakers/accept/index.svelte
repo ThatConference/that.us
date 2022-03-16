@@ -174,8 +174,7 @@
 	</h2>
 	{#if $state.matches(['step_one'])}
 		<p
-			class="mt-6 text-4xl font-extrabold leading-8 tracking-tight text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl"
-		>
+			class="mt-6 text-4xl font-extrabold leading-8 tracking-tight text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl">
 			Congratulations are in order!
 		</p>
 
@@ -192,8 +191,7 @@
 		</div>
 	{:else}
 		<p
-			class="mt-6 text-4xl sm:text-5xl sm:tracking-tight lg:text-6xl leading-8 font-extrabold tracking-tight text-gray-900"
-		>
+			class="mt-6 text-4xl sm:text-5xl sm:tracking-tight lg:text-6xl leading-8 font-extrabold tracking-tight text-gray-900">
 			Counselor Enrollment
 		</p>
 	{/if}
@@ -224,8 +222,7 @@
 							sessions={$state.context.acceptedSpeaker.sessions}
 							{eventDetails}
 							on:speaker-decline={handleSpeakerDecline}
-							on:submit-step={handleSubmit}
-						>
+							on:submit-step={handleSubmit}>
 							<SectionHeader slot="header" stepNumber="1" title={pluckTitle('accept')} />
 						</AcceptInvitation>
 					</div>
@@ -236,8 +233,7 @@
 						<SelectTickets
 							{eventDetails}
 							platform={$state.context.acceptedSpeaker.platform}
-							on:submit-step={handleSubmit}
-						>
+							on:submit-step={handleSubmit}>
 							<SectionHeader slot="header" stepNumber="2" title={pluckTitle('select')} />
 						</SelectTickets>
 					</div>
@@ -249,8 +245,7 @@
 							platform={$state.context.acceptedSpeaker.platform}
 							orderId={$state.context.orderId}
 							orderAllocations={$state.context.allocations}
-							on:submit-step={handleSubmit}
-						>
+							on:submit-step={handleSubmit}>
 							<SectionHeader slot="header" stepNumber="3" title={pluckTitle('tickets')} />
 						</SelectTicketDetails>
 					</div>

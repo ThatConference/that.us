@@ -15,8 +15,7 @@
 			<div class="lg:grid lg:grid-cols-12 lg:gap-8">
 				<div class="text-center md:mx-auto md:max-w-2xl lg:col-span-3">
 					<h2
-						class="my-2 text-3xl font-extrabold leading-8 tracking-tight text-thatBlue-800 sm:text-4xl sm:leading-10"
-					>
+						class="my-2 text-3xl font-extrabold leading-8 tracking-tight text-thatBlue-800 sm:text-4xl sm:leading-10">
 						Our Followers
 					</h2>
 				</div>

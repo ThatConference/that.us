@@ -60,8 +60,7 @@
 				<h1
 					class="pb-16 text-center text-4xl font-extrabold leading-10
               tracking-tight text-thatBlue-800 sm:text-left sm:text-5xl
-              sm:leading-none md:text-6xl"
-				>
+              sm:leading-none md:text-6xl">
 					Call for Camp Counselors
 				</h1>
 			</div>
@@ -98,8 +97,7 @@
 			<div class="lg:grid lg:grid-cols-5 lg:items-start lg:gap-8">
 				<div class="col-span-5">
 					<h3
-						class="text-center text-4xl font-extrabold uppercase tracking-wide text-white sm:text-left"
-					>
+						class="text-center text-4xl font-extrabold uppercase tracking-wide text-white sm:text-left">
 						Summer Camp for Geeks
 					</h3>
 				</div>
@@ -117,8 +115,7 @@
 					<img
 						class="flip h-1/8 sm:absolute sm:h-2/3 sm:translate-y-24 sm:transform"
 						src="/images/characters/bear-pig.png"
-						alt
-					/>
+						alt />
 				</div>
 			</div>
 		</div>
@@ -146,8 +143,7 @@
 						<img
 							src="/images/characters/what_to_expect_tech_stack.png"
 							class="lazyload h-24 w-full object-scale-down"
-							alt="a computer"
-						/>
+							alt="a computer" />
 					</div>
 					<p class="prose-lg flex-grow pt-4 text-left text-gray-500">
 						Online activities are solely delivered online, authentic to their audience. They are
@@ -167,8 +163,7 @@
 						<img
 							src="/images/characters/what_to_expect_professional_networking.png"
 							class="lazyload h-24 w-full object-scale-down"
-							alt="two geeks high fiving"
-						/>
+							alt="two geeks high fiving" />
 					</div>
 				</div>
 			</div>
@@ -181,8 +176,7 @@
 				<div class="mt-8 flex flex-col space-y-6">
 					<div>
 						<h2
-							class="text-center text-4xl font-extrabold uppercase tracking-tighter text-thatBlue-800 sm:text-left"
-						>
+							class="text-center text-4xl font-extrabold uppercase tracking-tighter text-thatBlue-800 sm:text-left">
 							Audiences And Formats
 						</h2>
 					</div>
@@ -242,8 +236,7 @@
 				<div class="mt-8 flex flex-col space-y-6">
 					<div>
 						<h2
-							class="text-center text-4xl font-extrabold uppercase tracking-tighter text-thatBlue-800 sm:text-left"
-						>
+							class="text-center text-4xl font-extrabold uppercase tracking-tighter text-thatBlue-800 sm:text-left">
 							Key Dates You Need To Know
 						</h2>
 					</div>
@@ -267,8 +260,7 @@
 						<img
 							src="/images/characters/what_to_expect_4_days.png"
 							class="lazyload mx-auto h-48 flex-shrink-0"
-							alt="a calendar"
-						/>
+							alt="a calendar" />
 					</div>
 				</div>
 			</div>

@@ -42,16 +42,14 @@
 		<div class="relative grid gap-6 px-5 py-6 sm:gap-8 sm:p-8 lg:grid-cols-2">
 			<div class="-m-3 flex items-start p-3">
 				<div
-					class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-that-orange"
-				>
+					class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-that-orange">
 					{#if isEmpty($session.thatProfile) || !$session.thatProfile.profileImage}
 						<Icon data={userIcon} class="h-8 w-8 rounded-full bg-that-orange text-white" />
 					{:else}
 						<img
 							class="h-12 w-12 rounded-full"
 							src="{$session.thatProfile.profileImage}?w=256&h=256&fit=crop"
-							alt=""
-						/>
+							alt="" />
 					{/if}
 				</div>
 				<div class="ml-4">
@@ -75,8 +73,7 @@
 				<a
 					href="/my/profiles/primary/"
 					class="block rounded-md px-3 pb-2 text-base font-medium
-           hover:bg-that-blue focus:bg-that-blue focus:text-white focus:outline-none"
-				>
+           hover:bg-that-blue focus:bg-that-blue focus:text-white focus:outline-none">
 					<span class="text-gray-300 hover:text-white" class:text-gray-800={darkMode}>
 						Create Profile
 					</span>
@@ -85,8 +82,7 @@
 					rel="external"
 					href="/logout/"
 					class="mt-1 block rounded-md px-3 py-2 text-base font-medium hover:bg-that-blue
-            focus:bg-that-blue focus:text-white focus:outline-none"
-				>
+            focus:bg-that-blue focus:text-white focus:outline-none">
 					<span class="text-gray-300 hover:text-white" class:text-gray-800={darkMode}>
 						Logout
 					</span>
@@ -96,8 +92,7 @@
 					{#each loggedInMenuItems as { rel, href, text }}
 						<div
 							class="flex px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-that-blue focus:outline-none focus:text-white focus:bg-that-blue"
-							class:text-gray-800={darkMode}
-						>
+							class:text-gray-800={darkMode}>
 							<a {rel} {href}>{text}</a>
 						</div>
 					{/each}
@@ -108,15 +103,13 @@
 				<a
 					rel="external"
 					href="/login/"
-					class="mt-4 mb-1 mr-1 block w-full bg-white rounded-md py-2 text-sm font-semibold text-that-blue text-center flex-grow"
-				>
+					class="mt-4 mb-1 mr-1 block w-full bg-white rounded-md py-2 text-sm font-semibold text-that-blue text-center flex-grow">
 					Login
 				</a>
 				<a
 					rel="external"
 					href="/login/"
-					class="mt-4 mb-1 ml-1 block w-full bg-that-orange rounded-md py-2 text-sm font-semibold text-white text-center flex-grow"
-				>
+					class="mt-4 mb-1 ml-1 block w-full bg-that-orange rounded-md py-2 text-sm font-semibold text-white text-center flex-grow">
 					Sign Up
 				</a>
 			</div>

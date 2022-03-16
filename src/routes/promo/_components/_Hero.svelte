@@ -58,16 +58,14 @@
 				<div class="relative">
 					<div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 						<div
-							class="mx-auto max-w-md space-y-4 lg:grid lg:max-w-6xl lg:grid-cols-2 lg:gap-5 lg:space-y-0"
-						>
+							class="mx-auto max-w-md space-y-4 lg:grid lg:max-w-6xl lg:grid-cols-2 lg:gap-5 lg:space-y-0">
 							<div class="relative flex flex-col rounded-lg shadow-lg">
 								<div>
 									<div class="absolute inset-0 rounded-lg border-t-2 border-thatOrange-500" />
 									<div class="absolute inset-x-0 top-0 translate-y-px transform">
 										<div class="flex -translate-y-1/2 transform justify-center">
 											<span
-												class="text-md inline-flex rounded-full bg-thatOrange-500 px-6 py-1 font-bold uppercase tracking-wider text-white"
-											>
+												class="text-md inline-flex rounded-full bg-thatOrange-500 px-6 py-1 font-bold uppercase tracking-wider text-white">
 												ON THAT
 											</span>
 										</div>
@@ -84,8 +82,7 @@
 												<div>
 													<span class="text-red-500 line-through">
 														<span
-															class="flex items-start px-3 text-5xl tracking-tight text-gray-900"
-														>
+															class="flex items-start px-3 text-5xl tracking-tight text-gray-900">
 															<span class="mt-2 mr-2 text-3xl font-medium"> $ </span>
 															<span class="font-extrabold">
 																{eventTickets['VIRTUAL_CAMPER'].price}
@@ -111,8 +108,7 @@
 									</div>
 								</div>
 								<div
-									class="relative flex flex-1 flex-col justify-between space-y-6 bg-gray-50 px-6 pt-6 pb-8 sm:p-10 sm:pt-6"
-								>
+									class="relative flex flex-1 flex-col justify-between space-y-6 bg-gray-50 px-6 pt-6 pb-8 sm:p-10 sm:pt-6">
 									<p class="mt-5 text-lg text-gray-500">
 										{eventTickets['PROMO_VIRTUAL_CAMPER'].shortDescription}
 									</p>
@@ -159,8 +155,7 @@
 											<button
 												type="button"
 												on:click={() => handlePurchase('PROMO_VIRTUAL_CAMPER')}
-												class="w-full px-8 py-2 md:px-10"
-											>
+												class="w-full px-8 py-2 md:px-10">
 												Purchase
 											</button>
 										</StandardShell>
@@ -174,8 +169,7 @@
 									<div class="absolute inset-x-0 top-0 translate-y-px transform">
 										<div class="flex -translate-y-1/2 transform justify-center">
 											<span
-												class="text-md inline-flex rounded-full bg-thatOrange-500 px-6 py-1 font-bold uppercase tracking-wider text-white"
-											>
+												class="text-md inline-flex rounded-full bg-thatOrange-500 px-6 py-1 font-bold uppercase tracking-wider text-white">
 												AT THAT
 											</span>
 										</div>
@@ -193,8 +187,7 @@
 												<div>
 													<span class="text-red-500 line-through">
 														<span
-															class="flex items-start px-3 text-5xl tracking-tight text-gray-900"
-														>
+															class="flex items-start px-3 text-5xl tracking-tight text-gray-900">
 															<span class="mt-2 mr-2 text-3xl font-medium"> $ </span>
 															<span class="font-extrabold">
 																{eventTickets['CAMPER_NO_FOOD'].price}
@@ -220,8 +213,7 @@
 								</div>
 
 								<div
-									class="relative flex flex-1 flex-col justify-between space-y-6 bg-gray-50 px-6 pt-6 pb-8 sm:p-10 sm:pt-6"
-								>
+									class="relative flex flex-1 flex-col justify-between space-y-6 bg-gray-50 px-6 pt-6 pb-8 sm:p-10 sm:pt-6">
 									<p class="mt-5 text-lg text-gray-500">
 										{eventTickets['PROMO_CAMPER_NO_FOOD'].shortDescription}
 									</p>
@@ -276,8 +268,7 @@
 											<button
 												type="button"
 												on:click={() => handlePurchase('PROMO_CAMPER_NO_FOOD')}
-												class="w-full px-8 py-2 md:px-10"
-											>
+												class="w-full px-8 py-2 md:px-10">
 												Purchase
 											</button>
 										</StandardShell>

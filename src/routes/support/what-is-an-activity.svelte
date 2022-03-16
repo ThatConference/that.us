@@ -66,8 +66,7 @@
 					<img
 						class="lazyload w-full rounded-lg shadow"
 						src="/images/ActivityDetailExample.jpg"
-						alt=""
-					/>
+						alt="" />
 					<figcaption>Example: product review and sprint planning Activity.</figcaption>
 				</figure>
 			</div>
@@ -88,8 +87,7 @@
 		</div>
 		<div
 			class="my-12 mx-auto flex max-w-prose flex-col items-center justify-center
-        lg:max-w-none"
-		>
+        lg:max-w-none">
 			<div class="flex space-x-4 text-base">
 				<StandardLink href="/support/">Getting Started</StandardLink>
 				<HighlightLink href="/support/joining-an-activity/">Joining an Activity</HighlightLink>

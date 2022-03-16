@@ -30,16 +30,14 @@
 				<h1
 					class="pb-16 text-4xl font-extrabold leading-10 tracking-tight
           text-thatBlue-800 sm:text-center sm:text-5xl sm:leading-none
-          md:text-6xl lg:text-left"
-				>
+          md:text-6xl lg:text-left">
 					Sign Up Today!
 				</h1>
 			</header>
 
 			<main>
 				<div
-					class="space-y-12 divide-y-2 lg:grid lg:grid-cols-2 lg:items-start lg:gap-32 lg:space-y-0"
-				>
+					class="space-y-12 divide-y-2 lg:grid lg:grid-cols-2 lg:items-start lg:gap-32 lg:space-y-0">
 					<section>
 						<ol class="overflow-hidden">
 							<li class="relative pb-10" in:fade={{ delay: 100, duration: 500 }}>
@@ -50,15 +48,13 @@
 								<a rel="external" href="/login/" class="group relative flex items-center p-3">
 									<span class="flex h-20 items-center">
 										<span
-											class="relative z-10 flex h-20 w-20 items-center justify-center rounded-full bg-white p-3 ring-4 ring-thatOrange-500 group-hover:bg-thatOrange-500 group-hover:text-white"
-										>
+											class="relative z-10 flex h-20 w-20 items-center justify-center rounded-full bg-white p-3 ring-4 ring-thatOrange-500 group-hover:bg-thatOrange-500 group-hover:text-white">
 											<span class="text-5xl font-extrabold">1</span>
 										</span>
 									</span>
 									<span class="ml-4 flex min-w-0 flex-col items-start">
 										<span class="text-xl font-semibold uppercase tracking-wide"
-											>Create Your Login</span
-										>
+											>Create Your Login</span>
 										<span class="text-lg text-gray-500">
 											You will need an account to create or join any activities.
 										</span>
@@ -71,15 +67,13 @@
 								<a href="/my/profiles/primary/" class="group relative flex items-center p-3">
 									<span class="flex h-20 items-center">
 										<span
-											class="relative z-10 flex h-20 w-20 items-center justify-center rounded-full bg-white p-3 ring-4 ring-thatOrange-500 group-hover:bg-thatOrange-500 group-hover:text-white"
-										>
+											class="relative z-10 flex h-20 w-20 items-center justify-center rounded-full bg-white p-3 ring-4 ring-thatOrange-500 group-hover:bg-thatOrange-500 group-hover:text-white">
 											<span class="text-5xl font-extrabold">2</span>
 										</span>
 									</span>
 									<span class="ml-4 flex min-w-0 flex-col">
 										<span class="text-xl font-semibold uppercase tracking-wide"
-											>Tell Us About Yourself</span
-										>
+											>Tell Us About Yourself</span>
 										<span class="text-lg text-gray-500">
 											Tell everyone a bit about who you are and where to find you on the internet.
 										</span>
@@ -90,8 +84,7 @@
 								<a href="/support/" class="group relative flex items-center p-3">
 									<span class="flex h-20 items-center">
 										<span
-											class="relative z-10 flex h-20 w-20 items-center justify-center rounded-full bg-white p-3 ring-4 ring-thatOrange-500 group-hover:bg-thatOrange-500 group-hover:text-white"
-										>
+											class="relative z-10 flex h-20 w-20 items-center justify-center rounded-full bg-white p-3 ring-4 ring-thatOrange-500 group-hover:bg-thatOrange-500 group-hover:text-white">
 											<span class="text-5xl font-extrabold">3</span>
 										</span>
 									</span>
@@ -112,8 +105,7 @@
 					<section class="col-span-2 pt-16">
 						<h2
 							class="pb-16 text-4xl font-extrabold leading-10 tracking-tight text-thatBlue-800 sm:text-center sm:text-5xl sm:leading-none
-						md:text-6xl lg:text-left"
-						>
+						md:text-6xl lg:text-left">
 							Join The Daily Conversation
 						</h2>
 						<div class="space-y-8 lg:grid lg:grid-cols-6 lg:items-center lg:gap-8">
@@ -134,8 +126,7 @@
 					<section class="col-span-2 pt-16">
 						<h2
 							class="pb-16 text-4xl font-extrabold leading-10 tracking-tight text-thatBlue-800 sm:text-center sm:text-5xl sm:leading-none
-						md:text-6xl lg:text-left"
-						>
+						md:text-6xl lg:text-left">
 							Newsletter and Announcements
 						</h2>
 						<div class="space-y-8">

@@ -51,13 +51,11 @@
 								href="/my/network/sponsors/"
 								class={$page.url.pathname.startsWith('/my/network/sponsors')
 									? asideSelected.item
-									: asideDefault.item}
-							>
+									: asideDefault.item}>
 								<User
 									classes={$page.url.pathname.startsWith('/my/network/sponsors')
 										? asideSelected.image
-										: asideDefault.image}
-								/>
+										: asideDefault.image} />
 								<span class="truncate"> Sponsor Network </span>
 							</a>
 						</nav>

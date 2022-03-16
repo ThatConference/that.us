@@ -13,6 +13,5 @@
 		17.849.02"
 		fill="none"
 		stroke="currentColor"
-		stroke-width="8"
-	/>
+		stroke-width="8" />
 </svg>

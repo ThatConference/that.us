@@ -1,11 +1,9 @@
 <section class="bg-thatBlue-700 py-12 lg:py-16">
 	<div
 		class="relative mx-auto max-w-screen-xl px-4 sm:px-6 lg:flex lg:items-center
-      lg:justify-between lg:px-8"
-	>
+      lg:justify-between lg:px-8">
 		<h2
-			class="text-3xl font-semibold leading-10 tracking-tight text-white sm:text-4xl sm:leading-none"
-		>
+			class="text-3xl font-semibold leading-10 tracking-tight text-white sm:text-4xl sm:leading-none">
 			Are you ready to expand your network?
 			<br />
 			<span class="text-that-orange">Signup today, it's free.</span>
@@ -18,8 +16,7 @@
             text-base font-medium leading-6 text-white shadow
             transition duration-150
             ease-in-out hover:bg-thatOrange-500
-            focus:border-thatOrange-700 focus:outline-none focus:ring-that-orange md:py-4 md:px-10 md:text-lg"
-				>
+            focus:border-thatOrange-700 focus:outline-none focus:ring-that-orange md:py-4 md:px-10 md:text-lg">
 					Join today!
 				</a>
 			</div>
@@ -31,8 +28,7 @@
             transition duration-150 ease-in-out
             hover:bg-thatBlue-500 hover:text-white
             focus:border-thatBlue-800 focus:bg-thatBlue-500
-            focus:text-white focus:outline-none focus:ring-thatBlue-500 md:py-4 md:px-10 md:text-lg"
-				>
+            focus:text-white focus:outline-none focus:ring-thatBlue-500 md:py-4 md:px-10 md:text-lg">
 					Upcoming Activities
 				</a>
 			</div>

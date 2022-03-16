@@ -53,8 +53,7 @@
 					title: 'View Activities',
 					href: '/activities'
 				}}
-				{returnTo}
-			/>
+				{returnTo} />
 		</div>
 	</div>
 </StackedLayout>

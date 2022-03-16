@@ -7,14 +7,12 @@
 <div class="flex flex-col justify-center">
 	<div class="relative py-3 sm:mx-auto sm:max-w-xl">
 		<div
-			class="absolute inset-0 -skew-y-6 transform bg-gradient-to-r from-thatBlue-400 to-thatBlue-700 shadow-lg sm:-rotate-6 sm:skew-y-0 sm:rounded-3xl"
-		/>
+			class="absolute inset-0 -skew-y-6 transform bg-gradient-to-r from-thatBlue-400 to-thatBlue-700 shadow-lg sm:-rotate-6 sm:skew-y-0 sm:rounded-3xl" />
 		<div class="relative bg-white px-4 py-6 shadow-lg sm:rounded-3xl sm:p-14">
 			<div class="mx-auto max-w-md">
 				<a href={`/events/${event.slug}`}>
 					<div
-						class="flex transform flex-col justify-center transition duration-500 ease-in-out hover:scale-105"
-					>
+						class="flex transform flex-col justify-center transition duration-500 ease-in-out hover:scale-105">
 						<img src={event.logo} class="h-24" alt="THAT Confernece Logo" />
 					</div>
 				</a>
@@ -57,8 +55,7 @@
 						<p>
 							<a
 								href={`/events/${event.slug}/tickets`}
-								class="text-that-red hover:text-thatRed-600"
-							>
+								class="text-that-red hover:text-thatRed-600">
 								Purchase Now &rarr;
 							</a>
 						</p>

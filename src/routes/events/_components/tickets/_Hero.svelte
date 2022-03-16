@@ -14,8 +14,7 @@
 		<div class="flex flex-col items-center sm:flex-row sm:justify-between">
 			<div class="flex flex-col space-y-12">
 				<h1
-					class="text-4xl font-extrabold uppercase text-thatBlue-500 sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl"
-				>
+					class="text-4xl font-extrabold uppercase text-thatBlue-500 sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl">
 					Event Tickets
 				</h1>
 
@@ -82,14 +81,12 @@
 				class="h-6 w-6 animate-bounce"
 				fill="none"
 				viewBox="0 0 24 24"
-				stroke="currentColor"
-			>
+				stroke="currentColor">
 				<path
 					stroke-linecap="round"
 					stroke-linejoin="round"
 					stroke-width="2"
-					d="M19 14l-7 7m0 0l-7-7m7 7V3"
-				/>
+					d="M19 14l-7 7m0 0l-7-7m7 7V3" />
 			</svg>
 		</div>
 	</div>

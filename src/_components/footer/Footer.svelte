@@ -37,8 +37,7 @@
 		</div>
 
 		<div
-			class="mt-12 grid grid-cols-2 gap-12 pt-12 md:grid-cols-3 xl:col-span-3 xl:mt-0 xl:grid-cols-6"
-		>
+			class="mt-12 grid grid-cols-2 gap-12 pt-12 md:grid-cols-3 xl:col-span-3 xl:mt-0 xl:grid-cols-6">
 			<div>
 				<h3 class="text-sm font-semibold uppercase tracking-wider text-gray-400">THAT</h3>
 				<ul class="mt-6 space-y-4">
@@ -46,8 +45,7 @@
 						<li>
 							<a
 								href={thatLink.href}
-								class="text-base text-gray-500 hover:font-semibold hover:text-that-blue focus:border-thatOrange-700 focus:ring-that-orange"
-							>
+								class="text-base text-gray-500 hover:font-semibold hover:text-that-blue focus:border-thatOrange-700 focus:ring-that-orange">
 								{thatLink.text}
 							</a>
 						</li>
@@ -64,8 +62,7 @@
 						<li>
 							<a
 								href={link.href}
-								class="text-base text-gray-500 hover:font-semibold hover:text-that-blue focus:border-thatOrange-700 focus:ring-that-orange"
-							>
+								class="text-base text-gray-500 hover:font-semibold hover:text-that-blue focus:border-thatOrange-700 focus:ring-that-orange">
 								{link.text}
 							</a>
 						</li>
@@ -80,8 +77,7 @@
 						<li>
 							<a
 								href={supportLink.href}
-								class="text-base text-gray-500 hover:font-semibold hover:text-that-blue focus:border-thatOrange-700 focus:ring-that-orange"
-							>
+								class="text-base text-gray-500 hover:font-semibold hover:text-that-blue focus:border-thatOrange-700 focus:ring-that-orange">
 								{supportLink.text}
 							</a>
 						</li>
@@ -96,8 +92,7 @@
 						<li>
 							<a
 								href={companyLink.href}
-								class="text-base text-gray-500 hover:font-semibold hover:text-that-blue focus:border-thatOrange-700 focus:ring-that-orange"
-							>
+								class="text-base text-gray-500 hover:font-semibold hover:text-that-blue focus:border-thatOrange-700 focus:ring-that-orange">
 								{companyLink.text}
 							</a>
 						</li>
@@ -112,8 +107,7 @@
 						<li>
 							<a
 								href={leaglLink.href}
-								class="text-base text-gray-500 hover:font-semibold hover:text-that-blue focus:border-thatOrange-700 focus:ring-that-orange"
-							>
+								class="text-base text-gray-500 hover:font-semibold hover:text-that-blue focus:border-thatOrange-700 focus:ring-that-orange">
 								{leaglLink.text}
 							</a>
 						</li>
@@ -128,8 +122,7 @@
 						<li>
 							<a
 								href={link.href}
-								class="text-base text-gray-500 hover:font-semibold hover:text-that-blue focus:border-thatOrange-700 focus:ring-that-orange"
-							>
+								class="text-base text-gray-500 hover:font-semibold hover:text-that-blue focus:border-thatOrange-700 focus:ring-that-orange">
 								{link.text}
 							</a>
 						</li>

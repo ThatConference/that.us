@@ -73,12 +73,10 @@
 							<ul class="grid grid-cols-1 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
 								{#each $state.context.items as c (c.id)}
 									<li
-										class="col-span-1 transform rounded-lg bg-white shadow transition duration-500 ease-in-out hover:scale-105 hover:bg-that-offWhite"
-									>
+										class="col-span-1 transform rounded-lg bg-white shadow transition duration-500 ease-in-out hover:scale-105 hover:bg-that-offWhite">
 										<a
 											href={`/communities/${c.slug}`}
-											class="flex h-full flex-col justify-between p-4 text-center focus:outline-none"
-										>
+											class="flex h-full flex-col justify-between p-4 text-center focus:outline-none">
 											<CommunityCard community={c} />
 										</a>
 									</li>

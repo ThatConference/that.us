@@ -46,8 +46,7 @@
 	<div
 		class="flex flex-1 items-center justify-between rounded-md border bg-gray-50"
 		class:bg-green-50={submitSuccess}
-		class:border-green-500={submitSuccess}
-	>
+		class:border-green-500={submitSuccess}>
 		<div class="flex-1 px-4 py-2 text-sm">
 			<button type="button" class="w-full text-left" on:click={() => (open = !open)}>
 				<div class="flex items-center justify-between space-x-4">
@@ -64,14 +63,12 @@
 								class="h-6 w-6 animate-bounce"
 								fill="none"
 								viewBox="0 0 24 24"
-								stroke="currentColor"
-							>
+								stroke="currentColor">
 								<path
 									stroke-linecap="round"
 									stroke-linejoin="round"
 									stroke-width="2"
-									d="M19 14l-7 7m0 0l-7-7m7 7V3"
-								/>
+									d="M19 14l-7 7m0 0l-7-7m7 7V3" />
 							</svg>
 						{/if}
 					</div>
@@ -88,8 +85,7 @@
 									<select
 										name="tshirtSize"
 										bind:value={tshirtSizeSelection}
-										class="form-select mt-1 block w-full rounded-md text-sm"
-									>
+										class="form-select mt-1 block w-full rounded-md text-sm">
 										<option>Please Select</option>
 										{#each tShirtSizes.options as option}
 											<option value={option.value}>{option.label}</option>
@@ -104,8 +100,7 @@
 										<span class="text-gray-700">Please select your hoodie size (unisex only).</span>
 										<select
 											bind:value={hoodieSizeSelection}
-											class="form-select mt-1 block w-full rounded-md text-sm"
-										>
+											class="form-select mt-1 block w-full rounded-md text-sm">
 											<option>Please Select</option>
 											{#each hoodieSizes.options as option}
 												<option value={option.value}>{option.label}</option>
@@ -121,8 +116,7 @@
 										<span class="text-gray-700">Do you have any dietary restrictions?</span>
 										<select
 											bind:value={dietaryRequirementsSelection}
-											class="form-multiselect mt-1 block w-full text-sm"
-										>
+											class="form-multiselect mt-1 block w-full text-sm">
 											<option>Please Select</option>
 											{#each dietaryRequirements.options as option}
 												<option value={option.value}>{option.label}</option>

@@ -77,8 +77,7 @@
 					<img
 						class="lazyload w-full rounded-lg shadow"
 						src="/images/ActivityCreateExample.jpg"
-						alt="New Activity Form"
-					/>
+						alt="New Activity Form" />
 					<figcaption>Example: New Activity Form</figcaption>
 				</figure>
 			</div>
@@ -100,8 +99,7 @@
 		</div>
 		<div
 			class="my-12 mx-auto flex max-w-prose flex-col items-center justify-center
-        lg:max-w-none"
-		>
+        lg:max-w-none">
 			<div class="flex space-x-4 text-base">
 				<StandardLink href="/support/joining-an-activity/">Joining an Activity</StandardLink>
 				<HighlightLink href="/support/staying-up-to-date/">Staying Up To Date</HighlightLink>

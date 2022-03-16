@@ -96,8 +96,7 @@
 					on:XCHANGE_CONTACT={() =>
 						send('XCHANGE_CONTACT', {
 							id: $state.context.profile.id
-						})}
-				/>
+						})} />
 			</div>
 
 			{#if $state?.context?.profile?.members?.length > 0}
@@ -116,8 +115,7 @@
 				<div in:fade={{ delay: getDelay() }}>
 					<PartnerCta
 						action={$state.context.profile.callToActionSpotlight}
-						url={$state.context.profile.callToActionUrl}
-					/>
+						url={$state.context.profile.callToActionUrl} />
 				</div>
 			{/if}
 
@@ -144,8 +142,7 @@
 					on:TOGGLE_FOLLOW={() =>
 						send('FOLLOW', {
 							id: $state.context.profile.id
-						})}
-				/>
+						})} />
 			</div>
 		</div>
 	{/if}

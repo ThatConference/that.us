@@ -41,21 +41,18 @@
 </script>
 
 <div
-	class="fixed inset-x-0 bottom-0 z-10 px-4 pb-6 sm:inset-0 sm:flex sm:items-center sm:justify-center sm:p-0"
->
+	class="fixed inset-x-0 bottom-0 z-10 px-4 pb-6 sm:inset-0 sm:flex sm:items-center sm:justify-center sm:p-0">
 	<div class="fixed inset-0 transition-opacity">
 		<div class="absolute inset-0 bg-gray-500 opacity-75" />
 	</div>
 
 	<div
-		class="transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 shadow-xl transition-all sm:w-full sm:max-w-sm sm:p-6"
-	>
+		class="transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 shadow-xl transition-all sm:w-full sm:max-w-sm sm:p-6">
 		<div class="absolute top-0 right-0 hidden pt-4 pr-4 sm:block">
 			<button
 				type="button"
 				class=" rounded-md text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-thatBlue-500 focus:ring-offset-2"
-				on:click={() => dispatch('close')}
-			>
+				on:click={() => dispatch('close')}>
 				<span class="sr-only">Close</span>
 				<svg
 					class="h-6 w-6"
@@ -63,14 +60,12 @@
 					fill="none"
 					viewBox="0 0 24 24"
 					stroke="currentColor"
-					aria-hidden="true"
-				>
+					aria-hidden="true">
 					<path
 						stroke-linecap="round"
 						stroke-linejoin="round"
 						stroke-width="2"
-						d="M6 18L18 6M6 6l12 12"
-					/>
+						d="M6 18L18 6M6 6l12 12" />
 				</svg>
 			</button>
 		</div>
@@ -92,8 +87,7 @@
 							ballTopLeft="#f74646"
 							ballTopRight="#ff834d"
 							ballBottomLeft="#26529A"
-							ballBottomRight="#555555"
-						/>
+							ballBottomRight="#555555" />
 
 						<div class="mt-2">
 							<p class="text-md leading-5 text-gray-500">Invoking api and making data.</p>
@@ -112,8 +106,7 @@
 								<button
 									type="button"
 									class="w-full py-4 text-sm leading-5 font-medium"
-									on:click={() => tryAgain()}
-								>
+									on:click={() => tryAgain()}>
 									<span class="text-lg">Retry</span>
 								</button>
 							</Shell>
@@ -128,29 +121,25 @@
 								}}
 								on:backspace={() => {
 									pinNumber = pinNumber.slice(0, -1);
-								}}
-							/>
+								}} />
 						</div>
 
 						<div
-							class="relative border border-gray-300 rounded-md px-3 py-2 shadow-sm focus-within:ring-1 focus-within:ring-thatBlue-800 focus-within:border-thatBlue-800"
-						>
+							class="relative border border-gray-300 rounded-md px-3 py-2 shadow-sm focus-within:ring-1 focus-within:ring-thatBlue-800 focus-within:border-thatBlue-800">
 							<input
 								autofocus
 								type="text"
 								name="pinNumber"
 								bind:value={pinNumber}
 								class="block w-full border-0 p-0 text-gray-900 placeholder-gray-400 focus:ring-0 sm:text-sm"
-								placeholder="1234"
-							/>
+								placeholder="1234" />
 						</div>
 
 						<div class="flex">
 							<Shell>
 								<button
 									class="w-full py-4 text-sm leading-5 font-medium"
-									on:click={() => handleCheckIn()}
-								>
+									on:click={() => handleCheckIn()}>
 									<span class="text-lg">Complete Check-In</span>
 								</button>
 							</Shell>

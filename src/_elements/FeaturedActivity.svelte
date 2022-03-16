@@ -25,8 +25,7 @@
 
 <a sveltekit:prefetch href="/activities/{id}/">
 	<div
-		class="h-full w-full transform rounded-lg bg-that-blue py-10 px-6 text-center shadow transition duration-500 ease-in-out hover:scale-105 hover:bg-thatBlue-400 xl:px-10 xl:text-left"
-	>
+		class="h-full w-full transform rounded-lg bg-that-blue py-10 px-6 text-center shadow transition duration-500 ease-in-out hover:scale-105 hover:bg-thatBlue-400 xl:px-10 xl:text-left">
 		<div class="space-y-6 xl:space-y-10">
 			<div>
 				<img
@@ -34,8 +33,7 @@
 					data-sizes="auto"
 					data-src={srcset.src}
 					data-srcset={srcset.srcset}
-					alt={`${host.firstName} ${host.lastName}`}
-				/>
+					alt={`${host.firstName} ${host.lastName}`} />
 			</div>
 
 			<div class="flex flex-col text-lg font-medium leading-6">
