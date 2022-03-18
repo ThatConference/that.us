@@ -6,18 +6,24 @@
 	<div class="my-36 mx-auto max-w-screen-xl px-4 sm:px-6 md:my-12">
 		<div class="flex flex-col space-y-24 lg:grid lg:grid-cols-7">
 			<div class="col-span-4">
-				<h2 class="font-extrabold uppercase tracking-wider text-thatRed-500">CAMP FOR GEEKS</h2>
-				<h1 class="mt-6 text-5xl font-semibold text-thatBlue-700">
+				<h2 class="font-extrabold uppercase tracking-wider text-thatRed-500 antialiased">
+					CAMP FOR GEEKS
+				</h2>
+				<h1 class="mt-6 text-5xl font-bold text-thatBlue-700 antialiased">
 					Howdy. We’re a full-stack, tech-obsessed community of fun, code-loving humans who share
 					and learn together.
 				</h1>
 
 				<p class="mt-6 text-2xl text-gray-500">
-					We geek-out in <a href="/tx/"
-						><span class="font-extrabold text-thatRed-500">Texas</span></a>
+					We geek-out in
+					<a href="/tx/">
+						<span class="font-extrabold text-thatRed-500">Texas</span>
+					</a>
 					and
-					<a href="/wi/"><span class="font-extrabold text-thatRed-500">Wisconsin</span></a> once a year
-					but we host digital events all the time.
+					<a href="/wi/">
+						<span class="font-extrabold text-thatRed-500">Wisconsin</span>
+					</a>
+					once a year but we host digital events all the time.
 				</p>
 				<div class="mt-20 flex space-x-4">
 					<div><ActionLink href="/support/">What is THAT Community?</ActionLink></div>
