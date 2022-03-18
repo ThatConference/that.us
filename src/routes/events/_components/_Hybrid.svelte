@@ -2,7 +2,6 @@
 	export let event;
 
 	import { getContext } from 'svelte';
-	import { fade } from 'svelte/transition';
 	import { goto } from '$app/navigation';
 
 	import { Highlight as HighlightLink } from '$elements/links';
@@ -13,8 +12,10 @@
 	import CallForSpeakers from '$components/cta/_CallForSpeakers.svelte';
 
 	import Speakers from './speakers/_Speakers.svelte';
+	import Hero from './hybrid/Hero.svelte';
+	import WhatIs from './hybrid/WhatIs.svelte';
 	import What from './hybrid/_What.svelte';
-	import Hero from './hybrid/_Hero.svelte';
+	import Gallery from './hybrid/Gallery.svelte';
 	import Partners from './hybrid/_Partners.svelte';
 	import FAQ from './hybrid/_FAQ.svelte';
 	import CamperTickets from './hybrid/_CamperTickets.svelte';
@@ -99,16 +100,24 @@
 </script>
 
 <Layout>
-	<section in:fade slot="nav">
+	<section slot="nav">
 		<Nav />
 	</section>
 
-	<section in:fade>
+	<section>
 		<Hero {event} />
 	</section>
 
-	<section in:fade={{ delay: 200 }}>
+	<section>
+		<WhatIs />
+	</section>
+
+	<section>
 		<What {event} />
+	</section>
+
+	<section>
+		<Gallery />
 	</section>
 
 	<section id="tickets">
