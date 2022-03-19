@@ -53,6 +53,7 @@
 
 		<div class="relative mt-24 flex flex-col space-y-4 p-8 sm:flex-row sm:space-y-0 sm:space-x-4">
 			<div class="flex-1 rounded-md shadow">
+				<!-- svelte-ignore a11y-missing-attribute -->
 				<a use:scrollto={'#professionals'}>
 					<Shell>
 						<div class="px-4 py-2 font-extrabold uppercase">Professionals</div>
@@ -60,6 +61,7 @@
 				</a>
 			</div>
 			<div class="flex-1 rounded-md shadow">
+				<!-- svelte-ignore a11y-missing-attribute -->
 				<a use:scrollto={'#workshops'}>
 					<Shell>
 						<div class="px-4 py-2 font-extrabold uppercase">Workshops</div>
@@ -67,6 +69,7 @@
 				</a>
 			</div>
 			<div class="flex-1 rounded-md shadow">
+				<!-- svelte-ignore a11y-missing-attribute -->
 				<a use:scrollto={'#families'}>
 					<Shell>
 						<div class="px-4 py-2 font-extrabold uppercase">Families</div>

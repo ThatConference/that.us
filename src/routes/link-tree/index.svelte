@@ -94,16 +94,3 @@
 		</div>
 	</div>
 </Layout>
-
-<style>
-	.centerIcon {
-		--size: 100px;
-		position: fixed;
-		top: 0;
-		left: 0;
-		inset: calc(50% - calc(var(--size) / 2));
-		border-radius: var(--size);
-		height: var(--size);
-		width: var(--size);
-	}
-</style>

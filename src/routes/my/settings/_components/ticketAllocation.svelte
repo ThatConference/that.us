@@ -100,14 +100,14 @@
 		<div class="col-span-2">
 			{#if isAllocated}
 				<ShellButton>
-					<a
+					<button
 						on:click={() => (isAllocated = false)}
 						class="w-full px-8 py-1 text-center text-sm font-medium leading-5 md:px-10 ">
 						<span>
 							<Icon data={refresh} class="-ml-1 mr-2 h-4 w-4" />
 						</span>
 						Re-Transfer
-					</a>
+					</button>
 				</ShellButton>
 			{:else}
 				<button

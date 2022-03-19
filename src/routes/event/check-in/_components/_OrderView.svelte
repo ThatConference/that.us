@@ -46,6 +46,7 @@
 <section>
 	<div>
 		<div class="flex flex-col space-y-4 sm:flex-row sm:items-center sm:space-y-0 sm:space-x-8">
+			<!-- svelte-ignore a11y-autofocus -->
 			<input
 				autofocus
 				class="form-input rounded-md border"

@@ -1,5 +1,5 @@
 <script>
-	export let eventTicket;
+	// export let eventTicket;
 
 	import { goto } from '$app/navigation';
 
