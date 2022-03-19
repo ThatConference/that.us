@@ -34,7 +34,7 @@
 <section class="bg-white py-12 lg:py-16">
 	<div class="relative mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
 		<h1
-			class="text-4xl font-semibold leading-10 tracking-tight text-thatBlue-700 sm:text-5xl sm:leading-none">
+			class="text-2xl font-extrabold uppercase text-thatBlue-700 antialiased sm:text-3xl lg:text-4xl xl:text-5xl">
 			Upcoming Events
 		</h1>
 

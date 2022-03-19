@@ -5,9 +5,9 @@
 
 <section class="py-12 lg:py-16">
 	<div class="relative mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
-		<div class="mx-auto max-w-4xl text-center">
+		<div class="mx-auto max-w-5xl text-center">
 			<h2
-				class="text-center text-4xl font-semibold leading-10 tracking-tight text-thatBlue-700 sm:text-5xl sm:leading-none">
+				class="text-center text-2xl font-extrabold uppercase text-thatBlue-700 antialiased sm:text-3xl lg:text-4xl xl:text-5xl">
 				Trusted by geeks from
 				{countries}
 				countries

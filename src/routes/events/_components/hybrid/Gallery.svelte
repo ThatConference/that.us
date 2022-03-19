@@ -115,7 +115,7 @@
 	}
 </script>
 
-<div class="relative my-24 overflow-hidden">
+<div id="gallery" class="relative my-24 overflow-hidden">
 	<div class="grid grid-cols-5 gap-2 text-white">
 		{#each displayItems as item, i}
 			{#if i % 2 === 0}

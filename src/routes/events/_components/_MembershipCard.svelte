@@ -17,7 +17,7 @@
 	}
 </script>
 
-<div class="relative bg-thatBlue-100 bg-opacity-25">
+<div class="relative ">
 	<div class="pt-12 sm:pt-16 lg:pt-20">
 		<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 			<slot name="header" />
