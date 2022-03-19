@@ -130,24 +130,6 @@
 								class:rounded-l-2xl={i === 2} />
 						</a>
 					</div>
-					{#if i === 2}
-						<div class="absolute bottom-6 z-20 flex space-x-4 place-self-start blur-none">
-							<button
-								on:click={backward}
-								class="h-16 w-16 rounded-full bg-that-red duration-500 ease-in-out hover:scale-105">
-								<div class="flip flex flex-col items-center">
-									<ChevronRight classes="h-12" />
-								</div>
-							</button>
-							<button
-								on:click={forward}
-								class="h-16 w-16 rounded-full bg-that-red duration-500 ease-in-out hover:scale-105">
-								<div class="flex flex-col items-center">
-									<ChevronRight classes="h-12" />
-								</div>
-							</button>
-						</div>
-					{/if}
 				</div>
 			{:else}
 				<div
@@ -163,11 +145,31 @@
 		{/each}
 	</div>
 
-	<div class="relative mx-auto flex max-w-7xl pt-2">
-		<div class="font-semibold text-gray-500">
+	<div class="relative mx-auto max-w-7xl">
+		<div class="-mt-16 flex flex-col items-center">
+			<div class="z-20 flex space-x-12 text-white blur-none">
+				<button
+					on:click={backward}
+					class="h-16 w-16 rounded-full bg-that-red duration-500 ease-in-out hover:scale-105">
+					<div class="flip flex flex-col items-center">
+						<ChevronRight classes="h-12" />
+					</div>
+				</button>
+				<button
+					on:click={forward}
+					class="h-16 w-16 rounded-full bg-that-red duration-500 ease-in-out hover:scale-105">
+					<div class="flex flex-col items-center">
+						<ChevronRight classes="h-12" />
+					</div>
+				</button>
+			</div>
+		</div>
+
+		<div class="flex font-semibold text-gray-500">
 			<span>Check out more fun conference photos</span>
-			<a href="https://flickr.com/thatconference" target="_blank"
-				><span class="font-extrabold text-thatRed-500">here</span></a>
+			<a href="https://flickr.com/thatconference" target="_blank">
+				<span class="pl-1 font-extrabold text-thatRed-500">here</span>
+			</a>
 		</div>
 	</div>
 </div>
