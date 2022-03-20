@@ -1,3 +1,15 @@
+# [2.11.0](https://github.com/ThatConference/that.us/compare/v2.10.1...v2.11.0) (2022-03-20)
+
+
+### Bug Fixes
+
+* fixes lint errors ([83155e3](https://github.com/ThatConference/that.us/commit/83155e3823ecbd89ed13546f60c6a7446b3cb272))
+
+
+### Features
+
+* adds new nav for events ([8c094f2](https://github.com/ThatConference/that.us/commit/8c094f21564849aef9e1cf5bba0b205adb44824b))
+
 ## [2.10.1](https://github.com/ThatConference/that.us/compare/v2.10.0...v2.10.1) (2022-03-16)
 
 
