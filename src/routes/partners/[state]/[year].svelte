@@ -12,8 +12,6 @@
 		const event = await getEventPartners(eventSlug);
 		const levels = groupBy(event.partners, 'level');
 
-		console.log({ event });
-
 		return {
 			props: {
 				event,

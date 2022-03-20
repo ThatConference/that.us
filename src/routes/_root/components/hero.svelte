@@ -25,8 +25,11 @@
 					</a>
 					once a year but we host digital events all the time.
 				</p>
-				<div class="mt-20 flex space-x-4">
-					<div><ActionLink href="/support/">What is THAT Community?</ActionLink></div>
+				<div
+					class="mt-20 flex flex-col items-center justify-center space-y-12 sm:flex-row sm:justify-start sm:space-y-0 sm:space-x-4">
+					<div>
+						<ActionLink href="/support/">What is THAT Community?</ActionLink>
+					</div>
 					<div><StandardLink href="/events/">View all Events</StandardLink></div>
 				</div>
 			</div>
