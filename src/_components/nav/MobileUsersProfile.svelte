@@ -37,7 +37,7 @@
 	];
 </script>
 
-<div class="border-t border-thatBlue-400 pb-3">
+<div class="border-grey-400 border-t pb-3">
 	{#if $session.isAuthenticated}
 		<div class="relative grid gap-6 px-5 py-6 sm:gap-8 sm:p-8 lg:grid-cols-2">
 			<div class="-m-3 flex items-start p-3">
@@ -90,11 +90,13 @@
 			{:else}
 				<div class="flex flex-col space-y-2">
 					{#each loggedInMenuItems as { rel, href, text }}
-						<div
-							class="flex px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-that-blue focus:outline-none focus:text-white focus:bg-that-blue"
-							class:text-gray-800={darkMode}>
-							<a {rel} {href}>{text}</a>
-						</div>
+						<a {rel} {href}>
+							<div
+								class="flex px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-that-blue focus:outline-none focus:text-white focus:bg-that-blue"
+								class:text-gray-800={darkMode}>
+								{text}
+							</div>
+						</a>
 					{/each}
 				</div>
 			{/if}

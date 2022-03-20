@@ -128,6 +128,7 @@
 
 				<div
 					class="relative border border-gray-300 rounded-md px-3 py-2 shadow-sm focus-within:ring-1 focus-within:ring-thatBlue-800 focus-within:border-thatBlue-800">
+					<!-- svelte-ignore a11y-autofocus -->
 					<input
 						autofocus
 						type="text"

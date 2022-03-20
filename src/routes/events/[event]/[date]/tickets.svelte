@@ -19,12 +19,10 @@
 	export let event;
 
 	import { getContext } from 'svelte';
-	import { fade } from 'svelte/transition';
 	import { goto } from '$app/navigation';
 
 	import seoMetaTags from '$utils/seo/metaTags';
-	import Layout from '$elements/layouts/LandingLayout.svelte';
-	import Nav from '$components/nav/interiorNav/Top.svelte';
+	import Layout from '$components/events/layouts/hybrid/Layout.svelte';
 	import Seo from '$components/Seo.svelte';
 
 	import Hero from '../../_components/tickets/_Hero.svelte';
@@ -63,12 +61,8 @@
 
 <Seo title={metaTags.title} tags={metaTags.tags} />
 
-<Layout>
-	<section in:fade slot="nav">
-		<Nav />
-	</section>
-
-	<section>
+<Layout {event}>
+	<section class="mt-40">
 		<Hero {event} />
 	</section>
 

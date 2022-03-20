@@ -28,10 +28,13 @@
 	}
 </script>
 
-<div>
+<div id="tickets">
 	<div class="bg-thatBlue-800 px-4 pt-12 sm:px-6 lg:px-8 lg:pt-20">
 		<div class="relative flex flex-col items-center justify-center space-y-12">
-			<p class="text-3xl font-extrabold text-white sm:text-4xl lg:text-5xl">Camper Tickets</p>
+			<p
+				class=" text-2xl font-extrabold uppercase text-white antialiased sm:text-3xl lg:text-4xl xl:text-5xl">
+				Camper Tickets
+			</p>
 
 			<p class="mx-auto max-w-6xl text-center text-xl text-gray-300 sm:mt-5 sm:text-2xl">
 				As a Camper, you receive up to 4 days of 200 professional sessions across various

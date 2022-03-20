@@ -1,6 +1,6 @@
 <script>
 	import { getContext } from 'svelte';
-	import MobileUsersProfile from '../_MobileUsersProfile.svelte';
+	import MobileUsersProfile from '../MobileUsersProfile.svelte';
 
 	const mobileVisible = getContext('IS_Mobile_VIEW');
 </script>

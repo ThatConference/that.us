@@ -1,7 +1,7 @@
 <script>
 	export let partner;
 	export let isFollowing = false;
-	export let wasContactExchanged = false;
+	// export let wasContactExchanged = false;
 
 	import { createEventDispatcher } from 'svelte';
 	import { session } from '$app/stores';

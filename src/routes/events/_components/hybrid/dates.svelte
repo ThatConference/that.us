@@ -8,9 +8,13 @@
 		.groupBy(({ dueDate }) => dayjs(dueDate).format('M/YYYY'))
 		.sortBy(({ dueDate }) => dayjs(dueDate).format('YYYY'))
 		.value();
+
+	function hasPasted(milestone) {
+		return dayjs().isAfter(milestone, 'day');
+	}
 </script>
 
-<div class="my-24">
+<div id="dates" class="my-24">
 	<div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 ">
 		<div class="lg:grid lg:grid-cols-1 lg:items-start lg:gap-32">
 			<!-- left side -->
@@ -18,7 +22,7 @@
 				<div class="flex items-center space-x-12">
 					<div class="w-full">
 						<h2
-							class="text-center text-2xl font-extrabold uppercase text-gray-500 sm:text-left sm:text-3xl lg:text-4xl">
+							class="text-center text-2xl font-extrabold uppercase text-thatBlue-700 antialiased sm:text-left sm:text-3xl lg:text-4xl xl:text-5xl">
 							Key Dates You Need To Know
 						</h2>
 					</div>
@@ -44,7 +48,9 @@
 
 									{#each month as milestone}
 										<div class="flex flex-col space-y-4">
-											<div class="prose-lg flex space-x-4 text-gray-500">
+											<div
+												class="prose-lg flex space-x-4 text-gray-500"
+												class:line-through={hasPasted(milestone.dueDate)}>
 												<div>
 													{dayjs(milestone.dueDate).format('MM/DD/YY')}
 												</div>

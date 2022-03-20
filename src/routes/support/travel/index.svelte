@@ -26,12 +26,12 @@
 	<div class="flex flex-col place-content-center gap-4 md:grid md:grid-cols-2">
 		<div class="transform p-12 transition duration-500 ease-in-out hover:scale-105">
 			<a href="/support/travel/wi/">
-				<img src="/images/that-wi-logo.svg" />
+				<img src="/images/that-wi-logo.svg" alt="wi logo" />
 			</a>
 		</div>
 		<div class="transform p-12 transition duration-500 ease-in-out hover:scale-105">
 			<a href="/support/travel/tx/">
-				<img src="/images/that-tx-logo.svg" />
+				<img src="/images/that-tx-logo.svg" alt="tx logo" />
 			</a>
 		</div>
 	</div>

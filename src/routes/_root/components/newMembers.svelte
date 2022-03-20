@@ -37,7 +37,7 @@
 	<div class="mx-auto max-w-screen-xl px-8">
 		<div class="relative py-20 text-left">
 			<h3
-				class="text-4xl font-semibold leading-10 tracking-tight text-thatBlue-700 sm:text-5xl sm:leading-none">
+				class="text-2xl font-extrabold uppercase text-thatBlue-700 antialiased sm:text-3xl lg:text-4xl xl:text-5xl">
 				Welcome to THAT family!
 			</h3>
 			<p class="mt-4 text-xl leading-7 text-gray-500">

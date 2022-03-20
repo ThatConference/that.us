@@ -1,9 +1,6 @@
 <script>
 	export let classes;
 	import { fly, fade } from 'svelte/transition';
-
-	export let delay = 2000;
-	export let duration = 1000;
 </script>
 
 <svg

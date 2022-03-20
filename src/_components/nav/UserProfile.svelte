@@ -35,7 +35,7 @@
 					<Icon data={userIcon} class="h-8 w-8 rounded-full" />
 				{/if}
 			{:else}
-				<div class="transition duration-500 ease-in-out transform hover:scale-105">
+				<div class="transition duration-500 ease-in-out transform hover:scale-110">
 					<Icon data={userIcon} class="h-8 w-8 rounded-full" />
 				</div>
 			{/if}

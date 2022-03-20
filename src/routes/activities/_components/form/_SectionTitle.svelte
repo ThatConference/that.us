@@ -1,7 +1,6 @@
 <script>
 	export let title = '';
 	export let description = '';
-	export let stepNumber;
 
 	import Icon from 'svelte-awesome';
 	import { stepForward } from '$components/svelte-awesome-icons';
@@ -16,7 +15,6 @@
 			<div class="block bg-gray-100 px-1">
 				<span
 					class="flex h-8 w-8 items-center justify-center rounded-full bg-white ring-4 ring-gray-300">
-					<!-- <span class="text-sm text-gray-500">{stepNumber}</span> -->
 					<Icon data={stepForward} class="h-4 w-4 text-gray-500" />
 				</span>
 			</div>

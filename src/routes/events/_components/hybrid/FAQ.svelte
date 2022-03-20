@@ -29,6 +29,6 @@
 	];
 </script>
 
-<div>
+<div id="faq">
 	<FAQS {faqs} />
 </div>
