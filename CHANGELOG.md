@@ -1,3 +1,10 @@
+## [2.11.1](https://github.com/ThatConference/that.us/compare/v2.11.0...v2.11.1) (2022-03-20)
+
+
+### Bug Fixes
+
+* fixes button and removes console ([8e08c94](https://github.com/ThatConference/that.us/commit/8e08c94017829812c1e45b2de8bb81a79eb6630b))
+
 # [2.11.0](https://github.com/ThatConference/that.us/compare/v2.10.1...v2.11.0) (2022-03-20)
 
 
