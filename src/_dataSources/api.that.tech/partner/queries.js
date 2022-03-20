@@ -237,6 +237,11 @@ export const QUERY_EVENT_PARTNERS = `
 				get {
 					logo
 					name
+					slug
+					venues {
+						city
+						state
+					}
 					partners {
 						...coreFieldsFragment
 						level

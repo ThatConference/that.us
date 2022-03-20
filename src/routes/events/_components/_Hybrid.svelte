@@ -6,8 +6,7 @@
 
 	import { Highlight as HighlightLink } from '$elements/links';
 
-	import Layout from '$elements/layouts/LandingLayout.svelte';
-	import Nav from '$components/nav/interiorNav/Top.svelte';
+	import Layout from '$components/events/layouts/hybrid/Layout.svelte';
 	import UpNextEvent from '$components/activities/UpNextEvent.svelte';
 	import CallForSpeakers from '$components/cta/_CallForSpeakers.svelte';
 
@@ -101,12 +100,8 @@
 </script>
 
 <div class="bg-thatBlue-100 bg-opacity-25">
-	<Layout>
-		<section slot="nav">
-			<Nav />
-		</section>
-
-		<section>
+	<Layout {event}>
+		<section class="mt-24">
 			<Hero {event} />
 		</section>
 

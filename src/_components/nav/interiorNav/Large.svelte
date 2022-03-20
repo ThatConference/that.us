@@ -9,7 +9,7 @@
 
 	import ActivitySlideOver from '../../activityCenter/ActivitySlideOver.svelte';
 	import DesktopLink from './_DesktopLink.svelte';
-	import UserProfile from '../_UserProfile.svelte';
+	import UserProfile from '../UserProfile.svelte';
 	import { clickOutside } from '$elements/actions';
 
 	let activityVisible;

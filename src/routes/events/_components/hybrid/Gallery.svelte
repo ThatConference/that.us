@@ -1,5 +1,6 @@
 <script>
-	import { ChevronRight } from '$elements/svgs';
+	import RightArrow from '$elements/svgs/RightArrow.svelte';
+	import LeftArrow from '$elements/svgs/LeftArrow.svelte';
 
 	const gallerySize = 3;
 
@@ -151,15 +152,15 @@
 				<button
 					on:click={backward}
 					class="h-16 w-16 rounded-full bg-that-red duration-500 ease-in-out hover:scale-105">
-					<div class="flip flex flex-col items-center">
-						<ChevronRight classes="h-12" />
+					<div class="flex flex-col items-center">
+						<LeftArrow />
 					</div>
 				</button>
 				<button
 					on:click={forward}
 					class="h-16 w-16 rounded-full bg-that-red duration-500 ease-in-out hover:scale-105">
 					<div class="flex flex-col items-center">
-						<ChevronRight classes="h-12" />
+						<RightArrow />
 					</div>
 				</button>
 			</div>
@@ -173,9 +174,3 @@
 		</div>
 	</div>
 </div>
-
-<style>
-	.flip {
-		transform: scaleX(-1);
-	}
-</style>

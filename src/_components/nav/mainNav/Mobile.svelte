@@ -3,7 +3,7 @@
 	import { Standard as StandardLink } from '$elements/links';
 
 	import links from './links';
-	import MobileUsersProfile from '../_MobileUsersProfile.svelte';
+	import MobileUsersProfile from '../MobileUsersProfile.svelte';
 </script>
 
 {#each links as l}
