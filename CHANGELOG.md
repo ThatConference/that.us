@@ -1,3 +1,10 @@
+## [2.11.2](https://github.com/ThatConference/that.us/compare/v2.11.1...v2.11.2) (2022-03-21)
+
+
+### Bug Fixes
+
+* incorrect url ([362f3ed](https://github.com/ThatConference/that.us/commit/362f3ed844e6e82ec7e293a633c8bb7acb32d6e8))
+
 ## [2.11.1](https://github.com/ThatConference/that.us/compare/v2.11.0...v2.11.1) (2022-03-20)
 
 
