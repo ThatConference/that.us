@@ -10,10 +10,10 @@
 		const { event, date } = params;
 		const eventSlug = `${event}/${date}`;
 
-		const { queryEventWithSpeakersBySlug } = eventsApi(fetch);
+		const { queryEventWithFeaturedSpeakersBySlug } = eventsApi(fetch);
 
 		function query(slug) {
-			return queryEventWithSpeakersBySlug(slug).then((event) => {
+			return queryEventWithFeaturedSpeakersBySlug(slug).then((event) => {
 				switch (event.type) {
 					case 'HYBRID_MULTI_DAY':
 						eventFormat = Hybrid;

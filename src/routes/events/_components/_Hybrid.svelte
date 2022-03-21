@@ -129,7 +129,7 @@
 			</section>
 		{:else}
 			<section>
-				<Speakers {event} />
+				<Speakers title="Featured Speakers" showAllSpeakers speakers={event.featuredSpeakers} />
 			</section>
 			<section id="upnext">
 				<UpNextEvent {event}>

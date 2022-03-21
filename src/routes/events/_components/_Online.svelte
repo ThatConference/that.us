@@ -125,7 +125,7 @@
 	</section>
 
 	<section>
-		<Speakers {event} />
+		<Speakers title="Featured Speakers" showAllSpeakers speakers={event.featuredSpeakers} />
 		<UpNextEvent {event}>
 			<div slot="action">
 				<HighlightLink href={`/activities/${event.slug}`}>View the entire schedule</HighlightLink>

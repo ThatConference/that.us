@@ -184,6 +184,45 @@ export const QUERY_THAT_CONFERENCE_EVENT = `
 	}
 `;
 
+export const QUERY_EVENT_WITH_FEATURED_SPEAKERS_BY_SLUG = `
+	${eventFieldsFragment}
+	query QUERY_EVENT_WITH_FEATURED_SPEAKERS_BY_SLUG ($slug: String) {
+		events {
+			event (findBy: {slug: $slug}) {
+				get {
+					...eventFields
+					milestones {
+						title
+						description
+						dueDate
+					}
+					featuredSpeakers {
+						id
+						firstName
+						lastName
+						jobTitle
+						company
+						profileImage
+						earnedMeritBadges {
+							id
+							name
+							image
+							description
+						}
+						profileSlug
+						profileLinks {
+							isPublic
+							linkType
+							url					
+						}						
+					}
+				}
+			}
+		}
+	}
+`;
+
+
 export const QUERY_EVENT_WITH_SPEAKERS_BY_SLUG = `
 	${eventFieldsFragment}
 	query QUERY_EVENT_WITH_SPEAKERS_BY_SLUG ($slug: String) {
@@ -221,6 +260,7 @@ export const QUERY_EVENT_WITH_SPEAKERS_BY_SLUG = `
 		}
 	}
 `;
+
 
 export const QUERY_EVENT_BY_ID = `
 	${eventFieldsFragment}
@@ -396,6 +436,19 @@ export default (fetch) => {
 		});
 	}
 
+	function queryEventWithFeaturedSpeakersBySlug(slug) {
+		const variables = { slug };
+
+		return client
+			.query({ query: QUERY_EVENT_WITH_FEATURED_SPEAKERS_BY_SLUG, variables })
+			.then(({ data, errors }) => {
+				if (errors) log({ errors, tag: 'QUERY_EVENT_WITH_FEATURED_SPEAKERS_BY_SLUG' });
+
+				const { event } = data.events;
+				return event ? event.get : null;
+			});
+	}
+
 	function queryEventWithSpeakersBySlug(slug) {
 		const variables = { slug };
 
@@ -497,6 +550,7 @@ export default (fetch) => {
 		queryEventsByCommunity,
 		queryEventBySlug,
 		queryEventWithSpeakersBySlug,
+		queryEventWithFeaturedSpeakersBySlug,
 		queryEventById,
 		queryEventForCfp,
 		queryEventForAcceptedSpeaker,
