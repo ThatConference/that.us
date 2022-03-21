@@ -1,4 +1,6 @@
 <script>
+	export let event;
+
 	import { Action as ActionLink } from '$elements/links';
 </script>
 
@@ -35,7 +37,7 @@
 				professional and family tracks, so there is something to learn and experience at all ages.
 			</p>
 			<div class="pt-8">
-				<ActionLink href="/support/">View Schedule</ActionLink>
+				<ActionLink href={`/events/${event.slug}/schedule/`}>View Schedule</ActionLink>
 			</div>
 		</div>
 	</div>

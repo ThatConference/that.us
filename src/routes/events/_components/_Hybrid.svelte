@@ -106,7 +106,7 @@
 		</section>
 
 		<section>
-			<WhatIs />
+			<WhatIs {event} />
 		</section>
 
 		<section>
