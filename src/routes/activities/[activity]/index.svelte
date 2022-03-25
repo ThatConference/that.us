@@ -49,7 +49,7 @@
 			imageId,
 			description: `${activity.shortDescription}`,
 			openGraph: {
-				url: `https://that.us/activity/${activity.id}`
+				url: `https://that.us/activities/${activity.id}`
 			}
 		})
 	}))();

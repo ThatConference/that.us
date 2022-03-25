@@ -41,7 +41,7 @@
 				<a href="/signup/">create one here</a>, and then update your
 				<a href="/my/profiles/primary/">profile accordingly</a>. Once completed you can then create
 				a
-				<a href="/activity/create/">New Activity</a>. It's here where you will detail out the
+				<a href="/activities/create/">New Activity</a>. It's here where you will detail out the
 				conversation, inviting others to join in. The submission process isn't complex but it's
 				important as you want to make sure the right people join in your Activity.
 			</p>
