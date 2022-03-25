@@ -1,3 +1,10 @@
+## [2.11.3](https://github.com/ThatConference/that.us/compare/v2.11.2...v2.11.3) (2022-03-25)
+
+
+### Bug Fixes
+
+* fix url refs with activity, should be activities ([a9f6eb5](https://github.com/ThatConference/that.us/commit/a9f6eb5d4bd0cc59b52953dc77fa43d83a946157))
+
 ## [2.11.2](https://github.com/ThatConference/that.us/compare/v2.11.1...v2.11.2) (2022-03-21)
 
 
