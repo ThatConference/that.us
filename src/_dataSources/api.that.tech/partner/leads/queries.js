@@ -24,12 +24,14 @@ const QUERY_MY_NETWORK_SPONSORS = `
 						partnersNotes
 						
 						partner {
+							id
 							companyName
 							companyLogo
 							slug
 						}
 						
 						event {
+							id
 							name
 							slug
 							logo

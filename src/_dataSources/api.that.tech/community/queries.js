@@ -132,6 +132,7 @@ export const QUERY_ACTIVE_THAT_EVENTS = `
 						ticketsOnSaleFrom
 						ticketsOnSaleUntil
 						venues {
+							id
 							name
 							address
 							city

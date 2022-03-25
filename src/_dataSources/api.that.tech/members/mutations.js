@@ -64,6 +64,7 @@ export const MUTATION_UPDATE_EMERGENCY_CONTACT = `
 		members { 
 			member {
 				update(profile: { emergencyContact: $emergencyContact }) {
+					id
 					emergencyContact {
 						fullName
 						phoneNumber

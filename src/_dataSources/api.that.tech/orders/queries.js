@@ -58,6 +58,7 @@ export const QUERY_ORDER_RECEIPT = `
 		orders {
 			me {
 				order(orderId: $orderId) {
+					id
 					receipt
 				}
 			}
@@ -104,16 +105,19 @@ const allocationsFragment = `
 
 				allocatedTo {
 					... on PrivateProfile {
+						id
 						firstName
 						lastInitial
 					}
 					... on PublicProfile {
+						id
 						firstName
 						lastName
 					}
 				}
 				
 				event {
+					id
 					name
 					logo
 					slug
@@ -121,6 +125,7 @@ const allocationsFragment = `
 
 				product {
 					... on ProductBase {
+						id
 						name            
 						ticketType: type
 					}
@@ -128,6 +133,7 @@ const allocationsFragment = `
 				
 				allocatedTo {
 					... on PrivateProfile {
+						id
 						firstName
 						lastInitial              
 					}

@@ -93,6 +93,7 @@ export const QUERY_SESSION_BY_ID = `
 					slug
 				}
 				speakers {
+					id
 					firstName
 					lastName
 					bio
@@ -283,6 +284,7 @@ export const QUERY_SESSION_BY_ID_SHORT = `
 	query querySessionById($sessionId: ID!) {
 		sessions {
 			session (sessionId: $sessionId) {  
+				id
 				title
 				shortDescription
 				eventId

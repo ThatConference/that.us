@@ -19,6 +19,7 @@ export const QUERY_EVENT_PRODUCTS = `
 		events {
 			event(findBy: {id: $eventId}) {
 				get {
+					id
 					products {
 						...productBaseFields
 					}

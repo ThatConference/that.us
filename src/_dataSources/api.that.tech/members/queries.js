@@ -83,6 +83,7 @@ export const QUERY_MEMBER_BY_SLUG = `
 					url
 				}
 				earnedMeritBadges {
+					id
 					name
 					image
 				}
@@ -130,6 +131,7 @@ export const QUERY_FOLLOWERS = `
 	query queryMemberFollowers($slug: Slug!) {
 		members {
 			member(slug: $slug) {
+				id
 				followCount
 				followers {
 					cursor
@@ -150,6 +152,7 @@ export const QUERY_NEXT_FOLLOWERS = `
 	query queryNextMemberFollowers($slug: Slug!, $cursor: String) {
 		members {
 			member(slug: $slug) {
+				id
 				followers(cursor: $cursor) {
 					cursor
 					profiles {
