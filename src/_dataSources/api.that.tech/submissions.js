@@ -20,6 +20,7 @@ export const QUERY_MY_SUBMISSIONS = `
 						createdAt
 						lastUpdatedAt
 						event{
+							id
 							name,
 							year
 						}

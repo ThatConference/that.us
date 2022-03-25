@@ -107,6 +107,7 @@ const eventFieldsFragment = `
 		}
 
 		venues {
+			id
 			name
 			address
 			city
@@ -154,6 +155,7 @@ export const QUERY_EVENT_BY_SLUG = `
 				get {
 					...eventFields
 					milestones {
+						id
 						title
 						description
 						dueDate
@@ -172,6 +174,7 @@ export const QUERY_THAT_CONFERENCE_EVENT = `
 					startDate
 					endDate
 					venues {
+						id
 						name
 						address
 						city
@@ -192,6 +195,7 @@ export const QUERY_EVENT_WITH_SPEAKERS_BY_SLUG = `
 				get {
 					...eventFields
 					milestones {
+						id
 						title
 						description
 						dueDate
@@ -259,11 +263,13 @@ export const QUERY_EVENT_FOR_CFP = `
 					ticketsOnSaleFrom
 					
 					milestones{
+						id
 						title
 						description
 						dueDate
 					}
 					venues {
+						id
 						name
 						address
 						city
@@ -308,6 +314,7 @@ export const QUERY_EVENTS_BY_COMMUNITY = `
 						}
 
 						venues {
+							id
 							name
 							address
 							city
@@ -333,6 +340,7 @@ export const QUERY_EVENT_FOR_ACCEPTED_SPEAKER = `
 					slug
 					logo
 					venues {
+						id
 						name
 						address
 						city

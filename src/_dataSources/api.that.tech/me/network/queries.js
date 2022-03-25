@@ -23,12 +23,14 @@ const QUERY_MY_NETWORK_SPONSORS = `
 						createdAt
 						
 						partner {
+							id
 							companyName
 							companyLogo
 							slug
 						}
 						
 						event {
+							id
 							name
 							slug
 							logo

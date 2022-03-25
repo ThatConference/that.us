@@ -54,10 +54,12 @@ const featuredSessionsFragment = `
 			}
 
 			event {
+				id
 				logo
 			}
 
 			speakers {
+				id
 				profileImage
 				profileSlug
 				firstName
@@ -162,6 +164,7 @@ export const QUERY_FOLLOWERS = `
 	query queryPartnerFollowersById($id: ID) {
 		partners {
 			partner(findBy: {id: $id}) {
+				id
 				followCount
 				followers {
 					cursor
@@ -182,6 +185,7 @@ export const QUERY_NEXT_FOLLOWERS = `
 	query queryPartnerFollowersById($id: ID, $cursor: String) {
 		partners {
 			partner(findBy: {id: $id}) {
+				id
 				followers(cursor: $cursor) {
 					cursor
 					members {
@@ -203,6 +207,7 @@ export const QUERY_UPCOMING_PARTNERS = `
 	query QUERY_UPCOMING_PARTNERS {
 		events {
 			all {
+				id
 				endDate
 				isActive
 				partners {
@@ -259,6 +264,7 @@ export const QUERY_PARTNER_JOB_LISTING = `
 	query QUERY_PARTNER_JOB_LISTING ($partner: Slug, $slug: String!) {
 		partners {
 			partner (findBy: { slug: $partner }) {
+				id
 				companyName
 				companyLogo
 				website
@@ -266,6 +272,7 @@ export const QUERY_PARTNER_JOB_LISTING = `
 				state
 				...socialLinksFieldsFragment
 				jobListing(slug: $slug) {
+					id
 					title
 					description
 					jobType

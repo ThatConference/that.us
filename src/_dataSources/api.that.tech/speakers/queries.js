@@ -37,6 +37,7 @@ export const QUERY_MY_ACCEPTED_SPEAKER = `
 					eventId
 					isAcceptedSpeaker
 					sessions {
+						id
 						title
 						shortDescription
 						startTime
@@ -59,6 +60,7 @@ export const QUERY_MY_ORDERS = `
 						isAllocated
 						product {
 							... on ProductBase {
+								id
 								name
 								shortDescription
 								uiReference

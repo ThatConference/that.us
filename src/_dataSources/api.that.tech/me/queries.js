@@ -5,6 +5,7 @@ export const QUERY_ME_FOLLOWING_COMMUNITIES = `
   query queryMyCommunityFollows {
     communities {
       me {
+				id
         favorites {
           ids
         }
@@ -17,6 +18,7 @@ export const QUERY_ME_FOLLOWING_MEMBERS = `
   query queryMyMemberFollowing {
     members {
       me {
+				id
         following {
           ids
         }
@@ -29,6 +31,7 @@ export const QUERY_ME_FOLLOWING_PARTNERS = `
   query queryMyCommunityFollows {
     partners {
       me {
+				id
         favorites {
           ids
         }
@@ -41,6 +44,7 @@ export const QUERY_ME_DISCOUNT_CODES = `
   query queryMeDiscountCodes {
     members {
       me {
+				id
         discountCodes {
           id
           title
@@ -76,6 +80,7 @@ export const QUERY_ME_EMERGENCY_CONTACT = `
   query QUERY_ME_EMERGENCY_CONTACT {
     members {
       me {
+				id
         emergencyContact {
 					fullName
 					phoneNumber

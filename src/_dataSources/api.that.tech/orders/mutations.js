@@ -36,10 +36,12 @@ export const MUTATION_ALLOCATE_TICKET = `
               message
               allocatedTo {
                 ... on PrivateProfile {
+									id
                   firstName
                   lastInitial
                 }
                 ... on PublicProfile {
+									id
                   firstName
                   lastName
                 }
