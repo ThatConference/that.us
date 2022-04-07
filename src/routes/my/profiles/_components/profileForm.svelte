@@ -585,9 +585,19 @@
 						<h3 class="text-lg font-medium leading-6 text-gray-900">
 							Make your profile public(ish).
 						</h3>
-						<p class="mt-1 text-sm leading-5 text-gray-500">
-							By allowing us to feature you, you can...
-						</p>
+
+						<div class="mt-1 text-sm leading-5 text-gray-500">
+							<p>By allowing us to feature you, you can...</p>
+							<p class="pt-4">
+								By selecting this, you can submit an activity on THAT.us. Your profile will then be
+								featured across different areas of the Website. We don't sell or share any of your
+								data.
+							</p>
+							<p class="pt-4 font-semibold">
+								After toggling this, it takes a few moments for our robots to wake up and do their
+								jobs.
+							</p>
+						</div>
 					</div>
 
 					<div class="mt-6">
@@ -602,13 +612,6 @@
 								on:change={({ detail }) => setValue('canFeature', detail)}
 								size="2.5rem"
 								class="flex-none" />
-
-							<div class="ml-3 text-sm leading-5">
-								<p class="text-gray-500">
-									By selecting this, you're able to submit an activity and THAT can feature your
-									profile on that.us or thatconference.com. We don't sell any data.
-								</p>
-							</div>
 
 							{#if touched['canFeature'] && errors['canFeature']}
 								<p>error</p>
