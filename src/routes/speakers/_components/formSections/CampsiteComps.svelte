@@ -52,7 +52,7 @@
 		<span class="font-extrabold uppercase">now</span>
 		by heading over to the counselor's Kalahari registration link at
 
-		<a class="hover" href={kalahari.speakerPasskey[eventDetails.slug].bookingUrl}>
+		<a class="hover" target="_blank" href={kalahari.speakerPasskey[eventDetails.slug].bookingUrl}>
 			{kalahari.speakerPasskey[eventDetails.slug].bookingUrl}
 		</a>
 
