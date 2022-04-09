@@ -40,9 +40,9 @@
 			</li>
 			<li>Help spread the good word. Tell all your friends.</li>
 			<li>
-				Make your <a class="hover" target="_target" href="/my/profiles/primary/">profile</a> shine.
+				Make your <a class="hover" target="_blank" href="/my/profiles/primary/">profile</a> shine.
 			</li>
-			<li>Tweak your <a class="hover" target="_target" href="/my/submissions/">session</a>.</li>
+			<li>Tweak your <a class="hover" target="_blank" href="/my/submissions/">session</a>.</li>
 			<li>
 				Pass out the speaker discount code ({kalahari.speakerPasskey[eventDetails.slug]
 					.discountCode}) to your company's geeks.
