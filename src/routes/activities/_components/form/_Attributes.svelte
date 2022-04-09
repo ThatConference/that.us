@@ -59,7 +59,7 @@
 						<legend class="sr-only">Target Location</legend>
 						<div
 							class="flex w-full flex-col space-y-4 rounded-md sm:flex-row sm:space-y-0 sm:space-x-4">
-							{#each targetLocation.options as option}
+							{#each targetLocation.options.filter((i) => i.value !== 'OTHER') as option}
 								<div class="flex-grow">
 									<label
 										class="relative flex cursor-pointer rounded-lg border border-gray-200 bg-white p-4">
