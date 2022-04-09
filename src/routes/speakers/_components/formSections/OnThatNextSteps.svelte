@@ -89,10 +89,8 @@
 		You've been assigned a ticket to ON THAT, which you can view here
 		<a class="hover" target="_blank" href="/my/settings/tickets"
 			>https://that.us/my/settings/tickets/</a
-		>. This gives you full access to all of the online sessions and the ability to create more. Yes,
-		that's right if you want to talk about more, head over to
-		<a class="hover" target="_blank" href="/activities/create"
-			>https://that.us/activities/create/</a> and create more sessions.
+		>. This gives you full access to all of the online sessions and the ability to create during the
+		event.
 	</p>
 </div>
 
