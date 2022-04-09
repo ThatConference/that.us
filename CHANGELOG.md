@@ -1,3 +1,14 @@
+## [2.11.4](https://github.com/ThatConference/that.us/compare/v2.11.3...v2.11.4) (2022-04-09)
+
+
+### Bug Fixes
+
+* disables continue until tickets are complete ([919cc77](https://github.com/ThatConference/that.us/commit/919cc77c59e4e065019884200a974ce19987a92c))
+* filters OTHER from CFP ([07b7dc9](https://github.com/ThatConference/that.us/commit/07b7dc90ec05fae152b5ea43ce2419636ba53a2a))
+* fixes on-that session copy ([a97ab41](https://github.com/ThatConference/that.us/commit/a97ab4153210636485deb51b9eda46f3b7ff1d04))
+* fixes some error flow on tickets ([bbd3990](https://github.com/ThatConference/that.us/commit/bbd3990357d794218613027ca2874a4058507d9d))
+* missing _blank ([579f074](https://github.com/ThatConference/that.us/commit/579f074f2d25fdd73bb188fee77e7b2fdac2abbf))
+
 ## [2.11.3](https://github.com/ThatConference/that.us/compare/v2.11.2...v2.11.3) (2022-03-25)
 
 
