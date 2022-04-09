@@ -3,7 +3,7 @@
 	export let orderAllocation;
 	export let isOpen = false;
 
-	import { getContext } from 'svelte';
+	import { getContext, createEventDispatcher } from 'svelte';
 	import { slide, fade } from 'svelte/transition';
 	import { quintOut } from 'svelte/easing';
 
@@ -12,6 +12,7 @@
 	import speakerMutationsApi from '$dataSources/api.that.tech/speakers/mutations';
 	import { Shell } from '$elements/buttons';
 
+	const dispatch = createEventDispatcher();
 	const { tShirtSizes, hoodieSizes, dietaryRequirements } = getContext('SPEAKER_ACCEPT_ENUMS');
 	const { addOrderAllocationResponses } = speakerMutationsApi();
 
@@ -38,6 +39,8 @@
 		const result = await addOrderAllocationResponses(request);
 
 		submitSuccess = result.success;
+		dispatch('ticket-created', { wasCreated: submitSuccess });
+
 		submitting = false;
 	}
 </script>

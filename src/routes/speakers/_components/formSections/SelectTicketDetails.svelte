@@ -9,10 +9,24 @@
 	import { Shell } from '$elements/buttons';
 	import TicketDetail from './TicketDetail.svelte';
 
-	const isAt = platform === 'AT_THAT';
 	const dispatch = createEventDispatcher();
+	const isAt = platform === 'AT_THAT';
+	const ticketResults = [];
+
+	let canContinue = false;
+	let ticketError = false;
 
 	$: allocatedAllocations = orderAllocations.filter((oa) => oa.isAllocated);
+
+	function handleTicketCreated({ detail }) {
+		ticketResults.push(detail.wasCreated);
+		canContinue = false;
+
+		if (orderAllocations.length === ticketResults.length) {
+			ticketError = ticketResults.includes(false);
+			canContinue = !ticketError;
+		}
+	}
 </script>
 
 <div class="space-y-4">
@@ -33,23 +47,31 @@
 	{:else}
 		<h2 class="text-xl text-gray-800 font-extrabold">Please complete each ticket.</h2>
 		{#each allocatedAllocations as orderAllocation, i}
-			<TicketDetail {orderId} {orderAllocation} isOpen={i === 0} />
+			<TicketDetail
+				{orderId}
+				{orderAllocation}
+				isOpen={i === 0}
+				on:ticket-created={handleTicketCreated} />
 		{/each}
 	{/if}
 </div>
 
 <div class="mt-12">
-	<div class="flex justify-end">
-		<button on:click={() => dispatch('submit-step')}>
-			<Shell>
-				<div class="px-8 py-2 font-extrabold">
-					{#if isAt}
-						Next, Emergency Contact
-					{:else}
-						Next, Next Steps
-					{/if}
-				</div>
-			</Shell>
-		</button>
-	</div>
+	{#if ticketError}
+		<p>Your ticket is in error. contact us.</p>
+	{:else}
+		<div class="flex justify-end">
+			<button disabled={canContinue} on:click={() => dispatch('submit-step')}>
+				<Shell>
+					<div class="px-8 py-2 font-extrabold" class:bg:grey-400={!canContinue}>
+						{#if isAt}
+							Next, Emergency Contact
+						{:else}
+							Next, Next Steps
+						{/if}
+					</div>
+				</Shell>
+			</button>
+		</div>
+	{/if}
 </div>
