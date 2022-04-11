@@ -58,7 +58,7 @@
 
 <script>
 	import { onMount, setContext } from 'svelte';
-	import { navigating, session, page } from '$app/stores';
+	import { navigating, session } from '$app/stores';
 
 	import loading from '$stores/loading';
 	import { showReleaseNotes } from '$stores/siteVersion';
@@ -136,16 +136,9 @@
 			});
 		}
 	}
-
-	function copy(e) {
-		const selection = document.getSelection();
-		const appededString = `${selection.toString()}\r\n\nRead more at: ${$page.url.href} on THAT.`;
-
-		e.clipboardData.setData('text/plain', appededString);
-	}
 </script>
 
-<div on:copy|preventDefault={copy}>
+<div>
 	{#if $navigating || $loading}
 		<Preloading />
 	{/if}
