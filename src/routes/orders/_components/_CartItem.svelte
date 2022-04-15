@@ -26,20 +26,14 @@
 			name="quantity"
 			id="quantity"
 			bind:value={currentQty}
-			class="block rounded-md border border-gray-200 p-2 text-center shadow-sm focus:border-thatOrange-500 focus:ring-thatOrange-500" />
-	</td>
-	<td class="whitespace-nowrap px-6 py-4 text-right align-top text-sm font-medium">
-		<button
-			on:click={() =>
+			on:change={() =>
 				dispatch('cart_update', {
 					...lineItem,
 					quantity: currentQty
 				})}
-			class="text-thatOrange-400 hover:text-thatOrange-500">
-			Update
-		</button>
-		/
-
+			class="block rounded-md border border-gray-200 p-2 text-center shadow-sm focus:border-thatOrange-500 focus:ring-thatOrange-500" />
+	</td>
+	<td class="whitespace-nowrap px-6 py-4 text-right align-top text-sm font-medium">
 		<button
 			on:click={() => dispatch('cart_remove', { id: lineItem.id })}
 			class="text-thatOrange-400 hover:text-thatOrange-500">
