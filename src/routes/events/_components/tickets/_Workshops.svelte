@@ -2,7 +2,7 @@
 	export let event;
 
 	import { createEventDispatcher } from 'svelte';
-
+	import dayjs from 'dayjs';
 	import { Standard as StandardButton } from '$elements/buttons';
 	import { CheckFull } from '$elements/svgs';
 
@@ -76,7 +76,9 @@
 											<CheckFull height="h-4" width="h-4" />
 										</span>
 									</div>
-									<p class="ml-3 text-sm text-gray-700">Event Access Monday 1/17</p>
+									<p class="ml-3 text-sm text-gray-700">
+										Event Access {dayjs(event.startDate).format('dddd M/D')}
+									</p>
 								</li>
 
 								<li class="flex items-start lg:col-span-1">
