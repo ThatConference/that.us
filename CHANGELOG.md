@@ -1,3 +1,10 @@
+## [2.11.5](https://github.com/ThatConference/that.us/compare/v2.11.4...v2.11.5) (2022-04-15)
+
+
+### Bug Fixes
+
+* use event startdate for workshop ([60b155b](https://github.com/ThatConference/that.us/commit/60b155b19189384a3da287808e7711c2d05d37d5))
+
 ## [2.11.4](https://github.com/ThatConference/that.us/compare/v2.11.3...v2.11.4) (2022-04-09)
 
 
