@@ -70,10 +70,12 @@
 	import isSameOrAfter from 'dayjs/plugin/isSameOrAfter.js';
 	import isToday from 'dayjs/plugin/isToday.js';
 	import isBetween from 'dayjs/plugin/isBetween.js';
-	import { Input } from 'sveltejs-forms';
-	import Datepicker from 'svelte-calendar';
+	// import { Input } from 'sveltejs-forms';
 	import Select from 'svelte-select';
 	import advancedFormat from 'dayjs/plugin/advancedFormat.js';
+
+	import Flatpickr from 'svelte-flatpickr';
+	import 'flatpickr/dist/flatpickr.css';
 
 	import config from '$utils/config';
 
@@ -87,6 +89,7 @@
 
 	// control bindings
 	let estimatedDurationSelect;
+	let flatpickr;
 	let timezoneSelect;
 
 	let currentEventId = values?.event?.id;
@@ -95,35 +98,33 @@
 		? dayjs(values.selectedDay).toDate()
 		: dayjs().toDate();
 
-	$: startDate = event.id === config.eventId ? dayjs().toDate() : dayjs(event.startDate).toDate();
-	$: endDate = dayjs(event.endDate).toDate();
-
 	async function handleReset() {
 		await tick();
 
-		setField('selectedTime', undefined); // reset the starting time as the event range has changed.
 		selectedTimeValue = undefined;
-	}
+		setField('selectedTime', undefined); // reset the starting time as the event range has changed.
 
-	// reset the start date based on the event
-	$: {
-		if (currentEventId && !event.id) {
-			startDate = dayjs(values.event.startDate).toDate();
-			endDate = dayjs(values.event.endDate).toDate();
-		} else if (currentEventId !== event.id) {
-			startDate =
-				event.id === config.eventId // if this is the default daily event. then it's just today's date.
-					? dayjs().toDate()
-					: dayjs(event.startDate).toDate();
-
-			currentEventId = event.id;
-
-			setField('selectedDay', dayjs(startDate).format('YYYY-MM-DD'));
-			selectedDateValue = startDate;
-
-			handleReset();
+		if (flatpickr) {
+			flatpickr.clear();
 		}
 	}
+
+	$: startDate =
+		event.id === config.eventId
+			? dayjs().startOf('d').toDate()
+			: dayjs(event.startDate).startOf('d').toDate();
+	$: endDate = dayjs(event.endDate).toDate();
+
+	$: fpOptions = {
+		altInput: true,
+		altFormat: 'F J, Y',
+		enableTime: false,
+		minDate: startDate,
+		maxDate: endDate,
+		onChange(_, dateStr) {
+			setField('selectedDay', dayjs(dateStr).format('YYYY-MM-DD'));
+		}
+	};
 
 	$: timeSlotOptionsFiltered = dayjs(selectedDateValue).isToday()
 		? timeSlotOptions.filter((t) => dayjs(t.value, 'HH:mm').isSameOrAfter(dayjs()))
@@ -133,6 +134,26 @@
 
 				return d.isBetween(dayjs(event.startDate), dayjs(event.endDate));
 		  });
+
+	// reset the start date based on the event
+	$: {
+		if (currentEventId && !event.id) {
+			startDate = dayjs(values.event.startDate).startOf('d').toDate();
+			endDate = dayjs(values.event.endDate).toDate();
+		} else if (currentEventId !== event.id) {
+			startDate =
+				event.id === config.eventId // if this is the default daily event. then it's just today's date.
+					? dayjs().startOf('d').toDate()
+					: dayjs(event.startDate).startOf('d').toDate();
+
+			currentEventId = event.id;
+
+			setField('selectedDay', dayjs(startDate).format('YYYY-MM-DD'));
+			selectedDateValue = startDate;
+
+			handleReset();
+		}
+	}
 
 	function findSelectedDuration(values) {
 		return estimatedDurationOptions.find((item) => item.value === values['selectedDuration']);
@@ -159,15 +180,22 @@
 
 		<div class="mt-1 sm:col-span-2 sm:mt-0">
 			<div class="max-w-lg sm:text-sm sm:leading-5">
-				<Input hidden name="selectedDay" bind:value={selectedDateValue} />
-				<Datepicker
-					start={startDate}
-					end={endDate}
-					bind:selected={selectedDateValue}
-					format={dayjs(selectedDateValue).format('dddd, MMM D, YYYY z')}
-					style="form-select sm:text-sm sm:leading-5 shadow-sm hover:border-gray-700"
-					on:dateSelected={({ detail: { date } }) =>
-						setField('selectedDay', dayjs(date).format('YYYY-MM-DD'))} />
+				<!-- <Input hidden name="selectedDay" bind:value={selectedDateValue} /> -->
+
+				<Flatpickr
+					options={fpOptions}
+					bind:flatpickr
+					bind:value={selectedDateValue}
+					name="selectedDay"
+					element="#my-picker">
+					<div class="flatpickr" id="my-picker">
+						<input
+							type="text"
+							placeholder="Select Date.."
+							data-input
+							class="shadow-sm hover:border-gray-700 sm:text-sm sm:leading-5" />
+					</div>
+				</Flatpickr>
 			</div>
 		</div>
 	</div>
