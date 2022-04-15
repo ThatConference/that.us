@@ -55,8 +55,8 @@
 			</p>
 		</div>
 
-		<!-- for when the other comes back into play <div class="flex flex-col sm:flex-row sm:items-center sm:space-x-8 space-y-8 sm:space-y-0"> -->
-		<div class="flex flex-col items-center space-y-8 sm:space-x-8 sm:space-y-0">
+		<div class="flex flex-col space-y-8 sm:flex-row sm:space-x-8 sm:space-y-0">
+			<!-- <div class="flex flex-col items-center space-y-8 sm:space-x-8 sm:space-y-0"> -->
 			<div class="rounded-md bg-gray-50 bg-opacity-50 px-12 shadow-md">
 				<div class="prose-md prose text-gray-500">
 					<div class="flex flex-col pb-12">
@@ -119,10 +119,8 @@
 				</div>
 			</div>
 
-			<!-- Not avail yet.
-				
-			<div class="px-12 bg-gray-50 bg-opacity-50 rounded-md shadow-md">
-				<div class="prose prose-md text-gray-500">
+			<div class="rounded-md bg-gray-50 bg-opacity-50 px-12 shadow-md">
+				<div class="prose-md prose text-gray-500">
 					<div class="flex flex-col pb-12">
 						<h2>Staybridge Suites</h2>
 
@@ -141,23 +139,17 @@
 
 						<h3>Booking Your Reservation</h3>
 						<p>
-							Call toll free at 1-800-238-8000 and use block code <span
-								class="font-semibold text-gray-800">TCO</span
+							Call toll free at 1-800-496-7630 and use block code <span
+								class="font-semibold text-gray-800">KTC</span
 							>. Or book online by using the dedicated website like below.
 						</p>
 
 						<div class="flex justify-center">
-							<StandardLink
-								open={true}
-								href="https://www.staybridge.com/redirect?path=hd&brandCode=SB&localeCode=en&regionCode=1&hotelCode=MSNLD&_PMID=99801505&GPC=TCO&cn=no&viewfullsite=true"
-								>Book Today</StandardLink
-							>
+							<StandardLink open={true} href="https://www.staybridge.com/">Book Today</StandardLink>
 						</div>
 					</div>
 				</div>
-			</div> 
-		
-			-->
+			</div>
 		</div>
 
 		<div class="pt-24 text-lg leading-7 lg:grid lg:grid-cols-2 lg:items-start lg:gap-8">
