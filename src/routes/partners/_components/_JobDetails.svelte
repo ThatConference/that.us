@@ -1,8 +1,6 @@
 <script>
 	export let jobListing;
 
-	console.log({ jobListing });
-
 	import partnerQueryApi from '$dataSources/api.that.tech/partner/queries';
 	import { Standard as StandardLink } from '$elements/links';
 
