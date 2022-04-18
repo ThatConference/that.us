@@ -1,7 +1,10 @@
 <script>
 	export let jobListing;
 
+	console.log({ jobListing });
+
 	import partnerQueryApi from '$dataSources/api.that.tech/partner/queries';
+	import { Standard as StandardLink } from '$elements/links';
 
 	const { queryPartnerDropDownValues } = partnerQueryApi();
 
@@ -54,6 +57,14 @@
 					{/each}
 				</div>
 			{/await}
+
+			{#if jobListing.applyNowLink}
+				<div class="flex items-end justify-end">
+					<StandardLink>
+						<a href={jobListing.applyNowLink}>Apply Now</a>
+					</StandardLink>
+				</div>
+			{/if}
 		</div>
 	</div>
 </section>
