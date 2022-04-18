@@ -127,7 +127,9 @@
 						<p>
 							A room block with discounted rates is now open at Staybridge Suites in Wisconsin Dells
 							located directly across the street from the Kalahari AND within walking distance to
-							the conference. <span class="font-semibold text-gray-800">Rates expire {close}</span>.
+							the conference. <span class="font-semibold text-gray-800"
+								>Rates expire on 6/24/2022</span
+							>.
 						</p>
 						<div>
 							<blockquote>
@@ -141,7 +143,7 @@
 						<p>
 							Call toll free at 1-800-496-7630 and use block code <span
 								class="font-semibold text-gray-800">KTC</span
-							>. Or book online by using the dedicated website like below.
+							>. Or book online by using the dedicated website link below.
 						</p>
 
 						<div class="flex justify-center">
