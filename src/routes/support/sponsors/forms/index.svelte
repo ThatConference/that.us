@@ -71,7 +71,7 @@
 								</div>
 
 								<div class="transform transition duration-500 ease-in-out hover:scale-105">
-									<a href="/sponsors/tx/TX-Exhibitor-Order-Form" target="_blank">
+									<a href="/sponsors/tx/TX-Exhibitor-Order-Form.pdf" target="_blank">
 										<div class="prose prose-lg w-full rounded-md border bg-white p-4 shadow-md">
 											<h4>Service Order Form</h4>
 											<p class="prose-md prose text-gray-500">
@@ -82,7 +82,7 @@
 								</div>
 
 								<div class="transform transition duration-500 ease-in-out hover:scale-105">
-									<a href="/sponsors/tx/TX-Kalahari-Parcel-Form" target="_blank">
+									<a href="/sponsors/tx/TX-Kalahari-Parcel-Form.pdf" target="_blank">
 										<div class="prose prose-lg w-full rounded-md border bg-white p-4 shadow-md">
 											<h4>Shipping Information</h4>
 											<p class="prose-md prose text-gray-500">
