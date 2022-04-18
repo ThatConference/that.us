@@ -169,7 +169,7 @@
 						</blockquote>
 					</div>
 
-					<div class="prose prose-lg text-gray-500">
+					<div class="prose prose-lg mb-10 text-gray-500">
 						<h2>From The Air</h2>
 
 						<p>
@@ -197,6 +197,26 @@
 						<p>
 							Are there shuttles to the Kalahari from the airports? Unfortunately no but we suggest
 							jumping in THAT Slack and ask if anyone is interested in ridesharing.
+						</p>
+					</div>
+					<div class="prose prose-lg text-gray-500">
+						<h2>By Train</h2>
+
+						<p>
+							There is an Amtrak station in Wisconsin Dells as another travel option. Check the <a
+								href="https://www.amtrak.com/stations/wdl"
+								target="_blank">Amtrak</a> website for train schedule and pricing.
+						</p>
+						<blockquote>
+							Wisconsin Dells (WDL)<br />
+							100 LaCrosse Street<br />
+							Wisconsin Dells, WI 53965<br />
+							Station Building (with waiting room)
+						</blockquote>
+						<p>
+							Are there shuttles to the Kalahari from the train station? Unfortunately no, but
+							fortunately it's a short taxi/Uber/Lyft ride to the Kalahari. Also try jumping in THAT
+							Slack and ask if anyone is interested in ridesharing or available for a ride.
 						</p>
 					</div>
 				</div>
