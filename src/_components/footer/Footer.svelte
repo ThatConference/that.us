@@ -22,7 +22,13 @@
 		<div class="xl:grid xl:grid-cols-3 xl:gap-8">
 			<div class="space-y-8 xl:col-span-1">
 				<img class="lazyload h-12 w-auto" src="/images/THAT-Full-Wide.svg" alt="THAT Logo" />
-				<p class="text-base text-gray-500">Geeks helping Geeks become more awesome every day.</p>
+				<div class="space-y-2 text-base text-gray-500">
+					<p>Geeks helping Geeks</p>
+					<p>
+						Made with <span class="pr-2">💙</span> in Spring Grove, IL
+					</p>
+					<p>+1-484-302-8428</p>
+				</div>
 				<div class="flex space-x-2">
 					{#each socials as s}
 						<div class="h-6 w-6">
