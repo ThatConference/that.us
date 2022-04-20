@@ -1,3 +1,10 @@
+## [2.11.6](https://github.com/ThatConference/that.us/compare/v2.11.5...v2.11.6) (2022-04-20)
+
+
+### Bug Fixes
+
+* null feature member return ([52676b3](https://github.com/ThatConference/that.us/commit/52676b3d845b1d1fa866f5cd5a30cdf2214c9d98))
+
 ## [2.11.5](https://github.com/ThatConference/that.us/compare/v2.11.4...v2.11.5) (2022-04-15)
 
 
