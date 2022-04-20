@@ -19,7 +19,7 @@
 			</div>
 			<div class="lg:col-span-2">
 				<ul class="space-y-12 sm:grid sm:grid-cols-2 sm:gap-12 sm:space-y-0 lg:gap-x-8">
-					{#each members as member}
+					{#each members.filter((m) => !!m) as member}
 						<li
 							class="transform cursor-pointer transition duration-500 ease-in-out hover:scale-105">
 							<a href="/members/{member.profileSlug}/">
