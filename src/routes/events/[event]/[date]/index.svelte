@@ -6,9 +6,8 @@
 
 	let eventFormat;
 
-	export async function load({ params, fetch }) {
-		const { event, date } = params;
-		const eventSlug = `${event}/${date}`;
+	export async function load({ stuff, fetch }) {
+		const { eventSlug } = stuff;
 
 		const { queryEventWithSpeakersBySlug } = eventsApi(fetch);
 
