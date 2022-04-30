@@ -223,6 +223,7 @@
 		{#each sorted as day, d}
 			<div>
 				<h2
+					id={dayjs(day.dayOfYear).format('dddd').toLowerCase()}
 					class="sticky top-0 z-20 mb-7 -ml-5 -mr-5 whitespace-nowrap 
                  bg-gray-100 pt-4 pl-5 text-xl 
                  font-extrabold leading-9 tracking-tight text-thatBlue-800 sm:mb-9 sm:-ml-6 sm:-mr-6 sm:pl-6 sm:leading-10 md:text-4xl">
