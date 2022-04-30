@@ -49,9 +49,7 @@
 <Layout {event}>
 	<main class="mt-40">
 		<div class="relative pb-16 md:pb-20 lg:pb-24 xl:pb-32">
-			<div class="bg-opactity-75 bg-gradient-to-t from-gray-200 py-16">
-				<Hero {event} />
-			</div>
+			<Hero {event} />
 
 			<div class="mx-auto max-w-screen-xl px-4 sm:px-6">
 				{#if levels['PIONEER']}
