@@ -101,7 +101,7 @@
 
 <div class="bg-thatBlue-100 bg-opacity-25">
 	<Layout {event}>
-		<section class="mt-24">
+		<section>
 			<Hero {event} />
 		</section>
 
