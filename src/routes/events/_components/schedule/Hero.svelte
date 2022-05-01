@@ -27,7 +27,8 @@
 			</h1>
 		</div>
 
-		<div class="mt-24 flex justify-center space-y-4 p-8 sm:flex-row sm:space-y-0 sm:space-x-4">
+		<div
+			class="mt-24 flex flex-col justify-center space-y-4 p-8 lg:flex-row lg:space-y-0 lg:space-x-4">
 			<div class="flex-1 cursor-pointer">
 				<!-- svelte-ignore a11y-missing-attribute -->
 				<a class="w-full text-center" use:scrollto={'#monday'}>
