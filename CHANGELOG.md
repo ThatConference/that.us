@@ -1,3 +1,10 @@
+## [2.11.9](https://github.com/ThatConference/that.us/compare/v2.11.8...v2.11.9) (2022-05-01)
+
+
+### Bug Fixes
+
+* updates nav, and travel ([5b7be0a](https://github.com/ThatConference/that.us/commit/5b7be0a87faa09f4d3e9ced085e95807d7c19017))
+
 ## [2.11.8](https://github.com/ThatConference/that.us/compare/v2.11.7...v2.11.8) (2022-05-01)
 
 
