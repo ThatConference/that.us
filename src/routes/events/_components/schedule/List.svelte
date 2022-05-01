@@ -18,6 +18,7 @@
 	import createMachine from '../../_machines/event';
 
 	const { sessions } = event;
+
 	let scrollThreshold = 1200;
 
 	const { state, send } = useMachine(
