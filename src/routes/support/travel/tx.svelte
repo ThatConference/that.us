@@ -31,7 +31,8 @@
 	const closeTime = dayjs(kalahari.passkey.tx.closes);
 	const close = closeTime.format('dddd, MMMM D, YYYY');
 
-	const isRoomBlockOpen = dayjs().isBetween(openTime, closeTime);
+	// todo needs to be fixed later
+	// const isRoomBlockOpen = dayjs().isBetween(openTime, closeTime);
 </script>
 
 <Seo title={metaTags.title} tags={metaTags.tags} />
@@ -41,7 +42,7 @@
 
 	<section class="text-gray-500">
 		<div
-			class="prose-lg 
+			class="prose-md 
               relative mx-auto mb-8 max-w-prose
               text-lg leading-7  
               text-gray-500 lg:mx-0 lg:max-w-7xl lg:pr-72">
@@ -53,7 +54,7 @@
 		</div>
 
 		<div class="flex flex-col items-center space-y-8 sm:space-x-8 sm:space-y-0">
-			<div class="rounded-md bg-gray-50 bg-opacity-50 px-12 shadow-md">
+			<div class="rounded-md bg-gray-100 px-12 shadow-md">
 				<div class="prose-md prose text-gray-500">
 					<div class="flex-col pb-12">
 						<h2>Kalahari Resorts and Convention Center</h2>
@@ -78,18 +79,18 @@
 
 						<h3>Room Types</h3>
 						<div class="flex space-x-4">
-							<div class="prose prose-lg w-full rounded-md border bg-white p-4 shadow-md">
+							<div class="prose-md prose w-full rounded-md border bg-white p-4 shadow-md">
 								<h4>Double Queen Sofa</h4>
 								<p class="text-center">$199 + tax and fees</p>
 							</div>
 
-							<div class="prose prose-lg w-full rounded-md border bg-white p-4 shadow-md ">
+							<div class="prose-md prose w-full rounded-md border bg-white p-4 shadow-md ">
 								<h4>2 Bedroom Suite</h4>
 								<p class="text-center">$249 + tax and fees</p>
 							</div>
 						</div>
 
-						<div class="prose prose-lg mt-4 text-gray-500">
+						<div class="prose-md prose mt-4 text-gray-500">
 							<p>Restrictions do apply:</p>
 							<ul>
 								<li>Speakers, this block isn't for you. Contact us.</li>
@@ -105,13 +106,14 @@
 							1-877-525-2427.
 						</p>
 
-						{#if isRoomBlockOpen}
-							<div class="mt-8 flex flex-col items-center">
-								<StandardLink open={true} href={kalahari.passkey.tx.url}>Book Today</StandardLink>
-							</div>
-						{:else}
+						<!-- todo the room block is open right now. milestones are wrong. -->
+						<!-- {#if isRoomBlockOpen} -->
+						<div class="mt-8 flex flex-col items-center">
+							<StandardLink open={true} href={kalahari.passkey.tx.url}>Book Today</StandardLink>
+						</div>
+						<!-- {:else}
 							<div class="mt-8 flex flex-col items-center">asdfasdf</div>
-						{/if}
+						{/if} -->
 					</div>
 				</div>
 			</div>
@@ -120,7 +122,7 @@
 		<div class="pt-24 text-lg leading-7 lg:grid lg:grid-cols-2 lg:items-start lg:gap-8">
 			<div class="relative mb-12 lg:mb-0">
 				<div class="mb-10 flex flex-col justify-start">
-					<div class="prose prose-lg mb-10 text-gray-500">
+					<div class="prose-md prose mb-10 text-gray-500">
 						<h2>THAT Campsite</h2>
 
 						<p>The Kalahari Resort and Convention Center can be located at:</p>
@@ -131,26 +133,30 @@
 							Round Rock, TX 78665<br />
 						</blockquote>
 					</div>
-
-					<div class="prose prose-lg text-gray-500">
-						<h2>From The Air</h2>
-
-						<p>
-							If you're coming from afar and need to fly then Austin–Bergstrom International Airport
-							(AUS) is your destination. The Kalahari Resorts is located in Round Rock Texas which
-							is roughly 35 minutes north of Austin–Bergstrom Airport.
-						</p>
-
-						<p>
-							Are there shuttles to the Kalahari from the airports? Unfortunately no but we suggest
-							jumping in THAT Slack and ask if anyone is interested in ridesharing or catching an
-							Uber/Lyft.
-						</p>
-					</div>
 				</div>
 			</div>
 			<div class="relative mx-auto max-w-prose text-base lg:max-w-none">
 				<MemoryHighlight imageSrc="/images/memories/hallway2_small.jpg" />
+			</div>
+		</div>
+
+		<div class="flex flex-col space-y-8 pt-24 sm:flex-row sm:space-x-8 sm:space-y-0">
+			<div class="rounded-md bg-gray-100 px-12 shadow-md">
+				<div class="prose-md prose my-10 text-gray-500">
+					<h2>By Air</h2>
+
+					<p>
+						If you're coming from afar and need to fly then Austin–Bergstrom International Airport
+						(AUS) is your destination. The Kalahari Resorts is located in Round Rock Texas which is
+						roughly 35 minutes north of Austin–Bergstrom Airport.
+					</p>
+
+					<p>
+						Are there shuttles to the Kalahari from the airports? Unfortunately no but we suggest
+						jumping in THAT Slack and ask if anyone is interested in ridesharing or catching an
+						Uber/Lyft.
+					</p>
+				</div>
 			</div>
 		</div>
 	</section>
