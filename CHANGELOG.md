@@ -1,3 +1,10 @@
+## [2.11.8](https://github.com/ThatConference/that.us/compare/v2.11.7...v2.11.8) (2022-05-01)
+
+
+### Bug Fixes
+
+* button stacking in hero ([a94a81b](https://github.com/ThatConference/that.us/commit/a94a81bbaaca62cfe2a4e0554604532fdd7fc034))
+
 ## [2.11.7](https://github.com/ThatConference/that.us/compare/v2.11.6...v2.11.7) (2022-05-01)
 
 
