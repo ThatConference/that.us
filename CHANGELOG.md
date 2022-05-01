@@ -1,3 +1,10 @@
+## [2.11.7](https://github.com/ThatConference/that.us/compare/v2.11.6...v2.11.7) (2022-05-01)
+
+
+### Bug Fixes
+
+* correct sessions being loaded ([add1116](https://github.com/ThatConference/that.us/commit/add11162a55671b7c4c3da06229fdef414841f83))
+
 ## [2.11.6](https://github.com/ThatConference/that.us/compare/v2.11.5...v2.11.6) (2022-04-20)
 
 
