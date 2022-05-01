@@ -10,6 +10,7 @@
 
 <script>
 	export let event;
+	export let sessions;
 
 	import seoMetaTags from '$utils/seo/metaTags';
 	import Seo from '$components/Seo.svelte';
@@ -38,6 +39,6 @@
 	</section>
 
 	<section>
-		<List {event} />
+		<List event={sessions} />
 	</section>
 </div>
