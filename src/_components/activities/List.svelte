@@ -51,6 +51,7 @@
 	let onThat = true;
 	let atThat = true;
 	let family = true;
+	let professional = true;
 	let workshop = true;
 	let openSpace = true;
 	let dense = false;
@@ -88,6 +89,7 @@
 			(activity.type == 'WORKSHOP' ? workshop : true) &&
 			(activity.type == 'OPEN_SPACE' ? openSpace : true) &&
 			(activity.category == 'FAMILY' ? family : true) &&
+			(activity.category == 'PROFESSIONAL' ? professional : true) &&
 			(activity.targetLocation == 'IN_PERSON' ? atThat : true) &&
 			(activity.targetLocation == 'ONLINE' ? onThat : true)
 	);
@@ -167,6 +169,22 @@
 		}),
 		options
 	);
+
+	function cardParams(a) {
+		return _.pick(a, [
+			'id',
+			'title',
+			'type',
+			'speakers',
+			'startTime',
+			'durationInMinutes',
+			'shortDescription',
+			'tags',
+			'targetLocation',
+			'location',
+			'eventId'
+		]);
+	}
 </script>
 
 <div class="relative">
@@ -213,6 +231,7 @@
 			bind:atThat
 			bind:onThat
 			bind:family
+			bind:professional
 			bind:workshop
 			bind:openSpace
 			on:click={handleCloseFilter}
@@ -257,7 +276,7 @@
 										</li>
 									{:else}
 										<li in:fade class="col-span-1 bg-white rounded-lg shadow-lg">
-											<Card {...activity} {editMode} {dense} />
+											<Card {...cardParams(activity)} {editMode} {dense} />
 										</li>
 									{/if}
 								{/each}

@@ -19,6 +19,7 @@ const coreSessionFields = `
 		durationInMinutes
 		slug
 		communities
+		category
 		targetLocation
 		location {
 			destination
