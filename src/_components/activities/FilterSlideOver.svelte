@@ -7,6 +7,7 @@
 	export let onThat;
 	export let atThat;
 	export let family;
+	export let professional;
 	export let openSpace;
 	export let workshop;
 
@@ -87,6 +88,11 @@
 						class="md:text-md whitespace-nowrap text-base capitalize text-gray-500 sm:text-lg md:mt-1 lg:mx-0">
 						<input type="checkbox" bind:checked={family} />
 						<span class="px-2">Family</span>
+					</label>
+					<label
+						class="md:text-md whitespace-nowrap text-base capitalize text-gray-500 sm:text-lg md:mt-1 lg:mx-0">
+						<input type="checkbox" bind:checked={professional} />
+						<span class="px-2">Professional</span>
 					</label>
 					<label
 						class="md:text-md whitespace-nowrap text-base capitalize text-gray-500 sm:text-lg md:mt-1 lg:mx-0">
