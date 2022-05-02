@@ -1,3 +1,10 @@
+## [2.11.10](https://github.com/ThatConference/that.us/compare/v2.11.9...v2.11.10) (2022-05-02)
+
+
+### Bug Fixes
+
+* family filter for sessions ([2fbfb81](https://github.com/ThatConference/that.us/commit/2fbfb8109a0206eaba30a71a1c3e4a680f7dea64))
+
 ## [2.11.9](https://github.com/ThatConference/that.us/compare/v2.11.8...v2.11.9) (2022-05-01)
 
 
