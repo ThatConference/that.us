@@ -1,3 +1,10 @@
+## [2.11.11](https://github.com/ThatConference/that.us/compare/v2.11.10...v2.11.11) (2022-05-04)
+
+
+### Bug Fixes
+
+* room block date extension ([e8e6a67](https://github.com/ThatConference/that.us/commit/e8e6a6709cb2e3c81b07fa7dbf1b4ebadfcaf36b))
+
 ## [2.11.10](https://github.com/ThatConference/that.us/compare/v2.11.9...v2.11.10) (2022-05-02)
 
 
