@@ -108,7 +108,7 @@ export const kalahari = {
 			bookingUrl: 'https://book.passkey.com/e/50279812',
 			start: '05/22/2022',
 			end: '05/26/2022',
-			blockCloseDate: '05/01/2022',
+			blockCloseDate: '05/13/2022',
 			discountCode: 'THATTX'
 		}
 	}
