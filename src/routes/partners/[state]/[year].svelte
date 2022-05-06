@@ -64,6 +64,10 @@
 					<PartnerLevel header="Scout Sponsors" partners={levels['SCOUT']} />
 				{/if}
 
+				{#if levels['CUB']}
+					<PartnerLevel header="Family Sponsors" partners={levels['CUB']} />
+				{/if}
+
 				{#if levels['MEDIA']}
 					<PartnerLevel header="Media Sponsors" partners={levels['MEDIA']} />
 				{/if}
