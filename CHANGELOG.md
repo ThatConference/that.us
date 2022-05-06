@@ -1,3 +1,10 @@
+## [2.11.12](https://github.com/ThatConference/that.us/compare/v2.11.11...v2.11.12) (2022-05-06)
+
+
+### Bug Fixes
+
+* adds cub ([b52bb87](https://github.com/ThatConference/that.us/commit/b52bb878affecb5411299b9d040f91e42a8d71ff))
+
 ## [2.11.11](https://github.com/ThatConference/that.us/compare/v2.11.10...v2.11.11) (2022-05-04)
 
 
