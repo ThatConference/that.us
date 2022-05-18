@@ -1,3 +1,10 @@
+## [2.13.1](https://github.com/ThatConference/that.us/compare/v2.13.0...v2.13.1) (2022-05-18)
+
+
+### Bug Fixes
+
+* incorrect event date in hero ([4854fe3](https://github.com/ThatConference/that.us/commit/4854fe377120df3b36a9f7f6eca573b07d0be862))
+
 # [2.13.0](https://github.com/ThatConference/that.us/compare/v2.12.0...v2.13.0) (2022-05-18)
 
 
