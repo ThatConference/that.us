@@ -243,6 +243,8 @@ export const QUERY_EVENT_PARTNERS = `
 					logo
 					name
 					slug
+					startDate
+					endDate
 					venues {
 						city
 						state
