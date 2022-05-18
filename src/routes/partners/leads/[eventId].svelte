@@ -107,7 +107,7 @@
 					<Shell>
 						<button
 							type="button"
-							class="w-full py-4 text-sm leading-5 font-medium"
+							class="w-full py-4 text-sm font-medium leading-5"
 							on:click={() => tryAgain()}>
 							<span class="text-lg">Retry</span>
 						</button>
@@ -115,8 +115,8 @@
 				</div>
 			</div>
 		{:else}
-			<div class="w-full flex flex-col space-y-4">
-				<div class="p-8 bg-gray-50 bg-opacity-50 shadow-md border rounded-xl">
+			<div class="flex w-full flex-col space-y-4">
+				<div class="rounded-xl border bg-gray-50 bg-opacity-50 p-8 shadow-md">
 					<NumPad
 						on:digit={(event) => {
 							pinNumber = pinNumber.concat(event.detail);
@@ -127,7 +127,7 @@
 				</div>
 
 				<div
-					class="relative border border-gray-300 rounded-md px-3 py-2 shadow-sm focus-within:ring-1 focus-within:ring-thatBlue-800 focus-within:border-thatBlue-800">
+					class="relative rounded-md border border-gray-300 px-3 py-2 shadow-sm focus-within:border-thatBlue-800 focus-within:ring-1 focus-within:ring-thatBlue-800">
 					<!-- svelte-ignore a11y-autofocus -->
 					<input
 						autofocus
@@ -142,7 +142,7 @@
 					<Shell>
 						<button
 							type="button"
-							class="w-full py-4 text-sm leading-5 font-medium"
+							class="w-full py-4 text-sm font-medium leading-5"
 							on:click={() => handleContactExchange()}>
 							<span class="text-lg">Connect</span>
 						</button>
@@ -156,7 +156,7 @@
 						rows="10"
 						multiline={true}
 						bind:value={partnerNotes}
-						class="border border-gray-300 rounded-md  form-input w-full sm:text-sm sm:leading-5 hover:border-gray-700"
+						class="form-input w-full rounded-md  border border-gray-300 hover:border-gray-700 sm:text-sm sm:leading-5"
 						placeholder="E.g. Jane would be a great fit for our company." />
 				</div>
 			</div>

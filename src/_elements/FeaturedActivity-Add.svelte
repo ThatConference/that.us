@@ -26,12 +26,12 @@
 						<Icon data={plusCircle} class="h-40 w-40 text-thatBlue-100 xl:h-56 xl:w-56" />
 					{:else}
 						<img
-							class="mx-auto h-40 w-40 rounded-full xl:w-56 xl:h-56"
+							class="mx-auto h-40 w-40 rounded-full xl:h-56 xl:w-56"
 							src={`${$session.thatProfile.profileImage}${imageCrops.profile}`}
 							alt={`${$session.thatProfile.firstName} ${$session.thatProfile.lastName}`} />
 					{/if}
 				{:else}
-					<Icon data={plusCircle} class="text-thatBlue-100 h-40 w-40 xl:w-56 xl:h-56" />
+					<Icon data={plusCircle} class="h-40 w-40 text-thatBlue-100 xl:h-56 xl:w-56" />
 				{/if}
 			</div>
 

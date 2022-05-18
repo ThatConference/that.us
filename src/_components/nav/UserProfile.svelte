@@ -35,7 +35,7 @@
 					<Icon data={userIcon} class="h-8 w-8 rounded-full" />
 				{/if}
 			{:else}
-				<div class="transition duration-500 ease-in-out transform hover:scale-110">
+				<div class="transform transition duration-500 ease-in-out hover:scale-110">
 					<Icon data={userIcon} class="h-8 w-8 rounded-full" />
 				</div>
 			{/if}
@@ -66,10 +66,10 @@
 					</div>
 				{:else}
 					<div
-						class="on-top origin-top-right absolute right-0 mt-2 min-w-48 rounded-md shadow-lg"
+						class="on-top min-w-48 absolute right-0 mt-2 origin-top-right rounded-md shadow-lg"
 						in:fade>
-						<div class="py-1 rounded-md bg-white ring-1 ring-black ring-opacity-5">
-							<div class="block px-4 py-2 text-sm hover:bg-gray-100 text-gray-700 border-b">
+						<div class="rounded-md bg-white py-1 ring-1 ring-black ring-opacity-5">
+							<div class="block border-b px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
 								<a href="/my/profiles/primary/" on:click={() => (visible = false)}>
 									<p>{$session.thatProfile.firstName} {$session.thatProfile.lastName}</p>
 									<p class="truncate pt-2">{$session.thatProfile.email}</p>
@@ -122,18 +122,18 @@
 					</div>
 				{/if}
 			{:else}
-				<div in:fade class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg z-50">
-					<div class="py-1 rounded-md bg-white ring-1 ring-black ring-opacity-5">
+				<div in:fade class="absolute right-0 z-50 mt-2 w-48 origin-top-right rounded-md shadow-lg">
+					<div class="rounded-md bg-white py-1 ring-1 ring-black ring-opacity-5">
 						<a
 							rel="external"
 							href="/login/"
-							class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer">
+							class="block cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
 							Login
 						</a>
 						<a
 							rel="external"
 							href="/api/auth/signup/"
-							class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer">
+							class="block cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
 							Sign Up
 						</a>
 					</div>

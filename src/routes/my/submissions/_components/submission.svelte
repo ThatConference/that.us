@@ -48,7 +48,7 @@
 									<Ban classes="mr-1.5 h-5 w-5" />
 								{:else if activity.status === 'ACCEPTED'}
 									<span
-										class="h-5 w-5 mr-1.5 rounded-full bg-green-400 flex items-center justify-center ring-8 ring-white">
+										class="mr-1.5 flex h-5 w-5 items-center justify-center rounded-full bg-green-400 ring-8 ring-white">
 										<CheckFull />
 									</span>
 								{:else}

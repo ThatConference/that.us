@@ -134,10 +134,10 @@
 				</div>
 			{:else}
 				<div
-					class="py-6 place-self-center z-10 col-span-3 duration-500 ease-in-out hover:scale-105">
+					class="z-10 col-span-3 place-self-center py-6 duration-500 ease-in-out hover:scale-105">
 					<a href={item.url} target="_blank">
 						<img
-							class="lazyload rounded-2xl shadow-xl col-span-3 object-cover h-[770] w-full"
+							class="lazyload col-span-3 h-[770] w-full rounded-2xl object-cover shadow-xl"
 							src={item.src}
 							alt="" />
 					</a>

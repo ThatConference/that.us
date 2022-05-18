@@ -149,7 +149,7 @@
 			</a>
 		</div>
 	{:else if $state.matches('authenticated.pendingProfile')}
-		<h3 class="text-lg leading-6 font-medium text-gray-900">Full Profile Incomplete</h3>
+		<h3 class="text-lg font-medium leading-6 text-gray-900">Full Profile Incomplete</h3>
 		<div class="mt-2 max-w-xl text-sm text-gray-500">
 			<p>
 				Your purchase is attached to the user profile. In order to proceed you need to finish
@@ -165,7 +165,7 @@
 			</a>
 		</div>
 	{:else if $state.matches('authenticated.profileCompleted')}
-		<h3 class="text-lg leading-6 font-medium text-gray-900">Finalize and Complete</h3>
+		<h3 class="text-lg font-medium leading-6 text-gray-900">Finalize and Complete</h3>
 		<div class="mt-2 max-w-xl text-sm text-gray-500">
 			<p>
 				To fully complete this purchase, upon continue we will redirect your browser to

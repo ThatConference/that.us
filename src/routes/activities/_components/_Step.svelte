@@ -24,9 +24,9 @@
 				</span>
 			{:else}
 				<span
-					class="h-8 w-8 bg-white rounded-full flex items-center justify-center ring-4 ring-gray-300">
+					class="flex h-8 w-8 items-center justify-center rounded-full bg-white ring-4 ring-gray-300">
 					{#if isLastItem}
-						<Icon data={flagCheckered} class="text-gray-500 w-4 h-4" />
+						<Icon data={flagCheckered} class="h-4 w-4 text-gray-500" />
 					{:else}
 						<span class="text-sm text-gray-500">{stepNumber}</span>
 					{/if}

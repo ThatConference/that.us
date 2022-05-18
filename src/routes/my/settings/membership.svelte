@@ -87,14 +87,14 @@
 		</div>
 	{:else}
 		<div class="mt-8">
-			<div class="bg-white shadow overflow-hidden sm:rounded-md">
+			<div class="overflow-hidden bg-white shadow sm:rounded-md">
 				<ul class="divide-y divide-gray-200">
 					{#each codes as code}
-						<li class="hover:bg-gray-50 cursor-pointer">
+						<li class="cursor-pointer hover:bg-gray-50">
 							<!-- svelte-ignore a11y-missing-attribute -->
 							<a data-clipboard-text={code.code} class="discountCode">
 								<div class="flex items-center px-4 py-4 sm:px-6">
-									<div class="min-w-0 flex-1 flex items-center">
+									<div class="flex min-w-0 flex-1 items-center">
 										<div class="flex-shrink-0">
 											{#if code.type === 'TICKET'}
 												<Ticket classes="h-8 w-8 mr-3 text-green-500" />
@@ -104,7 +104,7 @@
 										</div>
 										<div class="min-w-0 flex-1 items-center px-4 md:grid md:grid-cols-2 md:gap-4">
 											<div>
-												<p class="text-md font-bold text-thatBlue-800 truncate">
+												<p class="text-md truncate font-bold text-thatBlue-800">
 													{code.title}
 												</p>
 											</div>

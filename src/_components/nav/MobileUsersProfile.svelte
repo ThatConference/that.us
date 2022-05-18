@@ -92,7 +92,7 @@
 					{#each loggedInMenuItems as { rel, href, text }}
 						<a {rel} {href}>
 							<div
-								class="flex px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-that-blue focus:outline-none focus:text-white focus:bg-that-blue"
+								class="flex rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-that-blue hover:text-white focus:bg-that-blue focus:text-white focus:outline-none"
 								class:text-gray-800={darkMode}>
 								{text}
 							</div>
@@ -105,13 +105,13 @@
 				<a
 					rel="external"
 					href="/login/"
-					class="mt-4 mb-1 mr-1 block w-full bg-white rounded-md py-2 text-sm font-semibold text-that-blue text-center flex-grow">
+					class="mt-4 mb-1 mr-1 block w-full flex-grow rounded-md bg-white py-2 text-center text-sm font-semibold text-that-blue">
 					Login
 				</a>
 				<a
 					rel="external"
 					href="/login/"
-					class="mt-4 mb-1 ml-1 block w-full bg-that-orange rounded-md py-2 text-sm font-semibold text-white text-center flex-grow">
+					class="mt-4 mb-1 ml-1 block w-full flex-grow rounded-md bg-that-orange py-2 text-center text-sm font-semibold text-white">
 					Sign Up
 				</a>
 			</div>
