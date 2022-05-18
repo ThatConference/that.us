@@ -24,7 +24,7 @@
 	}))();
 
 	const { addPin } = leadsMutationApi();
-	const eventId = page.slug;
+	const { eventId } = $page.params;
 
 	let pinNumber = '';
 	let partnerNotes;
