@@ -1,6 +1,23 @@
-<script>
-	import { page, session } from '$app/stores'; // todo.. totally broke
+<script context="module">
+	import meQueriesApi from '$dataSources/api.that.tech/me/queries';
 
+	export async function load({ fetch }) {
+		const { queryDropDownValues } = meQueriesApi(fetch);
+		const dropDownValues = await queryDropDownValues();
+
+		return {
+			props: {
+				dropDownValues
+			}
+		};
+	}
+</script>
+
+<script>
+	export let dropDownValues;
+
+	import { setContext } from 'svelte';
+	import { page, session } from '$app/stores'; // todo.. totally broke
 	import lodash from 'lodash';
 
 	import Nav from '$components/nav/interiorNav/Top.svelte';
@@ -9,7 +26,6 @@
 	import StackedLayout from '$elements/layouts/StackedLayout.svelte';
 
 	const { isEmpty } = lodash;
-
 	const asideSelected = {
 		item: 'bg-thatBlue-100 bg-opacity-25 hover:bg-opacity-25 hover:bg-thatBlue-100 border-thatBlue-500 text-thatBlue-700 hover:text-thatBlue-700 group mt-1 border-l-4 px-3 py-2 flex items-center text-sm font-medium',
 		image: 'text-thatBlue-500 group-hover:text-thatBlue-500 flex-shrink-0 -ml-1 mr-3 h-6 w-6'
@@ -19,6 +35,8 @@
 		item: 'border-transparent text-gray-900 hover:bg-gray-50 hover:text-gray-900 group mt-1 border-l-4 px-3 py-2 flex items-center text-sm font-medium',
 		image: 'text-gray-400 group-hover:text-gray-500 flex-shrink-0 -ml-1 mr-3 h-6 w-6'
 	};
+
+	setContext('COUNTRY_CODES', dropDownValues);
 </script>
 
 <StackedLayout>

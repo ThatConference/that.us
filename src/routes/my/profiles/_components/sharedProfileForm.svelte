@@ -1,14 +1,17 @@
 <script context="module">
 	import * as yup from 'yup';
+	const PHONE_NUMBER_REGEX = /^\+[1-9]\d{6,14}$/;
 
 	const schema = yup.object().shape({
 		firstName: yup.string().trim().required('Please add your first name.'),
 		lastName: yup.string().trim().required('Please add your last name.'),
 		email: yup.string().trim().required('Please add your email address.'),
 
-		phone: yup.string().trim().nullable(),
 		city: yup.string().trim().nullable(),
-		state: yup.string().trim().nullable()
+		state: yup.string().trim().nullable(),
+		country: yup.string().trim().nullable(),
+		phone: yup.string().trim().matches(PHONE_NUMBER_REGEX, 'Invalid Phone Number').nullable(),
+		company: yup.string().trim().nullable()
 	});
 </script>
 
@@ -16,11 +19,18 @@
 	export let handleSubmit;
 	export let sharedProfile;
 
+	import { getContext } from 'svelte';
 	import { Form, Input } from 'sveltejs-forms';
-	import ErrorNotificaiton from '$components/notifications/Error.svelte';
+	import Select from 'svelte-select';
+	import MaskInput from 'svelte-input-mask/MaskInput.svelte';
 
-	import { Waiting } from '$elements';
+	import ErrorNotificaiton from '$components/notifications/Error.svelte';
+	import { Busy } from '$elements';
 	import { Shell } from '$elements/buttons';
+
+	const { countryCode } = getContext('COUNTRY_CODES');
+
+	let countryCodeValue = countryCode?.options?.find(({ value }) => value === sharedProfile.country);
 </script>
 
 <Form
@@ -30,7 +40,10 @@
 	validateOnChange={false}
 	on:submit={handleSubmit}
 	let:isSubmitting
-	let:isValid>
+	let:isValid
+	let:setValue
+	let:errors
+	let:touched>
 	<div>
 		<div>
 			<h2 class="text-xl font-bold leading-6 text-gray-900">Your Shared Profile</h2>
@@ -81,7 +94,7 @@
 					</div>
 				</div>
 
-				<div class="sm:col-span-4">
+				<div class="sm:col-span-6">
 					<label for="email" class="block text-sm font-medium leading-5 text-gray-700">
 						Email address
 					</label>
@@ -102,23 +115,9 @@
 						<div class="w-full border-t border-gray-300" />
 					</div>
 					<div class="relative flex justify-center">
-						<span class="bg-gray-100 px-2 text-sm text-gray-500"> Optional Fields </span>
+						<span class="bg-gray-100 px-6 text-sm uppercase text-gray-500"> Optional Fields </span>
 					</div>
 				</div>
-
-				<!-- <div class="sm:col-span-4">
-          <label
-            for="about"
-            class="block text-sm font-medium leading-5 text-gray-700">
-            Phone Number
-          </label>
-          <div class="mt-1 border rounded-md shadow-sm">
-            <Input
-              name="phone"
-              type="tel"
-              class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
-          </div>
-        </div> -->
 
 				<div class="sm:col-span-3">
 					<label for="city" class="block text-sm font-medium leading-5 text-gray-700"> City </label>
@@ -141,32 +140,89 @@
 							class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
 					</div>
 				</div>
-			</div>
-		</div>
 
-		<div class="mt-8 border-t border-gray-200 pt-5">
-			<div class="flex justify-end space-x-4">
-				<div class="flex">
-					<Shell>
-						<button
-							type="submit"
-							disabled={isSubmitting}
-							class="w-full px-8 py-2 text-sm font-medium leading-5">
-							<span>Update Shared Profile</span>
-						</button>
-					</Shell>
+				<div class="sm:col-span-3">
+					<label for="state" class="block text-sm font-medium leading-5 text-gray-700">
+						Country
+					</label>
+					<div class="mt-1 rounded-md border shadow-sm">
+						<Select
+							inputAttributes={{
+								name: 'country'
+							}}
+							inputStyles="form-multiselect transition ease-in-out duration-150 sm:text-sm sm:leading-5 hover:border-gray-700"
+							items={countryCode.options}
+							value={countryCodeValue}
+							on:select={({ detail }) => setValue('country', detail.value)}
+							on:clear={() => setValue('country', null)}
+							hasError={touched['country'] && errors['country']} />
+					</div>
+					{#if touched['country'] && errors['country']}
+						<p class="italic text-red-600">{errors['country']}</p>
+					{/if}
+				</div>
+
+				<div class="sm:col-span-3">
+					<label for="about" class="block text-sm font-medium leading-5 text-gray-700">
+						Phone Number
+					</label>
+					<div class="mt-1 rounded-md border shadow-sm">
+						<MaskInput
+							name="phone"
+							alwaysShowMask
+							mask="+0 (000) 000 - 0000"
+							size={20}
+							showMask
+							maskChar="_"
+							class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+							value={sharedProfile.phone || undefined}
+							on:change={({ detail: { inputState } }) => {
+								if (inputState.unmaskedValue.length === 0) setValue('phone', null);
+								else setValue('phone', `+${inputState.unmaskedValue}`);
+							}} />
+					</div>
+					{#if touched['phone'] && errors['phone']}
+						<p class="italic text-red-600">{errors['phone']}</p>
+					{/if}
+				</div>
+
+				<div class="sm:col-span-3">
+					<label for="company" class="block text-sm font-medium leading-5 text-gray-700">
+						Company
+					</label>
+					<div class="mt-1 rounded-md border shadow-sm">
+						<Input
+							name="company"
+							type="text"
+							class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
+					</div>
 				</div>
 			</div>
 		</div>
 
-		{#if isValid === false}
-			<ErrorNotificaiton message="Please correct the errors listed above." />
+		{#if !isSubmitting}
+			<div class="mt-8 border-t border-gray-200 pt-5">
+				<div class="flex justify-end space-x-4">
+					<div class="flex">
+						<Shell>
+							<button
+								type="submit"
+								disabled={isSubmitting}
+								class="w-full px-8 py-2 text-sm font-medium leading-5">
+								<span>Update Shared Profile</span>
+							</button>
+						</Shell>
+					</div>
+				</div>
+			</div>
+		{:else}
+			<div class="flex flex-grow justify-center py-12">
+				<Busy />
+			</div>
 		{/if}
 
-		{#if isSubmitting}
-			<div class="flex flex-grow justify-center py-12">
-				<Waiting />
-			</div>
+		{#if isValid === false}
+			<ErrorNotificaiton message="Please correct the errors listed above." />
 		{/if}
 	</div>
 </Form>

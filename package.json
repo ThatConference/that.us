@@ -83,6 +83,7 @@
 		"svelte-flatpickr": "^3.2.6",
 		"svelte-headroom": "^2.2.1",
 		"svelte-infinite-scroll": "^2.0.1",
+		"svelte-input-mask": "^1.1.0",
 		"svelte-loading-spinners": "^0.1.7",
 		"svelte-preprocess": "^4.10.6",
 		"svelte-scrollto": "^0.2.0",
