@@ -8,6 +8,10 @@ const sharedProfileFragment = `
 		lastName
 		email
 		phone
+		city
+		state
+		country
+		company
 	}
 `;
 

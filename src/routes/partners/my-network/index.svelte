@@ -43,6 +43,11 @@
 			firstName: y.member.firstName,
 			lastName: y.member.lastName,
 			email: y.member.email,
+			phone: y.member.phone ? y.member.phone : '',
+			city: y.member.city ? y.member.city : '',
+			state: y.member.state ? y.member.state : '',
+			country: y.member.country ? y.member.country : '',
+			company: y.member.company ? y.member.company : '',
 			partnersNotes: y.partnersNotes ? y.partnersNotes : ''
 		}));
 
@@ -56,6 +61,11 @@
 			'Attendee First Name',
 			'Attendee Last Name',
 			'Attendee Email',
+			'Attendee Phone',
+			'Attendee City',
+			'Attendee State',
+			'Attendee Country',
+			'Attendee Company',
 			'Partners Notes'
 		];
 
