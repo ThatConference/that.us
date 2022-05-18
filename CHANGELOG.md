@@ -1,3 +1,10 @@
+# [2.13.0](https://github.com/ThatConference/that.us/compare/v2.12.0...v2.13.0) (2022-05-18)
+
+
+### Features
+
+* bumping to 16 ([a385a96](https://github.com/ThatConference/that.us/commit/a385a96b54ab6879d044c5d73817ffc3b8ed5031))
+
 # [2.12.0](https://github.com/ThatConference/that.us/compare/v2.11.12...v2.12.0) (2022-05-18)
 
 
