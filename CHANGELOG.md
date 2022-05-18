@@ -1,3 +1,15 @@
+# [2.12.0](https://github.com/ThatConference/that.us/compare/v2.11.12...v2.12.0) (2022-05-18)
+
+
+### Bug Fixes
+
+* a bug from kit conversion reading store wrong ([4621194](https://github.com/ThatConference/that.us/commit/462119409f63acc2e36d754fb783bf0e8e1fdb05))
+
+
+### Features
+
+* adds new shared profile fields ([f98fdbd](https://github.com/ThatConference/that.us/commit/f98fdbd3cda88adac5ebd2d6b60ed9bc52e352ce))
+
 ## [2.11.12](https://github.com/ThatConference/that.us/compare/v2.11.11...v2.11.12) (2022-05-06)
 
 
