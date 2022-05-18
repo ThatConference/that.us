@@ -1,6 +1,6 @@
 <script context="module">
 	export async function load() {
-		const eventId = '7wiuRWI7EZjcdF4e9MDz';
+		const eventId = 'OlyDhUyrp2DI9babqZO9';
 
 		return {
 			status: 301,

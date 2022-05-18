@@ -1,6 +1,21 @@
 import gFetch from '$utils/gfetch';
 import { log } from '../utilities/error';
 
+const enumValues = `
+	options: enumValues {
+		label: description
+		value: name
+	}
+`;
+
+export const QUERY_DROPDOWN_VALUES = `
+	query QUERY_DROPDOWN_VALUES {
+		countryCode: __type(name: "CountryCode") {
+			${enumValues}
+		}
+	}
+`;
+
 export const QUERY_ME_FOLLOWING_COMMUNITIES = `
   query queryMyCommunityFollows {
     communities {
@@ -67,9 +82,11 @@ export const QUERY_ME_SHARED_PROFILE = `
           firstName
           lastName
           email
-          phone
           city
           state
+					country
+					phone
+					company
         }
       }
     }
@@ -167,12 +184,23 @@ export default (fetch) => {
 			});
 	};
 
+	function queryDropDownValues() {
+		const variables = {};
+
+		return client.query({ query: QUERY_DROPDOWN_VALUES, variables }).then(({ data, errors }) => {
+			if (errors) log({ errors, tag: 'QUERY_DROPDOWN_VALUES' });
+
+			return data;
+		});
+	}
+
 	return {
 		queryMeFollowingCommunities,
 		queryMeFollowingMembers,
 		queryMeFollowingPartners,
 		queryMeDiscountCodes,
 		queryMeSharedProfile,
-		queryMeEmergencyContact
+		queryMeEmergencyContact,
+		queryDropDownValues
 	};
 };

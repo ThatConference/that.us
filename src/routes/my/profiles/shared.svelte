@@ -32,7 +32,14 @@
 
 	async function handleUpdate({ detail: { values, setSubmitting } }) {
 		setSubmitting(true);
-		await updateSharedProfile(values);
+
+		try {
+			await updateSharedProfile(values);
+		} catch (e) {
+			//todo what do we do here?
+			console.error(e);
+		}
+
 		setSubmitting(false);
 	}
 
