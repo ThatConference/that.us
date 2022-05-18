@@ -29,7 +29,7 @@
 					but when we do it's to make sure you stay in the know.
 				</p>
 			{:else}
-				<p class="mt-3 max-w-3xl prose prose-lg text-gray-500">
+				<p class="prose prose-lg mt-3 max-w-3xl text-gray-500">
 					Thank you for signing up. Welcome to THAT family.
 				</p>
 				<p class="mt-3 text-sm leading-5 text-gray-500">

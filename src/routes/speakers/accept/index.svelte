@@ -191,7 +191,7 @@
 		</div>
 	{:else}
 		<p
-			class="mt-6 text-4xl sm:text-5xl sm:tracking-tight lg:text-6xl leading-8 font-extrabold tracking-tight text-gray-900">
+			class="mt-6 text-4xl font-extrabold leading-8 tracking-tight text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl">
 			Counselor Enrollment
 		</p>
 	{/if}

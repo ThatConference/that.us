@@ -110,7 +110,7 @@
 						{:else}
 							<div class="flex justify-center">
 								<div
-									class="px-8 py-3 rounded-md shadow text-base leading-6 font-medium border-2 border-thatBlue-500 text-thatBlue-500 bg-white">
+									class="rounded-md border-2 border-thatBlue-500 bg-white px-8 py-3 text-base font-medium leading-6 text-thatBlue-500 shadow">
 									Reservations open on {open}.
 								</div>
 							</div>

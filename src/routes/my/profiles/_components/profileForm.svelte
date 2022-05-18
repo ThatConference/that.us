@@ -389,7 +389,7 @@
 							<Input
 								type="text"
 								name="profileSlug"
-								class="flex-1 form-input block w-full min-w-0 rounded-none
+								class="form-input block w-full min-w-0 flex-1 rounded-none
                   rounded-r-md transition duration-150 ease-in-out sm:text-sm
                   sm:leading-5" />
 						{/if}

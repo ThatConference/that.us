@@ -126,7 +126,7 @@
 					</div>
 				{:else if checkInError}
 					<div class="relative my-6 flex flex-col space-y-6">
-						<div class="w-full mt-2">
+						<div class="mt-2 w-full">
 							<p class="text-md leading-5 text-gray-500">
 								{checkInErroMessage}
 							</p>
@@ -136,7 +136,7 @@
 							<Shell>
 								<button
 									type="button"
-									class="w-full py-4 text-sm leading-5 font-medium"
+									class="w-full py-4 text-sm font-medium leading-5"
 									on:click={() => tryAgain()}>
 									<span class="text-lg">Retry</span>
 								</button>
@@ -149,7 +149,7 @@
 							<Shell>
 								<button
 									type="button"
-									class="w-full py-4 text-sm leading-5 font-medium"
+									class="w-full py-4 text-sm font-medium leading-5"
 									on:click={() => handleRevertCheckIn()}>
 									<span class="text-lg">Revert CheckIn</span>
 								</button>
@@ -160,14 +160,14 @@
 							<Shell>
 								<button
 									type="button"
-									class="w-full py-4 text-sm leading-5 font-medium"
+									class="w-full py-4 text-sm font-medium leading-5"
 									on:click={() => (setPin = true)}>
 									<span class="text-lg">Reset Pin</span>
 								</button>
 							</Shell>
 						</div>
 
-						<div class="flex space-x-4 items-center">
+						<div class="flex items-center space-x-4">
 							<div>
 								<Checkbox
 									name="isOwedShirt"
@@ -178,7 +178,7 @@
 							<Shell>
 								<button
 									type="button"
-									class="w-full py-4 text-sm leading-5 font-medium"
+									class="w-full py-4 text-sm font-medium leading-5"
 									on:click={() => handleOweSwag()}>
 									<span class="text-lg">Owe Shirt</span>
 								</button>
@@ -198,7 +198,7 @@
 						</div>
 
 						<div
-							class="relative border border-gray-300 rounded-md px-3 py-2 shadow-sm focus-within:ring-1 focus-within:ring-thatBlue-800 focus-within:border-thatBlue-800">
+							class="relative rounded-md border border-gray-300 px-3 py-2 shadow-sm focus-within:border-thatBlue-800 focus-within:ring-1 focus-within:ring-thatBlue-800">
 							<input
 								type="text"
 								name="pinNumber"
@@ -211,7 +211,7 @@
 							<Shell>
 								<button
 									type="button"
-									class="w-full py-4 text-sm leading-5 font-medium"
+									class="w-full py-4 text-sm font-medium leading-5"
 									on:click={() => handleResetPin()}>
 									<span class="text-lg">Reset Pin</span>
 								</button>

@@ -263,16 +263,16 @@
 							</button>
 						</div>
 					{:else}
-						<div class="mt-2 mx-2 rounded-md shadow-sm">
+						<div class="mx-2 mt-2 rounded-md shadow-sm">
 							<a
 								rel="external"
 								href="/login/"
-								class="relative inline-flex items-center px-4 py-2 border-2
-                  border-thatBlue-500 text-sm leading-5 font-medium rounded-md
-                  text-gray-700 bg-white hover:text-gray-500 focus:outline-none
-                  focus:ring-blue focus:border-blue-300
-                  active:bg-gray-50 active:text-gray-800 transition duration-150
-                  ease-in-out">
+								class="focus:ring-blue relative inline-flex items-center rounded-md border-2
+                  border-thatBlue-500 bg-white px-4 py-2 text-sm
+                  font-medium leading-5 text-gray-700 transition
+                  duration-150 ease-in-out
+                  hover:text-gray-500 focus:border-blue-300 focus:outline-none active:bg-gray-50
+                  active:text-gray-800">
 								<Icon data={heart} class="-ml-1 mr-2 h-4 w-4" />
 								<span>Favorite</span>
 							</a>
@@ -317,26 +317,26 @@
 						</div>
 					{:else if targetLocation != 'IN_PERSON'}
 						{#if canJoin}
-							<div class="mt-2 mx-2 rounded-md shadow-sm">
+							<div class="mx-2 mt-2 rounded-md shadow-sm">
 								<a
 									href={joinUrl}
-									class="relative inline-flex justify-center py-2 px-4 border-2
-                  border-thatBlue-500 text-sm leading-5 font-medium rounded-md
-                  text-thatBlue-500 bg-white hover:bg-thatBlue-500
-                  hover:text-white focus:outline-none
-                  focus:ring-thatBlue-500 focus:bg-thatBlue-500
-                  focus:text-white focus:border-thatBlue-800
-                  active:bg-thatBlue-800 transition duration-150 ease-in-out">
+									class="relative inline-flex justify-center rounded-md border-2 border-thatBlue-500
+                  bg-white py-2 px-4 text-sm font-medium
+                  leading-5 text-thatBlue-500 transition
+                  duration-150 ease-in-out
+                  hover:bg-thatBlue-500 hover:text-white
+                  focus:border-thatBlue-800 focus:bg-thatBlue-500
+                  focus:text-white focus:outline-none focus:ring-thatBlue-500 active:bg-thatBlue-800">
 									<Icon data={signIn} class="-ml-1 mr-2 h-4 w-4 text-gray-400" />
 									<span>Join In</span>
 								</a>
 							</div>
 						{:else}
-							<span class="mt-2 mx-2 rounded-md shadow-sm">
+							<span class="mx-2 mt-2 rounded-md shadow-sm">
 								<div
-									class="relative inline-flex items-center px-4 py-2 border-2
-                  border-gray-300 text-sm leading-5 font-medium rounded-md
-                  text-gray-400 bg-white">
+									class="relative inline-flex items-center rounded-md border-2 border-gray-300
+                  bg-white px-4 py-2 text-sm font-medium
+                  leading-5 text-gray-400">
 									<Icon data={signIn} class="-ml-1 mr-2 h-4 w-4" />
 									<span>Join {timeLeftToJoin}</span>
 								</div>

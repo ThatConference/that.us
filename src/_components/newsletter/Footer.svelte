@@ -24,7 +24,7 @@
 			The latest news, articles, and resources, sent to your inbox weekly.
 		</p>
 	{:else}
-		<h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">
+		<h3 class="text-sm font-semibold uppercase tracking-wider text-gray-400">
 			Thank you for signing up. Welcome to THAT family.
 		</h3>
 		<p class="mt-4 text-base text-gray-500">

@@ -64,7 +64,7 @@
 				<Busy />
 			</div>
 		{:else}
-			<h2 class="text-xl text-gray-800 font-extrabold">Please complete each ticket.</h2>
+			<h2 class="text-xl font-extrabold text-gray-800">Please complete each ticket.</h2>
 			{#each allocatedAllocations as orderAllocation, i}
 				<TicketDetail
 					{orderId}

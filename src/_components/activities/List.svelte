@@ -275,7 +275,7 @@
 											<KeynoteCard {...activity} />
 										</li>
 									{:else}
-										<li in:fade class="col-span-1 bg-white rounded-lg shadow-lg">
+										<li in:fade class="col-span-1 rounded-lg bg-white shadow-lg">
 											<Card {...cardParams(activity)} {editMode} {dense} />
 										</li>
 									{/if}
@@ -287,14 +287,14 @@
 			</div>
 		{/each}
 	{:else}
-		<div class="flex flex-col justify-center items-center">
+		<div class="flex flex-col items-center justify-center">
 			<img
-				class="lazyload h-52 sm:h-64 lg:h-72 m-0 mt-24 lg:m-10"
+				class="lazyload m-0 mt-24 h-52 sm:h-64 lg:m-10 lg:h-72"
 				src="/images/characters/sasquatch.png"
 				alt="Empty-handed Sasquatch" />
 			{#if activities.length > 0}
 				<h1
-					class="pt-10 pb-4 sm:pb-10 px-2 tracking-tight leading-10 font-bold text-thatBlue-600 text-3xl sm:text-4xl lg:text-5xl text-center">
+					class="px-2 pt-10 pb-4 text-center text-3xl font-bold leading-10 tracking-tight text-thatBlue-600 sm:pb-10 sm:text-4xl lg:text-5xl">
 					{`Honestly, I tried, but there's nothing for "${searchterm}".`}
 				</h1>
 			{/if}

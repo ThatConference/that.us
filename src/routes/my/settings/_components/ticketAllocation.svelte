@@ -92,7 +92,7 @@
 						type="email"
 						name="emailAddress"
 						placeholder="E.g. hello@that.us"
-						class="form-input block h-12 w-full sm:text-sm sm:leading-5 hover:border-gray-700" />
+						class="form-input block h-12 w-full hover:border-gray-700 sm:text-sm sm:leading-5" />
 				</div>
 			{/if}
 		</div>
@@ -112,12 +112,12 @@
 			{:else}
 				<button
 					type="submit"
-					class="text-center w-full h-full bg-white rounded-md shadow 
-          border-2 border-thatBlue-500
-          text-base leading-6 md:text-lg font-medium text-thatBlue-500 
-          hover:bg-thatBlue-500 hover:text-white 
-          focus:bg-thatBlue-500 focus:text-white focus:outline-none focus:ring-thatBlue-500 focus:border-thatBlue-800 
-          transition duration-150 ease-in-out">
+					class="h-full w-full rounded-md border-2 border-thatBlue-500 bg-white 
+          text-center text-base
+          font-medium leading-6 text-thatBlue-500 shadow transition 
+          duration-150 ease-in-out 
+          hover:bg-thatBlue-500 hover:text-white focus:border-thatBlue-800 focus:bg-thatBlue-500 focus:text-white 
+          focus:outline-none focus:ring-thatBlue-500 md:text-lg">
 					<span>
 						<Icon data={share} class="-ml-1 mr-2 h-4 w-4" />
 					</span>

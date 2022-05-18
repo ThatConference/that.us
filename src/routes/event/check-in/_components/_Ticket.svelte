@@ -89,7 +89,7 @@
 						<Shell>
 							<button
 								type="button"
-								class="w-full py-4 px-6 text-sm leading-5 font-medium"
+								class="w-full py-4 px-6 text-sm font-medium leading-5"
 								on:click|stopPropagation|preventDefault={() =>
 									(editCheckInClicked = !editCheckInClicked)}>
 								<span class="text-lg">Edit CheckIn</span>

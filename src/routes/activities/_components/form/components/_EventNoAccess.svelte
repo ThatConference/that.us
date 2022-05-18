@@ -37,13 +37,13 @@
 	{:else}
 		<a href={`/events/${event.slug}`}>
 			<div
-				class="flex-1 flex items-center justify-between border border-gray-200 bg-gray-50 rounded-md truncate">
-				<div class="flex-1 px-4 py-2 text-sm truncate text-gray-500">
+				class="flex flex-1 items-center justify-between truncate rounded-md border border-gray-200 bg-gray-50">
+				<div class="flex-1 truncate px-4 py-2 text-sm text-gray-500">
 					<p class="font-medium">A Ticket or Membership is Required</p>
 					<p class="">View Event Details</p>
 				</div>
 				<div class="flex-shrink-0 pr-4">
-					<span class="h-6 w-6 rounded-full flex items-center justify-center">
+					<span class="flex h-6 w-6 items-center justify-center rounded-full">
 						<Ban height="h-4" width="w-4" />
 					</span>
 				</div>

@@ -105,7 +105,7 @@
 							<Shell>
 								<button
 									type="button"
-									class="w-full py-4 text-sm leading-5 font-medium"
+									class="w-full py-4 text-sm font-medium leading-5"
 									on:click={() => tryAgain()}>
 									<span class="text-lg">Retry</span>
 								</button>
@@ -125,7 +125,7 @@
 						</div>
 
 						<div
-							class="relative border border-gray-300 rounded-md px-3 py-2 shadow-sm focus-within:ring-1 focus-within:ring-thatBlue-800 focus-within:border-thatBlue-800">
+							class="relative rounded-md border border-gray-300 px-3 py-2 shadow-sm focus-within:border-thatBlue-800 focus-within:ring-1 focus-within:ring-thatBlue-800">
 							<!-- svelte-ignore a11y-autofocus -->
 							<input
 								autofocus
@@ -139,7 +139,7 @@
 						<div class="flex">
 							<Shell>
 								<button
-									class="w-full py-4 text-sm leading-5 font-medium"
+									class="w-full py-4 text-sm font-medium leading-5"
 									on:click={() => handleCheckIn()}>
 									<span class="text-lg">Complete Check-In</span>
 								</button>

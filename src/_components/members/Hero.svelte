@@ -40,12 +40,12 @@
 			<div class="rounded-md shadow">
 				<a
 					href="/membership/"
-					class="w-full flex items-center justify-center px-8 py-3 border
-            border-transparent text-base leading-6 font-medium rounded-md
-            text-white bg-thatOrange-400 hover:bg-thatOrange-500
-            focus:outline-none focus:border-thatOrange-700
-            focus:ring-that-orange transition duration-150 ease-in-out
-            md:py-4 md:text-lg md:px-10">
+					class="flex w-full items-center justify-center rounded-md border border-transparent
+            bg-thatOrange-400 px-8 py-3 text-base font-medium
+            leading-6 text-white transition
+            duration-150 ease-in-out
+            hover:bg-thatOrange-500 focus:border-thatOrange-700 focus:outline-none focus:ring-that-orange
+            md:py-4 md:px-10 md:text-lg">
 					Upgrade to for full access!
 				</a>
 			</div>

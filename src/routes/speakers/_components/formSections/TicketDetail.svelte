@@ -149,7 +149,7 @@
 								</button>
 							{:else}
 								<div>
-									<span class="h-8 w-8 rounded-full bg-green-500 flex items-center justify-center">
+									<span class="flex h-8 w-8 items-center justify-center rounded-full bg-green-500">
 										<CheckFull />
 									</span>
 								</div>
