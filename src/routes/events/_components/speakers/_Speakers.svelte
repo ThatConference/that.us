@@ -5,7 +5,7 @@
 	export let max = 10;
 
 	$: speakers = uniqBy(
-		event.speakers.filter((x) => x.profileSlug != 'thatconference'),
+		event.speakers.filter((s) => s).filter((x) => x.profileSlug != 'thatconference'),
 		(i) => i.id
 	).slice(0, max);
 
