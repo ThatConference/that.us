@@ -1,3 +1,10 @@
+## [2.13.2](https://github.com/ThatConference/that.us/compare/v2.13.1...v2.13.2) (2022-05-19)
+
+
+### Bug Fixes
+
+* null speaker returned on event page ([34f06a2](https://github.com/ThatConference/that.us/commit/34f06a203fc9052e5c04f8a68183fe8d7d0dc4c4))
+
 ## [2.13.1](https://github.com/ThatConference/that.us/compare/v2.13.0...v2.13.1) (2022-05-18)
 
 
