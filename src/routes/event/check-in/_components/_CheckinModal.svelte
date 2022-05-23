@@ -41,7 +41,7 @@
 </script>
 
 <div
-	class="fixed inset-x-0 bottom-0 z-10 px-4 pb-6 sm:inset-0 sm:flex sm:items-center sm:justify-center sm:p-0">
+	class="fixed inset-x-0 bottom-0 z-50 px-4 pb-6 sm:inset-0 sm:flex sm:items-center sm:justify-center sm:p-0">
 	<div class="fixed inset-0 transition-opacity">
 		<div class="absolute inset-0 bg-gray-500 opacity-75" />
 	</div>
