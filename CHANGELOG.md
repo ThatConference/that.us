@@ -1,3 +1,10 @@
+## [2.13.3](https://github.com/ThatConference/that.us/compare/v2.13.2...v2.13.3) (2022-05-23)
+
+
+### Bug Fixes
+
+* modal on checkin ([5d149f4](https://github.com/ThatConference/that.us/commit/5d149f4e24ab2ab98daef273eb151df5fb2b45f5))
+
 ## [2.13.2](https://github.com/ThatConference/that.us/compare/v2.13.1...v2.13.2) (2022-05-19)
 
 
