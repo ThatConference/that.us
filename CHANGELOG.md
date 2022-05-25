@@ -1,3 +1,10 @@
+## [2.13.4](https://github.com/ThatConference/that.us/compare/v2.13.3...v2.13.4) (2022-05-25)
+
+
+### Bug Fixes
+
+* correct wi hotel block close dates ([3f56d9e](https://github.com/ThatConference/that.us/commit/3f56d9ec2a3e69510d9e7e28d2be3e190d3d42f0))
+
 ## [2.13.3](https://github.com/ThatConference/that.us/compare/v2.13.2...v2.13.3) (2022-05-23)
 
 
