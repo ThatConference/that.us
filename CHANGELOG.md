@@ -1,3 +1,10 @@
+## [2.13.5](https://github.com/ThatConference/that.us/compare/v2.13.4...v2.13.5) (2022-05-31)
+
+
+### Bug Fixes
+
+* add disclaimer in speaker enrollment ([b88f38e](https://github.com/ThatConference/that.us/commit/b88f38ed5c8df22c1301cab9bb20630f329ead36))
+
 ## [2.13.4](https://github.com/ThatConference/that.us/compare/v2.13.3...v2.13.4) (2022-05-25)
 
 
