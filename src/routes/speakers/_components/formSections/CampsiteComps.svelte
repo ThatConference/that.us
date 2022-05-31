@@ -80,7 +80,7 @@
 		speakers). To reserve the room, the Kalahari requires a deposit of one night's stay plus tax.
 		THAT Conference works directly with the Kalahari to apply the appropriate credits to your
 		account during the conference. You will see the proper credits applied to your final bill upon
-		checkout.
+		checkout. Speaking sessions from sponsorships is not eligible for this benefit.
 	</p>
 
 	<div class="mt-6 antialiased">
