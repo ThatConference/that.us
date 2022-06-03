@@ -1,3 +1,10 @@
+## [2.13.6](https://github.com/ThatConference/that.us/compare/v2.13.5...v2.13.6) (2022-06-03)
+
+
+### Bug Fixes
+
+* spotlight page typo ([9197c8e](https://github.com/ThatConference/that.us/commit/9197c8e8131c7e39567efb17ee84e808b5780e8f))
+
 ## [2.13.5](https://github.com/ThatConference/that.us/compare/v2.13.4...v2.13.5) (2022-05-31)
 
 
