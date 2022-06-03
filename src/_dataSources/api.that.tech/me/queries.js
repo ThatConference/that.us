@@ -46,7 +46,6 @@ export const QUERY_ME_FOLLOWING_PARTNERS = `
   query queryMyCommunityFollows {
     partners {
       me {
-				id
         favorites {
           ids
         }
