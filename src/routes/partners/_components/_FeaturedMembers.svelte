@@ -14,7 +14,7 @@
 					Meet our team
 				</h2>
 				<p class="text-xl leading-7 text-gray-500">
-					Here are just some of the great folks you can find chat with around THAT.
+					Here are just some of the great folks you can find and chat with around THAT.
 				</p>
 			</div>
 			<div class="lg:col-span-2">
