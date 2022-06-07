@@ -1,3 +1,10 @@
+## [2.13.8](https://github.com/ThatConference/that.us/compare/v2.13.7...v2.13.8) (2022-06-07)
+
+
+### Bug Fixes
+
+* update sponsor handbook ([45e527f](https://github.com/ThatConference/that.us/commit/45e527f6274e9fa74a9043f8c8be113e05929a55))
+
 ## [2.13.7](https://github.com/ThatConference/that.us/compare/v2.13.6...v2.13.7) (2022-06-03)
 
 
