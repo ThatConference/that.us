@@ -1,3 +1,10 @@
+## [2.13.9](https://github.com/ThatConference/that.us/compare/v2.13.8...v2.13.9) (2022-06-15)
+
+
+### Bug Fixes
+
+* cfp dates ([b160fdc](https://github.com/ThatConference/that.us/commit/b160fdc0a399ed8de95e547f11d672ad4b0d09a2))
+
 ## [2.13.8](https://github.com/ThatConference/that.us/compare/v2.13.7...v2.13.8) (2022-06-07)
 
 
