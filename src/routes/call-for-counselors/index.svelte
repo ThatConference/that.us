@@ -1,8 +1,8 @@
 <script context="module">
 	export async function load() {
 		return {
-			status: 302,
-			redirect: `/call-for-counselors/wi/2022`
+			status: 301,
+			redirect: `/call-for-counselors/tx/2023`
 		};
 	}
 </script>

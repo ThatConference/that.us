@@ -75,7 +75,7 @@ export const imageCrops = {
 export const events = {
 	next: {
 		tx: {
-			slug: 'tx/2022'
+			slug: 'tx/2023'
 		},
 		wi: {
 			slug: 'wi/2022'
