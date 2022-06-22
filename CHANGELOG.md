@@ -1,3 +1,10 @@
+## [2.13.10](https://github.com/ThatConference/that.us/compare/v2.13.9...v2.13.10) (2022-06-22)
+
+
+### Bug Fixes
+
+* adds some better words and unlocks booking button ([a00f8c2](https://github.com/ThatConference/that.us/commit/a00f8c2373c7f36cb847808d97725fdc63cbe0b0))
+
 ## [2.13.9](https://github.com/ThatConference/that.us/compare/v2.13.8...v2.13.9) (2022-06-15)
 
 
