@@ -31,7 +31,7 @@
 	const closeTime = dayjs(kalahari.passkey.wi.closes);
 	const close = closeTime.format('dddd, MMMM D, YYYY');
 
-	const isRoomBlockOpen = dayjs().isBetween(openTime, closeTime);
+	const isRoomBlockOpen = dayjs().isBetween(openTime.subtract(1, 'day'), closeTime.add(1, 'day'));
 </script>
 
 <Seo title={metaTags.title} tags={metaTags.tags} />
@@ -103,18 +103,16 @@
 						<h3>Booking Your Reservation</h3>
 						<p>A dedicated website is now available for you to book your hotel room online.</p>
 
-						{#if isRoomBlockOpen}
-							<div class="flex justify-center">
-								<StandardLink open={true} href={kalahari.passkey.wi.url}>Book Today</StandardLink>
-							</div>
-						{:else}
-							<div class="flex justify-center">
-								<div
-									class="rounded-md border-2 border-thatBlue-500 bg-white px-8 py-3 text-base font-medium leading-6 text-thatBlue-500 shadow">
-									Reservations open on {open}.
-								</div>
-							</div>
+						{#if !isRoomBlockOpen}
+							<p class="text-red-500">
+								Please note that our block discounts have ended, but you can still book your stay at
+								the Kalahari.
+							</p>
 						{/if}
+
+						<div class="flex justify-center">
+							<StandardLink open={true} href={kalahari.passkey.wi.url}>Book Today</StandardLink>
+						</div>
 					</div>
 				</div>
 			</div>
