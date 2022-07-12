@@ -1,3 +1,10 @@
+## [2.13.11](https://github.com/ThatConference/that.us/compare/v2.13.10...v2.13.11) (2022-07-12)
+
+
+### Bug Fixes
+
+* removing on-that ([9784ccc](https://github.com/ThatConference/that.us/commit/9784cccf9b4921415221b2baacd9db348ef4d969))
+
 ## [2.13.10](https://github.com/ThatConference/that.us/compare/v2.13.9...v2.13.10) (2022-06-22)
 
 
