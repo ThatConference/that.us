@@ -21,19 +21,6 @@ export const ticketBreakdown = [
 		]
 	},
 	{
-		uiReference: 'VIRTUAL_CAMPER',
-		includes: [
-			{
-				title: 'Event Access',
-				includes: [{ title: 'Tuesday' }, { title: 'Wednesday' }, { title: 'Thursday' }]
-			},
-			{
-				title: 'Other',
-				includes: [{ title: 'T-Shirt (US Only)' }]
-			}
-		]
-	},
-	{
 		uiReference: 'CAMPER_NO_FOOD',
 		includes: [
 			{
@@ -149,50 +136,50 @@ const pricingBreakdown = [
 		includes: [
 			{
 				title: 'Monday',
-				isIncluded: [true, false, false, false, true]
+				isIncluded: [true, false, false, true]
 			},
 			{
 				title: 'Tuesday',
-				isIncluded: [false, true, true, true, true]
+				isIncluded: [false, true, true, true]
 			},
 			{
 				title: 'Wednesday',
-				isIncluded: [false, true, true, true, true]
+				isIncluded: [false, true, true, true]
 			},
 			{
 				title: 'Thursday',
-				isIncluded: [false, true, true, true, true]
+				isIncluded: [false, true, true, true]
 			}
 		]
 	},
 	{
 		title: 'Food and Beverage',
 		includes: [
-			{ title: 'Monday Lunch', isIncluded: [true, false, false, false, true] },
+			{ title: 'Monday Lunch', isIncluded: [true, false, false, true] },
 			{
 				title: 'Tuesday Breakfast & Lunch',
-				isIncluded: [false, false, false, true, true]
+				isIncluded: [false, false, true, true]
 			},
-			{ title: 'Happy Hour', isIncluded: [false, false, false, true, true] },
+			{ title: 'Happy Hour', isIncluded: [false, false, true, true] },
 			{
 				title: 'Wednesday Breakfast & Lunch',
-				isIncluded: [false, false, false, true, true]
+				isIncluded: [false, false, true, true]
 			},
 			{
 				title: 'Wednesday Pig Roast',
-				isIncluded: [false, false, false, true, true]
+				isIncluded: [false, false, true, true]
 			},
 			{
 				title: 'Thursday Breakfast & Lunch',
-				isIncluded: [false, false, false, true, true]
+				isIncluded: [false, false, true, true]
 			},
 			{
 				title: 'Closing Smores Bar',
-				isIncluded: [false, false, false, true, true]
+				isIncluded: [false, false, true, true]
 			},
 			{
 				title: 'All Day Caffeine & H20',
-				isIncluded: [false, false, false, true, true]
+				isIncluded: [false, false, true, true]
 			}
 		]
 	},
@@ -202,12 +189,12 @@ const pricingBreakdown = [
 		includes: [
 			{
 				title: 'Welcome Reception',
-				isIncluded: [true, false, true, true, true]
+				isIncluded: [true, true, true, true]
 			},
-			{ title: 'Game Night', isIncluded: [false, false, true, true, true] },
+			{ title: 'Game Night', isIncluded: [false, true, true, true] },
 			{
 				title: 'Water Park Party',
-				isIncluded: [false, false, true, true, true]
+				isIncluded: [false, true, true, true]
 			}
 		]
 	},
@@ -217,11 +204,11 @@ const pricingBreakdown = [
 		includes: [
 			{
 				title: 'Conference Badge',
-				isIncluded: [true, false, true, true, true]
+				isIncluded: [true, true, true, true]
 			},
-			{ title: 'T-Shirt', isIncluded: [false, 'US Only', true, true, true] },
-			{ title: 'THAT Gift', isIncluded: [false, false, true, true, true] },
-			{ title: 'Wifi Access', isIncluded: [true, false, true, true, true] }
+			{ title: 'T-Shirt', isIncluded: [false, true, true, true] },
+			{ title: 'THAT Gift', isIncluded: [false, true, true, true] },
+			{ title: 'Wifi Access', isIncluded: [true, true, true, true] }
 		]
 	}
 ];

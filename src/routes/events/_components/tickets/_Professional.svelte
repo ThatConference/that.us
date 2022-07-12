@@ -206,11 +206,6 @@
 						</td>
 
 						<td class="px-6 pt-12">
-							<StandardButton on:click={() => handlePurchase('VIRTUAL_CAMPER')}
-								>Purchase</StandardButton>
-						</td>
-
-						<td class="px-6 pt-12">
 							<StandardButton on:click={() => handlePurchase('CAMPER_NO_FOOD')}
 								>Purchase</StandardButton>
 						</td>
