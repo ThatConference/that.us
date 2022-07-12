@@ -39,14 +39,6 @@
 		{
 			q: 'Do I need to register? Do I get a ticket?',
 			a: 'Yes. If selected, we will provide you will the necessary information to get it all squared away.'
-		},
-		{
-			q: 'I was selected to speak Online. Do I get an in-person ticket?',
-			a: 'No, you will receive a free ticket to the portion of the event you are speaking in. Online speakers will be given a free virtual ticket, and in-person speakers will be given that appropriate ticket.'
-		},
-		{
-			q: 'Can I submit or speak at both, online and in-person.',
-			a: 'Sure.'
 		}
 	];
 </script>
