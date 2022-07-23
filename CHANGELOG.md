@@ -1,3 +1,10 @@
+# [2.14.0](https://github.com/ThatConference/that.us/compare/v2.13.11...v2.14.0) (2022-07-23)
+
+
+### Features
+
+* adds sings ([d582aba](https://github.com/ThatConference/that.us/commit/d582aba552816e1d9073889339f19362a41b96b8))
+
 ## [2.13.11](https://github.com/ThatConference/that.us/compare/v2.13.10...v2.13.11) (2022-07-12)
 
 
