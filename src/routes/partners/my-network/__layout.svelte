@@ -9,7 +9,9 @@
 		load: async function load({ fetch }) {
 			const { queryMyNetwork } = partnerNetworkApi(fetch);
 
-			const contacts = await queryMyNetwork().then((r) => sortBy(r, 'createdAt').reverse());
+			const contacts = await queryMyNetwork()
+				.then((c) => c.filter((c) => c !== null))
+				.then((r) => sortBy(r, 'createdAt').reverse());
 
 			return {
 				stuff: {
