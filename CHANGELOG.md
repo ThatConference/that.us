@@ -1,3 +1,11 @@
+# [2.15.0](https://github.com/ThatConference/that.us/compare/v2.14.0...v2.15.0) (2022-07-26)
+
+
+### Features
+
+* adds correct event id ([0d6b4b2](https://github.com/ThatConference/that.us/commit/0d6b4b2b0feb569649dd75a25781ab1084bca2e3))
+* removes null record ([3383429](https://github.com/ThatConference/that.us/commit/33834292181fde8075a0f555892a457991fd1f11))
+
 # [2.14.0](https://github.com/ThatConference/that.us/compare/v2.13.11...v2.14.0) (2022-07-23)
 
 
