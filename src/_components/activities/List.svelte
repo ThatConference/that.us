@@ -252,6 +252,7 @@
 				{#each day.timeSlots as ts}
 					<div class="relative">
 						<h2
+							id={dayjs(ts.timeSlot).format('ddddHHmmss').toLowerCase()}
 							class="sm:top-13 sticky top-11 z-10 -ml-5 -mr-5 whitespace-nowrap bg-gray-100 
                      pt-2 pl-5 text-xl font-extrabold 
                      leading-9 tracking-tight text-thatOrange-400 sm:-ml-6 sm:-mr-6 sm:pl-6 sm:leading-10 md:text-4xl">

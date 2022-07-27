@@ -2,10 +2,13 @@
 	export let event;
 
 	import { useMachine } from 'xstate-svelte';
-	import SvelteInfiniteScroll from 'svelte-infinite-scroll';
 
 	import seoMetaTags from '$utils/seo/metaTags';
 	import { debug } from '$utils/config';
+	import dayjs from 'dayjs';
+	import utc from 'dayjs/plugin/utc.js';
+	import timezone from 'dayjs/plugin/timezone.js';
+	import advancedFormat from 'dayjs/plugin/advancedFormat.js';
 
 	import Seo from '$components/Seo.svelte';
 
@@ -16,12 +19,19 @@
 	import { Chevron } from '$elements/svgs';
 
 	import createMachine from '../../_machines/event';
+	import * as animateScroll from 'svelte-scrollto';
+
+	import { onMount } from 'svelte';
+
+	dayjs.extend(utc);
+	dayjs.extend(timezone);
+	dayjs.extend(advancedFormat);
 
 	const { sessions } = event;
 
 	let scrollThreshold = 1200;
 
-	const { state, send } = useMachine(
+	const { state } = useMachine(
 		createMachine({
 			items: sessions.sessions.filter((s) => s),
 			cursor: sessions.cursor,
@@ -44,9 +54,20 @@
 		})
 	}))();
 
-	function handleLoadMore() {
-		send('NEXT');
-	}
+	onMount(() => {
+		// When we load the component, scroll to the next session
+		const currDate = dayjs(new Date());
+		const todaysUpcomingSessions = sessions.sessions
+			.map((x) => dayjs(x.startTime))
+			.filter((x) => x.format('YYYYMMDD') === currDate.format('YYYYMMDD'))
+			.filter((x) => x > currDate)
+			.sort((a, b) => a - b);
+
+		if (todaysUpcomingSessions.length === 0) return;
+
+		const elScrollTo = todaysUpcomingSessions[0].format('ddddHHmmss').toLowerCase();
+		animateScroll.scrollTo({ element: '#' + elScrollTo });
+	});
 </script>
 
 <Seo title={metaTags.title} tags={metaTags.tags} />
@@ -60,8 +81,6 @@
 				<Busy />
 			{:else}
 				<ActivityList activities={$state.context.items} />
-
-				<SvelteInfiniteScroll window threshold={scrollThreshold} on:loadMore={handleLoadMore} />
 			{/if}
 
 			{#if $state.context.items > 0}
