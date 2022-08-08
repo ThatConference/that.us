@@ -76,7 +76,7 @@
 		</div>
 
 		<div class="p-10 pb-24 text-center text-green-500">
-			<p class="font-semibold tracking-wider">Times are represented in your browswer's timezone.</p>
+			<p class="font-semibold tracking-wider">Times are represented in your browser's timezone.</p>
 			<p class="font-semibold tracking-wider">THAT Conference is in Central Time.</p>
 		</div>
 	</div>
