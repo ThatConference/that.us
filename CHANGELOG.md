@@ -1,3 +1,10 @@
+# [2.16.0](https://github.com/ThatConference/that.us/compare/v2.15.0...v2.16.0) (2022-08-08)
+
+
+### Features
+
+* adding new routes ([a369e06](https://github.com/ThatConference/that.us/commit/a369e06d91faa844800a1f92a604a9dded2116b5))
+
 # [2.15.0](https://github.com/ThatConference/that.us/compare/v2.14.0...v2.15.0) (2022-07-26)
 
 
