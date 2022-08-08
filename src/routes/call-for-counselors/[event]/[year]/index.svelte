@@ -67,10 +67,10 @@
 
 			<div class="col-span-3 space-y-8">
 				<p class="prose-2xl text-gray-500">
-					Are you ready to speak at the biggest tech conference in the US Midwest? We are searching
-					for hour-long sessions, half and full-day workshops, and keynotes that bring value to our
-					community. The sessions and workshops can appeal to developers, designers, testers,
-					business owners, site builders, community organizers, and everything in-between.
+					We are searching for hour-long sessions, half and full-day workshops, and keynotes that
+					bring value to our community. The sessions and workshops can appeal to developers,
+					designers, testers, business owners, site builders, community organizers, and everything
+					in-between.
 				</p>
 
 				<div class="flex justify-center space-x-4">
@@ -104,7 +104,7 @@
 
 				<div class="col-span-3">
 					<p class="prose-xl text-white">
-						THAT Conference is the largest tech event in the US Midwest, and it’s held at a
+						THAT Conference is the largest family-friendly tech event in the US, and it’s held at a
 						waterpark. We are a family-friendly conference and encourage children (geeklings) to
 						submit talks as well! We are looking for counselors on a wide variety of topics and
 						backgrounds. Do you have a story to tell? Do you have expertise in a specific field to
@@ -122,53 +122,6 @@
 	</div>
 
 	<div id="formatAndDates" />
-
-	<div class="relative mt-24">
-		<div class="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 ">
-			<div class="flex flex-col justify-center text-center">
-				<h2 class="text-4xl font-extrabold uppercase tracking-tighter text-thatBlue-800">
-					Speak Online or In-Person, you decide.
-				</h2>
-			</div>
-
-			<div class="mt-12">
-				<p class="prose-lg pt-4 text-center text-gray-500">
-					Dare we say we've gone "digital-first"? Sounds fancy, right? The truth is we're a believer
-					in continuous refactoring, and let's be honest, the resort isn't big enough for the camp
-					we want to set up. THAT Conference is now comprised of two primary delivery methods,
-					online or in-person.
-				</p>
-				<div class="flex pt-12">
-					<div class="flex flex-col justify-center">
-						<img
-							src="/images/characters/what_to_expect_tech_stack.png"
-							class="lazyload h-24 w-full object-scale-down"
-							alt="a computer" />
-					</div>
-					<p class="prose-lg flex-grow pt-4 text-left text-gray-500">
-						Online activities are solely delivered online, authentic to their audience. They are
-						meant to be very interactive, global, and happen at any time for any length of time.
-						They're limited to 100 people, but some of the best, most engaging activities happen
-						with just a few geeks. The possibilities are endless, and we're excited to have this
-						addition.
-					</p>
-				</div>
-				<div class="flex pt-12">
-					<p class="prose-lg flex-grow pt-4 text-left text-gray-500">
-						In-person activities are just that; they're physically in-person and also authentic to
-						their audience. Typically they're orchestrated with a single speaker and limited by time
-						and physical space.
-					</p>
-					<div class="flex flex-col justify-center">
-						<img
-							src="/images/characters/what_to_expect_professional_networking.png"
-							class="lazyload h-24 w-full object-scale-down"
-							alt="two geeks high fiving" />
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
 
 	<div class="mt-24">
 		<div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 ">

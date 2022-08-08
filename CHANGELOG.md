@@ -1,3 +1,74 @@
+# [2.15.0](https://github.com/ThatConference/that.us/compare/v2.14.0...v2.15.0) (2022-07-26)
+
+
+### Features
+
+* adds correct event id ([0d6b4b2](https://github.com/ThatConference/that.us/commit/0d6b4b2b0feb569649dd75a25781ab1084bca2e3))
+* removes null record ([3383429](https://github.com/ThatConference/that.us/commit/33834292181fde8075a0f555892a457991fd1f11))
+
+# [2.14.0](https://github.com/ThatConference/that.us/compare/v2.13.11...v2.14.0) (2022-07-23)
+
+
+### Features
+
+* adds sings ([d582aba](https://github.com/ThatConference/that.us/commit/d582aba552816e1d9073889339f19362a41b96b8))
+
+## [2.13.11](https://github.com/ThatConference/that.us/compare/v2.13.10...v2.13.11) (2022-07-12)
+
+
+### Bug Fixes
+
+* removing on-that ([9784ccc](https://github.com/ThatConference/that.us/commit/9784cccf9b4921415221b2baacd9db348ef4d969))
+
+## [2.13.10](https://github.com/ThatConference/that.us/compare/v2.13.9...v2.13.10) (2022-06-22)
+
+
+### Bug Fixes
+
+* adds some better words and unlocks booking button ([a00f8c2](https://github.com/ThatConference/that.us/commit/a00f8c2373c7f36cb847808d97725fdc63cbe0b0))
+
+## [2.13.9](https://github.com/ThatConference/that.us/compare/v2.13.8...v2.13.9) (2022-06-15)
+
+
+### Bug Fixes
+
+* cfp dates ([b160fdc](https://github.com/ThatConference/that.us/commit/b160fdc0a399ed8de95e547f11d672ad4b0d09a2))
+
+## [2.13.8](https://github.com/ThatConference/that.us/compare/v2.13.7...v2.13.8) (2022-06-07)
+
+
+### Bug Fixes
+
+* update sponsor handbook ([45e527f](https://github.com/ThatConference/that.us/commit/45e527f6274e9fa74a9043f8c8be113e05929a55))
+
+## [2.13.7](https://github.com/ThatConference/that.us/compare/v2.13.6...v2.13.7) (2022-06-03)
+
+
+### Bug Fixes
+
+* query for id on type that does not have it ([dc35ef9](https://github.com/ThatConference/that.us/commit/dc35ef99d057934649eac3de58be6bda709374c1))
+
+## [2.13.6](https://github.com/ThatConference/that.us/compare/v2.13.5...v2.13.6) (2022-06-03)
+
+
+### Bug Fixes
+
+* spotlight page typo ([9197c8e](https://github.com/ThatConference/that.us/commit/9197c8e8131c7e39567efb17ee84e808b5780e8f))
+
+## [2.13.5](https://github.com/ThatConference/that.us/compare/v2.13.4...v2.13.5) (2022-05-31)
+
+
+### Bug Fixes
+
+* add disclaimer in speaker enrollment ([b88f38e](https://github.com/ThatConference/that.us/commit/b88f38ed5c8df22c1301cab9bb20630f329ead36))
+
+## [2.13.4](https://github.com/ThatConference/that.us/compare/v2.13.3...v2.13.4) (2022-05-25)
+
+
+### Bug Fixes
+
+* correct wi hotel block close dates ([3f56d9e](https://github.com/ThatConference/that.us/commit/3f56d9ec2a3e69510d9e7e28d2be3e190d3d42f0))
+
 ## [2.13.3](https://github.com/ThatConference/that.us/compare/v2.13.2...v2.13.3) (2022-05-23)
 
 

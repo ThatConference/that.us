@@ -75,7 +75,7 @@ export const imageCrops = {
 export const events = {
 	next: {
 		tx: {
-			slug: 'tx/2022'
+			slug: 'tx/2023'
 		},
 		wi: {
 			slug: 'wi/2022'
@@ -87,7 +87,7 @@ export const kalahari = {
 	passkey: {
 		wi: {
 			opens: '04/11/2022',
-			closes: '07/01/2022',
+			closes: '06/22/2022',
 			url: 'https://book.passkey.com/e/50053977'
 		},
 		tx: {
@@ -100,8 +100,8 @@ export const kalahari = {
 		'wi/2022': {
 			bookingUrl: 'https://book.passkey.com/e/50318258',
 			start: '04/11/2022',
-			end: '07/01/2022',
-			blockCloseDate: '07/01/2022',
+			end: '06/22/2022',
+			blockCloseDate: '06/22/2022',
 			discountCode: 'THATWI'
 		},
 		'tx/2022': {
