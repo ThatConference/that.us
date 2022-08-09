@@ -424,6 +424,15 @@
         "code",
         "bug"
       ]
+    },
+    {
+      "login": "garciadev",
+      "name": "Daniel Garcia",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5198299?v=4",
+      "profile": "https://github.com/garciadev",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
