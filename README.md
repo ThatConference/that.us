@@ -1,7 +1,7 @@
 # THAT.US
 
 [![GitHub issues open](https://img.shields.io/github/issues/thatconference/that.us.svg)](https://github.com/thatconference/that.us/issues) [![release](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/thatconference/that.us/issues) <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-45-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-46-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 ## Get started
@@ -124,6 +124,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/AndrewSchwabe"><img src="https://avatars.githubusercontent.com/u/17070695?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Andrew Schwabe</b></sub></a><br /><a href="https://github.com/ThatConference/that.us/commits?author=AndrewSchwabe" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/binaryjanitor"><img src="https://avatars.githubusercontent.com/u/13708049?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Jon Cwiak</b></sub></a><br /><a href="https://github.com/ThatConference/that.us/issues?q=author%3Abinaryjanitor" title="Bug reports">🐛</a></td>
     <td align="center"><a href="https://code.erpenbeck.io"><img src="https://avatars.githubusercontent.com/u/8420128?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Michael</b></sub></a><br /><a href="https://github.com/ThatConference/that.us/commits?author=GitMje" title="Code">💻</a> <a href="https://github.com/ThatConference/that.us/issues?q=author%3AGitMje" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://github.com/garciadev"><img src="https://avatars.githubusercontent.com/u/5198299?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Daniel Garcia</b></sub></a><br /><a href="https://github.com/ThatConference/that.us/issues?q=author%3Agarciadev" title="Bug reports">🐛</a></td>
   </tr>
 </table>
 
