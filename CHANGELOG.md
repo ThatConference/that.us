@@ -1,3 +1,10 @@
+## [2.16.1](https://github.com/ThatConference/that.us/compare/v2.16.0...v2.16.1) (2022-08-09)
+
+
+### Bug Fixes
+
+* external routes redirect correctly ([73a039a](https://github.com/ThatConference/that.us/commit/73a039a7a0c6a9055ae40a8e7e936c581a011d2a))
+
 # [2.16.0](https://github.com/ThatConference/that.us/compare/v2.15.0...v2.16.0) (2022-08-08)
 
 
