@@ -479,7 +479,7 @@
 										<Icon data={externalLink} class="h-4 w-4" />
 									</div>
 									<div class="flex-grow rounded-md p-2">
-										<a open href={sa.url}>
+										<a open rel="external" href={sa.url}>
 											<p>{sa.name}</p>
 											<p class="mt-1 text-sm text-gray-400">{sa.description}</p>
 										</a>
