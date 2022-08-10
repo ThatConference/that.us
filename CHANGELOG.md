@@ -1,3 +1,10 @@
+## [2.16.2](https://github.com/ThatConference/that.us/compare/v2.16.1...v2.16.2) (2022-08-10)
+
+
+### Bug Fixes
+
+* removed old open attribute and added targetBlank ([d90d983](https://github.com/ThatConference/that.us/commit/d90d983147ed35d688615fa32ae4e0a6f5d17f98))
+
 ## [2.16.1](https://github.com/ThatConference/that.us/compare/v2.16.0...v2.16.1) (2022-08-09)
 
 
