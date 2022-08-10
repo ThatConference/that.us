@@ -197,7 +197,7 @@
 					{#each speakers as s}
 						<div class="flex flex-col items-center md:flex-row">
 							<div class="flex-shrink-0">
-								<a href="/members/{s.profileSlug}/" open>
+								<a href="/members/{s.profileSlug}/">
 									<span class="relative inline-block">
 										<img
 											class="lazyload h-24 w-24 rounded-full"
@@ -479,7 +479,7 @@
 										<Icon data={externalLink} class="h-4 w-4" />
 									</div>
 									<div class="flex-grow rounded-md p-2">
-										<a open rel="external" href={sa.url}>
+										<a target="_blank" rel="external" href={sa.url}>
 											<p>{sa.name}</p>
 											<p class="mt-1 text-sm text-gray-400">{sa.description}</p>
 										</a>

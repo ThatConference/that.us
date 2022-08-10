@@ -122,7 +122,7 @@
 				<li class="pt-4">
 					<div class="flex items-center space-x-4">
 						<div class="flex-grow rounded-md p-2" class:bg-gray-50={showBackground(i)}>
-							<a open href={item.url}>
+							<a target="_blank" href={item.url}>
 								<p>{item.name}</p>
 								<p class="mt-1 text-sm text-gray-400">{item.description}</p>
 							</a>

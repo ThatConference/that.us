@@ -349,7 +349,7 @@
 			</div>
 		{/if}
 		<div class="flex w-full flex-col items-center p-3">
-			<a sveltekit:prefetch open href="/members/{host.profileSlug}/" class="flex-shrink-0">
+			<a sveltekit:prefetch href="/members/{host.profileSlug}/" class="flex-shrink-0">
 				<span class="relative inline-block">
 					<img
 						class="lazyload h-24 w-24 rounded-full"
