@@ -677,7 +677,6 @@
 									<div class="ml-3 text-sm leading-5">
 										<label for="comments" class="font-medium text-gray-700">
 											<a
-												open
 												tabindex="-1"
 												href="/support/code-of-conduct/"
 												class="font-medium text-indigo-600 transition
@@ -708,7 +707,6 @@
 										<div class="ml-3 text-sm leading-5">
 											<label for="comments" class="font-medium text-gray-700">
 												<a
-													open
 													tabindex="-1"
 													href="/suppoprt/anti-harassment/"
 													class="font-medium text-indigo-600 transition
@@ -738,7 +736,6 @@
 											<div class="ml-3 text-sm leading-5">
 												<label for="comments" class="font-medium text-gray-700">
 													<a
-														open
 														tabindex="-1"
 														href="/support/commitment-to-diversity/"
 														class="font-medium text-indigo-600
@@ -772,7 +769,6 @@
 												<div class="ml-3 text-sm leading-5">
 													<label for="candidates" class="font-medium text-gray-700">
 														<a
-															open
 															tabindex="-1"
 															href="/support/terms-of-use/"
 															class="font-medium text-indigo-600
@@ -846,7 +842,6 @@
 										<label for="comments" class="font-medium text-gray-700">
 											<a
 												tabindex="-1"
-												open
 												href="/support/code-of-conduct/"
 												class="font-medium text-indigo-600 transition
                         duration-150 ease-in-out hover:text-indigo-500">

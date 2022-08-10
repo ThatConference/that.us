@@ -70,7 +70,6 @@
 								{#if location === 'THAT'}
 									<div class="m-3 inline-flex rounded-md shadow-md">
 										<a
-											open
 											href={`/join/${id}`}
 											class="focus:ring-red relative inline-flex w-32
                       items-center justify-center rounded-md border border-gray-300 bg-white
@@ -85,7 +84,6 @@
 								{:else}
 									<div class="m-3 inline-flex rounded-md shadow-md">
 										<a
-											open
 											href="https://youtube.com/c/thatconference"
 											class="focus:ring-red relative inline-flex w-32
                       items-center justify-center rounded-md border border-gray-300 bg-white

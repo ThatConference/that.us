@@ -36,7 +36,6 @@
 			<a
 				sveltekit:prefetch
 				href="/events/"
-				open
 				class="ml-1 rounded-md px-3 py-2 text-sm font-medium text-gray-300
           hover:bg-that-blue hover:text-white focus:bg-that-blue
           focus:text-white focus:outline-none">
@@ -45,7 +44,6 @@
 
 			<a
 				sveltekit:prefetch
-				open
 				href="/activities/"
 				class="ml-1 rounded-md px-3 py-2 text-sm font-medium text-gray-300
           hover:bg-that-blue hover:text-white focus:bg-that-blue

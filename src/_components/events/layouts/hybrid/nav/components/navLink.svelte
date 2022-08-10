@@ -6,7 +6,6 @@
 	<a
 		sveltekit:prefetch
 		{href}
-		open
 		class="w-full rounded-md px-3 py-2 text-gray-600
 			transition duration-150 ease-in-out 
 		hover:bg-that-blue hover:text-white
