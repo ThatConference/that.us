@@ -1,3 +1,10 @@
+## [2.16.3](https://github.com/ThatConference/that.us/compare/v2.16.2...v2.16.3) (2022-08-11)
+
+
+### Bug Fixes
+
+* next year defaults ([a8db298](https://github.com/ThatConference/that.us/commit/a8db298ed48ef4cdfca0289dead3ea79535c124f))
+
 ## [2.16.2](https://github.com/ThatConference/that.us/compare/v2.16.1...v2.16.2) (2022-08-10)
 
 
