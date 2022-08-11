@@ -1,3 +1,10 @@
+## [2.16.4](https://github.com/ThatConference/that.us/compare/v2.16.3...v2.16.4) (2022-08-11)
+
+
+### Bug Fixes
+
+* updates sitemap ([d1367e8](https://github.com/ThatConference/that.us/commit/d1367e87be6c0d64321c770655d9bd1690fbdff6))
+
 ## [2.16.3](https://github.com/ThatConference/that.us/compare/v2.16.2...v2.16.3) (2022-08-11)
 
 
