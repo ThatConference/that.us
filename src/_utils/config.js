@@ -78,7 +78,7 @@ export const events = {
 			slug: 'tx/2023'
 		},
 		wi: {
-			slug: 'wi/2022'
+			slug: 'wi/2023'
 		}
 	}
 };
@@ -86,29 +86,29 @@ export const events = {
 export const kalahari = {
 	passkey: {
 		wi: {
-			opens: '04/11/2022',
-			closes: '06/22/2022',
+			opens: '04/11/2023',
+			closes: '06/22/2023',
 			url: 'https://book.passkey.com/e/50053977'
 		},
 		tx: {
-			opens: '01/01/2022',
-			closes: '05/01/2022',
+			opens: '01/01/2023',
+			closes: '05/01/2023',
 			url: 'https://book.passkey.com/e/50279810'
 		}
 	},
 	speakerPasskey: {
-		'wi/2022': {
+		'wi/2023': {
 			bookingUrl: 'https://book.passkey.com/e/50318258',
-			start: '04/11/2022',
-			end: '06/22/2022',
-			blockCloseDate: '06/22/2022',
+			start: '04/11/2023',
+			end: '06/22/2023',
+			blockCloseDate: '06/22/2023',
 			discountCode: 'THATWI'
 		},
-		'tx/2022': {
+		'tx/2023': {
 			bookingUrl: 'https://book.passkey.com/e/50279812',
-			start: '05/22/2022',
-			end: '05/26/2022',
-			blockCloseDate: '05/13/2022',
+			start: '05/22/2023',
+			end: '05/26/2023',
+			blockCloseDate: '05/13/2023',
 			discountCode: 'THATTX'
 		}
 	}
