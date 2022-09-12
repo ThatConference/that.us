@@ -3,7 +3,7 @@
 	import Seo from '$components/Seo.svelte';
 	import { Highlight as HighlightLink } from '$elements/links';
 
-	import Layout from './_components/_Layout.svelte';
+	import Layout from '../_components/_Layout.svelte';
 
 	const metaTags = ((title = 'Payment Canceled - THAT') => ({
 		title,
