@@ -133,7 +133,7 @@
 
 			<div in:fade={{ delay: getDelay(true) }}>
 				<div in:fade={{ delay: getDelay() }}>
-					<Followers stateMachineService={$state.context.followMachineServices} />
+					<Followers followers={$state.context.followers} />
 				</div>
 
 				<CTA
