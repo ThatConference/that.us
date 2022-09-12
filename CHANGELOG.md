@@ -1,3 +1,10 @@
+## [2.17.1](https://github.com/ThatConference/that.us/compare/v2.17.0...v2.17.1) (2022-09-12)
+
+
+### Bug Fixes
+
+* husky not found ([ad77365](https://github.com/ThatConference/that.us/commit/ad773655cf8d83da521de26b9fd8cc359fd426ec))
+
 # [2.17.0](https://github.com/ThatConference/that.us/compare/v2.16.4...v2.17.0) (2022-09-12)
 
 
