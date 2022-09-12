@@ -20,9 +20,21 @@
 	import EventFollowers from './online/_EventFollowers.svelte';
 	import EventTicket from './online/_EventTicket.svelte';
 
-	const { send } = getContext('cart');
+	const cart = getContext('cart');
+	const claimTicket = getContext('claimTicket');
 	const { products } = event;
 	const virtualTicket = products.find((x) => x.productType === 'TICKET');
+
+	async function handleClaimTicket(event, { product }) {
+		const ticket = {
+			eventId: event.id,
+			eventDetails: event,
+			productId: product.id
+		};
+
+		claimTicket.send('ADD_ITEM', ticket);
+		goto('/orders/claim/');
+	}
 
 	function handleAddEventTicketClick(eventId, eventProducts, quantity = 1) {
 		const eventTicket = eventProducts
@@ -30,8 +42,9 @@
 			.find((e) => e.productType === 'TICKET');
 		const isBulkPurchase = quantity > 1 ? true : false;
 
-		send('ADD_ITEM', {
+		cart.send('ADD_ITEM', {
 			eventId,
+			eventDetails: event,
 			...eventTicket,
 			isBulkPurchase,
 			quantity
@@ -45,8 +58,9 @@
 			.find((e) => e.productType === 'MEMBERSHIP');
 		const isBulkPurchase = quantity > 1 ? true : false;
 
-		send('ADD_ITEM', {
+		cart.send('ADD_ITEM', {
 			eventId,
+			eventDetails: event,
 			...eventTicket,
 			isBulkPurchase,
 			quantity
@@ -96,12 +110,14 @@
 	<section in:fade slot="header">
 		<OnlineHero
 			{event}
+			on:claim-ticket={({ detail }) => handleClaimTicket(event, detail)}
 			on:purchase-event-ticket={() => handleAddEventTicketClick(event.id, event.products)} />
 	</section>
 
 	<section in:fade={{ delay: 200 }}>
 		<EventTicket
 			{event}
+			on:claim-ticket={({ detail }) => handleClaimTicket(event, detail)}
 			on:purchase-event-ticket={() => handleAddEventTicketClick(event.id, event.products)} />
 	</section>
 

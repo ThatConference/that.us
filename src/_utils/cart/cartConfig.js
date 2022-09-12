@@ -5,6 +5,7 @@ function createConfig(metaContext) {
 		context: {
 			meta: metaContext || undefined,
 			eventId: undefined,
+			eventDetails: undefined,
 			cart: {},
 			checkoutSessionId: undefined,
 			productTypes: []

@@ -7,7 +7,7 @@
 	import { clickOutside } from '$elements/actions';
 
 	const { isEmpty } = lodash;
-	let visible;
+	let visible = false;
 </script>
 
 <div class="relative">

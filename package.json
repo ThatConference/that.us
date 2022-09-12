@@ -42,6 +42,7 @@
 		"@tailwindcss/line-clamp": "^0.4.0",
 		"@tailwindcss/typography": "^0.5.2",
 		"@xstate/inspect": "^0.7.0",
+		"@xstate/svelte": "^2.0.0",
 		"all-contributors-cli": "^6.20.0",
 		"archieml": "^0.5.0",
 		"autoprefixer": "^10.4.7",
@@ -95,8 +96,7 @@
 		"tailwindcss": "^3.0.24",
 		"unist-util-visit": "^4.1.0",
 		"uuid": "^8.3.2",
-		"xstate": "^4.32.1",
-		"xstate-svelte": "^1.0.1",
+		"xstate": "^4.33.5",
 		"yup": "^0.32.11"
 	}
 }

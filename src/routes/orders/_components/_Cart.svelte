@@ -153,6 +153,11 @@
 									<th
 										scope="col"
 										class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+										Event
+									</th>
+									<th
+										scope="col"
+										class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
 										Item
 									</th>
 									<th
@@ -183,6 +188,7 @@
 							<tbody>
 								{#each Object.keys($state.context.cart) as productKey, i (productKey)}
 									<CartItem
+										eventDetails={$state.context.eventDetails}
 										lineItem={$state.context.cart[productKey]}
 										showBackground={showBackground(i)}
 										on:cart_remove={({ detail: { id } }) =>

@@ -2,7 +2,7 @@
 	export let stateMachineService;
 
 	import { fade } from 'svelte/transition';
-	import { useService } from 'xstate-svelte';
+	import { useService } from '@xstate/svelte';
 
 	import { debug } from '$utils/config';
 	import lodash from 'lodash';

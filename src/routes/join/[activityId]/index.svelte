@@ -14,7 +14,7 @@
 			let hasAccess = await canAccessEvent(activityDetails.eventId);
 			if (!hasAccess) {
 				return {
-					status: 401,
+					status: 302,
 					redirect: `/join/access-denied/?id=${activityId}`
 				};
 			}
@@ -137,8 +137,6 @@
 			},
 
 			onload: () => {
-				console.log('jitsi onload');
-
 				api.getIFrame().focus();
 				handleResize();
 				jitsiLoaded = true;

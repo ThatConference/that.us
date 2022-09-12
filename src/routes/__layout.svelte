@@ -65,10 +65,12 @@
 	import { messages } from '$stores/notificationCenter';
 
 	import cart from '$utils/cart';
+	import claimTicket from '$utils/claimTicket';
 
 	import Preloading from '$components/preloading.svelte';
 
 	// setup the context on the cart for later usage
+	setContext('claimTicket', claimTicket);
 	setContext('cart', cart);
 	setContext('correlationId', correlationId);
 

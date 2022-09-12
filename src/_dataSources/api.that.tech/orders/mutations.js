@@ -54,6 +54,21 @@ export const MUTATION_ALLOCATE_TICKET = `
   }
 `;
 
+export const MUTATION_CLAIM_TICKET = `
+	mutation ClaimMySpot ($claim: ClaimOrderInput!) {
+		orders {
+			me {
+				checkout {
+					claim(claim: $claim) {
+						result
+						message
+					}
+				}
+			}
+		}
+	}
+`;
+
 export default (fetch) => {
 	const client = fetch ? gFetch(fetch) : gFetch();
 
@@ -126,9 +141,34 @@ export default (fetch) => {
 			});
 	}
 
+	function claimTicket(eventId, productId) {
+		const variables = {
+			claim: {
+				eventId,
+				productId
+			}
+		};
+
+		return client
+			.mutation({ mutation: MUTATION_CLAIM_TICKET, variables })
+			.then(({ data, errors }) => {
+				if (errors) log({ errors, tag: 'MUTATION_CLAIM_TICKET' });
+
+				let results;
+
+				if (data) {
+					const { claim } = data.orders.me.checkout;
+					results = claim;
+				}
+
+				return results;
+			});
+	}
+
 	return {
 		createCheckoutSession,
 		markSurveyQuestionsCompleted,
-		allocateTicket
+		allocateTicket,
+		claimTicket
 	};
 };

@@ -18,7 +18,7 @@
 	import { setContext } from 'svelte';
 	import { page, session } from '$app/stores';
 	import { fade } from 'svelte/transition';
-	import { useMachine } from 'xstate-svelte';
+	import { useMachine } from '@xstate/svelte';
 
 	import { debug } from '$utils/config';
 	import seoMetaTags from '$utils/seo/metaTags';

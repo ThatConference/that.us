@@ -1,9 +1,8 @@
 import { writable } from 'svelte/store';
 import { interpret } from 'xstate';
 
-const stateStore = writable(null); // this should really be readable
-
 export function useMachine(machine, options) {
+	const stateStore = writable(null); // this should really be readable
 	const service = interpret(machine, options);
 
 	stateStore.set(service.initialState);

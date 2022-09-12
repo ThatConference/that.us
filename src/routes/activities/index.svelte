@@ -16,7 +16,7 @@
 	export let activities;
 
 	import { session } from '$app/stores';
-	import { useMachine } from 'xstate-svelte';
+	import { useMachine } from '@xstate/svelte';
 	import SvelteInfiniteScroll from 'svelte-infinite-scroll';
 	import lodash from 'lodash';
 

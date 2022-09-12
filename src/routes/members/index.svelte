@@ -16,7 +16,7 @@
 	export let members;
 
 	import SvelteInfiniteScroll from 'svelte-infinite-scroll';
-	import { useMachine } from 'xstate-svelte';
+	import { useMachine } from '@xstate/svelte';
 
 	import seoMetaTags from '$utils/seo/metaTags';
 	import { debug } from '$utils/config';

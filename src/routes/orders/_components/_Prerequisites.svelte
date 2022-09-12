@@ -1,52 +1,38 @@
 <script>
-	export let stateMachine;
-
 	import { session } from '$app/stores';
-	import { useService } from 'xstate-svelte';
-	import lodash from 'lodash';
-
 	import { goto } from '$app/navigation';
+	import lodash from 'lodash';
+	import { useMachine } from '@xstate/svelte';
 
 	import { debug } from '$utils/config';
 	import StepComplete from '$elements/svgs/StepComplete.svelte';
 	import Step from '$elements/svgs/Step.svelte';
 
-	const { isEmpty } = lodash;
-	const { state, send, service } = useService(stateMachine, {
+	import prerequisitesMachine from '../_machines/prerequisites';
+
+	const { state, send } = useMachine(prerequisitesMachine(), {
 		devTools: debug.xstate
 	});
 
-	let stepOneComplete = false;
-	let stepTwoComplete = false;
-	let stepThreeComplete = false;
-
-	service.onTransition((eventState) => {
-		if (eventState.matches('authenticated')) {
-			stepOneComplete = true;
-		}
-
-		if (eventState.matches('authenticated.profileCompleted')) {
-			stepTwoComplete = true;
-		}
-	});
-
-	$: if (!isEmpty($session.thatProfile)) {
-		send('PROFILE_COMPLETED', { status: true });
-	} else {
-		send('PROFILE_COMPLETED', { status: false });
-	}
+	const { isEmpty } = lodash;
 
 	$: if ($session.isAuthenticated) {
 		send('AUTHENTICATED', { status: true });
 	} else {
 		send('AUTHENTICATED', { status: false });
 	}
+
+	$: if (!isEmpty($session.thatProfile)) {
+		send('PROFILE_COMPLETED', { status: true });
+	} else {
+		send('PROFILE_COMPLETED', { status: false });
+	}
 </script>
 
 <nav aria-label="Progress">
 	<ol class="divide-y divide-gray-300 rounded-md border border-gray-300 md:flex md:divide-y-0">
 		<li class="relative md:flex md:flex-1">
-			{#if stepOneComplete}
+			{#if $state.context.isAuthenticated}
 				<StepComplete stepName="Login" />
 			{:else}
 				<Step
@@ -73,12 +59,12 @@
 		</li>
 
 		<li class="relative md:flex">
-			{#if stepTwoComplete}
+			{#if $state.context.hasUserProfile}
 				<StepComplete stepName="Profile Completed" />
 			{:else}
 				<Step
 					step="2"
-					isActive={$state.matches('authenticated.pendingProfile')}
+					isActive={$state.matches('pendingProfile')}
 					stepName="Profile Completed"
 					on:click={() => goto('/my/profiles/primary/')} />
 			{/if}
@@ -99,39 +85,16 @@
 		</li>
 
 		<li class="relative md:flex">
-			{#if stepThreeComplete}
-				<StepComplete stepName="Verify Order" />
-			{:else}
-				<Step
-					step="3"
-					isActive={$state.matches('authenticated.profileCompleted.pendingVerification')}
-					stepName="Verify Order"
-					on:click={() => goto('/orders/summary/', { replace: true })} />
-			{/if}
-
-			<div class="absolute top-0 right-0 hidden h-full w-5 md:block" aria-hidden="true">
-				<svg
-					class="h-full w-full text-gray-300"
-					viewBox="0 0 22 80"
-					fill="none"
-					preserveAspectRatio="none">
-					<path
-						d="M0 -2L20 40L0 82"
-						vector-effect="non-scaling-stroke"
-						stroke="currentcolor"
-						stroke-linejoin="round" />
-				</svg>
-			</div>
-		</li>
-
-		<li class="relative md:flex">
-			<Step step="4" isActive={false} stepName="Complete Purchase" href="/" />
+			<Step
+				step="3"
+				isActive={$state.matches('pendingVerification')}
+				stepName="Verify and Complete Order" />
 		</li>
 	</ol>
 </nav>
 
 <div class="px-4 py-5 sm:p-6">
-	{#if $state.matches('pendingLogin')}
+	{#if ['unAuthenticated', 'pendingLogin'].some($state.matches)}
 		<h3 class="text-lg font-medium leading-6 text-gray-900">Please Login</h3>
 		<div class="mt-2 max-w-xl text-sm text-gray-500">
 			<p>
@@ -148,7 +111,7 @@
 				<span aria-hidden="true">&rarr;</span>
 			</a>
 		</div>
-	{:else if $state.matches('authenticated.pendingProfile')}
+	{:else if $state.matches('pendingProfile')}
 		<h3 class="text-lg font-medium leading-6 text-gray-900">Full Profile Incomplete</h3>
 		<div class="mt-2 max-w-xl text-sm text-gray-500">
 			<p>
@@ -164,7 +127,7 @@
 				<span aria-hidden="true">&rarr;</span>
 			</a>
 		</div>
-	{:else if $state.matches('authenticated.profileCompleted')}
+	{:else if $state.matches('prerequisitesMet')}
 		<h3 class="text-lg font-medium leading-6 text-gray-900">Finalize and Complete</h3>
 		<div class="mt-2 max-w-xl text-sm text-gray-500">
 			<p>

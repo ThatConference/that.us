@@ -1,7 +1,7 @@
 <script>
 	export let stateMachineService;
 
-	import { useService } from 'xstate-svelte';
+	import { useService } from '@xstate/svelte';
 
 	import { Avatars } from '$elements';
 	import { debug } from '$utils/config';

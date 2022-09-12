@@ -1,10 +1,9 @@
 <script>
-	import { getContext } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import Icon from 'svelte-awesome';
 	import { plus } from '$components/svelte-awesome-icons';
 
-	import { Activity, Cart } from '$elements/svgs';
+	import { Activity } from '$elements/svgs';
 	import { hasNotifications } from '$stores/notificationCenter';
 
 	import ActivitySlideOver from '../../activityCenter/ActivitySlideOver.svelte';
@@ -12,16 +11,15 @@
 	import UserProfile from '../UserProfile.svelte';
 	import { clickOutside } from '$elements/actions';
 
+	import Cart from '../Cart.svelte';
+	import ClaimCart from '../ClaimCart.svelte';
+
 	let activityVisible;
 	let helpVisible;
 
 	function handleCloseActivityCenter() {
 		activityVisible = !activityVisible;
 	}
-
-	const { state } = getContext('cart');
-
-	$: cartItems = Object.keys($state.context.cart).length;
 </script>
 
 <div class="relative flex items-center">
@@ -160,29 +158,19 @@
 			{/if}
 		{/if}
 
-		{#if true}
-			<div class="relative inline-block">
-				<div class="ml-4 rounded-full p-1 text-white hover:bg-thatBlue-500">
-					<a href="/orders/summary/">
-						<Cart />
+		<div class="text-white">
+			<ClaimCart />
+		</div>
+		<div class="text-white">
+			<Cart />
+		</div>
 
-						{#if cartItems > 0}
-							<span class="absolute bottom-0 right-0 block animate-pulse">
-								<span
-									class="inline-flex h-4 w-4 items-center justify-center rounded-full bg-gray-500">
-									<span class="text-xs font-medium leading-none text-white">{cartItems}</span>
-								</span>
-							</span>
-						{/if}
-					</a>
-				</div>
+		<div class="flex items-center justify-center">
+			<div class="ml-4 rounded-full p-1 text-white hover:bg-thatBlue-500">
+				<a href="/activities/create/">
+					<Icon data={plus} class="h-8 w-8" />
+				</a>
 			</div>
-		{/if}
-
-		<div class="ml-4 rounded-full p-1 text-white hover:bg-thatBlue-500">
-			<a href="/activities/create/">
-				<Icon data={plus} class="h-8 w-8" />
-			</a>
 		</div>
 
 		<div class="ml-4 rounded-full text-white hover:bg-thatBlue-500">
