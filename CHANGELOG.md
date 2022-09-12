@@ -1,3 +1,16 @@
+# [2.17.0](https://github.com/ThatConference/that.us/compare/v2.16.4...v2.17.0) (2022-09-12)
+
+
+### Bug Fixes
+
+* broken reference path ([2e1ded2](https://github.com/ThatConference/that.us/commit/2e1ded2d0fa5254b3f8da6dfbb97954a5fec3e07))
+* reworked statemachine using spawned actor ([342cb63](https://github.com/ThatConference/that.us/commit/342cb633412552926169e5bdb9b27955b2413305))
+
+
+### Features
+
+* adds claim ticket ([c57fe84](https://github.com/ThatConference/that.us/commit/c57fe849b4f21af39c600fda166cb970b124a0e8))
+
 ## [2.16.4](https://github.com/ThatConference/that.us/compare/v2.16.3...v2.16.4) (2022-08-11)
 
 
