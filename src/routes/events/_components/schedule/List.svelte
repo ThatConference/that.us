@@ -1,7 +1,7 @@
 <script>
 	export let event;
 
-	import { useMachine } from 'xstate-svelte';
+	import { useMachine } from '@xstate/svelte';
 	import SvelteInfiniteScroll from 'svelte-infinite-scroll';
 
 	import seoMetaTags from '$utils/seo/metaTags';

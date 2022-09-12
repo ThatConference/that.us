@@ -1,7 +1,7 @@
 <button
 	type="button"
 	on:click
-	class="rounded-md border-2 border-thatBlue-500
+	class="whitespace-nowrap rounded-md border-2 border-thatBlue-500
 	bg-white px-8 py-2 
 		text-base font-medium
 		leading-6 text-thatBlue-500 shadow transition duration-150 

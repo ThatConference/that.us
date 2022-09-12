@@ -70,22 +70,29 @@ function createServices() {
 				const localCart = browser ? window.localStorage.getItem(cartKeyName) : null;
 				const results = JSON.parse(localCart) || {};
 
-				const { lineItems = {}, eventId = undefined, productTypes = [] } = results;
+				const {
+					lineItems = {},
+					eventId = undefined,
+					productTypes = [],
+					eventDetails = undefined
+				} = results;
 
 				return {
 					eventId,
 					cart: lineItems,
-					productTypes
+					productTypes,
+					eventDetails
 				};
 			}),
 
 			setLocalStorage: (context) => {
-				const { cart, eventId, productTypes } = context;
+				const { cart, eventId, productTypes, eventDetails } = context;
 
 				const localCart = {
 					version: cartVersion,
 					lineItems: cart,
 					eventId,
+					eventDetails,
 					productTypes
 				};
 
@@ -95,12 +102,21 @@ function createServices() {
 			clearCart: assign({
 				cart: () => ({}),
 				eventId: () => undefined,
+				eventDetails: () => undefined,
 				productTypes: () => []
 			}),
 
 			clearLocalStorage: () => window.localStorage.removeItem(cartKeyName),
 
 			addItem: assign({
+				eventDetails: (context, event) =>
+					event.eventDetails
+						? {
+								logo: event.eventDetails.logo,
+								name: event.eventDetails.name,
+								slug: event.eventDetails.slug
+						  }
+						: context.eventDetails,
 				eventId: (context, event) => context.eventId || event.eventId,
 				productTypes: (context, event) => [...context.productTypes, event.productType],
 				cart: (context, event) => {

@@ -33,6 +33,7 @@
 
 		send('ADD_ITEM', {
 			eventId: event.id,
+			eventDetails: event,
 			...eventTicket
 		});
 
@@ -46,6 +47,7 @@
 
 		send('ADD_ITEM', {
 			eventId: event.id,
+			eventDetails: event,
 			...eventTicket,
 			quantity: 1
 		});

@@ -4,7 +4,7 @@
 
 <svg
 	xmlns="http://www.w3.org/2000/svg"
-	class={classes}
+	class="h-8 w-8 {classes}"
 	fill="none"
 	viewBox="0 0 24 24"
 	stroke="currentColor">

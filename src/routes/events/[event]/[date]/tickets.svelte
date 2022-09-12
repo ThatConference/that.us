@@ -45,6 +45,7 @@
 
 		send('ADD_ITEM', {
 			eventId: event.id,
+			eventDetails: event,
 			...eventTicket
 		});
 

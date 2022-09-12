@@ -1,6 +1,7 @@
 <script>
 	export let showBackground = false;
 	export let lineItem;
+	export let eventDetails;
 
 	import { createEventDispatcher } from 'svelte';
 
@@ -11,6 +12,14 @@
 </script>
 
 <tr class="bg-white" class:bg-gray-50={showBackground}>
+	<td class="whitespace-nowrap px-6 py-4 align-top text-sm font-medium text-gray-900">
+		<div class="flex flex-col items-center space-y-4">
+			{#if eventDetails}
+				<div>{eventDetails.name}</div>
+				<img class="h-24 w-24" src={eventDetails.logo} alt="event logo" />
+			{/if}
+		</div>
+	</td>
 	<td class="whitespace-nowrap px-6 py-4 align-top text-sm font-medium text-gray-900">
 		{lineItem.name}
 	</td>
@@ -31,7 +40,7 @@
 					...lineItem,
 					quantity: currentQty
 				})}
-			class="block rounded-md border border-gray-200 p-2 text-center shadow-sm focus:border-thatOrange-500 focus:ring-thatOrange-500" />
+			class="block w-28 rounded-md border border-gray-200 p-2 text-center shadow-sm focus:border-thatOrange-500 focus:ring-thatOrange-500" />
 	</td>
 	<td class="whitespace-nowrap px-6 py-4 text-right align-top text-sm font-medium">
 		<button

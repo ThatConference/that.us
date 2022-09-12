@@ -18,7 +18,7 @@ function createConfig(slug) {
 			slug: slug || undefined,
 			profile: undefined,
 			isAuthenticated: false,
-			followMachineServices: undefined
+			followers: []
 		},
 
 		on: {
@@ -46,7 +46,7 @@ function createConfig(slug) {
 					onDone: [
 						{
 							cond: 'profileFound',
-							actions: ['queryProfileSuccess', 'createFollowMachineServices'],
+							actions: ['queryProfileSuccess'],
 							target: 'profileLoaded'
 						},
 						{
@@ -92,20 +92,36 @@ function createConfig(slug) {
 
 						states: {
 							loadFollowing: {
-								invoke: {
-									id: 'queryMyFollowing',
-									src: 'queryMyFollowing',
-									onDone: [
-										{
-											actions: ['queryMyFollowingSuccess'],
-											target: 'loaded'
-										}
-									],
+								invoke: [
+									{
+										id: 'queryMyFollowing',
+										src: 'queryMyFollowing',
+										onDone: [
+											{
+												actions: ['queryMyFollowingSuccess'],
+												target: 'loaded'
+											}
+										],
 
-									onError: {
-										target: 'error'
+										onError: {
+											target: 'error'
+										}
+									},
+									{
+										id: 'queryFollowers',
+										src: 'queryFollowers',
+										onDone: [
+											{
+												actions: ['queryFollowersSuccess'],
+												target: 'loaded'
+											}
+										],
+
+										onError: {
+											target: 'error'
+										}
 									}
-								}
+								]
 							},
 
 							toggleFollow: {
@@ -114,7 +130,6 @@ function createConfig(slug) {
 									src: 'toggleFollow',
 									onDone: [
 										{
-											actions: ['refreshFollowers'],
 											target: 'loadFollowing'
 										}
 									],

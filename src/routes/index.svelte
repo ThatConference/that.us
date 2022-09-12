@@ -68,7 +68,7 @@
 	export let blogPosts;
 
 	import { session } from '$app/stores';
-	import { useMachine } from 'xstate-svelte';
+	import { useMachine } from '@xstate/svelte';
 
 	import { debug } from '$utils/config';
 	import seoMetaTags from '$utils/seo/metaTags';

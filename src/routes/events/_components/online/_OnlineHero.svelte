@@ -44,7 +44,7 @@
 
 							<h2
 								class="mt-1 text-4xl font-extrabold tracking-tight text-white sm:mt-2 sm:text-6xl lg:mt-3 xl:text-6xl ">
-								{dayjs(event.startDate).format("MMMM D, 'YY, h:mm A")}
+								{dayjs(event.startDate).format('MMMM D, YYYY')}
 							</h2>
 						</div>
 					</div>

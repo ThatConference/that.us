@@ -3,11 +3,13 @@
 
 	import dayjs from 'dayjs';
 	import Icon from 'svelte-awesome';
+	import lodash from 'lodash';
 	import { commentsO, hashtag, clockO, desktop, users } from '$components/svelte-awesome-icons';
 	import { createEventDispatcher } from 'svelte';
 	import utc from 'dayjs/plugin/utc.js';
 	import timezone from 'dayjs/plugin/timezone.js';
 	import advancedFormat from 'dayjs/plugin/advancedFormat.js';
+	const { keyBy } = lodash;
 
 	import { Standard as StandardButton } from '$elements/buttons';
 	import { Check } from '$elements/svgs';
@@ -18,7 +20,14 @@
 	dayjs.extend(timezone);
 	dayjs.extend(advancedFormat);
 
-	const ticket = event.products.filter((f) => f.isEnabled).find((e) => e.productType === 'TICKET');
+	const tickets = event.products
+		.filter((f) => f.isEnabled)
+		.filter((e) => e.productType === 'TICKET');
+
+	const eventTickets = keyBy(
+		tickets.filter((t) => t.uiReference),
+		(i) => i.uiReference
+	);
 
 	const dispatch = createEventDispatcher();
 </script>
@@ -41,8 +50,133 @@
 			</p>
 		</div>
 
-		<div class="relative mt-12 lg:mt-24 lg:grid lg:grid-cols-2 lg:items-center lg:gap-12">
-			<div class="relative">
+		<div
+			class="relative mt-12 flex flex-col space-y-10 lg:mt-24 lg:flex-row lg:space-y-0 lg:space-x-10">
+			<div class="flex flex-col rounded-xl shadow-lg">
+				<div class="bg-white px-6 py-8 sm:p-10 sm:pb-6">
+					<div class="inline-flex items-center">
+						<div>
+							<span
+								class="rounded-full bg-thatOrange-400 px-4 py-1 text-sm font-semibold uppercase leading-5 tracking-wide text-white">
+								THAT Online - Event Ticket
+							</span>
+						</div>
+					</div>
+					<div class="mt-4 flex items-baseline text-6xl font-extrabold">
+						{#if eventTickets['CLAIMABLE_TICKET'].price === 0}
+							Free
+						{:else}
+							${eventTickets['CLAIMABLE_TICKET'].price}
+							<span class="ml-1 text-2xl font-medium text-gray-500"> USD </span>
+						{/if}
+					</div>
+					<p class="mt-5 text-lg text-gray-500">
+						{event.name}
+					</p>
+					<p class="text-lg text-gray-500">
+						{dayjs(event.startDate).format('dddd, MMMM D, YYYY - h:mm A z')}
+					</p>
+					<p class="mt-6 text-lg text-gray-500">
+						{eventTickets['VIRTUAL_CAMPER'].description}
+					</p>
+				</div>
+				<div
+					class="flex flex-1 flex-col justify-between space-y-6 bg-gray-50 px-6 pt-6 pb-8 sm:p-10 sm:pt-6">
+					<ul class="space-y-4">
+						<li class="flex items-start">
+							<div class="flex-shrink-0">
+								<span class="text-green-500"><Check /></span>
+							</div>
+							<p class="ml-3 text-base text-gray-700">Full Access All Day</p>
+						</li>
+
+						<li class="flex items-start">
+							<div class="flex-shrink-0">
+								<span class="text-green-500"><Check /></span>
+							</div>
+							<p class="ml-3 text-base text-gray-700">Create and Facilitate Activities</p>
+						</li>
+
+						<li class="flex items-start">
+							<div class="flex-shrink-0">
+								<span class="text-green-500"><Check /></span>
+							</div>
+							<p class="ml-3 text-base text-gray-700">Join Any Activity</p>
+						</li>
+					</ul>
+
+					<StandardButton
+						on:click={() =>
+							dispatch('claim-ticket', { product: { id: eventTickets['CLAIMABLE_TICKET'].id } })}>
+						Claim Your Ticket
+					</StandardButton>
+				</div>
+			</div>
+
+			<div class="flex flex-col rounded-xl shadow-lg">
+				<div class="bg-white px-6 py-8 sm:p-10 sm:pb-6">
+					<div class="inline-flex items-center">
+						<div>
+							<span
+								class="rounded-full bg-thatOrange-400 px-4 py-1 text-sm font-semibold uppercase leading-5 tracking-wide text-white">
+								THAT Online - Event Ticket
+							</span>
+						</div>
+					</div>
+					<div class="mt-4 flex items-baseline text-6xl font-extrabold">
+						${eventTickets['VIRTUAL_CAMPER'].price}
+						<span class="ml-1 text-2xl font-medium text-gray-500"> USD </span>
+					</div>
+					<p class="mt-5 text-lg text-gray-500">
+						{event.name}
+					</p>
+					<p class="text-lg text-gray-500">
+						{dayjs(event.startDate).format('dddd, MMMM D, YYYY - h:mm A z')}
+					</p>
+					<p class="mt-6  text-lg text-gray-500">
+						{eventTickets['VIRTUAL_CAMPER'].description}
+					</p>
+				</div>
+				<div
+					class="flex flex-1 flex-col justify-between space-y-6 bg-gray-50 px-6 pt-6 pb-8 sm:p-10 sm:pt-6">
+					<ul class="space-y-4">
+						<li class="flex items-start">
+							<div class="flex-shrink-0">
+								<span class="text-green-500"><Check /></span>
+							</div>
+							<p class="ml-3 text-base text-gray-700">Full Access All Day</p>
+						</li>
+
+						<li class="flex items-start">
+							<div class="flex-shrink-0">
+								<span class="text-green-500"><Check /></span>
+							</div>
+							<p class="ml-3 text-base text-gray-700">Create and Facilitate Activities</p>
+						</li>
+
+						<li class="flex items-start">
+							<div class="flex-shrink-0">
+								<span class="text-green-500"><Check /></span>
+							</div>
+							<p class="ml-3 text-base text-gray-700">Join Any Activity</p>
+						</li>
+
+						<li class="flex items-start">
+							<div class="flex-shrink-0">
+								<span class="text-green-500"><Check /></span>
+							</div>
+							<p class="ml-3 text-base text-gray-700">Helps Support Future Platform Growth</p>
+						</li>
+					</ul>
+					<StandardButton on:click={() => dispatch('purchase-event-ticket')}>
+						Buy us a Coffee & Claim Ticket
+					</StandardButton>
+				</div>
+			</div>
+		</div>
+
+		<div class="relative mt-12  lg:mt-24">
+			<div class="flex flex-col">
 				<h3 class="text-2xl font-extrabold tracking-tight text-thatBlue-800 sm:text-3xl">
 					Built to support the practitioners
 				</h3>
@@ -52,8 +186,9 @@
 					experiences. Our problems are hard, they require context and that's ok. This is why we've
 					created a platform to connect people more authentically, true to peer-to-peer learning.
 				</p>
-
-				<dl class="mt-10 space-y-10">
+			</div>
+			<div>
+				<dl class="mt-10 flex flex-col space-y-10 lg:flex-row lg:space-y-0 lg:space-x-10">
 					<div class="flex">
 						<div class="flex-shrink-0">
 							<div
@@ -107,73 +242,6 @@
 						</div>
 					</div>
 				</dl>
-			</div>
-
-			<div class="relative mt-10" aria-hidden="true">
-				<div class="p-12">
-					<div class="flex flex-col rounded-xl shadow-lg">
-						<div class="bg-white px-6 py-8 sm:p-10 sm:pb-6">
-							<div class="inline-flex items-center">
-								<div>
-									<span
-										class="rounded-full bg-thatOrange-400 px-4 py-1 text-sm font-semibold uppercase leading-5 tracking-wide text-white">
-										THAT Online - Event Ticket
-									</span>
-								</div>
-							</div>
-							<div class="strike mt-4 flex items-baseline text-6xl font-extrabold">
-								${ticket.price}
-								<span class="ml-1 text-2xl font-medium text-gray-500"> USD </span>
-							</div>
-							<p class="mt-5 text-lg text-gray-500">
-								{event.name}
-							</p>
-							<p class="text-lg text-gray-500">
-								{dayjs(event.startDate).format('dddd, MMMM D, YYYY - h:mm A z')}
-							</p>
-
-							<p class="mt-6 text-center text-lg text-red-500">
-								For a limited time all monthly THAT Online events are <span class="font-extrabold"
-									>free</span> and do not require a ticket to participate.
-							</p>
-						</div>
-						<div
-							class="flex flex-1 flex-col justify-between space-y-6 bg-gray-50 px-6 pt-6 pb-8 sm:p-10 sm:pt-6">
-							<ul class="space-y-4">
-								<li class="flex items-start">
-									<div class="flex-shrink-0">
-										<span class="text-green-500"><Check /></span>
-									</div>
-									<p class="ml-3 text-base text-gray-700">Full Access All Day</p>
-								</li>
-
-								<li class="flex items-start">
-									<div class="flex-shrink-0">
-										<span class="text-green-500"><Check /></span>
-									</div>
-									<p class="ml-3 text-base text-gray-700">Create and Facilitate Activities</p>
-								</li>
-
-								<li class="flex items-start">
-									<div class="flex-shrink-0">
-										<span class="text-green-500"><Check /></span>
-									</div>
-									<p class="ml-3 text-base text-gray-700">Join Any Activity</p>
-								</li>
-
-								<li class="flex items-start">
-									<div class="flex-shrink-0">
-										<span class="text-green-500"><Check /></span>
-									</div>
-									<p class="ml-3 text-base text-gray-700">Helps Support Future Platform Growth</p>
-								</li>
-							</ul>
-							<StandardButton on:click={() => dispatch('purchase-event-ticket')}>
-								Purchase
-							</StandardButton>
-						</div>
-					</div>
-				</div>
 			</div>
 		</div>
 

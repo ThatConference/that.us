@@ -1,6 +1,10 @@
 <script>
 	import { getContext } from 'svelte';
+
 	import MobileUsersProfile from '../MobileUsersProfile.svelte';
+	import ClaimCart from '../ClaimCart.svelte';
+	import Cart from '../Cart.svelte';
+	import AddActivity from '../AddActivity.svelte';
 
 	const mobileVisible = getContext('IS_Mobile_VIEW');
 </script>
@@ -66,6 +70,12 @@
         focus:outline-none">
 			Help
 		</a>
+	</div>
+
+	<div class="flex justify-center space-x-4 py-4 text-white">
+		<ClaimCart />
+		<Cart />
+		<AddActivity />
 	</div>
 
 	<MobileUsersProfile darkMode={false} />

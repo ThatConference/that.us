@@ -39,7 +39,7 @@
 	export let acceptedSpeaker;
 
 	import { fade } from 'svelte/transition';
-	import { useMachine } from 'xstate-svelte';
+	import { useMachine } from '@xstate/svelte';
 
 	import seoMetaTags from '$utils/seo/metaTags';
 	import { debug } from '$utils/config';

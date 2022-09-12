@@ -1,7 +1,7 @@
 <script>
 	export let profileSlug;
 
-	import { useMachine } from 'xstate-svelte';
+	import { useMachine } from '@xstate/svelte';
 
 	import { debug } from '$utils/config';
 	import { FeaturedActivityDetail } from '$elements';
