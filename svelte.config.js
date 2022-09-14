@@ -1,7 +1,7 @@
 // import adapter from '@sveltejs/adapter-auto';
-import adapter from '@sveltejs/adapter-vercel';
+import adapter from '@sveltejs/adapter-auto';
 import preprocess from 'svelte-preprocess';
-import { resolve } from 'path';
+
 import { mdsvex } from 'mdsvex';
 import mdsvexConfig from './mdsvex.config.js';
 
@@ -16,22 +16,6 @@ const config = {
 		trailingSlash: 'always',
 		serviceWorker: {
 			register: false
-		},
-		vite: {
-			build: {
-				sourcemap: true
-			},
-			resolve: {
-				alias: {
-					$components: resolve('src/_components'),
-					$elements: resolve('src/_elements'),
-					$utils: resolve('src/_utils'),
-					$dataSources: resolve('src/_dataSources'),
-					$stores: resolve('src/_stores'),
-					$machines: resolve('src/_machines'),
-					$blog: resolve('src/_blog')
-				}
-			}
 		},
 		adapter: adapter()
 	},
