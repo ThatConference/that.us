@@ -7,7 +7,11 @@ export const MUTATION_CREATE_CHECKOUT_SESSION = `
       me {
         checkout {
           stripe {
-            create (checkout: $checkout)
+            create (checkout: $checkout) {
+							success
+							message
+							stripeCheckoutId
+						}
           }
         }
       }
@@ -16,7 +20,7 @@ export const MUTATION_CREATE_CHECKOUT_SESSION = `
 `;
 
 export const MUTATION_MARK_SURVEY_QUESTIONS_COMPLETED = `
-  mutation createCheckoutSession($eventId: ID!, $orderReference: String!) {
+  mutation markQuestionsComplete($eventId: ID!, $orderReference: String!) {
     orders {
       me {
         markQuestionsComplete(eventId: $eventId, orderReference: $orderReference)
