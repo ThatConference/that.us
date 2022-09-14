@@ -34,7 +34,7 @@
 		"@sentry/node": "^6.19.7",
 		"@sentry/tracing": "^6.19.7",
 		"@stripe/stripe-js": "^1.29.0",
-		"@sveltejs/adapter-auto": "next",
+		"@sveltejs/adapter-auto": "1.0.0-next.64",
 		"@sveltejs/kit": "1.0.0-next.405",
 		"@tailwindcss/aspect-ratio": "^0.4.0",
 		"@tailwindcss/forms": "^0.5.2",
