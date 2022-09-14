@@ -4,9 +4,6 @@ import { resolve } from 'path';
 /** @type {import('vite').UserConfig} */
 const config = {
 	plugins: [sveltekit()],
-	build: {
-		sourcemap: true
-	},
 	resolve: {
 		alias: {
 			$components: resolve('src/_components'),

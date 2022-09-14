@@ -31,6 +31,6 @@ async function afterCallback(_req, _res, session, _state) {
 	}
 }
 
-export function get(requestEvent) {
+export function GET(requestEvent) {
 	return auth0.handleCallback(requestEvent, { afterCallback });
 }

@@ -5,7 +5,7 @@
 	"main": "index.js",
 	"type": "module",
 	"engines": {
-		"node": ">= 16.x"
+		"node": "16.x"
 	},
 	"repository": {
 		"type": "git",
@@ -17,7 +17,7 @@
 		"dev": "env-cmd vite dev",
 		"local:build": "env-cmd vite build",
 		"build": "vite build",
-		"preview": "vite preview",
+		"preview": "env-cmd vite preview",
 		"lint": "prettier --ignore-path .gitignore --check --plugin-search-dir=. ./src && eslint --ignore-path .gitignore ./src",
 		"format": "prettier --ignore-path .gitignore --write --plugin-search-dir=. ./src",
 		"validate": "concurrently npm:lint",
@@ -34,7 +34,7 @@
 		"@sentry/node": "^6.19.7",
 		"@sentry/tracing": "^6.19.7",
 		"@stripe/stripe-js": "^1.29.0",
-		"@sveltejs/adapter-auto": "next",
+		"@sveltejs/adapter-auto": "1.0.0-next.64",
 		"@sveltejs/kit": "1.0.0-next.405",
 		"@tailwindcss/aspect-ratio": "^0.4.0",
 		"@tailwindcss/forms": "^0.5.2",
@@ -50,8 +50,8 @@
 		"cssnano": "^5.1.8",
 		"dayjs": "^1.11.2",
 		"env-cmd": "^10.1.0",
-		"esbuild": "^0.14.39",
-		"eslint": "^8.15.0",
+		"esbuild": "^0.15.7",
+		"eslint": "^8.23.1",
 		"eslint-config-prettier": "^8.5.0",
 		"eslint-plugin-svelte3": "^4.0.0",
 		"fetch-retry": "^5.0.2",
@@ -77,7 +77,7 @@
 		"rehype-slug": "^5.0.1",
 		"remark-preview": "^1.0.2",
 		"remark-reading-time": "1.0.1",
-		"svelte": "^3.48.0",
+		"svelte": "^3.50.1",
 		"svelte-awesome": "^2.4.6",
 		"svelte-checkbox": "^1.0.1",
 		"svelte-content-loader": "^1.1.3",
