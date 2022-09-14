@@ -1,7 +1,8 @@
 import { browser } from '$app/env';
 
 function configMissing(configKey) {
-	throw new Error(`Missing required environment varable: ${configKey}`);
+	const message = `Missing required environment varable: ${configKey}`;
+	throw new Error(message);
 }
 
 export default {
