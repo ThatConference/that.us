@@ -1,7 +1,7 @@
 import fetch from 'isomorphic-fetch';
 import config from '$utils/config';
 
-export async function post(requestEvent) {
+export async function POST(requestEvent) {
 	const { locals, request } = requestEvent;
 	const body = await request.json();
 

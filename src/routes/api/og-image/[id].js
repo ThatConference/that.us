@@ -2,7 +2,7 @@ import config from '$utils/config';
 
 const baseHostImage = 'https://that.imgix.net/og-image';
 
-export async function get({ params }) {
+export async function GET({ params }) {
 	let { id } = params;
 	const response = await fetch(`${baseHostImage}/${id}.png`);
 

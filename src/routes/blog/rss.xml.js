@@ -44,7 +44,7 @@ export async function getPosts() {
 	return posts;
 }
 
-export async function get() {
+export async function GET() {
 	const posts = await getPosts();
 	const body = xml(posts);
 

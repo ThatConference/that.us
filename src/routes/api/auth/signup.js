@@ -1,6 +1,6 @@
 import auth0 from '$utils/security';
 
-export function get(req, res) {
+export function GET(req, res) {
 	return auth0
 		.handleLogin(req, res, {
 			authorizationParams: {
