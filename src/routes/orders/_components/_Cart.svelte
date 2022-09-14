@@ -38,7 +38,13 @@
 
 		return orderMutations()
 			.createCheckoutSession(eventId, lineItems)
-			.then((session) => stripe.redirectToCheckout({ sessionId: session }))
+			.then((results) => {
+				console.log({ results });
+				if (results.success) stripe.redirectToCheckout({ sessionId: results.stripeCheckoutId });
+				else {
+					throw new Error(results.message);
+				}
+			})
 			.then(function (result) {
 				// If redirectToCheckout fails due to a browser or network error, you should display the localized error message to your customer using error.message.
 				if (result.error) {
