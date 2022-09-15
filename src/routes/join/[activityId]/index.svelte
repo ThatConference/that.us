@@ -282,13 +282,16 @@
 	</div>
 
 	<div slot="body" class="relative">
-		<button
-			type="button"
-			class="absolute top-12 left-0 ml-48 mt-1 cursor-pointer"
-			on:click={expanded ? shrinkJitsiFrame : expandJitsiFrame}>
-			<Icon data={expanded ? compressIcon : expandIcon} class="h-6 w-6 text-white" />
-		</button>
-
+		<div>
+			<button
+				type="button"
+				class="absolute top-6 left-5 cursor-pointer"
+				on:click={expanded ? shrinkJitsiFrame : expandJitsiFrame}>
+				<div class="flex h-12 w-[100px] items-center justify-center rounded-md bg-red-500">
+					<Icon data={expanded ? compressIcon : expandIcon} class="h-8 w-8 text-white" />
+				</div>
+			</button>
+		</div>
 		{#if !jitsiLoaded}
 			<div class="flex flex-col items-center justify-center">
 				<p class="text-xl font-semibold">Loading room....</p>
