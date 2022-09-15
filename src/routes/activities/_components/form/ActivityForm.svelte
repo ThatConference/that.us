@@ -304,7 +304,15 @@
 			</section>
 
 			{#if isValid === false}
-				<ErrorNotificaiton message="Please correct the issues listed above." />
+				<ErrorNotificaiton message="Please correct the following errors.">
+					<div>
+						<ul>
+							{#each Object.entries(errors) as error}
+								<li>{error[1]}</li>
+							{/each}
+						</ul>
+					</div>
+				</ErrorNotificaiton>
 			{/if}
 
 			{#if isSubmitting}

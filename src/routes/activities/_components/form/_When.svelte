@@ -70,7 +70,6 @@
 	import isSameOrAfter from 'dayjs/plugin/isSameOrAfter.js';
 	import isToday from 'dayjs/plugin/isToday.js';
 	import isBetween from 'dayjs/plugin/isBetween.js';
-	// import { Input } from 'sveltejs-forms';
 	import Select from 'svelte-select';
 	import advancedFormat from 'dayjs/plugin/advancedFormat.js';
 
@@ -180,8 +179,6 @@
 
 		<div class="mt-1 sm:col-span-2 sm:mt-0">
 			<div class="max-w-lg sm:text-sm sm:leading-5">
-				<!-- <Input hidden name="selectedDay" bind:value={selectedDateValue} /> -->
-
 				<Flatpickr
 					options={fpOptions}
 					bind:flatpickr
@@ -192,6 +189,7 @@
 						<input
 							type="text"
 							placeholder="Select Date.."
+							name="selectedDay"
 							data-input
 							class="shadow-sm hover:border-gray-700 sm:text-sm sm:leading-5" />
 					</div>

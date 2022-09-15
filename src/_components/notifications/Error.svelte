@@ -42,6 +42,7 @@
 						</button>
 					</div>
 				</div>
+				<div class="mx-16 mt-2 italic text-white"><slot /></div>
 			</div>
 		</div>
 	</div>
