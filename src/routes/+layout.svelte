@@ -37,7 +37,7 @@
 
 	$: if (!isEmpty($page.data.user.profile)) {
 		if (!dev && browser) {
-			let { id, email } = $page.data.user.profile;
+			let { id, email, firstName, lastName } = $page.data.user.profile;
 
 			Sentry.configureScope((scope) => {
 				scope.setUser({
@@ -49,6 +49,17 @@
 			LogRocket.identify(id, {
 				email
 			});
+
+			var _hsq = (window._hsq = window._hsq || []);
+			_hsq.push([
+				'identify',
+				{
+					email,
+					id,
+					firstName,
+					lastName
+				}
+			]);
 		}
 	}
 </script>

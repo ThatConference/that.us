@@ -17,6 +17,7 @@
 	import WarningNotification from '$components/notifications/Warning.svelte';
 	import Seo from '$components/Seo.svelte';
 
+	import { trackEvent } from '$utils/hst';
 	import config, { analytics } from '$utils/config.public';
 
 	let { activityId, activityDetails } = data;
@@ -219,6 +220,7 @@
 
 	onMount(() => {
 		initJitsi();
+		trackEvent('activity_join', { id: activityId });
 	});
 </script>
 
