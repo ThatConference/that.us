@@ -5,7 +5,7 @@
 	const { slug, name } = community;
 	const handle = `@${slug}`;
 
-	import { session } from '$app/stores';
+	import { page } from '$app/stores';
 	import { createEventDispatcher } from 'svelte';
 
 	import { Standard as StandardButton } from '$elements/buttons';
@@ -27,7 +27,7 @@
 	</h2>
 
 	<span slot="actionPrimary">
-		{#if $session.isAuthenticated}
+		{#if $page.data.user.isAuthenticated}
 			<StandardButton class="h-3/4" on:click={() => dispatch('community-follow')}>
 				{#if isFollowing}Un-Follow{:else}Follow{/if}
 				{handle}

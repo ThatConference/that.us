@@ -1,25 +1,13 @@
-<script context="module">
-	import membersApi from '$dataSources/api.that.tech/members/queries';
-
-	export async function load({ fetch }) {
-		const { queryMembers } = membersApi(fetch);
-
-		return {
-			props: {
-				members: await queryMembers()
-			}
-		};
-	}
-</script>
-
 <script>
-	export let members;
+	export let data;
+
+	let { members } = data;
 
 	import SvelteInfiniteScroll from 'svelte-infinite-scroll';
 	import { useMachine } from '@xstate/svelte';
 
 	import seoMetaTags from '$utils/seo/metaTags';
-	import { debug } from '$utils/config';
+	import { debug } from '$utils/config.public';
 	import { Waiting } from '$elements';
 	import Layout from '$elements/layouts/ContentLayout.svelte';
 	import Seo from '$components/Seo.svelte';

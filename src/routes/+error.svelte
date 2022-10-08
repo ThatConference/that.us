@@ -1,16 +1,8 @@
-<script context="module">
-	export function load({ error, status }) {
-		return {
-			props: { error, status }
-		};
-	}
-</script>
-
 <script>
-	export let error, status;
+	import { page } from '$app/stores';
 
-	import { dev } from '$app/env';
-	import * as Sentry from '@sentry/browser';
+	import { dev } from '$app/environment';
+	import * as Sentry from '@sentry/svelte';
 
 	import { Standard as StandardLink } from '$elements/links';
 	import seoMetaTags from '$utils/seo/metaTags';
@@ -30,14 +22,13 @@
 		})
 	}))();
 
-	if (!dev) {
-		const thisError = new Error(error.message);
-		thisError.name = error.name;
-		thisError.stack = error.stack;
+	console.log('is dev', dev);
+	console.log('page', $page);
 
-		Sentry.captureException(thisError, {
+	if (!dev) {
+		Sentry.captureException($page.error, {
 			tags: {
-				status
+				status: $page.status
 			}
 		});
 	}
@@ -49,15 +40,15 @@
 	class="min-h-screen bg-white px-4 py-16 sm:px-6 sm:py-24 md:grid md:place-items-center lg:px-8">
 	<div class="mx-auto max-w-max">
 		<main class="sm:flex">
-			<p class="text-4xl font-extrabold text-that-red sm:text-5xl">{status}</p>
+			<p class="text-4xl font-extrabold text-that-red sm:text-5xl">{$page.status}</p>
 			<div class="sm:ml-6">
 				<div class="sm:border-l sm:border-gray-200 sm:pl-6">
 					<div class="flex">
 						<div>
 							<h1 class="text-4xl font-extrabold tracking-tight text-thatBlue-800 sm:text-5xl">
-								{#if status === 404}
-									{#if error.message}
-										{error.message}
+								{#if $page.status === 404}
+									{#if $page.error.message}
+										{$page.error.message}
 									{:else}
 										THAT Page not found
 									{/if}
@@ -67,16 +58,16 @@
 							</h1>
 
 							<p class="mt-1 text-base text-gray-500">
-								{#if status === 404}
+								{#if $page.status === 404}
 									Please check the URL in the address bar and try again.
 								{:else}
 									Well that's no good. We've notified the geeks and logged the error.
 								{/if}
 							</p>
 
-							{#if dev && error.stack}
+							{#if dev && $page.error.stack}
 								<p class="mt-10 max-w-lg text-base text-red-500">
-									{error.stack}
+									{$page.error.stack}
 								</p>
 							{/if}
 						</div>

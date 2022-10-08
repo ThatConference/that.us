@@ -1,24 +1,9 @@
-<script context="module">
-	import meQueryApi from '$dataSources/api.that.tech/me/queries';
-
-	export async function load({ fetch }) {
-		const { queryMeDiscountCodes } = meQueryApi(fetch);
-		let codes = await queryMeDiscountCodes();
-
-		return {
-			props: {
-				codes
-			}
-		};
-	}
-</script>
-
 <script>
-	export let codes;
+	export let data;
 
 	import { onMount, onDestroy } from 'svelte';
-	import { session } from '$app/stores';
-	import { browser } from '$app/env';
+	import { page } from '$app/stores';
+	import { browser } from '$app/environment';
 	import dayjs from 'dayjs';
 	import Clipboard from 'clipboard';
 
@@ -27,6 +12,8 @@
 
 	import { Standard as StandardLink } from '$elements/links';
 	import { Warning, Store, Ticket } from '$elements/svgs';
+
+	let { codes } = data;
 	const metaTags = ((title = 'Your Membership - THAT') => ({
 		title,
 		tags: seoMetaTags({
@@ -68,7 +55,7 @@
 		<h2 class="text-xl font-bold leading-6 text-gray-900">Membership Settings</h2>
 	</header>
 
-	{#if !$session.thatProfile?.isMember}
+	{#if !$page.data.user.profile?.isMember}
 		<div class="mt-8">
 			<div class="flex items-center">
 				<div class="mr-4">

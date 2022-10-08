@@ -1,28 +1,5 @@
-<script context="module">
-	import sessionsApi from '$dataSources/api.that.tech/sessions';
-
-	export async function load({ params, fetch }) {
-		const { querySessionsBySlug } = sessionsApi(fetch);
-
-		const { state, year } = params;
-		const eventSlug = `${state}/${year}`;
-
-		const event = await querySessionsBySlug({ slug: eventSlug });
-		// todo.. What do we do in the scenario where the event isn't found?
-
-		return {
-			props: {
-				event
-			},
-			stuff: {
-				event
-			}
-		};
-	}
-</script>
-
 <script>
-	export let event;
+	export let data;
 
 	import dayjs from 'dayjs';
 
@@ -32,6 +9,7 @@
 	import { ActionHeader } from '$elements';
 	import { Highlight as HighlightLink } from '$elements/links';
 
+	let { event } = data;
 	let hasEnded = dayjs(event.endDate).isBefore(dayjs(), 'day');
 </script>
 

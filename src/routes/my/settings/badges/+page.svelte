@@ -1,6 +1,6 @@
 <script>
 	// utilities
-	import { session } from '$app/stores';
+	import { page } from '$app/stores';
 
 	import seoMetaTags from '$utils/seo/metaTags';
 	import Seo from '$components/Seo.svelte';
@@ -8,8 +8,8 @@
 
 	let awardedBadges = [];
 
-	$: if ($session.thatProfile?.earnedMeritBadges) {
-		awardedBadges = [...$session.thatProfile.earnedMeritBadges];
+	$: if ($page.data.user.profile?.earnedMeritBadges) {
+		awardedBadges = [...$page.data.user.profile.earnedMeritBadges];
 	}
 
 	const metaTags = ((title = 'My Merit Badges - THAT') => ({

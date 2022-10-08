@@ -20,7 +20,6 @@ export const QUERY_ME_FOLLOWING_COMMUNITIES = `
   query queryMyCommunityFollows {
     communities {
       me {
-				id
         favorites {
           ids
         }

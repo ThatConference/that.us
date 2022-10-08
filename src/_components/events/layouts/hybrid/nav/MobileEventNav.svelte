@@ -2,7 +2,7 @@
 	export let event;
 	export let hidden;
 
-	import { session } from '$app/stores';
+	import { page } from '$app/stores';
 	import { createEventDispatcher } from 'svelte';
 	import { clickOutside } from '$elements/actions';
 	import { StandardShell } from '$elements/buttons';
@@ -28,7 +28,7 @@
 	<div class="mx-8 flex items-center justify-between">
 		<!-- logo -->
 		<div class="cursor">
-			<a sveltekit:prefetch href="/that-conference">
+			<a data-sveltekit-prefetch href="/that-conference">
 				<img class="h-16" src="/images/ThatConferenceLogo.svg" alt="THAT Logo" />
 			</a>
 		</div>
@@ -86,7 +86,7 @@
 
 				<div class="py-6">
 					<div>
-						{#if $session.isAuthenticated}
+						{#if $page.data.user.isAuthenticated}
 							<MobileUsersProfile darkMode={true} />
 						{:else}
 							<StandardShell>

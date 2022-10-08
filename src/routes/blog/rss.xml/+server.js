@@ -52,8 +52,6 @@ export async function GET() {
 		'Cache-Control': 'max-age=0, s-maxage=3600',
 		'Content-Type': 'application/xml'
 	};
-	return {
-		headers,
-		body
-	};
+
+	return new Response(JSON.stringify(body), { headers });
 }

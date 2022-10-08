@@ -7,7 +7,7 @@
 	import advancedFormat from 'dayjs/plugin/advancedFormat.js';
 
 	import { Shell } from '$elements/buttons';
-	import config from '$utils/config';
+	import config from '$utils/config.public';
 	import { CheckFull } from '$elements/svgs';
 
 	import CheckInModal from './_CheckinModal.svelte';

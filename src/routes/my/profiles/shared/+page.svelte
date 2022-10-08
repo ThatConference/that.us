@@ -1,32 +1,18 @@
-<script context="module">
-	import meQueryApi from '$dataSources/api.that.tech/me/queries';
-
-	export async function load({ fetch }) {
-		const { queryMeSharedProfile } = meQueryApi(fetch);
-
-		let sharedProfile = await queryMeSharedProfile();
-		return {
-			props: {
-				sharedProfile
-			}
-		};
-	}
-</script>
-
 <script>
-	export let sharedProfile;
+	export let data;
 
-	import { session } from '$app/stores';
+	import { page } from '$app/stores';
 	import lodash from 'lodash';
 
 	import seoMetaTags from '$utils/seo/metaTags';
 	import Seo from '$components/Seo.svelte';
 	import { Warning } from '$elements/svgs';
 
-	import SharedProfileForm from './_components/sharedProfileForm.svelte';
+	import SharedProfileForm from '../_components/sharedProfileForm.svelte';
 
 	import meMutationsApi from '$dataSources/api.that.tech/me/mutations';
 
+	let { sharedProfile } = data;
 	const { isEmpty } = lodash;
 	const { updateSharedProfile } = meMutationsApi();
 
@@ -60,7 +46,7 @@
 
 <Seo title={metaTags.title} tags={metaTags.tags} />
 
-{#if !isEmpty($session.thatProfile)}
+{#if !isEmpty($page.data.user.profile)}
 	<SharedProfileForm handleSubmit={handleUpdate} {sharedProfile} />
 {:else}
 	<div class="mt-8">

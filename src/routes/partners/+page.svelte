@@ -1,19 +1,5 @@
-<script context="module">
-	import partnersApi from '$dataSources/api.that.tech/partner/queries';
-
-	export async function load({ fetch }) {
-		const { getUpcomingPartners } = partnersApi(fetch);
-
-		return {
-			props: {
-				partners: await getUpcomingPartners()
-			}
-		};
-	}
-</script>
-
 <script>
-	export let partners;
+	export let data;
 
 	import seoMetaTags from '$utils/seo/metaTags';
 	import Seo from '$components/Seo.svelte';
@@ -22,6 +8,7 @@
 
 	import Hero from './_components/_PartnersHero.svelte';
 
+	let { partners } = data;
 	const metaTags = ((title = `Visit these sponosors who've made THAT Conference possible.`) => ({
 		title,
 		tags: seoMetaTags({

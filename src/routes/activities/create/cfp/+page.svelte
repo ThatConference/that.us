@@ -1,36 +1,5 @@
-<script context="module">
-	export async function load({ url, stuff }) {
-		//todo: we need to get this from some config somewhere or better yet an api
-		const upNextHybridEvent = `OlyDhUyrp2DI9babqZO9`;
-
-		const eventId = url.searchParams.has('event')
-			? url.searchParams.get('event')
-			: upNextHybridEvent;
-		const selectedEvent = stuff.events.find((i) => i.id === eventId);
-
-		const activeEvents = {
-			daily: [],
-			online: [],
-			hybrid: [],
-			backdoor: selectedEvent
-		};
-
-		return {
-			props: {
-				...stuff,
-				activeEvents,
-				eventId,
-				isCallForSpeakersOpen: selectedEvent.isCallForSpeakersOpen
-			}
-		};
-	}
-</script>
-
 <script>
-	export let isCallForSpeakersOpen;
-	export let events;
-	export let activeEvents;
-	export let eventId;
+	export let data;
 
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
@@ -39,7 +8,9 @@
 	import Seo from '$components/Seo.svelte';
 
 	import { ModalError } from '$elements';
-	import Create from './index.svelte';
+	import Create from '../+page.svelte';
+
+	let { isCallForSpeakersOpen, events, activeEvents, eventId } = data;
 
 	onMount(() => {
 		if (!$page.url.searchParams.has('event'))

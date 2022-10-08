@@ -4,7 +4,7 @@
 	import { goto } from '$app/navigation';
 	import { getContext } from 'svelte';
 
-	import config from '$utils/config';
+	import config from '$utils/config.public';
 	import { Check } from '$elements/svgs';
 	import { Highlight as HighlightButton } from '$elements/buttons';
 

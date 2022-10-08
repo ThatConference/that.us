@@ -14,7 +14,6 @@
 	export let dense = false;
 
 	// 3rd party
-	import { session } from '$app/stores';
 	import { onMount, getContext } from 'svelte';
 	import dayjs from 'dayjs';
 	import isBetween from 'dayjs/plugin/isBetween.js';
@@ -33,7 +32,7 @@
 	import { page } from '$app/stores';
 	import lodash from 'lodash';
 
-	import config from '$utils/config';
+	import config from '$utils/config.public';
 	import buildImageSrc from '$utils/image';
 	import { truncate, isLongerThan } from '$utils/truncate';
 	import { show } from '$stores/profileNotification';
@@ -57,7 +56,7 @@
 	const isAllowed = () => {
 		let permitted = false;
 
-		if (isEmpty($session.thatProfile)) {
+		if (isEmpty($page.data.user.profile)) {
 			show.set(new Boolean(true));
 			permitted = false;
 		} else {
@@ -90,7 +89,7 @@
 	$: canJoin = isInWindow;
 
 	onMount(async () => {
-		if ($session.isAuthenticated) await getFavorites(eventId);
+		if ($page.data.user.isAuthenticated) await getFavorites(eventId);
 
 		let endTime = (durationInMinutes ? durationInMinutes : 60) + 10;
 		let currentStartTime = dayjs(startTime).subtract(5, 'minute');
@@ -155,7 +154,11 @@
 				class="flex flex-shrink-0 flex-grow-0 basis-32 flex-col items-stretch justify-between pt-3 text-center">
 				<div class="flex flex-shrink-0 flex-grow flex-col justify-center">
 					<div class="flex-start flex flex-shrink-0 flex-grow-0 flex-col">
-						<a sveltekit:prefetch open href="/members/{host.profileSlug}/" class="flex-shrink-0">
+						<a
+							data-sveltekit-prefetch
+							open
+							href="/members/{host.profileSlug}/"
+							class="flex-shrink-0">
 							<span class="relative inline-block">
 								<img
 									class="lazyload h-12 w-12 rounded-full"
@@ -177,7 +180,7 @@
 					</div>
 
 					{#if !hasExpired}
-						{#if $session.isAuthenticated}
+						{#if $page.data.user.isAuthenticated}
 							<button
 								type="button"
 								on:click|preventDefault={!favoriteDisabled && handleToggle}
@@ -208,7 +211,7 @@
 
 			<div class="flex flex-grow flex-col justify-between">
 				<!-- COLUMN 2-->
-				<a sveltekit:prefetch href="/activities/{id}/">
+				<a data-sveltekit-prefetch href="/activities/{id}/">
 					<h3 class="break-words pt-1 text-base font-medium leading-5 text-gray-900">
 						{title}
 					</h3>
@@ -240,7 +243,7 @@
 
 						{#if !hasExpired}
 							<div class="hidden border-l pl-1 text-center md:block">
-								{#if $session.isAuthenticated}
+								{#if $page.data.user.isAuthenticated}
 									<button
 										type="button"
 										on:click|preventDefault={!favoriteDisabled && handleToggle}
@@ -270,7 +273,7 @@
 							</div>
 						{/if}
 
-						{#if $session.isAuthenticated}
+						{#if $page.data.user.isAuthenticated}
 							{#if canEdit()}
 								<div class="border-l pl-1 text-center">
 									<a
@@ -349,7 +352,7 @@
 			</div>
 		{/if}
 		<div class="flex w-full flex-col items-center p-3">
-			<a sveltekit:prefetch href="/members/{host.profileSlug}/" class="flex-shrink-0">
+			<a data-sveltekit-prefetch href="/members/{host.profileSlug}/" class="flex-shrink-0">
 				<span class="relative inline-block">
 					<img
 						class="lazyload h-24 w-24 rounded-full"
@@ -370,7 +373,7 @@
 			</a>
 
 			<div class="flex w-full flex-col justify-center text-center">
-				<a sveltekit:prefetch href="/activities/{id}/">
+				<a data-sveltekit-prefetch href="/activities/{id}/">
 					<h3 class="break-words pt-1 text-base font-medium leading-5 text-gray-900">
 						{title}
 					</h3>
@@ -413,7 +416,7 @@
 			</div>
 
 			{#if !hasExpired}
-				{#if $session.isAuthenticated}
+				{#if $page.data.user.isAuthenticated}
 					<div class="-ml-px flex flex-1 basis-0 border-t border-l border-gray-200">
 						<button
 							type="button"
@@ -447,7 +450,7 @@
 				{/if}
 			{/if}
 
-			{#if $session.isAuthenticated}
+			{#if $page.data.user.isAuthenticated}
 				{#if canEdit()}
 					<div class="-ml-px flex flex-1 basis-0 border-l border-gray-200">
 						<a

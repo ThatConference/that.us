@@ -1,46 +1,14 @@
-<script context="module">
-	import sessionsApi from '$dataSources/api.that.tech/sessions';
-	import sessionsQueryApi from '$dataSources/api.that.tech/sessions/queries';
-
-	export async function load({ params, fetch }) {
-		const { getById } = sessionsApi(fetch);
-		const { querySessionDropDownValues } = sessionsQueryApi(fetch);
-
-		let activityId = params.activity;
-
-		//todo need to figure out how to handle no sessions.. do we return an error, or just pop a message box
-		let [activity, sessionLookups] = await Promise.all([
-			getById(activityId),
-			querySessionDropDownValues()
-		]);
-
-		if (!activity) {
-			return {
-				status: 404,
-				error: 'Activity not found'
-			};
-		}
-
-		return {
-			props: {
-				activity,
-				sessionLookups
-			}
-		};
-	}
-</script>
-
 <script>
-	export let activity;
-	export let sessionLookups;
+	export let data;
 
 	import seoMetaTags from '$utils/seo/metaTags';
-
 	import Seo from '$components/Seo.svelte';
 	import { ActionHeader } from '$elements';
 	import Nav from '$components/nav/interiorNav/Top.svelte';
 	import ActivityDetails from '$components/activities/ActivityDetails.svelte';
 	import StackedLayout from '$elements/layouts/StackedLayout.svelte';
+
+	let { activity, sessionLookups } = data;
 
 	const metaTags = ((imageId = activity.id, title = `${activity.title}.`) => ({
 		title,

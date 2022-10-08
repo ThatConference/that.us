@@ -1,22 +1,9 @@
-<script context="module">
-	import sessionsQueryApi from '$dataSources/api.that.tech/sessions/queries';
-
-	export async function load({ fetch }) {
-		const { querySessionDropDownValues } = sessionsQueryApi(fetch);
-
-		return {
-			props: {
-				sessionEnumLookups: await querySessionDropDownValues()
-			}
-		};
-	}
-</script>
-
 <script>
-	export let sessionEnumLookups;
+	export let data;
 
 	import { setContext } from 'svelte';
 
+	let { sessionEnumLookups } = data;
 	setContext('SESSION_ENUMS', sessionEnumLookups);
 </script>
 

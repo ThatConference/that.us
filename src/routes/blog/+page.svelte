@@ -1,35 +1,5 @@
-<script context="module">
-	import { getPosts } from '$blog/getPosts';
-	import membersQueryApi from '$dataSources/api.that.tech/members/queries';
-
-	export async function load({ fetch }) {
-		const { queryBlogAuthorBySlug } = membersQueryApi(fetch);
-		const rawPosts = getPosts();
-
-		let posts = await Promise.all(
-			rawPosts.map(async (p) => {
-				const author = await queryBlogAuthorBySlug(p.metadata.authorSlug);
-
-				return {
-					...p,
-					metadata: {
-						...p.metadata,
-						author
-					}
-				};
-			})
-		);
-
-		return {
-			props: {
-				posts
-			}
-		};
-	}
-</script>
-
 <script>
-	export let posts;
+	export let data;
 
 	import Card from '$components/blog/components/blogCard.svelte';
 	import Layout from '$elements/layouts/ContentLayout.svelte';
@@ -37,6 +7,7 @@
 	import seoMetaTags from '$utils/seo/metaTags';
 	import Seo from '$components/Seo.svelte';
 
+	let { posts } = data;
 	const metaTags = ((title = `The official blog of THAT and THAT Conference.`) => ({
 		title,
 		tags: seoMetaTags({

@@ -1,22 +1,7 @@
-<script context="module">
-	import communityQueryApi from '$dataSources/api.that.tech/community/queries';
-
-	export async function load({ fetch }) {
-		const { queryActiveThatEvents } = communityQueryApi(fetch);
-		const events = await queryActiveThatEvents();
-
-		const filtered = events.filter((x) => x.type === 'HYBRID_MULTI_DAY');
-
-		return {
-			props: {
-				events: filtered
-			}
-		};
-	}
-</script>
-
 <script>
-	export let events;
+	export let data;
+
+	let { events } = data;
 
 	import seoMetaTags from '$utils/seo/metaTags';
 	import Seo from '$components/Seo.svelte';

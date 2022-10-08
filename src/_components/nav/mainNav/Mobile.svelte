@@ -1,5 +1,5 @@
 <script>
-	import { session } from '$app/stores';
+	import { page } from '$app/stores';
 	import { Standard as StandardLink } from '$elements/links';
 
 	import MobileUsersProfile from '../MobileUsersProfile.svelte';
@@ -27,7 +27,7 @@
 </div>
 
 <div class="my-4 flex flex-col space-y-5 px-4 sm:my-4 sm:px-6">
-	{#if $session.isAuthenticated}
+	{#if $page.data.user.isAuthenticated}
 		<MobileUsersProfile darkMode={true} />
 	{:else}
 		<StandardLink rel="external" href="/login/">Log in</StandardLink>

@@ -1,20 +1,5 @@
-<script context="module">
-	import submissionsApi from '$dataSources/api.that.tech/submissions';
-
-	export async function load({ fetch }) {
-		const { queryMySubmissions } = submissionsApi(fetch);
-		let activities = await queryMySubmissions();
-
-		return {
-			props: {
-				activities
-			}
-		};
-	}
-</script>
-
 <script>
-	export let activities;
+	export let data;
 
 	import { fade } from 'svelte/transition';
 
@@ -24,6 +9,7 @@
 
 	import SubmissionList from './_components/submissionList.svelte';
 
+	let { activities } = data;
 	const metaTags = ((title = 'My Submissions - THAT') => ({
 		title,
 		tags: seoMetaTags({

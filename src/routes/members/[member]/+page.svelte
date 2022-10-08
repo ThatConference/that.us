@@ -1,41 +1,5 @@
-<script context="module">
-	import memberQueryApi from '$dataSources/api.that.tech/members/queries';
-	import meQueryApi from '$dataSources/api.that.tech/me/queries';
-
-	export async function load({ params, fetch, session }) {
-		const { queryMemberBySlug, queryFollowers } = memberQueryApi(fetch);
-		const { queryMeFollowingMembers } = meQueryApi(fetch);
-
-		let { member } = params;
-
-		let [profile, followers, myFollowers = []] = await (async () => {
-			if (session.isAuthenticated) {
-				return await Promise.all([
-					queryMemberBySlug(member),
-					queryFollowers(member),
-					queryMeFollowingMembers()
-				]);
-			} else {
-				return await Promise.all([queryMemberBySlug(member), queryFollowers(member)]);
-			}
-		})();
-
-		return {
-			props: {
-				memberSlug: member,
-				profile,
-				followers,
-				isFollowing: myFollowers.includes(profile.id)
-			}
-		};
-	}
-</script>
-
 <script>
-	export let memberSlug;
-	export let profile;
-	export let followers;
-	export let isFollowing;
+	export let data;
 
 	import { fade } from 'svelte/transition';
 
@@ -51,9 +15,10 @@
 	import MeritBadges from '../_components/meritBadges.svelte';
 	import Hero from '../_components/hero.svelte';
 
-	const { toggleFollow } = memberMutationApi();
-
+	let { memberSlug, profile, followers, isFollowing } = data;
 	let delayCounter = 200;
+
+	const { toggleFollow } = memberMutationApi();
 
 	const metaTags = ((title = `${profile.firstName} ${profile.lastName} - THAT`) => ({
 		title,

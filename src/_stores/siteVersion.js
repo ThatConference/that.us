@@ -1,6 +1,6 @@
-import { browser } from '$app/env';
+import { browser } from '$app/environment';
 import { readable, writable } from 'svelte/store';
-import config from '$utils/config';
+import config from '$utils/config.public';
 
 export const siteVersion = readable(config.version);
 export const showReleaseNotes = writable(false);

@@ -1,15 +1,5 @@
-<script context="module">
-	export async function load({ stuff }) {
-		return {
-			props: {
-				...stuff
-			}
-		};
-	}
-</script>
-
 <script>
-	export let contacts;
+	export let data;
 
 	import dayjs from 'dayjs';
 
@@ -18,6 +8,7 @@
 	import Seo from '$components/Seo.svelte';
 	import { Shell } from '$elements/buttons';
 
+	let { contacts } = data;
 	const metaTags = ((title = 'Partner Network - THAT') => ({
 		title,
 		tags: seoMetaTags({

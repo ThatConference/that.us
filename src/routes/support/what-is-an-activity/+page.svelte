@@ -1,6 +1,6 @@
 <script>
-	import Layout from './_components/_Layout.svelte';
-	import Header from './_components/_Header.svelte';
+	import Layout from '../_components/_Layout.svelte';
+	import Header from '../_components/_Header.svelte';
 
 	import seoMetaTags from '$utils/seo/metaTags';
 	import Seo from '$components/Seo.svelte';

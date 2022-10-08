@@ -1,4 +1,4 @@
-import { browser } from '$app/env';
+import { browser } from '$app/environment';
 import { createMachine, assign } from 'xstate';
 import lodash from 'lodash';
 

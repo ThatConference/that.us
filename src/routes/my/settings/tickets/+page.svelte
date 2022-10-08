@@ -1,26 +1,5 @@
-<script context="module">
-	import lodash from 'lodash';
-	import ordersApi from '$dataSources/api.that.tech/orders/queries';
-
-	const { sortBy } = lodash;
-
-	export async function load({ fetch }) {
-		const { queryMyTicketAllocations } = ordersApi(fetch);
-
-		let tickets = await queryMyTicketAllocations().then((r) => {
-			return sortBy(r, 'event.startDate').reverse();
-		});
-
-		return {
-			props: {
-				tickets
-			}
-		};
-	}
-</script>
-
 <script>
-	export let tickets = [];
+	export let data;
 
 	import dayjs from 'dayjs';
 	import isBetween from 'dayjs/plugin/isBetween.js';
@@ -30,6 +9,7 @@
 
 	dayjs.extend(isBetween);
 
+	let { tickets = [] } = data;
 	const metaTags = ((title = 'My Event Tickets - THAT') => ({
 		title,
 		tags: seoMetaTags({

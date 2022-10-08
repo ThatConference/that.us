@@ -1,9 +1,15 @@
 <script>
+	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
+	import { invalidateAll } from '$app/navigation';
 
 	const returnTo = $page.url.searchParams.has('returnTo')
 		? $page.url.searchParams.get('returnTo')
 		: '/';
+
+	onMount(() => {
+		invalidateAll();
+	});
 </script>
 
 <div

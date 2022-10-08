@@ -1,19 +1,5 @@
-<script context="module">
-	import partnersApi from '$dataSources/api.that.tech/partner/queries';
-
-	export async function load({ fetch }) {
-		const { getPastPartners } = partnersApi(fetch);
-
-		return {
-			props: {
-				partners: await getPastPartners()
-			}
-		};
-	}
-</script>
-
 <script>
-	export let partners;
+	export let data;
 
 	import seoMetaTags from '$utils/seo/metaTags';
 
@@ -22,6 +8,8 @@
 	import Layout from '$elements/layouts/ContentLayout.svelte';
 
 	import Hero from '../_components/_PastPartnersHero.svelte';
+
+	let { partners } = data;
 
 	const metaTags = ((
 		title = `Visit all of our past sponsors who've helped make THAT Conference possible.`

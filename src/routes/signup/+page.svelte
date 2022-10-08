@@ -7,7 +7,7 @@
 	import { Standard as StandardLink } from '$elements/links';
 	import Newsletter from '$components/newsletter/Short.svelte';
 
-	import WelcomeQuote from './support/_components/_WelcomeQuote.svelte';
+	import WelcomeQuote from '../support/_components/_WelcomeQuote.svelte';
 
 	const metaTags = ((title = 'Create your THAT account and profile today and get involved.') => ({
 		title,

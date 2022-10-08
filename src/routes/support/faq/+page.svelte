@@ -6,7 +6,7 @@
 	import FaqItems from '$components/faq/FaqItem.svelte';
 	import Layout from '$elements/layouts/ContentLayout.svelte';
 
-	import items from './_faqItems.json';
+	import items from '../_faqItems.json';
 
 	const metaTags = ((title = 'FAQ - THAT') => ({
 		title,

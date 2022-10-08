@@ -1,46 +1,15 @@
-<script context="module">
-	import sessionsApi from '$dataSources/api.that.tech/sessions.js';
-	import eventsApi from '$dataSources/api.that.tech/events/queries.js';
-
-	export async function load({ params, fetch }) {
-		const { activityId } = params;
-
-		const { querySessionById } = sessionsApi(fetch);
-		const { canAccessEvent } = eventsApi(fetch);
-
-		const activityDetails = await querySessionById(activityId);
-
-		if (activityDetails) {
-			let hasAccess = await canAccessEvent(activityDetails.eventId);
-			if (!hasAccess) {
-				return {
-					status: 302,
-					redirect: `/join/access-denied/?id=${activityId}`
-				};
-			}
-		}
-
-		return {
-			props: {
-				activityId,
-				activityDetails
-			}
-		};
-	}
-</script>
-
 <script>
-	export let activityId;
-	export let activityDetails;
+	export let data;
 
 	import { onMount } from 'svelte';
-	import { session } from '$app/stores';
+	import { page } from '$app/stores';
 	import lodash from 'lodash';
 	import { goto } from '$app/navigation';
 	import Icon from 'svelte-awesome';
 	import { expand as expandIcon, compress as compressIcon } from '$components/svelte-awesome-icons';
 	import { Circle3 } from 'svelte-loading-spinners';
 
+	import sessionsApi from '$dataSources/api.that.tech/sessions';
 	import seoMetaTags from '$utils/seo/metaTags';
 	import { ModalError, ActionHeader } from '$elements';
 	import StackedLayout from '$elements/layouts/StackedLayout.svelte';
@@ -48,12 +17,12 @@
 	import WarningNotification from '$components/notifications/Warning.svelte';
 	import Seo from '$components/Seo.svelte';
 
-	import config, { analytics } from '$utils/config';
+	import config, { analytics } from '$utils/config.public';
+
+	let { activityId, activityDetails } = data;
 
 	const { isEmpty } = lodash;
-
 	const { setAttendance } = sessionsApi();
-
 	const imageCrop = '?mask=ellipse&w=500&h=500&fit=crop';
 	const jitsiFrameTopBuffer = 340;
 
@@ -99,7 +68,7 @@
 			'participants-pane'
 		];
 
-		if ($session.user['http://auth.that.tech/roles'].includes('Admin')) {
+		if ($page.data.user.baseUser['http://auth.that.tech/roles'].includes('Admin')) {
 			toolButtonConfig.push(
 				'recording',
 				'livestreaming',
@@ -133,7 +102,7 @@
 				DEFAULT_REMOTE_DISPLAY_NAME: 'THAT Camper'
 			},
 			userInfo: {
-				displayName: `${$session.thatProfile?.firstName} ${$session.thatProfile?.lastName}`
+				displayName: `${$page.data.user.profile?.firstName} ${$page.data.user.profile?.lastName}`
 			},
 
 			onload: () => {
@@ -218,16 +187,15 @@
 		}
 	}
 
-	$: if (!isEmpty($session.thatProfile)) {
+	$: if (!isEmpty($page.data.user.profile)) {
 		incompleteProfile = false;
 	}
 
-	$: if ($session.isAuthenticated && !incompleteProfile) {
-		console.log('session loaded');
+	$: if ($page.data.user.isAuthenticated && !incompleteProfile) {
 		Promise.resolve(setAttendance(activityId));
 
-		avatarUrl = `${$session.thatProfile.profileImage}${imageCrop}`;
-		displayName = `${$session.thatProfile.firstName} ${$session.thatProfile.lastName}`;
+		avatarUrl = `${$page.data.user.profile.profileImage}${imageCrop}`;
+		displayName = `${$page.data.user.profile.firstName} ${$page.data.user.profile.lastName}`;
 
 		if (jitsiLoaded) {
 			api.executeCommand('avatarUrl', avatarUrl);

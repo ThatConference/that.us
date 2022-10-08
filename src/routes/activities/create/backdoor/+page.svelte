@@ -1,20 +1,9 @@
-<script context="module">
-	export async function load({ stuff }) {
-		return {
-			props: {
-				...stuff
-			}
-		};
-	}
-</script>
-
 <script>
-	export let events;
-	export let activeEvents;
-	export let isBackdoor;
-	export let eventId;
+	export let data;
 
-	import Create from './index.svelte';
+	import Create from '../+page.svelte';
+
+	let { events, activeEvents, isBackdoor, eventId } = data;
 </script>
 
 <Create {events} {activeEvents} {isBackdoor} {eventId} />

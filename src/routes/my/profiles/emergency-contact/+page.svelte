@@ -1,31 +1,17 @@
-<script context="module">
-	import meQueryApi from '$dataSources/api.that.tech/me/queries';
-
-	export async function load({ fetch }) {
-		const { queryMeEmergencyContact } = meQueryApi(fetch);
-
-		let emergencyContactInformation = await queryMeEmergencyContact();
-		return {
-			props: {
-				emergencyContactInformation
-			}
-		};
-	}
-</script>
-
 <script>
-	export let emergencyContactInformation;
+	export let data;
 
-	import { session } from '$app/stores';
+	import { page } from '$app/stores';
 	import lodash from 'lodash';
 
 	import seoMetaTags from '$utils/seo/metaTags';
 	import Seo from '$components/Seo.svelte';
 	import { Warning } from '$elements/svgs';
 
-	import EmergencyContactForm from './_components/emergencyContactForm.svelte';
+	import EmergencyContactForm from '../_components/emergencyContactForm.svelte';
 	import membersMutationApi from '$dataSources/api.that.tech/members/mutations';
 
+	let { emergencyContactInformation } = data;
 	const { isEmpty } = lodash;
 	const { updateEmergencyContact } = membersMutationApi();
 
@@ -54,7 +40,7 @@
 
 <Seo title={metaTags.title} tags={metaTags.tags} />
 
-{#if !isEmpty($session.thatProfile)}
+{#if !isEmpty($page.data.user.profile)}
 	<EmergencyContactForm handleSubmit={handleUpdate} {emergencyContactInformation} />
 {:else}
 	<div class="mt-8">

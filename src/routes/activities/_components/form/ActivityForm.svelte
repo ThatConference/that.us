@@ -9,7 +9,7 @@
 	export let handleWithdraw;
 	export let handleSubmit;
 
-	import { session } from '$app/stores';
+	import { page } from '$app/stores';
 	import { getContext } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import dayjs from 'dayjs';
@@ -52,7 +52,7 @@
 	$: validationSchema = openSpaces;
 	$: showLongForm = false;
 
-	$: if (!isEmpty($session.thatProfile)) {
+	$: if (!isEmpty($page.data.user.profile)) {
 		createDisabled = false;
 	}
 
@@ -149,7 +149,7 @@
     activity until that's complete."
 		action={{ title: 'Create Profile', href: '/my/profiles/primary' }}
 		returnTo={{ title: 'Return to Activities', href: '/activities' }} />
-{:else if !$session.thatProfile?.canFeature}
+{:else if !$page.data.user.profile?.canFeature}
 	<ModalError
 		title="Your Profile Isn't Public."
 		text="It appears we cannot feature your profile. You need to have a public

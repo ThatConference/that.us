@@ -9,14 +9,14 @@
 	export let profileLinks = [];
 
 	import buildImageSrc from '$utils/image';
-	import config from '$utils/config';
+	import config from '$utils/config.public';
 	import SocialLinks from '$components/social/SocialLink.svelte';
 
 	const userProfileImage = profileImage || config.defaultProfileImage;
 	const srcset = buildImageSrc(userProfileImage, ['128', '500']);
 </script>
 
-<a sveltekit:prefetch href="/members/{profileSlug}/">
+<a data-sveltekit-prefetch href="/members/{profileSlug}/">
 	<div
 		class="h-full transform rounded-lg bg-white text-center shadow transition duration-500 ease-in-out hover:scale-105 hover:bg-gray-100 ">
 		<div class="flex flex-col p-4">

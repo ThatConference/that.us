@@ -1,18 +1,5 @@
-<script context="module">
-	export async function load({ stuff }) {
-		return {
-			props: {
-				...stuff
-			}
-		};
-	}
-</script>
-
 <script>
-	export let events;
-	export let activeEvents;
-	export let isBackdoor;
-	export let eventId;
+	export let data;
 
 	import { goto } from '$app/navigation';
 	import Typewriter from 'svelte-typewriter';
@@ -31,6 +18,9 @@
 	import ActivityForm from '../_components/form/ActivityForm.svelte';
 	import { formatCreate } from '../_lib/formatRequest';
 
+	let { events, activeEvents, isBackdoor, eventId } = data;
+	const { createSession } = sessionsApi();
+
 	const metaTags = ((title = `Create a new activitiy for THAT or THAT Conference.`) => ({
 		title,
 		tags: seoMetaTags({
@@ -42,8 +32,6 @@
 			}
 		})
 	}))();
-
-	const { createSession } = sessionsApi();
 
 	async function handleSubmit({ detail: { values, setSubmitting, resetForm } }) {
 		setSubmitting(true);

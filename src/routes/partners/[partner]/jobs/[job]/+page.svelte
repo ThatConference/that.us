@@ -1,30 +1,15 @@
-<script context="module">
-	import partnerQueryApi from '$dataSources/api.that.tech/partner/queries';
-
-	export async function load({ params }) {
-		const { partner, job } = params;
-		const { queryPartnerJobListing } = partnerQueryApi();
-
-		return {
-			props: {
-				job,
-				partner: await queryPartnerJobListing(partner, job)
-			}
-		};
-	}
-</script>
-
 <script>
-	export let partner;
-	export let job;
+	export let data;
 
 	import seoMetaTags from '$utils/seo/metaTags';
 	import Seo from '$components/Seo.svelte';
 
 	import ProfileLayout from '$elements/layouts/Profile.svelte';
 
-	import JobHero from '../../_components/_JobHero.svelte';
-	import JobDetails from '../../_components/_JobDetails.svelte';
+	import JobHero from '../../../_components/_JobHero.svelte';
+	import JobDetails from '../../../_components/_JobDetails.svelte';
+
+	let { partner, job } = data;
 
 	const metaTags = ((title = `${partner.jobListing.title} at ${partner.companyName}.`) => ({
 		title,

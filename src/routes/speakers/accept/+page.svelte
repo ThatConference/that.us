@@ -1,48 +1,11 @@
-<script context="module">
-	import speakerQueriesApi from '$dataSources/api.that.tech/speakers/queries';
-	import eventQueriesApi from '$dataSources/api.that.tech/events/queries';
-
-	export async function load({ url, fetch }) {
-		const eventSlug = url.searchParams.has('eventSlug') ? url.searchParams.get('eventSlug') : null;
-
-		if (eventSlug == null)
-			return {
-				status: 404,
-				error: 'Invalid Event'
-			};
-
-		const { queryMyAcceptedSpeaker } = speakerQueriesApi(fetch);
-		const { queryEventForAcceptedSpeaker } = eventQueriesApi(fetch);
-
-		const [acceptedSpeaker, eventDetails] = await Promise.all([
-			queryMyAcceptedSpeaker(eventSlug),
-			queryEventForAcceptedSpeaker(eventSlug)
-		]);
-
-		if (!acceptedSpeaker)
-			return {
-				status: 404,
-				error: 'Counselor Not Found'
-			};
-
-		return {
-			props: {
-				acceptedSpeaker,
-				eventDetails
-			}
-		};
-	}
-</script>
-
 <script>
-	export let eventDetails;
-	export let acceptedSpeaker;
+	export let data;
 
 	import { fade } from 'svelte/transition';
 	import { useMachine } from '@xstate/svelte';
 
 	import seoMetaTags from '$utils/seo/metaTags';
-	import { debug } from '$utils/config';
+	import { debug } from '$utils/config.public';
 	import Seo from '$components/Seo.svelte';
 	import NewFeatureWarning from '$components/NewFeatureWarning.svelte';
 
@@ -61,6 +24,8 @@
 	import NoSessions from '../_components/formSections/NoSessions.svelte';
 
 	import speakerAcceptMachine from './_machine';
+
+	let { eventDetails, acceptedSpeaker } = data;
 
 	const platformText =
 		acceptedSpeaker.platform === 'AT_THAT' ? 'in-person (AT THAT)' : 'online (ON THAT)';

@@ -1,29 +1,13 @@
-<script context="module">
-	import communityQueryApi from '$dataSources/api.that.tech/community/queries';
-
-	export async function load({ fetch }) {
-		const { queryActiveThatEvents } = communityQueryApi(fetch);
-		const thatActiveEvents = await queryActiveThatEvents();
-
-		const filteredEvents = thatActiveEvents.filter((x) => x.type === 'HYBRID_MULTI_DAY');
-
-		return {
-			props: {
-				thatActiveEvents: filteredEvents
-			}
-		};
-	}
-</script>
-
 <script>
-	export let thatActiveEvents;
+	export let data;
 
 	import seoMetaTags from '$utils/seo/metaTags';
 	import Seo from '$components/Seo.svelte';
 	import Layout from '$elements/layouts/ContentLayout.svelte';
 
-	import { Hero, ThatActiveEvents } from './_root/components';
+	import { Hero, ThatActiveEvents } from '../_root/components';
 
+	let { thatActiveEvents } = data;
 	const metaTags = ((title = 'THAT Conference Texas and Wisconsin') => ({
 		title,
 		tags: seoMetaTags({

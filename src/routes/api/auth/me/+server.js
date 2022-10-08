@@ -1,5 +1,5 @@
-import auth0 from '$utils/security';
+import auth0 from '$utils/security/server';
 
-export function GET(requestEvent) {
-	return auth0.handleProfile(requestEvent, { refetch: true });
+export function GET({ request }) {
+	return auth0.handleProfile(request, { refetch: true });
 }

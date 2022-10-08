@@ -1,5 +1,5 @@
 <script>
-	import { session } from '$app/stores';
+	import { page } from '$app/stores';
 	import { fade } from 'svelte/transition';
 	import { user as userIcon } from '$components/svelte-awesome-icons';
 	import Icon from 'svelte-awesome';
@@ -20,16 +20,16 @@
 			aria-label="User menu"
 			aria-haspopup="true"
 			on:click|preventDefault={() => (visible = !visible)}>
-			{#if $session.isAuthenticated}
-				{#if isEmpty($session.thatProfile)}
+			{#if $page.data.user.isAuthenticated}
+				{#if isEmpty($page.data.user.profile)}
 					<div>
 						<Icon data={userIcon} class="h-8 w-8 rounded-full" />
 						<span class="absolute bottom-0 right-0 block h-3.5 w-3.5 rounded-full bg-red-400" />
 					</div>
-				{:else if $session.thatProfile?.profileImage}
+				{:else if $page.data.user.profile?.profileImage}
 					<img
 						class="h-10 w-10 rounded-full"
-						src="{$session.thatProfile.profileImage}?w=256&h=256&fit=crop"
+						src="{$page.data.user.profile.profileImage}?w=256&h=256&fit=crop"
 						alt="" />
 				{:else}
 					<Icon data={userIcon} class="h-8 w-8 rounded-full" />
@@ -44,8 +44,8 @@
 
 	{#if visible}
 		<div use:clickOutside on:click_outside={() => (visible = false)}>
-			{#if $session.isAuthenticated}
-				{#if isEmpty($session.thatProfile)}
+			{#if $page.data.user.isAuthenticated}
+				{#if isEmpty($page.data.user.profile)}
 					<div
 						class="absolute right-0 z-50 mt-2 w-48 origin-top-right rounded-md shadow-lg"
 						in:fade>
@@ -71,8 +71,8 @@
 						<div class="rounded-md bg-white py-1 ring-1 ring-black ring-opacity-5">
 							<div class="block border-b px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
 								<a href="/my/profiles/primary/" on:click={() => (visible = false)}>
-									<p>{$session.thatProfile.firstName} {$session.thatProfile.lastName}</p>
-									<p class="truncate pt-2">{$session.thatProfile.email}</p>
+									<p>{$page.data.user.profile.firstName} {$page.data.user.profile.lastName}</p>
+									<p class="truncate pt-2">{$page.data.user.profile.email}</p>
 								</a>
 							</div>
 
@@ -91,7 +91,7 @@
 							</a>
 
 							<a
-								sveltekit:prefetch
+								data-sveltekit-prefetch
 								href="/my/network/"
 								on:click={() => (visible = false)}
 								class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
@@ -99,14 +99,14 @@
 							</a>
 
 							<a
-								sveltekit:prefetch
+								data-sveltekit-prefetch
 								href="/my/favorites/"
 								class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
 								My Favorites
 							</a>
 
 							<a
-								sveltekit:prefetch
+								data-sveltekit-prefetch
 								href="/my/submissions/"
 								class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
 								My Submissions

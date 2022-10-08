@@ -2,16 +2,16 @@
 	import seoMetaTags from '$utils/seo/metaTags';
 	import Seo from '$components/Seo.svelte';
 
-	import ClaimCart from './_components/_ClaimCart.svelte';
+	import Cart from '../../_components/_Cart.svelte';
 
-	const metaTags = ((title = 'Claim Ticket - THAT') => ({
+	const metaTags = ((title = 'Order Summary - THAT') => ({
 		title,
 		tags: seoMetaTags({
 			title,
-			description: 'Claim your ticket.',
+			description: 'View the items in your cart.',
 			openGraph: {
 				type: 'website',
-				url: `https://that.us/orders/claim`
+				url: `https://that.us/orders/summary`
 			},
 			noindex: true,
 			nofollow: true
@@ -22,5 +22,5 @@
 <Seo title={metaTags.title} tags={metaTags.tags} />
 
 <div class="my-12 lg:flex lg:justify-between">
-	<ClaimCart />
+	<Cart />
 </div>

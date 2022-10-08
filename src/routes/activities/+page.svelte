@@ -1,21 +1,7 @@
-<script context="module">
-	import sessionsApi from '$dataSources/api.that.tech/sessions';
-
-	export async function load({ fetch }) {
-		const { querySessionsByDate } = sessionsApi(fetch);
-
-		return {
-			props: {
-				activities: await querySessionsByDate({ pageSize: 100 })
-			}
-		};
-	}
-</script>
-
 <script>
-	export let activities;
+	export let data;
 
-	import { session } from '$app/stores';
+	import { page } from '$app/stores';
 	import { useMachine } from '@xstate/svelte';
 	import SvelteInfiniteScroll from 'svelte-infinite-scroll';
 	import lodash from 'lodash';
@@ -32,10 +18,11 @@
 	import { Highlight as HighlightLink } from '$elements/links';
 
 	import seoMetaTags from '$utils/seo/metaTags';
-	import { debug } from '$utils/config';
+	import { debug } from '$utils/config.public';
 
 	import createMachine from './_machines/daily';
 
+	const { activities } = data;
 	const { isEmpty, uniqBy } = lodash;
 
 	const metaTags = ((
@@ -71,7 +58,7 @@
 		}
 	);
 
-	$: if (!isEmpty($session.thatProfile)) {
+	$: if (!isEmpty($page.data.user.profile)) {
 		createDisabled = false;
 	}
 

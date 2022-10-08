@@ -1,5 +1,5 @@
 import gFetch from '$utils/gfetch';
-import * as Sentry from '@sentry/browser';
+import * as Sentry from '@sentry/svelte';
 
 import { log } from '../utilities/error';
 

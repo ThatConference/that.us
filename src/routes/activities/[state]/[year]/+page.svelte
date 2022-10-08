@@ -1,21 +1,11 @@
-<script context="module">
-	export async function load({ stuff }) {
-		return {
-			props: {
-				event: stuff.event
-			}
-		};
-	}
-</script>
-
 <script>
-	export let event;
+	export let data;
 
 	import { useMachine } from '@xstate/svelte';
 	import SvelteInfiniteScroll from 'svelte-infinite-scroll';
 
 	import seoMetaTags from '$utils/seo/metaTags';
-	import { debug } from '$utils/config';
+	import { debug } from '$utils/config.public';
 
 	import Seo from '$components/Seo.svelte';
 	import CardLoader from '$components/CardLoader.svelte';
@@ -27,6 +17,7 @@
 
 	import createMachine from '../../_machines/event';
 
+	let { event } = data;
 	const { sessions } = event;
 	let scrollThreshold = 1200;
 

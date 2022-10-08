@@ -1,54 +1,7 @@
-<script context="module">
-	import { getPosts } from '$blog/getPosts';
-	import membersQueryApi from '$dataSources/api.that.tech/members/queries';
-
-	export async function load({ fetch, params }) {
-		const { slug } = params;
-		const { queryBlogAuthorBySlug } = membersQueryApi(fetch);
-
-		const post = getPosts().find((post) => slug === post.metadata.slug);
-		const author = await queryBlogAuthorBySlug(post.metadata.authorSlug);
-
-		if (!post) {
-			return {
-				status: 404,
-				error: 'Post not found'
-			};
-		}
-
-		return {
-			props: {
-				author,
-				...post.metadata,
-				next: post.next?.metadata,
-				previous: post.previous?.metadata,
-				component: post.component
-			},
-			stuff: {
-				heroImage: post.metadata.heroImage,
-				slug,
-				component: post.component
-			}
-		};
-	}
-</script>
-
 <script>
-	export let center = true;
-
-	// metadata
-	export let author;
-	export let title;
-	export let description;
-	export let date;
-
-	export let readingTime;
-	export let slug;
-	export let heroImage;
-	export let heroImageCaption;
+	export let data;
 
 	import dayjs from 'dayjs';
-
 	import image from '$blog/image';
 	import buildImageSrc from '$utils/image';
 	import Layout from '$elements/layouts/ContentLayout.svelte';
@@ -57,6 +10,17 @@
 
 	import NewsletterSignup from '$components/newsletter/Wide.svelte';
 
+	let {
+		center = true,
+		author,
+		title,
+		description,
+		date,
+		readingTime,
+		slug,
+		heroImage,
+		heroImageCaption
+	} = data;
 	const { cdnUrl } = image(slug);
 
 	const metaTags = ((bTitle = `${title} by ${author.firstName} ${author.lastName}`) => ({

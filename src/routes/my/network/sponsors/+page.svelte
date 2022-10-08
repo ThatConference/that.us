@@ -1,26 +1,8 @@
-<script context="module">
-	import lodash from 'lodash';
-	import meNetworkQueryApi from '$dataSources/api.that.tech/me/network/queries';
-
-	const { sortBy } = lodash;
-
-	export async function load({ fetch }) {
-		const { queryMySponsorNetwork } = meNetworkQueryApi(fetch);
-
-		const contacts = await queryMySponsorNetwork().then((r) => sortBy(r, 'createdAt').reverse());
-
-		return {
-			props: {
-				contacts
-			}
-		};
-	}
-</script>
-
 <script>
-	export let contacts = [];
+	export let data;
 
 	import dayjs from 'dayjs';
+	let { contacts = [] } = data;
 
 	//todo add seo
 	// metaTagsStore.set({

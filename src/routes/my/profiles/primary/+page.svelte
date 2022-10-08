@@ -1,62 +1,27 @@
-<script context="module">
-	import lodash from 'lodash';
-	import meApi from '$dataSources/api.that.tech/me';
-
-	const { isNil, isEmpty } = lodash;
-
-	export async function load({ fetch, session }) {
-		const { queryMe } = meApi(fetch);
-		const me = await queryMe();
-
-		let isNewProfile, currentProfile;
-
-		if (session.user || me) {
-			if (!isNil(me) && !isEmpty(me)) {
-				currentProfile = me;
-				isNewProfile = false;
-			} else {
-				currentProfile = {
-					firstName: session.user?.given_name ? session.user.given_name : '',
-					lastName: session.user?.family_name ? session.user.family_name : '',
-					profileSlug: session.user?.nickname ? session.user.nickname : '',
-					email: session.user?.email ? session.user.email : ''
-				};
-				isNewProfile = true;
-			}
-		}
-
-		return {
-			props: {
-				currentProfile,
-				isNewProfile
-			}
-		};
-	}
-</script>
-
 <script>
-	export let currentProfile;
-	export let isNewProfile;
+	export let data;
 
 	import { goto } from '$app/navigation';
-	import { session } from '$app/stores';
 
 	import logEvent from '$utils/eventTrack';
 	import seoMetaTags from '$utils/seo/metaTags';
 	import Seo from '$components/Seo.svelte';
 
 	import memberApi from '$dataSources/api.that.tech/members/mutations';
-	import ProfileForm from './_components/profileForm.svelte';
+	import ProfileForm from '../_components/profileForm.svelte';
 
+	let { currentProfile, isNewProfile } = data;
 	const { createProfile, updateProfile } = memberApi();
 
 	function updateSession(profile) {
-		session.update((s) => {
-			return {
-				...s,
-				thatProfile: profile
-			};
-		});
+		console.log('todo fix update session store', profile);
+		//todo... CRITICAL WTF
+		// session.update((s) => {
+		// 	return {
+		// 		...s,
+		// 		thatProfile: profile
+		// 	};
+		// });
 	}
 
 	async function handleNew({ detail: { values, setSubmitting, resetForm } }) {

@@ -1,36 +1,14 @@
-<script context="module">
-	import lodash from 'lodash';
-	import partnerQueryApi from '$dataSources/api.that.tech/partner/queries';
-
-	export async function load({ params, fetch }) {
-		const { groupBy } = lodash;
-		const { state, year } = params;
-		const { getEventPartners } = partnerQueryApi(fetch);
-
-		const eventSlug = `${state}/${year}`;
-
-		const event = await getEventPartners(eventSlug);
-		const levels = groupBy(event.partners, 'level');
-
-		return {
-			props: {
-				event,
-				levels
-			}
-		};
-	}
-</script>
-
 <script>
-	export let event, levels;
+	export let data;
 
 	import seoMetaTags from '$utils/seo/metaTags';
 	import Seo from '$components/Seo.svelte';
 	import Layout from '$components/events/layouts/hybrid/Layout.svelte';
 
-	import PartnerLevel from '../_components/_EventPartnerLevel.svelte';
-	import Hero from '../_components/_EventHero.svelte';
+	import PartnerLevel from '../../_components/_EventPartnerLevel.svelte';
+	import Hero from '../../_components/_EventHero.svelte';
 
+	let { event, levels } = data;
 	const metaTags = ((title = 'THAT Conference sponsors and partners.') => ({
 		title,
 		tags: seoMetaTags({

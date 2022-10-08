@@ -1,18 +1,5 @@
-<script context="module">
-	export async function load({ stuff }) {
-		return {
-			props: {
-				...stuff
-			}
-		};
-	}
-</script>
-
 <script>
-	export let activityDetails;
-	export let events;
-	export let activeEvents;
-	export let eventId;
+	export let data;
 
 	import { goto } from '$app/navigation';
 	import Typewriter from 'svelte-typewriter';
@@ -28,9 +15,10 @@
 
 	import sessionsMutationsApi from '$dataSources/api.that.tech/sessions/mutations';
 
-	import { formatUpdate } from '../_lib/formatRequest';
-	import ActivityForm from '../_components/form/ActivityForm.svelte';
+	import { formatUpdate } from '../../_lib/formatRequest';
+	import ActivityForm from '../../_components/form/ActivityForm.svelte';
 
+	let { activityDetails, events, activeEvents, eventId } = data;
 	const { updateSession } = sessionsMutationsApi();
 
 	const metaTags = ((title = 'Edit Activity - THAT') => ({

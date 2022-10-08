@@ -1,18 +1,12 @@
-<script context="module">
-	import auth0 from '$utils/security';
-
-	export const load = auth0.withPageAuthRequired();
-</script>
-
 <script>
-	import { session } from '$app/stores';
+	import { page } from '$app/stores';
 	import lodash from 'lodash';
 
 	import seoMetaTags from '$utils/seo/metaTags';
 	import Seo from '$components/Seo.svelte';
 	import { Warning } from '$elements/svgs';
 
-	import SubmitForm from './_components/submitForm.svelte';
+	import SubmitForm from '../_components/submitForm.svelte';
 	import newsMutationApi from '$dataSources/api.that.tech/news/mutations';
 
 	const { create } = newsMutationApi();
@@ -55,7 +49,7 @@
 			</h1>
 		</header>
 
-		{#if !isEmpty($session.thatProfile)}
+		{#if !isEmpty($page.data.user.profile)}
 			<SubmitForm {handleSubmit} />
 		{:else}
 			<div class="mt-8">

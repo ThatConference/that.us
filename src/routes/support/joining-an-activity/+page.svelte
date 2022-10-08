@@ -3,8 +3,8 @@
 	import Seo from '$components/Seo.svelte';
 	import { Highlight as HighlightLink, Standard as StandardLink } from '$elements/links';
 
-	import Layout from './_components/_Layout.svelte';
-	import Header from './_components/_Header.svelte';
+	import Layout from '../_components/_Layout.svelte';
+	import Header from '../_components/_Header.svelte';
 
 	const metaTags = ((title = 'Joining an Activity - THAT') => ({
 		title,

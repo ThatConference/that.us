@@ -1,63 +1,53 @@
-import { browser } from '$app/env';
+import { env } from '$env/dynamic/public';
 
 function configMissing(configKey) {
-	const message = `Missing required environment varable: ${configKey}`;
+	const message = `Missing required public environment varable: ${configKey}`;
 	throw new Error(message);
 }
 
 export default {
-	hostURL: import.meta.env.VITE_HOST_URL || 'https://that.us',
-	nodeEnv: process.env.NODE_ENV,
+	hostURL: env.PUBLIC_HOST_URL || 'https://that.us',
+	nodeEnv: env.NODE_ENV,
 	version: '2.1.0',
 	eventId: 'YWavA70szR8rxSwrLJaL',
 	eventSlug: 'thatus/daily',
 	api: {
 		cache: 'https://that.graphcdn.app/',
-		direct: import.meta.env.VITE_THAT_API || configMissing('VITE_THAT_API')
+		direct: env.PUBLIC_THAT_API || configMissing('PUBLIC_THAT_API')
 	},
-	ogImageApi: import.meta.env.VITE_THAT_OG_IMAGE_API || 'https://og-image.that.tech/og-image',
+	ogImageApi: env.PUBLIC_THAT_OG_IMAGE_API || 'https://og-image.that.tech/og-image',
 	profileImageApi: 'https://api.that.tech/profile',
 	defaultProfileImage:
 		'https://images.that.tech/members/person-placeholder.jpg?auto=format&fit=facearea&facepad=10&mask=ellipse&h=250&w=250&q=50&dpr=2',
-	stripeKey: import.meta.env.VITE_STRIPE_PK_KEY || configMissing('VITE_STRIPE_PK_KEY'),
-	process: import.meta.env
+	stripeKey: env.PUBLIC_STRIPE_PK_KEY || configMissing('PUBLIC_STRIPE_PK_KEY')
 };
 
 export const securityConfig = () => {
 	const config = {
-		clientID: import.meta.env.VITE_AUTH0_CLIENT_ID || configMissing('VITE_AUTH0_CLIENT_ID'),
-		baseURL: import.meta.env.VITE_AUTH0_BASE_URL || `https://that.us`,
+		clientID: env.PUBLIC_AUTH0_CLIENT_ID || configMissing('PUBLIC_AUTH0_CLIENT_ID'),
+		baseURL: env.PUBLIC_AUTH0_BASE_URL || `https://that.us`,
 		issuerBaseURL: `https://auth.that.tech`,
 
 		authorizationParams: {
-			scope: import.meta.env.VITE_AUTH0_SCOPE || 'openid profile email offline_access',
-			audience: import.meta.env.VITE_AUTH0_AUDIENCE || 'https://api.that.tech/graphql'
+			scope: env.PUBLIC_AUTH0_SCOPE || 'openid profile email offline_access',
+			audience: env.PUBLIC_AUTH0_AUDIENCE || 'https://api.that.tech/graphql'
 		},
 
 		routes: {
 			login: '/login/',
 			callback: '/api/auth/callback',
-			redirectUri: import.meta.env.VITE_REDIRECT_URI || configMissing('VITE_REDIRECT_URI'),
+			redirectUri: env.PUBLIC_REDIRECT_URI || configMissing('PUBLIC_REDIRECT_URI'),
 			postLogoutRedirectUri:
-				import.meta.env.VITE_POST_LOGOUT_REDIRECT_URI ||
-				configMissing('VITE_POST_LOGOUT_REDIRECT_URI')
+				env.PUBLIC_POST_LOGOUT_REDIRECT_URI || configMissing('PUBLIC_POST_LOGOUT_REDIRECT_URI')
 		}
 	};
-
-	// private to server
-	if (!browser) {
-		config.baseURL = process.env['AUTH0_BASE_URL'] || 'https://that.us';
-		config.clientSecret =
-			process.env['AUTH0_CLIENT_SECRET'] || configMissing('AUTH0_CLIENT_SECRET');
-		config.secret = process.env['AUTH0_SECRET'] || configMissing('AUTH0_CLIENT_SECRET');
-	}
 
 	return config;
 };
 
 export const logging = {
 	dsn: 'https://15d4b436dc0a4366a0ac388c65772926@o235190.ingest.sentry.io/5357492',
-	environment: process.env.NODE_ENV,
+	environment: env.NODE_ENV,
 	logRocket: 'c59zeb/that-prod'
 };
 

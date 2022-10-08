@@ -1,22 +1,5 @@
-<script context="module">
-	import favoritesApi from '$dataSources/api.that.tech/favorites';
-	import config from '$utils/config';
-
-	export async function load({ fetch }) {
-		const { get } = favoritesApi(fetch);
-
-		const activities = await get(config.eventId);
-
-		return {
-			props: {
-				activities
-			}
-		};
-	}
-</script>
-
 <script>
-	export let activities;
+	export let data;
 
 	import seoMetaTags from '$utils/seo/metaTags';
 	import Seo from '$components/Seo.svelte';
@@ -28,6 +11,7 @@
 	import Sponsor from '$components/SponsorSimple.svelte';
 	import ActivityList from '$components/activities/List.svelte';
 
+	let { activities } = data;
 	const metaTags = ((title = 'My Favorites - THAT') => ({
 		title,
 		tags: seoMetaTags({

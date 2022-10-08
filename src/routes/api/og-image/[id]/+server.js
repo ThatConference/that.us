@@ -1,4 +1,4 @@
-import config from '$utils/config';
+import config from '$utils/config.public';
 
 const baseHostImage = 'https://that.imgix.net/og-image';
 
@@ -17,10 +17,9 @@ export async function GET({ params }) {
 		body = Buffer.from(imageBuffer);
 	}
 
-	return {
+	return new Response(body, {
 		headers: {
 			'Content-Type': 'image/png'
-		},
-		body
-	};
+		}
+	});
 }

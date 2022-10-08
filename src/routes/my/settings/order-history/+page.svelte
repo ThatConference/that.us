@@ -1,21 +1,5 @@
-<script context="module">
-	import ordersApi from '$dataSources/api.that.tech/orders/queries';
-
-	export async function load({ fetch }) {
-		const { queryMyBulkAllocations } = ordersApi(fetch);
-
-		const orders = await queryMyBulkAllocations();
-
-		return {
-			props: {
-				orders
-			}
-		};
-	}
-</script>
-
 <script>
-	export let orders;
+	export let data;
 
 	import SvelteInfiniteScroll from 'svelte-infinite-scroll';
 	import { useMachine } from '@xstate/svelte';
@@ -29,14 +13,15 @@
 	import { ChevronRight } from '$elements/svgs';
 	import ScrollThreshold from '$components/ScrollThreshold.svelte';
 
-	import { debug } from '$utils/config';
+	import { debug } from '$utils/config.public';
 	import orderQueryApi from '$dataSources/api.that.tech/orders/queries';
 
-	import createMachine from '../_machines/bulkAllocations';
-	import TicketAllocation from './_components/ticketAllocation.svelte';
+	import createMachine from '../../_machines/bulkAllocations';
+	import TicketAllocation from '../_components/ticketAllocation.svelte';
 
 	dayjs.extend(isBetween);
 
+	let { orders } = data;
 	const { queryOrderReceiptUrl } = orderQueryApi();
 	let scrollThreshold = 1200;
 

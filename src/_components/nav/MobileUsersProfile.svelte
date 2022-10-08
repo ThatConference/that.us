@@ -1,7 +1,7 @@
 <script>
 	export let darkMode = false;
 
-	import { session } from '$app/stores';
+	import { page } from '$app/stores';
 	import { user as userIcon } from '$components/svelte-awesome-icons';
 	import Icon from 'svelte-awesome';
 	import lodash from 'lodash';
@@ -38,28 +38,28 @@
 </script>
 
 <div class="border-grey-400 border-t pb-3">
-	{#if $session.isAuthenticated}
+	{#if $page.data.user.isAuthenticated}
 		<div class="relative grid gap-6 px-5 py-6 sm:gap-8 sm:p-8 lg:grid-cols-2">
 			<div class="-m-3 flex items-start p-3">
 				<div
 					class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-that-orange">
-					{#if isEmpty($session.thatProfile) || !$session.thatProfile.profileImage}
+					{#if isEmpty($page.data.user.profile) || !$page.data.user.profile.profileImage}
 						<Icon data={userIcon} class="h-8 w-8 rounded-full bg-that-orange text-white" />
 					{:else}
 						<img
 							class="h-12 w-12 rounded-full"
-							src="{$session.thatProfile.profileImage}?w=256&h=256&fit=crop"
+							src="{$page.data.user.profile.profileImage}?w=256&h=256&fit=crop"
 							alt="" />
 					{/if}
 				</div>
 				<div class="ml-4">
-					{#if !isEmpty($session.thatProfile)}
+					{#if !isEmpty($page.data.user.profile)}
 						<p class="text-base font-medium text-white" class:text-gray-800={darkMode}>
-							{$session.thatProfile.firstName}
-							{$session.thatProfile.lastName}
+							{$page.data.user.profile.firstName}
+							{$page.data.user.profile.lastName}
 						</p>
 						<p class="text-sm text-gray-300">
-							{$session.thatProfile.email}
+							{$page.data.user.profile.email}
 						</p>
 					{/if}
 				</div>
@@ -68,8 +68,8 @@
 	{/if}
 
 	<div class="px-2">
-		{#if $session.isAuthenticated}
-			{#if isEmpty($session.thatProfile)}
+		{#if $page.data.user.isAuthenticated}
+			{#if isEmpty($page.data.user.profile)}
 				<a
 					href="/my/profiles/primary/"
 					class="block rounded-md px-3 pb-2 text-base font-medium

@@ -1,4 +1,4 @@
-import config from '$utils/config';
+import config from '$utils/config.public';
 
 function createOgImagePaths({ imageId = undefined, imageUrl = undefined, ogImages = undefined }) {
 	const basePath = '/images/og-images';

@@ -1,5 +1,5 @@
 <script>
-	import { session } from '$app/stores';
+	import { page } from '$app/stores';
 	import lodash from 'lodash';
 
 	import seoMetaTags from '$utils/seo/metaTags';
@@ -40,7 +40,7 @@
 
 <Seo title={metaTags.title} tags={metaTags.tags} />
 
-{#if !isEmpty($session.thatProfile)}
+{#if !isEmpty($page.data.user.profile)}
 	<div class="flex flex-col items-start space-y-8">
 		<div class="space-y-4">
 			<h2 class="text-xl font-bold leading-6 text-gray-900">Join THAT Slack</h2>

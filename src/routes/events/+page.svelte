@@ -1,36 +1,5 @@
-<script context="module">
-	import dayjs from 'dayjs';
-	import lodash from 'lodash';
-	import eventsApi from '$dataSources/api.that.tech/events/queries';
-
-	const { sortBy, take, drop } = lodash;
-
-	export async function load() {
-		const queryEvents = () =>
-			eventsApi()
-				.queryEventsByCommunity()
-				.then((r) => sortBy(r, 'endDate').reverse())
-				.then((r) => {
-					const splitAt = r.findIndex((i) => dayjs(i.endDate).isBefore(dayjs()));
-
-					const upcoming = take(r, splitAt)
-						.filter((i) => i.type.toLowerCase() !== 'daily')
-						.reverse();
-					const past = drop(r, splitAt);
-
-					return [upcoming, past];
-				});
-
-		return {
-			props: {
-				events: await queryEvents()
-			}
-		};
-	}
-</script>
-
 <script>
-	export let events = [];
+	export let data;
 
 	import { fade } from 'svelte/transition';
 
@@ -41,6 +10,7 @@
 	import Hero from './_components/events/_EventsHero.svelte';
 	import EventCard from './_components/_EventCard.svelte';
 
+	let { events = [] } = data;
 	const metaTags = ((title = 'Upcoming and past events on THAT and THAT Conference.') => ({
 		title,
 		tags: seoMetaTags({

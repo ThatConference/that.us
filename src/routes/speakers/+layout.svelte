@@ -1,27 +1,10 @@
-<script context="module">
-	import auth0 from '$utils/security';
-	import speakerQueriesApi from '$dataSources/api.that.tech/speakers/queries';
-
-	export const load = auth0.withPageAuthRequired({
-		load: async function load({ fetch }) {
-			const { querySpeakerAcceptDownValues } = speakerQueriesApi(fetch);
-			const dropDownValues = await querySpeakerAcceptDownValues();
-
-			return {
-				props: {
-					dropDownValues
-				}
-			};
-		}
-	});
-</script>
-
 <script>
-	export let dropDownValues;
+	export let data;
 
 	import { setContext } from 'svelte';
 	import Layout from '$elements/layouts/ContentLayout.svelte';
 
+	let { dropDownValues } = data;
 	setContext('SPEAKER_ACCEPT_ENUMS', dropDownValues);
 </script>
 

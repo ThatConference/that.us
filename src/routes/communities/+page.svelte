@@ -1,25 +1,11 @@
-<script context="module">
-	import communitiesApi from '$dataSources/api.that.tech/community/queries';
-
-	export async function load({ fetch }) {
-		const { queryAllCommunities } = communitiesApi(fetch);
-
-		return {
-			props: {
-				communities: await queryAllCommunities()
-			}
-		};
-	}
-</script>
-
 <script>
-	export let communities;
+	export let data;
 
 	import SvelteInfiniteScroll from 'svelte-infinite-scroll';
 	import { useMachine } from '@xstate/svelte';
 
 	import seoMetaTags from '$utils/seo/metaTags';
-	import { debug } from '$utils/config';
+	import { debug } from '$utils/config.public';
 	import Seo from '$components/Seo.svelte';
 	import { Waiting } from '$elements';
 	import Layout from '$elements/layouts/ContentLayout.svelte';
@@ -29,6 +15,7 @@
 	import Hero from './_components/_CommunitiesHero.svelte';
 	import createMachine from './_machines/communities';
 
+	let { communities } = data;
 	const metaTags = ((
 		title = 'Find your fellow geeks with THAT Communities. Follow one today.'
 	) => ({

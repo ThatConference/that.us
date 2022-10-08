@@ -1,15 +1,5 @@
-<script context="module">
-	export async function load({ stuff }) {
-		return {
-			props: {
-				...stuff
-			}
-		};
-	}
-</script>
-
 <script>
-	export let event;
+	export let data;
 
 	import { getContext } from 'svelte';
 	import { goto } from '$app/navigation';
@@ -18,12 +8,13 @@
 	import Layout from '$components/events/layouts/hybrid/Layout.svelte';
 	import Seo from '$components/Seo.svelte';
 
-	import Hero from '../../_components/tickets/_Hero.svelte';
-	import Professional from '../../_components/tickets/_Professional.svelte';
-	import Workshops from '../../_components/tickets/_Workshops.svelte';
-	import Families from '../../_components/tickets/_Families.svelte';
-	import Notices from '../../_components/Notices.svelte';
+	import Hero from '../../../_components/tickets/_Hero.svelte';
+	import Professional from '../../../_components/tickets/_Professional.svelte';
+	import Workshops from '../../../_components/tickets/_Workshops.svelte';
+	import Families from '../../../_components/tickets/_Families.svelte';
+	import Notices from '../../../_components/Notices.svelte';
 
+	let { event } = data;
 	const { send } = getContext('cart');
 
 	const metaTags = ((title = 'THAT Conference tickets and discounts explained.') => ({

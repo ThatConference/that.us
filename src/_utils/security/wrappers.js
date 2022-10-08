@@ -1,13 +1,13 @@
+import { error } from '@sveltejs/kit';
 // TODO: Implement caching with WeakMap so that auth0's session cache can be used to best effect, as otherwise we'll be calling this too often
 // Cache should, given the same Svelte request object, always return the same NextApiRequest mimic
-function mkReq(requestEvent) {
-	const { request } = requestEvent;
 
+function mkReq(request) {
 	const result = {
 		method: 'GET',
 		headers: Object.fromEntries(request.headers),
-		query: Object.fromEntries(requestEvent.url.searchParams),
-		url: requestEvent.url.href
+		query: Object.fromEntries(new URL(request.url).searchParams),
+		url: request.url
 	};
 
 	//todo.. this needs to get validated, since this is a get, body should always be {}
@@ -108,27 +108,31 @@ class ResMimic {
 		}
 
 		const body = this.bodyObj ? this.bodyObj : this.bodyStr;
-		return { status, headers, body };
+
+		return new Response(JSON.stringify(body), {
+			status,
+			headers
+		});
 	}
 }
 
 function auth0Wrapper(auth0fn) {
-	return (requestEvent, auth0FnOptions) => {
-		const req = mkReq(requestEvent);
+	return (request, auth0FnOptions) => {
+		const req = mkReq(request);
 		const res = new ResMimic();
 
 		return auth0fn(req, res, auth0FnOptions)
 			.then(() => res.getSvelteResponse())
-			.catch((error) => {
-				console.error('auth error', error);
-				return { status: 500, body: error };
+			.catch((err) => {
+				console.error('auth0 function wrapper error', err);
+				throw error(500, err);
 			});
 	};
 }
 
 function auth0WrapperJson(auth0fn) {
-	return (requestEvent, auth0FnOptions) => {
-		const req = mkReq(requestEvent);
+	return (request, auth0FnOptions) => {
+		const req = mkReq(request);
 		const res = new ResMimic();
 
 		return auth0fn(req, res, auth0FnOptions);

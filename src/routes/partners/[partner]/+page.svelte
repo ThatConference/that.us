@@ -1,26 +1,12 @@
-<script context="module">
-	import sessionsQueryApi from '$dataSources/api.that.tech/sessions/queries';
-
-	export async function load({ fetch }) {
-		const { querySessionDropDownValues } = sessionsQueryApi(fetch);
-
-		return {
-			props: {
-				sessionEnumLookups: await querySessionDropDownValues()
-			}
-		};
-	}
-</script>
-
 <script>
-	export let sessionEnumLookups;
+	export let data;
 
 	import { setContext } from 'svelte';
-	import { page, session } from '$app/stores';
+	import { page } from '$app/stores';
 	import { fade } from 'svelte/transition';
 	import { useMachine } from '@xstate/svelte';
 
-	import { debug } from '$utils/config';
+	import { debug } from '$utils/config.public';
 	import seoMetaTags from '$utils/seo/metaTags';
 	import Seo from '$components/Seo.svelte';
 	import ProfileLayout from '$elements/layouts/Profile.svelte';
@@ -36,6 +22,7 @@
 
 	import createMachine from '../_machines/partner';
 
+	let { sessionEnumLookups } = data;
 	setContext('SESSION_ENUMS', sessionEnumLookups);
 	const { partner } = $page.params;
 
@@ -62,7 +49,7 @@
 		}))();
 	}
 
-	$: if ($session.isAuthenticated) {
+	$: if ($page.data.user.isAuthenticated) {
 		send('AUTHENTICATED', { status: true });
 	} else {
 		send('AUTHENTICATED', { status: false });

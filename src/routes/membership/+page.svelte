@@ -2,8 +2,8 @@
 	import { useMachine } from '@xstate/svelte';
 
 	import seoMetaTags from '$utils/seo/metaTags';
-	import { debug } from '$utils/config';
-	import config from '$utils/config';
+	import { debug } from '$utils/config.public';
+	import config from '$utils/config.public';
 	import Seo from '$components/Seo.svelte';
 	import { Logo } from '$elements';
 

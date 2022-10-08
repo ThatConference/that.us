@@ -1,6 +1,6 @@
 <script>
 	export let event;
-	import { session } from '$app/stores';
+	import { page } from '$app/stores';
 	import lodash from 'lodash';
 	import Headroom from 'svelte-headroom';
 
@@ -26,8 +26,8 @@
 		if (!hidden) hidden = !hidden;
 	}}>
 	<nav class="relative">
-		{#if $session.isAuthenticated}
-			{#if isEmpty($session.thatProfile)}
+		{#if $page.data.user.isAuthenticated}
+			{#if isEmpty($page.data.user.profile)}
 				<CreateProfileNotification />
 			{/if}
 		{/if}

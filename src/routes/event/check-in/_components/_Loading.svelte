@@ -1,7 +1,7 @@
 <script>
 	import { fade } from 'svelte/transition';
 
-	import config from '$utils/config';
+	import config from '$utils/config.public';
 	import { Chevron } from '$elements/svgs';
 
 	let imageCrop = '?auto=format&mask=ellipse&fit=crop&w=256&h=256&q=80';

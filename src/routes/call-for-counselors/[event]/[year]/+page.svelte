@@ -1,22 +1,5 @@
-<script context="module">
-	import eventsApi from '$dataSources/api.that.tech/events/queries';
-
-	export async function load({ params, fetch }) {
-		const { event, year } = params;
-		const slug = `${event}/${year}`;
-
-		const { queryEventForCfp } = eventsApi(fetch);
-
-		return {
-			props: {
-				event: await queryEventForCfp(slug)
-			}
-		};
-	}
-</script>
-
 <script>
-	export let event;
+	export let data;
 
 	import dayjs from 'dayjs';
 
@@ -29,6 +12,7 @@
 	import EventMeta from '../../_components/eventMeta.svelte';
 	import CTA from '../../_components/cta.svelte';
 
+	let { event } = data;
 	const metaTags = ((title = `${event?.name} Call For Counselors - THAT`) => ({
 		title,
 		tags: seoMetaTags({

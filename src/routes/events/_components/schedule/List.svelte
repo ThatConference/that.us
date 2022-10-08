@@ -5,7 +5,7 @@
 	import SvelteInfiniteScroll from 'svelte-infinite-scroll';
 
 	import seoMetaTags from '$utils/seo/metaTags';
-	import { debug } from '$utils/config';
+	import { debug } from '$utils/config.public';
 
 	import Seo from '$components/Seo.svelte';
 

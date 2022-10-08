@@ -4,7 +4,7 @@
 	// export let wasContactExchanged = false;
 
 	import { createEventDispatcher } from 'svelte';
-	import { session } from '$app/stores';
+	import { page } from '$app/stores';
 
 	import { Standard as StandardButton } from '$elements/buttons';
 	import { Standard as StandardLink } from '$elements/links';
@@ -46,7 +46,7 @@
 							Visit
 						</StandardLink>
 
-						{#if $session.isAuthenticated}
+						{#if $page.data.user.isAuthenticated}
 							<!-- TODO.. Needs a bit of work.
                 <StandardButton
                   class="h-3/4"

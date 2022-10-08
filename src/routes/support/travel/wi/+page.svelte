@@ -3,13 +3,13 @@
 	import isBetween from 'dayjs/plugin/isBetween.js';
 
 	import { Standard as StandardLink } from '$elements/links';
-	import { kalahari } from '$utils/config';
+	import { kalahari } from '$utils/config.public';
 	import seoMetaTags from '$utils/seo/metaTags';
 	import Seo from '$components/Seo.svelte';
 
-	import Layout from '../_components/_Layout.svelte';
-	import Header from '../_components/_Header.svelte';
-	import MemoryHighlight from '../_components/_MemoryHighlight.svelte';
+	import Layout from '../../_components/_Layout.svelte';
+	import Header from '../../_components/_Header.svelte';
+	import MemoryHighlight from '../../_components/_MemoryHighlight.svelte';
 
 	dayjs.extend(isBetween);
 

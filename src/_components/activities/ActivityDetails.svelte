@@ -4,7 +4,6 @@
 	export let sessionLookups;
 
 	// 3rd Party
-	import { session } from '$app/stores';
 	import { onMount } from 'svelte';
 	import dayjs from 'dayjs';
 	import isBetween from 'dayjs/plugin/isBetween.js';
@@ -31,7 +30,7 @@
 	import lodash from 'lodash';
 
 	import buildImageSrc from '$utils/image';
-	import config from '$utils/config';
+	import config from '$utils/config.public';
 	import favoritesApi from '$dataSources/api.that.tech/favorites';
 	import currentEvent from '$stores/currentEvent';
 	import { Avatars, Tag } from '$elements';
@@ -91,7 +90,7 @@
 	let favoriteDisabled = false;
 
 	let incompleteProfile = true;
-	$: if (!isEmpty($session.thatProfile)) {
+	$: if (!isEmpty($page.data.user.profile)) {
 		incompleteProfile = false;
 	}
 
@@ -129,7 +128,7 @@
 	onMount(async () => {
 		window.history.replaceState({}, null, `/activities/${id}`);
 
-		if ($session.isAuthenticated) await getFavorites($currentEvent.eventId);
+		if ($page.data.user.isAuthenticated) await getFavorites($currentEvent.eventId);
 
 		let endTime = (durationInMinutes ? durationInMinutes : 60) + 10;
 
@@ -244,7 +243,7 @@
 
 			<div class="mt-2 flex flex-wrap items-center justify-center md:mt-0">
 				{#if !hasExpired}
-					{#if $session.isAuthenticated && !incompleteProfile}
+					{#if $page.data.user.isAuthenticated && !incompleteProfile}
 						<div class="mx-2 mt-2 rounded-md shadow-sm">
 							<button
 								type="button"
@@ -280,7 +279,7 @@
 					{/if}
 				{/if}
 
-				{#if $session.isAuthenticated && !incompleteProfile}
+				{#if $page.data.user.isAuthenticated && !incompleteProfile}
 					{#if canEdit()}
 						<div class="mx-2 mt-2 rounded-md shadow-sm">
 							<a

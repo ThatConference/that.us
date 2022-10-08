@@ -1,5 +1,5 @@
-import auth0 from '$utils/security';
+import auth0 from '$utils/security/client';
 
-export function GET(requestEvent) {
-	return auth0.handleLogout(requestEvent);
+export function GET({ request }) {
+	return auth0.handleLogout(request);
 }

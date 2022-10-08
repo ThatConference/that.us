@@ -1,6 +1,6 @@
 <script>
-	import Layout from './_components/_Layout.svelte';
-	import Prerequisites from './_components/_Prerequisites.svelte';
+	import Layout from '../_components/_Layout.svelte';
+	import Prerequisites from '../_components/_Prerequisites.svelte';
 </script>
 
 <Layout>

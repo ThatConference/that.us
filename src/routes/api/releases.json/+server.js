@@ -1,7 +1,7 @@
+import { json } from '@sveltejs/kit';
+
 export async function GET({ _query, _locals }) {
-	return {
-		body: {
-			stuff: 'asdf'
-		}
-	};
+	return json({
+		stuff: 'asdf'
+	});
 }

@@ -1,35 +1,29 @@
+import auth0 from '$utils/security/server';
+import { json, error } from '@sveltejs/kit';
 import fetch from 'isomorphic-fetch';
-import config from '$utils/config';
+import config from '$utils/config.public';
 
-export async function POST(requestEvent) {
-	const { locals, request } = requestEvent;
+export async function POST({ request }) {
+	const { accessToken } = await auth0.getAccessToken(request);
 	const body = await request.json();
 
-	if (!locals.isAuthenticated) {
-		return {
-			status: 401
-		};
+	if (!accessToken) {
+		throw error(401, 'Unauthorized Access');
 	}
 
 	const results = await fetch(config.api.direct, {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
-			Authorization: `Bearer ${locals.auth0Session.accessToken}`
+			Authorization: `Bearer ${accessToken}`
 		},
 		body: JSON.stringify(body)
 	})
 		.then((r) => r.json())
-		.catch((error) => {
-			console.error('PROXY POST ERROR', error);
-			return {
-				status: 500,
-				body: error.message
-			};
+		.catch((err) => {
+			console.error('PROXY POST ERROR', err);
+			throw error(500, err);
 		});
 
-	return {
-		status: 200,
-		body: results
-	};
+	return json(results);
 }

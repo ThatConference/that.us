@@ -1,23 +1,8 @@
-<script context="module">
-	import meQueriesApi from '$dataSources/api.that.tech/me/queries';
-
-	export async function load({ fetch }) {
-		const { queryDropDownValues } = meQueriesApi(fetch);
-		const dropDownValues = await queryDropDownValues();
-
-		return {
-			props: {
-				dropDownValues
-			}
-		};
-	}
-</script>
-
 <script>
-	export let dropDownValues;
+	export let data;
 
 	import { setContext } from 'svelte';
-	import { page, session } from '$app/stores'; // todo.. totally broke
+	import { page } from '$app/stores'; // todo.. totally broke
 	import lodash from 'lodash';
 
 	import Nav from '$components/nav/interiorNav/Top.svelte';
@@ -25,6 +10,7 @@
 	import { User, Badge, Slack } from '$elements/svgs';
 	import StackedLayout from '$elements/layouts/StackedLayout.svelte';
 
+	let { dropDownValues } = data;
 	const { isEmpty } = lodash;
 	const asideSelected = {
 		item: 'bg-thatBlue-100 bg-opacity-25 hover:bg-opacity-25 hover:bg-thatBlue-100 border-thatBlue-500 text-thatBlue-700 hover:text-thatBlue-700 group mt-1 border-l-4 px-3 py-2 flex items-center text-sm font-medium',
@@ -63,7 +49,7 @@
 								<span class="truncate"> Your Profile </span>
 							</a>
 
-							{#if !isEmpty($session.thatProfile)}
+							{#if !isEmpty($page.data.user.profile)}
 								<a
 									href="/my/profiles/shared/"
 									class={$page.url.pathname.startsWith('/my/profiles/shared')

@@ -1,10 +1,10 @@
-import { browser } from '$app/env';
-import * as Sentry from '@sentry/browser';
+import { browser } from '$app/environment';
+import * as Sentry from '@sentry/svelte';
 import isoFetch from 'isomorphic-fetch';
 import fetchRetry from 'fetch-retry';
 
 import loading from '$stores/loading';
-import config from '$utils/config';
+import config from '$utils/config.public';
 
 function init(fetch) {
 	let _cacheApiUrl = config.api.cache;

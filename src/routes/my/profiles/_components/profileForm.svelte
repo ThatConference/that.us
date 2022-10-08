@@ -3,7 +3,7 @@
 	export let profile;
 	export let isNewProfile;
 
-	import { session } from '$app/stores';
+	import { page } from '$app/stores';
 	import Icon from 'svelte-awesome';
 	import {
 		linkedin,
@@ -24,7 +24,7 @@
 	import omitDeep from 'omit-deep';
 
 	import { Shell } from '$elements/buttons';
-	import config from '$utils/config';
+	import config from '$utils/config.public';
 
 	import memberApi from '$dataSources/api.that.tech/members/queries';
 	import { Waiting } from '$elements';
@@ -281,7 +281,7 @@
 		const res = await fetch(config.profileImageApi, {
 			method: 'POST',
 			headers: {
-				Authorization: `Bearer ${$session.accessToken}`
+				Authorization: `Bearer ${$page.data.user.accessToken}`
 			},
 			body: formData
 		});

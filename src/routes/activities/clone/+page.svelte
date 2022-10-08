@@ -1,19 +1,5 @@
-<script context="module">
-	export async function load({ stuff }) {
-		return {
-			props: {
-				...stuff
-			}
-		};
-	}
-</script>
-
 <script>
-	export let activity;
-	export let events;
-	export let activeEvents;
-	export let isBackdoor;
-	export let eventId;
+	export let data;
 
 	import { goto } from '$app/navigation';
 	import Typewriter from 'svelte-typewriter';
@@ -31,6 +17,8 @@
 
 	import ActivityForm from '../_components/form/ActivityForm.svelte';
 	import { formatCreate } from '../_lib/formatRequest';
+
+	let { activity, events, activeEvents, isBackdoor, eventId } = data;
 
 	// stripping out things that are set when submitted
 	delete activity.createdAt;

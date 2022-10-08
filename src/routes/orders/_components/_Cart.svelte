@@ -1,10 +1,10 @@
 <script>
-	import { browser, dev } from '$app/env';
+	import { browser, dev } from '$app/environment';
 	import { onMount, getContext } from 'svelte';
-	import * as Sentry from '@sentry/browser';
+	import * as Sentry from '@sentry/svelte';
 	import { loadStripe } from '@stripe/stripe-js';
 
-	import config from '$utils/config';
+	import config from '$utils/config.public';
 	import { Cart as CartModal } from '$elements/modals';
 	import { Standard as StandardButton } from '$elements/buttons';
 	import { Standard as StandardLink } from '$elements/links';
@@ -17,7 +17,7 @@
 		Sentry.addBreadcrumb({
 			category: 'checkout',
 			message: 'handle checkout called',
-			level: Sentry.Severity.Info
+			level: 'info'
 		});
 
 		const { eventId, cart } = $state.context;
@@ -39,7 +39,6 @@
 		return orderMutations()
 			.createCheckoutSession(eventId, lineItems)
 			.then((results) => {
-				console.log({ results });
 				if (results.success) stripe.redirectToCheckout({ sessionId: results.stripeCheckoutId });
 				else {
 					throw new Error(results.message);

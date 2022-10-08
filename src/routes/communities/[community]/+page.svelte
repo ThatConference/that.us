@@ -1,33 +1,7 @@
-<script context="module">
-	import communityQueryApi from '$dataSources/api.that.tech/community/queries';
-
-	export async function load({ params, fetch }) {
-		const { community } = params;
-		const { queryCommunityBySlug, queryCommunityFollowers, queryCommunityActivities } =
-			communityQueryApi(fetch);
-
-		const [communityDetails, communityFollowers, communityActivities] = await Promise.all([
-			queryCommunityBySlug(community),
-			queryCommunityFollowers(community),
-			queryCommunityActivities({ slug: community })
-		]);
-
-		return {
-			props: {
-				communityDetails,
-				communityFollowers: communityFollowers.followers.members,
-				communityActivities: communityActivities.sessions
-			}
-		};
-	}
-</script>
-
 <script>
-	export let communityDetails;
-	export let communityFollowers;
-	export let communityActivities;
+	export let data;
 
-	import { session } from '$app/stores';
+	import { page } from '$app/stores';
 	import { fade } from 'svelte/transition';
 
 	import seoMetaTags from '$utils/seo/metaTags';
@@ -41,6 +15,7 @@
 	import CTA from './_components/cta.svelte';
 	import Hero from './_components/hero.svelte';
 
+	let { communityDetails, communityFollowers, communityActivities } = data;
 	const { toggleFollow } = communityMutationApi();
 	const { queryMeFollowingCommunities } = meQueryApi();
 
@@ -58,7 +33,7 @@
 
 	let delayCounter = 200;
 	$: userIsFollowing = false;
-	$: if ($session.isAuthenticated) {
+	$: if ($page.data.user.isAuthenticated) {
 		queryMeFollowingCommunities().then((r) => {
 			userIsFollowing = r.includes(communityDetails.id);
 		});
