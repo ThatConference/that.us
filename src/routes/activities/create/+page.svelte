@@ -8,7 +8,7 @@
 
 	import seoMetaTags from '$utils/seo/metaTags';
 	import Seo from '$components/Seo.svelte';
-	import logEvent from '$utils/eventTrack';
+	import { tagEvent } from '$utils/tagEvent';
 	import sessionsApi from '$dataSources/api.that.tech/sessions/mutations';
 	import { ActionHeader } from '$elements';
 	import { Standard as StandardLink } from '$elements/links';
@@ -41,7 +41,7 @@
 
 		await createSession(eventId, type, activity);
 
-		logEvent('activity_created');
+		tagEvent('created', 'activities');
 
 		resetForm();
 		setSubmitting(false);

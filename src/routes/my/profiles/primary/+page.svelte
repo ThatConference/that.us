@@ -3,7 +3,7 @@
 
 	import { goto } from '$app/navigation';
 
-	import logEvent from '$utils/eventTrack';
+	import { tagEvent } from '$utils/tagEvent';
 	import seoMetaTags from '$utils/seo/metaTags';
 	import Seo from '$components/Seo.svelte';
 
@@ -29,7 +29,7 @@
 
 		updateSession(updatedThatProfile);
 
-		logEvent('profile_created');
+		tagEvent('created', 'profile');
 
 		setSubmitting(false);
 		resetForm();
@@ -52,7 +52,7 @@
 
 		updateSession(updatedThatProfile);
 
-		logEvent('profile_update');
+		tagEvent('update', 'profile');
 
 		setSubmitting(false);
 		resetForm();

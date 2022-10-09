@@ -7,7 +7,7 @@
 	import { plus } from '$components/svelte-awesome-icons';
 
 	import seoMetaTags from '$utils/seo/metaTags';
-	import logEvent from '$utils/eventTrack';
+	import { tagEvent } from '$utils/tagEvent';
 	import sessionsApi from '$dataSources/api.that.tech/sessions/mutations';
 	import Seo from '$components/Seo.svelte';
 	import { ActionHeader } from '$elements';
@@ -55,7 +55,7 @@
 
 		await createSession(eventId, type, activity);
 
-		logEvent('activity_created');
+		tagEvent('clone', 'activities');
 
 		resetForm();
 		setSubmitting(false);

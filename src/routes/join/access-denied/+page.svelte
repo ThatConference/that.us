@@ -1,4 +1,5 @@
 <script>
+	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
 
 	import seoMetaTags from '$utils/seo/metaTags';
@@ -8,6 +9,7 @@
 	import { Error } from '$elements/modals';
 	import { ActionHeader } from '$elements';
 	import StackedLayout from '$elements/layouts/StackedLayout.svelte';
+	import { tagEvent } from '$utils/tagEvent';
 
 	let returnTo = {
 		title: 'Home',
@@ -21,6 +23,9 @@
 		};
 	}
 
+	onMount(() => {
+		tagEvent('join_access_denied', 'activities');
+	});
 	const metaTags = ((title = 'Your access to join this activity was denied') => ({
 		title,
 		tags: seoMetaTags({

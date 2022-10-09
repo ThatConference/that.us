@@ -7,7 +7,7 @@
 	import { plus } from '$components/svelte-awesome-icons';
 
 	import seoMetaTags from '$utils/seo/metaTags';
-	import logEvent from '$utils/eventTrack';
+	import { tagEvent } from '$utils/tagEvent';
 	import Seo from '$components/Seo.svelte';
 	import { ActionHeader, ModalError } from '$elements';
 	import StackedLayout from '$elements/layouts/StackedLayout.svelte';
@@ -40,7 +40,7 @@
 			status
 		});
 
-		logEvent('activity_withdraw');
+		tagEvent('withdraw', 'activities');
 
 		goto(`/my/submissions`);
 	}
@@ -51,7 +51,7 @@
 
 		await updateSession(activityDetails.id, type, activity);
 
-		logEvent('activity_updated');
+		tagEvent('updated', 'activities');
 
 		setSubmitting(false);
 		resetForm();
