@@ -11,7 +11,7 @@ import { BrowserTracing } from '@sentry/tracing';
 import * as Sentry from '@sentry/svelte';
 import LogRocket from 'logrocket';
 
-import config, { debug, logging } from '$utils/config.public';
+import { debug, logging } from '$utils/config.public';
 
 const correlationId = uuidv4();
 
@@ -21,7 +21,8 @@ if (!dev) {
 
 	Sentry.init({
 		dsn: logging.dsn,
-		release: config.version,
+		dist: 'that-us:3.0.0',
+		release: 'that-us:3.0.0',
 		environment: logging.environment,
 		debug: false,
 		attachStacktrace: true,
