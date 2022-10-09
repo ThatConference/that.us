@@ -50,11 +50,9 @@
 		if (!dev && browser) {
 			let { id, email, firstName, lastName } = $page.data.user.profile;
 
-			Sentry.configureScope((scope) => {
-				scope.setUser({
-					email,
-					id
-				});
+			Sentry.setUser({
+				email,
+				id
 			});
 
 			LogRocket.identify(id, {
