@@ -23,6 +23,17 @@
 
 	const { isEmpty } = lodash;
 
+	navigating.subscribe((event) => {
+		if (event) {
+			if (!dev && browser) {
+				let { to } = event;
+				let _hsq = (window._hsq = window._hsq || []);
+				_hsq.push(['setPath', to.url.pathname]);
+				_hsq.push(['trackPageView']);
+			}
+		}
+	});
+
 	onMount(() => {
 		if ($showReleaseNotes) {
 			messages.update((m) => [
@@ -50,7 +61,7 @@
 				email
 			});
 
-			var _hsq = (window._hsq = window._hsq || []);
+			let _hsq = (window._hsq = window._hsq || []);
 			_hsq.push([
 				'identify',
 				{
