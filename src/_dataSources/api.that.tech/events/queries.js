@@ -388,8 +388,7 @@ export default (fetch) => {
 			.then(({ data, errors }) => {
 				if (errors) log({ errors, tag: 'QUERY_THAT_CONFERENCE_EVENT' });
 
-				const { event } = data.events;
-				return event ? event.get : null;
+				return data?.events?.event?.get || null;
 			});
 	}
 
@@ -399,8 +398,7 @@ export default (fetch) => {
 		return client.query({ query: QUERY_EVENT_BY_SLUG, variables }).then(({ data, errors }) => {
 			if (errors) log({ errors, tag: 'QUERY_EVENT_BY_SLUG' });
 
-			const { event } = data.events;
-			return event ? event.get : null;
+			return data?.events?.event?.get || null;
 		});
 	}
 
@@ -412,8 +410,7 @@ export default (fetch) => {
 			.then(({ data, errors }) => {
 				if (errors) log({ errors, tag: 'QUERY_EVENT_WITH_SPEAKERS_BY_SLUG' });
 
-				const { event } = data.events;
-				return event ? event.get : null;
+				return data?.events?.event?.get || null;
 			});
 	}
 
@@ -423,8 +420,7 @@ export default (fetch) => {
 		return client.query({ query: QUERY_EVENT_BY_ID, variables }).then(({ data, errors }) => {
 			if (errors) log({ errors, tag: 'QUERY_EVENT_BY_ID' });
 
-			const { event } = data.events;
-			return event ? event.get : null;
+			return data?.events?.event?.get || null;
 		});
 	}
 
@@ -434,8 +430,7 @@ export default (fetch) => {
 		return client.query({ query: QUERY_EVENT_FOR_CFP, variables }).then(({ data, errors }) => {
 			if (errors) log({ errors, tag: 'QUERY_EVENT_FOR_CFP' });
 
-			const { event } = data.events;
-			return event ? event.get : null;
+			return data?.events?.event?.get || null;
 		});
 	}
 
@@ -444,8 +439,7 @@ export default (fetch) => {
 		return client.query({ query: QUERY_EVENTS, variables }).then(({ data, errors }) => {
 			if (errors) log({ errors, tag: 'QUERY_EVENTS' });
 
-			const { all } = data.events;
-			return all || [];
+			return data?.events?.all || [];
 		});
 	}
 
@@ -457,8 +451,7 @@ export default (fetch) => {
 			.then(({ data, errors }) => {
 				if (errors) log({ errors, tag: 'QUERY_EVENTS_BY_COMMUNITY' });
 
-				const { community } = data.communities;
-				return community ? community.get.events : [];
+				return data?.communities?.community.get.events || [];
 			});
 	}
 
