@@ -1,10 +1,10 @@
 <script>
-	import { session } from '$app/stores';
+	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
 	import lodash from 'lodash';
 	import { useMachine } from '@xstate/svelte';
 
-	import { debug } from '$utils/config';
+	import { debug } from '$utils/config.public';
 	import StepComplete from '$elements/svgs/StepComplete.svelte';
 	import Step from '$elements/svgs/Step.svelte';
 
@@ -16,13 +16,13 @@
 
 	const { isEmpty } = lodash;
 
-	$: if ($session.isAuthenticated) {
+	$: if ($page.data.user.isAuthenticated) {
 		send('AUTHENTICATED', { status: true });
 	} else {
 		send('AUTHENTICATED', { status: false });
 	}
 
-	$: if (!isEmpty($session.thatProfile)) {
+	$: if (!isEmpty($page.data.user.profile)) {
 		send('PROFILE_COMPLETED', { status: true });
 	} else {
 		send('PROFILE_COMPLETED', { status: false });

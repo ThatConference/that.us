@@ -1,11 +1,11 @@
 <script>
 	export let touched, errors, setField;
 	export let initialData;
-	export let dropDownValues;
 
+	import { getContext } from 'svelte';
 	import Select from 'svelte-select';
 
-	const { targetAudience } = dropDownValues;
+	const { targetAudience } = getContext('DROP_DOWN_KEY_VALUE_PAIRS');
 
 	let selectedtargetAudienceValue = initialData.targetAudience
 		? targetAudience.options.filter((i) => initialData.targetAudience.includes(i.value))

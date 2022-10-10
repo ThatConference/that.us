@@ -3,7 +3,7 @@
 
 	import { useMachine } from '@xstate/svelte';
 
-	import { debug } from '$utils/config';
+	import { debug } from '$utils/config.public';
 	import { FeaturedActivityDetail } from '$elements';
 
 	import activityMachine from '../_machines/activities';

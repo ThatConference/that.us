@@ -4,7 +4,7 @@
 	export let isBlogLayout = false;
 
 	import gFetch from '$utils/gfetch';
-	import envConfig from '$utils/config';
+	import envConfig from '$utils/config.public';
 	import { Standard as StandardLink, Highlight as HighlightLink } from '$elements/links';
 
 	const GET_PARTNERS = `

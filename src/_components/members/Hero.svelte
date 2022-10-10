@@ -1,5 +1,5 @@
 <script>
-	import { session } from '$app/stores';
+	import { page } from '$app/stores';
 </script>
 
 <div class="sm:text-center lg:text-left">
@@ -20,7 +20,7 @@
 		conversations and relationships. If you haven’t already signed up why wait any longer?
 	</p>
 
-	{#if !$session.isAuthenticated}
+	{#if !$page.data.user.isAuthenticated}
 		<div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
 			<div class="rounded-md shadow">
 				<a
@@ -35,7 +35,7 @@
 				</a>
 			</div>
 		</div>
-	{:else if !$session.thatProfile?.isMember}
+	{:else if !$page.data.user.profile?.isMember}
 		<div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
 			<div class="rounded-md shadow">
 				<a

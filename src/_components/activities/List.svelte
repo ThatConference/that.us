@@ -4,7 +4,7 @@
 	export let editMode = false;
 	export let reverse = false;
 
-	import { browser } from '$app/env';
+	import { browser } from '$app/environment';
 	import { fade } from 'svelte/transition';
 	import dayjs from 'dayjs';
 	import _ from 'lodash';

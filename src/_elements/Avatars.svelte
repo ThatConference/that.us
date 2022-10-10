@@ -2,7 +2,7 @@
 	export let host;
 	export let attendees;
 
-	import config from '$utils/config';
+	import config from '$utils/config.public';
 	import buildImageSrc from '$utils/image';
 
 	const speakerProfileImage = host?.profileImage || config.defaultProfileImage;

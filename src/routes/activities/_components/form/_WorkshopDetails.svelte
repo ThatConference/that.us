@@ -1,11 +1,11 @@
 <script>
 	export let setField;
 	export let initialData;
-	export let dropDownValues;
 
+	import { getContext } from 'svelte';
 	import { Input } from 'sveltejs-forms';
 
-	const { duration } = dropDownValues;
+	const { duration } = getContext('DROP_DOWN_KEY_VALUE_PAIRS');
 
 	let durationSelected = initialData?.duration || undefined;
 </script>

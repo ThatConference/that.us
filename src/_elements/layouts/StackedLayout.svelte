@@ -2,7 +2,7 @@
 	export let bodyBackgroundColor = 'bg-gray-100';
 
 	import { fade } from 'svelte/transition';
-	import { session } from '$app/stores';
+	import { page } from '$app/stores';
 	import lodash from 'lodash';
 
 	import { Footer } from '$components';
@@ -13,8 +13,8 @@
 	const { isEmpty } = lodash;
 </script>
 
-{#if $session.isAuthenticated}
-	{#if isEmpty($session.thatProfile)}
+{#if $page.data.user.isAuthenticated}
+	{#if isEmpty($page.data.user.profile)}
 		<CreateProfileNotification />
 	{/if}
 {/if}

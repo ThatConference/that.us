@@ -2,7 +2,7 @@
 	export let community;
 	export let isFollowing;
 
-	import { session } from '$app/stores';
+	import { page } from '$app/stores';
 	import { createEventDispatcher } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import dayjs from 'dayjs';
@@ -32,7 +32,7 @@
 					</div>
 
 					<div class="flex justify-end space-x-4">
-						{#if $session.isAuthenticated}
+						{#if $page.data.user.isAuthenticated}
 							<StandardButton class="h-3/4" on:click={() => dispatch('community-follow')}>
 								{#if !isFollowing}Follow{:else}Un-Follow{/if}
 							</StandardButton>

@@ -3,7 +3,7 @@
 	export let isFollowing = false;
 
 	import { createEventDispatcher } from 'svelte';
-	import { session } from '$app/stores';
+	import { page } from '$app/stores';
 
 	import { Standard as StandardButton } from '$elements/buttons';
 	import { Standard as StandardLink } from '$elements/links';
@@ -27,7 +27,7 @@
 	</h2>
 
 	<span slot="actionPrimary">
-		{#if $session.isAuthenticated}
+		{#if $page.data.user.isAuthenticated}
 			<StandardButton class="h-3/4" on:click={() => dispatch('TOGGLE_FOLLOW')}>
 				{#if isFollowing}Un-Follow{:else}Follow{/if}
 				{handle}

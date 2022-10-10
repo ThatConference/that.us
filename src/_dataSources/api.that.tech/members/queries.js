@@ -190,13 +190,7 @@ export default (fetch) => {
 		return client.query({ query: QUERY_MEMBERS_INITAL, variables }).then(({ data, errors }) => {
 			if (errors) log({ errors, tag: 'QUERY_MEMBERS_INITAL' });
 
-			let results = null;
-			if (data) {
-				const { members } = data.members;
-				results = members;
-			}
-
-			return results;
+			return data?.members?.members || null;
 		});
 	};
 
@@ -205,13 +199,7 @@ export default (fetch) => {
 		return client.query({ query: QUERY_MEMBERS_NEXT, variables }).then(({ data, errors }) => {
 			if (errors) log({ errors, tag: 'QUERY_MEMBERS_NEXT' });
 
-			let results = null;
-			if (data) {
-				const { members } = data.members;
-				results = members;
-			}
-
-			return results;
+			return data?.members?.members || null;
 		});
 	};
 
@@ -228,7 +216,7 @@ export default (fetch) => {
 		return client.query({ query: QUERY_MEMBER_BY_SLUG, variables }).then(({ data, errors }) => {
 			if (errors) log({ errors, tag: 'QUERY_MEMBER_BY_SLUG' });
 
-			return data.members.member;
+			return data?.members?.member || null;
 		});
 	};
 
@@ -241,7 +229,7 @@ export default (fetch) => {
 			.then(({ data, errors }) => {
 				if (errors) log({ errors, tag: 'QUERY_BLOG_AUTHOR_BY_SLUG' });
 
-				return data.members.member;
+				return data?.members?.member || null;
 			});
 	};
 
@@ -258,7 +246,7 @@ export default (fetch) => {
 		return client.query({ query: QUERY_MEMBER_ACTIVITIES, variables }).then(({ data, errors }) => {
 			if (errors) log({ errors, tag: 'QUERY_MEMBER_ACTIVITIES' });
 
-			return data.members.member.sessions;
+			return data?.members?.member?.sessions || null;
 		});
 	};
 
@@ -275,7 +263,7 @@ export default (fetch) => {
 		return client.query({ query: QUERY_MEMBER_ACTIVITIES, variables }).then(({ data, errors }) => {
 			if (errors) log({ errors, tag: 'QUERY_MEMBER_ACTIVITIES' });
 
-			return data.members.member.sessions;
+			return data?.members?.member?.sessions || [];
 		});
 	};
 
@@ -285,8 +273,7 @@ export default (fetch) => {
 		return client.query({ query: QUERY_FOLLOWERS, variables }).then(({ data, errors }) => {
 			if (errors) log({ errors, tag: 'QUERY_FOLLOWERS' });
 
-			const { member } = data.members;
-			return member || []; // followerCount and followers are in partner
+			return data?.members?.member || []; // followerCount and followers are in partner
 		});
 	};
 
@@ -295,8 +282,7 @@ export default (fetch) => {
 		return client.query({ query: QUERY_NEXT_FOLLOWERS, variables }).then(({ data, errors }) => {
 			if (errors) log({ errors, tag: 'QUERY_NEXT_FOLLOWERS' });
 
-			const { member } = data.members;
-			return member || null;
+			return data?.members?.member || null;
 		});
 	};
 

@@ -3,7 +3,7 @@
 
 	import dayjs from 'dayjs';
 
-	import config from '$utils/config';
+	import config from '$utils/config.public';
 	import { Chevron } from '$elements/svgs';
 	import Ticket from './_Ticket.svelte';
 

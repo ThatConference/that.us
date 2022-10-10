@@ -1,4 +1,4 @@
-import { debug } from '$utils/config';
+import { debug } from '$utils/config.public';
 import { useMachine } from '$utils/useMachine';
 
 import create from './machine';

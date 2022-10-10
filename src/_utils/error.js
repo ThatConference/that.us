@@ -1,4 +1,4 @@
-import * as Sentry from '@sentry/browser';
+import * as Sentry from '@sentry/svelte';
 
 export const log = ({ error, extra = {}, tags }) => {
 	const err = new Error(error);

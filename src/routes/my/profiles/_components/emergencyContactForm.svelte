@@ -29,6 +29,7 @@
 
 	import { Form, Input } from 'sveltejs-forms';
 	import ErrorNotificaiton from '$components/notifications/Error.svelte';
+	import MaskInput from 'svelte-input-mask/MaskInput.svelte';
 
 	import { Waiting } from '$elements';
 	import { Shell } from '$elements/buttons';
@@ -94,12 +95,20 @@
 								<span
 									class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400" />
 							</div>
-							<Input
+
+							<MaskInput
 								name="phoneNumber"
-								type="tel"
-								class="form-input mt-1 block w-full rounded-sm text-sm "
-								required
-								placeholder="E.g. +13476748428" />
+								alwaysShowMask
+								mask="+0 (000) 000 - 0000"
+								size={20}
+								showMask
+								maskChar="_"
+								class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+								value={emergencyContactInformation.phoneNumber || undefined}
+								on:change={({ detail: { inputState } }) => {
+									if (inputState.unmaskedValue.length === 0) setValue('phoneNumber', null);
+									else setValue('phoneNumber', `+${inputState.unmaskedValue}`);
+								}} />
 						</div>
 
 						<div class="mt-4">

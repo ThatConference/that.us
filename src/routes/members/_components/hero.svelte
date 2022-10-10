@@ -2,12 +2,12 @@
 	export let member;
 	export let isFollowing = false;
 
-	import { session } from '$app/stores';
+	import { page } from '$app/stores';
 	import { createEventDispatcher } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import dayjs from 'dayjs';
 
-	import config from '$utils/config';
+	import config from '$utils/config.public';
 
 	import { Tag } from '$elements';
 	import Header from '$elements/layouts/profile/_Header.svelte';
@@ -57,7 +57,7 @@
 					</div>
 
 					<div class="flex justify-end space-x-4">
-						{#if $session.isAuthenticated}
+						{#if $page.data.user.isAuthenticated}
 							<StandardButton class="h-3/4" on:click={() => dispatch('TOGGLE_FOLLOW')}>
 								{#if !isFollowing}Follow{:else}Un-Follow{/if}
 							</StandardButton>

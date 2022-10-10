@@ -13,7 +13,7 @@
 
 	import eventsApi from '$dataSources/api.that.tech/events/queries';
 	import { CheckFull } from '$elements/svgs';
-	import config from '$utils/config';
+	import config from '$utils/config.public';
 	import EventNoAccess from './components/_EventNoAccess.svelte';
 
 	const { canAddSession } = eventsApi();

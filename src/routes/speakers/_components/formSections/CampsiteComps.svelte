@@ -6,7 +6,7 @@
 	import Checkbox from 'svelte-checkbox';
 
 	import { Shell } from '$elements/buttons';
-	import { kalahari } from '$utils/config';
+	import { kalahari } from '$utils/config.public';
 
 	const dispatch = createEventDispatcher();
 	const [venue] = eventDetails.venues;

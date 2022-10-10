@@ -1,3 +1,4 @@
+import { redirect } from '@sveltejs/kit';
 import { initAuth0 as origInitAuth0 } from '@auth0/nextjs-auth0';
 import { auth0Wrapper, auth0WrapperJson } from './wrappers';
 import lodash from 'lodash';
@@ -31,51 +32,22 @@ export function initAuth0(config) {
 		),
 
 		withPageAuthRequired(opts) {
-			return (loadParams) => {
-				const isAuthenticated = loadParams.session?.isAuthenticated;
-				if (isAuthenticated) {
-					const user = loadParams.session?.user;
-
-					// validate account is verified
+			return async (loadParams) => {
+				const { user } = await loadParams.parent();
+				if (user.isAuthenticated === true) {
 					if (!isNil(user) && !isEmpty(user)) {
-						// eslint-disable-next-line no-unsafe-optional-chaining
-						const [provider] = user.sub?.split('|');
+						const [provider] = user.baseUser.sub.split('|');
 						if (provider !== 'twitter') {
-							if (!user.email_verified) {
-								return {
-									status: 307,
-									redirect: `/verify-account`
-								};
+							if (user.email_verified === false) {
+								throw redirect(307, `/verify-account`);
 							}
 						}
 					}
 
 					if (opts?.load && typeof opts?.load === 'function') {
-						const loadResult = opts?.load(loadParams);
-						// Handle either promises or non-promises without making this function async
-						if (loadResult && typeof loadResult.then === 'function') {
-							// Async load() function
-							return loadResult.then((loadResult) => {
-								if (loadResult) {
-									return { ...loadResult, props: { ...loadResult.props, user, isAuthenticated } };
-								} else {
-									// If user's load() function returned nothing, they intend to fall through, so we shouldn't populate user props
-									return loadResult;
-								}
-							});
-						} else if (loadResult) {
-							// Synchronous load()
-							return { ...loadResult, props: { ...loadResult.props, user, isAuthenticated } };
-						} else {
-							// If user's load() function returned nothing, they intend to fall through, so we shouldn't populate user props
-							return loadResult;
-						}
+						return opts?.load(loadParams);
 					} else {
-						// No load function passed, so just populate user prop
-						return {
-							stuff: { user, isAuthenticated },
-							props: { user, isAuthenticated }
-						};
+						return {};
 					}
 				} else {
 					const { url } = loadParams;
@@ -84,16 +56,15 @@ export function initAuth0(config) {
 					const returnUrl =
 						opts?.returnTo || queryString ? `${url.pathname}?${queryString}` : url.pathname;
 
-					return {
-						status: 307,
-						redirect: `/login-redirect/?returnTo=${returnUrl}`
-					};
+					throw redirect(307, `/login-redirect/?returnTo=${returnUrl}`);
 				}
 			};
 		},
 
 		withApiAuthRequired: (route, opts = {}) => {
+			console.log('withApiAuthRequired', opts);
 			return (svelteReq) => {
+				console.log('svelteReq', svelteReq);
 				if (
 					svelteReq.locals.isAuthenticated &&
 					svelteReq.locals.user &&

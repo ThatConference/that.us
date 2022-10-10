@@ -76,7 +76,7 @@
 	import Flatpickr from 'svelte-flatpickr';
 	import 'flatpickr/dist/flatpickr.css';
 
-	import config from '$utils/config';
+	import config from '$utils/config.public';
 
 	dayjs.extend(utc);
 	dayjs.extend(timezone);

@@ -1,19 +1,30 @@
 import { sveltekit } from '@sveltejs/kit/vite';
-import { resolve } from 'path';
+import viteSentry from 'vite-plugin-sentry';
+import pkg from './package.json';
 
-/** @type {import('vite').UserConfig} */
+const sentryConfig = {
+	url: 'https://sentry.io',
+	authToken: process.env.SENTRY_SRC_MAP_UPLOAD,
+	org: 'that-confernece',
+	project: 'thatus',
+	release: pkg.version,
+	deploy: {
+		env: 'production'
+	},
+	setCommits: {
+		auto: true
+	},
+	sourceMaps: {
+		include: ['./dist/assets'],
+		ignore: ['node_modules'],
+		urlPrefix: '~/assets'
+	}
+};
+
 const config = {
-	plugins: [sveltekit()],
-	resolve: {
-		alias: {
-			$components: resolve('src/_components'),
-			$elements: resolve('src/_elements'),
-			$utils: resolve('src/_utils'),
-			$dataSources: resolve('src/_dataSources'),
-			$stores: resolve('src/_stores'),
-			$machines: resolve('src/_machines'),
-			$blog: resolve('src/_blog')
-		}
+	plugins: [viteSentry(sentryConfig), sveltekit()],
+	build: {
+		sourcemap: true
 	}
 };
 

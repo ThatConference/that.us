@@ -6,7 +6,7 @@
 
 	import { CheckFull } from '$elements/svgs';
 	import { Shell } from '$elements/buttons';
-	import { kalahari } from '$utils/config';
+	import { kalahari } from '$utils/config.public';
 
 	const isAt = platform === 'AT_THAT';
 	const dispatch = createEventDispatcher();

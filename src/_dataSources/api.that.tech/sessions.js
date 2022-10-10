@@ -304,8 +304,7 @@ export default (fetch) => {
 		client.query({ query: graphQuery, variables }).then(({ data, errors }) => {
 			if (errors) log({ errors, tag: 'query_sessions' });
 
-			const { all } = data.sessions;
-			return all || [];
+			return data?.sessions?.all || [];
 		});
 
 	const querySessions = ({ eventId, pageSize = defaultPageSize }) =>
@@ -321,8 +320,7 @@ export default (fetch) => {
 		return client.query({ query: QUERY_SESSIONS_BY_SLUG, variables }).then(({ data, errors }) => {
 			if (errors) log({ errors, tag: 'QUERY_SESSIONS_BY_SLUG' });
 
-			const { get } = data.events.event;
-			return get || null;
+			return data?.events?.event?.get || null;
 		});
 	};
 
@@ -336,8 +334,7 @@ export default (fetch) => {
 			.then(({ data, errors }) => {
 				if (errors) log({ errors, tag: 'QUERY_SESSION_BY_ID_SHORT' });
 
-				const { session } = data.sessions;
-				return session || null;
+				return data?.sessions?.session || null;
 			});
 	};
 
@@ -357,8 +354,7 @@ export default (fetch) => {
 			.then(({ data, errors }) => {
 				if (errors) log({ errors, tag: 'QUERY_SESSIONS_BY_DATE' });
 
-				const { all } = data.sessions;
-				return all || [];
+				return data?.sessions?.all || [];
 			});
 	}
 
@@ -377,8 +373,7 @@ export default (fetch) => {
 			.then(({ data, errors }) => {
 				if (errors) log({ errors, tag: 'QUERY_NEXT_SESSIONS_BY_DATE' });
 
-				const { all } = data.sessions;
-				return all || [];
+				return data?.sessions?.all || [];
 			});
 	}
 
@@ -388,7 +383,7 @@ export default (fetch) => {
 		return client.query({ query: QUERY_SESSION_BY_ID, variables }).then(({ data, errors }) => {
 			if (errors) log({ errors, tag: 'QUERY_SESSION_BY_ID' });
 
-			return data.sessions.session;
+			return data?.sessions?.session || [];
 		});
 	};
 
@@ -403,7 +398,7 @@ export default (fetch) => {
 		return client.mutation({ mutation: CREATE_SESSION, variables }).then(({ data, errors }) => {
 			if (errors) log({ errors, tag: 'CREATE_SESSION' });
 
-			return data.sessions.create.openSpace;
+			return data?.sessions?.create?.openSpace || [];
 		});
 	};
 
@@ -419,7 +414,7 @@ export default (fetch) => {
 			.then(({ data, errors }) => {
 				if (errors) log({ errors, tag: 'UPDATE_SESSION_BY_ID' });
 
-				return data.sessions.session.update.openSpace;
+				return data?.sessions?.session?.update?.openSpace || null;
 			});
 	};
 

@@ -1,5 +1,5 @@
 <script>
-	import { session } from '$app/stores';
+	import { page } from '$app/stores';
 </script>
 
 <section class="mt-12 bg-white py-12 lg:py-16">
@@ -53,7 +53,7 @@
 				</svg>
 				<blockquote class="relative">
 					<div class="prose-xl text-gray-500 sm:text-lg md:text-xl">
-						{#if !$session.isAuthenticated}
+						{#if !$page.data.user.isAuthenticated}
 							<p>
 								Our mission is simple, foster a community of geeks who want to help one another be
 								awesome. THAT.us is a safe place for all of the geeks and geeklings from anywhere,
@@ -64,7 +64,7 @@
 									Join us today!
 								</a>
 							</p>
-						{:else if !$session.thatProfile?.isMember}
+						{:else}
 							<p>
 								Our mission is simple, foster a community of geeks who want to help one another be
 								awesome. We could create a free platform, but then you become the product. To that,
