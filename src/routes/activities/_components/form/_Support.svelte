@@ -1,12 +1,12 @@
 <script>
 	export let touched, errors, setField;
 	export let initialData;
-	export let dropDownValues;
 
+	import { getContext } from 'svelte';
 	import { Input } from 'sveltejs-forms';
 	import Checkbox from 'svelte-checkbox';
 
-	const { mentorship } = dropDownValues;
+	const { mentorship } = getContext('DROP_DOWN_KEY_VALUE_PAIRS');
 
 	let activityMentorshipSelected = initialData.mentorship || undefined;
 	let canRecord = initialData.canRecord || false;

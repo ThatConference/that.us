@@ -20,6 +20,7 @@
 	setContext('claimTicket', claimTicket);
 	setContext('cart', cart);
 	setContext('correlationId', data.correlationId);
+	setContext('DROP_DOWN_KEY_VALUE_PAIRS', data.dropDownKeyValuePairs);
 
 	const { isEmpty } = lodash;
 

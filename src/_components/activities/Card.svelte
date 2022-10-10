@@ -47,7 +47,7 @@
 
 	const { isEmpty, find } = lodash;
 	const { toggle, get: getFavorites, favoritesStore: favorites } = favoritesApi();
-	const sessionEnumLookups = getContext('SESSION_ENUMS');
+	const { sessionLocationDestinations } = getContext('DROP_DOWN_KEY_VALUE_PAIRS');
 
 	let host = speakers[0];
 	let favoriteDisabled = false;
@@ -124,8 +124,7 @@
 	};
 
 	function lookupEnumLabel(location) {
-		return sessionEnumLookups.sessionLocationDestinations?.options.find((x) => x.value === location)
-			?.label;
+		return sessionLocationDestinations?.options.find((x) => x.value === location)?.label;
 	}
 
 	const userProfileImage = host.profileImage || config.defaultProfileImage;

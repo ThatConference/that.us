@@ -1,7 +1,4 @@
 <script>
-	export let data;
-
-	import { setContext } from 'svelte';
 	import { page } from '$app/stores';
 	import { fade } from 'svelte/transition';
 	import { useMachine } from '@xstate/svelte';
@@ -22,8 +19,6 @@
 
 	import createMachine from '../_machines/partner';
 
-	let { sessionEnumLookups } = data;
-	setContext('SESSION_ENUMS', sessionEnumLookups);
 	const { partner } = $page.params;
 
 	const { state, send } = useMachine(createMachine(partner), {

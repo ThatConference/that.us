@@ -2,7 +2,6 @@
 	export let data;
 
 	import { goto } from '$app/navigation';
-	import Typewriter from 'svelte-typewriter';
 	import Icon from 'svelte-awesome';
 	import { plus } from '$components/svelte-awesome-icons';
 
@@ -70,21 +69,7 @@
 		<Nav />
 		<ActionHeader>
 			<div class="flex space-x-2" slot="title">
-				<span>Create a new</span>
-				<div class="italic text-that-orange">
-					<Typewriter loop cursor="white" interval={[50, 60, 80]}>
-						<span>Room.</span>
-						<span>Presentation.</span>
-						<span>Open Space.</span>
-						<span>Code Review.</span>
-						<span>Panel Discussion.</span>
-						<span>Office Hours.</span>
-						<span>Chat.</span>
-						<span>Q&A.</span>
-						<span>AMA.</span>
-						<span>you decide.</span>
-					</Typewriter>
-				</div>
+				<span>Create a new activity.</span>
 			</div>
 		</ActionHeader>
 	</div>

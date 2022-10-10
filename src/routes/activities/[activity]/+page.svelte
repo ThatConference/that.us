@@ -8,7 +8,7 @@
 	import ActivityDetails from '$components/activities/ActivityDetails.svelte';
 	import StackedLayout from '$elements/layouts/StackedLayout.svelte';
 
-	let { activity, sessionLookups } = data;
+	let { activity } = data;
 
 	const metaTags = ((imageId = activity.id, title = `${activity.title}.`) => ({
 		title,
@@ -31,6 +31,6 @@
 		<ActionHeader title="Activity Spotlight" />
 	</div>
 	<div slot="body">
-		<ActivityDetails {activity} sessionLocation={activity.location} {sessionLookups} />
+		<ActivityDetails {activity} sessionLocation={activity.location} />
 	</div>
 </StackedLayout>

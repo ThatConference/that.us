@@ -13,7 +13,7 @@
 	import { Shell } from '$elements/buttons';
 
 	const dispatch = createEventDispatcher();
-	const { tShirtSizes, hoodieSizes, dietaryRequirements } = getContext('SPEAKER_ACCEPT_ENUMS');
+	const { tShirtSizes, hoodieSizes, dietaryRequirements } = getContext('DROP_DOWN_KEY_VALUE_PAIRS');
 	const { addOrderAllocationResponses } = speakerMutationsApi();
 
 	let open = isOpen;

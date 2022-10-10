@@ -12,6 +12,7 @@ import * as Sentry from '@sentry/svelte';
 import LogRocket from 'logrocket';
 
 import { debug, logging } from '$utils/config.public';
+import coreQueryApi from '$dataSources/api.that.tech/core/queries';
 
 const correlationId = uuidv4();
 
@@ -48,8 +49,12 @@ if (debug.xstate && browser) {
 }
 
 export async function load({ data }) {
+	const { queryDropDownValues } = coreQueryApi(fetch);
+	const dropDownKeyValuePairs = await queryDropDownValues();
+
 	return {
 		correlationId,
+		dropDownKeyValuePairs,
 		...data
 	};
 }

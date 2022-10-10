@@ -1,10 +1,9 @@
 <script>
 	export let activity;
 	export let sessionLocation;
-	export let sessionLookups;
 
 	// 3rd Party
-	import { onMount } from 'svelte';
+	import { onMount, getContext } from 'svelte';
 	import dayjs from 'dayjs';
 	import isBetween from 'dayjs/plugin/isBetween.js';
 	import isSameOrAfter from 'dayjs/plugin/isSameOrAfter.js';
@@ -69,17 +68,18 @@
 		supportingArtifacts
 	} = activity;
 
+	let dropDownKeyValuePairs = getContext('DROP_DOWN_KEY_VALUE_PAIRS');
 	const { toggle, get: getFavorites, favoritesStore: favorites } = favoritesApi();
 	const isDailyActivity = config.eventId === eventId;
 
 	// Enum Lookups
 	let sessionTargetLocation =
-		sessionLookups.targetLocation.options.find((x) => x.value === targetLocation)?.label ||
+		dropDownKeyValuePairs.targetLocation.options.find((x) => x.value === targetLocation)?.label ||
 		'Online';
 	let sessionTargetLocationIcon =
 		targetLocation === 'EITHER' ? exchange : targetLocation === 'IN_PERSON' ? user : globe;
-	let sessionType = sessionLookups.sessionType.options.find((x) => x.value === type)?.label;
-	let sessionLocationDestination = sessionLookups.sessionLocationDestinations.options.find(
+	let sessionType = dropDownKeyValuePairs.sessionType.options.find((x) => x.value === type)?.label;
+	let sessionLocationDestination = dropDownKeyValuePairs.sessionLocationDestinations.options.find(
 		(x) => x.value === sessionLocation?.destination
 	)?.label;
 

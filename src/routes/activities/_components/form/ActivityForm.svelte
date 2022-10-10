@@ -10,7 +10,6 @@
 	export let handleSubmit;
 
 	import { page } from '$app/stores';
-	import { getContext } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import dayjs from 'dayjs';
 	import { Form, Input } from 'sveltejs-forms';
@@ -44,7 +43,6 @@
 		...initialData
 	});
 
-	const dropDownValues = getContext('SESSION_ENUMS');
 	let createDisabled = true;
 	let eventSelected = events.find((i) => i.id === eventId);
 
@@ -212,7 +210,6 @@
 				<div class:hidden={!showLongForm}>
 					<AttributesSection
 						initialData={formattedInitial}
-						{dropDownValues}
 						setField={setValue}
 						{touched}
 						{errors}
@@ -230,12 +227,7 @@
 					stepNumber="4"
 					description="Who will benefit the most from this activity? Who should attend?" />
 
-				<AudienceSection
-					{dropDownValues}
-					initialData={formattedInitial}
-					setField={setValue}
-					{touched}
-					{errors} />
+				<AudienceSection initialData={formattedInitial} setField={setValue} {touched} {errors} />
 			</section>
 
 			<section in:fade class:hidden={!showLongForm} class="mt-8">
@@ -245,12 +237,7 @@
 						stepNumber="5"
 						description="Explain in more detail what this workshop is all about." />
 
-					<WorkshopSection
-						initialData={formattedInitial}
-						{dropDownValues}
-						setField={setValue}
-						{touched}
-						{errors} />
+					<WorkshopSection initialData={formattedInitial} setField={setValue} {touched} {errors} />
 				</div>
 			</section>
 
@@ -266,12 +253,7 @@
 					stepNumber="6"
 					description="Do you have some supporting resources for folks? Add them here for others to easily reference later." />
 
-				<ResourcesSection
-					initialData={formattedInitial}
-					{dropDownValues}
-					setField={setValue}
-					{touched}
-					{errors} />
+				<ResourcesSection initialData={formattedInitial} setField={setValue} {touched} {errors} />
 			</section>
 
 			<section in:fade class:hidden={!showLongForm} class="mt-8">
@@ -280,12 +262,7 @@
 					stepNumber="7"
 					description="We want you to be your best you. How can we help?" />
 
-				<SupportSection
-					initialData={formattedInitial}
-					{dropDownValues}
-					setField={setValue}
-					{touched}
-					{errors} />
+				<SupportSection initialData={formattedInitial} setField={setValue} {touched} {errors} />
 			</section>
 
 			<!-- when section -->

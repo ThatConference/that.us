@@ -90,25 +90,6 @@ const socialLinksFieldsFragment = `
 	}
 `;
 
-const enumValues = `
-	options: enumValues {
-		label: description
-		value: name
-	}
-`;
-
-export const QUERY_PARTNER_DROPDOWN_VALUES = `
-	query QUERY_PARTNER_DROPDOWN_VALUES {
-		jobType: __type(name: "JobType") {
-			${enumValues}
-		}
-		
-		experienceLevel: __type(name: "ExperienceLevel") {
-			${enumValues}
-		}
-	}
-`;
-
 export const QUERY_PARTNERS = `
 	${socialLinksFieldsFragment}
 	${coreFieldsFragment}
@@ -410,18 +391,6 @@ export default (fetch) => {
 		});
 	}
 
-	function queryPartnerDropDownValues() {
-		const variables = {};
-
-		return client
-			.query({ query: QUERY_PARTNER_DROPDOWN_VALUES, variables })
-			.then(({ data, errors }) => {
-				if (errors) log({ errors, tag: 'QUERY_PARTNER_DROPDOWN_VALUES' });
-
-				return data;
-			});
-	}
-
 	function queryPartnerJobListing(partnerSlug, jobSlug) {
 		const variables = { partner: partnerSlug, slug: jobSlug };
 
@@ -445,7 +414,6 @@ export default (fetch) => {
 		getPartner,
 		queryFollowers,
 		queryNextFollowers,
-		queryPartnerDropDownValues,
 		queryPartnerJobListing
 	};
 };

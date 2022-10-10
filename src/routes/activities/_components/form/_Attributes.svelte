@@ -1,14 +1,15 @@
 <script>
 	export let touched, errors, setField;
 	export let initialData;
-	export let dropDownValues;
 
-	import { createEventDispatcher } from 'svelte';
+	import { createEventDispatcher, getContext } from 'svelte';
 
 	import { Input } from 'sveltejs-forms';
 	import Select from 'svelte-select';
 
-	const { sessionCategory, category, targetLocation, sessionType } = dropDownValues;
+	const { sessionCategory, category, targetLocation, sessionType } = getContext(
+		'DROP_DOWN_KEY_VALUE_PAIRS'
+	);
 	const dispatch = createEventDispatcher();
 
 	// todo this works for now, but doesn't account for after call for speakers.

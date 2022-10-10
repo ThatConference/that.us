@@ -1,22 +1,20 @@
 <script>
 	export let jobListing;
 
-	import partnerQueryApi from '$dataSources/api.that.tech/partner/queries';
+	import { getContext } from 'svelte';
 	import { Standard as StandardLink } from '$elements/links';
 
-	const { queryPartnerDropDownValues } = partnerQueryApi();
+	const { jobType, experienceLevel } = getContext('DROP_DOWN_KEY_VALUE_PAIRS');
 
-	function getJobAttributes(dropDownValues) {
+	function getJobAttributes() {
 		return [
 			{
 				key: 'Employment Term',
-				value: dropDownValues.jobType.options.find((i) => i.value === jobListing.jobType).label
+				value: jobType.options.find((i) => i.value === jobListing.jobType).label
 			},
 			{
 				key: 'Experience Level',
-				value: dropDownValues.experienceLevel.options.find(
-					(i) => i.value === jobListing.experienceLevel
-				).label
+				value: experienceLevel.options.find((i) => i.value === jobListing.experienceLevel).label
 			},
 			{
 				key: 'Relocation Offered',
@@ -43,18 +41,16 @@
 				<p class="lineBreaks prose-xl">{jobListing.description}</p>
 			</div>
 
-			{#await queryPartnerDropDownValues() then dropDownValues}
-				<div class="flex flex-col items-start space-y-2">
-					{#each getJobAttributes(dropDownValues) as ja}
-						<div class="flex space-x-2">
-							<div>{ja.key}:</div>
-							<div class="font-extrabold">
-								{ja.value}
-							</div>
+			<div class="flex flex-col items-start space-y-2">
+				{#each getJobAttributes() as ja}
+					<div class="flex space-x-2">
+						<div>{ja.key}:</div>
+						<div class="font-extrabold">
+							{ja.value}
 						</div>
-					{/each}
-				</div>
-			{/await}
+					</div>
+				{/each}
+			</div>
 
 			{#if jobListing.applyNowLink}
 				<div class="flex items-end justify-end">
