@@ -22,9 +22,6 @@
 		})
 	}))();
 
-	console.log('is dev', dev);
-	console.log('page', $page);
-
 	if (!dev) {
 		Sentry.captureException($page.error, {
 			tags: {
