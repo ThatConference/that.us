@@ -57,6 +57,7 @@
 		"fuse.js": "^6.6.2",
 		"husky": "^8.0.1",
 		"ical-generator": "^3.5.2",
+		"install": "^0.13.0",
 		"isomorphic-fetch": "^3.0.0",
 		"lazysizes": "^5.3.2",
 		"lodash": "^4.17.21",

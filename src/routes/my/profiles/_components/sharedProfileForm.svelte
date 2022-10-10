@@ -28,7 +28,7 @@
 	import { Busy } from '$elements';
 	import { Shell } from '$elements/buttons';
 
-	const { countryCode } = getContext('COUNTRY_CODES');
+	const { countryCode } = getContext('DROP_DOWN_KEY_VALUE_PAIRS');
 
 	let countryCodeValue = countryCode?.options?.find(({ value }) => value === sharedProfile.country);
 </script>
