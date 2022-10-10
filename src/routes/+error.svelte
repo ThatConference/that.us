@@ -23,11 +23,7 @@
 	}))();
 
 	if (!dev) {
-		Sentry.captureException($page.error, {
-			tags: {
-				status: $page.status
-			}
-		});
+		Sentry.captureException(new Error($page.error));
 	}
 </script>
 
