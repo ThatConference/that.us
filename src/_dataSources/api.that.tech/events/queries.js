@@ -377,8 +377,8 @@ export const QUERY_CAN_ADD_SESSION = `
 	}
 `;
 
-export default (fetch) => {
-	const client = fetch ? gFetch(fetch) : gFetch();
+export default () => {
+	const client = gFetch();
 
 	function queryThatConferenceEvent(slug) {
 		const variables = { slug };

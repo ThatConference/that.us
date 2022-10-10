@@ -168,8 +168,8 @@ export const QUERY_NEXT_FOLLOWERS = `
 	}
 `;
 
-export default (fetch) => {
-	const client = fetch ? gFetch(fetch) : gFetch();
+export default () => {
+	const client = gFetch();
 
 	const isSlugTaken = (slug) => {
 		const variables = { slug };

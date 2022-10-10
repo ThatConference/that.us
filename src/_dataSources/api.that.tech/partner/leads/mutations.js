@@ -31,8 +31,8 @@ export const MUTATION_ADD_LEAD = `
   }
 `;
 
-export default (fetch) => {
-	const client = fetch ? gFetch(fetch) : gFetch();
+export default () => {
+	const client = gFetch();
 
 	function addPin(eventId, partnerPin, partnersNotes) {
 		const variables = {

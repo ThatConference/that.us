@@ -1,9 +1,9 @@
 import communityQueryApi from '$dataSources/api.that.tech/community/queries';
 
-export async function load({ params, fetch }) {
+export async function load({ params }) {
 	const { community } = params;
 	const { queryCommunityBySlug, queryCommunityFollowers, queryCommunityActivities } =
-		communityQueryApi(fetch);
+		communityQueryApi();
 
 	const [communityDetails, communityFollowers, communityActivities] = await Promise.all([
 		queryCommunityBySlug(community),

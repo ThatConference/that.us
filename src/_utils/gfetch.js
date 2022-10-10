@@ -6,9 +6,9 @@ import fetchRetry from 'fetch-retry';
 import loading from '$stores/loading';
 import config from '$utils/config.public';
 
-function init(fetch) {
+function init() {
 	let _cacheApiUrl = config.api.cache;
-	let _fetch = fetchRetry(fetch || isoFetch);
+	let _fetch = fetchRetry(isoFetch);
 
 	let headers = {
 		credentials: 'include',

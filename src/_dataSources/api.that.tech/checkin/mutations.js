@@ -66,8 +66,8 @@ export const MUTATION_SET_RECEIVED_SWAG = `
   }
 `;
 
-export default (fetch) => {
-	const client = fetch ? gFetch(fetch) : gFetch();
+export default () => {
+	const client = gFetch();
 
 	function checkIn(eventId, orderAllocationId, pinNumber) {
 		const variables = { eventId, orderAllocationId, pinNumber };

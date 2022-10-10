@@ -69,8 +69,8 @@ const QUERY_EVENT_REGISTRATIONS = `
 	}   
 `;
 
-export default (fetch) => {
-	const client = fetch ? gFetch(fetch) : gFetch();
+export default () => {
+	const client = gFetch();
 
 	function queryEventRegistrations(eventSlug) {
 		const variables = {

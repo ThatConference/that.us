@@ -31,8 +31,8 @@ export const QUERY_MY_SUBMISSIONS = `
 	}
 `;
 
-export default (fetch) => {
-	const client = fetch ? gFetch(fetch) : gFetch();
+export default () => {
+	const client = gFetch();
 
 	function queryMySubmissions() {
 		return client

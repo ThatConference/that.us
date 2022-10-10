@@ -1,7 +1,7 @@
 import sessionsApi from '$dataSources/api.that.tech/sessions';
 
-export async function load({ params, fetch }) {
-	const { querySessionsBySlug } = sessionsApi(fetch);
+export async function load({ params }) {
+	const { querySessionsBySlug } = sessionsApi();
 
 	const { state, year } = params;
 	const eventSlug = `${state}/${year}`;

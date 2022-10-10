@@ -297,8 +297,8 @@ export const QUERY_SESSION_BY_ID_SHORT = `
 	}
 `;
 
-export default (fetch) => {
-	const client = fetch ? gFetch(fetch) : gFetch();
+export default () => {
+	const client = gFetch();
 
 	const query = (graphQuery, variables) =>
 		client.query({ query: graphQuery, variables }).then(({ data, errors }) => {

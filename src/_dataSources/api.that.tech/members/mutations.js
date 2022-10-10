@@ -116,8 +116,8 @@ export const MUTATION_REQUEST_SLACK_INVITE = `
 	}
 `;
 
-export default (fetch) => {
-	const client = fetch ? gFetch(fetch) : gFetch();
+export default () => {
+	const client = gFetch();
 
 	function createProfile(profile) {
 		const variables = { profile };

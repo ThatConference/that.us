@@ -1,7 +1,7 @@
 import ordersApi from '$dataSources/api.that.tech/orders/queries';
 
-export async function load({ fetch }) {
-	const { queryMyBulkAllocations } = ordersApi(fetch);
+export async function load() {
+	const { queryMyBulkAllocations } = ordersApi();
 
 	const orders = await queryMyBulkAllocations();
 

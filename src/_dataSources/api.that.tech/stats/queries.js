@@ -16,8 +16,8 @@ export const QUERY_COMMUNITY_STATS = `
   }
 `;
 
-export default (fetch) => {
-	const client = fetch ? gFetch(fetch) : gFetch();
+export default () => {
+	const client = gFetch();
 
 	const queryCommunityStats = (slug = 'that') => {
 		const variables = { community: { slug } };
