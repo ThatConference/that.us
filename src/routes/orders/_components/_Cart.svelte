@@ -10,6 +10,7 @@
 	import { Standard as StandardLink } from '$elements/links';
 	import orderMutations from '$dataSources/api.that.tech/orders/mutations';
 	import CartItem from './_CartItem.svelte';
+	import { tagEvent } from '$utils/tagEvent';
 
 	const { state, send } = getContext('cart');
 
@@ -19,6 +20,8 @@
 			message: 'handle checkout called',
 			level: 'info'
 		});
+
+		Sentry.configureScope((scope) => scope.setTransactionName('Handle Checkout'));
 
 		const { eventId, cart } = $state.context;
 		Sentry.setContext('cart', cart);
@@ -32,8 +35,7 @@
 		Sentry.setContext('lineItems', lineItems);
 
 		if (!dev && browser) {
-			//track LinkedIn event
-			window.lintrk('track', { conversion_id: 6688825 });
+			tagEvent('redirect-stripe', 'checkout');
 		}
 
 		return orderMutations()
