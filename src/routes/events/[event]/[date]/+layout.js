@@ -1,10 +1,10 @@
 import eventsApi from '$dataSources/api.that.tech/events/queries';
 
-export async function load({ params, fetch }) {
+export async function load({ params }) {
 	const { event, date } = params;
 	const eventSlug = `${event}/${date}`;
 
-	const { queryEventWithSpeakersBySlug } = eventsApi(fetch);
+	const { queryEventWithSpeakersBySlug } = eventsApi();
 
 	return {
 		eventSlug,

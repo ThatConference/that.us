@@ -11,8 +11,8 @@ export const CREATE_NEWS_POST = `
   }
 `;
 
-export default (fetch) => {
-	const client = fetch ? gFetch(fetch) : gFetch();
+export default () => {
+	const client = gFetch();
 
 	function create({ url, description, tags }) {
 		const variables = {

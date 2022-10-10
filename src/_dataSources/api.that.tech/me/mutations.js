@@ -24,8 +24,8 @@ export const MUTATION_UPDATE_SHARED_PROFILE = `
 		}
 	}
 `;
-export default (fetch) => {
-	const client = fetch ? gFetch(fetch) : gFetch();
+export default () => {
+	const client = gFetch();
 
 	function updateSharedProfile(sharedProfile) {
 		const variables = { sharedProfile };

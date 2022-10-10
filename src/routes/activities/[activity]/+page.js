@@ -1,8 +1,8 @@
 import { error } from '@sveltejs/kit';
 import sessionsApi from '$dataSources/api.that.tech/sessions';
 
-export async function load({ params, fetch }) {
-	const { getById } = sessionsApi(fetch);
+export async function load({ params }) {
+	const { getById } = sessionsApi();
 
 	let activityId = params.activity;
 

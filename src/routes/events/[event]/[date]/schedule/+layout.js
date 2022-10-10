@@ -1,7 +1,7 @@
 import sessionsApi from '$dataSources/api.that.tech/sessions';
 
-export async function load({ parent, fetch }) {
-	const { querySessionsBySlug } = sessionsApi(fetch);
+export async function load({ parent }) {
+	const { querySessionsBySlug } = sessionsApi();
 
 	let { eventSlug } = await parent();
 	const sessions = await querySessionsBySlug({ slug: eventSlug, pageSize: 250 });

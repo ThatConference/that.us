@@ -55,8 +55,8 @@ export const QUERY_MY_FAVORITES = `
   }
 `;
 
-export default (fetch) => {
-	const client = fetch ? gFetch(fetch) : gFetch();
+export default () => {
+	const client = gFetch();
 
 	const favoritesStore = writable([]);
 

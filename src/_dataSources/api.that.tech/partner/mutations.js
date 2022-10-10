@@ -13,8 +13,8 @@ export const MUTATION_FOLLOW_PARTNER_TOGGLE = `
   }
 `;
 
-export default (fetch) => {
-	const client = fetch ? gFetch(fetch) : gFetch();
+export default () => {
+	const client = gFetch();
 
 	function toggleFollow(partnerId) {
 		const variables = { partnerId };

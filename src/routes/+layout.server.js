@@ -9,7 +9,7 @@ const body = {
 	variables: {}
 };
 
-async function queryMe(fetch, accessToken) {
+async function queryMe(accessToken) {
 	return await fetch(config.api.direct, {
 		method: 'POST',
 		headers: {
@@ -24,7 +24,7 @@ async function queryMe(fetch, accessToken) {
 		.then((results) => results.data.members?.me);
 }
 
-export async function load({ fetch, request }) {
+export async function load({ request }) {
 	const auth0Session = await auth0.getSession(request);
 
 	let user = {
@@ -35,7 +35,7 @@ export async function load({ fetch, request }) {
 	};
 
 	if (user.isAuthenticated) {
-		user.profile = await queryMe(fetch, user.accessToken);
+		user.profile = await queryMe(user.accessToken);
 	}
 
 	return {

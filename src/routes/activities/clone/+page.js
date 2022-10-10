@@ -53,9 +53,9 @@ function transformEvents(allEvents, eventId, isBackdoor) {
 }
 
 export const load = auth0.withPageAuthRequired({
-	load: async function load({ url, fetch }) {
-		const { queryEventsByCommunity } = eventsApi(fetch);
-		const { queryMySessionById } = sessionsQueryApi(fetch);
+	load: async function load({ url }) {
+		const { queryEventsByCommunity } = eventsApi();
+		const { queryMySessionById } = sessionsQueryApi();
 
 		const activityId = url.searchParams.get('id') || null;
 		if (!activityId) {
