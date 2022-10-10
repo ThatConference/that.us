@@ -8,7 +8,10 @@ import config from '$utils/config.public';
 
 function init() {
 	let _cacheApiUrl = config.api.cache;
-	let _fetch = fetchRetry(isoFetch);
+	let _fetch = fetchRetry(isoFetch, {
+		retries: 5,
+		retryDelay: 800
+	});
 
 	let headers = {
 		credentials: 'include',
@@ -32,13 +35,13 @@ function init() {
 			Sentry.captureException(error);
 		}
 
-		if (error !== null || response.status >= 400) {
+		if (response || response?.status >= 400) {
 			Sentry.captureMessage(
-				`retrying fetch, attempt number ${attempt + 1}, response.status ${response.status}`
+				`retrying fetch, attempt number ${attempt + 1}, response.status ${response?.status}`
 			);
-
-			return attempt <= 5 ? true : false;
 		}
+
+		return attempt <= 5 ? true : false;
 	}
 
 	function query({ query, variables = {} }) {
@@ -93,7 +96,7 @@ function init() {
 				return r;
 			})
 			.catch((error) => {
-				console.error('api query error:', error);
+				console.error('api secure query error:', error);
 				Sentry.captureException(error);
 			});
 	}
@@ -125,7 +128,7 @@ function init() {
 				return r;
 			})
 			.catch((error) => {
-				console.error('api query error:', error);
+				console.error('api mutation error:', error);
 				Sentry.captureException(error);
 			});
 	}
