@@ -8,10 +8,7 @@ import config from '$utils/config.public';
 
 function init() {
 	let _cacheApiUrl = config.api.cache;
-	let _fetch = fetchRetry(isoFetch, {
-		retries: 5,
-		retryDelay: 800
-	});
+	let _fetch = fetchRetry(isoFetch);
 
 	let headers = {
 		credentials: 'include',
@@ -39,9 +36,8 @@ function init() {
 			Sentry.captureMessage(
 				`retrying fetch, attempt number ${attempt + 1}, response.status ${response?.status}`
 			);
+			return attempt <= 5 ? true : false;
 		}
-
-		return attempt <= 5 ? true : false;
 	}
 
 	function query({ query, variables = {} }) {

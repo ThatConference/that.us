@@ -6,6 +6,7 @@ export async function load({ params, parent }) {
 	const { queryMeFollowingMembers } = meQueryApi();
 
 	let { member } = params;
+
 	let { user } = await parent();
 
 	let [profile, followers, myFollowers = []] = await (async () => {
