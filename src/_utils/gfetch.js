@@ -32,7 +32,7 @@ function init() {
 			Sentry.captureException(error);
 		}
 
-		if (response || response?.status >= 400) {
+		if (response?.status >= 400) {
 			Sentry.captureMessage(
 				`retrying fetch, attempt number ${attempt + 1}, response.status ${response?.status}`
 			);
