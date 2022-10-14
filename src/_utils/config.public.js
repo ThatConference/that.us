@@ -8,7 +8,7 @@ function configMissing(configKey) {
 export default {
 	hostURL: env.PUBLIC_HOST_URL || 'https://that.us',
 	nodeEnv: env.NODE_ENV,
-	version: '3.0.3',
+	version: '3.0.4',
 	eventId: 'YWavA70szR8rxSwrLJaL',
 	eventSlug: 'thatus/daily',
 	api: {
