@@ -49,8 +49,8 @@ export const QUERY_MY_ORDERS = `
 	}
 `;
 
-export default () => {
-	const client = gFetch();
+export default (fetch) => {
+	const client = fetch ? gFetch(fetch) : gFetch();
 
 	function queryMyAcceptedSpeaker(eventSlug) {
 		const variables = { eventSlug };

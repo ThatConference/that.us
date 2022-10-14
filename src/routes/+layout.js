@@ -48,7 +48,7 @@ if (debug.xstate && browser) {
 	});
 }
 
-export async function load({ data }) {
+export async function load({ data, fetch }) {
 	const { queryDropDownValues } = coreQueryApi(fetch);
 	const dropDownKeyValuePairs = await queryDropDownValues();
 

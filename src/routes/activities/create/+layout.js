@@ -52,8 +52,8 @@ function transformEvents(allEvents, eventId, isBackdoor) {
 }
 
 export const load = auth0.withPageAuthRequired({
-	load: async function load({ url }) {
-		const { queryEventsByCommunity } = eventsApi();
+	load: async function load({ url, fetch }) {
+		const { queryEventsByCommunity } = eventsApi(fetch);
 
 		const isBackdoor =
 			url.pathname === '/activities/create/backdoor/' ||

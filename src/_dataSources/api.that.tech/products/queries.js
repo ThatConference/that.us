@@ -29,8 +29,8 @@ export const QUERY_EVENT_PRODUCTS = `
 	}
 `;
 
-export default () => {
-	const client = gFetch();
+export default (fetch) => {
+	const client = fetch ? gFetch(fetch) : gFetch();
 
 	function queryProductsByEvent(eventId) {
 		const variables = { eventId };

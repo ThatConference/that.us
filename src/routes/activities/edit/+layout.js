@@ -36,11 +36,11 @@ function transformEvents(allEvents, eventId, isBackdoor) {
 }
 
 export const load = auth0.withPageAuthRequired({
-	load: async function load({ params }) {
+	load: async function load({ params, fetch }) {
 		const { activityId } = params;
 
-		const { queryEventsByCommunity } = eventsApi();
-		const { queryMySessionById } = sessionsQueryApi();
+		const { queryEventsByCommunity } = eventsApi(fetch);
+		const { queryMySessionById } = sessionsQueryApi(fetch);
 
 		const [activityDetails, events] = await Promise.all([
 			queryMySessionById(activityId),

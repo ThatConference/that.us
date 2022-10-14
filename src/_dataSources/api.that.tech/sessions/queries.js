@@ -93,8 +93,8 @@ export const QUERY_MY_SESSION_BY_ID = `
 	}
 `;
 
-export default () => {
-	const client = gFetch();
+export default (fetch) => {
+	const client = fetch ? gFetch(fetch) : gFetch();
 
 	function queryMySessionById(sessionId) {
 		const variables = { sessionId };

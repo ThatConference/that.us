@@ -14,8 +14,8 @@ export const MUTATION_FOLLOW_COMMUNITY_TOGGLE = `
   }
 `;
 
-export default () => {
-	const client = gFetch();
+export default (fetch) => {
+	const client = fetch ? gFetch(fetch) : gFetch();
 
 	function toggleFollow(communityId) {
 		const variables = { communityId };

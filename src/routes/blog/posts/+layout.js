@@ -2,9 +2,9 @@ import { error } from '@sveltejs/kit';
 import { getPosts } from '$blog/getPosts';
 import membersQueryApi from '$dataSources/api.that.tech/members/queries';
 
-export async function load({ params }) {
+export async function load({ params, fetch }) {
 	const { slug } = params;
-	const { queryBlogAuthorBySlug } = membersQueryApi();
+	const { queryBlogAuthorBySlug } = membersQueryApi(fetch);
 
 	const post = getPosts().find((post) => slug === post.metadata.slug);
 	const author = await queryBlogAuthorBySlug(post.metadata.authorSlug);

@@ -169,8 +169,8 @@ export const QUERY_MY_BULK_ALLOCATIONS_NEXT = `
 	}
 `;
 
-export default () => {
-	const client = gFetch();
+export default (fetch) => {
+	const client = fetch ? gFetch(fetch) : gFetch();
 
 	function queryMyOrders(pageSize = defaultPageSize) {
 		const variables = {

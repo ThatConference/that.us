@@ -213,8 +213,8 @@ function mapUpdateMutation(type) {
 	return mutation;
 }
 
-export default () => {
-	const client = gFetch();
+export default (fetch) => {
+	const client = fetch ? gFetch(fetch) : gFetch();
 
 	function createSession(eventId, sessionType, session) {
 		const variables = { eventId, session };

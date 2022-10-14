@@ -3,9 +3,9 @@ import meApi from '$dataSources/api.that.tech/me';
 
 const { isNil, isEmpty } = lodash;
 
-export async function load({ parent }) {
-	const { queryMe } = meApi();
-	const me = await queryMe();
+export async function load({ parent, fetch }) {
+	const { queryMe } = meApi(fetch);
+	const me = await queryMe(fetch);
 
 	let isNewProfile, currentProfile;
 	let { user } = await parent();

@@ -93,8 +93,8 @@ function logResult(results, mutation) {
 	}
 }
 
-export default () => {
-	const client = gFetch();
+export default (fetch) => {
+	const client = fetch ? gFetch(fetch) : gFetch();
 
 	function acceptInvitation({ eventSlug, agreeToSpeak, reason = undefined }) {
 		const variables = { eventSlug, agreeToSpeak, reason };

@@ -1,8 +1,8 @@
 import { getPosts } from '$blog/getPosts';
 import membersQueryApi from '$dataSources/api.that.tech/members/queries';
 
-export async function load() {
-	const { queryBlogAuthorBySlug } = membersQueryApi();
+export async function load({ fetch }) {
+	const { queryBlogAuthorBySlug } = membersQueryApi(fetch);
 	const rawPosts = getPosts();
 
 	let posts = await Promise.all(

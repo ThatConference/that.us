@@ -1,10 +1,10 @@
 import lodash from 'lodash';
 import partnerQueryApi from '$dataSources/api.that.tech/partner/queries';
 
-export async function load({ params }) {
+export async function load({ params, fetch }) {
 	const { groupBy } = lodash;
 	const { state, year } = params;
-	const { getEventPartners } = partnerQueryApi();
+	const { getEventPartners } = partnerQueryApi(fetch);
 
 	const eventSlug = `${state}/${year}`;
 

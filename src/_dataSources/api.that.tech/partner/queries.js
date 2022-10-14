@@ -284,8 +284,8 @@ function createSocialLinks(partner) {
 	return socialLinks;
 }
 
-export default () => {
-	const client = gFetch();
+export default (fetch) => {
+	const client = fetch ? gFetch(fetch) : gFetch();
 
 	const getPartner = (slug) => {
 		const variables = { slug };

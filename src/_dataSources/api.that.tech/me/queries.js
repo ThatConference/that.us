@@ -93,8 +93,8 @@ export const QUERY_ME_EMERGENCY_CONTACT = `
   }
 `;
 
-export default () => {
-	const client = gFetch();
+export default (fetch) => {
+	const client = fetch ? gFetch(fetch) : gFetch();
 
 	const queryMeFollowingCommunities = () => {
 		const variables = {};
