@@ -4,8 +4,8 @@ import { sortBy } from 'lodash';
 import partnerNetworkApi from '$dataSources/api.that.tech/partner/leads/queries';
 
 export const load = auth0.withPageAuthRequired({
-	load: async function load() {
-		const { queryMyNetwork } = partnerNetworkApi();
+	load: async function load({ fetch }) {
+		const { queryMyNetwork } = partnerNetworkApi(fetch);
 
 		const contacts = await queryMyNetwork()
 			.then((c) => c.filter((c) => c !== null))

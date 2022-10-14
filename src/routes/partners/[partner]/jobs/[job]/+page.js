@@ -1,8 +1,8 @@
 import partnerQueryApi from '$dataSources/api.that.tech/partner/queries';
 
-export async function load({ params }) {
+export async function load({ params, fetch }) {
 	const { partner, job } = params;
-	const { queryPartnerJobListing } = partnerQueryApi();
+	const { queryPartnerJobListing } = partnerQueryApi(fetch);
 
 	return {
 		job,

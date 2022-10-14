@@ -4,9 +4,9 @@ import eventsApi from '$dataSources/api.that.tech/events/queries';
 
 const { sortBy, take, drop } = lodash;
 
-export async function load() {
+export async function load({ fetch }) {
 	const queryEvents = () =>
-		eventsApi()
+		eventsApi(fetch)
 			.queryEventsByCommunity()
 			.then((r) => sortBy(r, 'endDate').reverse())
 			.then((r) => {

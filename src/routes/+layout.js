@@ -22,8 +22,8 @@ if (!dev) {
 
 	Sentry.init({
 		dsn: logging.dsn,
-		dist: 'that-us:3.0.3',
-		release: 'that-us:3.0.3',
+		dist: 'that-us:3.0.4',
+		release: 'that-us:3.0.4',
 		environment: logging.environment,
 		debug: false,
 		attachStacktrace: true,
@@ -48,7 +48,7 @@ if (debug.xstate && browser) {
 	});
 }
 
-export async function load({ data }) {
+export async function load({ data, fetch }) {
 	const { queryDropDownValues } = coreQueryApi(fetch);
 	const dropDownKeyValuePairs = await queryDropDownValues();
 

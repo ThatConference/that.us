@@ -84,8 +84,8 @@ export const QUERY_DROPDOWN_VALUES = `
 	}
 `;
 
-export default () => {
-	const client = gFetch();
+export default (fetch) => {
+	const client = fetch ? gFetch(fetch) : gFetch();
 
 	function queryDropDownValues() {
 		const variables = {};

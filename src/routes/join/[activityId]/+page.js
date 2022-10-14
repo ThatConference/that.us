@@ -2,11 +2,11 @@ import { redirect } from '@sveltejs/kit';
 import sessionsApi from '$dataSources/api.that.tech/sessions';
 import eventsApi from '$dataSources/api.that.tech/events/queries';
 
-export async function load({ params }) {
+export async function load({ params, fetch }) {
 	const { activityId } = params;
 
-	const { querySessionById } = sessionsApi();
-	const { canAccessEvent } = eventsApi();
+	const { querySessionById } = sessionsApi(fetch);
+	const { canAccessEvent } = eventsApi(fetch);
 
 	const activityDetails = await querySessionById(activityId);
 

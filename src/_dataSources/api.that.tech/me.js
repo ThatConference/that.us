@@ -41,8 +41,8 @@ export const QUERY_ME = `
 		}
 `;
 
-export default () => {
-	const client = gFetch();
+export default (fetch) => {
+	const client = fetch ? gFetch(fetch) : gFetch();
 
 	const queryMe = () =>
 		client.secureQuery({ query: QUERY_ME }).then(({ data, errors }) => {

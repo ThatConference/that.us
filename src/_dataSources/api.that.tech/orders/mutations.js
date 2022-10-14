@@ -73,8 +73,8 @@ export const MUTATION_CLAIM_TICKET = `
 	}
 `;
 
-export default () => {
-	const client = gFetch();
+export default (fetch) => {
+	const client = fetch ? gFetch(fetch) : gFetch();
 
 	function createCheckoutSession(eventId, lineItems) {
 		const variables = {

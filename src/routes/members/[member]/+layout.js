@@ -1,9 +1,9 @@
 import memberQueryApi from '$dataSources/api.that.tech/members/queries';
 import meQueryApi from '$dataSources/api.that.tech/me/queries';
 
-export async function load({ params, parent }) {
-	const { queryMemberBySlug, queryFollowers } = memberQueryApi();
-	const { queryMeFollowingMembers } = meQueryApi();
+export async function load({ params, parent, fetch }) {
+	const { queryMemberBySlug, queryFollowers } = memberQueryApi(fetch);
+	const { queryMeFollowingMembers } = meQueryApi(fetch);
 
 	let { member } = params;
 

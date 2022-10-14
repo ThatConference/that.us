@@ -146,8 +146,8 @@ export const QUERY_ACTIVE_THAT_EVENTS = `
 	}
 `;
 
-export default () => {
-	const client = gFetch();
+export default (fetch) => {
+	const client = fetch ? gFetch(fetch) : gFetch();
 
 	const queryAllCommunities = () =>
 		client.query({ query: QUERY_ALL_COMMUNITIES }).then(({ data, errors }) => {

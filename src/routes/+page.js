@@ -7,12 +7,12 @@ import communityQueryApi from '$dataSources/api.that.tech/community/queries';
 //blog
 import { getPosts } from '$blog/getPosts';
 
-export async function load() {
-	const { queryActiveThatEvents } = communityQueryApi();
-	const { queryMembers, queryBlogAuthorBySlug } = membersApi();
-	const { queryEventsByCommunity } = eventsApi();
-	const { queryCommunityStats } = statsApi();
-	const { querySessionsByDate } = sessionsApi();
+export async function load({ fetch }) {
+	const { queryActiveThatEvents } = communityQueryApi(fetch);
+	const { queryMembers, queryBlogAuthorBySlug } = membersApi(fetch);
+	const { queryEventsByCommunity } = eventsApi(fetch);
+	const { queryCommunityStats } = statsApi(fetch);
+	const { querySessionsByDate } = sessionsApi(fetch);
 
 	const rawPosts = getPosts({ limit: 6 });
 

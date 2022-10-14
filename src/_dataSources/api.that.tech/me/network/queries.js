@@ -46,8 +46,8 @@ const QUERY_MY_NETWORK_SPONSORS = `
 	}   
 `;
 
-export default () => {
-	const client = gFetch();
+export default (fetch) => {
+	const client = fetch ? gFetch(fetch) : gFetch();
 
 	function queryMySponsorNetwork() {
 		const variables = {};
