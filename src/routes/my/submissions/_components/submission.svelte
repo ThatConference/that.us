@@ -45,16 +45,24 @@
 							</p>
 							<p class="mt-2 flex items-start text-sm text-gray-500">
 								{#if ['WITHDREW', 'CANCELLED'].includes(activity.status)}
-									<Ban classes="mr-1.5 h-5 w-5" />
+									<div class="flex items-center">
+										<Ban classes="mr-1.5 h-5 w-5" />
+										<span>{activity.status}</span>
+									</div>
 								{:else if activity.status === 'ACCEPTED'}
 									<span
 										class="mr-1.5 flex h-5 w-5 items-center justify-center rounded-full bg-green-400 ring-8 ring-white">
 										<CheckFull />
 									</span>
+									<span>{activity.status}</span>
 								{:else}
-									<Warning classes="mr-1.5 h-5 w-5" />
+									<div>
+										<div class="flex items-center">
+											<Warning classes="text-yellow-500 mr-1.5 h-5 w-5" />
+											<span>PENDING REVIEW</span>
+										</div>
+									</div>
 								{/if}
-								{activity.status}
 							</p>
 						</div>
 					</div>
