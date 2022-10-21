@@ -5,21 +5,19 @@ export async function load({ params, parent, fetch }) {
 	const { queryMemberBySlug, queryFollowers } = memberQueryApi(fetch);
 	const { queryMeFollowingMembers } = meQueryApi(fetch);
 
+	let { user } = await parent();
 	let { member } = params;
 
-	let { user } = await parent();
-
-	let [profile, followers, myFollowers = []] = await (async () => {
+	function getQueries(member) {
 		if (user.isAuthenticated) {
-			return await Promise.all([
-				queryMemberBySlug(member),
-				queryFollowers(member),
-				queryMeFollowingMembers()
-			]);
+			return [queryMemberBySlug(member), queryFollowers(member), queryMeFollowingMembers()];
 		} else {
-			return await Promise.all([queryMemberBySlug(member), queryFollowers(member)]);
+			return [queryMemberBySlug(member), queryFollowers(member)];
 		}
-	})();
+	}
+	let queries = getQueries(member);
+
+	let [profile, followers, myFollowers = []] = await Promise.all(queries);
 
 	return {
 		memberSlug: member,
