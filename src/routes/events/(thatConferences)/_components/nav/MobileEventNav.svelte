@@ -28,7 +28,7 @@
 	<div class="mx-8 flex items-center justify-between">
 		<!-- logo -->
 		<div class="cursor">
-			<a data-sveltekit-prefetch href="/that-conference">
+			<a href="/that-conference">
 				<img class="h-16" src="/images/ThatConferenceLogo.svg" alt="THAT Logo" />
 			</a>
 		</div>

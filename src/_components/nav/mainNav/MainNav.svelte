@@ -67,7 +67,7 @@
 			<nav class="relative flex items-center justify-between sm:h-10 lg:justify-start">
 				<div class="flex flex-shrink-0 flex-grow items-center lg:flex-grow-0">
 					<div class="flex w-full items-center justify-between lg:w-auto">
-						<a data-sveltekit-prefetch href="/" aria-label="Home">
+						<a href="/" aria-label="Home">
 							<img class="h-8 w-auto sm:h-10" src="/images/THAT-Full-Wide.svg" alt="THAT Logo" />
 						</a>
 						<div class="-mr-2 flex items-center lg:hidden">

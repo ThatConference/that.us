@@ -24,7 +24,7 @@
 
 <div class="relative flex items-center">
 	<div class="flex-shrink-0">
-		<a data-sveltekit-prefetch href="/">
+		<a href="/">
 			<img class="h-10" src="/images/THAT-Full-Wide-White.svg" alt="THAT Logo" />
 		</a>
 	</div>
@@ -32,7 +32,6 @@
 	<div class="hidden lg:block">
 		<div class="ml-8 flex items-baseline">
 			<a
-				data-sveltekit-prefetch
 				href="/events/"
 				class="ml-1 rounded-md px-3 py-2 text-sm font-medium text-gray-300
           hover:bg-that-blue hover:text-white focus:bg-that-blue
@@ -41,7 +40,6 @@
 			</a>
 
 			<a
-				data-sveltekit-prefetch
 				href="/activities/"
 				class="ml-1 rounded-md px-3 py-2 text-sm font-medium text-gray-300
           hover:bg-that-blue hover:text-white focus:bg-that-blue
@@ -50,7 +48,6 @@
 			</a>
 
 			<a
-				data-sveltekit-prefetch
 				href="/members/"
 				class="ml-1 rounded-md px-3 py-2 text-sm font-medium text-gray-300
           hover:bg-that-blue hover:text-white focus:bg-that-blue
@@ -59,7 +56,6 @@
 			</a>
 
 			<a
-				data-sveltekit-prefetch
 				href="/communities/"
 				class="ml-1 rounded-md px-3 py-2 text-sm font-medium text-gray-300
           hover:bg-that-blue hover:text-white focus:bg-that-blue
@@ -68,7 +64,6 @@
 			</a>
 
 			<a
-				data-sveltekit-prefetch
 				href="/partners/"
 				class="ml-1 rounded-md px-3 py-2 text-sm font-medium text-gray-300
           hover:bg-that-blue hover:text-white focus:bg-that-blue
@@ -77,7 +72,6 @@
 			</a>
 
 			<a
-				data-sveltekit-prefetch
 				href="/blog/"
 				class="ml-1 rounded-md px-3 py-2 text-sm font-medium text-gray-300
           hover:bg-that-blue hover:text-white focus:bg-that-blue

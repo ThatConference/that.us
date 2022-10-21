@@ -18,7 +18,6 @@
 	<div class="md:ml-10 md:flex md:pr-4">
 		{#each links as l}
 			<a
-				data-sveltekit-prefetch
 				href={l.href}
 				class="ml-1 rounded-md px-3 py-2 text-sm font-medium  text-gray-500
         transition duration-150 ease-in-out hover:bg-that-blue
