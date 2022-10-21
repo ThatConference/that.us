@@ -44,7 +44,7 @@
 									>{dayjs(activity.createdAt).format('MMMM D, YYYY')}</time>
 							</p>
 							<p class="mt-2 flex items-start text-sm text-gray-500">
-								{#if ['WITHDREW', 'CANCELLED'].includes(activity.status)}
+								{#if ['NOT_ACCEPTED', 'WITHDREW', 'CANCELLED'].includes(activity.status)}
 									<div class="flex items-center">
 										<Ban classes="mr-1.5 h-5 w-5" />
 										<span>{activity.status}</span>
