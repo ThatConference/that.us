@@ -201,7 +201,7 @@
 								</ul>
 								<div class="mt-10">
 									<div class="flex flex-col">
-										<HighlightButton on:click={() => handleAddToCart('EVERYTHING_CAMPER')}>
+										<HighlightButton on:click={() => handleAddToCart('CAMPER')}>
 											Purchase
 										</HighlightButton>
 									</div>
