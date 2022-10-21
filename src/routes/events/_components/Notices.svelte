@@ -1,7 +1,5 @@
 <script>
-	import { page } from '$app/stores';
-
-	const { event } = $page.params;
+	export let event;
 </script>
 
 <div id="special-offers" class="relative mt-40">

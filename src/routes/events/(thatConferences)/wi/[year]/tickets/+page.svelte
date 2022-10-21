@@ -35,7 +35,7 @@
 
 <section id="professionals">
 	<Professional {event} />
-	<Notices />
+	<Notices event="wi" />
 </section>
 
 <section id="workshops">

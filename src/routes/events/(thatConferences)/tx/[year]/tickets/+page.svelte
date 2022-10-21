@@ -38,7 +38,7 @@
 </section>
 
 <section>
-	<Notices />
+	<Notices event="tx" />
 </section>
 
 <!-- <section id="workshops">
