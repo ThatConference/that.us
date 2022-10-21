@@ -51,7 +51,11 @@
 								class="transform cursor-pointer transition duration-500 ease-in-out hover:scale-110">
 								<div
 									class="flex h-24 w-24 flex-col items-center justify-center rounded-full bg-thatBlue-700 p-4">
-									<a href={s.href} aria-label={s.ariaLabel} target="_blank" rel="noopener">
+									<a
+										href={s.href}
+										aria-label={s.ariaLabel}
+										target="_blank"
+										rel="external noopener noreferrer">
 										<Social {...s} />
 									</a>
 								</div>

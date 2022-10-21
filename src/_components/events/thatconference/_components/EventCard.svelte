@@ -3,6 +3,9 @@
 	import { Action as ActionLink } from '$elements/links';
 
 	import dayjs from 'dayjs';
+	import isSameOrAfter from 'dayjs/plugin/isSameOrAfter.js';
+
+	dayjs.extend(isSameOrAfter);
 </script>
 
 <div class="flex flex-col justify-center">
@@ -32,9 +35,19 @@
 						</div>
 
 						<div class="pt-2 text-base font-bold leading-6 sm:text-lg sm:leading-7">
-							<span class="font-extrabold text-that-red">Tickets are on sale.</span>
+							{#if dayjs().isSameOrAfter(dayjs(event.ticketsOnSaleFrom))}
+								<p class="font-extrabold text-that-red">
+									<a href={`/events/${event.slug}/tickets`} class="hover:text-thatBlue-500">
+										Tickets on sale now!
+									</a>
+								</p>
+							{:else}
+								<p class="font-extrabold text-that-red">
+									<a href={`/cfp`} class="hover:text-thatBlue-500"> Submit to Speak </a>
+								</p>
+							{/if}
 							<p>
-								<a href={`/activities/${event.slug}`} class="hover:text-thatBlue-700">
+								<a href={`/events/${event.slug}/schedule`} class="hover:text-thatBlue-500">
 									See the full schedule &rarr;
 								</a>
 							</p>

@@ -49,7 +49,6 @@
 								>. Still having issues, then please ask us in chat, or email us at
 								<a
 									href="mailto:hello@that.us?subject=Account Verification Problem"
-									rel="noopener"
 									target="_blank"
 									class="text-thatOrange-400 hover:text-thatOrange-500 hover:underline"
 									>hello@that.us</a

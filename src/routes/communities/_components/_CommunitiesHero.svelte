@@ -16,7 +16,7 @@
 		us at
 		<a
 			href="mailto:hello@that.us?subject=Adding a new community to THAT.us"
-			rel="noopener"
+			rel="external noopener"
 			target="_blank"
 			class="text-thatOrange-400 hover:text-thatOrange-500 hover:underline">hello@that.us</a
 		>.

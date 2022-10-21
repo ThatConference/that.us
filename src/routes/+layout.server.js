@@ -24,7 +24,7 @@ async function queryMe(accessToken) {
 		.then((results) => results.data.members?.me);
 }
 
-export async function load({ request }) {
+export async function load({ request, locals }) {
 	const auth0Session = await auth0.getSession(request);
 
 	let user = {
@@ -37,6 +37,8 @@ export async function load({ request }) {
 	if (user.isAuthenticated) {
 		user.profile = await queryMe(user.accessToken);
 	}
+
+	locals.user = user;
 
 	return {
 		user

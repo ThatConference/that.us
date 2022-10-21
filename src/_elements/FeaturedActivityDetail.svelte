@@ -27,6 +27,7 @@
 		<div class="flex h-full w-full flex-col space-y-4 text-white">
 			<h1 class="text-lg font-semibold tracking-tight">{title}</h1>
 
+			<!-- svelte-ignore a11y-click-events-have-key-events -->
 			<div
 				class="flex-grow"
 				class:cursor-pointer={isLongerThan(shortDescription, 25)}

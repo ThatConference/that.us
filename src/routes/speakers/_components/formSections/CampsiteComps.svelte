@@ -33,8 +33,11 @@
 				<span>{venue.city}, {venue.state} {venue.zip}</span>
 			</div>
 			<div>
-				<a target="_blank" class="hover" href="https://www.kalahariresorts.com/"
-					>https://www.kalahariresorts.com</a>
+				<a
+					target="_blank"
+					rel="external noopener"
+					class="hover"
+					href="https://www.kalahariresorts.com/">https://www.kalahariresorts.com</a>
 			</div>
 		</div>
 	</div>
@@ -52,7 +55,11 @@
 		<span class="font-extrabold uppercase">now</span>
 		by heading over to the counselor's Kalahari registration link at
 
-		<a class="hover" target="_blank" href={kalahari.speakerPasskey[eventDetails.slug].bookingUrl}>
+		<a
+			class="hover"
+			target="_blank"
+			rel="external noopener"
+			href={kalahari.speakerPasskey[eventDetails.slug].bookingUrl}>
 			{kalahari.speakerPasskey[eventDetails.slug].bookingUrl}
 		</a>
 

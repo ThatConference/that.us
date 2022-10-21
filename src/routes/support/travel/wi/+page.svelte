@@ -215,7 +215,8 @@
 					<p>
 						There is an Amtrak station in Wisconsin Dells as another travel option. Check the <a
 							href="https://www.amtrak.com/stations/wdl"
-							target="_blank">Amtrak</a> website for train schedule and pricing.
+							target="_blank"
+							rel="external noopener noreferrer">Amtrak</a> website for train schedule and pricing.
 					</p>
 					<blockquote>
 						Wisconsin Dells (WDL)<br />

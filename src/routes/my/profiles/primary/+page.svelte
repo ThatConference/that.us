@@ -13,27 +13,20 @@
 	let { currentProfile, isNewProfile } = data;
 	const { createProfile, updateProfile } = memberApi();
 
-	function updateSession(profile) {
-		console.log('todo fix update session store', profile);
-		//todo... CRITICAL WTF
-		// session.update((s) => {
-		// 	return {
-		// 		...s,
-		// 		thatProfile: profile
-		// 	};
-		// });
-	}
+	/* todo
+		before the last kit upgrade we had update the svelte session store. now there isn't a session store.
+		this feels broken expecially on new profiles.
+	*/
 
 	async function handleNew({ detail: { values, setSubmitting, resetForm } }) {
-		const updatedThatProfile = await createProfile({ profileLinks: [], ...values });
-
-		updateSession(updatedThatProfile);
+		setSubmitting(true);
+		await createProfile({ profileLinks: [], ...values });
 
 		tagEvent('created', 'profile');
 
 		setSubmitting(false);
 		resetForm();
-		goto(`/activities`);
+		goto(`/`);
 	}
 
 	async function handleUpdate({ detail: { values, setSubmitting, resetForm } }) {
@@ -48,15 +41,14 @@
 		delete updatedProfile.acceptedCodeOfConduct;
 		delete updatedProfile.acceptedTermsOfService;
 
-		const updatedThatProfile = await updateProfile(updatedProfile);
-
-		updateSession(updatedThatProfile);
+		setSubmitting(true);
+		await updateProfile(updatedProfile);
 
 		tagEvent('update', 'profile');
-
 		setSubmitting(false);
 		resetForm();
-		goto(`/activities`);
+
+		goto(`/`);
 	}
 
 	const metaTags = ((title = 'My Profile - THAT') => ({

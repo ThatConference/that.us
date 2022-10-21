@@ -7,7 +7,6 @@ import mdsvexConfig from './mdsvex.config.js';
 
 //todo this needs to get checked on the build rigs
 const dev = process.env.NODE_ENV === 'development' ? true : false;
-console.log('process.env.NODE_ENV === development', dev);
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {

@@ -23,13 +23,13 @@
 				Subscribe Today
 			</h2>
 			{#if !submitted}
-				<p class="prose prose-lg mt-3 max-w-3xl text-gray-500">
+				<p class="prose-lg prose mt-3 max-w-3xl text-gray-500">
 					Another list? We know you're busy enough just trying to get your product shipped. We also
 					don't want to become more noise for you. We don't email much, honestly, we're busy too,
 					but when we do it's to make sure you stay in the know.
 				</p>
 			{:else}
-				<p class="prose prose-lg mt-3 max-w-3xl text-gray-500">
+				<p class="prose-lg prose mt-3 max-w-3xl text-gray-500">
 					Thank you for signing up. Welcome to THAT family.
 				</p>
 				<p class="mt-3 text-sm leading-5 text-gray-500">

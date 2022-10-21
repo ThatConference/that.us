@@ -17,7 +17,10 @@
 
 	<div class="flex flex-col items-center justify-center">
 		<div class="pt-24">
-			<a href="https://www.youtube.com/watch?v=_aO4uBrJGFU" target="_blank">
+			<a
+				href="https://www.youtube.com/watch?v=_aO4uBrJGFU"
+				target="_blank"
+				rel="external noopener noreferrer">
 				<div
 					class="transform rounded-lg border-2 border-thatBlue-400 py-6 px-12 transition duration-500 ease-in-out hover:scale-105">
 					<div class="flex space-x-4">

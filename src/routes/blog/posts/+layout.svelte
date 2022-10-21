@@ -103,7 +103,7 @@
 				</div>
 
 				<div class="mx-auto max-w-prose">
-					<div class="prose prose-lg text-gray-500">
+					<div class="prose-lg prose text-gray-500">
 						<slot />
 					</div>
 				</div>

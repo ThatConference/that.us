@@ -15,7 +15,7 @@ This is an ongoing process. We talk to various innovators, experts, and organiza
 
 - Forward our call for proposals to relevant affinity groups with the message that we are looking for a diverse speaker roster.
 - Suggest to potential Counselors (Speakers) that they submit a proposal during our Call for Counselors phase.
-- Organize community-based public speaking trainings and practice events - <a href="http://www.ignitetalks.io" target="_blank">Ignite</a> is one popular format.
+- Organize community-based public speaking trainings and practice events - <a href="http://www.ignitetalks.io" target="_blank" rel="external noopener">Ignite</a> is one popular format.
 - Suggest ways that the onsite conference experience can be more welcoming and supportive, free from intimidation and marginalization (some great resources exist on [Ashe Dryden’s blog](http://ashedryden.com/blog/increasing-diversity-at-your-conference))
 
 Share your ideas and best practices for how we can realize our vision (send an email to [Hello@THATConference.com](mailto:Hello@THATConference.com))

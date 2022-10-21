@@ -101,8 +101,8 @@
 
 	<p class="prose prose-xl mt-4 text-gray-500">
 		You can update your session with any pointers to resources, etc. Just log in to
-		<a class="hover" target="_blank" href="https://that.us/my/submissions/"
-			>https://that.us/my/submissions/</a> and feel free to update.
+		<a class="hover" target="_blank" href="/my/submissions/">https://that.us/my/submissions/</a> and
+		feel free to update.
 	</p>
 </div>
 

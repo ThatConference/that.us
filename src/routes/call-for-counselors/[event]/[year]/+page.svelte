@@ -31,9 +31,18 @@
 <div class="overflow-hidden py-20">
 	<div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 		<div class="lg:grid lg:grid-cols-5 lg:items-start lg:gap-8">
-			<div class="col-span-5 text-center sm:text-left">
+			<div class="col-span-5 mb-12 text-center sm:text-left">
+				<h3 class="text-2xl text-thatOrange-400">
+					<span class="font-extrabold">
+						{event.name}
+					</span>
+				</h3>
 				<h2 class="text-2xl text-thatOrange-400">
-					Submissions Now Open Through
+					Submissions Open
+					<span class="font-extrabold">
+						{dayjs(event.callForSpeakersOpenDate).format('dddd, MMMM D, YYYY')}
+					</span>
+					through
 					<span class="font-extrabold">
 						{dayjs(event.callForSpeakersCloseDate).format('dddd, MMMM D, YYYY')}
 					</span>
@@ -57,7 +66,7 @@
 					in-between.
 				</p>
 
-				<div class="flex justify-center space-x-4">
+				<div class="flex justify-center space-x-4 pt-12">
 					<div class="flex-none">
 						<StandardLink href={`/activities/create/cfp/?event=${event.id}`}>
 							Become a Counselor
