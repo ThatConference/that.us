@@ -22,7 +22,7 @@
 		ticketResults.push(detail.wasCreated);
 		canContinue = false;
 
-		if (orderAllocations.length - 1 === ticketResults.length) {
+		if (orderAllocations.length === ticketResults.length) {
 			ticketError = ticketResults.includes(false);
 			canContinue = !ticketError;
 		}
@@ -46,6 +46,7 @@
 			so we can sort this out with you.
 		</p>
 		<div class="mt-4 flex">
+			<!-- svelte-ignore security-anchor-rel-noreferrer -->
 			<a
 				href={`mailto:hello@that.us?subject=Error Creating My Speaker Tickets&body=The robots have failed us. Order Id ${orderId}`}
 				rel="noopener"
