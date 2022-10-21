@@ -45,7 +45,7 @@
 		<div class="space-y-4">
 			<h2 class="text-xl font-bold leading-6 text-gray-900">Join THAT Slack</h2>
 
-			<div class=" prose prose-sm text-gray-500">
+			<div class=" prose-sm prose text-gray-500">
 				<p>Slack, everyone has one, and we have one too. Join thousands who chat daily.</p>
 
 				<p class="mt-4 leading-5">
@@ -74,7 +74,7 @@
 
 			{#if results}
 				<div class="max-w-sm">
-					<p class="prose prose-sm text-gray-500">{results}</p>
+					<p class="prose-sm prose text-gray-500">{results}</p>
 				</div>
 			{/if}
 		</div>

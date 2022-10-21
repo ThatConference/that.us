@@ -451,7 +451,7 @@ export default (fetch) => {
 			.then(({ data, errors }) => {
 				if (errors) log({ errors, tag: 'QUERY_EVENTS_BY_COMMUNITY' });
 
-				return data?.communities?.community.get.events || [];
+				return data?.communities?.community?.get.events || [];
 			});
 	}
 

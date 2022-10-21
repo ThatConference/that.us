@@ -28,10 +28,10 @@
 	import { page } from '$app/stores';
 	import lodash from 'lodash';
 
+	import favorites, { toggle } from '$lib/stores/favorites';
 	import buildImageSrc from '$utils/image';
 	import config from '$utils/config.public';
-	import favoritesApi from '$dataSources/api.that.tech/favorites';
-	import currentEvent from '$stores/currentEvent';
+
 	import { Avatars, Tag } from '$elements';
 
 	// import CalendarButton from './elements/CalendarButton.svelte';
@@ -69,7 +69,6 @@
 	} = activity;
 
 	let dropDownKeyValuePairs = getContext('DROP_DOWN_KEY_VALUE_PAIRS');
-	const { toggle, get: getFavorites, favoritesStore: favorites } = favoritesApi();
 	const isDailyActivity = config.eventId === eventId;
 
 	// Enum Lookups
@@ -96,17 +95,11 @@
 
 	const handleToggle = async () => {
 		favoriteDisabled = true;
-		await toggle(id, $currentEvent.eventId);
+		await toggle(id, eventId);
 		favoriteDisabled = false;
 	};
 
-	let isFavorite = false;
-
-	favorites.subscribe((favs) => {
-		let found = find(favs, (i) => i.id === id);
-
-		found ? (isFavorite = true) : (isFavorite = false);
-	});
+	$: isFavorite = find($favorites, (i) => i.id === id) ? true : false;
 
 	let isInWindow = false;
 	$: canJoin = isInWindow;
@@ -127,8 +120,6 @@
 
 	onMount(async () => {
 		window.history.replaceState({}, null, `/activities/${id}`);
-
-		if ($page.data.user.isAuthenticated) await getFavorites($currentEvent.eventId);
 
 		let endTime = (durationInMinutes ? durationInMinutes : 60) + 10;
 
@@ -255,10 +246,17 @@
                   duration-150 ease-in-out
                   hover:text-gray-500 focus:border-blue-300 focus:outline-none active:bg-gray-50
                   active:text-gray-800">
-								<Icon data={heart} class="-ml-1 mr-2 h-4 w-4" />
 								{#if isFavorite}
-									<span>Unfavorite</span>
-								{:else}<span>Favorite</span>{/if}
+									<div class="text-red-500">
+										<Icon data={heart} class="-ml-1 mr-2 h-4 w-4" />
+										<span>Unfavorite</span>
+									</div>
+								{:else}
+									<div>
+										<Icon data={heartO} class="-ml-1 mr-2 h-4 w-4" />
+										<span>Favorite</span>
+									</div>
+								{/if}
 							</button>
 						</div>
 					{:else}
@@ -478,7 +476,7 @@
 										<Icon data={externalLink} class="h-4 w-4" />
 									</div>
 									<div class="flex-grow rounded-md p-2">
-										<a target="_blank" rel="external" href={sa.url}>
+										<a target="_blank" rel="external noopener" href={sa.url}>
 											<p>{sa.name}</p>
 											<p class="mt-1 text-sm text-gray-400">{sa.description}</p>
 										</a>

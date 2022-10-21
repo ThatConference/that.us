@@ -1,7 +1,7 @@
 [
 	{
 		"question": "I have a cool idea for THAT.us, where can I submit it?",
-		"answer": "THAT.us is a fully open source project located on <a class='underline hover:no-underline hover:font-semibold' target='_blank' href='https://github.com/ThatConference/that.us'>GitHub</a>. Feel free to add a feature request or send your idea directly to <a class='underline hover:no-underline hover:font-semibold' href='mailto:hello@thatconference.com'>hello@thatconference.com</a>. We are accepting pull requests too!",
+		"answer": "THAT.us is a fully open source project located on <a class='underline hover:no-underline hover:font-semibold' target='_blank' rel='external noopener noreferrer' href='https://github.com/ThatConference/that.us'>GitHub</a>. Feel free to add a feature request or send your idea directly to <a class='underline hover:no-underline hover:font-semibold' href='mailto:hello@thatconference.com'>hello@thatconference.com</a>. We are accepting pull requests too!",
 		"category": "general"
 	},
 	{
@@ -11,7 +11,7 @@
 	},
 	{
 		"question": "How do I get invited to THAT Slack?",
-		"answer": "Go to <a class='underline hover:no-underline hover:font-semibold' target='_blank' href='https://thatslack.thatconference.com'>https://thatslack.thatconference.com</a> to get signed up",
+		"answer": "Go to <a class='underline hover:no-underline hover:font-semibold' target='_blank' href='/signup'>Sign Up</a> to get signed up",
 		"category": "general"
 	},
 	{
@@ -26,12 +26,12 @@
 	},
 	{
 		"question": "How do I know what activities are happening?",
-		"answer": "<a class='underline hover:no-underline hover:font-semibold' href='https://that.us/activities'>THAT Board</a> is the central place for ALL activities happening. Their is also an <a class='underline hover:no-underline hover:font-semibold' href='https://bit.ly/2YRdVxy'>iCal feed</a> available for you to add to your personal calendar too.",
+		"answer": "<a class='underline hover:no-underline hover:font-semibold' href='/activities'>THAT Board</a> is the central place for ALL activities happening. Their is also an <a class='underline hover:no-underline hover:font-semibold' href='https://bit.ly/2YRdVxy'>iCal feed</a> available for you to add to your personal calendar too.",
 		"category": "activities"
 	},
 	{
 		"question": "How do I join an activity?",
-		"answer": "The most direct way to join an activity is to click the join button of the activity on <a class='underline hover:no-underline hover:font-semibold' href='https://that.us/activities'>THAT Board</a>. For more details on joining activities visit this <a class='underline hover:no-underline hover:font-semibold' href='https://that.ussupport/'>help page</a>.",
+		"answer": "The most direct way to join an activity is to click the join button of the activity on <a class='underline hover:no-underline hover:font-semibold' href='/activities'>THAT Board</a>. For more details on joining activities visit this <a class='underline hover:no-underline hover:font-semibold' href='/support'>help page</a>.",
 		"category": "activities"
 	},
 	{
@@ -41,17 +41,17 @@
 	},
 	{
 		"question": "What makes a good activity?",
-		"answer": "Almost anything makes a good Activity. A few examples are: Presentations, code reviews, Q & A sessions, panel discussion, AMA's, get a group together to figure out an issue, office hours, open space, or just to chat. You decide on the subject. Remember it must conform to our <a class='underline hover:no-underline hover:font-semibold' target='_blank' href='https://www.thatconference.com/terms-of-use'>Terms of Use</a> and <a class='underline hover:no-underline hover:font-semibold' target='_blank' href='https://www.thatconference.com/anti-harassment-policy'>Anti-Harassment</a> policies.",
+		"answer": "Almost anything makes a good Activity. A few examples are: Presentations, code reviews, Q & A sessions, panel discussion, AMA's, get a group together to figure out an issue, office hours, open space, or just to chat. You decide on the subject. Remember it must conform to our <a class='underline hover:no-underline hover:font-semibold' target='_blank' href='/support/terms-of-use'>Terms of Use</a> and <a class='underline hover:no-underline hover:font-semibold' target='_blank' href='/support/anti-harassment-policy'>Anti-Harassment</a> policies.",
 		"category": "activities"
 	},
 	{
 		"question": "Who can add new activities?",
-		"answer": "Anybody! Anybody with a public THAT account that is. As long as you have a THAT account and make it public, so others can see who you are, you can add an Activity to THAT.us. And ensure you follow our <a class='underline hover:no-underline hover:font-semibold' target='_blank' href='https://www.thatconference.com/code-of-conduct'>Code of Conduct</a>",
+		"answer": "Anybody! Anybody with a public THAT account that is. As long as you have a THAT account and make it public, so others can see who you are, you can add an Activity to THAT.us. And ensure you follow our <a class='underline hover:no-underline hover:font-semibold' target='_blank' href='/support/code-of-conduct'>Code of Conduct</a>",
 		"category": "activities"
 	},
 	{
 		"question": "How do I create an activity?",
-		"answer": "Creating an activity is easy and straight forward. Head on over to this <a class='underline hover:no-underline hover:font-semibold' href='https://that.ussupport/'>help page</a> which will provide you with all of the details.",
+		"answer": "Creating an activity is easy and straight forward. Head on over to this <a class='underline hover:no-underline hover:font-semibold' href='/support'>help page</a> which will provide you with all of the details.",
 		"category": "activities"
 	},
 	{
@@ -61,7 +61,7 @@
 	},
 	{
 		"question": "How should I prepare for an Activity?",
-		"answer": "<ul class='faq-list'><li>Ensure your background doesn't contain any non-family friendly items. It's important to keep a safe environment for all!</li><li>Check that your audio and camera are working. Test at the <a class='underline hover:no-underline hover:font-semibold' href='https://that.us/join/that-test' target='_blank'>Tech Check Activity</a></li><li>Have water nearby, it's important to keep hydrated 🚰</li><li>If you're not in Central Time Zone, verify how your local time corresponds with website time. The goal is to have the site in your local time, but, you know, times are hard ⏰.</li><li>Your microphone/speakers/headset/camera are all in good working condition and of good quality 🎙️</li><li>If you have a lot of background noise or echo, an app like <a class='underline hover:no-underline hover:font-semibold' href='https://krisp.ai' target='_blank'>Krisp</a> can help</li></ul>",
+		"answer": "<ul class='faq-list'><li>Ensure your background doesn't contain any non-family friendly items. It's important to keep a safe environment for all!</li><li>Check that your audio and camera are working. Test at the <a class='underline hover:no-underline hover:font-semibold' href='/join/that-test' target='_blank'>Tech Check Activity</a></li><li>Have water nearby, it's important to keep hydrated 🚰</li><li>If you're not in Central Time Zone, verify how your local time corresponds with website time. The goal is to have the site in your local time, but, you know, times are hard ⏰.</li><li>Your microphone/speakers/headset/camera are all in good working condition and of good quality 🎙️</li><li>If you have a lot of background noise or echo, an app like <a class='underline hover:no-underline hover:font-semibold' href='https://krisp.ai' target='_blank' rel='external noopener noreferrer'>Krisp</a> can help</li></ul>",
 		"category": "activities"
 	},
 	{
@@ -76,7 +76,7 @@
 	},
 	{
 		"question": "Do I need an account to participate in Activities?",
-		"answer": "Yes, a THAT account is required to participate in any Activity. You may create a new account and profile here (<a class='underline hover:no-underline hover:font-semibold' href='https://that.us/signup/'>Sign up</a>).",
+		"answer": "Yes, a THAT account is required to participate in any Activity. You may create a new account and profile here (<a class='underline hover:no-underline hover:font-semibold' href='/signup'>Sign up</a>).",
 		"category": "account"
 	},
 	{
@@ -106,7 +106,7 @@
 	},
 	{
 		"question": "Oh no, `x` doesn't work on THAT.us! How do I let you know?",
-		"answer": "THAT.us is a fullly open source project located at <a class='underline hover:no-underline hover:font-semibold' target='_blank' href='https://github.com/ThatConference/that.us'>GitHub</a>. Please fill out an bug report in GitHub and we'll have a look at it. If it is urgent (security issue, etc.) please reach out directly to hello@thatconference.com or the chat bubble at the bottom of the page.",
+		"answer": "THAT.us is a fullly open source project located at <a class='underline hover:no-underline hover:font-semibold' target='_blank' rel='external noopener noreferrer' href='https://github.com/ThatConference/that.us'>GitHub</a>. Please fill out an bug report in GitHub and we'll have a look at it. If it is urgent (security issue, etc.) please reach out directly to hello@thatconference.com or the chat bubble at the bottom of the page.",
 		"category": "troubleshooting"
 	}
 ]

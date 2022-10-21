@@ -62,9 +62,7 @@ export function initAuth0(config) {
 		},
 
 		withApiAuthRequired: (route, opts = {}) => {
-			console.log('withApiAuthRequired', opts);
 			return (svelteReq) => {
-				console.log('svelteReq', svelteReq);
 				if (
 					svelteReq.locals.isAuthenticated &&
 					svelteReq.locals.user &&

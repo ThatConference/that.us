@@ -3,14 +3,13 @@
 
 	import { fade } from 'svelte/transition';
 
-	import seoMetaTags from '$utils/seo/metaTags';
-	import Seo from '$components/Seo.svelte';
 	import Layout from '$elements/layouts/ContentLayout.svelte';
+	import Seo from '$components/Seo.svelte';
+	import seoMetaTags from '$utils/seo/metaTags';
 
-	import Hero from './_components/events/_EventsHero.svelte';
-	import EventCard from './_components/_EventCard.svelte';
+	import EventCard from './_components/EventCard.svelte';
+	import { ThatActiveEvents } from '../_root/components';
 
-	let { events = [] } = data;
 	const metaTags = ((title = 'Upcoming and past events on THAT and THAT Conference.') => ({
 		title,
 		tags: seoMetaTags({
@@ -27,29 +26,37 @@
 			}
 		})
 	}))();
+
+	let { events = [] } = data;
+
+	const thatConferences = events[0].filter((x) => x.type === 'HYBRID_MULTI_DAY');
+	const otherUpcomingEvents = events[0].filter((x) => x.type !== 'HYBRID_MULTI_DAY');
 </script>
 
 <Seo title={metaTags.title} tags={metaTags.tags} />
 
 <Layout>
 	<main class="overflow-hidden">
+		<ThatActiveEvents events={thatConferences} />
+
 		<div class="relative pb-16 md:pb-20 lg:pb-24 xl:pb-32">
 			<div class="mx-auto mt-32 max-w-screen-xl px-4 sm:px-6 xl:mt-40">
 				<main>
-					<Hero />
 					<div class="py-20 px-8">
 						<div class="relative mx-auto">
-							<div class="mx-auto mt-12 grid max-w-lg gap-10 lg:max-w-none lg:grid-cols-3">
-								{#each events[0] as e (e.id)}
-									<div
-										in:fade
-										class="transform transition duration-500 ease-in-out hover:scale-105">
-										<a href={`/events/${e.slug}`}>
-											<EventCard event={e} />
-										</a>
-									</div>
-								{/each}
-							</div>
+							{#if otherUpcomingEvents.length > 0}
+								<div class="mx-auto mt-12 grid max-w-lg gap-10 lg:max-w-none lg:grid-cols-3">
+									{#each otherUpcomingEvents as e (e.id)}
+										<div
+											in:fade
+											class="transform transition duration-500 ease-in-out hover:scale-105">
+											<a href={`/events/${e.slug}`}>
+												<EventCard event={e} />
+											</a>
+										</div>
+									{/each}
+								</div>
+							{/if}
 
 							<div class="relative m-12">
 								<div class="absolute inset-0 flex items-center" aria-hidden="true">

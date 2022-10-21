@@ -17,7 +17,7 @@ export default [
 		href: '/communities/'
 	},
 	{
-		text: 'Partners',
+		text: 'Sponsors',
 		href: '/partners/'
 	},
 	{

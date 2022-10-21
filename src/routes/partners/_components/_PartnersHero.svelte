@@ -21,7 +21,6 @@
 				appreciate their support! Are you interested in partnering with us? Email us at
 				<a
 					href="mailto:hello@that.us?subject=Let's Partner"
-					rel="noopener"
 					target="_blank"
 					class="text-thatOrange-400 hover:text-thatOrange-500 hover:underline">hello@that.us</a
 				>.

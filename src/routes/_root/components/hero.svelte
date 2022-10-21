@@ -37,7 +37,8 @@
 				<a
 					class="transform transition duration-500 ease-in-out hover:scale-105"
 					href="https://www.youtube.com/watch?v=_aO4uBrJGFU"
-					target="_blank">
+					target="_blank"
+					rel="external noopener noreferrer">
 					<img
 						class="lazyload h-96 w-auto"
 						src="/images/characters/Robot-Play.svg"

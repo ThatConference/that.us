@@ -100,8 +100,12 @@
 								<li>
 									<a href={`/partners/leads/${txEventId}`} target="_blank">Lead Generation</a>
 								</li>
-								<li><a href="/partners/my-network/" target="_blank">Lead Generation Results</a></li>
-								<li><a href="/my/network/sponsors" target="_blank">Your Network</a></li>
+								<li>
+									<a href="/partners/my-network/" target="_blank">Lead Generation Results</a>
+								</li>
+								<li>
+									<a href="/my/network/sponsors" target="_blank">Your Network</a>
+								</li>
 							</ul>
 						</div>
 
@@ -186,8 +190,12 @@
 								<li>
 									<a href={`/partners/leads/${wiEventId}`} target="_blank">Lead Generation</a>
 								</li>
-								<li><a href="/partners/my-network/" target="_blank">Lead Generation Results</a></li>
-								<li><a href="/my/network/sponsors" target="_blank">Your Network</a></li>
+								<li>
+									<a href="/partners/my-network/" target="_blank">Lead Generation Results</a>
+								</li>
+								<li>
+									<a href="/my/network/sponsors" target="_blank">Your Network</a>
+								</li>
 							</ul>
 						</div>
 

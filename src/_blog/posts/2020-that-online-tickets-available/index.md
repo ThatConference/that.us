@@ -9,7 +9,7 @@ layout: blog
 ---
 
 <div style="text-align: center; padding: 4rem 0;">
-  <a href="https://ti.to/that-conference/that-conference-2020" class="linkButton" target="_blank">
+  <a href="https://ti.to/that-conference/that-conference-2020" class="linkButton" target="_blank" rel="external noreferrer noopener">
     Get Your Ticket Here
   </a>
 </div>
@@ -49,7 +49,7 @@ You will need a ticket to enter camp. This year we’ve restructured our tickets
 All tickets, at time of purchase, will provide you with an option to add-on exclusive 2020 merchandise in a color not available in the THAT Conference store. A THAT Conference login is required to access the event. Tickets and add-on merchandise are non-refundable after purchase.
 
 <div style="text-align: center; padding: 4rem 0;">
-  <a href="https://ti.to/that-conference/that-conference-2020" class="linkButton" target="_blank">
+  <a href="https://ti.to/that-conference/that-conference-2020" class="linkButton" target="_blank" rel="external noreferrer noopener">
     Get Your Ticket Here
   </a>
 </div>

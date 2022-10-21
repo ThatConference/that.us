@@ -187,7 +187,6 @@
 			<p>
 				At any time feel free to drop us a line <a
 					href="mailto:hello@that.us"
-					rel="noopener"
 					target="_blank"
 					class="hover">hello@that.us</a>
 			</p>

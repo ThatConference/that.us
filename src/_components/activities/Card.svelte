@@ -23,6 +23,7 @@
 	import {
 		info,
 		heart,
+		heartO,
 		signIn,
 		cog,
 		mapMarker,
@@ -36,17 +37,16 @@
 	import buildImageSrc from '$utils/image';
 	import { truncate, isLongerThan } from '$utils/truncate';
 	import { show } from '$stores/profileNotification';
-	import favoritesApi from '$dataSources/api.that.tech/favorites';
 
 	import { Tag } from '$elements';
 	import CardLink from './CardLink.svelte';
+	import favorites, { toggle } from '$lib/stores/favorites';
 
 	dayjs.extend(isBetween);
 	dayjs.extend(isSameOrAfter);
 	dayjs.extend(relativeTime);
 
 	const { isEmpty, find } = lodash;
-	const { toggle, get: getFavorites, favoritesStore: favorites } = favoritesApi();
 	const { sessionLocationDestinations } = getContext('DROP_DOWN_KEY_VALUE_PAIRS');
 
 	let host = speakers[0];
@@ -66,31 +66,15 @@
 		return permitted;
 	};
 
-	const handleToggle = async () => {
-		if (isAllowed()) {
-			favoriteDisabled = true;
-			await toggle(id, eventId);
-			favoriteDisabled = false;
-		}
-	};
-
 	let expandDescription = false;
-
-	let isFavorite = false;
-	favorites.subscribe((favs) => {
-		let found = find(favs, (i) => i.id === id);
-
-		found ? (isFavorite = true) : (isFavorite = false);
-	});
-
 	let timeLeftToJoin = 'in ...';
 	let hasExpired = true;
 	let isInWindow = false;
+
+	$: isFavorite = find($favorites, (i) => i.id === id) ? true : false;
 	$: canJoin = isInWindow;
 
 	onMount(async () => {
-		if ($page.data.user.isAuthenticated) await getFavorites(eventId);
-
 		let endTime = (durationInMinutes ? durationInMinutes : 60) + 10;
 		let currentStartTime = dayjs(startTime).subtract(5, 'minute');
 		let currentEndTime = dayjs(startTime).add(endTime, 'minute');
@@ -113,7 +97,17 @@
 		};
 	});
 
-	const canEdit = () => {
+	async function handleToggle() {
+		if (isAllowed()) {
+			favoriteDisabled = true;
+
+			await toggle(id, eventId);
+
+			favoriteDisabled = false;
+		}
+	}
+
+	function canEdit() {
 		let canEditMe = false;
 
 		if (editMode) {
@@ -121,14 +115,11 @@
 		}
 
 		return canEditMe;
-	};
+	}
 
 	function lookupEnumLabel(location) {
 		return sessionLocationDestinations?.options.find((x) => x.value === location)?.label;
 	}
-
-	const userProfileImage = host.profileImage || config.defaultProfileImage;
-	const srcset = buildImageSrc(userProfileImage, ['96']);
 
 	function getSessionUrl() {
 		let sessionUrl = `/join/${id}`;
@@ -140,14 +131,17 @@
 		return sessionUrl;
 	}
 
+	const userProfileImage = host.profileImage || config.defaultProfileImage;
+	const srcset = buildImageSrc(userProfileImage, ['96']);
 	const joinUrl = getSessionUrl();
 </script>
 
 {#if dense}
 	<div
-		class={`mb-2 flex h-full w-full flex-col ${
-			requiresAccessToJoin ? 'rounded-lg border-t-4 border-red-500' : ''
-		}`}>
+		class="mb-2 flex h-full w-full flex-col"
+		class:rounded-lg={requiresAccessToJoin}
+		class:border-t-4={requiresAccessToJoin}
+		class:border-red-500={requiresAccessToJoin}>
 		<div class="flex">
 			<div
 				class="flex flex-shrink-0 flex-grow-0 basis-32 flex-col items-stretch justify-between pt-3 text-center">
@@ -183,24 +177,27 @@
 							<button
 								type="button"
 								on:click|preventDefault={!favoriteDisabled && handleToggle}
-								class:text-red-500={isFavorite}
 								class="focus:ring-blue relative inline-flex items-center
 									justify-center rounded-br-lg border border-transparent py-2 text-xs
 									font-medium leading-4 text-gray-700
 									transition duration-150
 									ease-in-out hover:text-gray-300 focus:z-10 focus:border-blue-300
 									focus:outline-none">
-								<Icon data={heart} class="h-4 w-4" />
+								{#if isFavorite}
+									<Icon data={heart} class="h-4 w-4 text-red-500" />
+								{:else}
+									<Icon data={heartO} class="h-4 w-4" />
+								{/if}
 							</button>
 						{:else}
 							<a
 								href="/login/"
 								class="focus:ring-blue relative inline-flex items-center
-						justify-center rounded-br-lg border border-transparent py-2 text-xs
-						font-medium leading-4 text-gray-700
-						transition duration-150
-						ease-in-out hover:text-gray-300 focus:z-10 focus:border-blue-300
-						focus:outline-none">
+									justify-center rounded-br-lg border border-transparent py-2 text-xs
+									font-medium leading-4 text-gray-700
+									transition duration-150
+									ease-in-out hover:text-gray-300 focus:z-10 focus:border-blue-300
+									focus:outline-none">
 								<Icon data={heart} class="h-4 w-4" />
 							</a>
 						{/if}
@@ -216,6 +213,7 @@
 					</h3>
 				</a>
 
+				<!-- svelte-ignore a11y-click-events-have-key-events -->
 				<div
 					class="flex-grow pb-1"
 					class:cursor-pointer={isLongerThan(shortDescription, 25)}
@@ -246,15 +244,23 @@
 									<button
 										type="button"
 										on:click|preventDefault={!favoriteDisabled && handleToggle}
-										class:text-red-500={isFavorite}
 										class="focus:ring-blue relative inline-flex flex-1 basis-0 items-center
-									justify-center rounded-br-lg border border-transparent py-2 text-xs
-									font-medium leading-4 text-gray-700
-									transition duration-150
-									ease-in-out hover:text-gray-300 focus:z-10 focus:border-blue-300
-									focus:outline-none">
-										<Icon data={heart} class="h-4 w-4" />
-										<span class="ml-3">Favorite</span>
+											justify-center rounded-br-lg border border-transparent py-2 text-xs
+											font-medium leading-4 text-gray-700
+											transition duration-150
+											ease-in-out hover:text-gray-300 focus:z-10 focus:border-blue-300
+											focus:outline-none">
+										{#if isFavorite}
+											<div class="text-red-500">
+												<Icon data={heart} class="h-4 w-4" />
+												<span class="ml-3">Unfavorite</span>
+											</div>
+										{:else}
+											<div class="">
+												<Icon data={heartO} class="h-4 w-4" />
+												<span class="ml-3">Favorite</span>
+											</div>
+										{/if}
 									</button>
 								{:else}
 									<a
@@ -265,8 +271,10 @@
 										transition duration-150
 										ease-in-out hover:text-gray-300 focus:z-10 focus:border-blue-300
 										focus:outline-none">
-										<Icon data={heart} class="h-4 w-4" />
-										<span class="ml-3">Favorite</span>
+										<div>
+											<Icon data={heart} class="h-4 w-4" />
+											<span class="ml-3">Favorite</span>
+										</div>
 									</a>
 								{/if}
 							</div>
@@ -278,11 +286,11 @@
 									<a
 										href="/activities/edit/{id}/"
 										class="focus:ring-blue relative inline-flex flex-1 basis-0 items-center
-									justify-center rounded-br-lg border border-transparent py-2 text-xs
-									font-medium leading-4 text-gray-700
-									transition duration-150
-									ease-in-out hover:text-gray-300 focus:z-10 focus:border-blue-300
-									focus:outline-none">
+											justify-center rounded-br-lg border border-transparent py-2 text-xs
+											font-medium leading-4 text-gray-700
+											transition duration-150
+											ease-in-out hover:text-gray-300 focus:z-10 focus:border-blue-300
+											focus:outline-none">
 										<Icon data={cog} class="h-4 w-4" />
 										<span class="ml-3">Edit</span>
 									</a>
@@ -292,20 +300,18 @@
 
 						{#if !hasExpired}
 							<div class="col-span-2">
-								<div class="-mt-px flex">
+								<div class="flex h-full">
 									{#if targetLocation === 'IN_PERSON'}
-										<div class="-ml-px flex flex-1 basis-0">
-											<div
-												class="pointer-cursor relative inline-flex flex-1 items-center
-										justify-center rounded-br-lg border border-transparent bg-that-blue py-2
-										text-xs font-medium leading-4 text-white
-										transition duration-150 ease-in-out">
-												<Icon data={user} class="-ml-1 mr-2 h-4 w-4" />
+										<div
+											class="flex w-full justify-center space-x-8 rounded-br-lg  bg-that-blue py-2 text-xs font-medium  text-white">
+											<div class="flex justify-center space-x-2">
+												<Icon data={user} class="h-4 w-4" />
 												<span>In-Person</span>
-												<span class="ml-2">
-													<Icon data={mapMarker} class="mr-2 h-4 w-4 pb-0.5" />
-													Room: {lookupEnumLabel(location?.destination)}
-												</span>
+											</div>
+
+											<div class="flex justify-center space-x-2">
+												<Icon data={mapMarker} class="h-4 w-4" />
+												<span>{lookupEnumLabel(location?.destination)}</span>
 											</div>
 										</div>
 									{:else if canJoin}
@@ -316,9 +322,9 @@
 										<div class="-ml-px flex flex-1 border-l pl-1 text-center">
 											<div
 												class="relative inline-flex flex-1 items-center justify-center
-											rounded-br-lg rounded-bl-lg border border-transparent py-2 text-xs
-											font-medium leading-4 text-gray-300 transition duration-150
-											ease-in-out">
+													rounded-br-lg rounded-bl-lg border border-transparent py-2 text-xs
+													font-medium leading-4 text-gray-300 transition duration-150
+													ease-in-out">
 												<Icon data={signIn} class="-ml-1 mr-2 h-4 w-4" />
 												<span>Join {timeLeftToJoin}</span>
 											</div>
@@ -383,6 +389,7 @@
 			</div>
 		</div>
 
+		<!-- svelte-ignore a11y-click-events-have-key-events -->
 		<div
 			class="flex-grow px-3 pb-3"
 			class:cursor-pointer={isLongerThan(shortDescription, 25)}
@@ -420,15 +427,23 @@
 						<button
 							type="button"
 							on:click|preventDefault={!favoriteDisabled && handleToggle}
-							class:text-red-500={isFavorite}
 							class="focus:ring-blue relative inline-flex flex-1 basis-0 items-center
                 justify-center rounded-br-lg border border-transparent py-2 text-xs
                 font-medium leading-4 text-gray-700
                 transition duration-150
                 ease-in-out hover:text-gray-300 focus:z-10 focus:border-blue-300
                 focus:outline-none">
-							<Icon data={heart} class="h-4 w-4" />
-							<span class="ml-3">Favorite</span>
+							{#if isFavorite}
+								<div class="text-red-500">
+									<Icon data={heart} class="h-4 w-4" />
+									<span class="ml-3">Unfavorite</span>
+								</div>
+							{:else}
+								<div>
+									<Icon data={heartO} class="h-4 w-4" />
+									<span class="ml-3">Favorite</span>
+								</div>
+							{/if}
 						</button>
 					</div>
 				{:else}
@@ -474,16 +489,16 @@
 					{#if targetLocation === 'IN_PERSON'}
 						<div class="-ml-px flex w-0 flex-1">
 							<div
-								class="pointer-cursor relative inline-flex w-0 flex-1 items-center
-											justify-center rounded-br-lg rounded-bl-lg border border-transparent bg-that-blue
-											py-2 text-xs font-medium leading-4 text-white
-											transition duration-150 ease-in-out">
-								<Icon data={user} class="-ml-1 mr-2 h-4 w-4" />
-								<span>In-Person</span>
-								<span class="ml-2">
-									<Icon data={mapMarker} class="mr-2 h-4 w-4 pb-0.5" />
-									Room: {lookupEnumLabel(location?.destination)}
-								</span>
+								class="flex w-full justify-center space-x-8 rounded-br-lg rounded-bl-lg border border-transparent bg-that-blue py-2 text-xs font-medium  text-white">
+								<div class="flex justify-center space-x-2">
+									<Icon data={user} class="h-4 w-4" />
+									<span>In-Person</span>
+								</div>
+
+								<div class="flex justify-center space-x-2">
+									<Icon data={mapMarker} class="h-4 w-4" />
+									<span>{lookupEnumLabel(location?.destination)}</span>
+								</div>
 							</div>
 						</div>
 					{:else if canJoin}

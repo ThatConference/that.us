@@ -7,10 +7,6 @@ export async function load({ params, fetch }) {
 	const eventSlug = `${state}/${year}`;
 
 	const event = await querySessionsBySlug({ slug: eventSlug });
-	// todo.. What do we do in the scenario where the event isn't found?
-
-	console.log(eventSlug, { event });
-
 	return {
 		event
 	};

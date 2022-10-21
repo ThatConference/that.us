@@ -8,7 +8,7 @@ function configMissing(configKey) {
 export default {
 	hostURL: env.PUBLIC_HOST_URL || 'https://that.us',
 	nodeEnv: env.NODE_ENV,
-	version: '3.0.4',
+	version: '3.1.0',
 	eventId: 'YWavA70szR8rxSwrLJaL',
 	eventSlug: 'thatus/daily',
 	api: {
@@ -79,27 +79,27 @@ export const kalahari = {
 		wi: {
 			opens: '04/11/2023',
 			closes: '06/22/2023',
-			url: 'https://book.passkey.com/e/50053977'
+			url: 'https://book.passkey.com/'
 		},
 		tx: {
-			opens: '01/01/2023',
-			closes: '05/01/2023',
-			url: 'https://book.passkey.com/e/50279810'
+			opens: '10/21/2022',
+			closes: '12/26/2022',
+			url: 'https://book.passkey.com/e/50408131'
 		}
 	},
 	speakerPasskey: {
 		'wi/2023': {
-			bookingUrl: 'https://book.passkey.com/e/50318258',
+			bookingUrl: 'https://book.passkey.com/',
 			start: '04/11/2023',
 			end: '06/22/2023',
 			blockCloseDate: '06/22/2023',
 			discountCode: 'THATWI'
 		},
 		'tx/2023': {
-			bookingUrl: 'https://book.passkey.com/e/50279812',
-			start: '05/22/2023',
-			end: '05/26/2023',
-			blockCloseDate: '05/13/2023',
+			bookingUrl: 'https://book.passkey.com/e/50410736',
+			start: '10/21/2022',
+			end: '12/26/2022',
+			blockCloseDate: '12/26/2022',
 			discountCode: 'THATTX'
 		}
 	}
