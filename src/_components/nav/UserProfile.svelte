@@ -91,7 +91,6 @@
 							</a>
 
 							<a
-								data-sveltekit-prefetch
 								href="/my/network/"
 								on:click={() => (visible = false)}
 								class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
@@ -99,14 +98,12 @@
 							</a>
 
 							<a
-								data-sveltekit-prefetch
 								href="/my/favorites/"
 								class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
 								My Favorites
 							</a>
 
 							<a
-								data-sveltekit-prefetch
 								href="/my/submissions/"
 								class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
 								My Submissions

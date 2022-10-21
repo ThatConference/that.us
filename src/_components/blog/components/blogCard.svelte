@@ -10,7 +10,7 @@
 	const srcset = buildImageSrc(metadata.author.profileImage, ['40']);
 </script>
 
-<a data-sveltekit-prefetch href={`/blog/posts/${metadata.slug}/`}>
+<a href={`/blog/posts/${metadata.slug}/`}>
 	<div
 		class="flex h-full transform flex-col overflow-hidden rounded-lg shadow-lg transition duration-500 ease-in-out hover:scale-105">
 		<div class="flex-shrink-0">

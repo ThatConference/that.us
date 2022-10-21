@@ -15,7 +15,6 @@
 	class:block={$mobileVisible}>
 	<div class="px-2 py-3 sm:px-3">
 		<a
-			data-sveltekit-prefetch
 			href="/events/"
 			class="mt-1 block rounded-md px-3 py-2 text-base font-medium text-gray-300
         hover:bg-that-blue hover:text-white focus:bg-that-blue focus:text-white
@@ -23,7 +22,6 @@
 			Events
 		</a>
 		<a
-			data-sveltekit-prefetch
 			href="/activities/"
 			class="mt-1 block rounded-md px-3 py-2 text-base font-medium text-gray-300
         hover:bg-that-blue hover:text-white focus:bg-that-blue focus:text-white
@@ -31,7 +29,6 @@
 			Activities
 		</a>
 		<a
-			data-sveltekit-prefetch
 			href="/members/"
 			class="mt-1 block rounded-md px-3 py-2 text-base font-medium text-gray-300
         hover:bg-that-blue hover:text-white focus:bg-that-blue focus:text-white
@@ -39,7 +36,6 @@
 			Members
 		</a>
 		<a
-			data-sveltekit-prefetch
 			href="/communities/"
 			class="mt-1 block rounded-md px-3 py-2 text-base font-medium text-gray-300
 				hover:bg-that-blue hover:text-white focus:bg-that-blue focus:text-white
@@ -47,7 +43,6 @@
 			Communities
 		</a>
 		<a
-			data-sveltekit-prefetch
 			href="/partners/"
 			class="mt-1 block rounded-md px-3 py-2 text-base font-medium text-gray-300
         hover:bg-that-blue hover:text-white focus:bg-that-blue focus:text-white
@@ -55,7 +50,6 @@
 			Partners
 		</a>
 		<a
-			data-sveltekit-prefetch
 			href="/blog/"
 			class="mt-1 block rounded-md px-3 py-2 text-base font-medium text-gray-300
         hover:bg-that-blue hover:text-white focus:bg-that-blue focus:text-white
@@ -63,7 +57,6 @@
 			Blog
 		</a>
 		<a
-			data-sveltekit-prefetch
 			href="/support/"
 			class="mt-1 block rounded-md px-3 py-2 text-base font-medium text-gray-300
         hover:bg-that-blue hover:text-white focus:bg-that-blue focus:text-white
