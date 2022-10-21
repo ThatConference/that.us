@@ -10,8 +10,6 @@
 	import { Standard as StandardButton, Highlight as HighlightButton } from '$elements/buttons';
 	import { Shell as ShellButton } from '$elements/buttons';
 
-	import Notices from '../../../../_components/Notices.svelte';
-
 	const { send } = getContext('cart');
 	const { keyBy } = lodash;
 
@@ -282,7 +280,5 @@
 				</HighlightLink>
 			</div>
 		</div>
-
-		<Notices />
 	</div>
 </div>
