@@ -1,8 +1,6 @@
 <script>
 	export let data;
 
-	let { members } = data;
-
 	import SvelteInfiniteScroll from 'svelte-infinite-scroll';
 	import { useMachine } from '@xstate/svelte';
 
@@ -14,8 +12,9 @@
 	import Hero from '$components/members/Hero.svelte';
 	import MemberCard from '$components/members/MemberCard.svelte';
 	import ScrollThreshold from '$components/ScrollThreshold.svelte';
-
 	import memberMachine from './_machines/members';
+
+	let { members } = data;
 
 	const metaTags = ((title = 'These are the geeks you will find at THAT and THAT Conference.') => ({
 		title,
