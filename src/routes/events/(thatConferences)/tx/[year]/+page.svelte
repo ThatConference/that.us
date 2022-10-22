@@ -73,7 +73,7 @@
 		<section id="upnext">
 			<UpNextEvent {event}>
 				<div slot="action">
-					<HighlightLink href={`/activities/${event.slug}`}>View the entire schedule</HighlightLink>
+					<HighlightLink href={`schedule`}>View the entire schedule</HighlightLink>
 				</div>
 			</UpNextEvent>
 		</section>
