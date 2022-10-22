@@ -43,7 +43,8 @@ function init(fetch) {
 	function query({ query, variables = {} }) {
 		if (browser) loading.set(true);
 
-		return _fetch(_cacheApiUrl, {
+		const fr = fetchRetry(isoFetch);
+		return fr(_cacheApiUrl, {
 			method: 'POST',
 			headers,
 			body: JSON.stringify({

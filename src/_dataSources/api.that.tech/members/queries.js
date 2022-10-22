@@ -29,7 +29,7 @@ const userFragment = `
 
 export const QUERY_MEMBERS_INITAL = `
 		${userFragment}
-		query getAllMembersPaged($pageSize: Int) {
+		query QUERY_MEMBERS_INITAL_PAGED($pageSize: Int) {
 			members {
 				members (pageSize: $pageSize, orderBy:CREATEDAT) {
 					cursor
@@ -43,7 +43,7 @@ export const QUERY_MEMBERS_INITAL = `
 
 export const QUERY_MEMBERS_NEXT = `
 		${userFragment}
-		query getAllMembersPaged($pageSize: Int, $after: String) {
+		query QUERY_MEMBERS_NEXT_PAGED($pageSize: Int, $after: String) {
 			members {
 				members (pageSize: $pageSize, after: $after, orderBy:CREATEDAT) {
 					cursor

@@ -14,7 +14,7 @@
 	import ScrollThreshold from '$components/ScrollThreshold.svelte';
 	import memberMachine from './_machines/members';
 
-	let { members } = data;
+	let { pagedMembers: members } = data;
 
 	const metaTags = ((title = 'These are the geeks you will find at THAT and THAT Conference.') => ({
 		title,
