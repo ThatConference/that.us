@@ -1,10 +1,7 @@
 <script>
-	export let eventDetails;
-
 	import { createEventDispatcher } from 'svelte';
 	import { Shell } from '$elements/buttons';
 
-	import { kalahari } from '$utils/config.public';
 	const dispatch = createEventDispatcher();
 
 	function handleSubmit() {
@@ -43,10 +40,6 @@
 				Make your <a class="hover" target="_blank" href="/my/profiles/primary/">profile</a> shine.
 			</li>
 			<li>Tweak your <a class="hover" target="_blank" href="/my/submissions/">session</a>.</li>
-			<li>
-				Pass out the speaker discount code ({kalahari.speakerPasskey[eventDetails.slug]
-					.discountCode}) to your company's geeks.
-			</li>
 		</ul>
 	</div>
 </div>
