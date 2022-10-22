@@ -4,6 +4,7 @@
 
 <div class="flex">
 	<a
+		data-sveltekit-prefetch
 		{href}
 		class="w-full rounded-md px-3 py-2 text-gray-600
 			transition duration-150 ease-in-out 
