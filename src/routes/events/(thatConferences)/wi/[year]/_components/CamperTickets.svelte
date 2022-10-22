@@ -259,7 +259,9 @@
 									<div class="mt-8">
 										<div class="flex flex-col">
 											<ShellButton>
-												<a class="py-2" href="tickets#families"> More Information </a>
+												<a data-sveltekit-prefetch class="py-2" href="tickets#families">
+													More Information
+												</a>
 											</ShellButton>
 										</div>
 									</div>
