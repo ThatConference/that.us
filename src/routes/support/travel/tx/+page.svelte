@@ -81,7 +81,7 @@
 						<div class="flex flex-col items-center space-x-4">
 							<div class="prose-md prose w-2/4 rounded-md border bg-white p-4 shadow-md">
 								<h4>Double Queen Sofa</h4>
-								<p class="text-center">$169 + tax and fees</p>
+								<p class="text-center">$189 + tax and fees</p>
 							</div>
 
 							<!-- <div class="prose-md prose w-full rounded-md border bg-white p-4 shadow-md ">
