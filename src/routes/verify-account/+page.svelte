@@ -43,8 +43,9 @@
 							</h1>
 
 							<p class="prose prose-lg mt-4 max-w-3xl text-gray-500">
-								You account is current unverified. To continue please check your email and finish
-								the login verification. If you've done so and are still seeing this error <span
+								You login's email address is current unverified. To continue please check your email
+								and finish the email verification process. Don't forget to check your spam folder
+								for the email. If you've done so and are still seeing this error <span
 									class="font-extrabold">please logout and login again</span
 								>. Still having issues, then please ask us in chat, or email us at
 								<a
