@@ -2,6 +2,7 @@
 	export let data;
 
 	import { goto } from '$app/navigation';
+	import { invalidateAll } from '$app/navigation';
 
 	import { tagEvent } from '$utils/tagEvent';
 	import seoMetaTags from '$utils/seo/metaTags';
@@ -13,11 +14,6 @@
 	let { currentProfile, isNewProfile } = data;
 	const { createProfile, updateProfile } = memberApi();
 
-	/* todo
-		before the last kit upgrade we had update the svelte session store. now there isn't a session store.
-		this feels broken expecially on new profiles.
-	*/
-
 	async function handleNew({ detail: { values, setSubmitting, resetForm } }) {
 		setSubmitting(true);
 		await createProfile({ profileLinks: [], ...values });
@@ -26,6 +22,9 @@
 
 		setSubmitting(false);
 		resetForm();
+
+		invalidateAll();
+
 		goto(`/`);
 	}
 
@@ -47,6 +46,8 @@
 		tagEvent('update', 'profile');
 		setSubmitting(false);
 		resetForm();
+
+		invalidateAll();
 
 		goto(`/`);
 	}
