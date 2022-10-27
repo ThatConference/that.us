@@ -1,5 +1,4 @@
 import { redirect } from '@sveltejs/kit';
-import { invalidateAll } from '$app/navigation';
 import { initAuth0 as origInitAuth0 } from '@auth0/nextjs-auth0';
 import { auth0Wrapper, auth0WrapperJson } from './wrappers';
 import lodash from 'lodash';
@@ -40,7 +39,6 @@ export function initAuth0(config) {
 						const [provider] = user.baseUser.sub.split('|');
 						if (provider !== 'twitter') {
 							if (user.baseUser.email_verified === false) {
-								invalidateAll();
 								throw redirect(307, `/verify-account`);
 							}
 						}
