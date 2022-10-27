@@ -1,6 +1,4 @@
 <script>
-	import { onMount } from 'svelte';
-	import { invalidateAll } from '$app/navigation';
 	import { Standard as StandardLink } from '$elements/links';
 	import seoMetaTags from '$utils/seo/metaTags';
 	import Seo from '$components/Seo.svelte';
@@ -18,10 +16,6 @@
 			nofollow: true
 		})
 	}))();
-
-	onMount(() => {
-		invalidateAll();
-	});
 </script>
 
 <Seo title={metaTags.title} tags={metaTags.tags} />

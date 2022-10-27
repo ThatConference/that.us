@@ -38,7 +38,7 @@ export function initAuth0(config) {
 					if (!isNil(user) && !isEmpty(user)) {
 						const [provider] = user.baseUser.sub.split('|');
 						if (provider !== 'twitter') {
-							if (user.email_verified === false) {
+							if (user.baseUser.email_verified === false) {
 								throw redirect(307, `/verify-account`);
 							}
 						}
