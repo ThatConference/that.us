@@ -36,7 +36,7 @@ You will find the env settings in .env.sample. The current settings in the .env.
   npm run dev
 ```
 
-Navigate to [localhost:3000](http://localhost:3000). You should see your app running. Edit a component file in `src`, save it. It's setup with HMR and Tailwind's JIT. You should see your changes as soon as you make them.
+Navigate to [localhost:5173](http://localhost:5173). You should see your app running. Edit a component file in `src`, save it. It's setup with HMR and Tailwind's JIT. You should see your changes as soon as you make them.
 
 ## Building and running in production mode
 
