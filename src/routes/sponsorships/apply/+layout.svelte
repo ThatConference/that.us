@@ -6,7 +6,7 @@
 	import Nav from '$components/nav/thatConference/Nav.svelte';
 </script>
 
-<div class="">
+<div>
 	<div class="flex min-h-screen flex-col">
 		<div class="z-50">
 			<Nav />
