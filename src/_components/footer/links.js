@@ -54,6 +54,10 @@ export const supportLinks = [
 		href: '/support/faq/'
 	},
 	{
+		text: 'Contact Us',
+		href: '/support/contact-us/'
+	},
+	{
 		text: 'Changelog',
 		href: '/releases/changelog/'
 	},
