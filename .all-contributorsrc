@@ -433,6 +433,15 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "kristjanr",
+      "name": "Kristjan Roosild",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1203138?v=4",
+      "profile": "https://ee.linkedin.com/in/kristjanroosild",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
@@ -440,5 +449,6 @@
   "projectOwner": "ThatConference",
   "repoType": "github",
   "repoHost": "https://github.com",
-  "skipCi": true
+  "skipCi": true,
+  "commitConvention": "angular"
 }
