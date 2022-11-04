@@ -77,7 +77,7 @@
 			</div>
 
 			<h3>Next steps</h3>
-			<p>Based on your purchase we have a few follow up things you.</p>
+			<p>Based on your purchase we have a few follow up things for you.</p>
 
 			{#if eventLocation}
 				{#if targetLocations.length > 0}
