@@ -59,4 +59,4 @@ Feel free to join in the conversation in [THAT Slack](https://thatconference.eml
 
 Speaking of 2020, we’re looking for 2020 THAT Conference Partners. The support we receive from our partners allows us to make our event and community as awesome as possible. We could not do this without their amazing collaboration.
 
-If you know of an organization interested in chatting with us, let us know at [partners@THATConference.com](mailto:partners@thatconference.com) or share our link to [THAT Conference Become A Partner](https://thatconference.emlnk1.com/lt.php?s=e0cc6c16fb4f7e07c6db83d1c5e5ea83&i=117A217A1A1818).
+If you know of an organization interested in chatting with us, let us know at [partners@THATConference.com](mailto:partners@thatconference.com) or share our link to [THAT Conference Become A Partner](/sponsorships/apply/).

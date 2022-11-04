@@ -30,7 +30,7 @@
 		</p>
 
 		<div class="flex pt-12">
-			<a href="mailto:partners@thatconference.com">
+			<a href="/sponsorships/apply/#prospectus">
 				<div
 					class="transform rounded-lg border-2 border-thatBlue-400 py-6 px-12 transition duration-500 ease-in-out hover:scale-105">
 					<div class="flex items-center space-x-4">

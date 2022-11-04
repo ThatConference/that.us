@@ -33,10 +33,10 @@
 			<NavLink href={buildUrl('travel')}>Travel</NavLink>
 		</div>
 
-		<div class="ml-32 flex flex-1 space-x-2">
+		<div class="ml-32 flex flex-1 space-x-4">
 			<ShellButton>
 				<div class="py-2 px-4">
-					<a href="mailto:hello@that.us?subject=Let's Partner"> Sponsorships </a>
+					<a href="/sponsorships/apply/#prospectus"> Sponsorships </a>
 				</div>
 			</ShellButton>
 			<StandardShell>

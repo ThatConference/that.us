@@ -118,7 +118,7 @@
 						</div>
 
 						<div class="flex-none">
-							<HighlightLink href="mailto:hello@that.us?subject=Let's Partner">
+							<HighlightLink href="/sponsorships/apply/#prospectus">
 								<span class="text-xl">Sponsor Today!</span>
 							</HighlightLink>
 						</div>
@@ -156,9 +156,7 @@
 					</div>
 
 					<div class="mt-6 flex justify-center">
-						<StandardLink href="mailto:hello@that.us?subject=Let's Partner">
-							Tell Me More
-						</StandardLink>
+						<StandardLink href="/sponsorships/apply/#prospectus">Tell Me More</StandardLink>
 					</div>
 				</div>
 			</div>

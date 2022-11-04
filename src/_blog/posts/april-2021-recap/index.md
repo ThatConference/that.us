@@ -73,7 +73,7 @@ Questions we know you have:
 - The call for speakers will be open in the next couple of weeks.
 - Tickets will go on sale in the next couple of weeks.
 - Room blocks will open when tickets go on sale.
-- We need your support. If you're interested in sponsoring, please contact us at [sponsorship@thatconference.com](mailto:sponsorship@thatconference.com); this even includes that.us.
+- We need your support. If you're interested in sponsoring, please contact us at [https://that.us/sponsorships/apply/#prospectus](/sponsorships/apply/#prospectus); this even includes that.us.
 
 Thank you for your patience. Thank you for your support. Thank you for being such a great community of amazing people who support one another every day. This year will be the start of a new decade of THAT.
 
