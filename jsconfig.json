@@ -1,0 +1,14 @@
+{
+	"compilerOptions": {
+		"baseUrl": ".",
+		"paths": {
+			"$components/*": ["./src/_components/*"],
+			"$elements/*": ["./src/_elements/*"],
+			"$utils/*": ["./src/_utils/*"],
+			"$dataSources/*": ["./src/_dataSources/*"],
+			"$stores/*": ["./src/_stores/*"],
+			"$machines/*": ["./src/_machines/*"],
+			"$blog/*": ["./src/_blog/*"]
+		}
+	}
+}
