@@ -20,7 +20,7 @@
 
 			<div>
 				<ul class="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-					{#each sortBy(sessions, 'startTime') as activity (activity.id)}
+					{#each sortBy(sessions, 'startTime').filter((s) => !!s) as activity (activity.id)}
 						<li in:fade class="col-span-1 rounded-lg bg-white shadow-lg">
 							<Card {...activity} editMode={false} />
 						</li>

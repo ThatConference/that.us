@@ -65,7 +65,7 @@
 						want to make sure you have the information you need to get involved with THAT.
 					</p>
 
-					<p>Things we you should know:</p>
+					<p>Things you should know:</p>
 					<ul>
 						<li>
 							<a href="/support/what-is-an-activity/"> What is an Activity? </a>
