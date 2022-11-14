@@ -16,7 +16,7 @@ export default {
 		direct: env.PUBLIC_THAT_API || configMissing('PUBLIC_THAT_API')
 	},
 	ogImageApi: env.PUBLIC_THAT_OG_IMAGE_API || 'https://og-image.that.tech/og-image',
-	profileImageApi: 'https://api.that.tech/profile',
+	profileImageApi: 'https://fn.that.tech/profile',
 	defaultProfileImage:
 		'https://images.that.tech/members/person-placeholder.jpg?auto=format&fit=facearea&facepad=10&mask=ellipse&h=250&w=250&q=50&dpr=2',
 	stripeKey: env.PUBLIC_STRIPE_PK_KEY || configMissing('PUBLIC_STRIPE_PK_KEY')
