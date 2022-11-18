@@ -2,26 +2,29 @@ import gFetch from '$utils/gfetch';
 import { log } from '../../utilities/error';
 
 const favoriteFragment = `
-  fragment sessionFields on AcceptedSession {
+  fragment sessionFields on SessionFavorite {
     id
-		eventId
-    title
-    shortDescription
-    status
-    startTime
-    tags
-    communities
-    speakers {
+    session {
       id
-      firstName
-      lastName
-      profileImage
-      profileSlug
-      earnedMeritBadges {
+      eventId
+      title
+      shortDescription
+      status
+      startTime
+      tags
+      communities
+      speakers {
         id
-        name
-        image
-        description
+        firstName
+        lastName
+        profileImage
+        profileSlug
+        earnedMeritBadges {
+          id
+          name
+          image
+          description
+        }
       }
     }
   }
@@ -52,7 +55,7 @@ export default (fetch) => {
 		return client.mutation({ mutation: TOGGLE_FAVORITE, variables }).then(({ data, errors }) => {
 			if (errors) log({ errors, tag: 'TOGGLE_FAVORITE' });
 
-			return data?.sessions?.favoriting?.toggle;
+			return data?.sessions?.favoriting?.toggle?.session;
 		});
 	}
 
