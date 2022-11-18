@@ -2,27 +2,30 @@ import gFetch from '$utils/gfetch';
 import { log } from '../../utilities/error';
 
 const favoriteFragment = `
-  fragment sessionFields on AcceptedSession {
+  fragment sessionFields on SessionFavorite {
     id
-		eventId
-    title
-    shortDescription
-    status
-    startTime
-    tags
-    communities
-    speakers {
+    session {
       id
-      firstName
-      lastName
-      profileImage
-      profileSlug
-      earnedMeritBadges {
+      eventId
+      title
+      shortDescription
+      status
+      startTime
+      tags
+      communities
+      speakers {
         id
-        name
-        image
-        description
-      }
+        firstName
+        lastName
+        profileImage
+        profileSlug
+        earnedMeritBadges {
+          id
+          name
+          image
+          description
+        }
+      }  
     }
   }
 `;
@@ -53,7 +56,7 @@ export default (fetch) => {
 
 			let results = data?.sessions?.me?.favorites || [];
 
-			results = results.filter((s) => s).filter((s) => s.status === 'ACCEPTED');
+			results = results.filter((s) => s?.session).filter((s) => s?.session?.status === 'ACCEPTED');
 			results.sort((a, b) => new Date(a.startTime) - new Date(b.startTime));
 
 			return results;
