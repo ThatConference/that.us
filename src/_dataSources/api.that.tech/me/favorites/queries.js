@@ -56,8 +56,7 @@ export default (fetch) => {
 
 			let results = data?.sessions?.me?.favorites || [];
 
-			results = results.map((s) => ({ ...s.session }));
-			results = results.filter((s) => s).filter((s) => s.status === 'ACCEPTED');
+			results = results.filter((s) => s?.session).filter((s) => s?.session?.status === 'ACCEPTED');
 			results.sort((a, b) => new Date(a.startTime) - new Date(b.startTime));
 
 			return results;
