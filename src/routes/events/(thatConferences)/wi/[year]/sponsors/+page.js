@@ -6,7 +6,7 @@ export async function load({ params, fetch }) {
 	const { year } = params;
 	const { getEventPartners } = partnerQueryApi(fetch);
 
-	const eventSlug = `tx/${year}`;
+	const eventSlug = `wi/${year}`;
 
 	const event = await getEventPartners(eventSlug);
 	const levels = groupBy(event.partners, 'level');
