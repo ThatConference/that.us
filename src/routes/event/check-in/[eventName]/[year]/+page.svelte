@@ -8,11 +8,11 @@
 	import RegistrationList from '../../_components/_RegistrationList.svelte';
 
 	let { registrations } = data;
-	const metaTags = ((title = 'Event Checkin - THAT') => ({
+	const metaTags = ((title = 'Event Check-In - THAT') => ({
 		title,
 		tags: seoMetaTags({
 			title,
-			description: 'Upcoming and Past Events at THAT',
+			description: 'Event check-in',
 			openGraph: {
 				type: 'website',
 				url: 'https://that.us/'

@@ -3,6 +3,7 @@
 	export let eventId;
 	export let title;
 	export let text;
+	export let returnPin;
 
 	import { createEventDispatcher } from 'svelte';
 	import { Circle3 } from 'svelte-loading-spinners';
@@ -27,6 +28,7 @@
 		waiting = false;
 
 		if (result) {
+			returnPin = pinNumber;
 			dispatch('checkinCompleted');
 		} else {
 			checkInError = true;
