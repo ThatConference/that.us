@@ -30,7 +30,7 @@
 		waiting = false;
 
 		if (result) {
-			returnPin = pinNumber;
+			returnPin = pinNumber || 'PIN Removed';
 			dispatch('checkinUpdated');
 		} else {
 			checkInError = true;

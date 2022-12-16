@@ -23,12 +23,13 @@
 	async function handleCheckIn() {
 		waiting = true;
 
+		if (pinNumber === '') pinNumber = null;
 		const { result, message } = await checkIn(eventId, ticketId, pinNumber);
 
 		waiting = false;
 
 		if (result) {
-			returnPin = pinNumber;
+			returnPin = pinNumber ?? 'PIN opt-out';
 			dispatch('checkinCompleted');
 		} else {
 			checkInError = true;

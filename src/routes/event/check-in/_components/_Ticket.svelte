@@ -102,7 +102,23 @@
 			</div>
 		</div>
 	</div>
-
+	{#if !ticket.hasCheckedIn && displayPin !== 'PIN not set'}
+		<div class="flex pt-6 pb-2">
+			<div class="flex items-center">
+				<div class="flex-shrink-0 pr-4">
+					<span
+						class="flex h-6 w-6 items-center justify-center rounded-full bg-green-500 bg-opacity-60">
+						<CheckFull height="h-4" width="w-4" />
+					</span>
+				</div>
+				<div>
+					<span class="text-gray-500">
+						Checked in. Reload page to perform further edits to this ticket.
+					</span>
+				</div>
+			</div>
+		</div>
+	{/if}
 	{#if ticket.hasCheckedIn}
 		<div class="flex pt-6 pb-2">
 			<div class="flex items-center">
