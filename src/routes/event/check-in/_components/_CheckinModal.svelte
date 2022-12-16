@@ -3,6 +3,7 @@
 	export let eventId;
 	export let title;
 	export let text;
+	export let returnPin;
 
 	import { createEventDispatcher } from 'svelte';
 	import { Circle3 } from 'svelte-loading-spinners';
@@ -22,11 +23,13 @@
 	async function handleCheckIn() {
 		waiting = true;
 
+		if (pinNumber === '') pinNumber = null;
 		const { result, message } = await checkIn(eventId, ticketId, pinNumber);
 
 		waiting = false;
 
 		if (result) {
+			returnPin = pinNumber ?? 'PIN opt-out';
 			dispatch('checkinCompleted');
 		} else {
 			checkInError = true;

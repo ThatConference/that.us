@@ -23,6 +23,8 @@
 	let ticketHolder = ticket.isAllocated ? allocatedTo : purchasedBy;
 	let checkInClicked = false;
 	let editCheckInClicked = false;
+	let displayPin = ticket.partnerPin ?? 'PIN not set';
+	let tempPin;
 </script>
 
 <div
@@ -64,7 +66,7 @@
 						</p>
 						<div class="mt-2 flex items-center space-x-2 text-sm text-gray-500">
 							<span class="rounded-full bg-green-300 py-1 px-8  font-extrabold text-white">
-								{ticket.partnerPin ? ticket.partnerPin : 'unassigned'}
+								{displayPin}
 							</span>
 						</div>
 					</div>
@@ -100,7 +102,23 @@
 			</div>
 		</div>
 	</div>
-
+	{#if !ticket.hasCheckedIn && displayPin !== 'PIN not set'}
+		<div class="flex pt-6 pb-2">
+			<div class="flex items-center">
+				<div class="flex-shrink-0 pr-4">
+					<span
+						class="flex h-6 w-6 items-center justify-center rounded-full bg-green-500 bg-opacity-60">
+						<CheckFull height="h-4" width="w-4" />
+					</span>
+				</div>
+				<div>
+					<span class="text-gray-500">
+						Checked in. Reload page to perform further edits to this ticket.
+					</span>
+				</div>
+			</div>
+		</div>
+	{/if}
 	{#if ticket.hasCheckedIn}
 		<div class="flex pt-6 pb-2">
 			<div class="flex items-center">
@@ -133,8 +151,10 @@
 		text="Please enter the user's pin."
 		eventId={ticket.event.id}
 		ticketId={ticket.id}
+		bind:returnPin={tempPin}
 		on:checkinCompleted={() => {
 			checkInClicked = false;
+			if (tempPin) displayPin = tempPin;
 		}}
 		on:close={() => (checkInClicked = false)} />
 {/if}
@@ -142,12 +162,14 @@
 {#if editCheckInClicked}
 	<EditCheckinModal
 		title="THAT Edit Check-In"
-		text="Revert or update a users checkin."
+		text="Revert or update a users check-in."
 		eventId={ticket.event.id}
 		ticketId={ticket.id}
 		isOwedShirt={!ticket.receivedSwag}
+		bind:returnPin={tempPin}
 		on:checkinUpdated={() => {
 			editCheckInClicked = false;
+			if (tempPin) displayPin = tempPin;
 		}}
 		on:close={() => (editCheckInClicked = false)} />
 {/if}

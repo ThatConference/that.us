@@ -18,8 +18,8 @@
 		})
 	}))();
 
-	const txEventId = 'OlyDhUyrp2DI9babqZO9';
-	const wiEventId = 'w1ZQFzsSZzRuItVCNVmC';
+	const txEventId = 'THATConferenceTexas2023';
+	const wiEventId = 'THATConferenceWisconsin2023';
 </script>
 
 <Seo title={metaTags.title} tags={metaTags.tags} />
@@ -98,7 +98,9 @@
 							<h3>Important Event Links</h3>
 							<ul>
 								<li>
-									<a href={`/partners/leads/${txEventId}`} target="_blank">Lead Generation</a>
+									<a href={`/partners/leads/${txEventId}`} target="_blank" rel="noreferrer">
+										Lead Generation
+									</a>
 								</li>
 								<li>
 									<a href="/partners/my-network/" target="_blank">Lead Generation Results</a>

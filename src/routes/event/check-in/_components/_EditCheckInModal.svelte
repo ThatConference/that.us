@@ -4,6 +4,7 @@
 	export let title;
 	export let text;
 	export let isOwedShirt = false;
+	export let returnPin;
 
 	import { createEventDispatcher } from 'svelte';
 	import { Circle3 } from 'svelte-loading-spinners';
@@ -29,6 +30,7 @@
 		waiting = false;
 
 		if (result) {
+			returnPin = pinNumber || 'PIN Removed';
 			dispatch('checkinUpdated');
 		} else {
 			checkInError = true;
@@ -44,6 +46,7 @@
 		waiting = false;
 
 		if (result) {
+			returnPin = 'PIN not set';
 			dispatch('checkinUpdated');
 		} else {
 			checkInError = true;
