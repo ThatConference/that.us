@@ -40,10 +40,7 @@ function transformEvents(allEvents, eventId, isBackdoor) {
 				.filter((i) => i.isActive)
 				.filter(
 					(i) =>
-						dayjs().isBetween(
-							dayjs(i.callForSpeakersOpenDate),
-							dayjs(i.callForSpeakersCloseDate)
-						) || dayjs().isBetween(dayjs(i.startDate).subtract(2, 'week'), dayjs(i.endDate)),
+						dayjs().isBetween(dayjs(i.callForSpeakersOpenDate), dayjs(i.callForSpeakersCloseDate)),
 					'endDate'
 				)
 		);
