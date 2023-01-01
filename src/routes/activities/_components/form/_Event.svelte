@@ -230,7 +230,7 @@
 					<div class="relative flex justify-center">
 						<span
 							class="rounded-md bg-gray-100 px-2 text-sm uppercase tracking-wider text-gray-500">
-							Upcoming Hybrid, In-Person Events
+							Upcoming In-Person Events
 						</span>
 					</div>
 				</div>
