@@ -7,9 +7,8 @@
 	import { Input } from 'sveltejs-forms';
 	import Select from 'svelte-select';
 
-	const { sessionCategory, category, targetLocation, sessionType } = getContext(
-		'DROP_DOWN_KEY_VALUE_PAIRS'
-	);
+	const { sessionCategory, category, sessionType } = getContext('DROP_DOWN_KEY_VALUE_PAIRS');
+
 	const dispatch = createEventDispatcher();
 
 	// todo this works for now, but doesn't account for after call for speakers.
@@ -27,7 +26,7 @@
 
 	let activityTypeSelected = initialData.type || undefined;
 	let activityCategorySelected = initialData.category || undefined;
-	let activityTargetLocationSelected = initialData.targetLocation || undefined;
+	let activityTargetLocationSelected = initialData.targetLocation || 'IN_PERSON';
 
 	function onActivityTypeChange({ target }) {
 		setField('type', target.value);
@@ -37,7 +36,8 @@
 
 <div class="px-4 sm:px-6">
 	<div class="mt-6 grid grid-cols-1 gap-y-8 gap-x-4 sm:grid-cols-6">
-		<div class="sm:col-span-6">
+		<Input hidden name="targetLocation" value={activityTargetLocationSelected} />
+		<!-- <div class="sm:col-span-6">
 			<label for="activity_tags" class="block text-sm font-medium text-gray-700">
 				Select the Desired Location
 			</label>
@@ -82,7 +82,7 @@
 					</fieldset>
 				</div>
 			</div>
-		</div>
+		</div> -->
 
 		<div class="sm:col-span-6">
 			<label for="activity_tags" class="block text-sm font-medium text-gray-700">
