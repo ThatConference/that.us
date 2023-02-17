@@ -8,7 +8,10 @@
 			"$dataSources/*": ["./src/_dataSources/*"],
 			"$stores/*": ["./src/_stores/*"],
 			"$machines/*": ["./src/_machines/*"],
-			"$blog/*": ["./src/_blog/*"]
+			"$blog/*": ["./src/_blog/*"],
+			"$lib": ["src/lib"],
+			"$lib/*": ["src/lib/*"]
 		}
-	}
+	},
+	"extends": "./.svelte-kit/tsconfig.json"
 }
