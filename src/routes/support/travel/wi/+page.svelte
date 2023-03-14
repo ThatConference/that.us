@@ -80,13 +80,13 @@
 						<h3>Room Types</h3>
 						<div class="flex space-x-4">
 							<div class="prose-md prose w-full rounded-md border bg-white p-4 shadow-md">
-								<h4>Double Queen Sofa</h4>
-								<p class="text-center">$200 + tax and fees</p>
+								<h4>Run of House</h4>
+								<p class="text-center">$249 + tax and fees</p>
 							</div>
 
 							<div class="prose-md prose w-full rounded-md border bg-white p-4 shadow-md ">
-								<h4>2 Bedroom Suite</h4>
-								<p class="text-center">$324 + tax and fees</p>
+								<h4>2 Bedroom, 2 Bath Patio</h4>
+								<p class="text-center">$369 + tax and fees</p>
 							</div>
 						</div>
 
@@ -102,6 +102,10 @@
 
 						<h3>Booking Your Reservation</h3>
 						<p>A dedicated website is now available for you to book your hotel room online.</p>
+						<p>
+							Please note that in addition to our negotiated room rates, all Kalahari available
+							rooms will show as an option to reserve.
+						</p>
 
 						{#if !isRoomBlockOpen}
 							<p class="text-red-500">
