@@ -77,8 +77,8 @@ export const events = {
 export const kalahari = {
 	passkey: {
 		wi: {
-			opens: '04/11/2023',
-			closes: '06/22/2023',
+			opens: '04/10/2023',
+			closes: '06/21/2023',
 			url: 'https://book.passkey.com/'
 		},
 		tx: {
@@ -90,9 +90,9 @@ export const kalahari = {
 	speakerPasskey: {
 		'wi/2023': {
 			bookingUrl: 'https://book.passkey.com/',
-			start: '04/11/2023',
-			end: '06/22/2023',
-			blockCloseDate: '06/22/2023'
+			start: '04/10/2023',
+			end: '06/21/2023',
+			blockCloseDate: '06/21/2023'
 		},
 		'tx/2023': {
 			bookingUrl: 'https://book.passkey.com/e/50410736',
