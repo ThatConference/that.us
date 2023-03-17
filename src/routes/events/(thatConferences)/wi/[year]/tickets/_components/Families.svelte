@@ -15,6 +15,8 @@
 	const campmateTicket = products.find((p) => p.uiReference === 'CAMPMATE');
 	const campmateWithFoodTicket = products.find((p) => p.uiReference === 'CAMPMATE_WITH_FOOD');
 
+	const pigRoast = products.find((p) => p.uiReference === 'HOG_ROAST');
+
 	const familyTickets = [
 		{
 			...geeklingTicket,
@@ -23,7 +25,7 @@
 				'THAT Badge',
 				'T-Shirt',
 				'Waterpark Party Access',
-				'BBQ',
+				'Wednesday Pig Roast',
 				'Game Night'
 			]
 		},
@@ -35,7 +37,7 @@
 				'THAT Badge',
 				'T-Shirt',
 				'Waterpark Party Access',
-				'BBQ',
+				'Wednesday Pig Roast',
 				'Game Night'
 			]
 		},
@@ -46,7 +48,7 @@
 				'THAT Badge',
 				'T-Shirt',
 				'Waterpark Party Access',
-				'BBQ',
+				'Wednesday Pig Roast',
 				'Game Night'
 			]
 		},
@@ -58,11 +60,18 @@
 				'THAT Badge',
 				'T-Shirt',
 				'Waterpark Party Access',
-				'BBQ',
+				'Wednesday Pig Roast',
 				'Game Night'
 			]
 		}
 	];
+
+	if (pigRoast?.isEnabled === true) {
+		familyTickets.push({
+			...pigRoast,
+			includes: ['Wednesday Pig Roast', 'Waterpark Party Access']
+		});
+	}
 
 	function handleAddToCart(uiReference) {
 		const eventTicket = event.products
