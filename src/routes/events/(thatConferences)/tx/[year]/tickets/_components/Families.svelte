@@ -69,7 +69,7 @@
 	if (pigRoast?.isEnabled === true) {
 		familyTickets.push({
 			...pigRoast,
-			includes: ['Wednesday Pig Roast', 'Waterpark Party Access']
+			includes: ['BBQ', 'Waterpark Party Access']
 		});
 	}
 
