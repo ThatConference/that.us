@@ -32,6 +32,7 @@
 	const close = closeTime.format('dddd, MMMM D, YYYY');
 
 	const isRoomBlockOpen = dayjs().isBetween(openTime.subtract(1, 'day'), closeTime.add(1, 'day'));
+	const isNotOpenYet = dayjs().isBefore(openTime);
 </script>
 
 <Seo title={metaTags.title} tags={metaTags.tags} />
@@ -107,7 +108,12 @@
 							rooms will show as an option to reserve.
 						</p>
 
-						{#if !isRoomBlockOpen}
+						{#if !isRoomBlockOpen && isNotOpenYet}
+							<p class="text-red-500">
+								Our discount block has not opened yet. Please come back on <span
+									class="font-semibold text-red-500">{open}</span>
+							</p>
+						{:else}
 							<p class="text-red-500">
 								Please note that our block discounts have ended, but you can still book your stay at
 								the Kalahari.
@@ -121,7 +127,7 @@
 				</div>
 			</div>
 
-			<div class="rounded-md bg-gray-100 px-12 shadow-md">
+			<div class="rounded-md bg-gray-100 px-12 shadow-md" hidden>
 				<div class="prose-md prose text-gray-500">
 					<div class="flex flex-col pb-12">
 						<h2>Staybridge Suites</h2>
@@ -162,7 +168,7 @@
 					<div class="prose-md prose mb-10 text-gray-500">
 						<h2>THAT Campsite</h2>
 
-						<p>The Kalahari Resort and Convention Center can be located at:</p>
+						<p>The Kalahari Resort and Convention Center is located at:</p>
 
 						<blockquote>
 							Kalahari Resorts and Convention Center<br />
