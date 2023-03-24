@@ -247,7 +247,7 @@
 
 				{#if $state.matches(['step_seven'])}
 					<div in:fade={{ delay: 100, duration: 400 }}>
-						<ThankYou>
+						<ThankYou {eventDetails} sessions={$state.context.acceptedSpeaker.sessions}>
 							<SectionHeader slot="header" title={pluckTitle('complete')} />
 						</ThankYou>
 					</div>

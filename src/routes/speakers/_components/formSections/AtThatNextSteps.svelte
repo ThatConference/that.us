@@ -1,6 +1,9 @@
 <script>
+	export let eventDetails;
+
 	import { createEventDispatcher } from 'svelte';
 	import { Shell } from '$elements/buttons';
+	import { kalahari } from '$utils/config.public';
 
 	const dispatch = createEventDispatcher();
 
@@ -29,11 +32,18 @@
 			</li>
 			<li>
 				<span class="font-extrabold">Mentoring.</span> If you'd like help; we're here to help. Feel free
-				to reach out at anytime and if you checked the I need help box, you will see an email from us
-				soon.
+				to reach out at anytime and if you checked the "I need help" box when submitting, you will see
+				an email from us soon.
 			</li>
 			<li>
-				<span class="font-extrabold">Book your stay, like now.</span>
+				<span class="font-extrabold"
+					>Book your stay, <a
+						class="hover font-extrabold text-gray-500"
+						target="_blank"
+						rel="external noopener noreferrer"
+						href={kalahari.speakerPasskey[eventDetails.slug].bookingUrl}>
+						like now</a
+					>!</span>
 			</li>
 			<li>Help spread the good word. Tell all your friends.</li>
 			<li>
@@ -45,20 +55,19 @@
 </div>
 
 <div class="mt-12">
-	<h2 class="text-xl font-extrabold text-gray-800">Counselor Setup</h2>
+	<h2 class="text-xl font-extrabold text-gray-800">On-Site Session Room Setup</h2>
 
 	<p class="prose prose-xl mt-4 text-gray-500">
-		We recommend that you scout out your speaking room early, so when the time comes, you know
+		We recommend that you scout out your speaking room early so that when the time comes you know
 		exactly where you're going. If you ever find yourself completely lost, find a member of THAT
-		Staff, and we will point you in the right direction. Every speaking room will have the
-		following:
+		Staff and we will point you in the right direction. Every speaking room will have the following:
 	</p>
 
 	<div class="prose prose-xl mt-4 text-gray-500">
 		<ul>
-			<li>Podium, Lectern.</li>
+			<li>Lectern; really it's a round high top cocktail table that sits flat 😉</li>
 			<li>
-				HDMI connectors for video. Would you mind bringing an appropriate adapter for your computer
+				HDMI connectors for video. Make sure you bring an appropriate adapter for your computer
 				(USB-C to HDMI, etc.)
 			</li>
 			<li>3.5mm audio (for direct laptop connection)</li>

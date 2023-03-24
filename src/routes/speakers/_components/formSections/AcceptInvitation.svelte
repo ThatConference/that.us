@@ -47,7 +47,7 @@
 		It's hard to describe the excitement running through camp right now. THAT Conference is right
 		around the corner, and we can't wait to name you as one of our counselors! We're so grateful for
 		all the geeks who submitted sessions all over the globe to better the community. After multiple
-		days of discussions, we've selected you to present the following sessions.
+		days of discussions, we've selected you to present the following sessions:
 	</p>
 </div>
 
