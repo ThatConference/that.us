@@ -16,9 +16,9 @@
 
 <div>
 	<p class="prose prose-lg mt-6">
-		We did it; we knocked these tasks off that to-do list (Your room's booked, right?). We hope
-		you're as pumped as we are, and before you know it, THAT Conference will be here. We're here to
-		make you your most excellent, if you need help, you know where to find us.
+		We did it! We knocked these tasks off that to-do list (Your room is booked, right)? We hope
+		you're as pumped as we are, and before you know it, THAT Conference will be here. We are here to
+		make you your most excellent. If you need help, you know where to find us.
 	</p>
 
 	<p class="prose prose-lg mt-12">
