@@ -35,7 +35,7 @@
 			<div>
 				<a
 					target="_blank"
-					rel="external noopener"
+					rel="external noopener noreferrer"
 					class="hover"
 					href="https://www.kalahariresorts.com/">https://www.kalahariresorts.com</a>
 			</div>
@@ -58,7 +58,7 @@
 		<a
 			class="hover"
 			target="_blank"
-			rel="external noopener"
+			rel="external noopener noreferrer"
 			href={kalahari.speakerPasskey[eventDetails.slug].bookingUrl}>
 			{kalahari.speakerPasskey[eventDetails.slug].bookingUrl}
 		</a>
@@ -82,12 +82,16 @@
 	<h2 class="text-xl font-extrabold text-gray-800">Room Compensation</h2>
 
 	<p class="prose prose-lg mt-4 text-gray-500">
-		As a thank you for being a Counselor, we will reimburse you for two nights stay in a standard
-		room for each day that you speak (up to a total of three nights per family of multiple
-		speakers). To reserve the room, the Kalahari requires a deposit of one night's stay plus tax.
-		THAT Conference works directly with the Kalahari to apply the appropriate credits to your
-		account during the conference. You will see the proper credits applied to your final bill upon
-		checkout. Speaking sessions from sponsorships is not eligible for this benefit.
+		As a thank you for being a Counselor, we will reimburse you for two nights' lodging in a
+		standard room (up to $249/day) for each day that you speak (up to a total of three nights per
+		family of multiple speakers).
+	</p>
+	<p class="prose prose-lg mt-4 text-gray-500">
+		To reserve the room, the Kalahari requires a deposit of one night's stay plus tax and fees. THAT
+		Conference works directly with the Kalahari to apply the appropriate credits to your account
+		during the conference. You will see the proper credits applied to your final bill upon checkout.
+		Please note that you may book any room type, however, you will be responsible for the difference
+		at any rate above $249/day. Speaking sessions from sponsorships are excluded from this benefit.
 	</p>
 
 	<div class="mt-6 antialiased">
