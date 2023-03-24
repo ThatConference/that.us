@@ -6,7 +6,7 @@
 
 	let sessionurl = `https://that.us/activities/${sessions[0].id}`;
 	let tweettext = encodeURIComponent(
-		`I'm speaking at @THATconferfence on ${sessions[0].title}. Learn more at`
+		`I'm speaking at @THATconference on ${sessions[0].title}. Learn more at`
 	);
 </script>
 
