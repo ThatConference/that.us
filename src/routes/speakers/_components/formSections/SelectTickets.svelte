@@ -76,10 +76,6 @@
 		As part of agreeing to speak at THAT, you, of course, need a badge. If you were selected to
 		present AT THAT, you also get to bring your family.
 	</p>
-	<p class="prose prose-lg mt-4 text-gray-500">
-		You will also receive a free ON THAT (virtual ticket) camper to give away to anyone you wish. We
-		will send you further instructions on how to do so later.
-	</p>
 	{#if !isAt}
 		<p class="prose prose-lg mt-4 text-gray-500">
 			If you would like to attend in-person please contact us.
