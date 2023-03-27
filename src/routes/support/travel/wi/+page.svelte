@@ -32,7 +32,6 @@
 	const close = closeTime.format('dddd, MMMM D, YYYY');
 
 	const isRoomBlockOpen = dayjs().isBetween(openTime.subtract(1, 'day'), closeTime.add(1, 'day'));
-	const isNotOpenYet = dayjs().isBefore(openTime);
 </script>
 
 <Seo title={metaTags.title} tags={metaTags.tags} />
@@ -108,16 +107,8 @@
 							rooms will show as an option to reserve.
 						</p>
 
-						{#if !isRoomBlockOpen && isNotOpenYet}
-							<p class="text-red-500">
-								Our discount block has not opened yet. Please come back on <span
-									class="font-semibold text-red-500">{open}</span>
-							</p>
-						{:else}
-							<p class="text-red-500">
-								Please note that our block discounts have ended, but you can still book your stay at
-								the Kalahari.
-							</p>
+						{#if !isRoomBlockOpen}
+							<p class="text-red-500">Our room blocks are currently closed.</p>
 						{/if}
 
 						<div class="flex justify-center">
