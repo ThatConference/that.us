@@ -222,7 +222,7 @@
 										<div class="mt-4 flex items-center justify-center">
 											<span class="flex items-start px-3 text-6xl tracking-tight text-gray-900">
 												<span class="mt-2 mr-2 text-4xl font-medium">$</span>
-												<span class="font-extrabold"> 79 </span>
+												<span class="font-extrabold"> 99 </span>
 												<span class="mt-2 ml-2 text-xl font-medium tracking-wide text-gray-400">
 													USD
 												</span>
