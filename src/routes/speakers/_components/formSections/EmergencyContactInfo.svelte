@@ -7,7 +7,10 @@
 		phoneNumber: yup
 			.string()
 			.trim()
-			.matches(/^\+[1-9]\d{10,14}$/, 'Phone number must be in the following format: +13476748428)')
+			.matches(
+				/^\+(?:[0-9] ?){6,14}[0-9]$/,
+				'Phone number must be in the following format: +13476748428, +493083050, etc.)'
+			)
 			.required('Please enter a phone number we can reach them at.'),
 		relationship: yup.string().trim().required('What is their relationship to you?'),
 		travelingWithYou: yup.boolean().required('Are they traveling with you?')
