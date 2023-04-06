@@ -8,8 +8,8 @@
 			.string()
 			.trim()
 			.matches(
-				/^\+[1-9]\d{10,14}$/,
-				'Phone number must be in the following format (E.g. +13476748428)'
+				/^\+(?:[0-9] ?){6,14}[0-9]$/,
+				'Phone number must be in the following format: +13476748428, +493083050, etc.)'
 			)
 			.required('Please enter a phone number we can reach them at.'),
 		relationship: yup.string().trim().required('What is their relationship to you?'),
@@ -89,7 +89,7 @@
 						<div class="mt-4">
 							<label for="phoneNumber" class="block">
 								<span class="text-gray-700"
-									>What is the best number to contact them at? (E.g. +13476748428)</span>
+									>What is the best number to contact them at? (E.g. +13476748428, +493083050, etc.)</span>
 							</label>
 							<div class="relative">
 								<span
@@ -99,12 +99,12 @@
 							<MaskInput
 								name="phoneNumber"
 								alwaysShowMask
-								mask="+0 (000) 000 - 0000"
+								mask="+00000000000000"
 								size={20}
 								showMask
-								maskChar="_"
+								maskChar=""
 								class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5"
-								value={emergencyContactInformation.phoneNumber || undefined}
+								value={emergencyContactInformation?.phoneNumber || undefined}
 								on:change={({ detail: { inputState } }) => {
 									if (inputState.unmaskedValue.length === 0) setValue('phoneNumber', null);
 									else setValue('phoneNumber', `+${inputState.unmaskedValue}`);
