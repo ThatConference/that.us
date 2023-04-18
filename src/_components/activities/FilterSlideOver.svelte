@@ -43,7 +43,7 @@
 		</div>
 
 		{#if eventsModified.length > 0}
-			<div class="pt-4 pb-2">
+			<div class="pb-2 pt-4">
 				<h2 class="text-lg font-medium leading-7 text-gray-900">Events</h2>
 				<div class="my-2 border-gray-200">
 					<ul>
@@ -141,7 +141,7 @@
 		{#if selectedFilterTerms.length}
 			<button
 				type="button"
-				class="focus:ring-blue rounded-md border border-gray-300 py-2 px-4 text-sm
+				class="focus:ring-blue rounded-md border border-gray-300 px-4 py-2 text-sm
         font-medium leading-5 text-gray-700 transition
         duration-150 ease-in-out hover:text-gray-500
         focus:border-blue-300 focus:outline-none active:bg-gray-50 active:text-gray-800"

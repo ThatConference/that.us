@@ -30,7 +30,7 @@
 				</div>
 			</div>
 
-			<div class="px-4 pt-12 pb-12 sm:px-6 lg:px-8 lg:pt-20 lg:pb-20">
+			<div class="px-4 pb-12 pt-12 sm:px-6 lg:px-8 lg:pb-20 lg:pt-20">
 				<div class="text-center">
 					<p
 						class="mt- text-3xl font-extrabold leading-9 text-white sm:text-2xl
@@ -53,10 +53,10 @@
 						<PanelSpeakers {speakers} />
 					{/if}
 
-					<div class="rounded-b-lg border-t-2 border-gray-100 bg-gray-50 px-10 py-10 pt-10 pb-8">
+					<div class="rounded-b-lg border-t-2 border-gray-100 bg-gray-50 px-10 py-10 pb-8 pt-10">
 						<div class="flex flex-col items-center justify-center lg:flex-row">
 							<span
-								class="flex-none pb-4 text-3xl leading-none tracking-tight text-gray-900 sm:text-3xl lg:pr-4 lg:pb-0">
+								class="flex-none pb-4 text-3xl leading-none tracking-tight text-gray-900 sm:text-3xl lg:pb-0 lg:pr-4">
 								<span class="font-extrabold">
 									{#if location === 'THAT'}
 										Join In

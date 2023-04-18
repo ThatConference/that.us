@@ -9,7 +9,6 @@ export { default as user } from 'svelte-awesome/icons/user';
 export { default as externalLink } from 'svelte-awesome/icons/externalLink';
 export { default as info } from 'svelte-awesome/icons/info';
 export { default as mapMarker } from 'svelte-awesome/icons/mapMarker';
-export { default as filter } from 'svelte-awesome/icons/filter ';
 export { default as signIn } from 'svelte-awesome/icons/signIn';
 export { default as calendarCheckO } from 'svelte-awesome/icons/calendarCheckO';
 export { default as warning } from 'svelte-awesome/icons/warning';

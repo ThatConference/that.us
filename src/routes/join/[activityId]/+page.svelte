@@ -244,7 +244,7 @@
 			<ActionHeader title={activityDetails.title}>
 				<a
 					href="/activities/{activityId}/"
-					class="rounded-md border-2 border-thatBlue-500 bg-white px-8 py-3 text-base font-medium leading-6 text-thatBlue-500 shadow transition duration-150 ease-in-out hover:bg-thatBlue-500 hover:text-white focus:border-thatBlue-800 focus:bg-thatBlue-500 focus:text-white focus:outline-none focus:ring-thatBlue-500 md:py-4 md:px-10 md:text-lg"
+					class="rounded-md border-2 border-thatBlue-500 bg-white px-8 py-3 text-base font-medium leading-6 text-thatBlue-500 shadow transition duration-150 ease-in-out hover:bg-thatBlue-500 hover:text-white focus:border-thatBlue-800 focus:bg-thatBlue-500 focus:text-white focus:outline-none focus:ring-thatBlue-500 md:px-10 md:py-4 md:text-lg"
 					target="_blank"
 					rel="noopener">Activity Details</a>
 			</ActionHeader>
@@ -255,7 +255,7 @@
 		<div>
 			<button
 				type="button"
-				class="absolute top-6 left-5 cursor-pointer"
+				class="absolute left-5 top-6 cursor-pointer"
 				on:click={expanded ? shrinkJitsiFrame : expandJitsiFrame}>
 				<div class="flex h-12 w-[100px] items-center justify-center rounded-md bg-red-500">
 					<Icon data={expanded ? compressIcon : expandIcon} class="h-8 w-8 text-white" />

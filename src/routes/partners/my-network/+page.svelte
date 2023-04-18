@@ -80,7 +80,7 @@
 				<Shell>
 					<button
 						type="button"
-						class="w-full py-4 px-8 text-sm font-medium leading-5"
+						class="w-full px-8 py-4 text-sm font-medium leading-5"
 						on:click={downloadHandler}>
 						<span class="text-lg">Download</span>
 					</button>

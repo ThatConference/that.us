@@ -21,7 +21,7 @@
 								<div class="flex h-full w-full flex-col space-y-4">
 									<div class="flex-grow">
 										<svg
-											class="top-0 left-0 h-8 w-8 -translate-x-4 translate-y-4
+											class="left-0 top-0 h-8 w-8 -translate-x-4 translate-y-4
 											transform text-thatBlue-100 opacity-50"
 											fill="currentColor"
 											viewBox="0 0 32 32">

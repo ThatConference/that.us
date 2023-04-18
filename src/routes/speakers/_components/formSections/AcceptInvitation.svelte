@@ -55,7 +55,7 @@
 	<h2 class="text-xl font-extrabold text-gray-800">Event Details</h2>
 
 	<div
-		class="mt-4 flex flex-col items-center justify-center space-y-6 rounded-md border bg-gray-50 py-4 px-4 sm:flex-row sm:space-y-0 sm:space-x-8 sm:py-0">
+		class="mt-4 flex flex-col items-center justify-center space-y-6 rounded-md border bg-gray-50 px-4 py-4 sm:flex-row sm:space-x-8 sm:space-y-0 sm:py-0">
 		<div class="flex flex-col items-center sm:items-start">
 			<div class="font-extrabold">{eventDetails.name}</div>
 			<div class="text-gray-500">

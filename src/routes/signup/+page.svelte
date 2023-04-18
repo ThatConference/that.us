@@ -41,7 +41,7 @@
 					<section>
 						<ol class="overflow-hidden">
 							<li class="relative pb-10" in:fade={{ delay: 100, duration: 500 }}>
-								<div class="absolute top-4 left-12 ml-0.5 mt-0.5 h-full w-1 bg-thatOrange-500" />
+								<div class="absolute left-12 top-4 ml-0.5 mt-0.5 h-full w-1 bg-thatOrange-500" />
 
 								<!-- Complete Step -->
 								<!-- todo how do we redirect after login? -->
@@ -62,7 +62,7 @@
 								</a>
 							</li>
 							<li class="relative pb-10" in:fade={{ delay: 300, duration: 500 }}>
-								<div class="absolute top-4 left-12 ml-0.5 mt-0.5 h-full w-1 bg-thatOrange-500" />
+								<div class="absolute left-12 top-4 ml-0.5 mt-0.5 h-full w-1 bg-thatOrange-500" />
 
 								<a href="/my/profiles/primary/" class="group relative flex items-center p-3">
 									<span class="flex h-20 items-center">

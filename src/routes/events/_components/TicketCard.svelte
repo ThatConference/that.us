@@ -34,7 +34,7 @@
 		</div>
 
 		<div class="flex flex-col justify-between">
-			<div class="flex-grow px-6 pt-6 pb-8 sm:p-10 sm:pt-6">
+			<div class="flex-grow px-6 pb-8 pt-6 sm:p-10 sm:pt-6">
 				<ul>
 					{#each ticketDetails.includes as item}
 						<li class="flex">

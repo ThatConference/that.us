@@ -5,7 +5,7 @@
 <section class="mt-12 bg-white py-12 lg:py-16">
 	<div class="relative mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
 		<svg
-			class="-translate-y-3/6 absolute right-full -top-3/4 hidden translate-x-1/2
+			class="-translate-y-3/6 absolute -top-3/4 right-full hidden translate-x-1/2
       transform lg:block"
 			width="404"
 			height="784"
@@ -35,7 +35,7 @@
 
 			<div class="relative lg:ml-10">
 				<svg
-					class="absolute top-0 left-0 h-36 w-36 -translate-x-8
+					class="absolute left-0 top-0 h-36 w-36 -translate-x-8
           -translate-y-24 transform text-thatBlue-200 opacity-50"
 					stroke="currentColor"
 					fill="none"

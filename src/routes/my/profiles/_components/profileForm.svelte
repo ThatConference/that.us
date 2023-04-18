@@ -326,14 +326,14 @@
 			</p>
 		</div>
 		<div class="px-4">
-			<div class="mt-6 grid grid-cols-1 gap-y-4 gap-x-4 sm:grid-cols-6">
+			<div class="mt-6 grid grid-cols-1 gap-x-4 gap-y-4 sm:grid-cols-6">
 				<div class="sm:col-span-3">
 					<label for="first_name" class="block text-sm font-medium leading-5 text-gray-700">
 						First or Given Name
 					</label>
 					<div class="relative">
 						<span
-							class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400" />
+							class="absolute left-0 top-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400" />
 					</div>
 					<div class="mt-1 rounded-md border shadow-sm">
 						<Input
@@ -351,7 +351,7 @@
 					</label>
 					<div class="relative">
 						<span
-							class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400" />
+							class="absolute left-0 top-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400" />
 					</div>
 					<div class="mt-1 rounded-md border shadow-sm">
 						<Input
@@ -367,7 +367,7 @@
 					</label>
 					<div class="relative">
 						<span
-							class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400" />
+							class="absolute left-0 top-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400" />
 					</div>
 					<!-- todo .. shadow doesn't align correctly <div class="mt-1 flex rounded-md shadow-sm"> -->
 					<div class="mt-1 flex">
@@ -402,7 +402,7 @@
 					</label>
 					<div class="relative">
 						<span
-							class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400" />
+							class="absolute left-0 top-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400" />
 					</div>
 					<p class="mt-2 text-sm text-gray-500">Write a few sentences about yourself.</p>
 					<div class="mt-1 rounded-md border shadow-sm">
@@ -471,7 +471,7 @@
 								type="file"
 								on:change={(e) => postProfilePicture(e).then((r) => setValue('profileImage', r))}
 								accept="image/x-png,image/png,.png,image/jpeg,.jpg,.jpeg,image/gif,.gif"
-								class="focus:ring-blue rounded-md border border-gray-300 py-2 px-3
+								class="focus:ring-blue rounded-md border border-gray-300 px-3 py-2
                   text-sm font-medium leading-4 text-gray-700
                   transition duration-150
                   ease-in-out hover:text-gray-500
@@ -635,7 +635,7 @@
 							</label>
 							<div class="relative">
 								<span
-									class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400" />
+									class="absolute left-0 top-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400" />
 							</div>
 							<div class="mt-1 rounded-md border shadow-sm">
 								<Input
@@ -662,7 +662,7 @@
 							<legend class="text-base font-medium text-gray-900"> Do you agree to our: </legend>
 							<div class="relative">
 								<span
-									class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400" />
+									class="absolute left-0 top-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400" />
 							</div>
 
 							<div class="mt-4">
@@ -820,11 +820,6 @@
 				</div>
 
 				<div class="mt-8 border-t border-gray-200 pt-8">
-					<div>
-						<h3 class="text-lg font-medium leading-6 text-gray-900">User Account Maintenance</h3>
-						<p class="mt-1 text-sm leading-5 text-gray-500">more to come...</p>
-					</div>
-
 					<div class="mt-6">
 						<fieldset>
 							<legend class="text-base font-medium text-gray-900"> User Account </legend>
@@ -876,7 +871,7 @@
 						<button
 							type="reset"
 							tabindex="-1"
-							class="focus:ring-blue rounded-md border-2 border-gray-300 py-2 px-4
+							class="focus:ring-blue rounded-md border-2 border-gray-300 px-4 py-2
               text-sm font-medium leading-5 text-gray-700
               transition duration-150 ease-in-out
               hover:text-gray-500 focus:border-blue-300 focus:outline-none active:bg-gray-50

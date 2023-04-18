@@ -1,7 +1,5 @@
 export let data;
-
 import '../app.css';
-
 import 'lazysizes';
 import { browser, dev } from '$app/environment';
 

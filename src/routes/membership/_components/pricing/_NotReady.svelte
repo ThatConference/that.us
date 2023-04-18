@@ -6,7 +6,7 @@
 
 <div class="bg-thatBlue-800 text-white">
 	<div class="relative">
-		<div class="mx-auto max-w-5xl py-16 px-4 text-center sm:py-20 sm:px-6 lg:px-8">
+		<div class="mx-auto max-w-5xl px-4 py-16 text-center sm:px-6 sm:py-20 lg:px-8">
 			<h2 class="text-5xl font-extrabold sm:text-4xl">
 				<span class="block">Signup today.</span>
 				<span class="block">Join the daily conversation for FREE.</span>

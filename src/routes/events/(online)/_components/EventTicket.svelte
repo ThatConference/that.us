@@ -51,7 +51,7 @@
 		</div>
 
 		<div
-			class="relative mt-12 flex flex-col space-y-10 lg:mt-24 lg:flex-row lg:space-y-0 lg:space-x-10">
+			class="relative mt-12 flex flex-col space-y-10 lg:mt-24 lg:flex-row lg:space-x-10 lg:space-y-0">
 			<div class="flex flex-col rounded-xl shadow-lg">
 				<div class="bg-white px-6 py-8 sm:p-10 sm:pb-6">
 					<div class="inline-flex items-center">
@@ -81,7 +81,7 @@
 					</p>
 				</div>
 				<div
-					class="flex flex-1 flex-col justify-between space-y-6 bg-gray-50 px-6 pt-6 pb-8 sm:p-10 sm:pt-6">
+					class="flex flex-1 flex-col justify-between space-y-6 bg-gray-50 px-6 pb-8 pt-6 sm:p-10 sm:pt-6">
 					<ul class="space-y-4">
 						<li class="flex items-start">
 							<div class="flex-shrink-0">
@@ -138,7 +138,7 @@
 					</p>
 				</div>
 				<div
-					class="flex flex-1 flex-col justify-between space-y-6 bg-gray-50 px-6 pt-6 pb-8 sm:p-10 sm:pt-6">
+					class="flex flex-1 flex-col justify-between space-y-6 bg-gray-50 px-6 pb-8 pt-6 sm:p-10 sm:pt-6">
 					<ul class="space-y-4">
 						<li class="flex items-start">
 							<div class="flex-shrink-0">
@@ -188,7 +188,7 @@
 				</p>
 			</div>
 			<div>
-				<dl class="mt-10 flex flex-col space-y-10 lg:flex-row lg:space-y-0 lg:space-x-10">
+				<dl class="mt-10 flex flex-col space-y-10 lg:flex-row lg:space-x-10 lg:space-y-0">
 					<div class="flex">
 						<div class="flex-shrink-0">
 							<div
@@ -251,7 +251,7 @@
 					<ActivityTypes />
 				</div>
 
-				<div class="relative mt-24 lg:col-start-2 lg:mt-0 lg:ml-14">
+				<div class="relative mt-24 lg:col-start-2 lg:ml-14 lg:mt-0">
 					<h3 class="text-2xl font-extrabold tracking-tight text-thatBlue-800 sm:text-3xl">
 						A platform designed to support us
 					</h3>

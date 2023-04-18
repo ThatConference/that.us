@@ -1,5 +1,8 @@
 <script>
 	export let data;
+
+	import '../app.css';
+
 	import { onMount, setContext } from 'svelte';
 	import { navigating, page } from '$app/stores';
 	import { browser, dev } from '$app/environment';

@@ -5,7 +5,7 @@
 		WELCOME TO THAT ONLINE
 	</p>
 	<h1
-		class="mt-2 mb-8 text-3xl font-extrabold leading-8 tracking-tight
+		class="mb-8 mt-2 text-3xl font-extrabold leading-8 tracking-tight
 			text-gray-900 sm:text-4xl sm:leading-10">
 		Your ticket has been claimed!
 	</h1>

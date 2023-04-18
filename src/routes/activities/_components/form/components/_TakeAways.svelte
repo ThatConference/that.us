@@ -64,7 +64,7 @@
 <div>
 	<Form {schema} validateOnBlur={false} validateOnChange={false} on:submit={handleSubmit}>
 		<div
-			class="flex w-full flex-col space-y-4 sm:flex-row sm:items-center sm:space-y-0 sm:space-x-8">
+			class="flex w-full flex-col space-y-4 sm:flex-row sm:items-center sm:space-x-8 sm:space-y-0">
 			<div class="flex-grow">
 				<Input
 					id="takeAwayInput"

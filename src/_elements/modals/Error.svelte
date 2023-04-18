@@ -16,7 +16,7 @@
 	</div>
 
 	<div
-		class="relative transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4
+		class="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5
     shadow-xl transition-all sm:w-full sm:max-w-lg sm:p-6"
 		role="dialog"
 		aria-modal="true"
@@ -34,7 +34,7 @@
             4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
 				</svg>
 			</div>
-			<div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+			<div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
 				<h3 class="text-lg font-medium leading-6 text-gray-900" id="modal-headline">
 					{title}
 				</h3>

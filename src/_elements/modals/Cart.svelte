@@ -13,7 +13,7 @@
 	</div>
 
 	<div
-		class="transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 shadow-xl transition-all sm:w-full sm:max-w-sm sm:p-6"
+		class="transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 shadow-xl transition-all sm:w-full sm:max-w-sm sm:p-6"
 		role="dialog"
 		aria-modal="true"
 		aria-labelledby="modal-headline"

@@ -74,7 +74,7 @@
 <div>
 	<Form {schema} validateOnBlur={false} validateOnChange={false} on:submit={handleSubmit}>
 		<div class="w-full space-y-4">
-			<div class="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
+			<div class="flex flex-col space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
 				<div class="flex-grow">
 					<Input
 						name="name"

@@ -20,14 +20,14 @@
 		<div class="flex w-full flex-1 justify-end space-x-4">
 			<div>
 				<ShellButton>
-					<div class="py-2 px-4">
+					<div class="px-4 py-2">
 						<a href="/support/contact-us"> Contact Us </a>
 					</div>
 				</ShellButton>
 			</div>
 			<div>
 				<ShellButton>
-					<div class="py-2 px-4">
+					<div class="px-4 py-2">
 						<a href="/sponsorships/apply/#prospectus"> Sponsorship Prospectus </a>
 					</div>
 				</ShellButton>

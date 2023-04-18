@@ -12,7 +12,7 @@
 	const dispatch = createEventDispatcher();
 </script>
 
-<div class="relative py-12 px-4">
+<div class="relative px-4 py-12">
 	<div>
 		<div class="mx-auto max-w-7xl lg:px-8">
 			<div class="grid-cols-3 lg:grid lg:gap-12">
@@ -50,7 +50,7 @@
 					</div>
 				</div>
 
-				<div class="mt-12 -mb-16 hidden sm:-mb-48 lg:relative lg:m-0 lg:block">
+				<div class="-mb-16 mt-12 hidden sm:-mb-48 lg:relative lg:m-0 lg:block">
 					<div class="mx-auto max-w-md sm:max-w-2xl lg:max-w-none">
 						<Code
 							classes="w-full lg:absolute lg:inset-y-0 lg:left-0 lg:h-full lg:w-auto lg:max-w-none" />

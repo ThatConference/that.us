@@ -3,7 +3,7 @@
 </script>
 
 <section class="relative overflow-x-hidden">
-	<div class="my-36 mx-auto max-w-screen-xl px-4 sm:px-6 md:my-12">
+	<div class="mx-auto my-36 max-w-screen-xl px-4 sm:px-6 md:my-12">
 		<div class="flex flex-col space-y-24 lg:grid lg:grid-cols-7">
 			<div class="col-span-4">
 				<h2 class="font-extrabold uppercase tracking-wider text-thatRed-500 antialiased">
@@ -26,7 +26,7 @@
 					once a year but we host digital events all the time.
 				</p>
 				<div
-					class="mt-20 flex flex-col items-center justify-center space-y-12 sm:flex-row sm:justify-start sm:space-y-0 sm:space-x-4">
+					class="mt-20 flex flex-col items-center justify-center space-y-12 sm:flex-row sm:justify-start sm:space-x-4 sm:space-y-0">
 					<div>
 						<ActionLink href="/support/">What is THAT Community?</ActionLink>
 					</div>

@@ -12,13 +12,13 @@
 		aria-labelledby="modal-title"
 		role="dialog"
 		aria-modal="true">
-		<div class="flex min-h-screen items-center justify-center px-4 pt-4 pb-20 text-center sm:p-10">
+		<div class="flex min-h-screen items-center justify-center px-4 pb-20 pt-4 text-center sm:p-10">
 			<div class="fixed inset-0">
 				<div class="absolute inset-0 bg-gray-500 opacity-75" />
 			</div>
 
 			<div
-				class="transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4
+				class="transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5
 		shadow-xl transition-all sm:w-full sm:max-w-sm sm:p-6"
 				role="dialog"
 				aria-modal="true"

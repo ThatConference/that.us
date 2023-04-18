@@ -23,13 +23,13 @@
 				Subscribe Today
 			</h2>
 			{#if !submitted}
-				<p class="prose-lg prose mt-3 max-w-3xl text-gray-500">
+				<p class="prose prose-lg mt-3 max-w-3xl text-gray-500">
 					Another list? We know you're busy enough just trying to get your product shipped. We also
 					don't want to become more noise for you. We don't email much, honestly, we're busy too,
 					but when we do it's to make sure you stay in the know.
 				</p>
 			{:else}
-				<p class="prose-lg prose mt-3 max-w-3xl text-gray-500">
+				<p class="prose prose-lg mt-3 max-w-3xl text-gray-500">
 					Thank you for signing up. Welcome to THAT family.
 				</p>
 				<p class="mt-3 text-sm leading-5 text-gray-500">
@@ -37,7 +37,7 @@
 				</p>
 			{/if}
 		</div>
-		<div class="mt-8 lg:mt-0 lg:ml-8">
+		<div class="mt-8 lg:ml-8 lg:mt-0">
 			{#if !submitted}
 				<Form
 					on:submit={handleSubmit}
@@ -60,11 +60,11 @@
 								type="email"
 								required
 								class="w-full min-w-0 appearance-none rounded-md border 
-								border-gray-300 bg-white py-2 
-								px-4 text-base text-gray-900 placeholder-gray-500 shadow-sm 
+								border-gray-300 bg-white px-4 
+								py-2 text-base text-gray-900 placeholder-gray-500 shadow-sm 
 								focus:border-thatBlue-500 focus:placeholder-gray-400 focus:outline-none focus:ring-thatBlue-500"
 								placeholder="Enter your email" />
-							<div class="mt-3 rounded-md shadow sm:mt-0 sm:ml-3 sm:flex-shrink-0">
+							<div class="mt-3 rounded-md shadow sm:ml-3 sm:mt-0 sm:flex-shrink-0">
 								<button
 									type="submit"
 									class="rounded-md border-2 border-thatBlue-500 bg-white px-4 py-2 text-base font-medium

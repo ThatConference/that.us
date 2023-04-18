@@ -42,7 +42,7 @@
 		<div class="relative pb-16 md:pb-20 lg:pb-24 xl:pb-32">
 			<div class="mx-auto mt-32 max-w-screen-xl px-4 sm:px-6 xl:mt-40">
 				<main>
-					<div class="py-20 px-8">
+					<div class="px-8 py-20">
 						<div class="relative mx-auto">
 							{#if otherUpcomingEvents.length > 0}
 								<div class="mx-auto mt-12 grid max-w-lg gap-10 lg:max-w-none lg:grid-cols-3">

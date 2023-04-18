@@ -86,7 +86,7 @@
 			</p>
 		</div>
 		<div
-			class="my-12 mx-auto flex max-w-prose flex-col items-center justify-center
+			class="mx-auto my-12 flex max-w-prose flex-col items-center justify-center
         lg:max-w-none">
 			<div class="flex space-x-4 text-base">
 				<StandardLink href="/support/">Getting Started</StandardLink>

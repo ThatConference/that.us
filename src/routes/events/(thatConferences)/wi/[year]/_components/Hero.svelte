@@ -28,7 +28,7 @@
 				<div class="flex pt-12">
 					<a href="tickets">
 						<div
-							class="transform rounded-lg border-2 border-thatBlue-400 py-6 px-12 transition duration-500 ease-in-out hover:scale-105">
+							class="transform rounded-lg border-2 border-thatBlue-400 px-12 py-6 transition duration-500 ease-in-out hover:scale-105">
 							<div class="flex items-center space-x-4">
 								<div class="col-span-3 flex flex-col items-center justify-center">
 									<img

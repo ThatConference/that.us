@@ -12,7 +12,6 @@ const dev = process.env.NODE_ENV === 'development' ? true : false;
 const config = {
 	extensions: ['.svelte', ...mdsvexConfig.extensions],
 	kit: {
-		trailingSlash: 'always',
 		serviceWorker: {
 			register: false
 		},

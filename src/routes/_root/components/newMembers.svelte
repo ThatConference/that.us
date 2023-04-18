@@ -8,7 +8,7 @@
 <section class="relative py-12 lg:py-16">
 	<div class="hidden overflow-x-hidden lg:absolute lg:inset-0 lg:block">
 		<svg
-			class="absolute top-0 right-1/2 -translate-x-64 translate-y-64 transform"
+			class="absolute right-1/2 top-0 -translate-x-64 translate-y-64 transform"
 			width="640"
 			height="784"
 			fill="none"

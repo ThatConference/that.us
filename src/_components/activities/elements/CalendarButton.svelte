@@ -29,7 +29,7 @@
 	href={url}
 	download={`${slug}@that.us.ics`}
 	on:click={createICal}
-	class="inline-flex items-center justify-center py-2 px-4">
+	class="inline-flex items-center justify-center px-4 py-2">
 	<Icon data={calendarCheckO} class="-ml-1 mr-2 h-4 w-4" />
 	<span>Add To Calendar</span>
 </a>

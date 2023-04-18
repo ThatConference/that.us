@@ -18,7 +18,7 @@
 <footer class="z-10 border-t border-gray-200 bg-gray-50" aria-labelledby="footerHeading">
 	<h2 id="footerHeading" class="sr-only">Footer</h2>
 
-	<div class="mx-auto max-w-7xl py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
+	<div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
 		<div class="xl:grid xl:grid-cols-3 xl:gap-8">
 			<div class="space-y-8 xl:col-span-1">
 				<img class="lazyload h-12 w-auto" src="/images/THAT-Full-Wide.svg" alt="THAT Logo" />

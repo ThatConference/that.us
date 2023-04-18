@@ -123,7 +123,7 @@
 					</div>
 
 					<div
-						class="bg-gray-100 py-8 px-6 text-center lg:flex lg:flex-shrink-0 lg:flex-col lg:justify-center lg:p-12">
+						class="bg-gray-100 px-6 py-8 text-center lg:flex lg:flex-shrink-0 lg:flex-col lg:justify-center lg:p-12">
 						<div
 							class="mt-4 flex items-center justify-center text-5xl font-extrabold text-gray-900">
 							<span>${worshopTicket.price}</span>
