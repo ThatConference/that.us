@@ -73,7 +73,6 @@ function init(fetch) {
 			loading.set(true);
 		}
 
-		// console.log('q', query);
 		return _fetch(dynamicEndpoint, {
 			method: 'POST',
 			headers: {
@@ -90,7 +89,6 @@ function init(fetch) {
 		})
 			.then(json)
 			.then((r) => {
-				console.log('r', r);
 				if (browser) loading.set(false);
 				return r;
 			})

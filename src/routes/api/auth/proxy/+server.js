@@ -14,7 +14,6 @@ export async function POST({ request }) {
 			throw error(401, 'Unauthorized Access');
 		}
 
-		console.log('body', body);
 		const results = await fetch(config.api.direct, {
 			method: 'POST',
 			headers: {
