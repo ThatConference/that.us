@@ -14,6 +14,7 @@ export async function POST({ request }) {
 			throw error(401, 'Unauthorized Access');
 		}
 
+		console.log('body', body);
 		const results = await fetch(config.api.direct, {
 			method: 'POST',
 			headers: {
@@ -22,12 +23,18 @@ export async function POST({ request }) {
 			},
 			body: JSON.stringify(body)
 		})
-			.then((r) => r.json())
+			.then(async (r) => {
+				if (!r.ok) {
+					console.error('🧨 proxy request non 200 result', r.status, r.statusText);
+					Sentry.setContext('proxy status', { status: r.status, statusText: r.statusText });
+				}
+				return r.json();
+			})
 			.catch((err) => {
 				console.error('PROXY POST ERROR', err);
 
 				Sentry.setContext('query', body);
-				Sentry.captureException(new Error(error));
+				Sentry.captureException(new Error(err));
 
 				throw error(500, err);
 			});
@@ -36,7 +43,7 @@ export async function POST({ request }) {
 	} catch ({ message }) {
 		console.error('AUTH0 EXCEPTION', message);
 
-		Sentry.setContext('AUTH0 GetAccessToken Exception', body);
+		Sentry.setContext('AUTH0 GetAccessToken body', { body });
 		Sentry.captureMessage(message);
 
 		return json({});

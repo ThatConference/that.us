@@ -1,4 +1,4 @@
-import adapter from '@sveltejs/adapter-auto';
+import adapter from '@sveltejs/adapter-vercel';
 import preprocess from 'svelte-preprocess';
 import { mdsvex } from 'mdsvex';
 import { resolve } from 'path';
@@ -24,6 +24,9 @@ const config = {
 			$stores: resolve('./src/_stores'),
 			$machines: resolve('./src/_machines'),
 			$blog: resolve('./src/_blog')
+		},
+		version: {
+			name: process.env?.npm_package_version || '0.0.0'
 		}
 	},
 	preprocess: !dev

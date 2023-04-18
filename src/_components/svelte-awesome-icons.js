@@ -1,3 +1,4 @@
+export { default as filter } from 'svelte-awesome/icons/filter';
 export { default as expand } from 'svelte-awesome/icons/expand';
 export { default as compress } from 'svelte-awesome/icons/compress';
 export { default as cog } from 'svelte-awesome/icons/cog';
