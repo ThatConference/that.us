@@ -13,10 +13,6 @@
 			text: 'My Profiles'
 		},
 		{
-			href: '/my/settings/',
-			text: 'My Settings'
-		},
-		{
 			href: '/my/network/',
 			text: 'My Network'
 		},
@@ -27,6 +23,14 @@
 		{
 			href: '/my/favorites/',
 			text: 'My Favorites'
+		},
+		{
+			href: '/my/notification-preferences/',
+			text: 'My Notification Preferences'
+		},
+		{
+			href: '/my/settings/',
+			text: 'Orders, Tickets, Membership'
 		},
 
 		{
@@ -105,13 +109,13 @@
 				<a
 					rel="external"
 					href="/login/"
-					class="mt-4 mb-1 mr-1 block w-full flex-grow rounded-md bg-white py-2 text-center text-sm font-semibold text-that-blue">
+					class="mb-1 mr-1 mt-4 block w-full flex-grow rounded-md bg-white py-2 text-center text-sm font-semibold text-that-blue">
 					Login
 				</a>
 				<a
 					rel="external"
 					href="/login/"
-					class="mt-4 mb-1 ml-1 block w-full flex-grow rounded-md bg-that-orange py-2 text-center text-sm font-semibold text-white">
+					class="mb-1 ml-1 mt-4 block w-full flex-grow rounded-md bg-that-orange py-2 text-center text-sm font-semibold text-white">
 					Sign Up
 				</a>
 			</div>

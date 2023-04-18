@@ -43,7 +43,7 @@
 					href="/login/?r=/orders/summary" />
 			{/if}
 
-			<div class="absolute top-0 right-0 hidden h-full w-5 md:block" aria-hidden="true">
+			<div class="absolute right-0 top-0 hidden h-full w-5 md:block" aria-hidden="true">
 				<svg
 					class="h-full w-full text-gray-300"
 					viewBox="0 0 22 80"
@@ -69,7 +69,7 @@
 					on:click={() => goto('/my/profiles/primary/')} />
 			{/if}
 
-			<div class="absolute top-0 right-0 hidden h-full w-5 md:block" aria-hidden="true">
+			<div class="absolute right-0 top-0 hidden h-full w-5 md:block" aria-hidden="true">
 				<svg
 					class="h-full w-full text-gray-300"
 					viewBox="0 0 22 80"

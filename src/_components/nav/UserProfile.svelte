@@ -66,7 +66,7 @@
 					</div>
 				{:else}
 					<div
-						class="on-top min-w-48 absolute right-0 mt-2 origin-top-right rounded-md shadow-lg"
+						class="on-top absolute right-0 mt-2 w-64 origin-top-right rounded-md shadow-lg"
 						in:fade>
 						<div class="rounded-md bg-white py-1 ring-1 ring-black ring-opacity-5">
 							<div class="block border-b px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
@@ -81,13 +81,6 @@
 								on:click={() => (visible = false)}
 								class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
 								My Profiles
-							</a>
-
-							<a
-								href="/my/settings/badges/"
-								on:click={() => (visible = false)}
-								class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-								My Settings
 							</a>
 
 							<a
@@ -110,6 +103,19 @@
 								href="/my/submissions/"
 								class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
 								My Submissions
+							</a>
+
+							<a
+								href="/my/notification-preferences"
+								class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+								My Notification Preferences
+							</a>
+
+							<a
+								href="/my/settings/badges/"
+								on:click={() => (visible = false)}
+								class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+								Orders, Tickets, Membership
 							</a>
 
 							<a

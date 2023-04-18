@@ -5,7 +5,7 @@
 </script>
 
 <div class="relative">
-	<div class="mx-auto max-w-7xl py-16 px-4 sm:px-6 lg:py-20 lg:px-8">
+	<div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
 		<div class="lg:grid lg:grid-cols-5 lg:gap-16">
 			<div class="space-y-4 lg:col-span-2">
 				<h2 class="text-3xl font-extrabold text-thatBlue-800">Frequently Asked Questions</h2>
@@ -18,7 +18,7 @@
 				</p>
 			</div>
 
-			<dl class="mt-12 lg:col-span-3 lg:mt-0 lg:ml-16">
+			<dl class="mt-12 lg:col-span-3 lg:ml-16 lg:mt-0">
 				{#each faqs as faq}
 					<FAQ {...faq} />
 				{/each}

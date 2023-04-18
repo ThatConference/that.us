@@ -89,7 +89,7 @@
 						<span>{readingTime.text}</span>
 					</div>
 					<h1
-						class="mt-2 mb-8 text-3xl font-extrabold leading-8 tracking-wide
+						class="mb-8 mt-2 text-3xl font-extrabold leading-8 tracking-wide
         text-gray-900 sm:text-4xl sm:leading-10">
 						{title}
 					</h1>
@@ -103,7 +103,7 @@
 				</div>
 
 				<div class="mx-auto max-w-prose">
-					<div class="prose-lg prose text-gray-500">
+					<div class="prose prose-lg text-gray-500">
 						<slot />
 					</div>
 				</div>

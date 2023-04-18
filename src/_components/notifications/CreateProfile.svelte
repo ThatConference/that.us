@@ -4,7 +4,7 @@
 
 {#if !wasDismissed}
 	<div class="relative bg-red-400">
-		<div class="mx-auto max-w-screen-xl py-3 px-3 sm:px-6 lg:px-8">
+		<div class="mx-auto max-w-screen-xl px-3 py-3 sm:px-6 lg:px-8">
 			<div class="pr-16 sm:px-16 sm:text-center">
 				<p class="font-medium text-white">
 					<span class="hidden md:inline">
@@ -19,8 +19,8 @@
 				</p>
 			</div>
 			<div
-				class="absolute inset-y-0 right-0 flex items-start pt-1 pr-1 sm:items-start
-          sm:pt-1 sm:pr-2">
+				class="absolute inset-y-0 right-0 flex items-start pr-1 pt-1 sm:items-start
+          sm:pr-2 sm:pt-1">
 				<button
 					type="button"
 					class="flex rounded-md p-2 transition duration-150

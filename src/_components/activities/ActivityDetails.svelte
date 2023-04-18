@@ -283,7 +283,7 @@
 							<a
 								href={`/activities/edit/${id}`}
 								class="inline-flex justify-center rounded-md border-2 border-thatBlue-500
-                  bg-white py-2 px-4 text-sm font-medium
+                  bg-white px-4 py-2 text-sm font-medium
                   leading-5 text-thatBlue-500 transition
                   duration-150 ease-in-out
                   hover:bg-thatBlue-500 hover:text-white
@@ -302,7 +302,7 @@
 							<a
 								href="https://youtube.com/c/thatconference"
 								class="relative inline-flex justify-center rounded-md border-2 border-thatBlue-500
-              bg-white py-2 px-4 text-sm font-medium
+              bg-white px-4 py-2 text-sm font-medium
               leading-5 text-thatBlue-500 transition
               duration-150 ease-in-out
               hover:bg-thatBlue-500 hover:text-white
@@ -318,7 +318,7 @@
 								<a
 									href={joinUrl}
 									class="relative inline-flex justify-center rounded-md border-2 border-thatBlue-500
-                  bg-white py-2 px-4 text-sm font-medium
+                  bg-white px-4 py-2 text-sm font-medium
                   leading-5 text-thatBlue-500 transition
                   duration-150 ease-in-out
                   hover:bg-thatBlue-500 hover:text-white

@@ -6,7 +6,7 @@
 </script>
 
 <div class="px-4 sm:px-6">
-	<div class="mt-6 grid grid-cols-1 gap-y-8 gap-x-4 sm:grid-cols-6">
+	<div class="mt-6 grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-6">
 		<div class="sm:col-span-6">
 			<label for="activity_tags" class="block text-sm font-medium text-gray-700">
 				Search Tags

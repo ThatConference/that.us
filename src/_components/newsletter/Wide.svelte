@@ -39,7 +39,7 @@
 				</p>
 			{/if}
 		</div>
-		<div class="mt-8 lg:mt-0 lg:ml-8">
+		<div class="mt-8 lg:ml-8 lg:mt-0">
 			{#if !submitted}
 				<Form
 					on:submit={handleSubmit}
@@ -67,7 +67,7 @@
                   duration-150 ease-in-out focus:placeholder-gray-400 focus:outline-none
                   sm:max-w-xs"
 								placeholder="Enter your email" />
-							<div class="mt-3 rounded-md shadow sm:mt-0 sm:ml-3 sm:flex-shrink-0">
+							<div class="mt-3 rounded-md shadow sm:ml-3 sm:mt-0 sm:flex-shrink-0">
 								<button
 									type="submit"
 									class="flex w-full items-center justify-center rounded-md border

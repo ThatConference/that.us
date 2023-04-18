@@ -7,7 +7,7 @@
 </script>
 
 <div class="bg-that-offWhite bg-opacity-50">
-	<div class="mx-auto max-w-screen-xl py-12 px-4 sm:px-6 lg:px-8 lg:py-24">
+	<div class="mx-auto max-w-screen-xl px-4 py-12 sm:px-6 lg:px-8 lg:py-24">
 		<div class="grid grid-cols-1 gap-12 lg:grid-cols-3 lg:gap-8">
 			<div class="space-y-5 sm:space-y-4">
 				<h2 class="text-3xl font-extrabold leading-9 tracking-tight text-thatBlue-800 sm:text-4xl">

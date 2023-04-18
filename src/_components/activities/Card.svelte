@@ -322,7 +322,7 @@
 										<div class="-ml-px flex flex-1 border-l pl-1 text-center">
 											<div
 												class="relative inline-flex flex-1 items-center justify-center
-													rounded-br-lg rounded-bl-lg border border-transparent py-2 text-xs
+													rounded-bl-lg rounded-br-lg border border-transparent py-2 text-xs
 													font-medium leading-4 text-gray-300 transition duration-150
 													ease-in-out">
 												<Icon data={signIn} class="-ml-1 mr-2 h-4 w-4" />
@@ -348,7 +348,7 @@
 		{#if type !== 'OPEN_SPACE' && host.profileSlug != 'thatconference'}
 			<div class="relative w-full text-center">
 				<div
-					class="absolute top-8 right-0 inline-block rounded-l-xl bg-that-red p-2 pl-3 shadow-sm">
+					class="absolute right-0 top-8 inline-block rounded-l-xl bg-that-red p-2 pl-3 shadow-sm">
 					<div class="flex flex-col items-center">
 						<span class="text-xs uppercase text-white">Camp</span>
 						<span class="text-xs uppercase text-white">Counselor</span>
@@ -423,7 +423,7 @@
 
 			{#if !hasExpired}
 				{#if $page.data.user.isAuthenticated}
-					<div class="-ml-px flex flex-1 basis-0 border-t border-l border-gray-200">
+					<div class="-ml-px flex flex-1 basis-0 border-l border-t border-gray-200">
 						<button
 							type="button"
 							on:click|preventDefault={!favoriteDisabled && handleToggle}
@@ -489,7 +489,7 @@
 					{#if targetLocation === 'IN_PERSON'}
 						<div class="-ml-px flex w-0 flex-1">
 							<div
-								class="flex w-full justify-center space-x-8 rounded-br-lg rounded-bl-lg border border-transparent bg-that-blue py-2 text-xs font-medium  text-white">
+								class="flex w-full justify-center space-x-8 rounded-bl-lg rounded-br-lg border border-transparent bg-that-blue py-2 text-xs font-medium  text-white">
 								<div class="flex justify-center space-x-2">
 									<Icon data={user} class="h-4 w-4" />
 									<span>In-Person</span>
@@ -509,7 +509,7 @@
 						<div class="-ml-px flex w-0 flex-1">
 							<div
 								class="relative inline-flex w-0 flex-1 items-center justify-center
-                rounded-br-lg rounded-bl-lg border border-transparent py-2 text-xs
+                rounded-bl-lg rounded-br-lg border border-transparent py-2 text-xs
                 font-medium leading-4 text-gray-300 transition duration-150
                 ease-in-out">
 								<Icon data={signIn} class="-ml-1 mr-2 h-4 w-4" />

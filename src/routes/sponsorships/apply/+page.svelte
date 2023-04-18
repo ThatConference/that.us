@@ -12,7 +12,7 @@
 </script>
 
 <div class="relative overflow-x-hidden text-gray-500">
-	<div class="mx-auto mt-36 mb-16 max-w-screen-xl px-4 sm:px-0">
+	<div class="mx-auto mb-16 mt-36 max-w-screen-xl px-4 sm:px-0">
 		<h2 class="my-6 font-extrabold uppercase tracking-wider text-thatRed-500 antialiased">
 			Help Send a Geek To Camp
 		</h2>
@@ -57,7 +57,7 @@
 								<!-- svelte-ignore a11y-missing-attribute -->
 								<a use:scrollto={'#prospectus'}>
 									<div
-										class="transform rounded-lg border-2 border-thatBlue-400 py-4 px-6 transition duration-500 ease-in-out hover:scale-105">
+										class="transform rounded-lg border-2 border-thatBlue-400 px-6 py-4 transition duration-500 ease-in-out hover:scale-105">
 										<div class="flex space-x-4">
 											<div class="flex flex-col text-white">
 												<p class="font-bold">Sponsorship Prospectus</p>
@@ -91,7 +91,7 @@
 		<Ticker {partners} />
 	</div>
 
-	<div class="my-36 mx-auto flex max-w-screen-lg flex-col md:flex-row">
+	<div class="mx-auto my-36 flex max-w-screen-lg flex-col md:flex-row">
 		<div class="flex flex-col items-center md:basis-1/2">
 			<img class="h-96" src="/images/characters/skinny.svg" alt="boating in forest" />
 		</div>

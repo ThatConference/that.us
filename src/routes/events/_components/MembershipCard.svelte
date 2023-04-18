@@ -99,7 +99,7 @@
 						</div>
 					</div>
 					<div
-						class="bg-gray-50 py-8 px-6 text-center lg:flex lg:flex-shrink-0 lg:flex-col lg:justify-center lg:p-12">
+						class="bg-gray-50 px-6 py-8 text-center lg:flex lg:flex-shrink-0 lg:flex-col lg:justify-center lg:p-12">
 						<p class="text-lg font-medium leading-6 text-gray-900">
 							Yearly Commitment, Automatic Renewal
 						</p>
@@ -108,7 +108,7 @@
 							<span class="flex items-start px-3 text-6xl tracking-tight text-gray-900">
 								<span class="mr-2 text-4xl font-medium">$</span>
 								<span class="font-extrabold">{membershipDetails.price}</span>
-								<span class="mt-2 ml-2 text-xl font-medium tracking-wide text-gray-400"> USD </span>
+								<span class="ml-2 mt-2 text-xl font-medium tracking-wide text-gray-400"> USD </span>
 							</span>
 						</div>
 

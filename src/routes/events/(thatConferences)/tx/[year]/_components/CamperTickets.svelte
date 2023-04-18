@@ -69,9 +69,9 @@
 										</h3>
 										<div class="mt-4 flex items-center justify-center">
 											<span class="flex items-start px-3 text-6xl tracking-tight text-gray-900">
-												<span class="mt-2 mr-2 text-4xl font-medium">$</span>
+												<span class="mr-2 mt-2 text-4xl font-medium">$</span>
 												<span class="font-extrabold">{eventTickets['CAMPER_NO_FOOD'].price}</span>
-												<span class="mt-2 ml-2 text-xl font-medium tracking-wide text-gray-400">
+												<span class="ml-2 mt-2 text-xl font-medium tracking-wide text-gray-400">
 													USD
 												</span>
 											</span>
@@ -137,18 +137,18 @@
 									</span>
 								</div>
 							</div>
-							<div class="rounded-t-lg bg-white px-6 pt-12 pb-10">
+							<div class="rounded-t-lg bg-white px-6 pb-10 pt-12">
 								<div>
 									<h3 class="text-center text-2xl font-bold uppercase text-gray-500">
 										{eventTickets['CAMPER'].name}
 									</h3>
 									<div class="mt-4 flex items-center justify-center">
 										<span class="flex items-start px-3 text-6xl tracking-tight text-gray-900">
-											<span class="mt-2 mr-2 text-4xl font-medium"> $ </span>
+											<span class="mr-2 mt-2 text-4xl font-medium"> $ </span>
 											<span class="font-extrabold">
 												{eventTickets['CAMPER'].price}
 											</span>
-											<span class="mt-2 ml-2 text-xl font-medium tracking-wide text-gray-400">
+											<span class="ml-2 mt-2 text-xl font-medium tracking-wide text-gray-400">
 												USD
 											</span>
 										</span>
@@ -156,7 +156,7 @@
 								</div>
 							</div>
 							<div
-								class="rounded-b-lg border-t-2 border-gray-100 bg-gray-50 px-6 pt-10 pb-8 sm:px-10 sm:py-10">
+								class="rounded-b-lg border-t-2 border-gray-100 bg-gray-50 px-6 pb-8 pt-10 sm:px-10 sm:py-10">
 								<ul class="space-y-4">
 									<li class="flex items-start">
 										<div class="flex-shrink-0">
@@ -221,9 +221,9 @@
 										</h3>
 										<div class="mt-4 flex items-center justify-center">
 											<span class="flex items-start px-3 text-6xl tracking-tight text-gray-900">
-												<span class="mt-2 mr-2 text-4xl font-medium">$</span>
+												<span class="mr-2 mt-2 text-4xl font-medium">$</span>
 												<span class="font-extrabold"> 79 </span>
-												<span class="mt-2 ml-2 text-xl font-medium tracking-wide text-gray-400">
+												<span class="ml-2 mt-2 text-xl font-medium tracking-wide text-gray-400">
 													USD
 												</span>
 											</span>

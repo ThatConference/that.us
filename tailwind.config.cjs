@@ -2,10 +2,6 @@
 module.exports = {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 	theme: {
-		fontFamily: {
-			og: ['Roboto']
-		},
-
 		extend: {
 			colors: {
 				'that-offWhite': '#F7F7F7',
@@ -70,7 +66,6 @@ module.exports = {
 	},
 
 	plugins: [
-		require('@tailwindcss/line-clamp'),
 		require('@tailwindcss/forms'),
 		require('@tailwindcss/typography'),
 		require('@tailwindcss/aspect-ratio')

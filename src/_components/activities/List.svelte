@@ -189,13 +189,13 @@
 
 <div class="relative">
 	<div class="sticky top-0 z-30 ">
-		<div class="absolute top-0 right-0 flex content-center border-gray-200 pt-4">
-			<div class="form-check mt-2 mr-2 flex content-center">
+		<div class="absolute right-0 top-0 flex content-center border-gray-200 pt-4">
+			<div class="form-check mr-2 mt-2 flex content-center">
 				<input
 					id="dense"
 					type="checkbox"
 					bind:checked={dense}
-					class="form-check-input float-left mt-1 mr-2 h-4 w-4 cursor-pointer appearance-none rounded-sm border border-gray-300 bg-white bg-contain bg-center bg-no-repeat align-top transition duration-200 checked:border-blue-600 checked:bg-blue-600 focus:outline-none" />
+					class="form-check-input float-left mr-2 mt-1 h-4 w-4 cursor-pointer appearance-none rounded-sm border border-gray-300 bg-white bg-contain bg-center bg-no-repeat align-top transition duration-200 checked:border-blue-600 checked:bg-blue-600 focus:outline-none" />
 				<label for="dense" class="form-check-label inline-block text-gray-800">Dense</label>
 			</div>
 			<button
@@ -243,9 +243,9 @@
 			<div>
 				<h2
 					id={dayjs(day.dayOfYear).format('dddd').toLowerCase()}
-					class="sticky top-0 z-20 mb-7 -ml-5 -mr-5 whitespace-nowrap 
-                 bg-gray-100 pt-4 pl-5 text-xl 
-                 font-extrabold leading-9 tracking-tight text-thatBlue-800 sm:mb-9 sm:-ml-6 sm:-mr-6 sm:pl-6 sm:leading-10 md:text-4xl">
+					class="sticky top-0 z-20 -ml-5 -mr-5 mb-7 whitespace-nowrap 
+                 bg-gray-100 pl-5 pt-4 text-xl 
+                 font-extrabold leading-9 tracking-tight text-thatBlue-800 sm:-ml-6 sm:-mr-6 sm:mb-9 sm:pl-6 sm:leading-10 md:text-4xl">
 					{dayjs(day.dayOfYear).format("dddd, MMMM D, 'YY")}
 				</h2>
 
@@ -253,7 +253,7 @@
 					<div class="relative">
 						<h2
 							class="sm:top-13 sticky top-11 z-10 -ml-5 -mr-5 whitespace-nowrap bg-gray-100 
-                     pt-2 pl-5 text-xl font-extrabold 
+                     pl-5 pt-2 text-xl font-extrabold 
                      leading-9 tracking-tight text-thatOrange-400 sm:-ml-6 sm:-mr-6 sm:pl-6 sm:leading-10 md:text-4xl">
 							{#if !dayjs(ts.timeSlot).isValid()}
 								Unscheduled
@@ -271,7 +271,7 @@
 									{#if isKeynote(activity)}
 										<li
 											in:fade
-											class="col-span-1 mt-10 mb-10 rounded-lg bg-gray-100 shadow-lg sm:col-span-2 lg:col-span-3">
+											class="col-span-1 mb-10 mt-10 rounded-lg bg-gray-100 shadow-lg sm:col-span-2 lg:col-span-3">
 											<KeynoteCard {...activity} />
 										</li>
 									{:else}
@@ -294,7 +294,7 @@
 				alt="Empty-handed Sasquatch" />
 			{#if activities.length > 0}
 				<h1
-					class="px-2 pt-10 pb-4 text-center text-3xl font-bold leading-10 tracking-tight text-thatBlue-600 sm:pb-10 sm:text-4xl lg:text-5xl">
+					class="px-2 pb-4 pt-10 text-center text-3xl font-bold leading-10 tracking-tight text-thatBlue-600 sm:pb-10 sm:text-4xl lg:text-5xl">
 					{`Honestly, I tried, but there's nothing for "${searchterm}".`}
 				</h1>
 			{/if}

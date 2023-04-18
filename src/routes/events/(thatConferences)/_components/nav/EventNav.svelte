@@ -35,12 +35,12 @@
 
 		<div class="ml-32 flex flex-1 space-x-4">
 			<ShellButton>
-				<div class="py-2 px-4">
+				<div class="px-4 py-2">
 					<a href="/sponsorships/apply/#prospectus"> Sponsorships </a>
 				</div>
 			</ShellButton>
 			<StandardShell>
-				<div class="py-2 px-4">
+				<div class="px-4 py-2">
 					<a href={buildUrl('tickets')}> Purchase Tickets </a>
 				</div>
 			</StandardShell>

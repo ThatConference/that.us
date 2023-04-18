@@ -3,11 +3,11 @@
 </script>
 
 <blockquote in:fade={{ delay: 300, duration: 2000 }} class="relative rounded-lg bg-white shadow-lg">
-	<div class="rounded-t-lg px-6 py-8 sm:px-10 sm:pt-10 sm:pb-8">
+	<div class="rounded-t-lg px-6 py-8 sm:px-10 sm:pb-8 sm:pt-10">
 		<img src="/images/THAT-Full-Wide.svg" alt="THAT" class="lazyload h-8" />
 		<div class="relative mt-8 text-lg font-medium leading-7 text-gray-700">
 			<svg
-				class="absolute top-0 left-0 h-8 w-8 -translate-x-4 -translate-y-2
+				class="absolute left-0 top-0 h-8 w-8 -translate-x-4 -translate-y-2
 					transform text-thatBlue-100 opacity-50"
 				fill="currentColor"
 				viewBox="0 0 32 32">
@@ -22,8 +22,8 @@
 		</div>
 	</div>
 	<cite
-		class="flex items-center rounded-b-lg bg-thatBlue-700 py-5
-			px-6 not-italic sm:mt-10 sm:items-start sm:py-5 sm:pl-12 sm:pr-10">
+		class="flex items-center rounded-b-lg bg-thatBlue-700 px-6
+			py-5 not-italic sm:mt-10 sm:items-start sm:py-5 sm:pl-12 sm:pr-10">
 		<div class="sm:-mt-15 mr-4 rounded-full border-2 border-white sm:mr-6">
 			<img
 				class="lazyload h-12 w-12 rounded-full bg-indigo-300 sm:h-20 sm:w-20"

@@ -6,7 +6,7 @@
 	import { stepForward } from '$components/svelte-awesome-icons';
 </script>
 
-<div class="pt-20 pb-2">
+<div class="pb-2 pt-20">
 	<div class="relative">
 		<div class="absolute inset-0 flex items-center" aria-hidden="true">
 			<div class="w-full border-t border-gray-300" />

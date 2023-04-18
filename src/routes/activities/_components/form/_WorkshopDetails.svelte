@@ -11,14 +11,14 @@
 </script>
 
 <div class="px-4 sm:px-6">
-	<div class="mt-6 grid grid-cols-1 gap-y-8 gap-x-4 sm:grid-cols-6">
+	<div class="mt-6 grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-6">
 		<div class="sm:col-span-6">
 			<label for="activity_full_description" class="block text-sm font-medium text-gray-700">
 				Hong long is this workshop?
 			</label>
 			<div class="relative">
 				<span
-					class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400" />
+					class="absolute left-0 top-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400" />
 			</div>
 			<!-- <div>
 				<p class="mt-1 text-sm text-gray-400">write me</p>
@@ -29,7 +29,7 @@
 					<fieldset>
 						<legend class="sr-only">Workshop Duration</legend>
 						<div
-							class="flex w-full flex-col space-y-4 rounded-md sm:flex-row sm:space-y-0 sm:space-x-4">
+							class="flex w-full flex-col space-y-4 rounded-md sm:flex-row sm:space-x-4 sm:space-y-0">
 							{#each duration.options as option}
 								<div class="flex-grow">
 									<label
@@ -62,7 +62,7 @@
 			<label for="activity_agenda" class="block text-sm font-medium text-gray-700"> Agenda </label>
 			<div class="relative">
 				<span
-					class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400" />
+					class="absolute left-0 top-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400" />
 			</div>
 			<div>
 				<p class="mt-1 text-sm text-gray-400">

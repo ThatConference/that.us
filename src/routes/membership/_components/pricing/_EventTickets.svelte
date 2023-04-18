@@ -50,7 +50,7 @@
 							<p class="mt-5 text-lg text-gray-500">THAT usage each and every day.</p>
 						</div>
 						<div
-							class="flex flex-1 flex-col justify-between space-y-6 bg-gray-50 px-6 pt-6 pb-8 sm:p-10 sm:pt-6">
+							class="flex flex-1 flex-col justify-between space-y-6 bg-gray-50 px-6 pb-8 pt-6 sm:p-10 sm:pt-6">
 							<ul class="space-y-4">
 								<li class="flex items-start">
 									<div class="flex-shrink-0">
@@ -93,7 +93,7 @@
 							<p class="mt-5 text-lg text-gray-500">Single Day Online Event Ticket</p>
 						</div>
 						<div
-							class="flex flex-1 flex-col justify-between space-y-6 bg-gray-50 px-6 pt-6 pb-8 sm:p-10 sm:pt-6">
+							class="flex flex-1 flex-col justify-between space-y-6 bg-gray-50 px-6 pb-8 pt-6 sm:p-10 sm:pt-6">
 							<ul class="space-y-4">
 								<li class="flex items-start">
 									<div class="flex-shrink-0">

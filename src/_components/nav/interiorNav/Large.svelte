@@ -96,7 +96,7 @@
 				</button>
 				{#if helpVisible}
 					<div use:clickOutside on:click_outside={() => (helpVisible = false)}>
-						<div class="absolute z-50 mt-2 ml-4 w-64 rounded-md shadow-lg" in:fade>
+						<div class="absolute z-50 ml-4 mt-2 w-64 rounded-md shadow-lg" in:fade>
 							<div class="rounded-md bg-white py-1 ring-1 ring-black ring-opacity-5">
 								<a href="/support/" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
 									Getting Started

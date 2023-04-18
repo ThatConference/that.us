@@ -90,7 +90,7 @@
 							<MobileUsersProfile darkMode={true} />
 						{:else}
 							<StandardShell>
-								<div class="py-2 px-4">
+								<div class="px-4 py-2">
 									<a rel="external" href="/login/">Log in</a>
 								</div>
 							</StandardShell>

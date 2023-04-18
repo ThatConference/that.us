@@ -48,7 +48,7 @@
 	<div slot="panelActions">
 		<button
 			type="button"
-			class="focus:ring-blue rounded-md border border-gray-300 py-2 px-4 text-sm
+			class="focus:ring-blue rounded-md border border-gray-300 px-4 py-2 text-sm
         font-medium leading-5 text-gray-700 transition
         duration-150 ease-in-out hover:text-gray-500
         focus:border-blue-300 focus:outline-none active:bg-gray-50 active:text-gray-800"

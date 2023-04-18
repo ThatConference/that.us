@@ -54,7 +54,7 @@
 								</time>
 							</p>
 							<div class="mt-2 flex items-center space-x-2 text-sm text-gray-500">
-								<span class="rounded-full bg-green-300 py-1 px-8  font-extrabold text-white">
+								<span class="rounded-full bg-green-300 px-8 py-1  font-extrabold text-white">
 									{registration.orderAllocations.length}
 								</span>
 								<span>

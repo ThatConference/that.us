@@ -45,8 +45,8 @@
 				</h2>
 			</div>
 			<ul
-				class="space-y-12 lg:grid lg:grid-cols-2 lg:items-start lg:gap-y-8
-					lg:gap-x-12 lg:space-y-0">
+				class="space-y-12 lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-12
+					lg:gap-y-8 lg:space-y-0">
 				{#each hybrid as event}
 					<li>
 						<Event {event} />
@@ -60,8 +60,8 @@
 			</div>
 
 			<ul
-				class="space-y-12 lg:grid lg:grid-cols-2 lg:items-start lg:gap-y-8
-          lg:gap-x-12 lg:space-y-0">
+				class="space-y-12 lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-12
+          lg:gap-y-8 lg:space-y-0">
 				{#each online as event}
 					<li>
 						<Event {event} />

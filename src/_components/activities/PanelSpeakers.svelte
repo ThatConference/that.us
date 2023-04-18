@@ -17,7 +17,7 @@
             lg:row-end-4 lg:mx-0 lg:mt-0 lg:max-w-none">
 						<div class="relative z-10 rounded-lg shadow-xl">
 							<div class="pointer-events-none absolute inset-0 rounded-lg" />
-							<div class="rounded-t-lg bg-white px-6 pt-12 pb-10">
+							<div class="rounded-t-lg bg-white px-6 pb-10 pt-12">
 								<ul class="flex justify-around">
 									{#each displayedSpeakers as speaker (speaker.id)}
 										<li>

@@ -312,7 +312,7 @@
 										tabindex="-1"
 										class="order focus:ring-red w-full rounded-md 
                           border-2 border-transparent bg-red-400
-                          py-2 px-4 text-sm font-medium 
+                          px-4 py-2 text-sm font-medium 
                           leading-5
                           text-white 
                           transition 
@@ -327,8 +327,8 @@
 								<button
 									type="submit"
 									class="w-full rounded-md border-2
-                      border-thatBlue-500 bg-white py-2
-                      px-4 text-sm font-medium 
+                      border-thatBlue-500 bg-white px-4
+                      py-2 text-sm font-medium 
                     leading-5 text-thatBlue-500 
                     transition duration-150
                       ease-in-out hover:bg-thatBlue-500 hover:text-white focus:border-thatBlue-800 focus:bg-thatBlue-500

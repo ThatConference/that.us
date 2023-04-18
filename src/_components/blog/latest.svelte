@@ -15,7 +15,7 @@
 				class="mt-2 text-2xl font-extrabold uppercase text-thatBlue-700 antialiased sm:text-3xl lg:text-4xl xl:text-5xl">
 				Announcements, Updates and Words
 			</p>
-			<p class="my-24 mx-auto max-w-prose text-xl text-gray-500">
+			<p class="mx-auto my-24 max-w-prose text-xl text-gray-500">
 				<StandardLink href="/blog/">View All Blog Posts</StandardLink>
 			</p>
 		</div>

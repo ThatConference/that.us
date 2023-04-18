@@ -81,8 +81,8 @@
 	</div>
 
 	<div
-		class="transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 shadow-xl transition-all sm:w-full sm:max-w-sm sm:p-6">
-		<div class="absolute top-0 right-0 hidden pt-4 pr-4 sm:block">
+		class="transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 shadow-xl transition-all sm:w-full sm:max-w-sm sm:p-6">
+		<div class="absolute right-0 top-0 hidden pr-4 pt-4 sm:block">
 			<button
 				type="button"
 				class=" rounded-md text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-thatBlue-500 focus:ring-offset-2"

@@ -15,7 +15,7 @@
 				</div>
 				but we need some bullets.
 			</div>
-			<div class="mt-6 rounded-md shadow lg:mt-0 lg:ml-10 lg:flex-shrink-0">
+			<div class="mt-6 rounded-md shadow lg:ml-10 lg:mt-0 lg:flex-shrink-0">
 				<a
 					href="mailto:hello@that.us"
 					class="flex items-center justify-center rounded-md border border-transparent bg-white px-5 py-3 text-base font-medium text-gray-900 hover:bg-gray-50">

@@ -65,7 +65,7 @@
 							{ticket.product.name}
 						</p>
 						<div class="mt-2 flex items-center space-x-2 text-sm text-gray-500">
-							<span class="rounded-full bg-green-300 py-1 px-8  font-extrabold text-white">
+							<span class="rounded-full bg-green-300 px-8 py-1  font-extrabold text-white">
 								{displayPin}
 							</span>
 						</div>
@@ -80,7 +80,7 @@
 						<Shell>
 							<button
 								type="button"
-								class="w-full py-4 px-6 text-sm font-medium leading-5"
+								class="w-full px-6 py-4 text-sm font-medium leading-5"
 								on:click|stopPropagation|preventDefault={() => (checkInClicked = !checkInClicked)}>
 								<span class="text-lg">Check-In</span>
 							</button>
@@ -91,7 +91,7 @@
 						<Shell>
 							<button
 								type="button"
-								class="w-full py-4 px-6 text-sm font-medium leading-5"
+								class="w-full px-6 py-4 text-sm font-medium leading-5"
 								on:click|stopPropagation|preventDefault={() =>
 									(editCheckInClicked = !editCheckInClicked)}>
 								<span class="text-lg">Edit CheckIn</span>
@@ -103,7 +103,7 @@
 		</div>
 	</div>
 	{#if !ticket.hasCheckedIn && displayPin !== 'PIN not set'}
-		<div class="flex pt-6 pb-2">
+		<div class="flex pb-2 pt-6">
 			<div class="flex items-center">
 				<div class="flex-shrink-0 pr-4">
 					<span
@@ -120,7 +120,7 @@
 		</div>
 	{/if}
 	{#if ticket.hasCheckedIn}
-		<div class="flex pt-6 pb-2">
+		<div class="flex pb-2 pt-6">
 			<div class="flex items-center">
 				<div class="flex-shrink-0 pr-4">
 					<span

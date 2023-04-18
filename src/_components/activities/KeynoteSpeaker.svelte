@@ -18,7 +18,7 @@
 			<div class="relative lg:grid lg:grid-cols-7">
 				<div
 					class="mx-auto mt-10 max-w-lg lg:col-start-2 lg:col-end-7 lg:row-start-1 lg:row-end-4 lg:mx-0 lg:mt-0 lg:max-w-none">
-					<div class="rounded-t-lg bg-white px-6 pt-12 pb-10">
+					<div class="rounded-t-lg bg-white px-6 pb-10 pt-12">
 						<div class="text-center text-3xl font-semibold leading-9 text-gray-900 sm:-mx-6">
 							<a href="/members/{host.profileSlug}/" class="flex-shrink-0">
 								<span class="relative inline-block">

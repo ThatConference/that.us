@@ -1,9 +1,8 @@
-export let data;
+// export const trailingSlash = 'always';
 
 import '../app.css';
-
 import 'lazysizes';
-import { browser, dev } from '$app/environment';
+import { browser, dev, version } from '$app/environment';
 
 import { v4 as uuidv4 } from 'uuid';
 import { inspect } from '@xstate/inspect';
@@ -22,12 +21,12 @@ if (!dev) {
 
 	Sentry.init({
 		dsn: logging.dsn,
-		dist: 'that-us:3.1.1',
-		release: 'that-us:3.1.1',
+		release: version ?? 'not-set',
 		environment: logging.environment,
 		debug: false,
 		attachStacktrace: true,
-		integrations: [new BrowserTracing()]
+		integrations: [new BrowserTracing()],
+		normalizeDepth: 6
 	});
 
 	LogRocket.getSessionURL((sessionURL) => {

@@ -39,7 +39,7 @@
 				</p>
 			</div>
 
-			<div class="mt-6 grid grid-cols-1 gap-y-6 gap-y-4 sm:grid-cols-6">
+			<div class="mt-6 grid grid-cols-1 gap-y-4 gap-y-6 sm:grid-cols-6">
 				<div class="sm:col-span-3">
 					<label for="ticket_reference" class="block text-sm font-medium leading-5 text-gray-700">
 						Ticket Reference Number
@@ -63,7 +63,7 @@
 						type="submit"
 						disabled={isSubmitting}
 						class="inline-flex justify-center rounded-md border-2 border-thatBlue-500
-              bg-white py-2 px-4 text-sm font-medium
+              bg-white px-4 py-2 text-sm font-medium
               leading-5 text-thatBlue-500 transition duration-150
               ease-in-out hover:bg-thatBlue-500
               hover:text-white focus:border-thatBlue-800 focus:bg-thatBlue-500
@@ -75,7 +75,7 @@
 					<button
 						type="reset"
 						tabindex="-1"
-						class="focus:ring-blue rounded-md border-2 border-gray-300 py-2 px-4
+						class="focus:ring-blue rounded-md border-2 border-gray-300 px-4 py-2
               text-sm font-medium leading-5 text-gray-700
               transition duration-150 ease-in-out
               hover:text-gray-500 focus:border-blue-300 focus:outline-none active:bg-gray-50

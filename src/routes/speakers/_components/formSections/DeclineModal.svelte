@@ -15,7 +15,7 @@
 	<div
 		use:clickOutside
 		on:click_outside
-		class="relative overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 shadow-xl sm:w-full sm:max-w-lg sm:p-6">
+		class="relative overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 shadow-xl sm:w-full sm:max-w-lg sm:p-6">
 		<div class="sm:flex sm:items-start">
 			<div
 				class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
@@ -29,7 +29,7 @@
 				</svg>
 			</div>
 
-			<div class="mt-3 flex-grow text-center sm:mt-0 sm:ml-4 sm:text-left">
+			<div class="mt-3 flex-grow text-center sm:ml-4 sm:mt-0 sm:text-left">
 				<h3 class="text-lg font-medium leading-6 text-gray-900">Decline Your Invitation</h3>
 
 				<div class="mt-2">

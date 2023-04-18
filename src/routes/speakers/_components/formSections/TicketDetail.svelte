@@ -131,7 +131,7 @@
 						</div>
 					</div>
 
-					<div class="my-2 mx-4">
+					<div class="mx-4 my-2">
 						<div class="flex justify-end">
 							{#if !submitSuccess}
 								<button disabled={submitting} type="submit">

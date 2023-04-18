@@ -54,7 +54,7 @@
 
 	<div class="pb-12">
 		<div class="bg-gradient-to-b from-thatBlue-800">
-			<div class="pb-12 sm:pt-12 sm:pb-16 lg:pt-16 lg:pb-24">
+			<div class="pb-12 sm:pb-16 sm:pt-12 lg:pb-24 lg:pt-16">
 				<div class="relative">
 					<div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 						<div
@@ -83,7 +83,7 @@
 													<span class="text-red-500 line-through">
 														<span
 															class="flex items-start px-3 text-5xl tracking-tight text-gray-900">
-															<span class="mt-2 mr-2 text-3xl font-medium"> $ </span>
+															<span class="mr-2 mt-2 text-3xl font-medium"> $ </span>
 															<span class="font-extrabold">
 																{eventTickets['VIRTUAL_CAMPER'].price}
 															</span>
@@ -93,7 +93,7 @@
 
 												<div>
 													<span class="flex items-start px-3 text-5xl tracking-tight text-gray-900">
-														<span class="mt-2 mr-2 text-3xl font-medium"> $ </span>
+														<span class="mr-2 mt-2 text-3xl font-medium"> $ </span>
 														<span class="font-extrabold">
 															{eventTickets['PROMO_VIRTUAL_CAMPER'].price}
 														</span>
@@ -108,7 +108,7 @@
 									</div>
 								</div>
 								<div
-									class="relative flex flex-1 flex-col justify-between space-y-6 bg-gray-50 px-6 pt-6 pb-8 sm:p-10 sm:pt-6">
+									class="relative flex flex-1 flex-col justify-between space-y-6 bg-gray-50 px-6 pb-8 pt-6 sm:p-10 sm:pt-6">
 									<p class="mt-5 text-lg text-gray-500">
 										{eventTickets['PROMO_VIRTUAL_CAMPER'].shortDescription}
 									</p>
@@ -188,7 +188,7 @@
 													<span class="text-red-500 line-through">
 														<span
 															class="flex items-start px-3 text-5xl tracking-tight text-gray-900">
-															<span class="mt-2 mr-2 text-3xl font-medium"> $ </span>
+															<span class="mr-2 mt-2 text-3xl font-medium"> $ </span>
 															<span class="font-extrabold">
 																{eventTickets['CAMPER_NO_FOOD'].price}
 															</span>
@@ -198,7 +198,7 @@
 
 												<div>
 													<span class="flex items-start px-3 text-5xl tracking-tight text-gray-900">
-														<span class="mt-2 mr-2 text-3xl font-medium"> $ </span>
+														<span class="mr-2 mt-2 text-3xl font-medium"> $ </span>
 														<span class="font-extrabold">
 															{eventTickets['PROMO_CAMPER_NO_FOOD'].price}
 														</span>
@@ -213,7 +213,7 @@
 								</div>
 
 								<div
-									class="relative flex flex-1 flex-col justify-between space-y-6 bg-gray-50 px-6 pt-6 pb-8 sm:p-10 sm:pt-6">
+									class="relative flex flex-1 flex-col justify-between space-y-6 bg-gray-50 px-6 pb-8 pt-6 sm:p-10 sm:pt-6">
 									<p class="mt-5 text-lg text-gray-500">
 										{eventTickets['PROMO_CAMPER_NO_FOOD'].shortDescription}
 									</p>

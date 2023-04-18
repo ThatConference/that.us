@@ -75,7 +75,7 @@
 							</label>
 							<div class="relative">
 								<span
-									class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400" />
+									class="absolute left-0 top-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400" />
 							</div>
 							<Input
 								autofocus
@@ -93,7 +93,7 @@
 							</label>
 							<div class="relative">
 								<span
-									class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400" />
+									class="absolute left-0 top-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400" />
 							</div>
 
 							<MaskInput
@@ -131,7 +131,7 @@
 
 							<div class="relative">
 								<span
-									class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400" />
+									class="absolute left-0 top-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400" />
 							</div>
 
 							<Select
@@ -158,7 +158,7 @@
 							</label>
 							<div class="relative">
 								<span
-									class="absolute top-0 left-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400" />
+									class="absolute left-0 top-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400" />
 							</div>
 							<Select
 								inputAttributes={{ name: 'travelingWithYou' }}

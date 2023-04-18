@@ -58,7 +58,7 @@
 
 <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 	<h1 class="mt-6 text-xl font-bold leading-6 text-thatBlue-800">THAT Contact Exchange</h1>
-	<div class="absolute top-0 right-0 block pt-4 pr-4">
+	<div class="absolute right-0 top-0 block pr-4 pt-4">
 		<button
 			type="button"
 			class="rounded-full border-2 border-gray-200 p-2 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-thatBlue-500 focus:ring-offset-2"

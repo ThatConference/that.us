@@ -12,7 +12,7 @@
 
 <div class="relative pb-8">
 	{#if !isLastItem}
-		<span class="absolute top-4 left-4 -ml-px h-full w-0.5 bg-gray-200" aria-hidden="true" />
+		<span class="absolute left-4 top-4 -ml-px h-full w-0.5 bg-gray-200" aria-hidden="true" />
 	{/if}
 
 	<div class="relative flex space-x-3 text-gray-500">

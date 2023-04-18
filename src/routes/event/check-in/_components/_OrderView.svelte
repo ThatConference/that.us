@@ -45,7 +45,7 @@
 
 <section>
 	<div>
-		<div class="flex flex-col space-y-4 sm:flex-row sm:items-center sm:space-y-0 sm:space-x-8">
+		<div class="flex flex-col space-y-4 sm:flex-row sm:items-center sm:space-x-8 sm:space-y-0">
 			<!-- svelte-ignore a11y-autofocus -->
 			<input
 				autofocus

@@ -27,7 +27,7 @@
 
 	<div slot="body">
 		<main class="relative -mx-6">
-			<div class="divide-y divide-gray-200 lg:grid lg:grid-cols-12 lg:divide-y-0 lg:divide-x">
+			<div class="divide-y divide-gray-200 lg:grid lg:grid-cols-12 lg:divide-x lg:divide-y-0">
 				<aside class="py-6 lg:col-span-3">
 					<div class="sticky top-4">
 						<nav>
@@ -84,7 +84,7 @@
 					</div>
 				</aside>
 
-				<div class="divide-y divide-gray-200 py-4 px-4 lg:col-span-9">
+				<div class="divide-y divide-gray-200 px-4 py-4 lg:col-span-9">
 					<slot />
 				</div>
 			</div>

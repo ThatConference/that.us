@@ -36,7 +36,7 @@
 
 <div class="relative">
 	<div class="mx-auto max-w-2xl lg:max-w-7xl">
-		<div class="py-24 px-6">
+		<div class="px-6 py-24">
 			<h2
 				class="pb-6 text-4xl font-extrabold leading-8 tracking-tight text-thatBlue-800 sm:text-5xl lg:pb-24">
 				Professional Campers
@@ -73,7 +73,7 @@
 			<!-- TODO put a quick jump list here... -->
 
 			{#each ticketBreakdown as ticket}
-				<section class="rounded-lg bg-white py-6 px-4 shadow-lg">
+				<section class="rounded-lg bg-white px-4 py-6 shadow-lg">
 					<div class="mb-8 w-full px-4">
 						<div class="flex items-center">
 							<div class="w-3/4">
@@ -88,7 +88,7 @@
 							<div class="flex w-1/3 justify-center">
 								<div class="mt-4 flex items-center">
 									<span class="flex items-start px-3 text-6xl tracking-tight text-gray-900">
-										<span class="mt-2 mr-2 text-4xl font-medium">$</span>
+										<span class="mr-2 mt-2 text-4xl font-medium">$</span>
 										<span class="font-extrabold">
 											{eventTickets[ticket.uiReference].price}
 										</span>
@@ -109,13 +109,13 @@
 					{#each ticket.includes as item}
 						<div class="flex flex-col">
 							<h2
-								class="border-t border-gray-200 bg-gray-50 py-3 px-4 text-left text-sm font-medium text-gray-900">
+								class="border-t border-gray-200 bg-gray-50 px-4 py-3 text-left text-sm font-medium text-gray-900">
 								{item.title}
 							</h2>
 							{#each item.includes as i}
 								<div class="divide-y divide-gray-200">
 									<div class="border-t border-gray-200">
-										<p class="py-5 px-4 text-left text-sm font-normal text-gray-500">
+										<p class="px-4 py-5 text-left text-sm font-normal text-gray-500">
 											{i.title}
 										</p>
 									</div>
@@ -139,7 +139,7 @@
 		</div>
 
 		<!-- lg+ -->
-		<div class="hidden rounded-lg bg-white py-16 shadow-lg sm:py-20 sm:px-6 lg:block lg:px-8 ">
+		<div class="hidden rounded-lg bg-white py-16 shadow-lg sm:px-6 sm:py-20 lg:block lg:px-8 ">
 			<table class="h-px w-full ">
 				<caption class="sr-only">Pricing plan comparison</caption>
 
@@ -159,15 +159,15 @@
 
 				<tbody class="divide-y divide-gray-200 border-t border-gray-200">
 					<tr>
-						<th class="py-8 px-6 text-left align-top text-sm font-medium text-gray-900" scope="row"
+						<th class="px-6 py-8 text-left align-top text-sm font-medium text-gray-900" scope="row"
 							>Pricing</th>
 
 						{#each ticketBreakdown as ticket}
-							<td class="h-full py-8 px-6 align-top">
+							<td class="h-full px-6 py-8 align-top">
 								<div class="flex h-full flex-col items-center">
 									<div class="mt-4 flex items-center">
 										<span class="flex items-start px-3 text-6xl tracking-tight text-gray-900">
-											<span class="mt-2 mr-2 text-4xl font-medium">$</span>
+											<span class="mr-2 mt-2 text-4xl font-medium">$</span>
 											<span class="font-extrabold">
 												{eventTickets[ticket.uiReference].price}
 											</span>
