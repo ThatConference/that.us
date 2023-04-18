@@ -47,5 +47,13 @@
 		Don't miss out on this unique opportunity to connect with your fellow geeks. Enable today and get ready to Meet THAT Camper!"
 		frequency="Weekly from the time you purchased a ticket until the start of the event. Sent every Monday at 9am central"
 		checked={meetThatCamper}
-		on:toggled={({ detail }) => handleChecked({ meetThatCamper: detail })} />
+		on:toggled={({ detail }) => handleChecked({ meetThatCamper: detail })}>
+		<div class="p-4 text-lg text-gray-500">
+			<p>
+				We will use your shared profile in making this connection on your behalf and your shared
+				profile is defaulted to what is set on your main profile.
+			</p>
+			<a class=" text-thatOrange-500" href="/my/profiles/shared">View Your Shared Profile</a>
+		</div>
+	</Notification>
 </div>
