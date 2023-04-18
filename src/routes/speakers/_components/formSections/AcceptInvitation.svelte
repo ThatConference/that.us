@@ -94,6 +94,7 @@
 			<div class="col-span-2">
 				<p class="font-extrabold">{session.title}</p>
 
+				<!-- svelte-ignore a11y-click-events-have-key-events -->
 				<div
 					class="flex-grow px-3 pb-3"
 					class:cursor-pointer={isLongerThan(session.shortDescription, 25)}
