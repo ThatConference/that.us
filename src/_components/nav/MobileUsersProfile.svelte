@@ -13,10 +13,6 @@
 			text: 'My Profiles'
 		},
 		{
-			href: '/my/settings/',
-			text: 'My Settings'
-		},
-		{
 			href: '/my/network/',
 			text: 'My Network'
 		},
@@ -27,6 +23,14 @@
 		{
 			href: '/my/favorites/',
 			text: 'My Favorites'
+		},
+		{
+			href: '/my/notification-preferences/',
+			text: 'My Notification Preferences'
+		},
+		{
+			href: '/my/settings/',
+			text: 'Orders, Tickets, Membership'
 		},
 
 		{
