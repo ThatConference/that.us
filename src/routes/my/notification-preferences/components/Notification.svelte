@@ -25,6 +25,7 @@
 							</div>
 							<div>
 								<p class="lineBreaks p-4 text-lg text-gray-500">{description}</p>
+								<slot />
 							</div>
 						</div>
 					</div>
