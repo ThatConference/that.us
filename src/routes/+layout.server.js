@@ -24,6 +24,8 @@ async function queryMe(accessToken) {
 		.then((results) => results.data.members?.me);
 }
 
+export const trailingSlash = 'always';
+
 export async function load({ request, locals }) {
 	const auth0Session = await auth0.getSession(request);
 
