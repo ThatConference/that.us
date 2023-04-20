@@ -19,7 +19,7 @@
 				<h1 class="text-2xl font-bold uppercase tracking-wider text-white antialiased">
 					<span class="text-green-500">{`${venue.city}, ${venue.state}`}</span> / {dayjs(
 						event.startDate
-					).format('MMMM Do')} - {dayjs(event.endDate).format('Do, YYYY')}
+					).format('MMMM Do')} - {dayjs(event.endDate).format('MMMM Do, YYYY')}
 				</h1>
 				<p class="text-5xl font-extrabold leading-snug tracking-wider text-white antialiased">
 					A summer camp in the Texas winter for software geeks passionate about learning all things
