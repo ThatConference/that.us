@@ -26,19 +26,19 @@
 
 	let atThatAdditionalTickets = {
 		'1': {
-			title: 'Complimenatary Campmate Ticket',
+			title: 'Complimentary Campmate Ticket',
 			description: 'If you so choose to bring your significant other, this is their ticket.',
 			selected: false,
 			uiReference: 'CAMPMATE'
 		},
 		'2': {
-			title: 'Complimenatary Geekling #1 Ticket',
+			title: 'Complimentary Geekling #1 Ticket',
 			description: 'Do you have a short stack? Bring them along.',
 			selected: false,
 			uiReference: 'GEEKLING'
 		},
 		'3': {
-			title: 'Complimenatary Geekling #2 Ticket',
+			title: 'Complimentary Geekling #2 Ticket',
 			description: 'Do you have a short stack? Bring them along.',
 			selected: false,
 			uiReference: 'GEEKLING'
