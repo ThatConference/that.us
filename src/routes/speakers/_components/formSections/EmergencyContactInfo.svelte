@@ -106,6 +106,10 @@
 								<label for="email" class="block">
 									<span class="text-gray-700">What is their email address?</span>
 								</label>
+								<div class="relative">
+									<span
+										class="absolute left-0 top-0 block h-2 w-2 -translate-x-4 -translate-y-4 transform rounded-full bg-red-400" />
+								</div>
 								<Input
 									name="email"
 									type="email"
