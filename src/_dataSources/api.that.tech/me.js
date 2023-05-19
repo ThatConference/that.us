@@ -36,6 +36,7 @@ export const QUERY_ME = `
 					lifeHack
 					interests
 					isMember
+					favoritesICalendarUrl
 				}
 			}
 		}
