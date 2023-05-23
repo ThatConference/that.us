@@ -3,11 +3,12 @@
 
 	import seoMetaTags from '$utils/seo/metaTags';
 	import Seo from '$components/Seo.svelte';
+	import { Standard as StandardLink } from '$elements/links';
 	import Layout from '../_components/_Layout.svelte';
 	import Header from '../_components/_Header.svelte';
 
-	let { profile } = data;
-	const iCalUrl = profile.favoritesICalendarUrl;
+	let { user } = data;
+	const iCalUrl = user.profile.favoritesICalendarUrl;
 
 	const metaTags = ((title = 'My Favorites ICalendar Help - THAT') => ({
 		title,
@@ -34,7 +35,7 @@
 				them!
 			</p>
 			<h2>Your Personal iCalendar Link</h2>
-			{#if profile.firstName}
+			{#if user.isAuthenticated}
 				<div class="m-10">
 					<span class="sm:hidden md:inline">{iCalUrl}</span>
 					<button
@@ -62,13 +63,17 @@
 				</div>
 			{:else}
 				<div class="m-10">
-					<a
+					<StandardLink rel={'external'} href={'/login/?returnTo=/support/my-favorites-icalendar'}>
+						Login
+						<span aria-hidden="true">&rarr;</span>
+					</StandardLink>
+					<!-- <a
 						rel="external"
 						class="font-medium !text-thatOrange-400 hover:!text-thatOrange-600"
 						href="/login/?returnTo=/support/my-favorites-icalendar">
 						Login
 						<span aria-hidden="true">&rarr;</span>
-					</a>
+					</a> -->
 				</div>
 			{/if}
 		</div>
