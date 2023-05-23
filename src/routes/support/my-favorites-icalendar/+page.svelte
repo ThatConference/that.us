@@ -67,13 +67,6 @@
 						Login
 						<span aria-hidden="true">&rarr;</span>
 					</StandardLink>
-					<!-- <a
-						rel="external"
-						class="font-medium !text-thatOrange-400 hover:!text-thatOrange-600"
-						href="/login/?returnTo=/support/my-favorites-icalendar">
-						Login
-						<span aria-hidden="true">&rarr;</span>
-					</a> -->
 				</div>
 			{/if}
 		</div>

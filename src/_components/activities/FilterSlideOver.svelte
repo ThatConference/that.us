@@ -4,8 +4,6 @@
 	export let communities;
 	export let events = [];
 	export let selectedFilterTerms = [];
-	export let onThat;
-	export let atThat;
 	export let family;
 	export let professional;
 	export let openSpace;
@@ -63,23 +61,6 @@
 				</div>
 			</div>
 		{/if}
-		<div class="py-4">
-			<h2 class="text-lg font-medium leading-7 text-gray-900">Location</h2>
-			<div class="border-gray-200">
-				<fieldset class="flex flex-col">
-					<label
-						class="md:text-md whitespace-nowrap text-base capitalize text-gray-500 sm:text-lg md:mt-1 lg:mx-0">
-						<input type="checkbox" bind:checked={atThat} />
-						<span class="px-2">AT THAT</span>
-					</label>
-					<label
-						class="md:text-md whitespace-nowrap text-base capitalize text-gray-500 sm:text-lg md:mt-1 lg:mx-0">
-						<input type="checkbox" bind:checked={onThat} />
-						<span class="px-2">ON THAT</span>
-					</label>
-				</fieldset>
-			</div>
-		</div>
 		<div class="py-4">
 			<h2 class="text-lg font-medium leading-7 text-gray-900">Category</h2>
 			<div class="border-gray-200">
