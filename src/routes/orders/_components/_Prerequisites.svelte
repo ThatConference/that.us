@@ -40,7 +40,7 @@
 					isActive={$state.matches('pendingLogin')}
 					stepName="Login"
 					rel="external"
-					href="/login/?r=/orders/summary" />
+					href="/login/?returnTo=/orders/summary" />
 			{/if}
 
 			<div class="absolute right-0 top-0 hidden h-full w-5 md:block" aria-hidden="true">
@@ -105,7 +105,7 @@
 		<div class="mt-3 text-sm">
 			<a
 				rel="external"
-				href="/login/?r=/orders/summary"
+				href="/login/?returnTo=/orders/summary"
 				class="font-medium text-thatOrange-400 hover:text-thatOrange-500">
 				Login
 				<span aria-hidden="true">&rarr;</span>

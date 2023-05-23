@@ -39,4 +39,3 @@ export { default as desktop } from 'svelte-awesome/icons/desktop';
 export { default as users } from 'svelte-awesome/icons/users';
 export { default as plus } from 'svelte-awesome/icons/plus';
 export { default as stepForward } from 'svelte-awesome/icons/stepForward';
-export { default as copyRegular } from 'svelte-awesome/icons/copy';

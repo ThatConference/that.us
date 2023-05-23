@@ -1,22 +1,18 @@
 <script>
 	export let data;
 
-	import Icon from 'svelte-awesome';
-	import { copyRegular } from '$components/svelte-awesome-icons';
 	import seoMetaTags from '$utils/seo/metaTags';
 	import Seo from '$components/Seo.svelte';
 	import { ModalWarning, ActionHeader } from '$elements';
 	import StackedLayout from '$elements/layouts/StackedLayout.svelte';
 	import { Highlight as HighlightLink } from '$elements/links';
+	import { Highlight as HighlightButton } from '$elements/buttons';
 
 	import Nav from '$components/nav/interiorNav/Top.svelte';
 	import Sponsor from '$components/SponsorSimple.svelte';
 	import ActivityList from '$components/activities/List.svelte';
-	import favoritesMutationsApi from '$dataSources/api.that.tech/me/favorites/mutations';
 
-	let { activities, profile } = data;
-	let iCalUrl = profile.favoritesICalendarUrl;
-	let { rotateICalendarUrl } = favoritesMutationsApi();
+	let { activities } = data;
 
 	const metaTags = ((title = 'My Favorites - THAT') => ({
 		title,
@@ -31,6 +27,10 @@
 			nofollow: true
 		})
 	}))();
+
+	const doTheDownload = () => {
+		alert('test: dowloading...');
+	};
 </script>
 
 <Seo title={metaTags.title} tags={metaTags.tags} />
@@ -39,35 +39,14 @@
 	<div slot="header">
 		<Nav />
 		<ActionHeader title="My Favorites">
-			<HighlightLink href="/activities/">Return to Activities</HighlightLink>
+			<div class="flex flex-col space-y-2 sm:flex-row sm:space-x-4 sm:space-y-0">
+				<HighlightLink href="/support/my-favorites-icalendar/">Subscribe</HighlightLink>
+				<HighlightButton on:click={doTheDownload}>Download</HighlightButton>
+			</div>
 		</ActionHeader>
 	</div>
 
 	<div slot="body">
-		<div>
-			<div class="overflow-x-auto">
-				<h2 class="font-bold leading-9 text-thatBlue-800 sm:text-xl md:text-2xl">
-					Favorites ICAL Feed
-				</h2>
-				<span class="w-8 overflow-hidden text-gray-500">{iCalUrl}</span>
-				<button
-					class="px-1 text-gray-600 hover:text-thatOrange-400"
-					title="copy to clipboard"
-					on:click={async () => await navigator.clipboard.writeText(iCalUrl)}>
-					<Icon data={copyRegular} label="copy to clipboard" />
-				</button>
-			</div>
-			<div>
-				<button
-					type="button"
-					class="mt-2 block text-xs text-gray-500 hover:text-thatOrange-400"
-					on:click={async () => {
-						iCalUrl = await rotateICalendarUrl();
-					}}>
-					Click me to rotate url
-				</button>
-			</div>
-		</div>
 		{#if activities.length > 0}
 			<ActivityList reverse={true} {activities} />
 		{:else}
