@@ -1,9 +1,14 @@
 <script>
 	export let data;
 
+	import { browser } from '$app/environment';
+	import { onMount, onDestroy } from 'svelte';
+	import Clipboard from 'clipboard';
+
 	import seoMetaTags from '$utils/seo/metaTags';
 	import Seo from '$components/Seo.svelte';
 	import { Standard as StandardLink } from '$elements/links';
+	import { Standard as StandardButton } from '$elements/buttons';
 	import Layout from '../_components/_Layout.svelte';
 	import Header from '../_components/_Header.svelte';
 
@@ -21,56 +26,69 @@
 			}
 		})
 	}))();
+
+	let clipboard;
+	let copiedText = 'Copy URL';
+
+	onMount(() => {
+		if (browser) {
+			clipboard = new Clipboard('#calendarUrl');
+
+			clipboard.on('success', function () {
+				copiedText = 'Copied!';
+			});
+		}
+	});
+
+	onDestroy(() => {
+		if (browser) {
+			if (clipboard) clipboard.destroy();
+		}
+	});
 </script>
 
 <Seo title={metaTags.title} tags={metaTags.tags} />
 
 <Layout>
 	<Header center={true} pretext={'Cool Hacks'}>Adding My Favorites to Your Calendar</Header>
-	<section>
-		<div class="prose prose-lg mx-auto text-gray-500">
-			<p>
-				Get all your favorites right in your calendar. By copying the link below into your favorite
-				calendar program you can have an up-to-date list of your favorites. Right where you want
-				them!
-			</p>
-			<h2>Your Personal iCalendar Link</h2>
+	<div class="prose prose-lg mx-auto text-gray-500">
+		<p>
+			Get all your favorites right in your calendar. By copying the link below into your favorite
+			calendar program you can have an up-to-date list of your favorites. Right where you want them!
+		</p>
+
+		<div>
+			<h2>Your Personalized iCalendar Link</h2>
+
 			{#if user.isAuthenticated}
-				<div class="m-10">
-					<span class="sm:hidden md:inline">{iCalUrl}</span>
-					<button
-						id="copy-to-clipboard"
-						class="cursor-pointer rounded-md border-2 border-transparent bg-thatBlue-500 px-8 py-3
-					text-center text-base font-medium leading-6 text-white shadow transition
-					duration-150 ease-in-out hover:bg-thatBlue-400 focus:border-thatBlue-700
-					focus:outline-none focus:ring-that-blue
-					md:ml-2 md:px-5 md:py-2 md:text-lg"
-						title="copy to clipboard"
-						on:click={async () => {
-							const cbButton = document.querySelector('#copy-to-clipboard');
-							await navigator.clipboard.writeText(iCalUrl);
-							cbButton.innerText = 'Copied!';
-							cbButton.classList.add('bg-thatOrange-400');
-							cbButton.classList.remove('hover:bg-thatBlue-400');
-							setTimeout(() => {
-								cbButton.innerText = 'Copy URL';
-								cbButton.classList.remove('bg-thatOrange-400');
-								cbButton.classList.add('hover:bg-thatBlue-400');
-							}, 1500);
-						}}>
-						Copy URL
-					</button>
+				<div>
+					<p class="hidden italic sm:block">{iCalUrl}</p>
+				</div>
+
+				<div>
+					<StandardButton id="calendarUrl" data-clipboard-text={iCalUrl}>
+						{copiedText}
+					</StandardButton>
 				</div>
 			{:else}
-				<div class="m-10">
-					<StandardLink rel={'external'} href={'/login/?returnTo=/support/my-favorites-icalendar'}>
-						Login
-						<span aria-hidden="true">&rarr;</span>
-					</StandardLink>
+				<div class="">
+					<div>
+						<p>You need to login to gain access to your personalized url.</p>
+					</div>
+
+					<div>
+						<StandardLink
+							rel={'external'}
+							href={'/login/?returnTo=/support/my-favorites-icalendar'}>
+							<span>Login</span>
+							<span aria-hidden="true">&rarr;</span>
+						</StandardLink>
+					</div>
 				</div>
 			{/if}
 		</div>
-		<div class="prose prose-lg mx-auto text-gray-500">
+
+		<div>
 			<h2>How to Use the ICalendar URL</h2>
 			<ol>
 				<li>Copy the link above. You'll need to add that to your calendar program.</li>
@@ -125,5 +143,5 @@
 				</li>
 			</ol>
 		</div>
-	</section>
+	</div>
 </Layout>
