@@ -16,9 +16,5 @@ export async function load({ params, fetch }) {
 			throw redirect(302, `/join/access-denied/?id=${activityId}`);
 		}
 	}
-
-	return {
-		activityId,
-		activityDetails
-	};
+	throw redirect(302, `https://meet.jit.si/that-${activityId}`);
 }
