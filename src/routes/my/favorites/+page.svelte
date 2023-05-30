@@ -60,7 +60,7 @@
 		];
 
 		const tableKeys = Object.keys(csvdata[0]);
-		csvGenerator(csvdata, tableKeys, tableHeader, 'THAT-My-Favorites');
+		csvGenerator(csvdata, tableKeys, tableHeader, 'THAT-My-Favorites.csv');
 	};
 </script>
 
