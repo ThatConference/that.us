@@ -9,9 +9,18 @@ const favoriteFragment = `
       eventId
       title
       shortDescription
+      durationInMinutes
       status
       startTime
       tags
+      targetLocation
+      location {
+        destination
+        isOnline
+        url
+      }
+      type
+      category
       communities
       speakers {
         id
@@ -32,10 +41,10 @@ const favoriteFragment = `
 
 export const QUERY_MY_FAVORITES = `
   ${favoriteFragment}
-  query memberFavorites ($eventId: ID!) {
+  query memberFavorites ($eventId: ID! $historyDays: Int) {
     sessions {
       me {
-        favorites(eventId: $eventId) {
+        favorites(eventId: $eventId historyDays: $historyDays) {
           ...sessionFields
         }
       }
@@ -48,7 +57,8 @@ export default (fetch) => {
 
 	function query() {
 		const variables = {
-			eventId: 'ANY'
+			eventId: 'ANY',
+			historyDays: 30
 		};
 
 		return client.secureQuery({ query: QUERY_MY_FAVORITES, variables }).then(({ data, errors }) => {
@@ -56,8 +66,8 @@ export default (fetch) => {
 
 			let results = data?.sessions?.me?.favorites || [];
 
-			results = results.filter((s) => s?.session).filter((s) => s?.session?.status === 'ACCEPTED');
-			results.sort((a, b) => new Date(a.startTime) - new Date(b.startTime));
+			results = results.filter((s) => s?.session?.status === 'ACCEPTED');
+			results.sort((a, b) => new Date(a?.session?.startTime) - new Date(b?.session?.startTime));
 
 			return results;
 		});

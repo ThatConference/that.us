@@ -43,6 +43,16 @@ const TOGGLE_FAVORITE = `
   }
 `;
 
+const ROTATE_ICALENDAR_URL = `
+  mutation rotateICalendarUrl {
+    members {
+      member {
+        rotateICalenarUrl
+      }
+    }
+  }
+`;
+
 export default (fetch) => {
 	const client = fetch ? gFetch(fetch) : gFetch();
 
@@ -59,7 +69,20 @@ export default (fetch) => {
 		});
 	}
 
+	function rotateICalendarUrl() {
+		const variables = {};
+
+		return client
+			.mutation({ mutation: ROTATE_ICALENDAR_URL, variables })
+			.then(({ data, errors }) => {
+				if (errors) log({ errors, tag: 'ROTATE_ICALENDAR_URL' });
+
+				return data?.members?.member?.rotateICalenarUrl;
+			});
+	}
+
 	return {
-		toggle
+		toggle,
+		rotateICalendarUrl
 	};
 };
