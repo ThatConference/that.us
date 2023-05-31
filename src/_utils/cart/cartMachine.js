@@ -1,9 +1,13 @@
 import { browser } from '$app/environment';
 import { createMachine, assign } from 'xstate';
 import lodash from 'lodash';
+import dayjs from 'dayjs';
+import isBetween from 'dayjs/plugin/isBetween.js';
 
 import { log } from '../error';
 import createConfig from './cartConfig';
+
+dayjs.extend(isBetween);
 
 const { isEmpty } = lodash;
 const cartKeyName = 'cart';
@@ -12,6 +16,25 @@ const cartVersion = '1.0.0';
 function createServices() {
 	return {
 		guards: {
+			isInactiveEvent: (_, event) => {
+				let { endDate } = event.eventDetails;
+
+				return dayjs().isAfter(dayjs(endDate), 'day');
+			},
+
+			isNotOnSale: (_, event) => {
+				let { onSaleFrom, onSaleUntil, isEnabled } = event;
+				let isInWindow = dayjs().isBetween(dayjs(onSaleFrom), dayjs(onSaleUntil), 'day');
+
+				let results = true;
+
+				if (isInWindow && isEnabled) {
+					results = false;
+				}
+
+				return results;
+			},
+
 			hasCartItems: (context) => !isEmpty(context.cart),
 
 			isEmptyCart: (context) => isEmpty(context.cart),
@@ -32,7 +55,7 @@ function createServices() {
 				return false;
 			},
 
-			isTicketOrMemberhip: (context, event) => {
+			isTicketOrMembership: (context, event) => {
 				// triggers just replacing the item in the cart.
 				if (isEmpty(context.cart)) return false;
 

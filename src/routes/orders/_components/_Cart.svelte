@@ -14,7 +14,7 @@
 
 	const { state, send } = getContext('cart');
 
-	function handleCheckout() {
+	async function handleCheckout() {
 		Sentry.addBreadcrumb({
 			category: 'checkout',
 			message: 'handle checkout called',
@@ -38,23 +38,23 @@
 			tagEvent('redirect-stripe', 'checkout');
 		}
 
-		return orderMutations()
-			.createCheckoutSession(eventId, lineItems)
-			.then((results) => {
-				if (results.success) stripe.redirectToCheckout({ sessionId: results.stripeCheckoutId });
-				else {
-					throw new Error(results.message);
-				}
-			})
-			.then(function (result) {
-				// If redirectToCheckout fails due to a browser or network error, you should display the localized error message to your customer using error.message.
-				if (result.error) {
-					alert(result.error.message);
-				}
-			})
-			.catch(function (error) {
-				Sentry.captureException(error);
-			});
+		try {
+			const checkoutSessionResults = await orderMutations().createCheckoutSession(
+				eventId,
+				lineItems
+			);
+
+			if (checkoutSessionResults.success) {
+				stripe.redirectToCheckout({ sessionId: checkoutSessionResults.stripeCheckoutId });
+			} else {
+				Sentry.captureException(checkoutSessionResults.message);
+				// todo.. We should maybe display the message back to the user? or do something with it
+				send('API_ERRORED');
+			}
+		} catch (error) {
+			Sentry.captureException(error);
+			send('API_ERRORED');
+		}
 	}
 
 	let stripe;
@@ -77,6 +77,10 @@
 	function showBackground(i) {
 		const result = i % 2;
 		return result != 0;
+	}
+
+	function handleClearCart() {
+		send('CLEAR_CART');
 	}
 
 	function handleErrorContinue() {
@@ -116,6 +120,34 @@
 		<div class="flex justify-center space-x-6">
 			<StandardButton on:click={handleReplaceCart}>replace</StandardButton>
 			<StandardButton on:click={handleErrorContinue}>keep</StandardButton>
+		</div>
+	</CartModal>
+{/if}
+
+{#if $state.matches('cart.cartError.inactiveEvent')}
+	<CartModal
+		title="Expired Event"
+		text="The event you're trying to purchase a ticket for has expried.">
+		<div class="flex justify-center space-x-6">
+			<StandardButton on:click={handleClearCart}>Reset and Continue</StandardButton>
+		</div>
+	</CartModal>
+{/if}
+
+{#if $state.matches('cart.cartError.productNotOnSale')}
+	<CartModal
+		title="Ticket Not OnSale"
+		text="The ticket you're trying to purchase isn't currently on sale.">
+		<div class="flex justify-center space-x-6">
+			<StandardButton on:click={handleClearCart}>Reset and Continue</StandardButton>
+		</div>
+	</CartModal>
+{/if}
+
+{#if $state.matches('cart.cartError.apiErrored')}
+	<CartModal title="Whoops" text="I'm sorry, it looks like our robots failed us.">
+		<div class="flex justify-center space-x-6">
+			<StandardButton on:click={handleErrorContinue}>Try Again</StandardButton>
 		</div>
 	</CartModal>
 {/if}

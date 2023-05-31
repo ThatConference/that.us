@@ -34,7 +34,15 @@ function createConfig(metaContext) {
 							target: '.cartError.duplicateMembership'
 						},
 						{
-							cond: 'isTicketOrMemberhip',
+							cond: 'isInactiveEvent',
+							target: '.cartError.inactiveEvent'
+						},
+						{
+							cond: 'isNotOnSale',
+							target: '.cartError.productNotOnSale'
+						},
+						{
+							cond: 'isTicketOrMembership',
 							target: '.cartError.invalidProductType'
 						},
 						{
@@ -47,8 +55,14 @@ function createConfig(metaContext) {
 						}
 					],
 					CONTINUE: { target: '.init' },
+
 					REPLACE_CART: {
 						actions: ['clearCart', 'clearLocalStorage', 'addItem', 'setLocalStorage'],
+						target: '.pending'
+					},
+
+					CLEAR_CART: {
+						actions: ['clearCart', 'clearLocalStorage'],
 						target: '.pending'
 					}
 				},
@@ -88,6 +102,10 @@ function createConfig(metaContext) {
 							CLEAR_CART: {
 								actions: ['clearCart', 'clearLocalStorage'],
 								target: 'new'
+							},
+
+							API_ERRORED: {
+								target: 'cartError.apiErrored'
 							}
 						}
 					},
@@ -113,6 +131,18 @@ function createConfig(metaContext) {
 							},
 
 							invalidProductType: {
+								entry: 'saveAddErrorEventData'
+							},
+
+							inactiveEvent: {
+								entry: 'saveAddErrorEventData'
+							},
+
+							productNotOnSale: {
+								entry: 'saveAddErrorEventData'
+							},
+
+							apiErrored: {
 								entry: 'saveAddErrorEventData'
 							}
 						}
