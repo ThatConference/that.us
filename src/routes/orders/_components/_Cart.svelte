@@ -13,6 +13,7 @@
 	import { tagEvent } from '$utils/tagEvent';
 
 	const { state, send } = getContext('cart');
+	let apiErrorMessage = '';
 
 	async function handleCheckout() {
 		Sentry.addBreadcrumb({
@@ -49,10 +50,13 @@
 			} else {
 				Sentry.captureException(checkoutSessionResults.message);
 				// todo.. We should maybe display the message back to the user? or do something with it
+				const msg = checkoutSessionResults.message ?? '';
+				apiErrorMessage = msg.substring(msg.indexOf('ref:'));
 				send('API_ERRORED');
 			}
 		} catch (error) {
-			Sentry.captureException(error);
+			const sentryId = Sentry.captureException(error);
+			apiErrorMessage = `ref: ${sentryId}`;
 			send('API_ERRORED');
 		}
 	}
@@ -116,7 +120,7 @@
 {#if $state.matches('cart.cartError.invalidProductType')}
 	<CartModal
 		title="Purchasing Limitation"
-		text="You can purchase an event ticket or a membership but not both. If you have a membership, there is no need for an additional event ticket.">
+		text="You can purchase an event ticket or a membership but not both. Memberships and event tickets cannot be on the same order.">
 		<div class="flex justify-center space-x-6">
 			<StandardButton on:click={handleReplaceCart}>replace</StandardButton>
 			<StandardButton on:click={handleErrorContinue}>keep</StandardButton>
@@ -136,7 +140,7 @@
 
 {#if $state.matches('cart.cartError.productNotOnSale')}
 	<CartModal
-		title="Ticket Not OnSale"
+		title="Ticket Not On Sale"
 		text="The ticket you're trying to purchase isn't currently on sale.">
 		<div class="flex justify-center space-x-6">
 			<StandardButton on:click={handleClearCart}>Reset and Continue</StandardButton>
@@ -144,8 +148,10 @@
 	</CartModal>
 {/if}
 
-{#if $state.matches('cart.cartError.apiErrored')}
-	<CartModal title="Whoops" text="I'm sorry, it looks like our robots failed us.">
+{#if $state.matches('cart.cartError.apiErrored') || false}
+	<CartModal
+		title="Whoops"
+		text="We're sorry, it looks like our robots failed us. {apiErrorMessage}">
 		<div class="flex justify-center space-x-6">
 			<StandardButton on:click={handleErrorContinue}>Try Again</StandardButton>
 		</div>
