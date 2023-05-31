@@ -10,6 +10,8 @@ const productBaseFieldsFragment = `
 		productType: type
 		price
 		isEnabled
+		onSaleFrom
+		onSaleUntil
 	}
 `;
 

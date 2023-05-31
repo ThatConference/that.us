@@ -12,6 +12,8 @@ const productBaseFieldsFragment = `
 		isEnabled
 		uiReference
 		shortDescription
+		onSaleFrom
+		onSaleUntil
 	}
 `;
 
