@@ -9,7 +9,7 @@
 	import Hero from './_components/_PartnersHero.svelte';
 
 	let { partners } = data;
-	const metaTags = ((title = `Visit these sponosors who've made THAT Conference possible.`) => ({
+	const metaTags = ((title = `Visit these sponsors who've made THAT Conference possible.`) => ({
 		title,
 		tags: seoMetaTags({
 			title,
