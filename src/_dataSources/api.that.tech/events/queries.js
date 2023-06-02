@@ -379,6 +379,47 @@ export const QUERY_CAN_ADD_SESSION = `
 	}
 `;
 
+export const QUERY_ACTIVE_COMMUNITY_EVENTS_FOR_JOBS = `
+	query getActiveEventJobs($community: CommunityQueryInput!) {
+		communities {
+			community(findBy: $community) {
+				get {
+					id
+					name
+					events(filter: ACTIVE) {
+						id
+						name
+						slug
+						startDate
+						endDate
+						partners {
+							id
+							slug
+							level
+							placement
+							companyName
+							companyLogo
+							jobListings {
+								id
+								slug
+								title
+								description
+								jobType
+								internship
+								experienceLevel
+								relocationOffered
+								remote
+								featured
+								datePosted
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+`;
+
 export default (fetch) => {
 	const client = fetch ? gFetch(fetch) : gFetch();
 
@@ -495,6 +536,17 @@ export default (fetch) => {
 			});
 	}
 
+	function queryActiveEventsByCommunitiesForJobs(community = 'that') {
+		const variables = { community: { slug: community } };
+		return client
+			.query({ query: QUERY_ACTIVE_COMMUNITY_EVENTS_FOR_JOBS, variables })
+			.then(({ data, errors }) => {
+				if (errors) log({ errors, tag: 'QUERY_ACTIVE_COMMUNITY_EVENTS_FOR_JOBS' });
+
+				return data.communities.community?.get?.events || [];
+			});
+	}
+
 	return {
 		queryEvents,
 		queryEventsByCommunity,
@@ -505,6 +557,7 @@ export default (fetch) => {
 		queryEventForAcceptedSpeaker,
 		canAddSession,
 		canAccessEvent,
-		queryThatConferenceEvent
+		queryThatConferenceEvent,
+		queryActiveEventsByCommunitiesForJobs
 	};
 };
