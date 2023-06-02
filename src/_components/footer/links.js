@@ -35,6 +35,10 @@ export const thatConferenceLinks = [
 		href: '/partners/'
 	},
 	{
+		text: 'Sponsor Job Board',
+		href: '/partners/job-board/'
+	},
+	{
 		text: 'THAT Store',
 		href: 'https://store.that.us/'
 	},
