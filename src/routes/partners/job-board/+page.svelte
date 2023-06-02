@@ -13,10 +13,11 @@
 		title,
 		tags: seoMetaTags({
 			title,
-			description: '',
+			description:
+				'Discover career opportunities with THAT Conference sponsor job board. Find the perfect position that aligns with your skills and interests.',
 			openGraph: {
 				type: 'website',
-				url: 'https://that.us/jobs'
+				url: 'https://that.us/partners/job-board'
 			}
 		})
 	}))();
