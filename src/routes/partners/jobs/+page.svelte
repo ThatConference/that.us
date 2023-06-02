@@ -66,18 +66,15 @@
 			<div class="mx-auto mt-32 max-w-screen-xl px-4 sm:px-6 xl:mt-40">
 				<main>
 					<Hero />
-					<div class="py-10">
-						<div class="px-8">
-							<div class="mb-12">
-								<ul class="mt-8 gap-8">
-									{#each jobList as job}
-										<li>
-											<JobCard {job} />
-										</li>
-									{/each}
-								</ul>
-							</div>
-						</div>
+
+					<div class="mt-8">
+						<ul class="flex flex-col space-y-12">
+							{#each jobList as job}
+								<li>
+									<JobCard {job} />
+								</li>
+							{/each}
+						</ul>
 					</div>
 				</main>
 			</div>
