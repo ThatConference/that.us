@@ -202,13 +202,11 @@ export const QUERY_UPCOMING_PARTNERS = `
 `;
 
 export const QUERY_PAST_PARTNERS = `
-	${socialLinksFieldsFragment}
 	${coreFieldsFragment}
 	query QUERY_PAST_PARTNERS {
 		partners {
 			all {
 				...coreFieldsFragment
-				...socialLinksFieldsFragment
 			}
 		}
 	}
@@ -350,13 +348,7 @@ export default (fetch) => {
 			let results = [];
 			if (data) {
 				const { all } = data.partners;
-				results = uniqBy(
-					all.map((p) => ({
-						...p,
-						socialLinks: createSocialLinks(p)
-					})),
-					'id'
-				);
+				results = uniqBy(all, 'id');
 			}
 
 			return results;
