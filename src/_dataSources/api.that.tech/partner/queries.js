@@ -120,6 +120,7 @@ export const QUERY_PARTNER = `
 				...jobListingsFragment
 				...socialLinksFieldsFragment
 				...featuredSessionsFragment
+				isActiveSponsor
 				website
 				aboutUs
 				city

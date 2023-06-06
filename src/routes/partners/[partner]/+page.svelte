@@ -16,8 +16,11 @@
 	import JobListings from '../_components/_JobListings.svelte';
 	import FeaturedSessions from '../_components/_FeaturedSessions.svelte';
 	import PartnerCta from '../_components/_PartnerCta.svelte';
+	import { NoAction as NoActionModal } from '$elements/modals';
+	import { Standard as StandardLink } from '$elements/links';
 
 	import createMachine from '../_machines/partner';
+	import { log } from 'logrocket';
 
 	const { partner } = $page.params;
 
@@ -65,6 +68,13 @@
 
 <ProfileLayout>
 	{#if ['profileLoaded'].some($state.matches)}
+		{#if $state?.context?.profile?.isActiveSponsor === false}
+			<NoActionModal
+				title="Not Currently a Sponsor"
+				text="This partner isn't currently an active sponsor">
+				<StandardLink href="/partners/">Current Sponsors</StandardLink>
+			</NoActionModal>
+		{/if}
 		<div class="flex flex-col">
 			<div in:fade={{ delay: getDelay() }}>
 				<Hero
