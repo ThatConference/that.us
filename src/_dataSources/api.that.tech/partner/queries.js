@@ -1,4 +1,3 @@
-import dayjs from 'dayjs';
 import lodash from 'lodash';
 
 import gFetch from '$utils/gfetch';
@@ -7,6 +6,8 @@ import config from '$utils/config.public';
 import { log } from '../utilities/error';
 
 const { uniqBy } = lodash;
+const levelSortOrder = ['PIONEER', 'EXPLORER', 'SCOUT', 'CUB', 'PATRON', 'MEDIA', 'CHARITY'];
+
 const coreFieldsFragment = `
 	fragment coreFieldsFragment on Partner {
 		id
@@ -187,15 +188,21 @@ export const QUERY_UPCOMING_PARTNERS = `
 	${socialLinksFieldsFragment}
 	${coreFieldsFragment}
 	query QUERY_UPCOMING_PARTNERS {
-		events {
-			all {
-				id
-				endDate
-				isActive
-				partners {
-					...coreFieldsFragment
-					level
-					...socialLinksFieldsFragment
+		communities {
+			community(findBy: { slug:"that" }) {
+				get {
+					events(filter: ACTIVE_PARTNER) {
+						id
+						slug
+						endDate
+						isActive
+						partners {
+							...coreFieldsFragment
+							level
+							placement
+							...socialLinksFieldsFragment
+						}
+					}
 				}
 			}
 		}
@@ -323,19 +330,19 @@ export default (fetch) => {
 
 			let results = [];
 			if (data) {
-				const { all } = data.events;
+				const { events } = data.communities.community.get;
 
-				results = uniqBy(
-					all
-						.filter((e) => e.isActive)
-						.filter((e) => dayjs().isBefore(dayjs(e.endDate).add(30, 'day'), 'day'))
-						.reduce((acc, current) => [...acc, ...current.partners], [])
-						.map((p) => ({
-							...p,
-							socialLinks: createSocialLinks(p)
-						})),
-					'id'
-				);
+				results = events
+					.filter((e) => e.slug !== 'thatus/daily')
+					.reduce((acc, current) => [...acc, ...current.partners], [])
+					.map((p) => ({
+						...p,
+						socialLinks: createSocialLinks(p)
+					}))
+					.sort((a, b) => a.placement - b.placement)
+					.sort((a, b) => levelSortOrder.indexOf(a.level) - levelSortOrder.indexOf(b.level));
+
+				results = uniqBy(results, 'id');
 			}
 
 			return results;
