@@ -79,7 +79,7 @@
 	<div class="my-36 flex flex-col items-center text-center">
 		<p class="prose-xl max-w-xl text-gray-500">
 			Whether your focus is on the professional or family side, we look for interactive partners who
-			want to create a unique experience while having fun with our summer camp for geeks theme.
+			want to create a unique experience while having fun with our summer camp for geeks® theme.
 		</p>
 	</div>
 

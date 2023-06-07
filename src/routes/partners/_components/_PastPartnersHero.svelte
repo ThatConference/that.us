@@ -1,3 +1,7 @@
+<script>
+	import { Standard as StandardLink } from '$elements/links';
+</script>
+
 <section>
 	<h2
 		class="text-4xl font-extrabold leading-10 tracking-tight text-thatBlue-800 sm:text-5xl sm:leading-none md:text-6xl">
@@ -21,6 +25,11 @@
 					class="text-thatOrange-400 hover:text-thatOrange-500 hover:underline">hello@that.us</a
 				>.
 			</p>
+		</div>
+		<div class="mt-5 flex sm:justify-end">
+			<StandardLink href={`/partners/`}>
+				<span class="text-xl"> View Current Partners and Sponsors </span>
+			</StandardLink>
 		</div>
 	</div>
 </section>
