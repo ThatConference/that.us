@@ -1,5 +1,5 @@
 <script>
-	import { circIn, circOut } from 'svelte/easing';
+	import { circIn } from 'svelte/easing';
 	import { fade, draw } from 'svelte/transition';
 
 	const leftBracket =
@@ -19,27 +19,24 @@
 	stroke-linejoin="round"
 	stroke-miterlimit="2"
 	fill="#ffffff">
-	<g out:fade={{ duration: 500 }} in:fade={{ duration: 500 }}>
+	<g in:fade={{ duration: 250 }}>
 		<path
-			in:draw={{ duration: 500, easing: circIn }}
-			out:draw={{ duration: 500, easing: circOut }}
+			in:draw={{ duration: 250, easing: circIn }}
 			style="stroke:#f74646; stroke-width: 10px"
 			d={leftBracket}>
-			<animate attributeName="fill" begin="500ms" dur="500ms" to="#f74646" fill="freeze" />
+			<animate attributeName="fill" begin="250ms" dur="500ms" to="#f74646" fill="freeze" />
 		</path>
 		<path
-			in:draw={{ duration: 500, easing: circIn }}
-			out:draw={{ duration: 500, easing: circOut }}
+			in:draw={{ duration: 250, easing: circIn }}
 			style="stroke:#f74646; stroke-width: 10px"
 			d={treesPath}>
-			<animate attributeName="fill" begin="500ms" dur="500ms" to="#f74646" fill="freeze" />
+			<animate attributeName="fill" begin="250ms" dur="500ms" to="#f74646" fill="freeze" />
 		</path>
 		<path
-			in:draw={{ duration: 500, easing: circIn }}
-			out:draw={{ duration: 500, easing: circOut }}
+			in:draw={{ duration: 250, easing: circIn }}
 			style="stroke:#f74646; stroke-width: 10px"
 			d={rightBracket}>
-			<animate attributeName="fill" begin="500ms" dur="500ms" to="#f74646" fill="freeze" />
+			<animate attributeName="fill" begin="250ms" dur="500ms" to="#f74646" fill="freeze" />
 		</path>
 	</g>
 </svg>

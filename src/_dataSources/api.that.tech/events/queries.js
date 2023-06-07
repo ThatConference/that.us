@@ -386,7 +386,7 @@ export const QUERY_ACTIVE_COMMUNITY_EVENTS_FOR_JOBS = `
 				get {
 					id
 					name
-					events(filter: ACTIVE) {
+					events(filter: ACTIVE_PARTNER) {
 						id
 						name
 						slug

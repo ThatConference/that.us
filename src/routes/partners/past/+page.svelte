@@ -4,7 +4,7 @@
 	import seoMetaTags from '$utils/seo/metaTags';
 
 	import Seo from '$components/Seo.svelte';
-	import PartnerCard from '$components/partners/PartnerCard.svelte';
+	import PastPartnerCard from '$components/partners/PastPartnerCard.svelte';
 	import Layout from '$elements/layouts/ContentLayout.svelte';
 
 	import Hero from '../_components/_PastPartnersHero.svelte';
@@ -36,11 +36,8 @@
 				<div class="mt-12 py-12">
 					<ul class="grid grid-cols-1 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
 						{#each partners as p, i (p.id)}
-							<li
-								class="col-span-1 flex transform flex-col rounded-lg bg-white text-center shadow transition duration-500 ease-in-out hover:scale-105 hover:bg-that-offWhite">
-								<a href={`/partners/${p.slug}`}>
-									<PartnerCard {...p} />
-								</a>
+							<li class="col-span-1 flex transform flex-col rounded-lg bg-white text-center shadow">
+								<PastPartnerCard {...p} />
 							</li>
 						{/each}
 					</ul>
