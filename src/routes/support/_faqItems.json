@@ -26,7 +26,7 @@
 	},
 	{
 		"question": "How do I know what activities are happening?",
-		"answer": "<a class='underline hover:no-underline hover:font-semibold' href='/activities'>THAT Board</a> is the central place for ALL activities happening. Their is also an <a class='underline hover:no-underline hover:font-semibold' href='https://bit.ly/2YRdVxy'>iCal feed</a> available for you to add to your personal calendar too.",
+		"answer": "<a class='underline hover:no-underline hover:font-semibold' href='/activities'>THAT Board</a> is the central place for ALL activities happening. Their is also an <a class='underline hover:no-underline hover:font-semibold' href='https://that.land/calendar'>iCal feed</a> available for you to add to your personal calendar too.",
 		"category": "activities"
 	},
 	{
