@@ -52,6 +52,10 @@
 							<Level header="Family Sponsors" partners={levels['CUB']} />
 						{/if}
 
+						{#if levels['PATRON']}
+							<Level header="Patron Sponsors" partners={levels['PATRON']} />
+						{/if}
+
 						{#if levels['MEDIA']}
 							<Level header="Media Sponsors" partners={levels['MEDIA']} />
 						{/if}
