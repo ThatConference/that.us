@@ -44,7 +44,7 @@
 				<div class="flex">
 					<div class="w-1/2">
 						<div class="flex h-full flex-col justify-center space-y-6 text-white">
-							<div class="text-2xl font-bold">Summer Camp For Geeks</div>
+							<div class="text-2xl font-bold">Summer Camp For Geeks®</div>
 							<p class="prose-xl text-white">
 								THAT Conference is the “Summer Camp for Geeks” that combines technology, networking,
 								social events and exposure in an inspirational, family friendly environment at the

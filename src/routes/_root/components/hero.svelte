@@ -7,7 +7,7 @@
 		<div class="flex flex-col space-y-24 lg:grid lg:grid-cols-7">
 			<div class="col-span-4">
 				<h2 class="font-extrabold uppercase tracking-wider text-thatRed-500 antialiased">
-					CAMP FOR GEEKS
+					SUMMER CAMP FOR GEEKS®
 				</h2>
 				<h1 class="mt-6 text-5xl font-bold text-thatBlue-700 antialiased">
 					Howdy. We’re a full-stack, tech-obsessed community of fun, code-loving humans who share
