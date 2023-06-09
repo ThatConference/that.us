@@ -65,19 +65,29 @@
 		prerequisites,
 		takeaways,
 		agenda,
-		supportingArtifacts
+		supportingArtifacts,
+		primaryCategory
 	} = activity;
 
 	let dropDownKeyValuePairs = getContext('DROP_DOWN_KEY_VALUE_PAIRS');
 	const isDailyActivity = config.eventId === eventId;
 
 	// Enum Lookups
-	let sessionTargetLocation =
-		dropDownKeyValuePairs.targetLocation.options.find((x) => x.value === targetLocation)?.label ||
-		'Online';
 	let sessionTargetLocationIcon =
 		targetLocation === 'EITHER' ? exchange : targetLocation === 'IN_PERSON' ? user : globe;
 	let sessionType = dropDownKeyValuePairs.sessionType.options.find((x) => x.value === type)?.label;
+	// Display replacements
+	if (type === 'REGULAR') {
+		if (primaryCategory === 'THAT') {
+			sessionType = 'A THAT Conference Activity';
+		} else {
+			sessionType = sessionType.replace('60', durationInMinutes.toString());
+		}
+	}
+	if (type === 'KEYNOTE') {
+		sessionType = sessionType.replace('90', durationInMinutes.toString());
+	}
+
 	let sessionLocationDestination = dropDownKeyValuePairs.sessionLocationDestinations.options.find(
 		(x) => x.value === sessionLocation?.destination
 	)?.label;
@@ -369,13 +379,11 @@
 					<!-- Start Time -->
 					<p class="text-base text-gray-700  sm:mx-auto sm:text-lg md:text-xl lg:mx-0">
 						{#if durationInMinutes > 0}
+							{dayjs(startTime).format('dddd, MMMM D, YYYY - h:mm A z')}, for
+							{dayjs.duration(durationInMinutes, 'minutes').as('hours')}
 							{#if durationInMinutes <= 60}
-								{dayjs(startTime).format('dddd, MMMM D, YYYY - h:mm A z')}, for
-								{dayjs.duration(durationInMinutes, 'minutes').as('hours')}
 								hour.
 							{:else}
-								{dayjs(startTime).format('dddd, MMMM D, YYYY - h:mm A z')}, for
-								{dayjs.duration(durationInMinutes, 'minutes').as('hours')}
 								hours.
 							{/if}
 						{/if}
@@ -384,9 +392,7 @@
 					<!-- Location -->
 					<p
 						class="mt-1 text-base text-gray-700 sm:mx-auto sm:mt-2 sm:text-lg md:mt-1 md:text-xl lg:mx-0">
-						<Icon
-							data={sessionTargetLocationIcon}
-							class="mr-2 h-4 w-4 pb-0.5" />{sessionTargetLocation}
+						<Icon data={sessionTargetLocationIcon} class="mr-2 h-4 w-4 pb-0.5" />
 						{sessionType}
 					</p>
 

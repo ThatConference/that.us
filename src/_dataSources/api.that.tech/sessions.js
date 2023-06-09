@@ -20,6 +20,7 @@ const coreSessionFields = `
 		slug
 		communities
 		category
+		primaryCategory
 		targetLocation
 		location {
 			destination
