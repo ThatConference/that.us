@@ -63,7 +63,11 @@ The Kalahari provides the "Tree People" a 10% discount at many of the restaurant
 
 ## Mess Hall
 
-The Mess Hall is our main gathering place. This is where you'll find conference-provided meals, keynotes and special activities like THAT Wildlife. Oh and of course bacon 🥓!
+The Mess Hall is our main gathering place. This is where you'll find conference-provided meals, keynotes and special activities like THAT Wildlife. Oh and of course bacon 🥓! All family and attendees are welcome in the Mess Hall during meal times. You must have a food wristband to get food from the food buffet lines.
+
+### Dietary Restrictions
+
+We've worked with the Kalahari to accommodate as many dietary restrictions as we can. Food line items are marked with dietary information like gluten-free, vegetarian, etc. Should you find yourself in need of assistance, please find a THAT Crew member. We'll be happy to assist!
 
 ## Open Spaces
 
