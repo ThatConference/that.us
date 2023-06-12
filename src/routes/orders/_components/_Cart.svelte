@@ -259,7 +259,13 @@
 			</div>
 		</div>
 
-		<div class="flex justify-end">
+		<div class="flex justify-end ">
+			<p class="text-sm text-gray-500">
+				Refunds will not be issued on any ticket <span class="font-bold">30 days</span> before the event
+				or thereafter. Prior to that, a $30.00 (per ticket) processing fee will be applied to each attendee
+				ticket refund and a $10.00 (per ticket) processing fee will be applied to each family ticket
+				refund.
+			</p>
 			{#if $state.matches('verification.verified')}
 				<div class="flex space-x-4">
 					<StandardButton on:click={() => history.back()}>Continue Shopping</StandardButton>
@@ -268,7 +274,7 @@
 				</div>
 			{:else}
 				<div
-					class="rounded-md bg-gray-200 px-8 py-2 text-base font-medium leading-6 text-white shadow md:px-10 md:text-lg">
+					class="whitespace-nowrap rounded-md bg-gray-200 px-8 py-2 text-base font-medium leading-6 text-white shadow md:px-10 md:text-lg">
 					Purchase Now
 				</div>
 			{/if}
