@@ -191,7 +191,7 @@
 				text="Ticket refunds will not be issued on any ticket <span class='font-bold'>30 days</span> before the event or thereafter. Prior to that, a $30.00 (per ticket) processing fee will be applied to each attendee ticket refund and a $10.00 (per ticket) processing fee will be applied to each family ticket refund. Memberships are non-refundable.">
 				<div class="flex justify-center space-x-6">
 					<StandardButton on:click={() => openRefundPolicyModal(false)}>Cancel</StandardButton>
-					<StandardButton on:click={handleCheckout}>Go Checkout</StandardButton>
+					<StandardButton on:click={handleCheckout}>Agree and Continue</StandardButton>
 				</div>
 			</ActionModal>
 		{/if}
@@ -280,7 +280,7 @@
 				<div class="flex space-x-4">
 					<StandardButton on:click={() => history.back()}>Continue Shopping</StandardButton>
 					<StandardButton on:click={() => openRefundPolicyModal(true)}
-						>Continue to Complete Purchase</StandardButton>
+						>Agree and Continue</StandardButton>
 				</div>
 			{:else}
 				<div

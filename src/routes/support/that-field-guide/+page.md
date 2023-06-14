@@ -6,7 +6,7 @@ layout: support
 ---
 
 <div class="max-w-prose mx-auto">
-  <div class="prose prose-lg text-gray-500">
+  <div class= "prose prose-lg text-gray-500">
 
 ## Welcome
 
@@ -16,7 +16,7 @@ Last updated on **June 8th, 2023**
 
 ## Registration
 
-When you arrive at camp stop down at the Registration Desk and check in. This is where you'll get your badge and swag. The Registration Desk remains open throughout the day to answer questions. There is also a lost and found.
+When you arrive at camp stop down at the Registration Desk located in the convention center and check in. This is where you'll get your badge and swag. The Registration Desk remains open throughout the day to answer questions. There is also a lost and found.
 
 ### Hugs, Handshakes, and Waves
 
@@ -32,7 +32,7 @@ Yes, we understand while you're at the Kalahari and THAT Conference there are a 
 
 - The **Kalahari Wristband** is needed for the waterpark during the day, to get in your room, etc.
 - You DON'T need the Kalahari wristband for the THAT Conference Waterpark Party, bring your conference badge to get in.
-- You need to wear your **THAT Conference Food Bracelet**. Keep it on, if you lose it, it cannot be replaced.
+- You need to wear your **THAT Conference Food Bracelet** and present it at every meal. Keep it on: if you lose it, it cannot be replaced.
 - The **Campmate and Geekling food wristbands** only need to be worn for the THAT Conference Wednesday night dinner Pig Roast (WI) / BBQ (TX)
 
 ### THAT Ranger Station
@@ -47,7 +47,7 @@ With over 100 sessions, activities and Open Spaces sessions, keeping track of it
 
 ### Favorites
 
-By clicking on the ❤️ heart on a session, it adds this session to your [favorites](/my/favorites/). Favoriting sessions helps in many ways. It provides you with a list of all your favorite sessions. You'll receive an email notification whenever there is a change to a session's room or time. It also informs us how interested people are in a session so we can ensure there is a large enough room for it.
+By clicking on the ❤️ heart on a session, it adds this session to your [favorites](/my/favorites/). Favoriting sessions help in many ways. It provides you with a list of all your favorite sessions. You'll receive an email notification whenever there is a change to a session's room or time. It also informs us how interested people are in a session so we can ensure there is a large enough room for it.
 
 You can view a list of all of your favorites on the [My Favorites](/my/favorites/) page. Click the **[Subscribe](/support/my-favorites-icalendar/)** button at the top of the page for instructions on how to add your favorites to your calendar. There is also a button to download a CSV file of your favorites.
 
@@ -59,11 +59,11 @@ That's right, all restaurants and stands in the Kalahari are now cashless. The o
 
 ### 10% Discount at many restaurants
 
-The Kalahari provides the "Tree People" a 10% discount at many of the restaurants in the Kalahari. You'll need to show them your badge for the discount. We recommend you ask before ordering to ensure the particular restaurant you're at provides this discount.
+The Kalahari provides the "Tree People" a 10% discount at many of the restaurants in the Kalahari. You'll need to show them your badge for the discount. We recommend you ask before ordering to ensure the particular restaurant you're at provides this discount. The discount does not include alcohol.
 
 ## Mess Hall
 
-The Mess Hall is our main gathering place. This is where you'll find conference-provided meals, keynotes and special activities like THAT Wildlife. Oh and of course bacon 🥓! All family and attendees are welcome in the Mess Hall during meal times. You must have a food wristband to get food from the food buffet lines.
+The Mess Hall is our main gathering place. This is where you'll find conference-provided meals, keynotes and special activities like THAT Game Night. All family and attendees are welcome in the Mess Hall during meal times. You must have a food wristband to get food from the food buffet lines.
 
 ### Dietary Restrictions
 
@@ -77,7 +77,7 @@ Interested in discussing a topic or sharing an experience with peers? Want to cu
 
 ### Open Spaces Kick-Off
 
-After lunch on Tuesday around 12:00 will be the Open Spaces kick-off where we'll explain how Open Spaces works and start getting items on the Open Space's boards. we can't wait to see what you add to THAT Conference.
+After lunch on Tuesday around 12:00 will be the Open Spaces kick-off where we'll explain how Open Spaces works and start getting items on the Open Space's boards. We can't wait to see what you add to THAT Conference.
 
 ## Sponsors and Data Collection
 

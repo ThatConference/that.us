@@ -1,6 +1,6 @@
 /* eslint-disable global-require */
 module.exports = {
-	content: ['./src/**/*.{html,js,svelte,ts}'],
+	content: ['./src/**/*.{html,js,svelte,ts,md}'],
 	theme: {
 		extend: {
 			colors: {

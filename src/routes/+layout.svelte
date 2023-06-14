@@ -96,7 +96,7 @@
 	}
 
 	:global(.prose a:hover) {
-		color: #ffffff;
+		color: #f3f4f6;
 	}
 
 	:global(.lineBreaks) {
