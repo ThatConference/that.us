@@ -39,12 +39,8 @@ export default {
 			autolinkHeadings,
 			{
 				behavior: 'prepend',
-				// properties: {
-				// 	ariaHidden: true,
-				// 	tabIndex: -1,
-				// 	class: ''
-				// },
 				// on auto-headings insert svg along with anchor slug
+				// may be better to reference a global svg
 				content: s(
 					'svg',
 					{
