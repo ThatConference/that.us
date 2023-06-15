@@ -280,7 +280,7 @@
 				<div class="flex space-x-4">
 					<StandardButton on:click={() => history.back()}>Continue Shopping</StandardButton>
 					<StandardButton on:click={() => openRefundPolicyModal(true)}
-						>Agree and Continue</StandardButton>
+						>Continue to Complete Purchase</StandardButton>
 				</div>
 			{:else}
 				<div
