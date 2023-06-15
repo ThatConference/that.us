@@ -6,6 +6,7 @@
 
 	import config from '$utils/config.public';
 	import { Cart as CartModal } from '$elements/modals';
+	import { Action as ActionModal } from '$elements/modals';
 	import { Standard as StandardButton } from '$elements/buttons';
 	import { Standard as StandardLink } from '$elements/links';
 	import orderMutations from '$dataSources/api.that.tech/orders/mutations';
@@ -99,6 +100,11 @@
 
 		send('REPLACE_CART', eventData);
 	}
+
+	let activateRefundPolicyModal = false;
+	function openRefundPolicyModal(showModal) {
+		activateRefundPolicyModal = showModal;
+	}
 </script>
 
 <svelte:head>
@@ -179,6 +185,16 @@
 	</section>
 {:else}
 	<section class="flex flex-col space-y-8">
+		{#if activateRefundPolicyModal === true}
+			<ActionModal
+				title="Refund Policy"
+				text="Ticket refunds will not be issued on any ticket <span class='font-bold'>30 days</span> before the event or thereafter. Prior to that, a $30.00 (per ticket) processing fee will be applied to each attendee ticket refund and a $10.00 (per ticket) processing fee will be applied to each family ticket refund. Memberships are non-refundable.">
+				<div class="flex justify-center space-x-6">
+					<StandardButton on:click={() => openRefundPolicyModal(false)}>Cancel</StandardButton>
+					<StandardButton on:click={handleCheckout}>Agree and Continue</StandardButton>
+				</div>
+			</ActionModal>
+		{/if}
 		<div class="relative">
 			<div class="absolute inset-0 flex items-center" aria-hidden="true">
 				<div class="w-full border-t border-gray-300" />
@@ -259,16 +275,16 @@
 			</div>
 		</div>
 
-		<div class="flex justify-end">
+		<div class="flex justify-end ">
 			{#if $state.matches('verification.verified')}
 				<div class="flex space-x-4">
 					<StandardButton on:click={() => history.back()}>Continue Shopping</StandardButton>
-
-					<StandardButton on:click={handleCheckout}>Continue to Complete Purchase</StandardButton>
+					<StandardButton on:click={() => openRefundPolicyModal(true)}
+						>Agree and Continue</StandardButton>
 				</div>
 			{:else}
 				<div
-					class="rounded-md bg-gray-200 px-8 py-2 text-base font-medium leading-6 text-white shadow md:px-10 md:text-lg">
+					class="whitespace-nowrap rounded-md bg-gray-200 px-8 py-2 text-base font-medium leading-6 text-white shadow md:px-10 md:text-lg">
 					Purchase Now
 				</div>
 			{/if}
