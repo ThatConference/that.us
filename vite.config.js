@@ -17,7 +17,7 @@ const config = ({ mode }) => {
 		},
 		setCommits: {
 			auto: true,
-			'ignore-missing': true
+			ignoreMissing: true
 		},
 		sourceMaps: {
 			include: ['./.svelte-kit/output'],

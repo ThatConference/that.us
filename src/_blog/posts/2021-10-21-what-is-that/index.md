@@ -9,26 +9,25 @@ layout: blog
 ---
 
 <script>
-	export let slug;
-	
-	import image from '$blog/image';
-	import { Standard as StandardLink } from '$elements/links';
+ export let slug;
+ 
+ import image from '$blog/image';
+ import { Standard as StandardLink } from '$elements/links';
 
-
-	const { cdnUrl } = image(slug);
+ const { cdnUrl } = image(slug);
 
 </script>
 
 ## Hey Clark, help me understand; THAT, THAT Conference, and THAT Online, what is all this?
 
-## I don't understand.
+## I don't understand
 
 This question came through our webchat during last Friday's THAT Online, and it's the spirit of today's newsletter. Over the past two years, a lot has changed, we've tried to adapt, innovate, and better service all Geeks, but we're not always the best at the words part of things, so let's dive in.
 
 ## What is THAT?
 
 <div class="w-full grid place-content-center">
-	<img class="w-[300px] lazyload" src="{cdnUrl('THAT-Wide.png')}" alt="THAT Logo"/>
+ <img class="w-[300px] lazyload" src="{cdnUrl('THAT-Wide.png')}" alt="THAT Logo"/>
 </div>
 
 Let's start by defining what exactly **THAT** is. The most straightforward answer, well, everything. By now, you've heard me say a community goes far beyond one's time together at THAT Conference; it exists every day. No doubt something special happens when geeks get together, it's essential, but it also shouldn't ever stop there. Our mission is to help you grow, support you, and grow the communities that surround every one of us. We also want to do all this every day of the year.
@@ -44,13 +43,13 @@ We set out to build a platform that would help us all. It should let us see one 
 **It's also free to use.**
 
 <div class="py-10 w-full grid place-content-center">
-	<StandardLink href="/activities/">View Activities</StandardLink>
+ <StandardLink href="/activities/">View Activities</StandardLink>
 </div>
 
 ## What is THAT Conference?
 
 <div class="w-full grid place-content-center">
-	<img class="w-[300px] lazyload" src={cdnUrl("THAT-Conference.png")} alt="THAT Logo" />
+ <img class="w-[300px] lazyload" src={cdnUrl("THAT-Conference.png")} alt="THAT Logo" />
 </div>
 
 Now without question, you found us because of THAT Conference. Looking back over the past ten years, it's crazy amazing to reflect on just how much tech has changed, and like tech, THAT Conference has grown in every aspect. THAT Conference is still and will always be at the core of our mission. Getting geeks together to support, teach, expand their networks, and grow their businesses is our passion.
@@ -63,7 +62,7 @@ Unlike other hybrid events, ours intentionally do not intermingle. We want to re
 
 ### What is AT THAT Conference?
 
-Everything you've come to know about THAT Conference remains the same. Simply put, you're physically AT THAT Conference. Summer Camp For Geeks.
+Everything you've come to know about THAT Conference remains the same. Simply put, you're physically AT THAT Conference. Summer Camp For Geeks®.
 
 ### What is ON THAT Conference?
 
@@ -86,13 +85,13 @@ Nope in fact it's quite the opposite. We're adding a winter event in Round Rock 
 In summary - when you think of THAT Conference you know it's one of our keystone events which is now a combination of **AT** && **ON THAT**.
 
 <div class="py-10 w-full grid place-content-center">
-	<StandardLink href="https://thatconference.com">THAT Conference</StandardLink>
+ <StandardLink href="https://thatconference.com">THAT Conference</StandardLink>
 </div>
 
 ## What is THAT Online?
 
 <div class="w-full grid place-content-center">
-	<img class="w-[300px] lazyload" src={cdnUrl("that-online.png")} alt="THAT Logo" />
+ <img class="w-[300px] lazyload" src={cdnUrl("that-online.png")} alt="THAT Logo" />
 </div>
 
 That leads us to THAT Online. Much like THAT Conference's ON THAT, THAT Online is a monthly manifestation of that same spirit. A monthly unconference on the 15th of every month for 24 hours. There is no call for speakers and we all drive the schedule based on what we submit and when we schedule it.
@@ -108,7 +107,7 @@ You do not need to wait for an event to use [THAT.us](https://THAT.us), remember
 Honestly, this pandemic we've all been hiking through opened the door for us to really do what we're passionate about which is help geeks. Sure we like to write code, but we like connecting people more.
 
 <div class="py-10 w-full grid place-content-center">
-	<StandardLink href="/events/">See the upcoming events</StandardLink>
+ <StandardLink href="/events/">See the upcoming events</StandardLink>
 </div>
 
 ## What is THAT Membership?
@@ -116,10 +115,10 @@ Honestly, this pandemic we've all been hiking through opened the door for us to 
 If you can't tell, we've been busy, and we hope you love all that you see. Earlier this year we introduced a Membership program. We introduced this as a direct way to support us and in turn support the community at large. You can read more about it here: [https://that.us/membership/](https://that.us/membership/) and note there are some benefit improvements coming.
 
 <div class="py-10 w-full grid place-content-center">
-	<StandardLink href="/membership/">Join Today</StandardLink>
+ <StandardLink href="/membership/">Join Today</StandardLink>
 </div>
 
-## Mark your Calendars!
+## Mark your Calendars
 
 ### Texas
 

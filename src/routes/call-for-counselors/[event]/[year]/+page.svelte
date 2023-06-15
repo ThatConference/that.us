@@ -91,7 +91,7 @@
 				<div class="col-span-5">
 					<h3
 						class="text-center text-4xl font-extrabold uppercase tracking-wide text-white sm:text-left">
-						Summer Camp for Geeks
+						Summer Camp for Geeks®
 					</h3>
 				</div>
 
