@@ -4,7 +4,7 @@
 	import '../app.css';
 
 	import { onMount, setContext } from 'svelte';
-	import { navigating, page } from '$app/stores';
+	import { navigating } from '$app/stores';
 	import { browser, dev } from '$app/environment';
 	import lodash from 'lodash';
 	import * as Sentry from '@sentry/svelte';
@@ -50,9 +50,9 @@
 		}
 	});
 
-	$: if (!isEmpty($page.data.user.profile)) {
+	$: if (!isEmpty(data.user.profile)) {
 		if (!dev && browser) {
-			let { id, email, firstName, lastName } = $page.data.user.profile;
+			let { id, email, firstName, lastName } = data.user.profile;
 
 			Sentry.setUser({
 				email,
