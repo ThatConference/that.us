@@ -7,6 +7,7 @@
 	import seoMetaTags from '$utils/seo/metaTags';
 	import Layout from '$elements/layouts/ContentLayout.svelte';
 	import Seo from '$components/Seo.svelte';
+	import NewsletterModal from '$components/newsletter/Modal.svelte';
 
 	import {
 		Hero,
@@ -60,6 +61,8 @@
 		<Testimonials />
 		<Stats {stats} />
 	</div>
+
+	<NewsletterModal />
 
 	<div>
 		<UpNext

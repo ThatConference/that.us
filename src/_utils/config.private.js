@@ -14,3 +14,8 @@ export const securityConfig = () => {
 
 	return config;
 };
+
+export const newsletterConfig = {
+	portalId: env.NEWSLETTER_PORTAL_ID || configMissing('NEWSLETTER_PORTAL_ID'),
+	formId: env.NEWSLETTER_FORM_ID || configMissing('NEWSLETTER_FORM_ID')
+};

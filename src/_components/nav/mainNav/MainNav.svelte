@@ -1,6 +1,5 @@
 <script>
 	import lodash from 'lodash';
-	import Headroom from 'svelte-headroom';
 
 	import { page } from '$app/stores';
 	import CreateProfileNotification from '$components/notifications/CreateProfile.svelte';
