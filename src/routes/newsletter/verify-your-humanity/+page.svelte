@@ -1,5 +1,5 @@
 <script>
-	import Layout from '$components/layouts/ContentLayout.svelte';
+	import Layout from '$elements/layouts/ContentLayout.svelte';
 	import HubspotForm from '$components/newsletter/HubspotForm.svelte';
 </script>
 
