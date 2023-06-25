@@ -55,6 +55,11 @@ export const debug = {
 	xstate: false
 };
 
+export const recaptcha = {
+	siteKey: '6Lc0xrMmAAAAAHVlanzsS01OjAzlvHasXQMevfuV',
+	threshold: 0.5
+};
+
 export const analytics = {
 	google: 'UA-21705613-11'
 };

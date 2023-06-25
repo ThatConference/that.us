@@ -143,4 +143,8 @@
 		height: var(--size);
 		width: var(--size);
 	}
+
+	:global(.grecaptcha-badge) {
+		visibility: hidden;
+	}
 </style>
