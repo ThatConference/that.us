@@ -1,6 +1,6 @@
 <script>
 	import { page } from '$app/stores';
-	// import { fade } from 'svelte/transition';
+	import { fade } from 'svelte/transition';
 	import { superForm, superValidateSync } from 'sveltekit-superforms/client';
 	import Icon from 'svelte-awesome';
 	import * as flashModule from 'sveltekit-flash-message/client';
@@ -16,15 +16,18 @@
 		data.append('recaptchaToken', token);
 	}
 
-	const { form, enhance, constraints, errors } = superForm(superValidateSync(newsletterSchema), {
-		onSubmit: handleOnSubmit,
-		dataType: 'json',
-		validators: newsletterSchema,
-		syncFlashMessage: false,
-		flashMessage: {
-			module: flashModule
+	const { form, enhance, constraints, errors, tainted } = superForm(
+		superValidateSync(newsletterSchema),
+		{
+			onSubmit: handleOnSubmit,
+			dataType: 'json',
+			validators: newsletterSchema,
+			syncFlashMessage: false,
+			flashMessage: {
+				module: flashModule
+			}
 		}
-	});
+	);
 </script>
 
 <div class="flex flex-col text-gray-500">
@@ -52,8 +55,19 @@
 				Join Free
 			</button>
 		</div>
+
+		{#if $tainted}
+			<div in:fade class="mt-4 max-w-lg space-y-2 text-sm">
+				<p>
+					This site is protected by reCAPTCHA Enterprise and the Google
+					<a class="text-thatBlue-400" href="https://policies.google.com/privacy">Privacy Policy</a>
+					and
+					<a class="text-thatBlue-400" href="https://policies.google.com/terms">Terms of Service</a>
+					apply.
+				</p>
+			</div>
+		{/if}
 		<!-- 
-			
 			Saving for when we turn on gdpr on hubspot
 			
 			{#if $tainted}
