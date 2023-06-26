@@ -20,6 +20,7 @@
 	import claimTicket from '$utils/claimTicket';
 
 	import Preloading from '$components/preloading.svelte';
+	import { recaptcha } from '$utils/config.public';
 
 	// setup the context on the cart for later usage
 	setContext('claimTicket', claimTicket);
@@ -48,6 +49,12 @@
 	});
 
 	onMount(() => {
+		/* eslint-disable no-undef */
+		grecaptcha.enterprise.ready(async () => {
+			/* eslint-disable no-undef */
+			await grecaptcha.enterprise.execute(recaptcha.siteKey, { action: 'site_load' });
+		});
+
 		if ($showReleaseNotes) {
 			messages.update((m) => [
 				...m,
