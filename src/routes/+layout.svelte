@@ -5,19 +5,22 @@
 
 	import { onMount, setContext } from 'svelte';
 	import { navigating, page } from '$app/stores';
+	import { beforeNavigate } from '$app/navigation';
 	import { browser, dev } from '$app/environment';
+
+	import LogRocket from 'logrocket';
 	import lodash from 'lodash';
 	import * as Sentry from '@sentry/svelte';
-	import LogRocket from 'logrocket';
+	import { initFlash } from 'sveltekit-flash-message/client';
 
 	import loading from '$stores/loading';
 	import { showReleaseNotes } from '$stores/siteVersion';
 	import { messages } from '$stores/notificationCenter';
-
 	import cart from '$utils/cart';
 	import claimTicket from '$utils/claimTicket';
 
 	import Preloading from '$components/preloading.svelte';
+	import { recaptcha } from '$utils/config.public';
 
 	// setup the context on the cart for later usage
 	setContext('claimTicket', claimTicket);
@@ -26,6 +29,13 @@
 	setContext('DROP_DOWN_KEY_VALUE_PAIRS', data.dropDownKeyValuePairs);
 
 	const { isEmpty } = lodash;
+	const flash = initFlash(page);
+
+	beforeNavigate((nav) => {
+		if ($flash && nav.from?.url.toString() !== nav.to?.url.toString()) {
+			$flash = undefined;
+		}
+	});
 
 	navigating.subscribe((event) => {
 		if (event) {
@@ -39,6 +49,12 @@
 	});
 
 	onMount(() => {
+		/* eslint-disable no-undef */
+		grecaptcha.enterprise.ready(async () => {
+			/* eslint-disable no-undef */
+			await grecaptcha.enterprise.execute(recaptcha.siteKey, { action: 'site_load' });
+		});
+
 		if ($showReleaseNotes) {
 			messages.update((m) => [
 				...m,
@@ -50,9 +66,9 @@
 		}
 	});
 
-	$: if (!isEmpty($page.data.user.profile)) {
+	$: if (!isEmpty(data.user.profile)) {
 		if (!dev && browser) {
-			let { id, email, firstName, lastName } = $page.data.user.profile;
+			let { id, email, firstName, lastName } = data.user.profile;
 
 			Sentry.setUser({
 				email,
@@ -81,7 +97,6 @@
 	{#if $navigating || $loading}
 		<Preloading />
 	{/if}
-
 	<slot />
 </div>
 
@@ -134,5 +149,9 @@
 		border-radius: var(--size);
 		height: var(--size);
 		width: var(--size);
+	}
+
+	:global(.grecaptcha-badge) {
+		visibility: hidden;
 	}
 </style>

@@ -5,7 +5,7 @@
 	import Seo from '$components/Seo.svelte';
 
 	import { Highlight as HighlightLink } from '$elements/links';
-
+	import NewsletterWide from '$components/newsletter/Wide.svelte';
 	import UpNextEvent from '$components/activities/UpNextEvent.svelte';
 	import CallForSpeakers from '$components/cta/_CallForSpeakers.svelte';
 
@@ -82,6 +82,10 @@
 	<!--dates-->
 	<section>
 		<Dates milestones={event.milestones} />
+	</section>
+
+	<section>
+		<NewsletterWide />
 	</section>
 
 	<section id="sponsors">

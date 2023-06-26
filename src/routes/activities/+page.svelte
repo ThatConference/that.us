@@ -7,7 +7,7 @@
 	import lodash from 'lodash';
 
 	import Nav from '$components/nav/interiorNav/Top.svelte';
-	import Sponsor from '$components/SponsorSimple.svelte';
+
 	import ActivityList from '$components/activities/List.svelte';
 	import ScrollThreshold from '$components/ScrollThreshold.svelte';
 	import Seo from '$components/Seo.svelte';
@@ -96,9 +96,5 @@
 				<Waiting />
 			</div>
 		{/if}
-	</div>
-
-	<div slot="footer">
-		<Sponsor eventId={$state.context.eventId} />
 	</div>
 </StackedLayout>

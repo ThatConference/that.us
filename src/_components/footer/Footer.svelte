@@ -1,10 +1,11 @@
 <script>
 	import dayjs from 'dayjs';
 
+	import { version } from '$app/environment';
+
 	import { SocialLink } from '../social';
 	import socials from './socials';
 	import Newsletter from '../newsletter/Footer.svelte';
-	import { version } from '$app/environment';
 
 	import {
 		thatLinks,
@@ -38,7 +39,7 @@
 					{/each}
 				</div>
 			</div>
-			<div class="col-span-2 mt-12 flex justify-end  xl:mt-0 ">
+			<div class="col-span-2 mt-12 flex justify-end xl:mt-0 ">
 				<Newsletter />
 			</div>
 		</div>

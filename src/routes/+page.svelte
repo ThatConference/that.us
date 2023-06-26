@@ -1,13 +1,13 @@
 <script>
 	export let data;
 
-	import { page } from '$app/stores';
 	import { useMachine } from '@xstate/svelte';
 
 	import { debug } from '$utils/config.public';
 	import seoMetaTags from '$utils/seo/metaTags';
 	import Layout from '$elements/layouts/ContentLayout.svelte';
 	import Seo from '$components/Seo.svelte';
+	import NewsletterModal from '$components/newsletter/Modal.svelte';
 
 	import {
 		Hero,
@@ -18,7 +18,6 @@
 		Stats,
 		Events,
 		NewMembers,
-		WelcomeBack,
 		UpNext,
 		BlogLatest,
 		ThatActiveEvents
@@ -26,7 +25,8 @@
 
 	import createMachine from './_root/machines/upNext';
 
-	let { members, events, thatActiveEvents, stats, activitiesUpNext, blogPosts } = data;
+	let { members, events, thatActiveEvents, stats, activitiesUpNext, blogPosts, user } = data;
+
 	const metaTags = ((
 		title = 'Howdy. We’re a full-stack, tech-obsessed community of fun, code-loving humans who share and learn together. Home of THAT Conference.'
 	) => ({
@@ -52,60 +52,36 @@
 <Seo title={metaTags.title} tags={metaTags.tags} />
 
 <Layout>
-	{#if $page.data.profile?.isMember}
-		<div>
-			<WelcomeBack />
-		</div>
+	<div>
+		<Hero />
+		<ThatActiveEvents events={thatActiveEvents} />
+	</div>
 
-		<div>
-			<UpNext
-				items={$state.context.items}
-				hasMore={$state.context.cursor ? true : false}
-				on:next={() => {
-					send('NEXT');
-				}} />
-		</div>
+	<div>
+		<Testimonials />
+		<Stats {stats} />
+	</div>
 
-		<div>
-			<Events {events} />
-		</div>
+	<NewsletterModal />
 
-		<div>
-			<Stats {stats} />
-			<BlogLatest posts={blogPosts} />
-			<NewMembers {members} />
-			<Newsletter />
-		</div>
-	{:else}
-		<div>
-			<Hero />
-			<ThatActiveEvents events={thatActiveEvents} />
-		</div>
+	<div>
+		<UpNext
+			items={$state.context.items}
+			hasMore={$state.context.cursor ? true : false}
+			on:next={() => {
+				send('NEXT');
+			}} />
 
-		<div>
-			<Testimonials />
-			<Stats {stats} />
-		</div>
+		<Events {events} />
 
-		<div>
-			<UpNext
-				items={$state.context.items}
-				hasMore={$state.context.cursor ? true : false}
-				on:next={() => {
-					send('NEXT');
-				}} />
+		{#if !user.isAuthenticated}
+			<CTA />
+		{:else if !user.profile?.isMember}
+			<CtaMembership />
+		{/if}
 
-			<Events {events} />
-
-			{#if !$page.data.user.isAuthenticated}
-				<CTA />
-			{:else if !$page.data.user.profile?.isMember}
-				<CtaMembership />
-			{/if}
-
-			<BlogLatest posts={blogPosts} />
-			<NewMembers {members} />
-			<Newsletter />
-		</div>
-	{/if}
+		<BlogLatest posts={blogPosts} />
+		<Newsletter />
+		<NewMembers {members} />
+	</div>
 </Layout>

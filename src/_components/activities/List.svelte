@@ -228,8 +228,6 @@
 			{events}
 			bind:selectedFilterTerms
 			bind:searchterm
-			bind:atThat
-			bind:onThat
 			bind:family
 			bind:professional
 			bind:workshop
