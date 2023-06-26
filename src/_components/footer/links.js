@@ -4,6 +4,10 @@ export const thatLinks = [
 		href: '/blog/'
 	},
 	{
+		text: 'Newsletter',
+		href: '/newsletter/'
+	},
+	{
 		text: 'Events',
 		href: '/events/'
 	},
@@ -27,20 +31,24 @@ export const thatConferenceLinks = [
 		href: '/that-conference/'
 	},
 	{
-		text: 'Call for Speakers',
-		href: '/call-for-counselors/'
+		text: 'THAT Field Guid',
+		href: '/support/that-field-guide/'
 	},
 	{
-		text: 'Sponsors and Partners',
-		href: '/partners/'
-	},
-	{
-		text: 'Sponsor Job Board',
+		text: 'Job Board',
 		href: '/partners/job-board/'
 	},
 	{
 		text: 'THAT Store',
 		href: 'https://store.that.us/'
+	},
+	{
+		text: 'Call for Speakers',
+		href: '/cfp/'
+	},
+	{
+		text: 'Sponsors',
+		href: '/partners/'
 	},
 	{
 		text: 'COVID Policies',

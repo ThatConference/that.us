@@ -53,21 +53,24 @@
 					</li>
 				{/each}
 			</ul>
-			<div class="flex w-full flex-col">
-				<h2 class="text-3xl font-semibold leading-9 tracking-tight sm:text-4xl">
-					<span class="pl-2 text-that-orange">Virtual Events</span>
-				</h2>
-			</div>
 
-			<ul
-				class="space-y-12 lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-12
+			{#if online.length > 0}
+				<div class="flex w-full flex-col">
+					<h2 class="text-3xl font-semibold leading-9 tracking-tight sm:text-4xl">
+						<span class="pl-2 text-that-orange">Virtual Events</span>
+					</h2>
+				</div>
+
+				<ul
+					class="space-y-12 lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-12
           lg:gap-y-8 lg:space-y-0">
-				{#each online as event}
-					<li>
-						<Event {event} />
-					</li>
-				{/each}
-			</ul>
+					{#each online as event}
+						<li>
+							<Event {event} />
+						</li>
+					{/each}
+				</ul>
+			{/if}
 		</div>
 
 		<div class="relative flex justify-end pt-16">
