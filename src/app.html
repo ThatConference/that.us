@@ -125,21 +125,5 @@
 
 			gtag('config', 'UA-21705613-11');
 		</script>
-		<script>
-			// function onClick(e) {
-			// 	e.preventDefault();
-			grecaptcha.enterprise.ready(async () => {
-				const token = await grecaptcha.enterprise.execute(
-					'6Lc0xrMmAAAAAHVlanzsS01OjAzlvHasXQMevfuV',
-					{ action: 'PAGE_LOAD' }
-				);
-				// IMPORTANT: The 'token' that results from execute is an encrypted response sent by
-				// reCAPTCHA Enterprise to the end user's browser.
-				// This token must be validated by creating an assessment.
-				// See https://cloud.google.com/recaptcha-enterprise/docs/create-assessment
-				// console.log('token', token);
-			});
-			// }
-		</script>
 	</body>
 </html>

@@ -8,7 +8,16 @@
 	import { envelope } from '$components/svelte-awesome-icons';
 	import newsletterSchema from '$lib/formSchemas/newsletter';
 
+	import { recaptcha } from '$utils/config.public';
+
+	async function handleOnSubmit({ data }) {
+		/*eslint-disable no-undef*/
+		const token = await grecaptcha.enterprise.execute(recaptcha.siteKey, { action: 'submit' });
+		data.append('recaptchaToken', token);
+	}
+
 	const { form, enhance, constraints, errors } = superForm(superValidateSync(newsletterSchema), {
+		onSubmit: handleOnSubmit,
 		dataType: 'json',
 		validators: newsletterSchema,
 		syncFlashMessage: false,
