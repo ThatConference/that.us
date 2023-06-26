@@ -48,10 +48,10 @@
 	let communities = [];
 	let selectedFilterTerms = getSessionSelectedTags();
 	let activitiesTaggedFiltered = [];
-	let onThat = true;
-	let atThat = true;
 	let family = true;
 	let professional = true;
+	let regular = true;
+	let keynote = true;
 	let workshop = true;
 	let openSpace = true;
 	let dense = false;
@@ -84,22 +84,26 @@
 		window.sessionStorage.setItem('selectedTags', JSON.stringify(selectedFilterTerms));
 	}
 
-	$: activitesLocationCategoryFiltered = activitiesFiltered.filter(
+	$: activitiesLocationCategoryFilteredA = activitiesFiltered.filter(
 		(activity) =>
-			(activity.type == 'WORKSHOP' ? workshop : true) &&
-			(activity.type == 'OPEN_SPACE' ? openSpace : true) &&
-			(activity.category == 'FAMILY' ? family : true) &&
-			(activity.category == 'PROFESSIONAL' ? professional : true) &&
-			(activity.targetLocation == 'IN_PERSON' ? atThat : true) &&
-			(activity.targetLocation == 'ONLINE' ? onThat : true)
+			(activity.category == 'FAMILY' ? family : false) ||
+			(activity.category == 'PROFESSIONAL' ? professional : false)
+	);
+
+	$: activitiesLocationCategoryFiltered = activitiesLocationCategoryFilteredA.filter(
+		(activity) =>
+			(activity.type == 'REGULAR' ? regular : false) ||
+			(activity.type == 'KEYNOTE' ? keynote : false) ||
+			(activity.type == 'WORKSHOP' ? workshop : false) ||
+			(activity.type == 'OPEN_SPACE' ? openSpace : false)
 	);
 
 	$: activitiesTaggedFiltered =
 		selectedFilterTerms.length > 0
-			? activitesLocationCategoryFiltered.filter((activity) =>
+			? activitiesLocationCategoryFiltered.filter((activity) =>
 					selectedFilterTerms.some((tag) => activity.tags.some((t) => t.toLowerCase() === tag))
 			  )
-			: activitesLocationCategoryFiltered;
+			: activitiesLocationCategoryFiltered;
 
 	$: sorted = _(activitiesTaggedFiltered)
 		.groupBy(({ startTime }) => dayjs(startTime).format('MM/DD/YYYY'))
@@ -230,6 +234,8 @@
 			bind:searchterm
 			bind:family
 			bind:professional
+			bind:regular
+			bind:keynote
 			bind:workshop
 			bind:openSpace
 			on:click={handleCloseFilter}
