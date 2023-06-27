@@ -39,25 +39,22 @@
 </script>
 
 <Layout>
-	<Header pretext="Sponsorship Support" center={true}>Expo Hall Only Ticket Claim</Header>
+	<Header pretext="Sponsorship Support" center={true}>Expo Hall Only ticket</Header>
 	<section>
 		<div class="prose prose-lg mx-auto text-gray-500">
 			<p>
-				Get your Expo Hall ticket here. There is no charge for the ticket. Use the code you received
-				in the box below and follow the instructions. If you need a code email us at <a
-					href="mailto:partners@thatconference.com">partners@thatconference.com</a> or speak to anyone
-				in a staff shirt onsite.
+				The Expo Hall Only Ticket is a free ticket for a sponsor booth worker to participate at
+				their sponsor booth during the conference. The ticket enables an individual to attend their
+				company’s booth and receive a sponsor badge. The ticket includes access to Game Night, the
+				WaterPark Party, Open Spaces and the Closing Ceremony. It does not include any food,
+				beverages, sessions, keynotes or workshops during the entirety of the conference. Hotel
+				rooms and waterpark passes are also excluded.
 			</p>
+			<p>One ticket is required for each individual participating at their sponsor booth.</p>
 			<p>
-				<strong>What is an Expo Hall Only Ticket?</strong> The Expo Hall Only ticket is for sponsor booth
-				workers to register for an event. One ticket is required for each booth worker. The ticket provides
-				access to: the Expo Hall only, all 4 days at THAT Conference enabling the booth worker to receive
-				a sponsor badge and participate at your company's booth, game night, the waterpark party, open
-				spaces and the closing ceremony.
-			</p>
-			<p>
-				The ticket does not include any food, beverages or sessions during the 3-day main event or
-				the 1-day workshops, your hotel room or hotel water park passes.
+				To claim a ticket, email <a href="mailto:partners@thatconference.com"
+					>partners@thatconference.com</a> to receive a code or speak to anyone in a staff shirt onsite.
+				If you have already received a code, simply enter it below.
 			</p>
 		</div>
 		<div>
