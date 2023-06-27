@@ -84,13 +84,13 @@
 		window.sessionStorage.setItem('selectedTags', JSON.stringify(selectedFilterTerms));
 	}
 
-	$: activitiesLocationCategoryFilteredA = activitiesFiltered.filter(
+	$: primaryCategorySort = activitiesFiltered.filter(
 		(activity) =>
 			(activity.category == 'FAMILY' ? family : false) ||
 			(activity.category == 'PROFESSIONAL' ? professional : false)
 	);
 
-	$: activitiesLocationCategoryFiltered = activitiesLocationCategoryFilteredA.filter(
+	$: activitiesLocationCategoryFiltered = primaryCategorySort.filter(
 		(activity) =>
 			(activity.type == 'REGULAR' ? regular : false) ||
 			(activity.type == 'KEYNOTE' ? keynote : false) ||
