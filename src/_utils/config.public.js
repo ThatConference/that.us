@@ -68,6 +68,21 @@ export const imageCrops = {
 	profile: '?mask=ellipse&w=500&h=500&fit=crop&q=75&fm=jpg'
 };
 
+export const claimCodes = [
+	{
+		72423: {
+			eventSlug: 'wi/2023',
+			eventTitle: 'THAT Conference Wisconsin'
+		}
+	},
+	{
+		12924: {
+			eventSlug: 'tx/2024',
+			eventTitle: 'THAT Conference Texas'
+		}
+	}
+];
+
 export const events = {
 	next: {
 		tx: {

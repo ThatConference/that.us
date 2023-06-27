@@ -28,36 +28,36 @@
 
 	<ol>
 		<li>
-			Ensure your profile is up-to-date with a photo. This is a great way for folks who have visited
-			your booth another way to get in contact with you after the event.
+			Ensure your <a href="/my/profiles/primary/">profile</a> is up-to-date with a photo. This is a great
+			way for folks who have visited your booth another way to get in contact with you after the event.
 		</li>
 		<li>
 			Your company has a Spotlight page on our website. Let the attendees put a name with your face
-			by adding your profile to your company’s Spotlight page. Simply email us and we can quickly
+			by adding your profile to your company’s Spotlight page. Simply contact us and we can quickly
 			add your profile.
 		</li>
 		<li>
-			You will need access to our lead generation system. If you plan on using the system during our
-			event, simply email us and we will get you setup.
+			You will need access to our lead generation system if you plan on using the system during our
+			event. Simply contact us and we will get you setup.
 		</li>
 		<li>
 			If you haven’t done so already, make sure you’ve booked your hotel room. All booking
-			information can be found here: <a href="https://that.us/support/travel/"
-				>https://that.us/support/travel/</a>
+			information can be found here: <a href="/support/travel/">https://that.us/support/travel/</a>
 		</li>
 		<li>
 			When you get to the event make sure you check in at registration to get your sponsor badge.
 		</li>
 		<li>
-			On Monday at 3:00 PM there will be a sponsor meeting in the Open Spaces area. This is an
-			opportunity to meet one another, discuss the event, answer any questions, and get things
+			On <strong>Monday at 3:00 PM</strong> there will be a sponsor meeting in the Open Spaces area.
+			This is an opportunity to meet one another, discuss the event, answer any questions, and get things
 			kicked off before the early registration meet and greet that evening.
 		</li>
 	</ol>
 
 	<p>
-		Visit <a href="https://sponsor.that.us">https://sponsor.that.us</a> for a one-stop resource for your
-		sponsorship. It contains links to lead generation, a sponsor handbook and many other resources.
+		Visit <a href="/support/sponsors/forms/">https://sponsor.that.us</a> for a one-stop resource for
+		your sponsorship. It contains links to lead generation, a sponsor handbook and many other important
+		resources.
 	</p>
 	<p>
 		If you have any questions you can <a href="email:partners@thatconference.com">email us</a> or speak

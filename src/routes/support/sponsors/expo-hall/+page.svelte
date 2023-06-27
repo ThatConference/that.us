@@ -17,10 +17,8 @@
 		if (!claimCode) return;
 		const code = claimCodes.find((c) => c[claimCode]) || {};
 		const event = events.find((e) => e.slug === code[claimCode]?.eventSlug);
-		console.log('event', event);
 		if (event) {
 			const ticket = event.products.find((p) => p.uiReference === 'CLAIMABLE_TICKET');
-			console.log('ticket', ticket);
 			if (ticket) {
 				// add ticket to basket
 				const to = {
@@ -30,6 +28,8 @@
 				};
 				claimTicket.send('ADD_ITEM', to);
 				goto('/orders/claim/');
+			} else {
+				isInvalidCode = true;
 			}
 		} else {
 			// invalid code
@@ -43,17 +43,17 @@
 	<section>
 		<div class="prose prose-lg mx-auto text-gray-500">
 			<p>
-				This is where you claim your Expo Hall ticket. Use the code you received in the box below
-				and follow the instructions. If you need a code email us at <a
+				Get your Expo Hall ticket here. There is no charge for the ticket. Use the code you received
+				in the box below and follow the instructions. If you need a code email us at <a
 					href="mailto:partners@thatconference.com">partners@thatconference.com</a> or speak to anyone
 				in a staff shirt onsite.
 			</p>
 			<p>
-				<strong>What is an Expo Hall Only Ticket?</strong>: The Expo Hall Only ticket is for
-				sponsor's booth workers to register for an event. The ticket provides access to the Expo
-				Hall only, all 4 days at THAT Conference enabling the booth worker to receive a sponsor
-				badge, and participate at your company's booth, game night, the waterpark party, open spaces
-				and the closing ceremony.
+				<strong>What is an Expo Hall Only Ticket?</strong> The Expo Hall Only ticket is for sponsor booth
+				workers to register for an event. One ticket is required for each booth worker. The ticket provides
+				access to: the Expo Hall only, all 4 days at THAT Conference enabling the booth worker to receive
+				a sponsor badge and participate at your company's booth, game night, the waterpark party, open
+				spaces and the closing ceremony.
 			</p>
 			<p>
 				The ticket does not include any food, beverages or sessions during the 3-day main event or
@@ -65,7 +65,7 @@
 				<input
 					maxlength="20"
 					type="text"
-					placeholder="enter claim code"
+					placeholder="Enter claim code here"
 					bind:value={claimCode}
 					class="rounded-md border-thatBlue-400 focus-within:bg-gray-100" />
 				<StandardButton on:click={handleClaimTicket}>Claim Ticket</StandardButton>
