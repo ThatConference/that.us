@@ -420,6 +420,30 @@ export const QUERY_ACTIVE_COMMUNITY_EVENTS_FOR_JOBS = `
 	}
 `;
 
+export const QUERY_ACTIVE_EVENTS_PRODUCTS = `
+${productBaseFieldsFragment}
+query getActiveEventJobs($community: CommunityQueryInput!) {
+	communities {
+		community(findBy: $community) {
+			get {
+				id
+				name
+				events(filter: ACTIVE) {
+					id
+					name
+					slug
+					type
+					logo
+					products {
+						...productBaseFields
+					}			
+				}
+			}
+		}
+	}
+}
+`;
+
 export default (fetch) => {
 	const client = fetch ? gFetch(fetch) : gFetch();
 
@@ -547,6 +571,17 @@ export default (fetch) => {
 			});
 	}
 
+	function queryActiveEventsForProducts(community = 'that') {
+		const variables = { community: { slug: community } };
+		return client
+			.query({ query: QUERY_ACTIVE_EVENTS_PRODUCTS, variables })
+			.then(({ data, errors }) => {
+				if (errors) log({ errors, tag: 'QUERY_ACTIVE_EVENTS_PRODUCTS' });
+
+				return data?.communities?.community?.get?.events ?? [];
+			});
+	}
+
 	return {
 		queryEvents,
 		queryEventsByCommunity,
@@ -558,6 +593,7 @@ export default (fetch) => {
 		canAddSession,
 		canAccessEvent,
 		queryThatConferenceEvent,
-		queryActiveEventsByCommunitiesForJobs
+		queryActiveEventsByCommunitiesForJobs,
+		queryActiveEventsForProducts
 	};
 };

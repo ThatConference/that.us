@@ -108,6 +108,9 @@
 								<li>
 									<a href="/my/network/sponsors" target="_blank">Your Network</a>
 								</li>
+								<li>
+									<a href="/support/sponsors/expo-hall" target="_blank">Expo Hall Only Tickets</a>
+								</li>
 							</ul>
 						</div>
 
@@ -197,6 +200,9 @@
 								</li>
 								<li>
 									<a href="/my/network/sponsors" target="_blank">Your Network</a>
+								</li>
+								<li>
+									<a href="/support/sponsors/expo-hall" target="_blank">Expo Hall Only Tickets</a>
 								</li>
 							</ul>
 						</div>
