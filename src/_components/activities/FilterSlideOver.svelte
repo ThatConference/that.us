@@ -6,6 +6,8 @@
 	export let selectedFilterTerms = [];
 	export let family;
 	export let professional;
+	export let regular;
+	export let keynote;
 	export let openSpace;
 	export let workshop;
 
@@ -62,7 +64,7 @@
 			</div>
 		{/if}
 		<div class="py-4">
-			<h2 class="text-lg font-medium leading-7 text-gray-900">Category</h2>
+			<h2 class="text-lg font-medium leading-7 text-gray-900">Track</h2>
 			<div class="border-gray-200">
 				<fieldset class="flex flex-col">
 					<label
@@ -75,15 +77,33 @@
 						<input type="checkbox" bind:checked={professional} />
 						<span class="px-2">Professional</span>
 					</label>
+				</fieldset>
+			</div>
+		</div>
+
+		<div class="py-4">
+			<h2 class="text-lg font-medium leading-7 text-gray-900">Session Type</h2>
+			<div class="border-gray-200">
+				<fieldset class="flex flex-col">
 					<label
 						class="md:text-md whitespace-nowrap text-base capitalize text-gray-500 sm:text-lg md:mt-1 lg:mx-0">
-						<input type="checkbox" bind:checked={openSpace} />
-						<span class="px-2">Open Space</span>
+						<input type="checkbox" bind:checked={regular} />
+						<span class="px-2">Regular</span>
+					</label>
+					<label
+						class="md:text-md whitespace-nowrap text-base capitalize text-gray-500 sm:text-lg md:mt-1 lg:mx-0">
+						<input type="checkbox" bind:checked={keynote} />
+						<span class="px-2">Keynote</span>
 					</label>
 					<label
 						class="md:text-md whitespace-nowrap text-base capitalize text-gray-500 sm:text-lg md:mt-1 lg:mx-0">
 						<input type="checkbox" bind:checked={workshop} />
 						<span class="px-2">Workshop</span>
+					</label>
+					<label
+						class="md:text-md whitespace-nowrap text-base capitalize text-gray-500 sm:text-lg md:mt-1 lg:mx-0">
+						<input type="checkbox" bind:checked={openSpace} />
+						<span class="px-2">Open Space</span>
 					</label>
 				</fieldset>
 			</div>

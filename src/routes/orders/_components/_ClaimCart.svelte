@@ -28,7 +28,6 @@
 					alt="Event Logo"
 					class="h-12 w-12 flex-none sm:h-24 sm:w-24" />
 			</a>
-
 			<!-- <div class="ml-4 grid grid-cols-3 place-items-center gap-6"> -->
 			<div class="ml-4 grid grid-cols-5 place-items-center gap-6">
 				<div class="col-span-2">
@@ -36,7 +35,7 @@
 						<a href="/events/{$state.context.eventDetails?.slug}"
 							>{$state.context.eventDetails?.name || 'THAT Online'}</a>
 					</h3>
-					<p class="mt-1 text-gray-500">Online Event Ticket</p>
+					<p class="mt-1 text-gray-500">Expo Hall Only Ticket</p>
 				</div>
 
 				<p class="font-semibold text-gray-900">FREE</p>
