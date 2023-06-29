@@ -12,11 +12,11 @@
 	let imageCrop = '?auto=format&mask=ellipse&fit=crop&w=256&h=256&q=80';
 </script>
 
-<button
-	type="button"
-	class="w-full hover:bg-gray-50"
-	on:click|preventDefault={() => (userClicked = !userClicked)}>
-	<div class="flex flex-col">
+<div class="flex flex-col">
+	<button
+		type="button"
+		class="w-full hover:bg-gray-50"
+		on:click|preventDefault={() => (userClicked = !userClicked)}>
 		<div class="flex items-center">
 			<div class="flex min-w-0 flex-1 items-center">
 				<div class="flex-shrink-0">
@@ -69,20 +69,20 @@
 				<Chevron />
 			</div>
 		</div>
+	</button>
 
-		{#if userClicked}
-			<div>
-				<div class="my-4 border-t-2" />
-				<div class="flex flex-col sm:mx-12">
-					<ul class="space-y-4">
-						{#each registration.orderAllocations as ticket}
-							<li>
-								<Ticket {ticket} />
-							</li>
-						{/each}
-					</ul>
-				</div>
+	{#if userClicked}
+		<div>
+			<div class="my-4 border-t-2" />
+			<div class="flex flex-col sm:mx-12">
+				<ul class="space-y-4">
+					{#each registration.orderAllocations as ticket}
+						<li>
+							<Ticket {ticket} />
+						</li>
+					{/each}
+				</ul>
 			</div>
-		{/if}
-	</div>
-</button>
+		</div>
+	{/if}
+</div>
