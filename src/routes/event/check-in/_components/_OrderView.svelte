@@ -34,7 +34,7 @@
 	let registrationsFiltered = [];
 	let searchterm = '';
 
-	$: if (searchterm === '') {
+	$: if (searchterm?.length < searchOptions.minMatchCharLength || searchterm === '') {
 		registrationsFiltered = registrations;
 	} else {
 		registrationsFiltered = fuse.search(searchterm).map((r) => r.item);

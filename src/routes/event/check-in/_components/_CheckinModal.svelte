@@ -18,7 +18,7 @@
 	let pinNumber = '';
 	let waiting = false;
 	let checkInError = false;
-	let checkInErroMessage;
+	let checkInErrorMessage;
 
 	async function handleCheckIn() {
 		waiting = true;
@@ -33,13 +33,13 @@
 			dispatch('checkinCompleted');
 		} else {
 			checkInError = true;
-			checkInErroMessage = message;
+			checkInErrorMessage = message;
 		}
 	}
 
 	function tryAgain() {
 		checkInError = false;
-		checkInErroMessage = undefined;
+		checkInErrorMessage = undefined;
 	}
 </script>
 
@@ -100,7 +100,7 @@
 					<div class="relative my-6 flex flex-col space-y-6">
 						<div class="mt-2">
 							<p class="text-md leading-5 text-gray-500">
-								{checkInErroMessage}
+								{checkInErrorMessage}
 							</p>
 						</div>
 
