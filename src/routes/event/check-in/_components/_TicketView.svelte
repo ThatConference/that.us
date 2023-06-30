@@ -53,7 +53,7 @@
 	let statsPigRoastTotal = 0;
 	let statsPigRoastCheckedIn = 0;
 
-	$: if (searchterm === '') {
+	$: if (searchterm?.length < searchOptions.minMatchCharLength || searchterm === '') {
 		registrationsSearched = registrationsFiltered;
 	} else {
 		registrationsSearched = fuse.search(searchterm).map((r) => r.item);

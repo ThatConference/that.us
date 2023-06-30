@@ -25,6 +25,14 @@
 	let editCheckInClicked = false;
 	let displayPin = ticket.partnerPin ?? 'PIN not set';
 	let tempPin;
+
+	// keeps ticket object up-to-date with pin changes.
+	// $: console.log(ticket);
+	$: {
+		ticket.partnerPin = displayPin;
+		ticket.hasCheckedIn = displayPin !== 'PIN not set';
+		// console.log('in pin');
+	}
 </script>
 
 <div
@@ -102,23 +110,6 @@
 			</div>
 		</div>
 	</div>
-	{#if !ticket.hasCheckedIn && displayPin !== 'PIN not set'}
-		<div class="flex pb-2 pt-6">
-			<div class="flex items-center">
-				<div class="flex-shrink-0 pr-4">
-					<span
-						class="flex h-6 w-6 items-center justify-center rounded-full bg-green-500 bg-opacity-60">
-						<CheckFull height="h-4" width="w-4" />
-					</span>
-				</div>
-				<div>
-					<span class="text-gray-500">
-						Checked in. Reload page to perform further edits to this ticket.
-					</span>
-				</div>
-			</div>
-		</div>
-	{/if}
 	{#if ticket.hasCheckedIn}
 		<div class="flex pb-2 pt-6">
 			<div class="flex items-center">
@@ -143,6 +134,11 @@
 			</div>
 		</div>
 	{/if}
+	{#if ticket.isDirty}
+		<div class="text-center italic text-gray-500">
+			🧹 Record is dirty. Refresh page for latest values 🧹
+		</div>
+	{/if}
 </div>
 
 {#if checkInClicked}
@@ -154,7 +150,10 @@
 		bind:returnPin={tempPin}
 		on:checkinCompleted={() => {
 			checkInClicked = false;
-			if (tempPin) displayPin = tempPin;
+			ticket.isDirty = true;
+			if (tempPin) {
+				displayPin = tempPin;
+			}
 		}}
 		on:close={() => (checkInClicked = false)} />
 {/if}
@@ -169,7 +168,10 @@
 		bind:returnPin={tempPin}
 		on:checkinUpdated={() => {
 			editCheckInClicked = false;
-			if (tempPin) displayPin = tempPin;
+			ticket.isDirty = true;
+			if (tempPin) {
+				displayPin = tempPin;
+			}
 		}}
 		on:close={() => (editCheckInClicked = false)} />
 {/if}
