@@ -31,7 +31,7 @@ export const thatConferenceLinks = [
 		href: '/that-conference/'
 	},
 	{
-		text: 'THAT Field Guid',
+		text: 'THAT Field Guide',
 		href: '/support/that-field-guide/'
 	},
 	{
