@@ -2,12 +2,15 @@
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 	import { Circle3 } from 'svelte-loading-spinners';
+	import SuccessBanner from '$components/banners/SuccessRounded.svelte';
 
 	import seoMetaTags from '$utils/seo/metaTags';
 	import Seo from '$components/Seo.svelte';
 	import NumPad from '$components/numberPad/Panel.svelte';
 	import { Shell } from '$elements/buttons';
 	import leadsMutationApi from '$dataSources/api.that.tech/partner/leads/mutations';
+
+	let showBanner = false;
 
 	const metaTags = ((title = 'Lead Capture - THAT') => ({
 		title,
@@ -31,7 +34,7 @@
 	let waiting = false;
 
 	let contactExchangeError = false;
-	let comtactExchangeErrorMessage;
+	let contactExchangeErrorMessage;
 
 	async function handleContactExchange() {
 		waiting = true;
@@ -40,24 +43,35 @@
 		waiting = false;
 
 		if (result) {
+			showBanner = true;
+			setTimeout(() => {
+				showBanner = false;
+			}, 2000);
+
 			pinNumber = '';
 			partnerNotes = undefined;
 		} else {
 			contactExchangeError = true;
-			comtactExchangeErrorMessage = message;
+			contactExchangeErrorMessage = message;
 		}
 	}
 
 	function tryAgain() {
 		contactExchangeError = false;
-		comtactExchangeErrorMessage = undefined;
+		contactExchangeErrorMessage = undefined;
 	}
 </script>
 
 <Seo title={metaTags.title} tags={metaTags.tags} />
 
 <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-	<h1 class="mt-6 text-xl font-bold leading-6 text-thatBlue-800">THAT Contact Exchange</h1>
+	<h1 class="mt-2 text-xl font-bold leading-6 text-thatBlue-800">THAT Contact Exchange</h1>
+	<div
+		class:opacity-100={showBanner}
+		class="mx-auto max-w-sm opacity-0 transition-opacity duration-700 ease-out">
+		<SuccessBanner>Contact Saved!</SuccessBanner>
+	</div>
+
 	<div class="absolute right-0 top-0 block pr-4 pt-4">
 		<button
 			type="button"
@@ -79,8 +93,7 @@
 			</svg>
 		</button>
 	</div>
-
-	<div class="mx-auto mt-4 max-w-sm">
+	<div class="mx-auto mt-0 max-w-sm">
 		{#if waiting}
 			<div class="relative my-6 flex flex-col items-center space-y-6">
 				<Circle3
@@ -99,7 +112,7 @@
 			<div class="relative my-6 flex flex-col space-y-6">
 				<div class="mt-2">
 					<p class="text-md leading-5 text-gray-500">
-						{comtactExchangeErrorMessage}
+						{contactExchangeErrorMessage}
 					</p>
 				</div>
 

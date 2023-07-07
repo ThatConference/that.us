@@ -27,11 +27,9 @@
 	let tempPin;
 
 	// keeps ticket object up-to-date with pin changes.
-	// $: console.log(ticket);
 	$: {
 		ticket.partnerPin = displayPin;
 		ticket.hasCheckedIn = displayPin !== 'PIN not set';
-		// console.log('in pin');
 	}
 </script>
 
