@@ -1,35 +1,46 @@
 <script>
-	const sponsorImages = [
-		'https://storage.googleapis.com/that-bucket/partnerlogos/CUNA-Mutual-Group.svg',
-		'https://storage.googleapis.com/that-bucket/partnerlogos/CUNA-Mutual-Group.svg',
-		'https://storage.googleapis.com/that-bucket/partnerlogos/Core-BTS.svg',
-		'https://storage.googleapis.com/that-bucket/partnerlogos/Core-BTS.svg',
-		'https://storage.googleapis.com/that-bucket/partnerlogos/unspecified.svg',
-		'https://storage.googleapis.com/that-bucket/partnerlogos/unspecified.svg',
-		'https://storage.googleapis.com/that-bucket/partnerlogos/Progress.svg',
-		'https://storage.googleapis.com/that-bucket/partnerlogos/NVISIA.svg',
-		'https://storage.googleapis.com/that-bucket/partnerlogos/ionic.svg',
-		'https://storage.googleapis.com/that-bucket/partnerlogos/grapecity.svg',
-		'https://storage.googleapis.com/that-bucket/partnerlogos/symplr.svg',
-		'https://storage.googleapis.com/that-bucket/partnerlogos/google-cloud.svg',
-		'https://storage.googleapis.com/that-bucket/partnerlogos/Trek.svg',
-		'https://storage.googleapis.com/that-bucket/partnerlogos/Algorand.svg',
-		'https://storage.googleapis.com/that-bucket/partnerlogos/Twilio.svg'
-	];
+	export let data;
 
-	let currentImage = sponsorImages[0];
+	const { levels } = data;
+
+	const pioneer = levels['PIONEER'] ?? [];
+	const explorer = levels['EXPLORER'] ?? [];
+	let pioneerCounter = 0;
+	let explorerCounter = 0;
 	let counter = 0;
+	let currentImage;
+	let interval = 6000;
 
-	setInterval(() => {
-		currentImage = sponsorImages[counter];
-		counter++;
+	// initially displayed
+	currentImage = pioneer[pioneerCounter]?.companyLogo;
+	pioneerCounter += 1;
+	counter += 1;
 
-		if (counter === sponsorImages.length) counter = 0;
-	}, 3000);
+	(function loop() {
+		setTimeout(() => {
+			if (counter % 2 === 0) {
+				currentImage = pioneer[pioneerCounter]?.companyLogo;
+				pioneerCounter += 1;
+				if (pioneerCounter === pioneer.length) {
+					pioneerCounter = 0;
+				}
+				interval = 6000;
+			} else {
+				currentImage = explorer[explorerCounter]?.companyLogo;
+				explorerCounter += 1;
+				if (explorerCounter === explorer.length) {
+					explorerCounter = 0;
+				}
+				interval = 3000;
+			}
+			counter += 1;
+			loop();
+		}, interval);
+	})();
 </script>
 
-<div class="bg-[url('/images/sign-background.png')] bg-cover bg-center">
-	<div class="min-w-screen flex min-h-screen flex-col items-center justify-center">
-		<img class="h-10/12 -mt-32 w-10/12" src={currentImage} alt="" />
+<div class="bg-[url('/images/tv-background.png')] bg-cover bg-center">
+	<div class="flex min-h-screen min-w-min flex-col items-center justify-center">
+		<img class="-mt-32 h-3/4 w-3/4" src={currentImage} alt="logo" />
 	</div>
 </div>
