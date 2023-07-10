@@ -11,7 +11,9 @@
 	let currentImage;
 	let interval = 6000;
 
+	// initially displayed
 	currentImage = pioneer[pioneerCounter]?.companyLogo;
+	pioneerCounter += 1;
 	counter += 1;
 
 	(function loop() {
