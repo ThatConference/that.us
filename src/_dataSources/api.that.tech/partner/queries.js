@@ -349,6 +349,23 @@ export default (fetch) => {
 		});
 	}
 
+	function getPresentEventPartners() {
+		return client.query({ query: QUERY_UPCOMING_PARTNERS }).then(({ data, errors }) => {
+			if (errors) log({ errors, tag: 'QUERY_UPCOMING_PARTNERS' });
+
+			let results = [];
+			if (data) {
+				const { events } = data.communities.community.get;
+
+				[results] = events
+					.filter((e) => e.slug !== 'thatus/daily')
+					.sort((a, b) => new Date(a.endDate).getTime() - new Date(b.endDate).getTime());
+			}
+
+			return results?.partners ?? [];
+		});
+	}
+
 	function getPastPartners() {
 		return client.query({ query: QUERY_PAST_PARTNERS }).then(({ data, errors }) => {
 			if (errors) log({ errors, tag: 'QUERY_PAST_PARTNERS' });
@@ -410,6 +427,7 @@ export default (fetch) => {
 	return {
 		getPastPartners,
 		getUpcomingPartners,
+		getPresentEventPartners,
 		getEventPartners,
 		getPartner,
 		queryFollowers,
