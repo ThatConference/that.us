@@ -230,7 +230,9 @@ export default (fetch) => {
 	}
 
 	function queryMyTicketAllocations() {
-		return queryMyAllocations().then((r) => r.filter((t) => t.product.type === 'TICKET'));
+		return queryMyAllocations().then((r) =>
+			r.filter((t) => ['TICKET', 'TRAINING', 'FAMILY', 'FOOD'].includes(t.product.type))
+		);
 	}
 
 	function queryMyBulkAllocations(pageSize = defaultPageSize) {
