@@ -1,8 +1,6 @@
 <script>
 	import { page } from '$app/stores';
-
 	import { dev } from '$app/environment';
-	import * as Sentry from '@sentry/svelte';
 
 	import { Standard as StandardLink } from '$elements/links';
 	import seoMetaTags from '$utils/seo/metaTags';
@@ -21,10 +19,6 @@
 			nofollow: true
 		})
 	}))();
-
-	if (!dev) {
-		Sentry.captureException(new Error($page.error));
-	}
 </script>
 
 <Seo title={metaTags.title} tags={metaTags.tags} />

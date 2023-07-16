@@ -1,10 +1,10 @@
-// import * as Sentry from '@sentry/svelte';
+import { sequence } from '@sveltejs/kit/hooks';
+import * as Sentry from '@sentry/sveltekit';
 
-// export async function handleError({ error, event }) {
-// 	Sentry.captureException(error, { event });
+Sentry.init({
+	dsn: 'https://15d4b436dc0a4366a0ac388c65772926@o235190.ingest.sentry.io/5357492',
+	tracesSampleRate: 1
+});
 
-// 	return {
-// 		message: 'Whoops!',
-// 		code: error.code ?? 'UNKNOWN'
-// 	};
-// }
+export const handleError = Sentry.handleErrorWithSentry();
+export const handle = sequence(Sentry.sentryHandle());

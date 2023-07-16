@@ -8,7 +8,6 @@
 	import { beforeNavigate } from '$app/navigation';
 	import { browser, dev } from '$app/environment';
 
-	import LogRocket from 'logrocket';
 	import lodash from 'lodash';
 	import * as Sentry from '@sentry/svelte';
 	import { initFlash } from 'sveltekit-flash-message/client';
@@ -37,16 +36,16 @@
 		}
 	});
 
-	navigating.subscribe((event) => {
-		if (event) {
-			if (!dev && browser) {
+	if (!dev && browser) {
+		navigating.subscribe((event) => {
+			if (event) {
 				let { to } = event;
 				let _hsq = (window._hsq = window._hsq || []);
 				_hsq.push(['setPath', to.url.pathname]);
 				_hsq.push(['trackPageView']);
 			}
-		}
-	});
+		});
+	}
 
 	onMount(() => {
 		/* eslint-disable no-undef */
@@ -73,10 +72,6 @@
 			Sentry.setUser({
 				email,
 				id
-			});
-
-			LogRocket.identify(id, {
-				email
 			});
 
 			let _hsq = (window._hsq = window._hsq || []);
