@@ -1,6 +1,6 @@
 {
 	"name": "that-us",
-	"version": "3.11.6",
+	"version": "3.11.7",
 	"description": "THAT.us website",
 	"main": "index.js",
 	"type": "module",
@@ -31,7 +31,6 @@
 		"@fullhuman/postcss-purgecss": "^5.0.0",
 		"@okrad/svelte-progressbar": "^1.11.3",
 		"@sentry/svelte": "^7.58.1",
-		"@sentry/sveltekit": "^7.58.1",
 		"@sentry/tracing": "^7.58.1",
 		"@stripe/stripe-js": "^1.42.0",
 		"@sveltejs/adapter-vercel": "^3.0.1",
@@ -100,5 +99,8 @@
 		"xstate": "^4.38.0",
 		"yup": "^0.32.11",
 		"zod": "^3.21.4"
+	},
+	"dependencies": {
+		"@sentry/sveltekit": "^7.58.1"
 	}
 }
