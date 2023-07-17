@@ -27,16 +27,15 @@ function init(fetch) {
 	}
 
 	function retryOn(attempt, error, response) {
-		if (error) {
-			console.error('fetch error:', error);
+		if (error !== null || response?.status === 503) {
 			Sentry.captureException(error);
-		}
-
-		if (response?.status >= 400) {
 			Sentry.captureMessage(
-				`retrying fetch, attempt number ${attempt + 1}, response.status ${response?.status}`
+				`Fetch network error, retrying, attempt number ${attempt + 1}, response.status ${
+					response?.status
+				}`
 			);
-			return attempt <= 5 ? true : false;
+
+			return true;
 		}
 	}
 
@@ -53,6 +52,7 @@ function init(fetch) {
           `,
 				variables
 			}),
+			retries: 3,
 			retryOn
 		})
 			.then(json)
