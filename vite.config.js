@@ -19,15 +19,15 @@ const config = ({ mode }) => {
 			deploy: {
 				env: 'production'
 			}
+		},
+		setCommits: {
+			auto: true,
+			ignoreMissing: true
+		},
+		sourceMaps: {
+			include: ['./.svelte-kit/output'],
+			ignore: ['node_modules']
 		}
-		// setCommits: {
-		// 	auto: true,
-		// 	ignoreMissing: true
-		// },
-		// sourceMaps: {
-		// 	include: ['./.svelte-kit/output'],
-		// 	ignore: ['node_modules']
-		// }
 	};
 
 	return defineConfig({
