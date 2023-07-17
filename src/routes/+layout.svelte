@@ -89,8 +89,10 @@
 </script>
 
 <div>
-	{#if $navigating || $loading}
-		<Preloading />
+	{#if browser}
+		{#if $navigating || $loading}
+			<Preloading />
+		{/if}
 	{/if}
 	<slot />
 </div>
