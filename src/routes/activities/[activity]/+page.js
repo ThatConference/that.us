@@ -9,7 +9,7 @@ export async function load({ params, fetch }) {
 	//todo need to figure out how to handle no sessions.. do we return an error, or just pop a message box
 	let activity = await getById(activityId);
 
-	if (!activity) {
+	if (!activity || activity?.length < 1) {
 		throw error(404, 'Activity not found');
 	}
 
