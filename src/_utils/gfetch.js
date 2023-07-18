@@ -28,12 +28,12 @@ function init(fetch) {
 
 	function retryOn(attempt, error, response) {
 		if (error !== null || response?.status === 503) {
-			Sentry.captureException(error);
-			Sentry.captureMessage(
-				`Fetch network error, retrying, attempt number ${attempt + 1}, response.status ${
+			Sentry.setContext('fetch retryOn', {
+				message: `Fetch network error, retrying, attempt number ${attempt + 1}, response.status ${
 					response?.status
-				}`
-			);
+				}, is response empty? ${response === undefined || response === null}`
+			});
+			Sentry.captureException(error);
 
 			return true;
 		}
