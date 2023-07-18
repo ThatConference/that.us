@@ -11,7 +11,14 @@ export const log = ({ errors, extra, tag }) => {
 			extra
 		});
 
-		Sentry.captureException(err);
+		let error;
+		if (err instanceof Error) {
+			error = err;
+		} else {
+			error = new Error(err.message ?? 'unknown error');
+		}
+
+		Sentry.captureException(error);
 	});
 };
 
