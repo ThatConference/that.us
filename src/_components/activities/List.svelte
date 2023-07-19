@@ -3,6 +3,7 @@
 	export let events = [];
 	export let editMode = false;
 	export let reverse = false;
+	export let filterForFamily = false;
 
 	import { browser } from '$app/environment';
 	import { fade } from 'svelte/transition';
@@ -49,7 +50,7 @@
 	let selectedFilterTerms = getSessionSelectedTags();
 	let activitiesTaggedFiltered = [];
 	let family = true;
-	let professional = true;
+	let professional = filterForFamily ? false : true;
 	let regular = true;
 	let keynote = true;
 	let workshop = true;
