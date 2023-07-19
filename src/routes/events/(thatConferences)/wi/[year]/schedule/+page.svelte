@@ -7,7 +7,7 @@
 	import Hero from '../../../../_components/schedule/Hero.svelte';
 	import List from '../../../../_components/schedule/List.svelte';
 
-	let { event, sessions } = data;
+	let { event, sessions, filterForFamily } = data;
 	const metaTags = ((title = 'THAT Conference Speakers and Schedule.') => ({
 		title,
 		tags: seoMetaTags({
@@ -29,6 +29,6 @@
 	</section>
 
 	<section>
-		<List event={sessions} />
+		<List event={sessions} {filterForFamily} />
 	</section>
 </div>

@@ -1,5 +1,6 @@
 <script>
 	export let event;
+	export let filterForFamily;
 
 	import { useMachine } from '@xstate/svelte';
 	import SvelteInfiniteScroll from 'svelte-infinite-scroll';
@@ -59,7 +60,7 @@
 			{#if ['init'].some($state.matches)}
 				<Busy />
 			{:else}
-				<ActivityList activities={$state.context.items} />
+				<ActivityList activities={$state.context.items} {filterForFamily} />
 
 				<SvelteInfiniteScroll window threshold={scrollThreshold} on:loadMore={handleLoadMore} />
 			{/if}
