@@ -1,6 +1,6 @@
 {
 	"name": "that-us",
-	"version": "3.11.12",
+	"version": "3.11.13",
 	"description": "THAT.us website",
 	"main": "index.js",
 	"type": "module",
@@ -33,8 +33,8 @@
 		"@sentry/svelte": "^7.58.1",
 		"@sentry/tracing": "^7.58.1",
 		"@stripe/stripe-js": "^1.42.0",
-		"@sveltejs/adapter-vercel": "^3.0.1",
-		"@sveltejs/kit": "1.21.0",
+		"@sveltejs/adapter-vercel": "^3.0.2",
+		"@sveltejs/kit": "1.22.3",
 		"@tailwindcss/aspect-ratio": "^0.4.2",
 		"@tailwindcss/forms": "^0.5.3",
 		"@tailwindcss/typography": "^0.5.9",
