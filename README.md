@@ -1,16 +1,16 @@
 # THAT.US
 
 [![GitHub issues open](https://img.shields.io/github/issues/thatconference/that.us.svg)](https://github.com/thatconference/that.us/issues) [![release](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/thatconference/that.us/issues) <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-48-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-49-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 ## Get started
 
-THAT.us is a SvelteKit application. It uses Tailwind for styling, and makes GraphQL calls against our Api, https://api.that.tech/view.
+THAT.us is a SvelteKit application. It uses Tailwind for styling, and makes GraphQL calls against our Api, <https://api.that.tech/view>.
 
 ### local dependencies
 
-- nodejs v16.x
+- nodejs v18.x
 - npm v8.0.0
 
 ### project dependencies
@@ -27,7 +27,7 @@ Install the project dependencies...
 
 ### env configuration
 
-You will find the env settings in .env.sample. The current settings in the .env.sample will allow you to do development on pages which do not require authentication. If you're interested in working on those pages in the project you will need some additional values. Email us at hello@that.us.
+You will find the env settings in .env.sample. The current settings in the .env.sample will allow you to do development on pages which do not require authentication. If you're interested in working on those pages in the project you will need some additional values. Email us at <hello@that.us>.
 
 ### running
 
@@ -56,7 +56,7 @@ The only difference is how we're managing env settings.
 
 We now follow the commitlint conventional spec.
 
-https://www.npmjs.com/package/@commitlint/config-conventional
+<https://www.npmjs.com/package/@commitlint/config-conventional>
 
 ## Contributors ✨
 
@@ -127,6 +127,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="https://code.erpenbeck.io"><img src="https://avatars.githubusercontent.com/u/8420128?v=4?s=100" width="100px;" alt="Michael"/><br /><sub><b>Michael</b></sub></a><br /><a href="https://github.com/ThatConference/that.us/commits?author=GitMje" title="Code">💻</a> <a href="https://github.com/ThatConference/that.us/issues?q=author%3AGitMje" title="Bug reports">🐛</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/garciadev"><img src="https://avatars.githubusercontent.com/u/5198299?v=4?s=100" width="100px;" alt="Daniel Garcia"/><br /><sub><b>Daniel Garcia</b></sub></a><br /><a href="https://github.com/ThatConference/that.us/issues?q=author%3Agarciadev" title="Bug reports">🐛</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://ee.linkedin.com/in/kristjanroosild"><img src="https://avatars.githubusercontent.com/u/1203138?v=4?s=100" width="100px;" alt="Kristjan Roosild"/><br /><sub><b>Kristjan Roosild</b></sub></a><br /><a href="https://github.com/ThatConference/that.us/commits?author=kristjanr" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/DanWillman"><img src="https://avatars.githubusercontent.com/u/4489280?v=4?s=100" width="100px;" alt="Dan Willman"/><br /><sub><b>Dan Willman</b></sub></a><br /><a href="https://github.com/ThatConference/that.us/commits?author=DanWillman" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="http://envisionitllc.com"><img src="https://avatars.githubusercontent.com/u/1406827?v=4?s=100" width="100px;" alt="Bob Dankert"/><br /><sub><b>Bob Dankert</b></sub></a><br /><a href="#ideas-BobDankert" title="Ideas, Planning, & Feedback">🤔</a></td>
     </tr>
   </tbody>
