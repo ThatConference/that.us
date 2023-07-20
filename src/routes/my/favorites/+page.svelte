@@ -79,7 +79,7 @@
 
 	<div slot="body">
 		{#if activities.length > 0}
-			<ActivityList reverse={true} {activities} />
+			<ActivityList reverse={false} {activities} />
 		{:else}
 			<div class="p-12">
 				<ModalWarning
