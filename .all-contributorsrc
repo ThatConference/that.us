@@ -442,6 +442,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "BobDankert",
+      "name": "Bob Dankert",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1406827?v=4",
+      "profile": "http://envisionitllc.com",
+      "contributions": [
+        "ideas"
+      ]
     }
   ],
   "contributorsPerLine": 7,
@@ -450,5 +459,6 @@
   "repoType": "github",
   "repoHost": "https://github.com",
   "skipCi": true,
-  "commitConvention": "angular"
+  "commitConvention": "angular",
+  "commitType": "docs"
 }
