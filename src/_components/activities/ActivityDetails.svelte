@@ -366,7 +366,7 @@
 			</h2>
 
 			<div
-				class="sm:spaace-y-0 flex flex-col items-center justify-center space-x-0 space-y-4 py-4 sm:flex-row sm:justify-start sm:space-x-8">
+				class="flex flex-col items-center justify-center space-x-0 space-y-4 py-4 sm:flex-row sm:justify-start sm:space-x-8 sm:space-y-0">
 				{#if !isDailyActivity}
 					<div class="h-24 w-24">
 						<a href={`/events/${event.slug}`} class="h-full w-full">
@@ -375,36 +375,42 @@
 					</div>
 				{/if}
 
-				<div>
-					<!-- Start Time -->
-					<p class="text-base text-gray-700  sm:mx-auto sm:text-lg md:text-xl lg:mx-0">
-						{#if durationInMinutes > 0}
-							{dayjs(startTime).format('dddd, MMMM D, YYYY - h:mm A z')}, for
-							{dayjs.duration(durationInMinutes, 'minutes').as('hours')}
-							{#if durationInMinutes <= 60}
-								hour.
-							{:else}
-								hours.
-							{/if}
-						{/if}
-					</p>
-
-					<!-- Location -->
+				{#if status === 'CANCELLED'}
 					<p
-						class="mt-1 text-base text-gray-700 sm:mx-auto sm:mt-2 sm:text-lg md:mt-1 md:text-xl lg:mx-0">
-						<Icon data={sessionTargetLocationIcon} class="mr-2 h-4 w-4 pb-0.5" />
-						{sessionType}
+						class="text-base text-gray-700 sm:mx-auto sm:mt-2 sm:text-lg md:mt-1 md:text-xl lg:mx-0">
+						CANCELED
 					</p>
+				{:else}
+					<div>
+						<!-- Start Time -->
+						<p class="text-base text-gray-700  sm:mx-auto sm:text-lg md:text-xl lg:mx-0">
+							{#if durationInMinutes > 0}
+								{dayjs(startTime).format('dddd, MMMM D, YYYY - h:mm A z')}, for
+								{dayjs.duration(durationInMinutes, 'minutes').as('hours')}
+								{#if durationInMinutes <= 60}
+									hour.
+								{:else}
+									hours.
+								{/if}
+							{/if}
+						</p>
 
-					{#if targetLocation === 'IN_PERSON' && sessionLocationDestination}
+						<!-- Location -->
 						<p
 							class="mt-1 text-base text-gray-700 sm:mx-auto sm:mt-2 sm:text-lg md:mt-1 md:text-xl lg:mx-0">
-							<Icon data={mapMarker} class="mr-2 h-4 w-4 pb-0.5" />Room: {sessionLocationDestination}
+							<Icon data={sessionTargetLocationIcon} class="mr-2 h-4 w-4 pb-0.5" />
+							{sessionType}
 						</p>
-					{/if}
-				</div>
-			</div>
 
+						{#if targetLocation === 'IN_PERSON' && sessionLocationDestination}
+							<p
+								class="mt-1 text-base text-gray-700 sm:mx-auto sm:mt-2 sm:text-lg md:mt-1 md:text-xl lg:mx-0">
+								<Icon data={mapMarker} class="mr-2 h-4 w-4 pb-0.5" />Room: {sessionLocationDestination}
+							</p>
+						{/if}
+					</div>
+				{/if}
+			</div>
 			<!-- Tags -->
 			<div class="flex flex-wrap justify-center space-x-2 pb-3 lg:justify-start">
 				{#each tags as t}
@@ -415,14 +421,23 @@
 			</div>
 
 			<!-- Description -->
-			<p
-				class="lineBreaks prose mt-3 text-gray-500 sm:mx-auto sm:mt-5 sm:text-lg md:text-xl lg:mx-0">
-				{#if longDescription}
-					{longDescription}
-				{:else}
-					{shortDescription}
-				{/if}
-			</p>
+			{#if status === 'CANCELLED'}
+				<div class="mt-0 flex justify-center">
+					<img
+						class="lazyload h-20 md:h-40"
+						alt="canceled session"
+						src="/images/canceled-stamp.svg" />
+				</div>
+			{:else}
+				<p
+					class="lineBreaks prose mt-3 text-gray-500 sm:mx-auto sm:mt-5 sm:text-lg md:text-xl lg:mx-0">
+					{#if longDescription}
+						{longDescription}
+					{:else}
+						{shortDescription}
+					{/if}
+				</p>
+			{/if}
 
 			{#if type === 'WORKSHOP'}
 				<div class="mt-12">
