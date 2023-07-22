@@ -12,6 +12,7 @@
 	export let targetLocation;
 	export let location;
 	export let dense = false;
+	export let status;
 
 	// 3rd party
 	import { onMount, getContext } from 'svelte';
@@ -214,22 +215,29 @@
 				</a>
 
 				<!-- svelte-ignore a11y-click-events-have-key-events -->
-				<div
-					class="flex-grow pb-1"
-					class:cursor-pointer={isLongerThan(shortDescription, 25)}
-					on:click|preventDefault={() => (expandDescription = !expandDescription)}>
-					<p class="break-words text-sm leading-5 text-gray-500">
-						{#if expandDescription}
-							<span class="lineBreaks">{shortDescription}</span>
-						{:else}
-							<div class:hover:text-gray-300={isLongerThan(shortDescription, 25)}>
-								<span>{truncate(shortDescription, 25)}</span>
-								{#if isLongerThan(shortDescription, 25)}
-									<Icon data={caretDown} class="ml-2" />
-								{/if}
-							</div>
-						{/if}
-					</p>
+				<div class="grid grid-cols-2 md:grid-cols-4">
+					<div
+						class="flex-grow pb-1 {status === 'CANCELLED' ? 'col-span-3' : 'col-span-4'}"
+						class:cursor-pointer={isLongerThan(shortDescription, 25)}
+						on:click|preventDefault={() => (expandDescription = !expandDescription)}>
+						<p class="break-words text-sm leading-5 text-gray-500">
+							{#if expandDescription}
+								<span class="lineBreaks">{shortDescription}</span>
+							{:else}
+								<div class:hover:text-gray-300={isLongerThan(shortDescription, 25)}>
+									<span>{truncate(shortDescription, 25)}</span>
+									{#if isLongerThan(shortDescription, 25)}
+										<Icon data={caretDown} class="ml-2" />
+									{/if}
+								</div>
+							{/if}
+						</p>
+					</div>
+					{#if status === 'CANCELLED'}
+						<div class="flex-grow justify-self-end pb-1 pr-3 sm:-mt-2">
+							<img class="lazyload h-10" alt="canceled session" src="/images/canceled-stamp.svg" />
+						</div>
+					{/if}
 				</div>
 
 				<div class="border-t border-gray-200">
@@ -394,18 +402,27 @@
 			class="flex-grow px-3 pb-3"
 			class:cursor-pointer={isLongerThan(shortDescription, 25)}
 			on:click|preventDefault={() => (expandDescription = !expandDescription)}>
-			<p class="break-words text-sm leading-5 text-gray-500">
-				{#if expandDescription}
-					<span class="lineBreaks">{shortDescription}</span>
-				{:else}
-					<div class:hover:text-gray-300={isLongerThan(shortDescription, 25)}>
-						<span>{truncate(shortDescription, 25)}</span>
-						{#if isLongerThan(shortDescription, 25)}
-							<Icon data={caretDown} class="ml-2" />
-						{/if}
-					</div>
-				{/if}
-			</p>
+			{#if status === 'CANCELLED'}
+				<div class="flex items-center justify-center">
+					<img
+						class="lazyload relative h-28 "
+						alt="canceled session"
+						src="/images/canceled-stamp.svg" />
+				</div>
+			{:else}
+				<p class="break-words text-sm leading-5 text-gray-500">
+					{#if expandDescription}
+						<span class="lineBreaks">{shortDescription}</span>
+					{:else}
+						<div class:hover:text-gray-300={isLongerThan(shortDescription, 25)}>
+							<span>{truncate(shortDescription, 25)}</span>
+							{#if isLongerThan(shortDescription, 25)}
+								<Icon data={caretDown} class="ml-2" />
+							{/if}
+						</div>
+					{/if}
+				</p>
+			{/if}
 		</div>
 
 		<div class="flex flex-wrap justify-center space-x-2 px-4 pb-3">

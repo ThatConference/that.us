@@ -187,7 +187,8 @@
 			'tags',
 			'targetLocation',
 			'location',
-			'eventId'
+			'eventId',
+			'status'
 		]);
 	}
 </script>
