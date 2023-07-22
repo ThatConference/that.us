@@ -158,7 +158,7 @@ export const QUERY_SESSIONS_BY_SLUG = `
 					startDate
 					endDate
 					slug
-					sessions(pageSize: $pageSize, status: ACCEPTED, cursor: $cursor) {
+					sessions(pageSize: $pageSize, status: [ACCEPTED, CANCELLED], cursor: $cursor) {
 						cursor
 						count
 						sessions {
@@ -179,7 +179,7 @@ export const QUERY_NEXT_SESSIONS = `
 	${coreSpeakerFields}
 	query QUERY_NEXT_SESSIONS ($pageSize: Int, $cursor: String) {
 		sessions {
-			all (pageSize: $pageSize, status: ACCEPTED, cursor: $cursor) {
+			all (pageSize: $pageSize, status: [ACCEPTED, CANCELLED], cursor: $cursor) {
 				cursor
 				count
 				sessions {
@@ -203,7 +203,7 @@ export const QUERY_SESSIONS_BY_DATE = `
 	${coreSpeakerFields}
 	query QUERY_SESSIONS_BY_DATE ($asOfDate: Date, $pageSize: Int) {
 		sessions {
-			all (asOfDate: $asOfDate, status: ACCEPTED, pageSize: $pageSize) {
+			all (asOfDate: $asOfDate, status: [ACCEPTED, CANCELLED], pageSize: $pageSize) {
 				cursor
 				sessions {
 					...coreFields
@@ -226,7 +226,7 @@ export const QUERY_NEXT_SESSIONS_BY_DATE = `
 	${coreSpeakerFields}
 	query QUERY_NEXT_SESSIONS_BY_DATE ($asOfDate: Date, $pageSize: Int, $cursor: String) {
 		sessions {
-			all(asOfDate: $asOfDate, status: ACCEPTED, pageSize: $pageSize, cursor: $cursor) {
+			all(asOfDate: $asOfDate, status: [ACCEPTED, CANCELLED], pageSize: $pageSize, cursor: $cursor) {
 				cursor
 				sessions {
 					...coreFields
