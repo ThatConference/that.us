@@ -26,10 +26,10 @@ export const ticketBreakdown = [
 			{
 				title: 'Event Access',
 				includes: [
-					{ title: 'Sunday' },
 					{ title: 'Monday' },
 					{ title: 'Tuesday' },
-					{ title: 'Wednesday' }
+					{ title: 'Wednesday' },
+					{ title: 'Thursday' }
 				]
 			},
 			{
@@ -57,10 +57,10 @@ export const ticketBreakdown = [
 			{
 				title: 'Event Access',
 				includes: [
-					{ title: 'Sunday' },
 					{ title: 'Monday' },
 					{ title: 'Tuesday' },
-					{ title: 'Wednesday' }
+					{ title: 'Wednesday' },
+					{ title: 'Thursday' }
 				]
 			},
 			{
@@ -145,12 +145,8 @@ const pricingBreakdown = [
 		title: 'Event Access',
 		includes: [
 			{
-				title: 'Sunday',
-				isIncluded: [true, true]
-			},
-			{
 				title: 'Monday',
-				isIncluded: [true, true]
+				isIncluded: [false, false]
 			},
 			{
 				title: 'Tuesday',
@@ -159,32 +155,32 @@ const pricingBreakdown = [
 			{
 				title: 'Wednesday',
 				isIncluded: [true, true]
+			},
+			{
+				title: 'Thursday',
+				isIncluded: [true, true]
 			}
 		]
 	},
 	{
 		title: 'Food and Beverage',
 		includes: [
-			{ title: 'Sunday Lunch', isIncluded: [false, true] },
-			{
-				title: 'Monday Breakfast & Lunch',
-				isIncluded: [false, true]
-			},
-			{ title: 'Monday Happy Hour', isIncluded: [false, true] },
+			{ title: 'Monday Lunch', isIncluded: [false, true] },
 			{
 				title: 'Tuesday Breakfast & Lunch',
 				isIncluded: [false, true]
 			},
-			{
-				title: 'Tuesday BBQ',
-				isIncluded: [false, true]
-			},
+			{ title: 'Tuesday Happy Hour', isIncluded: [false, true] },
 			{
 				title: 'Wednesday Breakfast & Lunch',
 				isIncluded: [false, true]
 			},
 			{
-				title: 'Closing Smores Bar',
+				title: 'Wednesday BBQ',
+				isIncluded: [false, true]
+			},
+			{
+				title: 'Thursday Breakfast & Lunch',
 				isIncluded: [false, true]
 			},
 			{

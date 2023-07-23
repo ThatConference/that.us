@@ -1,6 +1,6 @@
 {
 	"name": "that-us",
-	"version": "3.11.17",
+	"version": "3.11.18",
 	"description": "THAT.us website",
 	"main": "index.js",
 	"type": "module",
