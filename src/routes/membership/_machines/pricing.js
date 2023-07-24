@@ -22,7 +22,7 @@ function createServices() {
 				}),
 
 			queryProductsSuccess: assign({
-				endDate: (_, { data }) => data.endDate,
+				event: (_, { data }) => data,
 				eventTicket: (_, { data }) =>
 					data.products.find((element) => element.productType === 'TICKET'),
 				membership: (_, { data }) =>

@@ -40,7 +40,7 @@
 {#if $state.matches('ready')}
 	<Layout>
 		<Hero
-			endDate={$state.context.endDate}
+			event={$state.context.event}
 			eventTicket={$state.context.eventTicket}
 			membership={$state.context.membership} />
 
@@ -50,7 +50,7 @@
 
 		<PricingCore
 			eventTicket={$state.context.eventTicket}
-			endDate={$state.context.endDate}
+			event={$state.context.event}
 			membership={$state.context.membership} />
 
 		<FAQs />
