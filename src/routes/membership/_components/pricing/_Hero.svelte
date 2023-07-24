@@ -1,6 +1,7 @@
 <script>
 	// export let eventTicket;
 	export let membership;
+	export let endDate;
 
 	import { goto } from '$app/navigation';
 	import { getContext } from 'svelte';
@@ -16,6 +17,7 @@
 		const isBulkPurchase = quantity > 1 ? true : false;
 		send('ADD_ITEM', {
 			eventId: config.eventId,
+			eventDetails: { endDate },
 			...membership,
 			isBulkPurchase,
 			quantity

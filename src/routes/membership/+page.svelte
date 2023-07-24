@@ -39,13 +39,19 @@
 
 {#if $state.matches('ready')}
 	<Layout>
-		<Hero eventTicket={$state.context.eventTicket} membership={$state.context.membership} />
+		<Hero
+			endDate={$state.context.endDate}
+			eventTicket={$state.context.eventTicket}
+			membership={$state.context.membership} />
 
 		<Quote />
 
 		<Logo height="40" uri="/images/THAT-Logo-Words.svg" />
 
-		<PricingCore eventTicket={$state.context.eventTicket} membership={$state.context.membership} />
+		<PricingCore
+			eventTicket={$state.context.eventTicket}
+			endDate={$state.context.endDate}
+			membership={$state.context.membership} />
 
 		<FAQs />
 		<NotReady />
