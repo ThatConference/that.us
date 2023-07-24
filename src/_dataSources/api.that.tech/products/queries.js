@@ -22,6 +22,8 @@ export const QUERY_EVENT_PRODUCTS = `
 			event(findBy: {id: $eventId}) {
 				get {
 					id
+					startDate
+					endDate
 					products {
 						...productBaseFields
 					}
@@ -40,8 +42,8 @@ export default (fetch) => {
 		return client.query({ query: QUERY_EVENT_PRODUCTS, variables }).then(({ data, errors }) => {
 			if (errors) log({ errors, tag: 'QUERY_EVENT_PRODUCTS' });
 
-			const { event } = data.events;
-			return event ? event.get.products : [];
+			const { get } = data.events.event;
+			return get;
 		});
 	}
 

@@ -22,8 +22,11 @@ function createServices() {
 				}),
 
 			queryProductsSuccess: assign({
-				eventTicket: (_, { data }) => data.find((element) => element.productType === 'TICKET'),
-				membership: (_, { data }) => data.find((element) => element.productType === 'MEMBERSHIP')
+				endDate: (_, { data }) => data.endDate,
+				eventTicket: (_, { data }) =>
+					data.products.find((element) => element.productType === 'TICKET'),
+				membership: (_, { data }) =>
+					data.products.find((element) => element.productType === 'MEMBERSHIP')
 			})
 		}
 	};
