@@ -29,7 +29,9 @@
 	// keeps ticket object up-to-date with pin changes.
 	$: {
 		ticket.partnerPin = displayPin;
-		ticket.hasCheckedIn = displayPin !== 'PIN not set';
+		if (ticket.isDirty) {
+			ticket.hasCheckedIn = displayPin !== 'PIN not set';
+		}
 	}
 </script>
 
