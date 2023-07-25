@@ -24,6 +24,8 @@ export const QUERY_EVENT_PRODUCTS = `
 					id
 					startDate
 					endDate
+					logo
+					name
 					products {
 						...productBaseFields
 					}
