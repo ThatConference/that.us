@@ -88,7 +88,8 @@
 	$: primaryCategorySort = activitiesFiltered.filter(
 		(activity) =>
 			(activity.category == 'FAMILY' ? family : false) ||
-			(activity.category == 'PROFESSIONAL' ? professional : false)
+			(activity.category == 'PROFESSIONAL' ? professional : false) ||
+			activities.category == null
 	);
 
 	$: activitiesLocationCategoryFiltered = primaryCategorySort.filter(
