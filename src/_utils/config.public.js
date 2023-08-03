@@ -88,7 +88,7 @@ export const events = {
 			slug: 'tx/2024'
 		},
 		wi: {
-			slug: 'wi/2023'
+			slug: 'wi/2024'
 		}
 	}
 };
