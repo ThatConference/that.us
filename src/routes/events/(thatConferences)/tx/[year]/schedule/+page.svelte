@@ -26,7 +26,7 @@
 
 <div>
 	<section class="mt-40">
-		<Hero {event} days={['Sunday', 'Monday', 'Tuesday', 'Wednesday']} />
+		<Hero {event} days={['Monday', 'Tuesday', 'Wednesday', 'Thursday']} />
 	</section>
 
 	<section>

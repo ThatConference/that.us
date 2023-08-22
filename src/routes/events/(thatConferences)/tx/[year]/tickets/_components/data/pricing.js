@@ -146,7 +146,7 @@ const pricingBreakdown = [
 		includes: [
 			{
 				title: 'Monday',
-				isIncluded: [false, false]
+				isIncluded: [true, true]
 			},
 			{
 				title: 'Tuesday',
@@ -197,9 +197,12 @@ const pricingBreakdown = [
 				title: 'Welcome Reception',
 				isIncluded: [true, true]
 			},
-			{ title: 'Game Night', isIncluded: [true, true] },
 			{
-				title: 'Water Park Party',
+				title: 'Game Night',
+				isIncluded: [true, true]
+			},
+			{
+				title: 'Patio Campfire',
 				isIncluded: [true, true]
 			}
 		]
