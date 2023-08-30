@@ -71,18 +71,30 @@
 								</div>
 
 								<div class="transform transition duration-500 ease-in-out hover:scale-105">
-									<a href="/sponsors/tx/TX-Exhibitor-Order-Form.pdf" target="_blank">
+									<a href="/sponsors/tx/TX-AV-Exhibitor-Order-Form.pdf" target="_blank">
 										<div class="prose prose-lg w-full rounded-md border bg-white p-4 shadow-md">
-											<h4>Service Order Form</h4>
+											<h4>AV Order Form</h4>
 											<p class="prose-md prose text-gray-500">
-												Information on ordering additional items and services through the Kalahari.
+												Information on ordering additional AV-related items and services through the
+												Kalahari.
 											</p>
 										</div>
 									</a>
 								</div>
 
 								<div class="transform transition duration-500 ease-in-out hover:scale-105">
-									<a href="/sponsors/tx/TX-Kalahari-Parcel-Form.pdf" target="_blank">
+									<a href="/sponsors/tx/TX-Exhibitor-Pre-Order-Menu-Form.pdf" target="_blank">
+										<div class="prose prose-lg w-full rounded-md border bg-white p-4 shadow-md">
+											<h4>Pre-Order Menu Form</h4>
+											<p class="prose-md prose text-gray-500">
+												Information on ordering food and beverages to your booth.
+											</p>
+										</div>
+									</a>
+								</div>
+
+								<div class="transform transition duration-500 ease-in-out hover:scale-105">
+									<a href="/sponsors/tx/TX-Kalahari-FedEx-Parcel-Form.pdf" target="_blank">
 										<div class="prose prose-lg w-full rounded-md border bg-white p-4 shadow-md">
 											<h4>Shipping Information</h4>
 											<p class="prose-md prose text-gray-500">
