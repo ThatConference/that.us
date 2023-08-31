@@ -61,6 +61,14 @@ That's right, all restaurants and stands in the Kalahari are now cashless. The o
 
 The Kalahari provides the "Tree People" a 10% discount at many of the restaurants in the Kalahari. You'll need to show them your badge for the discount. We recommend you ask before ordering to ensure the particular restaurant you're at provides this discount. The discount does not include alcohol.
 
+### List of Kalahari Texas restaurants supporting the discount
+
+Show your badge and enjoy a 10% discount at the following restaurants on food and non-alcoholic beverages at the Kalahari in Texas:
+
+- Cinco Nino's
+- B-Lux
+- Sortino's
+
 ## Mess Hall
 
 The Mess Hall is our main gathering place. This is where you'll find conference-provided meals, keynotes and special activities like THAT Game Night. All family and attendees are welcome in the Mess Hall during meal times. You must have a food wristband to get food from the food buffet lines.
