@@ -10,66 +10,26 @@
 	const { products } = event;
 
 	const geeklingTicket = products.find((p) => p.uiReference === 'GEEKLING');
-	const geeklingWithFoodTicket = products.find((p) => p.uiReference === 'GEEKLING_WITH_FOOD');
 
 	const campmateTicket = products.find((p) => p.uiReference === 'CAMPMATE');
-	const campmateWithFoodTicket = products.find((p) => p.uiReference === 'CAMPMATE_WITH_FOOD');
 
 	const pigRoast = products.find((p) => p.uiReference === 'HOG_ROAST');
 
 	const familyTickets = [
 		{
 			...geeklingTicket,
-			includes: [
-				'Family Sessions',
-				'THAT Badge',
-				'T-Shirt',
-				'Waterpark Party Access',
-				'BBQ',
-				'Game Night'
-			]
-		},
-		{
-			...geeklingWithFoodTicket,
-			includes: [
-				'Includes All Food Offered',
-				'Family Sessions',
-				'THAT Badge',
-				'T-Shirt',
-				'Waterpark Party Access',
-				'BBQ',
-				'Game Night'
-			]
+			includes: ['Family Sessions', 'THAT Badge', 'T-Shirt', 'Happy Hour', 'BBQ', 'Game Night']
 		},
 		{
 			...campmateTicket,
-			includes: [
-				'Family Sessions',
-				'THAT Badge',
-				'T-Shirt',
-				'Waterpark Party Access',
-				'BBQ',
-				'Game Night'
-			]
-		},
-		{
-			...campmateWithFoodTicket,
-			includes: [
-				'Includes All Food Offered',
-				'Family Sessions',
-				'THAT Badge',
-				'T-Shirt',
-				'Waterpark Party Access',
-				'BBQ',
-				'Game Night'
-			]
+			includes: ['Family Sessions', 'THAT Badge', 'T-Shirt', 'Happy Hour', 'BBQ', 'Game Night']
 		}
 	];
 
 	if (pigRoast?.isEnabled === true) {
 		familyTickets.push({
 			...pigRoast,
-			includes: ['BBQ', 'Waterpark Party Access']
+			includes: ['BBQ']
 		});
 	}
 
