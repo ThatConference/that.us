@@ -4,7 +4,7 @@
 
 	import dayjs from 'dayjs';
 	import isSameOrAfter from 'dayjs/plugin/isSameOrAfter.js';
-
+	console.log('event obj', event);
 	dayjs.extend(isSameOrAfter);
 </script>
 
@@ -30,8 +30,7 @@
 				<div class="divide-y divide-gray-200">
 					<div class="space-y-4 py-8 text-base leading-6 text-gray-700 sm:text-lg sm:leading-7">
 						<div>
-							Keynotes, Workshops, Sessions, Open Spaces, a pig roast, and even a Waterpark party.
-							Hurry camp starts soon!
+							{event.description}
 						</div>
 
 						<div class="pt-2 text-base font-bold leading-6 sm:text-lg sm:leading-7">
