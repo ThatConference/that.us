@@ -69,13 +69,13 @@ export const imageCrops = {
 
 export const claimCodes = [
 	{
-		72423: {
-			eventSlug: 'wi/2023',
+		72924: {
+			eventSlug: 'wi/2024',
 			eventTitle: 'THAT Conference Wisconsin'
 		}
 	},
 	{
-		12924: {
+		13024: {
 			eventSlug: 'tx/2024',
 			eventTitle: 'THAT Conference Texas'
 		}
@@ -101,23 +101,23 @@ export const kalahari = {
 			url: 'https://book.passkey.com/e/50528959'
 		},
 		tx: {
-			opens: '10/21/2022',
-			closes: '12/26/2022',
+			opens: '09/13/2023',
+			closes: '01/08/2024',
 			url: 'https://book.passkey.com/e/'
 		}
 	},
 	speakerPasskey: {
-		'wi/2023': {
+		'wi/2024': {
 			bookingUrl: 'https://book.passkey.com/e/50528993',
 			start: '03/27/2023',
 			end: '06/21/2023',
 			blockCloseDate: '06/21/2023'
 		},
-		'tx/2023': {
+		'tx/2024': {
 			bookingUrl: 'https://book.passkey.com/e/',
-			start: '10/21/2022',
-			end: '12/26/2022',
-			blockCloseDate: '12/26/2022'
+			start: '09/13/2023',
+			end: '01/08/2024',
+			blockCloseDate: '01/08/2023'
 		}
 	}
 };

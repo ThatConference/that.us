@@ -26,7 +26,7 @@ export const ticketBreakdown = [
 			{
 				title: 'Event Access',
 				includes: [
-					{ title: 'Monday' },
+					// { title: 'Monday' },
 					{ title: 'Tuesday' },
 					{ title: 'Wednesday' },
 					{ title: 'Thursday' }
@@ -57,7 +57,7 @@ export const ticketBreakdown = [
 			{
 				title: 'Event Access',
 				includes: [
-					{ title: 'Monday' },
+					// { title: 'Monday' },
 					{ title: 'Tuesday' },
 					{ title: 'Wednesday' },
 					{ title: 'Thursday' }
@@ -144,10 +144,10 @@ const pricingBreakdown = [
 	{
 		title: 'Event Access',
 		includes: [
-			{
-				title: 'Monday',
-				isIncluded: [true, true]
-			},
+			// {
+			// 	title: 'Monday',
+			// 	isIncluded: [true, true]
+			// },
 			{
 				title: 'Tuesday',
 				isIncluded: [true, true]
@@ -165,7 +165,7 @@ const pricingBreakdown = [
 	{
 		title: 'Food and Beverage',
 		includes: [
-			{ title: 'Monday Lunch', isIncluded: [false, true] },
+			// { title: 'Monday Lunch', isIncluded: [false, true] },
 			{
 				title: 'Tuesday Breakfast & Lunch',
 				isIncluded: [false, true]
