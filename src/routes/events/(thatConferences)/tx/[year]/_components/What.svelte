@@ -21,7 +21,7 @@
 			imageUrl: '/images/characters/what_to_expect_industry_leaders.png'
 		},
 		{
-			title: '4 Full Days',
+			title: '3 Full Days',
 			imageUrl: '/images/characters/what_to_expect_4_days.png'
 		},
 		{

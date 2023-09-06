@@ -50,10 +50,10 @@
 				<div class="lg:w-3/4 lg:pl-12">
 					<p class="prose-xl mt-12 text-gray-500">
 						As a Camper, you receive 3 days of professional sessions across various technologies,
-						platforms, and disciplines of all levels. You can also access 10,000 sq. ft. of open
-						spaces to participate in more intimate discussions across all topics you and your fellow
-						attendees generate. All sessions, including open spaces, are designed to build your road
-						to level up your skills, career and take charge of
+						platforms, and disciplines of all levels. You can also access over 10,000 sq. ft. of
+						open spaces to participate in more intimate discussions across all topics you and your
+						fellow attendees generate. All sessions, including open spaces, are designed to build
+						your road to level up your skills, career and take charge of
 						<span class="font-bold">you</span>.
 					</p>
 

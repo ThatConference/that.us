@@ -76,7 +76,7 @@
 								<div class="flex flex-wrap items-center justify-center">
 									{#each partners as p}
 										<div
-											class="p-4 w-1/3 transition duration-500 ease-in-out transform hover:scale-105">
+											class="p-2 w-1/2 transition duration-500 ease-in-out transform hover:scale-105">
 											<a href="/partners/{p.slug}/">
 												<img class="lazyload w-full h-24" src={p.companyLogo} alt={p.companyName} />
 											</a>
