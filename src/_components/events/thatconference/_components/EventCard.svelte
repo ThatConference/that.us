@@ -4,7 +4,7 @@
 
 	import dayjs from 'dayjs';
 	import isSameOrAfter from 'dayjs/plugin/isSameOrAfter.js';
-	console.log('event obj', event);
+
 	dayjs.extend(isSameOrAfter);
 </script>
 
