@@ -45,16 +45,16 @@
 			<p>
 				The Expo Hall Only Ticket is a free ticket for a sponsor booth worker to participate at
 				their sponsor booth during the conference. The ticket enables an individual to attend their
-				company’s booth and receive a sponsor badge. The ticket includes access to Game Night, the
-				WaterPark Party, Open Spaces and the Closing Ceremony. It does not include any food,
-				beverages, sessions, keynotes or workshops during the entirety of the conference. Hotel
-				rooms and waterpark passes are also excluded.
+				company’s booth and receive a sponsor badge. The ticket includes access to Game Night, Open
+				Spaces and the Closing Ceremony. It does not include any food, beverages, sessions, keynotes
+				or workshops during the entirety of the conference. Hotel rooms and waterpark passes are
+				also excluded.
 			</p>
 			<p>One ticket is required for each individual participating at their sponsor booth.</p>
 			<p>
 				To claim a ticket, email <a href="mailto:partners@thatconference.com"
 					>partners@thatconference.com</a> to receive a code or speak to anyone in a staff shirt onsite.
-				If you have already received a code, simply enter it below.
+				If you have already received a code, simply enter it below:
 			</p>
 		</div>
 		<div>

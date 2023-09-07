@@ -43,11 +43,11 @@
 			</p>
 
 			<p class="mx-auto max-w-6xl text-center text-xl text-gray-300 sm:mt-5 sm:text-2xl">
-				As a Camper, you receive up to 4 days of 200 professional sessions across various
-				technologies, platforms, and disciplines of all levels. You can also access over 10,000 sq.
-				ft. of open spaces to participate in more intimate discussions across all topics you and
-				your fellow attendees generated. All sessions, including open spaces, are designed to build
-				your road to level up your skills, career and take charge of
+				As a Camper, you receive 3 days of professional sessions across various technologies,
+				platforms, and disciplines of all levels. You can also access over 10,000 sq. ft. of open
+				spaces to participate in more intimate discussions across all topics you and your fellow
+				attendees generate. All sessions, including open spaces, are designed to build your road to
+				level up your skills, career and take charge of
 				<span class="font-bold">you</span>.
 			</p>
 		</div>
@@ -88,13 +88,6 @@
 											<p class="ml-3 text-base font-medium text-gray-500">
 												Full Access to All Sessions
 											</p>
-										</li>
-
-										<li class="flex items-start">
-											<div class="flex-shrink-0">
-												<span class="text-green-500"><Check /></span>
-											</div>
-											<p class="ml-3 text-base font-medium text-gray-500">Waterpark Party</p>
 										</li>
 
 										<li class="flex items-start">
@@ -163,7 +156,7 @@
 											<span class="text-green-500"><Check /></span>
 										</div>
 										<p class="ml-3 text-base font-medium text-gray-500">
-											Full access to all 4 days
+											Full access to all Sessions
 										</p>
 									</li>
 
@@ -189,14 +182,14 @@
 											<span class="text-green-500"><Check /></span>
 										</div>
 										<p class="ml-3 text-base font-medium text-gray-500">
-											Welcome Reception, Happy Hours and BBQ
+											Welcome Reception and Happy Hour
 										</p>
 									</li>
 									<li class="flex items-start">
 										<div class="flex-shrink-0">
 											<span class="text-green-500"><Check /></span>
 										</div>
-										<p class="ml-3 text-base font-medium text-gray-500">Waterpark Party</p>
+										<p class="ml-3 text-base font-medium text-gray-500">BBQ</p>
 									</li>
 								</ul>
 								<div class="mt-10">
@@ -217,12 +210,12 @@
 								<div class="bg-white px-6 py-10">
 									<div>
 										<h3 class="text-center text-2xl font-bold uppercase text-gray-500">
-											Family Campers (starting at)
+											Family Campers
 										</h3>
 										<div class="mt-4 flex items-center justify-center">
 											<span class="flex items-start px-3 text-6xl tracking-tight text-gray-900">
 												<span class="mr-2 mt-2 text-4xl font-medium">$</span>
-												<span class="font-extrabold"> 79 </span>
+												<span class="font-extrabold"> 99 </span>
 												<span class="ml-2 mt-2 text-xl font-medium tracking-wide text-gray-400">
 													USD
 												</span>
@@ -237,16 +230,14 @@
 											<div class="flex-shrink-0">
 												<span class="text-green-500"><Check /></span>
 											</div>
-											<p class="ml-3 text-base font-medium text-gray-500">Family Sessions</p>
+											<p class="ml-3 text-base font-medium text-gray-500">Family Activities</p>
 										</li>
 
 										<li class="flex items-start">
 											<div class="flex-shrink-0">
 												<span class="text-green-500"><Check /></span>
 											</div>
-											<p class="ml-3 text-base font-medium text-gray-500">
-												Pig Roast and Waterpark Party
-											</p>
+											<p class="ml-3 text-base font-medium text-gray-500">BBQ and Happy Hour</p>
 										</li>
 
 										<li class="flex items-start">
