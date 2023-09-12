@@ -95,8 +95,9 @@
 		To reserve the room, the Kalahari requires a deposit of one night's stay plus tax and fees. THAT
 		Conference works directly with the Kalahari to apply the appropriate credits to your account
 		during the conference. You will see the proper credits applied to your final bill upon checkout.
-		Please note that you may book any room type, however, you will be responsible for the difference
-		at any rate above $179/day. Speaking sessions from sponsorships are excluded from this benefit.
+		Please note that you are welcome to upgrade your room, however, you will be responsible for the
+		difference at any rate above $179/day. Speaking sessions from sponsorships are excluded from
+		this benefit.
 	</p>
 
 	<div class="mt-6 antialiased">
