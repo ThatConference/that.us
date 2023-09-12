@@ -101,7 +101,7 @@ export const kalahari = {
 			url: 'https://book.passkey.com/e/50528959'
 		},
 		tx: {
-			opens: '09/13/2023',
+			opens: '09/19/2023',
 			closes: '01/08/2024',
 			url: 'https://book.passkey.com/e/50671911'
 		}
@@ -116,7 +116,7 @@ export const kalahari = {
 		},
 		'tx/2024': {
 			bookingUrl: 'https://book.passkey.com/e/50671918',
-			start: '09/13/2023',
+			start: '09/19/2023',
 			end: '01/08/2024',
 			blockCloseDate: '01/08/2023',
 			accessCode: 'THATSPEAK'
