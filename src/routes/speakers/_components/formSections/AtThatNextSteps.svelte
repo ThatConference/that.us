@@ -43,7 +43,11 @@
 						rel="external noopener noreferrer"
 						href={kalahari.speakerPasskey[eventDetails.slug].bookingUrl}>
 						like now</a
-					>!</span>
+					>!
+					{#if kalahari.speakerPasskey[eventDetails.slug].accessCode}
+						(Access Code: {kalahari.speakerPasskey[eventDetails.slug].accessCode})
+					{/if}
+				</span>
 			</li>
 			<li>Help spread the good word. Tell all your friends.</li>
 			<li>

@@ -36,12 +36,12 @@
 				</div>
 
 				<p class="py-4 text-center text-lg font-extrabold tracking-wide text-gray-600">
-					Hotel Accomodations
+					Hotel Accommodations
 				</p>
 
 				<p class="prose text-center text-gray-500">
-					For each talk accepted we cover 2 standard room nights at the Kalahari, up to a 3 nights
-					max per family.
+					For each talk accepted we cover 2 Double Queen Sofa nights at the Kalahari, up to a 3
+					nights max per family.
 				</p>
 			</div>
 		</a>

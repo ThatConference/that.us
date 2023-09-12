@@ -31,8 +31,7 @@
 	const closeTime = dayjs(kalahari.passkey.tx.closes);
 	const close = closeTime.format('dddd, MMMM D, YYYY');
 
-	// todo needs to be fixed later
-	// const isRoomBlockOpen = dayjs().isBetween(openTime, closeTime);
+	const isRoomBlockOpen = dayjs().isBetween(openTime.subtract(1, 'day'), closeTime.add(1, 'day'));
 </script>
 
 <Seo title={metaTags.title} tags={metaTags.tags} />
@@ -48,8 +47,8 @@
               text-gray-500 lg:mx-0 lg:max-w-7xl lg:pr-72">
 			<p>We have partnered with the Kalahari Resort to offer the best group rates around.</p>
 			<p class="mt-8">
-				Discounted rates are available not only during our conference dates, but also a few days
-				before and after the event in case you'd like to extend your stay.
+				Discounted rates are available not only during our conference dates, but a few additional
+				days as well in case you'd like to extend your stay.
 			</p>
 		</div>
 
@@ -81,24 +80,23 @@
 						<div class="flex flex-col items-center space-x-4">
 							<div class="prose-md prose w-2/4 rounded-md border bg-white p-4 shadow-md">
 								<h4>Double Queen Sofa</h4>
-								<p class="text-center">$189 + tax and fees</p>
+								<p class="text-center">$198 + tax and fees</p>
 							</div>
-
-							<!-- <div class="prose-md prose w-full rounded-md border bg-white p-4 shadow-md ">
-								<h4>2 Bedroom Suite</h4>
-								<p class="text-center">$249 + tax and fees</p>
-							</div> -->
 						</div>
 
-						<div class="prose-md prose mt-4 text-gray-500">
+						<!-- <div class="prose-md prose mt-4 text-gray-500">
 							<p>Restrictions do apply:</p>
 							<ul>
 								<li>Speakers, this block isn't for you. Contact us.</li>
-								<li>Weekend rates may be different than listed above.</li>
-								<li>Our block discount does apply to all rooms, not just the two listed above.</li>
 								<li>Never wait to book; when they're gone, they're gone.</li>
 							</ul>
-						</div>
+						</div> -->
+
+						<h3>Speakers</h3>
+						<p>
+							This room block is not for you. Please use the link in the email you received or
+							contact us.
+						</p>
 
 						<h3>Booking Your Reservation</h3>
 						<p>
@@ -106,14 +104,12 @@
 							1-877-525-2427.
 						</p>
 
-						<!-- todo the room block is open right now. milestones are wrong. -->
-						<!-- {#if isRoomBlockOpen} -->
+						{#if !isRoomBlockOpen}
+							<p class="text-center text-red-500">Our room blocks are currently closed.</p>
+						{/if}
 						<div class="mt-8 flex flex-col items-center">
 							<StandardLink open={true} href={kalahari.passkey.tx.url}>Book Today</StandardLink>
 						</div>
-						<!-- {:else}
-							<div class="mt-8 flex flex-col items-center">asdfasdf</div>
-						{/if} -->
 					</div>
 				</div>
 			</div>
@@ -153,7 +149,7 @@
 
 					<p>
 						Are there shuttles to the Kalahari from the airports? Unfortunately no but we suggest
-						jumping in THAT Slack and ask if anyone is interested in ridesharing or catching an
+						jumping in THAT Slack and ask if anyone is interested in ride-sharing or catching an
 						Uber/Lyft.
 					</p>
 				</div>
