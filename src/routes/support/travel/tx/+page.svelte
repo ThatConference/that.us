@@ -31,7 +31,8 @@
 	const closeTime = dayjs(kalahari.passkey.tx.closes);
 	const close = closeTime.format('dddd, MMMM D, YYYY');
 
-	const isRoomBlockOpen = dayjs().isBetween(openTime.subtract(1, 'day'), closeTime.add(1, 'day'));
+	// disabling message for now
+	const isRoomBlockOpen = true; // dayjs().isBetween(openTime.subtract(1, 'day'), closeTime.add(1, 'day'));
 </script>
 
 <Seo title={metaTags.title} tags={metaTags.tags} />
@@ -59,10 +60,11 @@
 						<h2>Kalahari Resorts and Convention Center</h2>
 						<div>
 							<p>
-								Our room block opens <span class="font-semibold text-gray-800">{open}</span>, and
-								will close
+								Our room block with discounted rates opens <span class="font-semibold text-gray-800"
+									>{open}</span
+								>, and will close
 								<span class="font-semibold text-gray-800">{close}</span>
-								or until the block is filled so reserve your room early!
+								or until the block is filled. Reserve your room early to lock in the discounted rates.
 							</p>
 						</div>
 						<div>
