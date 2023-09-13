@@ -145,8 +145,8 @@
 
 		<div class="mt-12">
 			<p class="prose prose-lg text-gray-500">
-				Congratulations are in order! We've selected you and your session as part of our {platformText}
-				event and you're officially a {eventDetails.name} Counselor.
+				We've selected you and your session as part of our {platformText} event and you're officially
+				a {eventDetails.name} Counselor.
 			</p>
 			<p class="prose prose-lg mt-4 text-gray-500">
 				To accept your speaking session, you must complete this Counselor Enrollment process. It's

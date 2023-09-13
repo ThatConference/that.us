@@ -28,7 +28,7 @@
 		<ul>
 			<li>
 				<span class="font-extrabold">Speaker Decks.</span> We don't have a speaker deck as much as we
-				have a few slides for you to include. We will sent that to you once finished.
+				have a few slides for you to include. We will send that to you once finished.
 			</li>
 			<li>
 				<span class="font-extrabold">Mentoring.</span> If you'd like help; we're here to help. Feel free
@@ -43,7 +43,11 @@
 						rel="external noopener noreferrer"
 						href={kalahari.speakerPasskey[eventDetails.slug].bookingUrl}>
 						like now</a
-					>!</span>
+					>!
+					{#if kalahari.speakerPasskey[eventDetails.slug].accessCode}
+						(Access Code: {kalahari.speakerPasskey[eventDetails.slug].accessCode})
+					{/if}
+				</span>
 			</li>
 			<li>Help spread the good word. Tell all your friends.</li>
 			<li>

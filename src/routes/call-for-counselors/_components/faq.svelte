@@ -22,7 +22,7 @@
 		},
 		{
 			q: 'How do I get reimbursed for my room?',
-			a: 'We will work with the resort and magically apply the credit to your bill. You are responsible for any other expenses incurred. We reimburse the cost of a standard room rate.'
+			a: 'We will work with the resort and magically apply the credit to your bill. You are responsible for any other expenses incurred. We reimburse the cost of a Double Queen Sofa rate.'
 		},
 		{
 			q: 'Can my family come?',
