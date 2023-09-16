@@ -42,7 +42,7 @@
 			title: a.title ? a.title : '',
 			speakers: a.speakers.map((s) => `${s.firstName} ${s.lastName}`).join(';'),
 			priCategory: a.priCategory ? a.priCategory : '',
-			sessionLink: `https://that.us/activites/${a.id}/`,
+			sessionLink: `https://that.us/activities/${a.id}/`,
 			sessionType: a.type
 		}));
 
