@@ -1,11 +1,5 @@
-import partnersApi from '$dataSources/api.that.tech/partner/queries';
+import { redirect } from '@sveltejs/kit';
 
-export async function load({ fetch }) {
-	const { getUpcomingPartners } = partnersApi(fetch);
-
-	const partners = await getUpcomingPartners();
-
-	return {
-		partners
-	};
+export async function load() {
+	throw redirect(301, `https://thatconference.com/sponsorships/apply`);
 }
