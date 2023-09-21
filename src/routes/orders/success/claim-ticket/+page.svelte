@@ -48,7 +48,7 @@
 			When you get to the event make sure you check in at registration to get your sponsor badge.
 		</li>
 		<li>
-			On <strong>Monday at 3:00 PM</strong> there will be a sponsor meeting in the Open Spaces area.
+			On <strong>Monday at 1:00 PM</strong> there will be a sponsor meeting in the Open Spaces area.
 			This is an opportunity to meet one another, discuss the event, answer any questions, and get things
 			kicked off before the early registration meet and greet that evening.
 		</li>
