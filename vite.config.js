@@ -16,17 +16,21 @@ const config = ({ mode }) => {
 			url: 'https://sentry.io',
 			cleanArtifacts: true,
 			rewrite: false,
+			// vite overrides NODE_ENV to production when running 'vite build'
+			uploadSourceMaps: process.env.PUBLIC_VERCEL_ENV === 'production',
 			deploy: {
 				env: 'production'
-			}
-		},
-		setCommits: {
-			auto: true,
-			ignoreMissing: true
-		},
-		sourceMaps: {
-			include: ['./.svelte-kit/output'],
-			ignore: ['node_modules']
+			},
+			setCommits: {
+				auto: true,
+				ignoreMissing: true
+			},
+			sourceMaps: {
+				assets: ['./.svelte-kit/output'],
+				ignore: ['node_modules']
+			},
+			debug: false,
+			dryRun: false
 		}
 	};
 

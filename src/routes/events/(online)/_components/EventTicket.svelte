@@ -63,10 +63,10 @@
 						</div>
 					</div>
 					<div class="mt-4 flex items-baseline text-6xl font-extrabold">
-						{#if eventTickets['CLAIMABLE_TICKET'].price === 0}
+						{#if eventTickets['CLAIMABLE_TICKET']?.price === 0}
 							Free
 						{:else}
-							${eventTickets['CLAIMABLE_TICKET'].price}
+							${eventTickets['CLAIMABLE_TICKET']?.price ?? 15}
 							<span class="ml-1 text-2xl font-medium text-gray-500"> USD </span>
 						{/if}
 					</div>
@@ -107,7 +107,9 @@
 
 					<StandardButton
 						on:click={() =>
-							dispatch('claim-ticket', { product: { id: eventTickets['CLAIMABLE_TICKET'].id } })}>
+							dispatch('claim-ticket', {
+								product: { id: eventTickets['CLAIMABLE_TICKET']?.id ?? '' }
+							})}>
 						Claim Your Ticket
 					</StandardButton>
 				</div>
