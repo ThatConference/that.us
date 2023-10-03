@@ -2,6 +2,7 @@ import dayjs from 'dayjs';
 import isSameOrBefore from 'dayjs/plugin/isSameOrBefore.js';
 import isBetween from 'dayjs/plugin/isBetween.js';
 import lodash from 'lodash';
+import { error } from '@sveltejs/kit';
 
 import eventsApi from '$dataSources/api.that.tech/events/queries';
 import sessionsQueryApi from '$dataSources/api.that.tech/sessions/queries';
@@ -46,6 +47,12 @@ export const load = auth0.withPageAuthRequired({
 			queryMySessionById(activityId),
 			queryEventsByCommunity()
 		]);
+
+		if (!activityDetails) {
+			throw new error(404, {
+				message: 'Activity Not Found'
+			});
+		}
 
 		return {
 			activityDetails,
