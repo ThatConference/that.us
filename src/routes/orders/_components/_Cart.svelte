@@ -188,7 +188,7 @@
 		{#if activateRefundPolicyModal === true}
 			<ActionModal
 				title="Refund Policy"
-				text="Ticket refunds will not be issued on any ticket <span class='font-bold'>30 days</span> before the event or thereafter. Prior to that, a $30.00 (per ticket) processing fee will be applied to each attendee ticket refund and a $10.00 (per ticket) processing fee will be applied to each family ticket refund. Memberships are non-refundable.">
+				text="Ticket refunds will not be issued on any ticket <span class='font-bold'>30 days</span> before the event or thereafter. Prior to that, a $30.00 (per ticket) processing fee will be applied to each Camper ticket refund and a $10.00 (per ticket) processing fee will be applied to each Geekling and Campmate ticket refund. Memberships are non-refundable.">
 				<div class="flex justify-center space-x-6">
 					<StandardButton on:click={() => openRefundPolicyModal(false)}>Cancel</StandardButton>
 					<StandardButton on:click={handleCheckout}>Agree and Continue</StandardButton>
