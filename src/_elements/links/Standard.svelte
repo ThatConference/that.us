@@ -1,11 +1,13 @@
 <script>
 	export let href;
 	export let rel;
+	export let target;
 </script>
 
 <a
 	{href}
 	{rel}
+	{target}
 	class="cursor-pointer rounded-md border-2 border-thatBlue-500 bg-white px-8 py-3 text-base
     font-medium leading-6 text-thatBlue-500 shadow
     transition duration-150 ease-in-out hover:bg-thatBlue-500
