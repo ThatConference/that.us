@@ -87,23 +87,27 @@
 
 	$: primaryCategorySort = activitiesFiltered.filter(
 		(activity) =>
-			(activity.category == 'FAMILY' ? family : false) ||
-			(activity.category == 'PROFESSIONAL' ? professional : false) ||
-			activities.category == null
+			(activity.category === 'FAMILY' ? family : false) ||
+			(activity.category === 'PROFESSIONAL' ? professional : false) ||
+			activities.category === null
 	);
 
 	$: activitiesLocationCategoryFiltered = primaryCategorySort.filter(
 		(activity) =>
-			(activity.type == 'REGULAR' ? regular : false) ||
-			(activity.type == 'KEYNOTE' ? keynote : false) ||
-			(activity.type == 'WORKSHOP' ? workshop : false) ||
-			(activity.type == 'OPEN_SPACE' ? openSpace : false)
+			(activity.type === 'REGULAR' ? regular : false) ||
+			(activity.type === 'KEYNOTE' ? keynote : false) ||
+			(activity.type === 'WORKSHOP' ? workshop : false) ||
+			(activity.type === 'OPEN_SPACE' ? openSpace : false)
 	);
 
 	$: activitiesTaggedFiltered =
 		selectedFilterTerms.length > 0
-			? activitiesLocationCategoryFiltered.filter((activity) =>
-					selectedFilterTerms.some((tag) => activity.tags.some((t) => t.toLowerCase() === tag))
+			? activitiesLocationCategoryFiltered.filter(
+					(activity) =>
+						selectedFilterTerms.some((tag) => activity.tags.some((t) => t.toLowerCase() === tag)) ||
+						selectedFilterTerms.some((tag) =>
+							activity.communities.some((c) => c.toLowerCase() === tag.replace('@', ''))
+						)
 			  )
 			: activitiesLocationCategoryFiltered;
 
