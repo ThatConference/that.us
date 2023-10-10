@@ -124,3 +124,8 @@ export const kalahari = {
 		}
 	}
 };
+
+export const thatConferenceRedirect = {
+	baseUrl: `https://thatconference.com`,
+	defaultStatus: 308
+};

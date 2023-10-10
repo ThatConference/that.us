@@ -6,5 +6,5 @@ export function load({ params }) {
 	if (!Number.isInteger(Number.parseInt(year, 10))) {
 		throw error(404, 'Event not found');
 	}
-	throw redirect(tcr.defaultStatus, `${tcr.baseUrl}/tx/${year}/travel/`);
+	throw redirect(tcr.defaultStatus, `${tcr.baseUrl}/wi/${year}/tickets/`);
 }
