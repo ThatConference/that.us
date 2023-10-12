@@ -17,7 +17,17 @@ function init(fetch) {
 		// 'that-correlation-id': createCorrelationId()
 	};
 
-	const json = (r) => r.json();
+	const handleResult = (r) => {
+		if (browser) {
+			loading.set(false);
+		}
+
+		if (r.ok) {
+			return r.json();
+		} else {
+			throw new Error(`${r.status} ${r.statusText}`);
+		}
+	};
 
 	function updateHeaders(values) {
 		headers = {
@@ -55,11 +65,7 @@ function init(fetch) {
 			retries: 3,
 			retryOn
 		})
-			.then(json)
-			.then((r) => {
-				if (browser) loading.set(false);
-				return r;
-			})
+			.then(handleResult)
 			.catch((error) => {
 				console.error('api query error:', error);
 				Sentry.captureException(error);
@@ -87,11 +93,7 @@ function init(fetch) {
 			}),
 			retryOn
 		})
-			.then(json)
-			.then((r) => {
-				if (browser) loading.set(false);
-				return r;
-			})
+			.then(handleResult)
 			.catch((error) => {
 				console.error('api secure query error:', error);
 				Sentry.captureException(error);
@@ -119,11 +121,7 @@ function init(fetch) {
 			}),
 			retryOn
 		})
-			.then(json)
-			.then((r) => {
-				if (browser) loading.set(false);
-				return r;
-			})
+			.then(handleResult)
 			.catch((error) => {
 				console.error('api mutation error:', error);
 				Sentry.captureException(error);
