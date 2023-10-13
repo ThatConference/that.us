@@ -48,11 +48,13 @@
 	}
 
 	onMount(() => {
-		/* eslint-disable no-undef */
-		grecaptcha.enterprise.ready(async () => {
+		if (window.grecaptcha) {
 			/* eslint-disable no-undef */
-			await grecaptcha.enterprise.execute(recaptcha.siteKey, { action: 'site_load' });
-		});
+			grecaptcha.enterprise.ready(async () => {
+				/* eslint-disable no-undef */
+				await grecaptcha.enterprise.execute(recaptcha.siteKey, { action: 'site_load' });
+			});
+		}
 
 		if ($showReleaseNotes) {
 			messages.update((m) => [
