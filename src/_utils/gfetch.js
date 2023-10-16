@@ -22,7 +22,7 @@ function init(fetch) {
 			loading.set(false);
 		}
 
-		if (r.ok) {
+		if (r.status === 200) {
 			return r.json();
 		} else {
 			throw new Error(`${r.status} ${r.statusText}`);
@@ -43,7 +43,7 @@ function init(fetch) {
 					response?.status
 				}, is response empty? ${response === undefined || response === null}`
 			});
-			Sentry.captureException(error);
+			Sentry.captureMessage(error);
 
 			return true;
 		}
