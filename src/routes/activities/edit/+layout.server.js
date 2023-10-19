@@ -1,3 +1,4 @@
+// file needs to be +layout.server.js to ensure security fires in hooks.server.js handle
 import dayjs from 'dayjs';
 import isSameOrBefore from 'dayjs/plugin/isSameOrBefore.js';
 import isBetween from 'dayjs/plugin/isBetween.js';
@@ -6,7 +7,6 @@ import { error } from '@sveltejs/kit';
 
 import eventsApi from '$dataSources/api.that.tech/events/queries';
 import sessionsQueryApi from '$dataSources/api.that.tech/sessions/queries';
-import auth0 from '$utils/security/client';
 
 dayjs.extend(isSameOrBefore);
 dayjs.extend(isBetween);
@@ -36,30 +36,28 @@ function transformEvents(allEvents, eventId, isBackdoor) {
 	return activeEvents;
 }
 
-export const load = auth0.withPageAuthRequired({
-	load: async function load({ params, fetch }) {
-		const { activityId } = params;
+export async function load({ params, fetch }) {
+	const { activityId } = params;
 
-		const { queryEventsByCommunity } = eventsApi(fetch);
-		const { queryMySessionById } = sessionsQueryApi(fetch);
+	const { queryEventsByCommunity } = eventsApi(fetch);
+	const { queryMySessionById } = sessionsQueryApi(fetch);
 
-		const [activityDetails, events] = await Promise.all([
-			queryMySessionById(activityId),
-			queryEventsByCommunity()
-		]);
+	const [activityDetails, events] = await Promise.all([
+		queryMySessionById(activityId),
+		queryEventsByCommunity()
+	]);
 
-		if (!activityDetails) {
-			throw new error(404, {
-				message: 'Activity Not Found'
-			});
-		}
-
-		return {
-			activityDetails,
-			events,
-			activeEvents: transformEvents(events, activityDetails.eventId, true),
-			isBackdoor: true,
-			eventId: activityDetails.eventId
-		};
+	if (!activityDetails) {
+		throw new error(404, {
+			message: 'Activity Not Found'
+		});
 	}
-});
+
+	return {
+		activityDetails,
+		events,
+		activeEvents: transformEvents(events, activityDetails.eventId, true),
+		isBackdoor: true,
+		eventId: activityDetails.eventId
+	};
+}
