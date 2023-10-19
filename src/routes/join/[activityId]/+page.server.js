@@ -1,3 +1,4 @@
+// file needs to be page.server.js to ensure security fires in hooks.server.js handle
 import { redirect } from '@sveltejs/kit';
 import sessionsApi from '$dataSources/api.that.tech/sessions';
 import eventsApi from '$dataSources/api.that.tech/events/queries';

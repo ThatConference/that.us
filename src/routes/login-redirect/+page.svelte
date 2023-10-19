@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
 	import { invalidateAll } from '$app/navigation';
+	import { signIn } from '@auth/sveltekit/client';
 
 	const returnTo = $page.url.searchParams.has('returnTo')
 		? $page.url.searchParams.get('returnTo')
@@ -52,16 +53,15 @@
 		</div>
 		<div class="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
 			<span class="flex w-full rounded-md shadow-sm sm:ml-3 sm:w-auto">
-				<a
-					href={`/login/?returnTo=${returnTo}`}
-					rel="external"
+				<button
+					on:click={() => signIn('auth0', { callbackUrl: returnTo })}
 					class="focus:ring-red inline-flex w-full justify-center rounded-md
          			border border-transparent bg-red-600 px-4 py-2 text-base
           			font-medium leading-6 text-white shadow-sm transition
           		duration-150 ease-in-out hover:bg-red-500 focus:border-red-700
           		focus:outline-none sm:text-sm sm:leading-5">
 					Login
-				</a>
+				</button>
 			</span>
 			<span class="flex w-full rounded-md shadow-sm sm:ml-3 sm:w-auto">
 				<a

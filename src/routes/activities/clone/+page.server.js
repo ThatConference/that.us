@@ -1,10 +1,11 @@
+// file needs to be page.server.js to ensure security fires in hooks.server.js handle
 import dayjs from 'dayjs';
-import eventsApi from '$dataSources/api.that.tech/events/queries';
 import isSameOrBefore from 'dayjs/plugin/isSameOrBefore.js';
 import isBetween from 'dayjs/plugin/isBetween.js';
 import lodash from 'lodash';
 
-import auth0 from '$utils/security/client';
+import eventsApi from '$dataSources/api.that.tech/events/queries';
+import sessionsQueryApi from '$dataSources/api.that.tech/sessions/queries';
 import config from '$utils/config.public';
 
 dayjs.extend(isBetween);
@@ -48,22 +49,38 @@ function transformEvents(allEvents, eventId, isBackdoor) {
 	return activeEvents;
 }
 
-export const load = auth0.withPageAuthRequired({
-	load: async function load({ url, fetch }) {
-		const { queryEventsByCommunity } = eventsApi(fetch);
+export async function load({ url, fetch }) {
+	const { queryEventsByCommunity } = eventsApi(fetch);
+	const { queryMySessionById } = sessionsQueryApi(fetch);
 
-		const isBackdoor =
-			url.pathname === '/activities/create/backdoor/' ||
-			url.pathname === '/activities/create/backdoor';
-
-		const eventId = url.searchParams.get('event') || config.eventId;
-		const events = await queryEventsByCommunity();
-
+	const activityId = url.searchParams.get('id') || null;
+	if (!activityId) {
 		return {
-			events,
-			activeEvents: transformEvents(events, eventId, isBackdoor),
-			isBackdoor,
-			eventId
+			status: 404,
+			error: 'Activity not found'
 		};
 	}
-});
+
+	const [events, activity] = await Promise.all([
+		queryEventsByCommunity(),
+		queryMySessionById(activityId)
+	]);
+
+	if (!activity) {
+		return {
+			status: 404,
+			error: 'Activity not found'
+		};
+	}
+
+	const isBackdoor = false;
+	const eventId = config.eventId;
+
+	return {
+		activity,
+		events,
+		eventId,
+		activeEvents: transformEvents(events, eventId, isBackdoor),
+		isBackdoor
+	};
+}

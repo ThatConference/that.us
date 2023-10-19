@@ -1,4 +1,3 @@
-import auth0 from '$utils/security/server';
 import config from '$utils/config.public';
 import { QUERY_ME } from '$dataSources/api.that.tech/me';
 import { loadFlashMessage } from 'sveltekit-flash-message/server';
@@ -28,8 +27,8 @@ async function queryMe(accessToken) {
 export const trailingSlash = 'always';
 
 export const load = loadFlashMessage(async (event) => {
-	let { request, locals } = event;
-	const auth0Session = await auth0.getSession(request);
+	let { locals } = event;
+	const auth0Session = await locals.getSession();
 
 	let user = {
 		isAuthenticated: !!auth0Session?.user,

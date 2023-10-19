@@ -1,8 +1,41 @@
-import auth0 from '$utils/security/client';
+import { redirect, error } from '@sveltejs/kit';
+import * as Sentry from '@sentry/sveltekit';
 
-export const trailingSlash = 'always';
+export async function GET({ fetch, locals, url }) {
+	const returnTo = url.searchParams?.get('returnTo') || '/';
+	let _url = '/';
+	try {
+		const session = await locals.getSession();
+		if (!session?.user) {
+			const tokenCall = await fetch('/auth/csrf');
+			const csrfTokenResponse = await new Response(tokenCall.body).json();
+			const csrfToken = csrfTokenResponse.csrfToken;
 
-export function GET({ request }) {
-	const returnTo = request.url.searchParams?.get('returnTo') || '/';
-	return auth0.handleLogin(request, { returnTo });
+			const formData = new URLSearchParams();
+			formData.append('redirect', 'false');
+			formData.append('csrfToken', csrfToken);
+			formData.append('callbackUrl', returnTo);
+
+			const signInRequest = await fetch('/auth/signin/auth0', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/x-www-form-urlencoded',
+					'X-Auth-Return-Redirect': '1'
+				},
+				body: formData.toString()
+			});
+
+			const signInResponse = await new Response(signInRequest.body).json();
+			if (signInResponse?.url) {
+				_url = signInResponse.url;
+			}
+		}
+	} catch (err) {
+		Sentry.setContext('error', { err });
+		throw error(500, 'Authentication Login Error');
+	}
+
+	if (_url) {
+		throw redirect(302, _url);
+	}
 }
