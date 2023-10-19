@@ -89,7 +89,7 @@
 		(activity) =>
 			(activity.category === 'FAMILY' ? family : false) ||
 			(activity.category === 'PROFESSIONAL' ? professional : false) ||
-			activities.category === null
+			activity.category === null
 	);
 
 	$: activitiesLocationCategoryFiltered = primaryCategorySort.filter(
@@ -199,7 +199,7 @@
 </script>
 
 <div class="relative">
-	<div class="sticky top-0 z-30 ">
+	<div class="sticky top-0 z-30">
 		<div class="absolute right-0 top-0 flex content-center border-gray-200 pt-4">
 			<div class="form-check mr-2 mt-2 flex content-center">
 				<input
@@ -226,7 +226,7 @@
 			</button>
 			<input
 				use:autoFocus
-				class="form-input hidden h-10 rounded-md p-2 sm:inline sm:text-sm sm:leading-5 "
+				class="form-input hidden h-10 rounded-md p-2 sm:inline sm:text-sm sm:leading-5"
 				bind:value={searchterm}
 				placeholder="type to search..." />
 		</div>
@@ -254,8 +254,8 @@
 			<div>
 				<h2
 					id={dayjs(day.dayOfYear).format('dddd').toLowerCase()}
-					class="sticky top-0 z-20 -ml-5 -mr-5 mb-7 whitespace-nowrap 
-                 bg-gray-100 pl-5 pt-4 text-xl 
+					class="sticky top-0 z-20 -ml-5 -mr-5 mb-7 whitespace-nowrap
+                 bg-gray-100 pl-5 pt-4 text-xl
                  font-extrabold leading-9 tracking-tight text-thatBlue-800 sm:-ml-6 sm:-mr-6 sm:mb-9 sm:pl-6 sm:leading-10 md:text-4xl">
 					{dayjs(day.dayOfYear).format("dddd, MMMM D, 'YY")}
 				</h2>
@@ -263,8 +263,8 @@
 				{#each day.timeSlots as ts}
 					<div class="relative">
 						<h2
-							class="sm:top-13 sticky top-11 z-10 -ml-5 -mr-5 whitespace-nowrap bg-gray-100 
-                     pl-5 pt-2 text-xl font-extrabold 
+							class="sm:top-13 sticky top-11 z-10 -ml-5 -mr-5 whitespace-nowrap bg-gray-100
+                     pl-5 pt-2 text-xl font-extrabold
                      leading-9 tracking-tight text-thatOrange-400 sm:-ml-6 sm:-mr-6 sm:pl-6 sm:leading-10 md:text-4xl">
 							{#if !dayjs(ts.timeSlot).isValid()}
 								Unscheduled
