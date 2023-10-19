@@ -47,7 +47,7 @@ export const securityConfig = () => {
 };
 
 export const logging = {
-	dsn: '', //'https://15d4b436dc0a4366a0ac388c65772926@o235190.ingest.sentry.io/5357492',
+	dsn: 'https://15d4b436dc0a4366a0ac388c65772926@o235190.ingest.sentry.io/5357492',
 	environment: env.PUBLIC_VERCEL_ENV
 };
 
