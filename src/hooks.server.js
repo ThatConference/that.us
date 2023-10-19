@@ -49,6 +49,10 @@ async function authorization({ event, resolve }) {
 			}
 			throw redirect(303, `/login-redirect?returnTo=${toPath}`);
 		}
+
+		if (!session.user.sub.startsWith('twitter') && session.user?.emailVerified === false) {
+			throw redirect(307, `/verify-account`);
+		}
 	}
 
 	return resolve(event);
@@ -85,10 +89,13 @@ const authConfig = {
 			return baseUrl;
 		},
 		jwt(jwtGoo) {
-			const { account, token } = jwtGoo;
+			const { account, token, profile } = jwtGoo;
 			if (account) {
 				token.accessToken = account.access_token;
 				token.idToken = account.id_token;
+			}
+			if (profile) {
+				token.emailVerified = profile.email_verified;
 			}
 			return token;
 		},
@@ -98,6 +105,7 @@ const authConfig = {
 			session.idToken = token.idToken;
 			session.user.id = token.sub;
 			session.user.sub = token.sub;
+			session.user.emailVerified = token.emailVerified;
 			const payload = parseOnly(token.accessToken);
 			if (payload) {
 				const { permissions } = payload;
