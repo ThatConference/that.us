@@ -74,7 +74,7 @@ const authConfig = {
 	secret,
 	debug: false,
 	session: {
-		maxAge: 3600 // 1 min // 3600 * 24 // 1440 mins, 1 day
+		maxAge: 3600 * 24 // 1440 mins, 1 day
 	},
 	callbacks: {
 		redirect(redirectGoo) {
