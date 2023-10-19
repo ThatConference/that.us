@@ -1,10 +1,6 @@
 {
 	"name": "that-us",
-<<<<<<< HEAD
-	"version": "3.14.3",
-=======
 	"version": "3.15.0",
->>>>>>> 748e2d1c (chore: package patch updates except eslint, prettier which were minor)
 	"description": "THAT.us website",
 	"main": "index.js",
 	"type": "module",
