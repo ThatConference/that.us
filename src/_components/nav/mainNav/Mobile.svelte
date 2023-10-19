@@ -26,10 +26,11 @@
 	<AddActivity />
 </div>
 
-<div class="my-4 flex flex-col space-y-5 px-4 sm:my-4 sm:px-6">
+<div class="my-4 flex flex-col space-y-4 px-4 sm:my-4 sm:px-6">
 	{#if $page.data.user.isAuthenticated}
 		<MobileUsersProfile darkMode={true} />
 	{:else}
-		<StandardLink rel="external" href="/login/">Log in</StandardLink>
+		<StandardLink rel="external" href="/login/">Login</StandardLink>
+		<StandardLink rel="external" href="/signup/">Sign Up</StandardLink>
 	{/if}
 </div>
