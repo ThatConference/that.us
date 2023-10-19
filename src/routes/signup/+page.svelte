@@ -6,6 +6,7 @@
 	import Layout from '$elements/layouts/ContentLayout.svelte';
 	import { Standard as StandardLink } from '$elements/links';
 	import Newsletter from '$components/newsletter/Short.svelte';
+	import { ChevronRight } from '$elements/svgs';
 
 	import WelcomeQuote from '../support/_components/_WelcomeQuote.svelte';
 
@@ -45,21 +46,29 @@
 
 								<!-- Complete Step -->
 								<!-- todo how do we redirect after login? -->
-								<a rel="external" href="/login/" class="group relative flex items-center p-3">
-									<span class="flex h-20 items-center">
-										<span
-											class="relative z-10 flex h-20 w-20 items-center justify-center rounded-full bg-white p-3 ring-4 ring-thatOrange-500 group-hover:bg-thatOrange-500 group-hover:text-white">
-											<span class="text-5xl font-extrabold">1</span>
-										</span>
-									</span>
-									<span class="ml-4 flex min-w-0 flex-col items-start">
-										<span class="text-xl font-semibold uppercase tracking-wide"
-											>Create Your Login</span>
-										<span class="text-lg text-gray-500">
-											You will need an account to create or join any activities.
-										</span>
-									</span>
-								</a>
+								<!-- <a rel="external" href="/login/" class="group relative flex items-center p-3"> -->
+								<form method="POST">
+									<button type="submit" class="group relative flex p-3">
+										<div class="flex h-20">
+											<span
+												class="relative z-10 flex h-20 w-20 items-center justify-center rounded-full bg-white p-3 ring-4 ring-thatOrange-500 group-hover:bg-thatOrange-500 group-hover:text-white">
+												<span class="text-5xl font-extrabold">1</span>
+											</span>
+										</div>
+										<div class="ml-4 min-w-0">
+											<p class="text-left text-xl font-semibold uppercase tracking-wide">
+												Create Your Login
+											</p>
+											<p class="flex text-left text-lg text-gray-500">
+												You will need an account to create or join any activities.
+											</p>
+										</div>
+										<div class="flex h-20 flex-col justify-center text-thatOrange-500">
+											<ChevronRight />
+										</div>
+									</button>
+								</form>
+								<!-- </a> -->
 							</li>
 							<li class="relative pb-10" in:fade={{ delay: 300, duration: 500 }}>
 								<div class="absolute left-12 top-4 ml-0.5 mt-0.5 h-full w-1 bg-thatOrange-500" />
@@ -78,6 +87,9 @@
 											Tell everyone a bit about who you are and where to find you on the internet.
 										</span>
 									</span>
+									<div class="flex h-20 flex-col justify-center text-thatOrange-500">
+										<ChevronRight />
+									</div>
 								</a>
 							</li>
 							<li class="relative pb-10" in:fade={{ delay: 500, duration: 500 }}>
@@ -94,6 +106,9 @@
 											We've put together a few words on how to get started with THAT.
 										</span>
 									</span>
+									<div class="flex h-20 flex-col justify-center text-thatOrange-500">
+										<ChevronRight />
+									</div>
 								</a>
 							</li>
 						</ol>

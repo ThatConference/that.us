@@ -27,7 +27,7 @@ export const securityConfig = () => {
 	const config = {
 		clientID: env.PUBLIC_AUTH0_CLIENT_ID || configMissing('PUBLIC_AUTH0_CLIENT_ID'),
 		baseURL: env.PUBLIC_AUTH0_BASE_URL || `https://that.us`,
-		issuerBaseURL: `https://auth.that.tech`,
+		issuerBaseURL: `https://auth.that.tech/`,
 
 		authorizationParams: {
 			scope: env.PUBLIC_AUTH0_SCOPE || 'openid profile email offline_access',
