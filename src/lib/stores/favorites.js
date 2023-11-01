@@ -28,15 +28,11 @@ export async function toggle(sessionId, eventId) {
 	return results;
 }
 
-async function create() {
-	const initalValues = await get();
-	favoritesStore.set(initalValues);
-}
-
 if (browser) {
-	page.subscribe((values) => {
-		if (values?.data?.user?.profile) {
-			create();
+	page.subscribe(async (values) => {
+		if (values?.data?.user?.isAuthenticated) {
+			const initalValues = await get();
+			favoritesStore.set(initalValues);
 		}
 	});
 }
