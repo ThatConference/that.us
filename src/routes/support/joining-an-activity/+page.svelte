@@ -27,11 +27,15 @@
 		<div class="prose prose-lg mx-auto text-gray-500">
 			<p>
 				<strong>Click the join button.</strong> Yes, it's just THAT simple. The join button enables itself
-				5 minutes before the scheduled start time (in your timezone0) and will remain active for the
-				duration of the activity. THAT works in any browser and you just need to enable your webcam and
-				microphone. We do require everyone to log in before joining any Activity. Your mic will always
-				be muted by default and your camera will be enabled. Activities are currently limited to 100
-				concurrent attendees.
+				5 minutes before the scheduled start time (in your timezone) and will remain active for the duration
+				of the activity.
+			</p>
+			<p>
+				THAT utilizes Discord, via <a href="https://discord.gg/annje7TBG8"> THAT Discord</a>, which
+				works in any browser or the Discord client, and you just need to enable your webcam and
+				microphone. We do require everyone to log in before joining any Activity. Your mic will
+				always be muted by default and your camera will be enabled. Activities are currently limited
+				to 100 concurrent attendees.
 			</p>
 
 			<div class="scale-75 transform text-center">
@@ -48,7 +52,6 @@
 			</p>
 			<ul>
 				<li>Always be nice.</li>
-				<li>Raise hand to speak.</li>
 				<li>Mute yourself when not speaking.</li>
 				<li>Speak clearly so others can hear you.</li>
 				<li>Create space so others can speak.</li>
