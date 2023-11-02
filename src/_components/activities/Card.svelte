@@ -13,6 +13,7 @@
 	export let location;
 	export let dense = false;
 	export let status;
+	export let discord;
 
 	// 3rd party
 	import { onMount, getContext } from 'svelte';
@@ -41,7 +42,9 @@
 
 	import { Tag } from '$elements';
 	import CardLink from './CardLink.svelte';
+	import CardButton from './CardButton.svelte';
 	import favorites, { toggle } from '$lib/stores/favorites';
+	import DiscordLinksModal from './DiscordLinksModal.svelte';
 
 	dayjs.extend(isBetween);
 	dayjs.extend(isSameOrAfter);
@@ -135,8 +138,12 @@
 	const userProfileImage = host.profileImage || config.defaultProfileImage;
 	const srcset = buildImageSrc(userProfileImage, ['96']);
 	const joinUrl = getSessionUrl();
+	let showDiscordLinksModal = false;
 </script>
 
+{#if showDiscordLinksModal === true}
+	<DiscordLinksModal {discord} bind:showModal={showDiscordLinksModal} />
+{/if}
 {#if dense}
 	<div
 		class="mb-2 flex h-full w-full flex-col"
@@ -311,7 +318,7 @@
 								<div class="flex h-full">
 									{#if targetLocation === 'IN_PERSON'}
 										<div
-											class="flex w-full justify-center space-x-8 rounded-br-lg  bg-that-blue py-2 text-xs font-medium  text-white">
+											class="flex w-full justify-center space-x-8 rounded-br-lg bg-that-blue py-2 text-xs font-medium text-white">
 											<div class="flex justify-center space-x-2">
 												<Icon data={user} class="h-4 w-4" />
 												<span>In-Person</span>
@@ -324,7 +331,14 @@
 										</div>
 									{:else if canJoin}
 										<div class="-ml-px flex flex-1 basis-0 border-l pl-1 text-center">
-											<CardLink href={joinUrl} icon={signIn} text={'Join In'} />
+											{#if discord.channelUrl}
+												<CardButton
+													on:click={() => (showDiscordLinksModal = true)}
+													icon={signIn}
+													text={'Join In'} />
+											{:else}
+												<CardLink href={joinUrl} icon={signIn} text={'Join In'} />
+											{/if}
 										</div>
 									{:else}
 										<div class="-ml-px flex flex-1 border-l pl-1 text-center">
@@ -405,7 +419,7 @@
 			{#if status === 'CANCELLED'}
 				<div class="flex items-center justify-center">
 					<img
-						class="lazyload relative h-28 "
+						class="lazyload relative h-28"
 						alt="canceled session"
 						src="/images/canceled-stamp.svg" />
 				</div>
@@ -506,7 +520,7 @@
 					{#if targetLocation === 'IN_PERSON'}
 						<div class="-ml-px flex w-0 flex-1">
 							<div
-								class="flex w-full justify-center space-x-8 rounded-bl-lg rounded-br-lg border border-transparent bg-that-blue py-2 text-xs font-medium  text-white">
+								class="flex w-full justify-center space-x-8 rounded-bl-lg rounded-br-lg border border-transparent bg-that-blue py-2 text-xs font-medium text-white">
 								<div class="flex justify-center space-x-2">
 									<Icon data={user} class="h-4 w-4" />
 									<span>In-Person</span>
@@ -520,7 +534,14 @@
 						</div>
 					{:else if canJoin}
 						<div class="-ml-px flex w-0 flex-1">
-							<CardLink href={joinUrl} icon={signIn} text={'Join In'} />
+							{#if discord.channelUrl}
+								<CardButton
+									on:click={() => (showDiscordLinksModal = true)}
+									icon={signIn}
+									text={'Join In'} />
+							{:else}
+								<CardLink href={joinUrl} icon={signIn} text={'Join In'} />
+							{/if}
 						</div>
 					{:else}
 						<div class="-ml-px flex w-0 flex-1">

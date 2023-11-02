@@ -5,6 +5,7 @@
 </script>
 
 <a
+	on:click
 	{href}
 	{rel}
 	{target}

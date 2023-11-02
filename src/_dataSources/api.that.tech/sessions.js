@@ -27,6 +27,12 @@ const coreSessionFields = `
 			isOnline
 			url
 		}
+		discord {
+			channelUrl
+			inviteUrl
+			guildScheduledEventUrl
+			guildScheduledEventInviteUrl
+		}
 		agenda
 		longDescription
 		prerequisites
