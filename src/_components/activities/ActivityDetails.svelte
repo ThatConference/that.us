@@ -37,6 +37,7 @@
 	// import CalendarButton from './elements/CalendarButton.svelte';
 	import { SocialLink } from '../social';
 	import Success from '../notifications/Success.svelte';
+	import DiscordLinksModal from './DiscordLinksModal.svelte';
 
 	dayjs.extend(isBetween);
 	dayjs.extend(isSameOrAfter);
@@ -66,7 +67,8 @@
 		takeaways,
 		agenda,
 		supportingArtifacts,
-		primaryCategory
+		primaryCategory,
+		discord
 	} = activity;
 
 	let dropDownKeyValuePairs = getContext('DROP_DOWN_KEY_VALUE_PAIRS');
@@ -179,6 +181,7 @@
 	}
 
 	const joinUrl = getSessionUrl();
+	let showDiscordLinksModal = false;
 </script>
 
 {#if isNew}
@@ -187,6 +190,9 @@
 	<Success title="Success 🎊" text="Successfully updated {title}." />
 {/if}
 
+{#if showDiscordLinksModal === true}
+	<DiscordLinksModal {discord} bind:showModal={showDiscordLinksModal} />
+{/if}
 <div>
 	<!--header-->
 	<div class="border-b border-gray-300 px-4 py-5 sm:px-6">
@@ -325,18 +331,34 @@
 					{:else if targetLocation != 'IN_PERSON'}
 						{#if canJoin}
 							<div class="mx-2 mt-2 rounded-md shadow-sm">
-								<a
-									href={joinUrl}
-									class="relative inline-flex justify-center rounded-md border-2 border-thatBlue-500
+								{#if discord.channelUrl}
+									<button
+										type="button"
+										on:click={() => (showDiscordLinksModal = true)}
+										class="relative inline-flex justify-center rounded-md border-2 border-thatBlue-500
                   bg-white px-4 py-2 text-sm font-medium
                   leading-5 text-thatBlue-500 transition
                   duration-150 ease-in-out
                   hover:bg-thatBlue-500 hover:text-white
                   focus:border-thatBlue-800 focus:bg-thatBlue-500
                   focus:text-white focus:outline-none focus:ring-thatBlue-500 active:bg-thatBlue-800">
-									<Icon data={signIn} class="-ml-1 mr-2 h-4 w-4 text-gray-400" />
-									<span>Join In</span>
-								</a>
+										<Icon data={signIn} class="-ml-1 mr-2 h-4 w-4 text-gray-400" />
+										<span>Join In</span>
+									</button>
+								{:else}
+									<a
+										href={joinUrl}
+										class="relative inline-flex justify-center rounded-md border-2 border-thatBlue-500
+                  bg-white px-4 py-2 text-sm font-medium
+                  leading-5 text-thatBlue-500 transition
+                  duration-150 ease-in-out
+                  hover:bg-thatBlue-500 hover:tes xt-white
+                  focus:border-thatBlue-800 focus:bg-thatBlue-500
+                  focus:text-white focus:outline-none focus:ring-thatBlue-500 active:bg-thatBlue-800">
+										<Icon data={signIn} class="-ml-1 mr-2 h-4 w-4 text-gray-400" />
+										<span>Join In</span>
+									</a>
+								{/if}
 							</div>
 						{:else}
 							<span class="mx-2 mt-2 rounded-md shadow-sm">
@@ -383,7 +405,7 @@
 				{:else}
 					<div>
 						<!-- Start Time -->
-						<p class="text-base text-gray-700  sm:mx-auto sm:text-lg md:text-xl lg:mx-0">
+						<p class="text-base text-gray-700 sm:mx-auto sm:text-lg md:text-xl lg:mx-0">
 							{#if durationInMinutes > 0}
 								{dayjs(startTime).format('dddd, MMMM D, YYYY - h:mm A z')}, for
 								{dayjs.duration(durationInMinutes, 'minutes').as('hours')}

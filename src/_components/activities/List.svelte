@@ -193,7 +193,8 @@
 			'targetLocation',
 			'location',
 			'eventId',
-			'status'
+			'status',
+			'discord'
 		]);
 	}
 </script>
