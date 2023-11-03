@@ -15,8 +15,10 @@ const { clientSecret, secret } = privateConfig();
 
 Sentry.init({
 	dsn: logging.dsn,
+	attachStacktrace: true,
 	environment: logging.environment,
-	tracesSampleRate: 1
+	tracesSampleRate: 1,
+	denyUrls: logging.denyUrls
 });
 
 const loginRedirectPaths = [
