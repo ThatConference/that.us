@@ -23,8 +23,10 @@
 				// add ticket to basket
 				const to = {
 					eventId: event.id,
+					eventType: event.type,
 					eventDetails: event,
-					productId: ticket.id
+					productId: ticket.id,
+					productDetails: ticket
 				};
 				claimTicket.send('ADD_ITEM', to);
 				goto('/orders/claim/');
@@ -67,7 +69,7 @@
 					class="rounded-md border-thatBlue-400 focus-within:bg-gray-100" />
 				<StandardButton on:click={handleClaimTicket}>Claim Ticket</StandardButton>
 			</div>
-			<p hidden={!isInvalidCode} class=" text-center text-sm italic text-red-500 ">
+			<p hidden={!isInvalidCode} class=" text-center text-sm italic text-red-500">
 				THAT code is invalid. Please contact THAT Crew.
 			</p>
 		</div>

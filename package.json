@@ -1,6 +1,6 @@
 {
 	"name": "that-us",
-	"version": "3.16.1",
+	"version": "3.16.2",
 	"description": "THAT.us website",
 	"main": "index.js",
 	"type": "module",
@@ -97,7 +97,7 @@
 		"uuid": "^9.0.1",
 		"vite": "^4.3.9",
 		"vite-plugin-sentry": "^1.3.0",
-		"xstate": "^4.38.2",
+		"xstate": "^4.38.3",
 		"yup": "^0.32.11",
 		"zod": "^3.21.4"
 	},

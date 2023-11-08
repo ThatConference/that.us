@@ -11,6 +11,7 @@ const productBaseFieldsFragment = `
 		price
 		isEnabled
 		uiReference
+		eventActivities
 		shortDescription
 		onSaleFrom
 		onSaleUntil
