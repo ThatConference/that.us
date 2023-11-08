@@ -7,7 +7,8 @@ function createConfig(metaContext) {
 			eventId: undefined,
 			productId: undefined,
 			pendingClaim: false,
-			claimResults: undefined
+			claimResults: undefined,
+			ticketType: undefined
 		},
 		states: {
 			verification: {
@@ -71,7 +72,7 @@ function createConfig(metaContext) {
 							onDone: [
 								{
 									cond: 'wasTicketClaimed',
-									actions: ['claimTicketSuccess', 'clearCart', 'clearLocalStorage'],
+									actions: ['claimTicketSuccess'],
 									target: 'ticketClaimed'
 								},
 								{
@@ -83,7 +84,27 @@ function createConfig(metaContext) {
 					},
 
 					ticketClaimed: {
-						entry: 'redirectToSuccess'
+						entry: ['clearCart', 'clearLocalStorage'],
+						initial: 'initial',
+						states: {
+							initial: {
+								always: [
+									{
+										cond: 'isExpoHallTicket',
+										target: 'expoHall'
+									},
+									{
+										target: 'defaultRedirect'
+									}
+								]
+							},
+							expoHall: {
+								entry: 'expoHallRedirect'
+							},
+							defaultRedirect: {
+								entry: 'defaultRedirect'
+							}
+						}
 					},
 
 					ticketClaimIssue: {},

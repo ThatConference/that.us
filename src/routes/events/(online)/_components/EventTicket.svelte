@@ -21,13 +21,18 @@
 	dayjs.extend(advancedFormat);
 
 	const tickets = event.products
-		.filter((f) => f.isEnabled)
-		.filter((e) => e.productType === 'TICKET');
+		.filter((f) => f.isEnabled === true && f.productType === 'TICKET')
+		// if claimable_ticket don't filter in if eventActivities includes expo hall
+		.filter((e) =>
+			e.uiReference === 'CLAIMABLE_TICKET' ? !e.eventActivities?.includes('EXPO_HALL') : true
+		);
 
 	const eventTickets = keyBy(
 		tickets.filter((t) => t.uiReference),
 		(i) => i.uiReference
 	);
+
+	const claimableTicket = eventTickets['CLAIMABLE_TICKET'] ?? {};
 
 	const dispatch = createEventDispatcher();
 </script>
@@ -52,68 +57,63 @@
 
 		<div
 			class="relative mt-12 flex flex-col space-y-10 lg:mt-24 lg:flex-row lg:space-x-10 lg:space-y-0">
-			<div class="flex flex-col rounded-xl shadow-lg">
-				<div class="bg-white px-6 py-8 sm:p-10 sm:pb-6">
-					<div class="inline-flex items-center">
-						<div>
-							<span
-								class="rounded-full bg-thatOrange-400 px-4 py-1 text-sm font-semibold uppercase leading-5 tracking-wide text-white">
-								THAT Online - Event Ticket
-							</span>
+			{#if claimableTicket.id}
+				<div class="flex flex-col rounded-xl shadow-lg">
+					<div class="bg-white px-6 py-8 sm:p-10 sm:pb-6">
+						<div class="inline-flex items-center">
+							<div>
+								<span
+									class="rounded-full bg-thatOrange-400 px-4 py-1 text-sm font-semibold uppercase leading-5 tracking-wide text-white">
+									THAT Online - Event Ticket
+								</span>
+							</div>
 						</div>
+						<div class="mt-4 flex items-baseline text-6xl font-extrabold">Free</div>
+						<p class="mt-5 text-lg text-gray-500">
+							{event.name}
+						</p>
+						<p class="text-lg text-gray-500">
+							{dayjs(event.startDate).format('dddd, MMMM D, YYYY - h:mm A z')}
+						</p>
+						<p class="mt-6 text-lg text-gray-500">
+							{claimableTicket.description}
+						</p>
 					</div>
-					<div class="mt-4 flex items-baseline text-6xl font-extrabold">
-						{#if eventTickets['CLAIMABLE_TICKET']?.price === 0}
-							Free
-						{:else}
-							${eventTickets['CLAIMABLE_TICKET']?.price ?? 15}
-							<span class="ml-1 text-2xl font-medium text-gray-500"> USD </span>
-						{/if}
+					<div
+						class="flex flex-1 flex-col justify-between space-y-6 bg-gray-50 px-6 pb-8 pt-6 sm:p-10 sm:pt-6">
+						<ul class="space-y-4">
+							<li class="flex items-start">
+								<div class="flex-shrink-0">
+									<span class="text-green-500"><Check /></span>
+								</div>
+								<p class="ml-3 text-base text-gray-700">Full Access All Day</p>
+							</li>
+
+							<li class="flex items-start">
+								<div class="flex-shrink-0">
+									<span class="text-green-500"><Check /></span>
+								</div>
+								<p class="ml-3 text-base text-gray-700">Create and Facilitate Activities</p>
+							</li>
+
+							<li class="flex items-start">
+								<div class="flex-shrink-0">
+									<span class="text-green-500"><Check /></span>
+								</div>
+								<p class="ml-3 text-base text-gray-700">Join Any Activity</p>
+							</li>
+						</ul>
+
+						<StandardButton
+							on:click={() =>
+								dispatch('claim-ticket', {
+									product: { ...claimableTicket }
+								})}>
+							Claim Your Ticket
+						</StandardButton>
 					</div>
-					<p class="mt-5 text-lg text-gray-500">
-						{event.name}
-					</p>
-					<p class="text-lg text-gray-500">
-						{dayjs(event.startDate).format('dddd, MMMM D, YYYY - h:mm A z')}
-					</p>
-					<p class="mt-6 text-lg text-gray-500">
-						{eventTickets['VIRTUAL_CAMPER'].description}
-					</p>
 				</div>
-				<div
-					class="flex flex-1 flex-col justify-between space-y-6 bg-gray-50 px-6 pb-8 pt-6 sm:p-10 sm:pt-6">
-					<ul class="space-y-4">
-						<li class="flex items-start">
-							<div class="flex-shrink-0">
-								<span class="text-green-500"><Check /></span>
-							</div>
-							<p class="ml-3 text-base text-gray-700">Full Access All Day</p>
-						</li>
-
-						<li class="flex items-start">
-							<div class="flex-shrink-0">
-								<span class="text-green-500"><Check /></span>
-							</div>
-							<p class="ml-3 text-base text-gray-700">Create and Facilitate Activities</p>
-						</li>
-
-						<li class="flex items-start">
-							<div class="flex-shrink-0">
-								<span class="text-green-500"><Check /></span>
-							</div>
-							<p class="ml-3 text-base text-gray-700">Join Any Activity</p>
-						</li>
-					</ul>
-
-					<StandardButton
-						on:click={() =>
-							dispatch('claim-ticket', {
-								product: { id: eventTickets['CLAIMABLE_TICKET']?.id ?? '' }
-							})}>
-						Claim Your Ticket
-					</StandardButton>
-				</div>
-			</div>
+			{/if}
 
 			<div class="flex flex-col rounded-xl shadow-lg">
 				<div class="bg-white px-6 py-8 sm:p-10 sm:pb-6">
@@ -135,7 +135,7 @@
 					<p class="text-lg text-gray-500">
 						{dayjs(event.startDate).format('dddd, MMMM D, YYYY - h:mm A z')}
 					</p>
-					<p class="mt-6  text-lg text-gray-500">
+					<p class="mt-6 text-lg text-gray-500">
 						{eventTickets['VIRTUAL_CAMPER'].description}
 					</p>
 				</div>
@@ -177,7 +177,7 @@
 			</div>
 		</div>
 
-		<div class="relative mt-12  lg:mt-24">
+		<div class="relative mt-12 lg:mt-24">
 			<div class="flex flex-col">
 				<h3 class="text-2xl font-extrabold tracking-tight text-thatBlue-800 sm:text-3xl">
 					Built to support the practitioners

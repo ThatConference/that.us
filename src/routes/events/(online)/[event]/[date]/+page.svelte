@@ -46,7 +46,8 @@
 		const ticket = {
 			eventId: event.id,
 			eventDetails: event,
-			productId: product.id
+			productId: product.id,
+			productDetails: product
 		};
 
 		claimTicket.send('ADD_ITEM', ticket);
