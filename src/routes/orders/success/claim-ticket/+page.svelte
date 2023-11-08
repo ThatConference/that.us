@@ -2,7 +2,7 @@
 	<p
 		class="text-base font-semibold uppercase leading-6 tracking-wide
 			text-thatOrange-400">
-		WELCOME TO THAT CONFERENCE
+		WELCOME TO THAT ONLINE
 	</p>
 	<h1
 		class="mb-8 mt-2 text-3xl font-extrabold leading-8 tracking-tight
@@ -12,57 +12,35 @@
 </div>
 
 <div
-	class="prose relative mx-auto mb-8 max-w-prose leading-7 text-gray-500 lg:mx-0 lg:max-w-5xl lg:pr-72">
+	class="leading-7text-gray-500 prose relative mx-auto mb-8 max-w-prose lg:mx-0 lg:max-w-5xl lg:pr-72">
 	<p>
-		Welcome to THAT Conference, we are excited you’re joining us. Here are details about your Expo
-		Hall Only ticket and next steps you need to complete.
+		Thank you for securing a ticket to THAT Online! We are excited to have you join our community
+		and be part of our global family! Your support helps our mission of fostering a community of
+		geeks who want to help each other be awesome. Together we can accomplish amazing things!
 	</p>
 
-	<p>
-		The Expo Hall Only ticket provides access only to the Expo Hall (sponsor booths), Open Spaces,
-		Game Night, the Waterpark Party, and the Closing Ceremony. It does not provide food, beverages,
-		access to sessions or any other activities not listed above.
+	<p class="mt-8">
+		Make sure to mark your calendar and remember the event runs for 24 hours to best accommodate for
+		all time zones and schedules. So get ready and start thinking about the areas, topics, and/or
+		questions that would help you in your daily tech life.
 	</p>
 
-	<h2>What you need to do next</h2>
-
-	<ol>
+	<p class="mt-8">In the meantime, here are a few things you can do to prepare for the event:</p>
+	<ul>
+		<li>Create an Activity on something you want to discuss or share.</li>
 		<li>
-			Ensure your <a href="/my/profiles/primary/">profile</a> is up-to-date with a photo. This is a great
-			way for folks who have visited your booth another way to get in contact with you after the event.
+			Look through the list of Activities and favorite the ones you are interested in attending.
 		</li>
 		<li>
-			Your company has a Spotlight page on our website. Let the attendees put a name with your face
-			by adding your profile to your company’s Spotlight page. Simply contact us and we can quickly
-			add your profile.
+			<a href="/my/profiles/slack/">Join us in Slack.</a>
 		</li>
-		<li>
-			You will need access to our lead generation system if you plan on using the system during our
-			event. Simply contact us and we will get you setup.
-		</li>
-		<li>
-			If you haven’t done so already, make sure you’ve booked your hotel room. All booking
-			information can be found here: <a href="/support/travel/">https://that.us/support/travel/</a>
-		</li>
-		<li>
-			When you get to the event make sure you check in at registration to get your sponsor badge.
-		</li>
-		<li>
-			On <span class="font-bold">Monday at 1:00 PM</span> there will be a sponsor meeting in the Open
-			Spaces area. This is an opportunity to meet one another, discuss the event, answer any questions,
-			and get things kicked off before the early registration meet and greet that evening.
-		</li>
-	</ol>
+		<li>And lastly, tell your friends!</li>
+	</ul>
 
 	<p>
-		Visit <a href="/support/sponsors/forms/">https://sponsor.that.us</a> for a one-stop resource for
-		your sponsorship. It contains links to lead generation, a sponsor handbook and many other important
-		resources.
-	</p>
-	<p>
-		If you have any questions you can <a href="email:partners@thatconference.com">email us</a> or speak
-		to anyone onsite with a staff t-shirt.
+		Have questions? Feel free to check out our <a href="/support/faq/">FAQ</a>, or email us at
+		hello@that.us.
 	</p>
 
-	<p>Thank you for your support and we look forward to seeing you soon.</p>
+	<p>See you soon.</p>
 </div>

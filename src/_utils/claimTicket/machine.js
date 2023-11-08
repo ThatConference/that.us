@@ -13,11 +13,16 @@ const claimCartVersion = '1.0.0';
 
 function createServices() {
 	const { claimTicket } = orderMutationApi();
+	const TICKET_TYPE = {
+		EXPO_HALL: 'expoHall',
+		OTHER: 'other'
+	};
 
 	return {
 		guards: {
 			isPendingClaim: (context) => context.pendingClaim,
-			wasTicketClaimed: (_, { data }) => data.result
+			wasTicketClaimed: (_, { data }) => data.result,
+			isExpoHallTicket: (context) => context?.ticketType === TICKET_TYPE.EXPO_HALL
 		},
 
 		services: {
@@ -39,23 +44,30 @@ function createServices() {
 				const localCart = browser ? window.localStorage.getItem(claimCartKeyName) : null;
 				const results = JSON.parse(localCart) || {};
 
-				const { eventId = undefined, productId = undefined, eventDetails = undefined } = results;
+				const {
+					eventId = undefined,
+					productId = undefined,
+					eventDetails = undefined,
+					productDetails = undefined
+				} = results;
 				return {
 					eventId,
 					eventDetails,
 					productId,
+					productDetails,
 					pendingClaim: eventId && productId ? true : false
 				};
 			}),
 
 			setLocalStorage: (context) => {
-				const { eventId, productId, eventDetails } = context;
+				const { eventId, productId, eventDetails, productDetails } = context;
 
 				const localCart = {
 					version: claimCartVersion,
 					eventId,
 					eventDetails,
-					productId
+					productId,
+					productDetails
 				};
 
 				window.localStorage.setItem(claimCartKeyName, JSON.stringify(localCart));
@@ -65,7 +77,8 @@ function createServices() {
 				pendingClaim: () => false,
 				eventId: () => undefined,
 				eventDetails: () => undefined,
-				productId: () => undefined
+				productId: () => undefined,
+				productDetails: () => undefined
 			}),
 
 			clearLocalStorage: () => window.localStorage.removeItem(claimCartKeyName),
@@ -77,18 +90,35 @@ function createServices() {
 						? {
 								logo: event.eventDetails.logo,
 								name: event.eventDetails.name,
-								slug: event.eventDetails.slug
+								slug: event.eventDetails.slug,
+								type: event.eventDetails.type
 						  }
 						: context.eventDetails,
 				eventId: (context, event) => context.eventId || event.eventId,
-				productId: (context, event) => context.productId || event.productId
+				productId: (context, event) => context.productId || event.productId,
+				productDetails: (context, event) =>
+					event.productDetails
+						? {
+								name: event.productDetails.name,
+								eventActivities: event.productDetails.eventActivities,
+								uiReference: event.productDetails.uiReference
+						  }
+						: context.productDetails
 			}),
 
 			claimTicketSuccess: assign({
-				claimResults: (_, { data }) => data.results
+				claimResults: (_, { data }) => data.results,
+				ticketType: ({ productDetails }) => {
+					let ticketType = TICKET_TYPE.OTHER;
+					if (productDetails?.eventActivities?.includes('EXPO_HALL')) {
+						ticketType = TICKET_TYPE.EXPO_HALL;
+					}
+					return ticketType;
+				}
 			}),
 
-			redirectToSuccess: () => goto('/orders/success/claim-ticket/')
+			defaultRedirect: () => goto('/orders/success/claim-ticket/'),
+			expoHallRedirect: () => goto('/orders/success/expo-hall-ticket')
 		}
 	};
 }
