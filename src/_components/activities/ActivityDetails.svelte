@@ -348,11 +348,11 @@
 								{:else}
 									<a
 										href={joinUrl}
-										class="relative inline-flex justify-center rounded-md border-2 border-thatBlue-500
-                  bg-white px-4 py-2 text-sm font-medium
-                  leading-5 text-thatBlue-500 transition
-                  duration-150 ease-in-out
-                  hover:bg-thatBlue-500 hover:tes xt-white
+										class="hover:tes xt-white relative inline-flex justify-center rounded-md
+                  border-2 border-thatBlue-500 bg-white px-4 py-2
+                  text-sm font-medium leading-5
+                  text-thatBlue-500 transition
+                  duration-150 ease-in-out hover:bg-thatBlue-500
                   focus:border-thatBlue-800 focus:bg-thatBlue-500
                   focus:text-white focus:outline-none focus:ring-thatBlue-500 active:bg-thatBlue-800">
 										<Icon data={signIn} class="-ml-1 mr-2 h-4 w-4 text-gray-400" />
