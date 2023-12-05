@@ -23,7 +23,16 @@
 	}))();
 
 	// find partners with jobs and deduplicate them.
-	const partnerLevelSort = ['PIONEER', 'EXPLORER', 'SCOUT', 'PATRON', 'CUB', 'MEDIA'];
+	const partnerLevelSort = [
+		'PIONEER',
+		'EXPLORER',
+		'SCOUT',
+		'RANGER',
+		'TRAILBLAZER',
+		'PATRON',
+		'CUB',
+		'MEDIA'
+	];
 	const partnerMap = new Map();
 	data.events.forEach((event) =>
 		event.partners.forEach((partner) => {
