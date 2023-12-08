@@ -9,15 +9,15 @@
 
 <ActionModal
 	title="Leaving THAT.us site"
-	text="THAT.us Activities are hosted on <span class='font-bold'>Discord</span>. Please use the
-appropriate link below to get started.">
+	text="THAT Open Spaces are now hosted in <span class='font-bold'>Discord</span> as dedicated voice channels. Please use the
+appropriate link below to get started and join. Please note: you have to be a member of THAT Discord to join.">
 	<div
 		class="flex justify-center space-x-6"
 		use:clickOutside
 		on:click_outside={() => (showModal = false)}>
 		<StandardLink href={discord.channelUrl} target="_blank" on:click={() => (showModal = false)}
-			>Go as Discord Member</StandardLink>
+			>Join Channel</StandardLink>
 		<StandardLink href={discord.inviteUrl} target="_blank" on:click={() => (showModal = false)}
-			>Go using Discord Invite</StandardLink>
+			>I need a Discord invite.</StandardLink>
 	</div>
 </ActionModal>

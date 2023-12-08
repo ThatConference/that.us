@@ -6,7 +6,7 @@
 	"editor.tabSize": 2,
 	"editor.snippetSuggestions": "top",
 	"editor.codeActionsOnSave": {
-		"source.fixAll": true
+		"source.fixAll": "explicit"
 	},
 	"workbench.colorCustomizations": {
 		"titleBar.activeForeground": "#000",

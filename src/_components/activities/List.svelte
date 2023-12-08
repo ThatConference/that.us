@@ -51,11 +51,13 @@
 	let activitiesTaggedFiltered = [];
 	let family = true;
 	let professional = filterForFamily ? false : true;
-	let regular = true;
-	let keynote = true;
-	let workshop = true;
+	let regular = false;
+	let keynote = false;
+	let workshop = false;
 	let openSpace = true;
 	let dense = false;
+
+	console.log('activities', activities);
 
 	$: {
 		const tagsSet = new Set();
@@ -92,12 +94,13 @@
 			activity.category === null
 	);
 
-	$: activitiesLocationCategoryFiltered = primaryCategorySort.filter(
-		(activity) =>
-			(activity.type === 'REGULAR' ? regular : false) ||
-			(activity.type === 'KEYNOTE' ? keynote : false) ||
-			(activity.type === 'WORKSHOP' ? workshop : false) ||
-			(activity.type === 'OPEN_SPACE' ? openSpace : false)
+	$: activitiesLocationCategoryFiltered = primaryCategorySort.filter((activity) =>
+		(activity.type === 'REGULAR' ? regular : false) ||
+		(activity.type === 'KEYNOTE' ? keynote : false) ||
+		(activity.type === 'WORKSHOP' ? workshop : false) ||
+		activity.type === 'OPEN_SPACE'
+			? openSpace
+			: false
 	);
 
 	$: activitiesTaggedFiltered =
