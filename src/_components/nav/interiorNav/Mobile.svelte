@@ -16,19 +16,18 @@
 	<div class="px-2 py-3 sm:px-3">
 		<a
 			data-sveltekit-prefetch
-			href="/events/"
-			class="mt-1 block rounded-md px-3 py-2 text-base font-medium text-gray-300
-        hover:bg-that-blue hover:text-white focus:bg-that-blue focus:text-white
-        focus:outline-none">
-			Events
-		</a>
-		<a
-			data-sveltekit-prefetch
 			href="/activities/"
 			class="mt-1 block rounded-md px-3 py-2 text-base font-medium text-gray-300
+				hover:bg-that-blue hover:text-white focus:bg-that-blue focus:text-white
+				focus:outline-none">
+			Upcoming Open Spaces
+		</a>
+		<a
+			href="https://thatconference.com"
+			class="mt-1 block rounded-md px-3 py-2 text-base font-medium text-gray-300
         hover:bg-that-blue hover:text-white focus:bg-that-blue focus:text-white
         focus:outline-none">
-			Activities
+			THAT Conference
 		</a>
 		<a
 			data-sveltekit-prefetch
@@ -46,22 +45,22 @@
 				focus:outline-none">
 			Communities
 		</a>
-		<a
+		<!-- <a
 			data-sveltekit-prefetch
 			href="/partners/"
 			class="mt-1 block rounded-md px-3 py-2 text-base font-medium text-gray-300
         hover:bg-that-blue hover:text-white focus:bg-that-blue focus:text-white
         focus:outline-none">
 			Partners
-		</a>
-		<a
+		</a> -->
+		<!-- <a
 			data-sveltekit-prefetch
 			href="/blog/"
 			class="mt-1 block rounded-md px-3 py-2 text-base font-medium text-gray-300
         hover:bg-that-blue hover:text-white focus:bg-that-blue focus:text-white
         focus:outline-none">
 			Blog
-		</a>
+		</a> -->
 		<a
 			data-sveltekit-prefetch
 			href="/support/"

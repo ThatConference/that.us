@@ -73,7 +73,7 @@
 <StackedLayout>
 	<div slot="header">
 		<Nav />
-		<ActionHeader title="Daily Activities">
+		<ActionHeader title="Upcoming Open Spaces">
 			{#if !createDisabled}
 				<HighlightLink href="/activities/create/">Create Activity</HighlightLink>
 			{/if}

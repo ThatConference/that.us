@@ -1,10 +1,6 @@
 export default [
 	{
-		text: 'Events',
-		href: '/events/'
-	},
-	{
-		text: 'Activities',
+		text: 'Upcoming Open Spaces',
 		href: '/activities/',
 		first: true
 	},
@@ -17,15 +13,19 @@ export default [
 		href: '/communities/'
 	},
 	{
-		text: 'Sponsors',
-		href: '/partners/'
-	},
-	{
-		text: 'Blog',
-		href: '/blog/'
-	},
-	{
-		text: 'Help',
-		href: '/support/'
+		text: 'THAT Conference',
+		href: 'https://thatconference.com'
 	}
+	// {
+	// 	text: 'Sponsors',
+	// 	href: '/partners/'
+	// },
+	// {
+	// 	text: 'Blog',
+	// 	href: '/blog/'
+	// },
+	// {
+	// 	text: 'Help',
+	// 	href: '/support/'
+	// }
 ];
