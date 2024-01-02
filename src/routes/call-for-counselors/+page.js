@@ -1,6 +1,6 @@
 import { redirect } from '@sveltejs/kit';
-import { thatConferenceRedirect as tcr } from '$utils/config.public.js';
+// import { thatConferenceRedirect as tcr } from '$utils/config.public.js';
 
 export async function load() {
-	throw redirect(301, `${tcr.baseUrl}/cfp`);
+	throw redirect(301, `/activities/create/?event=THATConferenceWisconsin2024`);
 }
