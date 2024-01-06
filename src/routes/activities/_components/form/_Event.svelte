@@ -42,7 +42,7 @@
 
 <Input hidden name="eventId" value={eventSelected} />
 
-<div in:fade class="px-4 py-5 sm:px-6 ">
+<div in:fade class="px-4 py-5 sm:px-6">
 	{#if isBackdoor}
 		<ul class="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6">
 			<li class="col-span-1 rounded-md shadow-sm">
@@ -77,9 +77,101 @@
 		</ul>
 	{:else}
 		<ul class="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6">
+			<!-- divider for Hybrid Events-->
+			{#if activeEvents.hybrid.length > 0}
+				<div class="relative col-span-1 m-4 sm:col-span-2">
+					<div class="absolute inset-0 flex items-center" aria-hidden="true">
+						<div class="w-full border-t border-gray-300" />
+					</div>
+					<div class="relative flex justify-center">
+						<span
+							class="rounded-md bg-gray-100 px-2 text-sm uppercase tracking-wider text-gray-500">
+							Upcoming THAT Conferences
+						</span>
+					</div>
+				</div>
+
+				{#each activeEvents.hybrid as event, i (i)}
+					<li in:fade={{ delay: i * 200 }} class="col-span-1 rounded-md shadow-sm">
+						{#await canAddSession(event.id) then accessResults}
+							{#if accessResults}
+								<div class="transition duration-500 ease-in-out transform hover:scale-105">
+									<input
+										type="radio"
+										id={event.name}
+										bind:group={eventSelected}
+										value={event.id}
+										on:change={handleOnChange} />
+
+									<label for={event.name} class="h-full flex">
+										{#if event.id !== eventSelected}
+											<div
+												class="flex-1 flex items-center justify-between border border-gray-200 bg-white hover:bg-gray-50 rounded-md truncate">
+												<div class="flex-shrink-0">
+													<img class="p-2 h-14 object-fit" alt="" src={event.logo} />
+												</div>
+
+												<div class="flex-1 px-2 py-2 text-sm truncate">
+													<p class="text-gray-900 font-medium">
+														{event.name}
+													</p>
+
+													<p class="text-gray-500">
+														{dayjs(event.startDate).format('dddd, MMMM D, YYYY')}
+													</p>
+												</div>
+											</div>
+										{:else}
+											<div
+												class="flex-1 flex items-center justify-between border border-green-500 bg-green-100 rounded-md truncate">
+												<div class="flex-shrink-0">
+													<img class="p-2 h-14 object-fit" alt="" src={event.logo} />
+												</div>
+
+												<div class="flex-1 px-2 py-2 text-sm truncate">
+													<p class="text-gray-900 font-bold">
+														{event.name}
+													</p>
+
+													<p class="text-gray-500">
+														{dayjs(event.startDate).format('dddd, MMMM D, YYYY')}
+													</p>
+												</div>
+
+												<div class="flex-shrink-0 pr-4">
+													<span
+														class="h-6 w-6 rounded-full bg-green-500 bg-opacity-60 flex items-center justify-center">
+														<CheckFull height="h-4" width="w-4" />
+													</span>
+												</div>
+											</div>
+										{/if}
+									</label>
+								</div>
+							{:else}
+								<EventNoAccess {event} />
+							{/if}
+						{/await}
+					</li>
+				{/each}
+			{/if}
+
+			<!-- divider -->
+
+			<div class="relative col-span-1 m-4 sm:col-span-2">
+				<div class="absolute inset-0 flex items-center" aria-hidden="true">
+					<div class="w-full border-t border-gray-300" />
+				</div>
+				<div class="relative flex justify-center">
+					<span class="rounded-md bg-gray-100 px-2 text-sm uppercase tracking-wider text-gray-500">
+						THAT.US Online Open Spaces
+					</span>
+				</div>
+			</div>
+
 			<li
 				in:fade
-				class="col-span-1 transform rounded-md shadow-sm transition duration-500 ease-in-out hover:scale-105 ">
+				class="col-span-1 transform rounded-md shadow-sm transition duration-500 ease-in-out hover:scale-105">
 				<input
 					type="radio"
 					id={activeEvents.daily.name}
@@ -129,100 +221,7 @@
 
 			<!-- divider -->
 
-			<div class="relative col-span-1 m-4 sm:col-span-2">
-				<div class="absolute inset-0 flex items-center" aria-hidden="true">
-					<div class="w-full border-t border-gray-300" />
-				</div>
-				<div class="relative flex justify-center">
-					<span class="rounded-md bg-gray-100 px-2 text-sm uppercase tracking-wider text-gray-500">
-						Upcoming Online Events
-					</span>
-				</div>
-			</div>
-
-			<!-- end divider -->
-
-			{#each activeEvents.online as event, i (i)}
-				<li class="col-span-1 rounded-md shadow-sm">
-					{#await canAddSession(event.id)}
-						<div in:fade class="col-span-1 shadow-sm rounded-md">
-							<div class="shadow-sm rounded-md bg-white p-4 w-full mx-auto">
-								<div class="animate-pulse">
-									<div class="flex-1 space-y-2">
-										<div class="h-3 bg-gray-400 rounded w-1/2" />
-										<div class="h-3 bg-gray-300 rounded w-3/4" />
-									</div>
-								</div>
-							</div>
-						</div>
-					{:then accessResults}
-						{#if accessResults}
-							<div
-								in:fade
-								class={`transition duration-500 ease-in-out transform ${
-									event.id !== eventSelected ? 'hover:scale-105' : ''
-								}`}>
-								<input
-									type="radio"
-									id={event.name}
-									bind:group={eventSelected}
-									value={event.id}
-									on:change={handleOnChange} />
-
-								<label for={event.name} class="h-full flex">
-									{#if event.id !== eventSelected}
-										<div
-											class="flex-1 flex items-center justify-between border border-gray-200 bg-white hover:bg-gray-50 rounded-md truncate cursor-pointer">
-											<div class="flex-shrink-0">
-												<img class="p-2 h-14 object-fit" alt="" src={event.logo} />
-											</div>
-
-											<div class="flex-1 px-2 py-2 text-sm truncate">
-												<p class="text-gray-900 font-medium">
-													{event.name}
-												</p>
-
-												<p class="text-gray-500">
-													{dayjs(event.startDate).format('dddd, MMMM D, YYYY')}
-												</p>
-											</div>
-										</div>
-									{:else}
-										<div
-											class="flex-1 flex items-center justify-between border border-green-500 bg-green-100 rounded-md truncate">
-											<div class="flex-shrink-0">
-												<img class="p-2 h-14 object-fit" alt="" src={event.logo} />
-											</div>
-
-											<div class="flex-1 px-2 py-2 text-sm truncate">
-												<p class="text-gray-900 font-bold">
-													{event.name}
-												</p>
-
-												<p class="text-gray-500">
-													{dayjs(event.startDate).format('dddd, MMMM D, YYYY')}
-												</p>
-											</div>
-
-											<div class="flex-shrink-0 pr-4">
-												<span
-													class="h-6 w-6 rounded-full bg-green-500 bg-opacity-60 flex items-center justify-center">
-													<CheckFull height="h-4" width="w-4" />
-												</span>
-											</div>
-										</div>
-									{/if}
-								</label>
-							</div>
-						{:else}
-							<EventNoAccess {event} />
-						{/if}
-					{/await}
-				</li>
-			{/each}
-
-			<!-- divider for Hybrid Events-->
-			{#if activeEvents.hybrid.length > 0}
+			{#if activeEvents.online > 1}
 				<div class="relative col-span-1 m-4 sm:col-span-2">
 					<div class="absolute inset-0 flex items-center" aria-hidden="true">
 						<div class="w-full border-t border-gray-300" />
@@ -230,16 +229,33 @@
 					<div class="relative flex justify-center">
 						<span
 							class="rounded-md bg-gray-100 px-2 text-sm uppercase tracking-wider text-gray-500">
-							Upcoming In-Person Events
+							Upcoming Online Events
 						</span>
 					</div>
 				</div>
 
-				{#each activeEvents.hybrid as event, i (i)}
-					<li in:fade={{ delay: i * 200 }} class="col-span-1 rounded-md shadow-sm">
-						{#await canAddSession(event.id) then accessResults}
+				<!-- end divider -->
+
+				{#each activeEvents.online as event, i (i)}
+					<li class="col-span-1 rounded-md shadow-sm">
+						{#await canAddSession(event.id)}
+							<div in:fade class="col-span-1 shadow-sm rounded-md">
+								<div class="shadow-sm rounded-md bg-white p-4 w-full mx-auto">
+									<div class="animate-pulse">
+										<div class="flex-1 space-y-2">
+											<div class="h-3 bg-gray-400 rounded w-1/2" />
+											<div class="h-3 bg-gray-300 rounded w-3/4" />
+										</div>
+									</div>
+								</div>
+							</div>
+						{:then accessResults}
 							{#if accessResults}
-								<div class="transition duration-500 ease-in-out transform hover:scale-105">
+								<div
+									in:fade
+									class={`transition duration-500 ease-in-out transform ${
+										event.id !== eventSelected ? 'hover:scale-105' : ''
+									}`}>
 									<input
 										type="radio"
 										id={event.name}
@@ -250,7 +266,7 @@
 									<label for={event.name} class="h-full flex">
 										{#if event.id !== eventSelected}
 											<div
-												class="flex-1 flex items-center justify-between border border-gray-200 bg-white hover:bg-gray-50 rounded-md truncate">
+												class="flex-1 flex items-center justify-between border border-gray-200 bg-white hover:bg-gray-50 rounded-md truncate cursor-pointer">
 												<div class="flex-shrink-0">
 													<img class="p-2 h-14 object-fit" alt="" src={event.logo} />
 												</div>
