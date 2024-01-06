@@ -2,7 +2,17 @@ import { redirect, error } from '@sveltejs/kit';
 import * as Sentry from '@sentry/sveltekit';
 
 export async function GET({ fetch, locals, url }) {
-	const returnTo = url.searchParams?.get('returnTo') || '/';
+	const { searchParams } = url;
+
+	let returnTo = url.searchParams?.get('returnTo') || '/';
+
+	if (searchParams.size > 1) {
+		if (returnTo.length > 1) {
+			searchParams.delete('returnTo');
+			returnTo = `${returnTo}?${searchParams.toString()}`;
+		}
+	}
+
 	let _url = '/';
 	try {
 		const session = await locals.getSession();
