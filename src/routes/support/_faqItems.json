@@ -106,7 +106,12 @@
 	},
 	{
 		"question": "Oh no, `x` doesn't work on THAT.us! How do I let you know?",
-		"answer": "THAT.us is a fullly open source project located at <a class='underline hover:no-underline hover:font-semibold' target='_blank' rel='external noopener noreferrer' href='https://github.com/ThatConference/that.us'>GitHub</a>. Please fill out an bug report in GitHub and we'll have a look at it. If it is urgent (security issue, etc.) please reach out directly to hello@thatconference.com or the chat bubble at the bottom of the page.",
+		"answer": "THAT.us is a fullly open source project located at <a class='underline hover:no-underline hover:font-semibold' target='_blank' rel='external noopener noreferrer' href='https://github.com/ThatConference/that.us'>GitHub</a>. Please fill out a bug report in GitHub and we'll have a look at it. If it is urgent (security issue, etc.) please reach out directly to <a class='underline hover:no-underline hover:font-semibold' href='mailto:hello@thatconference.com'>hello@thatconference.com</a> or the chat bubble at the bottom of the page.",
 		"category": "troubleshooting"
+	},
+	{
+		"question": "Do you accomodate dietary restrictions such as gluten-free, vegetarian, vegan, etc meals?",
+		"answer": "We try to be as accommodating to everyone as possible. As such, we serve vegetarian options regardless. Food line items are marked with dietary information like gluten-free, vegetarian, etc. We can do vegan and special meals as well. Please reach out to <a class='underline hover:no-underline hover:font-semibold' href='mailto:hello@thatconference.com'>hello@thatconference.com</a> to get into the details so we can make sure it meets your needs.",
+		"category": "general"
 	}
 ]
