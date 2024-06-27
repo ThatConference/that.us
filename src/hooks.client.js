@@ -6,12 +6,10 @@ import { logging } from '$utils/config.public';
 Sentry.init({
 	dsn: logging.dsn,
 	attachStacktrace: true,
-	tracesSampleRate: 1,
-	replaysSessionSampleRate: 0.1,
-	replaysOnErrorSampleRate: 1,
-	integrations: [new Sentry.Replay()],
 	environment: logging.environment,
-	denyUrls: logging.denyUrls
+	denyUrls: logging.denyUrls,
+	enableTracing: false,
+	tracesSampleRate: 0
 });
 
 export const handleError = Sentry.handleErrorWithSentry();

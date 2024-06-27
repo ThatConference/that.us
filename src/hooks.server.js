@@ -17,8 +17,9 @@ Sentry.init({
 	dsn: logging.dsn,
 	attachStacktrace: true,
 	environment: logging.environment,
-	tracesSampleRate: 1,
-	denyUrls: logging.denyUrls
+	denyUrls: logging.denyUrls,
+	enableTracing: false,
+	tracesSampleRate: 0
 });
 
 const loginRedirectPaths = [
