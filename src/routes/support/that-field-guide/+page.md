@@ -18,14 +18,6 @@ Last updated on **June 8th, 2023**
 
 When you arrive at camp stop down at the Registration Desk located in the convention center and check in. This is where you'll get your badge and swag. The Registration Desk remains open throughout the day to answer questions. There is also a lost and found.
 
-### Hugs, Handshakes, and Waves
-
-In these special times not everyone may be comfortable with handshakes or hugs, so to help remove the uneasiness of it we've come up with a simple system using **lanyard colors** ❤️ 💛 💚
-
-- **Red lanyard** indicates the person prefers no physical contact, aka. waves.
-- **Yellow lanyard** indicates the person prefers limited contact and a handshake is okay.
-- **Green lanyard** indicates the person is okay with personal contact and a hug is acceptable.
-
 ### So Many Wristbands 😵‍💫
 
 Yes, we understand while you're at the Kalahari and THAT Conference there are a lot of needed wristbands. Hopefully, this will remove some confusion.
